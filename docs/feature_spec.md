@@ -1,54 +1,48 @@
 # Feature Specification
 
-## 1. Golden Time SRS Logic (Modified SM-2)
+## 1. Golden Time SRS Logic (FSRS v4+)
 
-The scheduler is the core of the application. It determines when a card should be reviewed next based on user performance.
+We use **FSRS (Free Spaced Repetition Scheduler)** via the `ts-fsrs` library. FSRS is a modern algorithm that adapts better to individual memory patterns than traditional SM-2.
 
-### Inputs
+### Library: `ts-fsrs`
 
-- `current_interval` (days)
-- `current_ease` (float, default 2.5)
-- `rating` (0-3 scale):
-  - 0: **Again/Fail** (Complete blackout)
-  - 1: **Hard** (Correct but difficult, hesitated)
-  - 2: **Good** (Correct with little effort)
-  - 3: **Easy** (Perfect instant recall)
+- **Repo:** [https://github.com/open-spaced-repetition/ts-fsrs](https://github.com/open-spaced-repetition/ts-fsrs)
+- **Goal:** Minimize review load while maintaining high retention (target 90%).
 
-### Algorithm Pseudocode
+### Usage Logic
 
-```javascript
-function calculateNextReview(card, rating) {
-  let newInterval, newEase;
+```typescript
+import { fsrs, generatorParameters, Rating } from 'ts-fsrs';
 
-  if (rating === 0) {
-    newInterval = 1; // Reset to 1 day (or 10 mins in session)
-    newEase = Math.max(1.3, card.ease_factor - 0.2);
-  } else {
-    // Standard SM-2 calculation
-    if (card.repetition_count === 0) {
-      newInterval = 1;
-    } else if (card.repetition_count === 1) {
-      newInterval = 6;
-    } else {
-      newInterval = Math.round(card.interval * card.ease_factor);
-    }
-    
-    // Update Ease Factor
-    // Formula: EF' = EF + (0.1 - (5-q)*(0.08+(5-q)*0.02))
-    // Our rating q is 0-3, typical SM-2 is 0-5. mapping needed or simplified logic:
-    // Simply: Ease changes slightly based on Hard/Good/Easy.
-    if (rating === 1) newEase = card.ease_factor - 0.15;
-    if (rating === 2) newEase = card.ease_factor;
-    if (rating === 3) newEase = card.ease_factor + 0.15;
-  }
+// Initialize Scheduler (Singleton)
+const params = generatorParameters({ enable_fuzz: true });
+const f = fsrs(params);
 
-  return {
-    next_review: addDays(Date.now(), newInterval),
-    interval: newInterval,
-    ease_factor: Math.max(1.3, newEase)
-  };
-}
+// 1. Calculate Next Review (on User Action)
+// Input: Current Card, Rating (Again/Hard/Good/Easy)
+const schedulingCards = f.repeat(card, new Date());
+
+// Output: schedulingCards[Rating.Good].card -> New Card State
+// Save updated 'card' to Database
 ```
+
+### Rating Scale
+
+- **1 (Again):** Forgot completely. Resets stability.
+- **2 (Hard):** Correct but hesitated.
+- **3 (Good):** Correct with little effort.
+- **4 (Easy):** Perfect instant recall.
+
+### Logic Test Data (Golden Data)
+
+Use these scenarios to verify the scheduler is working correctly (approximate values as fuzzing adds randomness).
+
+| Scenario     | Input (State)           | Rating      | Expected Outcome                                      |
+| :----------- | :---------------------- | :---------- | :---------------------------------------------------- |
+| **New Card** | New (State: 0)          | `Good` (3)  | Status: Learning, Due: ~10min/1day (depends on steps) |
+| **Learning** | Learning (State: 1)     | `Good` (3)  | Status: Review, interval increases                    |
+| **Review**   | Review, Stability: 5.0  | `Good` (3)  | Stability Increases (~7-10), Due: +Days               |
+| **Lapse**    | Review, Stability: 20.0 | `Again` (1) | Stability Decreases sharply, Due: <1 day (Relearning) |
 
 ## 2. Exercise Modes
 

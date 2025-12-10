@@ -33,6 +33,8 @@ Detailed documentation for this project is located in the `docs/` directory:
 - [Technical Specification](docs/technical_spec.md): Tech Stack, Architecture, and Data Model.
 - [Feature Specification](docs/feature_spec.md): SRS Algorithm, Exercise Types, and Logic.
 - [AI Integration](docs/ai_integration.md): Prompts and Agents for Grammar and Content.
+- [Design System](docs/design_system.md): UI/UX Rules, Color Palette, and Learner Heuristics.
+- [Project Roadmap](docs/project_roadmap.md): Phased implementation status.
 - [Conventions](docs/conventions.md): Code Style, Naming, and Best Practices.
 
 Please refer to these documents before making changes.

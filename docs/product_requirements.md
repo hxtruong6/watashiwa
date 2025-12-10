@@ -10,7 +10,7 @@
 
 - **"Golden Time" Optimization:** Unlike standard flashcards, this app calculates the exact moment a user is about to forget a word and schedules a review then.
 - **Deep Etymology:** Leverages Hán Việt (Sino-Vietnamese) for stronger memory anchors for Kanji.
-- **Active Recall:**  Uses interactive exercises (typing, speaking, context) rather than passive card flipping.
+- **Active Recall:** Uses interactive exercises (typing, speaking, context) rather than passive card flipping.
 
 ## 3. User Stories
 
