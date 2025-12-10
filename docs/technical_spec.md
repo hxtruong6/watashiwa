@@ -71,14 +71,14 @@ We favor **Server Actions** for mutations to ensuring type safety and code co-lo
 // Review a card
 type Rating = 1 | 2 | 3 | 4; // Again | Hard | Good | Easy
 async function submitReview(
-  cardId: string,
-  rating: Rating,
+	cardId: string,
+	rating: Rating,
 ): Promise<{ success: boolean; nextReview: Date }>;
 
 // Create a new card (Admin/User)
 async function createCard(data: {
-  word_surface: string;
-  reading_kana?: string; // Optional, can be auto-generated later
+	word_surface: string;
+	reading_kana?: string; // Optional, can be auto-generated later
 }): Promise<{ id: string; error?: string }>;
 
 // Get Due Cards (for Dashboard)

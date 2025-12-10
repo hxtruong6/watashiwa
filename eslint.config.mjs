@@ -4,18 +4,23 @@ import nextTs from 'eslint-config-next/typescript';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 
 const eslintConfig = defineConfig([
-  ...nextVitals,
-  ...nextTs,
-  eslintPluginPrettierRecommended,
-  // Override default ignores of eslint-config-next.
-  globalIgnores([
-    // Default ignores of eslint-config-next:
-    '.next/**',
-    'out/**',
-    'build/**',
-    'src/generated/**',
-    'next-env.d.ts',
-  ]),
+	...nextVitals,
+	...nextTs,
+	eslintPluginPrettierRecommended,
+	{
+		rules: {
+			'prettier/prettier': ['error', { useTabs: true }],
+		},
+	},
+	// Override default ignores of eslint-config-next.
+	globalIgnores([
+		// Default ignores of eslint-config-next:
+		'.next/**',
+		'out/**',
+		'build/**',
+		'src/generated/**',
+		'next-env.d.ts',
+	]),
 ]);
 
 export default eslintConfig;

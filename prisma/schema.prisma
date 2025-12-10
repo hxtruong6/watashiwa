@@ -1,14 +1,53 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// Prisma Schema for Watashi JP (JLPT SRS App)
+// FSRS-compatible vocabulary learning system
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider   = "prisma-client-js"
+  engineType = "library"
+  output     = "../src/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
+}
+
+// FSRS-compatible VocabCard
+model VocabCard {
+  id               String @id @default(uuid())
+  word_surface     String // e.g., 学生
+  reading_kana     String // e.g., がくせい
+  kanji_breakdown  Json // e.g., [{"kanji": "学", "han_viet": "HỌC", "meaning": "study"}]
+  han_viet         String // e.g., HỌC SINH
+  meaning          String // Native definition
+  example_sentence Json // { "sentence": "...", "translation": "..." }
+
+  // FSRS Fields
+  due            DateTime  @default(now()) // Next review date
+  stability      Float     @default(0) // Memory strength (days to 90% forget risk)
+  difficulty     Float     @default(0) // 1-10 scale
+  elapsed_days   Int       @default(0) // Days since last review
+  scheduled_days Int       @default(0) // Days scheduled for last interval
+  reps           Int       @default(0) // Total repetitions
+  lapses         Int       @default(0) // Total failures
+  state          Int       @default(0) // 0=New, 1=Learning, 2=Review, 3=Relearning
+  last_review    DateTime? // Last review timestamp
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([due])
+  @@index([state])
+}
+
+model ReviewLog {
+  id             String   @id @default(uuid())
+  cardId         String
+  rating         Int // 1=Again, 2=Hard, 3=Good, 4=Easy
+  review         DateTime @default(now())
+  scheduled_days Int
+  elapsed_days   Int
+  state          Int
+
+  @@index([cardId])
+  @@index([review])
 }
