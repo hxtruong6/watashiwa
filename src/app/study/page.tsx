@@ -2,21 +2,18 @@
 
 import { useState, useEffect } from 'react';
 import { getNextReviewCard, submitReview } from '@/services/actions';
-import VocabCard from '@/components/Review/VocabCard';
-import type { VocabCard as VocabCardType } from '@/generated/prisma';
+import type { StudyCardWithVocab } from '@/services/actions';
+import VocabCard from '@/components/review/VocabCard';
 import { Spin, Result, Button } from 'antd';
 
 export default function StudyPage() {
-	const [currentCard, setCurrentCard] = useState<VocabCardType | null>(null);
+	const [currentCard, setCurrentCard] = useState<StudyCardWithVocab | null>(null);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState('');
 
 	const loadNextCard = async () => {
 		setLoading(true);
 		try {
-			// Create a server action wrapper or call directly if it's a server component?
-			// Wait, this is a Client Component now because we need state interaction.
-			// So we call the imported server action.
 			const card = await getNextReviewCard();
 			setCurrentCard(card);
 			setError('');
@@ -35,8 +32,6 @@ export default function StudyPage() {
 	const handleRate = async (rating: number) => {
 		if (!currentCard) return;
 
-		// Optimistic update / Loading state could go here
-		// For now, let's just wait for result
 		try {
 			const result = await submitReview(currentCard.id, rating);
 			if (result.success) {

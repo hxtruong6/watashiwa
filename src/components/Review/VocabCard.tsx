@@ -2,12 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import { Card, Typography, Flex } from 'antd';
-import type { VocabCard as VocabCardType } from '@/generated/prisma';
+import type { StudyCardWithVocab } from '@/services/actions';
 
 const { Title, Text } = Typography;
 
 interface VocabCardProps {
-	card: VocabCardType;
+	card: StudyCardWithVocab;
 	onRate: (rating: number) => void;
 }
 
@@ -22,7 +22,7 @@ export default function VocabCard({ card, onRate }: VocabCardProps) {
 	// Keyboard shortcuts
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
-			// If we are typing in an input, don't trigger (not needed for this specific component yet, but good practice)
+			// If we are typing in an input, don't trigger
 			if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement).tagName)) return;
 
 			if (e.code === 'Space') {
@@ -38,6 +38,8 @@ export default function VocabCard({ card, onRate }: VocabCardProps) {
 		window.addEventListener('keydown', handleKeyDown);
 		return () => window.removeEventListener('keydown', handleKeyDown);
 	}, [isRevealed, onRate]);
+
+	const { vocab } = card;
 
 	return (
 		<Card
@@ -56,10 +58,10 @@ export default function VocabCard({ card, onRate }: VocabCardProps) {
 			<Flex vertical justify="center" align="center" gap={16} style={{ minHeight: 300 }}>
 				{/* Word Surface (Kanji) - Make it HUGE */}
 				<Title level={1} style={{ fontSize: '4rem', margin: 0 }}>
-					{card.word_surface}
+					{vocab.wordSurface}
 				</Title>
 
-				{/* Example Sentence (Always visible in this spec? Or hint? Let's hide meaning for now to test recall) */}
+				{/* Example Sentence */}
 				{!isRevealed && (
 					<Text type="secondary" style={{ marginTop: 24 }}>
 						Press [Space] to show answer
@@ -70,13 +72,13 @@ export default function VocabCard({ card, onRate }: VocabCardProps) {
 				{isRevealed && (
 					<div style={{ animation: 'fadeIn 0.3s ease-in' }}>
 						<Title level={3} style={{ color: '#1E3A5F', margin: 0 }}>
-							{card.reading_kana}
+							{vocab.readingKana}
 						</Title>
 						<Text strong style={{ fontSize: '1.2rem', display: 'block', margin: '8px 0' }}>
-							{card.han_viet}
+							{vocab.hanViet}
 						</Text>
 						<Text style={{ fontSize: '1.2rem', display: 'block', color: '#555' }}>
-							{card.meaning}
+							{vocab.meaning}
 						</Text>
 
 						<div style={{ marginTop: 40 }}>

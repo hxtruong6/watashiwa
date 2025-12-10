@@ -1,15 +1,21 @@
 'use client';
 
-import React from 'react';
-import DashboardLayout from '@/components/Layout/DashboardLayout';
+import React, { useEffect } from 'react';
+import DashboardLayout from '@/components/layout/DashboardLayout';
 import { Typography, Card, Statistic, Row, Col, Button, Flex } from 'antd';
 import { FireOutlined, ThunderboltOutlined, BookOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
+import { syncUser } from '@/services/actions';
 
 const { Title, Text } = Typography;
 
 export default function Home() {
 	const router = useRouter();
+
+	// Ensure user is active (User record exists) when they visit the dashboard
+	useEffect(() => {
+		syncUser();
+	}, []);
 
 	return (
 		<DashboardLayout>
@@ -17,7 +23,7 @@ export default function Home() {
 				<Flex justify="space-between" align="center" style={{ marginBottom: 32 }}>
 					<div>
 						<Title level={2} style={{ margin: 0 }}>
-							Good Morning, Truong!
+							Good Morning!
 						</Title>
 						<Text type="secondary">Ready to master some Kanji today?</Text>
 					</div>
@@ -37,7 +43,7 @@ export default function Home() {
 						<Card variant="borderless">
 							<Statistic
 								title="Due Reviews"
-								value={12}
+								value={0} // Placeholder until we fetch real stats
 								styles={{ content: { color: '#E64A19' } }}
 								prefix={<FireOutlined />}
 							/>
@@ -47,7 +53,7 @@ export default function Home() {
 						<Card variant="borderless">
 							<Statistic
 								title="New Cards"
-								value={5}
+								value={0} // Placeholder
 								styles={{ content: { color: '#1E3A5F' } }}
 								prefix={<BookOutlined />}
 							/>
@@ -57,7 +63,7 @@ export default function Home() {
 						<Card variant="borderless">
 							<Statistic
 								title="Retention Rate"
-								value={94.5}
+								value={90} // Placeholder
 								precision={1}
 								suffix="%"
 								styles={{ content: { color: '#708238' } }}

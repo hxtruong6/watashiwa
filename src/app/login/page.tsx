@@ -6,6 +6,7 @@ import { createClient } from '@/utils/supabase/client';
 import { useRouter } from 'next/navigation';
 import { LockOutlined, UserOutlined, MailOutlined } from '@ant-design/icons';
 import Link from 'next/link';
+import { syncUser } from '@/services/actions';
 
 const { Title, Text } = Typography;
 
@@ -17,45 +18,59 @@ export default function AuthPage() {
 	const router = useRouter();
 	const supabase = createClient();
 
-	const handleAuth = async (values: unknown) => {
+	const handleLogin = async (values: unknown) => {
 		setLoading(true);
 		setError(null);
 		setMessage(null);
 
 		const { email, password } = values as { email: string; password: string };
 
-		if (mode === 'login') {
-			const { error } = await supabase.auth.signInWithPassword({
-				email,
-				password,
-			});
+		const { error } = await supabase.auth.signInWithPassword({
+			email,
+			password,
+		});
 
-			if (error) {
-				setError(error.message);
-			} else {
-				router.push('/');
-				router.refresh();
-			}
+		if (error) {
+			setError(error.message);
 		} else {
-			// Sign Up Mode
-			const { data, error } = await supabase.auth.signUp({
-				email,
-				password,
-				options: {
-					emailRedirectTo: `${window.location.origin}/auth/callback`,
-				},
-			});
-
-			if (error) {
-				setError(error.message);
-			} else if (data.session) {
-				router.push('/');
-				router.refresh();
-			} else {
-				setMessage('Registration successful! Please check your email to confirm your account.');
-			}
+			// Check session and sync user to DB
+			await syncUser();
+			router.push('/');
+			router.refresh();
 		}
+		setLoading(false);
+	};
 
+	const handleSignUp = async (values: unknown) => {
+		setLoading(true);
+		setError(null);
+		setMessage(null);
+
+		const { email, password, name } = values as { email: string; password: string; name: string }; // Extract Name
+
+		// Standard SignUp - will send confirmation email by default in Supabase
+		const { data, error } = await supabase.auth.signUp({
+			email,
+			password,
+			options: {
+				emailRedirectTo: `${window.location.origin}/auth/callback`,
+				data: {
+					full_name: name, // Store name in metadata
+				},
+			},
+		});
+
+		if (error) {
+			setError(error.message);
+		} else if (data.session) {
+			// Logged in immediately (email confirm disabled)
+			await syncUser(name); // Initial sync with name
+			router.push('/');
+			router.refresh();
+		} else {
+			// Email confirm enabled
+			setMessage('Registration successful! Please check your email for the confirmation link.');
+		}
 		setLoading(false);
 	};
 
@@ -87,10 +102,16 @@ export default function AuthPage() {
 				<Form
 					name="auth-form"
 					initialValues={{ remember: true }}
-					onFinish={handleAuth}
+					onFinish={mode === 'login' ? handleLogin : handleSignUp}
 					layout="vertical"
 					key={mode} // Forced re-render on mode switch to clear fields
 				>
+					{mode === 'signup' && (
+						<Form.Item name="name" rules={[{ required: true, message: 'Please input your Name!' }]}>
+							<Input prefix={<UserOutlined />} placeholder="Full Name" size="large" />
+						</Form.Item>
+					)}
+
 					<Form.Item
 						name="email"
 						rules={[
