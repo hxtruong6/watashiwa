@@ -6,6 +6,21 @@ async function main() {
 	// Clear existing data
 	await prisma.reviewLog.deleteMany();
 	await prisma.vocabCard.deleteMany();
+	await prisma.user.deleteMany();
+
+	// Create Default User
+	// In a real scenario, this ID should match the Supabase Auth ID of your test user.
+	// For dev, we just create a local user.
+	// If you want to log in as this user via Supabase, you won't be able to unless you manually sync the ID.
+	// However, for testing actions locally or via scripts, this works.
+	const user = await prisma.user.create({
+		data: {
+			email: 'demo@watashi.jp',
+			name: 'Demo User',
+		},
+	});
+
+	console.log(`Created user: ${user.email} (${user.id})`);
 
 	// Golden Data from Feature Spec
 	const goldenData = [
@@ -24,6 +39,7 @@ async function main() {
 			stability: 0,
 			difficulty: 0,
 			due: new Date(),
+			userId: user.id,
 		},
 		// 2. Learning Card (State: 1)
 		{
@@ -40,6 +56,7 @@ async function main() {
 			stability: 0,
 			difficulty: 0,
 			due: new Date(),
+			userId: user.id,
 		},
 		// 3. Review Card (State: 2) - Stability 5.0
 		{
@@ -60,6 +77,7 @@ async function main() {
 			difficulty: 5.0,
 			// Due in the past to trigger review
 			due: new Date(new Date().setDate(new Date().getDate() - 1)),
+			userId: user.id,
 		},
 		// 4. Lapse Card (State: 3 - Relearning) - Stability 20.0 but failed recently if we want to simulate lapse,
 		// actually feature spec says "Lapse: Review, Stability: 20.0 -> Again".
@@ -78,6 +96,7 @@ async function main() {
 			stability: 20.0,
 			difficulty: 5.0,
 			due: new Date(new Date().setDate(new Date().getDate() - 1)),
+			userId: user.id,
 		},
 		// 5. Young Review Card (Just graduated)
 		{
@@ -97,6 +116,7 @@ async function main() {
 			stability: 1.0,
 			difficulty: 3.0,
 			due: new Date(new Date().setDate(new Date().getDate() - 1)),
+			userId: user.id,
 		},
 	];
 
@@ -106,7 +126,7 @@ async function main() {
 		});
 	}
 
-	console.log(`✅ Seeded ${goldenData.length} cards.`);
+	console.log(`✅ Seeded ${goldenData.length} cards for user ${user.name}.`);
 }
 
 main()

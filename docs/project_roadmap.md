@@ -25,22 +25,23 @@ To build this application effectively, we follow a **Phased Implementation Strat
 
 **Goal:** The application *feels* professional.
 
-- [ ] **Theme:** Implement `themeConfig.ts` with Indigo/Matcha/Washi palette.
-- [ ] **Layout:** Create the Dashboard with "Start Review" CTA.
-- [ ] **Deck List:** Building the `/decks` page to view/search content.
-- [ ] **Polish:** Add transitions and loading states.
+- [x] **Theme:** Implement `themeConfig.ts` with Indigo/Matcha/Washi palette.
+- [x] **Layout:** Create the Dashboard with "Start Review" CTA.
+- [x] **Deck List:** Building the `/decks` page to view/search content.
+- [/] **Polish:** Add transitions and loading states.
 
-## Phase 3: Content & AI
+## Phase 3: Content (Manual Import)
 
-**Goal:** Infinite content generation.
+**Goal:** robust system for managing content without AI.
 
-- [ ] **AI:** Script to generate cards from words via OpenAI/Gemini.
-- [ ] **Validation:** "Sentence Check" feature for output practice.
-- [ ] **Audio:** Text-to-Speech integration.
+- [ ] **CSV Import:** Create a script to import cards from CSV files.
+- [ ] **Admin UI:** Basic page to view all cards and delete/edit them.
 
-## Phase 4: Production
+## Phase 4: Production & Auth
 
-**Goal:** Launch.
+**Goal:** Secure multi-user environment.
 
-- [ ] **Auth:** Secure all routes (Supabase Middleware).
+- [ ] **Supabase Auth:** Setup Login/Register with Email/Password and Google.
+- [ ] **Multi-tenancy:** Update Prisma Schema to link `VocabCard` (progress) and `ReviewLog` to `User`.
+- [ ] **Middleware:** Protect `/study` and `/dashboard` routes.
 - [ ] **Deploy:** Vercel Production Deployment.

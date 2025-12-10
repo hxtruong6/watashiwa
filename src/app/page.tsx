@@ -1,66 +1,71 @@
-import Image from 'next/image';
-import styles from './page.module.css';
+'use client';
+
+import React from 'react';
+import DashboardLayout from '@/components/Layout/DashboardLayout';
+import { Typography, Card, Statistic, Row, Col, Button, Flex } from 'antd';
+import { FireOutlined, ThunderboltOutlined, BookOutlined } from '@ant-design/icons';
+import { useRouter } from 'next/navigation';
+
+const { Title, Text } = Typography;
 
 export default function Home() {
+	const router = useRouter();
+
 	return (
-		<div className={styles.page}>
-			<main className={styles.main}>
-				<Image
-					className={styles.logo}
-					src="/next.svg"
-					alt="Next.js logo"
-					width={100}
-					height={20}
-					priority
-				/>
-				<div className={styles.intro}>
-					<h1>To get started, edit the page.tsx file.</h1>
-					<p>
-						Looking for a starting point or more instructions? Head over to{' '}
-						<a
-							href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							Templates
-						</a>{' '}
-						or the{' '}
-						<a
-							href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							Learning
-						</a>{' '}
-						center.
-					</p>
-				</div>
-				<div className={styles.ctas}>
-					<a
-						className={styles.primary}
-						href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-						target="_blank"
-						rel="noopener noreferrer"
+		<DashboardLayout>
+			<div style={{ maxWidth: 800, margin: '0 auto' }}>
+				<Flex justify="space-between" align="center" style={{ marginBottom: 32 }}>
+					<div>
+						<Title level={2} style={{ margin: 0 }}>
+							Good Morning, Truong!
+						</Title>
+						<Text type="secondary">Ready to master some Kanji today?</Text>
+					</div>
+					<Button
+						type="primary"
+						size="large"
+						icon={<ThunderboltOutlined />}
+						onClick={() => router.push('/study')}
+						style={{ padding: '0 32px', height: 48, fontSize: 18 }}
 					>
-						<Image
-							className={styles.logo}
-							src="/vercel.svg"
-							alt="Vercel logomark"
-							width={16}
-							height={16}
-						/>
-						Deploy Now
-					</a>
-					<a
-						className={styles.secondary}
-						href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Documentation
-					</a>
-				</div>
-			</main>
-		</div>
+						Start Review
+					</Button>
+				</Flex>
+
+				<Row gutter={[16, 16]}>
+					<Col xs={24} sm={8}>
+						<Card variant="borderless">
+							<Statistic
+								title="Due Reviews"
+								value={12}
+								styles={{ content: { color: '#E64A19' } }}
+								prefix={<FireOutlined />}
+							/>
+						</Card>
+					</Col>
+					<Col xs={24} sm={8}>
+						<Card variant="borderless">
+							<Statistic
+								title="New Cards"
+								value={5}
+								styles={{ content: { color: '#1E3A5F' } }}
+								prefix={<BookOutlined />}
+							/>
+						</Card>
+					</Col>
+					<Col xs={24} sm={8}>
+						<Card variant="borderless">
+							<Statistic
+								title="Retention Rate"
+								value={94.5}
+								precision={1}
+								suffix="%"
+								styles={{ content: { color: '#708238' } }}
+							/>
+						</Card>
+					</Col>
+				</Row>
+			</div>
+		</DashboardLayout>
 	);
 }

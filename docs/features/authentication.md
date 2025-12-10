@@ -1,0 +1,71 @@
+# Feature: Authentication
+
+## Overview
+
+Authentication is the gateway to the application, ensuring that users can securely access their personal study data. We use **Supabase Auth** for identity management and session handling.
+
+## User Flows
+
+### 1. Sign Up
+
+- **Endpoint**: `/login` (Toggle to Sign Up)
+- **Input**: Email, Password
+- **Process**:
+  1. User enters credentials.
+  2. System creates a Supabase Auth user.
+  3. System sends a confirmation email (if enabled in Supabase) or logs the user in immediately.
+  4. **Important**: User is *not* considered active until they have a `User` record in our PostgreSQL database (handled via Seed or Signals - *Note: Currently manual or implicit*).
+
+### 2. Login
+
+- **Endpoint**: `/login`
+- **Input**: Email, Password
+- **Process**:
+  1. User enters credentials.
+  2. System authenticates against Supabase.
+  3. A Session Cookie is set (Duration: **30 days**).
+  4. User is redirected to `/` (Dashboard).
+- **Error Handling**: Invalid credentials show an error alert.
+
+### 3. Forgot Password
+
+- **Endpoint**: `/forgot-password`
+- **Process**:
+  1. User enters email.
+  2. System sends a Password Reset Link.
+  3. User clicks link -> Redirects to `/auth/callback` -> Redirects to `/reset-password`.
+  4. User enters new password.
+  5. Password is updated, user is logged in.
+
+### 4. Route Protection
+
+- **Mechanism**: Next.js Middleware (`src/middleware.ts`)
+- **Protected Routes**:
+  - `/` (Dashboard)
+  - `/study`
+  - `/decks`
+  - `/stats`
+- **Behavior**: Unauthenticated requests to these routes are redirected to `/login`.
+
+## Technical Implementation
+
+### Tech Stack
+
+- **Auth Provider**: Supabase Auth (GoTrue)
+- **Adapter**: `@supabase/ssr` (Next.js App Router compatible)
+- **State**: HttpOnly Cookies
+
+### Session Management
+
+- **Persistence**: Sessions last for **30 days** (2,592,000 seconds).
+- **Refresh**: Middleware automatically refreshes tokens if they are close to expiry.
+
+### Data Security
+
+- **Multi-tenancy**: All database queries in `actions.ts` MUST filter by `userId` obtained from `getUser()`.
+- **Row Level Security (RLS)**: (Future) Can be enabled on Supabase Postgres level for extra security.
+
+## Future Enhancements
+
+- [ ] OAuth Providers (Google, GitHub)
+- [ ] Profile Management (Avatar, Display Name)
