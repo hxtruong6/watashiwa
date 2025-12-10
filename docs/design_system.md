@@ -4,66 +4,72 @@
 
 The application is a tool for deep learning. The interface must be "invisible" until needed.
 
-- **Principle 1: Cognitive Load Reduction.** Since users are memorizing complex Kanji, the UI should be minimalist. No unnecessary decorations.
-- **Principle 2: Motivating Feedback.** Learning a language is hard. Interactions should feel rewarding (e.g., satisfying "click" sounds, smooth progress bars).
-- **Principle 3: Kanji First.** Text is the hero. Typography must prioritize legibility of intricate strokes.
+- **Principle 1: Cognitive Load Reduction.** Minimalism. No decorative noise.
+- **Principle 2: Motivating Feedback.** Tangible progress (sounds, smooth fills).
+- **Principle 3: Kanji First.** Text is the hero.
 
-## 2. Color Palette (Japanese Traditional Colors)
+## 2. Theme Configuration (Ant Design Tokens)
 
-We use a palette inspired by traditional Japanese colors (_Nippon no Iro_) to evoke a sense of calm and culture.
+We use Ant Design v5's Token System. Configure these in `themeConfig.ts`.
 
-### Primary
+### Brand Colors
 
-- **Indigo (Ai-iro 藍色):** `#1E3A5F` - Primary action buttons, headers. Deep and authoritative.
-- **Matcha (Uguisu-iro 鶯色):** `#708238` - Success states, positive progress. Calming green.
+| Token | Value | Name | Usage |
+| :--- | :--- | :--- | :--- |
+| `colorPrimary` | `#1E3A5F` | **Indigo (Ai-iro)** | Primary Actions, Active States, Headers. |
+| `colorSuccess` | `#708238` | **Matcha (Uguisu-iro)** | Correct Answers, Progress Bars, "Good" rating. |
+| `colorError` | `#E64A19` | **Vermilion (Shuiro)** | Wrong Answers, "Again" rating, Destructive actions. |
+| `colorWarning` | `#FAAD14` | **Goldenrod** | "Hard" rating. |
+| `colorInfo` | `#1E3A5F` | **Indigo** | Informational tags. |
 
-### Secondary
+### Backgrounds & Surfaces
 
-- **Sakura (Sakura-iro 桜色):** `#FFE4E1` - Subtle backgrounds, "Easy" rating hover.
-- **Vermilion (Shuiro 朱色):** `#E64A19` - "Again/Fail" actions, Error states. High alert.
-- **Paper (Washi 和紙):** `#F9F7F2` - Main background. Slightly off-white to reduce eye strain compared to `#FFFFFF`.
+| Token | Value | Name | Usage |
+| :--- | :--- | :--- | :--- |
+| `colorBgBase` | `#F9F7F2` | **Washi (Paper)** | Global background. Warmer and easier on eyes than `#FFFFFF`. |
+| `colorBgContainer` | `#FFFFFF` | **White** | Cards and Modals. |
+| `colorBgLayout` | `#F0F2F5` | **Mist** | Sidebar or secondary areas (if needed). |
 
-### Neutral
+### Typography
 
-- **Sumi (Sumi-iro 墨色):** `#2D2D2D` - Main text. Soft black.
-- **Stone (Ishi-iro 石色):** `#8C8C8C` - Secondary text, borders.
+- **Font Family:** `'Inter', 'Noto Sans JP', sans-serif`.
+- **Base Size:** `16px`.
 
-## 3. Typography
+**Hierarchy:**
 
-- **Font Family:** `Inter` (UI) + `Noto Sans JP` (Japanese Text).
-- **Base Size:** 16px.
-- **Kanji Scaling:** Japanese text should always be **1.2x - 1.5x** larger than surrounding English text.
-  - Reason: Kanji strokes ($20+$ strokes) blur at small sizes.
-  - _Rule:_ If English body is `16px`, Japanese examples are `20px`.
-  - _Rule:_ Flashcard Kanji characters are huge (`64px`+).
+- **Hero Kanji:** `64px` (Flashcard Center). Weight: `500`.
+- **Page Title:** `24px` (Dashboard Headers). Weight: `600`.
+- **Body:** `16px` (Standard text).
+- **Meta/Sub:** `14px` (Secondary info). Color: `textSecondary`.
 
-## 4. Layout Rules (Ant Design Customization)
+### Spacing & Shape
 
-We leverage Ant Design's grid but customize the spacing for a wider, breathier feel.
+- **`borderRadius`**: `8px` (Modern, soft).
+- **`paddingLG`**: `32px` (Generous breathing room for content).
 
-- **Card-Metric:** The central element is always the `VocabCard`.
-  - Max-width: `600px`.
-  - Padding: `32px` (Generous whitespace).
-  - Shadow: `elevation-2` (Subtle lift).
+## 3. Component Patterns
 
-- **Dashboard:**
-  - Three-column layout:
-    1. **Navigation** (Left, collapsible).
-    2. **Stats/Progress** (Top-right).
-    3. **Action Queue** (Center, dominant).
+### The `VocabCard`
 
-## 5. Interaction Patterns
+- **Container:** AntD `Card` with custom shadow: `box-shadow: 0 4px 12px rgba(0,0,0,0.08)`.
+- **Layout:**
+  - **Question Mode:** Centered Kanji.
+  - **Answer Mode:** Split view. Top: Kanji. Bottom: Meta (Hán Việt, Kana, Sentence).
+- **Animation:** Use `framer-motion` for flip or slide transitions.
 
-- **The "Review" Loop:**
-  - **State A (Question):** Clean card. Only "Show Answer" button visible interaction (or Spacebar).
-  - **State B (Answer):** Answer reveals WITH animation (fade-in `0.3s`). Rating buttons appear at bottom.
-  - **Feedback:** When a rating is selected, play a subtle interaction sound (optional toggle) and swipe the card away.
+### The `RatingBar`
 
-- **Micro-interactions:**
-  - Buttons should have a `scale(0.98)` active state (tactile feel).
-  - Progress bars should animate smoothly (`transition: width 0.5s ease-out`).
+- Located at the bottom of the active view.
+- **Buttons:**
+  - **Again (1):** Bordered Red.
+  - **Hard (2):** Bordered Orange.
+  - **Good (3):** Filled Green (Solid). **Dominant UI element.**
+  - **Easy (4):** Bordered Blue/Indigo.
+- **Mobile:** Sticky footer.
+- **Desktop:** Floating action bar below the card.
 
-## 6. Learner-Specific Heuristics
+## 4. Feedback & Micro-interactions
 
-- **Input Methods:** Always support _Keyboard Shortcuts_ (Space to flip, 1/2/3/4 to rate). Power users hate clicking.
-- **Error Prevention:** If a user types "gakusei" instead of "がくせい", auto-convert (WanaKana) or warn them instead of marking wrong immediately.
+- **Hover:** Interactive elements scale `1.02` on hover.
+- **Tap:** Active elements scale `0.98` on click.
+- **Transitions:** All UI changes (showing answer, changing cards) should be > `200ms` and ease-out. No harsh cuts.

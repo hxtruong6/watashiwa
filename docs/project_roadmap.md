@@ -1,43 +1,46 @@
 # Project Roadmap
 
-To build this application effectively with AI, we will follow a **Phased Implementation Strategy**.
-Each phase is a self-contained "Sprint" with a clear Definition of Done.
+To build this application effectively, we follow a **Phased Implementation Strategy**. Each phase is a "Sprint" with a clear Definition of Done.
 
-## Phase 1: The "Walking Skeleton" (Foundation)
+## Phase 0: Foundation (Completed)
 
-**Goal:** A working end-to-end flow with zero style but perfect logic.
+**Goal:** Database, API Shell, and Basic Routing are live.
 
-- [ ] **Database:** Apply Prisma Schema migration.
-- [ ] **Seeding:** Create a `seed.ts` script to populate the DB with 5 "Golden Data" test cards.
-- [ ] **API:** Implement `src/services/actions.ts` (skeleton functions).
-- [ ] **UI:** Create a raw HTML-like page `/study` that fetches one card and displays JSON.
+- [x] **Database:** Prisma Schema migrated.
+- [x] **Seeding:** `seed.ts` loads test cards.
+- [x] **API:** `actions.ts` skeleton exists.
+- [x] **Routing:** `/study` page exists (raw HTML).
 
-## Phase 2: The Logic Core (FSRS)
+## Phase 1: The Engine (FSRS & Core Loop)
 
-**Goal:** The SRS algorithm works and updates the database correctly.
+**Goal:** The application *works* as a study tool. Users can review cards, and the scheduler updates correctly.
 
-- [ ] **Library:** Install `ts-fsrs`.
-- [ ] **Implementation:** Implement `submitReview` in `actions.ts`.
-- [ ] **Testing:** Verify that reviewing a "New" card moves it to "Learning" and updates `stability`/`due` date in the DB.
-- [ ] **UI Connection:** Add generic "Again/Good" buttons to the `/study` page to trigger the action.
+- [x] **Library:** Integrate `ts-fsrs` with `actions.ts`.
+- [x] **Action:** Implement `submitReview(cardId, rating)` to update DB.
+- [x] **UI:** Build the `VocabCard` component (Question/Answer states).
+- [x] **Interaction:** Bind `Space` (Reveal) and `1/2/3/4` (Rate) keys.
+- [x] **Verify:** Reviewing a card moves it from `New` -> `Learning` -> `Review` in DB.
 
-## Phase 3: The "Zen" UI (Design System)
+## Phase 2: The "Zen" Shell (Dashboard & Theme)
 
-**Goal:** Make it look like the Design System.
+**Goal:** The application *feels* professional.
 
-- [ ] **Setup:** Configure Ant Design theme (colors, typography) in `themeConfig.ts`.
-- [ ] **Component:** Build `VocabCard` component (Card, Typography, Reveal Animation).
-- [ ] **Layout:** Build the Dashboard layout (Sidebar, Stats).
-- [ ] **Polish:** Add micro-interactions and sounds.
+- [ ] **Theme:** Implement `themeConfig.ts` with Indigo/Matcha/Washi palette.
+- [ ] **Layout:** Create the Dashboard with "Start Review" CTA.
+- [ ] **Deck List:** Building the `/decks` page to view/search content.
+- [ ] **Polish:** Add transitions and loading states.
 
-## Phase 4: Content & AI
+## Phase 3: Content & AI
 
-**Goal:** Fill the app with real data and AI magic.
+**Goal:** Infinite content generation.
 
-- [ ] **Generation:** Create an admin script to generate 50 cards from a CSV list using OpenAI.
-- [ ] **Grammar:** Implement the "Sentence Check" feature in the Study UI.
+- [ ] **AI:** Script to generate cards from words via OpenAI/Gemini.
+- [ ] **Validation:** "Sentence Check" feature for output practice.
+- [ ] **Audio:** Text-to-Speech integration.
 
-## Phase 5: Launch Prep
+## Phase 4: Production
 
-- [ ] **Auth:** Finalize Supabase Auth protection.
-- [ ] **Deploy:** Deployed to Vercel.
+**Goal:** Launch.
+
+- [ ] **Auth:** Secure all routes (Supabase Middleware).
+- [ ] **Deploy:** Vercel Production Deployment.

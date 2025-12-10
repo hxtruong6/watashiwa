@@ -1,20 +1,91 @@
-import prisma from '../src/lib/db.js';
+import { prisma } from '../src/lib/db';
 
 async function main() {
-	console.log('🌱 Seeding database with Golden Data...');
+	console.log('🌱 Starting seed...');
 
 	// Clear existing data
 	await prisma.reviewLog.deleteMany();
 	await prisma.vocabCard.deleteMany();
 
-	// Golden Data: 5 Test Cards (JLPT N5-N3)
-	const cards = [
+	// Golden Data from Feature Spec
+	const goldenData = [
+		// 1. New Card (State: 0)
+		{
+			word_surface: '猫',
+			reading_kana: 'ねこ',
+			kanji_breakdown: [{ kanji: '猫', han_viet: 'MIÊU', meaning: 'cat' }],
+			han_viet: 'MIÊU',
+			meaning: 'Cat',
+			example_sentence: {
+				sentence: '猫が好きです。',
+				translation: 'I like cats.',
+			},
+			state: 0, // New
+			stability: 0,
+			difficulty: 0,
+			due: new Date(),
+		},
+		// 2. Learning Card (State: 1)
+		{
+			word_surface: '食べる',
+			reading_kana: 'たべる',
+			kanji_breakdown: [{ kanji: '食', han_viet: 'THỰC', meaning: 'eat' }],
+			han_viet: 'THỰC',
+			meaning: 'To eat',
+			example_sentence: {
+				sentence: '寿司を食べる。',
+				translation: 'Eat sushi.',
+			},
+			state: 1, // Learning
+			stability: 0,
+			difficulty: 0,
+			due: new Date(),
+		},
+		// 3. Review Card (State: 2) - Stability 5.0
+		{
+			word_surface: '日本',
+			reading_kana: 'にほん',
+			kanji_breakdown: [
+				{ kanji: '日', han_viet: 'NHẬT', meaning: 'day/sun' },
+				{ kanji: '本', han_viet: 'BẢN', meaning: 'book/origin' },
+			],
+			han_viet: 'NHẬT BẢN',
+			meaning: 'Japan',
+			example_sentence: {
+				sentence: '日本に行きたい。',
+				translation: 'I want to go to Japan.',
+			},
+			state: 2, // Review
+			stability: 5.0,
+			difficulty: 5.0,
+			// Due in the past to trigger review
+			due: new Date(new Date().setDate(new Date().getDate() - 1)),
+		},
+		// 4. Lapse Card (State: 3 - Relearning) - Stability 20.0 but failed recently if we want to simulate lapse,
+		// actually feature spec says "Lapse: Review, Stability: 20.0 -> Again".
+		// So let's create a card that IS in review but has high stability, ready to be lapsed.
+		{
+			word_surface: '難しい',
+			reading_kana: 'むずかしい',
+			kanji_breakdown: [{ kanji: '難', han_viet: 'NAN', meaning: 'difficult' }],
+			han_viet: 'NAN',
+			meaning: 'Difficult',
+			example_sentence: {
+				sentence: '日本語は難しいです。',
+				translation: 'Japanese is difficult.',
+			},
+			state: 2, // Review
+			stability: 20.0,
+			difficulty: 5.0,
+			due: new Date(new Date().setDate(new Date().getDate() - 1)),
+		},
+		// 5. Young Review Card (Just graduated)
 		{
 			word_surface: '学生',
 			reading_kana: 'がくせい',
 			kanji_breakdown: [
 				{ kanji: '学', han_viet: 'HỌC', meaning: 'study' },
-				{ kanji: '生', han_viet: 'SINH', meaning: 'life/birth' },
+				{ kanji: '生', han_viet: 'SINH', meaning: 'life/student' },
 			],
 			han_viet: 'HỌC SINH',
 			meaning: 'Student',
@@ -22,78 +93,25 @@ async function main() {
 				sentence: '私は学生です。',
 				translation: 'I am a student.',
 			},
-		},
-		{
-			word_surface: '先生',
-			reading_kana: 'せんせい',
-			kanji_breakdown: [
-				{ kanji: '先', han_viet: 'TIÊN', meaning: 'before/ahead' },
-				{ kanji: '生', han_viet: 'SINH', meaning: 'life' },
-			],
-			han_viet: 'TIÊN SINH',
-			meaning: 'Teacher',
-			example_sentence: {
-				sentence: '田中先生は優しいです。',
-				translation: 'Tanaka-sensei is kind.',
-			},
-		},
-		{
-			word_surface: '図書館',
-			reading_kana: 'としょかん',
-			kanji_breakdown: [
-				{ kanji: '図', han_viet: 'ĐỒ', meaning: 'diagram' },
-				{ kanji: '書', han_viet: 'THƯ', meaning: 'write' },
-				{ kanji: '館', han_viet: 'QUÁN', meaning: 'building' },
-			],
-			han_viet: 'ĐỒ THƯ QUÁN',
-			meaning: 'Library',
-			example_sentence: {
-				sentence: '図書館で勉強します。',
-				translation: 'I study at the library.',
-			},
-		},
-		{
-			word_surface: '勉強',
-			reading_kana: 'べんきょう',
-			kanji_breakdown: [
-				{ kanji: '勉', han_viet: 'MIỄN', meaning: 'exertion' },
-				{ kanji: '強', han_viet: 'CƯỜNG', meaning: 'strong' },
-			],
-			han_viet: 'MIỄN CƯỜNG',
-			meaning: 'Study',
-			example_sentence: {
-				sentence: '毎日日本語を勉強します。',
-				translation: 'I study Japanese every day.',
-			},
-		},
-		{
-			word_surface: '友達',
-			reading_kana: 'ともだち',
-			kanji_breakdown: [
-				{ kanji: '友', han_viet: 'HỮU', meaning: 'friend' },
-				{ kanji: '達', han_viet: 'ĐẠT', meaning: 'plural' },
-			],
-			han_viet: 'HỮU ĐẠT',
-			meaning: 'Friend',
-			example_sentence: {
-				sentence: '友達と映画を見ます。',
-				translation: 'I watch movies with friends.',
-			},
+			state: 2, // Review
+			stability: 1.0,
+			difficulty: 3.0,
+			due: new Date(new Date().setDate(new Date().getDate() - 1)),
 		},
 	];
 
-	for (const card of cards) {
+	for (const card of goldenData) {
 		await prisma.vocabCard.create({
 			data: card,
 		});
 	}
 
-	console.log('✅ Seeded 5 vocabulary cards successfully!');
+	console.log(`✅ Seeded ${goldenData.length} cards.`);
 }
 
 main()
 	.catch((e) => {
-		console.error('❌ Seeding failed:', e);
+		console.error(e);
 		process.exit(1);
 	})
 	.finally(async () => {
