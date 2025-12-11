@@ -3,15 +3,7 @@
 import { prisma } from '@/lib/db';
 import { createClient } from '@/utils/supabase/server';
 import type { StudyCard, Vocab } from '@/generated/prisma';
-import {
-	Card,
-	createEmptyCard,
-	fsrs,
-	generatorParameters,
-	Rating,
-	ReviewLog,
-	State,
-} from 'ts-fsrs';
+import { Card, fsrs, generatorParameters, Rating, State } from 'ts-fsrs';
 
 // Initialize FSRS with default parameters
 const params = generatorParameters({ enable_fuzz: true });
@@ -236,5 +228,60 @@ export async function syncUser() {
 	} catch (error) {
 		console.error('Error syncing user:', error);
 		return { success: false, error: 'Failed to sync user' };
+	}
+}
+
+/**
+ * Get count of cards due for review
+ */
+export async function getReviewCount() {
+	try {
+		const user = await getUser();
+		if (!user) return 0;
+
+		const count = await prisma.studyCard.count({
+			where: {
+				userId: user.id,
+				due: {
+					lte: new Date(),
+				},
+			},
+		});
+		return count;
+	} catch (error) {
+		console.error('Error fetching review count:', error);
+		return 0;
+	}
+}
+
+/**
+ * Get user statistics (Streak, Total Reviews)
+ */
+export async function getUserStats() {
+	try {
+		const user = await getUser();
+		if (!user) return { streak: 0, totalReviewed: 0 };
+
+		// Simple Today's Review Count
+		const startOfDay = new Date();
+		startOfDay.setHours(0, 0, 0, 0);
+
+		const todaysReviews = await prisma.reviewLog.count({
+			where: {
+				userId: user.id,
+				review: {
+					gte: startOfDay,
+				},
+			},
+		});
+
+		// Placeholder for streak query
+		return {
+			streak: 1, // Mock value for now
+			totalReviewed: todaysReviews,
+		};
+	} catch (error) {
+		console.error('Error fetching stats:', error);
+		return { streak: 0, totalReviewed: 0 };
 	}
 }

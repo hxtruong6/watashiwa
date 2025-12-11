@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider, App } from 'antd';
 import theme from '../../theme/themeConfig';
+import NavBar from '@/components/NavBar';
 import './globals.css';
 
 const geistSans = Geist({
@@ -30,7 +31,12 @@ export default function RootLayout({
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
 				<AntdRegistry>
 					<ConfigProvider theme={theme}>
-						<App>{children}</App>
+						<App>
+							<NavBar />
+							<main style={{ minHeight: 'calc(100vh - 64px)', background: '#F9F7F2' }}>
+								{children}
+							</main>
+						</App>
 					</ConfigProvider>
 				</AntdRegistry>
 			</body>

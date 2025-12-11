@@ -17,6 +17,8 @@
     "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.87.1",
     "antd": "^6.1.0",
+    "framer-motion": "^12.23.26",
+    "motion": "^12.23.26",
     "next": "16.0.8",
     "pg": "^8.16.3",
     "react": "19.2.1",

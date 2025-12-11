@@ -7,6 +7,7 @@ The application is a tool for deep learning. The interface must be "invisible" u
 - **Principle 1: Cognitive Load Reduction.** Minimalism. No decorative noise.
 - **Principle 2: Motivating Feedback.** Tangible progress (sounds, smooth fills).
 - **Principle 3: Kanji First.** Text is the hero.
+- **Principle 4: Mobile First.** Design for the smallest screen first. Touch targets > 44px. Critical actions in "Thumb Zone".
 
 ## 2. Theme Configuration (Ant Design Tokens)
 

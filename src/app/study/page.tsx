@@ -1,95 +1,212 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { Layout, Button, Flex, Result, Spin, App } from 'antd';
 import { getNextReviewCard, submitReview } from '@/services/actions';
-import type { StudyCardWithVocab } from '@/services/actions';
-import VocabCard from '@/components/review/VocabCard';
-import { Spin, Result, Button } from 'antd';
+import VocabCard from '@/components/VocabCard';
+import RatingBar from '@/components/RatingBar';
+import { LoadingOutlined, CheckCircleFilled, CloseOutlined } from '@ant-design/icons';
+import { useRouter } from 'next/navigation';
+
+const { Content } = Layout;
 
 export default function StudyPage() {
-	const [currentCard, setCurrentCard] = useState<StudyCardWithVocab | null>(null);
+	const [card, setCard] = useState<any>(null); // Type will be fixed with Prisma generation
 	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState('');
+	const [showAnswer, setShowAnswer] = useState(false);
+	const [sessionComplete, setSessionComplete] = useState(false);
+	const [submitting, setSubmitting] = useState(false);
 
-	const loadNextCard = async () => {
-		setLoading(true);
+	// Access global message context
+	const { message } = App.useApp();
+	const router = useRouter();
+
+	// Fetch Initial Card
+	const fetchNextCard = useCallback(async () => {
 		try {
-			const card = await getNextReviewCard();
-			setCurrentCard(card);
-			setError('');
-		} catch (err) {
-			console.error(err);
-			setError('Failed to load card');
+			setLoading(true);
+			const nextCard = await getNextReviewCard();
+			if (nextCard) {
+				setCard(nextCard);
+				setShowAnswer(false);
+				setSessionComplete(false);
+			} else {
+				setCard(null);
+				setSessionComplete(true);
+			}
+		} catch (error) {
+			console.error('Failed to fetch card', error);
+			message.error('Failed to load cards. Please try refreshing.');
 		} finally {
 			setLoading(false);
 		}
-	};
+	}, [message]);
 
 	useEffect(() => {
-		loadNextCard();
-	}, []);
+		fetchNextCard();
+	}, [fetchNextCard]);
 
-	const handleRate = async (rating: number) => {
-		if (!currentCard) return;
+	// Handle Rating Submission
+	const handleRate = useCallback(
+		async (rating: number) => {
+			if (!card || submitting) return;
 
-		try {
-			const result = await submitReview(currentCard.id, rating);
-			if (result.success) {
-				// Move to next card
-				if (result.nextCard) {
-					setCurrentCard(result.nextCard);
+			try {
+				setSubmitting(true);
+				const result = await submitReview(card.id, rating);
+
+				if (result.success) {
+					// Optimistic update or wait for new card
+					if (result.nextCard) {
+						setCard(result.nextCard);
+						setShowAnswer(false);
+					} else {
+						setCard(null);
+						setSessionComplete(true);
+					}
 				} else {
-					// If no next card returned immediately, fetch again
-					await loadNextCard();
+					message.error(result.error || 'Failed to submit review');
 				}
-			} else {
-				alert('Error submitting review: ' + result.error);
+			} catch (error) {
+				console.error('Review error', error);
+				message.error('An unexpected error occurred.');
+			} finally {
+				setSubmitting(false);
 			}
-		} catch (err) {
-			console.error(err);
-			alert('Failed to submit review');
-		}
-	};
+		},
+		[card, submitting, message],
+	);
 
-	if (loading && !currentCard) {
+	// Keyboard Shortcuts
+	useEffect(() => {
+		const handleKeyDown = (e: KeyboardEvent) => {
+			if (loading || submitting || sessionComplete) return;
+
+			if (e.code === 'Space') {
+				e.preventDefault();
+				if (!showAnswer) {
+					setShowAnswer(true);
+				}
+			} else if (showAnswer) {
+				switch (e.key) {
+					case '1':
+						handleRate(1);
+						break;
+					case '2':
+						handleRate(2);
+						break;
+					case '3':
+						handleRate(3);
+						break;
+					case '4':
+						handleRate(4);
+						break;
+				}
+			}
+		};
+
+		window.addEventListener('keydown', handleKeyDown);
+		return () => window.removeEventListener('keydown', handleKeyDown);
+	}, [card, showAnswer, loading, submitting, sessionComplete, handleRate]); // Add deps!
+
+	// Loading State
+	if (loading && !card) {
 		return (
-			<div style={centerStyle}>
-				<Spin size="large" tip="Loading your deck..." />
-			</div>
+			<Flex justify="center" align="center" style={{ height: '100vh', background: '#F9F7F2' }}>
+				<Spin indicator={<LoadingOutlined style={{ fontSize: 48, color: '#1E3A5F' }} spin />} />
+			</Flex>
 		);
 	}
 
-	if (!currentCard) {
+	// Session Complete State
+	if (sessionComplete) {
 		return (
-			<div style={centerStyle}>
+			<Flex justify="center" align="center" style={{ height: '100vh', background: '#F9F7F2' }}>
 				<Result
-					status="success"
-					title="You're all done!"
-					subTitle="No more cards due for review right now. Great job!"
+					icon={<CheckCircleFilled style={{ color: '#708238', fontSize: 72 }} />}
+					title="Session Complete!"
+					subTitle="You've reviewed all your due cards for now. Great work!"
 					extra={[
-						<Button type="primary" key="home" href="/">
-							Go Home
-						</Button>,
-						<Button key="check" onClick={loadNextCard}>
-							Check Again
+						<Button type="primary" key="home" size="large" onClick={() => router.push('/')}>
+							Return to Dashboard
 						</Button>,
 					]}
 				/>
-			</div>
+			</Flex>
 		);
 	}
 
 	return (
-		<div style={{ padding: '2rem', minHeight: '100vh', backgroundColor: '#F9F7F2' }}>
-			<VocabCard card={currentCard} onRate={handleRate} />
-		</div>
+		<Layout style={{ minHeight: '100vh', background: '#F9F7F2' }}>
+			{/* Exit Button - Top Right */}
+			<div style={{ position: 'fixed', top: 16, right: 16, zIndex: 100 }}>
+				<Button
+					shape="circle"
+					icon={<CloseOutlined />}
+					onClick={() => router.push('/')}
+					style={{ border: 'none', background: 'rgba(0,0,0,0.05)', width: 44, height: 44 }}
+				/>
+			</div>
+
+			<Content
+				style={{
+					padding: '16px',
+					display: 'flex',
+					flexDirection: 'column',
+					height: '100vh',
+					maxWidth: 600,
+					margin: '0 auto',
+					width: '100%',
+				}}
+			>
+				{/* Scrollable Card Area */}
+				<div
+					style={{
+						flex: 1,
+						overflowY: 'auto',
+						display: 'flex',
+						flexDirection: 'column',
+						paddingBottom: 100,
+					}}
+				>
+					<VocabCard card={card} showAnswer={showAnswer} />
+				</div>
+
+				{/* Thumb Zone Controls - Fixed Bottom */}
+				<div
+					style={{
+						position: 'fixed',
+						bottom: 0,
+						left: 0,
+						right: 0,
+						padding: '16px 24px 32px',
+						background: 'linear-gradient(to top, #F9F7F2 80%, rgba(249, 247, 242, 0))',
+						display: 'flex',
+						justifyContent: 'center',
+						zIndex: 50,
+					}}
+				>
+					{!showAnswer ? (
+						<Button
+							size="large"
+							type="primary"
+							block
+							style={{
+								height: 56,
+								fontSize: 18,
+								borderRadius: 28,
+								maxWidth: 400,
+								boxShadow: '0 4px 12px rgba(30, 58, 95, 0.2)',
+							}}
+							onClick={() => setShowAnswer(true)}
+						>
+							Show Answer
+						</Button>
+					) : (
+						<RatingBar onRate={handleRate} disabled={submitting} />
+					)}
+				</div>
+			</Content>
+		</Layout>
 	);
 }
-
-const centerStyle = {
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center',
-	height: '100vh',
-	backgroundColor: '#F9F7F2',
-};
