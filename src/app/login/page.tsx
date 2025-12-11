@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Form, Input, Button, Card, Typography, Alert, Flex } from 'antd';
+import { Form, Input, Button, Card, Typography, Alert, Flex, App } from 'antd';
 import { createClient } from '@/utils/supabase/client';
-import { useRouter } from 'next/navigation';
 import { LockOutlined, UserOutlined, MailOutlined } from '@ant-design/icons';
 import Link from 'next/link';
 import { syncUser } from '@/services/actions';
@@ -11,11 +10,11 @@ import { syncUser } from '@/services/actions';
 const { Title, Text } = Typography;
 
 export default function AuthPage() {
+	const { message: antdMessage } = App.useApp();
 	const [mode, setMode] = useState<'login' | 'signup'>('login');
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const [message, setMessage] = useState<string | null>(null);
-	const router = useRouter();
 	const supabase = createClient();
 
 	const handleLogin = async (values: unknown) => {
@@ -23,22 +22,38 @@ export default function AuthPage() {
 		setError(null);
 		setMessage(null);
 
-		const { email, password } = values as { email: string; password: string };
+		try {
+			const { email, password } = values as { email: string; password: string };
+			console.log('Attempting login for:', email);
 
-		const { error } = await supabase.auth.signInWithPassword({
-			email,
-			password,
-		});
+			const { error } = await supabase.auth.signInWithPassword({
+				email,
+				password,
+			});
 
-		if (error) {
-			setError(error.message);
-		} else {
-			// Check session and sync user to DB
-			await syncUser();
-			router.push('/');
-			router.refresh();
+			if (error) {
+				console.error('Login error:', error.message);
+				setError(error.message);
+				antdMessage.error(error.message);
+			} else {
+				console.log('Login successful, syncing user...');
+				antdMessage.success('Login successful! Redirecting...');
+				// Check session and sync user to DB
+				try {
+					await syncUser();
+				} catch (syncErr) {
+					console.error('User sync failed (non-blocking):', syncErr);
+				}
+				// Force full reload ensures middleware sees the new cookie
+				window.location.href = '/';
+			}
+		} catch (err) {
+			console.error('Unexpected login error:', err);
+			setError('An unexpected error occurred. Please try again.');
+			antdMessage.error('An unexpected error occurred.');
+		} finally {
+			setLoading(false);
 		}
-		setLoading(false);
 	};
 
 	const handleSignUp = async (values: unknown) => {
@@ -46,32 +61,49 @@ export default function AuthPage() {
 		setError(null);
 		setMessage(null);
 
-		const { email, password, name } = values as { email: string; password: string; name: string }; // Extract Name
+		try {
+			const { email, password, name } = values as { email: string; password: string; name: string };
+			console.log('Attempting signup for:', email);
 
-		// Standard SignUp - will send confirmation email by default in Supabase
-		const { data, error } = await supabase.auth.signUp({
-			email,
-			password,
-			options: {
-				emailRedirectTo: `${window.location.origin}/auth/callback`,
-				data: {
-					full_name: name, // Store name in metadata
+			// Standard SignUp
+			const { data, error } = await supabase.auth.signUp({
+				email,
+				password,
+				options: {
+					emailRedirectTo: `${window.location.origin}/auth/callback`,
+					data: {
+						full_name: name,
+					},
 				},
-			},
-		});
+			});
 
-		if (error) {
-			setError(error.message);
-		} else if (data.session) {
-			// Logged in immediately (email confirm disabled)
-			await syncUser(name); // Initial sync with name
-			router.push('/');
-			router.refresh();
-		} else {
-			// Email confirm enabled
-			setMessage('Registration successful! Please check your email for the confirmation link.');
+			if (error) {
+				console.error('Signup error:', error.message);
+				setError(error.message);
+				antdMessage.error(error.message);
+			} else if (data.session) {
+				console.log('Signup successful (immediate login), syncing user...');
+				antdMessage.success('Signup successful! Redirecting...');
+				// Logged in immediately
+				try {
+					await syncUser();
+				} catch (syncErr) {
+					console.error('User sync failed (non-blocking):', syncErr);
+				}
+				// Force full reload to ensure middleware catches the new session
+				window.location.href = '/';
+			} else {
+				console.log('Signup successful (confirmation required)');
+				setMessage('Registration successful! Please check your email for the confirmation link.');
+				antdMessage.success('Registration successful! Check your email.');
+			}
+		} catch (err) {
+			console.error('Unexpected signup error:', err);
+			setError('An unexpected error occurred. Please try again.');
+			antdMessage.error('An unexpected error occurred.');
+		} finally {
+			setLoading(false);
 		}
-		setLoading(false);
 	};
 
 	const toggleMode = () => {
@@ -108,7 +140,12 @@ export default function AuthPage() {
 				>
 					{mode === 'signup' && (
 						<Form.Item name="name" rules={[{ required: true, message: 'Please input your Name!' }]}>
-							<Input prefix={<UserOutlined />} placeholder="Full Name" size="large" />
+							<Input
+								prefix={<UserOutlined />}
+								placeholder="Full Name"
+								size="large"
+								suppressHydrationWarning
+							/>
 						</Form.Item>
 					)}
 
@@ -119,7 +156,12 @@ export default function AuthPage() {
 							{ type: 'email', message: 'Please enter a valid email!' },
 						]}
 					>
-						<Input prefix={<MailOutlined />} placeholder="Email Address" size="large" />
+						<Input
+							prefix={<MailOutlined />}
+							placeholder="Email Address"
+							size="large"
+							suppressHydrationWarning
+						/>
 					</Form.Item>
 
 					<Form.Item
@@ -129,7 +171,13 @@ export default function AuthPage() {
 							mode === 'signup' ? { min: 6, message: 'Must be at least 6 characters' } : {},
 						]}
 					>
-						<Input prefix={<LockOutlined />} type="password" placeholder="Password" size="large" />
+						<Input
+							prefix={<LockOutlined />}
+							type="password"
+							placeholder="Password"
+							size="large"
+							suppressHydrationWarning
+						/>
 					</Form.Item>
 
 					{mode === 'login' && (

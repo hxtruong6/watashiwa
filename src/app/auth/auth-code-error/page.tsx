@@ -1,11 +1,13 @@
 'use client';
 
-import React from 'react';
-import { Button, Card, Typography, Flex, Result } from 'antd';
-import { useRouter } from 'next/navigation';
+import React, { Suspense } from 'react';
+import { Button, Card, Flex, Result } from 'antd';
+import { useRouter, useSearchParams } from 'next/navigation';
 
-export default function AuthCodeErrorPage() {
+function ErrorContent() {
 	const router = useRouter();
+	const searchParams = useSearchParams();
+	const error = searchParams.get('error');
 
 	return (
 		<Flex justify="center" align="center" style={{ minHeight: '100vh', background: '#F9F7F2' }}>
@@ -13,7 +15,7 @@ export default function AuthCodeErrorPage() {
 				<Result
 					status="error"
 					title="Authentication Failed"
-					subTitle="The link you used may be invalid, expired, or already used."
+					subTitle={error || 'The link you used may be invalid, expired, or already used.'}
 					extra={[
 						<Button type="primary" key="login" onClick={() => router.push('/login')}>
 							Go to Login
@@ -25,5 +27,13 @@ export default function AuthCodeErrorPage() {
 				/>
 			</Card>
 		</Flex>
+	);
+}
+
+export default function AuthCodeErrorPage() {
+	return (
+		<Suspense>
+			<ErrorContent />
+		</Suspense>
 	);
 }
