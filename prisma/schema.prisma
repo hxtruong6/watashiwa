@@ -29,6 +29,7 @@ model User {
   spaceKeyRating      Int     @default(3) @map("space_key_rating") // 1=Again, 2=Hard, 3=Good, 4=Easy
   autoShowAnswer      Boolean @default(false) @map("auto_show_answer")
   autoShowAnswerDelay Int     @default(40) @map("auto_show_answer_delay") // Seconds
+  timezone            String  @default("UTC")
 
   // Relations
   decks      Deck[] // Decks created by user
@@ -63,6 +64,7 @@ model Vocab {
 
   wordSurface     String  @map("word_surface") // e.g., 学生
   readingKana     String  @map("reading_kana") // e.g., がくせい
+  wordParts       Json?   @map("word_parts") // e.g., [{"text": "...", "furigana": "...", "romaji": "..."}]
   // JSON fields require careful mapping in Prisma
   kanjiBreakdown  Json    @map("kanji_breakdown") // e.g., [{"kanji": "学", "han_viet": "HỌC", "meaning": "study"}]
   hanViet         String  @map("han_viet") // e.g., HỌC SINH

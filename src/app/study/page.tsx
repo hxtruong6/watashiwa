@@ -1,25 +1,14 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import {
-	Layout,
-	Button,
-	Flex,
-	Result,
-	Spin,
-	App,
-	Modal,
-	Progress,
-	Typography,
-	Divider,
-	Statistic,
-} from 'antd';
+import { Layout, Button, Flex, Result, Spin, App, Modal, Progress, Typography } from 'antd';
 import {
 	getNextReviewCard,
 	submitReview,
 	getUserSettings,
 	getDailyProgress,
 } from '@/services/actions';
+import type { User } from '@/generated/prisma';
 import FlashCard from '@/components/FlashCard';
 import VocabSettings from '@/components/VocabSettings';
 import RatingBar from '@/components/RatingBar';
@@ -32,9 +21,10 @@ import {
 	TrophyOutlined,
 } from '@ant-design/icons';
 import { useRouter, useSearchParams } from 'next/navigation';
+import confetti from 'canvas-confetti';
 
 const { Content } = Layout;
-const { Text, Title, Paragraph } = Typography;
+const { Text } = Typography;
 
 export default function StudyPage() {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -42,7 +32,7 @@ export default function StudyPage() {
 	const [loading, setLoading] = useState(true);
 	const [showAnswer, setShowAnswer] = useState(false);
 	const [sessionComplete, setSessionComplete] = useState(false);
-	const [submitting, setSubmitting] = useState(false);
+	const [submittingRating, setSubmittingRating] = useState<number | null>(null);
 	const [headerVisible, setHeaderVisible] = useState(true);
 
 	// Progress Stats
@@ -73,14 +63,30 @@ export default function StudyPage() {
 	const router = useRouter();
 
 	// Load Initial Data
+	const [userSettings, setUserSettings] = useState<Partial<User> | null>(null); // Use appropriate type if available or infer
+
+	const fetchSettings = useCallback(async () => {
+		const settings = await getUserSettings();
+		if (settings) {
+			setDailyStats((prev) => ({
+				...prev,
+				limitNewCards: settings.limitNewCards,
+				limitReviews: settings.limitReviews,
+			}));
+			setAllowSpaceKey(settings.allowSpaceKey);
+			setSpaceKeyRating(settings.spaceKeyRating);
+			setAutoShowAnswer(settings.autoShowAnswer);
+			setAutoShowAnswerDelay(settings.autoShowAnswerDelay);
+			setUserSettings(settings);
+		}
+	}, []);
+
 	useEffect(() => {
-		Promise.all([getUserSettings(), getDailyProgress()]).then(([settings, stats]) => {
-			if (settings) {
-				setAllowSpaceKey(settings.allowSpaceKey);
-				setSpaceKeyRating(settings.spaceKeyRating);
-				setAutoShowAnswer(settings.autoShowAnswer);
-				setAutoShowAnswerDelay(settings.autoShowAnswerDelay);
-			}
+		fetchSettings();
+	}, [fetchSettings]);
+
+	useEffect(() => {
+		Promise.all([getDailyProgress()]).then(([stats]) => {
 			if (stats) {
 				setDailyStats(stats);
 			}
@@ -153,10 +159,10 @@ export default function StudyPage() {
 	// Handle Rating Submission
 	const handleRate = useCallback(
 		async (rating: number) => {
-			if (!card || submitting) return;
+			if (!card || submittingRating !== null) return;
 
 			try {
-				setSubmitting(true);
+				setSubmittingRating(rating);
 				// Optimistic UI update for stats could happen here, but safer to re-fetch or increment local state
 				const result = await submitReview(card.id, rating, deckId);
 
@@ -185,16 +191,16 @@ export default function StudyPage() {
 				console.error('Review error', error);
 				message.error('An unexpected error occurred.');
 			} finally {
-				setSubmitting(false);
+				setSubmittingRating(null);
 			}
 		},
-		[card, submitting, message, deckId],
+		[card, submittingRating, message, deckId],
 	);
 
 	// Keyboard Shortcuts
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
-			if (loading || submitting || sessionComplete || settingsVisible) return;
+			if (loading || submittingRating !== null || sessionComplete || settingsVisible) return;
 
 			if (e.code === 'Space') {
 				e.preventDefault();
@@ -232,13 +238,24 @@ export default function StudyPage() {
 		card,
 		showAnswer,
 		loading,
-		submitting,
+		submittingRating,
 		sessionComplete,
 		handleRate,
 		settingsVisible,
 		allowSpaceKey,
 		spaceKeyRating,
 	]);
+
+	// Session Complete Confetti
+	useEffect(() => {
+		if (sessionComplete) {
+			confetti({
+				particleCount: 100,
+				spread: 70,
+				origin: { y: 0.6 },
+			});
+		}
+	}, [sessionComplete]);
 
 	// Loading State
 	if (loading && !card) {
@@ -369,6 +386,7 @@ export default function StudyPage() {
 					shape="circle"
 					icon={<CloseOutlined />}
 					onClick={() => router.push('/')}
+					onMouseDown={(e) => e.preventDefault()}
 					style={{ border: 'none', background: 'rgba(0,0,0,0.05)', width: 44, height: 44 }}
 				/>
 			</div>
@@ -380,6 +398,7 @@ export default function StudyPage() {
 						shape="circle"
 						icon={<SettingOutlined />}
 						onClick={() => setSettingsVisible(true)}
+						onMouseDown={(e) => e.preventDefault()}
 						style={{ border: 'none', background: 'rgba(0,0,0,0.05)', width: 44, height: 44 }}
 					/>
 					{/* Cards Left Counter */}
@@ -416,6 +435,8 @@ export default function StudyPage() {
 					setShowRomaji={setShowRomaji}
 					autoPlayAudio={autoPlayAudio}
 					setAutoPlayAudio={setAutoPlayAudio}
+					userSettings={userSettings}
+					onSettingsChange={fetchSettings}
 				/>
 			</Modal>
 
@@ -482,7 +503,12 @@ export default function StudyPage() {
 								Show Answer (Space)
 							</Button>
 						) : (
-							<RatingBar onRate={handleRate} disabled={submitting} />
+							<RatingBar
+								key={card ? card.id : 'empty'}
+								onRate={handleRate}
+								disabled={submittingRating !== null}
+								selectedRating={submittingRating}
+							/>
 						)}
 					</div>
 				</div>

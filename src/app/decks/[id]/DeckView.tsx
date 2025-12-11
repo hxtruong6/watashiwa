@@ -15,7 +15,6 @@ import {
 	Tabs,
 	Segmented,
 	Table,
-	Tooltip,
 	Progress,
 	Statistic,
 	Row,
@@ -31,30 +30,16 @@ import {
 	EditOutlined,
 	CheckCircleOutlined,
 	SyncOutlined,
+	PlaySquareOutlined,
 } from '@ant-design/icons';
 import Link from 'next/link';
+import confetti from 'canvas-confetti';
 
 const { Title, Paragraph, Text } = Typography;
 
-// Mock function for FSRS State mapping if not available on frontend
-const getStateLabel = (state: number) => {
-	switch (state) {
-		case 0:
-			return <Tag color="blue">New</Tag>;
-		case 1:
-			return <Tag color="orange">Learning</Tag>;
-		case 2:
-			return <Tag color="green">Review</Tag>;
-		case 3:
-			return <Tag color="red">Relearning</Tag>;
-		default:
-			return <Tag>Unknown</Tag>;
-	}
-};
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function DeckView({ deck }: { deck: any }) {
 	const [viewMode, setViewMode] = useState<'List' | 'Grid'>('Grid');
+
 	const [activeTab, setActiveTab] = useState<'vocab' | 'kanji'>('vocab');
 
 	const stats = deck.stats || {
@@ -67,13 +52,24 @@ export default function DeckView({ deck }: { deck: any }) {
 	};
 	const percentLearned = stats.total > 0 ? Math.round((stats.started / stats.total) * 100) : 0;
 
+	// Trigger confetti if deck is fully learned
+	React.useEffect(() => {
+		if (percentLearned === 100) {
+			confetti({
+				particleCount: 100,
+				spread: 70,
+				origin: { y: 0.6 },
+			});
+		}
+	}, [percentLearned]);
+
 	// --- Vocab Columns ---
 	const vocabColumns = [
 		{
 			title: 'Word',
 			dataIndex: 'wordSurface',
 			key: 'wordSurface',
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 			render: (text: string, record: any) => (
 				<div>
 					<Text strong style={{ fontSize: 16 }}>
@@ -82,14 +78,14 @@ export default function DeckView({ deck }: { deck: any }) {
 					<div style={{ fontSize: 12, color: '#888' }}>{record.readingKana}</div>
 				</div>
 			),
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 			sorter: (a: any, b: any) => a.wordSurface.localeCompare(b.wordSurface),
 		},
 		{
 			title: 'Meaning',
 			dataIndex: 'meaning',
 			key: 'meaning',
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 			sorter: (a: any, b: any) => a.meaning.localeCompare(b.meaning),
 		},
 		{
@@ -101,8 +97,8 @@ export default function DeckView({ deck }: { deck: any }) {
 		{
 			title: 'Status',
 			key: 'status',
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			render: (_: any, record: any) => {
+
+			render: () => {
 				// Assuming we joined studyCard logic or similar, but complex in Table.
 				// For now, if no studyCard link in this view, we can't show status easily without extra data.
 				// Let's check if the deck prop includes study status.
@@ -121,13 +117,13 @@ export default function DeckView({ deck }: { deck: any }) {
 			title: 'Kanji',
 			dataIndex: 'kanji',
 			key: 'kanji',
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 			render: (text: string) => (
 				<Text strong style={{ fontSize: 20 }}>
 					{text}
 				</Text>
 			),
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 			sorter: (a: any, b: any) => a.kanji.localeCompare(b.kanji),
 		},
 		{
@@ -139,7 +135,7 @@ export default function DeckView({ deck }: { deck: any }) {
 			title: 'Onyomi',
 			dataIndex: 'onyomi',
 			key: 'onyomi',
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 			render: (onyomi: string[]) => (
 				<Flex gap="4px" wrap="wrap">
 					{onyomi.map((r) => (
@@ -154,7 +150,7 @@ export default function DeckView({ deck }: { deck: any }) {
 			title: 'Kunyomi',
 			dataIndex: 'kunyomi',
 			key: 'kunyomi',
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 			render: (kunyomi: string[]) => (
 				<Flex gap="4px" wrap="wrap">
 					{kunyomi.map((r) => (
@@ -194,7 +190,6 @@ export default function DeckView({ deck }: { deck: any }) {
 			<List
 				grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 3, xl: 4, xxl: 4 }}
 				dataSource={data}
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 				renderItem={(item: any) => (
 					<List.Item>
 						<Card hoverable style={{ height: '100%', borderRadius: 12 }}>
@@ -297,11 +292,11 @@ export default function DeckView({ deck }: { deck: any }) {
 							<Link href={`/study?deckId=${deck.id}`} style={{ width: '100%' }}>
 								<Button
 									type="primary"
-									icon={<ReadOutlined />}
+									icon={<PlaySquareOutlined />}
 									size="large"
 									style={{ width: '100%', height: 48, fontSize: 18 }}
 								>
-									Start Study
+									Play
 								</Button>
 							</Link>
 							{stats.unseen > 0 && (
@@ -380,7 +375,6 @@ export default function DeckView({ deck }: { deck: any }) {
 
 			<Tabs
 				activeKey={activeTab}
-				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 				onChange={(key) => setActiveTab(key as any)}
 				items={tabItems}
 				type="card"

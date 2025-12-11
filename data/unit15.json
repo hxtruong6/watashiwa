@@ -12,6 +12,17 @@
         "meaning": "đặt, bố trí"
       }
     ],
+    "wordParts": [
+      {
+        "text": "置",
+        "furigana": "お",
+        "romaji": "o"
+      },
+      {
+        "text": "きます",
+        "romaji": "kimasu"
+      }
+    ],
     "exampleSentence": {
       "sentence": "机の上に本を置きます。",
       "parts": [
@@ -60,6 +71,17 @@
         "meaning": "làm, sáng tác"
       }
     ],
+    "wordParts": [
+      {
+        "text": "作",
+        "furigana": "つく",
+        "romaji": "tsuku"
+      },
+      {
+        "text": "ります",
+        "romaji": "rimasu"
+      }
+    ],
     "exampleSentence": {
       "sentence": "夕飯を作ります。",
       "parts": [
@@ -94,6 +116,17 @@
         "meaning": "bán"
       }
     ],
+    "wordParts": [
+      {
+        "text": "売",
+        "furigana": "う",
+        "romaji": "u"
+      },
+      {
+        "text": "ります",
+        "romaji": "rimasu"
+      }
+    ],
     "exampleSentence": {
       "sentence": "車を売ります。",
       "parts": [
@@ -126,6 +159,17 @@
         "kanji": "知",
         "han_viet": "TRI",
         "meaning": "tri thức, hiểu biết"
+      }
+    ],
+    "wordParts": [
+      {
+        "text": "知",
+        "furigana": "し",
+        "romaji": "shi"
+      },
+      {
+        "text": "ります",
+        "romaji": "rimasu"
       }
     ],
     "exampleSentence": {
@@ -169,6 +213,17 @@
         "meaning": "cư trú, ở"
       }
     ],
+    "wordParts": [
+      {
+        "text": "住",
+        "furigana": "す",
+        "romaji": "su"
+      },
+      {
+        "text": "みます",
+        "romaji": "mimasu"
+      }
+    ],
     "exampleSentence": {
       "sentence": "大阪に住んでいます。",
       "parts": [
@@ -206,6 +261,17 @@
         "kanji": "究",
         "han_viet": "CỬU",
         "meaning": "nghiên cứu kỹ"
+      }
+    ],
+    "wordParts": [
+      {
+        "text": "研究",
+        "furigana": "けんきゅう",
+        "romaji": "kenkyuu"
+      },
+      {
+        "text": "します",
+        "romaji": "shimasu"
       }
     ],
     "exampleSentence": {
@@ -254,6 +320,13 @@
         "meaning": "nguyên liệu"
       }
     ],
+    "wordParts": [
+      {
+        "text": "資料",
+        "furigana": "しりょう",
+        "romaji": "shiryou"
+      }
+    ],
     "exampleSentence": {
       "sentence": "資料を送ってください。",
       "parts": [
@@ -296,6 +369,13 @@
         "kanji": "表",
         "han_viet": "BIỂU",
         "meaning": "bảng biểu"
+      }
+    ],
+    "wordParts": [
+      {
+        "text": "時刻表",
+        "furigana": "じこくひょう",
+        "romaji": "jikokuhyou"
       }
     ],
     "exampleSentence": {
@@ -346,6 +426,13 @@
         "meaning": "ý phục, quần áo"
       }
     ],
+    "wordParts": [
+      {
+        "text": "服",
+        "furigana": "ふく",
+        "romaji": "fuku"
+      }
+    ],
     "exampleSentence": {
       "sentence": "新しい服を買いました。",
       "parts": [
@@ -390,6 +477,13 @@
         "kanji": "品",
         "han_viet": "PHẨM",
         "meaning": "vật phẩm"
+      }
+    ],
+    "wordParts": [
+      {
+        "text": "製品",
+        "furigana": "せいひん",
+        "romaji": "seihin"
       }
     ],
     "exampleSentence": {
@@ -447,6 +541,13 @@
         "meaning": "sách"
       }
     ],
+    "wordParts": [
+      {
+        "text": "電子辞書",
+        "furigana": "でんしじしょ",
+        "romaji": "denshijisho"
+      }
+    ],
     "exampleSentence": {
       "sentence": "電子辞書は便利です。",
       "parts": [
@@ -484,6 +585,13 @@
         "kanji": "済",
         "han_viet": "TẾ",
         "meaning": "cứu tế, kinh tế"
+      }
+    ],
+    "wordParts": [
+      {
+        "text": "経済",
+        "furigana": "けいざい",
+        "romaji": "keizai"
       }
     ],
     "exampleSentence": {
@@ -537,6 +645,13 @@
         "meaning": "nơi chốn"
       }
     ],
+    "wordParts": [
+      {
+        "text": "市役所",
+        "furigana": "しやくしょ",
+        "romaji": "shiyakusho"
+      }
+    ],
     "exampleSentence": {
       "sentence": "市役所へ行きます。",
       "parts": [
@@ -574,6 +689,13 @@
         "kanji": "校",
         "han_viet": "HIỆU",
         "meaning": "trường học"
+      }
+    ],
+    "wordParts": [
+      {
+        "text": "高校",
+        "furigana": "こうこう",
+        "romaji": "koukou"
       }
     ],
     "exampleSentence": {
@@ -634,6 +756,13 @@
         "meaning": "người"
       }
     ],
+    "wordParts": [
+      {
+        "text": "歯医者",
+        "furigana": "はいしゃ",
+        "romaji": "haisha"
+      }
+    ],
     "exampleSentence": {
       "sentence": "歯が痛いので、歯医者へ行きます。",
       "parts": [
@@ -687,6 +816,13 @@
         "meaning": "thân thể"
       }
     ],
+    "wordParts": [
+      {
+        "text": "独身",
+        "furigana": "どくしん",
+        "romaji": "dokushin"
+      }
+    ],
     "exampleSentence": {
       "sentence": "彼はまだ独身です。",
       "parts": [
@@ -721,6 +857,17 @@
         "meaning": "mọi người, tất cả"
       }
     ],
+    "wordParts": [
+      {
+        "text": "皆",
+        "furigana": "みな",
+        "romaji": "mina"
+      },
+      {
+        "text": "さん",
+        "romaji": "san"
+      }
+    ],
     "exampleSentence": {
       "sentence": "皆さん、おはようございます。",
       "parts": [
@@ -751,6 +898,26 @@
         "kanji": "出",
         "han_viet": "XUẤT",
         "meaning": "ra"
+      }
+    ],
+    "wordParts": [
+      {
+        "text": "思",
+        "furigana": "おも",
+        "romaji": "omo"
+      },
+      {
+        "text": "い",
+        "romaji": "i"
+      },
+      {
+        "text": "出",
+        "furigana": "だ",
+        "romaji": "da"
+      },
+      {
+        "text": "します",
+        "romaji": "shimasu"
       }
     ],
     "exampleSentence": {
@@ -788,6 +955,12 @@
     "hanViet": "",
     "meaning": "kính ngữ của 「います」",
     "kanjiBreakdown": [],
+    "wordParts": [
+      {
+        "text": "いらっしゃいます",
+        "romaji": "irasshaimasu"
+      }
+    ],
     "exampleSentence": {
       "sentence": "先生は教室にいらっしゃいます。",
       "parts": [
@@ -835,6 +1008,13 @@
         "meaning": "cây cầu"
       }
     ],
+    "wordParts": [
+      {
+        "text": "日本橋",
+        "furigana": "にっぽんばし",
+        "romaji": "nipponbashi"
+      }
+    ],
     "exampleSentence": null
   },
   {
@@ -844,6 +1024,12 @@
     "hanViet": "",
     "meaning": "tên chương trình truyền hình (giả định)",
     "kanjiBreakdown": [],
+    "wordParts": [
+      {
+        "text": "みんなのインタビュー",
+        "romaji": "minnano interview"
+      }
+    ],
     "exampleSentence": null
   }
 ]

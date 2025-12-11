@@ -16,6 +16,8 @@ interface RawVocab {
 	meaning: string; // -> meaning
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	kanjiBreakdown: any[]; // -> kanjiBreakdown (Json)
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	wordParts?: any[]; // -> wordParts (Json)
 	exampleSentence: {
 		sentence: string;
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -62,7 +64,7 @@ async function main() {
 		deck = await prisma.deck.create({
 			data: {
 				title: deckTitle,
-				description: 'Imported from JSON',
+				description: 'Minna no Nihongo Unit 15',
 				authorId: user.id,
 				isPublic: true,
 			},
@@ -93,6 +95,7 @@ async function main() {
 				hanViet: item.hanViet,
 				meaning: item.meaning,
 				kanjiBreakdown: item.kanjiBreakdown, // Pass array directly
+				wordParts: item.wordParts, // Pass array directly
 				exampleSentence: item.exampleSentence, // Pass object directly
 				deckId: deck.id,
 			},
@@ -103,6 +106,7 @@ async function main() {
 				hanViet: item.hanViet,
 				meaning: item.meaning,
 				kanjiBreakdown: item.kanjiBreakdown,
+				wordParts: item.wordParts,
 				exampleSentence: item.exampleSentence,
 				deckId: deck.id,
 			},

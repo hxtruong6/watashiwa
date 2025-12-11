@@ -38,6 +38,7 @@ export default function VocabCard({
 		romaji,
 		kanjiBreakdown,
 		hanViet,
+		wordParts,
 	} = card?.vocab || {};
 
 	// Auto-play logic
@@ -130,37 +131,93 @@ export default function VocabCard({
 							/>
 						)}
 
-						{/* Furigana (Reading) - Only show if enabled */}
-						<div
-							style={{
-								height: 24,
-								marginBottom: 4,
-								opacity: showFurigana ? 1 : 0,
-								transition: 'opacity 0.3s ease',
-							}}
-						>
-							<Text type="secondary" style={{ fontSize: 18 }}>
-								{reading}
-							</Text>
-						</div>
+						{/* Main Word Display */}
+						{wordParts && Array.isArray(wordParts) && wordParts.length > 0 ? (
+							<Flex justify="center" align="end" gap={4} wrap="wrap">
+								{/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+								{wordParts.map((part: any, index: number) => (
+									<Flex key={index} vertical align="center">
+										{/* Furigana */}
+										<div
+											style={{
+												height: 24,
+												marginBottom: 0,
+												opacity: showFurigana ? 1 : 0,
+												transition: 'opacity 0.3s ease',
+												display: 'flex',
+												alignItems: 'flex-end',
+											}}
+										>
+											<Text type="secondary" style={{ fontSize: 14 }}>
+												{part.furigana || '　'}
+											</Text>
+										</div>
 
-						<Title level={1} style={{ fontSize: '64px', margin: '0 0 8px', color: '#1E3A5F' }}>
-							{kanji}
-						</Title>
+										{/* Kanji/Text */}
+										<Title
+											level={1}
+											style={{
+												fontSize: '64px',
+												margin: '0',
+												lineHeight: 1,
+												color: '#1E3A5F',
+											}}
+										>
+											{part.text}
+										</Title>
 
-						{/* Romaji - Only show if enabled */}
-						<div
-							style={{
-								marginTop: 8,
-								minHeight: 24,
-								opacity: showRomaji && romaji ? 1 : 0,
-								transition: 'opacity 0.3s ease',
-							}}
-						>
-							<Text type="secondary" style={{ fontSize: 16, fontStyle: 'italic' }}>
-								{romaji}
-							</Text>
-						</div>
+										{/* Romaji */}
+										<div
+											style={{
+												marginTop: 8,
+												minHeight: 24,
+												opacity: showRomaji ? 1 : 0,
+												transition: 'opacity 0.3s ease',
+											}}
+										>
+											<Text type="secondary" style={{ fontSize: 14, fontStyle: 'italic' }}>
+												{part.romaji || ''}
+											</Text>
+										</div>
+									</Flex>
+								))}
+							</Flex>
+						) : (
+							<>
+								{/* Fallback for legacy data */}
+								{/* Furigana (Reading) - Only show if enabled */}
+								<div
+									style={{
+										height: 24,
+										marginBottom: 4,
+										opacity: showFurigana ? 1 : 0,
+										transition: 'opacity 0.3s ease',
+									}}
+								>
+									<Text type="secondary" style={{ fontSize: 18 }}>
+										{reading}
+									</Text>
+								</div>
+
+								<Title level={1} style={{ fontSize: '64px', margin: '0 0 8px', color: '#1E3A5F' }}>
+									{kanji}
+								</Title>
+
+								{/* Romaji - Only show if enabled */}
+								<div
+									style={{
+										marginTop: 8,
+										minHeight: 24,
+										opacity: showRomaji && romaji ? 1 : 0,
+										transition: 'opacity 0.3s ease',
+									}}
+								>
+									<Text type="secondary" style={{ fontSize: 16, fontStyle: 'italic' }}>
+										{romaji}
+									</Text>
+								</div>
+							</>
+						)}
 					</div>
 
 					{/* Back of Card (Reveal) */}

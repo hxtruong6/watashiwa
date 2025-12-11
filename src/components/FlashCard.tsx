@@ -46,6 +46,7 @@ export default function FlashCard({
 		romaji,
 		kanjiBreakdown,
 		hanViet: vocabHanViet,
+		wordParts,
 	} = vocabData;
 
 	// Extract Kanji Data
@@ -160,48 +161,112 @@ export default function FlashCard({
 							<Tag color={isVocab ? 'geekblue' : 'purple'}>{isVocab ? 'Vocab' : 'Kanji'}</Tag>
 						</div>
 
-						{/* Top Secondary Text */}
-						{isVocab ? (
-							// Furigana
-							<div
-								style={{
-									height: 24,
-									marginBottom: 4,
-									opacity: showFurigana ? 1 : 0,
-									transition: 'opacity 0.3s ease',
-								}}
+						{/* Main Content Area */}
+						{isVocab && wordParts && Array.isArray(wordParts) && wordParts.length > 0 ? (
+							<Flex
+								justify="center"
+								align="end"
+								gap={4}
+								wrap="wrap"
+								style={{ marginTop: 12, marginBottom: 12 }}
 							>
-								<Text type="secondary" style={{ fontSize: 18 }}>
-									{reading}
-								</Text>
-							</div>
+								{/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+								{wordParts.map((part: any, index: number) => (
+									<Flex key={index} vertical align="center">
+										{/* Furigana */}
+										<div
+											style={{
+												height: 24,
+												marginBottom: 0,
+												opacity: showFurigana ? 1 : 0,
+												transition: 'opacity 0.3s ease',
+												display: 'flex',
+												alignItems: 'flex-end',
+											}}
+										>
+											<Text type="secondary" style={{ fontSize: 14 }}>
+												{part.furigana || '　'}
+											</Text>
+										</div>
+
+										{/* Kanji/Text */}
+										<Title
+											level={1}
+											style={{
+												fontSize: '64px', // Slightly smaller to fit multiple
+												margin: '0',
+												lineHeight: 1,
+												color: '#1E3A5F',
+											}}
+										>
+											{part.text}
+										</Title>
+
+										{/* Romaji */}
+										<div
+											style={{
+												marginTop: 8,
+												minHeight: 24,
+												opacity: showRomaji ? 1 : 0,
+												transition: 'opacity 0.3s ease',
+											}}
+										>
+											<Text type="secondary" style={{ fontSize: 14, fontStyle: 'italic' }}>
+												{part.romaji || ''}
+											</Text>
+										</div>
+									</Flex>
+								))}
+							</Flex>
 						) : (
-							// Strokes
-							<div style={{ height: 24, marginBottom: 4 }}>
-								<Text type="secondary" style={{ fontSize: 14 }}>
-									{strokes} strokes
-								</Text>
-							</div>
-						)}
+							<>
+								{/* Top Secondary Text */}
+								{isVocab ? (
+									// Furigana
+									<div
+										style={{
+											height: 24,
+											marginBottom: 4,
+											opacity: showFurigana ? 1 : 0,
+											transition: 'opacity 0.3s ease',
+										}}
+									>
+										<Text type="secondary" style={{ fontSize: 18 }}>
+											{reading}
+										</Text>
+									</div>
+								) : (
+									// Strokes
+									<div style={{ height: 24, marginBottom: 4 }}>
+										<Text type="secondary" style={{ fontSize: 14 }}>
+											{strokes} strokes
+										</Text>
+									</div>
+								)}
 
-						{/* Main Text */}
-						<Title level={1} style={{ fontSize: '80px', margin: '4px 0 16px', color: '#1E3A5F' }}>
-							{frontText}
-						</Title>
+								{/* Main Text */}
+								<Title
+									level={1}
+									style={{ fontSize: '80px', margin: '4px 0 16px', color: '#1E3A5F' }}
+								>
+									{frontText}
+								</Title>
 
-						{/* Bottom Secondary Text (Romaji for Vocab) */}
-						{isVocab && (
-							<div
-								style={{
-									minHeight: 24,
-									opacity: showRomaji && romaji ? 1 : 0,
-									transition: 'opacity 0.3s ease',
-								}}
-							>
-								<Text type="secondary" style={{ fontSize: 16, fontStyle: 'italic' }}>
-									{romaji}
-								</Text>
-							</div>
+								{/* Bottom Secondary Text (Romaji for Vocab) */}
+								{isVocab && (
+									<div
+										style={{
+											minHeight: 24,
+											opacity: showRomaji && romaji ? 1 : 0,
+											transition: 'opacity 0.3s ease',
+										}}
+									>
+										<Text type="secondary" style={{ fontSize: 16, fontStyle: 'italic' }}>
+											{romaji}
+										</Text>
+									</div>
+								)}
+							</>
 						)}
 					</div>
 
