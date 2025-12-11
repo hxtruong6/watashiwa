@@ -3,6 +3,7 @@
 import React from 'react';
 import { Typography, Button, Flex, Card, Statistic, Row, Col } from 'antd';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import {
 	ClockCircleOutlined,
 	FireOutlined,
@@ -24,6 +25,7 @@ interface DashboardContentProps {
 }
 
 export default function DashboardContent({ reviewCount, stats }: DashboardContentProps) {
+	const t = useTranslations('Dashboard');
 	const containerVariants = {
 		hidden: { opacity: 0 },
 		visible: {
@@ -64,16 +66,14 @@ export default function DashboardContent({ reviewCount, stats }: DashboardConten
 							letterSpacing: '-0.02em',
 						}}
 					>
-						Ready to learn?
+						{t('heroTitle')}
 					</Title>
 					<Text
 						type="secondary"
 						style={{ fontSize: 'clamp(1rem, 2vw, 1.25rem)', marginBottom: 48, maxWidth: 500 }}
 					>
 						{' '}
-						{reviewCount > 0
-							? "You have cards waiting for your attention. Let's keep the streak alive."
-							: "You're all caught up for now. Relax or explore new decks."}
+						{reviewCount > 0 ? t('heroSubtitleCards') : t('heroSubtitleNoCards')}
 					</Text>
 
 					{reviewCount > 0 ? (
@@ -94,7 +94,7 @@ export default function DashboardContent({ reviewCount, stats }: DashboardConten
 										gap: 12,
 									}}
 								>
-									Start Review{' '}
+									{t('startReview')}{' '}
 									<span style={{ opacity: 0.6, fontSize: '1rem' }}>({reviewCount})</span>
 								</Button>
 							</motion.div>
@@ -113,11 +113,9 @@ export default function DashboardContent({ reviewCount, stats }: DashboardConten
 									<CheckCircleOutlined style={{ fontSize: 56, color: '#708238' }} />
 									<div>
 										<Title level={3} style={{ margin: '0 0 8px' }}>
-											All caught up!
+											{t('allCaughtUp')}
 										</Title>
-										<Text type="secondary">
-											Great job. Check back later or learn new cards from your library.
-										</Text>
+										<Text type="secondary">{t('allCaughtUpSubtitle')}</Text>
 									</div>
 									<Link href="/decks">
 										<Button
@@ -126,7 +124,7 @@ export default function DashboardContent({ reviewCount, stats }: DashboardConten
 											icon={<RightOutlined />}
 											iconPlacement="end"
 										>
-											Browse Decks
+											{t('browseDecks')}
 										</Button>
 									</Link>
 								</Flex>
@@ -149,7 +147,7 @@ export default function DashboardContent({ reviewCount, stats }: DashboardConten
 							}}
 						>
 							<Statistic
-								title={<Text type="secondary">Day Streak</Text>}
+								title={<Text type="secondary">{t('dayStreak')}</Text>}
 								value={stats.streak}
 								prefix={<FireOutlined style={{ color: '#FAAD14', fontSize: 28, marginRight: 8 }} />}
 								styles={{ content: { color: '#1E3A5F', fontWeight: 600, fontSize: '2.5rem' } }}
@@ -168,7 +166,7 @@ export default function DashboardContent({ reviewCount, stats }: DashboardConten
 							}}
 						>
 							<Statistic
-								title={<Text type="secondary">Reviewed Today</Text>}
+								title={<Text type="secondary">{t('reviewedToday')}</Text>}
 								value={stats.totalReviewed}
 								prefix={
 									<ClockCircleOutlined style={{ color: '#708238', fontSize: 28, marginRight: 8 }} />
@@ -183,7 +181,7 @@ export default function DashboardContent({ reviewCount, stats }: DashboardConten
 			{/* Quick Access */}
 			<div style={{ marginTop: 48 }}>
 				<Title level={4} style={{ marginBottom: 24, color: '#1E3A5F' }}>
-					Quick Access
+					{t('quickAccess')}
 				</Title>
 				<Row gutter={[16, 16]}>
 					<Col xs={12} sm={6}>
@@ -201,7 +199,7 @@ export default function DashboardContent({ reviewCount, stats }: DashboardConten
 								>
 									<ReadOutlined style={{ fontSize: 24, color: '#1890ff', marginBottom: 8 }} />
 									<Text strong style={{ display: 'block' }}>
-										All Vocab
+										{t('allVocab')}
 									</Text>
 								</Card>
 							</motion.div>
@@ -222,7 +220,7 @@ export default function DashboardContent({ reviewCount, stats }: DashboardConten
 								>
 									<EditOutlined style={{ fontSize: 24, color: '#722ed1', marginBottom: 8 }} />
 									<Text strong style={{ display: 'block' }}>
-										All Kanji
+										{t('allKanji')}
 									</Text>
 								</Card>
 							</motion.div>

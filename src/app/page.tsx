@@ -1,12 +1,17 @@
 import React from 'react';
-import { getReviewCount, getUserStats, syncUser } from '@/services/actions';
-import DashboardContent from '@/components/DashboardContent';
+import { redirect } from 'next/navigation';
+import { getUser } from '@/services/actions';
+import LandingPage from '@/components/landing/LandingPage';
 
-export default async function Dashboard() {
-	// Sync user on load
-	await syncUser();
+export default async function Page() {
+	// Check for authenticated user
+	const user = await getUser();
 
-	const [reviewCount, stats] = await Promise.all([getReviewCount(), getUserStats()]);
+	// If user is logged in, redirect to dashboard
+	if (user) {
+		redirect('/dashboard');
+	}
 
-	return <DashboardContent reviewCount={reviewCount} stats={stats} />;
+	// Otherwise show public landing page
+	return <LandingPage />;
 }

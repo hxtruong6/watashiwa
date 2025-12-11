@@ -18,7 +18,7 @@ export type StudyCardWithDetails = StudyCard & {
 /**
  * Helper to get current authenticated user
  */
-async function getUser() {
+export async function getUser() {
 	const supabase = await createClient();
 	const {
 		data: { user },

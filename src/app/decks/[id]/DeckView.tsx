@@ -34,10 +34,12 @@ import {
 } from '@ant-design/icons';
 import Link from 'next/link';
 import confetti from 'canvas-confetti';
+import { useTranslations } from 'next-intl';
 
 const { Title, Paragraph, Text } = Typography;
 
 export default function DeckView({ deck }: { deck: any }) {
+	const t = useTranslations('Decks');
 	const [viewMode, setViewMode] = useState<'List' | 'Grid'>('Grid');
 
 	const [activeTab, setActiveTab] = useState<'vocab' | 'kanji'>('vocab');
@@ -66,7 +68,7 @@ export default function DeckView({ deck }: { deck: any }) {
 	// --- Vocab Columns ---
 	const vocabColumns = [
 		{
-			title: 'Word',
+			title: t('columnWord'),
 			dataIndex: 'wordSurface',
 			key: 'wordSurface',
 
@@ -82,20 +84,20 @@ export default function DeckView({ deck }: { deck: any }) {
 			sorter: (a: any, b: any) => a.wordSurface.localeCompare(b.wordSurface),
 		},
 		{
-			title: 'Meaning',
+			title: t('columnMeaning'),
 			dataIndex: 'meaning',
 			key: 'meaning',
 
 			sorter: (a: any, b: any) => a.meaning.localeCompare(b.meaning),
 		},
 		{
-			title: 'Han-Viet',
+			title: t('columnHanViet'),
 			dataIndex: 'hanViet',
 			key: 'hanViet',
 			responsive: ['sm'],
 		},
 		{
-			title: 'Status',
+			title: t('columnStatus'),
 			key: 'status',
 
 			render: () => {
@@ -114,7 +116,7 @@ export default function DeckView({ deck }: { deck: any }) {
 	// --- Kanji Columns ---
 	const kanjiColumns = [
 		{
-			title: 'Kanji',
+			title: t('columnKanji'),
 			dataIndex: 'kanji',
 			key: 'kanji',
 
@@ -127,12 +129,12 @@ export default function DeckView({ deck }: { deck: any }) {
 			sorter: (a: any, b: any) => a.kanji.localeCompare(b.kanji),
 		},
 		{
-			title: 'Meaning',
+			title: t('columnMeaning'),
 			dataIndex: 'meaning',
 			key: 'meaning',
 		},
 		{
-			title: 'Onyomi',
+			title: t('columnOnyomi'),
 			dataIndex: 'onyomi',
 			key: 'onyomi',
 
@@ -147,7 +149,7 @@ export default function DeckView({ deck }: { deck: any }) {
 			),
 		},
 		{
-			title: 'Kunyomi',
+			title: t('columnKunyomi'),
 			dataIndex: 'kunyomi',
 			key: 'kunyomi',
 
@@ -166,7 +168,7 @@ export default function DeckView({ deck }: { deck: any }) {
 	// --- Render Content Helper ---
 	const renderContent = (type: 'vocab' | 'kanji', data: any[]) => {
 		if (!data || data.length === 0) {
-			return <Empty description={`No ${type} in this deck yet`} />;
+			return <Empty description={t('noItems', { type })} />;
 		}
 
 		if (viewMode === 'List') {
@@ -222,7 +224,7 @@ export default function DeckView({ deck }: { deck: any }) {
 			key: 'vocab',
 			label: (
 				<span>
-					<ReadOutlined /> Vocabulary ({vocabCount})
+					<ReadOutlined /> {t('tabVocab', { count: vocabCount })}
 				</span>
 			),
 			children: renderContent('vocab', deck.vocab || []),
@@ -231,7 +233,7 @@ export default function DeckView({ deck }: { deck: any }) {
 			key: 'kanji',
 			label: (
 				<span>
-					<EditOutlined /> Kanji ({kanjiCount})
+					<EditOutlined /> {t('tabKanji', { count: kanjiCount })}
 				</span>
 			),
 			children: renderContent('kanji', deck.kanji || []),
@@ -249,7 +251,7 @@ export default function DeckView({ deck }: { deck: any }) {
 							</Link>
 						),
 					},
-					{ title: <Link href="/decks">Decks</Link> },
+					{ title: <Link href="/decks">{t('libraryTitle')}</Link> },
 					{ title: deck.title },
 				]}
 				style={{ marginBottom: 24 }}
@@ -275,17 +277,17 @@ export default function DeckView({ deck }: { deck: any }) {
 							<div style={{ marginTop: 8 }}>
 								{deck.isPublic ? (
 									<Tag icon={<GlobalOutlined />} color="green">
-										Public
+										{t('publicTag')}
 									</Tag>
 								) : (
 									<Tag icon={<TeamOutlined />} color="blue">
 										Private
 									</Tag>
 								)}
-								<Tag>{vocabCount + kanjiCount} items</Tag>
+								<Tag>{t('itemsCount', { count: vocabCount + kanjiCount })}</Tag>
 							</div>
 							<Paragraph style={{ margin: '12px 0 0', color: '#555', maxWidth: 600 }}>
-								{deck.description || 'No description provided.'}
+								{deck.description || t('noDescription')}
 							</Paragraph>
 						</div>
 						<div style={{ display: 'flex', flexDirection: 'column', gap: 8, minWidth: 200 }}>
@@ -296,7 +298,7 @@ export default function DeckView({ deck }: { deck: any }) {
 									size="large"
 									style={{ width: '100%', height: 48, fontSize: 18 }}
 								>
-									Play
+									{t('playButton')}
 								</Button>
 							</Link>
 							{stats.unseen > 0 && (
@@ -304,7 +306,7 @@ export default function DeckView({ deck }: { deck: any }) {
 									color="geekblue"
 									style={{ textAlign: 'center', margin: 0, padding: 8, fontSize: 13 }}
 								>
-									{stats.unseen} new items available
+									{t('newItemsAvailable', { count: stats.unseen })}
 								</Tag>
 							)}
 						</div>
@@ -317,9 +319,9 @@ export default function DeckView({ deck }: { deck: any }) {
 						<Col xs={24} md={14}>
 							<Flex vertical gap="small">
 								<Flex justify="space-between">
-									<Text strong>Overall Progress</Text>
+									<Text strong>{t('overallProgress')}</Text>
 									<Text type="secondary">
-										{stats.started} / {stats.total} learned
+										{t('learnedCount', { started: stats.started, total: stats.total })}
 									</Text>
 								</Flex>
 								<Progress
@@ -335,19 +337,19 @@ export default function DeckView({ deck }: { deck: any }) {
 						<Col xs={24} md={10}>
 							<Flex justify="space-around">
 								<Statistic
-									title="Unseen"
+									title={t('statUnseen')}
 									value={stats.unseen}
 									valueStyle={{ color: '#faad14', fontSize: 20 }}
 									prefix={<SyncOutlined spin={false} />}
 								/>
 								<Statistic
-									title="Active"
+									title={t('statActive')}
 									value={stats.learning + stats.review} // Learning + Review
 									valueStyle={{ color: '#1890ff', fontSize: 20 }}
 									prefix={<ReadOutlined />}
 								/>
 								<Statistic
-									title="Mastered"
+									title={t('statMastered')}
 									value={0} // Placeholder until strict 'Mastered' metric (e.g. maturity > 21 days)
 									valueStyle={{ color: '#52c41a', fontSize: 20 }}
 									prefix={<CheckCircleOutlined />}
@@ -361,7 +363,7 @@ export default function DeckView({ deck }: { deck: any }) {
 			{/* Filter & Tabs Section */}
 			<Flex justify="space-between" align="center" style={{ marginBottom: 16 }}>
 				<Title level={4} style={{ margin: 0 }}>
-					Deck Contents
+					{t('deckContentsTitle')}
 				</Title>
 				<Segmented
 					options={[

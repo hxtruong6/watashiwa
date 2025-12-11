@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Tooltip, ConfigProvider } from 'antd';
+import { useTranslations } from 'next-intl';
 
 interface RatingBarProps {
 	onRate: (rating: number) => void;
@@ -8,6 +9,7 @@ interface RatingBarProps {
 }
 
 export default function RatingBar({ onRate, disabled, selectedRating }: RatingBarProps) {
+	const t = useTranslations('Study');
 	// Local state not needed if controlled by parent used for animation trigger
 	// But parent state `submittingRating` is perfect.
 
@@ -74,7 +76,7 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 						gap: 12,
 					}}
 				>
-					<Tooltip title="Shortcut: 1">
+					<Tooltip title={t('shortcutTooltip', { key: 1 })}>
 						<Button
 							size="large"
 							loading={selectedRating === 1}
@@ -85,11 +87,11 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 								gridColumn: '1 / 2',
 							}}
 						>
-							Again (1)
+							{t('rateAgain')}
 						</Button>
 					</Tooltip>
 
-					<Tooltip title="Shortcut: 2">
+					<Tooltip title={t('shortcutTooltip', { key: 2 })}>
 						<Button
 							size="large"
 							loading={selectedRating === 2}
@@ -100,11 +102,11 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 								gridColumn: '2 / 3',
 							}}
 						>
-							Hard (2)
+							{t('rateHard')}
 						</Button>
 					</Tooltip>
 
-					<Tooltip title="Shortcut: 3">
+					<Tooltip title={t('shortcutTooltip', { key: 3 })}>
 						<Button
 							size="large"
 							loading={selectedRating === 3}
@@ -115,11 +117,11 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 								gridColumn: '1 / 2',
 							}}
 						>
-							Good (3)
+							{t('rateGood')}
 						</Button>
 					</Tooltip>
 
-					<Tooltip title="Shortcut: 4">
+					<Tooltip title={t('shortcutTooltip', { key: 4 })}>
 						<Button
 							size="large"
 							loading={selectedRating === 4}
@@ -130,7 +132,7 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 								gridColumn: '2 / 3',
 							}}
 						>
-							Easy (4)
+							{t('rateEasy')}
 						</Button>
 					</Tooltip>
 				</div>

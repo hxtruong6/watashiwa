@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import { Layout, Menu, Button, Flex, Typography, Drawer, Tooltip, Tag } from 'antd';
 import { usePathname, useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import LanguageSelector from './LanguageSelector';
 import { createClient } from '@/utils/supabase/client';
 import {
 	LogoutOutlined,
@@ -18,11 +20,20 @@ import type { MenuProps } from 'antd';
 const { Header } = Layout;
 const { Title } = Typography;
 
-export default function NavBar() {
+// Define types locally or import
+interface User {
+	id: string;
+	email?: string;
+}
+
+export default function NavBar({ user }: { user?: User | null }) {
 	const pathname = usePathname();
 	const router = useRouter();
 	const supabase = createClient();
 	const [drawerOpen, setDrawerOpen] = useState(false);
+
+	const t = useTranslations('NavBar');
+	const tCommon = useTranslations('Common');
 
 	const handleLogout = async () => {
 		await supabase.auth.signOut();
@@ -39,13 +50,13 @@ export default function NavBar() {
 		return null;
 	}
 
-	const items: MenuProps['items'] = [
+	const menuItems: MenuProps['items'] = [
 		{
 			key: '/',
 			icon: <DashboardOutlined />,
 			label: (
 				<Link href="/" onClick={closeDrawer}>
-					Dashboard
+					{t('dashboard')}
 				</Link>
 			),
 		},
@@ -54,7 +65,7 @@ export default function NavBar() {
 			icon: <BookOutlined />,
 			label: (
 				<Link href="/decks" onClick={closeDrawer}>
-					Decks
+					{t('decks')}
 				</Link>
 			),
 		},
@@ -63,8 +74,8 @@ export default function NavBar() {
 			key: 'analytics',
 			icon: <BarChartOutlined style={{ color: '#aaa' }} />,
 			label: (
-				<Tooltip title="Coming Soon">
-					<span style={{ color: '#aaa', cursor: 'not-allowed' }}>Analytics</span>
+				<Tooltip title={tCommon('soon')}>
+					<span style={{ color: '#aaa', cursor: 'not-allowed' }}>{t('analytics')}</span>
 					<Tag color="default" style={{ marginLeft: 8, fontSize: 10 }}>
 						Soon
 					</Tag>
@@ -76,8 +87,8 @@ export default function NavBar() {
 			key: 'community',
 			icon: <CommentOutlined style={{ color: '#aaa' }} />,
 			label: (
-				<Tooltip title="Coming Soon">
-					<span style={{ color: '#aaa', cursor: 'not-allowed' }}>Community</span>
+				<Tooltip title={tCommon('soon')}>
+					<span style={{ color: '#aaa', cursor: 'not-allowed' }}>{t('community')}</span>
 					<Tag color="default" style={{ marginLeft: 8, fontSize: 10 }}>
 						Soon
 					</Tag>
@@ -86,6 +97,10 @@ export default function NavBar() {
 			disabled: true,
 		},
 	];
+
+	// If not logged in, show minimal items or just Logo
+	// Actually, if on landing page, we might want "Login" button instead of specific menu
+	const isPublic = !user;
 
 	return (
 		<Header
@@ -140,38 +155,70 @@ export default function NavBar() {
 			{/* Desktop Menu */}
 			<div
 				className="desktop-nav"
-				style={{ flex: 1, justifyContent: 'flex-end', alignItems: 'center' }}
+				style={{ flex: 1, justifyContent: 'flex-end', alignItems: 'center', gap: 16 }}
 			>
-				<Menu
-					mode="horizontal"
-					selectedKeys={[pathname]}
-					items={items}
-					style={{
-						borderBottom: 'none',
-						background: 'transparent',
-						flex: 1,
-						justifyContent: 'flex-end',
-						marginRight: 24,
-					}}
-					disabledOverflow
-				/>
+				{!isPublic ? (
+					<>
+						<Menu
+							mode="horizontal"
+							selectedKeys={[pathname]}
+							items={menuItems}
+							style={{
+								borderBottom: 'none',
+								background: 'transparent',
+								flex: 1,
+								justifyContent: 'flex-end',
+							}}
+							disabledOverflow
+						/>
 
-				<Button type="text" icon={<LogoutOutlined />} onClick={handleLogout}>
-					Logout
-				</Button>
+						<LanguageSelector />
+
+						<Button type="text" icon={<LogoutOutlined />} onClick={handleLogout}>
+							{/* {tCommon('logout')} */}
+						</Button>
+					</>
+				) : (
+					<Flex gap="small" align="center">
+						<LanguageSelector />
+						<Link href="/login">
+							<Button type="primary" style={{ background: '#1E3A5F' }}>
+								Login
+							</Button>
+						</Link>
+					</Flex>
+				)}
 			</div>
 
 			{/* Mobile Trigger */}
-			<div className="mobile-trigger">
-				<Button type="text" icon={<MenuOutlined />} onClick={showDrawer} size="large" />
-			</div>
+			{!isPublic && (
+				<div className="mobile-trigger">
+					<Button type="text" icon={<MenuOutlined />} onClick={showDrawer} size="large" />
+				</div>
+			)}
+			{/* For public mobile, maybe show Login? */}
+			{isPublic && (
+				<div className="mobile-trigger">
+					<Flex gap="small" align="center">
+						<LanguageSelector />
+						<Link href="/login">
+							<Button type="primary" size="small" style={{ background: '#1E3A5F' }}>
+								Login
+							</Button>
+						</Link>
+					</Flex>
+				</div>
+			)}
 
 			{/* Mobile Drawer */}
 			<Drawer
 				title={
-					<Title level={4} style={{ margin: 0, color: '#1E3A5F' }}>
-						Menu
-					</Title>
+					<Flex justify="space-between" align="center">
+						<Title level={4} style={{ margin: 0, color: '#1E3A5F' }}>
+							{t('menu')}
+						</Title>
+						<LanguageSelector />
+					</Flex>
 				}
 				placement="right"
 				onClose={closeDrawer}
@@ -183,12 +230,12 @@ export default function NavBar() {
 					<Menu
 						mode="inline"
 						selectedKeys={[pathname]}
-						items={items}
+						items={menuItems}
 						style={{ borderRight: 'none', flex: 1 }}
 					/>
 					<div style={{ padding: '24px', borderTop: '1px solid #f0f0f0' }}>
 						<Button block danger icon={<LogoutOutlined />} onClick={handleLogout} size="large">
-							Logout
+							{tCommon('logout')}
 						</Button>
 					</div>
 				</Flex>

@@ -21,24 +21,36 @@ export const metadata: Metadata = {
 	description: 'Learn Japanese with Spaced Repetition',
 };
 
-export default function RootLayout({
+import { getLocale, getMessages } from 'next-intl/server';
+import { NextIntlClientProvider } from 'next-intl';
+
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
+	const locale = await getLocale();
+	const messages = await getMessages();
+
+	// Fetch user for NavBar state
+	const { getUser } = await import('@/services/actions');
+	const user = await getUser();
+
 	return (
-		<html lang="en">
+		<html lang={locale}>
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
-				<AntdRegistry>
-					<ConfigProvider theme={theme}>
-						<App>
-							<NavBar />
-							<main style={{ minHeight: 'calc(100vh - 64px)', background: '#F9F7F2' }}>
-								{children}
-							</main>
-						</App>
-					</ConfigProvider>
-				</AntdRegistry>
+				<NextIntlClientProvider messages={messages}>
+					<AntdRegistry>
+						<ConfigProvider theme={theme}>
+							<App>
+								<NavBar user={user} />
+								<main style={{ minHeight: 'calc(100vh - 64px)', background: '#F9F7F2' }}>
+									{children}
+								</main>
+							</App>
+						</ConfigProvider>
+					</AntdRegistry>
+				</NextIntlClientProvider>
 			</body>
 		</html>
 	);

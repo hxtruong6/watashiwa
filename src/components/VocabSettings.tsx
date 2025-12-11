@@ -22,6 +22,7 @@ import {
 	SettingOutlined,
 } from '@ant-design/icons';
 import { updateUserSettings } from '@/services/actions';
+import { useTranslations } from 'next-intl';
 
 const { Text } = Typography;
 const { Panel } = Collapse;
@@ -52,6 +53,8 @@ export default function VocabSettings({
 	userSettings,
 	onSettingsChange,
 }: VocabSettingsProps) {
+	const t = useTranslations('Settings');
+	const tCommon = useTranslations('Common');
 	const [form] = Form.useForm();
 	const [loading, setLoading] = useState(false);
 
@@ -76,10 +79,10 @@ export default function VocabSettings({
 			setLoading(true);
 			const result = await updateUserSettings(values);
 			if (result.success) {
-				message.success('Settings saved!');
+				message.success(tCommon('saveSuccess'));
 				if (onSettingsChange) onSettingsChange();
 			} else {
-				message.error(result.error || 'Failed to save settings');
+				message.error(result.error || tCommon('saveError'));
 			}
 		} catch (error) {
 			console.error('Save failed:', error);
@@ -107,40 +110,40 @@ export default function VocabSettings({
 				style={{ marginBottom: 16 }}
 			>
 				<Flex align="center" gap="small">
-					<Tooltip title="Show Furigana (Reading)">
+					<Tooltip title={t('furiganaTooltip')}>
 						<FontSizeOutlined style={{ color: '#1890ff' }} />
 					</Tooltip>
-					<Text style={{ fontSize: 13 }}>Furigana</Text>
+					<Text style={{ fontSize: 13 }}>{t('furigana')}</Text>
 					<Switch size="small" checked={showFurigana} onChange={setShowFurigana} />
 				</Flex>
 
 				<Flex align="center" gap="small">
-					<Tooltip title="Show Romaji">
+					<Tooltip title={t('romajiTooltip')}>
 						<TranslationOutlined style={{ color: '#52c41a' }} />
 					</Tooltip>
-					<Text style={{ fontSize: 13 }}>Romaji</Text>
+					<Text style={{ fontSize: 13 }}>{t('romaji')}</Text>
 					<Switch size="small" checked={showRomaji} onChange={setShowRomaji} />
 				</Flex>
 
 				<Flex align="center" gap="small">
-					<Tooltip title="Auto-play Audio">
+					<Tooltip title={t('autoPlayTooltip')}>
 						<SoundOutlined style={{ color: '#faad14' }} />
 					</Tooltip>
-					<Text style={{ fontSize: 13 }}>Auto-play</Text>
+					<Text style={{ fontSize: 13 }}>{t('autoPlay')}</Text>
 					<Switch size="small" checked={autoPlayAudio} onChange={setAutoPlayAudio} />
 				</Flex>
 			</Flex>
 
 			<div style={{ marginTop: 12, padding: '12px', background: '#f5f5f5', borderRadius: 8 }}>
 				<Text strong style={{ display: 'block', marginBottom: 4, fontSize: 12 }}>
-					Guide:
+					{t('guideTitle')}
 				</Text>
 				<ul style={{ paddingLeft: 20, margin: 0, fontSize: 12, color: '#666' }}>
 					<li>
-						<Text strong>[Space]</Text>: Flip / Rate Good
+						<Text strong>[Space]</Text>: {t('guideSpace')}
 					</li>
 					<li>
-						<Text strong>[1-4]</Text>: Rate Answer
+						<Text strong>[1-4]</Text>: {t('guideNumbers')}
 					</li>
 				</ul>
 			</div>
@@ -149,26 +152,22 @@ export default function VocabSettings({
 				<Panel
 					header={
 						<span style={{ fontWeight: 600, color: '#1E3A5F' }}>
-							<SettingOutlined /> Advanced Rules & Limits
+							<SettingOutlined /> {t('advancedSettings')}
 						</span>
 					}
 					key="1"
 				>
 					<Form form={form} layout="vertical" onFinish={handleSaveSettings}>
 						<Flex gap="middle">
-							<Form.Item name="limitNewCards" label="New Cards / Day" style={{ flex: 1 }}>
+							<Form.Item name="limitNewCards" label={t('limitNewCards')} style={{ flex: 1 }}>
 								<InputNumber min={0} max={100} style={{ width: '100%' }} />
 							</Form.Item>
-							<Form.Item name="limitReviews" label="Reviews / Day" style={{ flex: 1 }}>
+							<Form.Item name="limitReviews" label={t('limitReviews')} style={{ flex: 1 }}>
 								<InputNumber min={0} max={1000} style={{ width: '100%' }} />
 							</Form.Item>
 						</Flex>
 
-						<Form.Item
-							name="timezone"
-							label="Timezone"
-							help="Daily limits reset at midnight in this timezone."
-						>
+						<Form.Item name="timezone" label={t('timezone')} help={t('timezoneHelp')}>
 							<Select
 								showSearch
 								options={[
@@ -185,10 +184,10 @@ export default function VocabSettings({
 							/>
 						</Form.Item>
 
-						<Form.Item name="allowSpaceKey" valuePropName="checked" label="Space Key Behavior">
+						<Form.Item name="allowSpaceKey" valuePropName="checked" label={t('allowSpaceKeyLabel')}>
 							<Flex gap="small" align="center">
 								<Switch />
-								<Text>Enable Space Key</Text>
+								<Text>{t('allowSpaceKey')}</Text>
 							</Flex>
 						</Form.Item>
 						<Form.Item
@@ -197,12 +196,12 @@ export default function VocabSettings({
 						>
 							{({ getFieldValue }) =>
 								getFieldValue('allowSpaceKey') && (
-									<Form.Item name="spaceKeyRating" label="Rate as">
+									<Form.Item name="spaceKeyRating" label={t('spaceKeyRating')}>
 										<Radio.Group>
-											<Radio value={1}>Again</Radio>
-											<Radio value={2}>Hard</Radio>
-											<Radio value={3}>Good</Radio>
-											<Radio value={4}>Easy</Radio>
+											<Radio value={1}>{tCommon('rateAgain') || 'Again'}</Radio>
+											<Radio value={2}>{tCommon('rateHard') || 'Hard'}</Radio>
+											<Radio value={3}>{tCommon('rateGood') || 'Good'}</Radio>
+											<Radio value={4}>{tCommon('rateEasy') || 'Easy'}</Radio>
 										</Radio.Group>
 									</Form.Item>
 								)
@@ -213,7 +212,7 @@ export default function VocabSettings({
 							<Form.Item name="autoShowAnswer" valuePropName="checked" style={{ marginBottom: 0 }}>
 								<Flex gap="small" align="center">
 									<Switch />
-									<Text>Auto-Show Answer</Text>
+									<Text>{t('autoShowAnswer')}</Text>
 								</Flex>
 							</Form.Item>
 							<Form.Item
@@ -224,7 +223,7 @@ export default function VocabSettings({
 									getFieldValue('autoShowAnswer') && (
 										<Form.Item
 											name="autoShowAnswerDelay"
-											label="Delay (seconds)"
+											label={t('autoShowAnswerDelay')}
 											style={{ marginBottom: 0, width: 140 }}
 										>
 											<InputNumber
@@ -247,7 +246,7 @@ export default function VocabSettings({
 							block
 							style={{ marginTop: 16 }}
 						>
-							Save Settings
+							{t('saveSettings')}
 						</Button>
 					</Form>
 				</Panel>

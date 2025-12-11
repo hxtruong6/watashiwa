@@ -5,6 +5,7 @@ import { Typography, Row, Col, Card, Button, Flex, Tag, Empty } from 'antd';
 import Link from 'next/link';
 import { BookOutlined, RightOutlined } from '@ant-design/icons';
 import { motion } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -14,6 +15,7 @@ interface DecksContentProps {
 }
 
 export default function DecksContent({ decks }: DecksContentProps) {
+	const t = useTranslations('Decks');
 	const containerVariants = {
 		hidden: { opacity: 0 },
 		visible: {
@@ -39,16 +41,16 @@ export default function DecksContent({ decks }: DecksContentProps) {
 			<Flex justify="space-between" align="center" style={{ marginBottom: 32 }}>
 				<motion.div variants={itemVariants}>
 					<Title level={2} style={{ margin: 0, color: '#1E3A5F', fontSize: '1.75rem' }}>
-						Library
+						{t('libraryTitle')}
 					</Title>
 					<Text type="secondary" style={{ fontSize: '0.9rem' }}>
-						Explore and manage your vocabulary decks
+						{t('librarySubtitle')}
 					</Text>
 				</motion.div>
 				<motion.div variants={itemVariants}>
 					<Link href="/decks/new">
 						<Button type="primary" size="large">
-							+ New Deck
+							{t('newDeck')}
 						</Button>
 					</Link>
 				</motion.div>
@@ -85,7 +87,7 @@ export default function DecksContent({ decks }: DecksContentProps) {
 										>
 											<BookOutlined style={{ fontSize: 24, color: '#1E3A5F' }} />
 										</div>
-										{deck.isPublic && <Tag color="blue">Public</Tag>}
+										{deck.isPublic && <Tag color="blue">{t('publicTag')}</Tag>}
 									</Flex>
 
 									<Title level={4} style={{ margin: '0 0 8px', color: '#1E3A5F' }}>
@@ -97,16 +99,16 @@ export default function DecksContent({ decks }: DecksContentProps) {
 										ellipsis={{ rows: 2 }}
 										style={{ flex: 1, marginBottom: 24 }}
 									>
-										{deck.description || 'No description provided.'}
+										{deck.description || t('noDescription')}
 									</Paragraph>
 
 									<Flex align="center" justify="space-between" style={{ marginTop: 'auto' }}>
 										<Tag color="default" style={{ margin: 0 }}>
-											{deck._count?.vocab || 0} Cards
+											{t('cardsCount', { count: deck._count?.vocab || 0 })}
 										</Tag>
 										<Link href={`/decks/${deck.id}`}>
 											<Button type="text" icon={<RightOutlined />} iconPlacement="end">
-												Details
+												{t('detailsButton')}
 											</Button>
 										</Link>
 									</Flex>
@@ -119,10 +121,10 @@ export default function DecksContent({ decks }: DecksContentProps) {
 				<motion.div variants={itemVariants}>
 					<Empty
 						image={Empty.PRESENTED_IMAGE_SIMPLE}
-						description={<Text type="secondary">No decks found. Create one to get started!</Text>}
+						description={<Text type="secondary">{t('noDecksDescription')}</Text>}
 					>
 						<Link href="/decks/new">
-							<Button type="primary">Create Deck</Button>
+							<Button type="primary">{t('createDeckButton')}</Button>
 						</Link>
 					</Empty>
 				</motion.div>
