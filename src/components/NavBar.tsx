@@ -1,11 +1,19 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Layout, Menu, Button, Flex, Typography, Drawer } from 'antd';
+import { Layout, Menu, Button, Flex, Typography, Drawer, Tooltip, Tag } from 'antd';
 import { usePathname, useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
-import { LogoutOutlined, BookOutlined, DashboardOutlined, MenuOutlined } from '@ant-design/icons';
+import {
+	LogoutOutlined,
+	BookOutlined,
+	DashboardOutlined,
+	MenuOutlined,
+	BarChartOutlined,
+	CommentOutlined,
+} from '@ant-design/icons';
 import Link from 'next/link';
+import type { MenuProps } from 'antd';
 
 const { Header } = Layout;
 const { Title } = Typography;
@@ -15,16 +23,6 @@ export default function NavBar() {
 	const router = useRouter();
 	const supabase = createClient();
 	const [drawerOpen, setDrawerOpen] = useState(false);
-	// Note: AntD Grid `xs` breakpoint is <576px. We can use `Grid.useBreakpoint` or react-responsive.
-	// For simplicity with RSC/Client boundary, let's try CSS-in-JS logic or just use `Grid.useBreakpoint` inside component.
-	// However, hooks need valid context. Let's use a simple media query check if react-responsive is added,
-	// or just rely on CSS visibility helpers if available.
-	// Since we don't have `react-responsive` installed yet, I'll install it or use AntD's `Grid`.
-
-	// Better approach without extra deps: Use CSS media queries or AntD's visible classes if setup.
-	// Or just simple window width check after mount.
-
-	// Let's implement a standard Drawer pattern for mobile.
 
 	const handleLogout = async () => {
 		await supabase.auth.signOut();
@@ -41,7 +39,7 @@ export default function NavBar() {
 		return null;
 	}
 
-	const menuItems = [
+	const items: MenuProps['items'] = [
 		{
 			key: '/',
 			icon: <DashboardOutlined />,
@@ -60,6 +58,33 @@ export default function NavBar() {
 				</Link>
 			),
 		},
+
+		{
+			key: 'analytics',
+			icon: <BarChartOutlined style={{ color: '#aaa' }} />,
+			label: (
+				<Tooltip title="Coming Soon">
+					<span style={{ color: '#aaa', cursor: 'not-allowed' }}>Analytics</span>
+					<Tag color="default" style={{ marginLeft: 8, fontSize: 10 }}>
+						Soon
+					</Tag>
+				</Tooltip>
+			),
+			disabled: true,
+		},
+		{
+			key: 'community',
+			icon: <CommentOutlined style={{ color: '#aaa' }} />,
+			label: (
+				<Tooltip title="Coming Soon">
+					<span style={{ color: '#aaa', cursor: 'not-allowed' }}>Community</span>
+					<Tag color="default" style={{ marginLeft: 8, fontSize: 10 }}>
+						Soon
+					</Tag>
+				</Tooltip>
+			),
+			disabled: true,
+		},
 	];
 
 	return (
@@ -68,98 +93,105 @@ export default function NavBar() {
 				display: 'flex',
 				alignItems: 'center',
 				justifyContent: 'space-between',
-				background: '#fff',
+				background: 'rgba(255, 255, 255, 0.95)',
+				backdropFilter: 'blur(10px)',
 				padding: '0 24px',
 				boxShadow: '0 1px 2px rgba(0,0,0,0.03)',
 				position: 'sticky',
 				top: 0,
 				zIndex: 1000,
 				height: 64,
+				borderBottom: '1px solid #f0f0f0',
 			}}
 		>
 			{/* Logo Area */}
-			<Flex align="center" gap="small">
+			<Flex
+				align="center"
+				gap="small"
+				style={{ cursor: 'pointer' }}
+				onClick={() => router.push('/')}
+			>
+				{/* Could add an SVG logo here */}
 				<Title level={4} style={{ margin: 0, color: '#1E3A5F', minWidth: 120 }}>
-					Zen Mastery
+					WatashiWa
 				</Title>
 			</Flex>
 
-			{/* Desktop Menu */}
-			<div className="desktop-menu" style={{ display: 'none' }}>
-				{/* We will rely on CSS to toggle this. Since we can't easily add global css here, 
-                   we'll use inline styles with media query helper or just display logic.
-                   Wait, inline styles don't support media queries.
-                   
-                   Alternative: Render BOTH simple mobile icon and desktop menu, hide one with CSS classes?
-                   Or just use AntD's Responsive behavior.
-                */}
-			</div>
-
-			{/* 
-                Simplified Mobile-First Logic:
-                Always show Hamburger on small screens.
-            */}
-
-			{/* Mobile Hamburger (Visible on small screens) */}
-			<div className="mobile-nav-trigger">
-				<Button type="text" icon={<MenuOutlined />} onClick={showDrawer} className="mobile-only" />
-			</div>
-
-			{/* Desktop Nav (Hidden on Mobile) - Requires Global CSS or Styled Components. 
-                I'll allow both for now and assume the user can clean up resizing behavior, 
-                or I'll inject a style tag.
-            */}
-
+			{/* CSS for Responsive visibility */}
 			<style jsx global>{`
-				@media (max-width: 768px) {
+				@media (max-width: 1100px) {
 					.desktop-nav {
 						display: none !important;
 					}
-					.mobile-only {
-						display: inline-block !important;
+					.mobile-trigger {
+						display: inline-flex !important;
 					}
 				}
-				@media (min-width: 769px) {
+				@media (min-width: 1101px) {
 					.desktop-nav {
 						display: flex !important;
 					}
-					.mobile-only {
+					.mobile-trigger {
 						display: none !important;
 					}
 				}
 			`}</style>
 
-			<Flex
-				align="center"
-				gap="large"
+			{/* Desktop Menu */}
+			<div
 				className="desktop-nav"
-				style={{ flex: 1, justifyContent: 'flex-end' }}
+				style={{ flex: 1, justifyContent: 'flex-end', alignItems: 'center' }}
 			>
 				<Menu
 					mode="horizontal"
 					selectedKeys={[pathname]}
-					items={menuItems}
-					style={{ borderBottom: 'none', background: 'transparent', width: 200 }}
+					items={items}
+					style={{
+						borderBottom: 'none',
+						background: 'transparent',
+						flex: 1,
+						justifyContent: 'flex-end',
+						marginRight: 24,
+					}}
 					disabledOverflow
 				/>
+
 				<Button type="text" icon={<LogoutOutlined />} onClick={handleLogout}>
 					Logout
 				</Button>
-			</Flex>
+			</div>
+
+			{/* Mobile Trigger */}
+			<div className="mobile-trigger">
+				<Button type="text" icon={<MenuOutlined />} onClick={showDrawer} size="large" />
+			</div>
 
 			{/* Mobile Drawer */}
-			<Drawer title="Menu" placement="right" onClose={closeDrawer} open={drawerOpen} width={250}>
-				<Menu
-					mode="vertical"
-					selectedKeys={[pathname]}
-					items={menuItems}
-					style={{ borderRight: 'none' }}
-				/>
-				<div style={{ padding: '16px 24px' }}>
-					<Button block danger icon={<LogoutOutlined />} onClick={handleLogout}>
-						Logout
-					</Button>
-				</div>
+			<Drawer
+				title={
+					<Title level={4} style={{ margin: 0, color: '#1E3A5F' }}>
+						Menu
+					</Title>
+				}
+				placement="right"
+				onClose={closeDrawer}
+				open={drawerOpen}
+				size="default"
+				styles={{ body: { padding: 0 } }}
+			>
+				<Flex vertical style={{ height: '100%' }}>
+					<Menu
+						mode="inline"
+						selectedKeys={[pathname]}
+						items={items}
+						style={{ borderRight: 'none', flex: 1 }}
+					/>
+					<div style={{ padding: '24px', borderTop: '1px solid #f0f0f0' }}>
+						<Button block danger icon={<LogoutOutlined />} onClick={handleLogout} size="large">
+							Logout
+						</Button>
+					</div>
+				</Flex>
 			</Drawer>
 		</Header>
 	);

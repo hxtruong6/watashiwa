@@ -8,6 +8,8 @@ import {
 	FireOutlined,
 	CheckCircleOutlined,
 	RightOutlined,
+	ReadOutlined,
+	EditOutlined,
 } from '@ant-design/icons';
 import { motion } from 'motion/react';
 
@@ -177,6 +179,57 @@ export default function DashboardContent({ reviewCount, stats }: DashboardConten
 					</motion.div>
 				</Col>
 			</Row>
+
+			{/* Quick Access */}
+			<div style={{ marginTop: 48 }}>
+				<Title level={4} style={{ marginBottom: 24, color: '#1E3A5F' }}>
+					Quick Access
+				</Title>
+				<Row gutter={[16, 16]}>
+					<Col xs={12} sm={6}>
+						<Link href="/dashboard/vocab">
+							<motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+								<Card
+									size="small"
+									hoverable
+									style={{
+										textAlign: 'center',
+										borderRadius: 16,
+										border: '1px solid #f0f0f0',
+										boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
+									}}
+								>
+									<ReadOutlined style={{ fontSize: 24, color: '#1890ff', marginBottom: 8 }} />
+									<Text strong style={{ display: 'block' }}>
+										All Vocab
+									</Text>
+								</Card>
+							</motion.div>
+						</Link>
+					</Col>
+					<Col xs={12} sm={6}>
+						<Link href="/dashboard/kanji">
+							<motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+								<Card
+									size="small"
+									hoverable
+									style={{
+										textAlign: 'center',
+										borderRadius: 16,
+										border: '1px solid #f0f0f0',
+										boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
+									}}
+								>
+									<EditOutlined style={{ fontSize: 24, color: '#722ed1', marginBottom: 8 }} />
+									<Text strong style={{ display: 'block' }}>
+										All Kanji
+									</Text>
+								</Card>
+							</motion.div>
+						</Link>
+					</Col>
+				</Row>
+			</div>
 		</motion.div>
 	);
 }

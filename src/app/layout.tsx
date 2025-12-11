@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider, App } from 'antd';
-import theme from '../../theme/themeConfig';
+import theme from '../lib/theme/themeConfig';
 import NavBar from '@/components/NavBar';
 import './globals.css';
 

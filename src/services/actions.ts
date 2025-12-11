@@ -1,15 +1,19 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use server';
 
 import { prisma } from '@/lib/db';
 import { createClient } from '@/utils/supabase/server';
-import type { StudyCard, Vocab } from '@/generated/prisma';
+import type { StudyCard, Vocab, Kanji } from '@/generated/prisma';
 import { Card, fsrs, generatorParameters, Rating, State } from 'ts-fsrs';
 
 // Initialize FSRS with default parameters
 const params = generatorParameters({ enable_fuzz: true });
 const f = fsrs(params);
 
-export type StudyCardWithVocab = StudyCard & { vocab: Vocab };
+export type StudyCardWithDetails = StudyCard & {
+	vocab?: Vocab | null;
+	kanji?: Kanji | null;
+};
 
 /**
  * Helper to get current authenticated user
@@ -41,25 +45,156 @@ async function getUser() {
 
 /**
  * Get the next card due for review for the CURRENT user
+ * Optional: Constrain to specific deck
  */
-export async function getNextReviewCard(): Promise<StudyCardWithVocab | null> {
+export async function getNextReviewCard(deckId?: string): Promise<StudyCardWithDetails | null> {
 	try {
 		const user = await getUser();
-		if (!user) return null; // Or throw error to redirect to login
+		if (!user) return null;
 
-		const card = await prisma.studyCard.findFirst({
+		// 1. Fetch User Config for Limits
+		const userConfig = await prisma.user.findUnique({
+			where: { id: user.id },
+			select: {
+				limitNewCards: true,
+				limitReviews: true,
+			},
+		});
+		const limitNewCards = userConfig?.limitNewCards ?? 20;
+		const limitReviews = userConfig?.limitReviews ?? 200;
+
+		// 2. Count Today's Activity
+		const startOfDay = new Date();
+		startOfDay.setHours(0, 0, 0, 0);
+
+		const reviewsToday = await prisma.reviewLog.count({
 			where: {
 				userId: user.id,
+				review: { gte: startOfDay },
 			},
+		});
+
+		const newCardsToday = await prisma.studyCard.count({
+			where: {
+				userId: user.id,
+				createdAt: { gte: startOfDay },
+				state: 0, // Explicitly counting cards created as 'New' today
+			},
+		});
+
+		console.log(
+			`Daily Stats for ${user.id}: Reviews ${reviewsToday}/${limitReviews}, New ${newCardsToday}/${limitNewCards}`,
+		);
+
+		// 3. Enforce Review Limit
+		if (reviewsToday >= limitReviews) {
+			console.log('Daily review limit reached.');
+			return null;
+		}
+
+		// 4. Fetch Due Cards
+		const whereCondition: any = {
+			userId: user.id,
+			state: {
+				not: 3, // Assuming 3 is "Relearning" loop or similar, actually FSRS state 3 is Relearning.
+				// We just want ANY card due.
+			},
+			due: {
+				lte: new Date(),
+			},
+		};
+
+		// If deckId is provided, filter cards that belong to this deck
+		// A card belongs to a deck via its Vocab OR Kanji parent
+		if (deckId) {
+			whereCondition.OR = [{ vocab: { deckId: deckId } }, { kanji: { deckId: deckId } }];
+		}
+
+		const card = await prisma.studyCard.findFirst({
+			where: whereCondition,
 			orderBy: {
 				due: 'asc',
 			},
 			include: {
 				vocab: true,
+				kanji: true,
 			},
 		});
 
-		return card;
+		if (card) {
+			return card;
+		}
+
+		// --- JIT Enrollment Logic ---
+		// 5. Enforce New Card Limit
+		if (newCardsToday >= limitNewCards) {
+			console.log('Daily new card limit reached.');
+			return null;
+		}
+
+		// If no cards are due, look for NEW content to enroll
+
+		// 1. Try to find a new Vocab
+		const vocabWhere: any = {
+			deck: {
+				OR: [{ isPublic: true }, { authorId: user.id }],
+			},
+			studyCards: {
+				none: { userId: user.id }, // Exclude if user already has a card for this vocab
+			},
+		};
+		if (deckId) vocabWhere.deckId = deckId;
+
+		const newVocab = await prisma.vocab.findFirst({
+			where: vocabWhere,
+			orderBy: { createdAt: 'asc' }, // Learn oldest added first, or could be 'random'
+		});
+
+		if (newVocab) {
+			console.log(`Enrolling new Vocab: ${newVocab.wordSurface}`);
+			const newCard = await prisma.studyCard.create({
+				data: {
+					userId: user.id,
+					vocabId: newVocab.id,
+					due: new Date(), // Due immediately
+					state: 0, // New
+				},
+				include: { vocab: true, kanji: true },
+			});
+			return newCard;
+		}
+
+		// 2. Try to find a new Kanji
+		const kanjiWhere: any = {
+			deck: {
+				OR: [{ isPublic: true }, { authorId: user.id }],
+			},
+			studyCards: {
+				none: { userId: user.id },
+			},
+		};
+		if (deckId) kanjiWhere.deckId = deckId;
+
+		const newKanji = await prisma.kanji.findFirst({
+			where: kanjiWhere,
+			orderBy: { createdAt: 'asc' },
+		});
+
+		if (newKanji) {
+			console.log(`Enrolling new Kanji: ${newKanji.kanji}`);
+			const newCard = await prisma.studyCard.create({
+				data: {
+					userId: user.id,
+					kanjiId: newKanji.id,
+					due: new Date(),
+					state: 0,
+				},
+				include: { vocab: true, kanji: true },
+			});
+			return newCard;
+		}
+
+		return null;
 	} catch (error) {
 		console.error('Error fetching next review card:', error);
 		return null;
@@ -91,7 +226,8 @@ function toFsrsCard(studyCard: StudyCard): Card {
 export async function submitReview(
 	cardId: string,
 	rating: number,
-): Promise<{ success: boolean; nextCard?: StudyCardWithVocab | null; error?: string }> {
+	deckId?: string,
+): Promise<{ success: boolean; nextCard?: StudyCardWithDetails | null; error?: string }> {
 	try {
 		const user = await getUser();
 		if (!user) return { success: false, error: 'Unauthorized' };
@@ -104,6 +240,7 @@ export async function submitReview(
 			},
 			include: {
 				vocab: true,
+				kanji: true,
 			},
 		});
 
@@ -163,8 +300,8 @@ export async function submitReview(
 			`Reviewed Card ${cardId} by User ${user.id}: Rating ${rating} -> Due ${newCard.due.toISOString()}`,
 		);
 
-		// 5. Fetch next card
-		const nextCard = await getNextReviewCard();
+		// 5. Fetch next card (maintaining deck context if present)
+		const nextCard = await getNextReviewCard(deckId);
 
 		return { success: true, nextCard };
 	} catch (error) {
@@ -187,7 +324,7 @@ export async function getDecks() {
 			},
 			include: {
 				_count: {
-					select: { vocab: true },
+					select: { vocab: true, kanji: true },
 				},
 			},
 			orderBy: {
@@ -283,5 +420,218 @@ export async function getUserStats() {
 	} catch (error) {
 		console.error('Error fetching stats:', error);
 		return { streak: 0, totalReviewed: 0 };
+	}
+}
+
+/**
+ * Fetch a single deck by ID with vocab
+ */
+export async function getDeck(id: string) {
+	try {
+		const user = await getUser();
+		if (!user) return null;
+
+		const deck = await prisma.deck.findFirst({
+			where: {
+				id,
+				OR: [{ isPublic: true }, { authorId: user.id }],
+			},
+			include: {
+				vocab: {
+					orderBy: { createdAt: 'desc' },
+				},
+				kanji: {
+					orderBy: { createdAt: 'desc' },
+				},
+				_count: {
+					select: { vocab: true, kanji: true },
+				},
+			},
+		});
+
+		if (!deck) return null;
+
+		// Calculate Stats for User
+		const studyCards = await prisma.studyCard.findMany({
+			where: {
+				userId: user.id,
+				OR: [{ vocab: { deckId: id } }, { kanji: { deckId: id } }],
+			},
+			select: { state: true },
+		});
+
+		const learned = studyCards.filter((c) => c.state > 0).length;
+		const learning = studyCards.filter((c) => c.state === 0).length; // "New" in FSRS terms usually means state 0, but if we call it "Learning" in UI it's fine.
+		// Actually state 0 = New, 1 = Learning, 2 = Review, 3 = Relearning.
+		// Let's group:
+		// "Learned" (Started) = Total Cards - Unseen? Or Cards with state > 0 (passed initial learning)?
+		// User wants "How many words left". "Left" usually means "Unseen" + "New".
+		// "Learned" usually means "Review" (state 2).
+		// Let's provide granular stats:
+		// Total Items
+		// Started (Anyone with a card)
+		//   - New (State 0)
+		//   - Learning (State 1)
+		//   - Review (State 2)
+		//   - Relearning (State 3)
+		// Unseen = Total Items - Started
+
+		const stats = {
+			total: deck._count.vocab + deck._count.kanji,
+			started: studyCards.length,
+			new: studyCards.filter((c) => c.state === 0).length,
+			learning: studyCards.filter((c) => c.state === 1 || c.state === 3).length,
+			review: studyCards.filter((c) => c.state === 2).length,
+			unseen: deck._count.vocab + deck._count.kanji - studyCards.length,
+		};
+
+		return { ...deck, stats };
+	} catch (error) {
+		console.error('Error fetching deck:', error);
+		return null;
+	}
+}
+
+/**
+ * Fetch all Vocabulary for the current user (from all decks user has access to)
+ */
+export async function getAllVocab() {
+	try {
+		const user = await getUser();
+		if (!user) return [];
+
+		// For now fetching ALL. In production, need pagination.
+		const vocab = await prisma.vocab.findMany({
+			where: {
+				deck: {
+					OR: [{ isPublic: true }, { authorId: user.id }],
+				},
+			},
+			include: {
+				deck: true,
+				studyCards: {
+					where: { userId: user.id },
+					select: { state: true, due: true },
+				},
+			},
+			orderBy: { createdAt: 'desc' },
+		});
+		return vocab;
+	} catch (error) {
+		console.error('Error fetching all vocab:', error);
+		return [];
+	}
+}
+
+/**
+ * Fetch all Kanji for the current user
+ */
+export async function getAllKanji() {
+	try {
+		const user = await getUser();
+		if (!user) return [];
+
+		const kanji = await prisma.kanji.findMany({
+			where: {
+				deck: {
+					OR: [{ isPublic: true }, { authorId: user.id }],
+				},
+			},
+			include: {
+				deck: true,
+				studyCards: {
+					where: { userId: user.id },
+					select: { state: true, due: true },
+				},
+			},
+			orderBy: { createdAt: 'desc' },
+		});
+		return kanji;
+	} catch (error) {
+		console.error('Error fetching all kanji:', error);
+		return [];
+	}
+}
+
+/**
+ * Fetch User Settings (Limits and Preferences)
+ */
+export async function getUserSettings() {
+	try {
+		const user = await getUser();
+		if (!user) return null;
+
+		const settings = await prisma.user.findUnique({
+			where: { id: user.id },
+			select: {
+				limitNewCards: true,
+				limitReviews: true,
+				allowSpaceKey: true,
+				spaceKeyRating: true,
+				autoShowAnswer: true,
+				autoShowAnswerDelay: true,
+			},
+		});
+
+		return settings;
+	} catch (error) {
+		console.error('Error fetching user settings:', error);
+		return null;
+	}
+}
+
+/**
+ * Get daily progress stats for the user
+ */
+export async function getDailyProgress() {
+	try {
+		const user = await getUser();
+		if (!user) return null;
+
+		const startOfDay = new Date();
+		startOfDay.setHours(0, 0, 0, 0);
+
+		// 1. Get Limits
+		const userConfig = await prisma.user.findUnique({
+			where: { id: user.id },
+			select: { limitReviews: true, limitNewCards: true },
+		});
+		const limitReviews = userConfig?.limitReviews ?? 200;
+		const limitNewCards = userConfig?.limitNewCards ?? 20;
+
+		// 2. Get Today's Counts
+		const reviewsToday = await prisma.reviewLog.count({
+			where: {
+				userId: user.id,
+				review: { gte: startOfDay },
+			},
+		});
+
+		const newCardsToday = await prisma.studyCard.count({
+			where: {
+				userId: user.id,
+				createdAt: { gte: startOfDay },
+				state: 0,
+			},
+		});
+
+		// 3. Get Due Count (Approximate "Left")
+		const dueCount = await prisma.studyCard.count({
+			where: {
+				userId: user.id,
+				due: { lte: new Date() },
+			},
+		});
+
+		return {
+			reviewsToday,
+			limitReviews,
+			newCardsToday,
+			limitNewCards,
+			dueCount,
+		};
+	} catch (error) {
+		console.error('Error fetching daily progress:', error);
+		return null;
 	}
 }

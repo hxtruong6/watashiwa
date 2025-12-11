@@ -20,6 +20,16 @@ model User {
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime  @updatedAt @map("updated_at")
 
+  // Learning Limits
+  limitNewCards Int @default(20) @map("limit_new_cards")
+  limitReviews  Int @default(200) @map("limit_reviews")
+
+  // Study Preferences
+  allowSpaceKey       Boolean @default(true) @map("allow_space_key")
+  spaceKeyRating      Int     @default(3) @map("space_key_rating") // 1=Again, 2=Hard, 3=Good, 4=Easy
+  autoShowAnswer      Boolean @default(false) @map("auto_show_answer")
+  autoShowAnswerDelay Int     @default(40) @map("auto_show_answer_delay") // Seconds
+
   // Relations
   decks      Deck[] // Decks created by user
   studyCards StudyCard[]
@@ -37,6 +47,7 @@ model Deck {
   author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
 
   vocab Vocab[]
+  kanji Kanji[]
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -50,13 +61,14 @@ model Vocab {
   deckId String @map("deck_id")
   deck   Deck   @relation(fields: [deckId], references: [id], onDelete: Cascade)
 
-  wordSurface     String @map("word_surface") // e.g., 学生
-  readingKana     String @map("reading_kana") // e.g., がくせい
+  wordSurface     String  @map("word_surface") // e.g., 学生
+  readingKana     String  @map("reading_kana") // e.g., がくせい
   // JSON fields require careful mapping in Prisma
-  kanjiBreakdown  Json   @map("kanji_breakdown") // e.g., [{"kanji": "学", "han_viet": "HỌC", "meaning": "study"}]
-  hanViet         String @map("han_viet") // e.g., HỌC SINH
+  kanjiBreakdown  Json    @map("kanji_breakdown") // e.g., [{"kanji": "学", "han_viet": "HỌC", "meaning": "study"}]
+  hanViet         String  @map("han_viet") // e.g., HỌC SINH
   meaning         String // Native definition
-  exampleSentence Json   @map("example_sentence") // { "sentence": "...", "translation": "..." }
+  exampleSentence Json    @map("example_sentence") // { "sentence": "...", "translation": "..." }
+  audioUrl        String? @map("audio_url")
 
   // Relations
   studyCards StudyCard[]
@@ -67,7 +79,32 @@ model Vocab {
   @@index([deckId])
 }
 
-// StudyCard Model: A user's progress on a specific Vocab (FSRS data)
+// Kanji Model: For single Kanji character learning
+model Kanji {
+  id     String @id @default(uuid())
+  deckId String @map("deck_id")
+  deck   Deck   @relation(fields: [deckId], references: [id], onDelete: Cascade)
+
+  kanji     String
+  onyomi    String[] // e.g. ["ニチ", "ジツ"]
+  kunyomi   String[] // e.g. ["ひ", "び", "か"]
+  strokes   Int
+  hanViet   String   @map("han_viet")
+  meaning   String
+  jlptLevel String?  @map("jlpt_level") // N5, N4...
+  radicals  Json // e.g. [{ "kanji": "日", "hanViet": "...", "meaning": "..." }]
+  examples  Json // e.g. [{ "word": "...", "kana": "...", "meaning": "..." }]
+
+  // Relations
+  studyCards StudyCard[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([deckId])
+}
+
+// StudyCard Model: A user's progress on a specific Vocab OR Kanji (FSRS data)
 // Previously VocabCard
 model StudyCard {
   id String @id @default(uuid())
@@ -75,8 +112,12 @@ model StudyCard {
   userId String @map("user_id")
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  vocabId String @map("vocab_id")
-  vocab   Vocab  @relation(fields: [vocabId], references: [id], onDelete: Cascade)
+  // Polymorphic relation: either vocab or kanji must be set, but not both (enforced by app logic)
+  vocabId String? @map("vocab_id")
+  vocab   Vocab?  @relation(fields: [vocabId], references: [id], onDelete: Cascade)
+
+  kanjiId String? @map("kanji_id")
+  kanji   Kanji?  @relation(fields: [kanjiId], references: [id], onDelete: Cascade)
 
   // FSRS Fields
   due           DateTime  @default(now())
@@ -96,6 +137,7 @@ model StudyCard {
 
   @@index([userId])
   @@index([vocabId])
+  @@index([kanjiId])
   @@index([due])
   @@index([state])
 }

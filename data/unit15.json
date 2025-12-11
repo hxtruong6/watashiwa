@@ -1,0 +1,849 @@
+[
+  {
+    "id": "0ca5e9ea-8e15-43f8-a0c2-a9706337b5de",
+    "wordSurface": "置きます",
+    "readingKana": "おきます",
+    "hanViet": "TRÍ",
+    "meaning": "đặt, để",
+    "kanjiBreakdown": [
+      {
+        "kanji": "置",
+        "han_viet": "TRÍ",
+        "meaning": "đặt, bố trí"
+      }
+    ],
+    "exampleSentence": {
+      "sentence": "机の上に本を置きます。",
+      "parts": [
+        {
+          "text": "机",
+          "furigana": "つくえ"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "上",
+          "furigana": "うえ"
+        },
+        {
+          "text": "に"
+        },
+        {
+          "text": "本",
+          "furigana": "ほん"
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "置",
+          "furigana": "お"
+        },
+        {
+          "text": "きます。"
+        }
+      ],
+      "translation": "Tôi đặt quyển sách lên trên bàn."
+    }
+  },
+  {
+    "id": "4b1554e3-13b5-4f8b-b211-a55a76fd7f19",
+    "wordSurface": "作ります",
+    "readingKana": "つくります",
+    "hanViet": "TÁC",
+    "meaning": "làm, chế tạo, sản xuất",
+    "kanjiBreakdown": [
+      {
+        "kanji": "作",
+        "han_viet": "TÁC",
+        "meaning": "làm, sáng tác"
+      }
+    ],
+    "exampleSentence": {
+      "sentence": "夕飯を作ります。",
+      "parts": [
+        {
+          "text": "夕飯",
+          "furigana": "ゆうはん"
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "作",
+          "furigana": "つく"
+        },
+        {
+          "text": "ります。"
+        }
+      ],
+      "translation": "Tôi làm bữa tối."
+    }
+  },
+  {
+    "id": "06fd3442-37b6-4564-bd5c-c1f04cda0ff3",
+    "wordSurface": "売ります",
+    "readingKana": "うります",
+    "hanViet": "MẠI",
+    "meaning": "bán",
+    "kanjiBreakdown": [
+      {
+        "kanji": "売",
+        "han_viet": "MẠI",
+        "meaning": "bán"
+      }
+    ],
+    "exampleSentence": {
+      "sentence": "車を売ります。",
+      "parts": [
+        {
+          "text": "車",
+          "furigana": "くるま"
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "売",
+          "furigana": "う"
+        },
+        {
+          "text": "ります。"
+        }
+      ],
+      "translation": "Tôi bán xe ô tô."
+    }
+  },
+  {
+    "id": "85311d74-26a7-43a5-acf7-81f39916a8fe",
+    "wordSurface": "知ります",
+    "readingKana": "しります",
+    "hanViet": "TRI",
+    "meaning": "biết",
+    "kanjiBreakdown": [
+      {
+        "kanji": "知",
+        "han_viet": "TRI",
+        "meaning": "tri thức, hiểu biết"
+      }
+    ],
+    "exampleSentence": {
+      "sentence": "彼の住所を知っていますか。",
+      "parts": [
+        {
+          "text": "彼",
+          "furigana": "かれ"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "住所",
+          "furigana": "じゅうしょ"
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "知",
+          "furigana": "し"
+        },
+        {
+          "text": "っていますか。"
+        }
+      ],
+      "translation": "Bạn có biết địa chỉ của anh ấy không?"
+    }
+  },
+  {
+    "id": "d80186a3-2a36-4c1c-8a57-84f299b05042",
+    "wordSurface": "住みます",
+    "readingKana": "すみます",
+    "hanViet": "TRÚ, TRỤ",
+    "meaning": "sống, ở",
+    "kanjiBreakdown": [
+      {
+        "kanji": "住",
+        "han_viet": "TRÚ",
+        "meaning": "cư trú, ở"
+      }
+    ],
+    "exampleSentence": {
+      "sentence": "大阪に住んでいます。",
+      "parts": [
+        {
+          "text": "大阪",
+          "furigana": "おおさか"
+        },
+        {
+          "text": "に"
+        },
+        {
+          "text": "住",
+          "furigana": "す"
+        },
+        {
+          "text": "んでいます。"
+        }
+      ],
+      "translation": "Tôi đang sống ở Osaka."
+    }
+  },
+  {
+    "id": "254a9588-745f-4ccc-8777-b1c308f97b22",
+    "wordSurface": "研究します",
+    "readingKana": "けんきゅうします",
+    "hanViet": "NGHIÊN CỬU",
+    "meaning": "nghiên cứu",
+    "kanjiBreakdown": [
+      {
+        "kanji": "研",
+        "han_viet": "NGHIÊN",
+        "meaning": "mài, nghiên cứu"
+      },
+      {
+        "kanji": "究",
+        "han_viet": "CỬU",
+        "meaning": "nghiên cứu kỹ"
+      }
+    ],
+    "exampleSentence": {
+      "sentence": "大学で経済を研究しています。",
+      "parts": [
+        {
+          "text": "大学",
+          "furigana": "だいがく"
+        },
+        {
+          "text": "で"
+        },
+        {
+          "text": "経済",
+          "furigana": "けいざい"
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "研究",
+          "furigana": "けんきゅう"
+        },
+        {
+          "text": "しています。"
+        }
+      ],
+      "translation": "Tôi đang nghiên cứu kinh tế học ở trường đại học."
+    }
+  },
+  {
+    "id": "72771d0e-aacd-448a-b455-ef83b1f30559",
+    "wordSurface": "資料",
+    "readingKana": "しりょう",
+    "hanViet": "TƯ LIỆU",
+    "meaning": "tài liệu, tư liệu",
+    "kanjiBreakdown": [
+      {
+        "kanji": "資",
+        "han_viet": "TƯ",
+        "meaning": "của cải, vốn"
+      },
+      {
+        "kanji": "料",
+        "han_viet": "LIỆU",
+        "meaning": "nguyên liệu"
+      }
+    ],
+    "exampleSentence": {
+      "sentence": "資料を送ってください。",
+      "parts": [
+        {
+          "text": "資料",
+          "furigana": "しりょう"
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "送",
+          "furigana": "おく"
+        },
+        {
+          "text": "ってください。"
+        }
+      ],
+      "translation": "Hãy gửi tài liệu cho tôi."
+    }
+  },
+  {
+    "id": "db0eb966-e544-456c-8c19-e0108ba06d59",
+    "wordSurface": "時刻表",
+    "readingKana": "じこくひょう",
+    "hanViet": "THỜI KHẮC BIỂU",
+    "meaning": "bảng giờ tàu chạy",
+    "kanjiBreakdown": [
+      {
+        "kanji": "時",
+        "han_viet": "THỜI",
+        "meaning": "thời gian"
+      },
+      {
+        "kanji": "刻",
+        "han_viet": "KHẮC",
+        "meaning": "khắc, thời khắc"
+      },
+      {
+        "kanji": "表",
+        "han_viet": "BIỂU",
+        "meaning": "bảng biểu"
+      }
+    ],
+    "exampleSentence": {
+      "sentence": "時刻表で電車の時間を調べます。",
+      "parts": [
+        {
+          "text": "時刻表",
+          "furigana": "じこくひょう"
+        },
+        {
+          "text": "で"
+        },
+        {
+          "text": "電車",
+          "furigana": "でんしゃ"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "時間",
+          "furigana": "じかん"
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "調",
+          "furigana": "しら"
+        },
+        {
+          "text": "べます。"
+        }
+      ],
+      "translation": "Tôi tra giờ tàu chạy bằng bảng giờ tàu."
+    }
+  },
+  {
+    "id": "9f865fe2-6185-4a91-a38b-e8063ff1b4d0",
+    "wordSurface": "服",
+    "readingKana": "ふく",
+    "hanViet": "PHỤC",
+    "meaning": "quần áo",
+    "kanjiBreakdown": [
+      {
+        "kanji": "服",
+        "han_viet": "PHỤC",
+        "meaning": "ý phục, quần áo"
+      }
+    ],
+    "exampleSentence": {
+      "sentence": "新しい服を買いました。",
+      "parts": [
+        {
+          "text": "新",
+          "furigana": "あたら"
+        },
+        {
+          "text": "しい"
+        },
+        {
+          "text": "服",
+          "furigana": "ふく"
+        },
+        {
+          "text": "を"
+        },
+        {
+          "text": "買",
+          "furigana": "か"
+        },
+        {
+          "text": "いました。"
+        }
+      ],
+      "translation": "Tôi đã mua quần áo mới."
+    }
+  },
+  {
+    "id": "07960af1-edce-41be-9313-c5d6b2f79ee1",
+    "wordSurface": "製品",
+    "readingKana": "せいひん",
+    "hanViet": "CHẾ PHẨM",
+    "meaning": "sản phẩm",
+    "kanjiBreakdown": [
+      {
+        "kanji": "製",
+        "han_viet": "CHẾ",
+        "meaning": "chế tạo"
+      },
+      {
+        "kanji": "品",
+        "han_viet": "PHẨM",
+        "meaning": "vật phẩm"
+      }
+    ],
+    "exampleSentence": {
+      "sentence": "これは日本の製品です。",
+      "parts": [
+        {
+          "text": "これ"
+        },
+        {
+          "text": "は"
+        },
+        {
+          "text": "日本",
+          "furigana": "にほん"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "製品",
+          "furigana": "せいひん"
+        },
+        {
+          "text": "です。"
+        }
+      ],
+      "translation": "Đây là sản phẩm của Nhật Bản."
+    }
+  },
+  {
+    "id": "28edb0f8-6863-40b1-92b5-1af80d7748fd",
+    "wordSurface": "電子辞書",
+    "readingKana": "でんしじしょ",
+    "hanViet": "ĐIỆN TỪ TỪ ĐIỂN",
+    "meaning": "kim từ điển",
+    "kanjiBreakdown": [
+      {
+        "kanji": "電",
+        "han_viet": "ĐIỆN",
+        "meaning": "điện"
+      },
+      {
+        "kanji": "子",
+        "han_viet": "TỬ",
+        "meaning": "con, phần tử"
+      },
+      {
+        "kanji": "辞",
+        "han_viet": "TỪ",
+        "meaning": "ngôn từ"
+      },
+      {
+        "kanji": "書",
+        "han_viet": "THƯ",
+        "meaning": "sách"
+      }
+    ],
+    "exampleSentence": {
+      "sentence": "電子辞書は便利です。",
+      "parts": [
+        {
+          "text": "電子辞書",
+          "furigana": "でんしじしょ"
+        },
+        {
+          "text": "は"
+        },
+        {
+          "text": "便利",
+          "furigana": "べんり"
+        },
+        {
+          "text": "です。"
+        }
+      ],
+      "translation": "Kim từ điển rất tiện lợi."
+    }
+  },
+  {
+    "id": "d1fc2b17-af7b-4c00-8365-27bc203c0ebe",
+    "wordSurface": "経済",
+    "readingKana": "けいざい",
+    "hanViet": "KINH TẾ",
+    "meaning": "kinh tế",
+    "kanjiBreakdown": [
+      {
+        "kanji": "経",
+        "han_viet": "KINH",
+        "meaning": "kinh qua, kinh tế"
+      },
+      {
+        "kanji": "済",
+        "han_viet": "TẾ",
+        "meaning": "cứu tế, kinh tế"
+      }
+    ],
+    "exampleSentence": {
+      "sentence": "日本の経済について研究しています。",
+      "parts": [
+        {
+          "text": "日本",
+          "furigana": "にほん"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "経済",
+          "furigana": "けいざい"
+        },
+        {
+          "text": "について"
+        },
+        {
+          "text": "研究",
+          "furigana": "けんきゅう"
+        },
+        {
+          "text": "しています。"
+        }
+      ],
+      "translation": "Tôi đang nghiên cứu về kinh tế Nhật Bản."
+    }
+  },
+  {
+    "id": "566bfe65-d0ba-4e41-8d41-50dcb5625135",
+    "wordSurface": "市役所",
+    "readingKana": "しやくしょ",
+    "hanViet": "THỊ DỊCH SỞ",
+    "meaning": "tòa thị chính",
+    "kanjiBreakdown": [
+      {
+        "kanji": "市",
+        "han_viet": "THỊ",
+        "meaning": "thành phố, chợ"
+      },
+      {
+        "kanji": "役",
+        "han_viet": "DỊCH",
+        "meaning": "chức vụ, dịch vụ"
+      },
+      {
+        "kanji": "所",
+        "han_viet": "SỞ",
+        "meaning": "nơi chốn"
+      }
+    ],
+    "exampleSentence": {
+      "sentence": "市役所へ行きます。",
+      "parts": [
+        {
+          "text": "市役所",
+          "furigana": "しやくしょ"
+        },
+        {
+          "text": "へ"
+        },
+        {
+          "text": "行",
+          "furigana": "い"
+        },
+        {
+          "text": "きます。"
+        }
+      ],
+      "translation": "Tôi đi đến tòa thị chính."
+    }
+  },
+  {
+    "id": "f354bda6-6722-4122-94af-3bcbea2f2830",
+    "wordSurface": "高校",
+    "readingKana": "こうこう",
+    "hanViet": "CAO HIỆU",
+    "meaning": "trường trung học phổ thông, trường cấp 3",
+    "kanjiBreakdown": [
+      {
+        "kanji": "高",
+        "han_viet": "CAO",
+        "meaning": "cao"
+      },
+      {
+        "kanji": "校",
+        "han_viet": "HIỆU",
+        "meaning": "trường học"
+      }
+    ],
+    "exampleSentence": {
+      "sentence": "高校の時の友達に会いました。",
+      "parts": [
+        {
+          "text": "高校",
+          "furigana": "こうこう"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "時",
+          "furigana": "とき"
+        },
+        {
+          "text": "の"
+        },
+        {
+          "text": "友達",
+          "furigana": "ともだち"
+        },
+        {
+          "text": "に"
+        },
+        {
+          "text": "会",
+          "furigana": "あ"
+        },
+        {
+          "text": "いました。"
+        }
+      ],
+      "translation": "Tôi đã gặp bạn thời cấp 3."
+    }
+  },
+  {
+    "id": "fd79221f-c3c2-493c-92f4-4945c3be12c6",
+    "wordSurface": "歯医者",
+    "readingKana": "はいしゃ",
+    "hanViet": "XỈ Y GIẢ",
+    "meaning": "nha sĩ",
+    "kanjiBreakdown": [
+      {
+        "kanji": "歯",
+        "han_viet": "XỈ",
+        "meaning": "răng"
+      },
+      {
+        "kanji": "医",
+        "han_viet": "Y",
+        "meaning": "y học, bác sĩ"
+      },
+      {
+        "kanji": "者",
+        "han_viet": "GIẢ",
+        "meaning": "người"
+      }
+    ],
+    "exampleSentence": {
+      "sentence": "歯が痛いので、歯医者へ行きます。",
+      "parts": [
+        {
+          "text": "歯",
+          "furigana": "は"
+        },
+        {
+          "text": "が"
+        },
+        {
+          "text": "痛",
+          "furigana": "いた"
+        },
+        {
+          "text": "いので、"
+        },
+        {
+          "text": "歯医者",
+          "furigana": "はいしゃ"
+        },
+        {
+          "text": "へ"
+        },
+        {
+          "text": "行",
+          "furigana": "い"
+        },
+        {
+          "text": "きます。"
+        }
+      ],
+      "translation": "Vì đau răng nên tôi đi nha sĩ."
+    }
+  },
+  {
+    "id": "6599d86a-34a8-4707-982b-85e9969034aa",
+    "wordSurface": "独身",
+    "readingKana": "どくしん",
+    "hanViet": "ĐỘC THÂN",
+    "meaning": "độc thân",
+    "kanjiBreakdown": [
+      {
+        "kanji": "独",
+        "han_viet": "ĐỘC",
+        "meaning": "đơn độc"
+      },
+      {
+        "kanji": "身",
+        "han_viet": "THÂN",
+        "meaning": "thân thể"
+      }
+    ],
+    "exampleSentence": {
+      "sentence": "彼はまだ独身です。",
+      "parts": [
+        {
+          "text": "彼",
+          "furigana": "かれ"
+        },
+        {
+          "text": "はまだ"
+        },
+        {
+          "text": "独身",
+          "furigana": "どくしん"
+        },
+        {
+          "text": "です。"
+        }
+      ],
+      "translation": "Anh ấy vẫn còn độc thân."
+    }
+  },
+  {
+    "id": "8a018183-cec8-49db-885f-be7a914cdc8f",
+    "wordSurface": "皆さん",
+    "readingKana": "みなさん",
+    "hanViet": "",
+    "meaning": "các anh chị, các ông bà, các bạn, quý vị",
+    "kanjiBreakdown": [
+      {
+        "kanji": "皆",
+        "han_viet": "GIAI",
+        "meaning": "mọi người, tất cả"
+      }
+    ],
+    "exampleSentence": {
+      "sentence": "皆さん、おはようございます。",
+      "parts": [
+        {
+          "text": "皆さん",
+          "furigana": "みなさん"
+        },
+        {
+          "text": "、おはようございます。"
+        }
+      ],
+      "translation": "Chào mọi người buổi sáng."
+    }
+  },
+  {
+    "id": "9a4bd87f-856d-4c76-9caa-95c79334acdd",
+    "wordSurface": "思い出します",
+    "readingKana": "おもいだします",
+    "hanViet": "",
+    "meaning": "nhớ lại, hồi tưởng",
+    "kanjiBreakdown": [
+      {
+        "kanji": "思",
+        "han_viet": "TƯ",
+        "meaning": "suy nghĩ"
+      },
+      {
+        "kanji": "出",
+        "han_viet": "XUẤT",
+        "meaning": "ra"
+      }
+    ],
+    "exampleSentence": {
+      "sentence": "父のことを思い出しました。",
+      "parts": [
+        {
+          "text": "父",
+          "furigana": "ちち"
+        },
+        {
+          "text": "のことを"
+        },
+        {
+          "text": "思",
+          "furigana": "おも"
+        },
+        {
+          "text": "い"
+        },
+        {
+          "text": "出",
+          "furigana": "だ"
+        },
+        {
+          "text": "しました。"
+        }
+      ],
+      "translation": "Tôi nhớ lại chuyện về bố."
+    }
+  },
+  {
+    "id": "f295c013-0ff2-49c4-83b1-03f11d0afc00",
+    "wordSurface": "いらっしゃいます",
+    "readingKana": "いらっしゃいます",
+    "hanViet": "",
+    "meaning": "kính ngữ của 「います」",
+    "kanjiBreakdown": [],
+    "exampleSentence": {
+      "sentence": "先生は教室にいらっしゃいます。",
+      "parts": [
+        {
+          "text": "先生",
+          "furigana": "せんせい"
+        },
+        {
+          "text": "は"
+        },
+        {
+          "text": "教室",
+          "furigana": "きょうしつ"
+        },
+        {
+          "text": "に"
+        },
+        {
+          "text": "いらっしゃいます。"
+        }
+      ],
+      "translation": "Thầy giáo đang ở trong lớp học."
+    }
+  },
+  {
+    "id": "eb18a996-2a97-4152-b65e-1f480286a685",
+    "wordSurface": "日本橋",
+    "readingKana": "にっぽんばし",
+    "hanViet": "",
+    "meaning": "tên một khu phố buôn bán ở Osaka",
+    "kanjiBreakdown": [
+      {
+        "kanji": "日",
+        "han_viet": "NHẬT",
+        "meaning": "ngày, mặt trời"
+      },
+      {
+        "kanji": "本",
+        "han_viet": "BẢN",
+        "meaning": "gốc, sách"
+      },
+      {
+        "kanji": "橋",
+        "han_viet": "KIỀU",
+        "meaning": "cây cầu"
+      }
+    ],
+    "exampleSentence": null
+  },
+  {
+    "id": "bee7baa7-343c-4be4-9967-beeae64b4d46",
+    "wordSurface": "みんなのインタビュー",
+    "readingKana": "みんなのインタビュー",
+    "hanViet": "",
+    "meaning": "tên chương trình truyền hình (giả định)",
+    "kanjiBreakdown": [],
+    "exampleSentence": null
+  }
+]
