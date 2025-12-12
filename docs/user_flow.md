@@ -4,7 +4,14 @@
 
 The application architecture is designed for "Cognitive Load Reduction".
 
-### A. Dashboard (Home) `/`
+### A. Public Landing Page `/`
+
+* **Goal:** Conversion (Sign up / Login).
+* **Audience:** Unauthenticated users.
+* **Content:** Hero banner, Feature highlights, "Get Started" CTA.
+* **Flow:** `CTA` -> `Login Modal` -> `Dashboard`.
+
+### B. Dashboard (Home) `/dashboard`
 
 * **Goal:** Instant status check ("Do I have reviews?") & immediate entry to study.
 * **Primary Action:** "Start Review Session" (Primary Button).
@@ -29,6 +36,18 @@ The application architecture is designed for "Cognitive Load Reduction".
   * Search (Kanji/Kana/Meaning).
   * Toggle Activation (Freeze/Unfreeze cards).
   * Detail View (See full metadata: Etymology, Examples, Stats).
+
+### D. Content Import (Wizard) `/decks/import`
+
+* **Goal:** Bulk creation of vocabulary.
+* **Steps:**
+  1. **Upload:** User selects CSV file or downloads template.
+  2. **Preview:** System parses file and shows a spreadsheet-like view.
+      * *Validation:* row-by-row checks (Duplications, Missing required fields).
+      * *Action:* User can edit cells in-place or deselect bad rows.
+  3. **Configure:** Select target Deck (New or Existing).
+  4. **Confirm:** Commit to database.
+  5. **Result:** Summary report (Success/Fail count).
 
 ---
 

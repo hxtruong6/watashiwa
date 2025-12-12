@@ -1,20 +1,29 @@
 'use client';
 
-import React from 'react';
-import { Typography, Button, Flex, Card, Statistic, Row, Col } from 'antd';
-import Link from 'next/link';
-import { useTranslations } from 'next-intl';
-import {
-	ClockCircleOutlined,
-	FireOutlined,
-	CheckCircleOutlined,
-	RightOutlined,
-	ReadOutlined,
-	EditOutlined,
-} from '@ant-design/icons';
+import React, { useEffect, useState } from 'react';
+import confetti from 'canvas-confetti';
 import { motion } from 'motion/react';
+import {
+	HeroSection,
+	DueCTA,
+	StatsGrid,
+	WeeklyChart,
+	QuickActions,
+	MyDecks,
+} from '@/components/dashboard';
 
-const { Title, Text } = Typography;
+interface WeeklyStatsData {
+	days: { day: string; count: number; isToday?: boolean }[];
+	thisWeekTotal: number;
+	bestDay: { day: string; count: number };
+}
+
+interface DeckWithStats {
+	id: string;
+	title: string;
+	cardCount: number;
+	dueCount: number;
+}
 
 interface DashboardContentProps {
 	reviewCount: number;
@@ -22,212 +31,74 @@ interface DashboardContentProps {
 		streak: number;
 		totalReviewed: number;
 	};
+	weeklyStats?: WeeklyStatsData | null;
+	decks?: DeckWithStats[];
+	userName?: string | null;
+	dailyGoal: number;
 }
 
-export default function DashboardContent({ reviewCount, stats }: DashboardContentProps) {
-	const t = useTranslations('Dashboard');
-	const containerVariants = {
-		hidden: { opacity: 0 },
-		visible: {
-			opacity: 1,
-			transition: {
-				staggerChildren: 0.1,
-			},
-		},
-	};
+/**
+ * Main Dashboard component using modular sub-components
+ */
+export default function DashboardContent({
+	reviewCount,
+	stats,
+	weeklyStats,
+	decks = [],
+	userName,
+	dailyGoal,
+}: DashboardContentProps) {
+	const [hasShownConfetti, setHasShownConfetti] = useState(false);
 
-	const itemVariants = {
-		hidden: { opacity: 0, y: 20 },
-		visible: { opacity: 1, y: 0 },
-	};
+	// Trigger confetti when daily goal is reached
+	const isGoalComplete = stats.totalReviewed >= dailyGoal;
+
+	useEffect(() => {
+		if (isGoalComplete && !hasShownConfetti) {
+			confetti({
+				particleCount: 100,
+				spread: 70,
+				origin: { y: 0.3 },
+				colors: ['#708238', '#1E3A5F', '#FAAD14'],
+			});
+			// setHasShownConfetti(true);
+		}
+	}, [isGoalComplete, hasShownConfetti]);
 
 	return (
 		<motion.div
-			variants={containerVariants}
-			initial="hidden"
-			animate="visible"
-			style={{ maxWidth: 900, margin: '0 auto', padding: '24px 16px' }}
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			style={{ maxWidth: 1000, margin: '0 auto', padding: '24px 16px' }}
 		>
-			{/* Hero Section */}
-			<motion.div variants={itemVariants}>
-				<Flex
-					vertical
-					align="center"
-					justify="center"
-					style={{ minHeight: '35vh', textAlign: 'center' }}
-				>
-					<Title
-						level={1}
-						style={{
-							fontSize: 'clamp(2rem, 5vw, 3.5rem)', // Responsive font size
-							marginBottom: 16,
-							color: '#1E3A5F',
-							fontWeight: 700,
-							letterSpacing: '-0.02em',
-						}}
-					>
-						{t('heroTitle')}
-					</Title>
-					<Text
-						type="secondary"
-						style={{ fontSize: 'clamp(1rem, 2vw, 1.25rem)', marginBottom: 48, maxWidth: 500 }}
-					>
-						{' '}
-						{reviewCount > 0 ? t('heroSubtitleCards') : t('heroSubtitleNoCards')}
-					</Text>
+			{/* Hero: Greeting + Streak + Daily Goal */}
+			<HeroSection
+				userName={userName}
+				streak={stats.streak}
+				dailyProgress={stats.totalReviewed}
+				dailyGoal={dailyGoal}
+			/>
 
-					{reviewCount > 0 ? (
-						<Link href="/study" style={{ width: '100%', maxWidth: 300 }}>
-							<motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-								<Button
-									type="primary"
-									size="large"
-									style={{
-										height: 72,
-										width: '100%',
-										fontSize: '1.5rem',
-										borderRadius: 36,
-										boxShadow: '0 12px 24px rgba(30, 58, 95, 0.25)',
-										display: 'flex',
-										alignItems: 'center',
-										justifyContent: 'center',
-										gap: 12,
-									}}
-								>
-									{t('startReview')}{' '}
-									<span style={{ opacity: 0.6, fontSize: '1rem' }}>({reviewCount})</span>
-								</Button>
-							</motion.div>
-						</Link>
-					) : (
-						<motion.div whileHover={{ y: -5 }} style={{ width: '100%', maxWidth: 450 }}>
-							<Card
-								style={{
-									borderRadius: 24,
-									textAlign: 'center',
-									boxShadow: '0 8px 32px rgba(0,0,0,0.04)',
-									border: 'none',
-								}}
-							>
-								<Flex vertical align="center" gap="middle" style={{ padding: 24 }}>
-									<CheckCircleOutlined style={{ fontSize: 56, color: '#708238' }} />
-									<div>
-										<Title level={3} style={{ margin: '0 0 8px' }}>
-											{t('allCaughtUp')}
-										</Title>
-										<Text type="secondary">{t('allCaughtUpSubtitle')}</Text>
-									</div>
-									<Link href="/decks">
-										<Button
-											size="large"
-											type="default"
-											icon={<RightOutlined />}
-											iconPlacement="end"
-										>
-											{t('browseDecks')}
-										</Button>
-									</Link>
-								</Flex>
-							</Card>
-						</motion.div>
-					)}
-				</Flex>
-			</motion.div>
+			{/* Primary CTA: Start Review */}
+			<DueCTA dueCount={reviewCount} />
+
+			{/* Weekly Progress Chart */}
+			{weeklyStats && (
+				<WeeklyChart
+					data={weeklyStats.days}
+					thisWeekTotal={weeklyStats.thisWeekTotal}
+					bestDay={weeklyStats.bestDay}
+				/>
+			)}
 
 			{/* Stats Grid */}
-			<Row gutter={[24, 24]} style={{ marginTop: 64 }}>
-				<Col xs={24} sm={12}>
-					<motion.div variants={itemVariants} whileHover={{ y: -4 }}>
-						<Card
-							variant="borderless"
-							style={{
-								boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
-								borderRadius: 20,
-								height: '100%',
-							}}
-						>
-							<Statistic
-								title={<Text type="secondary">{t('dayStreak')}</Text>}
-								value={stats.streak}
-								prefix={<FireOutlined style={{ color: '#FAAD14', fontSize: 28, marginRight: 8 }} />}
-								styles={{ content: { color: '#1E3A5F', fontWeight: 600, fontSize: '2.5rem' } }}
-							/>
-						</Card>
-					</motion.div>
-				</Col>
-				<Col xs={24} sm={12}>
-					<motion.div variants={itemVariants} whileHover={{ y: -4 }}>
-						<Card
-							variant="borderless"
-							style={{
-								boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
-								borderRadius: 20,
-								height: '100%',
-							}}
-						>
-							<Statistic
-								title={<Text type="secondary">{t('reviewedToday')}</Text>}
-								value={stats.totalReviewed}
-								prefix={
-									<ClockCircleOutlined style={{ color: '#708238', fontSize: 28, marginRight: 8 }} />
-								}
-								styles={{ content: { color: '#1E3A5F', fontWeight: 600, fontSize: '2.5rem' } }}
-							/>
-						</Card>
-					</motion.div>
-				</Col>
-			</Row>
+			<StatsGrid streak={stats.streak} reviewedToday={stats.totalReviewed} />
 
-			{/* Quick Access */}
-			<div style={{ marginTop: 48 }}>
-				<Title level={4} style={{ marginBottom: 24, color: '#1E3A5F' }}>
-					{t('quickAccess')}
-				</Title>
-				<Row gutter={[16, 16]}>
-					<Col xs={12} sm={6}>
-						<Link href="/dashboard/vocab">
-							<motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-								<Card
-									size="small"
-									hoverable
-									style={{
-										textAlign: 'center',
-										borderRadius: 16,
-										border: '1px solid #f0f0f0',
-										boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
-									}}
-								>
-									<ReadOutlined style={{ fontSize: 24, color: '#1890ff', marginBottom: 8 }} />
-									<Text strong style={{ display: 'block' }}>
-										{t('allVocab')}
-									</Text>
-								</Card>
-							</motion.div>
-						</Link>
-					</Col>
-					<Col xs={12} sm={6}>
-						<Link href="/dashboard/kanji">
-							<motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-								<Card
-									size="small"
-									hoverable
-									style={{
-										textAlign: 'center',
-										borderRadius: 16,
-										border: '1px solid #f0f0f0',
-										boxShadow: '0 2px 8px rgba(0,0,0,0.02)',
-									}}
-								>
-									<EditOutlined style={{ fontSize: 24, color: '#722ed1', marginBottom: 8 }} />
-									<Text strong style={{ display: 'block' }}>
-										{t('allKanji')}
-									</Text>
-								</Card>
-							</motion.div>
-						</Link>
-					</Col>
-				</Row>
-			</div>
+			{/* Quick Actions */}
+			<QuickActions />
+
+			{/* My Decks */}
+			<MyDecks decks={decks} />
 		</motion.div>
 	);
 }

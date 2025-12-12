@@ -68,3 +68,76 @@ Interactions must be active.
 - **Hint:** Meaning of the sentence.
 - **Action:** Type the conjugated form of the word.
 - **Validation:** String match or simple AI check if rigorous.
+
+## 3. Public Landing Page & i18n
+
+### Landing Page
+
+- **Route:** `/` (Root).
+- **Protection:** Public access. Authenticated users redirected to `/dashboard`.
+- **Key Elements:**
+  - Hero Section: "Master Japanese with Golden Time SRS".
+  - Features: FSRS explanation, Exercise types.
+  - Footer: Links.
+
+### i18n (Internationalization)
+
+- **Strategy:** Cookie-based detection (No URL prefixes like `/en/...` or `/vi/...`).
+- **Default:** English (`en`).
+- **Supported:** English, Vietnamese (`vi`).
+- **Switcher:** Dropdown in Navbar/Footer.
+
+## 4. CSV Content Import
+
+### Data Architecture
+
+We do **not** need a separate "Import Table" in the database.
+
+- **Process:** Client-Side Parse -> Validation -> Batch Insert to `Vocab` table.
+- **Relations:**
+  - `Vocab` belongs to a `Deck`.
+  - `Vocab` has no study data initially.
+  - `StudyCard` is created *lazily* or *on-demand* when a user first studies the deck.
+
+### CSV Template Format
+
+The system expects a header row. Columns:
+
+| Column Name | Required | Description | Example |
+| :--- | :--- | :--- | :--- |
+| `term` | **Yes** | The word or expression | `学生` |
+| `reading` | **Yes** | Kana reading | `がくせい` |
+| `meaning` | **Yes** | Definition | `Student` |
+| `example_sentence` | No | Full sentence context | `私は学生です。` |
+| `example_translation` | No | Translation of sentence | `I am a student.` |
+| `han_viet` | No | Sino-Vietnamese (for VN users) | `HỌC SINH` |
+
+### Validation Rules
+
+1. **Required Fields:** `term`, `reading`, `meaning` must not be empty.
+2. **Duplication:** Warn if `term` already exists in the selected Deck.
+3. **Format:** Warn if `reading` contains Kanji (should be Kana only for typical cards).
+
+### UI Workflow
+
+1. **Select/Drop File:** Support `.csv`.
+2. **Parse & Preview:** specialized Data Grid component.
+    - Show valid rows in normal text.
+    - **Highlight errors** in Red.
+    - Allow user to **edit cell data** directly in the grid to fix errors before importing.
+    - "Ignore" checkbox for each row.
+3. **Import:** Progress bar as items are sent to API.
+
+## 5. Additional Features
+
+Detailed specifications for the following features are in separate documents:
+
+| Feature | Description | Spec |
+|:--------|:------------|:-----|
+| User Roles | Admin, Moderator, User permissions | [user-roles.md](features/user-roles.md) |
+| Community Comments | Card comments, voting, moderation | [community-comments.md](features/community-comments.md) |
+| Wishlist | Bookmark cards for later | [wishlist.md](features/wishlist.md) |
+| Vocab Browser | Filter/sort by memorization status | [vocab-browser.md](features/vocab-browser.md) |
+| Enhanced Dashboard | Gamification, streaks, UX | [enhanced-dashboard.md](features/enhanced-dashboard.md) |
+| User Ranking | Leaderboards by deck collection & time | [user-ranking.md](features/user-ranking.md) |
+| Card Reporting | Report incorrect content, corrections | [card-reporting.md](features/card-reporting.md) |

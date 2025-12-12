@@ -1,0 +1,7 @@
+// Dashboard components barrel export
+export { default as HeroSection } from './HeroSection';
+export { default as DueCTA } from './DueCTA';
+export { default as StatsGrid } from './StatsGrid';
+export { default as WeeklyChart } from './WeeklyChart';
+export { default as QuickActions } from './QuickActions';
+export { default as MyDecks } from './MyDecks';

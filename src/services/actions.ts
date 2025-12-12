@@ -727,3 +727,142 @@ function getStartOfDayInTimezone(timezone: string = 'UTC'): Date {
 		return d;
 	}
 }
+
+/**
+ * Get weekly review stats for the chart (last 7 days)
+ */
+export async function getWeeklyStats() {
+	try {
+		const user = await getUser();
+		if (!user) return null;
+
+		const days: { day: string; date: Date; count: number; isToday: boolean }[] = [];
+		const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+		const today = new Date();
+		today.setHours(0, 0, 0, 0);
+
+		// Generate last 7 days
+		for (let i = 6; i >= 0; i--) {
+			const date = new Date(today);
+			date.setDate(today.getDate() - i);
+			const dayEnd = new Date(date);
+			dayEnd.setHours(23, 59, 59, 999);
+
+			const count = await prisma.reviewLog.count({
+				where: {
+					userId: user.id,
+					review: {
+						gte: date,
+						lte: dayEnd,
+					},
+				},
+			});
+
+			days.push({
+				day: dayNames[date.getDay()],
+				date,
+				count,
+				isToday: i === 0,
+			});
+		}
+
+		const thisWeekTotal = days.reduce((sum, d) => sum + d.count, 0);
+		const bestDay = days.reduce((best, d) => (d.count > best.count ? d : best), days[0]);
+
+		return {
+			days: days.map((d) => ({ day: d.day, count: d.count, isToday: d.isToday })),
+			thisWeekTotal,
+			bestDay: { day: bestDay.day, count: bestDay.count },
+		};
+	} catch (error) {
+		console.error('Error fetching weekly stats:', error);
+		return null;
+	}
+}
+
+/**
+ * Get decks with due counts for dashboard
+ */
+export async function getDecksWithDue() {
+	try {
+		const user = await getUser();
+		if (!user) return [];
+
+		const decks = await prisma.deck.findMany({
+			where: {
+				OR: [{ isPublic: true }, { authorId: user.id }],
+			},
+			include: {
+				_count: {
+					select: { vocab: true, kanji: true },
+				},
+			},
+			orderBy: {
+				createdAt: 'desc',
+			},
+		});
+
+		// Get due counts for each deck
+		const decksWithDue = await Promise.all(
+			decks.map(async (deck) => {
+				const dueCount = await prisma.studyCard.count({
+					where: {
+						userId: user.id,
+						due: { lte: new Date() },
+						OR: [{ vocab: { deckId: deck.id } }, { kanji: { deckId: deck.id } }],
+					},
+				});
+
+				return {
+					id: deck.id,
+					title: deck.title,
+					cardCount: deck._count.vocab + deck._count.kanji,
+					dueCount,
+				};
+			}),
+		);
+
+		return decksWithDue;
+	} catch (error) {
+		console.error('Error fetching decks with due:', error);
+		return [];
+	}
+}
+
+/**
+ * Get dashboard data (combined call for efficiency)
+ */
+export async function getDashboardData() {
+	try {
+		const [reviewCount, stats, weeklyStats, decksWithDue, userSettings] = await Promise.all([
+			getReviewCount(),
+			getUserStats(),
+			getWeeklyStats(),
+			getDecksWithDue(),
+			getUserSettings(),
+		]);
+
+		// Get user name
+		const user = await getUser();
+		let userName: string | null = null;
+		if (user) {
+			const dbUser = await prisma.user.findUnique({
+				where: { id: user.id },
+				select: { name: true },
+			});
+			userName = dbUser?.name ?? null;
+		}
+
+		return {
+			reviewCount,
+			stats,
+			weeklyStats,
+			decksWithDue,
+			userSettings,
+			userName,
+		};
+	} catch (error) {
+		console.error('Error fetching dashboard data:', error);
+		return null;
+	}
+}

@@ -1,12 +1,26 @@
 import React from 'react';
-import { getReviewCount, getUserStats, syncUser } from '@/services/actions';
+import { getDashboardData, syncUser } from '@/services/actions';
 import DashboardContent from '@/components/DashboardContent';
 
 export default async function Dashboard() {
 	// Sync user on load
 	await syncUser();
 
-	const [reviewCount, stats] = await Promise.all([getReviewCount(), getUserStats()]);
+	// Get all dashboard data in a single call
+	const data = await getDashboardData();
 
-	return <DashboardContent reviewCount={reviewCount} stats={stats} />;
+	if (!data) {
+		return <div>Loading...</div>;
+	}
+
+	return (
+		<DashboardContent
+			reviewCount={data.reviewCount}
+			stats={data.stats}
+			weeklyStats={data.weeklyStats}
+			decks={data.decksWithDue}
+			userName={data.userName}
+			dailyGoal={data.userSettings?.limitReviews ?? 50}
+		/>
+	);
 }

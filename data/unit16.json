@@ -1,6 +1,6 @@
 [
     {
-        "id": "b16-001",
+        "id": 1,
         "wordSurface": "乗ります",
         "readingKana": "のります",
         "hanViet": "THỪA",
@@ -31,10 +31,21 @@
                 }
             ],
             "translation": "Tôi lên tàu điện."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "乗",
+                "furigana": "の",
+                "romaji": "no"
+            },
+            {
+                "text": "ります",
+                "romaji": "rimasu"
+            }
+        ]
     },
     {
-        "id": "b16-002",
+        "id": 2,
         "wordSurface": "降ります",
         "readingKana": "おります",
         "hanViet": "GIÁNG",
@@ -65,10 +76,21 @@
                 }
             ],
             "translation": "Tôi xuống tàu điện."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "降",
+                "furigana": "お",
+                "romaji": "o"
+            },
+            {
+                "text": "ります",
+                "romaji": "rimasu"
+            }
+        ]
     },
     {
-        "id": "b16-003",
+        "id": 3,
         "wordSurface": "乗り換えます",
         "readingKana": "のりかえます",
         "hanViet": "THỪA HOÁN",
@@ -118,10 +140,30 @@
                 }
             ],
             "translation": "Tôi chuyển sang tàu Shinkansen ở ga Tokyo."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "乗",
+                "furigana": "の",
+                "romaji": "no"
+            },
+            {
+                "text": "り",
+                "romaji": "ri"
+            },
+            {
+                "text": "換",
+                "furigana": "か",
+                "romaji": "ka"
+            },
+            {
+                "text": "えます",
+                "romaji": "emasu"
+            }
+        ]
     },
     {
-        "id": "b16-004",
+        "id": 4,
         "wordSurface": "浴びます",
         "readingKana": "あびます",
         "hanViet": "DỤC",
@@ -151,10 +193,21 @@
                 }
             ],
             "translation": "Tôi tắm vòi sen."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "浴",
+                "furigana": "あ",
+                "romaji": "a"
+            },
+            {
+                "text": "びます",
+                "romaji": "bimasu"
+            }
+        ]
     },
     {
-        "id": "b16-005",
+        "id": 5,
         "wordSurface": "入れます",
         "readingKana": "いれます",
         "hanViet": "NHẬP",
@@ -185,10 +238,21 @@
                 }
             ],
             "translation": "Tôi bỏ tiền vào."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "入",
+                "furigana": "い",
+                "romaji": "i"
+            },
+            {
+                "text": "れます",
+                "romaji": "remasu"
+            }
+        ]
     },
     {
-        "id": "b16-006",
+        "id": 6,
         "wordSurface": "出します",
         "readingKana": "だします",
         "hanViet": "XUẤT",
@@ -218,10 +282,21 @@
                 }
             ],
             "translation": "Tôi nộp báo cáo."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "出",
+                "furigana": "だ",
+                "romaji": "da"
+            },
+            {
+                "text": "します",
+                "romaji": "shimasu"
+            }
+        ]
     },
     {
-        "id": "b16-007",
+        "id": 7,
         "wordSurface": "下ろします",
         "readingKana": "おろします",
         "hanViet": "HẠ",
@@ -259,10 +334,21 @@
                 }
             ],
             "translation": "Tôi rút tiền ở ngân hàng."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "下",
+                "furigana": "お",
+                "romaji": "o"
+            },
+            {
+                "text": "ろします",
+                "romaji": "roshimasu"
+            }
+        ]
     },
     {
-        "id": "b16-008",
+        "id": 8,
         "wordSurface": "入ります",
         "readingKana": "はいります",
         "hanViet": "NHẬP",
@@ -293,10 +379,21 @@
                 }
             ],
             "translation": "Tôi vào đại học."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "入",
+                "furigana": "はい",
+                "romaji": "hai"
+            },
+            {
+                "text": "ります",
+                "romaji": "rimasu"
+            }
+        ]
     },
     {
-        "id": "b16-009",
+        "id": 9,
         "wordSurface": "出ます",
         "readingKana": "でます",
         "hanViet": "XUẤT",
@@ -327,10 +424,21 @@
                 }
             ],
             "translation": "Tôi tốt nghiệp đại học."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "出",
+                "furigana": "で",
+                "romaji": "de"
+            },
+            {
+                "text": "ます",
+                "romaji": "masu"
+            }
+        ]
     },
     {
-        "id": "b16-010",
+        "id": 10,
         "wordSurface": "押します",
         "readingKana": "おします",
         "hanViet": "ÁP",
@@ -357,10 +465,21 @@
                 }
             ],
             "translation": "Hãy ấn vào đây."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "押",
+                "furigana": "お",
+                "romaji": "o"
+            },
+            {
+                "text": "します",
+                "romaji": "shimasu"
+            }
+        ]
     },
     {
-        "id": "b16-011",
+        "id": 11,
         "wordSurface": "飲みます",
         "readingKana": "のみます",
         "hanViet": "ẨM",
@@ -394,10 +513,21 @@
                 }
             ],
             "translation": "Tôi uống rượu."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "飲",
+                "furigana": "の",
+                "romaji": "no"
+            },
+            {
+                "text": "みます",
+                "romaji": "mimasu"
+            }
+        ]
     },
     {
-        "id": "b16-012",
+        "id": 12,
         "wordSurface": "始めます",
         "readingKana": "はじめます",
         "hanViet": "THỦY",
@@ -428,10 +558,21 @@
                 }
             ],
             "translation": "Tôi bắt đầu cuộc họp."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "始",
+                "furigana": "はじ",
+                "romaji": "haji"
+            },
+            {
+                "text": "めます",
+                "romaji": "memasu"
+            }
+        ]
     },
     {
-        "id": "b16-013",
+        "id": 13,
         "wordSurface": "見学します",
         "readingKana": "けんがくします",
         "hanViet": "KIẾN HỌC",
@@ -467,10 +608,21 @@
                 }
             ],
             "translation": "Tôi tham quan nhà máy."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "見学",
+                "furigana": "けんがく",
+                "romaji": "kengaku"
+            },
+            {
+                "text": "します",
+                "romaji": "shimasu"
+            }
+        ]
     },
     {
-        "id": "b16-014",
+        "id": 14,
         "wordSurface": "電話します",
         "readingKana": "でんわします",
         "hanViet": "ĐIỆN THOẠI",
@@ -506,10 +658,21 @@
                 }
             ],
             "translation": "Tôi gọi điện cho bạn."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "電話",
+                "furigana": "でんわ",
+                "romaji": "denwa"
+            },
+            {
+                "text": "します",
+                "romaji": "shimasu"
+            }
+        ]
     },
     {
-        "id": "b16-015",
+        "id": 15,
         "wordSurface": "若い",
         "readingKana": "わかい",
         "hanViet": "NHƯỢC",
@@ -540,10 +703,21 @@
                 }
             ],
             "translation": "Anh ấy trẻ."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "若",
+                "furigana": "わか",
+                "romaji": "waka"
+            },
+            {
+                "text": "い",
+                "romaji": "i"
+            }
+        ]
     },
     {
-        "id": "b16-016",
+        "id": 16,
         "wordSurface": "長い",
         "readingKana": "ながい",
         "hanViet": "TRƯỜNG",
@@ -574,10 +748,21 @@
                 }
             ],
             "translation": "Tóc dài."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "長",
+                "furigana": "なが",
+                "romaji": "naga"
+            },
+            {
+                "text": "い",
+                "romaji": "i"
+            }
+        ]
     },
     {
-        "id": "b16-017",
+        "id": 17,
         "wordSurface": "短い",
         "readingKana": "みじかい",
         "hanViet": "ĐOẢN",
@@ -608,10 +793,21 @@
                 }
             ],
             "translation": "Kỳ nghỉ hè ngắn."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "短",
+                "furigana": "みじか",
+                "romaji": "mijika"
+            },
+            {
+                "text": "い",
+                "romaji": "i"
+            }
+        ]
     },
     {
-        "id": "b16-018",
+        "id": 18,
         "wordSurface": "明るい",
         "readingKana": "あかるい",
         "hanViet": "MINH",
@@ -645,10 +841,21 @@
                 }
             ],
             "translation": "Căn phòng này sáng sủa."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "明",
+                "furigana": "あか",
+                "romaji": "aka"
+            },
+            {
+                "text": "るい",
+                "romaji": "rui"
+            }
+        ]
     },
     {
-        "id": "b16-019",
+        "id": 19,
         "wordSurface": "暗い",
         "readingKana": "くらい",
         "hanViet": "ÁM",
@@ -679,10 +886,21 @@
                 }
             ],
             "translation": "Bên ngoài trời tối."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "暗",
+                "furigana": "くら",
+                "romaji": "kura"
+            },
+            {
+                "text": "い",
+                "romaji": "i"
+            }
+        ]
     },
     {
-        "id": "b16-020",
+        "id": 20,
         "wordSurface": "体",
         "readingKana": "からだ",
         "hanViet": "THỂ",
@@ -713,10 +931,17 @@
                 }
             ],
             "translation": "Tình trạng cơ thể tốt."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "体",
+                "furigana": "からだ",
+                "romaji": "karada"
+            }
+        ]
     },
     {
-        "id": "b16-021",
+        "id": 21,
         "wordSurface": "頭",
         "readingKana": "あたま",
         "hanViet": "ĐẦU",
@@ -740,10 +965,17 @@
                 }
             ],
             "translation": "Thông minh (đầu óc tốt)."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "頭",
+                "furigana": "あたま",
+                "romaji": "atama"
+            }
+        ]
     },
     {
-        "id": "b16-022",
+        "id": 22,
         "wordSurface": "髪",
         "readingKana": "かみ",
         "hanViet": "PHÁT",
@@ -774,10 +1006,17 @@
                 }
             ],
             "translation": "Tôi cắt tóc."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "髪",
+                "furigana": "かみ",
+                "romaji": "kami"
+            }
+        ]
     },
     {
-        "id": "b16-023",
+        "id": 23,
         "wordSurface": "顔",
         "readingKana": "かお",
         "hanViet": "NHAN",
@@ -808,10 +1047,17 @@
                 }
             ],
             "translation": "Tôi rửa mặt."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "顔",
+                "furigana": "かお",
+                "romaji": "kao"
+            }
+        ]
     },
     {
-        "id": "b16-024",
+        "id": 24,
         "wordSurface": "目",
         "readingKana": "め",
         "hanViet": "MỤC",
@@ -842,10 +1088,17 @@
                 }
             ],
             "translation": "Mắt to."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "目",
+                "furigana": "め",
+                "romaji": "me"
+            }
+        ]
     },
     {
-        "id": "b16-025",
+        "id": 25,
         "wordSurface": "耳",
         "readingKana": "みみ",
         "hanViet": "NHĨ",
@@ -876,10 +1129,17 @@
                 }
             ],
             "translation": "Tai bị đau."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "耳",
+                "furigana": "みみ",
+                "romaji": "mimi"
+            }
+        ]
     },
     {
-        "id": "b16-026",
+        "id": 26,
         "wordSurface": "鼻",
         "readingKana": "はな",
         "hanViet": "TỊ",
@@ -910,10 +1170,17 @@
                 }
             ],
             "translation": "Mũi cao."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "鼻",
+                "furigana": "はな",
+                "romaji": "hana"
+            }
+        ]
     },
     {
-        "id": "b16-027",
+        "id": 27,
         "wordSurface": "口",
         "readingKana": "くち",
         "hanViet": "KHẨU",
@@ -944,10 +1211,17 @@
                 }
             ],
             "translation": "Hãy mở miệng ra."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "口",
+                "furigana": "くち",
+                "romaji": "kuchi"
+            }
+        ]
     },
     {
-        "id": "b16-028",
+        "id": 28,
         "wordSurface": "歯",
         "readingKana": "は",
         "hanViet": "XỈ",
@@ -978,10 +1252,17 @@
                 }
             ],
             "translation": "Tôi đánh răng."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "歯",
+                "furigana": "は",
+                "romaji": "ha"
+            }
+        ]
     },
     {
-        "id": "b16-029",
+        "id": 29,
         "wordSurface": "おなか",
         "readingKana": "おなか",
         "hanViet": "",
@@ -1001,10 +1282,16 @@
                 }
             ],
             "translation": "Tôi đói bụng rồi."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "おなか",
+                "romaji": "onaka"
+            }
+        ]
     },
     {
-        "id": "b16-030",
+        "id": 30,
         "wordSurface": "足",
         "readingKana": "あし",
         "hanViet": "TÚC",
@@ -1035,10 +1322,17 @@
                 }
             ],
             "translation": "Chân dài."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "足",
+                "furigana": "あし",
+                "romaji": "ashi"
+            }
+        ]
     },
     {
-        "id": "b16-031",
+        "id": 31,
         "wordSurface": "背",
         "readingKana": "せ",
         "hanViet": "BỐI",
@@ -1069,10 +1363,17 @@
                 }
             ],
             "translation": "Cao ráo (dáng người)."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "背",
+                "furigana": "せ",
+                "romaji": "se"
+            }
+        ]
     },
     {
-        "id": "b16-032",
+        "id": 32,
         "wordSurface": "サービス",
         "readingKana": "サービス",
         "hanViet": "",
@@ -1089,10 +1390,16 @@
                 }
             ],
             "translation": "Dịch vụ tốt."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "サービス",
+                "romaji": "sa-bisu"
+            }
+        ]
     },
     {
-        "id": "b16-033",
+        "id": 33,
         "wordSurface": "ジョギング",
         "readingKana": "ジョギング",
         "hanViet": "",
@@ -1113,10 +1420,16 @@
                 }
             ],
             "translation": "Tôi chạy bộ mỗi ngày."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "ジョギング",
+                "romaji": "jiョgingu"
+            }
+        ]
     },
     {
-        "id": "b16-034",
+        "id": 34,
         "wordSurface": "シャワー",
         "readingKana": "シャワー",
         "hanViet": "",
@@ -1140,10 +1453,16 @@
                 }
             ],
             "translation": "Tôi tắm vòi sen."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "シャワー",
+                "romaji": "shiャwa-"
+            }
+        ]
     },
     {
-        "id": "b16-035",
+        "id": 35,
         "wordSurface": "緑",
         "readingKana": "みどり",
         "hanViet": "LỤC",
@@ -1184,10 +1503,17 @@
                 }
             ],
             "translation": "Thành phố này có nhiều cây xanh."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "緑",
+                "furigana": "みどり",
+                "romaji": "midori"
+            }
+        ]
     },
     {
-        "id": "b16-036",
+        "id": 36,
         "wordSurface": "お寺",
         "readingKana": "おてら",
         "hanViet": "TỰ",
@@ -1228,10 +1554,21 @@
                 }
             ],
             "translation": "Tôi đi đến chùa ở Kyoto."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "お",
+                "romaji": "o"
+            },
+            {
+                "text": "寺",
+                "furigana": "てら",
+                "romaji": "tera"
+            }
+        ]
     },
     {
-        "id": "b16-037",
+        "id": 37,
         "wordSurface": "神社",
         "readingKana": "じんじゃ",
         "hanViet": "THẦN XÃ",
@@ -1270,10 +1607,17 @@
                 }
             ],
             "translation": "Tôi cầu nguyện ở đền thờ."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "神社",
+                "furigana": "じんじゃ",
+                "romaji": "jinja"
+            }
+        ]
     },
     {
-        "id": "b16-038",
+        "id": 38,
         "wordSurface": "一番",
         "readingKana": "いちばん",
         "hanViet": "PHIÊN",
@@ -1312,10 +1656,17 @@
                 }
             ],
             "translation": "Cái này ngon nhất."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "一番",
+                "furigana": "いちばん",
+                "romaji": "ichiban"
+            }
+        ]
     },
     {
-        "id": "b16-039",
+        "id": 39,
         "wordSurface": "どうやって",
         "readingKana": "どうやって",
         "hanViet": "",
@@ -1343,10 +1694,16 @@
                 }
             ],
             "translation": "Đi đến trường đại học bằng cách nào?"
-        }
+        },
+        "wordParts": [
+            {
+                "text": "どうやって",
+                "romaji": "douyatsute"
+            }
+        ]
     },
     {
-        "id": "b16-040",
+        "id": 40,
         "wordSurface": "どの～",
         "readingKana": "どの～",
         "hanViet": "",
@@ -1374,10 +1731,21 @@
                 }
             ],
             "translation": "Vị nào là anh Tanaka?"
-        }
+        },
+        "wordParts": [
+            {
+                "text": "どの",
+                "romaji": "dono"
+            },
+            {
+                "text": "～",
+                "furigana": "～",
+                "romaji": "～"
+            }
+        ]
     },
     {
-        "id": "b16-041",
+        "id": 41,
         "wordSurface": "どれ",
         "readingKana": "どれ",
         "hanViet": "",
@@ -1404,37 +1772,103 @@
                 }
             ],
             "translation": "Cái ô của bạn là cái nào?"
-        }
+        },
+        "wordParts": [
+            {
+                "text": "どれ",
+                "romaji": "dore"
+            }
+        ]
     },
     {
-        "id": "b16-042",
+        "id": 42,
         "wordSurface": "すごいですね。",
         "readingKana": "すごいですね。",
         "hanViet": "",
         "meaning": "Thật là tuyệt vời. / Kinh quá nhỉ.",
         "kanjiBreakdown": [],
-        "exampleSentence": null
+        "exampleSentence": null,
+        "wordParts": [
+            {
+                "text": "すごいですね",
+                "romaji": "sugoidesune"
+            },
+            {
+                "text": "。",
+                "furigana": "。",
+                "romaji": "。"
+            }
+        ]
     },
     {
-        "id": "b16-043",
+        "id": 43,
         "wordSurface": "いいえ、まだまだです。",
         "readingKana": "いいえ、まだまだです。",
         "hanViet": "",
         "meaning": "không, tôi còn kém lắm. (cách nói khiêm nhường)",
         "kanjiBreakdown": [],
-        "exampleSentence": null
+        "exampleSentence": null,
+        "wordParts": [
+            {
+                "text": "いいえ",
+                "romaji": "iie"
+            },
+            {
+                "text": "、",
+                "furigana": "、",
+                "romaji": "、"
+            },
+            {
+                "text": "まだまだです",
+                "romaji": "madamadadesu"
+            },
+            {
+                "text": "。",
+                "furigana": "。",
+                "romaji": "。"
+            }
+        ]
     },
     {
-        "id": "b16-044",
+        "id": 44,
         "wordSurface": "お引き出しですか。",
         "readingKana": "おひきだしですか。",
         "hanViet": "",
         "meaning": "Anh/ chị rút tiền ạ?",
         "kanjiBreakdown": [],
-        "exampleSentence": null
+        "exampleSentence": null,
+        "wordParts": [
+            {
+                "text": "お",
+                "romaji": "o"
+            },
+            {
+                "text": "引",
+                "furigana": "ひ",
+                "romaji": "hi"
+            },
+            {
+                "text": "き",
+                "romaji": "ki"
+            },
+            {
+                "text": "出",
+                "furigana": "だ",
+                "romaji": "da"
+            },
+            {
+                "text": "しですか",
+                "romaji": "shidesuka"
+            },
+            {
+                "text": "。",
+                "furigana": "。",
+                "romaji": "。"
+            }
+        ]
     },
     {
-        "id": "b16-045",
+        "id": 45,
         "wordSurface": "まず",
         "readingKana": "まず",
         "hanViet": "",
@@ -1462,10 +1896,16 @@
                 }
             ],
             "translation": "Trước hết, thái rau."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "まず",
+                "romaji": "mazu"
+            }
+        ]
     },
     {
-        "id": "b16-046",
+        "id": 46,
         "wordSurface": "次に",
         "readingKana": "つぎに",
         "hanViet": "",
@@ -1503,10 +1943,21 @@
                 }
             ],
             "translation": "Tiếp theo, xào thịt."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "次",
+                "furigana": "つぎ",
+                "romaji": "tsugi"
+            },
+            {
+                "text": "に",
+                "romaji": "ni"
+            }
+        ]
     },
     {
-        "id": "b16-047",
+        "id": 47,
         "wordSurface": "キャッシュカード",
         "readingKana": "キャッシュカード",
         "hanViet": "",
@@ -1536,10 +1987,16 @@
                 }
             ],
             "translation": "Hãy cho thẻ ATM vào đây."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "キャッシュカード",
+                "romaji": "kiャッshiュka-do"
+            }
+        ]
     },
     {
-        "id": "b16-048",
+        "id": 48,
         "wordSurface": "暗証番号",
         "readingKana": "あんしょうばんごう",
         "hanViet": "",
@@ -1585,10 +2042,17 @@
                 }
             ],
             "translation": "Hãy ấn mật khẩu."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "暗証番号",
+                "furigana": "あんしょうばんごう",
+                "romaji": "anshoubangou"
+            }
+        ]
     },
     {
-        "id": "b16-049",
+        "id": 49,
         "wordSurface": "金額",
         "readingKana": "きんがく",
         "hanViet": "",
@@ -1624,10 +2088,17 @@
                 }
             ],
             "translation": "Xác nhận số tiền."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "金額",
+                "furigana": "きんがく",
+                "romaji": "kingaku"
+            }
+        ]
     },
     {
-        "id": "b16-050",
+        "id": 50,
         "wordSurface": "確認",
         "readingKana": "かくにん",
         "hanViet": "",
@@ -1662,10 +2133,17 @@
                 }
             ],
             "translation": "Kiểm tra hộ chiếu."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "確認",
+                "furigana": "かくにん",
+                "romaji": "kakunin"
+            }
+        ]
     },
     {
-        "id": "b16-051",
+        "id": 51,
         "wordSurface": "ボタン",
         "readingKana": "ボタン",
         "hanViet": "",
@@ -1706,19 +2184,32 @@
                 }
             ],
             "translation": "Ấn nút này thì nước sẽ chảy ra."
-        }
+        },
+        "wordParts": [
+            {
+                "text": "ボタン",
+                "romaji": "botan"
+            }
+        ]
     },
     {
-        "id": "b16-052",
+        "id": 52,
         "wordSurface": "ＪＲ",
         "readingKana": "ＪＲ",
         "hanViet": "",
         "meaning": "công ty đường sắt Nhật Bản",
         "kanjiBreakdown": [],
-        "exampleSentence": null
+        "exampleSentence": null,
+        "wordParts": [
+            {
+                "text": "ＪＲ",
+                "furigana": "ＪＲ",
+                "romaji": "ＪＲ"
+            }
+        ]
     },
     {
-        "id": "b16-053",
+        "id": 53,
         "wordSurface": "雪祭り",
         "readingKana": "ゆきまつり",
         "hanViet": "",
@@ -1735,37 +2226,66 @@
                 "meaning": "lễ hội"
             }
         ],
-        "exampleSentence": null
+        "exampleSentence": null,
+        "wordParts": [
+            {
+                "text": "雪祭",
+                "furigana": "ゆきまつ",
+                "romaji": "yukimatsu"
+            },
+            {
+                "text": "り",
+                "romaji": "ri"
+            }
+        ]
     },
     {
-        "id": "b16-054",
+        "id": 54,
         "wordSurface": "バンドン",
         "readingKana": "バンドン",
         "hanViet": "",
         "meaning": "Bandung (ở Indonesia)",
         "kanjiBreakdown": [],
-        "exampleSentence": null
+        "exampleSentence": null,
+        "wordParts": [
+            {
+                "text": "バンドン",
+                "romaji": "bandon"
+            }
+        ]
     },
     {
-        "id": "b16-055",
+        "id": 55,
         "wordSurface": "フランケン",
         "readingKana": "フランケン",
         "hanViet": "",
         "meaning": "Franken (ở Đức)",
         "kanjiBreakdown": [],
-        "exampleSentence": null
+        "exampleSentence": null,
+        "wordParts": [
+            {
+                "text": "フランケン",
+                "romaji": "furanken"
+            }
+        ]
     },
     {
-        "id": "b16-056",
+        "id": 56,
         "wordSurface": "ベラクルス",
         "readingKana": "ベラクルス",
         "hanViet": "",
         "meaning": "Veracruz (ở Mexico)",
         "kanjiBreakdown": [],
-        "exampleSentence": null
+        "exampleSentence": null,
+        "wordParts": [
+            {
+                "text": "ベラクルス",
+                "romaji": "berakurusu"
+            }
+        ]
     },
     {
-        "id": "b16-057",
+        "id": 57,
         "wordSurface": "梅田",
         "readingKana": "うめだ",
         "hanViet": "",
@@ -1782,10 +2302,17 @@
                 "meaning": "ruộng"
             }
         ],
-        "exampleSentence": null
+        "exampleSentence": null,
+        "wordParts": [
+            {
+                "text": "梅田",
+                "furigana": "うめだ",
+                "romaji": "umeda"
+            }
+        ]
     },
     {
-        "id": "b16-058",
+        "id": 58,
         "wordSurface": "大学前",
         "readingKana": "だいがくまえ",
         "hanViet": "",
@@ -1807,6 +2334,13 @@
                 "meaning": "trước"
             }
         ],
-        "exampleSentence": null
+        "exampleSentence": null,
+        "wordParts": [
+            {
+                "text": "大学前",
+                "furigana": "だいがくまえ",
+                "romaji": "daigakumae"
+            }
+        ]
     }
 ]

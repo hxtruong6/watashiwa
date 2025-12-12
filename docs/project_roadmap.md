@@ -28,20 +28,36 @@ To build this application effectively, we follow a **Phased Implementation Strat
 - [x] **Theme:** Implement `themeConfig.ts` with Indigo/Matcha/Washi palette.
 - [x] **Layout:** Create the Dashboard with "Start Review" CTA.
 - [x] **Deck List:** Building the `/decks` page to view/search content.
-- [/] **Polish:** Add transitions and loading states.
+- [x] **Polish:** transitions and loading states (Basic implementation done).
 
-## Phase 3: Content (Manual Import)
+## Phase 3: Content Ingestion (Current Priority)
 
-**Goal:** robust system for managing content without AI.
+**Goal:** Allow users to easily import their own study materials.
 
-- [ ] **CSV Import:** Create a script to import cards from CSV files.
-- [ ] **Admin UI:** Basic page to view all cards and delete/edit them.
+- [ ] **CSV Import Design:** Define template and validation logic.
+- [ ] **Import Wizard UI:** Upload -> Preview/Validate -> Confirm.
+- [ ] **Data Mapping:** Map CSV columns to `Vocab` model (Surface, Reading, Meaning, etc.).
+- [ ] **Deck Management:** Create/Select Deck during import.
 
-## Phase 4: Production & Auth
+## Phase 4: User Acquisition & Auth
 
-**Goal:** Secure multi-user environment.
+**Goal:** Secure multi-user environment and Public Landing Page.
 
-- [ ] **Supabase Auth:** Setup Login/Register with Email/Password and Google.
-- [ ] **Multi-tenancy:** Update Prisma Schema to link `VocabCard` (progress) and `ReviewLog` to `User`.
-- [ ] **Middleware:** Protect `/study` and `/dashboard` routes.
-- [ ] **Deploy:** Vercel Production Deployment.
+- [x] **Public Landing Page:** Hero section, Value prop, simple "Start" flow.
+- [x] **i18n:** Multi-language support (English/Vietnamese) without routing.
+- [/] **Supabase Auth:** Login/Register with Email/Password.
+- [ ] **User Sync:** Ensure Auth users have corresponding DB `User` records.
+- [ ] **Middleware:** Protect `/dashboard` routes.
+- [ ] **Deploy:** Production Deployment.
+
+## Phase 5: Community & Engagement
+
+**Goal:** Build social features and enhance user retention.
+
+- [ ] **User Roles:** Admin, Moderator, User permission system. ([Spec](features/user-roles.md))
+- [ ] **Community Comments:** Card comments, voting, moderation. ([Spec](features/community-comments.md))
+- [ ] **Wishlist:** Bookmark cards for later review. ([Spec](features/wishlist.md))
+- [ ] **Vocab Browser:** Filter/sort cards by memorization status. ([Spec](features/vocab-browser.md))
+- [ ] **Enhanced Dashboard:** Redesigned UX with gamification. ([Spec](features/enhanced-dashboard.md))
+- [ ] **User Ranking:** Leaderboards by deck collection (N5/N4) and time. ([Spec](features/user-ranking.md))
+- [ ] **Card Reporting:** Report incorrect content, moderator corrections. ([Spec](features/card-reporting.md))
