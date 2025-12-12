@@ -118,8 +118,8 @@ export async function getNextReviewCard(deckId?: string): Promise<StudyCardWithD
 				due: 'asc',
 			},
 			include: {
-				vocab: true,
-				kanji: true,
+				vocab: { include: { _count: { select: { cardComments: true } } } },
+				kanji: { include: { _count: { select: { cardComments: true } } } },
 			},
 		});
 
@@ -161,7 +161,10 @@ export async function getNextReviewCard(deckId?: string): Promise<StudyCardWithD
 					due: new Date(), // Due immediately
 					state: 0, // New
 				},
-				include: { vocab: true, kanji: true },
+				include: {
+					vocab: { include: { _count: { select: { cardComments: true } } } },
+					kanji: { include: { _count: { select: { cardComments: true } } } },
+				},
 			});
 			return newCard;
 		}
@@ -191,7 +194,10 @@ export async function getNextReviewCard(deckId?: string): Promise<StudyCardWithD
 					due: new Date(),
 					state: 0,
 				},
-				include: { vocab: true, kanji: true },
+				include: {
+					vocab: { include: { _count: { select: { cardComments: true } } } },
+					kanji: { include: { _count: { select: { cardComments: true } } } },
+				},
 			});
 			return newCard;
 		}

@@ -145,6 +145,9 @@ export default function VocabSettings({
 					<li>
 						<Text strong>[1-4]</Text>: {t('guideNumbers')}
 					</li>
+					<li>
+						<Text strong>Mobile</Text>: {t('guideMobile')}
+					</li>
 				</ul>
 			</div>
 

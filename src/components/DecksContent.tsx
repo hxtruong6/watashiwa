@@ -49,7 +49,7 @@ export default function DecksContent({ decks }: DecksContentProps) {
 				</motion.div>
 				<motion.div variants={itemVariants}>
 					<Link href="/decks/new">
-						<Button type="primary" size="large">
+						<Button type="primary" size="middle">
 							{t('newDeck')}
 						</Button>
 					</Link>

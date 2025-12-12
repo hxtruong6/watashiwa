@@ -10,7 +10,11 @@ import {
 	WeeklyChart,
 	QuickActions,
 	MyDecks,
+	TrendingTips,
+	MyContributions,
+	DonationButton,
 } from '@/components/dashboard';
+import { Divider } from 'antd';
 
 interface WeeklyStatsData {
 	days: { day: string; count: number; isToday?: boolean }[];
@@ -49,7 +53,7 @@ export default function DashboardContent({
 	dailyGoal,
 	userRole,
 }: DashboardContentProps & { userRole?: string }) {
-	const [hasShownConfetti, setHasShownConfetti] = useState(false);
+	const [hasShownConfetti] = useState(false);
 
 	// Trigger confetti when daily goal is reached
 	const isGoalComplete = stats.totalReviewed >= dailyGoal;
@@ -80,9 +84,37 @@ export default function DashboardContent({
 				dailyGoal={dailyGoal}
 			/>
 
+			{/* Primary CTA: Start Review */}
+			<DueCTA dueCount={reviewCount} />
+
+			{/* Weekly Progress Chart */}
+			{weeklyStats && (
+				<WeeklyChart
+					data={weeklyStats.days}
+					thisWeekTotal={weeklyStats.thisWeekTotal}
+					bestDay={weeklyStats.bestDay}
+				/>
+			)}
+
+			{/* Stats Grid */}
+			<StatsGrid streak={stats.streak} reviewedToday={stats.totalReviewed} />
+
+			{/* Your Top Tips (Small section under progress) */}
+			<MyContributions />
+
+			{/* Quick Actions */}
+			<QuickActions />
+
+			{/* My Decks */}
+			<MyDecks decks={decks} />
+
+			{/* Community Highlights (Trending) - Bottom of page */}
+			<Divider />
+			<TrendingTips />
+
 			{/* Admin Button */}
 			{(userRole === 'ADMIN' || userRole === 'MODERATOR') && (
-				<div style={{ marginBottom: 24, textAlign: 'center' }}>
+				<div style={{ marginTop: 24, textAlign: 'center' }}>
 					<a
 						href="/admin"
 						style={{
@@ -101,26 +133,8 @@ export default function DashboardContent({
 				</div>
 			)}
 
-			{/* Primary CTA: Start Review */}
-			<DueCTA dueCount={reviewCount} />
-
-			{/* Weekly Progress Chart */}
-			{weeklyStats && (
-				<WeeklyChart
-					data={weeklyStats.days}
-					thisWeekTotal={weeklyStats.thisWeekTotal}
-					bestDay={weeklyStats.bestDay}
-				/>
-			)}
-
-			{/* Stats Grid */}
-			<StatsGrid streak={stats.streak} reviewedToday={stats.totalReviewed} />
-
-			{/* Quick Actions */}
-			<QuickActions />
-
-			{/* My Decks */}
-			<MyDecks decks={decks} />
+			{/* Donation Button */}
+			<DonationButton />
 		</motion.div>
 	);
 }

@@ -9,16 +9,23 @@
         "done": "Hoàn tất",
         "saveSuccess": "Đã lưu cài đặt!",
         "saveError": "Không thể lưu cài đặt",
-        "reportIssue": "Báo cáo lỗi"
+        "reportIssue": "Báo cáo lỗi",
+        "edit": "Sửa",
+        "delete": "Xóa",
+        "rateAgain": "Lại",
+        "rateHard": "Khó",
+        "rateGood": "Tốt",
+        "rateEasy": "Dễ"
     },
     "NavBar": {
-        "dashboard": "Bảng tin",
+        "dashboard": "Trang chủ",
         "decks": "Bộ thẻ",
         "study": "Học tập",
         "profile": "Hồ sơ",
         "analytics": "Thống kê",
         "community": "Cộng đồng",
-        "menu": "Menu"
+        "menu": "Menu",
+        "share": "Chia sẻ"
     },
     "Dashboard": {
         "heroTitle": "Sẵn sàng học chưa?",
@@ -30,7 +37,7 @@
         "browseDecks": "Khám phá bộ thẻ",
         "dayStreak": "Chuỗi ngày",
         "reviewedToday": "Đã ôn tập hôm nay",
-        "quickAccess": "Thao tác nhanh",
+        "features": "Tính năng",
         "allVocab": "Tất cả từ vựng",
         "allKanji": "Tất cả Kanji",
         "greetingMorning": "Chào buổi sáng",
@@ -42,7 +49,7 @@
         "thisWeek": "Tuần này",
         "bestDay": "Ngày tốt nhất",
         "myDecks": "Bộ thẻ của tôi",
-        "newDeck": "+ Tạo mới",
+        "newDeck": "Tạo mới",
         "dueCount": "{count} cần ôn",
         "cardsCount": "{count} thẻ",
         "viewAll": "Xem tất cả",
@@ -58,7 +65,9 @@
         "totalCards": "Tổng số thẻ",
         "mastered": "Thành thạo",
         "nextReview": "Ôn tập tiếp",
-        "hours": "giờ"
+        "hours": "giờ",
+        "yourTopTips": "Mẹo hay của bạn",
+        "communityHighlights": "Nổi bật trong cộng đồng"
     },
     "Study": {
         "settingsTitle": "Cài đặt học tập",
@@ -83,7 +92,7 @@
     "Decks": {
         "libraryTitle": "Thư viện",
         "librarySubtitle": "Khám phá và quản lý bộ từ vựng của bạn",
-        "newDeck": "+ Bộ thẻ mới",
+        "newDeck": "Bộ thẻ mới",
         "publicTag": "Công khai",
         "noDescription": "Chưa có mô tả.",
         "cardsCount": "{count} Thẻ",
@@ -120,6 +129,7 @@
         "guideTitle": "Hướng dẫn:",
         "guideSpace": "Lật / Đánh giá Tốt",
         "guideNumbers": "Đánh giá câu trả lời",
+        "guideMobile": "Di động: Biểu tượng tự ẩn (5s)",
         "advancedSettings": "Cài đặt nâng cao & Giới hạn",
         "limitNewCards": "Thẻ mới / Ngày",
         "limitReviews": "Ôn tập / Ngày",
@@ -171,5 +181,52 @@
         "ctaTitle": "Sẵn sàng bắt đầu hành trình?",
         "ctaSubtitle": "Tham gia cùng hàng ngàn người học đang chinh phục tiếng Nhật hiệu quả. Không cần thẻ tín dụng.",
         "ctaButton": "Bắt đầu miễn phí"
+    },
+    "Comments": {
+        "title": "Mẹo cộng đồng",
+        "addTip": "Thêm mẹo",
+        "writeTip": "Viết mẹo",
+        "cancel": "Hủy",
+        "save": "Lưu",
+        "edit": "Sửa",
+        "delete": "Xóa",
+        "deleteTitle": "Xóa bình luận này?",
+        "deleteConfirm": "Bạn có chắc chắn muốn xóa bình luận này không?",
+        "updateSuccess": "Cập nhật thành công",
+        "updateError": "Cập nhật thất bại",
+        "postSuccess": "Đã đăng bình luận",
+        "postError": "Đăng thất bại",
+        "placeholder": "Chia sẻ mẹo ghi nhớ, cách dùng hoặc suy nghĩ của bạn...",
+        "contentLabel": "Nội dung",
+        "typeLabel": "Loại bình luận",
+        "postButton": "Đăng bình luận",
+        "noComments": "Chưa có bình luận. Hãy là người đầu tiên chia sẻ!",
+        "typeMnemonic": "Mẹo ghi nhớ (Mnemonic)",
+        "typeTip": "Mẹo sử dụng",
+        "typeCulture": "Lưu ý văn hóa",
+        "typeExample": "Ví dụ câu",
+        "typeGrammar": "Hỗ trợ ngữ pháp",
+        "typeGeneral": "Bình luận chung",
+        "validationRequired": "Vui lòng viết gì đó!",
+        "validationTooShort": "Quá ngắn (tối thiểu 5 ký tự)",
+        "validationTooLong": "Quá dài (tối đa 500 ký tự)"
+    },
+    "Donation": {
+        "title": "Ủng hộ WatashiWa",
+        "description": "WatashiWa là dự án tâm huyết của một lập trình viên độc lập. Sự ủng hộ của bạn đóng góp trực tiếp vào chi phí máy chủ và phát triển tính năng mới. Cảm ơn bạn đã đồng hành!",
+        "scanVietQR": "Quét bằng bất kỳ ứng dụng ngân hàng nào",
+        "scanMomo": "Quét bằng ứng dụng Momo",
+        "payPayId": "PayPay ID",
+        "payPayInstructions": "Gửi qua tìm kiếm ID trong ứng dụng PayPay",
+        "bankTransfer": "Chuyển khoản ngân hàng",
+        "copyAccount": "Sao chép số tài khoản",
+        "copied": "Đã sao chép!",
+        "mbBank": "MB Bank"
+    },
+    "Share": {
+        "title": "Mời bạn bè",
+        "hook": "Học cùng bạn bè vui hơn gấp đôi! Mời họ tham gia WatashiWa ngay hôm nay.",
+        "copyLink": "Sao chép liên kết",
+        "copied": "Đã sao chép!"
     }
 }

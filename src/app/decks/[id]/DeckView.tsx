@@ -31,7 +31,9 @@ import {
 	CheckCircleOutlined,
 	SyncOutlined,
 	PlaySquareOutlined,
+	CommentOutlined,
 } from '@ant-design/icons';
+import CommentDrawer from '@/components/comments/CommentDrawer';
 import Link from 'next/link';
 import confetti from 'canvas-confetti';
 import { useTranslations } from 'next-intl';
@@ -43,6 +45,21 @@ export default function DeckView({ deck }: { deck: any }) {
 	const [viewMode, setViewMode] = useState<'List' | 'Grid'>('Grid');
 
 	const [activeTab, setActiveTab] = useState<'vocab' | 'kanji'>('vocab');
+
+	// Comment Drawer State
+	const [commentDrawerOpen, setCommentDrawerOpen] = useState(false);
+	const [selectedEntityId, setSelectedEntityId] = useState<string | undefined>(undefined);
+	const [selectedEntityType, setSelectedEntityType] = useState<'vocab' | 'kanji' | undefined>(
+		undefined,
+	);
+	const [selectedEntityTitle, setSelectedEntityTitle] = useState<string | undefined>(undefined);
+
+	const openComments = (item: any, type: 'vocab' | 'kanji') => {
+		setSelectedEntityId(item.id);
+		setSelectedEntityType(type);
+		setSelectedEntityTitle(type === 'vocab' ? item.wordSurface : item.kanji);
+		setCommentDrawerOpen(true);
+	};
 
 	const stats = deck.stats || {
 		total: 0,
@@ -97,19 +114,16 @@ export default function DeckView({ deck }: { deck: any }) {
 			responsive: ['sm'],
 		},
 		{
-			title: t('columnStatus'),
-			key: 'status',
-
-			render: () => {
-				// Assuming we joined studyCard logic or similar, but complex in Table.
-				// For now, if no studyCard link in this view, we can't show status easily without extra data.
-				// Let's check if the deck prop includes study status.
-				// If not, we might skipped this column or show "Not Started".
-				// The current `getDeck` might not join StudyCard for ALL items for performance.
-				// Let's assume we don't have per-user card status here yet unless passed.
-				// Placeholder:
-				return <Tag color="default">N/A</Tag>;
-			},
+			title: t('columnStatus'), // Or 'Actions'
+			key: 'actions',
+			width: 80,
+			render: (_: any, record: any) => (
+				<Button
+					type="text"
+					icon={<CommentOutlined />}
+					onClick={() => openComments(record, 'vocab')}
+				/>
+			),
 		},
 	];
 
@@ -200,7 +214,22 @@ export default function DeckView({ deck }: { deck: any }) {
 									<Text strong style={{ fontSize: 20, color: '#1E3A5F' }}>
 										{type === 'vocab' ? item.wordSurface : item.kanji}
 									</Text>
-									{item.hanViet && <Tag color="gold">{item.hanViet}</Tag>}
+									<div style={{ display: 'flex', gap: 4 }}>
+										{item.hanViet && (
+											<Tag color="gold" style={{ margin: 0 }}>
+												{item.hanViet}
+											</Tag>
+										)}
+										<Button
+											size="small"
+											type="text"
+											icon={<CommentOutlined />}
+											onClick={(e) => {
+												e.stopPropagation(); // Prevent card click if we had one
+												openComments(item, type);
+											}}
+										/>
+									</div>
 								</Flex>
 								{type === 'vocab' && <Text type="secondary">{item.readingKana}</Text>}
 								<div style={{ minHeight: 40 }}>
@@ -380,6 +409,14 @@ export default function DeckView({ deck }: { deck: any }) {
 				onChange={(key) => setActiveTab(key as any)}
 				items={tabItems}
 				type="card"
+			/>
+
+			<CommentDrawer
+				open={commentDrawerOpen}
+				onClose={() => setCommentDrawerOpen(false)}
+				entityId={selectedEntityId}
+				entityType={selectedEntityType}
+				entityTitle={selectedEntityTitle}
 			/>
 		</div>
 	);

@@ -181,7 +181,7 @@ export default function QuickActions() {
 			style={{ marginBottom: 32 }}
 		>
 			<Title level={5} style={{ marginBottom: 16, color: '#1E3A5F' }}>
-				{t('quickAccess')}
+				{t('features')}
 			</Title>
 			<Row gutter={[12, 12]}>{actions.map(renderAction)}</Row>
 		</motion.div>

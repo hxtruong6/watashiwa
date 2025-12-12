@@ -5,3 +5,6 @@ export { default as StatsGrid } from './StatsGrid';
 export { default as WeeklyChart } from './WeeklyChart';
 export { default as QuickActions } from './QuickActions';
 export { default as MyDecks } from './MyDecks';
+export { default as TrendingTips } from './TrendingTips';
+export { default as MyContributions } from './MyContributions';
+export * from './DonationButton';

@@ -9,16 +9,23 @@
         "done": "Done",
         "saveSuccess": "Settings saved!",
         "saveError": "Failed to save settings",
-        "reportIssue": "Report Issue"
+        "reportIssue": "Report Issue",
+        "edit": "Edit",
+        "delete": "Delete",
+        "rateAgain": "Again",
+        "rateHard": "Hard",
+        "rateGood": "Good",
+        "rateEasy": "Easy"
     },
     "NavBar": {
-        "dashboard": "Dashboard",
+        "dashboard": "Home",
         "decks": "Decks",
         "study": "Study",
         "profile": "Profile",
         "analytics": "Analytics",
         "community": "Community",
-        "menu": "Menu"
+        "menu": "Menu",
+        "share": "Share"
     },
     "Dashboard": {
         "heroTitle": "Ready to learn?",
@@ -30,7 +37,7 @@
         "browseDecks": "Browse Decks",
         "dayStreak": "Day Streak",
         "reviewedToday": "Reviewed Today",
-        "quickAccess": "Quick Actions",
+        "features": "Features",
         "allVocab": "All Vocab",
         "allKanji": "All Kanji",
         "greetingMorning": "Good morning",
@@ -42,7 +49,7 @@
         "thisWeek": "This week",
         "bestDay": "Best day",
         "myDecks": "My Decks",
-        "newDeck": "+ New",
+        "newDeck": "New",
         "dueCount": "{count} due",
         "cardsCount": "{count} cards",
         "viewAll": "View All",
@@ -58,7 +65,9 @@
         "totalCards": "Total Cards",
         "mastered": "Mastered",
         "nextReview": "Next review",
-        "hours": "hours"
+        "hours": "hours",
+        "yourTopTips": "Your Top Tips",
+        "communityHighlights": "Community Highlights (Trending Tips)"
     },
     "Study": {
         "settingsTitle": "Learning Settings",
@@ -83,7 +92,7 @@
     "Decks": {
         "libraryTitle": "Library",
         "librarySubtitle": "Explore and manage your vocabulary decks",
-        "newDeck": "+ New Deck",
+        "newDeck": "New Deck",
         "publicTag": "Public",
         "noDescription": "No description provided.",
         "cardsCount": "{count} Cards",
@@ -120,6 +129,7 @@
         "guideTitle": "Guide:",
         "guideSpace": "Flip / Rate Good",
         "guideNumbers": "Rate Answer",
+        "guideMobile": "Mobile: Icons auto-hide (5s)",
         "advancedSettings": "Advanced Rules & Limits",
         "limitNewCards": "New Cards / Day",
         "limitReviews": "Reviews / Day",
@@ -171,5 +181,52 @@
         "ctaTitle": "Ready to start your journey?",
         "ctaSubtitle": "Join thousands of learners mastering Japanese efficiently. No credit card required.",
         "ctaButton": "Get Started for Free"
+    },
+    "Comments": {
+        "title": "Community Tips",
+        "addTip": "Add Tip",
+        "writeTip": "Write a Tip",
+        "cancel": "Cancel",
+        "save": "Save",
+        "edit": "Edit",
+        "delete": "Delete",
+        "deleteTitle": "Delete this comment?",
+        "deleteConfirm": "Are you sure you want to delete this comment?",
+        "updateSuccess": "Comment updated",
+        "updateError": "Failed to update",
+        "postSuccess": "Comment posted",
+        "postError": "Failed to post comment",
+        "placeholder": "Share your trick, tip, or thought...",
+        "contentLabel": "Content",
+        "typeLabel": "Comment Type",
+        "postButton": "Post Comment",
+        "noComments": "No comments yet. Be the first to share a tip!",
+        "typeMnemonic": "Mnemonic (Memory Trick)",
+        "typeTip": "Usage Tip",
+        "typeCulture": "Cultural Note",
+        "typeExample": "Example Sentence",
+        "typeGrammar": "Grammar Helper",
+        "typeGeneral": "General Comment",
+        "validationRequired": "Please write something!",
+        "validationTooShort": "Too short (min 5 chars)",
+        "validationTooLong": "Too long (max 500 chars)"
+    },
+    "Donation": {
+        "title": "Support WatashiWa",
+        "description": "WatashiWa is a passion project built by a solo developer. Your support directly contributes to server costs and future feature development. Thank you for keeping the learning journey alive!",
+        "scanVietQR": "Scan with any banking app in Vietnam",
+        "scanMomo": "Scan with Momo App",
+        "payPayId": "PayPay ID",
+        "payPayInstructions": "Send via ID search in PayPay app",
+        "bankTransfer": "Bank Transfer",
+        "copyAccount": "Copy Account Info",
+        "copied": "Copied!",
+        "mbBank": "MB Bank"
+    },
+    "Share": {
+        "title": "Invite Friends",
+        "hook": "Learning with friends doubles the fun! Invite them to WatashiWa today.",
+        "copyLink": "Copy Link",
+        "copied": "Copied!"
     }
 }

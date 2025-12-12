@@ -42,12 +42,18 @@ export default function MyDecks({ decks }: MyDecksProps) {
 				</Title>
 				<Flex gap={8}>
 					<Link href="/decks/new">
-						<Button type="text" size="small" icon={<PlusOutlined />}>
+						<Button type="text" size="small" icon={<PlusOutlined />} style={{ fontSize: 12 }}>
 							{t('newDeck')}
 						</Button>
 					</Link>
 					<Link href="/decks">
-						<Button type="link" size="small" icon={<RightOutlined />} iconPlacement="end">
+						<Button
+							type="link"
+							style={{ fontSize: 12 }}
+							size="small"
+							icon={<RightOutlined />}
+							iconPlacement="end"
+						>
 							{t('viewAll')}
 						</Button>
 					</Link>

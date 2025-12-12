@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { Layout, Button, Flex, Result, Spin, App, Drawer, Progress, Typography } from 'antd';
+import { Layout, Button, Flex, Result, Spin, App, Drawer, Progress, Typography, Badge } from 'antd';
 import { useTranslations } from 'next-intl';
 import {
 	getNextReviewCard,
@@ -14,6 +14,7 @@ import FlashCard from '@/components/FlashCard';
 import VocabSettings from '@/components/VocabSettings';
 import ReportModal from '@/components/ReportModal';
 import RatingBar from '@/components/RatingBar';
+import CommentDrawer from '@/components/comments/CommentDrawer';
 import {
 	LoadingOutlined,
 	CheckCircleFilled,
@@ -22,6 +23,7 @@ import {
 	FireOutlined,
 	TrophyOutlined,
 	FlagOutlined,
+	TeamOutlined,
 } from '@ant-design/icons';
 import { useRouter, useSearchParams } from 'next/navigation';
 import confetti from 'canvas-confetti';
@@ -64,6 +66,7 @@ export default function StudyContent() {
 	const [autoShowAnswer, setAutoShowAnswer] = useState(false);
 	const [autoShowAnswerDelay, setAutoShowAnswerDelay] = useState(40);
 	const [isReportModalOpen, setIsReportModalOpen] = useState(false);
+	const [isCommentDrawerOpen, setIsCommentDrawerOpen] = useState(false);
 
 	const { message } = App.useApp();
 	const router = useRouter();
@@ -100,20 +103,53 @@ export default function StudyContent() {
 	}, []);
 
 	// Scroll Detection for Distraction Free Mode
+	// Scroll & Inactivity Detection
 	useEffect(() => {
 		let lastScrollY = window.scrollY;
+		let timeoutId: NodeJS.Timeout;
+
+		const resetTimer = () => {
+			clearTimeout(timeoutId);
+			// Only auto-hide if scrolled down a bit (not at very top) to avoid annoying behavior?
+			// User request: "auto hide ... after 5s. show again if scroll".
+			// Let's just strict 5s hide.
+			timeoutId = setTimeout(() => {
+				setHeaderVisible(false);
+			}, 5000);
+		};
+
 		const handleScroll = () => {
 			const currentScrollY = window.scrollY;
+
+			// Standard Scroll Logic
 			if (currentScrollY > lastScrollY && currentScrollY > 50) {
-				setHeaderVisible(false); // Hide on scroll down
+				setHeaderVisible(false); // Hide on scroll down (swipe up)
 			} else {
-				setHeaderVisible(true); // Show on scroll up
+				// Show on scroll up (swipe down) OR tap
+				setHeaderVisible(true);
+				resetTimer(); // Reset inactivity timer on show
 			}
 			lastScrollY = currentScrollY;
 		};
 
+		// Also listen for touches to show header
+		const handleInteraction = () => {
+			setHeaderVisible(true);
+			resetTimer();
+		};
+
 		window.addEventListener('scroll', handleScroll, { passive: true });
-		return () => window.removeEventListener('scroll', handleScroll);
+		window.addEventListener('touchstart', handleInteraction, { passive: true });
+		window.addEventListener('click', handleInteraction, { passive: true });
+
+		resetTimer(); // Start initial timer
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+			window.removeEventListener('touchstart', handleInteraction);
+			window.removeEventListener('click', handleInteraction);
+			clearTimeout(timeoutId);
+		};
 	}, []);
 
 	// Update Stats helper
@@ -217,6 +253,7 @@ export default function StudyContent() {
 				sessionComplete ||
 				settingsVisible ||
 				isReportModalOpen ||
+				isCommentDrawerOpen ||
 				isInput
 			)
 				return;
@@ -262,6 +299,7 @@ export default function StudyContent() {
 		handleRate,
 		settingsVisible,
 		isReportModalOpen,
+		isCommentDrawerOpen,
 		allowSpaceKey,
 		spaceKeyRating,
 	]);
@@ -376,6 +414,9 @@ export default function StudyContent() {
 		(dailyStats.reviewsToday / (dailyStats.limitReviews || 1)) * 100,
 	);
 
+	// Get comment count // Safely handle if _count is missing (if prisma not updated yet)
+	const commentCount = card?.vocab?._count?.cardComments || card?.kanji?._count?.cardComments || 0;
+
 	return (
 		<Layout style={{ minHeight: '100vh', background: '#F9F7F2' }}>
 			{/* Minimal Top Progress Bar */}
@@ -400,7 +441,7 @@ export default function StudyContent() {
 				/>
 			</div>
 
-			{/* Exit Button - Top Right */}
+			{/* Top Right Controls (Close Only) */}
 			<div style={{ ...headerStyle, top: 16, right: 16 }}>
 				<Button
 					shape="circle"
@@ -411,7 +452,16 @@ export default function StudyContent() {
 				/>
 			</div>
 
-			{/* Settings Button - Top Left */}
+			{/* Comment Drawer */}
+			<CommentDrawer
+				open={isCommentDrawerOpen}
+				onClose={() => setIsCommentDrawerOpen(false)}
+				entityId={card?.vocab?.id || card?.kanji?.id}
+				entityType={card?.vocab ? 'vocab' : card?.kanji ? 'kanji' : undefined}
+				entityTitle={card?.vocab?.wordSurface || card?.kanji?.kanji}
+			/>
+
+			{/* Top Left Controls (Settings + Community + Counter) */}
 			<div style={{ ...headerStyle, top: 16, left: 16 }}>
 				<Flex gap="small" align="center">
 					<Button
@@ -421,6 +471,24 @@ export default function StudyContent() {
 						onMouseDown={(e) => e.preventDefault()}
 						style={{ border: 'none', background: 'rgba(0,0,0,0.05)', width: 44, height: 44 }}
 					/>
+
+					{/* Community Component (Moved) */}
+					<Badge count={commentCount} size="small" color="blue" offset={[-5, 5]}>
+						<Button
+							shape="circle"
+							icon={<TeamOutlined />}
+							onClick={() => setIsCommentDrawerOpen(true)}
+							onMouseDown={(e) => e.preventDefault()}
+							style={{
+								border: 'none',
+								background: 'rgba(0,0,0,0.05)',
+								width: 44,
+								height: 44,
+								color: '#1E3A5F', // Indigo brand color
+							}}
+						/>
+					</Badge>
+
 					{/* Cards Left Counter */}
 					<div
 						style={{
