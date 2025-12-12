@@ -1,6 +1,7 @@
 import React from 'react';
 import HeroSection from './HeroSection';
 import FeatureSection from './FeatureSection';
+import SocialProofSection from './SocialProofSection';
 import CTASection from './CTASection';
 
 export default function LandingPage() {
@@ -8,6 +9,7 @@ export default function LandingPage() {
 		<main>
 			<HeroSection />
 			<FeatureSection />
+			<SocialProofSection />
 			<CTASection />
 			<footer
 				style={{ padding: '24px', textAlign: 'center', background: '#F9F7F2', color: '#888' }}

@@ -4,6 +4,8 @@
 import { prisma } from '@/lib/db';
 import { createClient } from '@/utils/supabase/server';
 import type { StudyCard, Vocab, Kanji, User } from '@/generated/prisma';
+import { UserRole, ReportStatus, ReportType } from '@/generated/prisma';
+import { requireRole, hasRole } from '@/lib/auth/roleGuard';
 import { Card, fsrs, generatorParameters, Rating, State } from 'ts-fsrs';
 
 // Initialize FSRS with default parameters
@@ -864,5 +866,238 @@ export async function getDashboardData() {
 	} catch (error) {
 		console.error('Error fetching dashboard data:', error);
 		return null;
+	}
+}
+
+// --- Admin & Roles ---
+
+/**
+ * Get current user with role
+ */
+export async function getUserWithRole() {
+	const user = await getUser();
+	if (!user) return null;
+
+	const dbUser = await prisma.user.findUnique({
+		where: { id: user.id },
+		select: { id: true, name: true, email: true, role: true },
+	});
+	return dbUser;
+}
+
+/**
+ * Get stats for Admin Dashboard
+ * Requires MODERATOR or higher
+ */
+export async function getAdminStats() {
+	try {
+		const currentUser = await getUserWithRole();
+		requireRole(currentUser?.role, UserRole.MODERATOR);
+
+		const [userCount, reviewCount, activeToday] = await Promise.all([
+			prisma.user.count(),
+			prisma.reviewLog.count(),
+			prisma.user.count({
+				where: {
+					OR: [
+						{ lastLogin: { gte: new Date(new Date().setHours(0, 0, 0, 0)) } },
+						{ updatedAt: { gte: new Date(new Date().setHours(0, 0, 0, 0)) } },
+					],
+				},
+			}),
+		]);
+
+		return { userCount, reviewCount, activeToday };
+	} catch (error) {
+		console.error('Admin stats error:', error);
+		throw error; // Let UI handle it
+	}
+}
+
+/**
+ * Get all users for management
+ * Requires ADMIN
+ */
+export async function getAllUsers() {
+	try {
+		const currentUser = await getUserWithRole();
+		requireRole(currentUser?.role, UserRole.ADMIN);
+
+		// Limit to 100 for now
+		return await prisma.user.findMany({
+			take: 100,
+			orderBy: { createdAt: 'desc' },
+		});
+	} catch (error) {
+		console.error('Get users error:', error);
+		return [];
+	}
+}
+
+/**
+ * Update a user's role
+ * Requires ADMIN
+ */
+export async function updateUserRole(targetUserId: string, newRole: UserRole) {
+	try {
+		const currentUser = await getUserWithRole();
+		requireRole(currentUser?.role, UserRole.ADMIN);
+
+		const updatedUser = await prisma.user.update({
+			where: { id: targetUserId },
+			data: { role: newRole },
+		});
+		return { success: true, data: updatedUser };
+	} catch (error) {
+		console.error('Error updating user role:', error);
+		return { success: false, error: 'Failed to update user role' };
+	}
+}
+
+// --- Card Reporting Actions ---
+
+export async function submitReport(data: {
+	vocabId?: string;
+	kanjiId?: string;
+	type: ReportType;
+	field?: string;
+	currentValue?: string;
+	suggestedValue?: string;
+	notes?: string;
+}) {
+	try {
+		const user = await getUser();
+		if (!user) return { success: false, error: 'Unauthorized' };
+
+		// Basic Validation: Must define what is reported
+		if (!data.vocabId && !data.kanjiId) {
+			return { success: false, error: 'Must specify a Vocab or Kanji ID' };
+		}
+
+		await prisma.cardReport.create({
+			data: {
+				reporterId: user.id,
+				vocabId: data.vocabId,
+				kanjiId: data.kanjiId,
+				type: data.type,
+				field: data.field,
+				currentValue: data.currentValue,
+				suggestedValue: data.suggestedValue,
+				notes: data.notes,
+			},
+		});
+
+		return { success: true };
+	} catch (error) {
+		console.error('Error submitting report:', error);
+		return { success: false, error: 'Failed to submit report' };
+	}
+}
+
+export async function getReports(limit: number = 50, status: ReportStatus = ReportStatus.PENDING) {
+	try {
+		const user = await getUserWithRole();
+		if (!user || user.role === UserRole.USER) {
+			return { success: false, error: 'Unauthorized' };
+		}
+
+		const reports = await prisma.cardReport.findMany({
+			where: { status },
+			take: limit,
+			orderBy: { createdAt: 'desc' },
+			include: {
+				reporter: { select: { name: true, email: true } },
+				vocab: true, // Fetch full vocab details
+				kanji: true, // Fetch full kanji details
+			},
+		});
+		return { success: true, data: reports };
+	} catch (error) {
+		console.error('Error fetching reports:', error);
+		return { success: false, error: 'Failed to fetch reports' };
+	}
+}
+
+export async function resolveReport(
+	reportId: string,
+	action: 'ACCEPT' | 'REJECT',
+	resolutionStr?: string,
+) {
+	try {
+		const currentUser = await getUserWithRole();
+		if (!currentUser || !hasRole(currentUser.role, UserRole.MODERATOR)) {
+			return { success: false, error: 'Unauthorized' };
+		}
+
+		const status = action === 'ACCEPT' ? ReportStatus.ACCEPTED : ReportStatus.REJECTED;
+
+		const updated = await prisma.cardReport.update({
+			where: { id: reportId },
+			data: {
+				status,
+				resolution: resolutionStr,
+				resolvedById: currentUser.id,
+				resolvedAt: new Date(),
+			},
+		});
+
+		// Logic for points could go here (e.g. if ACCEPT => awarding points to reporter)
+		if (status === ReportStatus.ACCEPTED) {
+			// Placeholder: await awardPoints(updated.reporterId, 5);
+			console.log(`Accepted report ${reportId}, would award points to ${updated.reporterId}`);
+		}
+
+		return { success: true };
+	} catch (error) {
+		console.error('Error resolving report:', error);
+		return { success: false, error: 'Failed to resolve report' };
+	}
+}
+
+export async function updateVocab(id: string, data: Partial<Vocab>) {
+	try {
+		const user = await getUserWithRole();
+		if (!user || !hasRole(user.role, UserRole.MODERATOR)) {
+			return { success: false, error: 'Unauthorized' };
+		}
+
+		await prisma.vocab.update({
+			where: { id },
+			data: {
+				wordSurface: data.wordSurface,
+				readingKana: data.readingKana,
+				meaning: data.meaning,
+				exampleSentence: data.exampleSentence as any,
+				wordParts: data.wordParts as any,
+			},
+		});
+		return { success: true };
+	} catch (error) {
+		console.error('Error updating vocab:', error);
+		return { success: false, error: 'Failed to update vocab' };
+	}
+}
+
+export async function updateKanji(id: string, data: Partial<Kanji>) {
+	try {
+		const user = await getUserWithRole();
+		if (!user || !hasRole(user.role, UserRole.MODERATOR)) {
+			return { success: false, error: 'Unauthorized' };
+		}
+
+		await prisma.kanji.update({
+			where: { id },
+			data: {
+				kanji: data.kanji,
+				onyomi: data.onyomi,
+				kunyomi: data.kunyomi,
+				meaning: data.meaning,
+				examples: data.examples as any,
+			},
+		});
+		return { success: true };
+	} catch (error) {
+		console.error('Error updating kanji:', error);
+		return { success: false, error: 'Failed to update kanji' };
 	}
 }

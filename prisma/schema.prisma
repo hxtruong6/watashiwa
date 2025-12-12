@@ -20,6 +20,8 @@ model User {
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime  @updatedAt @map("updated_at")
 
+  role UserRole @default(USER)
+
   // Learning Limits
   limitNewCards Int @default(20) @map("limit_new_cards")
   limitReviews  Int @default(200) @map("limit_reviews")
@@ -32,9 +34,17 @@ model User {
   timezone            String  @default("UTC")
 
   // Relations
-  decks      Deck[] // Decks created by user
-  studyCards StudyCard[]
-  reviewLogs ReviewLog[]
+  studyCards      StudyCard[]
+  reviewLogs      ReviewLog[]
+  reportsSent     CardReport[] @relation("ReportedBy")
+  reportsResolved CardReport[] @relation("ResolvedBy")
+  decks           Deck[]
+}
+
+enum UserRole {
+  USER
+  MODERATOR
+  ADMIN
 }
 
 // Deck Model: A collection of vocabulary
@@ -75,8 +85,9 @@ model Vocab {
   // Relations
   studyCards StudyCard[]
 
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+  cardReports CardReport[]
 
   @@index([deckId])
 }
@@ -100,8 +111,9 @@ model Kanji {
   // Relations
   studyCards StudyCard[]
 
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+  cardReports CardReport[]
 
   @@index([deckId])
 }
@@ -163,4 +175,60 @@ model ReviewLog {
   @@index([cardId])
   @@index([review])
   @@index([userId])
+}
+
+// Card Reporting System
+model CardReport {
+  id String @id @default(uuid())
+
+  // What is being reported
+  vocabId String? @map("vocab_id")
+  vocab   Vocab?  @relation(fields: [vocabId], references: [id], onDelete: Cascade)
+
+  kanjiId String? @map("kanji_id")
+  kanji   Kanji?  @relation(fields: [kanjiId], references: [id], onDelete: Cascade)
+
+  // Who reported
+  reporterId String @map("reporter_id")
+  reporter   User   @relation("ReportedBy", fields: [reporterId], references: [id], onDelete: Cascade)
+
+  // Report details
+  type           ReportType
+  field          String? // Which field is incorrect (e.g., "readingKana", "meaning")
+  currentValue   String?    @map("current_value")
+  suggestedValue String?    @map("suggested_value")
+  notes          String?
+
+  // Resolution
+  status       ReportStatus @default(PENDING)
+  resolvedById String?      @map("resolved_by_id")
+  resolvedBy   User?        @relation("ResolvedBy", fields: [resolvedById], references: [id])
+  resolution   String? // Reason for reject, or confirmation message
+  resolvedAt   DateTime?    @map("resolved_at")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([status])
+  @@index([vocabId])
+  @@index([kanjiId])
+  @@index([reporterId])
+}
+
+enum ReportType {
+  INCORRECT_READING
+  INCORRECT_MEANING
+  INCORRECT_HAN_VIET
+  TYPO
+  MISSING_AUDIO
+  WRONG_EXAMPLE
+  DUPLICATE
+  OTHER
+}
+
+enum ReportStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  DUPLICATE
 }

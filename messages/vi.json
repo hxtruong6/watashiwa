@@ -8,7 +8,8 @@
         "soon": "Sắp ra mắt",
         "done": "Hoàn tất",
         "saveSuccess": "Đã lưu cài đặt!",
-        "saveError": "Không thể lưu cài đặt"
+        "saveError": "Không thể lưu cài đặt",
+        "reportIssue": "Báo cáo lỗi"
     },
     "NavBar": {
         "dashboard": "Bảng tin",
@@ -130,5 +131,45 @@
         "autoShowAnswer": "Tự động hiện đáp án",
         "autoShowAnswerDelay": "Độ trễ (giây)",
         "saveSettings": "Lưu cài đặt"
+    },
+    "Admin": {
+        "panelTitle": "Trang quản trị",
+        "overview": "Tổng quan",
+        "users": "Người dùng",
+        "totalUsers": "Tổng người dùng",
+        "totalReviews": "Tổng lượt ôn tập",
+        "activeToday": "Hoạt động hôm nay"
+    },
+    "Landing": {
+        "heroTitle": "Chinh phục tiếng Nhật với",
+        "heroTitleAccent": "Sự Tập Trung Tuyệt Đối",
+        "heroSubtitle": "Nền tảng SRS không xao nhãng dành cho người học nghiêm túc. Tối ưu hóa thời gian học với thuật toán thông minh, thống kê chi tiết và giao diện đẹp, sạch sẽ.",
+        "startLearning": "Bắt đầu học miễn phí",
+        "exploreFeatures": "Khám phá tính năng",
+        "badge": "Mới v2.0",
+        "freePlan": "Gói miễn phí trọn đời",
+        "noAds": "Không quảng cáo",
+        "openSource": "Mã nguồn mở",
+        "featuresTitle": "Tại sao chọn WatashiWa?",
+        "featuresSubtitle": "Mọi thứ bạn cần để đạt đến sự trôi chảy, gói gọn trong trải nghiệm hiện đại, sạch sẽ.",
+        "featureSRS": "Lặp lại thông minh (SRS)",
+        "featureSRSDesc": "Sử dụng thuật toán FSRS tiên tiến để lên lịch ôn tập chính xác khi bạn cần.",
+        "featureKanji": "Thành thạo Kanji",
+        "featureKanjiDesc": "Chế độ chuyên biệt cho nét viết và ý nghĩa Kanji.",
+        "featureMobile": "Ưu tiên di động",
+        "featureMobileDesc": "Học mọi lúc, mọi nơi với tối ưu hóa sử dụng một tay.",
+        "featureOffline": "Hỗ trợ ngoại tuyến",
+        "featureOfflineDesc": "Hoạt động mượt mà ngay cả khi kết nối mạng chập chờn.",
+        "featureAnalytics": "Thống kê chi tiết",
+        "featureAnalyticsDesc": "Theo dõi tỷ lệ ghi nhớ và chuỗi hoạt động hàng ngày.",
+        "featureCommunity": "Bộ thẻ cộng đồng",
+        "featureCommunityDesc": "Tải xuống các bộ thẻ được chia sẻ cho JLPT, Core 2k và nhiều hơn nữa.",
+        "statsLearners": "Học viên tích cực",
+        "statsReviews": "Thẻ đã ôn tập",
+        "statsDecks": "Bộ thẻ đã chia sẻ",
+        "statsPassRate": "Tỷ lệ đậu JLPT",
+        "ctaTitle": "Sẵn sàng bắt đầu hành trình?",
+        "ctaSubtitle": "Tham gia cùng hàng ngàn người học đang chinh phục tiếng Nhật hiệu quả. Không cần thẻ tín dụng.",
+        "ctaButton": "Bắt đầu miễn phí"
     }
 }

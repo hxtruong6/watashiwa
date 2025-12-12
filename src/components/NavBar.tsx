@@ -45,8 +45,8 @@ export default function NavBar({ user }: { user?: User | null }) {
 	const showDrawer = () => setDrawerOpen(true);
 	const closeDrawer = () => setDrawerOpen(false);
 
-	// Don't show NavBar on login or study pages (immersive mode)
-	if (pathname === '/login' || pathname === '/study') {
+	// Don't show NavBar on login or study pages (immersive mode), or Admin Panel
+	if (pathname === '/login' || pathname === '/study' || pathname?.startsWith('/admin')) {
 		return null;
 	}
 

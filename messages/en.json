@@ -8,7 +8,8 @@
         "soon": "Coming Soon",
         "done": "Done",
         "saveSuccess": "Settings saved!",
-        "saveError": "Failed to save settings"
+        "saveError": "Failed to save settings",
+        "reportIssue": "Report Issue"
     },
     "NavBar": {
         "dashboard": "Dashboard",
@@ -130,5 +131,45 @@
         "autoShowAnswer": "Auto-Show Answer",
         "autoShowAnswerDelay": "Delay (seconds)",
         "saveSettings": "Save Settings"
+    },
+    "Admin": {
+        "panelTitle": "Admin Panel",
+        "overview": "Overview",
+        "users": "Users",
+        "totalUsers": "Total Users",
+        "totalReviews": "Total Reviews",
+        "activeToday": "Active Today"
+    },
+    "Landing": {
+        "heroTitle": "Master Japanese with",
+        "heroTitleAccent": "Zen Focus",
+        "heroSubtitle": "The distraction-free SRS platform built for serious learners. Optimize your study time with our smart algorithm, detailed analytics, and a beautiful, clean interface.",
+        "startLearning": "Start Learning Free",
+        "exploreFeatures": "Explore Features",
+        "badge": "New v2.0",
+        "freePlan": "Free Forever Plan",
+        "noAds": "No Ads",
+        "openSource": "Open Source",
+        "featuresTitle": "Why WatashiWa?",
+        "featuresSubtitle": "Everything you need to reach fluency, packed into a clean, modern experience.",
+        "featureSRS": "Smart Repetition (SRS)",
+        "featureSRSDesc": "Powered by the advanced FSRS algorithm to schedule cards exactly when you need them.",
+        "featureKanji": "Kanji Mastery",
+        "featureKanjiDesc": "Dedicated modes for Kanji strokes and meanings.",
+        "featureMobile": "Mobile First",
+        "featureMobileDesc": "Study anywhere, anytime with one-handed usage optimization.",
+        "featureOffline": "Offline Capable",
+        "featureOfflineDesc": "Works buttery smooth even when connectivity is spotty.",
+        "featureAnalytics": "Detailed Analytics",
+        "featureAnalyticsDesc": "Track your retention rate and daily activity streaks.",
+        "featureCommunity": "Community Decks",
+        "featureCommunityDesc": "Download shared decks for JLPT, Core 2k, and more.",
+        "statsLearners": "Active Learners",
+        "statsReviews": "Cards Reviewed",
+        "statsDecks": "Decks Shared",
+        "statsPassRate": "JLPT Pass Rate",
+        "ctaTitle": "Ready to start your journey?",
+        "ctaSubtitle": "Join thousands of learners mastering Japanese efficiently. No credit card required.",
+        "ctaButton": "Get Started for Free"
     }
 }

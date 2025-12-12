@@ -93,6 +93,30 @@ export default function VocabCard({
 				/>
 			)}
 
+			{/* Floating Audio Button */}
+			{audioUrl && (
+				<Button
+					type="text"
+					shape="circle"
+					icon={
+						isPlaying ? (
+							<PauseCircleOutlined style={{ fontSize: 32, color: '#1890ff' }} />
+						) : (
+							<PlayCircleOutlined style={{ fontSize: 32, color: '#1890ff' }} />
+						)
+					}
+					onClick={toggleAudio}
+					style={{
+						position: 'absolute',
+						top: 16,
+						right: 16,
+						zIndex: 50,
+						background: 'white',
+						boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+					}}
+				/>
+			)}
+
 			<Card
 				style={{
 					width: '100%',
@@ -109,27 +133,7 @@ export default function VocabCard({
 				<Flex vertical align="center" justify="center" style={{ flex: 1 }}>
 					{/* Front of Card (Always Visible) */}
 					<div style={{ position: 'relative', width: '100%', textAlign: 'center' }}>
-						{/* Audio Button */}
-						{audioUrl && (
-							<Button
-								type="text"
-								shape="circle"
-								icon={
-									isPlaying ? (
-										<PauseCircleOutlined style={{ fontSize: 32, color: '#1890ff' }} />
-									) : (
-										<PlayCircleOutlined style={{ fontSize: 32, color: '#1890ff' }} />
-									)
-								}
-								onClick={toggleAudio}
-								style={{
-									position: 'absolute',
-									top: 0,
-									right: 0,
-									zIndex: 10,
-								}}
-							/>
-						)}
+						{/* Main Word Display */}
 
 						{/* Main Word Display */}
 						{wordParts && Array.isArray(wordParts) && wordParts.length > 0 ? (

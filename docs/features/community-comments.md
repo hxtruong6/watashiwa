@@ -4,35 +4,55 @@
 
 Allow users to contribute knowledge, tips, and mnemonics to vocabulary/kanji cards. Other users can vote on the quality of contributions.
 
+## Scenarios & User Flows
+
+### 1. Distraction-Free Study Help
+
+**Scenario**: A user is studying and keeps forgetting a specific word. They want a quick mnemonic without leaving the study flow.
+**Flow**:
+
+1. User encounters a difficult card in Study Mode.
+2. User taps the **Community Icon** (located below the Close/Exit button on the right).
+3. A **Drawer** slides up from the bottom (mobile) or side (desktop) containing top-voted mnemonics and tips.
+4. User reads a helpful mnemonic ("Ah, that makes sense!").
+5. User upvotes the tip.
+6. User closes the drawer and continues studying immediately.
+
+### 2. Deck Exploration & Contribution
+
+**Scenario**: A user is browsing a deck to preview words. They know a great trick for one of them.
+**Flow**:
+
+1. User is on the Deck Detail page (Grid View).
+2. User hovers over a card (Desktop) or sees an icon (Mobile).
+3. User clicks the **Comment Icon**.
+4. The Comment Drawer opens.
+5. User clicks "Add Comment".
+6. User selects type "Mnemonic", types the trick, and submits.
+7. The comment is immediately visible.
+
+### 3. Dashboard Discovery
+
+**Scenario**: User wants to learn something new or see what's active in the community.
+**Flow**:
+
+1. User visits the Dashboard.
+2. User sees a **"Trending Tips"** section showing card with highly upvoted recent comments.
+3. User clicks a tip to see the full word context (opens a modal or navigates to deck).
+
+### 4. Reviewing Impact
+
+**Scenario**: User wants to see if their contributions are helping others.
+**Flow**:
+
+1. User visits Dashboard.
+2. User sees **"My Contributions"** or **"Community Stats"** (e.g., "Your tips helped 50 people today").
+
 ## Core Features
 
-### 1. Card Comments
+(Same as before: Card Comments, Voting, Moderation, Comment Types)
 
-Users can add comments to any Vocab or Kanji card.
-
-**Comment Types:**
-
-- **Mnemonic**: Memory trick to remember the word
-- **Usage Tip**: Grammar or context advice
-- **Cultural Note**: Cultural background information
-- **General**: Default category
-
-### 2. Voting System
-
-- **Upvote** (+1): Comment is helpful
-- **Downvote** (-1): Comment is not helpful or incorrect
-- **Score**: `upvotes - downvotes`
-- Comments sorted by score (highest first)
-
-### 3. Moderation
-
-Moderators/Admins can:
-
-- **Hide**: Comment becomes invisible to users (soft delete)
-- **Delete**: Permanently remove comment
-- **Pin**: Highlight an exceptional comment at the top
-
-## Database Schema
+## Database Schema (Prisma)
 
 ```prisma
 model CardComment {
@@ -50,6 +70,11 @@ model CardComment {
   content   String
   type      CommentType @default(GENERAL)
   
+  // Votes cache (optional, but good for sorting)
+  upvotes   Int      @default(0)
+  downvotes Int      @default(0)
+  score     Int      @default(0)
+  
   isPinned  Boolean  @default(false) @map("is_pinned")
   isHidden  Boolean  @default(false) @map("is_hidden")
   
@@ -61,12 +86,15 @@ model CardComment {
   @@index([vocabId])
   @@index([kanjiId])
   @@index([authorId])
+  @@index([score]) // For trending queries
 }
 
 enum CommentType {
   MNEMONIC
   USAGE_TIP
   CULTURAL_NOTE
+  EXAMPLE
+  GRAMMAR
   GENERAL
 }
 
@@ -81,51 +109,27 @@ model CommentVote {
   
   value     Int     // +1 or -1
   
-  @@unique([commentId, userId]) // One vote per user per comment
+  @@unique([commentId, userId])
   @@index([commentId])
 }
 ```
 
-## User Interface
+## UI Implementation Details
 
-### Card Detail View
+### Study Page
 
-```
-┌─────────────────────────────────────┐
-│  学生 (がくせい) - Student           │
-│  ...card content...                 │
-├─────────────────────────────────────┤
-│  💡 Community Tips (12)             │
-│  ┌───────────────────────────────┐  │
-│  │ 🧠 Mnemonic by @user123       │  │
-│  │ "学 (study) + 生 (life) =     │  │
-│  │  someone living to study!"    │  │
-│  │ ▲ 24  ▼ 2   💬 Reply          │  │
-│  └───────────────────────────────┘  │
-│  [+ Add Comment]                    │
-└─────────────────────────────────────┘
-```
+- **Location**: `src/components/StudyContent.tsx`
+- **Trigger**: New Button with `TeamOutlined` or `CommentOutlined` icon. Positioned `top: 70px, right: 16px` (below Close button).
+- **Component**: Reusable `CommentDrawer`.
 
-### Comment Submission Modal
+### Deck Page
 
-- **Type Selector**: Dropdown (Mnemonic, Usage Tip, etc.)
-- **Content**: Textarea with character limit (500)
-- **Preview**: Live markdown preview
-- **Submit**: Disabled until valid
+- **Location**: `src/app/decks/[id]/DeckView.tsx`
+- **Trigger**:
+  - **Grid View**: Add overlay icon on `Card` hover.
+  - **List View**: Add "Comments" column or action button.
 
-## API Endpoints
+### Dashboard
 
-| Method | Endpoint | Description |
-|:-------|:---------|:------------|
-| GET | `/api/vocab/:id/comments` | Get comments for a vocab |
-| POST | `/api/vocab/:id/comments` | Create new comment |
-| PATCH | `/api/comments/:id` | Edit own comment |
-| DELETE | `/api/comments/:id` | Delete comment (own or mod) |
-| POST | `/api/comments/:id/vote` | Vote on comment |
-| PATCH | `/api/comments/:id/hide` | Moderator: hide comment |
-| PATCH | `/api/comments/:id/pin` | Moderator: pin comment |
-
-## Gamification (Future)
-
-- **Contributor Badge**: Users with 10+ upvoted comments
-- **Top Contributor**: Leaderboard for most helpful users
+- **Location**: `src/components/DashboardContent.tsx`
+- **New Section**: `TrendingTips` component.

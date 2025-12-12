@@ -47,7 +47,8 @@ export default function DashboardContent({
 	decks = [],
 	userName,
 	dailyGoal,
-}: DashboardContentProps) {
+	userRole,
+}: DashboardContentProps & { userRole?: string }) {
 	const [hasShownConfetti, setHasShownConfetti] = useState(false);
 
 	// Trigger confetti when daily goal is reached
@@ -78,6 +79,27 @@ export default function DashboardContent({
 				dailyProgress={stats.totalReviewed}
 				dailyGoal={dailyGoal}
 			/>
+
+			{/* Admin Button */}
+			{(userRole === 'ADMIN' || userRole === 'MODERATOR') && (
+				<div style={{ marginBottom: 24, textAlign: 'center' }}>
+					<a
+						href="/admin"
+						style={{
+							display: 'inline-block',
+							padding: '12px 24px',
+							background: '#1E3A5F',
+							color: 'white',
+							borderRadius: 12,
+							fontWeight: 600,
+							textDecoration: 'none',
+							boxShadow: '0 4px 12px rgba(30, 58, 95, 0.2)',
+						}}
+					>
+						Go to Admin Panel
+					</a>
+				</div>
+			)}
 
 			{/* Primary CTA: Start Review */}
 			<DueCTA dueCount={reviewCount} />

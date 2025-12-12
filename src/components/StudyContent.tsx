@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { Layout, Button, Flex, Result, Spin, App, Modal, Progress, Typography } from 'antd';
+import { Layout, Button, Flex, Result, Spin, App, Drawer, Progress, Typography } from 'antd';
 import { useTranslations } from 'next-intl';
 import {
 	getNextReviewCard,
@@ -12,6 +12,7 @@ import {
 import type { User } from '@/generated/prisma';
 import FlashCard from '@/components/FlashCard';
 import VocabSettings from '@/components/VocabSettings';
+import ReportModal from '@/components/ReportModal';
 import RatingBar from '@/components/RatingBar';
 import {
 	LoadingOutlined,
@@ -20,6 +21,7 @@ import {
 	SettingOutlined,
 	FireOutlined,
 	TrophyOutlined,
+	FlagOutlined,
 } from '@ant-design/icons';
 import { useRouter, useSearchParams } from 'next/navigation';
 import confetti from 'canvas-confetti';
@@ -61,6 +63,7 @@ export default function StudyContent() {
 	const [spaceKeyRating, setSpaceKeyRating] = useState(3);
 	const [autoShowAnswer, setAutoShowAnswer] = useState(false);
 	const [autoShowAnswerDelay, setAutoShowAnswerDelay] = useState(40);
+	const [isReportModalOpen, setIsReportModalOpen] = useState(false);
 
 	const { message } = App.useApp();
 	const router = useRouter();
@@ -203,7 +206,20 @@ export default function StudyContent() {
 	// Keyboard Shortcuts
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
-			if (loading || submittingRating !== null || sessionComplete || settingsVisible) return;
+			// Disable shortcuts if modal is open, or typing in an input
+			const target = e.target as HTMLElement;
+			const isInput =
+				target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable;
+
+			if (
+				loading ||
+				submittingRating !== null ||
+				sessionComplete ||
+				settingsVisible ||
+				isReportModalOpen ||
+				isInput
+			)
+				return;
 
 			if (e.code === 'Space') {
 				if (e.repeat) return; // Prevent holding key triggering multiple actions
@@ -245,6 +261,7 @@ export default function StudyContent() {
 		sessionComplete,
 		handleRate,
 		settingsVisible,
+		isReportModalOpen,
 		allowSpaceKey,
 		spaceKeyRating,
 	]);
@@ -420,16 +437,15 @@ export default function StudyContent() {
 				</Flex>
 			</div>
 
-			<Modal
+			{/* Settings Drawer - Side Panel */}
+			<Drawer
 				title={t('settingsTitle')}
+				placement="left"
+				onClose={() => setSettingsVisible(false)}
 				open={settingsVisible}
-				onCancel={() => setSettingsVisible(false)}
-				footer={[
-					<Button key="ok" type="primary" onClick={() => setSettingsVisible(false)}>
-						{tCommon('done')}
-					</Button>,
-				]}
-				centered
+				size="default"
+				mask={false}
+				styles={{ body: { paddingBottom: 80 } }}
 			>
 				<VocabSettings
 					showFurigana={showFurigana}
@@ -441,7 +457,34 @@ export default function StudyContent() {
 					userSettings={userSettings}
 					onSettingsChange={fetchSettings}
 				/>
-			</Modal>
+
+				<div style={{ marginTop: 32 }}>
+					<Button
+						danger
+						icon={<FlagOutlined />}
+						block
+						onClick={() => {
+							setSettingsVisible(false);
+							setIsReportModalOpen(true);
+						}}
+					>
+						{tCommon('reportIssue')}
+					</Button>
+					<div style={{ marginTop: 8, textAlign: 'center' }}>
+						<Text type="secondary" style={{ fontSize: 10 }}>
+							ID: {card?.id || 'N/A'}
+						</Text>
+					</div>
+				</div>
+			</Drawer>
+
+			<ReportModal
+				open={isReportModalOpen}
+				onClose={() => setIsReportModalOpen(false)}
+				vocabId={card?.vocab?.id}
+				kanjiId={card?.kanji?.id}
+				currentText={card?.vocab?.wordSurface || card?.kanji?.kanji || ''}
+			/>
 
 			<Content
 				style={{

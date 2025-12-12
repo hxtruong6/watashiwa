@@ -1,0 +1,61 @@
+'use client';
+
+import React from 'react';
+import { Typography, Row, Col } from 'antd';
+import { motion } from 'framer-motion';
+
+import { useTranslations } from 'next-intl';
+
+const { Text } = Typography;
+
+export default function SocialProofSection() {
+	const t = useTranslations('Landing');
+
+	const stats = [
+		{ label: t('statsLearners'), value: '10,000+', color: '#1E3A5F' },
+		{ label: t('statsReviews'), value: '5M+', color: '#708238' },
+		{ label: t('statsDecks'), value: '1,200+', color: '#FAAD14' },
+		{ label: t('statsPassRate'), value: '94%', color: '#E64A19' },
+	];
+
+	return (
+		<section
+			style={{
+				padding: '60px 0',
+				background: 'white',
+				borderTop: '1px solid #f0f0f0',
+				borderBottom: '1px solid #f0f0f0',
+			}}
+		>
+			<div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', width: '100%' }}>
+				<Row gutter={[48, 48]} justify="center">
+					{stats.map((stat, index) => (
+						<Col xs={24} sm={12} md={6} key={index} style={{ textAlign: 'center' }}>
+							<motion.div
+								initial={{ opacity: 0, scale: 0.5 }}
+								whileInView={{ opacity: 1, scale: 1 }}
+								viewport={{ once: true }}
+								transition={{ duration: 0.5, delay: index * 0.1 }}
+							>
+								<Text
+									style={{
+										display: 'block',
+										fontSize: 'clamp(32px, 3vw, 42px)',
+										fontWeight: 800,
+										color: stat.color,
+										lineHeight: 1.2,
+									}}
+								>
+									{stat.value}
+								</Text>
+								<Text type="secondary" style={{ fontSize: 16 }}>
+									{stat.label}
+								</Text>
+							</motion.div>
+						</Col>
+					))}
+				</Row>
+			</div>
+		</section>
+	);
+}
