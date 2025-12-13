@@ -27,7 +27,8 @@
         "menu": "Menu",
         "share": "Share",
         "library": "Library",
-        "myDecks": "My Decks"
+        "myDecks": "My Decks",
+        "courses": "Courses"
     },
     "Dashboard": {
         "heroTitle": "Ready to learn?",

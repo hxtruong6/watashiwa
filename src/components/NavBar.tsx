@@ -107,7 +107,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 			icon: <ReadOutlined />,
 			label: (
 				<Link href="/dashboard/courses" onClick={closeDrawer}>
-					Courses
+					{t('courses')}
 				</Link>
 			),
 		},

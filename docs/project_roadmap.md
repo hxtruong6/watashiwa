@@ -28,6 +28,7 @@ To build this application effectively, we follow a **Phased Implementation Strat
 - [x] **Theme:** Implement `themeConfig.ts` with Indigo/Matcha/Washi palette.
 - [x] **Layout:** Create the Dashboard with "Start Review" CTA.
 - [x] **Deck List:** Building the `/decks` page to view/search content.
+- [x] **Courses/Series:** Group decks into ordered learning paths (Deck Grouping).
 - [x] **Polish:** transitions and loading states (Basic implementation done).
 
 ## Phase 3: Content Ingestion (Current Priority)
@@ -45,17 +46,17 @@ To build this application effectively, we follow a **Phased Implementation Strat
 
 - [x] **Public Landing Page:** Hero section, Value prop, simple "Start" flow.
 - [x] **i18n:** Multi-language support (English/Vietnamese) without routing.
-- [/] **Supabase Auth:** Login/Register with Email/Password.
-- [ ] **User Sync:** Ensure Auth users have corresponding DB `User` records.
-- [ ] **Middleware:** Protect `/dashboard` routes.
+- [x] **Supabase Auth:** Login/Register with Email/Password.
+- [x] **User Sync:** Ensure Auth users have corresponding DB `User` records.
+- [x] **Middleware:** Protect `/dashboard` routes.
 - [ ] **Deploy:** Production Deployment.
 
 ## Phase 5: Community & Engagement
 
 **Goal:** Build social features and enhance user retention.
 
-- [ ] **User Roles:** Admin, Moderator, User permission system. ([Spec](features/user-roles.md))
-- [ ] **Community Comments:** Card comments, voting, moderation. ([Spec](features/community-comments.md))
+- [x] **User Roles:** Admin, Moderator, User permission system. ([Spec](features/user-roles.md))
+- [x] **Community Comments:** Card comments, voting, moderation. ([Spec](features/community-comments.md))
 - [ ] **Wishlist:** Bookmark cards for later review. ([Spec](features/wishlist.md))
 - [ ] **Vocab Browser:** Filter/sort cards by memorization status. ([Spec](features/vocab-browser.md))
 - [ ] **Enhanced Dashboard:** Redesigned UX with gamification. ([Spec](features/enhanced-dashboard.md))

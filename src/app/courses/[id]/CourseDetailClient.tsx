@@ -323,7 +323,7 @@ export default function CourseDetailClient({ course, isOwner }: CourseDetailClie
 															}}
 														>
 															<span>
-																{t('by')} {cd.deck.author.name}
+																{t('by')} {cd.deck.author?.name || 'Unknown'}
 															</span>
 															<Tag style={{ margin: 0 }}>
 																{cd.deck._count.vocab} {t('items')}

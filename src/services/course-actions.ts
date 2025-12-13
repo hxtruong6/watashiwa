@@ -262,6 +262,7 @@ export async function getCourseById(id: string) {
 					include: {
 						deck: {
 							include: {
+								author: { select: { name: true } },
 								_count: {
 									select: { vocab: true, kanji: true },
 								},
@@ -331,6 +332,7 @@ export async function getCourseWithUserProgress(courseId: string) {
 					include: {
 						deck: {
 							include: {
+								author: { select: { name: true } },
 								_count: { select: { vocab: true, kanji: true } },
 							},
 						},
