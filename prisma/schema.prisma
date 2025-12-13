@@ -33,6 +33,10 @@ model User {
   autoShowAnswerDelay Int     @default(40) @map("auto_show_answer_delay") // Seconds
   timezone            String  @default("UTC")
 
+  // Gamification
+  currentStreak Int @default(0) @map("current_streak")
+  longestStreak Int @default(0) @map("longest_streak")
+
   // Relations
   studyCards      StudyCard[]
   reviewLogs      ReviewLog[]
@@ -76,7 +80,7 @@ model Vocab {
   deck   Deck   @relation(fields: [deckId], references: [id], onDelete: Cascade)
 
   wordSurface     String  @map("word_surface") // e.g., 学生
-  readingKana     String  @map("reading_kana") // e.g., がくせい
+  readingKana     String? @map("reading_kana") // e.g., がくせい
   wordParts       Json?   @map("word_parts") // e.g., [{"text": "...", "furigana": "...", "romaji": "..."}]
   // JSON fields require careful mapping in Prisma
   kanjiBreakdown  Json    @map("kanji_breakdown") // e.g., [{"kanji": "学", "han_viet": "HỌC", "meaning": "study"}]

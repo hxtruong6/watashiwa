@@ -129,7 +129,9 @@ export default function FlashCard({
 					display: 'flex',
 					flexDirection: 'column',
 				}}
-				bodyStyle={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
+				styles={{
+					body: { flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' },
+				}}
 			>
 				<Flex vertical align="center" justify="center" style={{ flex: 1 }}>
 					{/* Front of Card (Always Visible) */}
@@ -310,67 +312,72 @@ export default function FlashCard({
 											)}
 										</div>
 
-										{exampleSentence && (
-											<div
-												style={{
-													background: '#F9F7F2',
-													padding: 16,
-													borderRadius: 8,
-													width: '100%',
-												}}
-											>
-												<Paragraph
+										{exampleSentence &&
+											exampleSentence !== '' &&
+											Object.keys(exampleSentence).length > 0 && (
+												<div
 													style={{
-														fontSize: 18,
-														marginBottom: 8,
-														textAlign: 'left',
-														lineHeight: '2.5',
+														background: '#F9F7F2',
+														padding: 16,
+														borderRadius: 8,
+														width: '100%',
 													}}
 												>
-													{typeof exampleSentence === 'object' && 'parts' in exampleSentence ? (
-														// eslint-disable-next-line @typescript-eslint/no-explicit-any
-														(exampleSentence as any).parts.map(
+													<Paragraph
+														style={{
+															fontSize: 18,
+															marginBottom: 8,
+															textAlign: 'left',
+															lineHeight: '2.5',
+														}}
+													>
+														{typeof exampleSentence === 'object' && 'parts' in exampleSentence ? (
 															// eslint-disable-next-line @typescript-eslint/no-explicit-any
-															(part: any, index: number) => (
-																<React.Fragment key={index}>
-																	{part.furigana ? (
-																		<ruby style={{ margin: '0 2px' }}>
-																			{part.text}
-																			<rt
-																				style={{
-																					fontSize: '0.6em',
-																					color: '#888',
-																					userSelect: 'none',
-																				}}
-																			>
-																				{part.furigana}
-																			</rt>
-																		</ruby>
-																	) : (
-																		<span>{part.text}</span>
-																	)}
-																</React.Fragment>
-															),
-														)
-													) : (
-														<span>{exampleSentence as unknown as string}</span>
-													)}
-												</Paragraph>
-												<Text
-													type="secondary"
-													style={{
-														fontSize: 14,
-														display: 'block',
-														textAlign: 'left',
-													}}
-												>
-													{typeof exampleSentence === 'object' && 'translation' in exampleSentence
-														? // eslint-disable-next-line @typescript-eslint/no-explicit-any
-															(exampleSentence as any).translation
-														: exampleMeaning}
-												</Text>
-											</div>
-										)}
+															(exampleSentence as any).parts.map(
+																// eslint-disable-next-line @typescript-eslint/no-explicit-any
+																(part: any, index: number) => (
+																	<React.Fragment key={index}>
+																		{part.furigana ? (
+																			<ruby style={{ margin: '0 2px' }}>
+																				{part.text}
+																				<rt
+																					style={{
+																						fontSize: '0.6em',
+																						color: '#888',
+																						userSelect: 'none',
+																					}}
+																				>
+																					{part.furigana}
+																				</rt>
+																			</ruby>
+																		) : (
+																			<span>{part.text}</span>
+																		)}
+																	</React.Fragment>
+																),
+															)
+														) : typeof exampleSentence === 'object' &&
+														  'sentence' in exampleSentence ? (
+															<span>{(exampleSentence as any)?.sentence || ''}</span>
+														) : typeof exampleSentence === 'string' ? (
+															<span>{exampleSentence}</span>
+														) : null}
+													</Paragraph>
+													<Text
+														type="secondary"
+														style={{
+															fontSize: 14,
+															display: 'block',
+															textAlign: 'left',
+														}}
+													>
+														{typeof exampleSentence === 'object' && 'translation' in exampleSentence
+															? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+																(exampleSentence as any).translation
+															: exampleMeaning}
+													</Text>
+												</div>
+											)}
 
 										{/* Kanji Breakdown */}
 										{kanjiBreakdown &&

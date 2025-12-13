@@ -110,7 +110,7 @@ export default function CommentDrawer({
 				</div>
 			}
 			placement="bottom"
-			height="85vh" // Tall drawer on mobile
+			style={{ height: '85vh' }}
 			onClose={onClose}
 			open={open}
 			styles={{ body: { padding: '16px 12px' } }}

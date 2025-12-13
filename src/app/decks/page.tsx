@@ -12,5 +12,5 @@ export default async function DecksPage() {
 	await syncUser();
 	const decks = await getDecks();
 
-	return <DecksContent decks={decks} />;
+	return <DecksContent decks={decks} userId={user.id} />;
 }

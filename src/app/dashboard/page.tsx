@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { UserRole } from '@/generated/prisma';
-import { getDashboardData, syncUser, getUserWithRole } from '@/services/actions';
+import { getDashboardData, syncUser, getUserWithRole, getLeaderboard } from '@/services/actions';
 import DashboardContent from '@/components/DashboardContent';
 
 interface Props {
@@ -25,6 +25,7 @@ export default async function Dashboard(props: Props) {
 
 	// Get all dashboard data in a single call
 	const data = await getDashboardData();
+	const leaderboard = await getLeaderboard();
 
 	if (!data) {
 		return <div>Loading...</div>;
@@ -39,6 +40,8 @@ export default async function Dashboard(props: Props) {
 			userName={data.userName}
 			dailyGoal={data.userSettings?.limitReviews ?? 50}
 			userRole={user?.role}
+			leaderboard={leaderboard}
+			userId={user?.id}
 		/>
 	);
 }

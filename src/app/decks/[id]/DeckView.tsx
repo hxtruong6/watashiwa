@@ -29,9 +29,10 @@ import {
 	BarsOutlined,
 	EditOutlined,
 	CheckCircleOutlined,
-	SyncOutlined,
 	PlaySquareOutlined,
 	CommentOutlined,
+	CloseOutlined,
+	SyncOutlined,
 } from '@ant-design/icons';
 import CommentDrawer from '@/components/comments/CommentDrawer';
 import Link from 'next/link';
@@ -272,6 +273,9 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 		},
 	];
 
+	// Add Content Toggle
+	const [showAddContent, setShowAddContent] = useState(false);
+
 	return (
 		<div style={{ maxWidth: 1000, margin: '0 auto', padding: '24px 16px' }}>
 			<Breadcrumb
@@ -289,7 +293,32 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 				style={{ marginBottom: 24 }}
 			/>
 
-			{isOwner && <SmartContentInput deckId={deck.id} onSuccess={() => router.refresh()} />}
+			{isOwner && (
+				<div style={{ marginBottom: 24 }}>
+					{showAddContent ? (
+						<div style={{ position: 'relative' }}>
+							<SmartContentInput deckId={deck.id} onSuccess={() => router.refresh()} />
+							<Button
+								type="text"
+								icon={<CloseOutlined />}
+								onClick={() => setShowAddContent(false)}
+								style={{ position: 'absolute', right: 16, top: 16, zIndex: 10 }}
+								title={t('close')}
+							/>
+						</div>
+					) : (
+						<Button
+							type="dashed"
+							icon={<EditOutlined />}
+							onClick={() => setShowAddContent(true)}
+							block
+							style={{ height: 48, borderRadius: 12, fontSize: 16 }}
+						>
+							{t('addNewContent')}
+						</Button>
+					)}
+				</div>
+			)}
 
 			{/* Hero / Stats Card */}
 			<Card

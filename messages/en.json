@@ -58,8 +58,11 @@
         "browseLibrary": "Browse Library",
         "importCards": "Import Cards",
         "wishlist": "Wishlist",
-        "statistics": "Statistics",
         "leaderboard": "Leaderboard",
+        "leaderboardSubtitle": "Top learners by streak",
+        "rank": "Rank",
+        "streakDays": "{count} days",
+        "statistics": "Statistics",
         "settings": "Settings",
         "viewDecks": "View Decks",
         "noDue": "No due",
@@ -119,7 +122,11 @@
         "deckContentsTitle": "Deck Contents",
         "playButton": "Play",
         "newItemsAvailable": "{count} new items available",
-        "itemsCount": "{count} items"
+        "itemsCount": "{count} items",
+        "searchPlaceholder": "Search decks...",
+        "filterAll": "All",
+        "filterMine": "My Decks",
+        "filterPublic": "Public"
     },
     "Settings": {
         "furigana": "Furigana",
@@ -214,12 +221,12 @@
         "validationTooLong": "Too long (max 500 chars)"
     },
     "Donation": {
-        "title": "Support WatashiWa",
-        "description": "WatashiWa is a passion project built by a solo developer. Your support directly contributes to server costs and future feature development. Thank you for keeping the learning journey alive!",
-        "scanVietQR": "Scan with any banking app in Vietnam",
+        "title": "Support the Journey",
+        "description": "WatashiWa is a passion project crafted by a solo developer. Your support isn't just a donation; it's fuel for the servers and motivation for the next feature. Thank you for being part of this story!",
+        "scanVietQR": "Scan with any Banking App (VietQR)",
         "scanMomo": "Scan with Momo App",
         "payPayId": "PayPay ID",
-        "payPayInstructions": "Send via ID search in PayPay app",
+        "payPayInstructions": "Search this ID in PayPay",
         "bankTransfer": "Bank Transfer",
         "copyAccount": "Copy Account Info",
         "copied": "Copied!",
@@ -261,6 +268,15 @@
         "labelOnyomi": "Onyomi",
         "labelKunyomi": "Kunyomi",
         "aiComingSoon": "Coming Soon",
-        "aiDescription": "AI-powered auto-fill. Just type a word, and we'll do the rest."
+        "aiDescription": "AI-powered auto-fill. Just type a word, and we'll do the rest.",
+        "addNewContent": "Add New Content",
+        "advancedModeVocab": "Advanced Mode (Word Parts, Details)",
+        "advancedModeKanji": "Advanced Mode (Radicals, Examples)",
+        "advancedTitleVocab": "Advanced Vocabulary",
+        "advancedTitleKanji": "Advanced Kanji",
+        "saveToDeck": "Save to Deck",
+        "msgAdvancedVocabAdded": "Advanced Vocabulary added!",
+        "msgAdvancedKanjiAdded": "Advanced Kanji added!",
+        "close": "Close"
     }
 }

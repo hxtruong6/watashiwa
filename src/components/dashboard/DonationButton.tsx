@@ -56,7 +56,7 @@ const pulseVariants = {
 	},
 };
 
-export function DonationButton() {
+export default function DonationButton() {
 	const [isOpen, setIsOpen] = useState(false);
 	const [isHovered, setIsHovered] = useState(false);
 	const t = useTranslations('Donation');

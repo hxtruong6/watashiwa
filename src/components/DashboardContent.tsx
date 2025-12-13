@@ -13,6 +13,7 @@ import {
 	TrendingTips,
 	MyContributions,
 	DonationButton,
+	GlobalLeaderboard,
 } from '@/components/dashboard';
 import { Divider } from 'antd';
 
@@ -39,6 +40,10 @@ interface DashboardContentProps {
 	decks?: DeckWithStats[];
 	userName?: string | null;
 	dailyGoal: number;
+	userRole?: string;
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	leaderboard?: any[]; // Added
+	userId?: string; // Added
 }
 
 /**
@@ -52,7 +57,9 @@ export default function DashboardContent({
 	userName,
 	dailyGoal,
 	userRole,
-}: DashboardContentProps & { userRole?: string }) {
+	leaderboard = [], // Added
+	userId, // Added
+}: DashboardContentProps) {
 	const [hasShownConfetti] = useState(false);
 
 	// Trigger confetti when daily goal is reached
@@ -98,6 +105,11 @@ export default function DashboardContent({
 
 			{/* Stats Grid */}
 			<StatsGrid streak={stats.streak} reviewedToday={stats.totalReviewed} />
+
+			{/* Global Leaderboard */}
+			<div style={{ marginTop: 24 }}>
+				<GlobalLeaderboard users={leaderboard} currentUserId={userId} />
+			</div>
 
 			{/* Your Top Tips (Small section under progress) */}
 			<MyContributions />

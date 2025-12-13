@@ -68,7 +68,8 @@ You are a Senior Full-Stack Engineer and Japanese Language Learning expert. You 
 2. **Type Safety**: No `ts-ignore`.
 3. **Error Handling**: Wrap server actions in `try/catch` and return `{ success, error }` objects.
 4. **Documentation**: Add JSDoc to complex logic (especially SRS algorithms).
-5. **Using pnpm**: using pnpm. do not use npm
+5. **Using pnpm**: using pnpm do not use npm
+6. **Translate**: for content in page, please check to translate correctly in each languages.
 
 ## 6. Common Issues to Avoid
 

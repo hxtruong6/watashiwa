@@ -5,6 +5,7 @@ import { Typography, Row, Col, Card, Button, Flex, Tag, Empty } from 'antd';
 import Link from 'next/link';
 import { BookOutlined } from '@ant-design/icons';
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 import DeckListActions from '@/app/dashboard/decks/DeckListActions';
 
 const { Title, Text, Paragraph } = Typography;
@@ -15,6 +16,7 @@ interface MyDecksListProps {
 
 export default function MyDecksList({ decks }: MyDecksListProps) {
 	const t = useTranslations('MyDecks');
+	const router = useRouter();
 
 	return (
 		<div style={{ maxWidth: 1200, margin: '0 auto', padding: '24px 16px' }}>
@@ -44,12 +46,14 @@ export default function MyDecksList({ decks }: MyDecksListProps) {
 						<Col xs={24} sm={12} md={8} lg={6} key={deck.id}>
 							<Card
 								hoverable
+								onClick={() => router.push(`/decks/${deck.id}`)}
 								style={{
 									borderRadius: 16,
 									height: '100%',
 									display: 'flex',
 									flexDirection: 'column',
 									boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+									cursor: 'pointer',
 								}}
 								styles={{ body: { flex: 1, display: 'flex', flexDirection: 'column' } }}
 							>
@@ -102,7 +106,7 @@ export default function MyDecksList({ decks }: MyDecksListProps) {
 											count: (deck._count?.vocab || 0) + (deck._count?.kanji || 0),
 										})}
 									</Tag>
-									<Flex gap="small">
+									<Flex gap="small" onClick={(e) => e.stopPropagation()}>
 										<Link href={`/decks/${deck.id}`}>
 											<Button type="text" size="small">
 												{t('view')}

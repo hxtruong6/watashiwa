@@ -128,7 +128,9 @@ export default function VocabCard({
 					display: 'flex',
 					flexDirection: 'column',
 				}}
-				bodyStyle={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
+				styles={{
+					body: { flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' },
+				}}
 			>
 				<Flex vertical align="center" justify="center" style={{ flex: 1 }}>
 					{/* Front of Card (Always Visible) */}

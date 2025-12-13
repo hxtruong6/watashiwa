@@ -14,11 +14,20 @@ interface SmartContentInputProps {
 	onSuccess: () => void;
 }
 
+import VocabEditor from '@/components/admin/VocabEditor';
+import KanjiEditor from '@/components/admin/KanjiEditor';
+import { Modal } from 'antd';
+
+// ... (keep imports)
+
 export default function SmartContentInput({ deckId, onSuccess }: SmartContentInputProps) {
 	const t = useTranslations('MyDecks');
 	const [form] = Form.useForm();
+	const [advancedForm] = Form.useForm();
 	const [loading, setLoading] = useState(false);
 	const [activeTab, setActiveTab] = useState('manual-vocab');
+	const [messageApi, contextHolder] = message.useMessage();
+	const [isAdvancedModalOpen, setIsAdvancedModalOpen] = useState(false);
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const handleFinishVocab = async (values: any) => {
@@ -26,7 +35,7 @@ export default function SmartContentInput({ deckId, onSuccess }: SmartContentInp
 		try {
 			const res = await createVocab(deckId, {
 				wordSurface: values.wordSurface,
-				readingKana: values.readingKana,
+				readingKana: values.readingKana || '',
 				meaning: values.meaning,
 				hanViet: values.hanViet,
 				exampleSentence: values.exampleSentence
@@ -35,15 +44,15 @@ export default function SmartContentInput({ deckId, onSuccess }: SmartContentInp
 			});
 
 			if (res.success) {
-				message.success('Vocabulary added!');
+				messageApi.success(t('msgVocabAdded') || 'Vocabulary added successfully!');
 				form.resetFields();
 				onSuccess();
 			} else {
-				message.error(res.error || 'Failed to add vocabulary');
+				messageApi.error(res.error || 'Failed to add vocabulary');
 			}
 		} catch (error) {
 			console.error(error);
-			message.error('An error occurred');
+			messageApi.error('An error occurred');
 		} finally {
 			setLoading(false);
 		}
@@ -63,120 +72,186 @@ export default function SmartContentInput({ deckId, onSuccess }: SmartContentInp
 			});
 
 			if (res.success) {
-				message.success('Kanji added!');
+				messageApi.success(t('msgKanjiAdded') || 'Kanji added successfully!');
 				form.resetFields();
 				onSuccess();
 			} else {
-				message.error(res.error || 'Failed to add kanji');
+				messageApi.error(res.error || 'Failed to add kanji');
 			}
 		} catch (error) {
 			console.error(error);
-			message.error('An error occurred');
+			messageApi.error('An error occurred');
+		} finally {
+			setLoading(false);
+		}
+	};
+
+	const handleAdvancedSubmit = async () => {
+		try {
+			const values = await advancedForm.validateFields();
+			setLoading(true);
+
+			let res;
+			if (activeTab === 'manual-vocab') {
+				res = await createVocab(deckId, {
+					wordSurface: values.wordSurface,
+					readingKana: values.readingKana,
+					meaning: values.meaning,
+					hanViet: values.hanViet,
+					exampleSentence: values.exampleSentence,
+					kanjiBreakdown: values.kanjiBreakdown,
+					wordParts: values.wordParts,
+				});
+				if (res.success) {
+					messageApi.success(t('msgAdvancedVocabAdded'));
+					advancedForm.resetFields();
+					setIsAdvancedModalOpen(false);
+					onSuccess();
+				} else {
+					messageApi.error(res.error || 'Failed to add vocabulary');
+				}
+			} else if (activeTab === 'manual-kanji') {
+				res = await createKanji(deckId, {
+					kanji: values.kanji,
+					meaning: values.meaning,
+					onyomi: values.onyomi || [],
+					kunyomi: values.kunyomi || [],
+					strokes: values.strokes || 0,
+					hanViet: values.hanViet,
+					radicals: values.radicals,
+					examples: values.examples,
+				});
+				if (res.success) {
+					messageApi.success(t('msgAdvancedKanjiAdded'));
+					advancedForm.resetFields();
+					setIsAdvancedModalOpen(false);
+					onSuccess();
+				} else {
+					messageApi.error(res.error || 'Failed to add kanji');
+				}
+			}
+		} catch (error) {
+			console.error(error);
+			messageApi.error('Validation failed or error occurred');
 		} finally {
 			setLoading(false);
 		}
 	};
 
 	const renderVocabForm = () => (
-		<Form form={form} layout="vertical" onFinish={handleFinishVocab}>
-			<Row gutter={[16, 0]}>
-				<Col xs={24} sm={12}>
-					<Form.Item
-						name="wordSurface"
-						label={t('labelWord')}
-						rules={[{ required: true, message: 'Required' }]}
-					>
-						<Input placeholder="e.g. 猫" />
-					</Form.Item>
-				</Col>
-				<Col xs={24} sm={12}>
-					<Form.Item
-						name="readingKana"
-						label={t('labelReading')}
-						rules={[{ required: true, message: 'Required' }]}
-					>
-						<Input placeholder="e.g. ねこ" />
-					</Form.Item>
-				</Col>
-			</Row>
+		<>
+			{/* Simple Form */}
+			<Form form={form} layout="vertical" onFinish={handleFinishVocab}>
+				<Row gutter={[16, 0]}>
+					<Col xs={24} sm={12}>
+						<Form.Item
+							name="wordSurface"
+							label={t('labelWord')}
+							rules={[{ required: true, message: 'Required' }]}
+						>
+							<Input placeholder="e.g. 猫" />
+						</Form.Item>
+					</Col>
+					<Col xs={24} sm={12}>
+						<Form.Item name="readingKana" label={t('labelReading')}>
+							<Input placeholder="e.g. ねこ" />
+						</Form.Item>
+					</Col>
+				</Row>
 
-			<Row gutter={[16, 0]}>
-				<Col xs={24} sm={16}>
-					<Form.Item name="meaning" label={t('labelMeaning')} rules={[{ required: true }]}>
-						<Input placeholder="e.g. Cat" />
-					</Form.Item>
-				</Col>
-				<Col xs={24} sm={8}>
-					<Form.Item name="hanViet" label={t('labelHanViet')}>
-						<Input placeholder="e.g. MIÊU" />
-					</Form.Item>
-				</Col>
-			</Row>
+				<Row gutter={[16, 0]}>
+					<Col xs={24} sm={16}>
+						<Form.Item name="meaning" label={t('labelMeaning')} rules={[{ required: true }]}>
+							<Input placeholder="e.g. Cat" />
+						</Form.Item>
+					</Col>
+					<Col xs={24} sm={8}>
+						<Form.Item name="hanViet" label={t('labelHanViet')}>
+							<Input placeholder="e.g. MIÊU" />
+						</Form.Item>
+					</Col>
+				</Row>
 
-			<Row gutter={[16, 0]}>
-				<Col xs={24} sm={12}>
-					<Form.Item name="exampleSentence" label={t('labelExample')}>
-						<Input placeholder="Japanese sentence" />
-					</Form.Item>
-				</Col>
-				<Col xs={24} sm={12}>
-					<Form.Item name="exampleTranslation" label={t('labelTranslation')}>
-						<Input placeholder="Meaning" />
-					</Form.Item>
-				</Col>
-			</Row>
+				<Row gutter={[16, 0]}>
+					<Col xs={24} sm={12}>
+						<Form.Item name="exampleSentence" label={t('labelExample')}>
+							<Input placeholder="Japanese sentence" />
+						</Form.Item>
+					</Col>
+					<Col xs={24} sm={12}>
+						<Form.Item name="exampleTranslation" label={t('labelTranslation')}>
+							<Input placeholder="Meaning" />
+						</Form.Item>
+					</Col>
+				</Row>
 
-			<Form.Item>
-				<Button type="primary" htmlType="submit" loading={loading} icon={<PlusOutlined />} block>
-					{t('btnAddVocab')}
+				<Form.Item>
+					<Button type="primary" htmlType="submit" loading={loading} icon={<PlusOutlined />} block>
+						{t('btnAddVocab')}
+					</Button>
+				</Form.Item>
+			</Form>
+
+			<div style={{ textAlign: 'center', marginTop: 16 }}>
+				<Button type="link" onClick={() => setIsAdvancedModalOpen(true)}>
+					{t('advancedModeVocab')}
 				</Button>
-			</Form.Item>
-		</Form>
+			</div>
+		</>
 	);
 
 	const renderKanjiForm = () => (
-		<Form form={form} layout="vertical" onFinish={handleFinishKanji}>
-			<Row gutter={[16, 0]}>
-				<Col xs={12} sm={6}>
-					<Form.Item name="kanji" label={t('labelKanji')} rules={[{ required: true, max: 1 }]}>
-						<Input placeholder="日" style={{ fontSize: 24, textAlign: 'center' }} maxLength={1} />
-					</Form.Item>
-				</Col>
-				<Col xs={12} sm={6}>
-					<Form.Item name="strokes" label={t('labelStrokes')}>
-						<InputNumber min={1} style={{ width: '100%' }} />
-					</Form.Item>
-				</Col>
-				<Col xs={24} sm={12}>
-					<Form.Item name="hanViet" label={t('labelHanViet')}>
-						<Input placeholder="NHẬT" />
-					</Form.Item>
-				</Col>
-			</Row>
+		<>
+			<Form form={form} layout="vertical" onFinish={handleFinishKanji}>
+				{/* Keep existing simple kanji fields */}
+				<Row gutter={[16, 0]}>
+					<Col xs={12} sm={6}>
+						<Form.Item name="kanji" label={t('labelKanji')} rules={[{ required: true, max: 1 }]}>
+							<Input placeholder="日" style={{ fontSize: 24, textAlign: 'center' }} maxLength={1} />
+						</Form.Item>
+					</Col>
+					<Col xs={12} sm={6}>
+						<Form.Item name="strokes" label={t('labelStrokes')}>
+							<InputNumber min={1} style={{ width: '100%' }} />
+						</Form.Item>
+					</Col>
+					<Col xs={24} sm={12}>
+						<Form.Item name="hanViet" label={t('labelHanViet')}>
+							<Input placeholder="NHẬT" />
+						</Form.Item>
+					</Col>
+				</Row>
 
-			<Form.Item name="meaning" label={t('labelMeaning')} rules={[{ required: true }]}>
-				<Input placeholder="Day, Sun" />
-			</Form.Item>
+				<Form.Item name="meaning" label={t('labelMeaning')} rules={[{ required: true }]}>
+					<Input placeholder="Day, Sun" />
+				</Form.Item>
 
-			<Row gutter={[16, 0]}>
-				<Col xs={24} sm={12}>
-					<Form.Item name="onyomi" label={t('labelOnyomi')}>
-						<Select mode="tags" placeholder="e.g. ニチ, ジツ" tokenSeparators={[',', ' ']} />
-					</Form.Item>
-				</Col>
-				<Col xs={24} sm={12}>
-					<Form.Item name="kunyomi" label={t('labelKunyomi')}>
-						<Select mode="tags" placeholder="e.g. ひ, -び" tokenSeparators={[',', ' ']} />
-					</Form.Item>
-				</Col>
-			</Row>
+				<Row gutter={[16, 0]}>
+					<Col xs={24} sm={12}>
+						<Form.Item name="onyomi" label={t('labelOnyomi')}>
+							<Select mode="tags" placeholder="e.g. ニチ, ジツ" tokenSeparators={[',', ' ']} />
+						</Form.Item>
+					</Col>
+					<Col xs={24} sm={12}>
+						<Form.Item name="kunyomi" label={t('labelKunyomi')}>
+							<Select mode="tags" placeholder="e.g. ひ, -び" tokenSeparators={[',', ' ']} />
+						</Form.Item>
+					</Col>
+				</Row>
 
-			<Form.Item>
-				<Button type="primary" htmlType="submit" loading={loading} icon={<PlusOutlined />} block>
-					{t('btnAddKanji')}
+				<Form.Item>
+					<Button type="primary" htmlType="submit" loading={loading} icon={<PlusOutlined />} block>
+						{t('btnAddKanji')}
+					</Button>
+				</Form.Item>
+			</Form>
+
+			<div style={{ textAlign: 'center', marginTop: 16 }}>
+				<Button type="link" onClick={() => setIsAdvancedModalOpen(true)}>
+					{t('advancedModeKanji')}
 				</Button>
-			</Form.Item>
-		</Form>
+			</div>
+		</>
 	);
 
 	const items = [
@@ -210,24 +285,41 @@ export default function SmartContentInput({ deckId, onSuccess }: SmartContentInp
 					<Tag color="purple" style={{ fontSize: 16, padding: '4px 12px', marginBottom: 16 }}>
 						{t('aiComingSoon')}
 					</Tag>
-					<p style={{ color: '#666' }}>{t('aiDescription')}</p>
+					<p style={{ color: '#666' }}> {t('aiDescription')}</p>
 				</div>
 			),
 		},
 	];
 
 	return (
-		<Card
-			title="Add Content"
-			style={{ marginBottom: 24, borderRadius: 16, border: '1px solid #e0e0e0' }}
-			styles={{ header: { borderBottom: 'none', fontSize: 18, color: '#1E3A5F' } }}
-		>
-			<Tabs
-				activeKey={activeTab}
-				onChange={setActiveTab}
-				items={items}
-				style={{ marginTop: -16 }}
-			/>
-		</Card>
+		<>
+			<Card
+				title="Add Content"
+				style={{ marginBottom: 24, borderRadius: 16, border: '1px solid #e0e0e0' }}
+				styles={{ header: { borderBottom: 'none', fontSize: 18, color: '#1E3A5F' } }}
+			>
+				{contextHolder}
+				<Tabs
+					activeKey={activeTab}
+					onChange={setActiveTab}
+					items={items}
+					style={{ marginTop: -16 }}
+				/>
+			</Card>
+
+			<Modal
+				title={activeTab === 'manual-vocab' ? t('advancedTitleVocab') : t('advancedTitleKanji')}
+				open={isAdvancedModalOpen}
+				onCancel={() => setIsAdvancedModalOpen(false)}
+				onOk={handleAdvancedSubmit}
+				width={800}
+				okText={t('saveToDeck')}
+				confirmLoading={loading}
+			>
+				<Form form={advancedForm} layout="vertical">
+					{activeTab === 'manual-vocab' ? <VocabEditor /> : <KanjiEditor />}
+				</Form>
+			</Modal>
+		</>
 	);
 }

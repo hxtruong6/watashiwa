@@ -7,4 +7,5 @@ export { default as QuickActions } from './QuickActions';
 export { default as MyDecks } from './MyDecks';
 export { default as TrendingTips } from './TrendingTips';
 export { default as MyContributions } from './MyContributions';
-export * from './DonationButton';
+export { default as DonationButton } from './DonationButton';
+export { default as GlobalLeaderboard } from './GlobalLeaderboard';

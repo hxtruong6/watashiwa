@@ -35,7 +35,7 @@ export default function KanjiBreakdown({ breakdown }: KanjiBreakdownProps) {
 							borderColor: '#e0e0e0',
 							textAlign: 'center',
 						}}
-						bodyStyle={{ padding: '8px 12px' }}
+						styles={{ body: { padding: '8px 12px' } }}
 					>
 						<Text style={{ fontSize: 24, display: 'block', color: '#1E3A5F', lineHeight: 1.2 }}>
 							{item.kanji}

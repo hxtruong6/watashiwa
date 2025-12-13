@@ -321,6 +321,32 @@ export async function submitReview(
 /**
  * Fetch all decks visible to the user (Public + Created by User)
  */
+
+export async function getLeaderboard() {
+	try {
+		const users = await prisma.user.findMany({
+			take: 10,
+			orderBy: {
+				currentStreak: 'desc',
+			},
+			select: {
+				id: true,
+				name: true,
+				currentStreak: true,
+			},
+		});
+
+		// Ensure we handle display names
+		return users.map((u) => ({
+			...u,
+			name: u.name || 'Anonymous Learner',
+		}));
+	} catch (error) {
+		console.error('Error fetching leaderboard:', error);
+		return [];
+	}
+}
+
 export async function getDecks() {
 	try {
 		const user = await getUser();

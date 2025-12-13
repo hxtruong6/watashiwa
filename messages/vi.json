@@ -58,8 +58,11 @@
         "browseLibrary": "Duyệt thư viện",
         "importCards": "Nhập thẻ",
         "wishlist": "Danh sách yêu thích",
-        "statistics": "Thống kê",
         "leaderboard": "Bảng xếp hạng",
+        "leaderboardSubtitle": "Top học viên chăm chỉ",
+        "rank": "Hạng",
+        "streakDays": "{count} ngày",
+        "statistics": "Thống kê",
         "settings": "Cài đặt",
         "viewDecks": "Xem bộ thẻ",
         "noDue": "Không có",
@@ -119,7 +122,11 @@
         "deckContentsTitle": "Nội dung bộ thẻ",
         "playButton": "Học ngay",
         "newItemsAvailable": "{count} thẻ mới",
-        "itemsCount": "{count} mục"
+        "itemsCount": "{count} mục",
+        "searchPlaceholder": "Tìm kiếm bộ thẻ...",
+        "filterAll": "Tất cả",
+        "filterMine": "Của tôi",
+        "filterPublic": "Công khai"
     },
     "Settings": {
         "furigana": "Furigana",
@@ -214,12 +221,12 @@
         "validationTooLong": "Quá dài (tối đa 500 ký tự)"
     },
     "Donation": {
-        "title": "Ủng hộ WatashiWa",
-        "description": "WatashiWa là dự án tâm huyết của một lập trình viên độc lập. Sự ủng hộ của bạn đóng góp trực tiếp vào chi phí máy chủ và phát triển tính năng mới. Cảm ơn bạn đã đồng hành!",
-        "scanVietQR": "Quét bằng bất kỳ ứng dụng ngân hàng nào",
-        "scanMomo": "Quét bằng ứng dụng Momo",
+        "title": "Tiếp sức cho WatashiWa",
+        "description": "WatashiWa được mình xây dựng và duy trì với đam mê và muốn học thuộc nhanh nhất. Mọi sự ủng hộ của bạn, dù ít hay nhiều, đều là nguồn động lực to lớn giúp mình chi trả phí máy chủ và phát triển thêm nhiều tính năng thú vị. Biết ơn bạn đã luôn đồng hành!",
+        "scanVietQR": "Quét bằng ứng dụng ngân hàng (VietQR)",
+        "scanMomo": "Ủng hộ qua Ví Momo",
         "payPayId": "PayPay ID",
-        "payPayInstructions": "Gửi qua tìm kiếm ID trong ứng dụng PayPay",
+        "payPayInstructions": "Tìm ID này trên ứng dụng PayPay",
         "bankTransfer": "Chuyển khoản ngân hàng",
         "copyAccount": "Sao chép số tài khoản",
         "copied": "Đã sao chép!",
@@ -261,6 +268,15 @@
         "labelOnyomi": "Onyomi (Âm On)",
         "labelKunyomi": "Kunyomi (Âm Kun)",
         "aiComingSoon": "Sắp ra mắt",
-        "aiDescription": "AI tự động điền thông tin. Chỉ cần nhập từ, mọi thứ còn lại để chúng tôi lo."
+        "aiDescription": "AI tự động điền thông tin. Chỉ cần nhập từ, mọi thứ còn lại để chúng tôi lo.",
+        "addNewContent": "Thêm nội dung mới",
+        "advancedModeVocab": "Chế độ nâng cao (Phần từ, Chi tiết)",
+        "advancedModeKanji": "Chế độ nâng cao (Bộ thủ, Ví dụ)",
+        "advancedTitleVocab": "Từ vựng nâng cao",
+        "advancedTitleKanji": "Kanji nâng cao",
+        "saveToDeck": "Lưu vào bộ thẻ",
+        "msgAdvancedVocabAdded": "Đã thêm từ vựng nâng cao!",
+        "msgAdvancedKanjiAdded": "Đã thêm Kanji nâng cao!",
+        "close": "Đóng"
     }
 }
