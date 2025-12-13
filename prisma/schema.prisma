@@ -45,6 +45,7 @@ model User {
   decks           Deck[]
   cardComments    CardComment[]
   commentVotes    CommentVote[]
+  createdCourses  Course[]
 }
 
 enum UserRole {
@@ -67,8 +68,9 @@ model Deck {
   vocab Vocab[]
   kanji Kanji[]
 
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
+  createdAt   DateTime     @default(now()) @map("created_at")
+  updatedAt   DateTime     @updatedAt @map("updated_at")
+  courseDecks CourseDeck[]
 
   @@index([authorId])
 }
@@ -299,4 +301,46 @@ model CommentVote {
 
   @@unique([commentId, userId])
   @@index([commentId])
+}
+
+// Course System
+model Course {
+  id          String  @id @default(uuid())
+  title       String
+  description String?
+  isPublic    Boolean @default(false) @map("is_public")
+  headerImage String? @map("header_image")
+
+  // Metadata
+  level String?
+  tags  String[]
+
+  authorId String @map("author_id")
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  // Relations
+  decks CourseDeck[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([authorId])
+}
+
+model CourseDeck {
+  id String @id @default(uuid())
+
+  courseId String @map("course_id")
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  deckId String @map("deck_id")
+  deck   Deck   @relation(fields: [deckId], references: [id], onDelete: Cascade)
+
+  sortOrder Int @default(0) @map("sort_order")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@unique([courseId, deckId])
+  @@index([courseId])
+  @@index([deckId])
 }

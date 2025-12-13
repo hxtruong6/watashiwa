@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import confetti from 'canvas-confetti';
-import { motion } from 'motion/react';
+import { motion, Variants } from 'motion/react';
 import {
 	HeroSection,
 	DueCTA,
@@ -77,11 +77,37 @@ export default function DashboardContent({
 		}
 	}, [isGoalComplete, hasShownConfetti]);
 
+	// Animation variants
+	const containerVariants: Variants = {
+		hidden: { opacity: 0 },
+		visible: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.1,
+				delayChildren: 0.1,
+			},
+		},
+	};
+
+	const itemVariants: Variants = {
+		hidden: { opacity: 0, y: 30 },
+		visible: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				type: 'spring',
+				stiffness: 50,
+				damping: 20,
+			},
+		},
+	};
+
 	return (
 		<motion.div
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			style={{ maxWidth: 1000, margin: '0 auto', padding: '24px 16px' }}
+			variants={containerVariants}
+			initial="hidden"
+			animate="visible"
+			style={{ maxWidth: 1000, margin: '0 auto', padding: '30px 16px' }}
 		>
 			{/* Hero: Greeting + Streak + Daily Goal */}
 			<HeroSection
@@ -92,41 +118,55 @@ export default function DashboardContent({
 			/>
 
 			{/* Primary CTA: Start Review */}
-			<DueCTA dueCount={reviewCount} />
+			<motion.div variants={itemVariants}>
+				<DueCTA dueCount={reviewCount} />
+			</motion.div>
 
 			{/* Weekly Progress Chart */}
 			{weeklyStats && (
-				<WeeklyChart
-					data={weeklyStats.days}
-					thisWeekTotal={weeklyStats.thisWeekTotal}
-					bestDay={weeklyStats.bestDay}
-				/>
+				<motion.div variants={itemVariants}>
+					<WeeklyChart
+						data={weeklyStats.days}
+						thisWeekTotal={weeklyStats.thisWeekTotal}
+						bestDay={weeklyStats.bestDay}
+					/>
+				</motion.div>
 			)}
 
 			{/* Stats Grid */}
-			<StatsGrid streak={stats.streak} reviewedToday={stats.totalReviewed} />
+			<motion.div variants={itemVariants}>
+				<StatsGrid streak={stats.streak} reviewedToday={stats.totalReviewed} />
+			</motion.div>
 
 			{/* Global Leaderboard */}
-			<div style={{ marginTop: 24 }}>
+			<motion.div variants={itemVariants} style={{ marginTop: 24 }}>
 				<GlobalLeaderboard users={leaderboard} currentUserId={userId} />
-			</div>
+			</motion.div>
 
 			{/* Your Top Tips (Small section under progress) */}
-			<MyContributions />
+			<motion.div variants={itemVariants}>
+				<MyContributions />
+			</motion.div>
 
 			{/* Quick Actions */}
-			<QuickActions />
+			<motion.div variants={itemVariants}>
+				<QuickActions />
+			</motion.div>
 
 			{/* My Decks */}
-			<MyDecks decks={decks} />
+			<motion.div variants={itemVariants}>
+				<MyDecks decks={decks} />
+			</motion.div>
 
 			{/* Community Highlights (Trending) - Bottom of page */}
-			<Divider />
-			<TrendingTips />
+			<motion.div variants={itemVariants}>
+				<Divider />
+				<TrendingTips />
+			</motion.div>
 
 			{/* Admin Button */}
 			{(userRole === 'ADMIN' || userRole === 'MODERATOR') && (
-				<div style={{ marginTop: 24, textAlign: 'center' }}>
+				<motion.div variants={itemVariants} style={{ marginTop: 24, textAlign: 'center' }}>
 					<a
 						href="/admin"
 						style={{
@@ -142,11 +182,13 @@ export default function DashboardContent({
 					>
 						Go to Admin Panel
 					</a>
-				</div>
+				</motion.div>
 			)}
 
 			{/* Donation Button */}
-			<DonationButton />
+			<motion.div variants={itemVariants}>
+				<DonationButton />
+			</motion.div>
 		</motion.div>
 	);
 }

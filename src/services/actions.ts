@@ -49,7 +49,13 @@ export async function getUser() {
  * Get the next card due for review for the CURRENT user
  * Optional: Constrain to specific deck
  */
-export async function getNextReviewCard(deckId?: string): Promise<StudyCardWithDetails | null> {
+/**
+ * Get the next card due for review for the CURRENT user
+ * Optional: Constrain to specific deck or LIST of decks (for Courses)
+ */
+export async function getNextReviewCard(
+	deckIdOrIds?: string | string[],
+): Promise<StudyCardWithDetails | null> {
 	try {
 		const user = await getUser();
 		if (!user) return null;
@@ -95,6 +101,7 @@ export async function getNextReviewCard(deckId?: string): Promise<StudyCardWithD
 		}
 
 		// 4. Fetch Due Cards
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const whereCondition: any = {
 			userId: user.id,
 			state: {
@@ -108,8 +115,20 @@ export async function getNextReviewCard(deckId?: string): Promise<StudyCardWithD
 
 		// If deckId is provided, filter cards that belong to this deck
 		// A card belongs to a deck via its Vocab OR Kanji parent
-		if (deckId) {
-			whereCondition.OR = [{ vocab: { deckId: deckId } }, { kanji: { deckId: deckId } }];
+		if (deckIdOrIds) {
+			if (Array.isArray(deckIdOrIds)) {
+				// Multiple Decks (Course Mode)
+				whereCondition.OR = [
+					{ vocab: { deckId: { in: deckIdOrIds } } },
+					{ kanji: { deckId: { in: deckIdOrIds } } },
+				];
+			} else {
+				// Single Deck
+				whereCondition.OR = [
+					{ vocab: { deckId: deckIdOrIds } },
+					{ kanji: { deckId: deckIdOrIds } },
+				];
+			}
 		}
 
 		const card = await prisma.studyCard.findFirst({
@@ -137,6 +156,7 @@ export async function getNextReviewCard(deckId?: string): Promise<StudyCardWithD
 		// If no cards are due, look for NEW content to enroll
 
 		// 1. Try to find a new Vocab
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const vocabWhere: any = {
 			deck: {
 				OR: [{ isPublic: true }, { authorId: user.id }],
@@ -145,7 +165,13 @@ export async function getNextReviewCard(deckId?: string): Promise<StudyCardWithD
 				none: { userId: user.id }, // Exclude if user already has a card for this vocab
 			},
 		};
-		if (deckId) vocabWhere.deckId = deckId;
+		if (deckIdOrIds) {
+			if (Array.isArray(deckIdOrIds)) {
+				vocabWhere.deckId = { in: deckIdOrIds };
+			} else {
+				vocabWhere.deckId = deckIdOrIds;
+			}
+		}
 
 		const newVocab = await prisma.vocab.findFirst({
 			where: vocabWhere,
@@ -170,6 +196,7 @@ export async function getNextReviewCard(deckId?: string): Promise<StudyCardWithD
 		}
 
 		// 2. Try to find a new Kanji
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const kanjiWhere: any = {
 			deck: {
 				OR: [{ isPublic: true }, { authorId: user.id }],
@@ -178,7 +205,13 @@ export async function getNextReviewCard(deckId?: string): Promise<StudyCardWithD
 				none: { userId: user.id },
 			},
 		};
-		if (deckId) kanjiWhere.deckId = deckId;
+		if (deckIdOrIds) {
+			if (Array.isArray(deckIdOrIds)) {
+				kanjiWhere.deckId = { in: deckIdOrIds };
+			} else {
+				kanjiWhere.deckId = deckIdOrIds;
+			}
+		}
 
 		const newKanji = await prisma.kanji.findFirst({
 			where: kanjiWhere,
@@ -231,10 +264,14 @@ function toFsrsCard(studyCard: StudyCard): Card {
  * Submit a review for a card using FSRS algorithm
  * Validates ownership
  */
+/**
+ * Submit a review for a card using FSRS algorithm
+ * Validates ownership
+ */
 export async function submitReview(
 	cardId: string,
 	rating: number,
-	deckId?: string,
+	deckIdOrIds?: string | string[],
 ): Promise<{ success: boolean; nextCard?: StudyCardWithDetails | null; error?: string }> {
 	try {
 		const user = await getUser();
@@ -309,7 +346,7 @@ export async function submitReview(
 		);
 
 		// 5. Fetch next card (maintaining deck context if present)
-		const nextCard = await getNextReviewCard(deckId);
+		const nextCard = await getNextReviewCard(deckIdOrIds);
 
 		return { success: true, nextCard };
 	} catch (error) {

@@ -42,7 +42,7 @@ export default function VocabListPage() {
 				return {
 					id: v.id,
 					wordSurface: v.wordSurface,
-					readingKana: v.readingKana,
+					readingKana: v.readingKana || '',
 					meaning: v.meaning,
 					hanViet: v.hanViet,
 					deckName: v.deck?.title || '-',

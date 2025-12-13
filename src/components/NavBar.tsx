@@ -21,6 +21,7 @@ import ShareModal from './ShareModal';
 import { createClient } from '@/utils/supabase/client';
 import {
 	LogoutOutlined,
+	ReadOutlined,
 	BookOutlined,
 	DashboardOutlined,
 	MenuOutlined,
@@ -98,6 +99,15 @@ export default function NavBar({ user }: { user?: User | null }) {
 			label: (
 				<Link href="/dashboard/decks" onClick={closeDrawer}>
 					{t('myDecks')}
+				</Link>
+			),
+		},
+		{
+			key: '/dashboard/courses',
+			icon: <ReadOutlined />,
+			label: (
+				<Link href="/dashboard/courses" onClick={closeDrawer}>
+					Courses
 				</Link>
 			),
 		},

@@ -9,6 +9,7 @@ import {
 	getUserSettings,
 	getDailyProgress,
 } from '@/services/actions';
+import { getCourseById } from '@/services/course-actions';
 import type { User } from '@/generated/prisma';
 import FlashCard from '@/components/FlashCard';
 import VocabSettings from '@/components/VocabSettings';
@@ -41,6 +42,7 @@ export default function StudyContent() {
 	const [sessionComplete, setSessionComplete] = useState(false);
 	const [submittingRating, setSubmittingRating] = useState<number | null>(null);
 	const [headerVisible, setHeaderVisible] = useState(true);
+	const [error, setError] = useState<string | null>(null);
 
 	// Progress Stats
 	const [dailyStats, setDailyStats] = useState({
@@ -52,7 +54,12 @@ export default function StudyContent() {
 	});
 
 	const searchParams = useSearchParams();
-	const deckId = searchParams.get('deckId') || undefined;
+	const deckIdParam = searchParams.get('deckId');
+	const courseIdParam = searchParams.get('courseId');
+
+	const [targetDeckIds, setTargetDeckIds] = useState<string | string[] | undefined>(
+		deckIdParam || undefined,
+	);
 
 	// Settings State
 	const [showFurigana, setShowFurigana] = useState(true);
@@ -162,8 +169,16 @@ export default function StudyContent() {
 	// Fetch Initial Card
 	const fetchNextCard = useCallback(async () => {
 		try {
+			// If courseId is present but targetDeckIds is not yet resolved (still string or undefined), wait or fetch
+			// Logic: If courseId is set, we need to resolve it to an array of deck IDs first.
+			// Handled in a separate effect below.
+
+			if (courseIdParam && !Array.isArray(targetDeckIds)) {
+				return; // Wait for course resolution
+			}
+
 			setLoading(true);
-			const nextCard = await getNextReviewCard(deckId);
+			const nextCard = await getNextReviewCard(targetDeckIds);
 			if (nextCard) {
 				setCard(nextCard);
 				setShowAnswer(false);
@@ -179,7 +194,35 @@ export default function StudyContent() {
 		} finally {
 			setLoading(false);
 		}
-	}, [deckId, message, updateStats, t]);
+	}, [targetDeckIds, message, updateStats, t, courseIdParam]);
+
+	// Resolve Course ID to Deck IDs
+	useEffect(() => {
+		if (courseIdParam) {
+			setLoading(true);
+			getCourseById(courseIdParam)
+				.then((course) => {
+					if (course && course.decks.length > 0) {
+						// Extract deck IDs
+						const ids = course.decks.map((cd: any) => cd.deckId);
+						setTargetDeckIds(ids);
+					} else {
+						const msg = t('errorCourseNotFound');
+						message.error(msg);
+						setError(msg);
+						setLoading(false);
+					}
+				})
+				.catch(() => {
+					const msg = t('errorLoadCourse');
+					message.error(msg);
+					setError(msg);
+					setLoading(false);
+				});
+		} else if (deckIdParam) {
+			setTargetDeckIds(deckIdParam);
+		}
+	}, [courseIdParam, deckIdParam, message]);
 
 	useEffect(() => {
 		fetchNextCard();
@@ -206,7 +249,7 @@ export default function StudyContent() {
 			try {
 				setSubmittingRating(rating);
 				// Optimistic UI update for stats could happen here, but safer to re-fetch or increment local state
-				const result = await submitReview(card.id, rating, deckId);
+				const result = await submitReview(card.id, rating, targetDeckIds);
 
 				if (result.success) {
 					// Increment local stats for immediate feedback
@@ -236,7 +279,7 @@ export default function StudyContent() {
 				setSubmittingRating(null);
 			}
 		},
-		[card, submittingRating, message, deckId, t],
+		[card, submittingRating, message, targetDeckIds, t],
 	);
 
 	// Keyboard Shortcuts
@@ -316,10 +359,31 @@ export default function StudyContent() {
 	}, [sessionComplete]);
 
 	// Loading State
-	if (loading && !card) {
+	if (loading && !card && !error) {
 		return (
 			<Flex justify="center" align="center" style={{ height: '100vh', background: '#F9F7F2' }}>
 				<Spin indicator={<LoadingOutlined style={{ fontSize: 48, color: '#1E3A5F' }} spin />} />
+			</Flex>
+		);
+	}
+
+	// Error State
+	if (error) {
+		return (
+			<Flex justify="center" align="center" style={{ height: '100vh', background: '#F9F7F2' }}>
+				<Result
+					status="warning"
+					title={t('unableToStart')}
+					subTitle={error}
+					extra={
+						<Button
+							type="primary"
+							onClick={() => router.push(courseIdParam ? `/courses/${courseIdParam}` : '/')}
+						>
+							{t('goBack')}
+						</Button>
+					}
+				/>
 			</Flex>
 		);
 	}
