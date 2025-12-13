@@ -12,3 +12,21 @@ body {
   overflow-x: hidden;
   width: 100%;
 }
+
+@media (max-width: 1000px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .mobile-trigger {
+    display: inline-flex !important;
+  }
+}
+
+@media (min-width: 1001px) {
+  .desktop-nav {
+    display: flex !important;
+  }
+  .mobile-trigger {
+    display: none !important;
+  }
+}

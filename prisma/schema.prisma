@@ -55,6 +55,7 @@ model Deck {
   title       String
   description String?
   isPublic    Boolean @default(false) @map("is_public")
+  headerImage String? @map("header_image")
 
   authorId String @map("author_id")
   author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)

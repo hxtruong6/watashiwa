@@ -1,5 +1,5 @@
-import React from 'react';
-import { getDeck, syncUser } from '@/services/actions';
+import React from 'react'; // Added explicit React import if needed, or keeping existing
+import { getDeck, syncUser, getUser } from '@/services/actions';
 import { notFound } from 'next/navigation';
 import DeckView from './DeckView';
 
@@ -8,11 +8,14 @@ export default async function DeckDetailPage({ params }: { params: Promise<{ id:
 
 	// Sync User
 	await syncUser();
+	const user = await getUser();
 	const deck = await getDeck(id);
 
 	if (!deck) {
 		notFound();
 	}
 
-	return <DeckView deck={deck} />;
+	const isOwner = user?.id === deck.authorId;
+
+	return <DeckView deck={deck} isOwner={isOwner} />;
 }

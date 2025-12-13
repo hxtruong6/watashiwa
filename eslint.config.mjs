@@ -10,6 +10,7 @@ const eslintConfig = defineConfig([
 	{
 		rules: {
 			'prettier/prettier': ['error', { useTabs: true }],
+			'@typescript-eslint/no-explicit-any': 'warn',
 		},
 	},
 	// Override default ignores of eslint-config-next.

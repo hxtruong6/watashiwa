@@ -29,9 +29,11 @@ import {
 	UserOutlined,
 	SettingOutlined,
 	ShareAltOutlined,
+	FolderOpenOutlined,
 } from '@ant-design/icons';
 import Link from 'next/link';
 import type { MenuProps } from 'antd';
+import Image from 'next/image';
 
 const { Header } = Layout;
 const { Text } = Typography;
@@ -73,7 +75,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 
 	const menuItems: MenuProps['items'] = [
 		{
-			key: '/',
+			key: '/?app=true',
 			icon: <DashboardOutlined />,
 			label: (
 				<Link href="/" onClick={closeDrawer}>
@@ -86,7 +88,16 @@ export default function NavBar({ user }: { user?: User | null }) {
 			icon: <BookOutlined />,
 			label: (
 				<Link href="/decks" onClick={closeDrawer}>
-					{t('decks')}
+					{t('library')}
+				</Link>
+			),
+		},
+		{
+			key: '/dashboard/decks',
+			icon: <FolderOpenOutlined />,
+			label: (
+				<Link href="/dashboard/decks" onClick={closeDrawer}>
+					{t('myDecks')}
 				</Link>
 			),
 		},
@@ -201,22 +212,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 					style={{ cursor: 'pointer' }}
 					onClick={() => router.push('/')}
 				>
-					<div
-						style={{
-							width: 32,
-							height: 32,
-							background: 'linear-gradient(135deg, #1E3A5F 0%, #3B82F6 100%)',
-							borderRadius: 8,
-							display: 'flex',
-							alignItems: 'center',
-							justifyContent: 'center',
-							color: 'white',
-							fontWeight: 'bold',
-							fontSize: 18,
-						}}
-					>
-						W
-					</div>
+					<Image src="/assets/w_logo.png" alt="WatashiWa Logo" width={64} height={64} />
 					<Text
 						strong
 						style={{
@@ -230,26 +226,6 @@ export default function NavBar({ user }: { user?: User | null }) {
 						WatashiWa
 					</Text>
 				</Flex>
-
-				{/* CSS for Responsive visibility */}
-				<style jsx global>{`
-					@media (max-width: 1000px) {
-						.desktop-nav {
-							display: none !important;
-						}
-						.mobile-trigger {
-							display: inline-flex !important;
-						}
-					}
-					@media (min-width: 1001px) {
-						.desktop-nav {
-							display: flex !important;
-						}
-						.mobile-trigger {
-							display: none !important;
-						}
-					}
-				`}</style>
 
 				{/* Desktop Menu */}
 				<div
@@ -275,7 +251,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 							<Space
 								size={16}
 								align="center"
-								split={<div style={{ width: 1, height: 16, background: '#eee' }} />}
+								separator={<div style={{ width: 1, height: 16, background: '#eee' }} />}
 							>
 								<LanguageSelector />
 
@@ -352,21 +328,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 					title={
 						<Flex justify="space-between" align="center">
 							<Flex align="center" gap="small">
-								<div
-									style={{
-										width: 24,
-										height: 24,
-										background: 'linear-gradient(135deg, #1E3A5F 0%, #3B82F6 100%)',
-										borderRadius: 6,
-										display: 'flex',
-										alignItems: 'center',
-										justifyContent: 'center',
-										color: 'white',
-										fontSize: 12,
-									}}
-								>
-									W
-								</div>
+								<Image src="/assets/w_logo.png" alt="Logo" width={24} height={24} />
 								<Text strong style={{ margin: 0, color: '#1E3A5F' }}>
 									WatashiWa
 								</Text>
@@ -379,8 +341,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 					placement="right"
 					onClose={closeDrawer}
 					open={drawerOpen}
-					width={280}
-					styles={{ body: { padding: 0 } }} // Updated from style={{ body: ... }} to styles API in v5? Actually Antd 5 uses styles
+					styles={{ body: { padding: 0 }, wrapper: { width: 280 } }}
 				>
 					<Flex vertical style={{ height: '100%' }}>
 						{user && (

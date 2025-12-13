@@ -1,23 +1,42 @@
 'use client';
 
 import React, { useState } from 'react';
-import { FloatButton, Modal, Tabs, Typography, Flex, Tooltip, ConfigProvider, Image } from 'antd';
+import {
+	FloatButton,
+	Modal,
+	Tabs,
+	Typography,
+	Flex,
+	Tooltip,
+	ConfigProvider,
+	Image,
+	Button,
+} from 'antd';
 import { HeartFilled, CopyOutlined, CheckOutlined, BankOutlined } from '@ant-design/icons';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 
 const { Text, Paragraph, Title } = Typography;
 
 // Animation variants for the button
-const buttonVariants = {
+// Animation variants for the container (scale & hover)
+const containerVariants = {
 	initial: { scale: 0.8, opacity: 0 },
 	animate: {
 		scale: 1,
 		opacity: 1,
 		transition: { duration: 0.3 },
 	},
+	hover: {
+		scale: 1.1,
+		opacity: 1,
+		transition: { duration: 0.2 },
+	},
+};
+
+// Animation variants for the inner pulse effect
+const pulseVariants = {
 	pulse: {
-		scale: 1,
 		boxShadow: [
 			'0 0 0 0 rgba(255, 77, 79, 0.4)',
 			'0 0 0 10px rgba(255, 77, 79, 0)',
@@ -29,15 +48,17 @@ const buttonVariants = {
 			repeatDelay: 1,
 		},
 	},
+	// When parent hovers, we want to stop the pulse or just have a static shadow
 	hover: {
-		scale: 1.1,
-		boxShadow: '0 0 0 0 rgba(255, 77, 79, 0)', // Clear pulse ring on hover
+		// We can clear the pulse shadow or keep it static
+		boxShadow: '0 0 0 0 rgba(255, 77, 79, 0)',
 		transition: { duration: 0.2 },
 	},
 };
 
 export function DonationButton() {
 	const [isOpen, setIsOpen] = useState(false);
+	const [isHovered, setIsHovered] = useState(false);
 	const t = useTranslations('Donation');
 
 	const items = [
@@ -133,37 +154,48 @@ export function DonationButton() {
 
 	return (
 		<>
-			<AnimatePresence>
+			<div
+				style={{
+					position: 'fixed',
+					bottom: 40,
+					right: 40,
+					zIndex: 100,
+				}}
+				onMouseEnter={() => setIsHovered(true)}
+				onMouseLeave={() => setIsHovered(false)}
+			>
 				<motion.div
-					variants={buttonVariants}
+					variants={containerVariants}
 					initial="initial"
-					animate="animate"
-					whileHover="hover"
-					// We apply the pulse animation to the button container
-					style={{
-						position: 'fixed',
-						bottom: 40,
-						right: 40,
-						zIndex: 100,
-					}}
+					animate={isHovered ? 'hover' : 'animate'}
 				>
-					{/* Inner motion div for the continuous pulse to avoid conflict with hover */}
-					<motion.div variants={buttonVariants} animate="pulse">
-						<FloatButton
-							icon={<HeartFilled style={{ color: '#fff' }} />}
-							type="primary"
-							style={{
-								width: 56,
-								height: 56,
-								// Override default primary color for this button specifically to be more "love" themed
-								backgroundColor: '#FF4D4F',
-							}}
-							onClick={() => setIsOpen(true)}
-							tooltip="Support Dev"
-						/>
+					<motion.div
+						variants={pulseVariants}
+						animate={isHovered ? 'hover' : 'pulse'}
+						style={{ borderRadius: '50%' }}
+					>
+						<Tooltip title="Support Dev" placement="left">
+							<Button
+								type="primary"
+								shape="circle"
+								icon={<HeartFilled style={{ fontSize: 24 }} />}
+								size="large"
+								style={{
+									width: 56,
+									height: 56,
+									backgroundColor: '#FF4D4F',
+									border: 'none',
+									boxShadow: '0 4px 12px rgba(255, 77, 79, 0.4)',
+									display: 'flex',
+									alignItems: 'center',
+									justifyContent: 'center',
+								}}
+								onClick={() => setIsOpen(true)}
+							/>
+						</Tooltip>
 					</motion.div>
 				</motion.div>
-			</AnimatePresence>
+			</div>
 
 			<Modal
 				title={null}

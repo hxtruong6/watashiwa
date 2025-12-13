@@ -25,7 +25,9 @@
         "analytics": "Analytics",
         "community": "Community",
         "menu": "Menu",
-        "share": "Share"
+        "share": "Share",
+        "library": "Library",
+        "myDecks": "My Decks"
     },
     "Dashboard": {
         "heroTitle": "Ready to learn?",
@@ -228,5 +230,37 @@
         "hook": "Learning with friends doubles the fun! Invite them to WatashiWa today.",
         "copyLink": "Copy Link",
         "copied": "Copied!"
+    },
+    "MyDecks": {
+        "title": "My Decks",
+        "subtitle": "Create and manage your custom flashcard sets.",
+        "createNew": "New Deck",
+        "edit": "Edit",
+        "createSuccess": "Deck created successfully",
+        "updateSuccess": "Deck updated successfully",
+        "public": "Public",
+        "private": "Private",
+        "noDescription": "No description",
+        "cardsCount": "{count} cards",
+        "view": "Study",
+        "emptyState": "You haven't created any decks yet.",
+        "browseLibrary": "Browse Library",
+        "tabVocab": "Manual Vocab",
+        "tabKanji": "Manual Kanji",
+        "tabSmart": "Smart Entry",
+        "labelWord": "Word",
+        "labelReading": "Reading (Kana)",
+        "labelMeaning": "Meaning",
+        "labelHanViet": "Han-Viet",
+        "labelExample": "Example Sentence",
+        "labelTranslation": "Translation",
+        "btnAddVocab": "Add this Vocab",
+        "btnAddKanji": "Add this Kanji",
+        "labelKanji": "Kanji",
+        "labelStrokes": "Strokes",
+        "labelOnyomi": "Onyomi",
+        "labelKunyomi": "Kunyomi",
+        "aiComingSoon": "Coming Soon",
+        "aiDescription": "AI-powered auto-fill. Just type a word, and we'll do the rest."
     }
 }

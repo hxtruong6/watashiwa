@@ -37,10 +37,13 @@ import CommentDrawer from '@/components/comments/CommentDrawer';
 import Link from 'next/link';
 import confetti from 'canvas-confetti';
 import { useTranslations } from 'next-intl';
+import SmartContentInput from '@/components/SmartContentInput';
+import { useRouter } from 'next/navigation';
 
 const { Title, Paragraph, Text } = Typography;
 
-export default function DeckView({ deck }: { deck: any }) {
+export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boolean }) {
+	const router = useRouter();
 	const t = useTranslations('Decks');
 	const [viewMode, setViewMode] = useState<'List' | 'Grid'>('Grid');
 
@@ -285,6 +288,8 @@ export default function DeckView({ deck }: { deck: any }) {
 				]}
 				style={{ marginBottom: 24 }}
 			/>
+
+			{isOwner && <SmartContentInput deckId={deck.id} onSuccess={() => router.refresh()} />}
 
 			{/* Hero / Stats Card */}
 			<Card

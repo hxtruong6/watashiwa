@@ -17,8 +17,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: 'JLPT Mastery SRS',
+	title: 'WatashiWa - Mastery SRS',
 	description: 'Learn Japanese with Spaced Repetition',
+	icons: {
+		icon: '/assets/w_logo.png',
+		shortcut: '/assets/w_logo.png',
+		apple: '/assets/w_logo.png',
+	},
 };
 
 import { getLocale, getMessages } from 'next-intl/server';

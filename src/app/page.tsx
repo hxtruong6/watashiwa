@@ -9,7 +9,7 @@ export default async function Page() {
 
 	// If user is logged in, redirect to dashboard
 	if (user) {
-		redirect('/dashboard');
+		redirect('/dashboard?app=true');
 	}
 
 	// Otherwise show public landing page

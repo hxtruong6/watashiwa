@@ -17,7 +17,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
 	const user = await getUserWithRole();
 
 	if (!user || !hasRole(user.role, UserRole.MODERATOR)) {
-		redirect('/dashboard');
+		redirect('/dashboard?app=true');
 	}
 
 	return (

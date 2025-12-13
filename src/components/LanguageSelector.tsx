@@ -1,6 +1,6 @@
 'use client';
 
-import { Select } from 'antd';
+import { Dropdown, Select } from 'antd';
 import { useRouter } from 'next/navigation';
 import { useLocale } from 'next-intl';
 
@@ -21,7 +21,7 @@ export default function LanguageSelector() {
 			title={locale === 'vi' ? 'Tiếng Việt' : 'English'}
 			style={{ minWidth: 60 }} // Reduced minWidth since we only show flag
 			optionLabelProp="short" // Use the 'short' property for the selected value display
-			dropdownStyle={{ minWidth: 150 }} // Ensure dropdown is wide enough
+			popupMatchSelectWidth={150}
 			options={[
 				{
 					value: 'vi',

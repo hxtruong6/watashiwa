@@ -25,7 +25,9 @@
         "analytics": "Thống kê",
         "community": "Cộng đồng",
         "menu": "Menu",
-        "share": "Chia sẻ"
+        "share": "Chia sẻ",
+        "library": "Thư viện",
+        "myDecks": "Bộ thẻ của tôi"
     },
     "Dashboard": {
         "heroTitle": "Sẵn sàng học chưa?",
@@ -228,5 +230,37 @@
         "hook": "Học cùng bạn bè vui hơn gấp đôi! Mời họ tham gia WatashiWa ngay hôm nay.",
         "copyLink": "Sao chép liên kết",
         "copied": "Đã sao chép!"
+    },
+    "MyDecks": {
+        "title": "Bộ thẻ của tôi",
+        "subtitle": "Tạo và quản lý các bộ thẻ tùy chỉnh của bạn.",
+        "createNew": "Bộ thẻ mới",
+        "edit": "Sửa",
+        "createSuccess": "Đã tạo bộ thẻ thành công",
+        "updateSuccess": "Đã cập nhật bộ thẻ thành công",
+        "public": "Công khai",
+        "private": "Riêng tư",
+        "noDescription": "Không có mô tả",
+        "cardsCount": "{count} thẻ",
+        "view": "Học",
+        "emptyState": "Bạn chưa tạo bộ thẻ nào.",
+        "browseLibrary": "Duyệt thư viện",
+        "tabVocab": "Thêm Từ vựng",
+        "tabKanji": "Thêm Kanji",
+        "tabSmart": "Nhập liệu thông minh",
+        "labelWord": "Từ vựng",
+        "labelReading": "Cách đọc (Kana)",
+        "labelMeaning": "Ý nghĩa",
+        "labelHanViet": "Hán-Việt",
+        "labelExample": "Câu ví dụ",
+        "labelTranslation": "Dịch nghĩa",
+        "btnAddVocab": "Thêm từ vựng này",
+        "btnAddKanji": "Thêm Kanji này",
+        "labelKanji": "Kanji",
+        "labelStrokes": "Số nét",
+        "labelOnyomi": "Onyomi (Âm On)",
+        "labelKunyomi": "Kunyomi (Âm Kun)",
+        "aiComingSoon": "Sắp ra mắt",
+        "aiDescription": "AI tự động điền thông tin. Chỉ cần nhập từ, mọi thứ còn lại để chúng tôi lo."
     }
 }

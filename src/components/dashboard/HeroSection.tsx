@@ -79,17 +79,12 @@ export default function HeroSection({
 					<Progress
 						percent={progressPercent}
 						showInfo={false}
-						strokeColor={
-							isGoalComplete
-								? '#708238'
-								: {
-										'0%': '#708238',
-										'100%': '#1E3A5F',
-									}
-						}
-						trailColor="#e8e8e8"
-						strokeWidth={10}
-						style={{ marginBottom: 0 }}
+						strokeColor={{
+							'0%': '#1E3A5F',
+							'100%': '#4F46E5', // Indigo
+						}}
+						railColor="rgba(0,0,0,0.06)"
+						size={['100%', 12]}
 					/>
 					{isGoalComplete && (
 						<motion.div
