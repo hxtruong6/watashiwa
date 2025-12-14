@@ -14,8 +14,14 @@ export default async function Dashboard(props: Props) {
 	// Sync user on load
 	await syncUser();
 
+	// Parallelize fetching
+	const [user, data, leaderboard] = await Promise.all([
+		getUserWithRole(),
+		getDashboardData(),
+		getLeaderboard(),
+	]);
+
 	// Check for role-based redirect
-	const user = await getUserWithRole();
 	if (
 		user &&
 		(user.role === UserRole.ADMIN || user.role === UserRole.MODERATOR) &&
@@ -23,10 +29,6 @@ export default async function Dashboard(props: Props) {
 	) {
 		redirect('/admin');
 	}
-
-	// Get all dashboard data in a single call
-	const data = await getDashboardData();
-	const leaderboard = await getLeaderboard();
 
 	if (!data) {
 		return <DashboardErrorState />;

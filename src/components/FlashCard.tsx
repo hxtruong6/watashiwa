@@ -55,6 +55,7 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 			speak,
 			stop,
 			isPlaying: isTtsPlaying,
+			voices,
 		} = useAudioPlayer({
 			rate: ttsSettings.speed,
 			voiceUri: ttsSettings.voiceUri,
@@ -169,6 +170,9 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 				}
 
 				if (shouldPlay) {
+					// If using TTS (!audioUrl), wait for voices to be loaded
+					if (!audioUrl && voices.length === 0) return;
+
 					// Small delay for smooth UX
 					const timer = setTimeout(() => {
 						playAudio();
@@ -177,7 +181,7 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 				}
 			}
 			// eslint-disable-next-line react-hooks/exhaustive-deps
-		}, [card?.id, showAnswer, autoPlayAudio, isVocab]);
+		}, [card?.id, showAnswer, autoPlayAudio, isVocab, voices.length]);
 
 		// Handle Audio Playback Toggle
 		const toggleAudio = (e?: React.MouseEvent) => {

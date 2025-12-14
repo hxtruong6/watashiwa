@@ -13,6 +13,7 @@ import {
 	Select,
 	message,
 	Popconfirm,
+	theme,
 } from 'antd';
 import {
 	LikeOutlined,
@@ -33,6 +34,7 @@ import { useTranslations } from 'next-intl';
 const { Text } = Typography;
 const { TextArea } = Input;
 const { Option } = Select;
+const { useToken } = theme;
 
 interface CommentProps {
 	comment: {
@@ -72,6 +74,7 @@ export default function CommentItem({
 }: CommentProps) {
 	const tComment = useTranslations('Comments');
 	const tCommon = useTranslations('Common');
+	const { token } = useToken();
 
 	const [vote, setVote] = useState(comment.userVote);
 	const [score, setScore] = useState(comment.score);
@@ -131,45 +134,65 @@ export default function CommentItem({
 	const canEdit = currentUserId === comment.authorId;
 
 	return (
-		<Card size="small" style={{ marginBottom: 16, borderColor: '#f0f0f0' }}>
+		<Card size="small" style={{ marginBottom: 16, borderColor: token.colorBorderSecondary }}>
 			<Flex gap="small" align="start">
 				<Flex vertical align="center" style={{ minWidth: 40, marginRight: 8 }}>
 					<Button
 						type="text"
 						size="small"
-						icon={vote === 1 ? <LikeFilled style={{ color: '#1890ff' }} /> : <LikeOutlined />}
+						icon={
+							vote === 1 ? <LikeFilled style={{ color: token.colorPrimary }} /> : <LikeOutlined />
+						}
 						onClick={() => handleVote(1)}
-						style={{ color: vote === 1 ? '#1890ff' : undefined }}
+						style={{ color: vote === 1 ? token.colorPrimary : undefined }}
 					/>
-					<Text strong style={{ color: score > 0 ? '#1890ff' : score < 0 ? '#ff4d4f' : '#888' }}>
+					<Text
+						strong
+						style={{
+							color:
+								score > 0
+									? token.colorPrimary
+									: score < 0
+										? token.colorError
+										: token.colorTextSecondary,
+						}}
+					>
 						{score}
 					</Text>
 					<Button
 						type="text"
 						size="small"
 						icon={
-							vote === -1 ? <DislikeFilled style={{ color: '#ff4d4f' }} /> : <DislikeOutlined />
+							vote === -1 ? (
+								<DislikeFilled style={{ color: token.colorError }} />
+							) : (
+								<DislikeOutlined />
+							)
 						}
 						onClick={() => handleVote(-1)}
-						style={{ color: vote === -1 ? '#ff4d4f' : undefined }}
+						style={{ color: vote === -1 ? token.colorError : undefined }}
 					/>
 				</Flex>
 
-				<Flex vertical style={{ width: '100%' }} gap="2px">
-					<Flex justify="space-between" align="center">
-						<Space size={4}>
-							<Avatar size="small" icon={<UserOutlined />} style={{ backgroundColor: '#87d068' }}>
+				<Flex vertical style={{ width: '100%' }} gap={2}>
+					<Flex justify="space-between" align="start" wrap="wrap" gap="small">
+						<Space size={4} wrap style={{ flex: 1, minWidth: 0 }}>
+							<Avatar
+								size="small"
+								icon={<UserOutlined />}
+								style={{ backgroundColor: token.colorSuccess, flexShrink: 0 }}
+							>
 								{comment.author.name?.[0]}
 							</Avatar>
-							<Text type="secondary" style={{ fontSize: 12 }}>
+							<Text type="secondary" style={{ fontSize: 12 }} ellipsis>
 								{comment.author.name || 'User'}
 							</Text>
-							<Text type="secondary" style={{ fontSize: 12 }}>
+							<Text type="secondary" style={{ fontSize: 12, whiteSpace: 'nowrap' }}>
 								• {formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}
 							</Text>
 						</Space>
 						{!isEditing && (
-							<Tag color={TagColors[comment.type] || 'default'} style={{ marginRight: 0 }}>
+							<Tag color={TagColors[comment.type] || 'default'} style={{ margin: 0 }}>
 								{/* Map type to translated label */}
 								{{
 									MNEMONIC: tComment('typeMnemonic'),

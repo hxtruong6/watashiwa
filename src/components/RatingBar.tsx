@@ -1,6 +1,9 @@
 import React from 'react';
-import { Button, Tooltip, ConfigProvider } from 'antd';
+import { Button, theme, Grid } from 'antd';
 import { useTranslations } from 'next-intl';
+
+const { useToken } = theme;
+const { useBreakpoint } = Grid;
 
 interface RatingBarProps {
 	onRate: (rating: number) => void;
@@ -10,39 +13,75 @@ interface RatingBarProps {
 
 export default function RatingBar({ onRate, disabled, selectedRating }: RatingBarProps) {
 	const t = useTranslations('Study');
-	// Local state not needed if controlled by parent used for animation trigger
-	// But parent state `submittingRating` is perfect.
+	const { token } = useToken();
+	const screens = useBreakpoint();
 
-	// Colors: Theme Primary + Soft Background Tints
+	// Map ratings to Theme Tokens
+	// Design System:
+	// Again (1): Bordered Red
+	// Hard (2): Bordered Orange
+	// Good (3): Filled Green (Dominant)
+	// Easy (4): Bordered Indigo
 	const colors = {
-		1: { primary: '#E64A19', bg: '#FFF1F0' }, // Again (Red)
-		2: { primary: '#FAAD14', bg: '#FFF7E6' }, // Hard (Orange)
-		3: { primary: '#708238', bg: '#F6FFED' }, // Good (Green)
-		4: { primary: '#1E3A5F', bg: '#F0F5FF' }, // Easy (Blue)
+		1: { primary: token.colorError, bg: '#FFF1F0' },
+		2: { primary: token.colorWarning, bg: '#FFF7E6' },
+		3: { primary: token.colorSuccess, bg: '#F6FFED' },
+		4: { primary: token.colorPrimary, bg: '#F0F5FF' },
 	};
 
-	const getButtonStyle = (rating: number, theme: { primary: string; bg: string }) => {
+	const getButtonStyle = (rating: number, colorTheme: { primary: string; bg: string }) => {
 		const isSelected = selectedRating === rating;
-		const isOthers = selectedRating !== null && selectedRating !== undefined && !isSelected;
+		const isGood = rating === 3; // The "Golden Path" action
+
+		// If Good (3): Solid style by default.
+		// Others: Outlined style by default.
+		// On Selection: All become "Solid" or maintain dominance?
+		// Let's make selection just add a ring or scale, keeping base style logic but ensuring visibility.
+
+		// Actually, standard practice:
+		// Selected = Filled/Active state.
+		// Unselected = Default state (Bordered or Filled based on priority).
+
+		const isActive = isSelected;
+
+		let background = '#fff';
+		let color = colorTheme.primary;
+		let border = `1px solid ${colorTheme.primary}`;
+		let boxShadow = 'none';
+
+		if (isGood) {
+			// Good is "Filled Green" per design system
+			background = colorTheme.primary;
+			color = '#fff';
+			border = 'none';
+			if (isActive) {
+				boxShadow = `0 0 0 4px ${colorTheme.primary}40`; // Focus ring
+			}
+		} else {
+			// Others are Bordered
+			if (isActive) {
+				background = colorTheme.primary;
+				color = '#fff';
+				boxShadow = `0 0 0 4px ${colorTheme.primary}40`;
+			} else {
+				background = '#fff'; // or transparent
+				color = colorTheme.primary;
+				border = `1px solid ${colorTheme.primary}`;
+			}
+		}
 
 		return {
-			height: 56,
-			fontSize: 16,
+			height: screens.xs ? 48 : 56,
+			fontSize: screens.xs ? 14 : 16,
 			fontWeight: 600,
-			transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-			opacity: isOthers ? 0.4 : 1, // Slightly higher opacity for legible fade
-			transform: isSelected ? 'scale(1.02)' : 'scale(1)',
+			transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+			transform: isActive ? 'scale(1.02)' : 'scale(1)',
 
-			// Tonal Style Logic
-			// Default: Soft Background + Strong Text
-			// Selected: Strong Background + White Text
-			backgroundColor: isSelected ? theme.primary : theme.bg,
-			color: isSelected ? '#fff' : theme.primary,
-			borderColor: isSelected ? theme.primary : 'transparent', // Transparent border when tonal
-			borderWidth: 1,
-			borderStyle: 'solid',
-
-			boxShadow: isSelected ? `0 8px 16px ${theme.primary}4D` : 'none', // Soft colored shadow on selection
+			backgroundColor: background,
+			color: color,
+			border: border,
+			boxShadow: boxShadow,
+			opacity: disabled && !isActive ? 0.5 : 1,
 		};
 	};
 
@@ -50,107 +89,62 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 		<div
 			style={{
 				marginTop: 16,
-				padding: '16px',
+				padding: screens.xs ? '8px' : '12px',
 				background: 'rgba(255, 255, 255, 0.95)',
-				borderRadius: 24,
+				borderRadius: 16,
 				boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
 				backdropFilter: 'blur(12px)',
 				width: '100%',
-				maxWidth: 500,
+				maxWidth: 600, // Allow wider on desktop
 			}}
 		>
-			<ConfigProvider
-				theme={{
-					components: {
-						Button: {
-							colorPrimary: '#1E3A5F', // Default fallback
-							algorithm: true, // Enable derivative colors
-						},
-					},
+			<div
+				style={{
+					display: 'grid',
+					gridTemplateColumns: screens.md ? 'repeat(4, 1fr)' : 'repeat(2, 1fr)', // 4 col on tablet+, 2 col on mobile
+					gap: screens.xs ? 8 : 12,
 				}}
 			>
-				<div
-					style={{
-						display: 'grid',
-						gridTemplateColumns: '1fr 1fr',
-						gap: 12,
-					}}
+				<Button
+					size="large"
+					loading={selectedRating === 1}
+					onClick={() => onRate(1)}
+					disabled={disabled && selectedRating !== 1}
+					style={getButtonStyle(1, colors[1])}
 				>
-					<Tooltip title={t('shortcutTooltip', { key: 1 })}>
-						<Button
-							size="large"
-							loading={selectedRating === 1}
-							onClick={() => onRate(1)}
-							disabled={disabled && selectedRating !== 1}
-							style={{
-								...getButtonStyle(1, colors[1]),
-								gridColumn: '1 / 2',
-							}}
-						>
-							{t('rateAgain')}
-						</Button>
-					</Tooltip>
+					{t('rateAgain')}
+				</Button>
 
-					<Tooltip title={t('shortcutTooltip', { key: 2 })}>
-						<Button
-							size="large"
-							loading={selectedRating === 2}
-							onClick={() => onRate(2)}
-							disabled={disabled && selectedRating !== 2}
-							style={{
-								...getButtonStyle(2, colors[2]),
-								gridColumn: '2 / 3',
-							}}
-						>
-							{t('rateHard')}
-						</Button>
-					</Tooltip>
+				<Button
+					size="large"
+					loading={selectedRating === 2}
+					onClick={() => onRate(2)}
+					disabled={disabled && selectedRating !== 2}
+					style={getButtonStyle(2, colors[2])}
+				>
+					{t('rateHard')}
+				</Button>
 
-					<Tooltip title={t('shortcutTooltip', { key: 3 })}>
-						<Button
-							size="large"
-							loading={selectedRating === 3}
-							onClick={() => onRate(3)}
-							disabled={disabled && selectedRating !== 3}
-							style={{
-								...getButtonStyle(3, colors[3]),
-								gridColumn: '1 / 2',
-							}}
-						>
-							{t('rateGood')}
-						</Button>
-					</Tooltip>
+				<Button
+					size="large"
+					loading={selectedRating === 3}
+					onClick={() => onRate(3)}
+					disabled={disabled && selectedRating !== 3}
+					style={getButtonStyle(3, colors[3])}
+				>
+					{t('rateGood')}
+				</Button>
 
-					<Tooltip title={t('shortcutTooltip', { key: 4 })}>
-						<Button
-							size="large"
-							loading={selectedRating === 4}
-							onClick={() => onRate(4)}
-							disabled={disabled && selectedRating !== 4}
-							style={{
-								...getButtonStyle(4, colors[4]),
-								gridColumn: '2 / 3',
-							}}
-						>
-							{t('rateEasy')}
-						</Button>
-					</Tooltip>
-				</div>
-			</ConfigProvider>
-
-			{/* Responsive styles */}
-			<style jsx>{`
-				@media (min-width: 600px) {
-					div[style*='gridTemplateColumns'] {
-						display: flex !important;
-						justify-content: space-between;
-					}
-					button {
-						flex: 1;
-						margin: 0 6px;
-					}
-				}
-			`}</style>
+				<Button
+					size="large"
+					loading={selectedRating === 4}
+					onClick={() => onRate(4)}
+					disabled={disabled && selectedRating !== 4}
+					style={getButtonStyle(4, colors[4])}
+				>
+					{t('rateEasy')}
+				</Button>
+			</div>
 		</div>
 	);
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Select, Slider, Typography, Form, Space, Button } from 'antd';
 import { PlayCircleOutlined } from '@ant-design/icons';
+import { useTranslations } from 'next-intl';
 import { useAudioPlayer } from './useAudioPlayer';
 
 const { Text } = Typography;
@@ -14,6 +15,7 @@ const STORAGE_KEY_VOICE = 'watashiwa_audio_voice';
 const STORAGE_KEY_SPEED = 'watashiwa_audio_speed';
 
 export default function VoiceSettings({ lang = 'ja-JP', onSettingsChange }: VoiceSettingsProps) {
+	const t = useTranslations('Settings');
 	const [speed, setSpeed] = useState(() => {
 		if (typeof window === 'undefined') return 1;
 		const s = localStorage.getItem(STORAGE_KEY_SPEED);
@@ -38,7 +40,20 @@ export default function VoiceSettings({ lang = 'ja-JP', onSettingsChange }: Voic
 	}, [onSettingsChange, selectedVoiceUri, speed]); // Run once to sync if needed
 
 	// Filter voices for the target language or "smart" defaults
-	const jpVoices = voices.filter((v) => v.lang === 'ja-JP');
+	const jpVoices = voices.filter((v) => {
+		if (v.lang !== 'ja-JP') return false;
+		const name = v.name.toLowerCase();
+		// Whitelist specific high-quality voices
+		return (
+			name.includes('hattori') ||
+			name.includes('kyoko') ||
+			name.includes('google') ||
+			name.includes('otoya') ||
+			name.includes('nanami') ||
+			name.includes('haruka') ||
+			name.includes('siri')
+		);
+	});
 
 	const handleVoiceChange = (val: string) => {
 		setSelectedVoiceUri(val);
@@ -59,17 +74,17 @@ export default function VoiceSettings({ lang = 'ja-JP', onSettingsChange }: Voic
 	return (
 		<div style={{ marginTop: 16 }}>
 			<Form layout="vertical">
-				<Form.Item label="Voice (Japanese)">
+				<Form.Item label={t('voiceLabel')}>
 					<Space.Compact style={{ width: '100%' }}>
 						<Select
 							value={selectedVoiceUri}
 							onChange={handleVoiceChange}
-							placeholder="Select a voice"
+							placeholder={t('voicePlaceholder')}
 							style={{ flex: 1 }}
 						>
 							{jpVoices.length === 0 && (
 								<Select.Option value="" disabled>
-									No Japanese voices found
+									{t('voiceNoFound')}
 								</Select.Option>
 							)}
 							{jpVoices.map((v) => (
@@ -79,19 +94,19 @@ export default function VoiceSettings({ lang = 'ja-JP', onSettingsChange }: Voic
 							))}
 						</Select>
 						<Button icon={<PlayCircleOutlined />} onClick={testAudio}>
-							Test
+							{t('voiceTest')}
 						</Button>
 					</Space.Compact>
 					{jpVoices.length === 0 && (
 						<Text type="secondary" style={{ fontSize: 12 }}>
-							Depending on your browser/OS, you might need to install Japanese language pack.
+							{t('voiceWarning')}
 						</Text>
 					)}
 				</Form.Item>
 
-				<Form.Item label={`Playback Speed: ${speed}x`}>
+				<Form.Item label={t('playbackSpeed', { speed })}>
 					<Slider
-						min={0.5}
+						min={0.2}
 						max={2.0}
 						step={0.1}
 						value={speed}

@@ -518,9 +518,19 @@ export async function getDeck(id: string) {
 			include: {
 				vocab: {
 					orderBy: { createdAt: 'desc' },
+					include: {
+						_count: {
+							select: { cardComments: true },
+						},
+					},
 				},
 				kanji: {
 					orderBy: { createdAt: 'desc' },
+					include: {
+						_count: {
+							select: { cardComments: true },
+						},
+					},
 				},
 				_count: {
 					select: { vocab: true, kanji: true },
@@ -633,27 +643,51 @@ export async function getWeeklyStats(userId?: string) {
 		const today = new Date();
 		today.setHours(0, 0, 0, 0);
 
-		// Generate last 7 days
+		// Optimize: Fetch all logs for the date range in one query
+		const rangeStart = new Date(today);
+		rangeStart.setDate(today.getDate() - 6);
+		rangeStart.setHours(0, 0, 0, 0);
+
+		const rangeEnd = new Date(today);
+		rangeEnd.setHours(23, 59, 59, 999);
+
+		const logs = await prisma.reviewLog.findMany({
+			where: {
+				userId: uid,
+				review: {
+					gte: rangeStart,
+					lte: rangeEnd,
+				},
+			},
+			select: {
+				review: true,
+			},
+		});
+
+		// Aggregate logs by day string (YYYY-MM-DD or similar to match loop logic)
+		const countsByDay: Record<string, number> = {};
+		logs.forEach((log) => {
+			// Get local date string relative to user? Or just Use server time as basis same as before
+			// The original loop constructed dates based on server 'today'.
+			// We should match that.
+			const d = new Date(log.review);
+			// We need to bucket them by "Day Index" relative to today, or just Date String.
+			// Let's use toDateString() as key which is "Thu Dec 14 2023"
+			const key = d.toDateString();
+			countsByDay[key] = (countsByDay[key] || 0) + 1;
+		});
+
+		// Reconstruct the array
 		for (let i = 6; i >= 0; i--) {
 			const date = new Date(today);
 			date.setDate(today.getDate() - i);
-			const dayEnd = new Date(date);
-			dayEnd.setHours(23, 59, 59, 999);
-
-			const count = await prisma.reviewLog.count({
-				where: {
-					userId: uid,
-					review: {
-						gte: date,
-						lte: dayEnd,
-					},
-				},
-			});
+			const dayLabel = dayNames[date.getDay()];
+			const key = date.toDateString();
 
 			days.push({
-				day: dayNames[date.getDay()],
+				day: dayLabel,
 				date,
-				count,
+				count: countsByDay[key] || 0,
 				isToday: i === 0,
 			});
 		}

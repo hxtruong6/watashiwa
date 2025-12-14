@@ -17,7 +17,9 @@
         "rateHard": "Hard",
         "rateGood": "Good",
         "rateEasy": "Easy",
-        "off": "Off"
+        "off": "Off",
+        "yes": "Yes",
+        "no": "No"
     },
     "NavBar": {
         "dashboard": "Home",
@@ -92,10 +94,10 @@
         "unexpectedError": "An unexpected error occurred.",
         "left": "left",
         "wait": "Wait...",
-        "rateAgain": "Again (1)",
-        "rateHard": "Hard (2)",
-        "rateGood": "Good (3)",
-        "rateEasy": "Easy (4)",
+        "rateAgain": "Again",
+        "rateHard": "Hard",
+        "rateGood": "Good",
+        "rateEasy": "Easy",
         "shortcutTooltip": "Shortcut: {key}",
         "errorCourseNotFound": "Course not found or has no decks linked.",
         "errorLoadCourse": "Failed to load course details.",
@@ -146,9 +148,11 @@
         "autoPlay": "Auto-play",
         "autoPlayTooltip": "Auto-play Audio",
         "guideTitle": "Guide:",
-        "guideSpace": "Flip / Rate Good",
+        "guideSpace": "Flip / Rate Card",
         "guideNumbers": "Rate Answer",
-        "guideMobile": "Mobile: Icons auto-hide (5s)",
+        "guideReplay": "Replay Audio",
+        "guideExample": "Play Example Audio",
+        "guideMobile": "Settings button auto-hide (5s)",
         "advancedSettings": "Advanced Rules & Limits",
         "limitNewCards": "New Cards / Day",
         "limitReviews": "Reviews / Day",
@@ -156,13 +160,19 @@
         "timezoneHelp": "Daily limits reset at midnight in this timezone.",
         "allowSpaceKeyLabel": "Space Key Behavior",
         "allowSpaceKey": "Enable Space Key",
-        "spaceKeyRating": "Rate as",
+        "spaceKeyRating": "Space press is rated as",
         "autoShowAnswer": "Auto-Show Answer",
         "autoShowAnswerDelay": "Delay (seconds)",
         "saveSettings": "Save Settings",
         "audioSettings": "Audio Settings",
         "question": "Front Side",
-        "answer": "Back Side"
+        "answer": "Back Side",
+        "voiceLabel": "Voice (Japanese)",
+        "voicePlaceholder": "Select a voice",
+        "voiceNoFound": "No Japanese voices found",
+        "voiceTest": "Test",
+        "voiceWarning": "Depending on your browser/OS, you might need to install Japanese language pack.",
+        "playbackSpeed": "Playback Speed: {speed}x"
     },
     "Admin": {
         "panelTitle": "Admin Panel",
@@ -231,7 +241,9 @@
         "typeGeneral": "General Comment",
         "validationRequired": "Please write something!",
         "validationTooShort": "Too short (min 5 chars)",
-        "validationTooLong": "Too long (max 500 chars)"
+        "validationTooLong": "Too long (max 500 chars)",
+        "sortPopular": "Popular",
+        "sortNewest": "Newest"
     },
     "Donation": {
         "title": "Support the Journey",

@@ -68,7 +68,6 @@ export default function StudyContent() {
 	const [settingsVisible, setSettingsVisible] = useState(false);
 
 	// User Preferences from DB
-	const [allowSpaceKey, setAllowSpaceKey] = useState(true);
 	const [spaceKeyRating, setSpaceKeyRating] = useState(3);
 	const [autoShowAnswer, setAutoShowAnswer] = useState(false);
 	const [autoShowAnswerDelay, setAutoShowAnswerDelay] = useState(40);
@@ -88,10 +87,8 @@ export default function StudyContent() {
 		if (settings) {
 			setDailyStats((prev) => ({
 				...prev,
-				limitNewCards: settings.limitNewCards,
 				limitReviews: settings.limitReviews,
 			}));
-			setAllowSpaceKey(settings.allowSpaceKey);
 			setSpaceKeyRating(settings.spaceKeyRating);
 			setAutoShowAnswer(settings.autoShowAnswer);
 			setAutoShowAnswerDelay(settings.autoShowAnswerDelay);
@@ -314,8 +311,6 @@ export default function StudyContent() {
 				if (e.repeat) return; // Prevent holding key triggering multiple actions
 				e.preventDefault(); // Prevent scrolling
 
-				if (!allowSpaceKey) return;
-
 				if (!showAnswer) {
 					setShowAnswer(true);
 				} else {
@@ -359,7 +354,6 @@ export default function StudyContent() {
 		settingsVisible,
 		isReportModalOpen,
 		isCommentDrawerOpen,
-		allowSpaceKey,
 		spaceKeyRating,
 	]);
 
@@ -658,7 +652,7 @@ export default function StudyContent() {
 						overflowY: 'auto',
 						display: 'flex',
 						flexDirection: 'column',
-						paddingBottom: 150, // Increased bottom padding for larger RatingBar area
+						paddingBottom: 220, // Increased bottom padding for larger RatingBar area on mobile
 						paddingTop: 60, // Space for header buttons
 					}}
 				>

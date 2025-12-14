@@ -3,14 +3,18 @@
   --foreground: #2D2D2D; /* Sumi */
 }
 
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
   width: 100%;
+  position: relative;
 }
 
 @media (max-width: 1000px) {
@@ -29,4 +33,25 @@ body {
   .mobile-trigger {
     display: none !important;
   }
+}
+
+/* Sentry Feedback Customization */
+#sentry-feedback {
+  --font-family: 'Inter', sans-serif !important;
+  --accent-background: #1E3A5F !important;
+  --submit-background: #1E3A5F !important;
+  --submit-outline: #1E3A5F !important;
+  --input-outline-focus: #1E3A5F !important; 
+  z-index: 100000 !important;
+}
+
+/* Hover Visibility Logic */
+.hover-target {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.hover-trigger:hover .hover-target,
+.hover-target.visible {
+  opacity: 1;
 }

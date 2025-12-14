@@ -41,6 +41,7 @@ export default function VocabCard({
 		speak,
 		stop,
 		isPlaying: isTtsPlaying,
+		voices,
 	} = useAudioPlayer({
 		rate: ttsSettings.speed,
 		voiceUri: ttsSettings.voiceUri,
@@ -65,13 +66,23 @@ export default function VocabCard({
 	} = card?.vocab || {};
 
 	// Stop audio when card changes
+	// Track previous card ID to derive state resets
+	const [prevCardId, setPrevCardId] = useState(card?.vocab?.id);
+
+	// Reset playing state during render if card changes (avoids cascading effect)
+	if (card?.vocab?.id !== prevCardId) {
+		setPrevCardId(card?.vocab?.id);
+		setIsFilePlaying(false);
+	}
+
+	// Stop audio side-effects when card changes
 	useEffect(() => {
 		stop();
 		if (audioRef.current) {
 			audioRef.current.pause();
 			audioRef.current.currentTime = 0;
 		}
-		setIsFilePlaying(false);
+		// setIsFilePlaying(false) is handled during render above
 	}, [card?.vocab?.id, stop]);
 
 	const playAudio = useCallback(() => {
@@ -93,13 +104,16 @@ export default function VocabCard({
 	// Auto-play logic
 	useEffect(() => {
 		if (autoPlayAudio) {
+			// If using TTS (!audioUrl), wait for voices to be loaded
+			if (!audioUrl && voices.length === 0) return;
+
 			// Small delay to ensure smooth transition
 			const timer = setTimeout(() => {
 				playAudio();
 			}, 300);
 			return () => clearTimeout(timer);
 		}
-	}, [card?.vocab?.id, autoPlayAudio, audioUrl, playAudio]);
+	}, [card?.vocab?.id, autoPlayAudio, audioUrl, playAudio, voices.length]);
 
 	// Handle Audio Playback
 	const toggleAudio = (e?: React.MouseEvent) => {

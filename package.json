@@ -27,6 +27,7 @@
     "canvas-confetti": "^1.9.4",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.23.26",
+    "import-in-the-middle": "^2.0.0",
     "motion": "^12.23.26",
     "next": "16.0.10",
     "next-intl": "^4.5.8",
@@ -34,6 +35,7 @@
     "posthog-js": "^1.306.1",
     "react": "19.2.1",
     "react-dom": "19.2.1",
+    "require-in-the-middle": "^8.0.1",
     "ts-fsrs": "^5.2.3",
     "uuid": "^13.0.0"
   },

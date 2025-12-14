@@ -16,6 +16,7 @@ import {
 	message,
 	Collapse,
 	Divider,
+	Space,
 } from 'antd';
 import {
 	SoundOutlined,
@@ -144,21 +145,36 @@ export default function VocabSettings({
 				</Flex>
 			</Flex>
 
-			<div style={{ marginTop: 12, padding: '12px', background: '#f5f5f5', borderRadius: 8 }}>
-				<Text strong style={{ display: 'block', marginBottom: 4, fontSize: 12 }}>
-					{t('guideTitle')}
-				</Text>
-				<ul style={{ paddingLeft: 20, margin: 0, fontSize: 12, color: '#666' }}>
-					<li>
-						<Text strong>[Space]</Text>: {t('guideSpace')}
-					</li>
-					<li>
-						<Text strong>[1-4]</Text>: {t('guideNumbers')}
-					</li>
-					<li>
-						<Text strong>Mobile</Text>: {t('guideMobile')}
-					</li>
-				</ul>
+			<div style={{ marginTop: 12, marginBottom: 16 }}>
+				<Collapse ghost size="small">
+					<Panel
+						header={
+							<Text strong style={{ fontSize: 12 }}>
+								{t('guideTitle')}
+							</Text>
+						}
+						key="1"
+						style={{ background: '#f5f5f5', borderRadius: 8 }}
+					>
+						<ul style={{ paddingLeft: 20, margin: 0, fontSize: 12, color: '#666' }}>
+							<li>
+								<Text strong>[Space]</Text>: {t('guideSpace')}
+							</li>
+							<li>
+								<Text strong>[1-4]</Text>: {t('guideNumbers')}
+							</li>
+							<li>
+								<Text strong>[R]</Text>: {t('guideReplay')}
+							</li>
+							<li>
+								<Text strong>[E]</Text>: {t('guideExample')}
+							</li>
+							<li>
+								<Text strong>Mobile</Text>: {t('guideMobile')}
+							</li>
+						</ul>
+					</Panel>
+				</Collapse>
 			</div>
 
 			<Collapse ghost expandIconPlacement="end">
@@ -205,28 +221,13 @@ export default function VocabSettings({
 							/>
 						</Form.Item>
 
-						<Form.Item name="allowSpaceKey" valuePropName="checked" label={t('allowSpaceKeyLabel')}>
-							<Flex gap="small" align="center">
-								<Switch />
-								<Text>{t('allowSpaceKey')}</Text>
-							</Flex>
-						</Form.Item>
-						<Form.Item
-							noStyle
-							shouldUpdate={(prev, curr) => prev.allowSpaceKey !== curr.allowSpaceKey}
-						>
-							{({ getFieldValue }) =>
-								getFieldValue('allowSpaceKey') && (
-									<Form.Item name="spaceKeyRating" label={t('spaceKeyRating')}>
-										<Radio.Group>
-											<Radio value={1}>{tCommon('rateAgain') || 'Again'}</Radio>
-											<Radio value={2}>{tCommon('rateHard') || 'Hard'}</Radio>
-											<Radio value={3}>{tCommon('rateGood') || 'Good'}</Radio>
-											<Radio value={4}>{tCommon('rateEasy') || 'Easy'}</Radio>
-										</Radio.Group>
-									</Form.Item>
-								)
-							}
+						<Form.Item name="spaceKeyRating" label={t('spaceKeyRating')}>
+							<Radio.Group>
+								<Radio value={1}>{tCommon('rateAgain') || 'Again'}</Radio>
+								<Radio value={2}>{tCommon('rateHard') || 'Hard'}</Radio>
+								<Radio value={3}>{tCommon('rateGood') || 'Good'}</Radio>
+								<Radio value={4}>{tCommon('rateEasy') || 'Easy'}</Radio>
+							</Radio.Group>
 						</Form.Item>
 
 						<Flex gap="middle" align="center">
@@ -247,13 +248,24 @@ export default function VocabSettings({
 											label={t('autoShowAnswerDelay')}
 											style={{ marginBottom: 0, width: 140 }}
 										>
-											<InputNumber
-												addonAfter="sec"
-												min={1}
-												max={300}
-												placeholder="Delay"
-												style={{ width: '100%' }}
-											/>
+											<Space.Compact style={{ width: '100%' }}>
+												<InputNumber
+													min={1}
+													max={300}
+													placeholder="Delay"
+													style={{ width: 'calc(100% - 40px)' }}
+												/>
+												<Button
+													style={{
+														pointerEvents: 'none',
+														backgroundColor: '#f5f5f5',
+														color: 'rgba(0, 0, 0, 0.45)',
+														borderLeft: 0,
+													}}
+												>
+													sec
+												</Button>
+											</Space.Compact>
 										</Form.Item>
 									)
 								}

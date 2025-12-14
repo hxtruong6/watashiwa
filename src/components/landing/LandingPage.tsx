@@ -6,7 +6,7 @@ import CTASection from './CTASection';
 
 export default function LandingPage() {
 	return (
-		<main>
+		<div className="landing-page">
 			<HeroSection />
 			<FeatureSection />
 			<SocialProofSection />
@@ -16,6 +16,6 @@ export default function LandingPage() {
 			>
 				© {new Date().getFullYear()} WatashiWa. All rights reserved.
 			</footer>
-		</main>
+		</div>
 	);
 }

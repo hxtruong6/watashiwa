@@ -1,5 +1,6 @@
 'use client';
 
+import * as Sentry from '@sentry/nextjs';
 import React, { useState } from 'react';
 import {
 	Layout,
@@ -31,6 +32,7 @@ import {
 	SettingOutlined,
 	ShareAltOutlined,
 	FolderOpenOutlined,
+	BugOutlined,
 } from '@ant-design/icons';
 import Link from 'next/link';
 import type { MenuProps } from 'antd';
@@ -58,6 +60,17 @@ export default function NavBar({ user }: { user?: User | null }) {
 
 	const t = useTranslations('NavBar');
 	const tCommon = useTranslations('Common');
+
+	const handleBugReport = async () => {
+		const feedback = Sentry.getFeedback();
+		if (feedback) {
+			const form = await feedback.createForm();
+			form.appendToDom();
+			form.open();
+		}
+		// Close menus if needed
+		setDrawerOpen(false);
+	};
 
 	const handleLogout = async () => {
 		await supabase.auth.signOut();
@@ -178,6 +191,12 @@ export default function NavBar({ user }: { user?: User | null }) {
 				},
 			},
 			{
+				key: 'report_bug',
+				icon: <BugOutlined />,
+				label: tCommon('reportIssue'),
+				onClick: handleBugReport,
+			},
+			{
 				key: 'logout',
 				icon: <LogoutOutlined />,
 				label: tCommon('logout'),
@@ -222,7 +241,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 					style={{ cursor: 'pointer' }}
 					onClick={() => router.push('/')}
 				>
-					<Image src="/assets/w_logo.png" alt="WatashiWa Logo" width={64} height={64} priority />
+					<Image src="/assets/w_logo.png" alt="WatashiWa Logo" width={50} height={50} priority />
 					<Text
 						strong
 						style={{
@@ -265,13 +284,17 @@ export default function NavBar({ user }: { user?: User | null }) {
 							>
 								<LanguageSelector />
 
-								{/* Share Button (Desktop) */}
+								{/* Share Button (Desktop) - Enhanced Visibility */}
 								<Tooltip title={t('share')}>
 									<Button
 										type="text"
-										icon={<ShareAltOutlined style={{ fontSize: 18, color: '#1E3A5F' }} />}
+										ghost
+										icon={<ShareAltOutlined style={{ fontSize: 18 }} />}
 										onClick={() => setShareModalOpen(true)}
-									/>
+										// style={{ borderColor: '#1E3A5F', color: '#1E3A5F' }}
+									>
+										{t('share')}
+									</Button>
 								</Tooltip>
 
 								<Dropdown menu={userMenuProps} trigger={['click']} placement="bottomRight">
@@ -393,14 +416,24 @@ export default function NavBar({ user }: { user?: User | null }) {
 							<div style={{ padding: '24px' }}>
 								<Button
 									block
+									type="primary"
 									icon={<ShareAltOutlined />}
 									onClick={() => {
 										setShareModalOpen(true);
 										setDrawerOpen(false);
 									}}
-									style={{ marginBottom: 12 }}
+									style={{ marginBottom: 12, background: '#1E3A5F' }}
 								>
 									{t('share')}
+								</Button>
+								<Button
+									block
+									type="text"
+									icon={<BugOutlined />}
+									onClick={handleBugReport}
+									style={{ marginBottom: 12, color: '#666' }}
+								>
+									{tCommon('reportIssue')}
 								</Button>
 								<Button block danger icon={<LogoutOutlined />} onClick={handleLogout}>
 									{tCommon('logout')}

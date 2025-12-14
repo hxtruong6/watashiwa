@@ -1,16 +1,18 @@
 'use client';
 
-import React, { useEffect, useState, useCallback } from 'react';
-import { Drawer, Button, Typography } from 'antd';
-import { CloseOutlined, PlusOutlined } from '@ant-design/icons';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
+import { Drawer, Button, Typography, Segmented, Flex, theme, Grid } from 'antd';
+import { CloseOutlined, PlusOutlined, FireOutlined, ClockCircleOutlined } from '@ant-design/icons';
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
 // import { useSession } from '@/services/auth'; // Assuming we have auth hook, or pass user prop
 import { getComments } from '@/services/comments';
 import { getUserWithRole } from '@/services/actions';
 import { useTranslations } from 'next-intl';
+import { CardComment } from '@/generated/prisma';
 
 const { Title, Text } = Typography;
+const { useToken } = theme;
 
 interface CommentDrawerProps {
 	open: boolean;
@@ -20,7 +22,12 @@ interface CommentDrawerProps {
 	entityTitle?: string; // e.g. "学生"
 }
 
-import { CardComment } from '@/generated/prisma';
+interface UserWithRole {
+	id: string;
+	role: string;
+	name?: string | null;
+	email?: string | null;
+}
 
 interface CommentWithUserVote extends CardComment {
 	author: {
@@ -30,6 +37,10 @@ interface CommentWithUserVote extends CardComment {
 	};
 	userVote: number;
 }
+
+type SortOption = 'popular' | 'newest';
+
+const { useBreakpoint } = Grid;
 
 export default function CommentDrawer({
 	open,
@@ -41,13 +52,23 @@ export default function CommentDrawer({
 	const [comments, setComments] = useState<CommentWithUserVote[]>([]);
 	const [loading, setLoading] = useState(false);
 	const [showForm, setShowForm] = useState(false);
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const [currentUser, setCurrentUser] = useState<any>(null); // Ideally User type but role is needed
+	const [currentUser, setCurrentUser] = useState<UserWithRole | null>(null);
+	const [sortBy, setSortBy] = useState<SortOption>('popular');
+
+	const { token } = useToken();
+	const screens = useBreakpoint();
+	const t = useTranslations('Comments');
+	const tCommon = useTranslations('Common');
+
+	const isMobile = !screens.md;
 
 	// Fetch user on mount (or could pass as prop)
 	useEffect(() => {
 		if (open) {
-			getUserWithRole().then((u) => setCurrentUser(u));
+			getUserWithRole()
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				.then((u: any) => setCurrentUser(u))
+				.catch((err) => console.error('Failed to fetch user', err));
 		}
 	}, [open]);
 
@@ -80,54 +101,96 @@ export default function CommentDrawer({
 		setComments((prev) => prev.filter((c) => c.id !== id));
 	};
 
-	const t = useTranslations('Comments');
-	const tCommon = useTranslations('Common');
+	const sortedComments = useMemo(() => {
+		return [...comments].sort((a, b) => {
+			if (sortBy === 'popular') {
+				// Sort by score (desc), then createdAt (desc)
+				return (
+					b.score - a.score || new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+				);
+			} else {
+				// Sort by createdAt (desc)
+				return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+			}
+		});
+	}, [comments, sortBy]);
 
 	return (
 		<Drawer
 			title={
-				<div
-					style={{
-						display: 'flex',
-						justifyContent: 'space-between',
-						alignItems: 'center',
-						width: '100%',
-					}}
-				>
-					<span>
-						{t('title')}: <Text code>{entityTitle}</Text>
-					</span>
-					{!showForm && (
-						<Button
-							type="primary"
-							size="small"
-							icon={<PlusOutlined />}
-							onClick={() => setShowForm(true)}
-						>
-							{t('addTip')}
-						</Button>
-					)}
+				<div style={{ width: '100%', paddingRight: 24 }}>
+					<Flex justify="space-between" align="center" wrap="wrap" gap="small">
+						<Flex align="center" gap="small" style={{ overflow: 'hidden' }}>
+							<span style={{ whiteSpace: 'nowrap' }}>{t('title')}:</span>
+							<Text code ellipsis style={{ maxWidth: 150, margin: 0 }}>
+								{entityTitle}
+							</Text>
+						</Flex>
+						{!showForm && (
+							<Button
+								type="primary"
+								size="small"
+								icon={<PlusOutlined />}
+								onClick={() => setShowForm(true)}
+								style={{ flexShrink: 0 }}
+							>
+								{t('addTip')}
+							</Button>
+						)}
+					</Flex>
 				</div>
 			}
-			placement="bottom"
-			style={{ height: '85vh' }}
+			placement={isMobile ? 'bottom' : 'right'}
+			width={isMobile ? '100%' : 500}
+			height={isMobile ? '80vh' : '100%'}
 			onClose={onClose}
 			open={open}
-			styles={{ body: { padding: '16px 12px' } }}
+			styles={{ body: { padding: '16px 12px', overflowY: 'auto', paddingBottom: 40 } }}
 			extra={<Button type="text" onClick={onClose} icon={<CloseOutlined />} />}
 			destroyOnHidden
 		>
-			<div style={{ maxWidth: 600, margin: '0 auto' }}>
+			<div style={{ maxWidth: 640, margin: '0 auto', paddingBottom: 24 }}>
+				{/* Sorting & Filter Controls - Only show if not adding new tip and has comments */}
+				{!showForm && comments.length > 0 && (
+					<Flex justify="flex-end" style={{ marginBottom: 16 }}>
+						<Segmented<SortOption>
+							options={[
+								{
+									label: t('sortPopular'),
+									value: 'popular',
+									icon: <FireOutlined />,
+								},
+								{
+									label: t('sortNewest'),
+									value: 'newest',
+									icon: <ClockCircleOutlined />,
+								},
+							]}
+							value={sortBy}
+							onChange={(val) => setSortBy(val as SortOption)}
+							size="small"
+						/>
+					</Flex>
+				)}
+
 				{showForm && entityId && entityType && (
-					<div style={{ marginBottom: 24 }}>
-						<div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
+					<div
+						style={{
+							marginBottom: 24,
+							background: token.colorBgContainer,
+							padding: 16,
+							borderRadius: token.borderRadiusLG,
+							border: `1px solid ${token.colorBorderSecondary}`,
+						}}
+					>
+						<Flex justify="space-between" style={{ marginBottom: 16 }}>
 							<Title level={5} style={{ margin: 0 }}>
 								{t('writeTip')}
 							</Title>
 							<Button size="small" onClick={() => setShowForm(false)}>
 								{tCommon('cancel')}
 							</Button>
-						</div>
+						</Flex>
 						<CommentForm
 							entityId={entityId}
 							entityType={entityType}
@@ -137,7 +200,7 @@ export default function CommentDrawer({
 				)}
 
 				<CommentList
-					comments={comments}
+					comments={sortedComments}
 					loading={loading}
 					currentUserId={currentUser?.id}
 					userRole={currentUser?.role}

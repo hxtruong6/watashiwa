@@ -213,27 +213,31 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 				dataSource={data}
 				renderItem={(item: any) => (
 					<List.Item>
-						<Card hoverable style={{ height: '100%', borderRadius: 12 }}>
+						<Card hoverable style={{ height: '100%', borderRadius: 12 }} className="hover-trigger">
 							<Flex vertical gap="small">
 								<Flex justify="space-between" align="start">
 									<Text strong style={{ fontSize: 20, color: '#1E3A5F' }}>
 										{type === 'vocab' ? item.wordSurface : item.kanji}
 									</Text>
-									<div style={{ display: 'flex', gap: 4 }}>
+									<div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
 										{item.hanViet && (
 											<Tag color="gold" style={{ margin: 0 }}>
 												{item.hanViet}
 											</Tag>
 										)}
-										<Button
-											size="small"
-											type="text"
-											icon={<CommentOutlined />}
-											onClick={(e) => {
-												e.stopPropagation(); // Prevent card click if we had one
-												openComments(item, type);
-											}}
-										/>
+										<div
+											className={`hover-target ${item._count?.cardComments > 0 ? 'visible' : ''}`}
+										>
+											<Button
+												size="small"
+												type="text"
+												icon={<CommentOutlined />}
+												onClick={(e) => {
+													e.stopPropagation(); // Prevent card click if we had one
+													openComments(item, type);
+												}}
+											/>
+										</div>
 									</div>
 								</Flex>
 								{type === 'vocab' && <Text type="secondary">{item.readingKana}</Text>}
