@@ -53,7 +53,7 @@ module.exports = {
 			host: '34.143.229.101', // REPLACE THIS
 			ref: 'origin/main',
 			repo: 'git@github.com:hxtruong6/watashiwa.git', // REPLACE THIS with actual repo URL
-			path: '/var/www/watashiwa', // Standard path, can be changed
+			path: '/mnt/data1/watashiwa/', // Standard path, real path: /mnt/data1/watashiwa/source
 			// Post-deploy hook:
 			// 1. Install deps
 			// 2. Generate Prisma client
