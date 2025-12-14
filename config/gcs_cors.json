@@ -1,0 +1,17 @@
+[
+    {
+        "origin": [
+            "http://localhost:3000",
+            "https://watashiwa.app"
+        ],
+        "method": [
+            "PUT",
+            "OPTIONS",
+            "GET"
+        ],
+        "responseHeader": [
+            "Content-Type"
+        ],
+        "maxAgeSeconds": 3600
+    }
+]

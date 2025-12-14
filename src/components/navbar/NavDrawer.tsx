@@ -35,6 +35,7 @@ interface NavDrawerProps {
 	onShare: () => void;
 	onBugReport: () => void;
 	onLogout: () => void;
+	onOpenSettings: () => void;
 }
 
 export default function NavDrawer({
@@ -46,6 +47,7 @@ export default function NavDrawer({
 	onShare,
 	onBugReport,
 	onLogout,
+	onOpenSettings,
 }: NavDrawerProps) {
 	const { token } = useToken();
 	const t = useTranslations('NavBar');
@@ -123,20 +125,7 @@ export default function NavDrawer({
 						>
 							<Flex justify="space-between" align="center">
 								<ThemeToggle />
-								<Flex gap="small" align="center">
-									<SettingOutlined style={{ color: token.colorTextSecondary }} />
-									<div
-										style={{
-											fontSize: 10,
-											background: token.colorFillContent,
-											color: token.colorTextDescription,
-											padding: '2px 6px',
-											borderRadius: 4,
-										}}
-									>
-										Soon
-									</div>
-								</Flex>
+								<Button type="text" icon={<SettingOutlined />} onClick={onOpenSettings} />
 							</Flex>
 						</div>
 

@@ -20,6 +20,7 @@ import {
 	Row,
 	Col,
 	theme,
+	Modal,
 } from 'antd';
 import {
 	ReadOutlined,
@@ -42,6 +43,7 @@ import { useTranslations } from 'next-intl';
 import SmartContentInput from '@/components/SmartContentInput';
 import { useRouter } from 'next/navigation';
 import BackButton from '@/components/BackButton';
+import FlashCard from '@/components/FlashCard';
 
 const { Title, Paragraph, Text } = Typography;
 const { useToken } = theme;
@@ -62,11 +64,24 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 	);
 	const [selectedEntityTitle, setSelectedEntityTitle] = useState<string | undefined>(undefined);
 
+	// Flashcard Preview State
+	const [previewOpen, setPreviewOpen] = useState(false);
+	const [previewItem, setPreviewItem] = useState<any>(null);
+	const [previewType, setPreviewType] = useState<'vocab' | 'kanji'>('vocab');
+	const [isFlipped, setIsFlipped] = useState(false);
+
 	const openComments = (item: any, type: 'vocab' | 'kanji') => {
 		setSelectedEntityId(item.id);
 		setSelectedEntityType(type);
 		setSelectedEntityTitle(type === 'vocab' ? item.wordSurface : item.kanji);
 		setCommentDrawerOpen(true);
+	};
+
+	const openPreview = (item: any, type: 'vocab' | 'kanji') => {
+		setPreviewItem(item);
+		setPreviewType(type);
+		setIsFlipped(false);
+		setPreviewOpen(true);
 	};
 
 	const stats = deck.stats || {
@@ -129,7 +144,10 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 				<Button
 					type="text"
 					icon={<CommentOutlined />}
-					onClick={() => openComments(record, 'vocab')}
+					onClick={(e) => {
+						e.stopPropagation();
+						openComments(record, 'vocab');
+					}}
 				/>
 			),
 		},
@@ -205,6 +223,10 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 					dataSource={data}
 					rowKey="id"
 					pagination={{ pageSize: 20 }}
+					onRow={(record) => ({
+						onClick: () => openPreview(record, type),
+						style: { cursor: 'pointer' },
+					})}
 				/>
 			);
 		}
@@ -216,7 +238,12 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 				dataSource={data}
 				renderItem={(item: any) => (
 					<List.Item>
-						<Card hoverable style={{ height: '100%', borderRadius: 12 }} className="hover-trigger">
+						<Card
+							hoverable
+							style={{ height: '100%', borderRadius: 12, borderColor: token.colorBorderSecondary }}
+							className="hover-trigger"
+							onClick={() => openPreview(item, type)}
+						>
 							<Flex vertical gap="small">
 								<Flex justify="space-between" align="start">
 									<Text strong style={{ fontSize: 20, color: token.colorPrimary }}>
@@ -284,6 +311,30 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 	// Add Content Toggle
 	const [showAddContent, setShowAddContent] = useState(false);
 
+	// Construct flashcard data from preview item
+	const getFlashCardData = () => {
+		if (!previewItem) return null;
+		if (previewType === 'vocab') {
+			return {
+				id: previewItem.id,
+				vocab: previewItem,
+				kanji: null,
+				reviewLogs: [],
+				state: 0, // Mock state for preview
+			};
+		} else {
+			return {
+				id: previewItem.id,
+				kanji: previewItem,
+				vocab: null,
+				reviewLogs: [],
+				state: 0,
+			};
+		}
+	};
+
+	const flashCardData = getFlashCardData();
+
 	return (
 		<div style={{ maxWidth: 1000, margin: '0 auto', padding: '24px 16px' }}>
 			<Flex align="center" gap="middle" style={{ marginBottom: 24 }}>
@@ -337,7 +388,7 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 					borderRadius: 16,
 					boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
 					marginBottom: 24,
-					background: '#fff',
+					background: token.colorBgContainer,
 				}}
 			>
 				<Flex vertical gap="middle">
@@ -359,7 +410,13 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 								)}
 								<Tag>{t('itemsCount', { count: vocabCount + kanjiCount })}</Tag>
 							</div>
-							<Paragraph style={{ margin: '12px 0 0', color: '#555', maxWidth: 600 }}>
+							<Paragraph
+								style={{
+									margin: '12px 0 0',
+									color: token.colorTextSecondary,
+									maxWidth: 600,
+								}}
+							>
 								{deck.description || t('noDescription')}
 							</Paragraph>
 						</div>
@@ -462,6 +519,28 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 				entityType={selectedEntityType}
 				entityTitle={selectedEntityTitle}
 			/>
+
+			<Modal
+				open={previewOpen}
+				onCancel={() => setPreviewOpen(false)}
+				footer={null}
+				destroyOnClose
+				width={600}
+				centered
+				style={{ maxWidth: '100vw' }}
+				styles={{ body: { padding: 0 } }}
+			>
+				{flashCardData && (
+					<div onClick={() => setIsFlipped(!isFlipped)} style={{ cursor: 'pointer' }}>
+						<FlashCard
+							card={flashCardData as any}
+							showAnswer={isFlipped}
+							showFurigana={true}
+							autoPlayAudio="off"
+						/>
+					</div>
+				)}
+			</Modal>
 		</div>
 	);
 }

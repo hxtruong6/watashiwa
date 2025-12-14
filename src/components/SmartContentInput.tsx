@@ -30,6 +30,7 @@ interface SmartContentInputProps {
 import VocabEditor from '@/components/admin/VocabEditor';
 import KanjiEditor from '@/components/admin/KanjiEditor';
 import { Modal } from 'antd';
+import ImageUploader from '@/components/Shared/ImageUploader';
 
 const { useToken } = theme;
 
@@ -55,6 +56,7 @@ export default function SmartContentInput({ deckId, onSuccess }: SmartContentInp
 				exampleSentence: values.exampleSentence
 					? { sentence: values.exampleSentence, translation: values.exampleTranslation }
 					: {},
+				imageUrl: values.imageUrl,
 			});
 
 			if (res.success) {
@@ -83,6 +85,7 @@ export default function SmartContentInput({ deckId, onSuccess }: SmartContentInp
 				kunyomi: values.kunyomi || [],
 				strokes: values.strokes || 0,
 				hanViet: values.hanViet,
+				imageUrl: values.imageUrl,
 			});
 
 			if (res.success) {
@@ -173,6 +176,10 @@ export default function SmartContentInput({ deckId, onSuccess }: SmartContentInp
 					</Col>
 				</Row>
 
+				<Form.Item name="imageUrl" label="Image">
+					<ImageUploader purpose="card" shape="rect" />
+				</Form.Item>
+
 				<Row gutter={[16, 0]}>
 					<Col xs={24} sm={16}>
 						<Form.Item name="meaning" label={t('labelMeaning')} rules={[{ required: true }]}>
@@ -235,6 +242,10 @@ export default function SmartContentInput({ deckId, onSuccess }: SmartContentInp
 						</Form.Item>
 					</Col>
 				</Row>
+
+				<Form.Item name="imageUrl" label="Image">
+					<ImageUploader purpose="card" shape="rect" />
+				</Form.Item>
 
 				<Form.Item name="meaning" label={t('labelMeaning')} rules={[{ required: true }]}>
 					<Input placeholder="Day, Sun" />

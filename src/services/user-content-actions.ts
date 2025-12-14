@@ -133,6 +133,7 @@ export async function createVocab(
 		kanjiBreakdown?: any; // Json
 		/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 		wordParts?: any; // Json
+		imageUrl?: string;
 	},
 ) {
 	try {
@@ -157,6 +158,7 @@ export async function createVocab(
 				exampleSentence: data.exampleSentence ?? {},
 				kanjiBreakdown: data.kanjiBreakdown ?? [],
 				wordParts: data.wordParts,
+				imageUrl: data.imageUrl,
 			},
 		});
 
@@ -181,6 +183,7 @@ export async function createKanji(
 		radicals?: any;
 		/* eslint-disable-next-line @typescript-eslint/no-explicit-any */
 		examples?: any;
+		imageUrl?: string;
 	},
 ) {
 	try {
@@ -206,6 +209,7 @@ export async function createKanji(
 				hanViet: data.hanViet,
 				radicals: data.radicals ?? [],
 				examples: data.examples ?? [],
+				imageUrl: data.imageUrl,
 			},
 		});
 

@@ -108,9 +108,9 @@ export default function VocabSettings({
 					{t('guideTitle')}
 				</Text>
 			),
-			style: { background: '#f5f5f5', borderRadius: 8 },
+			style: { background: token.colorFillQuaternary, borderRadius: 8 },
 			children: (
-				<ul style={{ paddingLeft: 20, margin: 0, fontSize: 12, color: '#666' }}>
+				<ul style={{ paddingLeft: 20, margin: 0, fontSize: 12, color: token.colorTextSecondary }}>
 					<li>
 						<Text strong>[Space]</Text>: {t('guideSpace')}
 					</li>

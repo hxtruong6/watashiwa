@@ -16,11 +16,14 @@ import {
 	theme,
 } from 'antd';
 import NavDrawer from './navbar/NavDrawer';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import LanguageSelector from './LanguageSelector';
 import ShareModal from './ShareModal';
+import SettingsModal from './navbar/SettingsModal';
 import { createClient } from '@/utils/supabase/client';
+import { useEffect } from 'react';
+
 import {
 	LogoutOutlined,
 	ReadOutlined,
@@ -56,10 +59,25 @@ interface User {
 export default function NavBar({ user }: { user?: User | null }) {
 	const pathname = usePathname();
 	const router = useRouter();
+	const searchParams = useSearchParams();
 	const { token } = useToken();
 	const supabase = createClient();
 	const [drawerOpen, setDrawerOpen] = useState(false);
 	const [shareModalOpen, setShareModalOpen] = useState(false);
+	const [settingsModalOpen, setSettingsModalOpen] = useState(false);
+
+	// Check URL for settings trigger
+	useEffect(() => {
+		if (searchParams.get('settings') === 'true') {
+			// Wrap in setTimeout to avoid synchronous setState warning during effect
+			setTimeout(() => setSettingsModalOpen(true), 0);
+
+			// Optional: Remove param from URL
+			const params = new URLSearchParams(searchParams.toString());
+			params.delete('settings');
+			router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+		}
+	}, [searchParams, pathname, router]);
 
 	const t = useTranslations('NavBar');
 	const tCommon = useTranslations('Common');
@@ -176,14 +194,12 @@ export default function NavBar({ user }: { user?: User | null }) {
 				style: { cursor: 'default', opacity: 1 },
 			},
 			{
-				type: 'divider',
-			},
-			{
 				key: 'settings',
 				icon: <SettingOutlined />,
-				label: 'Settings', // Placeholder, could be linked
-				disabled: true, // TODO: Implement settings page
+				label: 'Settings',
+				onClick: () => setSettingsModalOpen(true),
 			},
+
 			{
 				key: 'share',
 				icon: <ShareAltOutlined />,
@@ -371,9 +387,15 @@ export default function NavBar({ user }: { user?: User | null }) {
 					onShare={() => setShareModalOpen(true)}
 					onBugReport={handleBugReport}
 					onLogout={handleLogout}
+					onOpenSettings={() => setSettingsModalOpen(true)}
 				/>
 
 				<ShareModal open={shareModalOpen} onCancel={() => setShareModalOpen(false)} />
+				<SettingsModal
+					open={settingsModalOpen}
+					onCancel={() => setSettingsModalOpen(false)}
+					user={user}
+				/>
 			</div>
 		</Header>
 	);

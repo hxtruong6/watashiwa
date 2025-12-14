@@ -107,8 +107,8 @@ export default function QuickActions() {
 			key: 'settings',
 			icon: <SettingOutlined />,
 			labelKey: 'settings',
-			href: '/settings',
-			enabled: false,
+			href: '?settings=true',
+			enabled: true,
 			color: token.colorTextSecondary,
 		},
 	];

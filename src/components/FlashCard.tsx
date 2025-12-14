@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Card as AntCard, Typography, Tag, Divider, Flex, Button, theme } from 'antd';
-import { PauseCircleOutlined, SoundOutlined } from '@ant-design/icons';
+import { Card as AntCard, Typography, Tag, Divider, Flex, Button, theme, Image } from 'antd';
+import { PauseCircleOutlined, SoundOutlined, EyeOutlined } from '@ant-design/icons';
 import KanjiBreakdown from './KanjiBreakdown';
 
 const { useToken } = theme;
@@ -27,6 +27,8 @@ export interface FlashCardHandle {
 	playExampleAudio: () => void;
 }
 
+import { useTranslations } from 'next-intl';
+
 const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 	(
 		{
@@ -39,9 +41,16 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 		ref,
 	) => {
 		const { token } = useToken();
+		const t = useTranslations();
 		// Audio State
 		const audioRef = useRef<HTMLAudioElement | null>(null);
 		const [isFilePlaying, setIsFilePlaying] = useState(false);
+		const [imageError, setImageError] = useState(false);
+
+		// Reset error state when card changes
+		useEffect(() => {
+			setImageError(false);
+		}, [card?.id]);
 
 		// TTS Player
 		const [ttsSettings] = useState(() => {
@@ -82,6 +91,7 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 			exampleMeaning, // legacy field?
 			partsOfSpeech,
 			audioUrl,
+			imageUrl: vocabImageUrl,
 			romaji,
 			kanjiBreakdown,
 			hanViet: vocabHanViet,
@@ -99,10 +109,12 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 			meaning: kanjiMeaning,
 			examples: kanjiExamples,
 			radicals,
+			imageUrl: kanjiImageUrl,
 		} = kanjiData;
 
 		// Common Display Data
 		const frontText = isVocab ? vocabKanji || vocabData.wordSurface : charKanji;
+		const activeImageUrl = isVocab ? vocabImageUrl : kanjiImageUrl;
 
 		const playAudio = () => {
 			if (isVocab) {
@@ -407,7 +419,47 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 								<>
 									<Divider style={{ margin: '24px 0' }} />
 
+									{/* Render Image if exists and not errored */}
+									{activeImageUrl && !imageError && (
+										<div style={{ marginBottom: 20 }}>
+											<Image
+												src={activeImageUrl}
+												alt={frontText}
+												onError={() => setImageError(true)}
+												width="100%"
+												style={{
+													maxHeight: 140,
+													objectFit: 'contain',
+													borderRadius: 12,
+													boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+													background: token.colorBgContainer, // Fallback background
+												}}
+												placeholder={
+													<div
+														style={{
+															width: '100%',
+															height: '100%',
+															minHeight: 140,
+															display: 'flex',
+															alignItems: 'center',
+															justifyContent: 'center',
+															background: token.colorFillAlter, // Theme-aware background
+															borderRadius: 12,
+															color: token.colorTextSecondary, // Theme-aware text
+														}}
+													>
+														<Flex vertical align="center" gap="small">
+															<EyeOutlined style={{ fontSize: 24, opacity: 0.5 }} />
+															<Text type="secondary">{t('Common.loading')}</Text>
+														</Flex>
+													</div>
+												}
+											/>
+										</div>
+									)}
+
 									{/* ---- VOCAB BACK ---- */}
+
 									{isVocab && (
 										<>
 											{/* Han Viet Badge */}

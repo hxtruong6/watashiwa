@@ -12,6 +12,7 @@ interface LeaderboardUser {
 	id: string;
 	name: string;
 	currentStreak: number;
+	avatarUrl?: string | null;
 }
 
 interface GlobalLeaderboardProps {
@@ -91,6 +92,7 @@ export default function GlobalLeaderboard({ users, currentUserId }: GlobalLeader
 						<Flex align="center" gap="middle">
 							{getRankIcon(index)}
 							<Avatar
+								src={user.avatarUrl}
 								style={{
 									backgroundColor:
 										index === 0

@@ -19,6 +19,7 @@ model User {
   lastLogin DateTime? @map("last_login")
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime  @updatedAt @map("updated_at")
+  avatarUrl String?   @map("avatar_url")
 
   role UserRole @default(USER)
 
@@ -90,6 +91,7 @@ model Vocab {
   meaning         String // Native definition
   exampleSentence Json    @map("example_sentence") // { "sentence": "...", "translation": "..." }
   audioUrl        String? @map("audio_url")
+  imageUrl        String? @map("image_url")
 
   // Relations
   studyCards StudyCard[]
@@ -115,6 +117,7 @@ model Kanji {
   hanViet   String   @map("han_viet")
   meaning   String
   jlptLevel String?  @map("jlpt_level") // N5, N4...
+  imageUrl  String?  @map("image_url")
   radicals  Json // e.g. [{ "kanji": "日", "hanViet": "...", "meaning": "..." }]
   examples  Json // e.g. [{ "word": "...", "kana": "...", "meaning": "..." }]
 

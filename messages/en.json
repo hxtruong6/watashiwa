@@ -19,7 +19,13 @@
         "rateEasy": "Easy",
         "off": "Off",
         "yes": "Yes",
-        "no": "No"
+        "no": "No",
+        "email": "Email",
+        "name": "Name",
+        "upload": "Upload",
+        "uploadAvatar": "Click to upload new avatar",
+        "errorImageOnly": "You can only upload image files!",
+        "errorImageSize": "Image must be smaller than 5MB!"
     },
     "NavBar": {
         "dashboard": "Home",
@@ -138,7 +144,9 @@
         "searchPlaceholder": "Search decks...",
         "filterAll": "All",
         "filterMine": "My Decks",
-        "filterPublic": "Public"
+        "filterPublic": "Public",
+        "addNewContent": "Add Content",
+        "close": "Close"
     },
     "Settings": {
         "furigana": "Furigana",
@@ -173,7 +181,14 @@
         "voiceTest": "Test",
         "voiceWarning": "Depending on your browser/OS, you might need to install Japanese language pack.",
         "playbackSpeed": "Playback Speed: {speed}x",
-        "delay": "Delay"
+        "delay": "Delay",
+        "studyGoals": "Study Goals",
+        "limitNewCardsTooltip": "Maximum new cards to learn per day",
+        "limitReviewsTooltip": "Maximum cards to review per day",
+        "uploadAvatar": "Click to upload new avatar",
+        "goals": "Goals",
+        "profile": "Profile",
+        "settings": "Settings"
     },
     "Admin": {
         "panelTitle": "Admin Panel",

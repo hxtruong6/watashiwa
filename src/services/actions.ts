@@ -3,7 +3,9 @@
 
 import { prisma } from '@/lib/db';
 import { createClient } from '@/utils/supabase/server';
+import { revalidatePath } from 'next/cache';
 import type { StudyCard, Vocab, Kanji, User } from '@/generated/prisma';
+
 import { UserRole, ReportStatus, ReportType } from '@/generated/prisma';
 import { requireRole, hasRole } from '@/lib/auth/roleGuard';
 import { Card, fsrs, generatorParameters, Rating, State } from 'ts-fsrs';
@@ -375,6 +377,7 @@ export async function getLeaderboard() {
 				id: true,
 				name: true,
 				currentStreak: true,
+				avatarUrl: true,
 			},
 		});
 
@@ -382,6 +385,7 @@ export async function getLeaderboard() {
 		return users.map((u) => ({
 			...u,
 			name: u.name || 'Anonymous Learner',
+			avatarUrl: u.avatarUrl,
 		}));
 	} catch (error) {
 		console.error('Error fetching leaderboard:', error);
@@ -429,11 +433,13 @@ export async function syncUser() {
 			update: {
 				email: user.email!,
 				updatedAt: new Date(),
+				avatarUrl: user.user_metadata?.avatar_url,
 			},
 			create: {
 				id: user.id,
 				email: user.email!,
 				name: user.user_metadata?.full_name || user.email?.split('@')[0] || 'User',
+				avatarUrl: user.user_metadata?.avatar_url,
 			},
 		});
 
@@ -444,9 +450,47 @@ export async function syncUser() {
 	}
 }
 
+export async function updateUserAvatar(avatarUrl: string) {
+	try {
+		const user = await getUser();
+		if (!user) return { success: false, error: 'Unauthorized' };
+
+		await prisma.user.update({
+			where: { id: user.id },
+			data: { avatarUrl },
+		});
+
+		// Also update Supabase metadata if possible?
+		// Supabase Auth metadata is separate, but we primarily use it for initial sync.
+		// For now, we rely on our App's User table for the displayed avatar if we switch to using it.
+		// However, NavBar uses `user?.user_metadata?.avatar_url`.
+		// We might need to update Supabase User Metadata OR change NavBar to use Prisma User.
+		// Given time constraints, updating Prisma User is robust.
+		// But NavBar fetches `getUser()` which returns Supabase User.
+		// We should probably update Supabase too.
+
+		const supabase = await createClient();
+		const { error } = await supabase.auth.updateUser({
+			data: { avatar_url: avatarUrl },
+		});
+
+		if (error) {
+			console.error('Error updating supabase user metadata:', error);
+			// Continue, as we updated Prisma
+		}
+
+		revalidatePath('/');
+		return { success: true };
+	} catch (error) {
+		console.error('Error updating avatar:', error);
+		return { success: false, error: 'Failed to update avatar' };
+	}
+}
+
 /**
  * Get count of cards due for review
  */
+
 export async function getReviewCount(userId?: string) {
 	try {
 		let uid = userId;

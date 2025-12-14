@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { Typography, Flex, Progress, Button, theme } from 'antd';
-import { FireOutlined, SettingOutlined } from '@ant-design/icons';
+import { Typography, Flex, Progress, theme } from 'antd';
+import { FireOutlined } from '@ant-design/icons';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 
@@ -14,7 +14,6 @@ interface HeroSectionProps {
 	streak: number;
 	dailyProgress: number;
 	dailyGoal: number;
-	onOpenSettings?: () => void;
 }
 
 /**
@@ -25,7 +24,6 @@ export default function HeroSection({
 	streak,
 	dailyProgress,
 	dailyGoal,
-	onOpenSettings,
 }: HeroSectionProps) {
 	const { token } = useToken();
 	const t = useTranslations('Dashboard');
@@ -48,21 +46,6 @@ export default function HeroSection({
 			transition={{ duration: 0.4 }}
 			style={{ position: 'relative' }}
 		>
-			<Button
-				icon={<SettingOutlined style={{ fontSize: 18 }} />}
-				type="text"
-				onClick={onOpenSettings}
-				style={{
-					position: 'absolute',
-					top: 0,
-					right: 0,
-					opacity: 0.5,
-					transition: 'opacity 0.2s',
-				}}
-				onMouseEnter={(e) => (e.currentTarget.style.opacity = '1')}
-				onMouseLeave={(e) => (e.currentTarget.style.opacity = '0.5')}
-			/>
-
 			<Flex
 				vertical
 				align="center"

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, Input, Card, Button, Space, Divider, Row, Col } from 'antd';
 import { PlusOutlined, MinusCircleOutlined } from '@ant-design/icons';
+import ImageUploader from '@/components/Shared/ImageUploader';
 
 export default function KanjiEditor() {
 	return (
@@ -36,6 +37,10 @@ export default function KanjiEditor() {
 					</Form.Item>
 				</Col>
 			</Row>
+
+			<Form.Item name="imageUrl" label="Image">
+				<ImageUploader purpose="card" shape="rect" />
+			</Form.Item>
 
 			<Form.Item name="meaning" label="Meaning" rules={[{ required: true }]}>
 				<Input.TextArea rows={2} />

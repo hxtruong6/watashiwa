@@ -19,7 +19,13 @@
         "rateEasy": "Dễ",
         "off": "Tắt",
         "yes": "Có",
-        "no": "Không"
+        "no": "Không",
+        "email": "Email",
+        "name": "Tên",
+        "upload": "Tải lên",
+        "uploadAvatar": "Nhấn để tải lên ảnh đại diện mới",
+        "errorImageOnly": "Chỉ được tải lên tệp hình ảnh!",
+        "errorImageSize": "Kích thước ảnh phải nhỏ hơn 5MB!"
     },
     "NavBar": {
         "dashboard": "Trang chủ",
@@ -111,8 +117,8 @@
         "noDecksDescription": "Chưa có bộ thẻ nào. Tạo một bộ để bắt đầu nhé!",
         "createDeckButton": "Tạo bộ thẻ",
         "columnWord": "Từ vựng",
-        "columnMeaning": "Ý nghĩa",
-        "columnHanViet": "Hán-Việt",
+        "columnMeaning": "Nghĩa",
+        "columnHanViet": "Hán Việt",
         "columnStatus": "Trạng thái",
         "columnKanji": "Kanji",
         "columnOnyomi": "Onyomi",
@@ -132,7 +138,9 @@
         "searchPlaceholder": "Tìm kiếm bộ thẻ...",
         "filterAll": "Tất cả",
         "filterMine": "Của tôi",
-        "filterPublic": "Công khai"
+        "filterPublic": "Công khai",
+        "addNewContent": "Thêm nội dung",
+        "close": "Đóng"
     },
     "Settings": {
         "furigana": "Furigana",
@@ -167,7 +175,14 @@
         "voiceTest": "Thử giọng",
         "voiceWarning": "Tùy thuộc vào trình duyệt/HĐH, bạn có thể cần cài đặt gói ngôn ngữ tiếng Nhật.",
         "playbackSpeed": "Tốc độ phát: {speed}x",
-        "delay": "Sau"
+        "delay": "Sau",
+        "studyGoals": "Mục tiêu học tập",
+        "limitNewCardsTooltip": "Số lượng thẻ mới tối đa mỗi ngày",
+        "limitReviewsTooltip": "Số lượng thẻ ôn tập tối đa mỗi ngày",
+        "uploadAvatar": "Nhấn để tải lên ảnh đại diện mới",
+        "goals": "Mục tiêu",
+        "profile": "Hồ sơ",
+        "settings": "Cài đặt"
     },
     "Admin": {
         "panelTitle": "Trang quản trị",
@@ -277,8 +292,8 @@
         "tabSmart": "Nhập liệu thông minh",
         "labelWord": "Từ vựng",
         "labelReading": "Cách đọc (Kana)",
-        "labelMeaning": "Ý nghĩa",
-        "labelHanViet": "Hán-Việt",
+        "labelMeaning": "Nghĩa",
+        "labelHanViet": "Hán Việt",
         "labelExample": "Câu ví dụ",
         "labelTranslation": "Dịch nghĩa",
         "btnAddVocab": "Thêm từ vựng này",
