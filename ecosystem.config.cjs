@@ -2,13 +2,12 @@ module.exports = {
 	apps: [
 		{
 			name: 'watashiwa',
-			// Using 'npm start' is the most compatible way for Next.js
-			// It handles its own environment loading (.env.production)
-			script: 'npm',
+
+			script: 'node_modules/next/dist/bin/next',
 			args: 'start',
 
 			// Cluster mode
-			instances: 'max', // Use all available cores
+			instances: 1, // 'max' is Use all available cores
 			exec_mode: 'cluster',
 
 			// Watch mode (disabled in production)
@@ -45,8 +44,6 @@ module.exports = {
 	],
 
 	// Deployment Configuration
-	// Run with: pm2 deploy production setup
-	// Run with: pm2 deploy production
 	deploy: {
 		vps_prod: {
 			user: 'xuantruong', // Check: Is this the correct user?
