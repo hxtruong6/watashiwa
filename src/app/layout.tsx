@@ -4,6 +4,7 @@ import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider, App } from 'antd';
 import theme from '../lib/theme/themeConfig';
 import NavBar from '@/components/NavBar';
+import PostHogPageTracker from '@/components/Analytics/PostHogPageTracker';
 import './globals.css';
 
 const geistSans = Geist({
@@ -44,6 +45,7 @@ export default async function RootLayout({
 	return (
 		<html lang={locale}>
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
+				<PostHogPageTracker />
 				<NextIntlClientProvider messages={messages}>
 					<AntdRegistry>
 						<ConfigProvider theme={theme}>

@@ -40,6 +40,7 @@ import confetti from 'canvas-confetti';
 import { useTranslations } from 'next-intl';
 import SmartContentInput from '@/components/SmartContentInput';
 import { useRouter } from 'next/navigation';
+import BackButton from '@/components/BackButton';
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -278,20 +279,22 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 
 	return (
 		<div style={{ maxWidth: 1000, margin: '0 auto', padding: '24px 16px' }}>
-			<Breadcrumb
-				items={[
-					{
-						title: (
-							<Link href="/">
-								<HomeOutlined />
-							</Link>
-						),
-					},
-					{ title: <Link href="/decks">{t('libraryTitle')}</Link> },
-					{ title: deck.title },
-				]}
-				style={{ marginBottom: 24 }}
-			/>
+			<Flex align="center" gap="middle" style={{ marginBottom: 24 }}>
+				<BackButton fallbackPath="/decks" />
+				<Breadcrumb
+					items={[
+						{
+							title: (
+								<Link href="/">
+									<HomeOutlined />
+								</Link>
+							),
+						},
+						{ title: <Link href="/decks">{t('libraryTitle')}</Link> },
+						{ title: deck.title },
+					]}
+				/>
+			</Flex>
 
 			{isOwner && (
 				<div style={{ marginBottom: 24 }}>

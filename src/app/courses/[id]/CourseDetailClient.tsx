@@ -1,25 +1,34 @@
 'use client';
 
-import { Typography, Button, Card, Tag, Timeline, Progress, Flex } from 'antd';
 import {
-	PlayCircleFilled,
-	CheckCircleFilled,
-	ClockCircleFilled,
+	Typography,
+	Flex,
+	Card,
+	Progress,
+	Button,
+	Tag,
+	Popconfirm,
+	message,
+	Empty,
+	Timeline,
+} from 'antd';
+import {
 	TrophyOutlined,
+	CheckCircleFilled,
+	PlayCircleFilled,
 	PlusOutlined,
-	ArrowLeftOutlined,
 	DeleteOutlined,
 	ArrowUpOutlined,
 	ArrowDownOutlined,
+	ClockCircleFilled,
 	LinkOutlined,
 } from '@ant-design/icons';
-import { Popconfirm, message, Empty } from 'antd';
 import { removeDeckFromCourse, reorderDecks } from '@/services/course-actions';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import DeckSelector from './DeckSelector';
-
+import BackButton from '@/components/BackButton';
 const { Title, Text, Paragraph } = Typography;
 
 interface CourseDetailClientProps {
@@ -103,10 +112,8 @@ export default function CourseDetailClient({ course, isOwner }: CourseDetailClie
 				/>
 
 				<div style={{ position: 'relative', maxWidth: 800, margin: '0 auto', zIndex: 1 }}>
-					<div style={{ position: 'absolute', top: -40, left: 0 }}>
-						<Link href="/dashboard/courses">
-							<Button ghost icon={<ArrowLeftOutlined />} shape="circle" size="large" />
-						</Link>
+					<div style={{ maxWidth: 1000, margin: '0 auto', padding: '24px 16px' }}>
+						<BackButton fallbackPath="/dashboard/courses" color="white" />
 					</div>
 
 					<Title

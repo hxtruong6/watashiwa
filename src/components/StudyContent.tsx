@@ -11,7 +11,7 @@ import {
 } from '@/services/actions';
 import { getCourseById } from '@/services/course-actions';
 import type { User } from '@/generated/prisma';
-import FlashCard from '@/components/FlashCard';
+import FlashCard, { FlashCardHandle } from '@/components/FlashCard';
 import VocabSettings from '@/components/VocabSettings';
 import ReportModal from '@/components/ReportModal';
 import RatingBar from '@/components/RatingBar';
@@ -64,7 +64,7 @@ export default function StudyContent() {
 	// Settings State
 	const [showFurigana, setShowFurigana] = useState(true);
 	const [showRomaji, setShowRomaji] = useState(false);
-	const [autoPlayAudio, setAutoPlayAudio] = useState(false);
+	const [autoPlayAudio, setAutoPlayAudio] = useState<'off' | 'question' | 'answer'>('answer');
 	const [settingsVisible, setSettingsVisible] = useState(false);
 
 	// User Preferences from DB
@@ -73,7 +73,9 @@ export default function StudyContent() {
 	const [autoShowAnswer, setAutoShowAnswer] = useState(false);
 	const [autoShowAnswerDelay, setAutoShowAnswerDelay] = useState(40);
 	const [isReportModalOpen, setIsReportModalOpen] = useState(false);
+
 	const [isCommentDrawerOpen, setIsCommentDrawerOpen] = useState(false);
+	const flashCardRef = React.useRef<FlashCardHandle>(null);
 
 	const { message } = App.useApp();
 	const router = useRouter();
@@ -257,8 +259,7 @@ export default function StudyContent() {
 						...prev,
 						reviewsToday: prev.reviewsToday + 1,
 						// If card was new (state 0), increment newCardsToday. But we depend on backend card state which we might not have perfectly sync here easily without complex check.
-						// Simplifying: Just re-fetch stats periodically or after session?
-						// For smooth UI, let's just re-fetch in background.
+						// Simplifying: Just re-fetch in background.
 					}));
 					getDailyProgress().then((s) => s && setDailyStats(s));
 
@@ -289,6 +290,14 @@ export default function StudyContent() {
 			const target = e.target as HTMLElement;
 			const isInput =
 				target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable;
+
+			// Handle Escape to close settings
+			if (e.key === 'Escape' || e.code === 'Escape') {
+				if (settingsVisible) {
+					setSettingsVisible(false);
+					return;
+				}
+			}
 
 			if (
 				loading ||
@@ -328,6 +337,13 @@ export default function StudyContent() {
 						handleRate(4); // Easy
 						break;
 				}
+			}
+
+			// Audio Shortcuts
+			if (e.key.toLowerCase() === 'r') {
+				flashCardRef.current?.playAudio();
+			} else if (e.key.toLowerCase() === 'e') {
+				flashCardRef.current?.playExampleAudio();
 			}
 		};
 
@@ -422,28 +438,26 @@ export default function StudyContent() {
 						subTitle={t('sessionCompleteSubtitle')}
 						extra={[
 							<div key="stats" style={{ marginBottom: 24, textAlign: 'left' }}>
-								<div style={{ marginBottom: 16 }}>
-									<Flex justify="space-between">
-										<Text strong>
-											<FireOutlined /> {t('dailyReviews')}
-										</Text>
-										<Text>
-											{dailyStats.reviewsToday} / {dailyStats.limitReviews}
-										</Text>
-									</Flex>
-									<Progress percent={reviewPercent} status="active" strokeColor="#1890ff" />
-								</div>
-								<div>
-									<Flex justify="space-between">
-										<Text strong>
-											<TrophyOutlined /> {t('newWords')}
-										</Text>
-										<Text>
-											{dailyStats.newCardsToday} / {dailyStats.limitNewCards}
-										</Text>
-									</Flex>
-									<Progress percent={newPercent} status="active" strokeColor="#faad14" />
-								</div>
+								<Flex justify="space-between">
+									<Text strong>
+										<FireOutlined /> {t('dailyReviews')}
+									</Text>
+									<Text>
+										{dailyStats.reviewsToday} / {dailyStats.limitReviews}
+									</Text>
+								</Flex>
+								<Progress percent={reviewPercent} status="active" strokeColor="#1890ff" />
+							</div>,
+							<div key="new-cards-stats" style={{ marginBottom: 16 }}>
+								<Flex justify="space-between">
+									<Text strong>
+										<TrophyOutlined /> {t('newWords')}
+									</Text>
+									<Text>
+										{dailyStats.newCardsToday} / {dailyStats.limitNewCards}
+									</Text>
+								</Flex>
+								<Progress percent={newPercent} status="active" strokeColor="#faad14" />
 							</div>,
 							<Button
 								type="primary"
@@ -510,7 +524,15 @@ export default function StudyContent() {
 				<Button
 					shape="circle"
 					icon={<CloseOutlined />}
-					onClick={() => router.push('/')}
+					onClick={() => {
+						if (courseIdParam) {
+							router.push(`/courses/${courseIdParam}`);
+						} else if (deckIdParam && !deckIdParam.includes(',')) {
+							router.push(`/decks/${deckIdParam}`);
+						} else {
+							router.push('/');
+						}
+					}}
 					onMouseDown={(e) => e.preventDefault()}
 					style={{ border: 'none', background: 'rgba(0,0,0,0.05)', width: 44, height: 44 }}
 				/>
@@ -575,7 +597,7 @@ export default function StudyContent() {
 				placement="left"
 				onClose={() => setSettingsVisible(false)}
 				open={settingsVisible}
-				size="default"
+				size={'default'}
 				mask={false}
 				styles={{ body: { paddingBottom: 80 } }}
 			>
@@ -641,6 +663,8 @@ export default function StudyContent() {
 					}}
 				>
 					<FlashCard
+						ref={flashCardRef}
+						key={card?.id || 'empty'}
 						card={card}
 						showAnswer={showAnswer}
 						showFurigana={showFurigana}

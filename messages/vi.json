@@ -2,6 +2,7 @@
     "Common": {
         "loading": "Đang tải...",
         "error": "Đã xảy ra lỗi",
+        "retry": "Thử lại",
         "save": "Lưu lại",
         "cancel": "Hủy bỏ",
         "logout": "Đăng xuất",
@@ -15,7 +16,8 @@
         "rateAgain": "Lại",
         "rateHard": "Khó",
         "rateGood": "Tốt",
-        "rateEasy": "Dễ"
+        "rateEasy": "Dễ",
+        "off": "Tắt"
     },
     "NavBar": {
         "dashboard": "Trang chủ",
@@ -37,6 +39,7 @@
         "startReview": "Bắt đầu ôn tập",
         "allCaughtUp": "Đã hoàn thành!",
         "allCaughtUpSubtitle": "Tuyệt vời. Quay lại sau hoặc học từ mới trong thư viện nhé.",
+        "loadError": "Không thể tải dữ liệu bảng tin.",
         "browseDecks": "Khám phá bộ thẻ",
         "dayStreak": "Chuỗi ngày",
         "reviewedToday": "Đã ôn tập hôm nay",
@@ -150,7 +153,10 @@
         "spaceKeyRating": "Đánh giá là",
         "autoShowAnswer": "Tự động hiện đáp án",
         "autoShowAnswerDelay": "Độ trễ (giây)",
-        "saveSettings": "Lưu cài đặt"
+        "saveSettings": "Lưu cài đặt",
+        "audioSettings": "Cài đặt âm thanh",
+        "question": "Mặt trước",
+        "answer": "Mặt sau"
     },
     "Admin": {
         "panelTitle": "Trang quản trị",
@@ -210,7 +216,7 @@
         "contentLabel": "Nội dung",
         "typeLabel": "Loại bình luận",
         "postButton": "Đăng bình luận",
-        "noComments": "Chưa có bình luận. Hãy là người đầu tiên chia sẻ!",
+        "noComments": "Chưa có mẹo nào. Hãy là người đầu tiên chia sẻ nhé!",
         "typeMnemonic": "Mẹo ghi nhớ (Mnemonic)",
         "typeTip": "Mẹo sử dụng",
         "typeCulture": "Lưu ý văn hóa",

@@ -60,7 +60,7 @@ sudo pm2 save
 
 Ensure you have a PostgreSQL database connection string.
 
-1. **Clone the repository** to your server (e.g., `/var/www/watashi-jp`).
+1. **Clone the repository** to your server (e.g., `/var/www/watashiwa`).
 2. **Create a `.env` file** in the project root:
 
    ```bash
@@ -130,9 +130,9 @@ sudo pm2 startup
 ### PM2 Commands Cheat Sheet
 
 - **Status**: `pm2 status`
-- **Logs**: `pm2 logs watashi-jp`
-- **Restart**: `pm2 restart watashi-jp`
-- **Stop**: `pm2 stop watashi-jp`
+- **Logs**: `pm2 logs watashiwa`
+- **Restart**: `pm2 restart watashiwa`
+- **Stop**: `pm2 stop watashiwa`
 
 ---
 
@@ -196,7 +196,7 @@ sudo apt install nginx -y
 Create a new configuration file:
 
 ```bash
-sudo nano /etc/nginx/sites-available/watashi-jp
+sudo nano /etc/nginx/sites-available/watashiwa
 ```
 
 Paste the following configuration (replace `your-domain.com`):
@@ -220,7 +220,7 @@ server {
 ### Enable the Site
 
 ```bash
-sudo ln -s /etc/nginx/sites-available/watashi-jp /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/watashiwa /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl restart nginx
 ```
@@ -249,6 +249,6 @@ Follow the prompts to configure HTTPS redirection.
 
 ## Troubleshooting
 
-- **Check App Logs**: `pm2 logs watashi-jp`
+- **Check App Logs**: `pm2 logs watashiwa`
 - **Check Nginx Logs**: `sudo tail -f /var/log/nginx/error.log`
 - **Database Issues**: Verify `DATABASE_URL` in `.env` is correct and accessible.

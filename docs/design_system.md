@@ -4,10 +4,9 @@
 
 The application is a tool for deep learning. The interface must be "invisible" until needed.
 
-- **Principle 1: Cognitive Load Reduction.** Minimalism. No decorative noise.
+- **Principle 1: Cognitive Load Reduction.** Minimalism. No decorative noise. Be minimalistic, elegant, and creative.
 - **Principle 2: Motivating Feedback.** Tangible progress (sounds, smooth fills).
-- **Principle 3: Kanji First.** Text is the hero.
-- **Principle 4: Mobile First.** Design for the smallest screen first. Touch targets > 44px. Critical actions in "Thumb Zone".
+- **Principle 3: Mobile First.** Design for the smallest screen first. Touch targets > 44px. Critical actions in "Thumb Zone".
 
 ## 2. Theme Configuration (Ant Design Tokens)
 
@@ -22,6 +21,8 @@ We use Ant Design v5's Token System. Configure these in `themeConfig.ts`.
 | `colorError` | `#E64A19` | **Vermilion (Shuiro)** | Wrong Answers, "Again" rating, Destructive actions. |
 | `colorWarning` | `#FAAD14` | **Goldenrod** | "Hard" rating. |
 | `colorInfo` | `#1E3A5F` | **Indigo** | Informational tags. |
+
+- Add these variables to one place to easily change colors, configuration theme or dark mode.
 
 ### Backgrounds & Surfaces
 

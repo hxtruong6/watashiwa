@@ -24,6 +24,7 @@ interface CommentListProps {
 	userRole?: string;
 	onDeleted?: (id: string) => void;
 	onUpdated?: () => void;
+	t?: any;
 }
 
 export default function CommentList({
@@ -33,6 +34,7 @@ export default function CommentList({
 	userRole,
 	onDeleted,
 	onUpdated,
+	t,
 }: CommentListProps) {
 	if (loading) {
 		return (
@@ -43,12 +45,7 @@ export default function CommentList({
 	}
 
 	if (comments.length === 0) {
-		return (
-			<Empty
-				description="No comments yet. Be the first to share a tip!"
-				image={Empty.PRESENTED_IMAGE_SIMPLE}
-			/>
-		);
+		return <Empty description={t('noComments')} image={Empty.PRESENTED_IMAGE_SIMPLE} />;
 	}
 
 	return (

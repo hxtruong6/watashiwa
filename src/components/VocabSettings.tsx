@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import VoiceSettings from './Audio/VoiceSettings';
 import {
 	Card,
 	Switch,
@@ -14,6 +15,7 @@ import {
 	Radio,
 	message,
 	Collapse,
+	Divider,
 } from 'antd';
 import {
 	SoundOutlined,
@@ -36,11 +38,11 @@ interface VocabSettingsProps {
 	setShowFurigana: (show: boolean) => void;
 	showRomaji: boolean;
 	setShowRomaji: (show: boolean) => void;
-	autoPlayAudio: boolean;
-	setAutoPlayAudio: (play: boolean) => void;
+	autoPlayAudio: 'off' | 'question' | 'answer';
+	setAutoPlayAudio: (val: 'off' | 'question' | 'answer') => void;
 	// New props for persistence
-	userSettings?: Partial<User> | null;
-	onSettingsChange?: () => void;
+	userSettings: Partial<User> | null;
+	onSettingsChange: () => void;
 }
 
 export default function VocabSettings({
@@ -125,12 +127,20 @@ export default function VocabSettings({
 					<Switch size="small" checked={showRomaji} onChange={setShowRomaji} />
 				</Flex>
 
-				<Flex align="center" gap="small">
+				<Flex align="center" gap="small" wrap="wrap">
 					<Tooltip title={t('autoPlayTooltip')}>
 						<SoundOutlined style={{ color: '#faad14' }} />
 					</Tooltip>
 					<Text style={{ fontSize: 13 }}>{t('autoPlay')}</Text>
-					<Switch size="small" checked={autoPlayAudio} onChange={setAutoPlayAudio} />
+					<Radio.Group
+						value={autoPlayAudio}
+						onChange={(e) => setAutoPlayAudio(e.target.value as 'off' | 'question' | 'answer')}
+						size="small"
+					>
+						<Radio.Button value="off">{tCommon('off')}</Radio.Button>
+						<Radio.Button value="question">{t('question')}</Radio.Button>
+						<Radio.Button value="answer">{t('answer')}</Radio.Button>
+					</Radio.Group>
 				</Flex>
 			</Flex>
 
@@ -151,7 +161,7 @@ export default function VocabSettings({
 				</ul>
 			</div>
 
-			<Collapse ghost expandIconPosition="end">
+			<Collapse ghost expandIconPlacement="end">
 				<Panel
 					header={
 						<span style={{ fontWeight: 600, color: '#1E3A5F' }}>
@@ -160,6 +170,14 @@ export default function VocabSettings({
 					}
 					key="1"
 				>
+					<div style={{ marginBottom: 24, padding: '0 8px' }}>
+						<Text strong style={{ color: '#1E3A5F' }}>
+							{t('audioSettings')}
+						</Text>
+						<VoiceSettings />
+						<Divider style={{ margin: '16px 0' }} />
+					</div>
+
 					<Form form={form} layout="vertical" onFinish={handleSaveSettings}>
 						<Flex gap="middle">
 							<Form.Item name="limitNewCards" label={t('limitNewCards')} style={{ flex: 1 }}>

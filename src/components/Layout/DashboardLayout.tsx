@@ -57,7 +57,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 			>
 				<Flex justify="center" align="center" style={{ height: 64, margin: '16px 0' }}>
 					<Title level={4} style={{ margin: 0, color: '#1E3A5F' }}>
-						Watashi JLPT
+						WatashiWa
 					</Title>
 				</Flex>
 

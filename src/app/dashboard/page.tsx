@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation';
 import { UserRole } from '@/generated/prisma';
 import { getDashboardData, syncUser, getUserWithRole, getLeaderboard } from '@/services/actions';
 import DashboardContent from '@/components/DashboardContent';
+import DashboardErrorState from '@/components/dashboard/DashboardErrorState';
 
 interface Props {
 	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -28,7 +29,7 @@ export default async function Dashboard(props: Props) {
 	const leaderboard = await getLeaderboard();
 
 	if (!data) {
-		return <div>Loading...</div>;
+		return <DashboardErrorState />;
 	}
 
 	return (

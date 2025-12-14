@@ -442,14 +442,18 @@ export async function syncUser() {
 /**
  * Get count of cards due for review
  */
-export async function getReviewCount() {
+export async function getReviewCount(userId?: string) {
 	try {
-		const user = await getUser();
-		if (!user) return 0;
+		let uid = userId;
+		if (!uid) {
+			const user = await getUser();
+			if (!user) return 0;
+			uid = user.id;
+		}
 
 		const count = await prisma.studyCard.count({
 			where: {
-				userId: user.id,
+				userId: uid,
 				due: {
 					lte: new Date(),
 				},
@@ -465,10 +469,14 @@ export async function getReviewCount() {
 /**
  * Get user statistics (Streak, Total Reviews)
  */
-export async function getUserStats() {
+export async function getUserStats(userId?: string) {
 	try {
-		const user = await getUser();
-		if (!user) return { streak: 0, totalReviewed: 0 };
+		let uid = userId;
+		if (!uid) {
+			const user = await getUser();
+			if (!user) return { streak: 0, totalReviewed: 0 };
+			uid = user.id;
+		}
 
 		// Simple Today's Review Count
 		const startOfDay = new Date();
@@ -476,7 +484,7 @@ export async function getUserStats() {
 
 		const todaysReviews = await prisma.reviewLog.count({
 			where: {
-				userId: user.id,
+				userId: uid,
 				review: {
 					gte: startOfDay,
 				},
@@ -530,24 +538,6 @@ export async function getDeck(id: string) {
 			},
 			select: { state: true },
 		});
-
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		const learned = studyCards.filter((c) => c.state > 0).length;
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		const learning = studyCards.filter((c) => c.state === 0).length; // "New" in FSRS terms usually means state 0, but if we call it "Learning" in UI it's fine.
-		// Actually state 0 = New, 1 = Learning, 2 = Review, 3 = Relearning.
-		// Let's group:
-		// "Learned" (Started) = Total Cards - Unseen? Or Cards with state > 0 (passed initial learning)?
-		// User wants "How many words left". "Left" usually means "Unseen" + "New".
-		// "Learned" usually means "Review" (state 2).
-		// Let's provide granular stats:
-		// Total Items
-		// Started (Anyone with a card)
-		//   - New (State 0)
-		//   - Learning (State 1)
-		//   - Review (State 2)
-		//   - Relearning (State 3)
-		// Unseen = Total Items - Started
 
 		const stats = {
 			total: deck._count.vocab + deck._count.kanji,
@@ -627,15 +617,128 @@ export async function getAllKanji() {
 }
 
 /**
+ * Get weekly review stats for the chart (last 7 days)
+ */
+export async function getWeeklyStats(userId?: string) {
+	try {
+		let uid = userId;
+		if (!uid) {
+			const user = await getUser();
+			if (!user) return null;
+			uid = user.id;
+		}
+
+		const days: { day: string; date: Date; count: number; isToday: boolean }[] = [];
+		const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+		const today = new Date();
+		today.setHours(0, 0, 0, 0);
+
+		// Generate last 7 days
+		for (let i = 6; i >= 0; i--) {
+			const date = new Date(today);
+			date.setDate(today.getDate() - i);
+			const dayEnd = new Date(date);
+			dayEnd.setHours(23, 59, 59, 999);
+
+			const count = await prisma.reviewLog.count({
+				where: {
+					userId: uid,
+					review: {
+						gte: date,
+						lte: dayEnd,
+					},
+				},
+			});
+
+			days.push({
+				day: dayNames[date.getDay()],
+				date,
+				count,
+				isToday: i === 0,
+			});
+		}
+
+		const thisWeekTotal = days.reduce((sum, d) => sum + d.count, 0);
+		const bestDay = days.reduce((best, d) => (d.count > best.count ? d : best), days[0]);
+
+		return {
+			days: days.map((d) => ({ day: d.day, count: d.count, isToday: d.isToday })),
+			thisWeekTotal,
+			bestDay: { day: bestDay.day, count: bestDay.count },
+		};
+	} catch (error) {
+		console.error('Error fetching weekly stats:', error);
+		return null;
+	}
+}
+
+/**
+ * Get decks with due counts for dashboard
+ */
+export async function getDecksWithDue(userId?: string) {
+	try {
+		let uid = userId;
+		if (!uid) {
+			const user = await getUser();
+			if (!user) return [];
+			uid = user.id;
+		}
+
+		const decks = await prisma.deck.findMany({
+			where: {
+				OR: [{ isPublic: true }, { authorId: uid }],
+			},
+			include: {
+				_count: {
+					select: { vocab: true, kanji: true },
+				},
+			},
+			orderBy: {
+				createdAt: 'desc',
+			},
+		});
+
+		// Get due counts for each deck
+		const decksWithDue = await Promise.all(
+			decks.map(async (deck) => {
+				const dueCount = await prisma.studyCard.count({
+					where: {
+						userId: uid,
+						due: { lte: new Date() },
+						OR: [{ vocab: { deckId: deck.id } }, { kanji: { deckId: deck.id } }],
+					},
+				});
+
+				return {
+					id: deck.id,
+					title: deck.title,
+					cardCount: deck._count.vocab + deck._count.kanji,
+					dueCount,
+				};
+			}),
+		);
+
+		return decksWithDue;
+	} catch (error) {
+		console.error('Error fetching decks with due:', error);
+		return [];
+	}
+}
+
+/**
  * Fetch User Settings (Limits and Preferences)
  */
-export async function getUserSettings() {
+export async function getUserSettings(userId?: string) {
 	try {
-		const user = await getUser();
-		if (!user) return null;
+		let uid = userId;
+		if (!uid) {
+			const user = await getUser();
+			if (!user) return null;
+			uid = user.id;
+		}
 
 		const settings = await prisma.user.findUnique({
-			where: { id: user.id },
+			where: { id: uid },
 			select: {
 				limitNewCards: true,
 				limitReviews: true,
@@ -650,6 +753,65 @@ export async function getUserSettings() {
 	} catch (error) {
 		console.error('Error fetching user settings:', error);
 		return null;
+	}
+}
+/**
+ * Helper: Get Start of Day in User's Timezone (returned as UTC Date object)
+ * e.g. If User is Tokyo (UTC+9), and it's 10am Tokyo, Start of Day is 00:00 Tokyo.
+ * We need the UTC equivalent of 00:00 Tokyo, which is 15:00 UTC Previous Day.
+ */
+function getStartOfDayInTimezone(timezone: string = 'UTC'): Date {
+	try {
+		const now = new Date();
+		// Get date string in user's timezone: "MM/DD/YYYY"
+		const formatter = new Intl.DateTimeFormat('en-US', {
+			timeZone: timezone,
+			year: 'numeric',
+			month: 'numeric',
+			day: 'numeric',
+		});
+		const parts = formatter.formatToParts(now);
+		const month = parts.find((p) => p.type === 'month')?.value;
+		const day = parts.find((p) => p.type === 'day')?.value;
+		const year = parts.find((p) => p.type === 'year')?.value;
+
+		if (!month || !day || !year) throw new Error('Invalid date parts');
+
+		// Create a string "YYYY-MM-DD"
+		// We want to find the UTC time that corresponds to this local time.
+		// There isn't a direct "Date.from(string, timezone)" in stdlib.
+		// WORKAROUND:
+		// 1. Create a date assuming UTC: Date.UTC(year, month-1, day) -> Timestamp for 00:00 UTC.
+		// 2. Adjust by the offset of that timezone? No, offset changes (DST).
+		// 3. Iterative approach or library is best.
+		// Since we want to be safe, let's assume 'UTC' if complex.
+		// ACTUALLY, simpler:
+		// We can use the string to CREATE a date object, but we need to know the offset.
+		// Let's postpone complex date math and use a simplified version:
+		// If we create "YYYY-MM-DD" string and append the offset? No we don't know the offset easily.
+
+		// Fallback: Just use UTC for now to unblock, because native JS Timezone math is hell without `date-fns-tz`.
+		// User specifically asked for it. I will try to use the `toLocaleString` trick to approximate.
+
+		// Or try to parse offset from `longOffset`? "GMT+09:00".
+		const offsetStr = new Intl.DateTimeFormat('en-US', {
+			timeZone: timezone,
+			timeZoneName: 'longOffset',
+		}).format(now);
+		// Example: "12/12/2023, GMT+09:00"
+		const match = offsetStr.match(/GMT([+-]\d{2}:\d{2})/);
+		if (match) {
+			const offset = match[1];
+			const iso = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}T00:00:00${offset}`;
+			return new Date(iso);
+		}
+
+		return new Date(Date.UTC(parseInt(year), parseInt(month) - 1, parseInt(day)));
+	} catch (e) {
+		console.warn('Timezone calculation failed, falling back to UTC', e);
+		const d = new Date();
+		d.setUTCHours(0, 0, 0, 0);
+		return d;
 	}
 }
 
@@ -740,181 +902,21 @@ export async function updateUserSettings(data: Partial<User>) {
 }
 
 /**
- * Helper: Get Start of Day in User's Timezone (returned as UTC Date object)
- * e.g. If User is Tokyo (UTC+9), and it's 10am Tokyo, Start of Day is 00:00 Tokyo.
- * We need the UTC equivalent of 00:00 Tokyo, which is 15:00 UTC Previous Day.
- */
-function getStartOfDayInTimezone(timezone: string = 'UTC'): Date {
-	try {
-		const now = new Date();
-		// Get date string in user's timezone: "MM/DD/YYYY"
-		const formatter = new Intl.DateTimeFormat('en-US', {
-			timeZone: timezone,
-			year: 'numeric',
-			month: 'numeric',
-			day: 'numeric',
-		});
-		const parts = formatter.formatToParts(now);
-		const month = parts.find((p) => p.type === 'month')?.value;
-		const day = parts.find((p) => p.type === 'day')?.value;
-		const year = parts.find((p) => p.type === 'year')?.value;
-
-		if (!month || !day || !year) throw new Error('Invalid date parts');
-
-		// Create a string "YYYY-MM-DDT00:00:00"
-		// We want to find the UTC time that corresponds to this local time.
-		// There isn't a direct "Date.from(string, timezone)" in stdlib.
-		// WORKAROUND:
-		// 1. Create a date assuming UTC: Date.UTC(year, month-1, day) -> Timestamp for 00:00 UTC.
-		// 2. Adjust by the offset of that timezone? No, offset changes (DST).
-		// 3. Iterative approach or library is best.
-		// Since we want to be safe, let's assume 'UTC' if complex.
-		// ACTUALLY, simpler:
-		// We can use the string to CREATE a date object, but we need to know the offset.
-		// Let's postpone complex date math and use a simplified version:
-		// If we create "YYYY-MM-DD" string and append the offset? No we don't know the offset easily.
-
-		// Fallback: Just use UTC for now to unblock, because native JS Timezone math is hell without `date-fns-tz`.
-		// User specifically asked for it. I will try to use the `toLocaleString` trick to approximate.
-
-		// Or try to parse offset from `longOffset`? "GMT+09:00".
-		const offsetStr = new Intl.DateTimeFormat('en-US', {
-			timeZone: timezone,
-			timeZoneName: 'longOffset',
-		}).format(now);
-		// Example: "12/12/2023, GMT+09:00"
-		const match = offsetStr.match(/GMT([+-]\d{2}:\d{2})/);
-		if (match) {
-			const offset = match[1];
-			const iso = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}T00:00:00${offset}`;
-			return new Date(iso);
-		}
-
-		return new Date(Date.UTC(parseInt(year), parseInt(month) - 1, parseInt(day)));
-	} catch (e) {
-		console.warn('Timezone calculation failed, falling back to UTC', e);
-		const d = new Date();
-		d.setUTCHours(0, 0, 0, 0);
-		return d;
-	}
-}
-
-/**
- * Get weekly review stats for the chart (last 7 days)
- */
-export async function getWeeklyStats() {
-	try {
-		const user = await getUser();
-		if (!user) return null;
-
-		const days: { day: string; date: Date; count: number; isToday: boolean }[] = [];
-		const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-		const today = new Date();
-		today.setHours(0, 0, 0, 0);
-
-		// Generate last 7 days
-		for (let i = 6; i >= 0; i--) {
-			const date = new Date(today);
-			date.setDate(today.getDate() - i);
-			const dayEnd = new Date(date);
-			dayEnd.setHours(23, 59, 59, 999);
-
-			const count = await prisma.reviewLog.count({
-				where: {
-					userId: user.id,
-					review: {
-						gte: date,
-						lte: dayEnd,
-					},
-				},
-			});
-
-			days.push({
-				day: dayNames[date.getDay()],
-				date,
-				count,
-				isToday: i === 0,
-			});
-		}
-
-		const thisWeekTotal = days.reduce((sum, d) => sum + d.count, 0);
-		const bestDay = days.reduce((best, d) => (d.count > best.count ? d : best), days[0]);
-
-		return {
-			days: days.map((d) => ({ day: d.day, count: d.count, isToday: d.isToday })),
-			thisWeekTotal,
-			bestDay: { day: bestDay.day, count: bestDay.count },
-		};
-	} catch (error) {
-		console.error('Error fetching weekly stats:', error);
-		return null;
-	}
-}
-
-/**
- * Get decks with due counts for dashboard
- */
-export async function getDecksWithDue() {
-	try {
-		const user = await getUser();
-		if (!user) return [];
-
-		const decks = await prisma.deck.findMany({
-			where: {
-				OR: [{ isPublic: true }, { authorId: user.id }],
-			},
-			include: {
-				_count: {
-					select: { vocab: true, kanji: true },
-				},
-			},
-			orderBy: {
-				createdAt: 'desc',
-			},
-		});
-
-		// Get due counts for each deck
-		const decksWithDue = await Promise.all(
-			decks.map(async (deck) => {
-				const dueCount = await prisma.studyCard.count({
-					where: {
-						userId: user.id,
-						due: { lte: new Date() },
-						OR: [{ vocab: { deckId: deck.id } }, { kanji: { deckId: deck.id } }],
-					},
-				});
-
-				return {
-					id: deck.id,
-					title: deck.title,
-					cardCount: deck._count.vocab + deck._count.kanji,
-					dueCount,
-				};
-			}),
-		);
-
-		return decksWithDue;
-	} catch (error) {
-		console.error('Error fetching decks with due:', error);
-		return [];
-	}
-}
-
-/**
  * Get dashboard data (combined call for efficiency)
  */
 export async function getDashboardData() {
 	try {
+		const user = await getUser();
+		if (!user) return null;
+
 		const [reviewCount, stats, weeklyStats, decksWithDue, userSettings] = await Promise.all([
-			getReviewCount(),
-			getUserStats(),
-			getWeeklyStats(),
-			getDecksWithDue(),
-			getUserSettings(),
+			getReviewCount(user.id),
+			getUserStats(user.id),
+			getWeeklyStats(user.id),
+			getDecksWithDue(user.id),
+			getUserSettings(user.id),
 		]);
 
-		// Get user name
-		const user = await getUser();
 		let userName: string | null = null;
 		if (user) {
 			const dbUser = await prisma.user.findUnique({

@@ -143,6 +143,7 @@ export default function CommentDrawer({
 					userRole={currentUser?.role}
 					onDeleted={handleDeleted}
 					onUpdated={handleCommentSuccess}
+					t={t}
 				/>
 			</div>
 		</Drawer>

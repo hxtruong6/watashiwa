@@ -222,7 +222,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 					style={{ cursor: 'pointer' }}
 					onClick={() => router.push('/')}
 				>
-					<Image src="/assets/w_logo.png" alt="WatashiWa Logo" width={64} height={64} />
+					<Image src="/assets/w_logo.png" alt="WatashiWa Logo" width={64} height={64} priority />
 					<Text
 						strong
 						style={{

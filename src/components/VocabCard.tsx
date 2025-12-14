@@ -1,9 +1,8 @@
-'use client';
-
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Card, Typography, Tag, Divider, Flex, Button } from 'antd';
 import { PlayCircleOutlined, PauseCircleOutlined } from '@ant-design/icons';
 import KanjiBreakdown from './KanjiBreakdown';
+import { useAudioPlayer } from './Audio/useAudioPlayer';
 
 const { Title, Text, Paragraph } = Typography;
 
@@ -25,7 +24,31 @@ export default function VocabCard({
 	autoPlayAudio = false,
 }: VocabCardProps) {
 	const audioRef = useRef<HTMLAudioElement | null>(null);
-	const [isPlaying, setIsPlaying] = useState(false);
+	const [isFilePlaying, setIsFilePlaying] = useState(false);
+
+	// TTS Player
+	const [ttsSettings] = useState(() => {
+		if (typeof window === 'undefined') return { voiceUri: '', speed: 1 };
+		const savedVoice = localStorage.getItem('watashiwa_audio_voice');
+		const savedSpeed = localStorage.getItem('watashiwa_audio_speed');
+		return {
+			voiceUri: savedVoice || '',
+			speed: savedSpeed ? parseFloat(savedSpeed) : 1,
+		};
+	});
+
+	const {
+		speak,
+		stop,
+		isPlaying: isTtsPlaying,
+	} = useAudioPlayer({
+		rate: ttsSettings.speed,
+		voiceUri: ttsSettings.voiceUri,
+		lang: 'ja-JP',
+	});
+
+	// Derived Play State
+	const isPlaying = isFilePlaying || isTtsPlaying;
 
 	const {
 		kanji,
@@ -41,41 +64,64 @@ export default function VocabCard({
 		wordParts,
 	} = card?.vocab || {};
 
+	// Stop audio when card changes
+	useEffect(() => {
+		stop();
+		if (audioRef.current) {
+			audioRef.current.pause();
+			audioRef.current.currentTime = 0;
+		}
+		setIsFilePlaying(false);
+	}, [card?.vocab?.id, stop]);
+
+	const playAudio = useCallback(() => {
+		if (audioUrl && audioRef.current) {
+			audioRef.current
+				.play()
+				.then(() => setIsFilePlaying(true))
+				.catch((err) => console.error('Auto-play failed:', err));
+		} else {
+			// Fallback to TTS
+			// Prioritize reading (kana) for pronunciation, then kanji
+			// But for TTS, kanji is actually fine if the engine is good.
+			// But 'reading' is usually Hiragana/Katakana.
+			// Let's use the visible text (Kanji) if available, or Reading.
+			speak(kanji || reading);
+		}
+	}, [audioUrl, kanji, reading, speak]);
+
 	// Auto-play logic
 	useEffect(() => {
-		if (autoPlayAudio && audioUrl && audioRef.current) {
+		if (autoPlayAudio) {
 			// Small delay to ensure smooth transition
 			const timer = setTimeout(() => {
-				audioRef.current
-					?.play()
-					.then(() => setIsPlaying(true))
-					.catch((err) => console.error('Auto-play failed:', err));
+				playAudio();
 			}, 300);
 			return () => clearTimeout(timer);
 		}
-	}, [card?.vocab?.id, autoPlayAudio, audioUrl]);
-
-	// If no card, show loading or empty state
-	if (!card || !card.vocab) return null;
+	}, [card?.vocab?.id, autoPlayAudio, audioUrl, playAudio]);
 
 	// Handle Audio Playback
 	const toggleAudio = (e?: React.MouseEvent) => {
 		e?.stopPropagation(); // Prevent card flip if clicking button
-		if (audioRef.current) {
-			if (isPlaying) {
+
+		if (isPlaying) {
+			if (audioRef.current && !audioRef.current.paused) {
 				audioRef.current.pause();
-			} else {
-				// Stop other audios if needed (requires global state, skipping for now)
-				audioRef.current.currentTime = 0;
-				audioRef.current.play().catch((err) => console.error('Audio play failed:', err));
 			}
-			setIsPlaying(!isPlaying);
+			stop(); // Stop TTS
+			setIsFilePlaying(false);
+		} else {
+			playAudio();
 		}
 	};
 
+	// If no card, show loading or empty state
+	if (!card || !card.vocab) return null;
+
 	// Reset play state when audio ends
 	const onAudioEnded = () => {
-		setIsPlaying(false);
+		setIsFilePlaying(false);
 	};
 
 	return (
@@ -87,33 +133,44 @@ export default function VocabCard({
 					src={audioUrl}
 					preload="none"
 					onEnded={onAudioEnded}
-					onPause={() => setIsPlaying(false)}
-					onPlay={() => setIsPlaying(true)}
-					onLoadStart={() => setIsPlaying(false)}
+					onPause={() => setIsFilePlaying(false)}
+					onPlay={() => setIsFilePlaying(true)}
+					onLoadStart={() => setIsFilePlaying(false)}
 				/>
 			)}
 
 			{/* Floating Audio Button */}
+			<Button
+				type="text"
+				shape="circle"
+				icon={
+					isPlaying ? (
+						<PauseCircleOutlined style={{ fontSize: 32, color: '#1890ff' }} />
+					) : (
+						<PlayCircleOutlined style={{ fontSize: 32, color: '#1890ff' }} />
+					)
+				}
+				onClick={toggleAudio}
+				style={{
+					position: 'absolute',
+					top: 16,
+					right: 16,
+					zIndex: 50,
+					background: 'white',
+					boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+				}}
+			/>
+
+			{/* Audio Element for file playback */}
 			{audioUrl && (
-				<Button
-					type="text"
-					shape="circle"
-					icon={
-						isPlaying ? (
-							<PauseCircleOutlined style={{ fontSize: 32, color: '#1890ff' }} />
-						) : (
-							<PlayCircleOutlined style={{ fontSize: 32, color: '#1890ff' }} />
-						)
-					}
-					onClick={toggleAudio}
-					style={{
-						position: 'absolute',
-						top: 16,
-						right: 16,
-						zIndex: 50,
-						background: 'white',
-						boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-					}}
+				<audio
+					ref={audioRef}
+					src={audioUrl}
+					preload="none"
+					onEnded={onAudioEnded}
+					onPause={() => setIsFilePlaying(false)}
+					onPlay={() => setIsFilePlaying(true)}
+					onLoadStart={() => setIsFilePlaying(false)}
 				/>
 			)}
 

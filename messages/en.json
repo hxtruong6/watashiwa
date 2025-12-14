@@ -2,6 +2,7 @@
     "Common": {
         "loading": "Loading...",
         "error": "Something went wrong",
+        "retry": "Retry",
         "save": "Save",
         "cancel": "Cancel",
         "logout": "Logout",
@@ -15,7 +16,8 @@
         "rateAgain": "Again",
         "rateHard": "Hard",
         "rateGood": "Good",
-        "rateEasy": "Easy"
+        "rateEasy": "Easy",
+        "off": "Off"
     },
     "NavBar": {
         "dashboard": "Home",
@@ -37,6 +39,7 @@
         "startReview": "Start Review",
         "allCaughtUp": "All caught up!",
         "allCaughtUpSubtitle": "Great job. Check back later or learn new cards from your library.",
+        "loadError": "Unable to load dashboard data.",
         "browseDecks": "Browse Decks",
         "dayStreak": "Day Streak",
         "reviewedToday": "Reviewed Today",
@@ -156,7 +159,10 @@
         "spaceKeyRating": "Rate as",
         "autoShowAnswer": "Auto-Show Answer",
         "autoShowAnswerDelay": "Delay (seconds)",
-        "saveSettings": "Save Settings"
+        "saveSettings": "Save Settings",
+        "audioSettings": "Audio Settings",
+        "question": "Front Side",
+        "answer": "Back Side"
     },
     "Admin": {
         "panelTitle": "Admin Panel",

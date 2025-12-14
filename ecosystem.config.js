@@ -1,7 +1,7 @@
 module.exports = {
 	apps: [
 		{
-			name: 'watashi-jp',
+			name: 'watashiwa',
 			// Using 'npm start' is the most compatible way for Next.js
 			// It handles its own environment loading (.env.production)
 			script: 'npm',
@@ -52,8 +52,8 @@ module.exports = {
 			user: 'xuantruong', // Check: Is this the correct user?
 			host: '192.168.1.100', // REPLACE THIS
 			ref: 'origin/main',
-			repo: 'git@github.com:hxtruong6/watashi-jp.git', // REPLACE THIS with actual repo URL
-			path: '/var/www/watashi-jp', // Standard path, can be changed
+			repo: 'git@github.com:hxtruong6/watashiwa.git', // REPLACE THIS with actual repo URL
+			path: '/var/www/watashiwa', // Standard path, can be changed
 			// Post-deploy hook:
 			// 1. Install deps
 			// 2. Generate Prisma client
