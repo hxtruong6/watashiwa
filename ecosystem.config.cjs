@@ -50,7 +50,7 @@ module.exports = {
 	deploy: {
 		vps_prod: {
 			user: 'xuantruong', // Check: Is this the correct user?
-			host: '192.168.1.100', // REPLACE THIS
+			host: '34.143.229.101', // REPLACE THIS
 			ref: 'origin/main',
 			repo: 'git@github.com:hxtruong6/watashiwa.git', // REPLACE THIS with actual repo URL
 			path: '/var/www/watashiwa', // Standard path, can be changed
@@ -61,7 +61,7 @@ module.exports = {
 			// 4. Build app
 			// 5. Restart PM2
 			'post-deploy':
-				'pnpm install && pnpm db:generate && pnpm db:migrate && pnpm build && pm2 startOrRestart ecosystem.config.js production && pm2 save',
+				'pnpm install && pnpm db:generate && pnpm db:migrate && pnpm build && pm2 startOrRestart ecosystem.config.cjs --env production && pm2 save',
 			env: {
 				NODE_ENV: 'production',
 			},

@@ -131,7 +131,6 @@ export default function DashboardContent({
 				streak={stats.streak}
 				dailyProgress={stats.totalReviewed}
 				dailyGoal={dailyGoal}
-				onOpenSettings={() => setIsSettingsOpen(true)}
 			/>
 
 			{/* Primary CTA: Start Review */}
