@@ -1,15 +1,17 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Form, Input, Button, Card, Typography, Alert, Flex, App } from 'antd';
+import { Form, Input, Button, Card, Typography, Alert, Flex, App, theme } from 'antd';
 import { createClient } from '@/utils/supabase/client';
 import { LockOutlined, UserOutlined, MailOutlined } from '@ant-design/icons';
 import Link from 'next/link';
 import { syncUser } from '@/services/actions';
 
 const { Title, Text } = Typography;
+const { useToken } = theme;
 
 export default function AuthPage() {
+	const { token } = useToken();
 	const { message: antdMessage } = App.useApp();
 	const [mode, setMode] = useState<'login' | 'signup'>('login');
 	const [loading, setLoading] = useState(false);
@@ -113,10 +115,14 @@ export default function AuthPage() {
 	};
 
 	return (
-		<Flex justify="center" align="center" style={{ minHeight: '100vh', background: '#F9F7F2' }}>
+		<Flex
+			justify="center"
+			align="center"
+			style={{ minHeight: '100vh', background: token.colorBgLayout }}
+		>
 			<Card style={{ width: 400, boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }} bordered={false}>
 				<div style={{ textAlign: 'center', marginBottom: 24 }}>
-					<Title level={2} style={{ color: '#1E3A5F', marginBottom: 0 }}>
+					<Title level={2} style={{ color: token.colorPrimary, marginBottom: 0 }}>
 						{mode === 'login' ? 'Welcome Back' : 'Join Watashi JP'}
 					</Title>
 					<Text type="secondary">
@@ -183,7 +189,7 @@ export default function AuthPage() {
 					{mode === 'login' && (
 						<Form.Item style={{ marginBottom: 24 }}>
 							<Flex justify="end">
-								<Link href="/forgot-password" style={{ color: '#1E3A5F' }}>
+								<Link href="/forgot-password" style={{ color: token.colorPrimary }}>
 									Forgot password?
 								</Link>
 							</Flex>

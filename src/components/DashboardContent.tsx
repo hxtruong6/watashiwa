@@ -15,7 +15,12 @@ import {
 	DonationButton,
 	GlobalLeaderboard,
 } from '@/components/dashboard';
-import { Divider } from 'antd';
+import { Divider, Drawer, theme } from 'antd';
+
+const { useToken } = theme;
+import VocabSettings from './VocabSettings';
+import { useRouter } from 'next/navigation';
+import type { User } from '@/generated/prisma';
 
 interface WeeklyStatsData {
 	days: { day: string; count: number; isToday?: boolean }[];
@@ -42,8 +47,9 @@ interface DashboardContentProps {
 	dailyGoal: number;
 	userRole?: string;
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	leaderboard?: any[]; // Added
-	userId?: string; // Added
+	leaderboard?: any[];
+	userId?: string;
+	userSettings?: Partial<User> | null;
 }
 
 /**
@@ -57,10 +63,14 @@ export default function DashboardContent({
 	userName,
 	dailyGoal,
 	userRole,
-	leaderboard = [], // Added
-	userId, // Added
+	leaderboard = [],
+	userId,
+	userSettings,
 }: DashboardContentProps) {
+	const { token } = useToken();
 	const [hasShownConfetti] = useState(false);
+	const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+	const router = useRouter();
 
 	// Trigger confetti when daily goal is reached
 	const isGoalComplete = stats.totalReviewed >= dailyGoal;
@@ -71,11 +81,17 @@ export default function DashboardContent({
 				particleCount: 100,
 				spread: 70,
 				origin: { y: 0.3 },
-				colors: ['#708238', '#1E3A5F', '#FAAD14'],
+				colors: [token.colorSuccess, token.colorPrimary, token.colorWarning],
 			});
 			// setHasShownConfetti(true);
 		}
-	}, [isGoalComplete, hasShownConfetti]);
+	}, [
+		isGoalComplete,
+		hasShownConfetti,
+		token.colorSuccess,
+		token.colorPrimary,
+		token.colorWarning,
+	]);
 
 	// Animation variants
 	const containerVariants: Variants = {
@@ -115,6 +131,7 @@ export default function DashboardContent({
 				streak={stats.streak}
 				dailyProgress={stats.totalReviewed}
 				dailyGoal={dailyGoal}
+				onOpenSettings={() => setIsSettingsOpen(true)}
 			/>
 
 			{/* Primary CTA: Start Review */}
@@ -172,7 +189,7 @@ export default function DashboardContent({
 						style={{
 							display: 'inline-block',
 							padding: '12px 24px',
-							background: '#1E3A5F',
+							background: token.colorPrimary,
 							color: 'white',
 							borderRadius: 12,
 							fontWeight: 600,
@@ -189,6 +206,29 @@ export default function DashboardContent({
 			<motion.div variants={itemVariants}>
 				<DonationButton />
 			</motion.div>
+
+			{/* Settings Drawer */}
+			<Drawer
+				title="Settings"
+				placement="right"
+				onClose={() => setIsSettingsOpen(false)}
+				open={isSettingsOpen}
+				size="default"
+			>
+				<VocabSettings
+					showFurigana={true} // Default or fetched if global state
+					setShowFurigana={() => {}} // Placeholder if not strictly needed here or create local state if user wants preview
+					showRomaji={false}
+					setShowRomaji={() => {}}
+					autoPlayAudio="answer"
+					setAutoPlayAudio={() => {}}
+					userSettings={userSettings || null}
+					onSettingsChange={() => {
+						router.refresh();
+						// Optional: keep open or close
+					}}
+				/>
+			</Drawer>
 		</motion.div>
 	);
 }

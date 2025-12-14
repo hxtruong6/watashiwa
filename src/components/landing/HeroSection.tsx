@@ -1,16 +1,18 @@
 'use client';
 
 import React from 'react';
-import { Button, Typography, Flex, Badge } from 'antd';
+import { Button, Typography, Flex, Badge, theme } from 'antd';
 import { motion } from 'framer-motion';
 import { RocketOutlined, RightOutlined, CheckCircleFilled } from '@ant-design/icons';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 const { Title, Paragraph, Text } = Typography;
+const { useToken } = theme;
 
 export default function HeroSection() {
 	// Hook for translations
 	const t = useTranslations('Landing');
+	const { token } = useToken();
 
 	return (
 		<section
@@ -18,7 +20,7 @@ export default function HeroSection() {
 				minHeight: '90vh',
 				position: 'relative',
 				overflow: 'hidden',
-				background: '#F9F7F2',
+				background: token.colorBgLayout,
 				display: 'flex',
 				alignItems: 'center',
 				justifyContent: 'center', // Fix: Center content horizontally
@@ -46,7 +48,7 @@ export default function HeroSection() {
 					left: '-10%',
 					width: '50vw',
 					height: '50vw',
-					background: 'radial-gradient(circle, rgba(30, 58, 95, 0.1) 0%, rgba(255,255,255,0) 70%)',
+					background: `radial-gradient(circle, ${token.colorPrimary}1a 0%, rgba(255,255,255,0) 70%)`,
 					filter: 'blur(60px)',
 					borderRadius: '50%',
 					zIndex: 0,
@@ -93,7 +95,7 @@ export default function HeroSection() {
 								<div style={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
 									<Badge
 										count={t('badge')}
-										style={{ backgroundColor: '#708238', color: '#fff', marginBottom: 16 }}
+										style={{ backgroundColor: token.colorSuccess, color: '#fff', marginBottom: 16 }}
 									/>
 								</div>
 
@@ -102,7 +104,7 @@ export default function HeroSection() {
 									style={{
 										fontSize: 'clamp(32px, 5vw, 72px)',
 										fontWeight: 800,
-										color: '#1E3A5F',
+										color: token.colorPrimary,
 										lineHeight: 1.1,
 										marginTop: 16,
 										marginBottom: 24,
@@ -113,7 +115,7 @@ export default function HeroSection() {
 									{t('heroTitle')} <br />
 									<span
 										style={{
-											background: 'linear-gradient(120deg, #708238 0%, #A3B18A 100%)',
+											background: `linear-gradient(120deg, ${token.colorSuccess} 0%, #A3B18A 100%)`,
 											WebkitBackgroundClip: 'text',
 											WebkitTextFillColor: 'transparent',
 										}}
@@ -159,8 +161,8 @@ export default function HeroSection() {
 													padding: '0 40px',
 													fontSize: 18,
 													borderRadius: 16,
-													background: '#1E3A5F',
-													boxShadow: '0 10px 30px rgba(30, 58, 95, 0.3)',
+													background: token.colorPrimary,
+													boxShadow: `0 10px 30px ${token.colorPrimary}4d`,
 													border: 'none',
 													width: '100%',
 												}}
@@ -197,19 +199,19 @@ export default function HeroSection() {
 
 								<Flex gap="middle" wrap="wrap" style={{ marginTop: 40 }} justify="flex-start">
 									<Flex gap="small" align="center">
-										<CheckCircleFilled style={{ color: '#708238' }} />
+										<CheckCircleFilled style={{ color: token.colorSuccess }} />
 										<Text type="secondary" style={{ whiteSpace: 'nowrap' }}>
 											{t('freePlan')}
 										</Text>
 									</Flex>
 									<Flex gap="small" align="center">
-										<CheckCircleFilled style={{ color: '#708238' }} />
+										<CheckCircleFilled style={{ color: token.colorSuccess }} />
 										<Text type="secondary" style={{ whiteSpace: 'nowrap' }}>
 											{t('noAds')}
 										</Text>
 									</Flex>
 									<Flex gap="small" align="center">
-										<CheckCircleFilled style={{ color: '#708238' }} />
+										<CheckCircleFilled style={{ color: token.colorSuccess }} />
 										<Text type="secondary" style={{ whiteSpace: 'nowrap' }}>
 											{t('openSource')}
 										</Text>
@@ -241,7 +243,7 @@ export default function HeroSection() {
 										left: '10%',
 										right: '10%',
 										bottom: '10%',
-										background: 'linear-gradient(135deg, #E8EBF2 0%, #F9F7F2 100%)',
+										background: `linear-gradient(135deg, #E8EBF2 0%, ${token.colorBgLayout} 100%)`,
 										borderRadius: '40px',
 										transform: 'rotate(-6deg)',
 										zIndex: 0,
@@ -270,7 +272,7 @@ export default function HeroSection() {
 												width: 40,
 												height: 40,
 												borderRadius: 10,
-												background: '#1E3A5F',
+												background: token.colorPrimary,
 											}}
 										/>
 										<div
@@ -293,7 +295,7 @@ export default function HeroSection() {
 													width: 60,
 													height: 8,
 													borderRadius: 4,
-													background: '#FF4D4F',
+													background: token.colorError,
 												}}
 											/>
 											<div
@@ -301,7 +303,7 @@ export default function HeroSection() {
 													width: 60,
 													height: 8,
 													borderRadius: 4,
-													background: '#FAAD14',
+													background: token.colorWarning,
 												}}
 											/>
 											<div
@@ -309,7 +311,7 @@ export default function HeroSection() {
 													width: 60,
 													height: 8,
 													borderRadius: 4,
-													background: '#52C41A',
+													background: token.colorSuccess,
 												}}
 											/>
 										</Flex>
@@ -320,7 +322,7 @@ export default function HeroSection() {
 											position: 'absolute',
 											bottom: 20,
 											right: 20,
-											background: '#708238',
+											background: token.colorSuccess,
 											color: 'white',
 											padding: '8px 16px',
 											borderRadius: 20,
@@ -351,7 +353,7 @@ export default function HeroSection() {
 										<span style={{ fontSize: 24 }}>🔥</span>
 										<div>
 											<div style={{ fontSize: 12, color: '#888' }}>Streak</div>
-											<div style={{ fontWeight: 'bold', color: '#1E3A5F' }}>12 Days</div>
+											<div style={{ fontWeight: 'bold', color: token.colorPrimary }}>12 Days</div>
 										</div>
 									</Flex>
 								</motion.div>

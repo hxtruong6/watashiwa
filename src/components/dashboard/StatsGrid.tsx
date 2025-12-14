@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Typography, Card, Statistic, Row, Col } from 'antd';
+import { Typography, Card, Statistic, Row, Col, theme } from 'antd';
 import {
 	FireOutlined,
 	ClockCircleOutlined,
@@ -12,6 +12,7 @@ import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 
 const { Text } = Typography;
+const { useToken } = theme;
 
 interface StatsGridProps {
 	streak: number;
@@ -29,6 +30,7 @@ export default function StatsGrid({
 	totalCards,
 	masteredCards,
 }: StatsGridProps) {
+	const { token } = useToken();
 	const t = useTranslations('Dashboard');
 
 	const cardStyle = {
@@ -54,8 +56,10 @@ export default function StatsGrid({
 								</Text>
 							}
 							value={streak}
-							prefix={<FireOutlined style={{ color: '#FAAD14', fontSize: 20 }} />}
-							styles={{ content: { color: '#1E3A5F', fontWeight: 600, fontSize: '1.5rem' } }}
+							prefix={<FireOutlined style={{ color: token.colorWarning, fontSize: 20 }} />}
+							styles={{
+								content: { color: token.colorPrimary, fontWeight: 600, fontSize: '1.5rem' },
+							}}
 						/>
 					</Card>
 				</motion.div>
@@ -70,8 +74,10 @@ export default function StatsGrid({
 								</Text>
 							}
 							value={reviewedToday}
-							prefix={<ClockCircleOutlined style={{ color: '#708238', fontSize: 20 }} />}
-							styles={{ content: { color: '#1E3A5F', fontWeight: 600, fontSize: '1.5rem' } }}
+							prefix={<ClockCircleOutlined style={{ color: token.colorSuccess, fontSize: 20 }} />}
+							styles={{
+								content: { color: token.colorPrimary, fontWeight: 600, fontSize: '1.5rem' },
+							}}
 						/>
 					</Card>
 				</motion.div>
@@ -87,8 +93,10 @@ export default function StatsGrid({
 									</Text>
 								}
 								value={totalCards}
-								prefix={<BookOutlined style={{ color: '#1E3A5F', fontSize: 20 }} />}
-								styles={{ content: { color: '#1E3A5F', fontWeight: 600, fontSize: '1.5rem' } }}
+								prefix={<BookOutlined style={{ color: token.colorPrimary, fontSize: 20 }} />}
+								styles={{
+									content: { color: token.colorPrimary, fontWeight: 600, fontSize: '1.5rem' },
+								}}
 							/>
 						</Card>
 					</motion.div>
@@ -105,8 +113,8 @@ export default function StatsGrid({
 									</Text>
 								}
 								value={masteredCards}
-								prefix={<CheckCircleOutlined style={{ color: '#52c41a', fontSize: 20 }} />}
-								valueStyle={{ color: '#1E3A5F', fontWeight: 600, fontSize: '1.5rem' }}
+								prefix={<CheckCircleOutlined style={{ color: token.colorSuccess, fontSize: 20 }} />}
+								valueStyle={{ color: token.colorPrimary, fontWeight: 600, fontSize: '1.5rem' }}
 							/>
 						</Card>
 					</motion.div>

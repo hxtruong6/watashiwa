@@ -1,7 +1,19 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Typography, Row, Col, Card, Button, Flex, Tag, Empty, Input, Segmented } from 'antd';
+import {
+	Typography,
+	Row,
+	Col,
+	Card,
+	Button,
+	Flex,
+	Tag,
+	Empty,
+	Input,
+	Segmented,
+	theme,
+} from 'antd';
 import Link from 'next/link';
 import { BookOutlined, RightOutlined, SearchOutlined } from '@ant-design/icons';
 import { motion } from 'motion/react';
@@ -9,6 +21,7 @@ import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 
 const { Title, Text, Paragraph } = Typography;
+const { useToken } = theme;
 
 interface DecksContentProps {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -17,6 +30,7 @@ interface DecksContentProps {
 }
 
 export default function DecksContent({ decks, userId }: DecksContentProps) {
+	const { token } = useToken();
 	const t = useTranslations('Decks');
 	const router = useRouter();
 	const [searchTerm, setSearchTerm] = useState('');
@@ -79,7 +93,7 @@ export default function DecksContent({ decks, userId }: DecksContentProps) {
 				gap="small"
 			>
 				<motion.div variants={itemVariants}>
-					<Title level={2} style={{ margin: 0, color: '#1E3A5F', fontSize: '1.75rem' }}>
+					<Title level={2} style={{ margin: 0, color: token.colorPrimary, fontSize: '1.75rem' }}>
 						{t('libraryTitle')}
 					</Title>
 					<Text type="secondary" style={{ fontSize: '0.9rem' }}>
@@ -157,13 +171,13 @@ export default function DecksContent({ decks, userId }: DecksContentProps) {
 													style={{ width: '100%', height: '100%', objectFit: 'cover' }}
 												/>
 											) : (
-												<BookOutlined style={{ fontSize: 24, color: '#1E3A5F' }} />
+												<BookOutlined style={{ fontSize: 24, color: token.colorPrimary }} />
 											)}
 										</div>
 										{deck.isPublic && <Tag color="blue">{t('publicTag')}</Tag>}
 									</Flex>
 
-									<Title level={4} style={{ margin: '0 0 8px', color: '#1E3A5F' }}>
+									<Title level={4} style={{ margin: '0 0 8px', color: token.colorPrimary }}>
 										{deck.title}
 									</Title>
 

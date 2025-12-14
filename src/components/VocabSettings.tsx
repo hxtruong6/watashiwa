@@ -16,7 +16,7 @@ import {
 	message,
 	Collapse,
 	Divider,
-	Space,
+	theme,
 } from 'antd';
 import {
 	SoundOutlined,
@@ -29,10 +29,9 @@ import { useTranslations } from 'next-intl';
 
 const { Text } = Typography;
 const { Panel } = Collapse;
+const { useToken } = theme;
 
 import type { User } from '@/generated/prisma';
-
-// ...
 
 interface VocabSettingsProps {
 	showFurigana: boolean;
@@ -58,6 +57,7 @@ export default function VocabSettings({
 }: VocabSettingsProps) {
 	const t = useTranslations('Settings');
 	const tCommon = useTranslations('Common');
+	const { token } = useToken();
 	const [form] = Form.useForm();
 	const [loading, setLoading] = useState(false);
 
@@ -70,7 +70,7 @@ export default function VocabSettings({
 				allowSpaceKey: userSettings.allowSpaceKey,
 				spaceKeyRating: userSettings.spaceKeyRating,
 				autoShowAnswer: userSettings.autoShowAnswer,
-				autoShowAnswerDelay: userSettings.autoShowAnswerDelay,
+				autoShowAnswerDelay: userSettings.autoShowAnswerDelay ?? 10,
 				timezone: userSettings.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone,
 			});
 		}
@@ -114,7 +114,7 @@ export default function VocabSettings({
 			>
 				<Flex align="center" gap="small">
 					<Tooltip title={t('furiganaTooltip')}>
-						<FontSizeOutlined style={{ color: '#1890ff' }} />
+						<FontSizeOutlined style={{ color: token.colorPrimary }} />
 					</Tooltip>
 					<Text style={{ fontSize: 13 }}>{t('furigana')}</Text>
 					<Switch size="small" checked={showFurigana} onChange={setShowFurigana} />
@@ -122,7 +122,7 @@ export default function VocabSettings({
 
 				<Flex align="center" gap="small">
 					<Tooltip title={t('romajiTooltip')}>
-						<TranslationOutlined style={{ color: '#52c41a' }} />
+						<TranslationOutlined style={{ color: token.colorSuccess }} />
 					</Tooltip>
 					<Text style={{ fontSize: 13 }}>{t('romaji')}</Text>
 					<Switch size="small" checked={showRomaji} onChange={setShowRomaji} />
@@ -130,7 +130,7 @@ export default function VocabSettings({
 
 				<Flex align="center" gap="small" wrap="wrap">
 					<Tooltip title={t('autoPlayTooltip')}>
-						<SoundOutlined style={{ color: '#faad14' }} />
+						<SoundOutlined style={{ color: token.colorWarning }} />
 					</Tooltip>
 					<Text style={{ fontSize: 13 }}>{t('autoPlay')}</Text>
 					<Radio.Group
@@ -180,14 +180,14 @@ export default function VocabSettings({
 			<Collapse ghost expandIconPlacement="end">
 				<Panel
 					header={
-						<span style={{ fontWeight: 600, color: '#1E3A5F' }}>
+						<span style={{ fontWeight: 600, color: token.colorPrimary }}>
 							<SettingOutlined /> {t('advancedSettings')}
 						</span>
 					}
 					key="1"
 				>
 					<div style={{ marginBottom: 24, padding: '0 8px' }}>
-						<Text strong style={{ color: '#1E3A5F' }}>
+						<Text strong style={{ color: token.colorPrimary }}>
 							{t('audioSettings')}
 						</Text>
 						<VoiceSettings />
@@ -230,47 +230,49 @@ export default function VocabSettings({
 							</Radio.Group>
 						</Form.Item>
 
-						<Flex gap="middle" align="center">
-							<Form.Item name="autoShowAnswer" valuePropName="checked" style={{ marginBottom: 0 }}>
-								<Flex gap="small" align="center">
-									<Switch />
-									<Text>{t('autoShowAnswer')}</Text>
+						<div
+							style={{
+								marginTop: 8,
+								padding: '12px 16px',
+								background: token.colorBgLayout,
+								borderRadius: 12,
+								border: '1px solid rgba(0,0,0,0.04)',
+							}}
+						>
+							<Flex align="center" justify="space-between" wrap="wrap" gap="small">
+								<Flex align="center" gap="middle" style={{ flex: 1, minWidth: 140 }}>
+									<Form.Item name="autoShowAnswer" valuePropName="checked" noStyle>
+										<Switch />
+									</Form.Item>
+									<Flex vertical gap={0}>
+										<Text strong style={{ fontSize: 14, color: token.colorPrimary }}>
+											{t('autoShowAnswer')}
+										</Text>
+									</Flex>
 								</Flex>
-							</Form.Item>
-							<Form.Item
-								noStyle
-								shouldUpdate={(prev, curr) => prev.autoShowAnswer !== curr.autoShowAnswer}
-							>
-								{({ getFieldValue }) =>
-									getFieldValue('autoShowAnswer') && (
-										<Form.Item
-											name="autoShowAnswerDelay"
-											label={t('autoShowAnswerDelay')}
-											style={{ marginBottom: 0, width: 140 }}
-										>
-											<Space.Compact style={{ width: '100%' }}>
-												<InputNumber
-													min={1}
-													max={300}
-													placeholder="Delay"
-													style={{ width: 'calc(100% - 40px)' }}
-												/>
-												<Button
-													style={{
-														pointerEvents: 'none',
-														backgroundColor: '#f5f5f5',
-														color: 'rgba(0, 0, 0, 0.45)',
-														borderLeft: 0,
-													}}
-												>
-													sec
-												</Button>
-											</Space.Compact>
-										</Form.Item>
-									)
-								}
-							</Form.Item>
-						</Flex>
+
+								<Form.Item
+									noStyle
+									shouldUpdate={(prev, curr) => prev.autoShowAnswer !== curr.autoShowAnswer}
+								>
+									{({ getFieldValue }) =>
+										getFieldValue('autoShowAnswer') && (
+											<Flex align="center" gap="small">
+												<Text type="secondary" style={{ fontSize: 12 }}>
+													{t('delay') || 'Delay'}:
+												</Text>
+												<Form.Item name="autoShowAnswerDelay" noStyle>
+													<InputNumber min={1} max={300} style={{ width: 70 }} controls={false} />
+												</Form.Item>
+												<Text type="secondary" style={{ fontSize: 12 }}>
+													s
+												</Text>
+											</Flex>
+										)
+									}
+								</Form.Item>
+							</Flex>
+						</div>
 
 						<Button
 							type="primary"

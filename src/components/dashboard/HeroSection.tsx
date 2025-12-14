@@ -1,18 +1,20 @@
 'use client';
 
 import React from 'react';
-import { Typography, Flex, Progress } from 'antd';
-import { FireOutlined } from '@ant-design/icons';
+import { Typography, Flex, Progress, Button, theme } from 'antd';
+import { FireOutlined, SettingOutlined } from '@ant-design/icons';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 
 const { Title, Text } = Typography;
+const { useToken } = theme;
 
 interface HeroSectionProps {
 	userName?: string | null;
 	streak: number;
 	dailyProgress: number;
 	dailyGoal: number;
+	onOpenSettings?: () => void;
 }
 
 /**
@@ -23,7 +25,9 @@ export default function HeroSection({
 	streak,
 	dailyProgress,
 	dailyGoal,
+	onOpenSettings,
 }: HeroSectionProps) {
+	const { token } = useToken();
 	const t = useTranslations('Dashboard');
 
 	// Get time-based greeting
@@ -42,7 +46,23 @@ export default function HeroSection({
 			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.4 }}
+			style={{ position: 'relative' }}
 		>
+			<Button
+				icon={<SettingOutlined style={{ fontSize: 18 }} />}
+				type="text"
+				onClick={onOpenSettings}
+				style={{
+					position: 'absolute',
+					top: 0,
+					right: 0,
+					opacity: 0.5,
+					transition: 'opacity 0.2s',
+				}}
+				onMouseEnter={(e) => (e.currentTarget.style.opacity = '1')}
+				onMouseLeave={(e) => (e.currentTarget.style.opacity = '0.5')}
+			/>
+
 			<Flex
 				vertical
 				align="center"
@@ -52,7 +72,12 @@ export default function HeroSection({
 				{/* Personalized Greeting */}
 				<Text type="secondary" style={{ fontSize: 16, marginBottom: 8 }}>
 					{getGreeting()}
-					{userName && `, ${userName}`}!
+					{userName && (
+						<>
+							, <span style={{ color: token.colorPrimary, fontWeight: 600 }}>{userName}</span>
+						</>
+					)}
+					!
 				</Text>
 
 				{/* Streak Badge */}
@@ -61,9 +86,9 @@ export default function HeroSection({
 						animate={{ scale: [1, 1.1, 1] }}
 						transition={{ repeat: Infinity, duration: 2 }}
 					>
-						<FireOutlined style={{ color: '#FAAD14', fontSize: 32 }} />
+						<FireOutlined style={{ color: token.colorWarning, fontSize: 32 }} />
 					</motion.div>
-					<Title level={2} style={{ margin: 0, color: '#1E3A5F' }}>
+					<Title level={2} style={{ margin: 0, color: token.colorPrimary }}>
 						{streak} {t('dayStreak')}
 					</Title>
 				</Flex>
@@ -72,7 +97,10 @@ export default function HeroSection({
 				<div style={{ width: '100%', maxWidth: 400 }}>
 					<Flex justify="space-between" style={{ marginBottom: 4 }}>
 						<Text type="secondary">{t('dailyGoal')}</Text>
-						<Text type="secondary" style={{ color: isGoalComplete ? '#708238' : undefined }}>
+						<Text
+							type="secondary"
+							style={{ color: isGoalComplete ? token.colorSuccess : undefined }}
+						>
 							{t('dailyGoalProgress', { current: dailyProgress, goal: dailyGoal })}
 						</Text>
 					</Flex>
@@ -80,8 +108,8 @@ export default function HeroSection({
 						percent={progressPercent}
 						showInfo={false}
 						strokeColor={{
-							'0%': '#1E3A5F',
-							'100%': '#4F46E5', // Indigo
+							'0%': token.colorPrimary,
+							'100%': '#4F46E5', // Keep gradient for now or replace with token variation
 						}}
 						railColor="rgba(0,0,0,0.06)"
 						size={['100%', 12]}
@@ -92,7 +120,9 @@ export default function HeroSection({
 							animate={{ opacity: 1, scale: 1 }}
 							style={{ marginTop: 8 }}
 						>
-							<Text style={{ color: '#708238', fontWeight: 600 }}>🎉 {t('goalComplete')}</Text>
+							<Text style={{ color: token.colorSuccess, fontWeight: 600 }}>
+								🎉 {t('goalComplete')}
+							</Text>
 						</motion.div>
 					)}
 				</div>

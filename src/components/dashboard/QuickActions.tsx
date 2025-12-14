@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Typography, Card, Row, Col, Tooltip } from 'antd';
+import { Typography, Card, Row, Col, Tooltip, theme } from 'antd';
 import Link from 'next/link';
 import {
 	ReadOutlined,
@@ -19,6 +19,7 @@ import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 
 const { Title, Text } = Typography;
+const { useToken } = theme;
 
 interface QuickAction {
 	key: string;
@@ -33,6 +34,7 @@ interface QuickAction {
  * Quick actions grid with enabled and "coming soon" items
  */
 export default function QuickActions() {
+	const { token } = useToken();
 	const t = useTranslations('Dashboard');
 	const tCommon = useTranslations('Common');
 
@@ -43,7 +45,7 @@ export default function QuickActions() {
 			labelKey: 'allVocab',
 			href: '/dashboard/vocab',
 			enabled: true,
-			color: '#1890ff',
+			color: token.colorPrimary,
 		},
 		{
 			key: 'kanji',
@@ -59,7 +61,7 @@ export default function QuickActions() {
 			labelKey: 'viewDecks',
 			href: '/decks',
 			enabled: true,
-			color: '#1E3A5F',
+			color: token.colorPrimary,
 		},
 		{
 			key: 'browse',
@@ -67,7 +69,7 @@ export default function QuickActions() {
 			labelKey: 'browseLibrary',
 			href: '/browse',
 			enabled: false,
-			color: '#52c41a',
+			color: token.colorSuccess,
 		},
 		{
 			key: 'import',
@@ -99,7 +101,7 @@ export default function QuickActions() {
 			labelKey: 'leaderboard',
 			href: '/leaderboard',
 			enabled: false,
-			color: '#faad14',
+			color: token.colorWarning,
 		},
 		{
 			key: 'settings',
@@ -107,7 +109,7 @@ export default function QuickActions() {
 			labelKey: 'settings',
 			href: '/settings',
 			enabled: false,
-			color: '#8c8c8c',
+			color: token.colorTextSecondary,
 		},
 	];
 
@@ -180,7 +182,7 @@ export default function QuickActions() {
 			transition={{ delay: 0.3 }}
 			style={{ marginBottom: 32 }}
 		>
-			<Title level={5} style={{ marginBottom: 16, color: '#1E3A5F' }}>
+			<Title level={5} style={{ marginBottom: 16, color: token.colorPrimary }}>
 				{t('features')}
 			</Title>
 			<Row gutter={[12, 12]}>{actions.map(renderAction)}</Row>

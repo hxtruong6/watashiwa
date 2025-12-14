@@ -166,7 +166,8 @@
         "voiceNoFound": "Không tìm thấy giọng đọc tiếng Nhật",
         "voiceTest": "Thử giọng",
         "voiceWarning": "Tùy thuộc vào trình duyệt/HĐH, bạn có thể cần cài đặt gói ngôn ngữ tiếng Nhật.",
-        "playbackSpeed": "Tốc độ phát: {speed}x"
+        "playbackSpeed": "Tốc độ phát: {speed}x",
+        "delay": "Sau"
     },
     "Admin": {
         "panelTitle": "Trang quản trị",

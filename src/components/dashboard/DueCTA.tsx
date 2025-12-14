@@ -1,13 +1,14 @@
 'use client';
 
 import React from 'react';
-import { Typography, Button, Card, Flex } from 'antd';
+import { Typography, Button, Card, Flex, theme } from 'antd';
 import Link from 'next/link';
 import { CheckCircleOutlined, RightOutlined } from '@ant-design/icons';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 
 const { Title, Text } = Typography;
+const { useToken } = theme;
 
 interface DueCTAProps {
 	dueCount: number;
@@ -17,6 +18,7 @@ interface DueCTAProps {
  * Primary Call-to-Action showing due cards count and start review button
  */
 export default function DueCTA({ dueCount }: DueCTAProps) {
+	const { token } = useToken();
 	const t = useTranslations('Dashboard');
 
 	if (dueCount > 0) {
@@ -40,9 +42,9 @@ export default function DueCTA({ dueCount }: DueCTAProps) {
 						whileTap={{ scale: 0.97 }}
 						animate={{
 							boxShadow: [
-								'0 8px 24px rgba(30, 58, 95, 0.2)',
-								'0 12px 32px rgba(30, 58, 95, 0.3)',
-								'0 8px 24px rgba(30, 58, 95, 0.2)',
+								`0 8px 24px ${token.colorPrimary}33`,
+								`0 12px 32px ${token.colorPrimary}4d`,
+								`0 8px 24px ${token.colorPrimary}33`,
 							],
 						}}
 						transition={{ boxShadow: { repeat: Infinity, duration: 2 } }}
@@ -88,7 +90,7 @@ export default function DueCTA({ dueCount }: DueCTAProps) {
 				}}
 			>
 				<Flex vertical align="center" gap="middle" style={{ padding: 16 }}>
-					<CheckCircleOutlined style={{ fontSize: 48, color: '#708238' }} />
+					<CheckCircleOutlined style={{ fontSize: 48, color: token.colorSuccess }} />
 					<div>
 						<Title level={4} style={{ margin: '0 0 8px' }}>
 							{t('allCaughtUp')}

@@ -1,16 +1,18 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Card, Typography, Flex, Tag, Button, Space, Avatar, Tooltip } from 'antd';
+import { Card, Typography, Flex, Tag, Button, Space, Avatar, Tooltip, theme } from 'antd';
 import { LikeOutlined, LikeFilled, UserOutlined, ArrowRightOutlined } from '@ant-design/icons';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { voteComment } from '@/services/comments';
 
 const { Text, Title } = Typography;
+const { useToken } = theme;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function FeedItem({ item }: { item: any }) {
+	const { token } = useToken();
 	const tComment = useTranslations('Comments');
 	const [voteStatus, setVoteStatus] = useState(item.userVote || 0); // 1, -1, 0
 	const [score, setScore] = useState(item.score);
@@ -45,22 +47,26 @@ export default function FeedItem({ item }: { item: any }) {
 	return (
 		<Card
 			hoverable
-			style={{ borderRadius: 16, border: '1px solid #f0f0f0', overflow: 'hidden' }}
+			style={{
+				borderRadius: 16,
+				border: `1px solid ${token.colorBorderSecondary}`,
+				overflow: 'hidden',
+			}}
 			styles={{ body: { padding: 0 } }}
 		>
 			<Flex vertical>
 				{/* Context Header */}
 				<div
 					style={{
-						background: '#fafafa',
+						background: token.colorBgLayout,
 						padding: '12px 16px',
-						borderBottom: '1px solid #f0f0f0',
+						borderBottom: `1px solid ${token.colorBorderSecondary}`,
 					}}
 				>
 					<Flex justify="space-between" align="start">
 						<Flex vertical gap={2}>
 							<Flex gap="small" align="center">
-								<Title level={5} style={{ margin: 0, color: '#1E3A5F' }}>
+								<Title level={5} style={{ margin: 0, color: token.colorPrimary }}>
 									{contextTitle}
 								</Title>
 								<Tag color="geekblue" style={{ margin: 0 }}>
@@ -85,7 +91,7 @@ export default function FeedItem({ item }: { item: any }) {
 									size="small"
 									type="text"
 									icon={<ArrowRightOutlined />}
-									style={{ color: '#1E3A5F' }}
+									style={{ color: token.colorPrimary }}
 								/>
 							</Link>
 						</Tooltip>
@@ -101,7 +107,11 @@ export default function FeedItem({ item }: { item: any }) {
 					{/* Metadata Footer */}
 					<Flex justify="space-between" align="center" style={{ marginTop: 16 }}>
 						<Space>
-							<Avatar size="small" icon={<UserOutlined />} style={{ backgroundColor: '#ccc' }}>
+							<Avatar
+								size="small"
+								icon={<UserOutlined />}
+								style={{ backgroundColor: token.colorTextPlaceholder }}
+							>
 								{item.author?.name?.[0]?.toUpperCase()}
 							</Avatar>
 							<Flex vertical gap={0}>
@@ -118,7 +128,7 @@ export default function FeedItem({ item }: { item: any }) {
 							<Button
 								type={voteStatus === 1 ? 'text' : 'text'}
 								icon={voteStatus === 1 ? <LikeFilled /> : <LikeOutlined />}
-								style={{ color: voteStatus === 1 ? '#1E3A5F' : undefined }}
+								style={{ color: voteStatus === 1 ? token.colorPrimary : undefined }}
 								onClick={() => handleVote(1)}
 							/>
 							<Text strong style={{ minWidth: 20, textAlign: 'center' }}>

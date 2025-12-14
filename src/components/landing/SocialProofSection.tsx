@@ -1,21 +1,23 @@
 'use client';
 
 import React from 'react';
-import { Typography, Row, Col } from 'antd';
+import { Typography, Row, Col, theme } from 'antd';
 import { motion } from 'framer-motion';
 
 import { useTranslations } from 'next-intl';
 
 const { Text } = Typography;
+const { useToken } = theme;
 
 export default function SocialProofSection() {
+	const { token } = useToken();
 	const t = useTranslations('Landing');
 
 	const stats = [
-		{ label: t('statsLearners'), value: '10,000+', color: '#1E3A5F' },
-		{ label: t('statsReviews'), value: '5M+', color: '#708238' },
-		{ label: t('statsDecks'), value: '1,200+', color: '#FAAD14' },
-		{ label: t('statsPassRate'), value: '94%', color: '#E64A19' },
+		{ label: t('statsLearners'), value: '10,000+', color: token.colorPrimary },
+		{ label: t('statsReviews'), value: '1M+', color: token.colorSuccess },
+		{ label: t('statsDecks'), value: '1,200+', color: token.colorWarning },
+		{ label: t('statsPassRate'), value: '94%', color: token.colorError },
 	];
 
 	return (

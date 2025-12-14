@@ -172,7 +172,8 @@
         "voiceNoFound": "No Japanese voices found",
         "voiceTest": "Test",
         "voiceWarning": "Depending on your browser/OS, you might need to install Japanese language pack.",
-        "playbackSpeed": "Playback Speed: {speed}x"
+        "playbackSpeed": "Playback Speed: {speed}x",
+        "delay": "Delay"
     },
     "Admin": {
         "panelTitle": "Admin Panel",

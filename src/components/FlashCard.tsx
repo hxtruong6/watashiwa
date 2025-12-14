@@ -1,9 +1,11 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { Card as AntCard, Typography, Tag, Divider, Flex, Button } from 'antd';
+import { Card as AntCard, Typography, Tag, Divider, Flex, Button, theme } from 'antd';
 import { PauseCircleOutlined, SoundOutlined } from '@ant-design/icons';
 import KanjiBreakdown from './KanjiBreakdown';
+
+const { useToken } = theme;
 import { useAudioPlayer } from './Audio/useAudioPlayer';
 
 const { Title, Text, Paragraph } = Typography;
@@ -36,6 +38,7 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 		}: FlashCardProps,
 		ref,
 	) => {
+		const { token } = useToken();
 		// Audio State
 		const audioRef = useRef<HTMLAudioElement | null>(null);
 		const [isFilePlaying, setIsFilePlaying] = useState(false);
@@ -239,9 +242,9 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 									shape="circle"
 									icon={
 										isPlaying ? (
-											<PauseCircleOutlined style={{ fontSize: 24, color: '#1E3A5F' }} />
+											<PauseCircleOutlined style={{ fontSize: 24, color: token.colorPrimary }} />
 										) : (
-											<SoundOutlined style={{ fontSize: 24, color: '#1E3A5F' }} />
+											<SoundOutlined style={{ fontSize: 24, color: token.colorPrimary }} />
 										)
 									}
 									onClick={toggleAudio}
@@ -264,7 +267,7 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 									}}
 									onMouseEnter={(e) => {
 										e.currentTarget.style.transform = 'scale(1.05)';
-										e.currentTarget.style.boxShadow = '0 4px 15px rgba(30, 58, 95, 0.1)';
+										e.currentTarget.style.boxShadow = `0 4px 15px ${token.colorPrimary}1a`; // approximate 0.1 opacity
 									}}
 									onMouseLeave={(e) => {
 										e.currentTarget.style.transform = 'scale(1)';
@@ -313,7 +316,7 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 													fontSize: '64px', // Slightly smaller to fit multiple
 													margin: '0',
 													lineHeight: 1,
-													color: '#1E3A5F',
+													color: token.colorPrimary,
 												}}
 											>
 												{part.text}
@@ -364,7 +367,7 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 									{/* Main Text */}
 									<Title
 										level={1}
-										style={{ fontSize: '80px', margin: '4px 0 16px', color: '#1E3A5F' }}
+										style={{ fontSize: '80px', margin: '4px 0 16px', color: token.colorPrimary }}
 									>
 										{frontText}
 									</Title>
@@ -432,7 +435,7 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 												Object.keys(exampleSentence).length > 0 && (
 													<div
 														style={{
-															background: '#F9F7F2',
+															background: token.colorBgLayout,
 															padding: 16,
 															borderRadius: 8,
 															width: '100%',
@@ -499,7 +502,7 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 															<Button
 																type="text"
 																shape="circle"
-																icon={<SoundOutlined style={{ color: '#faad14' }} />}
+																icon={<SoundOutlined style={{ color: token.colorWarning }} />}
 																onClick={playExampleAudio}
 															/>
 														</Flex>
@@ -541,7 +544,7 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 													<Text type="secondary" style={{ fontSize: 12, display: 'block' }}>
 														Onyomi
 													</Text>
-													<Text strong style={{ fontSize: 16, color: '#cf1322' }}>
+													<Text strong style={{ fontSize: 16, color: token.colorError }}>
 														{onyomi?.join(', ') || '-'}
 													</Text>
 												</div>
@@ -549,7 +552,7 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 													<Text type="secondary" style={{ fontSize: 12, display: 'block' }}>
 														Kunyomi
 													</Text>
-													<Text strong style={{ fontSize: 16, color: '#389e0d' }}>
+													<Text strong style={{ fontSize: 16, color: token.colorSuccess }}>
 														{kunyomi?.join(', ') || '-'}
 													</Text>
 												</div>

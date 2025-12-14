@@ -1,11 +1,12 @@
 'use client';
 
 import React from 'react';
-import { Typography, Card, Flex } from 'antd';
+import { Typography, Card, Flex, theme } from 'antd';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 
 const { Title, Text } = Typography;
+const { useToken } = theme;
 
 interface DayData {
 	day: string; // e.g., "Mon", "Tue"
@@ -23,6 +24,7 @@ interface WeeklyChartProps {
  * Weekly progress chart showing last 7 days of review activity
  */
 export default function WeeklyChart({ data, thisWeekTotal, bestDay }: WeeklyChartProps) {
+	const { token } = useToken();
 	const t = useTranslations('Dashboard');
 
 	const maxCount = Math.max(...data.map((d) => d.count), 1);
@@ -41,7 +43,7 @@ export default function WeeklyChart({ data, thisWeekTotal, bestDay }: WeeklyChar
 				}}
 			>
 				<Flex justify="space-between" align="center" style={{ marginBottom: 16 }}>
-					<Title level={5} style={{ margin: 0, color: '#1E3A5F' }}>
+					<Title level={5} style={{ margin: 0, color: token.colorPrimary }}>
 						{t('weeklyProgress')}
 					</Title>
 					<Text type="secondary" style={{ fontSize: 13 }}>
@@ -85,9 +87,9 @@ export default function WeeklyChart({ data, thisWeekTotal, bestDay }: WeeklyChar
 										height,
 										borderRadius: 6,
 										background: day.isToday
-											? 'linear-gradient(180deg, #1E3A5F 0%, #2D5A8F 100%)'
+											? `linear-gradient(180deg, ${token.colorPrimary} 0%, #2D5A8F 100%)`
 											: isBest
-												? 'linear-gradient(180deg, #708238 0%, #8FA84A 100%)'
+												? `linear-gradient(180deg, ${token.colorSuccess} 0%, #8FA84A 100%)`
 												: day.count > 0
 													? '#e0e0e0'
 													: '#f5f5f5',
@@ -108,7 +110,7 @@ export default function WeeklyChart({ data, thisWeekTotal, bestDay }: WeeklyChar
 								flex: 1,
 								textAlign: 'center',
 								fontSize: 11,
-								color: day.isToday ? '#1E3A5F' : '#8c8c8c',
+								color: day.isToday ? token.colorPrimary : '#8c8c8c',
 								fontWeight: day.isToday ? 600 : 400,
 							}}
 						>

@@ -45,6 +45,7 @@ export default async function Dashboard(props: Props) {
 			userRole={user?.role}
 			leaderboard={leaderboard}
 			userId={user?.id}
+			userSettings={data.userSettings}
 		/>
 	);
 }

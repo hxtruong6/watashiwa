@@ -1,17 +1,18 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Flex, Segmented, Button, Spin, Empty, Tag as AntTag } from 'antd';
+import { Flex, Segmented, Button, Spin, Empty, Tag as AntTag, theme } from 'antd';
 import { ReloadOutlined } from '@ant-design/icons';
 import { getCommunityFeed } from '@/services/comments';
 import FeedItem from './FeedItem';
 import { useTranslations } from 'next-intl';
 
-// const { Title } = Typography;
-
 const TAGS = ['ALL', 'MNEMONIC', 'USAGE_TIP', 'CULTURAL_NOTE', 'EXAMPLE', 'GRAMMAR', 'GENERAL'];
 
+const { useToken } = theme;
+
 export default function CommunityFeed() {
+	const { token } = useToken();
 	// const t = useTranslations('NavBar');
 	const tComment = useTranslations('Comments');
 
@@ -70,7 +71,7 @@ export default function CommunityFeed() {
 					position: 'sticky',
 					top: 64,
 					zIndex: 10,
-					background: '#f5f5f5',
+					background: token.colorBgLayout,
 					padding: '16px 0',
 				}}
 			>
@@ -107,8 +108,8 @@ export default function CommunityFeed() {
 										fontSize: 13,
 										padding: '4px 12px',
 										borderRadius: 16,
-										border: activeTag === tag ? 'none' : '1px solid #d9d9d9',
-										background: activeTag === tag ? '#1E3A5F' : 'transparent',
+										border: activeTag === tag ? 'none' : `1px solid ${token.colorBorder}`,
+										background: activeTag === tag ? token.colorPrimary : 'transparent',
 									}}
 								>
 									{tag === 'ALL'

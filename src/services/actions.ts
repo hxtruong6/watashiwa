@@ -66,6 +66,7 @@ export async function getNextReviewCard(
 			select: {
 				limitNewCards: true,
 				limitReviews: true,
+				currentStreak: true, // Fetch streak to debug/log if needed, but we used cached usually
 			},
 		});
 		const limitNewCards = userConfig?.limitNewCards ?? 20;
@@ -345,7 +346,11 @@ export async function submitReview(
 			`Reviewed Card ${cardId} by User ${user.id}: Rating ${rating} -> Due ${newCard.due.toISOString()}`,
 		);
 
-		// 5. Fetch next card (maintaining deck context if present)
+		// 5. Update Streak (Fire and forget, or await?)
+		// Await to ensure UI sees fresh data if it re-fetches immediately
+		await recalculateUserStreak(user.id);
+
+		// 6. Fetch next card (maintaining deck context if present)
 		const nextCard = await getNextReviewCard(deckIdOrIds);
 
 		return { success: true, nextCard };
@@ -491,14 +496,99 @@ export async function getUserStats(userId?: string) {
 			},
 		});
 
-		// Placeholder for streak query
+		// Calculate/Sync Streak
+		// This ensures that if they missed a day since last login, it resets.
+		const currentStreak = await recalculateUserStreak(uid);
+
 		return {
-			streak: 1, // Mock value for now
+			streak: currentStreak,
 			totalReviewed: todaysReviews,
 		};
 	} catch (error) {
 		console.error('Error fetching stats:', error);
 		return { streak: 0, totalReviewed: 0 };
+	}
+}
+
+/**
+ * Recalculate and update the user's current streak
+ * Logic: Consecutive days ending Today OR Yesterday.
+ */
+export async function recalculateUserStreak(userId: string) {
+	try {
+		// Fetch all review dates for the user
+		// Optimization: We could limit to last 365 days or something if logs get huge
+		const logs = await prisma.reviewLog.findMany({
+			where: { userId },
+			select: { review: true },
+			orderBy: { review: 'desc' },
+		});
+
+		if (logs.length === 0) {
+			await prisma.user.update({ where: { id: userId }, data: { currentStreak: 0 } });
+			return 0;
+		}
+
+		// Normalize to YYYY-MM-DD Set
+		// Use user's local time?
+		// "Streak" is typically based on the user's perceived "Days".
+		// Ideally we use the user's timezone. For now, we'll use Server Time/UTC to be consistent with 'startOfDay' used elsewhere.
+		// If we want to be perfect, we should store timezone in User settings (which we added!).
+		// For now, let's assume default/UTC to keep it simple and consistent with other actions.
+		const uniqueDates = new Set<string>();
+		logs.forEach((log) => {
+			uniqueDates.add(log.review.toISOString().split('T')[0]); // YYYY-MM-DD
+		});
+
+		const today = new Date();
+		const todayStr = today.toISOString().split('T')[0];
+
+		const yesterday = new Date();
+		yesterday.setDate(yesterday.getDate() - 1);
+
+		let streak = 0;
+
+		// Check Today
+		if (uniqueDates.has(todayStr)) {
+			streak++;
+		}
+
+		// Walk backwards from Yesterday
+		const currentCheck = new Date(yesterday);
+		while (true) {
+			const checkStr = currentCheck.toISOString().split('T')[0];
+			if (uniqueDates.has(checkStr)) {
+				streak++;
+				currentCheck.setDate(currentCheck.getDate() - 1);
+			} else {
+				// If today is NOT present, we MUST have Yesterday to keep the streak alive.
+				// If we have Today (streak=1), and misses Yesterday -> Streak is 1.
+				if (streak === 0) {
+					// We didn't have today, and we don't have this check (yesterday).
+					// Streak is broken/zero.
+					break;
+				} else {
+					// We had some streak (maybe just Today), but hit a gap.
+					// However, if we didn't have Today, we already checked Yesterday effectively here.
+					// Wait, the logic: "If Today is missing, Streak continues from Yesterday".
+					// If Today is present, Streak continues from Yesterday.
+					// So actually we ALWAYS check backwards from Yesterday.
+					// BUT, if Today is missing AND Yesterday is missing, the loop breaks instantly at Yesterday.
+					break;
+				}
+			}
+		}
+
+		// Update User
+		await prisma.user.update({
+			where: { id: userId },
+			data: { currentStreak: streak },
+		});
+
+		return streak;
+	} catch (error) {
+		console.error('Error recalculating streak:', error);
+		return 0;
 	}
 }
 

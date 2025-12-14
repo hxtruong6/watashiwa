@@ -14,6 +14,7 @@ import {
 	Avatar,
 	Dropdown,
 	Space,
+	theme,
 } from 'antd';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -24,15 +25,14 @@ import {
 	LogoutOutlined,
 	ReadOutlined,
 	BookOutlined,
-	DashboardOutlined,
 	MenuOutlined,
 	BarChartOutlined,
-	CommentOutlined,
 	UserOutlined,
 	SettingOutlined,
 	ShareAltOutlined,
 	FolderOpenOutlined,
 	BugOutlined,
+	HomeOutlined,
 } from '@ant-design/icons';
 import Link from 'next/link';
 import type { MenuProps } from 'antd';
@@ -40,6 +40,7 @@ import Image from 'next/image';
 
 const { Header } = Layout;
 const { Text } = Typography;
+const { useToken } = theme;
 
 // Define types locally or import
 interface User {
@@ -54,6 +55,7 @@ interface User {
 export default function NavBar({ user }: { user?: User | null }) {
 	const pathname = usePathname();
 	const router = useRouter();
+	const { token } = useToken();
 	const supabase = createClient();
 	const [drawerOpen, setDrawerOpen] = useState(false);
 	const [shareModalOpen, setShareModalOpen] = useState(false);
@@ -90,7 +92,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 	const menuItems: MenuProps['items'] = [
 		{
 			key: '/?app=true',
-			icon: <DashboardOutlined />,
+			icon: <HomeOutlined />,
 			label: (
 				<Link href="/" onClick={closeDrawer}>
 					{t('dashboard')}
@@ -137,21 +139,21 @@ export default function NavBar({ user }: { user?: User | null }) {
 			),
 			disabled: true,
 		},
-		{
-			key: 'community',
-			icon: <CommentOutlined style={{ color: '#aaa' }} />,
-			label: (
-				<Tooltip title={tCommon('soon')}>
-					<span style={{ color: '#aaa', cursor: 'not-allowed' }}>{t('community')}</span>
-					<Tag color="cyan" style={{ marginLeft: 8, fontSize: 10, border: 'none' }}>
-						Soon
-					</Tag>
-				</Tooltip>
-				// <Link href="/community" onClick={closeDrawer}>
-				// 	{t('community')}
-				// </Link>
-			),
-		},
+		// {
+		// 	key: 'community',
+		// 	icon: <CommentOutlined style={{ color: '#aaa' }} />,
+		// 	label: (
+		// 		<Tooltip title={tCommon('soon')}>
+		// 			<span style={{ color: '#aaa', cursor: 'not-allowed' }}>{t('community')}</span>
+		// 			<Tag color="cyan" style={{ marginLeft: 8, fontSize: 10, border: 'none' }}>
+		// 				Soon
+		// 			</Tag>
+		// 		</Tooltip>
+		// 		// <Link href="/community" onClick={closeDrawer}>
+		// 		// 	{t('community')}
+		// 		// </Link>
+		// 	),
+		// },
 	];
 
 	// User Dropdown Menu
@@ -246,7 +248,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 						strong
 						style={{
 							margin: 0,
-							color: '#1E3A5F',
+							color: token.colorPrimary,
 							fontSize: 20,
 							letterSpacing: '-0.5px',
 							fontFamily: 'var(--font-geist-sans, sans-serif)', // Assuming setup
@@ -311,7 +313,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 											size="small"
 											icon={<UserOutlined />}
 											src={user?.user_metadata?.avatar_url}
-											style={{ backgroundColor: '#1E3A5F' }}
+											style={{ backgroundColor: token.colorPrimary }}
 										>
 											{user?.email?.[0]?.toUpperCase()}
 										</Avatar>
@@ -327,7 +329,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 								<Button
 									type="primary"
 									shape="round"
-									style={{ background: '#1E3A5F', padding: '0 24px', fontWeight: 500 }}
+									style={{ background: token.colorPrimary, padding: '0 24px', fontWeight: 500 }}
 								>
 									Login
 								</Button>
@@ -348,7 +350,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 						<Flex gap="small" align="center">
 							<LanguageSelector />
 							<Link href="/login">
-								<Button type="primary" size="small" style={{ background: '#1E3A5F' }}>
+								<Button type="primary" size="small" style={{ background: token.colorPrimary }}>
 									Login
 								</Button>
 							</Link>
@@ -362,7 +364,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 						<Flex justify="space-between" align="center">
 							<Flex align="center" gap="small">
 								<Image src="/assets/w_logo.png" alt="Logo" width={24} height={24} />
-								<Text strong style={{ margin: 0, color: '#1E3A5F' }}>
+								<Text strong style={{ margin: 0, color: token.colorPrimary }}>
 									WatashiWa
 								</Text>
 							</Flex>
@@ -390,7 +392,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 										size="large"
 										icon={<UserOutlined />}
 										src={user?.user_metadata?.avatar_url}
-										style={{ backgroundColor: '#1E3A5F' }}
+										style={{ backgroundColor: token.colorPrimary }}
 									>
 										{user?.email?.[0]?.toUpperCase()}
 									</Avatar>
@@ -422,7 +424,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 										setShareModalOpen(true);
 										setDrawerOpen(false);
 									}}
-									style={{ marginBottom: 12, background: '#1E3A5F' }}
+									style={{ marginBottom: 12, background: token.colorPrimary }}
 								>
 									{t('share')}
 								</Button>

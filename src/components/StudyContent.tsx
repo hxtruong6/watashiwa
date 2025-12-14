@@ -1,7 +1,19 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-import { Layout, Button, Flex, Result, Spin, App, Drawer, Progress, Typography, Badge } from 'antd';
+import {
+	Layout,
+	Button,
+	Flex,
+	Result,
+	Spin,
+	App,
+	Drawer,
+	Progress,
+	Typography,
+	Badge,
+	theme,
+} from 'antd';
 import { useTranslations } from 'next-intl';
 import {
 	getNextReviewCard,
@@ -31,8 +43,10 @@ import confetti from 'canvas-confetti';
 
 const { Content } = Layout;
 const { Text } = Typography;
+const { useToken } = theme;
 
 export default function StudyContent() {
+	const { token } = useToken();
 	const t = useTranslations('Study');
 	const tCommon = useTranslations('Common');
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -70,7 +84,7 @@ export default function StudyContent() {
 	// User Preferences from DB
 	const [spaceKeyRating, setSpaceKeyRating] = useState(3);
 	const [autoShowAnswer, setAutoShowAnswer] = useState(false);
-	const [autoShowAnswerDelay, setAutoShowAnswerDelay] = useState(40);
+	const [autoShowAnswerDelay, setAutoShowAnswerDelay] = useState(10);
 	const [isReportModalOpen, setIsReportModalOpen] = useState(false);
 
 	const [isCommentDrawerOpen, setIsCommentDrawerOpen] = useState(false);
@@ -91,7 +105,7 @@ export default function StudyContent() {
 			}));
 			setSpaceKeyRating(settings.spaceKeyRating);
 			setAutoShowAnswer(settings.autoShowAnswer);
-			setAutoShowAnswerDelay(settings.autoShowAnswerDelay);
+			setAutoShowAnswerDelay(settings.autoShowAnswerDelay ?? 10);
 			setUserSettings(settings);
 		}
 	}, []);
@@ -371,8 +385,14 @@ export default function StudyContent() {
 	// Loading State
 	if (loading && !card && !error) {
 		return (
-			<Flex justify="center" align="center" style={{ height: '100vh', background: '#F9F7F2' }}>
-				<Spin indicator={<LoadingOutlined style={{ fontSize: 48, color: '#1E3A5F' }} spin />} />
+			<Flex
+				justify="center"
+				align="center"
+				style={{ height: '100vh', background: token.colorBgLayout }}
+			>
+				<Spin
+					indicator={<LoadingOutlined style={{ fontSize: 48, color: token.colorPrimary }} spin />}
+				/>
 			</Flex>
 		);
 	}
@@ -380,7 +400,11 @@ export default function StudyContent() {
 	// Error State
 	if (error) {
 		return (
-			<Flex justify="center" align="center" style={{ height: '100vh', background: '#F9F7F2' }}>
+			<Flex
+				justify="center"
+				align="center"
+				style={{ height: '100vh', background: token.colorBgLayout }}
+			>
 				<Result
 					status="warning"
 					title={t('unableToStart')}
@@ -411,9 +435,8 @@ export default function StudyContent() {
 
 		return (
 			<Flex
-				justify="center"
 				align="center"
-				style={{ minHeight: '100vh', background: '#F9F7F2', padding: 20 }}
+				style={{ minHeight: '100vh', background: token.colorBgLayout, padding: 20 }}
 			>
 				<div
 					style={{
@@ -427,7 +450,7 @@ export default function StudyContent() {
 					}}
 				>
 					<Result
-						icon={<CheckCircleFilled style={{ color: '#52c41a', fontSize: 72 }} />}
+						icon={<CheckCircleFilled style={{ color: token.colorSuccess, fontSize: 72 }} />}
 						title={t('sessionComplete')}
 						subTitle={t('sessionCompleteSubtitle')}
 						extra={[
@@ -440,7 +463,11 @@ export default function StudyContent() {
 										{dailyStats.reviewsToday} / {dailyStats.limitReviews}
 									</Text>
 								</Flex>
-								<Progress percent={reviewPercent} status="active" strokeColor="#1890ff" />
+								<Progress
+									percent={reviewPercent}
+									status="active"
+									strokeColor={token.colorPrimary}
+								/>
 							</div>,
 							<div key="new-cards-stats" style={{ marginBottom: 16 }}>
 								<Flex justify="space-between">
@@ -451,7 +478,7 @@ export default function StudyContent() {
 										{dailyStats.newCardsToday} / {dailyStats.limitNewCards}
 									</Text>
 								</Flex>
-								<Progress percent={newPercent} status="active" strokeColor="#faad14" />
+								<Progress percent={newPercent} status="active" strokeColor={token.colorWarning} />
 							</div>,
 							<Button
 								type="primary"
@@ -490,7 +517,7 @@ export default function StudyContent() {
 	const commentCount = card?.vocab?._count?.cardComments || card?.kanji?._count?.cardComments || 0;
 
 	return (
-		<Layout style={{ minHeight: '100vh', background: '#F9F7F2' }}>
+		<Layout style={{ minHeight: '100vh', background: token.colorBgLayout }}>
 			{/* Minimal Top Progress Bar */}
 			<div
 				style={{
@@ -507,7 +534,7 @@ export default function StudyContent() {
 					style={{
 						height: '100%',
 						width: `${progressPercent}%`,
-						background: '#52c41a',
+						background: token.colorSuccess,
 						transition: 'width 0.5s ease',
 					}}
 				/>
@@ -564,7 +591,7 @@ export default function StudyContent() {
 								background: 'rgba(0,0,0,0.05)',
 								width: 44,
 								height: 44,
-								color: '#1E3A5F', // Indigo brand color
+								color: token.colorPrimary, // Indigo brand color
 							}}
 						/>
 					</Badge>
@@ -675,7 +702,7 @@ export default function StudyContent() {
 						left: 0,
 						right: 0,
 						padding: '16px 24px 32px',
-						background: 'linear-gradient(to top, #F9F7F2 90%, rgba(249, 247, 242, 0))',
+						background: `linear-gradient(to top, ${token.colorBgLayout} 90%, rgba(249, 247, 242, 0))`,
 						display: 'flex',
 						justifyContent: 'center',
 						zIndex: 50,
@@ -692,7 +719,7 @@ export default function StudyContent() {
 									height: 56,
 									fontSize: 18,
 									borderRadius: 28,
-									boxShadow: '0 4px 12px rgba(30, 58, 95, 0.2)',
+									boxShadow: `0 4px 12px ${token.colorPrimary}33`,
 								}}
 								onClick={() => setShowAnswer(true)}
 							>

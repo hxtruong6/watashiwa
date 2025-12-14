@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Typography, Row, Col } from 'antd';
+import { Typography, Row, Col, theme } from 'antd';
 import {
 	ThunderboltOutlined,
 	MobileOutlined,
@@ -15,8 +15,10 @@ import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 
 const { Title, Paragraph } = Typography;
+const { useToken } = theme;
 
 export default function FeatureSection() {
+	const { token } = useToken();
 	const t = useTranslations('Landing');
 
 	const features = [
@@ -24,7 +26,7 @@ export default function FeatureSection() {
 			title: t('featureSRS'),
 			description: t('featureSRSDesc'),
 			icon: <ThunderboltOutlined style={{ fontSize: 40, color: '#fff' }} />,
-			color: 'linear-gradient(135deg, #1E3A5F 0%, #112239 100%)',
+			color: `linear-gradient(135deg, ${token.colorPrimary} 0%, #112239 100%)`,
 			size: 'large',
 			delay: 0,
 		},
@@ -64,7 +66,7 @@ export default function FeatureSection() {
 			title: t('featureCommunity'),
 			description: t('featureCommunityDesc'),
 			icon: <GlobalOutlined style={{ fontSize: 32, color: '#fff' }} />,
-			color: 'linear-gradient(135deg, #708238 0%, #506126 100%)',
+			color: `linear-gradient(135deg, ${token.colorSuccess} 0%, #506126 100%)`,
 			size: 'large',
 			delay: 0.5,
 		},
@@ -75,7 +77,7 @@ export default function FeatureSection() {
 			id="features"
 			style={{
 				padding: '100px 0',
-				background: '#F9F7F2',
+				background: token.colorBgLayout,
 			}}
 		>
 			<div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', width: '100%' }}>
@@ -87,7 +89,12 @@ export default function FeatureSection() {
 				>
 					<Title
 						level={2}
-						style={{ color: '#1E3A5F', marginBottom: 16, textAlign: 'center', fontSize: '2.5rem' }}
+						style={{
+							color: token.colorPrimary,
+							marginBottom: 16,
+							textAlign: 'center',
+							fontSize: '2.5rem',
+						}}
 					>
 						{t('featuresTitle')}
 					</Title>
@@ -154,7 +161,7 @@ export default function FeatureSection() {
 											style={{
 												marginTop: 0,
 												marginBottom: 12,
-												color: feature.size === 'large' ? 'white' : '#1E3A5F',
+												color: feature.size === 'large' ? 'white' : token.colorPrimary,
 												fontSize: feature.size === 'large' ? 28 : 20,
 											}}
 										>

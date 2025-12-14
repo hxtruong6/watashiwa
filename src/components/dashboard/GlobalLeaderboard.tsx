@@ -1,11 +1,12 @@
 'use client';
 
 import React from 'react';
-import { Card, Typography, List, Avatar, Badge, Flex } from 'antd';
+import { Card, Typography, List, Avatar, Flex, theme } from 'antd';
 import { TrophyOutlined, FireOutlined } from '@ant-design/icons';
 import { useTranslations } from 'next-intl';
 
 const { Title, Text } = Typography;
+const { useToken } = theme;
 
 interface LeaderboardUser {
 	id: string;
@@ -19,6 +20,7 @@ interface GlobalLeaderboardProps {
 }
 
 export default function GlobalLeaderboard({ users, currentUserId }: GlobalLeaderboardProps) {
+	const { token } = useToken();
 	const t = useTranslations('Dashboard');
 
 	const getRankIcon = (index: number) => {
@@ -61,9 +63,9 @@ export default function GlobalLeaderboard({ users, currentUserId }: GlobalLeader
 			styles={{ body: { padding: '24px' } }}
 		>
 			<Flex align="center" gap="small" style={{ marginBottom: 24 }}>
-				<TrophyOutlined style={{ fontSize: 24, color: '#1E3A5F' }} />
+				<TrophyOutlined style={{ fontSize: 24, color: token.colorPrimary }} />
 				<div>
-					<Title level={4} style={{ margin: 0, color: '#1E3A5F' }}>
+					<Title level={4} style={{ margin: 0, color: token.colorPrimary }}>
 						{t('leaderboard')}
 					</Title>
 					<Text type="secondary" style={{ fontSize: '0.85rem' }}>
@@ -98,7 +100,7 @@ export default function GlobalLeaderboard({ users, currentUserId }: GlobalLeader
 														? '#C0C0C0'
 														: index === 2
 															? '#CD7F32'
-															: '#1E3A5F',
+															: token.colorPrimary,
 											color: '#fff',
 										}}
 									>
@@ -107,13 +109,16 @@ export default function GlobalLeaderboard({ users, currentUserId }: GlobalLeader
 								</Flex>
 							}
 							title={
-								<Text strong style={{ color: user.id === currentUserId ? '#1E3A5F' : undefined }}>
+								<Text
+									strong
+									style={{ color: user.id === currentUserId ? token.colorPrimary : undefined }}
+								>
 									{user.name} {user.id === currentUserId && '(You)'}
 								</Text>
 							}
 						/>
 						<Flex align="center" gap={4}>
-							<FireOutlined style={{ color: '#E64A19' }} />
+							<FireOutlined style={{ color: token.colorError }} />
 							<Text strong>{t('streakDays', { count: user.currentStreak })}</Text>
 						</Flex>
 					</List.Item>

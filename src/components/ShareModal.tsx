@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Modal, Typography, Flex, Input, Button, Tooltip, Space } from 'antd';
+import { Modal, Typography, Flex, Input, Button, Tooltip, Space, theme } from 'antd';
 import {
 	CopyOutlined,
 	CheckOutlined,
@@ -13,6 +13,7 @@ import {
 import { useTranslations } from 'next-intl';
 
 const { Title, Paragraph, Text } = Typography;
+const { useToken } = theme;
 
 interface ShareModalProps {
 	open: boolean;
@@ -20,6 +21,7 @@ interface ShareModalProps {
 }
 
 export default function ShareModal({ open, onCancel }: ShareModalProps) {
+	const { token } = useToken();
 	const t = useTranslations('Share');
 	const [copied, setCopied] = useState(false);
 	const shareUrl = typeof window !== 'undefined' ? window.location.origin : 'https://watashiwa.app';
@@ -58,7 +60,7 @@ export default function ShareModal({ open, onCancel }: ShareModalProps) {
 			width={480}
 			title={
 				<Flex align="center" gap="small">
-					<ShareAltOutlined style={{ color: '#1E3A5F' }} />
+					<ShareAltOutlined style={{ color: token.colorPrimary }} />
 					<span>{t('title')}</span>
 				</Flex>
 			}
@@ -66,14 +68,14 @@ export default function ShareModal({ open, onCancel }: ShareModalProps) {
 			<Flex vertical gap="large" style={{ padding: '12px 0' }}>
 				<div
 					style={{
-						background: 'linear-gradient(135deg, #e6f7ff 0%, #f0f5ff 100%)',
+						background: `linear-gradient(135deg, ${token.colorPrimaryBg} 0%, ${token.colorBgLayout} 100%)`,
 						padding: '20px',
 						borderRadius: 12,
 						textAlign: 'center',
-						border: '1px solid #d6e4ff',
+						border: `1px solid ${token.colorBorderSecondary}`,
 					}}
 				>
-					<Title level={4} style={{ marginBottom: 8, color: '#1E3A5F' }}>
+					<Title level={4} style={{ marginBottom: 8, color: token.colorPrimary }}>
 						✨ WatashiWa
 					</Title>
 					<Paragraph style={{ marginBottom: 0, fontSize: 15, color: '#444' }}>
@@ -90,7 +92,7 @@ export default function ShareModal({ open, onCancel }: ShareModalProps) {
 								type="primary"
 								icon={copied ? <CheckOutlined /> : <CopyOutlined />}
 								onClick={handleCopy}
-								style={{ background: copied ? '#52c41a' : '#1E3A5F' }}
+								style={{ background: copied ? token.colorSuccess : token.colorPrimary }}
 							>
 								{copied ? t('copied') : 'Copy'}
 							</Button>

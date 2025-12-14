@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { Card, Typography, Tag, Divider, Flex, Button } from 'antd';
+import { Card, Typography, Tag, Divider, Flex, Button, theme } from 'antd';
 import { PlayCircleOutlined, PauseCircleOutlined } from '@ant-design/icons';
 import KanjiBreakdown from './KanjiBreakdown';
 import { useAudioPlayer } from './Audio/useAudioPlayer';
 
 const { Title, Text, Paragraph } = Typography;
+const { useToken } = theme;
 
 // Temporary interface until we import full generated types
 interface VocabCardProps {
@@ -23,6 +24,7 @@ export default function VocabCard({
 	showRomaji = false,
 	autoPlayAudio = false,
 }: VocabCardProps) {
+	const { token } = useToken();
 	const audioRef = useRef<HTMLAudioElement | null>(null);
 	const [isFilePlaying, setIsFilePlaying] = useState(false);
 
@@ -159,9 +161,9 @@ export default function VocabCard({
 				shape="circle"
 				icon={
 					isPlaying ? (
-						<PauseCircleOutlined style={{ fontSize: 32, color: '#1890ff' }} />
+						<PauseCircleOutlined style={{ fontSize: 32, color: token.colorPrimary }} />
 					) : (
-						<PlayCircleOutlined style={{ fontSize: 32, color: '#1890ff' }} />
+						<PlayCircleOutlined style={{ fontSize: 32, color: token.colorPrimary }} />
 					)
 				}
 				onClick={toggleAudio}
@@ -237,7 +239,7 @@ export default function VocabCard({
 												fontSize: '64px',
 												margin: '0',
 												lineHeight: 1,
-												color: '#1E3A5F',
+												color: token.colorPrimary,
 											}}
 										>
 											{part.text}
@@ -276,7 +278,10 @@ export default function VocabCard({
 									</Text>
 								</div>
 
-								<Title level={1} style={{ fontSize: '64px', margin: '0 0 8px', color: '#1E3A5F' }}>
+								<Title
+									level={1}
+									style={{ fontSize: '64px', margin: '0 0 8px', color: token.colorPrimary }}
+								>
 									{kanji}
 								</Title>
 
@@ -334,7 +339,12 @@ export default function VocabCard({
 
 								{exampleSentence && (
 									<div
-										style={{ background: '#F9F7F2', padding: 16, borderRadius: 8, width: '100%' }}
+										style={{
+											background: token.colorBgLayout,
+											padding: 16,
+											borderRadius: 8,
+											width: '100%',
+										}}
 									>
 										<Paragraph
 											style={{
