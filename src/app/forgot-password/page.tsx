@@ -1,14 +1,16 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Form, Input, Button, Card, Typography, Alert, Flex } from 'antd';
+import { Form, Input, Button, Card, Typography, Alert, Flex, theme } from 'antd';
 import { createClient } from '@/utils/supabase/client';
 import { MailOutlined, ArrowLeftOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 
 const { Title, Text } = Typography;
+const { useToken } = theme;
 
 export default function ForgotPasswordPage() {
+	const { token } = useToken();
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const [message, setMessage] = useState<string | null>(null);
@@ -35,19 +37,21 @@ export default function ForgotPasswordPage() {
 	};
 
 	return (
-		<Flex justify="center" align="center" style={{ minHeight: '100vh', background: '#F9F7F2' }}>
+		<Flex
+			justify="center"
+			align="center"
+			style={{ minHeight: '100vh', background: token.colorBgLayout }}
+		>
 			<Card style={{ width: 400, boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }} bordered={false}>
 				<div style={{ textAlign: 'center', marginBottom: 24 }}>
-					<Title level={3} style={{ color: '#1E3A5F', marginBottom: 0 }}>
+					<Title level={3} style={{ color: token.colorPrimary, marginBottom: 0 }}>
 						Forgot Password
 					</Title>
 					<Text type="secondary">Enter your email to receive a reset link</Text>
 				</div>
 
-				{error && <Alert message={error} type="error" showIcon style={{ marginBottom: 24 }} />}
-				{message && (
-					<Alert message={message} type="success" showIcon style={{ marginBottom: 24 }} />
-				)}
+				{error && <Alert title={error} type="error" showIcon style={{ marginBottom: 24 }} />}
+				{message && <Alert title={message} type="success" showIcon style={{ marginBottom: 24 }} />}
 
 				<Form name="forgot-password" onFinish={handleReset} layout="vertical">
 					<Form.Item

@@ -11,6 +11,7 @@ import {
 	message,
 	Empty,
 	Timeline,
+	theme,
 } from 'antd';
 import {
 	TrophyOutlined,
@@ -30,6 +31,7 @@ import { useTranslations } from 'next-intl';
 import DeckSelector from './DeckSelector';
 import BackButton from '@/components/BackButton';
 const { Title, Text, Paragraph } = Typography;
+const { useToken } = theme;
 
 interface CourseDetailClientProps {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -38,6 +40,7 @@ interface CourseDetailClientProps {
 }
 
 export default function CourseDetailClient({ course, isOwner }: CourseDetailClientProps) {
+	const { token } = useToken();
 	const t = useTranslations('Courses');
 	const router = useRouter();
 	const totalDecks = course.decks.length;
@@ -96,7 +99,7 @@ export default function CourseDetailClient({ course, isOwner }: CourseDetailClie
 					position: 'relative',
 					background: course.headerImage
 						? `url(${course.headerImage}) center/cover no-repeat`
-						: '#1E3A5F',
+						: token.colorPrimary,
 					color: 'white',
 					padding: '80px 24px 120px',
 					textAlign: 'center',
@@ -170,10 +173,10 @@ export default function CourseDetailClient({ course, isOwner }: CourseDetailClie
 							<Progress
 								type="circle"
 								percent={overallProgress}
-								width={50}
-								strokeColor="#708238"
-								trailColor="rgba(255,255,255,0.2)"
-								format={() => <TrophyOutlined style={{ color: '#FAAD14' }} />}
+								size={50}
+								strokeColor={token.colorSuccess}
+								railColor="rgba(255,255,255,0.2)"
+								format={() => <TrophyOutlined style={{ color: token.colorWarning }} />}
 							/>
 						</Flex>
 					</Card>
@@ -235,7 +238,7 @@ export default function CourseDetailClient({ course, isOwner }: CourseDetailClie
 				>
 					<Flex justify="space-between" align="center" style={{ marginBottom: 40 }}>
 						<div>
-							<Title level={3} style={{ margin: 0, color: '#1E3A5F' }}>
+							<Title level={3} style={{ margin: 0, color: token.colorPrimary }}>
 								{t('learningPath')}
 							</Title>
 							<Text type="secondary">{t('decksCount', { count: totalDecks })} in sequence</Text>
@@ -270,11 +273,11 @@ export default function CourseDetailClient({ course, isOwner }: CourseDetailClie
 								return {
 									dot: isMastered ? (
 										<CheckCircleFilled
-											style={{ fontSize: 24, color: '#708238', background: 'white' }}
+											style={{ fontSize: 24, color: token.colorSuccess, background: 'white' }}
 										/>
 									) : isActive ? (
 										<PlayCircleFilled
-											style={{ fontSize: 24, color: '#1E3A5F', background: 'white' }}
+											style={{ fontSize: 24, color: token.colorPrimary, background: 'white' }}
 										/>
 									) : (
 										<ClockCircleFilled
@@ -288,7 +291,9 @@ export default function CourseDetailClient({ course, isOwner }: CourseDetailClie
 												className="deck-card-hover"
 												style={{
 													borderRadius: 16,
-													border: isStarted ? '1px solid #1E3A5F' : '1px solid #f0f0f0',
+													border: isStarted
+														? `1px solid ${token.colorPrimary}`
+														: '1px solid #f0f0f0',
 												}}
 											>
 												<Flex justify="space-between" align="start" gap="middle" wrap="wrap">
@@ -310,7 +315,7 @@ export default function CourseDetailClient({ course, isOwner }: CourseDetailClie
 																</Tag>
 															)}
 															<Link href={`/decks/${cd.deckId}`} target="_blank">
-																<LinkOutlined style={{ color: '#1890ff' }} />
+																<LinkOutlined style={{ color: token.colorPrimary }} />
 															</Link>
 														</div>
 
@@ -340,7 +345,7 @@ export default function CourseDetailClient({ course, isOwner }: CourseDetailClie
 
 													<div style={{ marginLeft: 24, textAlign: 'right', minWidth: 120 }}>
 														{isMastered ? (
-															<div style={{ color: '#52c41a', textAlign: 'center' }}>
+															<div style={{ color: token.colorSuccess, textAlign: 'center' }}>
 																<CheckCircleFilled style={{ fontSize: 24, marginBottom: 4 }} />
 																<div>
 																	<Text type="success" strong>

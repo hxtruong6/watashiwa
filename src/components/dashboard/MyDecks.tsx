@@ -1,13 +1,14 @@
 'use client';
 
 import React from 'react';
-import { Typography, Card, Row, Col, Button, Flex, Tag } from 'antd';
+import { Typography, Card, Row, Col, Button, Flex, Tag, theme } from 'antd';
 import Link from 'next/link';
 import { RightOutlined, PlusOutlined } from '@ant-design/icons';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 
 const { Title, Text } = Typography;
+const { useToken } = theme;
 
 interface DeckWithStats {
 	id: string;
@@ -24,6 +25,7 @@ interface MyDecksProps {
  * My Decks section showing user's decks with card and due counts
  */
 export default function MyDecks({ decks }: MyDecksProps) {
+	const { token } = useToken();
 	const t = useTranslations('Dashboard');
 
 	return (
@@ -33,7 +35,7 @@ export default function MyDecks({ decks }: MyDecksProps) {
 			transition={{ delay: 0.4 }}
 		>
 			<Flex justify="space-between" align="center" style={{ marginBottom: 16 }}>
-				<Title level={5} style={{ margin: 0, color: '#1E3A5F' }}>
+				<Title level={5} style={{ margin: 0, color: token.colorPrimary }}>
 					{t('myDecks')}
 				</Title>
 				<Flex gap={8}>
@@ -78,7 +80,7 @@ export default function MyDecks({ decks }: MyDecksProps) {
 										hoverable
 									>
 										<Flex vertical gap={8}>
-											<Text strong ellipsis style={{ color: '#1E3A5F' }}>
+											<Text strong ellipsis style={{ color: token.colorPrimary }}>
 												{deck.title}
 											</Text>
 											<Flex justify="space-between" align="center">

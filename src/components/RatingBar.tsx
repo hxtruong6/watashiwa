@@ -44,7 +44,7 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 
 		const isActive = isSelected;
 
-		let background = '#fff';
+		let background = token.colorBgContainer;
 		let color = colorTheme.primary;
 		let border = `1px solid ${colorTheme.primary}`;
 		let boxShadow = 'none';
@@ -64,7 +64,7 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 				color = '#fff';
 				boxShadow = `0 0 0 4px ${colorTheme.primary}40`;
 			} else {
-				background = '#fff'; // or transparent
+				background = token.colorBgContainer; // or transparent
 				color = colorTheme.primary;
 				border = `1px solid ${colorTheme.primary}`;
 			}
@@ -90,7 +90,7 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 			style={{
 				marginTop: 16,
 				padding: screens.xs ? '8px' : '12px',
-				background: 'rgba(255, 255, 255, 0.95)',
+				background: token.colorBgContainer,
 				borderRadius: 16,
 				boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
 				backdropFilter: 'blur(12px)',

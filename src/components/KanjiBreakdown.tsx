@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
-import { Typography, Flex, Card } from 'antd';
+import { Typography, Flex, Card, theme } from 'antd';
 
 const { Text } = Typography;
+const { useToken } = theme;
 
 interface KanjiItem {
 	kanji: string;
@@ -16,11 +17,12 @@ interface KanjiBreakdownProps {
 }
 
 export default function KanjiBreakdown({ breakdown }: KanjiBreakdownProps) {
+	const { token } = useToken();
 	if (!breakdown || breakdown.length === 0) return null;
 
 	return (
 		<Flex vertical gap="small" style={{ width: '100%', marginTop: 16 }}>
-			<Text strong style={{ color: '#1E3A5F', fontSize: 14 }}>
+			<Text strong style={{ color: token.colorPrimary, fontSize: 14 }}>
 				Kanji Breakdown
 			</Text>
 			<Flex wrap="wrap" gap="small">
@@ -31,19 +33,21 @@ export default function KanjiBreakdown({ breakdown }: KanjiBreakdownProps) {
 						style={{
 							minWidth: 100,
 							flex: '1 1 auto',
-							background: '#fff',
-							borderColor: '#e0e0e0',
+							background: token.colorFillQuaternary, // Subtle contrast against card bg
+							borderColor: token.colorBorderSecondary,
 							textAlign: 'center',
 						}}
 						styles={{ body: { padding: '8px 12px' } }}
 					>
-						<Text style={{ fontSize: 24, display: 'block', color: '#1E3A5F', lineHeight: 1.2 }}>
+						<Text
+							style={{ fontSize: 24, display: 'block', color: token.colorPrimary, lineHeight: 1.2 }}
+						>
 							{item.kanji}
 						</Text>
 						<Text type="secondary" style={{ fontSize: 11, display: 'block', marginTop: 2 }}>
 							{item.han_viet}
 						</Text>
-						<Text style={{ fontSize: 13, display: 'block', marginTop: 4, color: '#444' }}>
+						<Text style={{ fontSize: 13, display: 'block', marginTop: 4, color: token.colorText }}>
 							{item.meaning}
 						</Text>
 					</Card>

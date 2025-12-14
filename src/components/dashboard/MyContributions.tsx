@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Card, Typography, List, Tag, Flex } from 'antd';
+import { Card, Typography, Row, Col, Tag, Flex } from 'antd';
 import { FireOutlined, LikeOutlined } from '@ant-design/icons';
 import { getUserContributions } from '@/services/comments';
 
@@ -36,12 +36,9 @@ export default function MyContributions() {
 				</Title>
 			</Flex>
 
-			<List
-				grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 3, xl: 4, xxl: 4 }}
-				dataSource={comments}
-				loading={loading}
-				renderItem={(item) => (
-					<List.Item>
+			<Row gutter={[16, 16]}>
+				{comments.map((item) => (
+					<Col xs={24} sm={12} md={8} xl={6} key={item.id}>
 						<Card size="small" hoverable style={{ height: '100%', borderRadius: 8 }}>
 							<Flex vertical gap="small" justify="space-between" style={{ height: '100%' }}>
 								<div>
@@ -71,9 +68,9 @@ export default function MyContributions() {
 								</Flex>
 							</Flex>
 						</Card>
-					</List.Item>
-				)}
-			/>
+					</Col>
+				))}
+			</Row>
 		</div>
 	);
 }

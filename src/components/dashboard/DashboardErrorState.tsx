@@ -1,10 +1,13 @@
 'use client';
 
 import React from 'react';
-import { Result, Button, Flex } from 'antd';
+import { Result, Button, Flex, theme } from 'antd';
 import { useTranslations } from 'next-intl';
 
+const { useToken } = theme;
+
 export default function DashboardErrorState() {
+	const { token } = useToken();
 	const t = useTranslations('Dashboard');
 	const tCommon = useTranslations('Common');
 
@@ -26,7 +29,7 @@ export default function DashboardErrorState() {
 						key="retry"
 						shape="round"
 						onClick={() => window.location.reload()}
-						style={{ background: '#1E3A5F' }}
+						style={{ background: token.colorPrimary }}
 					>
 						{tCommon('retry')}
 					</Button>

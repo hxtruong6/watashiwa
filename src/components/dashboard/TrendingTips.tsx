@@ -1,16 +1,18 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Card, List, Tag, Typography, Flex } from 'antd';
+import { Card, List, Tag, Typography, Flex, theme } from 'antd';
 import { LikeOutlined } from '@ant-design/icons';
 import { getTrendingComments } from '@/services/comments';
 import Link from 'next/link';
 
 const { Text, Title } = Typography;
+const { useToken } = theme;
 
 import { useTranslations } from 'next-intl';
 
 export default function TrendingTips() {
+	const { token } = useToken();
 	const tDashboard = useTranslations('Dashboard');
 	const tComment = useTranslations('Comments');
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -45,7 +47,7 @@ export default function TrendingTips() {
 						<Flex vertical style={{ width: '100%' }} gap="4px">
 							<Flex justify="space-between" align="center">
 								<Link href={item.vocabId ? `/study?deckId=${item.vocab?.deckId || ''}` : '#'}>
-									<Text strong style={{ fontSize: 16, color: '#1E3A5F' }}>
+									<Text strong style={{ fontSize: 16, color: token.colorPrimary }}>
 										{item.vocab?.wordSurface || item.kanji?.kanji}
 									</Text>
 								</Link>

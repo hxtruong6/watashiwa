@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Card, Typography, List, Avatar, Flex, theme } from 'antd';
+import { Card, Typography, Avatar, Flex, theme } from 'antd';
 import { TrophyOutlined, FireOutlined } from '@ant-design/icons';
 import { useTranslations } from 'next-intl';
 
@@ -54,7 +54,7 @@ export default function GlobalLeaderboard({ users, currentUserId }: GlobalLeader
 
 	return (
 		<Card
-			bordered={false}
+			variant="borderless"
 			style={{
 				borderRadius: 16,
 				boxShadow: '0 4px 12px rgba(0,0,0,0.03)',
@@ -74,56 +74,51 @@ export default function GlobalLeaderboard({ users, currentUserId }: GlobalLeader
 				</div>
 			</Flex>
 
-			<List
-				itemLayout="horizontal"
-				dataSource={users}
-				renderItem={(user, index) => (
-					<List.Item
+			<Flex vertical gap="small">
+				{users.map((user, index) => (
+					<div
+						key={user.id}
 						style={{
 							padding: '12px 16px',
-							background: user.id === currentUserId ? '#F0F7FF' : 'transparent',
+							background: user.id === currentUserId ? token.colorFillQuaternary : 'transparent',
 							borderRadius: 12,
-							marginBottom: 8,
-							border: 'none',
+							marginBottom: 0,
+							display: 'flex',
+							justifyContent: 'space-between',
+							alignItems: 'center',
 						}}
 					>
-						<List.Item.Meta
-							avatar={
-								<Flex align="center" gap="middle">
-									{getRankIcon(index)}
-									<Avatar
-										style={{
-											backgroundColor:
-												index === 0
-													? '#FFD700'
-													: index === 1
-														? '#C0C0C0'
-														: index === 2
-															? '#CD7F32'
-															: token.colorPrimary,
-											color: '#fff',
-										}}
-									>
-										{user.name.charAt(0).toUpperCase()}
-									</Avatar>
-								</Flex>
-							}
-							title={
-								<Text
-									strong
-									style={{ color: user.id === currentUserId ? token.colorPrimary : undefined }}
-								>
-									{user.name} {user.id === currentUserId && '(You)'}
-								</Text>
-							}
-						/>
+						<Flex align="center" gap="middle">
+							{getRankIcon(index)}
+							<Avatar
+								style={{
+									backgroundColor:
+										index === 0
+											? '#FFD700'
+											: index === 1
+												? '#C0C0C0'
+												: index === 2
+													? '#CD7F32'
+													: token.colorPrimary,
+									color: '#fff',
+								}}
+							>
+								{user.name.charAt(0).toUpperCase()}
+							</Avatar>
+							<Text
+								strong
+								style={{ color: user.id === currentUserId ? token.colorPrimary : undefined }}
+							>
+								{user.name} {user.id === currentUserId && '(You)'}
+							</Text>
+						</Flex>
 						<Flex align="center" gap={4}>
 							<FireOutlined style={{ color: token.colorError }} />
 							<Text strong>{t('streakDays', { count: user.currentStreak })}</Text>
 						</Flex>
-					</List.Item>
-				)}
-			/>
+					</div>
+				))}
+			</Flex>
 		</Card>
 	);
 }

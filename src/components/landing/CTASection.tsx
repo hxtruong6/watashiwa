@@ -1,22 +1,24 @@
 'use client';
 
 import React from 'react';
-import { Button, Typography } from 'antd';
+import { Button, Typography, theme } from 'antd';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 import { useTranslations } from 'next-intl';
 
 const { Title, Paragraph } = Typography;
+const { useToken } = theme;
 
 export default function CTASection() {
+	const { token } = useToken();
 	const t = useTranslations('Landing');
 
 	return (
 		<section
 			style={{
 				padding: '120px 0',
-				background: '#1E3A5F',
+				background: token.colorPrimary,
 				textAlign: 'center',
 				color: '#fff',
 				position: 'relative',
@@ -93,7 +95,7 @@ export default function CTASection() {
 									padding: '0 48px',
 									fontSize: 20,
 									borderRadius: 32,
-									background: '#708238', // Zen Green
+									background: token.colorSuccess, // Zen Green
 									border: 'none',
 									boxShadow: '0 10px 20px rgba(0,0,0,0.2)',
 								}}

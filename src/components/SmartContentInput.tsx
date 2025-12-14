@@ -1,5 +1,18 @@
 import React, { useState } from 'react';
-import { Card, Tabs, Form, Input, Button, message, Tag, InputNumber, Select, Row, Col } from 'antd';
+import {
+	Card,
+	Tabs,
+	Form,
+	Input,
+	Button,
+	message,
+	Tag,
+	InputNumber,
+	Select,
+	Row,
+	Col,
+	theme,
+} from 'antd';
 import {
 	ThunderboltOutlined,
 	EditOutlined,
@@ -18,9 +31,10 @@ import VocabEditor from '@/components/admin/VocabEditor';
 import KanjiEditor from '@/components/admin/KanjiEditor';
 import { Modal } from 'antd';
 
-// ... (keep imports)
+const { useToken } = theme;
 
 export default function SmartContentInput({ deckId, onSuccess }: SmartContentInputProps) {
+	const { token } = useToken();
 	const t = useTranslations('MyDecks');
 	const [form] = Form.useForm();
 	const [advancedForm] = Form.useForm();
@@ -296,7 +310,7 @@ export default function SmartContentInput({ deckId, onSuccess }: SmartContentInp
 			<Card
 				title="Add Content"
 				style={{ marginBottom: 24, borderRadius: 16, border: '1px solid #e0e0e0' }}
-				styles={{ header: { borderBottom: 'none', fontSize: 18, color: '#1E3A5F' } }}
+				styles={{ header: { borderBottom: 'none', fontSize: 18, color: token.colorPrimary } }}
 			>
 				{contextHolder}
 				<Tabs

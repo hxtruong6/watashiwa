@@ -1,18 +1,20 @@
 'use client';
 
 import React from 'react';
-import { Layout, Menu, Typography, Flex } from 'antd';
+import { Layout, Menu, Typography, Flex, theme } from 'antd';
 import { HomeOutlined, ReadOutlined, BookOutlined, BarChartOutlined } from '@ant-design/icons';
 import { useRouter, usePathname } from 'next/navigation';
 
 const { Header, Sider, Content } = Layout;
 const { Title } = Typography;
+const { useToken } = theme;
 
 interface DashboardLayoutProps {
 	children: React.ReactNode;
 }
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {
+	const { token } = useToken();
 	const router = useRouter();
 	const pathname = usePathname();
 
@@ -56,7 +58,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 				collapsedWidth="0"
 			>
 				<Flex justify="center" align="center" style={{ height: 64, margin: '16px 0' }}>
-					<Title level={4} style={{ margin: 0, color: '#1E3A5F' }}>
+					<Title level={4} style={{ margin: 0, color: token.colorPrimary }}>
 						WatashiWa
 					</Title>
 				</Flex>

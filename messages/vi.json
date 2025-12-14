@@ -67,7 +67,7 @@
         "leaderboard": "Bảng xếp hạng",
         "leaderboardSubtitle": "Top học viên chăm chỉ",
         "rank": "Hạng",
-        "streakDays": "{count} ngày",
+        "streakDays": "{count}",
         "statistics": "Thống kê",
         "settings": "Cài đặt",
         "viewDecks": "Xem bộ thẻ",

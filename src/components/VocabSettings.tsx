@@ -28,7 +28,7 @@ import { updateUserSettings } from '@/services/actions';
 import { useTranslations } from 'next-intl';
 
 const { Text } = Typography;
-const { Panel } = Collapse;
+
 const { useToken } = theme;
 
 import type { User } from '@/generated/prisma';
@@ -60,6 +60,12 @@ export default function VocabSettings({
 	const { token } = useToken();
 	const [form] = Form.useForm();
 	const [loading, setLoading] = useState(false);
+
+	const [localTimeZone, setLocalTimeZone] = useState('UTC');
+
+	useEffect(() => {
+		setLocalTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone);
+	}, []);
 
 	// Update form when userSettings prop changes
 	useEffect(() => {
@@ -94,98 +100,47 @@ export default function VocabSettings({
 		}
 	};
 
-	return (
-		<Card
-			size="small"
-			style={{
-				width: '100%',
-				maxWidth: 600,
-				margin: '0 auto 16px',
-				borderRadius: 12,
-				boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-			}}
-		>
-			<Flex
-				gap="middle"
-				wrap="wrap"
-				justify="space-between"
-				align="center"
-				style={{ marginBottom: 16 }}
-			>
-				<Flex align="center" gap="small">
-					<Tooltip title={t('furiganaTooltip')}>
-						<FontSizeOutlined style={{ color: token.colorPrimary }} />
-					</Tooltip>
-					<Text style={{ fontSize: 13 }}>{t('furigana')}</Text>
-					<Switch size="small" checked={showFurigana} onChange={setShowFurigana} />
-				</Flex>
+	const guideItems = [
+		{
+			key: '1',
+			label: (
+				<Text strong style={{ fontSize: 12 }}>
+					{t('guideTitle')}
+				</Text>
+			),
+			style: { background: '#f5f5f5', borderRadius: 8 },
+			children: (
+				<ul style={{ paddingLeft: 20, margin: 0, fontSize: 12, color: '#666' }}>
+					<li>
+						<Text strong>[Space]</Text>: {t('guideSpace')}
+					</li>
+					<li>
+						<Text strong>[1-4]</Text>: {t('guideNumbers')}
+					</li>
+					<li>
+						<Text strong>[R]</Text>: {t('guideReplay')}
+					</li>
+					<li>
+						<Text strong>[E]</Text>: {t('guideExample')}
+					</li>
+					<li>
+						<Text strong>Mobile</Text>: {t('guideMobile')}
+					</li>
+				</ul>
+			),
+		},
+	];
 
-				<Flex align="center" gap="small">
-					<Tooltip title={t('romajiTooltip')}>
-						<TranslationOutlined style={{ color: token.colorSuccess }} />
-					</Tooltip>
-					<Text style={{ fontSize: 13 }}>{t('romaji')}</Text>
-					<Switch size="small" checked={showRomaji} onChange={setShowRomaji} />
-				</Flex>
-
-				<Flex align="center" gap="small" wrap="wrap">
-					<Tooltip title={t('autoPlayTooltip')}>
-						<SoundOutlined style={{ color: token.colorWarning }} />
-					</Tooltip>
-					<Text style={{ fontSize: 13 }}>{t('autoPlay')}</Text>
-					<Radio.Group
-						value={autoPlayAudio}
-						onChange={(e) => setAutoPlayAudio(e.target.value as 'off' | 'question' | 'answer')}
-						size="small"
-					>
-						<Radio.Button value="off">{tCommon('off')}</Radio.Button>
-						<Radio.Button value="question">{t('question')}</Radio.Button>
-						<Radio.Button value="answer">{t('answer')}</Radio.Button>
-					</Radio.Group>
-				</Flex>
-			</Flex>
-
-			<div style={{ marginTop: 12, marginBottom: 16 }}>
-				<Collapse ghost size="small">
-					<Panel
-						header={
-							<Text strong style={{ fontSize: 12 }}>
-								{t('guideTitle')}
-							</Text>
-						}
-						key="1"
-						style={{ background: '#f5f5f5', borderRadius: 8 }}
-					>
-						<ul style={{ paddingLeft: 20, margin: 0, fontSize: 12, color: '#666' }}>
-							<li>
-								<Text strong>[Space]</Text>: {t('guideSpace')}
-							</li>
-							<li>
-								<Text strong>[1-4]</Text>: {t('guideNumbers')}
-							</li>
-							<li>
-								<Text strong>[R]</Text>: {t('guideReplay')}
-							</li>
-							<li>
-								<Text strong>[E]</Text>: {t('guideExample')}
-							</li>
-							<li>
-								<Text strong>Mobile</Text>: {t('guideMobile')}
-							</li>
-						</ul>
-					</Panel>
-				</Collapse>
-			</div>
-
-			<Collapse ghost expandIconPlacement="end">
-				<Panel
-					header={
-						<span style={{ fontWeight: 600, color: token.colorPrimary }}>
-							<SettingOutlined /> {t('advancedSettings')}
-						</span>
-					}
-					key="1"
-				>
+	const advancedSettingsItems = [
+		{
+			key: '1',
+			label: (
+				<span style={{ fontWeight: 600, color: token.colorPrimary }}>
+					<SettingOutlined /> {t('advancedSettings')}
+				</span>
+			),
+			children: (
+				<>
 					<div style={{ marginBottom: 24, padding: '0 8px' }}>
 						<Text strong style={{ color: token.colorPrimary }}>
 							{t('audioSettings')}
@@ -214,8 +169,8 @@ export default function VocabSettings({
 									{ value: 'America/Los_Angeles', label: 'America/Los_Angeles (PST)' },
 									{ value: 'Europe/London', label: 'Europe/London (GMT)' },
 									{
-										value: Intl.DateTimeFormat().resolvedOptions().timeZone,
-										label: `Local (${Intl.DateTimeFormat().resolvedOptions().timeZone})`,
+										value: localTimeZone,
+										label: `Local (${localTimeZone})`,
 									},
 								]}
 							/>
@@ -284,8 +239,67 @@ export default function VocabSettings({
 							{t('saveSettings')}
 						</Button>
 					</Form>
-				</Panel>
-			</Collapse>
+				</>
+			),
+		},
+	];
+
+	return (
+		<Card
+			size="small"
+			style={{
+				width: '100%',
+				maxWidth: 600,
+				margin: '0 auto 16px',
+				borderRadius: 12,
+				boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+			}}
+		>
+			<Flex
+				gap="middle"
+				wrap="wrap"
+				justify="space-between"
+				align="center"
+				style={{ marginBottom: 16 }}
+			>
+				<Flex align="center" gap="small">
+					<Tooltip title={t('furiganaTooltip')}>
+						<FontSizeOutlined style={{ color: token.colorPrimary }} />
+					</Tooltip>
+					<Text style={{ fontSize: 13 }}>{t('furigana')}</Text>
+					<Switch size="small" checked={showFurigana} onChange={setShowFurigana} />
+				</Flex>
+
+				<Flex align="center" gap="small">
+					<Tooltip title={t('romajiTooltip')}>
+						<TranslationOutlined style={{ color: token.colorSuccess }} />
+					</Tooltip>
+					<Text style={{ fontSize: 13 }}>{t('romaji')}</Text>
+					<Switch size="small" checked={showRomaji} onChange={setShowRomaji} />
+				</Flex>
+
+				<Flex align="center" gap="small" wrap="wrap">
+					<Tooltip title={t('autoPlayTooltip')}>
+						<SoundOutlined style={{ color: token.colorWarning }} />
+					</Tooltip>
+					<Text style={{ fontSize: 13 }}>{t('autoPlay')}</Text>
+					<Radio.Group
+						value={autoPlayAudio}
+						onChange={(e) => setAutoPlayAudio(e.target.value as 'off' | 'question' | 'answer')}
+						size="small"
+					>
+						<Radio.Button value="off">{tCommon('off')}</Radio.Button>
+						<Radio.Button value="question">{t('question')}</Radio.Button>
+						<Radio.Button value="answer">{t('answer')}</Radio.Button>
+					</Radio.Group>
+				</Flex>
+			</Flex>
+
+			<div style={{ marginTop: 12, marginBottom: 16 }}>
+				<Collapse ghost size="small" items={guideItems} />
+			</div>
+
+			<Collapse ghost expandIconPlacement="end" items={advancedSettingsItems} />
 		</Card>
 	);
 }

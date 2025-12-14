@@ -440,7 +440,7 @@ export default function StudyContent() {
 			>
 				<div
 					style={{
-						background: 'white',
+						background: token.colorBgContainer,
 						padding: 40,
 						borderRadius: 24,
 						boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
@@ -604,7 +604,7 @@ export default function StudyContent() {
 							borderRadius: 20,
 							fontSize: 14,
 							fontWeight: 600,
-							color: '#666',
+							color: token.colorTextSecondary,
 						}}
 					>
 						{dailyStats.dueCount > 0 ? `${dailyStats.dueCount} ${t('left')}` : t('wait')}
@@ -702,7 +702,7 @@ export default function StudyContent() {
 						left: 0,
 						right: 0,
 						padding: '16px 24px 32px',
-						background: `linear-gradient(to top, ${token.colorBgLayout} 90%, rgba(249, 247, 242, 0))`,
+						background: `linear-gradient(to top, ${token.colorBgLayout} 90%, transparent)`,
 						display: 'flex',
 						justifyContent: 'center',
 						zIndex: 50,

@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
-import { ConfigProvider, App } from 'antd';
-import theme from '../lib/theme/themeConfig';
+import ThemeProvider from '@/components/theme/ThemeProvider';
 import NavBar from '@/components/NavBar';
 import PostHogPageTracker from '@/components/Analytics/PostHogPageTracker';
 import './globals.css';
@@ -48,14 +47,10 @@ export default async function RootLayout({
 				<PostHogPageTracker />
 				<NextIntlClientProvider messages={messages}>
 					<AntdRegistry>
-						<ConfigProvider theme={theme}>
-							<App>
-								<NavBar user={user} />
-								<main style={{ minHeight: 'calc(100vh - 64px)', background: '#F9F7F2' }}>
-									{children}
-								</main>
-							</App>
-						</ConfigProvider>
+						<ThemeProvider>
+							<NavBar user={user} />
+							<main className="app-main">{children}</main>
+						</ThemeProvider>
 					</AntdRegistry>
 				</NextIntlClientProvider>
 			</body>

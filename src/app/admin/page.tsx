@@ -1,6 +1,7 @@
 import React from 'react';
 import { UserOutlined, ReadOutlined, FireOutlined } from '@ant-design/icons';
 import { getAdminStats } from '@/services/actions';
+import themeConfig from '@/lib/theme/themeConfig';
 
 export default async function AdminDashboard() {
 	const stats = await getAdminStats();
@@ -34,7 +35,7 @@ export default async function AdminDashboard() {
 						<UserOutlined style={{ fontSize: 24 }} />
 						<span style={{ fontSize: 14 }}>Total Users</span>
 					</div>
-					<div style={{ fontSize: 32, fontWeight: 'bold', color: '#1E3A5F' }}>
+					<div style={{ fontSize: 32, fontWeight: 'bold', color: themeConfig.token?.colorPrimary }}>
 						{stats.userCount}
 					</div>
 				</div>
@@ -55,7 +56,7 @@ export default async function AdminDashboard() {
 						<ReadOutlined style={{ fontSize: 24 }} />
 						<span style={{ fontSize: 14 }}>Total Reviews</span>
 					</div>
-					<div style={{ fontSize: 32, fontWeight: 'bold', color: '#708238' }}>
+					<div style={{ fontSize: 32, fontWeight: 'bold', color: themeConfig.token?.colorSuccess }}>
 						{stats.reviewCount}
 					</div>
 				</div>

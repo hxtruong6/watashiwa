@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Table, Typography, Tag, Space, Layout, Button, Flex } from 'antd';
+import { Table, Typography, Tag, Space, Layout, Button, Flex, theme } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import { getAllVocab } from '@/services/actions';
 import { ArrowLeftOutlined } from '@ant-design/icons';
@@ -23,6 +23,7 @@ interface VocabDataType {
 
 export default function VocabListPage() {
 	const router = useRouter();
+	const { token } = theme.useToken();
 	const [data, setData] = useState<VocabDataType[]>([]);
 	const [loading, setLoading] = useState(true);
 
@@ -99,7 +100,7 @@ export default function VocabListPage() {
 	];
 
 	return (
-		<Layout style={{ minHeight: '100vh', background: '#fff' }}>
+		<Layout style={{ minHeight: '100vh', background: token.colorBgLayout }}>
 			<Content style={{ padding: '24px', maxWidth: 1200, margin: '0 auto', width: '100%' }}>
 				<Flex justify="space-between" align="center" style={{ marginBottom: 24 }}>
 					<Space>

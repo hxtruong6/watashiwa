@@ -19,6 +19,7 @@ import {
 	Statistic,
 	Row,
 	Col,
+	theme,
 } from 'antd';
 import {
 	ReadOutlined,
@@ -43,8 +44,10 @@ import { useRouter } from 'next/navigation';
 import BackButton from '@/components/BackButton';
 
 const { Title, Paragraph, Text } = Typography;
+const { useToken } = theme;
 
 export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boolean }) {
+	const { token } = useToken();
 	const router = useRouter();
 	const t = useTranslations('Decks');
 	const [viewMode, setViewMode] = useState<'List' | 'Grid'>('Grid');
@@ -99,7 +102,7 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 					<Text strong style={{ fontSize: 16 }}>
 						{text}
 					</Text>
-					<div style={{ fontSize: 12, color: '#888' }}>{record.readingKana}</div>
+					<div style={{ fontSize: 12, color: token.colorTextSecondary }}>{record.readingKana}</div>
 				</div>
 			),
 
@@ -216,7 +219,7 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 						<Card hoverable style={{ height: '100%', borderRadius: 12 }} className="hover-trigger">
 							<Flex vertical gap="small">
 								<Flex justify="space-between" align="start">
-									<Text strong style={{ fontSize: 20, color: '#1E3A5F' }}>
+									<Text strong style={{ fontSize: 20, color: token.colorPrimary }}>
 										{type === 'vocab' ? item.wordSurface : item.kanji}
 									</Text>
 									<div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
@@ -341,7 +344,7 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 					{/* Top Header */}
 					<Flex justify="space-between" align="start" wrap="wrap" gap="small">
 						<div>
-							<Title level={2} style={{ margin: 0, color: '#1E3A5F' }}>
+							<Title level={2} style={{ margin: 0, color: token.colorPrimary }}>
 								{deck.title}
 							</Title>
 							<div style={{ marginTop: 8 }}>
@@ -409,19 +412,19 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 								<Statistic
 									title={t('statUnseen')}
 									value={stats.unseen}
-									valueStyle={{ color: '#faad14', fontSize: 20 }}
+									valueStyle={{ color: token.colorWarning, fontSize: 20 }}
 									prefix={<SyncOutlined spin={false} />}
 								/>
 								<Statistic
 									title={t('statActive')}
 									value={stats.learning + stats.review} // Learning + Review
-									valueStyle={{ color: '#1890ff', fontSize: 20 }}
+									valueStyle={{ color: token.colorPrimary, fontSize: 20 }}
 									prefix={<ReadOutlined />}
 								/>
 								<Statistic
 									title={t('statMastered')}
 									value={0} // Placeholder until strict 'Mastered' metric (e.g. maturity > 21 days)
-									valueStyle={{ color: '#52c41a', fontSize: 20 }}
+									valueStyle={{ color: token.colorSuccess, fontSize: 20 }}
 									prefix={<CheckCircleOutlined />}
 								/>
 							</Flex>

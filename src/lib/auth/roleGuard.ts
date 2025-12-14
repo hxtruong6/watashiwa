@@ -1,4 +1,5 @@
 import { UserRole } from '@/generated/prisma';
+import themeConfig from '@/lib/theme/themeConfig';
 
 export const ROLE_HIERARCHY: Record<UserRole, number> = {
 	[UserRole.USER]: 1,
@@ -29,10 +30,10 @@ export function requireRole(userRole: UserRole | undefined, requiredRole: UserRo
 export function getRoleColor(role: UserRole): string {
 	switch (role) {
 		case UserRole.ADMIN:
-			return '#E64A19'; // Red
+			return themeConfig.token?.colorError || '#E64A19'; // Red
 		case UserRole.MODERATOR:
-			return '#1976D2'; // Blue
+			return themeConfig.token?.colorInfo || '#1976D2'; // Blue
 		default:
-			return '#8c8c8c'; // Grey (or hidden for user)
+			return themeConfig.token?.colorTextSecondary || '#8c8c8c'; // Grey
 	}
 }

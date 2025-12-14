@@ -3,6 +3,7 @@ import { getUserWithRole, getReports } from '@/services/actions';
 import { UserRole } from '@/generated/prisma';
 import { redirect } from 'next/navigation';
 import ClientReportsTable from './components/ClientReportsTable';
+import themeConfig from '@/lib/theme/themeConfig';
 
 export const dynamic = 'force-dynamic';
 
@@ -27,7 +28,14 @@ export default async function AdminReportsPage() {
 	return (
 		<div style={{ padding: '24px' }}>
 			<div style={{ marginBottom: 24 }}>
-				<h1 style={{ fontSize: '24px', fontWeight: 'bold', color: '#1E3A5F', margin: 0 }}>
+				<h1
+					style={{
+						fontSize: '24px',
+						fontWeight: 'bold',
+						color: themeConfig.token?.colorPrimary,
+						margin: 0,
+					}}
+				>
 					Report Management
 				</h1>
 				<p style={{ color: '#666', marginTop: 8 }}>

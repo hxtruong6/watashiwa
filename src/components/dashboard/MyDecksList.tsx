@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Typography, Row, Col, Card, Button, Flex, Tag, Empty } from 'antd';
+import { Typography, Row, Col, Card, Button, Flex, Tag, Empty, theme } from 'antd';
 import Link from 'next/link';
 import { BookOutlined } from '@ant-design/icons';
 import { useTranslations } from 'next-intl';
@@ -9,12 +9,14 @@ import { useRouter } from 'next/navigation';
 import DeckListActions from '@/app/dashboard/decks/DeckListActions';
 
 const { Title, Text, Paragraph } = Typography;
+const { useToken } = theme;
 
 interface MyDecksListProps {
 	decks: any[];
 }
 
 export default function MyDecksList({ decks }: MyDecksListProps) {
+	const { token } = useToken();
 	const t = useTranslations('MyDecks');
 	const router = useRouter();
 
@@ -22,7 +24,7 @@ export default function MyDecksList({ decks }: MyDecksListProps) {
 		<div style={{ maxWidth: 1200, margin: '0 auto', padding: '24px 16px' }}>
 			<Row justify="space-between" align="middle" gutter={[16, 16]} style={{ marginBottom: 32 }}>
 				<Col xs={24} sm={16}>
-					<Title level={2} style={{ margin: 0, color: '#1E3A5F', fontSize: '1.75rem' }}>
+					<Title level={2} style={{ margin: 0, color: token.colorPrimary, fontSize: '1.75rem' }}>
 						{t('title')}
 					</Title>
 					<Text type="secondary" style={{ fontSize: '0.9rem' }}>
@@ -78,7 +80,7 @@ export default function MyDecksList({ decks }: MyDecksListProps) {
 												style={{ width: '100%', height: '100%', objectFit: 'cover' }}
 											/>
 										) : (
-											<BookOutlined style={{ fontSize: 24, color: '#1E3A5F' }} />
+											<BookOutlined style={{ fontSize: 24, color: token.colorPrimary }} />
 										)}
 									</div>
 									{deck.isPublic ? (
@@ -88,7 +90,7 @@ export default function MyDecksList({ decks }: MyDecksListProps) {
 									)}
 								</Flex>
 
-								<Title level={4} style={{ margin: '0 0 8px', color: '#1E3A5F' }}>
+								<Title level={4} style={{ margin: '0 0 8px', color: token.colorPrimary }}>
 									{deck.title}
 								</Title>
 

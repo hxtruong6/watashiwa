@@ -259,7 +259,7 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 										alignItems: 'center',
 										justifyContent: 'center',
 										borderRadius: '50%',
-										background: 'rgba(255, 255, 255, 0.8)',
+										background: 'rgba(255, 255, 255, 0.1)', // Glass effect
 										backdropFilter: 'blur(4px)',
 										boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
 										border: '1px solid rgba(0,0,0,0.02)',
@@ -464,7 +464,7 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 																							<rt
 																								style={{
 																									fontSize: '0.6em',
-																									color: '#888',
+																									color: token.colorTextSecondary,
 																									userSelect: 'none',
 																								}}
 																							>
@@ -562,7 +562,7 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 											{/* Assuming radicals is Array<{kanji, hanViet, meaning}> */}
 											{radicals && Array.isArray(radicals) && radicals.length > 0 && (
 												<div style={{ textAlign: 'left', marginTop: 16 }}>
-													<Text strong style={{ fontSize: 13, color: '#666' }}>
+													<Text strong style={{ fontSize: 13, color: token.colorTextSecondary }}>
 														Radicals:
 													</Text>
 													<div style={{ marginTop: 4 }}>

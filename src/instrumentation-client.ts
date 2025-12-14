@@ -1,5 +1,6 @@
 import posthog from 'posthog-js';
 import * as Sentry from '@sentry/nextjs';
+import themeConfig from '@/lib/theme/themeConfig';
 
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
 
@@ -23,9 +24,9 @@ if (isEnabled) {
 				colorScheme: 'system',
 				autoInject: false,
 				themeLight: {
-					submitBackground: '#1E3A5F',
+					submitBackground: themeConfig.token?.colorPrimary || '#1E3A5F',
 					submitForeground: '#FFFFFF',
-					accentBackground: '#1E3A5F',
+					accentBackground: themeConfig.token?.colorPrimary || '#1E3A5F',
 					background: '#FFFFFF',
 				},
 			}),

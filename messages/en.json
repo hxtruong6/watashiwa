@@ -67,7 +67,7 @@
         "leaderboard": "Leaderboard",
         "leaderboardSubtitle": "Top learners by streak",
         "rank": "Rank",
-        "streakDays": "{count} days",
+        "streakDays": "{count}",
         "statistics": "Statistics",
         "settings": "Settings",
         "viewDecks": "View Decks",

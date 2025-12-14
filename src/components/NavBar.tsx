@@ -8,7 +8,6 @@ import {
 	Button,
 	Flex,
 	Typography,
-	Drawer,
 	Tooltip,
 	Tag,
 	Avatar,
@@ -16,6 +15,7 @@ import {
 	Space,
 	theme,
 } from 'antd';
+import NavDrawer from './navbar/NavDrawer';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import LanguageSelector from './LanguageSelector';
@@ -37,6 +37,7 @@ import {
 import Link from 'next/link';
 import type { MenuProps } from 'antd';
 import Image from 'next/image';
+import ThemeToggle from './ThemeToggle';
 
 const { Header } = Layout;
 const { Text } = Typography;
@@ -215,15 +216,15 @@ export default function NavBar({ user }: { user?: User | null }) {
 			style={{
 				display: 'flex',
 				justifyContent: 'center', // Center content
-				background: 'rgba(255, 255, 255, 0.8)', // More transparent
-				backdropFilter: 'blur(8px)', // Stronger blur
+				background: `color-mix(in srgb, ${token.colorBgContainer} 55%, transparent)`, // Semi-transparent for blur
+				backdropFilter: 'blur(8px)',
 				padding: 0, // Reset padding, will use container
 				boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.03)',
 				position: 'sticky',
 				top: 0,
 				zIndex: 1000,
 				height: 64,
-				borderBottom: '1px solid rgba(0,0,0,0.05)',
+				borderBottom: `1px solid ${token.colorBorderSecondary}`,
 			}}
 		>
 			<div
@@ -248,7 +249,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 						strong
 						style={{
 							margin: 0,
-							color: token.colorPrimary,
+							color: token.colorTextHeading,
 							fontSize: 20,
 							letterSpacing: '-0.5px',
 							fontFamily: 'var(--font-geist-sans, sans-serif)', // Assuming setup
@@ -285,6 +286,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 								separator={<div style={{ width: 1, height: 16, background: '#eee' }} />}
 							>
 								<LanguageSelector />
+								<ThemeToggle />
 
 								{/* Share Button (Desktop) - Enhanced Visibility */}
 								<Tooltip title={t('share')}>
@@ -293,7 +295,6 @@ export default function NavBar({ user }: { user?: User | null }) {
 										ghost
 										icon={<ShareAltOutlined style={{ fontSize: 18 }} />}
 										onClick={() => setShareModalOpen(true)}
-										// style={{ borderColor: '#1E3A5F', color: '#1E3A5F' }}
 									>
 										{t('share')}
 									</Button>
@@ -325,6 +326,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 					) : (
 						<Flex gap="middle" align="center">
 							<LanguageSelector />
+							<ThemeToggle />
 							<Link href="/login">
 								<Button
 									type="primary"
@@ -348,6 +350,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 				{isPublic && (
 					<div className="mobile-trigger">
 						<Flex gap="small" align="center">
+							<ThemeToggle />
 							<LanguageSelector />
 							<Link href="/login">
 								<Button type="primary" size="small" style={{ background: token.colorPrimary }}>
@@ -359,91 +362,16 @@ export default function NavBar({ user }: { user?: User | null }) {
 				)}
 
 				{/* Mobile Drawer */}
-				<Drawer
-					title={
-						<Flex justify="space-between" align="center">
-							<Flex align="center" gap="small">
-								<Image src="/assets/w_logo.png" alt="Logo" width={24} height={24} />
-								<Text strong style={{ margin: 0, color: token.colorPrimary }}>
-									WatashiWa
-								</Text>
-							</Flex>
-							<Space>
-								<LanguageSelector />
-							</Space>
-						</Flex>
-					}
-					placement="right"
-					onClose={closeDrawer}
+				<NavDrawer
 					open={drawerOpen}
-					styles={{ body: { padding: 0 }, wrapper: { width: 280 } }}
-				>
-					<Flex vertical style={{ height: '100%' }}>
-						{user && (
-							<div
-								style={{
-									padding: '20px 24px',
-									borderBottom: '1px solid #f0f0f0',
-									background: '#fafafa',
-								}}
-							>
-								<Flex gap={12} align="center">
-									<Avatar
-										size="large"
-										icon={<UserOutlined />}
-										src={user?.user_metadata?.avatar_url}
-										style={{ backgroundColor: token.colorPrimary }}
-									>
-										{user?.email?.[0]?.toUpperCase()}
-									</Avatar>
-									<Flex vertical>
-										<Text strong>{user?.user_metadata?.full_name || 'User'}</Text>
-										<Text type="secondary" style={{ fontSize: 12 }}>
-											{user?.email}
-										</Text>
-									</Flex>
-								</Flex>
-							</div>
-						)}
-
-						<Menu
-							mode="inline"
-							selectedKeys={[pathname]}
-							items={menuItems}
-							style={{ borderRight: 'none', flex: 1 }}
-							onClick={closeDrawer}
-						/>
-
-						{user && (
-							<div style={{ padding: '24px' }}>
-								<Button
-									block
-									type="primary"
-									icon={<ShareAltOutlined />}
-									onClick={() => {
-										setShareModalOpen(true);
-										setDrawerOpen(false);
-									}}
-									style={{ marginBottom: 12, background: token.colorPrimary }}
-								>
-									{t('share')}
-								</Button>
-								<Button
-									block
-									type="text"
-									icon={<BugOutlined />}
-									onClick={handleBugReport}
-									style={{ marginBottom: 12, color: '#666' }}
-								>
-									{tCommon('reportIssue')}
-								</Button>
-								<Button block danger icon={<LogoutOutlined />} onClick={handleLogout}>
-									{tCommon('logout')}
-								</Button>
-							</div>
-						)}
-					</Flex>
-				</Drawer>
+					onClose={closeDrawer}
+					user={user}
+					pathname={pathname}
+					menuItems={menuItems}
+					onShare={() => setShareModalOpen(true)}
+					onBugReport={handleBugReport}
+					onLogout={handleLogout}
+				/>
 
 				<ShareModal open={shareModalOpen} onCancel={() => setShareModalOpen(false)} />
 			</div>
