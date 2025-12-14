@@ -2,8 +2,7 @@
 
 import { prisma } from '@/lib/db';
 import { getUser } from './actions';
-import { UserRole, Prisma } from '@/generated/prisma';
-import { hasRole } from '@/lib/auth/roleGuard';
+import { UserRole } from '@prisma/client';
 
 // Helper to ensure Admin/Mod access
 async function requireAdminOrMod() {

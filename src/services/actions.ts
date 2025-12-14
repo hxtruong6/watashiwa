@@ -1,12 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use server';
 
 import { prisma } from '@/lib/db';
 import { createClient } from '@/utils/supabase/server';
 import { revalidatePath } from 'next/cache';
-import type { StudyCard, Vocab, Kanji, User } from '@/generated/prisma';
+import { StudyCard, Vocab, Kanji, User, UserRole, ReportStatus, ReportType } from '@prisma/client';
 
-import { UserRole, ReportStatus, ReportType } from '@/generated/prisma';
 import { requireRole, hasRole } from '@/lib/auth/roleGuard';
 import { Card, fsrs, generatorParameters, Rating, State } from 'ts-fsrs';
 

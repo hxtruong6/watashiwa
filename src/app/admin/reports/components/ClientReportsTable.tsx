@@ -4,7 +4,7 @@
 import React, { useState } from 'react';
 import { Table, Tag, Button, Space, Modal, message, Descriptions, Form } from 'antd';
 import { CheckOutlined, EyeOutlined } from '@ant-design/icons';
-import { ReportStatus, ReportType } from '@/generated/prisma';
+import { ReportStatus, ReportType } from '@prisma/client';
 import { resolveReport, updateVocab, updateKanji } from '@/services/actions';
 import VocabEditor from '@/components/admin/VocabEditor';
 import KanjiEditor from '@/components/admin/KanjiEditor';

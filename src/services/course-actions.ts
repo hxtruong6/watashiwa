@@ -3,7 +3,7 @@
 import { prisma } from '@/lib/db';
 import { revalidatePath } from 'next/cache';
 import { getUser } from '@/services/actions';
-import { PrismaClientKnownRequestError } from '@/generated/prisma/runtime/client';
+import { PrismaClientKnownRequestError } from '@prisma/client/runtime/client';
 
 // --- Types ---
 

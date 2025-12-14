@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Table, Select, message, Modal } from 'antd';
-import { UserRole } from '@/generated/prisma';
+import { UserRole } from '@prisma/client';
 import RoleBadge from '@/components/RoleBadge';
 import { updateUserRole } from '@/services/actions';
 

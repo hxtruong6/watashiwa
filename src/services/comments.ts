@@ -2,7 +2,7 @@
 
 import { prisma } from '@/lib/db';
 import { getUser } from '@/services/actions';
-import { CommentType } from '@/generated/prisma';
+import { CommentType } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
 /**
