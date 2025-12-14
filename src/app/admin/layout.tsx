@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { getUserWithRole } from '@/services/actions';
 import { hasRole } from '@/lib/auth/roleGuard';
-import { UserRole } from '@/generated/prisma';
+import { UserRole } from '@prisma/client';
 import React from 'react';
 import themeConfig from '@/lib/theme/themeConfig';
 import {

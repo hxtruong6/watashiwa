@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { UserRole } from '@/generated/prisma';
+import { UserRole } from '@prisma/client';
 import { getDashboardData, syncUser, getUserWithRole, getLeaderboard } from '@/services/actions';
 import DashboardContent from '@/components/DashboardContent';
 import DashboardErrorState from '@/components/dashboard/DashboardErrorState';

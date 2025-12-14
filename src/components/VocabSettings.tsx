@@ -31,7 +31,7 @@ const { Text } = Typography;
 
 const { useToken } = theme;
 
-import type { User } from '@/generated/prisma';
+import type { User } from '@prisma/client';
 
 interface VocabSettingsProps {
 	showFurigana: boolean;

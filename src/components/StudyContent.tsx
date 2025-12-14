@@ -22,7 +22,7 @@ import {
 	getDailyProgress,
 } from '@/services/actions';
 import { getCourseById } from '@/services/course-actions';
-import type { User } from '@/generated/prisma';
+import type { User } from '@prisma/client';
 import FlashCard, { FlashCardHandle } from '@/components/FlashCard';
 import VocabSettings from '@/components/VocabSettings';
 import ReportModal from '@/components/ReportModal';

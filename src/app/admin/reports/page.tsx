@@ -1,6 +1,6 @@
 import React from 'react';
 import { getUserWithRole, getReports } from '@/services/actions';
-import { UserRole } from '@/generated/prisma';
+import { UserRole } from '@prisma/client';
 import { redirect } from 'next/navigation';
 import ClientReportsTable from './components/ClientReportsTable';
 import themeConfig from '@/lib/theme/themeConfig';

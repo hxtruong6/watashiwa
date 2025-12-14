@@ -28,7 +28,7 @@ import {
 } from '@ant-design/icons';
 import { formatDistanceToNow } from 'date-fns';
 import { voteComment, deleteComment, updateComment } from '@/services/comments';
-import { CommentType } from '@/generated/prisma';
+import { CommentType } from '@prisma/client';
 import { useTranslations } from 'next-intl';
 
 const { Text } = Typography;

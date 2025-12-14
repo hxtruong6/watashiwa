@@ -3,7 +3,7 @@
 import React from 'react';
 import { Empty, Spin, Flex } from 'antd';
 import CommentItem from './CommentItem';
-import { CommentType } from '@/generated/prisma';
+import { CommentType } from '@prisma/client';
 
 interface CommentListProps {
 	comments: {

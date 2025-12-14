@@ -20,7 +20,7 @@ import { Divider, Drawer, theme } from 'antd';
 const { useToken } = theme;
 import VocabSettings from './VocabSettings';
 import { useRouter } from 'next/navigation';
-import type { User } from '@/generated/prisma';
+import type { User } from '@prisma/client';
 
 interface WeeklyStatsData {
 	days: { day: string; count: number; isToday?: boolean }[];

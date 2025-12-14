@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Tag } from 'antd';
-import { UserRole } from '@/generated/prisma';
+import { UserRole } from '@prisma/client';
 import { getRoleColor } from '@/lib/auth/roleGuard';
 
 interface RoleBadgeProps {

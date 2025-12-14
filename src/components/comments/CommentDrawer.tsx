@@ -9,7 +9,7 @@ import CommentForm from './CommentForm';
 import { getComments } from '@/services/comments';
 import { getUserWithRole } from '@/services/actions';
 import { useTranslations } from 'next-intl';
-import { CardComment } from '@/generated/prisma';
+import { CardComment } from '@prisma/client';
 
 const { Title, Text } = Typography;
 const { useToken } = theme;

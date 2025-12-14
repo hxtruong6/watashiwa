@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Modal, Select, Input, message } from 'antd';
 import { FlagOutlined } from '@ant-design/icons';
-import { ReportType } from '@/generated/prisma'; // Ensure this matches your Prisma Client location
+import { ReportType } from '@prisma/client'; // Ensure this matches your Prisma Client location
 import { submitReport } from '@/services/actions';
 
 const { TextArea } = Input;
