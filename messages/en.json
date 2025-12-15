@@ -38,7 +38,8 @@
         "share": "Share",
         "library": "Library",
         "myDecks": "My Decks",
-        "courses": "Courses"
+        "courses": "Courses",
+        "settings": "Settings"
     },
     "Dashboard": {
         "heroTitle": "Ready to learn?",
@@ -84,7 +85,8 @@
         "nextReview": "Next review",
         "hours": "hours",
         "yourTopTips": "Your Top Tips",
-        "communityHighlights": "Community Highlights (Trending Tips)"
+        "communityHighlights": "Community Highlights (Trending Tips)",
+        "exercises": "Active Recall"
     },
     "Study": {
         "settingsTitle": "Learning Settings",
@@ -110,7 +112,22 @@
         "unableToStart": "Unable to Start Session",
         "goBack": "Go Back",
         "noContentToStudy": "No content to study",
-        "noDecksInCourse": "This course has no decks yet. Add some decks to start studying."
+        "noDecksInCourse": "This course has no decks yet. Add some decks to start studying.",
+        "exercises": {
+            "title": "Active Recall",
+            "sessionComplete": "Session Complete!",
+            "sessionCompleteSubtitle": "Great job! You finished the session.",
+            "score": "You scored {score}/{total}",
+            "playAgain": "Play Again",
+            "dashboard": "Dashboard",
+            "loading": "Generating questions...",
+            "error": "Failed to load exercises. Please try again or check your content.",
+            "notEnoughCards": "Not Enough Cards",
+            "notEnoughCardsDesc": "You need at least 4 vocabulary cards to start an active recall session.",
+            "goBack": "Go Back",
+            "studyDeck": "Study Deck",
+            "browseLibrary": "Browse Library"
+        }
     },
     "Decks": {
         "libraryTitle": "Library",
@@ -146,7 +163,10 @@
         "filterMine": "My Decks",
         "filterPublic": "Public",
         "addNewContent": "Add Content",
-        "close": "Close"
+        "close": "Close",
+        "exercises": {
+            "title": "Active Recall"
+        }
     },
     "Settings": {
         "furigana": "Furigana",

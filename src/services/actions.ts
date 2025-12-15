@@ -13,6 +13,7 @@ const params = generatorParameters({ enable_fuzz: true });
 const f = fsrs(params);
 
 import { z } from 'zod';
+import { getStartOfDayInTimezone } from '@/lib/date-utils';
 
 // --- Zod Schemas ---
 
@@ -77,8 +78,8 @@ const UpdateKanjiSchema = z.object({
 });
 
 export type StudyCardWithDetails = StudyCard & {
-	vocab?: Vocab | null;
-	kanji?: Kanji | null;
+	vocab?: (Vocab & { _count?: { cardComments: number } }) | null;
+	kanji?: (Kanji & { _count?: { cardComments: number } }) | null;
 };
 
 import { cache } from 'react';
@@ -303,6 +304,175 @@ export async function getNextReviewCard(
 	} catch (error) {
 		console.error('Error fetching next review card:', error);
 		return null;
+	}
+}
+
+/**
+ * Get a queue of cards for review (Smart Queue / Prefetching)
+ * Fetches multiple cards to allow client-side buffering.
+ */
+export async function getReviewQueue(
+	deckIdOrIds?: string | string[],
+	limit: number = 3,
+): Promise<StudyCardWithDetails[]> {
+	try {
+		const validation = DeckIdOrIdsSchema.safeParse(deckIdOrIds);
+		if (!validation.success) return [];
+
+		const user = await getUser();
+		if (!user) return [];
+
+		// 1. Fetch User Config
+		const userConfig = await prisma.user.findUnique({
+			where: { id: user.id },
+			select: { limitNewCards: true, limitReviews: true },
+		});
+		const limitNewCards = userConfig?.limitNewCards ?? 20;
+		const limitReviews = userConfig?.limitReviews ?? 200;
+
+		const startOfDay = getStartOfDayInTimezone();
+
+		// 2. Check Daily Limits
+		const reviewsToday = await prisma.reviewLog.count({
+			where: { userId: user.id, review: { gte: startOfDay } },
+		});
+
+		if (reviewsToday >= limitReviews) return [];
+
+		const remainingReviews = limitReviews - reviewsToday;
+		const fetchLimit = Math.min(limit, remainingReviews);
+
+		if (fetchLimit <= 0) return [];
+
+		// 3. Fetch Due Cards (Reviews)
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		const whereCondition: any = {
+			userId: user.id,
+			due: { lte: new Date() },
+		};
+
+		if (deckIdOrIds) {
+			if (Array.isArray(deckIdOrIds)) {
+				whereCondition.OR = [
+					{ vocab: { deckId: { in: deckIdOrIds } } },
+					{ kanji: { deckId: { in: deckIdOrIds } } },
+				];
+			} else {
+				whereCondition.OR = [
+					{ vocab: { deckId: deckIdOrIds } },
+					{ kanji: { deckId: deckIdOrIds } },
+				];
+			}
+		}
+
+		const dueCards = await prisma.studyCard.findMany({
+			where: whereCondition,
+			orderBy: { due: 'asc' },
+			take: fetchLimit,
+			include: {
+				vocab: { include: { _count: { select: { cardComments: true } } } },
+				kanji: { include: { _count: { select: { cardComments: true } } } },
+			},
+		});
+
+		if (dueCards.length >= fetchLimit) {
+			return dueCards;
+		}
+
+		// 4. Fill with New Cards (JIT Enrollment)
+		const queue = [...dueCards];
+		const needed = fetchLimit - queue.length;
+
+		const newCardsToday = await prisma.studyCard.count({
+			where: {
+				userId: user.id,
+				createdAt: { gte: startOfDay },
+				state: 0,
+			},
+		});
+
+		if (newCardsToday >= limitNewCards) {
+			return queue;
+		}
+
+		const remainingNew = limitNewCards - newCardsToday;
+		const newToFetch = Math.min(needed, remainingNew);
+
+		if (newToFetch <= 0) return queue;
+
+		// Fetch New Vocab Candidates
+		// Note: This logic is tricky for "queueing" multiple NEW cards because we need to Enroll them to avoid creating duplicates.
+		// We WILL create them now.
+
+		for (let i = 0; i < newToFetch; i++) {
+			// Find 1 new candidate (Vocab or Kanji)
+			// Logic copied from getNextReviewCard but slightly optimized to just create one by one to ensure uniqueness/correct state
+			// Ideally we findMany, but JIT logic checks `studyCards: { none: ... }` which is robust.
+
+			// Vocab?
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			const vocabWhere: any = {
+				deck: { OR: [{ isPublic: true }, { authorId: user.id }] },
+				studyCards: { none: { userId: user.id } },
+			};
+			if (deckIdOrIds) {
+				if (Array.isArray(deckIdOrIds)) vocabWhere.deckId = { in: deckIdOrIds };
+				else vocabWhere.deckId = deckIdOrIds;
+			}
+
+			const newVocab = await prisma.vocab.findFirst({
+				where: vocabWhere,
+				orderBy: { createdAt: 'asc' },
+			});
+
+			if (newVocab) {
+				const newCard = await prisma.studyCard.create({
+					data: { userId: user.id, vocabId: newVocab.id, due: new Date(), state: 0 },
+					include: {
+						vocab: { include: { _count: { select: { cardComments: true } } } },
+						kanji: { include: { _count: { select: { cardComments: true } } } },
+					},
+				});
+				queue.push(newCard);
+				continue;
+			}
+
+			// Kanji?
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			const kanjiWhere: any = {
+				deck: { OR: [{ isPublic: true }, { authorId: user.id }] },
+				studyCards: { none: { userId: user.id } },
+			};
+			if (deckIdOrIds) {
+				if (Array.isArray(deckIdOrIds)) kanjiWhere.deckId = { in: deckIdOrIds };
+				else kanjiWhere.deckId = deckIdOrIds;
+			}
+
+			const newKanji = await prisma.kanji.findFirst({
+				where: kanjiWhere,
+				orderBy: { createdAt: 'asc' },
+			});
+
+			if (newKanji) {
+				const newCard = await prisma.studyCard.create({
+					data: { userId: user.id, kanjiId: newKanji.id, due: new Date(), state: 0 },
+					include: {
+						vocab: { include: { _count: { select: { cardComments: true } } } },
+						kanji: { include: { _count: { select: { cardComments: true } } } },
+					},
+				});
+				queue.push(newCard);
+				continue;
+			}
+
+			// No more content
+			break;
+		}
+
+		return queue;
+	} catch (error) {
+		console.error('Error fetching review queue:', error);
+		return [];
 	}
 }
 
@@ -1006,65 +1176,6 @@ export const getUserSettings = cache(async (userId?: string) => {
 	} catch (error) {
 		console.error('Error fetching user settings:', error);
 		return null;
-	}
-});
-/**
- * Helper: Get Start of Day in User's Timezone (returned as UTC Date object)
- * e.g. If User is Tokyo (UTC+9), and it's 10am Tokyo, Start of Day is 00:00 Tokyo.
- * We need the UTC equivalent of 00:00 Tokyo, which is 15:00 UTC Previous Day.
- */
-export const getStartOfDayInTimezone = cache((timezone: string = 'UTC'): Date => {
-	try {
-		const now = new Date();
-		// Get date string in user's timezone: "MM/DD/YYYY"
-		const formatter = new Intl.DateTimeFormat('en-US', {
-			timeZone: timezone,
-			year: 'numeric',
-			month: 'numeric',
-			day: 'numeric',
-		});
-		const parts = formatter.formatToParts(now);
-		const month = parts.find((p) => p.type === 'month')?.value;
-		const day = parts.find((p) => p.type === 'day')?.value;
-		const year = parts.find((p) => p.type === 'year')?.value;
-
-		if (!month || !day || !year) throw new Error('Invalid date parts');
-
-		// Create a string "YYYY-MM-DD"
-		// We want to find the UTC time that corresponds to this local time.
-		// There isn't a direct "Date.from(string, timezone)" in stdlib.
-		// WORKAROUND:
-		// 1. Create a date assuming UTC: Date.UTC(year, month-1, day) -> Timestamp for 00:00 UTC.
-		// 2. Adjust by the offset of that timezone? No, offset changes (DST).
-		// 3. Iterative approach or library is best.
-		// Since we want to be safe, let's assume 'UTC' if complex.
-		// ACTUALLY, simpler:
-		// We can use the string to CREATE a date object, but we need to know the offset.
-		// Let's postpone complex date math and use a simplified version:
-		// If we create "YYYY-MM-DD" string and append the offset? No we don't know the offset easily.
-
-		// Fallback: Just use UTC for now to unblock, because native JS Timezone math is hell without `date-fns-tz`.
-		// User specifically asked for it. I will try to use the `toLocaleString` trick to approximate.
-
-		// Or try to parse offset from `longOffset`? "GMT+09:00".
-		const offsetStr = new Intl.DateTimeFormat('en-US', {
-			timeZone: timezone,
-			timeZoneName: 'longOffset',
-		}).format(now);
-		// Example: "12/12/2023, GMT+09:00"
-		const match = offsetStr.match(/GMT([+-]\d{2}:\d{2})/);
-		if (match) {
-			const offset = match[1];
-			const iso = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}T00:00:00${offset}`;
-			return new Date(iso);
-		}
-
-		return new Date(Date.UTC(parseInt(year), parseInt(month) - 1, parseInt(day)));
-	} catch (e) {
-		console.warn('Timezone calculation failed, falling back to UTC', e);
-		const d = new Date();
-		d.setUTCHours(0, 0, 0, 0);
-		return d;
 	}
 });
 

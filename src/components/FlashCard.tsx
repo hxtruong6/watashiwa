@@ -462,12 +462,22 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 
 									{isVocab && (
 										<>
-											{/* Han Viet Badge */}
+											{/* Han Viet Badge - Refined ("Zen" Style) */}
 											{vocabHanViet && (
-												<div style={{ marginBottom: 16 }}>
-													<Tag color="volcano" style={{ fontSize: 14, padding: '4px 10px' }}>
+												<div style={{ marginBottom: 12 }}>
+													<Text
+														type="secondary"
+														style={{
+															fontSize: 14,
+															letterSpacing: '0.05em',
+															textTransform: 'uppercase',
+															color: token.colorTextTertiary,
+															borderBottom: `1px solid ${token.colorBorderSecondary}`,
+															paddingBottom: 2,
+														}}
+													>
 														{vocabHanViet}
-													</Tag>
+													</Text>
 												</div>
 											)}
 
@@ -576,12 +586,22 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 									{/* ---- KANJI BACK ---- */}
 									{isKanji && (
 										<>
-											{/* Han Viet */}
+											{/* Han Viet - Refined */}
 											{kanjiHanViet && (
 												<div style={{ marginBottom: 16 }}>
-													<Tag color="volcano" style={{ fontSize: 16, padding: '4px 12px' }}>
+													<Text
+														type="secondary"
+														style={{
+															fontSize: 16,
+															letterSpacing: '0.05em',
+															textTransform: 'uppercase',
+															color: token.colorTextTertiary,
+															borderBottom: `1px solid ${token.colorBorderSecondary}`,
+															paddingBottom: 2,
+														}}
+													>
 														{kanjiHanViet}
-													</Tag>
+													</Text>
 												</div>
 											)}
 

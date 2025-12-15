@@ -120,7 +120,16 @@ export default function AuthPage() {
 			align="center"
 			style={{ minHeight: '100vh', background: token.colorBgLayout }}
 		>
-			<Card style={{ width: 400, boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }} bordered={false}>
+			<Card
+				style={{
+					width: '100%',
+					maxWidth: 400,
+					background: token.colorBgContainer,
+					borderColor: token.colorBorder,
+				}}
+				styles={{ body: { padding: '32px 24px' } }}
+				variant="borderless"
+			>
 				<div style={{ textAlign: 'center', marginBottom: 24 }}>
 					<Title level={2} style={{ color: token.colorPrimary, marginBottom: 0 }}>
 						{mode === 'login' ? 'Welcome Back' : 'Join WatashiWa'}

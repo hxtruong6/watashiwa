@@ -104,7 +104,12 @@ export default function NavBar({ user }: { user?: User | null }) {
 	const closeDrawer = () => setDrawerOpen(false);
 
 	// Don't show NavBar on login or study pages (immersive mode), or Admin Panel
-	if (pathname === '/login' || pathname === '/study' || pathname?.startsWith('/admin')) {
+	if (
+		pathname === '/login' ||
+		pathname === '/study' ||
+		pathname === '/exercises' ||
+		pathname?.startsWith('/admin')
+	) {
 		return null;
 	}
 
@@ -196,7 +201,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 			{
 				key: 'settings',
 				icon: <SettingOutlined />,
-				label: 'Settings',
+				label: t('settings'),
 				onClick: () => setSettingsModalOpen(true),
 			},
 

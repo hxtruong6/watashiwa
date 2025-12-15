@@ -5,7 +5,21 @@
 While standard Flashcards (Passive Review/Self-Grading) are excellent for efficiency, **Active Recall Exercises** force the brain to retrieve information without a prompt, leading to stronger memory traces.
 
 **Strategy for V1 (MVP)**:
-To reduce complexity and launch faster, we will implement Exercises as a **Standalone Mode** (`/exercises`). Users choose to "Enter the Arena" rather than having it injected during standard study. This allows for a focused "Practice" session.
+To reduce complexity and launch faster, we will implement Exercises as a **Standalone Mode** (`/exercises`).
+
+## Design Philosophy
+
+> **Decision: Persistent Empty State over Toast Message**
+>
+> We chose to redirect users to a dedicated "Not Enough Cards" page instead of showing a transient Toast error.
+>
+> * **Robustness**: Works with deep linking/bookmarks (state is handled on the page, not just the button click).
+> * **Education**: Allows us to explain *why* (min 4 cards) and suggest actions (Add Content) without time pressure.
+> * **Simplicity**: Keeps the dashboard logic clean; the exercises page owns its validation.
+
+## User Scenarios
+
+Users choose to "Enter the Arena" rather than having it injected during standard study. This allows for a focused "Practice" session.
 
 ## 2. User Flow & UX
 
@@ -110,17 +124,23 @@ interface Question {
 
 ### Phase 1: Core Architecture
 
-* [ ] Define `Exercise` and `Question` interfaces.
-* [ ] Create `useExerciseSession` hook state machine.
-* [ ] Build `ExerciseLayout` (Shell).
+* [x] Define `Exercise` and `Question` interfaces.
+* [x] Create `useExerciseSession` hook state machine.
+* [x] Build `ExerciseLayout` (Shell).
 
 ### Phase 2: The MVP (MCQ)
 
-* [ ] Implement `MultipleChoiceExercise` component.
-* [ ] Build `ExercisesPage` (`/exercises`) to stitch it together.
-* [ ] Logic: "Get Random Questions" (Client-side shuffle for V1).
+* [x] Implement `MultipleChoiceExercise` component.
+* [x] Build `ExercisesPage` (`/exercises`) to stitch it together.
+* [x] Logic: "Get Random Questions" (Client-side shuffle for V1).
 
 ### Phase 3: Polish
 
-* [ ] Add Sound Effects (use `useSound` or Audio API).
-* [ ] Add Framer Motion transitions between questions.
+* [x] Add Sound Effects (use `useSound` or Audio API).
+* [x] Add Framer Motion transitions between questions.
+
+### Phase 4: Refinements (Checklist Compliance)
+
+* [x] Input Validation (Zod Schema for Server Actions).
+* [x] Keyboard Shortcuts (1-4 for options).
+* [x] Improved Distractor Logic (Matching word length).

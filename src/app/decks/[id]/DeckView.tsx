@@ -35,6 +35,7 @@ import {
 	CommentOutlined,
 	CloseOutlined,
 	SyncOutlined,
+	RocketOutlined,
 } from '@ant-design/icons';
 import CommentDrawer from '@/components/comments/CommentDrawer';
 import Link from 'next/link';
@@ -429,6 +430,15 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 									style={{ width: '100%', height: 48, fontSize: 18 }}
 								>
 									{t('playButton')}
+								</Button>
+							</Link>
+							<Link href={`/exercises?deckId=${deck.id}`} style={{ width: '100%' }}>
+								<Button
+									icon={<RocketOutlined />}
+									size="large"
+									style={{ width: '100%', height: 48, fontSize: 16 }}
+								>
+									{t('exercises.title')}
 								</Button>
 							</Link>
 							{stats.unseen > 0 && (

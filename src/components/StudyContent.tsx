@@ -16,10 +16,11 @@ import {
 } from 'antd';
 import { useTranslations } from 'next-intl';
 import {
-	getNextReviewCard,
 	submitReview,
 	getUserSettings,
 	getDailyProgress,
+	getReviewQueue,
+	type StudyCardWithDetails,
 } from '@/services/actions';
 import { getCourseById } from '@/services/course-actions';
 import type { User } from '@prisma/client';
@@ -40,6 +41,7 @@ import {
 } from '@ant-design/icons';
 import { useRouter, useSearchParams } from 'next/navigation';
 import confetti from 'canvas-confetti';
+import ImmersiveProgressBar from '@/components/Study/ImmersiveProgressBar';
 
 const { Content } = Layout;
 const { Text } = Typography;
@@ -50,7 +52,8 @@ export default function StudyContent() {
 	const t = useTranslations('Study');
 	const tCommon = useTranslations('Common');
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	const [card, setCard] = useState<any>(null);
+	const [card, setCard] = useState<StudyCardWithDetails | null>(null);
+	const [queue, setQueue] = useState<StudyCardWithDetails[]>([]);
 	const [loading, setLoading] = useState(true);
 	const [showAnswer, setShowAnswer] = useState(false);
 	const [sessionComplete, setSessionComplete] = useState(false);
@@ -179,27 +182,40 @@ export default function StudyContent() {
 		});
 	}, []);
 
-	// Fetch Initial Card
+	// Fetch Initial Card / Manage Queue
 	const fetchNextCard = useCallback(async () => {
 		try {
-			// If courseId is present but targetDeckIds is not yet resolved (still string or undefined), wait or fetch
-			// Logic: If courseId is set, we need to resolve it to an array of deck IDs first.
-			// Handled in a separate effect below.
-
 			if (courseIdParam && !Array.isArray(targetDeckIds)) {
 				return; // Wait for course resolution
 			}
 
-			setLoading(true);
-			const nextCard = await getNextReviewCard(targetDeckIds);
-			if (nextCard) {
+			// If we have cards in queue, use them immediately (client side)
+			if (queue.length > 0) {
+				const nextCard = queue[0];
 				setCard(nextCard);
+				setQueue((prev) => prev.slice(1)); // Remove from queue
+				setShowAnswer(false);
+				setSessionComplete(false);
+				setLoading(false);
+				return;
+			}
+
+			// Otherwise fetch from server
+			setLoading(true);
+
+			// Use Queue Fetcher instead of single card
+			const newQueue = await getReviewQueue(targetDeckIds, 3); // Buffer 3 cards
+
+			if (newQueue.length > 0) {
+				const nextCard = newQueue[0];
+				setCard(nextCard);
+				setQueue(newQueue.slice(1));
 				setShowAnswer(false);
 				setSessionComplete(false);
 			} else {
 				setCard(null);
 				setSessionComplete(true);
-				updateStats(); // Ensure final stats are fresh
+				updateStats();
 			}
 		} catch (error) {
 			console.error('Failed to fetch card', error);
@@ -207,7 +223,7 @@ export default function StudyContent() {
 		} finally {
 			setLoading(false);
 		}
-	}, [targetDeckIds, message, updateStats, t, courseIdParam]);
+	}, [targetDeckIds, message, updateStats, t, courseIdParam, queue]);
 
 	// Resolve Course ID to Deck IDs
 	useEffect(() => {
@@ -237,9 +253,16 @@ export default function StudyContent() {
 		}
 	}, [courseIdParam, deckIdParam, message]);
 
+	// Initial Load
 	useEffect(() => {
-		fetchNextCard();
-	}, [fetchNextCard]);
+		// Only fetch if we haven't loaded a card yet (and have IDs resolved)
+		if (!card && !loading && !sessionComplete) {
+			fetchNextCard();
+		} else if (!card && loading) {
+			// Initial load
+			fetchNextCard();
+		}
+	}, [fetchNextCard, card, loading, sessionComplete]);
 
 	// Auto-Reveal Timer
 	useEffect(() => {
@@ -259,39 +282,99 @@ export default function StudyContent() {
 		async (rating: number) => {
 			if (!card || submittingRating !== null) return;
 
-			try {
-				setSubmittingRating(rating);
-				// Optimistic UI update for stats could happen here, but safer to re-fetch or increment local state
-				const result = await submitReview(card.id, rating, targetDeckIds);
+			// Smart Queue Logic:
+			// 1. Optimistic Update (Immediate Feedback)
+			const currentCardId = card.id;
+			setSubmittingRating(rating); // Temporarily lock UI/Show loading on bar if desired, OR just instant.
+			// Ideally instant. Let's keep submittingRating but make it very short strictly for this function logic safeguard.
+			// Actually, we want to show next card IMMEDIATELY.
 
-				if (result.success) {
-					// Increment local stats for immediate feedback
-					setDailyStats((prev) => ({
-						...prev,
-						reviewsToday: prev.reviewsToday + 1,
-						// If card was new (state 0), increment newCardsToday. But we depend on backend card state which we might not have perfectly sync here easily without complex check.
-						// Simplifying: Just re-fetch in background.
-					}));
-					getDailyProgress().then((s) => s && setDailyStats(s));
+			// 2. Prep Next Card
+			let nextCard: StudyCardWithDetails | null = null;
 
-					if (result.nextCard) {
-						setCard(result.nextCard);
+			if (queue.length > 0) {
+				nextCard = queue[0];
+				setQueue((prev) => prev.slice(1));
+			} else {
+				// If queue empty, we might show loading spinner on next render.
+				// But we optimistically assume we might fetch fast or user has to wait.
+				// We'll set card to null implies loading if we call fetchNextCard?
+				// No, we handle it explicitly.
+			}
+
+			// 3. Update UI State Instantly
+			if (nextCard) {
+				setCard(nextCard);
+				setShowAnswer(false);
+				setSubmittingRating(null); // Unlock immediately for next card
+			} else {
+				// No card in queue? We must fetch.
+				setLoading(true);
+			}
+
+			// 4. Update Stats Optimistically
+			setDailyStats((prev) => ({
+				...prev,
+				reviewsToday: prev.reviewsToday + 1,
+			}));
+
+			// 5. Background Sync (Fire & Forget, or Catch Error)
+			// We don't await this blocking the UI transition.
+			submitReview(currentCardId, rating, targetDeckIds)
+				.then(
+					(result: {
+						success: boolean;
+						nextCard?: StudyCardWithDetails | null;
+						error?: string;
+					}) => {
+						if (!result.success) {
+							console.error('Background review submission failed', result.error);
+							message.error(t('failedSubmitReview'));
+							// TODO: Revert optimistic update? Tricky. For now, assume success or user retries on error (but we moved on).
+							// Ideally store "Pending Sync" queue. MVP: Log error.
+						} else {
+							// Success.
+							// replenish queue if needed
+							if (queue.length < 2) {
+								getReviewQueue(targetDeckIds, 3).then((newCards: StudyCardWithDetails[]) => {
+									// De-duplicate against current queue and current card
+									setQueue((prev) => {
+										const allIds = new Set(prev.map((c) => c.id));
+										allIds.add(card.id); // Don't add current card
+										if (nextCard) {
+											allIds.add(nextCard.id);
+										}
+
+										const validNew = newCards.filter((c) => !allIds.has(c.id));
+										return [...prev, ...validNew];
+									});
+								});
+							}
+						}
+					},
+				)
+				.catch((err: any) => console.error('BG Submit Error', err));
+
+			// If we didn't have a next card ready, we need to fetch now (blocking)
+			if (!nextCard) {
+				// We consumed the queue is empty.
+				// Re-fetch.
+				getReviewQueue(targetDeckIds, 3).then((newQueue: StudyCardWithDetails[]) => {
+					if (newQueue.length > 0) {
+						setCard(newQueue[0]);
+						setQueue(newQueue.slice(1));
 						setShowAnswer(false);
+						setSessionComplete(false);
 					} else {
 						setCard(null);
 						setSessionComplete(true);
 					}
-				} else {
-					message.error(result.error || t('failedSubmitReview'));
-				}
-			} catch (error) {
-				console.error('Review error', error);
-				message.error(t('unexpectedError'));
-			} finally {
-				setSubmittingRating(null);
+					setLoading(false);
+					setSubmittingRating(null);
+				});
 			}
 		},
-		[card, submittingRating, message, targetDeckIds, t],
+		[card, submittingRating, message, targetDeckIds, t, queue],
 	);
 
 	// Keyboard Shortcuts
@@ -519,26 +602,7 @@ export default function StudyContent() {
 	return (
 		<Layout style={{ minHeight: '100vh', background: token.colorBgLayout }}>
 			{/* Minimal Top Progress Bar */}
-			<div
-				style={{
-					position: 'fixed',
-					top: 0,
-					left: 0,
-					right: 0,
-					height: 4,
-					background: 'rgba(0,0,0,0.05)',
-					zIndex: 200,
-				}}
-			>
-				<div
-					style={{
-						height: '100%',
-						width: `${progressPercent}%`,
-						background: token.colorSuccess,
-						transition: 'width 0.5s ease',
-					}}
-				/>
-			</div>
+			<ImmersiveProgressBar percent={progressPercent} />
 
 			{/* Top Right Controls (Close Only) */}
 			<div style={{ ...headerStyle, top: 16, right: 16 }}>
@@ -663,12 +727,9 @@ export default function StudyContent() {
 
 			<Content
 				style={{
-					padding: '16px',
 					display: 'flex',
 					flexDirection: 'column',
 					height: '100vh',
-					maxWidth: 600,
-					margin: '0 auto',
 					width: '100%',
 				}}
 			>
@@ -681,6 +742,8 @@ export default function StudyContent() {
 						flexDirection: 'column',
 						paddingBottom: 220, // Increased bottom padding for larger RatingBar area on mobile
 						paddingTop: 60, // Space for header buttons
+						paddingLeft: 16,
+						paddingRight: 16,
 					}}
 				>
 					<FlashCard

@@ -32,6 +32,9 @@ Before writing a single line of code, ensure the "Why" and "What" are crystal cl
   - [ ] Visually clean and minimal (not cluttered)?
   - [ ] Using purposeful animations (not static or boring)?
   - [ ] Aesthetically aligned with the "Zen Mastery" philosophy?
+- [ ] **Design Philosophy**: document the *Why* behind major UX decisions (e.g., "Redirect vs Toast").
+  - [ ] Explain trade-offs (Educational vs Fast).
+  - [ ] Convince the future reader/maintainer.
 
 ### B. User Flow Analysis
 

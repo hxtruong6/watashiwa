@@ -123,7 +123,7 @@ export default function DashboardContent({
 			variants={containerVariants}
 			initial="hidden"
 			animate="visible"
-			style={{ maxWidth: 1000, margin: '0 auto', padding: '30px 16px' }}
+			style={{ maxWidth: 1000, margin: '0 auto', padding: '20px 16px 80px' }} // Reduced top padding, added bottom for nav
 		>
 			{/* Hero: Greeting + Streak + Daily Goal */}
 			<HeroSection
