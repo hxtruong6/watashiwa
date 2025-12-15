@@ -14,6 +14,9 @@ export default function HeroSection() {
 	const t = useTranslations('Landing');
 	const { token } = useToken();
 
+	// Quick check for dark mode based on background token
+	const isDark = token.colorBgBase === '#151F32';
+
 	return (
 		<section
 			style={{
@@ -24,7 +27,7 @@ export default function HeroSection() {
 				display: 'flex',
 				alignItems: 'center',
 				justifyContent: 'center',
-				paddingTop: 60, // Account for navbar
+				paddingTop: 0, // Flex center handles alignment better
 			}}
 		>
 			{/* Ambient Background Elements */}
@@ -33,8 +36,8 @@ export default function HeroSection() {
 					position: 'absolute',
 					top: '-20%',
 					right: '-10%',
-					width: '80vw',
-					height: '80vw',
+					width: 'min(80vw, 800px)',
+					height: 'min(80vw, 800px)',
 					background:
 						'radial-gradient(circle, rgba(112, 130, 56, 0.15) 0%, rgba(255,255,255,0) 70%)',
 					filter: 'blur(80px)', // Increased blur
@@ -47,8 +50,8 @@ export default function HeroSection() {
 					position: 'absolute',
 					bottom: '-10%',
 					left: '-10%',
-					width: '70vw',
-					height: '70vw',
+					width: 'min(70vw, 600px)',
+					height: 'min(70vw, 600px)',
 					background: `radial-gradient(circle, ${token.colorPrimary}1a 0%, rgba(255,255,255,0) 70%)`,
 					filter: 'blur(80px)',
 					borderRadius: '50%',
@@ -118,7 +121,7 @@ export default function HeroSection() {
 								{t('heroTitle')} <br />
 								<span
 									style={{
-										background: `linear-gradient(120deg, ${token.colorSuccess} 0%, #A3B18A 100%)`,
+										background: `linear-gradient(120deg, ${token.colorSuccess} 0%, ${token.colorPrimary} 100%)`,
 										WebkitBackgroundClip: 'text',
 										WebkitTextFillColor: 'transparent',
 									}}
@@ -130,7 +133,7 @@ export default function HeroSection() {
 							<Paragraph
 								style={{
 									fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-									color: '#555',
+									color: token.colorText,
 									marginBottom: 32,
 									maxWidth: '600px', // Prevent too wide on desktop
 									lineHeight: 1.6,
@@ -179,10 +182,10 @@ export default function HeroSection() {
 												height: 56,
 												fontSize: 18,
 												borderRadius: 16,
-												background: 'rgba(255,255,255,0.8)',
+												background: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.8)',
 												backdropFilter: 'blur(10px)',
-												border: '1px solid #E0E0E0',
-												color: '#555',
+												border: `1px solid ${token.colorBorder}`,
+												color: token.colorText,
 												width: '100%',
 												fontWeight: 500,
 											}}
@@ -257,9 +260,11 @@ export default function HeroSection() {
 							<div
 								style={{
 									position: 'relative',
-									background: 'rgba(255, 255, 255, 0.65)',
+									background: isDark
+										? 'rgba(21, 31, 50, 0.7)' // Dark glass
+										: 'rgba(255, 255, 255, 0.65)', // Light glass
 									backdropFilter: 'blur(24px)',
-									border: '1px solid rgba(255, 255, 255, 0.9)',
+									border: `1px solid ${isDark ? 'rgba(255,255,255,0.1)' : 'rgba(255, 255, 255, 0.9)'}`,
 									boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.15)', // Deeper shadow
 									borderRadius: '32px',
 									padding: '32px',
@@ -295,13 +300,20 @@ export default function HeroSection() {
 
 								<Flex vertical gap="small" align="center" style={{ padding: '20px 0 40px' }}>
 									<Text
-										style={{ fontSize: 96, lineHeight: 1, fontWeight: 'bold', color: '#1f1f1f' }}
+										style={{
+											fontSize: 96,
+											lineHeight: 1,
+											fontWeight: 'bold',
+											color: token.colorText,
+										}}
 									>
 										猫
 									</Text>
-									<Text style={{ fontSize: 28, color: '#666', fontWeight: 500 }}>Neko</Text>
+									<Text style={{ fontSize: 28, color: token.colorTextSecondary, fontWeight: 500 }}>
+										{t('mockupNeko')}
+									</Text>
 									<Text type="secondary" style={{ fontSize: 16 }}>
-										(Con Mèo)
+										{t('mockupTranslation')}
 									</Text>
 
 									{/* Difficulty Buttons Mockup */}
@@ -345,7 +357,7 @@ export default function HeroSection() {
 										position: 'absolute',
 										bottom: 24,
 										right: 24,
-										background: 'rgba(255,255,255,0.9)',
+										background: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.9)',
 										color: token.colorSuccess,
 										padding: '6px 12px',
 										borderRadius: 12,
@@ -354,7 +366,7 @@ export default function HeroSection() {
 										boxShadow: '0 4px 10px rgba(0,0,0,0.05)',
 									}}
 								>
-									SRS: ACTIVE
+									{t('mockupSRS')}
 								</div>
 							</div>
 
@@ -366,12 +378,12 @@ export default function HeroSection() {
 									position: 'absolute',
 									top: 20,
 									right: -30,
-									background: 'white',
+									background: token.colorBgContainer,
 									padding: '12px 20px',
 									borderRadius: 16,
 									boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
 									zIndex: 2,
-									border: '1px solid rgba(0,0,0,0.05)',
+									border: `1px solid ${token.colorBorder}`,
 								}}
 							>
 								<Flex gap="small" align="center">
@@ -380,15 +392,15 @@ export default function HeroSection() {
 										<div
 											style={{
 												fontSize: 10,
-												color: '#888',
+												color: token.colorTextSecondary,
 												textTransform: 'uppercase',
 												letterSpacing: 1,
 											}}
 										>
-											Streak
+											{t('mockupStreak')}
 										</div>
 										<div style={{ fontWeight: 800, color: token.colorPrimary, fontSize: 16 }}>
-											12 Days
+											{t('mockupDays')}
 										</div>
 									</div>
 								</Flex>

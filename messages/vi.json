@@ -39,7 +39,9 @@
         "library": "Thư viện",
         "myDecks": "Bộ thẻ của tôi",
         "courses": "Khóa học",
-        "settings": "Cài đặt"
+        "settings": "Cài đặt",
+        "login": "Vô liền nè",
+        "signup": "Ghi danh"
     },
     "Dashboard": {
         "heroTitle": "Sẵn sàng 'slay' từ vựng chưa?",
@@ -239,10 +241,15 @@
         "statsLearners": "Đồng Môn",
         "statsReviews": "Thẻ Đã Cày",
         "statsDecks": "Hàng Đã Share",
-        "statsPassRate": "Tỉ lệ Đậu N2+",
+        "statsPassRate": "Tỉ lệ Đậu N6++",
         "ctaTitle": "Còn đợi gì nữa?",
         "ctaSubtitle": "Gia nhập hội 'master' tiếng Nhật ngay hôm nay. Không cần visa, chỉ cần đam mê.",
-        "ctaButton": "Chiến ngay (Free)"
+        "ctaButton": "Chiến ngay (Free)",
+        "mockupNeko": "Neko",
+        "mockupTranslation": "(Con Mèo)",
+        "mockupSRS": "SRS: ĐANG BẬT",
+        "mockupStreak": "Chuỗi",
+        "mockupDays": "12 Ngày"
     },
     "Comments": {
         "title": "Mẹo cộng đồng",
@@ -377,5 +384,40 @@
         "mastered": "Thành thạo",
         "start": "Bắt đầu",
         "continue": "Tiếp tục"
+    },
+    "Login": {
+        "welcomeBack": "Hế lô, người anh em thiện lành! 👋",
+        "joinWatashiWa": "Gia nhập hội 'con nhà người ta' 🚀",
+        "signInText": "Vô đây cày cuốc tiếp nào.",
+        "createAccountText": "Tạo acc flex trình tiếng Nhật liền.",
+        "emailRequired": "Không được để trống email nha!",
+        "emailInvalid": "Email này ảo ma canada rồi, nhập lại đi.",
+        "passwordRequired": "Quên pass rồi à?",
+        "loginButton": "Vô luôn",
+        "signupButton": "Đăng ký lẹ",
+        "forgotPassword": "Quên pass?",
+        "noAccount": "Chưa có acc?",
+        "alreadyHaveAccount": "Ủa có acc rồi hả?",
+        "nameRequired": "Cho xin quý danh cái nào",
+        "loginSuccess": "Đăng nhập mượt mà! Đang chuyển hướng...",
+        "signupSuccess": "Đăng ký thành công! Vô việc luôn.",
+        "passwordMin": "Pass ngắn quá, thêm tí muối đi (tối thiểu {min} ký tự)",
+        "checkEmail": "Check email để xác nhận nha người đẹp.",
+        "registrationSuccess": "Đăng ký ngon lành! Check email để kích hoạt nhé.",
+        "fullNamePlaceholder": "Tên cúng cơm của bạn",
+        "emailPlaceholder": "Email xịn của bạn",
+        "passwordPlaceholder": "Mật khẩu siêu bí mật",
+        "unexpectedError": "Lỗi gì rồi, thử lại coi."
+    },
+    "Auth": {
+        "failedTitle": "Xác thực thất bại",
+        "defaultError": "Liên kết bạn sử dụng có thể không hợp lệ, hết hạn hoặc đã được sử dụng.",
+        "goToLogin": "Đến trang Đăng nhập",
+        "goHome": "Về trang chủ"
+    },
+    "NotFound": {
+        "title": "404",
+        "subTitle": "Trang này đã đi lạc vào hư vô...",
+        "backHome": "Về nhà thôi"
     }
 }

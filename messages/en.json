@@ -39,7 +39,9 @@
         "library": "Library",
         "myDecks": "My Decks",
         "courses": "Courses",
-        "settings": "Settings"
+        "settings": "Settings",
+        "login": "Login",
+        "signup": "Sign Up"
     },
     "Dashboard": {
         "heroTitle": "Ready to learn?",
@@ -248,7 +250,12 @@
         "statsPassRate": "JLPT Pass Rate",
         "ctaTitle": "Ready to start your journey?",
         "ctaSubtitle": "Join thousands of learners mastering Japanese efficiently. No credit card required.",
-        "ctaButton": "Get Started for Free"
+        "ctaButton": "Get Started for Free",
+        "mockupNeko": "Neko",
+        "mockupTranslation": "(Cat)",
+        "mockupSRS": "SRS: ACTIVE",
+        "mockupStreak": "Streak",
+        "mockupDays": "12 Days"
     },
     "Comments": {
         "title": "Community Tips",
@@ -383,5 +390,40 @@
         "mastered": "Mastered",
         "start": "Start",
         "continue": "Continue"
+    },
+    "Login": {
+        "welcomeBack": "Welcome Back",
+        "joinWatashiWa": "Join WatashiWa",
+        "signInText": "Sign in to access your decks",
+        "createAccountText": "Create an account to start learning",
+        "nameRequired": "Please input your Name!",
+        "fullNamePlaceholder": "Full Name",
+        "emailRequired": "Please input your Email!",
+        "emailInvalid": "Please enter a valid email!",
+        "emailPlaceholder": "Email Address",
+        "passwordRequired": "Please input your Password!",
+        "passwordMin": "Must be at least 4 characters",
+        "passwordPlaceholder": "Password",
+        "forgotPassword": "Forgot password?",
+        "loginButton": "Log in",
+        "signupButton": "Sign up",
+        "noAccount": "Don't have an account?",
+        "alreadyHaveAccount": "Already have an account?",
+        "loginSuccess": "Login successful! Redirecting...",
+        "signupSuccess": "Signup successful! Redirecting...",
+        "registrationSuccess": "Registration successful! Check your email.",
+        "unexpectedError": "An unexpected error occurred.",
+        "checkEmail": "Registration successful! Please check your email for the confirmation link."
+    },
+    "Auth": {
+        "failedTitle": "Authentication Failed",
+        "defaultError": "The link you used may be invalid, expired, or already used.",
+        "goToLogin": "Go to Login",
+        "goHome": "Go Home"
+    },
+    "NotFound": {
+        "title": "404",
+        "subTitle": "Sorry, the page you visited does not exist.",
+        "backHome": "Back Home"
     }
 }

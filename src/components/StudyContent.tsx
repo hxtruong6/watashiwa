@@ -6,7 +6,6 @@ import {
 	Button,
 	Flex,
 	Result,
-	Spin,
 	App,
 	Drawer,
 	Progress,
@@ -30,7 +29,6 @@ import ReportModal from '@/components/ReportModal';
 import RatingBar from '@/components/RatingBar';
 import CommentDrawer from '@/components/comments/CommentDrawer';
 import {
-	LoadingOutlined,
 	CheckCircleFilled,
 	CloseOutlined,
 	SettingOutlined,
@@ -42,6 +40,7 @@ import {
 import { useRouter, useSearchParams } from 'next/navigation';
 import confetti from 'canvas-confetti';
 import ImmersiveProgressBar from '@/components/Study/ImmersiveProgressBar';
+import Loading from '@/components/Shared/Loading';
 
 const { Content } = Layout;
 const { Text } = Typography;
@@ -467,17 +466,7 @@ export default function StudyContent() {
 
 	// Loading State
 	if (loading && !card && !error) {
-		return (
-			<Flex
-				justify="center"
-				align="center"
-				style={{ height: '100vh', background: token.colorBgLayout }}
-			>
-				<Spin
-					indicator={<LoadingOutlined style={{ fontSize: 48, color: token.colorPrimary }} spin />}
-				/>
-			</Flex>
-		);
+		return <Loading fullScreen />;
 	}
 
 	// Error State

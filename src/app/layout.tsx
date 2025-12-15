@@ -18,6 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+	metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
 	title: 'WatashiWa - Học Cực Cuốn - Cực Hay!',
 	description:
 		'App học từ vựng SRS xịn sò, không lo rớt môn. Flex trình độ N1, cày Kanji siêu dính. Chiến ngay đi ní!',
@@ -81,7 +82,7 @@ export default async function RootLayout({
 	const user = await getUser();
 
 	return (
-		<html lang={locale}>
+		<html lang={locale} suppressHydrationWarning>
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
 				<DisableZoom />
 				<PostHogPageTracker />

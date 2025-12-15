@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Typography, Row, Col, theme } from 'antd';
+import { Typography, Row, Col, theme, Grid } from 'antd';
 import {
 	ThunderboltOutlined,
 	MobileOutlined,
@@ -16,10 +16,22 @@ import { useTranslations } from 'next-intl';
 
 const { Title, Paragraph } = Typography;
 const { useToken } = theme;
+const { useBreakpoint } = Grid;
 
 export default function FeatureSection() {
 	const { token } = useToken();
+	const screens = useBreakpoint();
 	const t = useTranslations('Landing');
+	const [mounted, setMounted] = React.useState(false);
+
+	React.useEffect(() => {
+		const timer = setTimeout(() => setMounted(true), 0);
+		return () => clearTimeout(timer);
+	}, []);
+
+	// During SSR/initial render, assume mobile (false) to match server
+	// Once mounted, usage real screens breakpoint
+	const isMd = mounted ? screens.md : false;
 
 	const features = [
 		{
@@ -33,32 +45,32 @@ export default function FeatureSection() {
 		{
 			title: t('featureKanji'),
 			description: t('featureKanjiDesc'),
-			icon: <ReadOutlined style={{ fontSize: 32, color: '#555' }} />,
-			color: '#fff',
+			icon: <ReadOutlined style={{ fontSize: 32, color: token.colorTextSecondary }} />,
+			color: token.colorBgContainer,
 			size: 'medium',
 			delay: 0.1,
 		},
 		{
 			title: t('featureMobile'),
 			description: t('featureMobileDesc'),
-			icon: <MobileOutlined style={{ fontSize: 32, color: '#555' }} />,
-			color: '#fff',
+			icon: <MobileOutlined style={{ fontSize: 32, color: token.colorTextSecondary }} />,
+			color: token.colorBgContainer,
 			size: 'medium',
 			delay: 0.2,
 		},
 		{
 			title: t('featureOffline'),
 			description: t('featureOfflineDesc'),
-			icon: <SafetyCertificateOutlined style={{ fontSize: 32, color: '#555' }} />,
-			color: '#fff',
+			icon: <SafetyCertificateOutlined style={{ fontSize: 32, color: token.colorTextSecondary }} />,
+			color: token.colorBgContainer,
 			size: 'medium',
 			delay: 0.3,
 		},
 		{
 			title: t('featureAnalytics'),
 			description: t('featureAnalyticsDesc'),
-			icon: <BarChartOutlined style={{ fontSize: 32, color: '#555' }} />,
-			color: '#fff',
+			icon: <BarChartOutlined style={{ fontSize: 32, color: token.colorTextSecondary }} />,
+			color: token.colorBgContainer,
 			size: 'medium',
 			delay: 0.4,
 		},
@@ -76,11 +88,19 @@ export default function FeatureSection() {
 		<section
 			id="features"
 			style={{
-				padding: '100px 0',
+				padding: isMd ? '100px 0' : '60px 0',
 				background: token.colorBgLayout,
+				overflowX: 'hidden',
 			}}
 		>
-			<div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', width: '100%' }}>
+			<div
+				style={{
+					maxWidth: 1200,
+					margin: '0 auto',
+					padding: isMd ? '0 24px' : '0 16px',
+					width: '100%',
+				}}
+			>
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					whileInView={{ opacity: 1, y: 0 }}
@@ -102,7 +122,7 @@ export default function FeatureSection() {
 						style={{
 							textAlign: 'center',
 							fontSize: 18,
-							color: '#666',
+							color: token.colorTextSecondary,
 							maxWidth: 600,
 							margin: '0 auto 60px',
 						}}
@@ -111,7 +131,7 @@ export default function FeatureSection() {
 					</Paragraph>
 				</motion.div>
 
-				<Row gutter={[24, 24]}>
+				<Row gutter={isMd ? [24, 24] : [16, 16]}>
 					{features.map((feature, index) => (
 						<Col
 							xs={24}
@@ -133,21 +153,24 @@ export default function FeatureSection() {
 										height: '100%',
 										background: feature.color,
 										borderRadius: 24,
-										padding: 32,
+										padding: isMd ? 32 : 20,
 										display: 'flex',
 										flexDirection: 'column',
 										justifyContent: 'space-between',
-										border: feature.size === 'medium' ? '1px solid #EAEAEA' : 'none',
-										color: feature.size === 'large' ? 'white' : 'inherit',
+										border: feature.size === 'medium' ? `1px solid ${token.colorBorder}` : 'none',
+										color: feature.size === 'large' ? 'white' : token.colorText,
 									}}
 								>
 									<div style={{ marginBottom: 24 }}>
 										<div
 											style={{
-												width: 64,
-												height: 64,
+												width: isMd ? 64 : 56,
+												height: isMd ? 64 : 56,
 												borderRadius: 16,
-												background: feature.size === 'large' ? 'rgba(255,255,255,0.2)' : '#F5F5F5',
+												background:
+													feature.size === 'large'
+														? 'rgba(255,255,255,0.2)'
+														: token.colorFillTertiary,
 												display: 'flex',
 												alignItems: 'center',
 												justifyContent: 'center',
@@ -162,14 +185,17 @@ export default function FeatureSection() {
 												marginTop: 0,
 												marginBottom: 12,
 												color: feature.size === 'large' ? 'white' : token.colorPrimary,
-												fontSize: feature.size === 'large' ? 28 : 20,
+												fontSize: feature.size === 'large' ? (isMd ? 28 : 24) : isMd ? 20 : 18,
 											}}
 										>
 											{feature.title}
 										</Title>
 										<Paragraph
 											style={{
-												color: feature.size === 'large' ? 'rgba(255,255,255,0.85)' : '#666',
+												color:
+													feature.size === 'large'
+														? 'rgba(255,255,255,0.85)'
+														: token.colorTextSecondary,
 												fontSize: 16,
 												margin: 0,
 											}}
