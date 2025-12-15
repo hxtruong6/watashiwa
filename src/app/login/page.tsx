@@ -123,7 +123,7 @@ export default function AuthPage() {
 			<Card style={{ width: 400, boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }} bordered={false}>
 				<div style={{ textAlign: 'center', marginBottom: 24 }}>
 					<Title level={2} style={{ color: token.colorPrimary, marginBottom: 0 }}>
-						{mode === 'login' ? 'Welcome Back' : 'Join Watashi JP'}
+						{mode === 'login' ? 'Welcome Back' : 'Join WatashiWa'}
 					</Title>
 					<Text type="secondary">
 						{mode === 'login'

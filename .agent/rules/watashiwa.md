@@ -2,7 +2,7 @@
 trigger: always_on
 ---
 
-# Project Context: Watashi JP (JLPT Mastery with SRS)
+# Project Context: WatashiWa (Mastery with SRS)
 
 ## 1. Role & Persona
 

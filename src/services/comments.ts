@@ -4,11 +4,33 @@ import { prisma } from '@/lib/db';
 import { getUser } from '@/services/actions';
 import { CommentType } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
+import { z } from 'zod';
+
+const IdSchema = z.string().min(1);
+
+const CreateCommentSchema = z.object({
+	entityId: IdSchema,
+	entityType: z.enum(['vocab', 'kanji']),
+	content: z.string().min(1),
+	commentType: z.nativeEnum(CommentType).optional(),
+});
+
+const VoteSchema = z.object({
+	commentId: IdSchema,
+	value: z.number().int().min(-1).max(1),
+});
+
+const UpdateCommentSchema = z.object({
+	commentId: IdSchema,
+	content: z.string().min(1),
+	type: z.nativeEnum(CommentType),
+});
 
 /**
  * Get comments for a speicific Vocab or Kanji
  */
 export async function getComments(entityId: string, type: 'vocab' | 'kanji') {
+	if (!IdSchema.safeParse(entityId).success) return [];
 	const user = await getUser();
 	const where = type === 'vocab' ? { vocabId: entityId } : { kanjiId: entityId };
 
@@ -52,6 +74,9 @@ export async function createComment(
 	content: string,
 	commentType: CommentType = 'GENERAL',
 ) {
+	const validation = CreateCommentSchema.safeParse({ entityId, entityType, content, commentType });
+	if (!validation.success) return { success: false, error: 'Invalid data' };
+
 	const user = await getUser();
 	if (!user) {
 		return { success: false, error: 'Unauthorized' };
@@ -87,6 +112,9 @@ export async function createComment(
  * Value: 1 (up), -1 (down), 0 (remove vote)
  */
 export async function voteComment(commentId: string, value: number) {
+	const validation = VoteSchema.safeParse({ commentId, value });
+	if (!validation.success) return { success: false, error: 'Invalid vote data' };
+
 	const user = await getUser();
 	if (!user) {
 		return { success: false, error: 'Unauthorized' };
@@ -191,6 +219,7 @@ export async function voteComment(commentId: string, value: number) {
  * Delete a comment (Author or Admin/Mod)
  */
 export async function deleteComment(commentId: string) {
+	if (!IdSchema.safeParse(commentId).success) return { success: false, error: 'Invalid ID' };
 	const user = await getUser();
 	if (!user) return { success: false, error: 'Unauthorized' };
 
@@ -249,6 +278,9 @@ export async function getTrendingComments(limit = 5) {
  * Update a comment
  */
 export async function updateComment(commentId: string, content: string, type: CommentType) {
+	const validation = UpdateCommentSchema.safeParse({ commentId, content, type });
+	if (!validation.success) return { success: false, error: 'Invalid data' };
+
 	const user = await getUser();
 	if (!user) return { success: false, error: 'Unauthorized' };
 
