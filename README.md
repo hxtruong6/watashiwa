@@ -1,6 +1,6 @@
-# JLPT Mastery SRS
+# Mastery SRS
 
-A vocabulary learning application for Japanese (JLPT focus) using a Spaced Repetition System (SRS).
+A vocabulary learning application for Japanese using a Spaced Repetition System (SRS).
 
 ## Tech Stack
 

@@ -3,6 +3,38 @@
 import { prisma } from '@/lib/db';
 import { getUser } from './actions';
 import { UserRole } from '@prisma/client';
+import { z } from 'zod';
+
+const IdSchema = z.string().min(1);
+
+const DeckSchema = z.object({
+	title: z.string().min(1),
+	description: z.string().optional(),
+	isPublic: z.boolean(),
+});
+
+const UpdateDeckSchema = DeckSchema.partial();
+
+const VocabSchema = z.object({
+	deckId: IdSchema,
+	wordSurface: z.string().min(1),
+	readingKana: z.string().min(1),
+	meaning: z.string().min(1),
+	hanViet: z.string().optional(),
+	exampleSentence: z.any().optional(),
+	wordParts: z.any().optional(),
+});
+
+const KanjiSchema = z.object({
+	deckId: IdSchema,
+	kanji: z.string().min(1),
+	meaning: z.string().min(1),
+	hanViet: z.string().optional(),
+	onyomi: z.string().optional(),
+	kunyomi: z.string().optional(),
+	strokes: z.number().int().min(0).optional(),
+	examples: z.any().optional(),
+});
 
 // Helper to ensure Admin/Mod access
 async function requireAdminOrMod() {
@@ -36,6 +68,7 @@ export async function getAdminDecks() {
 
 export async function getAdminDeck(id: string) {
 	try {
+		if (!IdSchema.safeParse(id).success) return { success: false, error: 'Invalid ID' };
 		await requireAdminOrMod();
 		const deck = await prisma.deck.findUnique({
 			where: { id },
@@ -52,6 +85,9 @@ export async function getAdminDeck(id: string) {
 
 export async function createDeck(data: { title: string; description?: string; isPublic: boolean }) {
 	try {
+		const validation = DeckSchema.safeParse(data);
+		if (!validation.success) return { success: false, error: 'Invalid data' };
+
 		const user = await requireAdminOrMod();
 		const deck = await prisma.deck.create({
 			data: {
@@ -72,6 +108,10 @@ export async function updateDeck(
 	data: { title?: string; description?: string; isPublic?: boolean },
 ) {
 	try {
+		if (!IdSchema.safeParse(id).success) return { success: false, error: 'Invalid ID' };
+		const validation = UpdateDeckSchema.safeParse(data);
+		if (!validation.success) return { success: false, error: 'Invalid data' };
+
 		await requireAdminOrMod();
 		const deck = await prisma.deck.update({
 			where: { id },
@@ -85,6 +125,7 @@ export async function updateDeck(
 
 export async function deleteDeck(id: string) {
 	try {
+		if (!IdSchema.safeParse(id).success) return { success: false, error: 'Invalid ID' };
 		await requireAdminOrMod();
 		await prisma.deck.delete({ where: { id } });
 		return { success: true };
@@ -105,6 +146,8 @@ export async function createVocab(data: {
 	wordParts?: any; // Json
 }) {
 	try {
+		const validation = VocabSchema.safeParse(data);
+		if (!validation.success) return { success: false, error: 'Invalid data' };
 		await requireAdminOrMod();
 
 		// Optional: Check uniqueness within deck?
@@ -132,6 +175,7 @@ export async function createVocab(data: {
 
 export async function deleteVocab(id: string) {
 	try {
+		if (!IdSchema.safeParse(id).success) return { success: false, error: 'Invalid ID' };
 		await requireAdminOrMod();
 		await prisma.vocab.delete({ where: { id } });
 		return { success: true };
@@ -153,6 +197,8 @@ export async function createKanji(data: {
 	examples?: any;
 }) {
 	try {
+		const validation = KanjiSchema.safeParse(data);
+		if (!validation.success) return { success: false, error: 'Invalid data' };
 		await requireAdminOrMod();
 
 		// Convert string inputs to arrays if needed
@@ -190,6 +236,7 @@ export async function createKanji(data: {
 
 export async function deleteKanji(id: string) {
 	try {
+		if (!IdSchema.safeParse(id).success) return { success: false, error: 'Invalid ID' };
 		await requireAdminOrMod();
 		await prisma.kanji.delete({ where: { id } });
 		return { success: true };

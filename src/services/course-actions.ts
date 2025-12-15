@@ -4,6 +4,20 @@ import { prisma } from '@/lib/db';
 import { revalidatePath } from 'next/cache';
 import { getUser } from '@/services/actions';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/client';
+import { z } from 'zod';
+
+const IdSchema = z.string().min(1);
+
+const CreateCourseSchema = z.object({
+	title: z.string().min(1),
+	description: z.string().optional(),
+	isPublic: z.boolean().optional(),
+	headerImage: z.string().optional(),
+	level: z.string().optional(),
+	tags: z.array(z.string()).optional(),
+});
+
+const UpdateCourseSchema = CreateCourseSchema.partial();
 
 // --- Types ---
 
@@ -24,6 +38,8 @@ export type CourseWithDecks = Awaited<ReturnType<typeof getCourseById>>;
 
 export async function createCourse(data: CreateCourseInput) {
 	try {
+		const validation = CreateCourseSchema.safeParse(data);
+		if (!validation.success) return { success: false, error: 'Invalid data' };
 		const user = await getUser();
 		if (!user) {
 			return { success: false, error: 'Unauthorized' };
@@ -46,6 +62,10 @@ export async function createCourse(data: CreateCourseInput) {
 
 export async function updateCourse(id: string, data: UpdateCourseInput) {
 	try {
+		if (!IdSchema.safeParse(id).success) return { success: false, error: 'Invalid ID' };
+		const validation = UpdateCourseSchema.safeParse(data);
+		if (!validation.success) return { success: false, error: 'Invalid data' };
+
 		const user = await getUser();
 		if (!user) {
 			return { success: false, error: 'Unauthorized' };
@@ -77,6 +97,7 @@ export async function updateCourse(id: string, data: UpdateCourseInput) {
 
 export async function deleteCourse(id: string) {
 	try {
+		if (!IdSchema.safeParse(id).success) return { success: false, error: 'Invalid ID' };
 		const user = await getUser();
 		if (!user) {
 			return { success: false, error: 'Unauthorized' };
@@ -105,6 +126,9 @@ export async function deleteCourse(id: string) {
 
 export async function addDeckToCourse(courseId: string, deckId: string) {
 	try {
+		if (!IdSchema.safeParse(courseId).success || !IdSchema.safeParse(deckId).success) {
+			return { success: false, error: 'Invalid IDs' };
+		}
 		const user = await getUser();
 		if (!user) {
 			return { success: false, error: 'Unauthorized' };
@@ -150,6 +174,9 @@ export async function addDeckToCourse(courseId: string, deckId: string) {
 
 export async function removeDeckFromCourse(courseId: string, deckId: string) {
 	try {
+		if (!IdSchema.safeParse(courseId).success || !IdSchema.safeParse(deckId).success) {
+			return { success: false, error: 'Invalid IDs' };
+		}
 		const user = await getUser();
 		if (!user) {
 			return { success: false, error: 'Unauthorized' };
@@ -184,6 +211,9 @@ export async function removeDeckFromCourse(courseId: string, deckId: string) {
 
 export async function reorderDecks(courseId: string, deckIds: string[]) {
 	try {
+		if (!IdSchema.safeParse(courseId).success)
+			return { success: false, error: 'Invalid Course ID' };
+		// internal deckIds validation or rely on array
 		const user = await getUser();
 		if (!user) {
 			return { success: false, error: 'Unauthorized' };
@@ -252,6 +282,7 @@ export async function getCourses(options?: { userId?: string; isPublic?: boolean
 
 export async function getCourseById(id: string) {
 	try {
+		if (!IdSchema.safeParse(id).success) return null;
 		const course = await prisma.course.findUnique({
 			where: { id },
 			include: {
@@ -320,6 +351,7 @@ export async function searchDecks(query: string) {
  */
 export async function getCourseWithUserProgress(courseId: string) {
 	try {
+		if (!IdSchema.safeParse(courseId).success) return null;
 		const user = await getUser();
 		if (!user) return null;
 

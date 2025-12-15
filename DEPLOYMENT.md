@@ -1,6 +1,6 @@
-# Deployment Guide for Watashi JP (Linux Ubuntu)
+# Deployment Guide for WatashiWa (Linux Ubuntu)
 
-This guide outlines the steps to deploy the **Watashi JP** application to a Linux Ubuntu server using **PM2** for process management and **Nginx** as a reverse proxy.
+This guide outlines the steps to deploy the **WatashiWa** application to a Linux Ubuntu server using **PM2** for process management and **Nginx** as a reverse proxy.
 
 ## Prerequisites
 

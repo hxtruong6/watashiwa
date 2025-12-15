@@ -3,6 +3,41 @@
 import { prisma } from '@/lib/db';
 import { getUser } from '@/services/actions';
 import { revalidatePath } from 'next/cache';
+import { z } from 'zod';
+
+const IdSchema = z.string().min(1);
+
+const CreateDeckSchema = z.object({
+	title: z.string().min(1),
+	description: z.string().optional(),
+	isPublic: z.boolean().optional(),
+	headerImage: z.string().optional(),
+});
+
+const UpdateDeckSchema = CreateDeckSchema.partial();
+
+const CreateVocabSchema = z.object({
+	wordSurface: z.string().min(1),
+	readingKana: z.string().min(1),
+	meaning: z.string().min(1),
+	hanViet: z.string().optional(),
+	exampleSentence: z.any().optional(),
+	kanjiBreakdown: z.any().optional(),
+	wordParts: z.any().optional(),
+	imageUrl: z.string().optional(),
+});
+
+const CreateKanjiSchema = z.object({
+	kanji: z.string().min(1),
+	onyomi: z.array(z.string()),
+	kunyomi: z.array(z.string()),
+	meaning: z.string().min(1),
+	strokes: z.number().int().min(0),
+	hanViet: z.string().min(1),
+	radicals: z.any().optional(),
+	examples: z.any().optional(),
+	imageUrl: z.string().optional(),
+});
 
 export async function getUserDecks() {
 	try {
@@ -36,6 +71,9 @@ export async function createDeck(data: {
 	headerImage?: string;
 }) {
 	try {
+		const validation = CreateDeckSchema.safeParse(data);
+		if (!validation.success) return { success: false, error: 'Invalid data' };
+
 		const user = await getUser();
 		if (!user) return { success: false, error: 'Unauthorized' };
 
@@ -97,6 +135,7 @@ export async function updateDeck(
 
 export async function deleteDeck(id: string) {
 	try {
+		if (!IdSchema.safeParse(id).success) return { success: false, error: 'Invalid ID' };
 		const user = await getUser();
 		if (!user) return { success: false, error: 'Unauthorized' };
 
@@ -223,6 +262,7 @@ export async function createKanji(
 
 export async function deleteContent(type: 'vocab' | 'kanji', id: string) {
 	try {
+		if (!IdSchema.safeParse(id).success) return { success: false, error: 'Invalid ID' };
 		const user = await getUser();
 		if (!user) return { success: false, error: 'Unauthorized' };
 

@@ -14,6 +14,7 @@ import {
 	Dropdown,
 	Space,
 	theme,
+	Grid,
 } from 'antd';
 import NavDrawer from './navbar/NavDrawer';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
@@ -45,6 +46,7 @@ import ThemeToggle from './ThemeToggle';
 const { Header } = Layout;
 const { Text } = Typography;
 const { useToken } = theme;
+const { useBreakpoint } = Grid;
 
 // Define types locally or import
 interface User {
@@ -60,12 +62,20 @@ export default function NavBar({ user }: { user?: User | null }) {
 	const pathname = usePathname();
 	const router = useRouter();
 	const searchParams = useSearchParams();
+	const screens = useBreakpoint();
 	const { token } = useToken();
 	const supabase = createClient();
 	const [drawerOpen, setDrawerOpen] = useState(false);
 	const [shareModalOpen, setShareModalOpen] = useState(false);
 	const [settingsModalOpen, setSettingsModalOpen] = useState(false);
+	const [mounted, setMounted] = useState(false);
 
+	const isXs = mounted ? screens.xs : false; // Default to desktop (false) to match server or mobile? Server usually renders desktop first for SEO or mobile first. Standard is usually "false" for breakpoints on server.
+
+	useEffect(() => {
+		const timer = setTimeout(() => setMounted(true), 0);
+		return () => clearTimeout(timer);
+	}, []);
 	// Check URL for settings trigger
 	useEffect(() => {
 		if (searchParams.get('settings') === 'true') {
@@ -104,7 +114,12 @@ export default function NavBar({ user }: { user?: User | null }) {
 	const closeDrawer = () => setDrawerOpen(false);
 
 	// Don't show NavBar on login or study pages (immersive mode), or Admin Panel
-	if (pathname === '/login' || pathname === '/study' || pathname?.startsWith('/admin')) {
+	if (
+		pathname === '/login' ||
+		pathname === '/study' ||
+		pathname === '/exercises' ||
+		pathname?.startsWith('/admin')
+	) {
 		return null;
 	}
 
@@ -196,7 +211,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 			{
 				key: 'settings',
 				icon: <SettingOutlined />,
-				label: 'Settings',
+				label: t('settings'),
 				onClick: () => setSettingsModalOpen(true),
 			},
 
@@ -260,7 +275,13 @@ export default function NavBar({ user }: { user?: User | null }) {
 					style={{ cursor: 'pointer' }}
 					onClick={() => router.push('/')}
 				>
-					<Image src="/assets/w_logo.png" alt="WatashiWa Logo" width={50} height={50} priority />
+					<Image
+						src="/assets/w_logo.png"
+						alt="WatashiWa Logo"
+						width={isXs ? 40 : 50}
+						height={isXs ? 40 : 50}
+						priority
+					/>
 					<Text
 						strong
 						style={{
@@ -308,7 +329,6 @@ export default function NavBar({ user }: { user?: User | null }) {
 								<Tooltip title={t('share')}>
 									<Button
 										type="text"
-										ghost
 										icon={<ShareAltOutlined style={{ fontSize: 18 }} />}
 										onClick={() => setShareModalOpen(true)}
 									>
@@ -347,9 +367,23 @@ export default function NavBar({ user }: { user?: User | null }) {
 								<Button
 									type="primary"
 									shape="round"
-									style={{ background: token.colorPrimary, padding: '0 24px', fontWeight: 500 }}
+									style={{
+										background: token.colorPrimary,
+										padding: '0 24px',
+										fontWeight: 600,
+										boxShadow: `0 4px 14px 0 ${token.colorPrimary}40`,
+										border: 'none',
+									}}
+									onMouseEnter={(e) => {
+										e.currentTarget.style.transform = 'translateY(-1px)';
+										e.currentTarget.style.boxShadow = `0 6px 20px 0 ${token.colorPrimary}60`;
+									}}
+									onMouseLeave={(e) => {
+										e.currentTarget.style.transform = 'translateY(0)';
+										e.currentTarget.style.boxShadow = `0 4px 14px 0 ${token.colorPrimary}40`;
+									}}
 								>
-									Login
+									{t('login')}
 								</Button>
 							</Link>
 						</Flex>
@@ -370,7 +404,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 							<LanguageSelector />
 							<Link href="/login">
 								<Button type="primary" size="small" style={{ background: token.colorPrimary }}>
-									Login
+									{t('login')}
 								</Button>
 							</Link>
 						</Flex>

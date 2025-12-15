@@ -24,9 +24,9 @@ export default function SocialProofSection() {
 		<section
 			style={{
 				padding: '60px 0',
-				background: 'white',
-				borderTop: '1px solid #f0f0f0',
-				borderBottom: '1px solid #f0f0f0',
+				background: token.colorBgContainer,
+				borderTop: `1px solid ${token.colorBorderSecondary}`,
+				borderBottom: `1px solid ${token.colorBorderSecondary}`,
 			}}
 		>
 			<div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', width: '100%' }}>

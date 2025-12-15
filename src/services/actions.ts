@@ -12,38 +12,96 @@ import { Card, fsrs, generatorParameters, Rating, State } from 'ts-fsrs';
 const params = generatorParameters({ enable_fuzz: true });
 const f = fsrs(params);
 
+import { z } from 'zod';
+import { getStartOfDayInTimezone } from '@/lib/date-utils';
+
+// --- Zod Schemas ---
+
+const IdSchema = z.string().min(1);
+const DeckIdOrIdsSchema = z.union([z.string(), z.array(z.string())]).optional();
+
+const SubmitReviewSchema = z.object({
+	cardId: IdSchema,
+	rating: z.number().int().min(1).max(4),
+	deckIdOrIds: DeckIdOrIdsSchema,
+});
+
+const UpdateAvatarSchema = z.object({
+	avatarUrl: z.string().url(),
+});
+
+const UserSettingsSchema = z.object({
+	limitNewCards: z.number().int().min(0).optional(),
+	limitReviews: z.number().int().min(0).optional(),
+	allowSpaceKey: z.boolean().optional(),
+	spaceKeyRating: z.number().int().min(1).max(4).optional(),
+	autoShowAnswer: z.boolean().optional(),
+	autoShowAnswerDelay: z.number().int().min(0).optional(),
+	timezone: z.string().optional(),
+});
+
+const ReportSchema = z
+	.object({
+		vocabId: z.string().optional(),
+		kanjiId: z.string().optional(),
+		type: z.nativeEnum(ReportType),
+		field: z.string().optional(),
+		currentValue: z.string().optional(),
+		suggestedValue: z.string().optional(),
+		notes: z.string().optional(),
+	})
+	.refine((data) => data.vocabId || data.kanjiId, {
+		message: 'Must specify a Vocab or Kanji ID',
+		path: ['vocabId'],
+	});
+
+const ResolveReportSchema = z.object({
+	reportId: IdSchema,
+	action: z.enum(['ACCEPT', 'REJECT']),
+	resolutionStr: z.string().optional(),
+});
+
+const UpdateVocabSchema = z.object({
+	wordSurface: z.string().min(1).optional(),
+	readingKana: z.string().min(1).optional(),
+	meaning: z.string().min(1).optional(),
+	exampleSentence: z.any().optional(),
+	wordParts: z.any().optional(),
+});
+
+const UpdateKanjiSchema = z.object({
+	kanji: z.string().min(1).optional(),
+	onyomi: z.string().optional(),
+	kunyomi: z.string().optional(),
+	meaning: z.string().optional(),
+	examples: z.any().optional(),
+});
+
 export type StudyCardWithDetails = StudyCard & {
-	vocab?: Vocab | null;
-	kanji?: Kanji | null;
+	vocab?: (Vocab & { _count?: { cardComments: number } }) | null;
+	kanji?: (Kanji & { _count?: { cardComments: number } }) | null;
 };
+
+import { cache } from 'react';
 
 /**
  * Helper to get current authenticated user
+ * Wrapped in React `cache` to ensure we only hit Supabase Auth once per request
+ * even if this is called multiple times by Layout, Page, and Components.
  */
-export async function getUser() {
+export const getUser = cache(async () => {
 	const supabase = await createClient();
 	const {
 		data: { user },
 		error,
 	} = await supabase.auth.getUser();
+
 	if (error || !user) {
 		return null;
 	}
 
-	// Optimization: In a real high-traffic app, we might cache this or use a session claim.
-	// For this requirements "User is not considered active until...", we ensure DB record exists.
-	// We can do a "fire and forget" sync or a check.
-	// For safety in this "Side Project", let's just Upsert to be sure on every action check?
-	// Or simpler: just return user. If a foreign key fails, we know why.
-	// BUT the requirement is explicit.
-	// Let's add a `ensureUserExists` call here?
-	// To avoid infinite loops or overhead, let's assumes `syncUser` is called on Auth boundaries.
-	// However, if we want to be 100% sure:
-	// const dbUser = await prisma.user.findUnique({ where: { id: user.id } });
-	// if (!dbUser) { await syncUser(); }
-
 	return user;
-}
+});
 
 /**
  * Get the next card due for review for the CURRENT user
@@ -57,6 +115,12 @@ export async function getNextReviewCard(
 	deckIdOrIds?: string | string[],
 ): Promise<StudyCardWithDetails | null> {
 	try {
+		const validation = DeckIdOrIdsSchema.safeParse(deckIdOrIds);
+		if (!validation.success) {
+			console.error('Invalid deckIdOrIds:', validation.error);
+			return null;
+		}
+
 		const user = await getUser();
 		if (!user) return null;
 
@@ -244,6 +308,175 @@ export async function getNextReviewCard(
 }
 
 /**
+ * Get a queue of cards for review (Smart Queue / Prefetching)
+ * Fetches multiple cards to allow client-side buffering.
+ */
+export async function getReviewQueue(
+	deckIdOrIds?: string | string[],
+	limit: number = 3,
+): Promise<StudyCardWithDetails[]> {
+	try {
+		const validation = DeckIdOrIdsSchema.safeParse(deckIdOrIds);
+		if (!validation.success) return [];
+
+		const user = await getUser();
+		if (!user) return [];
+
+		// 1. Fetch User Config
+		const userConfig = await prisma.user.findUnique({
+			where: { id: user.id },
+			select: { limitNewCards: true, limitReviews: true },
+		});
+		const limitNewCards = userConfig?.limitNewCards ?? 20;
+		const limitReviews = userConfig?.limitReviews ?? 200;
+
+		const startOfDay = getStartOfDayInTimezone();
+
+		// 2. Check Daily Limits
+		const reviewsToday = await prisma.reviewLog.count({
+			where: { userId: user.id, review: { gte: startOfDay } },
+		});
+
+		if (reviewsToday >= limitReviews) return [];
+
+		const remainingReviews = limitReviews - reviewsToday;
+		const fetchLimit = Math.min(limit, remainingReviews);
+
+		if (fetchLimit <= 0) return [];
+
+		// 3. Fetch Due Cards (Reviews)
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		const whereCondition: any = {
+			userId: user.id,
+			due: { lte: new Date() },
+		};
+
+		if (deckIdOrIds) {
+			if (Array.isArray(deckIdOrIds)) {
+				whereCondition.OR = [
+					{ vocab: { deckId: { in: deckIdOrIds } } },
+					{ kanji: { deckId: { in: deckIdOrIds } } },
+				];
+			} else {
+				whereCondition.OR = [
+					{ vocab: { deckId: deckIdOrIds } },
+					{ kanji: { deckId: deckIdOrIds } },
+				];
+			}
+		}
+
+		const dueCards = await prisma.studyCard.findMany({
+			where: whereCondition,
+			orderBy: { due: 'asc' },
+			take: fetchLimit,
+			include: {
+				vocab: { include: { _count: { select: { cardComments: true } } } },
+				kanji: { include: { _count: { select: { cardComments: true } } } },
+			},
+		});
+
+		if (dueCards.length >= fetchLimit) {
+			return dueCards;
+		}
+
+		// 4. Fill with New Cards (JIT Enrollment)
+		const queue = [...dueCards];
+		const needed = fetchLimit - queue.length;
+
+		const newCardsToday = await prisma.studyCard.count({
+			where: {
+				userId: user.id,
+				createdAt: { gte: startOfDay },
+				state: 0,
+			},
+		});
+
+		if (newCardsToday >= limitNewCards) {
+			return queue;
+		}
+
+		const remainingNew = limitNewCards - newCardsToday;
+		const newToFetch = Math.min(needed, remainingNew);
+
+		if (newToFetch <= 0) return queue;
+
+		// Fetch New Vocab Candidates
+		// Note: This logic is tricky for "queueing" multiple NEW cards because we need to Enroll them to avoid creating duplicates.
+		// We WILL create them now.
+
+		for (let i = 0; i < newToFetch; i++) {
+			// Find 1 new candidate (Vocab or Kanji)
+			// Logic copied from getNextReviewCard but slightly optimized to just create one by one to ensure uniqueness/correct state
+			// Ideally we findMany, but JIT logic checks `studyCards: { none: ... }` which is robust.
+
+			// Vocab?
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			const vocabWhere: any = {
+				deck: { OR: [{ isPublic: true }, { authorId: user.id }] },
+				studyCards: { none: { userId: user.id } },
+			};
+			if (deckIdOrIds) {
+				if (Array.isArray(deckIdOrIds)) vocabWhere.deckId = { in: deckIdOrIds };
+				else vocabWhere.deckId = deckIdOrIds;
+			}
+
+			const newVocab = await prisma.vocab.findFirst({
+				where: vocabWhere,
+				orderBy: { createdAt: 'asc' },
+			});
+
+			if (newVocab) {
+				const newCard = await prisma.studyCard.create({
+					data: { userId: user.id, vocabId: newVocab.id, due: new Date(), state: 0 },
+					include: {
+						vocab: { include: { _count: { select: { cardComments: true } } } },
+						kanji: { include: { _count: { select: { cardComments: true } } } },
+					},
+				});
+				queue.push(newCard);
+				continue;
+			}
+
+			// Kanji?
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			const kanjiWhere: any = {
+				deck: { OR: [{ isPublic: true }, { authorId: user.id }] },
+				studyCards: { none: { userId: user.id } },
+			};
+			if (deckIdOrIds) {
+				if (Array.isArray(deckIdOrIds)) kanjiWhere.deckId = { in: deckIdOrIds };
+				else kanjiWhere.deckId = deckIdOrIds;
+			}
+
+			const newKanji = await prisma.kanji.findFirst({
+				where: kanjiWhere,
+				orderBy: { createdAt: 'asc' },
+			});
+
+			if (newKanji) {
+				const newCard = await prisma.studyCard.create({
+					data: { userId: user.id, kanjiId: newKanji.id, due: new Date(), state: 0 },
+					include: {
+						vocab: { include: { _count: { select: { cardComments: true } } } },
+						kanji: { include: { _count: { select: { cardComments: true } } } },
+					},
+				});
+				queue.push(newCard);
+				continue;
+			}
+
+			// No more content
+			break;
+		}
+
+		return queue;
+	} catch (error) {
+		console.error('Error fetching review queue:', error);
+		return [];
+	}
+}
+
+/**
  * Convert Prisma StudyCard to FSRS Card object
  */
 function toFsrsCard(studyCard: StudyCard): Card {
@@ -275,6 +508,11 @@ export async function submitReview(
 	deckIdOrIds?: string | string[],
 ): Promise<{ success: boolean; nextCard?: StudyCardWithDetails | null; error?: string }> {
 	try {
+		const validation = SubmitReviewSchema.safeParse({ cardId, rating, deckIdOrIds });
+		if (!validation.success) {
+			return { success: false, error: 'Invalid input data' };
+		}
+
 		const user = await getUser();
 		if (!user) return { success: false, error: 'Unauthorized' };
 
@@ -450,6 +688,11 @@ export async function syncUser() {
 
 export async function updateUserAvatar(avatarUrl: string) {
 	try {
+		const validation = UpdateAvatarSchema.safeParse({ avatarUrl });
+		if (!validation.success) {
+			return { success: false, error: 'Invalid avatar URL' };
+		}
+
 		const user = await getUser();
 		if (!user) return { success: false, error: 'Unauthorized' };
 
@@ -489,8 +732,10 @@ export async function updateUserAvatar(avatarUrl: string) {
  * Get count of cards due for review
  */
 
-export async function getReviewCount(userId?: string) {
+export const getReviewCount = cache(async (userId?: string) => {
 	try {
+		if (userId && !IdSchema.safeParse(userId).success) return 0;
+
 		let uid = userId;
 		if (!uid) {
 			const user = await getUser();
@@ -511,13 +756,15 @@ export async function getReviewCount(userId?: string) {
 		console.error('Error fetching review count:', error);
 		return 0;
 	}
-}
+});
 
 /**
  * Get user statistics (Streak, Total Reviews)
  */
-export async function getUserStats(userId?: string) {
+export const getUserStats = cache(async (userId?: string) => {
 	try {
+		if (userId && !IdSchema.safeParse(userId).success) return { streak: 0, totalReviewed: 0 };
+
 		let uid = userId;
 		if (!uid) {
 			const user = await getUser();
@@ -550,7 +797,7 @@ export async function getUserStats(userId?: string) {
 		console.error('Error fetching stats:', error);
 		return { streak: 0, totalReviewed: 0 };
 	}
-}
+});
 
 /**
  * Recalculate and update the user's current streak
@@ -558,6 +805,8 @@ export async function getUserStats(userId?: string) {
  */
 export async function recalculateUserStreak(userId: string) {
 	try {
+		if (!IdSchema.safeParse(userId).success) return 0;
+
 		// Fetch all review dates for the user
 		// Optimization: We could limit to last 365 days or something if logs get huge
 		const logs = await prisma.reviewLog.findMany({
@@ -639,6 +888,8 @@ export async function recalculateUserStreak(userId: string) {
  */
 export async function getDeck(id: string) {
 	try {
+		if (!IdSchema.safeParse(id).success) return null;
+
 		const user = await getUser();
 		if (!user) return null;
 
@@ -761,8 +1012,10 @@ export async function getAllKanji() {
 /**
  * Get weekly review stats for the chart (last 7 days)
  */
-export async function getWeeklyStats(userId?: string) {
+export const getWeeklyStats = cache(async (userId?: string) => {
 	try {
+		if (userId && !IdSchema.safeParse(userId).success) return null;
+
 		let uid = userId;
 		if (!uid) {
 			const user = await getUser();
@@ -836,13 +1089,15 @@ export async function getWeeklyStats(userId?: string) {
 		console.error('Error fetching weekly stats:', error);
 		return null;
 	}
-}
+});
 
 /**
  * Get decks with due counts for dashboard
  */
-export async function getDecksWithDue(userId?: string) {
+export const getDecksWithDue = cache(async (userId?: string) => {
 	try {
+		if (userId && !IdSchema.safeParse(userId).success) return [];
+
 		let uid = userId;
 		if (!uid) {
 			const user = await getUser();
@@ -889,13 +1144,15 @@ export async function getDecksWithDue(userId?: string) {
 		console.error('Error fetching decks with due:', error);
 		return [];
 	}
-}
+});
 
 /**
  * Fetch User Settings (Limits and Preferences)
  */
-export async function getUserSettings(userId?: string) {
+export const getUserSettings = cache(async (userId?: string) => {
 	try {
+		if (userId && !IdSchema.safeParse(userId).success) return null;
+
 		let uid = userId;
 		if (!uid) {
 			const user = await getUser();
@@ -920,71 +1177,12 @@ export async function getUserSettings(userId?: string) {
 		console.error('Error fetching user settings:', error);
 		return null;
 	}
-}
-/**
- * Helper: Get Start of Day in User's Timezone (returned as UTC Date object)
- * e.g. If User is Tokyo (UTC+9), and it's 10am Tokyo, Start of Day is 00:00 Tokyo.
- * We need the UTC equivalent of 00:00 Tokyo, which is 15:00 UTC Previous Day.
- */
-function getStartOfDayInTimezone(timezone: string = 'UTC'): Date {
-	try {
-		const now = new Date();
-		// Get date string in user's timezone: "MM/DD/YYYY"
-		const formatter = new Intl.DateTimeFormat('en-US', {
-			timeZone: timezone,
-			year: 'numeric',
-			month: 'numeric',
-			day: 'numeric',
-		});
-		const parts = formatter.formatToParts(now);
-		const month = parts.find((p) => p.type === 'month')?.value;
-		const day = parts.find((p) => p.type === 'day')?.value;
-		const year = parts.find((p) => p.type === 'year')?.value;
-
-		if (!month || !day || !year) throw new Error('Invalid date parts');
-
-		// Create a string "YYYY-MM-DD"
-		// We want to find the UTC time that corresponds to this local time.
-		// There isn't a direct "Date.from(string, timezone)" in stdlib.
-		// WORKAROUND:
-		// 1. Create a date assuming UTC: Date.UTC(year, month-1, day) -> Timestamp for 00:00 UTC.
-		// 2. Adjust by the offset of that timezone? No, offset changes (DST).
-		// 3. Iterative approach or library is best.
-		// Since we want to be safe, let's assume 'UTC' if complex.
-		// ACTUALLY, simpler:
-		// We can use the string to CREATE a date object, but we need to know the offset.
-		// Let's postpone complex date math and use a simplified version:
-		// If we create "YYYY-MM-DD" string and append the offset? No we don't know the offset easily.
-
-		// Fallback: Just use UTC for now to unblock, because native JS Timezone math is hell without `date-fns-tz`.
-		// User specifically asked for it. I will try to use the `toLocaleString` trick to approximate.
-
-		// Or try to parse offset from `longOffset`? "GMT+09:00".
-		const offsetStr = new Intl.DateTimeFormat('en-US', {
-			timeZone: timezone,
-			timeZoneName: 'longOffset',
-		}).format(now);
-		// Example: "12/12/2023, GMT+09:00"
-		const match = offsetStr.match(/GMT([+-]\d{2}:\d{2})/);
-		if (match) {
-			const offset = match[1];
-			const iso = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}T00:00:00${offset}`;
-			return new Date(iso);
-		}
-
-		return new Date(Date.UTC(parseInt(year), parseInt(month) - 1, parseInt(day)));
-	} catch (e) {
-		console.warn('Timezone calculation failed, falling back to UTC', e);
-		const d = new Date();
-		d.setUTCHours(0, 0, 0, 0);
-		return d;
-	}
-}
+});
 
 /**
  * Get daily progress stats for the user
  */
-export async function getDailyProgress() {
+export const getDailyProgress = cache(async () => {
 	try {
 		const user = await getUser();
 		if (!user) return null;
@@ -1035,13 +1233,18 @@ export async function getDailyProgress() {
 		console.error('Error fetching daily progress:', error);
 		return null;
 	}
-}
+});
 
 /**
  * Update User Settings
  */
 export async function updateUserSettings(data: Partial<User>) {
 	try {
+		const validation = UserSettingsSchema.safeParse(data);
+		if (!validation.success) {
+			return { success: false, error: 'Invalid settings data' };
+		}
+
 		const user = await getUser();
 		if (!user) return { success: false, error: 'Unauthorized' };
 
@@ -1111,7 +1314,7 @@ export async function getDashboardData() {
 /**
  * Get current user with role
  */
-export async function getUserWithRole() {
+export const getUserWithRole = cache(async () => {
 	const user = await getUser();
 	if (!user) return null;
 
@@ -1120,7 +1323,7 @@ export async function getUserWithRole() {
 		select: { id: true, name: true, email: true, role: true },
 	});
 	return dbUser;
-}
+});
 
 /**
  * Get stats for Admin Dashboard
@@ -1177,6 +1380,9 @@ export async function getAllUsers() {
  */
 export async function updateUserRole(targetUserId: string, newRole: UserRole) {
 	try {
+		if (!IdSchema.safeParse(targetUserId).success)
+			return { success: false, error: 'Invalid User ID' };
+
 		const currentUser = await getUserWithRole();
 		requireRole(currentUser?.role, UserRole.ADMIN);
 
@@ -1203,6 +1409,11 @@ export async function submitReport(data: {
 	notes?: string;
 }) {
 	try {
+		const validation = ReportSchema.safeParse(data);
+		if (!validation.success) {
+			return { success: false, error: validation.error.issues[0].message };
+		}
+
 		const user = await getUser();
 		if (!user) return { success: false, error: 'Unauthorized' };
 
@@ -1261,6 +1472,11 @@ export async function resolveReport(
 	resolutionStr?: string,
 ) {
 	try {
+		const validation = ResolveReportSchema.safeParse({ reportId, action, resolutionStr });
+		if (!validation.success) {
+			return { success: false, error: 'Invalid resolution data' };
+		}
+
 		const currentUser = await getUserWithRole();
 		if (!currentUser || !hasRole(currentUser.role, UserRole.MODERATOR)) {
 			return { success: false, error: 'Unauthorized' };
@@ -1293,6 +1509,10 @@ export async function resolveReport(
 
 export async function updateVocab(id: string, data: Partial<Vocab>) {
 	try {
+		if (!IdSchema.safeParse(id).success) return { success: false, error: 'Invalid ID' };
+		const validation = UpdateVocabSchema.safeParse(data);
+		if (!validation.success) return { success: false, error: 'Invalid data' };
+
 		const user = await getUserWithRole();
 		if (!user || !hasRole(user.role, UserRole.MODERATOR)) {
 			return { success: false, error: 'Unauthorized' };
@@ -1317,6 +1537,10 @@ export async function updateVocab(id: string, data: Partial<Vocab>) {
 
 export async function updateKanji(id: string, data: Partial<Kanji>) {
 	try {
+		if (!IdSchema.safeParse(id).success) return { success: false, error: 'Invalid ID' };
+		const validation = UpdateKanjiSchema.safeParse(data);
+		if (!validation.success) return { success: false, error: 'Invalid data' };
+
 		const user = await getUserWithRole();
 		if (!user || !hasRole(user.role, UserRole.MODERATOR)) {
 			return { success: false, error: 'Unauthorized' };

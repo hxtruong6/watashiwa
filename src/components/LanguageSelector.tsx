@@ -1,16 +1,14 @@
 'use client';
 
-import { Dropdown, Select } from 'antd';
-import { useRouter } from 'next/navigation';
+import { Select } from 'antd';
 import { useLocale } from 'next-intl';
 
 export default function LanguageSelector() {
-	const router = useRouter();
 	const locale = useLocale();
 
 	const handleChange = (newLocale: string) => {
 		document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
-		router.refresh();
+		window.location.reload();
 	};
 
 	return (

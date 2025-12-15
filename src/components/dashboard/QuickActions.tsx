@@ -14,6 +14,7 @@ import {
 	TrophyOutlined,
 	SettingOutlined,
 	LockOutlined,
+	RocketOutlined,
 } from '@ant-design/icons';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
@@ -54,6 +55,14 @@ export default function QuickActions() {
 			href: '/dashboard/kanji',
 			enabled: true,
 			color: '#722ed1',
+		},
+		{
+			key: 'exercises',
+			icon: <RocketOutlined />,
+			labelKey: 'exercises',
+			href: '/exercises',
+			enabled: true,
+			color: '#eb2f96', // Pink/Magenta
 		},
 		{
 			key: 'decks',

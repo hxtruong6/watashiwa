@@ -102,4 +102,18 @@ export const darkTheme: ThemeConfig = {
 	},
 };
 
+// Reusable Ambient Gradients for that "Zen" feel
+export const ambientGradients = {
+	primaryBlob: 'radial-gradient(circle, rgba(112, 130, 56, 0.15) 0%, rgba(255,255,255,0) 70%)',
+	secondaryBlob: (color: string) =>
+		`radial-gradient(circle, ${color}1a 0%, rgba(255,255,255,0) 70%)`,
+};
+
+export const customShadows = {
+	glassCard: {
+		light: '0 30px 60px -15px rgba(0, 0, 0, 0.15)',
+		dark: '0 30px 60px -15px rgba(0, 0, 0, 0.3)',
+	},
+};
+
 export default lightTheme;

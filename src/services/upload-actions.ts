@@ -2,11 +2,20 @@
 
 import { generateUploadUrl } from '@/lib/storage';
 import { randomUUID } from 'crypto';
+import { z } from 'zod';
+
+const PresignedUrlSchema = z.object({
+	fileType: z.string().regex(/^image\/(jpeg|png|webp|gif)$/),
+	purpose: z.enum(['avatar', 'card']),
+});
 
 export type UploadPurpose = 'avatar' | 'card';
 
 export async function getPresignedUrl(fileType: string, purpose: UploadPurpose) {
 	try {
+		const validation = PresignedUrlSchema.safeParse({ fileType, purpose });
+		if (!validation.success) return { success: false, error: 'Invalid input' };
+
 		// Basic validation
 		const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
 		if (!allowedTypes.includes(fileType)) {

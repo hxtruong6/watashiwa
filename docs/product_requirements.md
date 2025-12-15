@@ -2,7 +2,7 @@
 
 ## 1. Project Overview
 
-**Project Name:** Watashi JP (JLPT Mastery with SRS)
+**Project Name:** WatashiWa (Mastery with SRS)
 **Goal:** Build a high-performance vocabulary learning web application that leverages "Golden Time" SRS (Spaced Repetition System) to maximize retention for Japanese learners.
 **Target Audience:** Japanese language learners, with a specific focus on those who can benefit from Sino-Vietnamese (Hán Việt) associations (e.g., Vietnamese speakers).
 

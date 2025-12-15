@@ -51,7 +51,7 @@ export default function StatsGrid({
 					<Card variant="borderless" style={cardStyle}>
 						<Statistic
 							title={
-								<Text type="secondary" style={{ fontSize: 12 }}>
+								<Text type="secondary" style={{ fontSize: 11 }}>
 									{t('dayStreak')}
 								</Text>
 							}
@@ -69,7 +69,7 @@ export default function StatsGrid({
 					<Card variant="borderless" style={cardStyle}>
 						<Statistic
 							title={
-								<Text type="secondary" style={{ fontSize: 12 }}>
+								<Text type="secondary" style={{ fontSize: 11 }}>
 									{t('reviewedToday')}
 								</Text>
 							}
@@ -88,7 +88,7 @@ export default function StatsGrid({
 						<Card variant="borderless" style={cardStyle}>
 							<Statistic
 								title={
-									<Text type="secondary" style={{ fontSize: 12 }}>
+									<Text type="secondary" style={{ fontSize: 11 }}>
 										{t('totalCards')}
 									</Text>
 								}
@@ -108,13 +108,15 @@ export default function StatsGrid({
 						<Card variant="borderless" style={cardStyle}>
 							<Statistic
 								title={
-									<Text type="secondary" style={{ fontSize: 12 }}>
+									<Text type="secondary" style={{ fontSize: 11 }}>
 										{t('mastered')}
 									</Text>
 								}
 								value={masteredCards}
 								prefix={<CheckCircleOutlined style={{ color: token.colorSuccess, fontSize: 20 }} />}
-								valueStyle={{ color: token.colorPrimary, fontWeight: 600, fontSize: '1.5rem' }}
+								styles={{
+									content: { color: token.colorPrimary, fontWeight: 600, fontSize: '1.5rem' },
+								}}
 							/>
 						</Card>
 					</motion.div>

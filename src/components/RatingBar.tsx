@@ -71,7 +71,7 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 		}
 
 		return {
-			height: screens.xs ? 48 : 56,
+			height: screens.xs ? 44 : 56,
 			fontSize: screens.xs ? 14 : 16,
 			fontWeight: 600,
 			transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -82,7 +82,14 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 			border: border,
 			boxShadow: boxShadow,
 			opacity: disabled && !isActive ? 0.5 : 1,
+			userSelect: 'none' as const,
+			WebkitUserSelect: 'none' as const,
+			WebkitTouchCallout: 'none' as const,
 		};
+	};
+
+	const handleInteraction = (e: React.MouseEvent | React.TouchEvent) => {
+		e.stopPropagation();
 	};
 
 	return (
@@ -97,12 +104,15 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 				width: '100%',
 				maxWidth: 600, // Allow wider on desktop
 			}}
+			onClick={handleInteraction}
+			onTouchStart={handleInteraction}
 		>
 			<div
 				style={{
 					display: 'grid',
-					gridTemplateColumns: screens.md ? 'repeat(4, 1fr)' : 'repeat(2, 1fr)', // 4 col on tablet+, 2 col on mobile
-					gap: screens.xs ? 8 : 12,
+					// Always Horizontal (4 col) to maximize content visibility on mobile
+					gridTemplateColumns: 'repeat(4, 1fr)',
+					gap: 8, // Tighter gap on mobile if needed, but 8-12 is fine. Let's use 8 for safety with 4 cols.
 				}}
 			>
 				<Button
