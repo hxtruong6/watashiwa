@@ -1,7 +1,3 @@
----
-trigger: always_on
----
-
 # WatashiWa Project Context
 
 > **Last Updated**: December 2025
@@ -232,8 +228,8 @@ Requirements:
 
 ## Related Docs
 
-- [SRS Architecture](../docs/srs_architecture.md) — State machine & data flow
-- [Technical Spec](../docs/technical_spec.md) — API patterns
+- [SRS Architecture](./srs_architecture.md) — State machine & data flow
+- [Technical Spec](./technical_spec.md) — API patterns
 - [Prisma Schema](../prisma/schema.prisma) — Data models (source of truth)
-- [Conventions](../docs/conventions.md) — File structure & patterns
-- [Design System](../docs/design_system.md) — Token tables & UI specs
+- [Conventions](./conventions.md) — File structure & patterns
+- [Design System](./design_system.md) — Token tables & UI specs

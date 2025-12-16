@@ -110,51 +110,68 @@ export default function NavDrawer({
 					onClick={onClose}
 				/>
 
-				{user && (
-					<div style={{ padding: '24px' }}>
-						{/* Settings / Config Section */}
-						{/* Config Box */}
-						<div
-							style={{
-								marginBottom: 16,
-								padding: '12px 16px',
-								background: token.colorFillQuaternary,
-								borderRadius: 12,
-								border: `1px solid ${token.colorBorderSecondary}`,
-							}}
-						>
-							<Flex justify="space-between" align="center">
-								<ThemeToggle />
-								<Button type="text" icon={<SettingOutlined />} onClick={onOpenSettings} />
-							</Flex>
-						</div>
-
-						<Button
-							block
-							type="primary"
-							icon={<ShareAltOutlined />}
-							onClick={() => {
-								onShare();
-								onClose();
-							}}
-							style={{ marginBottom: 12, background: token.colorPrimary }}
-						>
-							{t('share')}
-						</Button>
-						<Button
-							block
-							type="text"
-							icon={<BugOutlined />}
-							onClick={onBugReport}
-							style={{ marginBottom: 12 }}
-						>
-							{tCommon('reportIssue')}
-						</Button>
-						<Button block danger icon={<LogoutOutlined />} onClick={onLogout}>
-							{tCommon('logout')}
-						</Button>
+				<div style={{ padding: '24px' }}>
+					{/* Config Box (Theme/Settings) - Available for all */}
+					<div
+						style={{
+							marginBottom: 16,
+							padding: '12px 16px',
+							background: token.colorFillQuaternary,
+							borderRadius: 12,
+							border: `1px solid ${token.colorBorderSecondary}`,
+						}}
+					>
+						<Flex justify="space-between" align="center">
+							<ThemeToggle />
+							{user && <Button type="text" icon={<SettingOutlined />} onClick={onOpenSettings} />}
+						</Flex>
 					</div>
-				)}
+
+					{user ? (
+						<>
+							<Button
+								block
+								type="primary"
+								icon={<ShareAltOutlined />}
+								onClick={() => {
+									onShare();
+									onClose();
+								}}
+								style={{ marginBottom: 12, background: token.colorPrimary }}
+							>
+								{t('share')}
+							</Button>
+							<Button
+								block
+								type="text"
+								icon={<BugOutlined />}
+								onClick={onBugReport}
+								style={{ marginBottom: 12 }}
+							>
+								{tCommon('reportIssue')}
+							</Button>
+							<Button block danger icon={<LogoutOutlined />} onClick={onLogout}>
+								{tCommon('logout')}
+							</Button>
+						</>
+					) : (
+						<>
+							<Button
+								block
+								type="primary"
+								icon={<UserOutlined />}
+								href="/login"
+								onClick={onClose}
+								style={{ marginBottom: 12, background: token.colorPrimary }}
+							>
+								{t('login')}
+							</Button>
+							<Button block type="text" icon={<BugOutlined />} onClick={onBugReport}>
+								{tCommon('reportIssue')}
+							</Button>
+						</>
+					)}
+				</div>
 			</Flex>
 		</Drawer>
 	);

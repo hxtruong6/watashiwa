@@ -1,79 +1,90 @@
-# UI/UX Design System: "Zen Mastery"
+# Design System: "Zen Mastery"
 
-## 1. Core Philosophy: Focus & Flow
+> **Primary Reference**: See [AI Context](./ai_context.md) for philosophy and coding patterns.
 
-The application is a tool for deep learning. The interface must be "invisible" until needed.
+---
 
-- **Principle 1: Cognitive Load Reduction.** Minimalism. No decorative noise. Be minimalistic, elegant, and creative.
-- **Principle 2: Motivating Feedback.** Tangible progress (sounds, smooth fills).
-- **Principle 3: Mobile First.** Design for the smallest screen first. Touch targets > 44px. Critical actions in "Thumb Zone".
+## Color Tokens
 
-Note: you are a product design, UI/UX designer with extensive experience in mobile web app design, responsive design, and mobile-first design.
+Configure in `src/lib/theme/themeConfig.ts`:
 
-## 2. Theme Configuration (Ant Design Tokens)
+| Token | Light | Dark | Usage |
+|-------|-------|------|-------|
+| `colorPrimary` | `#1E3A5F` | `#4A90D9` | Primary actions, headers |
+| `colorSuccess` | `#708238` | `#8BC34A` | "Good" rating, progress |
+| `colorError` | `#E64A19` | `#FF5722` | "Again" rating, destructive |
+| `colorWarning` | `#FAAD14` | `#FFB300` | "Hard" rating |
+| `colorBgBase` | `#F9F7F2` | `#1A1A1A` | Global background |
+| `colorBgContainer` | `#FFFFFF` | `#262626` | Cards, modals |
 
-We use Ant Design v5's Token System. Configure these in `themeConfig.ts`.
+---
 
-### Brand Colors
+## Typography
 
-| Token | Value | Name | Usage |
-| :--- | :--- | :--- | :--- |
-| `colorPrimary` | `#1E3A5F` | **Indigo (Ai-iro)** | Primary Actions, Active States, Headers. |
-| `colorSuccess` | `#708238` | **Matcha (Uguisu-iro)** | Correct Answers, Progress Bars, "Good" rating. |
-| `colorError` | `#E64A19` | **Vermilion (Shuiro)** | Wrong Answers, "Again" rating, Destructive actions. |
-| `colorWarning` | `#FAAD14` | **Goldenrod** | "Hard" rating. |
-| `colorInfo` | `#1E3A5F` | **Indigo** | Informational tags. |
+| Element | Size | Weight | Token |
+|---------|------|--------|-------|
+| Hero Kanji | `64px` | `500` | Custom |
+| Page Title | `24px` | `600` | `Typography.Title level={2}` |
+| Body | `16px` | `400` | `Typography.Text` |
+| Meta/Caption | `14px` | `400` | `Typography.Text type="secondary"` |
 
-- Add these variables to one place to easily change colors, configuration theme or dark mode.
+**Fonts**: `'Inter', 'Noto Sans JP', sans-serif`
 
-### Backgrounds & Surfaces
+---
 
-| Token | Value | Name | Usage |
-| :--- | :--- | :--- | :--- |
-| `colorBgBase` | `#F9F7F2` | **Washi (Paper)** | Global background. Warmer and easier on eyes than `#FFFFFF`. |
-| `colorBgContainer` | `#FFFFFF` | **White** | Cards and Modals. |
-| `colorBgLayout` | `#F0F2F5` | **Mist** | Sidebar or secondary areas (if needed). |
+## Spacing & Shape
 
-### Typography
+| Token | Value |
+|-------|-------|
+| `borderRadius` | `8px` |
+| `paddingLG` | `32px` |
+| `paddingMD` | `24px` |
+| `paddingSM` | `16px` |
 
-- **Font Family:** `'Inter', 'Noto Sans JP', sans-serif`.
-- **Base Size:** `16px`.
+---
 
-**Hierarchy:**
+## Component Patterns
 
-- **Hero Kanji:** `64px` (Flashcard Center). Weight: `500`.
-- **Page Title:** `24px` (Dashboard Headers). Weight: `600`.
-- **Body:** `16px` (Standard text).
-- **Meta/Sub:** `14px` (Secondary info). Color: `textSecondary`.
+### VocabCard
 
-### Spacing & Shape
+```tsx
+<Card
+  style={{
+    boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+    borderRadius: token.borderRadius,
+  }}
+>
+  {/* Question: Centered 64px Kanji */}
+  {/* Answer: Kanji + Hán Việt + Kana + Sentence */}
+</Card>
+```
 
-- **`borderRadius`**: `8px` (Modern, soft).
-- **`paddingLG`**: `32px` (Generous breathing room for content).
+### RatingBar (Sticky Footer)
 
-## 3. Component Patterns
+| Rating | Style | Token |
+|--------|-------|-------|
+| Again (1) | Bordered | `colorError` |
+| Hard (2) | Bordered | `colorWarning` |
+| Good (3) | **Filled** | `colorSuccess` |
+| Easy (4) | Bordered | `colorPrimary` |
 
-### The `VocabCard`
+---
 
-- **Container:** AntD `Card` with custom shadow: `box-shadow: 0 4px 12px rgba(0,0,0,0.08)`.
-- **Layout:**
-  - **Question Mode:** Centered Kanji.
-  - **Answer Mode:** Split view. Top: Kanji. Bottom: Meta (Hán Việt, Kana, Sentence).
-- **Animation:** Use `framer-motion` for flip or slide transitions.
+## Micro-interactions
 
-### The `RatingBar`
+| Trigger | Effect |
+|---------|--------|
+| Hover | `scale(1.02)` |
+| Active/Tap | `scale(0.98)` |
+| Transitions | `≥ 200ms ease-out` |
 
-- Located at the bottom of the active view.
-- **Buttons:**
-  - **Again (1):** Bordered Red.
-  - **Hard (2):** Bordered Orange.
-  - **Good (3):** Filled Green (Solid). **Dominant UI element.**
-  - **Easy (4):** Bordered Blue/Indigo.
-- **Mobile:** Sticky footer.
-- **Desktop:** Floating action bar below the card.
+Use `framer-motion` for card flip/slide animations.
 
-## 4. Feedback & Micro-interactions
+---
 
-- **Hover:** Interactive elements scale `1.02` on hover.
-- **Tap:** Active elements scale `0.98` on click.
-- **Transitions:** All UI changes (showing answer, changing cards) should be > `200ms` and ease-out. No harsh cuts.
+## Mobile First Checklist
+
+- [ ] Touch targets ≥ `44px`
+- [ ] Critical actions in thumb zone
+- [ ] Test on iPhone SE (375px) first
+- [ ] No horizontal scroll on any viewport

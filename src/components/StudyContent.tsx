@@ -124,54 +124,28 @@ export default function StudyContent() {
 		});
 	}, []);
 
-	// Scroll Detection for Distraction Free Mode
-	// Scroll & Inactivity Detection
+	// Scroll Detection for Distraction Free Mode (Zen Mode)
 	useEffect(() => {
 		let lastScrollY = window.scrollY;
-		let timeoutId: NodeJS.Timeout;
-
-		const resetTimer = () => {
-			clearTimeout(timeoutId);
-			// Only auto-hide if scrolled down a bit (not at very top) to avoid annoying behavior?
-			// User request: "auto hide ... after 5s. show again if scroll".
-			// Let's just strict 5s hide.
-			timeoutId = setTimeout(() => {
-				setHeaderVisible(false);
-			}, 5000);
-		};
 
 		const handleScroll = () => {
 			const currentScrollY = window.scrollY;
 
-			// Standard Scroll Logic
-			if (currentScrollY > lastScrollY && currentScrollY > 50) {
-				setHeaderVisible(false); // Hide on scroll down (swipe up)
-			} else {
-				// Show on scroll up (swipe down) OR tap
+			// Simple Logic:
+			// Scroll Down (>10px difference) -> Hide Header
+			// Scroll Up (>10px difference) -> Show Header
+			const diff = currentScrollY - lastScrollY;
+
+			if (diff > 10 && currentScrollY > 50) {
+				setHeaderVisible(false);
+			} else if (diff < -10) {
 				setHeaderVisible(true);
-				resetTimer(); // Reset inactivity timer on show
 			}
 			lastScrollY = currentScrollY;
 		};
 
-		// Also listen for touches to show header
-		const handleInteraction = () => {
-			setHeaderVisible(true);
-			resetTimer();
-		};
-
 		window.addEventListener('scroll', handleScroll, { passive: true });
-		window.addEventListener('touchstart', handleInteraction, { passive: true });
-		window.addEventListener('click', handleInteraction, { passive: true });
-
-		resetTimer(); // Start initial timer
-
-		return () => {
-			window.removeEventListener('scroll', handleScroll);
-			window.removeEventListener('touchstart', handleInteraction);
-			window.removeEventListener('click', handleInteraction);
-			clearTimeout(timeoutId);
-		};
+		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
 
 	// Update Stats helper
@@ -426,6 +400,8 @@ export default function StudyContent() {
 						break;
 					case '4':
 						handleRate(4); // Easy
+						break;
+					case '5': // Fallback for 5 keys? unlikely but safe
 						break;
 				}
 			}
@@ -743,41 +719,43 @@ export default function StudyContent() {
 						showFurigana={showFurigana}
 						showRomaji={showRomaji}
 						autoPlayAudio={autoPlayAudio}
+						onReveal={() => setShowAnswer(true)}
 					/>
 				</div>
 
-				{/* Thumb Zone Controls - Fixed Bottom */}
+				{/* Thumb Zone Controls - Fixed Bottom (Rating Only) */}
 				<div
 					style={{
 						position: 'fixed',
 						bottom: 0,
 						left: 0,
 						right: 0,
-						padding: '16px 24px 32px',
-						background: `linear-gradient(to top, ${token.colorBgLayout} 90%, transparent)`,
+						padding: '16px 24px 40px',
+						// Only show gradient if rating bar is visible to frame it, or always?
+						// Let's keep it clean: always transparent pointer events unless rating.
+						background: showAnswer
+							? `linear-gradient(to top, ${token.colorBgLayout} 90%, ${token.colorBgLayout}00)`
+							: 'transparent',
 						display: 'flex',
 						justifyContent: 'center',
 						zIndex: 50,
-						pointerEvents: 'none', // Allow clicking through gradient area
+						pointerEvents: 'none',
+						transition: 'background 0.3s ease',
 					}}
 				>
-					<div style={{ pointerEvents: 'auto', width: '100%', maxWidth: 500, textAlign: 'center' }}>
-						{!showAnswer ? (
-							<Button
-								size="large"
-								type="primary"
-								block
-								style={{
-									height: 56,
-									fontSize: 18,
-									borderRadius: 28,
-									boxShadow: `0 4px 12px ${token.colorPrimary}33`,
-								}}
-								onClick={() => setShowAnswer(true)}
-							>
-								{t('showAnswer')}
-							</Button>
-						) : (
+					<div
+						style={{
+							pointerEvents: 'auto',
+							width: '100%',
+							maxWidth: 500,
+							textAlign: 'center',
+							// Slid up animation for Rating Bar
+							transform: showAnswer ? 'translateY(0)' : 'translateY(100px)',
+							opacity: showAnswer ? 1 : 0,
+							transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)', // Spring-ish pop up
+						}}
+					>
+						{showAnswer && (
 							<RatingBar
 								key={card ? card.id : 'empty'}
 								onRate={handleRate}

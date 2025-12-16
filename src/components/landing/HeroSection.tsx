@@ -6,6 +6,8 @@ import { motion } from 'framer-motion';
 import { RocketOutlined, RightOutlined, CheckCircleFilled } from '@ant-design/icons';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import InteractiveFlipCard from './InteractiveFlipCard';
+
 const { Title, Paragraph, Text } = Typography;
 const { useToken } = theme;
 
@@ -43,6 +45,7 @@ export default function HeroSection() {
 					filter: 'blur(80px)', // Increased blur
 					borderRadius: '50%',
 					zIndex: 0,
+					pointerEvents: 'none',
 				}}
 			/>
 			<div
@@ -56,6 +59,7 @@ export default function HeroSection() {
 					filter: 'blur(80px)',
 					borderRadius: '50%',
 					zIndex: 0,
+					pointerEvents: 'none',
 				}}
 			/>
 
@@ -121,9 +125,9 @@ export default function HeroSection() {
 								{t('heroTitle')} <br />
 								<span
 									style={{
-										background: `linear-gradient(120deg, ${token.colorSuccess} 0%, ${token.colorPrimary} 100%)`,
-										WebkitBackgroundClip: 'text',
-										WebkitTextFillColor: 'transparent',
+										color: isDark ? '#68D391' : '#68D391',
+										textShadow: isDark ? '0 0 20px rgba(104, 211, 145, 0.4)' : 'none',
+										display: 'inline-block',
 									}}
 								>
 									{t('heroTitleAccent')}
@@ -135,6 +139,7 @@ export default function HeroSection() {
 									fontSize: 'clamp(1rem, 2vw, 1.25rem)',
 									color: token.colorText,
 									marginBottom: 32,
+
 									maxWidth: '600px', // Prevent too wide on desktop
 									lineHeight: 1.6,
 									textAlign: 'left',
@@ -219,193 +224,22 @@ export default function HeroSection() {
 						</motion.div>
 					</div>
 
-					{/* Right Visual (Mockup) */}
-					<div
-						style={{
-							flex: '1 1 340px', // Responsive basis
-							display: 'flex',
-							justifyContent: 'center',
-							alignItems: 'center',
-							position: 'relative',
-						}}
-					>
-						<motion.div
-							initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
-							animate={{ opacity: 1, scale: 1, rotate: 0 }}
-							transition={{
-								type: 'spring',
-								stiffness: 60,
-								damping: 15, // Bouncy!
-								delay: 0.2,
-							}}
-							style={{ position: 'relative', width: '100%', maxWidth: 450 }}
-						>
-							{/* Floating Emojis Background */}
-							<motion.div
-								animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-								transition={{ duration: 5, repeat: Infinity }}
-								style={{ position: 'absolute', top: -40, right: 0, fontSize: 40, zIndex: 0 }}
-							>
-								🚀
-							</motion.div>
-							<motion.div
-								animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
-								transition={{ duration: 6, repeat: Infinity, delay: 1 }}
-								style={{ position: 'absolute', bottom: -20, left: -20, fontSize: 40, zIndex: 0 }}
-							>
-								🔥
-							</motion.div>
-
-							{/* Glassmorphic Card Mockup */}
-							<div
-								style={{
-									position: 'relative',
-									background: isDark
-										? 'rgba(21, 31, 50, 0.7)' // Dark glass
-										: 'rgba(255, 255, 255, 0.65)', // Light glass
-									backdropFilter: 'blur(24px)',
-									border: `1px solid ${isDark ? 'rgba(255,255,255,0.1)' : 'rgba(255, 255, 255, 0.9)'}`,
-									boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.15)', // Deeper shadow
-									borderRadius: '32px',
-									padding: '32px',
-									zIndex: 1,
-								}}
-							>
-								{/* Mock UI Content */}
-								<Flex justify="space-between" align="center" style={{ marginBottom: 24 }}>
-									<div
-										style={{
-											width: 48,
-											height: 48,
-											borderRadius: 14,
-											background: token.colorPrimary,
-											display: 'flex',
-											alignItems: 'center',
-											justifyContent: 'center',
-											color: 'white',
-											fontWeight: 'bold',
-										}}
-									>
-										W
-									</div>
-									<div
-										style={{
-											width: 80,
-											height: 8,
-											borderRadius: 4,
-											background: 'rgba(0,0,0,0.1)',
-										}}
-									/>
-								</Flex>
-
-								<Flex vertical gap="small" align="center" style={{ padding: '20px 0 40px' }}>
-									<Text
-										style={{
-											fontSize: 96,
-											lineHeight: 1,
-											fontWeight: 'bold',
-											color: token.colorText,
-										}}
-									>
-										猫
-									</Text>
-									<Text style={{ fontSize: 28, color: token.colorTextSecondary, fontWeight: 500 }}>
-										{t('mockupNeko')}
-									</Text>
-									<Text type="secondary" style={{ fontSize: 16 }}>
-										{t('mockupTranslation')}
-									</Text>
-
-									{/* Difficulty Buttons Mockup */}
-									<Flex gap="small" style={{ marginTop: 32 }}>
-										<div
-											style={{
-												padding: '8px 24px',
-												borderRadius: 12,
-												background: token.colorError,
-												opacity: 0.2,
-												height: 12,
-												width: 40,
-											}}
-										/>
-										<div
-											style={{
-												padding: '8px 24px',
-												borderRadius: 12,
-												background: token.colorWarning,
-												opacity: 0.2,
-												height: 12,
-												width: 40,
-											}}
-										/>
-										<div
-											style={{
-												padding: '8px 24px',
-												borderRadius: 12,
-												background: token.colorSuccess,
-												opacity: 1, // Highlight 'Good'
-												height: 12,
-												width: 40,
-												boxShadow: `0 0 15px ${token.colorSuccess}`,
-											}}
-										/>
-									</Flex>
-								</Flex>
-
-								<div
-									style={{
-										position: 'absolute',
-										bottom: 24,
-										right: 24,
-										background: isDark ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.9)',
-										color: token.colorSuccess,
-										padding: '6px 12px',
-										borderRadius: 12,
-										fontSize: 12,
-										fontWeight: 700,
-										boxShadow: '0 4px 10px rgba(0,0,0,0.05)',
-									}}
-								>
-									{t('mockupSRS')}
-								</div>
-							</div>
-
-							{/* Floating Streak Element */}
-							<motion.div
-								animate={{ y: [0, -10, 0] }}
-								transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-								style={{
-									position: 'absolute',
-									top: 20,
-									right: -30,
-									background: token.colorBgContainer,
-									padding: '12px 20px',
-									borderRadius: 16,
-									boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-									zIndex: 2,
-									border: `1px solid ${token.colorBorder}`,
-								}}
-							>
-								<Flex gap="small" align="center">
-									<span style={{ fontSize: 20 }}>🔥</span>
-									<div>
-										<div
-											style={{
-												fontSize: 10,
-												color: token.colorTextSecondary,
-												textTransform: 'uppercase',
-												letterSpacing: 1,
-											}}
-										>
-											{t('mockupStreak')}
-										</div>
-										<div style={{ fontWeight: 800, color: token.colorPrimary, fontSize: 16 }}>
-											{t('mockupDays')}
-										</div>
-									</div>
-								</Flex>
-							</motion.div>
-						</motion.div>
+					{/* Right Visual (Interactive Flip Card) */}
+					<div style={{ flex: '1 1 340px' }}>
+						<InteractiveFlipCard
+							frontKanji={t('mockupKanji')}
+							frontSRSState={t('mockupSRS')}
+							backAnimationSrc="/assets/animations/Ramen.lottie"
+							backKanji={t('mockupKanji')}
+							backFurigana={t('mockupFurigana')}
+							backRomaji={t('mockupReading')}
+							backMeaning={t('mockupMeaning')}
+							backExample={t('mockupExample')}
+							backExampleTrans={t('mockupExampleTrans')}
+							streakLabel={t('mockupStreak')}
+							streakValue={t('mockupDays')}
+							tapHint={t('mockupTapToReveal')}
+						/>
 					</div>
 				</Flex>
 			</div>

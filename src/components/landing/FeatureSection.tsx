@@ -6,11 +6,11 @@ import {
 	ThunderboltOutlined,
 	MobileOutlined,
 	ReadOutlined,
-	SafetyCertificateOutlined,
 	GlobalOutlined,
 	BarChartOutlined,
 } from '@ant-design/icons';
 import { motion } from 'framer-motion';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 import { useTranslations } from 'next-intl';
 
@@ -61,7 +61,26 @@ export default function FeatureSection() {
 		{
 			title: t('featureOffline'),
 			description: t('featureOfflineDesc'),
-			icon: <SafetyCertificateOutlined style={{ fontSize: 32, color: token.colorTextSecondary }} />,
+			// icon: <SafetyCertificateOutlined style={{ fontSize: 32, color: token.colorTextSecondary }} />,
+			// Replaced with LoaderCat animation
+			element: (
+				<div
+					style={{
+						width: 60,
+						height: 60,
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}
+				>
+					<DotLottieReact
+						src="/assets/animations/LoaderCat.lottie"
+						loop
+						autoplay
+						style={{ width: '100%', height: '100%' }}
+					/>
+				</div>
+			),
 			color: token.colorBgContainer,
 			size: 'medium',
 			delay: 0.3,
@@ -88,9 +107,11 @@ export default function FeatureSection() {
 		<section
 			id="features"
 			style={{
-				padding: isMd ? '100px 0' : '60px 0',
+				padding: isMd ? '100px 4px' : '60px 4px',
 				background: token.colorBgLayout,
 				overflowX: 'hidden',
+				maxWidth: '100%',
+				margin: '0 auto',
 			}}
 		>
 			<div
@@ -99,6 +120,7 @@ export default function FeatureSection() {
 					margin: '0 auto',
 					padding: isMd ? '0 24px' : '0 16px',
 					width: '100%',
+					// backgroundColor: 'red',
 				}}
 			>
 				<motion.div
@@ -113,7 +135,7 @@ export default function FeatureSection() {
 							color: token.colorPrimary,
 							marginBottom: 16,
 							textAlign: 'center',
-							fontSize: '2.5rem',
+							fontSize: isMd ? '2.5rem' : '1.75rem',
 						}}
 					>
 						{t('featuresTitle')}
@@ -121,17 +143,17 @@ export default function FeatureSection() {
 					<Paragraph
 						style={{
 							textAlign: 'center',
-							fontSize: 18,
+							fontSize: isMd ? 18 : 16,
 							color: token.colorTextSecondary,
 							maxWidth: 600,
-							margin: '0 auto 60px',
+							margin: isMd ? '0 auto 60px' : '0 auto 32px',
 						}}
 					>
 						{t('featuresSubtitle')}
 					</Paragraph>
 				</motion.div>
 
-				<Row gutter={isMd ? [24, 24] : [16, 16]}>
+				<Row gutter={isMd ? [24, 24] : [0, 16]}>
 					{features.map((feature, index) => (
 						<Col
 							xs={24}
@@ -175,9 +197,10 @@ export default function FeatureSection() {
 												alignItems: 'center',
 												justifyContent: 'center',
 												marginBottom: 24,
+												overflow: 'hidden', // Contain animation if needed
 											}}
 										>
-											{feature.icon}
+											{feature.element || feature.icon}
 										</div>
 										<Title
 											level={3}

@@ -265,7 +265,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 					display: 'flex',
 					alignItems: 'center',
 					justifyContent: 'space-between',
-					padding: '0 24px',
+					padding: `${screens.xs ? '0 16px' : '0 24px'}`,
 				}}
 			>
 				{/* Logo Area */}
@@ -323,7 +323,8 @@ export default function NavBar({ user }: { user?: User | null }) {
 								separator={<div style={{ width: 1, height: 16, background: '#eee' }} />}
 							>
 								<LanguageSelector />
-								<ThemeToggle />
+
+								{!screens.xs && <ThemeToggle />}
 
 								{/* Share Button (Desktop) - Enhanced Visibility */}
 								<Tooltip title={t('share')}>
@@ -362,7 +363,8 @@ export default function NavBar({ user }: { user?: User | null }) {
 					) : (
 						<Flex gap="middle" align="center">
 							<LanguageSelector />
-							<ThemeToggle />
+							{!screens.xs && <ThemeToggle />}
+
 							<Link href="/login">
 								<Button
 									type="primary"
@@ -400,13 +402,22 @@ export default function NavBar({ user }: { user?: User | null }) {
 				{isPublic && (
 					<div className="mobile-trigger">
 						<Flex gap="small" align="center">
-							<ThemeToggle />
-							<LanguageSelector />
+							{/* Hide Theme/Lang on mobile - use Drawer instead */}
+							{!screens.xs && (
+								<>
+									<ThemeToggle />
+									<LanguageSelector />
+								</>
+							)}
+
 							<Link href="/login">
 								<Button type="primary" size="small" style={{ background: token.colorPrimary }}>
 									{t('login')}
 								</Button>
 							</Link>
+
+							{/* Hamburger for mobile settings/menu */}
+							{screens.xs && <Button type="text" icon={<MenuOutlined />} onClick={showDrawer} />}
 						</Flex>
 					</div>
 				)}
@@ -417,7 +428,8 @@ export default function NavBar({ user }: { user?: User | null }) {
 					onClose={closeDrawer}
 					user={user}
 					pathname={pathname}
-					menuItems={menuItems}
+					// Only show app menu items if user is logged in. Public users just see settings/login.
+					menuItems={user ? menuItems : []}
 					onShare={() => setShareModalOpen(true)}
 					onBugReport={handleBugReport}
 					onLogout={handleLogout}

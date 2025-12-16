@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Button, Typography, theme } from 'antd';
+import { Button, Typography, theme, Grid } from 'antd';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
@@ -13,11 +13,20 @@ const { useToken } = theme;
 export default function CTASection() {
 	const { token } = useToken();
 	const t = useTranslations('Landing');
+	const { md } = Grid.useBreakpoint();
+	const [mounted, setMounted] = React.useState(false);
+
+	React.useEffect(() => {
+		setMounted(true);
+	}, []);
+
+	// Default to mobile (false) during SSR to avoid hydration mismatch
+	const isDesktop = mounted && md;
 
 	return (
 		<section
 			style={{
-				padding: '120px 0',
+				padding: isDesktop ? '72px 0' : '100px 0',
 				background: token.colorPrimary,
 				textAlign: 'center',
 				color: '#fff',
@@ -29,23 +38,25 @@ export default function CTASection() {
 			<div
 				style={{
 					position: 'absolute',
-					top: -100,
-					left: -100,
-					width: 400,
-					height: 400,
+					top: isDesktop ? -50 : -20,
+					left: isDesktop ? -50 : -20,
+					width: 'clamp(150px, 30vw, 400px)',
+					height: 'clamp(150px, 30vw, 400px)',
 					background: 'rgba(255,255,255,0.03)',
 					borderRadius: '50%',
+					pointerEvents: 'none',
 				}}
 			/>
 			<div
 				style={{
 					position: 'absolute',
-					bottom: -50,
-					right: -50,
-					width: 300,
-					height: 300,
+					bottom: isDesktop ? -25 : -15,
+					right: isDesktop ? -25 : -15,
+					width: 'clamp(120px, 20vw, 300px)',
+					height: 'clamp(120px, 20vw, 300px)',
 					background: 'rgba(255,255,255,0.03)',
 					borderRadius: '50%',
+					pointerEvents: 'none',
 				}}
 			/>
 
@@ -70,30 +81,30 @@ export default function CTASection() {
 				>
 					<Title
 						level={2}
-						style={{ color: '#fff', marginBottom: 24, fontSize: 'clamp(32px, 4vw, 48px)' }}
+						style={{ color: '#fff', marginBottom: 24, fontSize: 'clamp(28px, 5vw, 48px)' }}
 					>
 						{t('ctaTitle')}
 					</Title>
 					<Paragraph
 						style={{
 							color: 'rgba(255,255,255,0.8)',
-							fontSize: 20,
-							marginBottom: 48,
+							fontSize: isDesktop ? 20 : 16,
+							marginBottom: isDesktop ? 48 : 32,
 							maxWidth: 600,
 						}}
 					>
 						{t('ctaSubtitle')}
 					</Paragraph>
 
-					<Link href="/login">
+					<Link href="/login" style={{ display: 'inline-block' }}>
 						<motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
 							<Button
 								type="primary"
 								size="large"
 								style={{
-									height: 64,
-									padding: '0 48px',
-									fontSize: 20,
+									height: isDesktop ? 64 : 56,
+									padding: isDesktop ? '0 48px' : '0 32px',
+									fontSize: isDesktop ? 20 : 18,
 									borderRadius: 32,
 									background: token.colorSuccess, // Zen Green
 									border: 'none',

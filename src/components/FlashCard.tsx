@@ -20,6 +20,7 @@ interface FlashCardProps {
 	showFurigana?: boolean;
 	showRomaji?: boolean;
 	autoPlayAudio?: 'off' | 'question' | 'answer';
+	onReveal?: () => void;
 }
 
 export interface FlashCardHandle {
@@ -37,6 +38,7 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 			showFurigana = true,
 			showRomaji = false,
 			autoPlayAudio = 'off',
+			onReveal,
 		}: FlashCardProps,
 		ref,
 	) => {
@@ -215,7 +217,22 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 		if (!card || (!isVocab && !isKanji)) return null;
 
 		return (
-			<div style={{ perspective: 1000, width: '100%', maxWidth: 600, margin: '0 auto' }}>
+			<div
+				onClickCapture={() => {
+					if (!showAnswer && onReveal) {
+						onReveal();
+					}
+				}}
+				style={{
+					perspective: 1000,
+					width: '100%',
+					maxWidth: 600,
+					margin: '0 auto',
+					cursor: !showAnswer ? 'pointer' : 'default',
+					userSelect: 'none', // Prevent text selection on tap
+					WebkitUserSelect: 'none',
+				}}
+			>
 				{/* Hidden Audio Element */}
 				{audioUrl && (
 					<audio
@@ -239,6 +256,18 @@ const FlashCard = React.forwardRef<FlashCardHandle, FlashCardProps>(
 						border: 'none',
 						display: 'flex',
 						flexDirection: 'column',
+						position: 'relative', // For absolute hint positioning
+						transition: 'transform 0.1s ease',
+					}}
+					// Add press effect to the CARD itself but triggered by wrapper click effectively
+					onMouseDown={(e) => {
+						if (!showAnswer) e.currentTarget.style.transform = 'scale(0.98)';
+					}}
+					onMouseUp={(e) => {
+						if (!showAnswer) e.currentTarget.style.transform = 'scale(1)';
+					}}
+					onMouseLeave={(e) => {
+						if (!showAnswer) e.currentTarget.style.transform = 'scale(1)';
 					}}
 					styles={{
 						body: { flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' },

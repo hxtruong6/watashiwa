@@ -956,11 +956,11 @@ export async function getAllVocab() {
 		const user = await getUser();
 		if (!user) return [];
 
-		// For now fetching ALL. In production, need pagination.
+		// Fetch only Vocab that the user is actually studying (has a StudyCard)
 		const vocab = await prisma.vocab.findMany({
 			where: {
-				deck: {
-					OR: [{ isPublic: true }, { authorId: user.id }],
+				studyCards: {
+					some: { userId: user.id },
 				},
 			},
 			include: {
@@ -989,8 +989,8 @@ export async function getAllKanji() {
 
 		const kanji = await prisma.kanji.findMany({
 			where: {
-				deck: {
-					OR: [{ isPublic: true }, { authorId: user.id }],
+				studyCards: {
+					some: { userId: user.id },
 				},
 			},
 			include: {

@@ -27,10 +27,18 @@ export default function SocialProofSection() {
 				background: token.colorBgContainer,
 				borderTop: `1px solid ${token.colorBorderSecondary}`,
 				borderBottom: `1px solid ${token.colorBorderSecondary}`,
+				overflow: 'hidden', // Prevent horizontal scroll from Row negative margins
 			}}
 		>
 			<div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', width: '100%' }}>
-				<Row gutter={[48, 48]} justify="center">
+				{/* Responsive gutter: Smaller on mobile to save space/prevent overflow */}
+				<Row
+					gutter={[
+						{ xs: 16, sm: 24, md: 48 },
+						{ xs: 32, md: 48 },
+					]}
+					justify="center"
+				>
 					{stats.map((stat, index) => (
 						<Col xs={24} sm={12} md={6} key={index} style={{ textAlign: 'center' }}>
 							<motion.div

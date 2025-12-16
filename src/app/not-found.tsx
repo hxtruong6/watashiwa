@@ -36,7 +36,7 @@ export default function NotFound() {
 						}}
 					>
 						<DotLottieReact
-							src="/assets/404.lottie"
+							src="/assets/animations/404.lottie"
 							loop
 							autoplay
 							style={{ width: '100%', height: '100%' }}

@@ -22,6 +22,7 @@ export default function ImmersiveProgressBar({ percent }: ImmersiveProgressBarPr
 				height: 4,
 				background: 'rgba(0,0,0,0.05)', // Subtle track
 				zIndex: 200,
+				pointerEvents: 'none',
 			}}
 		>
 			<div

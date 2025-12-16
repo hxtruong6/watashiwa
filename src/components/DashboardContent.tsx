@@ -16,6 +16,7 @@ import {
 	GlobalLeaderboard,
 } from '@/components/dashboard';
 import { Divider, Drawer, theme } from 'antd';
+import Link from 'next/link';
 
 const { useToken } = theme;
 import VocabSettings from './VocabSettings';
@@ -183,7 +184,7 @@ export default function DashboardContent({
 			{/* Admin Button */}
 			{(userRole === 'ADMIN' || userRole === 'MODERATOR') && (
 				<motion.div variants={itemVariants} style={{ marginTop: 24, textAlign: 'center' }}>
-					<a
+					<Link
 						href="/admin"
 						style={{
 							display: 'inline-block',
@@ -197,7 +198,7 @@ export default function DashboardContent({
 						}}
 					>
 						Go to Admin Panel
-					</a>
+					</Link>
 				</motion.div>
 			)}
 

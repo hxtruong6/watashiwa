@@ -1,27 +1,78 @@
 # Codebase Conventions
 
-## 1. File Structure
+> **Primary Reference**: See [AI Context](./ai_context.md) for full tech stack and design system.
 
-- **Components:** `src/components/[Feature]/[Name].tsx`
-- **Pages:** `src/app/[route]/page.tsx`
-- **Hooks:** `src/hooks/use[Name].ts`
-- **Utilities:** `src/lib/[name].ts`
+This document covers project-specific patterns not obvious from standard conventions.
 
-## 2. Naming
+---
 
-- **Files:** `kebab-case.ts` (e.g., `srs-algorithm.ts`)
-- **Components:** `PascalCase.tsx` (e.g., `VocabCard.tsx`)
-- **Functions/Vars:** `camelCase`
+## File Structure
 
-## 3. Tech Specifics
+| Type | Pattern | Example |
+|------|---------|---------|
+| Components | `src/components/[Feature]/` | `Dashboard/DeckList.tsx` |
+| Pages | `src/app/[route]/page.tsx` | `study/page.tsx` |
+| Server Actions | `src/services/actions.ts` | — |
+| Hooks | `src/hooks/use[Name].ts` | `useStudySession.ts` |
+| Utilities | `src/lib/[name].ts` | `srs-algorithm.ts` |
+| Types | `src/types/` or co-located | — |
 
-- **Ant Design:** Use standard Ant Design components. Customize via `ConfigProvider` in `theme/themeConfig.ts`.
-- **Styling:** Avoid custom CSS files. Use Ant Design's token system or inline styles/`style` prop for one-offs if absolutely necessary, or `created-style` (css-in-js).
-- **Types:** Explicit interfaces for all Props. `interface VocabCardProps { ... }`.
-- **State:** Use `useState` for local, `Zustand` (if complex) or React Context for global.
-- **Async:** Use `async/await`. Wrap DB calls in `try/catch`.
+---
 
-## 4. Documentation
+## Ant Design Integration
 
-- Add JSDoc comments to complex algorithms (like the SRS logic).
-- Keep `spec` files updated if requirements change.
+### Theme Configuration
+
+All tokens defined in `src/lib/theme/themeConfig.ts`. Never use:
+
+- Raw hex colors in components
+- Tailwind classes
+- Separate CSS/SCSS files
+
+### Layout Components
+
+```tsx
+// Preferred
+<Flex vertical gap="middle">
+  <Typography.Title level={3}>{t('heading')}</Typography.Title>
+</Flex>
+
+// Avoid
+<div style={{ display: 'flex', flexDirection: 'column' }}>
+```
+
+---
+
+## Data Patterns
+
+### Server Action Returns
+
+```typescript
+// Always return this shape
+type ActionResult<T> = {
+  success: boolean;
+  error?: string;
+  data?: T;
+};
+```
+
+### Hán Việt Data
+
+All Kanji-related data must include Sino-Vietnamese readings:
+
+```typescript
+{
+  kanji: "学",
+  han_viet: "HỌC",    // Required
+  reading: "がく",
+  meaning: "study"
+}
+```
+
+---
+
+## Translation (next-intl)
+
+- All user-facing strings use `useTranslations()`
+- Keys in `messages/en.json` and `messages/vi.json`
+- Namespace per feature: `dashboard.title`, `study.complete`
