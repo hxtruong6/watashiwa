@@ -19,9 +19,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
 	metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
-	title: 'WatashiWa - Học Cực Cuốn - Cực Hay!',
+	title: 'WatashiWa - Học Tiếng Nhật SRS Cực Cuốn',
 	description:
-		'App học từ vựng SRS xịn sò, không lo rớt môn. Flex trình độ N1, cày Kanji siêu dính. Chiến ngay đi ní!',
+		'Người bạn đồng hành học tiếng Nhật với SRS. Không áp lực, nhớ lâu, học theo cách của bạn. Hai hệ máy, miễn phí & mã nguồn mở.',
 	icons: {
 		icon: '/assets/w_logo.png',
 		shortcut: '/assets/w_logo.png',
@@ -32,10 +32,11 @@ export const metadata: Metadata = {
 		title: 'WatashiWa',
 		statusBarStyle: 'black-translucent',
 	},
+	manifest: '/manifest.json',
 	openGraph: {
-		title: 'WatashiWa - Học Cực Cuốn - Cực Hay!',
+		title: 'WatashiWa - Học Tiếng Nhật SRS Cực Cuốn (Gen Z Support)',
 		description:
-			'App học từ vựng SRS xịn sò, không lo rớt môn. Flex trình độ N1, cày Kanji siêu dính. Chiến ngay đi ní!',
+			'Người bạn đồng hành học tiếng Nhật với SRS. Không áp lực, nhớ lâu, học theo cách của bạn. Hai hệ máy, miễn phí & mã nguồn mở.',
 		url: 'https://watashiwa.app', // Replace with actual URL if known, or generic
 		siteName: 'WatashiWa',
 		images: [
@@ -51,9 +52,9 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: 'summary', // 'summary_large_image' usually requires a 2:1 landscape image. 'summary' is better for square logo.
-		title: 'WatashiWa - Học Cực Cuốn - Cực Hay!',
+		title: 'WatashiWa - Học Tiếng Nhật SRS Cực Cuốn (Gen Z Support)',
 		description:
-			'App học từ vựng xịn sò, không lo rớt môn. Flex trình độ N1, cày Kanji siêu dính. Chiến ngay đi ní!',
+			'Người bạn đồng hành học tiếng Nhật với SRS. Không áp lực, nhớ lâu, học theo cách của bạn. Chiến ngay đi ní!',
 		images: ['/assets/w_logo.png'],
 	},
 };

@@ -1,5 +1,5 @@
 {
-    "name": "WatashiWa - Học Cực Cuốn",
+    "name": "WatashiWa",
     "short_name": "WatashiWa",
     "lang": "vi",
     "start_url": "/",
@@ -20,7 +20,7 @@
             "type": "image/png"
         }
     ],
-    "description": "App học từ vựng SRS xịn sò, không lo rớt môn. Flex trình độ N1, cày Kanji siêu dính. Chiến ngay đi ní!",
+    "description": "Người bạn đồng hành học tiếng Nhật với SRS. Không áp lực, nhớ lâu, học theo cách của bạn.",
     "categories": [
         "education",
         "productivity",
