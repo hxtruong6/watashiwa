@@ -1,7 +1,7 @@
 # Data Processing Plan: MinaN5
 
 > **Source**: `data/MinaN5_1_13.txt`
-> **Destination**: `data/jlpt_n5/unitXX.json`
+> **Destination**: `data/minna_1/unitXX.json`
 
 ## Unit Tracking
 
@@ -20,12 +20,37 @@
 | **11** | ✅ Done | 33 | 440-472 | `いくつ`, `枚`, `兄弟` |
 | **12** | ✅ Done | ~71 | 473-543 | `簡単`, `天気`, `雨` |
 | **13** | ✅ Done | ~15 | 544-558 | `欲しい`, `散歩します` |
+| **14** | ✅ Done | 40 | 3-42 | `つけます`, `雨` (Source: `MinaN5_14_25.txt`) |
+| **15** | ✅ Done | 19 | 43-61 | `置きます`, `家族` (Source: `MinaN5_14_25.txt`) |
+| **16** | ✅ Done | 49 | 62-110 | `乗ります`, `緑` (Source: `MinaN5_14_25.txt`) |
+| **17** | ✅ Done | 28 | 111-138 | `覚えます`, `心配します` (Source: `MinaN5_14_25.txt`) |
+| **18** | ✅ Done | 24 | 162-185 | `できます`, `趣味` (Source: `MinaN5_14_25.txt`) |
+| **19** | ✅ Done | 23 | 139-161 | `登ります`, `練習` (Source: `MinaN5_14_25.txt`) |
+| **20** | ✅ Done | 17 | 186-202 | `要ります`, `ビザ` (Source: `MinaN5_14_25.txt`) |
+| **21** | ✅ Done | 22 | 238-259 | `思います`, `意見` (Source: `MinaN5_14_25.txt`) |
+| **22** | ✅ Done | 22 | 260-281 | `着ます`, `帽子` (Source: `MinaN5_14_25.txt`) |
+| **23** | ✅ Done | 25 | 282-306 | `聞きます`, `故障` (Source: `MinaN5_14_25.txt`) |
+| **24** | ✅ Done | 12 | 203-214 | `直します`, `紹介` (Source: `MinaN5_14_25.txt`) |
+| **25** | ✅ Done | 23 | 215-237 | `考えます`, `もし` (Source: `MinaN5_14_25.txt`) |
+| **26** | ⏳ Pending | 55 | 3-57 | `やります`, `ごみ` (Source: `MinaN4_26_38.txt`) |
+| **27** | ⏳ Pending | 42 | 58-99 | `飼います`, `走ります` (Source: `MinaN4_26_38.txt`) |
+| **28** | ⏳ Pending | 46 | 100-145 | `売れます`, `踊ります` (Source: `MinaN4_26_38.txt`) |
+| **29** | ⏳ Pending | 37 | 146-182 | `開きます`, `閉まります` (Source: `MinaN4_26_38.txt`) |
+| **30** | ⏳ Pending | 41 | 183-223 | `貼ります`, `植えます` (Source: `MinaN4_26_38.txt`) |
+| **31** | ⏳ Pending | 36 | 224-259 | `生活します`, `続けます` (Source: `MinaN4_26_38.txt`) |
+| **32** | ⏳ Pending | 57 | 260-316 | `閉じます`, `運動します` (Source: `MinaN4_26_38.txt`) |
+| **33** | ⏳ Pending | 46 | 317-362 | `逃げます`, `守ります` (Source: `MinaN4_26_38.txt`) |
+| **34** | ⏳ Pending | 39 | 363-401 | `磨きます`, `組立てます` (Source: `MinaN4_26_38.txt`) |
+| **35** | ⏳ Pending | 30 | 402-431 | `咲きます`, `変わります` (Source: `MinaN4_26_38.txt`) |
+| **36** | ⏳ Pending | 42 | 432-473 | `貯金します`, `あいます` (Source: `MinaN4_26_38.txt`) |
+| **37** | ⏳ Pending | 50 | 474-523 | `褒めます`, `誘います` (Source: `MinaN4_26_38.txt`) |
+| **38** | ⏳ Pending | 37 | 524-560 | `参加します`, `育てます` (Source: `MinaN4_26_38.txt`) |
 
 ## Generation Rules
 
 ### 1. File & Structure
 
-- **Path Pattern**: `data/jlpt_n5/unit{XX}.json` (e.g., `unit02.json`).
+- **Path Pattern**: `data/minna_1/unit{XX}.json` (e.g., `unit02.json`).
 - **Format**: JSON Array of objects.
 
 ### 2. Data Fields

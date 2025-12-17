@@ -1,0 +1,1270 @@
+[
+    {
+        "id": "u26-01",
+        "wordSurface": "やります",
+        "readingKana": "やります",
+        "hanViet": "",
+        "meaning": "làm (dùng cho hành động cụ thể)",
+        "enMeaning": "do, give (to pets, plants)",
+        "wordParts": [
+            {
+                "text": "やります",
+                "furigana": "やります"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "宿題をやります。",
+            "translation": "Làm bài tập.",
+            "enTranslation": "Do homework.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-02",
+        "wordSurface": "フリーマーケット",
+        "readingKana": "フリーマーケット",
+        "hanViet": "",
+        "meaning": "chợ đồ cũ, chợ trời",
+        "enMeaning": "flea market",
+        "wordParts": [
+            {
+                "text": "フリーマーケット",
+                "furigana": "フリーマーケット"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "フリーマーケットに行きます。",
+            "translation": "Đi chợ trời.",
+            "enTranslation": "Go to the flea market.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-03",
+        "wordSurface": "ボランティア",
+        "readingKana": "ボランティア",
+        "hanViet": "",
+        "meaning": "tình nguyện viên",
+        "enMeaning": "volunteer",
+        "wordParts": [
+            {
+                "text": "ボランティア",
+                "furigana": "ボランティア"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ボランティアに参加します。",
+            "translation": "Tham gia tình nguyện.",
+            "enTranslation": "Participate in volunteer work.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-04",
+        "wordSurface": "ごみ",
+        "readingKana": "ごみ",
+        "hanViet": "",
+        "meaning": "rác",
+        "enMeaning": "garbage, trash",
+        "wordParts": [
+            {
+                "text": "ごみ",
+                "furigana": "ごみ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ごみを捨てます。",
+            "translation": "Vứt rác.",
+            "enTranslation": "Throw away garbage.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-05",
+        "wordSurface": "いつでも",
+        "readingKana": "いつでも",
+        "hanViet": "",
+        "meaning": "lúc nào cũng",
+        "enMeaning": "anytime",
+        "wordParts": [
+            {
+                "text": "いつでも",
+                "furigana": "いつでも"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "いつでも電話してください。",
+            "translation": "Hãy gọi cho tôi bất cứ lúc nào.",
+            "enTranslation": "Please call me anytime.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-06",
+        "wordSurface": "どこでも",
+        "readingKana": "どこでも",
+        "hanViet": "",
+        "meaning": "ở đâu cũng",
+        "enMeaning": "anywhere",
+        "wordParts": [
+            {
+                "text": "どこでも",
+                "furigana": "どこでも"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "どこでもいいです。",
+            "translation": "Ở đâu cũng được.",
+            "enTranslation": "Anywhere is fine.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-07",
+        "wordSurface": "だれでも",
+        "readingKana": "だれでも",
+        "hanViet": "",
+        "meaning": "ai cũng",
+        "enMeaning": "anyone",
+        "wordParts": [
+            {
+                "text": "だれでも",
+                "furigana": "だれでも"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "だれでも参加できます。",
+            "translation": "Ai cũng có thể tham gia.",
+            "enTranslation": "Anyone can participate.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-08",
+        "wordSurface": "こんな",
+        "readingKana": "こんな",
+        "hanViet": "",
+        "meaning": "～ như thế này",
+        "enMeaning": "like this",
+        "wordParts": [
+            {
+                "text": "こんな",
+                "furigana": "こんな"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "こんな家",
+            "translation": "Ngôi nhà như thế này",
+            "enTranslation": "A house like this",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-09",
+        "wordSurface": "そんな",
+        "readingKana": "そんな",
+        "hanViet": "",
+        "meaning": "～ như thế đó",
+        "enMeaning": "like that (near listener)",
+        "wordParts": [
+            {
+                "text": "そんな",
+                "furigana": "そんな"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "そんなこと",
+            "translation": "Việc như thế đó",
+            "enTranslation": "Such a thing (near you)",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-10",
+        "wordSurface": "あんな",
+        "readingKana": "あんな",
+        "hanViet": "",
+        "meaning": "～ như thế kia",
+        "enMeaning": "like that (far from both)",
+        "wordParts": [
+            {
+                "text": "あんな",
+                "furigana": "あんな"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "あんな人",
+            "translation": "Người như thế kia",
+            "enTranslation": "A person like that (over there)",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-11",
+        "wordSurface": "ガス",
+        "readingKana": "ガス",
+        "hanViet": "",
+        "meaning": "ga",
+        "enMeaning": "gas",
+        "wordParts": [
+            {
+                "text": "ガス",
+                "furigana": "ガス"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ガスを使います。",
+            "translation": "Sử dụng ga.",
+            "enTranslation": "Use gas.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-12",
+        "wordSurface": "見ます・診ます",
+        "readingKana": "みます",
+        "hanViet": "KIẾN - CHẨN",
+        "meaning": "kiểm tra, khám bệnh",
+        "enMeaning": "check, examine",
+        "wordParts": [
+            {
+                "text": "見",
+                "furigana": "み"
+            },
+            {
+                "text": "ます",
+                "furigana": "ます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "医者が診ます。",
+            "translation": "Bác sĩ khám bệnh.",
+            "enTranslation": "The doctor examines.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-13",
+        "wordSurface": "探します・捜します",
+        "readingKana": "さがします",
+        "hanViet": "THÁM - SƯU",
+        "meaning": "tìm, tìm kiếm",
+        "enMeaning": "look for, search",
+        "wordParts": [
+            {
+                "text": "探",
+                "furigana": "さが"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "仕事を探します。",
+            "translation": "Tìm việc làm.",
+            "enTranslation": "Look for a job.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-14",
+        "wordSurface": "遅れます",
+        "readingKana": "おくれます",
+        "hanViet": "TRÌ",
+        "meaning": "chậm, muộn",
+        "enMeaning": "be late",
+        "wordParts": [
+            {
+                "text": "遅",
+                "furigana": "おく"
+            },
+            {
+                "text": "れます",
+                "furigana": "れます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "時間に遅れます。",
+            "translation": "Muộn giờ.",
+            "enTranslation": "Be late for time.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-15",
+        "wordSurface": "拾います",
+        "readingKana": "ひろいます",
+        "hanViet": "THẬP",
+        "meaning": "nhặt, lượm",
+        "enMeaning": "pick up",
+        "wordParts": [
+            {
+                "text": "拾",
+                "furigana": "ひろ"
+            },
+            {
+                "text": "います",
+                "furigana": "います"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "財布を拾いました。",
+            "translation": "Tôi nhặt được cái ví.",
+            "enTranslation": "I picked up a wallet.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-16",
+        "wordSurface": "連絡します",
+        "readingKana": "れんらくします",
+        "hanViet": "LIÊN LẠC",
+        "meaning": "liên lạc",
+        "enMeaning": "contact",
+        "wordParts": [
+            {
+                "text": "連",
+                "furigana": "れん"
+            },
+            {
+                "text": "絡",
+                "furigana": "らく"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "会社に連絡します。",
+            "translation": "Liên lạc với công ty.",
+            "enTranslation": "Contact the company.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-17",
+        "wordSurface": "気分がいい",
+        "readingKana": "きぶんがいい",
+        "hanViet": "KHÍ PHÂN",
+        "meaning": "cảm thấy thoải mái, cảm thấy khỏe",
+        "enMeaning": "feel good",
+        "wordParts": [
+            {
+                "text": "気",
+                "furigana": "き"
+            },
+            {
+                "text": "分",
+                "furigana": "ぶん"
+            },
+            {
+                "text": "がいい",
+                "furigana": "がいい"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "今日は気分がいいです。",
+            "translation": "Hôm nay tôi thấy khỏe.",
+            "enTranslation": "I feel good today.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-18",
+        "wordSurface": "気分が悪い",
+        "readingKana": "きぶんがわるい",
+        "hanViet": "KHÍ PHÂN ÁC",
+        "meaning": "cảm thấy không thoải mái, cảm thấy mệt",
+        "enMeaning": "feel bad, feel sick",
+        "wordParts": [
+            {
+                "text": "気",
+                "furigana": "き"
+            },
+            {
+                "text": "分",
+                "furigana": "ぶん"
+            },
+            {
+                "text": "が",
+                "furigana": "が"
+            },
+            {
+                "text": "悪",
+                "furigana": "わる"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "少し気分が悪いです。",
+            "translation": "Tôi thấy hơi mệt.",
+            "enTranslation": "I feel a bit sick.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-19",
+        "wordSurface": "運動会",
+        "readingKana": "うんどうかい",
+        "hanViet": "VẬN ĐỘNG HỘI",
+        "meaning": "hội thi thể thao",
+        "enMeaning": "sports day",
+        "wordParts": [
+            {
+                "text": "運",
+                "furigana": "うん"
+            },
+            {
+                "text": "動",
+                "furigana": "どう"
+            },
+            {
+                "text": "会",
+                "furigana": "かい"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "運動会に参加します。",
+            "translation": "Tham gia hội thi thể thao.",
+            "enTranslation": "Participate in the sports day.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-20",
+        "wordSurface": "盆踊り",
+        "readingKana": "ぼんおどり",
+        "hanViet": "BỒN DƯỢC",
+        "meaning": "múa bon",
+        "enMeaning": "Bon dance",
+        "wordParts": [
+            {
+                "text": "盆",
+                "furigana": "ぼん"
+            },
+            {
+                "text": "踊",
+                "furigana": "おど"
+            },
+            {
+                "text": "り",
+                "furigana": "り"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "盆踊りを見ます。",
+            "translation": "Xem múa Bon.",
+            "enTranslation": "Watch Bon dance.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-21",
+        "wordSurface": "場所",
+        "readingKana": "ばしょ",
+        "hanViet": "TRƯỜNG SỞ",
+        "meaning": "địa điểm, nơi",
+        "enMeaning": "place",
+        "wordParts": [
+            {
+                "text": "場",
+                "furigana": "ば"
+            },
+            {
+                "text": "所",
+                "furigana": "しょ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "場所を教えてください。",
+            "translation": "Hãy cho tôi biết địa điểm.",
+            "enTranslation": "Please tell me the location.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-22",
+        "wordSurface": "財布",
+        "readingKana": "さいふ",
+        "hanViet": "TÀI BỐ",
+        "meaning": "ví",
+        "enMeaning": "wallet",
+        "wordParts": [
+            {
+                "text": "財",
+                "furigana": "さい"
+            },
+            {
+                "text": "布",
+                "furigana": "ふ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "財布を忘れました。",
+            "translation": "Tôi quên ví.",
+            "enTranslation": "I forgot my wallet.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-23",
+        "wordSurface": "国会議事堂",
+        "readingKana": "こっかいぎじどう",
+        "hanViet": "QUỐC HỘI NGHỊ SỰ ĐƯỜNG",
+        "meaning": "tòa nhà quốc hội",
+        "enMeaning": "National Diet Building",
+        "wordParts": [
+            {
+                "text": "国",
+                "furigana": "こっ"
+            },
+            {
+                "text": "会",
+                "furigana": "かい"
+            },
+            {
+                "text": "議",
+                "furigana": "ぎ"
+            },
+            {
+                "text": "事",
+                "furigana": "じ"
+            },
+            {
+                "text": "堂",
+                "furigana": "どう"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "国会議事堂を見学します。",
+            "translation": "Tham quan tòa nhà quốc hội.",
+            "enTranslation": "Tour the National Diet Building.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-24",
+        "wordSurface": "平日",
+        "readingKana": "へいじつ",
+        "hanViet": "BÌNH NHẬT",
+        "meaning": "ngày thường",
+        "enMeaning": "weekday",
+        "wordParts": [
+            {
+                "text": "平",
+                "furigana": "へい"
+            },
+            {
+                "text": "日",
+                "furigana": "じつ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "平日は忙しいです。",
+            "translation": "Ngày thường tôi bận.",
+            "enTranslation": "I am busy on weekdays.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-25",
+        "wordSurface": "～弁",
+        "readingKana": "～べん",
+        "hanViet": "BIỆN",
+        "meaning": "phương ngữ ~, tiếng ~, giọng ~",
+        "enMeaning": "~ dialect",
+        "wordParts": [
+            {
+                "text": "弁",
+                "furigana": "べん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "関西弁",
+            "translation": "Giọng Kansai",
+            "enTranslation": "Kansai dialect",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-26",
+        "wordSurface": "今度",
+        "readingKana": "こんど",
+        "hanViet": "KIM ĐỘ",
+        "meaning": "lần tới",
+        "enMeaning": "next time",
+        "wordParts": [
+            {
+                "text": "今",
+                "furigana": "こん"
+            },
+            {
+                "text": "度",
+                "furigana": "ど"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "今度遊びに行きましょう。",
+            "translation": "Lần tới cùng đi chơi nhé.",
+            "enTranslation": "Let's go hang out next time.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-27",
+        "wordSurface": "ずいぶん",
+        "readingKana": "ずいぶん",
+        "hanViet": "",
+        "meaning": "khá, tương đối",
+        "enMeaning": "quite, very",
+        "wordParts": [
+            {
+                "text": "ずいぶん",
+                "furigana": "ずいぶん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ずいぶん寒くなりました。",
+            "translation": "Trời đã trở nên khá lạnh.",
+            "enTranslation": "It has become quite cold.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-28",
+        "wordSurface": "直接",
+        "readingKana": "ちょくせつ",
+        "hanViet": "TRỰC TIẾP",
+        "meaning": "trực tiếp",
+        "enMeaning": "directly",
+        "wordParts": [
+            {
+                "text": "直",
+                "furigana": "ちょく"
+            },
+            {
+                "text": "接",
+                "furigana": "せつ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "直接話してください。",
+            "translation": "Hãy nói chuyện trực tiếp.",
+            "enTranslation": "Please speak directly.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-29",
+        "wordSurface": "何でも",
+        "readingKana": "なんでも",
+        "hanViet": "HÀ",
+        "meaning": "cái gì cũng",
+        "enMeaning": "anything",
+        "wordParts": [
+            {
+                "text": "何",
+                "furigana": "なん"
+            },
+            {
+                "text": "でも",
+                "furigana": "でも"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "何でも食べてください。",
+            "translation": "Hãy ăn bất cứ thứ gì.",
+            "enTranslation": "Please eat anything.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-30",
+        "wordSurface": "片づきます",
+        "readingKana": "かたづきます",
+        "hanViet": "PHIẾN",
+        "meaning": "được dọn dẹp ngăn nắp",
+        "enMeaning": "be tidied up",
+        "wordParts": [
+            {
+                "text": "片",
+                "furigana": "かた"
+            },
+            {
+                "text": "づきます",
+                "furigana": "づきます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "部屋が片づきました。",
+            "translation": "Phòng đã được dọn dẹp.",
+            "enTranslation": "The room has been tidied up.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-31",
+        "wordSurface": "出します",
+        "readingKana": "だします",
+        "hanViet": "XUẤT",
+        "meaning": "đổ, để (rác)",
+        "enMeaning": "put out (trash)",
+        "wordParts": [
+            {
+                "text": "出",
+                "furigana": "だ"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ごみを出します。",
+            "translation": "Đổ rác.",
+            "enTranslation": "Put out the garbage.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-32",
+        "wordSurface": "燃えるごみ",
+        "readingKana": "もえるごみ",
+        "hanViet": "NHIÊN",
+        "meaning": "rác cháy được",
+        "enMeaning": "combustible garbage",
+        "wordParts": [
+            {
+                "text": "燃",
+                "furigana": "も"
+            },
+            {
+                "text": "えるごみ",
+                "furigana": "えるごみ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "今日は燃えるごみの日です。",
+            "translation": "Hôm nay là ngày rác cháy được.",
+            "enTranslation": "Today is combustible garbage day.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-33",
+        "wordSurface": "置き場",
+        "readingKana": "おきば",
+        "hanViet": "TRÍ TRƯỜNG",
+        "meaning": "nơi để",
+        "enMeaning": "place to put something",
+        "wordParts": [
+            {
+                "text": "置",
+                "furigana": "お"
+            },
+            {
+                "text": "き",
+                "furigana": "き"
+            },
+            {
+                "text": "場",
+                "furigana": "ば"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "自転車の置き場",
+            "translation": "Nơi để xe đạp",
+            "enTranslation": "Bicycle parking space",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-34",
+        "wordSurface": "横",
+        "readingKana": "よこ",
+        "hanViet": "HOÀNH",
+        "meaning": "bên cạnh",
+        "enMeaning": "side, beside",
+        "wordParts": [
+            {
+                "text": "横",
+                "furigana": "よこ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "テーブルの横",
+            "translation": "Bên cạnh cái bàn",
+            "enTranslation": "Beside the table",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-35",
+        "wordSurface": "瓶",
+        "readingKana": "びん",
+        "hanViet": "BÌNH",
+        "meaning": "chai",
+        "enMeaning": "bottle",
+        "wordParts": [
+            {
+                "text": "瓶",
+                "furigana": "びん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "瓶を捨てます。",
+            "translation": "Vứt chai.",
+            "enTranslation": "Throw away bottles.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-36",
+        "wordSurface": "缶",
+        "readingKana": "かん",
+        "hanViet": "PHẪU",
+        "meaning": "lon",
+        "enMeaning": "can",
+        "wordParts": [
+            {
+                "text": "缶",
+                "furigana": "かん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "缶ジュース",
+            "translation": "Nước trái cây lon",
+            "enTranslation": "Canned juice",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-37",
+        "wordSurface": "宇宙",
+        "readingKana": "うちゅう",
+        "hanViet": "VŨ TRỤ",
+        "meaning": "vũ trụ",
+        "enMeaning": "space, universe",
+        "wordParts": [
+            {
+                "text": "宇",
+                "furigana": "う"
+            },
+            {
+                "text": "宙",
+                "furigana": "ちゅう"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "宇宙へ行きたいです。",
+            "translation": "Tôi muốn đi vũ trụ.",
+            "enTranslation": "I want to go to space.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-38",
+        "wordSurface": "～様",
+        "readingKana": "～さま",
+        "hanViet": "DẠNG",
+        "meaning": "kính ngữ của San",
+        "enMeaning": "Mr./Ms. (polite)",
+        "wordParts": [
+            {
+                "text": "様",
+                "furigana": "さま"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "田中様",
+            "translation": "Ngài Tanaka",
+            "enTranslation": "Mr. Tanaka (polite)",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-39",
+        "wordSurface": "宇宙船",
+        "readingKana": "うちゅうせん",
+        "hanViet": "VŨ TRỤ THUYỀN",
+        "meaning": "tàu vũ trụ",
+        "enMeaning": "spaceship",
+        "wordParts": [
+            {
+                "text": "宇",
+                "furigana": "う"
+            },
+            {
+                "text": "宙",
+                "furigana": "ちゅう"
+            },
+            {
+                "text": "船",
+                "furigana": "せん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "宇宙船に乗ります。",
+            "translation": "Lên tàu vũ trụ.",
+            "enTranslation": "Board a spaceship.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-40",
+        "wordSurface": "怖い",
+        "readingKana": "こわい",
+        "hanViet": "BỐ",
+        "meaning": "sợ, đáng sợ",
+        "enMeaning": "scary, afraid",
+        "wordParts": [
+            {
+                "text": "怖",
+                "furigana": "こわ"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "お化けが怖いです。",
+            "translation": "Tôi sợ ma.",
+            "enTranslation": "I am afraid of ghosts.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-41",
+        "wordSurface": "宇宙ステーション",
+        "readingKana": "うちゅうステーション",
+        "hanViet": "VŨ TRỤ",
+        "meaning": "trạm vũ trụ",
+        "enMeaning": "space station",
+        "wordParts": [
+            {
+                "text": "宇",
+                "furigana": "う"
+            },
+            {
+                "text": "宙",
+                "furigana": "ちゅう"
+            },
+            {
+                "text": "ステーション",
+                "furigana": "ステーション"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "宇宙ステーションで働きます。",
+            "translation": "Làm việc tại trạm vũ trụ.",
+            "enTranslation": "Work at the space station.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-42",
+        "wordSurface": "違います",
+        "readingKana": "ちがいます",
+        "hanViet": "VI",
+        "meaning": "khác, không giống, sai, nhầm",
+        "enMeaning": "be different, wrong",
+        "wordParts": [
+            {
+                "text": "違",
+                "furigana": "ちが"
+            },
+            {
+                "text": "います",
+                "furigana": "います"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "それは違います。",
+            "translation": "Cái đó sai rồi.",
+            "enTranslation": "That is wrong.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-43",
+        "wordSurface": "宇宙飛行士",
+        "readingKana": "うちゅうひこうし",
+        "hanViet": "VŨ TRỤ PHI HÀNH SĨ",
+        "meaning": "nhà du hành vũ trụ",
+        "enMeaning": "astronaut",
+        "wordParts": [
+            {
+                "text": "宇",
+                "furigana": "う"
+            },
+            {
+                "text": "宙",
+                "furigana": "ちゅう"
+            },
+            {
+                "text": "飛",
+                "furigana": "ひ"
+            },
+            {
+                "text": "行",
+                "furigana": "こう"
+            },
+            {
+                "text": "士",
+                "furigana": "し"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "宇宙飛行士になりたいです。",
+            "translation": "Tôi muốn trở thành phi hành gia.",
+            "enTranslation": "I want to become an astronaut.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-44",
+        "wordSurface": "できます",
+        "readingKana": "できます",
+        "hanViet": "",
+        "meaning": "được làm, được hoàn thành",
+        "enMeaning": "be made, happen",
+        "wordParts": [
+            {
+                "text": "できます",
+                "furigana": "できます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "駅の前に新しいビルができました。",
+            "translation": "Một tòa nhà mới đã được xây xong trước ga.",
+            "enTranslation": "A new building has been built in front of the station.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-45",
+        "wordSurface": "ペット",
+        "readingKana": "ペット",
+        "hanViet": "",
+        "meaning": "thú cưng, động vật nuôi",
+        "enMeaning": "pet",
+        "wordParts": [
+            {
+                "text": "ペット",
+                "furigana": "ペット"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ペットを飼っています。",
+            "translation": "Tôi đang nuôi thú cưng.",
+            "enTranslation": "I have a pet.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-46",
+        "wordSurface": "クリーニング",
+        "readingKana": "クリーニング",
+        "hanViet": "",
+        "meaning": "giặt là",
+        "enMeaning": "cleaning, laundry",
+        "wordParts": [
+            {
+                "text": "クリーニング",
+                "furigana": "クリーニング"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "シャツをクリーニングに出します。",
+            "translation": "Đưa áo sơ mi đi giặt là.",
+            "enTranslation": "Send a shirt to the cleaners.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-47",
+        "wordSurface": "マンション",
+        "readingKana": "マンション",
+        "hanViet": "",
+        "meaning": "chung cư",
+        "enMeaning": "apartment, condominium",
+        "wordParts": [
+            {
+                "text": "マンション",
+                "furigana": "マンション"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "マンションに住んでいます。",
+            "translation": "Tôi đang sống ở chung cư.",
+            "enTranslation": "I live in an apartment.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-48",
+        "wordSurface": "キッチン",
+        "readingKana": "キッチン",
+        "hanViet": "",
+        "meaning": "bếp",
+        "enMeaning": "kitchen",
+        "wordParts": [
+            {
+                "text": "キッチン",
+                "furigana": "キッチン"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "きれいなキッチン",
+            "translation": "Nhà bếp đẹp",
+            "enTranslation": "Beautiful kitchen",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-49",
+        "wordSurface": "パーティールーム",
+        "readingKana": "パーティールーム",
+        "hanViet": "",
+        "meaning": "phòng tổ chức tiệc",
+        "enMeaning": "party room",
+        "wordParts": [
+            {
+                "text": "パーティールーム",
+                "furigana": "パーティールーム"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "パーティールームでパーティーをします。",
+            "translation": "Tổ chức tiệc ở phòng tiệc.",
+            "enTranslation": "Have a party in the party room.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-50",
+        "wordSurface": "～しか",
+        "readingKana": "～しか",
+        "hanViet": "",
+        "meaning": "chỉ ~ (được dùng với thể phủ định)",
+        "enMeaning": "only ~ (used with negative)",
+        "wordParts": [
+            {
+                "text": "しか",
+                "furigana": "しか"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "100円しかありません。",
+            "translation": "Tôi chỉ có 100 yên.",
+            "enTranslation": "I only have 100 yen.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-51",
+        "wordSurface": "ほかの",
+        "readingKana": "ほかの",
+        "hanViet": "",
+        "meaning": "khác",
+        "enMeaning": "other",
+        "wordParts": [
+            {
+                "text": "ほかの",
+                "furigana": "ほかの"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ほかの意見はありませんか。",
+            "translation": "Có ý kiến nào khác không?",
+            "enTranslation": "Are there any other opinions?",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-52",
+        "wordSurface": "はっきり",
+        "readingKana": "はっきり",
+        "hanViet": "",
+        "meaning": "rõ ràng",
+        "enMeaning": "clearly",
+        "wordParts": [
+            {
+                "text": "はっきり",
+                "furigana": "はっきり"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "はっきり言ってください。",
+            "translation": "Hãy nói rõ ràng.",
+            "enTranslation": "Please speak clearly.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-53",
+        "wordSurface": "いつか",
+        "readingKana": "いつか",
+        "hanViet": "",
+        "meaning": "lúc nào đó",
+        "enMeaning": "someday, sometime",
+        "wordParts": [
+            {
+                "text": "いつか",
+                "furigana": "いつか"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "いつか日本へ行きたいです。",
+            "translation": "Lúc nào đó tôi muốn đi Nhật.",
+            "enTranslation": "I want to go to Japan someday.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-54",
+        "wordSurface": "すばらしい",
+        "readingKana": "すばらしい",
+        "hanViet": "",
+        "meaning": "tuyệt vời",
+        "enMeaning": "wonderful, magnificent",
+        "wordParts": [
+            {
+                "text": "すばらしい",
+                "furigana": "すばらしい"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "すばらしい景色",
+            "translation": "Phong cảnh tuyệt vời",
+            "enTranslation": "Magnificent scenery",
+            "parts": []
+        }
+    },
+    {
+        "id": "u26-55",
+        "wordSurface": "ポケット",
+        "readingKana": "ポケット",
+        "hanViet": "",
+        "meaning": "chiếc túi (quần, áo)",
+        "enMeaning": "pocket",
+        "wordParts": [
+            {
+                "text": "ポケット",
+                "furigana": "ポケット"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ポケットに入れます。",
+            "translation": "Cho vào túi.",
+            "enTranslation": "Put in the pocket.",
+            "parts": []
+        }
+    }
+]

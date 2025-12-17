@@ -1,0 +1,706 @@
+[
+    {
+        "id": "u17-01",
+        "wordSurface": "覚えます",
+        "readingKana": "おぼえます",
+        "hanViet": "GIÁC",
+        "meaning": "nhớ",
+        "enMeaning": "remember, memorize",
+        "wordParts": [
+            {
+                "text": "覚",
+                "furigana": "おぼ"
+            },
+            {
+                "text": "えます",
+                "furigana": "えます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "単語を覚えます。",
+            "translation": "Nhớ từ vựng.",
+            "enTranslation": "Memorize vocabulary.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-02",
+        "wordSurface": "忘れます",
+        "readingKana": "わすれます",
+        "hanViet": "VONG",
+        "meaning": "quên",
+        "enMeaning": "forget",
+        "wordParts": [
+            {
+                "text": "忘",
+                "furigana": "わす"
+            },
+            {
+                "text": "れます",
+                "furigana": "れます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "宿題を忘れました。",
+            "translation": "Tôi đã quên bài tập về nhà.",
+            "enTranslation": "I forgot my homework.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-03",
+        "wordSurface": "払います",
+        "readingKana": "はらいます",
+        "hanViet": "PHẤT",
+        "meaning": "trả tiền",
+        "enMeaning": "pay",
+        "wordParts": [
+            {
+                "text": "払",
+                "furigana": "はら"
+            },
+            {
+                "text": "います",
+                "furigana": "います"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "カードで払います。",
+            "translation": "Trả bằng thẻ.",
+            "enTranslation": "Pay by card.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-04",
+        "wordSurface": "返します",
+        "readingKana": "かえします",
+        "hanViet": "PHẢN",
+        "meaning": "trả lại",
+        "enMeaning": "return (something)",
+        "wordParts": [
+            {
+                "text": "返",
+                "furigana": "かえ"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "本を返します。",
+            "translation": "Trả lại sách.",
+            "enTranslation": "Return the book.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-05",
+        "wordSurface": "出かけます",
+        "readingKana": "でかけます",
+        "hanViet": "XUẤT",
+        "meaning": "ra ngoài, đi ra ngoài",
+        "enMeaning": "go out",
+        "wordParts": [
+            {
+                "text": "出",
+                "furigana": "で"
+            },
+            {
+                "text": "かけます",
+                "furigana": "かけます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "日曜日出かけます。",
+            "translation": "Chủ nhật tôi đi ra ngoài.",
+            "enTranslation": "I go out on Sundays.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-06",
+        "wordSurface": "脱ぎます",
+        "readingKana": "ぬぎます",
+        "hanViet": "THOÁT",
+        "meaning": "cởi (giày, quần áo,...)",
+        "enMeaning": "take off (clothes, shoes)",
+        "wordParts": [
+            {
+                "text": "脱",
+                "furigana": "ぬ"
+            },
+            {
+                "text": "ぎます",
+                "furigana": "ぎます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "靴を脱ぎます。",
+            "translation": "Cởi giày.",
+            "enTranslation": "Take off shoes.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-07",
+        "wordSurface": "持って行きます",
+        "readingKana": "もっていきます",
+        "hanViet": "TRÌ HÀNH",
+        "meaning": "mang đi, mang theo",
+        "enMeaning": "take (something)",
+        "wordParts": [
+            {
+                "text": "持",
+                "furigana": "も"
+            },
+            {
+                "text": "って",
+                "furigana": "って"
+            },
+            {
+                "text": "行",
+                "furigana": "い"
+            },
+            {
+                "text": "きます",
+                "furigana": "きます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "傘を持って行きます。",
+            "translation": "Mang ô đi.",
+            "enTranslation": "Take an umbrella.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-08",
+        "wordSurface": "持って来ます",
+        "readingKana": "もってきます",
+        "hanViet": "TRÌ LAI",
+        "meaning": "mang đến",
+        "enMeaning": "bring (something)",
+        "wordParts": [
+            {
+                "text": "持",
+                "furigana": "も"
+            },
+            {
+                "text": "って",
+                "furigana": "って"
+            },
+            {
+                "text": "来",
+                "furigana": "き"
+            },
+            {
+                "text": "ます",
+                "furigana": "ます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "明日お弁当を持って来ます。",
+            "translation": "Ngày mai tôi sẽ mang cơm hộp đến.",
+            "enTranslation": "I will bring a bento tomorrow.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-09",
+        "wordSurface": "心配します",
+        "readingKana": "しんぱいします",
+        "hanViet": "TÂM PHỐI",
+        "meaning": "lo lắng",
+        "enMeaning": "worry",
+        "wordParts": [
+            {
+                "text": "心",
+                "furigana": "しん"
+            },
+            {
+                "text": "配",
+                "furigana": "ぱい"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "心配しないでください。",
+            "translation": "Xin đừng lo lắng.",
+            "enTranslation": "Please don't worry.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-10",
+        "wordSurface": "残業します",
+        "readingKana": "ざんぎょうします",
+        "hanViet": "TÀN NGHIỆP",
+        "meaning": "làm thêm giờ",
+        "enMeaning": "work overtime",
+        "wordParts": [
+            {
+                "text": "残",
+                "furigana": "ざん"
+            },
+            {
+                "text": "業",
+                "furigana": "ぎょう"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "今日は残業します。",
+            "translation": "Hôm nay tôi làm thêm giờ.",
+            "enTranslation": "I will work overtime today.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-11",
+        "wordSurface": "出張します",
+        "readingKana": "しゅっちょうします",
+        "hanViet": "XUẤT TRƯƠNG",
+        "meaning": "đi công tác",
+        "enMeaning": "go on a business trip",
+        "wordParts": [
+            {
+                "text": "出",
+                "furigana": "しゅっ"
+            },
+            {
+                "text": "張",
+                "furigana": "ちょう"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "東京へ出張します。",
+            "translation": "Đi công tác ở Tokyo.",
+            "enTranslation": "Go on a business trip to Tokyo.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-12",
+        "wordSurface": "大切",
+        "readingKana": "たいせつ",
+        "hanViet": "ĐẠI THIẾT",
+        "meaning": "quan trọng, quý giá",
+        "enMeaning": "important, precious",
+        "wordParts": [
+            {
+                "text": "大",
+                "furigana": "たい"
+            },
+            {
+                "text": "切",
+                "furigana": "せつ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "これは大切な本です。",
+            "translation": "Đây là quyển sách quý giá.",
+            "enTranslation": "This is a precious book.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-13",
+        "wordSurface": "大丈夫",
+        "readingKana": "だいじょうぶ",
+        "hanViet": "ĐẠI TRƯỢNG PHU",
+        "meaning": "không sao cả, không vấn đề gì",
+        "enMeaning": "all right, okay",
+        "wordParts": [
+            {
+                "text": "大",
+                "furigana": "だい"
+            },
+            {
+                "text": "丈",
+                "furigana": "じょう"
+            },
+            {
+                "text": "夫",
+                "furigana": "ぶ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "大丈夫ですか。",
+            "translation": "Bạn có sao không?",
+            "enTranslation": "Are you okay?",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-14",
+        "wordSurface": "危ない",
+        "readingKana": "あぶない",
+        "hanViet": "NGUY",
+        "meaning": "nguy hiểm, nguy cấp",
+        "enMeaning": "dangerous",
+        "wordParts": [
+            {
+                "text": "危",
+                "furigana": "あぶ"
+            },
+            {
+                "text": "ない",
+                "furigana": "ない"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "危ないですから、入らないでください。",
+            "translation": "Vì nguy hiểm nên đừng vào.",
+            "enTranslation": "Please do not enter because it is dangerous.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-15",
+        "wordSurface": "禁煙",
+        "readingKana": "きんえん",
+        "hanViet": "CẤM YÊN",
+        "meaning": "cấm hút thuốc",
+        "enMeaning": "no smoking",
+        "wordParts": [
+            {
+                "text": "禁",
+                "furigana": "きん"
+            },
+            {
+                "text": "煙",
+                "furigana": "えん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ここは禁煙です。",
+            "translation": "Ở đây cấm hút thuốc.",
+            "enTranslation": "Smoking is prohibited here.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-16",
+        "wordSurface": "保険証",
+        "readingKana": "ほけんしょう",
+        "hanViet": "BẢO HIỂM CHỨNG",
+        "meaning": "thẻ bảo hiểm y tế",
+        "enMeaning": "health insurance card",
+        "wordParts": [
+            {
+                "text": "保",
+                "furigana": "ほ"
+            },
+            {
+                "text": "険",
+                "furigana": "けん"
+            },
+            {
+                "text": "証",
+                "furigana": "しょう"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "保険証を持っていますか。",
+            "translation": "Bạn có thẻ bảo hiểm không?",
+            "enTranslation": "Do you have a health insurance card?",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-17",
+        "wordSurface": "熱",
+        "readingKana": "ねつ",
+        "hanViet": "NHIỆT",
+        "meaning": "sốt",
+        "enMeaning": "fever",
+        "wordParts": [
+            {
+                "text": "熱",
+                "furigana": "ねつ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "熱があります。",
+            "translation": "Tôi bị sốt.",
+            "enTranslation": "I have a fever.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-18",
+        "wordSurface": "病気",
+        "readingKana": "びょうき",
+        "hanViet": "BỆNH KHÍ",
+        "meaning": "ốm, bệnh",
+        "enMeaning": "illness, sickness",
+        "wordParts": [
+            {
+                "text": "病",
+                "furigana": "びょう"
+            },
+            {
+                "text": "気",
+                "furigana": "き"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "病気になりました。",
+            "translation": "Tôi bị ốm.",
+            "enTranslation": "I got sick.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-19",
+        "wordSurface": "薬",
+        "readingKana": "くすり",
+        "hanViet": "DƯỢC",
+        "meaning": "thuốc",
+        "enMeaning": "medicine",
+        "wordParts": [
+            {
+                "text": "薬",
+                "furigana": "くすり"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "薬を飲みます。",
+            "translation": "Uống thuốc.",
+            "enTranslation": "Take medicine.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-20",
+        "wordSurface": "上着",
+        "readingKana": "うわぎ",
+        "hanViet": "THƯỢNG TRƯỚC",
+        "meaning": "áo khoác",
+        "enMeaning": "jacket, outerwear",
+        "wordParts": [
+            {
+                "text": "上",
+                "furigana": "うわ"
+            },
+            {
+                "text": "着",
+                "furigana": "ぎ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "上着を着ます。",
+            "translation": "Mặc áo khoác.",
+            "enTranslation": "Wear a jacket.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-21",
+        "wordSurface": "下着",
+        "readingKana": "したぎ",
+        "hanViet": "HẠ TRƯỚC",
+        "meaning": "quần áo lót",
+        "enMeaning": "underwear",
+        "wordParts": [
+            {
+                "text": "下",
+                "furigana": "した"
+            },
+            {
+                "text": "着",
+                "furigana": "ぎ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "下着",
+            "translation": "Đồ lót",
+            "enTranslation": "Underwear",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-22",
+        "wordSurface": "緑",
+        "readingKana": "みどり",
+        "hanViet": "LỤC",
+        "meaning": "màu xanh lá",
+        "enMeaning": "green",
+        "wordParts": [
+            {
+                "text": "緑",
+                "furigana": "みどり"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "緑の木",
+            "translation": "Cây xanh",
+            "enTranslation": "Green tree",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-23",
+        "wordSurface": "お寺",
+        "readingKana": "おてら",
+        "hanViet": "TỰ",
+        "meaning": "chùa",
+        "enMeaning": "Buddhist temple",
+        "wordParts": [
+            {
+                "text": "お",
+                "furigana": "お"
+            },
+            {
+                "text": "寺",
+                "furigana": "てら"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "お寺へ行きます。",
+            "translation": "Đi chùa.",
+            "enTranslation": "Go to a temple.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-24",
+        "wordSurface": "神社",
+        "readingKana": "じんじゃ",
+        "hanViet": "THẦN XÃ",
+        "meaning": "đền thờ đạo Thần",
+        "enMeaning": "Shinto shrine",
+        "wordParts": [
+            {
+                "text": "神",
+                "furigana": "じん"
+            },
+            {
+                "text": "社",
+                "furigana": "じゃ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "神社でお祈りします。",
+            "translation": "Cầu nguyện ở đền thờ.",
+            "enTranslation": "Pray at a shrine.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-25",
+        "wordSurface": "次に",
+        "readingKana": "つぎに",
+        "hanViet": "THỨ",
+        "meaning": "tiếp theo, sau đó",
+        "enMeaning": "next",
+        "wordParts": [
+            {
+                "text": "次",
+                "furigana": "つぎ"
+            },
+            {
+                "text": "に",
+                "furigana": "に"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "次にこれをします。",
+            "translation": "Tiếp theo sẽ làm cái này.",
+            "enTranslation": "I will do this next.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-26",
+        "wordSurface": "暗証番号",
+        "readingKana": "あんしょうばんごう",
+        "hanViet": "ÁM CHỨNG PHIÊN HIỆU",
+        "meaning": "mật khẩu (số)",
+        "enMeaning": "PIN",
+        "wordParts": [
+            {
+                "text": "暗",
+                "furigana": "あん"
+            },
+            {
+                "text": "証",
+                "furigana": "しょう"
+            },
+            {
+                "text": "番",
+                "furigana": "ばん"
+            },
+            {
+                "text": "号",
+                "furigana": "ごう"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "暗証番号を押します。",
+            "translation": "Nhập mật khẩu.",
+            "enTranslation": "Enter your PIN.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-27",
+        "wordSurface": "金額",
+        "readingKana": "きんがく",
+        "hanViet": "KIM NGẠCH",
+        "meaning": "số tiền, khoản tiền",
+        "enMeaning": "amount of money",
+        "wordParts": [
+            {
+                "text": "金",
+                "furigana": "きん"
+            },
+            {
+                "text": "額",
+                "furigana": "がく"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "金額を確認します。",
+            "translation": "Xác nhận số tiền.",
+            "enTranslation": "Confirm the amount.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u17-28",
+        "wordSurface": "確認",
+        "readingKana": "かくにん",
+        "hanViet": "XÁC NHẬN",
+        "meaning": "sự xác nhận",
+        "enMeaning": "confirmation",
+        "wordParts": [
+            {
+                "text": "確",
+                "furigana": "かく"
+            },
+            {
+                "text": "認",
+                "furigana": "にん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "確認します。",
+            "translation": "Tôi sẽ xác nhận.",
+            "enTranslation": "I will confirm.",
+            "parts": []
+        }
+    }
+]

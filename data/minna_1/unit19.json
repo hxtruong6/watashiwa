@@ -1,0 +1,510 @@
+[
+    {
+        "id": "u19-01",
+        "wordSurface": "登ります",
+        "readingKana": "のぼります",
+        "hanViet": "ĐĂNG",
+        "meaning": "leo (núi)",
+        "enMeaning": "climb",
+        "wordParts": [
+            {
+                "text": "登",
+                "furigana": "のぼ"
+            },
+            {
+                "text": "ります",
+                "furigana": "ります"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "山に登ります。",
+            "translation": "Leo núi.",
+            "enTranslation": "Climb a mountain.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-02",
+        "wordSurface": "泊まります",
+        "readingKana": "とまります",
+        "hanViet": "BẠC",
+        "meaning": "trọ (khách sạn)",
+        "enMeaning": "stay (at a hotel)",
+        "wordParts": [
+            {
+                "text": "泊",
+                "furigana": "と"
+            },
+            {
+                "text": "まります",
+                "furigana": "まります"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ホテルに泊まります。",
+            "translation": "Trọ ở khách sạn.",
+            "enTranslation": "Stay at a hotel.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-03",
+        "wordSurface": "掃除します",
+        "readingKana": "そうじします",
+        "hanViet": "TẢO TRỪ",
+        "meaning": "lau chùi, dọn dẹp",
+        "enMeaning": "clean",
+        "wordParts": [
+            {
+                "text": "掃",
+                "furigana": "そう"
+            },
+            {
+                "text": "除",
+                "furigana": "じ"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "部屋を掃除します。",
+            "translation": "Dọn dẹp phòng.",
+            "enTranslation": "Clean the room.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-04",
+        "wordSurface": "洗濯します",
+        "readingKana": "せんたくします",
+        "hanViet": "TẨY TRẠC",
+        "meaning": "giặt (áo quần)",
+        "enMeaning": "wash clothes",
+        "wordParts": [
+            {
+                "text": "洗",
+                "furigana": "せん"
+            },
+            {
+                "text": "濯",
+                "furigana": "たく"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "服を洗濯します。",
+            "translation": "Giặt quần áo.",
+            "enTranslation": "Wash clothes.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-05",
+        "wordSurface": "眠い",
+        "readingKana": "ねむい",
+        "hanViet": "MIÊN",
+        "meaning": "buồn ngủ",
+        "enMeaning": "sleepy",
+        "wordParts": [
+            {
+                "text": "眠",
+                "furigana": "ねむ"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "眠いです。",
+            "translation": "Tôi buồn ngủ.",
+            "enTranslation": "I am sleepy.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-06",
+        "wordSurface": "強い",
+        "readingKana": "つよい",
+        "hanViet": "CƯỜNG",
+        "meaning": "mạnh",
+        "enMeaning": "strong",
+        "wordParts": [
+            {
+                "text": "強",
+                "furigana": "つよ"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "風が強いです。",
+            "translation": "Gió mạnh.",
+            "enTranslation": "The wind is strong.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-07",
+        "wordSurface": "弱い",
+        "readingKana": "よわい",
+        "hanViet": "NHƯỢC",
+        "meaning": "yếu",
+        "enMeaning": "weak",
+        "wordParts": [
+            {
+                "text": "弱",
+                "furigana": "よわ"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "体が弱いです。",
+            "translation": "Cơ thể yếu.",
+            "enTranslation": "Body is weak.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-08",
+        "wordSurface": "練習",
+        "readingKana": "れんしゅう",
+        "hanViet": "LUYỆN TẬP",
+        "meaning": "luyện tập, rèn luyện",
+        "enMeaning": "practice",
+        "wordParts": [
+            {
+                "text": "練",
+                "furigana": "れん"
+            },
+            {
+                "text": "習",
+                "furigana": "しゅう"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "練習します。",
+            "translation": "Luyện tập.",
+            "enTranslation": "Practice.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-09",
+        "wordSurface": "相撲",
+        "readingKana": "すもう",
+        "hanViet": "TƯƠNG PHỐC",
+        "meaning": "sumo",
+        "enMeaning": "sumo wrestling",
+        "wordParts": [
+            {
+                "text": "相",
+                "furigana": "す"
+            },
+            {
+                "text": "撲",
+                "furigana": "もう"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "相撲を見ます。",
+            "translation": "Xem sumo.",
+            "enTranslation": "Watch sumo.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-10",
+        "wordSurface": "お茶",
+        "readingKana": "おちゃ",
+        "hanViet": "TRÀ",
+        "meaning": "trà",
+        "enMeaning": "tea, tea ceremony",
+        "wordParts": [
+            {
+                "text": "お",
+                "furigana": "お"
+            },
+            {
+                "text": "茶",
+                "furigana": "ちゃ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "お茶を習います。",
+            "translation": "Học trà đạo.",
+            "enTranslation": "Learn tea ceremony.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-11",
+        "wordSurface": "日",
+        "readingKana": "ひ",
+        "hanViet": "NHẬT",
+        "meaning": "ngày",
+        "enMeaning": "day",
+        "wordParts": [
+            {
+                "text": "日",
+                "furigana": "ひ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "いい日です。",
+            "translation": "Một ngày tốt lành.",
+            "enTranslation": "It's a good day.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-12",
+        "wordSurface": "調子",
+        "readingKana": "ちょうし",
+        "hanViet": "ĐIỀU TỬ",
+        "meaning": "tình trạng",
+        "enMeaning": "condition, state",
+        "wordParts": [
+            {
+                "text": "調",
+                "furigana": "ちょう"
+            },
+            {
+                "text": "子",
+                "furigana": "し"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "体の調子がいいです。",
+            "translation": "Tình trạng cơ thể tốt.",
+            "enTranslation": "I am in good condition.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-13",
+        "wordSurface": "一度",
+        "readingKana": "いちど",
+        "hanViet": "NHẤT ĐỘ",
+        "meaning": "một lần",
+        "enMeaning": "once",
+        "wordParts": [
+            {
+                "text": "一",
+                "furigana": "いち"
+            },
+            {
+                "text": "度",
+                "furigana": "ど"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "一度日本へ行きたいです。",
+            "translation": "Tôi muốn đi Nhật một lần.",
+            "enTranslation": "I want to go to Japan once.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-14",
+        "wordSurface": "一度も",
+        "readingKana": "いちども",
+        "hanViet": "NHẤT ĐỘ",
+        "meaning": "chưa lần nào, chưa bao giờ (với phủ định)",
+        "enMeaning": "never (with negative)",
+        "wordParts": [
+            {
+                "text": "一",
+                "furigana": "いち"
+            },
+            {
+                "text": "度",
+                "furigana": "ど"
+            },
+            {
+                "text": "も",
+                "furigana": "も"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "一度も食べたことがありません。",
+            "translation": "Tôi chưa ăn bao giờ.",
+            "enTranslation": "I have never eaten it.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-15",
+        "wordSurface": "特に",
+        "readingKana": "とくに",
+        "hanViet": "ĐẶC",
+        "meaning": "đặc biệt là",
+        "enMeaning": "especially",
+        "wordParts": [
+            {
+                "text": "特",
+                "furigana": "とく"
+            },
+            {
+                "text": "に",
+                "furigana": "に"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "日本料理が好きです。特にすしが好きです。",
+            "translation": "Tôi thích món ăn Nhật. Đặc biệt là thích sushi.",
+            "enTranslation": "I like Japanese food. Especially sushi.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-16",
+        "wordSurface": "なります",
+        "readingKana": "なります",
+        "hanViet": "",
+        "meaning": "trở nên, trở thành",
+        "enMeaning": "become",
+        "wordParts": [
+            {
+                "text": "なります",
+                "furigana": "なります"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "元気になります。",
+            "translation": "Trở nên khỏe mạnh.",
+            "enTranslation": "Become healthy.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-17",
+        "wordSurface": "ゴルフ",
+        "readingKana": "ゴルフ",
+        "hanViet": "",
+        "meaning": "gôn",
+        "enMeaning": "golf",
+        "wordParts": [
+            {
+                "text": "ゴルフ",
+                "furigana": "ゴルフ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ゴルフをします。",
+            "translation": "Chơi gôn.",
+            "enTranslation": "Play golf.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-18",
+        "wordSurface": "だんだん",
+        "readingKana": "だんだん",
+        "hanViet": "",
+        "meaning": "dần dần",
+        "enMeaning": "gradually",
+        "wordParts": [
+            {
+                "text": "だんだん",
+                "furigana": "だんだん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "だんだん暑くなります。",
+            "translation": "Dần dần trở nên nóng.",
+            "enTranslation": "Currently getting hotter.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-19",
+        "wordSurface": "もうすぐ",
+        "readingKana": "もうすぐ",
+        "hanViet": "",
+        "meaning": "sắp, sắp sửa",
+        "enMeaning": "soon",
+        "wordParts": [
+            {
+                "text": "もうすぐ",
+                "furigana": "もうすぐ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "もうすぐ冬です。",
+            "translation": "Sắp đến mùa đông rồi.",
+            "enTranslation": "It will be winter soon.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-20",
+        "wordSurface": "でも",
+        "readingKana": "でも",
+        "hanViet": "",
+        "meaning": "nhưng",
+        "enMeaning": "but",
+        "wordParts": [
+            {
+                "text": "でも",
+                "furigana": "でも"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "安いです。でも、おいしくないです。",
+            "translation": "Rẻ. Nhưng không ngon.",
+            "enTranslation": "It's cheap. But it's not delicious.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-21",
+        "wordSurface": "なかなか",
+        "readingKana": "なかなか",
+        "hanViet": "",
+        "meaning": "khó mà, mãi mà (dùng với phủ định)",
+        "enMeaning": "not easily (with negative)",
+        "wordParts": [
+            {
+                "text": "なかなか",
+                "furigana": "なかなか"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "バスがなかなか来ません。",
+            "translation": "Xe buýt mãi mà không tới.",
+            "enTranslation": "The bus isn't coming easily.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u19-22",
+        "wordSurface": "ぜひ",
+        "readingKana": "ぜひ",
+        "hanViet": "",
+        "meaning": "nhất định (đứng đầu câu)",
+        "enMeaning": "by all means",
+        "wordParts": [
+            {
+                "text": "ぜひ",
+                "furigana": "ぜひ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ぜひ遊びに来てください。",
+            "translation": "Nhất định phải đến chơi nhé.",
+            "enTranslation": "Please come and visit by all means.",
+            "parts": []
+        }
+    }
+]

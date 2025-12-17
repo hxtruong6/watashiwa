@@ -27,7 +27,7 @@ import {
 import { removeDeckFromCourse, reorderDecks } from '@/services/course-actions';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import DeckSelector from './DeckSelector';
 import BackButton from '@/components/BackButton';
 const { Title, Text, Paragraph } = Typography;
@@ -42,6 +42,7 @@ interface CourseDetailClientProps {
 export default function CourseDetailClient({ course, isOwner }: CourseDetailClientProps) {
 	const { token } = useToken();
 	const t = useTranslations('Courses');
+	const locale = useLocale();
 	const router = useRouter();
 	const totalDecks = course.decks.length;
 
@@ -129,7 +130,7 @@ export default function CourseDetailClient({ course, isOwner }: CourseDetailClie
 							letterSpacing: '-0.02em',
 						}}
 					>
-						{course.title}
+						{locale === 'en' ? course.titleEn || course.title : course.title}
 					</Title>
 					<Paragraph
 						style={{
@@ -140,7 +141,8 @@ export default function CourseDetailClient({ course, isOwner }: CourseDetailClie
 							lineHeight: 1.6,
 						}}
 					>
-						{course.description || t('noDescription')}
+						{(locale === 'en' ? course.descriptionEn || course.description : course.description) ||
+							t('noDescription')}
 					</Paragraph>
 
 					{/* Overall Progress Badge */}
@@ -320,10 +322,12 @@ export default function CourseDetailClient({ course, isOwner }: CourseDetailClie
 														</div>
 
 														<Title level={4} style={{ margin: 0, marginBottom: 4 }}>
-															{cd.deck.title}
+															{locale === 'en' ? cd.deck.titleEn || cd.deck.title : cd.deck.title}
 														</Title>
 														<Text type="secondary" style={{ display: 'block', marginBottom: 12 }}>
-															{cd.deck.description || t('noDescription')}
+															{(locale === 'en'
+																? cd.deck.descriptionEn || cd.deck.description
+																: cd.deck.description) || t('noDescription')}
 														</Text>
 
 														<div

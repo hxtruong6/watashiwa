@@ -1,0 +1,490 @@
+[
+    {
+        "id": "u22-01",
+        "wordSurface": "着ます",
+        "readingKana": "きます",
+        "hanViet": "TRƯỚC",
+        "meaning": "mặc (áo sơ mi,...)",
+        "enMeaning": "wear, put on (upper body)",
+        "wordParts": [
+            {
+                "text": "着",
+                "furigana": "き"
+            },
+            {
+                "text": "ます",
+                "furigana": "ます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "シャツを着ます。",
+            "translation": "Mặc áo sơ mi.",
+            "enTranslation": "Wear a shirt.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-02",
+        "wordSurface": "生まれます",
+        "readingKana": "うまれます",
+        "hanViet": "SINH",
+        "meaning": "(được) sinh ra",
+        "enMeaning": "be born",
+        "wordParts": [
+            {
+                "text": "生",
+                "furigana": "う"
+            },
+            {
+                "text": "まれます",
+                "furigana": "まれます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "日本で生まれました。",
+            "translation": "Tôi sinh ra ở Nhật Bản.",
+            "enTranslation": "I was born in Japan.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-03",
+        "wordSurface": "帽子",
+        "readingKana": "ぼうし",
+        "hanViet": "MẠO TỬ",
+        "meaning": "cái mũ, mũ",
+        "enMeaning": "hat, cap",
+        "wordParts": [
+            {
+                "text": "帽",
+                "furigana": "ぼう"
+            },
+            {
+                "text": "子",
+                "furigana": "し"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "帽子をかぶります。",
+            "translation": "Đội mũ.",
+            "enTranslation": "Wear a hat.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-04",
+        "wordSurface": "眼鏡",
+        "readingKana": "めがね",
+        "hanViet": "NHÃN KÍNH",
+        "meaning": "kính, kính đeo mắt",
+        "enMeaning": "glasses",
+        "wordParts": [
+            {
+                "text": "眼",
+                "furigana": "め"
+            },
+            {
+                "text": "鏡",
+                "furigana": "がね"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "眼鏡をかけます。",
+            "translation": "Đeo kính.",
+            "enTranslation": "Wear glasses.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-05",
+        "wordSurface": "弁当",
+        "readingKana": "べんとう",
+        "hanViet": "BIỆN ĐƯƠNG",
+        "meaning": "cơm hộp",
+        "enMeaning": "bento, box lunch",
+        "wordParts": [
+            {
+                "text": "弁",
+                "furigana": "べん"
+            },
+            {
+                "text": "当",
+                "furigana": "とう"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "お弁当を食べます。",
+            "translation": "Ăn cơm hộp.",
+            "enTranslation": "Eat a bento.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-06",
+        "wordSurface": "都合",
+        "readingKana": "つごう",
+        "hanViet": "ĐÔ HỢP",
+        "meaning": "(sự) thuận tiện, thuận lợi",
+        "enMeaning": "convenience",
+        "wordParts": [
+            {
+                "text": "都",
+                "furigana": "つ"
+            },
+            {
+                "text": "合",
+                "furigana": "ごう"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "都合がいいですか。",
+            "translation": "Bạn có tiện không?",
+            "enTranslation": "Is it convenient for you?",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-07",
+        "wordSurface": "家賃",
+        "readingKana": "やちん",
+        "hanViet": "GIA NHẪM",
+        "meaning": "tiền thuê nhà",
+        "enMeaning": "rent (house)",
+        "wordParts": [
+            {
+                "text": "家",
+                "furigana": "や"
+            },
+            {
+                "text": "賃",
+                "furigana": "ちん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "家賃が高いです。",
+            "translation": "Tiền thuê nhà đắt.",
+            "enTranslation": "The rent is expensive.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-08",
+        "wordSurface": "和室",
+        "readingKana": "わしつ",
+        "hanViet": "HÒA THẤT",
+        "meaning": "phòng kiểu Nhật",
+        "enMeaning": "Japanese-style room",
+        "wordParts": [
+            {
+                "text": "和",
+                "furigana": "わ"
+            },
+            {
+                "text": "室",
+                "furigana": "しつ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "和室があります。",
+            "translation": "Có phòng kiểu Nhật.",
+            "enTranslation": "There is a Japanese-style room.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-09",
+        "wordSurface": "押し入れ",
+        "readingKana": "おしいれ",
+        "hanViet": "ÁP NHẬP",
+        "meaning": "tủ âm tường",
+        "enMeaning": "closet",
+        "wordParts": [
+            {
+                "text": "押",
+                "furigana": "お"
+            },
+            {
+                "text": "し",
+                "furigana": "し"
+            },
+            {
+                "text": "入",
+                "furigana": "い"
+            },
+            {
+                "text": "れ",
+                "furigana": "れ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "布団を押入れに入れます。",
+            "translation": "Cất chăn đệm vào tủ âm tường.",
+            "enTranslation": "Put the futon in the closet.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-10",
+        "wordSurface": "布団",
+        "readingKana": "ふとん",
+        "hanViet": "BỐ ĐOÀN",
+        "meaning": "chăn đệm kiểu Nhật",
+        "enMeaning": "futon",
+        "wordParts": [
+            {
+                "text": "布",
+                "furigana": "ふ"
+            },
+            {
+                "text": "団",
+                "furigana": "とん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "布団で寝ます。",
+            "translation": "Ngủ bằng chăn đệm.",
+            "enTranslation": "Sleep on a futon.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-11",
+        "wordSurface": "はきます",
+        "readingKana": "はきます",
+        "hanViet": "",
+        "meaning": "đi, mặc (giày, quần,...)",
+        "enMeaning": "wear, put on (lower body)",
+        "wordParts": [
+            {
+                "text": "はきます",
+                "furigana": "はきます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "靴をはきます。",
+            "translation": "Đi giày.",
+            "enTranslation": "Put on shoes.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-12",
+        "wordSurface": "かぶります",
+        "readingKana": "かぶります",
+        "hanViet": "",
+        "meaning": "đội (mũ)",
+        "enMeaning": "wear (on head)",
+        "wordParts": [
+            {
+                "text": "かぶります",
+                "furigana": "かぶります"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "帽子をかぶります。",
+            "translation": "Đội mũ.",
+            "enTranslation": "Wear a hat.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-13",
+        "wordSurface": "かけます",
+        "readingKana": "かけます",
+        "hanViet": "",
+        "meaning": "đeo (kính)",
+        "enMeaning": "wear (glasses)",
+        "wordParts": [
+            {
+                "text": "かけます",
+                "furigana": "かけます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "眼鏡をかけます。",
+            "translation": "Đeo kính.",
+            "enTranslation": "Wear glasses.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-14",
+        "wordSurface": "します",
+        "readingKana": "します",
+        "hanViet": "",
+        "meaning": "đeo cà vạt",
+        "enMeaning": "wear (tie)",
+        "wordParts": [
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ネクタイをします。",
+            "translation": "Đeo cà vạt.",
+            "enTranslation": "Wear a tie.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-15",
+        "wordSurface": "コート",
+        "readingKana": "コート",
+        "hanViet": "",
+        "meaning": "áo khoác",
+        "enMeaning": "coat",
+        "wordParts": [
+            {
+                "text": "コート",
+                "furigana": "コート"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "コートを着ます。",
+            "translation": "Mặc áo khoác.",
+            "enTranslation": "Wear a coat.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-16",
+        "wordSurface": "セーター",
+        "readingKana": "セーター",
+        "hanViet": "",
+        "meaning": "áo len",
+        "enMeaning": "sweater",
+        "wordParts": [
+            {
+                "text": "セーター",
+                "furigana": "セーター"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "セーターを買います。",
+            "translation": "Mua áo len.",
+            "enTranslation": "Buy a sweater.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-17",
+        "wordSurface": "スーツ",
+        "readingKana": "スーツ",
+        "hanViet": "",
+        "meaning": "com lê, vét",
+        "enMeaning": "suit",
+        "wordParts": [
+            {
+                "text": "スーツ",
+                "furigana": "スーツ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "スーツを着ます。",
+            "translation": "Mặc com lê.",
+            "enTranslation": "Wear a suit.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-18",
+        "wordSurface": "ケーキ",
+        "readingKana": "ケーキ",
+        "hanViet": "",
+        "meaning": "bánh ngọt",
+        "enMeaning": "cake",
+        "wordParts": [
+            {
+                "text": "ケーキ",
+                "furigana": "ケーキ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ケーキを食べます。",
+            "translation": "Ăn bánh ngọt.",
+            "enTranslation": "Eat cake.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-19",
+        "wordSurface": "ロボット",
+        "readingKana": "ロボット",
+        "hanViet": "",
+        "meaning": "rô bốt",
+        "enMeaning": "robot",
+        "wordParts": [
+            {
+                "text": "ロボット",
+                "furigana": "ロボット"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ロボットを作ります。",
+            "translation": "Chế tạo rô bốt.",
+            "enTranslation": "Make a robot.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-20",
+        "wordSurface": "ユーモア",
+        "readingKana": "ユーモア",
+        "hanViet": "",
+        "meaning": "sự hài hước",
+        "enMeaning": "humor",
+        "wordParts": [
+            {
+                "text": "ユーモア",
+                "furigana": "ユーモア"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ユーモアがあります。",
+            "translation": "Có tính hài hước.",
+            "enTranslation": "Have a sense of humor.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-21",
+        "wordSurface": "ダイニングキッチン",
+        "readingKana": "ダイニングキッチン",
+        "hanViet": "",
+        "meaning": "bếp kèm phòng ăn",
+        "enMeaning": "dining kitchen",
+        "wordParts": [
+            {
+                "text": "ダイニングキッチン",
+                "furigana": "ダイニングキッチン"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "広いダイニングキッチン",
+            "translation": "Phòng bếp rộng",
+            "enTranslation": "Spacious dining kitchen",
+            "parts": []
+        }
+    },
+    {
+        "id": "u22-22",
+        "wordSurface": "サイズ",
+        "readingKana": "サイズ",
+        "hanViet": "",
+        "meaning": "cỡ, kích cỡ",
+        "enMeaning": "size",
+        "wordParts": [
+            {
+                "text": "サイズ",
+                "furigana": "サイズ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "サイズが合いません。",
+            "translation": "Không vừa kích cỡ.",
+            "enTranslation": "The size doesn't fit.",
+            "parts": []
+        }
+    }
+]

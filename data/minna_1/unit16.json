@@ -1,0 +1,1110 @@
+[
+    {
+        "id": "u16-01",
+        "wordSurface": "乗ります",
+        "readingKana": "のります",
+        "hanViet": "THỪA",
+        "meaning": "đi, lên (tàu)",
+        "enMeaning": "ride, get on",
+        "wordParts": [
+            {
+                "text": "乗",
+                "furigana": "の"
+            },
+            {
+                "text": "ります",
+                "furigana": "ります"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "電車に乗ります。",
+            "translation": "Lên tàu điện.",
+            "enTranslation": "Get on the train.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-02",
+        "wordSurface": "降ります",
+        "readingKana": "おります",
+        "hanViet": "GIÁNG",
+        "meaning": "xuống (tàu)",
+        "enMeaning": "get off",
+        "wordParts": [
+            {
+                "text": "降",
+                "furigana": "お"
+            },
+            {
+                "text": "ります",
+                "furigana": "ります"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "電車を降ります。",
+            "translation": "Xuống tàu điện.",
+            "enTranslation": "Get off the train.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-03",
+        "wordSurface": "乗り換えます",
+        "readingKana": "のりかえます",
+        "hanViet": "THỪA HOÁN",
+        "meaning": "chuyển, đổi (tàu)",
+        "enMeaning": "transfer (trains)",
+        "wordParts": [
+            {
+                "text": "乗",
+                "furigana": "の"
+            },
+            {
+                "text": "り",
+                "furigana": "り"
+            },
+            {
+                "text": "換",
+                "furigana": "か"
+            },
+            {
+                "text": "えます",
+                "furigana": "えます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "地下鉄に乗り換えます。",
+            "translation": "Chuyển sang tàu điện ngầm.",
+            "enTranslation": "Transfer to the subway.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-04",
+        "wordSurface": "浴びます",
+        "readingKana": "あびます",
+        "hanViet": "DỤC",
+        "meaning": "tắm (vòi sen)",
+        "enMeaning": "take a shower",
+        "wordParts": [
+            {
+                "text": "浴",
+                "furigana": "あ"
+            },
+            {
+                "text": "びます",
+                "furigana": "びます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "シャワーを浴びます。",
+            "translation": "Tắm vòi hoa sen.",
+            "enTranslation": "Take a shower.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-05",
+        "wordSurface": "入れます",
+        "readingKana": "いれます",
+        "hanViet": "NHẬP",
+        "meaning": "cho vào, bỏ vào",
+        "enMeaning": "put in, insert",
+        "wordParts": [
+            {
+                "text": "入",
+                "furigana": "い"
+            },
+            {
+                "text": "れます",
+                "furigana": "れます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "お金を入れます。",
+            "translation": "Bỏ tiền vào.",
+            "enTranslation": "Put money in.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-06",
+        "wordSurface": "出します",
+        "readingKana": "だします",
+        "hanViet": "XUẤT",
+        "meaning": "lấy ra, đưa ra, gửi",
+        "enMeaning": "take out, hand in, send",
+        "wordParts": [
+            {
+                "text": "出",
+                "furigana": "だ"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "レポートを出します。",
+            "translation": "Nộp báo cáo.",
+            "enTranslation": "Submit the report.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-07",
+        "wordSurface": "下ろします",
+        "readingKana": "おろします",
+        "hanViet": "HẠ",
+        "meaning": "rút (tiền)",
+        "enMeaning": "withdraw (money)",
+        "wordParts": [
+            {
+                "text": "下",
+                "furigana": "お"
+            },
+            {
+                "text": "ろします",
+                "furigana": "ろします"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "お金を下ろします。",
+            "translation": "Rút tiền.",
+            "enTranslation": "Withdraw money.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-08",
+        "wordSurface": "入ります",
+        "readingKana": "はいります",
+        "hanViet": "NHẬP",
+        "meaning": "vào (đại học)",
+        "enMeaning": "enter (university)",
+        "wordParts": [
+            {
+                "text": "入",
+                "furigana": "はい"
+            },
+            {
+                "text": "ります",
+                "furigana": "ります"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "大学に入ります。",
+            "translation": "Vào đại học.",
+            "enTranslation": "Enter university.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-09",
+        "wordSurface": "出ます",
+        "readingKana": "でます",
+        "hanViet": "XUẤT",
+        "meaning": "ra, tốt nghiệp",
+        "enMeaning": "graduate",
+        "wordParts": [
+            {
+                "text": "出",
+                "furigana": "で"
+            },
+            {
+                "text": "ます",
+                "furigana": "ます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "大学を出ます。",
+            "translation": "Tốt nghiệp đại học.",
+            "enTranslation": "Graduate from university.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-10",
+        "wordSurface": "押します",
+        "readingKana": "おします",
+        "hanViet": "ÁP",
+        "meaning": "bấm, ấn",
+        "enMeaning": "push, press",
+        "wordParts": [
+            {
+                "text": "押",
+                "furigana": "お"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ボタンを押します。",
+            "translation": "Bấm nút.",
+            "enTranslation": "Press the button.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-11",
+        "wordSurface": "始めます",
+        "readingKana": "はじめます",
+        "hanViet": "THÍ",
+        "meaning": "bắt đầu, mở đầu, khởi đầu",
+        "enMeaning": "start, begin",
+        "wordParts": [
+            {
+                "text": "始",
+                "furigana": "はじ"
+            },
+            {
+                "text": "めます",
+                "furigana": "めます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "会議を始めます。",
+            "translation": "Bắt đầu cuộc họp.",
+            "enTranslation": "Start the meeting.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-12",
+        "wordSurface": "見学します",
+        "readingKana": "けんがくします",
+        "hanViet": "KIẾN HỌC",
+        "meaning": "tham quan, kiến tập",
+        "enMeaning": "tour, visit for study",
+        "wordParts": [
+            {
+                "text": "見",
+                "furigana": "けん"
+            },
+            {
+                "text": "学",
+                "furigana": "がく"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "工場を見学します。",
+            "translation": "Tham quan nhà máy.",
+            "enTranslation": "Tour the factory.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-13",
+        "wordSurface": "電話します",
+        "readingKana": "でんわします",
+        "hanViet": "ĐIỆN THOẠI",
+        "meaning": "gọi điện thoại",
+        "enMeaning": "call (phone)",
+        "wordParts": [
+            {
+                "text": "電",
+                "furigana": "でん"
+            },
+            {
+                "text": "話",
+                "furigana": "わ"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "友達に電話します。",
+            "translation": "Gọi điện cho bạn bè.",
+            "enTranslation": "Call a friend.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-14",
+        "wordSurface": "若い",
+        "readingKana": "わかい",
+        "hanViet": "NHƯỢC",
+        "meaning": "trẻ",
+        "enMeaning": "young",
+        "wordParts": [
+            {
+                "text": "若",
+                "furigana": "わか"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "彼は若いです。",
+            "translation": "Anh ấy trẻ.",
+            "enTranslation": "He is young.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-15",
+        "wordSurface": "長い",
+        "readingKana": "ながい",
+        "hanViet": "TRƯỜNG",
+        "meaning": "dài",
+        "enMeaning": "long",
+        "wordParts": [
+            {
+                "text": "長",
+                "furigana": "なが"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "髪が長いです。",
+            "translation": "Tóc dài.",
+            "enTranslation": "Hair is long.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-16",
+        "wordSurface": "短い",
+        "readingKana": "みじかい",
+        "hanViet": "ĐOẢN",
+        "meaning": "ngắn",
+        "enMeaning": "short",
+        "wordParts": [
+            {
+                "text": "短",
+                "furigana": "みじか"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "休みが短いです。",
+            "translation": "Kỳ nghỉ ngắn.",
+            "enTranslation": "The vacation is short.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-17",
+        "wordSurface": "明るい",
+        "readingKana": "あかるい",
+        "hanViet": "MINH",
+        "meaning": "sáng chói",
+        "enMeaning": "bright",
+        "wordParts": [
+            {
+                "text": "明",
+                "furigana": "あか"
+            },
+            {
+                "text": "るい",
+                "furigana": "るい"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "部屋が明るいです。",
+            "translation": "Căn phòng sáng sủa.",
+            "enTranslation": "The room is bright.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-18",
+        "wordSurface": "暗い",
+        "readingKana": "くらい",
+        "hanViet": "ÁM",
+        "meaning": "tối tăm",
+        "enMeaning": "dark",
+        "wordParts": [
+            {
+                "text": "暗",
+                "furigana": "くら"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "部屋が暗いです。",
+            "translation": "Căn phòng tối.",
+            "enTranslation": "The room is dark.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-19",
+        "wordSurface": "体",
+        "readingKana": "からだ",
+        "hanViet": "THỂ",
+        "meaning": "cơ thể",
+        "enMeaning": "body",
+        "wordParts": [
+            {
+                "text": "体",
+                "furigana": "からだ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "体が丈夫です。",
+            "translation": "Cơ thể khỏe mạnh.",
+            "enTranslation": "My body is strong.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-20",
+        "wordSurface": "頭",
+        "readingKana": "あたま",
+        "hanViet": "ĐẦU",
+        "meaning": "đầu",
+        "enMeaning": "head",
+        "wordParts": [
+            {
+                "text": "頭",
+                "furigana": "あたま"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "頭がいいです。",
+            "translation": "Thông minh (đầu tốt).",
+            "enTranslation": "Smart.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-21",
+        "wordSurface": "髪",
+        "readingKana": "かみ",
+        "hanViet": "PHÁT",
+        "meaning": "tóc",
+        "enMeaning": "hair",
+        "wordParts": [
+            {
+                "text": "髪",
+                "furigana": "かみ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "髪を切りました。",
+            "translation": "Tôi đã cắt tóc.",
+            "enTranslation": "I cut my hair.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-22",
+        "wordSurface": "顔",
+        "readingKana": "かお",
+        "hanViet": "NHAN",
+        "meaning": "mặt",
+        "enMeaning": "face",
+        "wordParts": [
+            {
+                "text": "顔",
+                "furigana": "かお"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "顔を洗います。",
+            "translation": "Rửa mặt.",
+            "enTranslation": "Wash face.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-23",
+        "wordSurface": "目",
+        "readingKana": "め",
+        "hanViet": "MỤC",
+        "meaning": "mắt",
+        "enMeaning": "eye",
+        "wordParts": [
+            {
+                "text": "目",
+                "furigana": "め"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "目が大きいです。",
+            "translation": "Mắt to.",
+            "enTranslation": "Eyes are big.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-24",
+        "wordSurface": "耳",
+        "readingKana": "みみ",
+        "hanViet": "NHĨ",
+        "meaning": "tai",
+        "enMeaning": "ear",
+        "wordParts": [
+            {
+                "text": "耳",
+                "furigana": "みみ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "耳が痛いです。",
+            "translation": "Đau tai.",
+            "enTranslation": "Ear hurts.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-25",
+        "wordSurface": "鼻",
+        "readingKana": "はな",
+        "hanViet": "TỊ",
+        "meaning": "mũi",
+        "enMeaning": "nose",
+        "wordParts": [
+            {
+                "text": "鼻",
+                "furigana": "はな"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "鼻が高いです。",
+            "translation": "Mũi cao.",
+            "enTranslation": "High nose.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-26",
+        "wordSurface": "口",
+        "readingKana": "くち",
+        "hanViet": "KHẨU",
+        "meaning": "miệng",
+        "enMeaning": "mouth",
+        "wordParts": [
+            {
+                "text": "口",
+                "furigana": "くち"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "口を開けてください。",
+            "translation": "Hãy mở miệng ra.",
+            "enTranslation": "Please open your mouth.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-27",
+        "wordSurface": "歯",
+        "readingKana": "は",
+        "hanViet": "XỈ",
+        "meaning": "răng",
+        "enMeaning": "tooth",
+        "wordParts": [
+            {
+                "text": "歯",
+                "furigana": "は"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "歯を磨きます。",
+            "translation": "Đánh răng.",
+            "enTranslation": "Brush teeth.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-28",
+        "wordSurface": "足",
+        "readingKana": "あし",
+        "hanViet": "TÚC",
+        "meaning": "chân",
+        "enMeaning": "leg, foot",
+        "wordParts": [
+            {
+                "text": "足",
+                "furigana": "あし"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "足が長いです。",
+            "translation": "Chân dài.",
+            "enTranslation": "Legs are long.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-29",
+        "wordSurface": "背",
+        "readingKana": "せ",
+        "hanViet": "BỐI",
+        "meaning": "lưng, chiều cao (cơ thể)",
+        "enMeaning": "back, height",
+        "wordParts": [
+            {
+                "text": "背",
+                "furigana": "せ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "背が高いです。",
+            "translation": "Dáng cao.",
+            "enTranslation": "Tall.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-30",
+        "wordSurface": "緊張します",
+        "readingKana": "きんちょうします",
+        "hanViet": "KHUẨN TRƯƠNG",
+        "meaning": "hồi hộp, căng thẳng",
+        "enMeaning": "get nervous",
+        "wordParts": [
+            {
+                "text": "緊",
+                "furigana": "きん"
+            },
+            {
+                "text": "張",
+                "furigana": "ちょう"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "面接で緊張しました。",
+            "translation": "Tôi đã rất hồi hộp trong buổi phỏng vấn.",
+            "enTranslation": "I was nervous at the interview.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-31",
+        "wordSurface": "賞金",
+        "readingKana": "しょうきん",
+        "hanViet": "THƯỞNG KIM",
+        "meaning": "tiền thưởng",
+        "enMeaning": "prize money",
+        "wordParts": [
+            {
+                "text": "賞",
+                "furigana": "しょう"
+            },
+            {
+                "text": "金",
+                "furigana": "きん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "賞金をもらいました。",
+            "translation": "Tôi đã nhận được tiền thưởng.",
+            "enTranslation": "I received prize money.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-32",
+        "wordSurface": "応援します",
+        "readingKana": "おうえんします",
+        "hanViet": "ỨNG VIỆN",
+        "meaning": "động viên, ủng hộ, chi viện",
+        "enMeaning": "support, cheer",
+        "wordParts": [
+            {
+                "text": "応",
+                "furigana": "おう"
+            },
+            {
+                "text": "援",
+                "furigana": "えん"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "チームを応援します。",
+            "translation": "Cổ vũ cho đội bóng.",
+            "enTranslation": "Cheer for the team.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-33",
+        "wordSurface": "心から",
+        "readingKana": "こころから",
+        "hanViet": "TÂM",
+        "meaning": "từ đáy lòng",
+        "enMeaning": "from the heart",
+        "wordParts": [
+            {
+                "text": "心",
+                "furigana": "こころ"
+            },
+            {
+                "text": "から",
+                "furigana": "から"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "心から感謝します。",
+            "translation": "Biết ơn từ tận đáy lòng.",
+            "enTranslation": "I thank you from the bottom of my heart.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-34",
+        "wordSurface": "感謝します",
+        "readingKana": "かんしゃします",
+        "hanViet": "CẢM TẠ",
+        "meaning": "cảm ơn, biết ơn",
+        "enMeaning": "thank, be grateful",
+        "wordParts": [
+            {
+                "text": "感",
+                "furigana": "かん"
+            },
+            {
+                "text": "謝",
+                "furigana": "しゃ"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "皆さんに感謝します。",
+            "translation": "Biết ơn mọi người.",
+            "enTranslation": "I am grateful to everyone.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-35",
+        "wordSurface": "お礼",
+        "readingKana": "おれい",
+        "hanViet": "LỄ",
+        "meaning": "lời cảm ơn, sự cảm ơn",
+        "enMeaning": "thanks, gratitude",
+        "wordParts": [
+            {
+                "text": "お",
+                "furigana": "お"
+            },
+            {
+                "text": "礼",
+                "furigana": "れい"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "お礼を言います。",
+            "translation": "Nói lời cảm ơn.",
+            "enTranslation": "Say thank you.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-36",
+        "wordSurface": "生かします",
+        "readingKana": "いかします",
+        "hanViet": "SINH",
+        "meaning": "phát huy",
+        "enMeaning": "make use of",
+        "wordParts": [
+            {
+                "text": "生",
+                "furigana": "い"
+            },
+            {
+                "text": "かします",
+                "furigana": "かします"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "経験を生かします。",
+            "translation": "Phát huy kinh nghiệm.",
+            "enTranslation": "Make use of experience.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-37",
+        "wordSurface": "ころ",
+        "readingKana": "ころ",
+        "hanViet": "",
+        "meaning": "lúc, thời",
+        "enMeaning": "around, about (time)",
+        "wordParts": [
+            {
+                "text": "ころ",
+                "furigana": "ころ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "学生のころ",
+            "translation": "Thời học sinh",
+            "enTranslation": "Student days",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-38",
+        "wordSurface": "きりん",
+        "readingKana": "きりん",
+        "hanViet": "",
+        "meaning": "hươu cao cổ",
+        "enMeaning": "giraffe",
+        "wordParts": [
+            {
+                "text": "きりん",
+                "furigana": "きりん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "動物園できりんを見ました。",
+            "translation": "Tôi đã thấy hươu cao cổ ở sở thú.",
+            "enTranslation": "I saw a giraffe at the zoo.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-39",
+        "wordSurface": "おなか",
+        "readingKana": "おなか",
+        "hanViet": "",
+        "meaning": "bụng",
+        "enMeaning": "stomach",
+        "wordParts": [
+            {
+                "text": "おなか",
+                "furigana": "おなか"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "おなかが痛いです。",
+            "translation": "Đau bụng.",
+            "enTranslation": "My stomach hurts.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-40",
+        "wordSurface": "なくします",
+        "readingKana": "なくします",
+        "hanViet": "",
+        "meaning": "(mình) làm mất, đánh mất",
+        "enMeaning": "lose",
+        "wordParts": [
+            {
+                "text": "なくします",
+                "furigana": "なくします"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "鍵をなくしました。",
+            "translation": "Tôi đã làm mất chìa khóa.",
+            "enTranslation": "I lost my key.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-41",
+        "wordSurface": "ふろ",
+        "readingKana": "ふろ",
+        "hanViet": "",
+        "meaning": "bồn tắm",
+        "enMeaning": "bath",
+        "wordParts": [
+            {
+                "text": "ふろ",
+                "furigana": "ふろ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "おふろに入ります。",
+            "translation": "Tắm bồn.",
+            "enTranslation": "Take a bath.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-42",
+        "wordSurface": "サービス",
+        "readingKana": "サービス",
+        "hanViet": "",
+        "meaning": "dịch vụ",
+        "enMeaning": "service",
+        "wordParts": [
+            {
+                "text": "サービス",
+                "furigana": "サービス"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "サービスがいいです。",
+            "translation": "Dịch vụ tốt.",
+            "enTranslation": "The service is good.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-43",
+        "wordSurface": "ジョギング",
+        "readingKana": "ジョギング",
+        "hanViet": "",
+        "meaning": "việc chạy bộ",
+        "enMeaning": "jogging",
+        "wordParts": [
+            {
+                "text": "ジョギング",
+                "furigana": "ジョギング"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ジョギングをします。",
+            "translation": "Chạy bộ.",
+            "enTranslation": "Go jogging.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-44",
+        "wordSurface": "シャワー",
+        "readingKana": "シャワー",
+        "hanViet": "",
+        "meaning": "vòi hoa sen",
+        "enMeaning": "shower",
+        "wordParts": [
+            {
+                "text": "シャワー",
+                "furigana": "シャワー"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "シャワーを浴びます。",
+            "translation": "Tắm vòi hoa sen.",
+            "enTranslation": "Take a shower.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-45",
+        "wordSurface": "どうやって",
+        "readingKana": "どうやって",
+        "hanViet": "",
+        "meaning": "làm thế nào~",
+        "enMeaning": "how",
+        "wordParts": [
+            {
+                "text": "どうやって",
+                "furigana": "どうやって"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "どうやって学校へ行きますか。",
+            "translation": "Bạn đi đến trường bằng cách nào?",
+            "enTranslation": "How do you go to school?",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-46",
+        "wordSurface": "すごい",
+        "readingKana": "すごい",
+        "hanViet": "",
+        "meaning": "thật tuyệt vời",
+        "enMeaning": "amazing, great",
+        "wordParts": [
+            {
+                "text": "すごい",
+                "furigana": "すごい"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "すごいですね。",
+            "translation": "Tuyệt vời quá nhỉ.",
+            "enTranslation": "That's amazing.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-47",
+        "wordSurface": "まず",
+        "readingKana": "まず",
+        "hanViet": "",
+        "meaning": "trước hết, đầu tiên",
+        "enMeaning": "first",
+        "wordParts": [
+            {
+                "text": "まず",
+                "furigana": "まず"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "まず名前を書いてください。",
+            "translation": "Trước hết hãy viết tên.",
+            "enTranslation": "First, please write your name.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-48",
+        "wordSurface": "キャッシュカード",
+        "readingKana": "キャッシュカード",
+        "hanViet": "",
+        "meaning": "thẻ ATM",
+        "enMeaning": "cash card, ATM card",
+        "wordParts": [
+            {
+                "text": "キャッシュカード",
+                "furigana": "キャッシュカード"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "キャッシュカードを使います。",
+            "translation": "Sử dụng thẻ ATM.",
+            "enTranslation": "Use an ATM card.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u16-49",
+        "wordSurface": "ボタン",
+        "readingKana": "ボタン",
+        "hanViet": "",
+        "meaning": "nút",
+        "enMeaning": "button",
+        "wordParts": [
+            {
+                "text": "ボタン",
+                "furigana": "ボタン"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ボタンを押してください。",
+            "translation": "Hãy ấn nút.",
+            "enTranslation": "Please press the button.",
+            "parts": []
+        }
+    }
+]

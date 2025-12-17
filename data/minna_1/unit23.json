@@ -1,0 +1,557 @@
+[
+    {
+        "id": "u23-01",
+        "wordSurface": "聞きます",
+        "readingKana": "ききます",
+        "hanViet": "VĂN",
+        "meaning": "hỏi (giáo viên)",
+        "enMeaning": "ask",
+        "wordParts": [
+            {
+                "text": "聞",
+                "furigana": "き"
+            },
+            {
+                "text": "きます",
+                "furigana": "きます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "先生に聞きます。",
+            "translation": "Hỏi giáo viên.",
+            "enTranslation": "Ask the teacher.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-02",
+        "wordSurface": "回します",
+        "readingKana": "まわします",
+        "hanViet": "HỒI",
+        "meaning": "vặn",
+        "enMeaning": "turn",
+        "wordParts": [
+            {
+                "text": "回",
+                "furigana": "まわ"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "これを回します。",
+            "translation": "Vặn cái này.",
+            "enTranslation": "Turn this.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-03",
+        "wordSurface": "引きます",
+        "readingKana": "ひきます",
+        "hanViet": "DẪN",
+        "meaning": "kéo",
+        "enMeaning": "pull",
+        "wordParts": [
+            {
+                "text": "引",
+                "furigana": "ひ"
+            },
+            {
+                "text": "きます",
+                "furigana": "きます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ドアを引きます。",
+            "translation": "Kéo cửa.",
+            "enTranslation": "Pull the door.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-04",
+        "wordSurface": "変えます",
+        "readingKana": "かえます",
+        "hanViet": "BIẾN",
+        "meaning": "thay đổi, biến đổi",
+        "enMeaning": "change",
+        "wordParts": [
+            {
+                "text": "変",
+                "furigana": "か"
+            },
+            {
+                "text": "えます",
+                "furigana": "えます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "サイズを変えます。",
+            "translation": "Đổi kích cỡ.",
+            "enTranslation": "Change the size.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-05",
+        "wordSurface": "触ります",
+        "readingKana": "さわります",
+        "hanViet": "XÚC",
+        "meaning": "sờ, chạm vào",
+        "enMeaning": "touch",
+        "wordParts": [
+            {
+                "text": "触",
+                "furigana": "さわ"
+            },
+            {
+                "text": "ります",
+                "furigana": "ります"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "機械に触らないでください。",
+            "translation": "Đừng chạm vào máy móc.",
+            "enTranslation": "Please do not touch the machine.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-06",
+        "wordSurface": "歩きます",
+        "readingKana": "あるきます",
+        "hanViet": "BỘ",
+        "meaning": "đi bộ",
+        "enMeaning": "walk",
+        "wordParts": [
+            {
+                "text": "歩",
+                "furigana": "ある"
+            },
+            {
+                "text": "きます",
+                "furigana": "きます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "駅まで歩きます。",
+            "translation": "Đi bộ đến nhà ga.",
+            "enTranslation": "Walk to the station.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-07",
+        "wordSurface": "渡ります",
+        "readingKana": "わたります",
+        "hanViet": "ĐỘ",
+        "meaning": "qua, đi qua (cầu)",
+        "enMeaning": "cross",
+        "wordParts": [
+            {
+                "text": "渡",
+                "furigana": "わた"
+            },
+            {
+                "text": "ります",
+                "furigana": "ります"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "橋を渡ります。",
+            "translation": "Qua cầu.",
+            "enTranslation": "Cross the bridge.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-08",
+        "wordSurface": "曲がります",
+        "readingKana": "まがります",
+        "hanViet": "KHÚC",
+        "meaning": "rẽ, quẹo",
+        "enMeaning": "turn",
+        "wordParts": [
+            {
+                "text": "曲",
+                "furigana": "ま"
+            },
+            {
+                "text": "がります",
+                "furigana": "がります"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "右へ曲がります。",
+            "translation": "Rẽ phải.",
+            "enTranslation": "Turn right.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-09",
+        "wordSurface": "寂しい",
+        "readingKana": "さびしい",
+        "hanViet": "TỊCH",
+        "meaning": "buồn, cô đơn",
+        "enMeaning": "lonely",
+        "wordParts": [
+            {
+                "text": "寂",
+                "furigana": "さび"
+            },
+            {
+                "text": "しい",
+                "furigana": "しい"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "寂しいです。",
+            "translation": "Tôi buồn / cô đơn.",
+            "enTranslation": "I am lonely.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-10",
+        "wordSurface": "湯",
+        "readingKana": "ゆ",
+        "hanViet": "THANG",
+        "meaning": "nước nóng",
+        "enMeaning": "hot water",
+        "wordParts": [
+            {
+                "text": "湯",
+                "furigana": "ゆ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "お湯が出ません。",
+            "translation": "Nước nóng không chảy ra.",
+            "enTranslation": "Hot water doesn't come out.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-11",
+        "wordSurface": "音",
+        "readingKana": "おと",
+        "hanViet": "ÂM",
+        "meaning": "âm thanh",
+        "enMeaning": "sound",
+        "wordParts": [
+            {
+                "text": "音",
+                "furigana": "おと"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "変な音がします。",
+            "translation": "Có âm thanh lạ.",
+            "enTranslation": "There is a strange sound.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-12",
+        "wordSurface": "故障",
+        "readingKana": "こしょう",
+        "hanViet": "CỐ CHƯỚNG",
+        "meaning": "hỏng, hỏng hóc",
+        "enMeaning": "breakdown, malfunction",
+        "wordParts": [
+            {
+                "text": "故",
+                "furigana": "こ"
+            },
+            {
+                "text": "障",
+                "furigana": "しょう"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "車が故障しました。",
+            "translation": "Xe bị hỏng.",
+            "enTranslation": "The car broke down.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-13",
+        "wordSurface": "道",
+        "readingKana": "みち",
+        "hanViet": "ĐẠO",
+        "meaning": "đường",
+        "enMeaning": "road, street",
+        "wordParts": [
+            {
+                "text": "道",
+                "furigana": "みち"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "道を歩きます。",
+            "translation": "Đi bộ trên đường.",
+            "enTranslation": "Walk on the street.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-14",
+        "wordSurface": "交差点",
+        "readingKana": "こうさてん",
+        "hanViet": "GIAO SOA ĐIỂM",
+        "meaning": "ngã tư",
+        "enMeaning": "crossing, intersection",
+        "wordParts": [
+            {
+                "text": "交",
+                "furigana": "こう"
+            },
+            {
+                "text": "差",
+                "furigana": "さ"
+            },
+            {
+                "text": "点",
+                "furigana": "てん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "交差点を渡ります。",
+            "translation": "Qua ngã tư.",
+            "enTranslation": "Cross the intersection.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-15",
+        "wordSurface": "信号",
+        "readingKana": "しんごう",
+        "hanViet": "TÍN HIỆU",
+        "meaning": "đèn giao thông, đèn tín hiệu",
+        "enMeaning": "traffic light",
+        "wordParts": [
+            {
+                "text": "信",
+                "furigana": "しん"
+            },
+            {
+                "text": "号",
+                "furigana": "ごう"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "信号が赤です。",
+            "translation": "Đèn tín hiệu màu đỏ.",
+            "enTranslation": "The traffic light is red.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-16",
+        "wordSurface": "角",
+        "readingKana": "かど",
+        "hanViet": "GIÁC",
+        "meaning": "góc",
+        "enMeaning": "corner",
+        "wordParts": [
+            {
+                "text": "角",
+                "furigana": "かど"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "角を曲がります。",
+            "translation": "Rẽ ở góc đường.",
+            "enTranslation": "Turn at the corner.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-17",
+        "wordSurface": "端",
+        "readingKana": "はし",
+        "hanViet": "ĐOAN",
+        "meaning": "cầu",
+        "enMeaning": "bridge",
+        "wordParts": [
+            {
+                "text": "端",
+                "furigana": "はし"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "橋を渡ります。",
+            "translation": "Qua cầu.",
+            "enTranslation": "Cross the bridge.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-18",
+        "wordSurface": "駐車場",
+        "readingKana": "ちゅうしゃじょう",
+        "hanViet": "TRÚ XA TRƯỜNG",
+        "meaning": "bãi đỗ xe",
+        "enMeaning": "parking lot",
+        "wordParts": [
+            {
+                "text": "駐",
+                "furigana": "ちゅう"
+            },
+            {
+                "text": "車",
+                "furigana": "しゃ"
+            },
+            {
+                "text": "場",
+                "furigana": "じょう"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ここに駐車場があります。",
+            "translation": "Ở đây có bãi đỗ xe.",
+            "enTranslation": "There is a parking lot here.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-19",
+        "wordSurface": "建物",
+        "readingKana": "たてもの",
+        "hanViet": "KIẾN VẬT",
+        "meaning": "tòa nhà",
+        "enMeaning": "building",
+        "wordParts": [
+            {
+                "text": "建",
+                "furigana": "た"
+            },
+            {
+                "text": "て"
+            },
+            {
+                "text": "物",
+                "furigana": "もの"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "高い建物",
+            "translation": "Tòa nhà cao",
+            "enTranslation": "Tall building",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-20",
+        "wordSurface": "何回も",
+        "readingKana": "なんかいも",
+        "hanViet": "HÀ HỒI",
+        "meaning": "nhiều lần",
+        "enMeaning": "many times",
+        "wordParts": [
+            {
+                "text": "何",
+                "furigana": "なん"
+            },
+            {
+                "text": "回",
+                "furigana": "かい"
+            },
+            {
+                "text": "も",
+                "furigana": "も"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "何回も行きました。",
+            "translation": "Tôi đã đi nhiều lần rồi.",
+            "enTranslation": "I have been there many times.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-21",
+        "wordSurface": "こっち",
+        "readingKana": "こっち",
+        "hanViet": "",
+        "meaning": "phía này, chỗ này (thông tục)",
+        "enMeaning": "this way, here (informal)",
+        "wordParts": [
+            {
+                "text": "こっち",
+                "furigana": "こっち"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "こっちへ来てください。",
+            "translation": "Lại đây.",
+            "enTranslation": "Please come here.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-22",
+        "wordSurface": "そっち",
+        "readingKana": "そっち",
+        "hanViet": "",
+        "meaning": "phía đó, chỗ đó (thông tục)",
+        "enMeaning": "that way, there (informal)",
+        "wordParts": [
+            {
+                "text": "そっち",
+                "furigana": "そっち"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "そっちはどうですか。",
+            "translation": "Đằng đó thế nào?",
+            "enTranslation": "How is it over there?",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-23",
+        "wordSurface": "あっち",
+        "readingKana": "あっち",
+        "hanViet": "",
+        "meaning": "phía kia, chỗ kia (thông tục)",
+        "enMeaning": "over there (informal)",
+        "wordParts": [
+            {
+                "text": "あっち",
+                "furigana": "あっち"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "あっちに行きましょう。",
+            "translation": "Cùng đi đằng kia nào.",
+            "enTranslation": "Let's go over there.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u23-24",
+        "wordSurface": "どっち",
+        "readingKana": "どっち",
+        "hanViet": "",
+        "meaning": "cái nào, phía nào (thông tục)",
+        "enMeaning": "which, which way (informal)",
+        "wordParts": [
+            {
+                "text": "どっち",
+                "furigana": "どっち"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "どっちが好きですか。",
+            "translation": "Bạn thích cái nào?",
+            "enTranslation": "Which one do you like?",
+            "parts": []
+        }
+    }
+]

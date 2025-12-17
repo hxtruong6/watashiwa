@@ -1,0 +1,366 @@
+[
+    {
+        "id": "u20-01",
+        "wordSurface": "要ります",
+        "readingKana": "いります",
+        "hanViet": "YẾU",
+        "meaning": "cần, cần thiết",
+        "enMeaning": "need, require",
+        "wordParts": [
+            {
+                "text": "要",
+                "furigana": "い"
+            },
+            {
+                "text": "ります",
+                "furigana": "ります"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ビザが要ります。",
+            "translation": "Cần visa.",
+            "enTranslation": "I need a visa.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u20-02",
+        "wordSurface": "調べます",
+        "readingKana": "しらべます",
+        "hanViet": "ĐIỀU",
+        "meaning": "tìm hiểu, kiểm tra, điều tra",
+        "enMeaning": "check, investigate",
+        "wordParts": [
+            {
+                "text": "調",
+                "furigana": "しら"
+            },
+            {
+                "text": "べます",
+                "furigana": "べます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "電話番号を調べます。",
+            "translation": "Tìm số điện thoại.",
+            "enTranslation": "Look up a phone number.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u20-03",
+        "wordSurface": "修理します",
+        "readingKana": "しゅうりします",
+        "hanViet": "TU LÍ",
+        "meaning": "sửa chữa, tu sửa",
+        "enMeaning": "repair",
+        "wordParts": [
+            {
+                "text": "修",
+                "furigana": "しゅう"
+            },
+            {
+                "text": "理",
+                "furigana": "り"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "自転車を修理します。",
+            "translation": "Sửa xe đạp.",
+            "enTranslation": "Repair a bicycle.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u20-04",
+        "wordSurface": "着物",
+        "readingKana": "きもの",
+        "hanViet": "TRƯỚC VẬT",
+        "meaning": "kimono",
+        "enMeaning": "kimono",
+        "wordParts": [
+            {
+                "text": "着",
+                "furigana": "き"
+            },
+            {
+                "text": "物",
+                "furigana": "もの"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "着物を着ます。",
+            "translation": "Mặc kimono.",
+            "enTranslation": "Wear a kimono.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u20-05",
+        "wordSurface": "初め",
+        "readingKana": "はじめ",
+        "hanViet": "SƠ",
+        "meaning": "ban đầu, đầu tiên",
+        "enMeaning": "beginning, first",
+        "wordParts": [
+            {
+                "text": "初",
+                "furigana": "はじめ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "初めに名前を書いてください。",
+            "translation": "Đầu tiên hãy viết tên.",
+            "enTranslation": "Please write your name first.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u20-06",
+        "wordSurface": "終わり",
+        "readingKana": "おわり",
+        "hanViet": "CHUNG",
+        "meaning": "kết thúc",
+        "enMeaning": "end",
+        "wordParts": [
+            {
+                "text": "終",
+                "furigana": "お"
+            },
+            {
+                "text": "わり",
+                "furigana": "わり"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "夏休みの終わり",
+            "translation": "Kết thúc kỳ nghỉ hè",
+            "enTranslation": "End of summer vacation",
+            "parts": []
+        }
+    },
+    {
+        "id": "u20-07",
+        "wordSurface": "ことば",
+        "readingKana": "ことば",
+        "hanViet": "",
+        "meaning": "từ, tiếng",
+        "enMeaning": "word, language",
+        "wordParts": [
+            {
+                "text": "ことば",
+                "furigana": "ことば"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "新しいことばを覚えます。",
+            "translation": "Nhớ từ mới.",
+            "enTranslation": "Memorize new words.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u20-08",
+        "wordSurface": "ビザ",
+        "readingKana": "ビザ",
+        "hanViet": "",
+        "meaning": "visa",
+        "enMeaning": "visa",
+        "wordParts": [
+            {
+                "text": "ビザ",
+                "furigana": "ビザ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ビザを申請します。",
+            "translation": "Xin visa.",
+            "enTranslation": "Apply for a visa.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u20-09",
+        "wordSurface": "みんなで",
+        "readingKana": "みんなで",
+        "hanViet": "",
+        "meaning": "mọi người cùng",
+        "enMeaning": "all together",
+        "wordParts": [
+            {
+                "text": "みんなで",
+                "furigana": "みんなで"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "みんなで歌いましょう。",
+            "translation": "Mọi người cùng hát nào.",
+            "enTranslation": "Let's sing all together.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u20-10",
+        "wordSurface": "～けど",
+        "readingKana": "～けど",
+        "hanViet": "",
+        "meaning": "~ nhưng",
+        "enMeaning": "but (informal)",
+        "wordParts": [
+            {
+                "text": "けど",
+                "furigana": "けど"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "行きたいけど、時間がありません。",
+            "translation": "Muốn đi nhưng không có thời gian.",
+            "enTranslation": "I want to go, but I don't have time.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u20-11",
+        "wordSurface": "よかったら",
+        "readingKana": "よかったら",
+        "hanViet": "",
+        "meaning": "nếu a/c thích thì",
+        "enMeaning": "if you like",
+        "wordParts": [
+            {
+                "text": "よかったら",
+                "furigana": "よかったら"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "よかったら、どうぞ。",
+            "translation": "Nếu bạn thích thì xin mời.",
+            "enTranslation": "If you like, please go ahead.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u20-12",
+        "wordSurface": "いろいろ",
+        "readingKana": "いろいろ",
+        "hanViet": "",
+        "meaning": "phong phú, nhiều thứ",
+        "enMeaning": "various",
+        "wordParts": [
+            {
+                "text": "いろいろ",
+                "furigana": "いろいろ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "いろいろお世話になりました。",
+            "translation": "Cảm ơn đã giúp đỡ nhiều.",
+            "enTranslation": "Thank you for everything.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u20-13",
+        "wordSurface": "くれます",
+        "readingKana": "くれます",
+        "hanViet": "",
+        "meaning": "cho, tặng (tôi)",
+        "enMeaning": "give (to me)",
+        "wordParts": [
+            {
+                "text": "くれます",
+                "furigana": "くれます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "母は私に花をくれました。",
+            "translation": "Mẹ tặng hoa cho tôi.",
+            "enTranslation": "Mother gave me flowers.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u20-14",
+        "wordSurface": "おじいさん",
+        "readingKana": "おじいさん",
+        "hanViet": "",
+        "meaning": "ông",
+        "enMeaning": "grandfather, old man",
+        "wordParts": [
+            {
+                "text": "おじいさん",
+                "furigana": "おじいさん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "親切なおじいさん",
+            "translation": "Ông lão tốt bụng",
+            "enTranslation": "Kind old man",
+            "parts": []
+        }
+    },
+    {
+        "id": "u20-15",
+        "wordSurface": "おばあさん",
+        "readingKana": "おばあさん",
+        "hanViet": "",
+        "meaning": "bà",
+        "enMeaning": "grandmother, old woman",
+        "wordParts": [
+            {
+                "text": "おばあさん",
+                "furigana": "おばあさん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "元気なおばあさん",
+            "translation": "Bà lão khỏe mạnh",
+            "enTranslation": "Healthy old woman",
+            "parts": []
+        }
+    },
+    {
+        "id": "u20-16",
+        "wordSurface": "ホームステイ",
+        "readingKana": "ホームステイ",
+        "hanViet": "",
+        "meaning": "homestay",
+        "enMeaning": "homestay",
+        "wordParts": [
+            {
+                "text": "ホームステイ",
+                "furigana": "ホームステイ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ホームステイをします。",
+            "translation": "Ở homestay.",
+            "enTranslation": "Do a homestay.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u20-17",
+        "wordSurface": "ほかに",
+        "readingKana": "ほかに",
+        "hanViet": "",
+        "meaning": "ngoài ra, bên cạnh đó",
+        "enMeaning": "besides, other",
+        "wordParts": [
+            {
+                "text": "ほかに",
+                "furigana": "ほかに"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ほかに質問がありますか。",
+            "translation": "Còn câu hỏi nào khác không?",
+            "enTranslation": "Any other questions?",
+            "parts": []
+        }
+    }
+]

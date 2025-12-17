@@ -1,0 +1,338 @@
+[
+    {
+        "id": "u24-01",
+        "wordSurface": "直します",
+        "readingKana": "なおします",
+        "hanViet": "TRỰC",
+        "meaning": "sửa, chữa, đính chính",
+        "enMeaning": "repair, correct",
+        "wordParts": [
+            {
+                "text": "直",
+                "furigana": "なお"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "間違いを直します。",
+            "translation": "Sửa lỗi sai.",
+            "enTranslation": "Correct the mistake.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u24-02",
+        "wordSurface": "連れて行きます",
+        "readingKana": "つれていきます",
+        "hanViet": "LIÊN HÀNH",
+        "meaning": "dẫn (ai đó) đi",
+        "enMeaning": "take (someone)",
+        "wordParts": [
+            {
+                "text": "連",
+                "furigana": "つ"
+            },
+            {
+                "text": "れて",
+                "furigana": "れて"
+            },
+            {
+                "text": "行",
+                "furigana": "い"
+            },
+            {
+                "text": "きます",
+                "furigana": "きます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "子供を病院へ連れて行きます。",
+            "translation": "Dẫn con đi bệnh viện.",
+            "enTranslation": "Take the child to the hospital.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u24-03",
+        "wordSurface": "連れて来ます",
+        "readingKana": "つれてきます",
+        "hanViet": "LIÊN LAI",
+        "meaning": "dẫn (ai đó) đến",
+        "enMeaning": "bring (someone)",
+        "wordParts": [
+            {
+                "text": "連",
+                "furigana": "つ"
+            },
+            {
+                "text": "れて",
+                "furigana": "れて"
+            },
+            {
+                "text": "来",
+                "furigana": "き"
+            },
+            {
+                "text": "ます",
+                "furigana": "ます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "友達を連れて来ます。",
+            "translation": "Dẫn bạn đến.",
+            "enTranslation": "Bring a friend.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u24-04",
+        "wordSurface": "送ります",
+        "readingKana": "おくります",
+        "hanViet": "TỐNG",
+        "meaning": "tiễn (ai đó)",
+        "enMeaning": "escort, send off",
+        "wordParts": [
+            {
+                "text": "送",
+                "furigana": "おく"
+            },
+            {
+                "text": "ります",
+                "furigana": "ります"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "駅まで送ります。",
+            "translation": "Tiễn ra đến nhà ga.",
+            "enTranslation": "Escort to the station.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u24-05",
+        "wordSurface": "紹介します",
+        "readingKana": "しょうかいします",
+        "hanViet": "GIỚI THIỆU",
+        "meaning": "giới thiệu",
+        "enMeaning": "introduce",
+        "wordParts": [
+            {
+                "text": "紹",
+                "furigana": "しょう"
+            },
+            {
+                "text": "介",
+                "furigana": "かい"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "友達を紹介します。",
+            "translation": "Giới thiệu bạn bè.",
+            "enTranslation": "Introduce a friend.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u24-06",
+        "wordSurface": "案内します",
+        "readingKana": "あんないします",
+        "hanViet": "ÁN NỘI",
+        "meaning": "hướng dẫn, giới thiệu",
+        "enMeaning": "show around, guide",
+        "wordParts": [
+            {
+                "text": "案",
+                "furigana": "あん"
+            },
+            {
+                "text": "内",
+                "furigana": "ない"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "学校を案内します。",
+            "translation": "Hướng dẫn tham quan trường.",
+            "enTranslation": "Show around the school.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u24-07",
+        "wordSurface": "説明します",
+        "readingKana": "せつめいします",
+        "hanViet": "THUYẾT MINH",
+        "meaning": "giải thích, trình bày",
+        "enMeaning": "explain",
+        "wordParts": [
+            {
+                "text": "説",
+                "furigana": "せつ"
+            },
+            {
+                "text": "明",
+                "furigana": "めい"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ルールを説明します。",
+            "translation": "Giải thích quy tắc.",
+            "enTranslation": "Explain the rules.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u24-08",
+        "wordSurface": "準備します",
+        "readingKana": "じゅんびします",
+        "hanViet": "CHUẨN BỊ",
+        "meaning": "chuẩn bị",
+        "enMeaning": "prepare",
+        "wordParts": [
+            {
+                "text": "準",
+                "furigana": "じゅん"
+            },
+            {
+                "text": "備",
+                "furigana": "び"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "旅行の準備をします。",
+            "translation": "Chuẩn bị cho chuyến du lịch.",
+            "enTranslation": "Prepare for the trip.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u24-09",
+        "wordSurface": "引っ越し",
+        "readingKana": "ひっこし",
+        "hanViet": "DẪN VIỆT",
+        "meaning": "chuyển nhà",
+        "enMeaning": "moving (house)",
+        "wordParts": [
+            {
+                "text": "引",
+                "furigana": "ひ"
+            },
+            {
+                "text": "っ",
+                "furigana": "っ"
+            },
+            {
+                "text": "越",
+                "furigana": "こ"
+            },
+            {
+                "text": "し",
+                "furigana": "し"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "来月引っ越しをします。",
+            "translation": "Tháng sau tôi chuyển nhà.",
+            "enTranslation": "I will move next month.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u24-10",
+        "wordSurface": "お菓子",
+        "readingKana": "おかし",
+        "hanViet": "QUẢ TỬ",
+        "meaning": "bánh kẹo",
+        "enMeaning": "sweets, snacks",
+        "wordParts": [
+            {
+                "text": "お",
+                "furigana": "お"
+            },
+            {
+                "text": "菓",
+                "furigana": "か"
+            },
+            {
+                "text": "子",
+                "furigana": "し"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "お菓子を食べます。",
+            "translation": "Ăn bánh kẹo.",
+            "enTranslation": "Eat sweets.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u24-11",
+        "wordSurface": "全部",
+        "readingKana": "ぜんぶ",
+        "hanViet": "TOÀN BỘ",
+        "meaning": "toàn bộ, tất cả",
+        "enMeaning": "all",
+        "wordParts": [
+            {
+                "text": "全",
+                "furigana": "ぜん"
+            },
+            {
+                "text": "部",
+                "furigana": "ぶ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "全部でいくらですか。",
+            "translation": "Tất cả hết bao nhiêu?",
+            "enTranslation": "How much is it in total?",
+            "parts": []
+        }
+    },
+    {
+        "id": "u24-12",
+        "wordSurface": "自分で",
+        "readingKana": "じぶんで",
+        "hanViet": "TỰ PHÂN",
+        "meaning": "tự mình",
+        "enMeaning": "by oneself",
+        "wordParts": [
+            {
+                "text": "自",
+                "furigana": "じ"
+            },
+            {
+                "text": "分",
+                "furigana": "ぶん"
+            },
+            {
+                "text": "で",
+                "furigana": "で"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "自分でやります。",
+            "translation": "Tôi sẽ tự làm.",
+            "enTranslation": "I will do it myself.",
+            "parts": []
+        }
+    }
+]

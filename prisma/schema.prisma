@@ -310,11 +310,13 @@ model CommentVote {
 
 // Course System
 model Course {
-  id          String  @id @default(uuid())
-  title       String
-  description String?
-  isPublic    Boolean @default(false) @map("is_public")
-  headerImage String? @map("header_image")
+  id            String  @id @default(uuid())
+  title         String
+  titleEn       String? @map("title_en")
+  description   String?
+  descriptionEn String? @map("description_en")
+  isPublic      Boolean @default(false) @map("is_public")
+  headerImage   String? @map("header_image")
 
   // Metadata
   level String?

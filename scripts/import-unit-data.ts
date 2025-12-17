@@ -30,17 +30,10 @@ interface RawVocab {
 	audio?: string; // Sometimes JSON might have this? Or maybe missing. Check mapping.
 }
 
-async function main() {
-	const unitFile = process.argv[2];
-	if (!unitFile) {
-		console.error('Please provide a unit file path (e.g. data/unit15.json)');
-		process.exit(1);
-	}
-
-	const filePath = path.resolve(process.cwd(), unitFile);
+export async function processUnitFile(filePath: string, userId: string) {
 	if (!fs.existsSync(filePath)) {
 		console.error(`File not found: ${filePath}`);
-		process.exit(1);
+		return;
 	}
 
 	console.log(`Reading data from ${filePath}...`);
@@ -49,16 +42,11 @@ async function main() {
 
 	console.log(`Found ${vocabList.length} items. Importing...`);
 
-	// Ensure a default deck exists or let user specify. For now, creating a temporary "Imported Deck"
-	// In real app, might want to find an existing deck by name or ID.
-	const user = await prisma.user.findFirst();
-	if (!user) {
-		console.error('No user found in DB. Please create a user first.');
-		process.exit(1);
-	}
-
-	const unitNumberMatch = unitFile.match(/unit(\d+)\.json$/);
+	const unitNumberMatch = filePath.match(/unit(\d+)\.json$/);
 	const unitNumber = unitNumberMatch ? unitNumberMatch[1] : '??';
+
+	// Handle 01, 02... by parsing to int if needed, but string '01' is fine for titles
+	// Actually, let's keep it as is for title consistencies created by shell script
 
 	const deckTitleEn = `Minna no Nihongo Unit ${unitNumber}`;
 	const deckTitleVn = `Minna no Nihongo Bài ${unitNumber}`;
@@ -69,7 +57,7 @@ async function main() {
 	let deck = await prisma.deck.findFirst({
 		where: {
 			OR: [{ title: deckTitleVn }, { titleEn: deckTitleEn }],
-			authorId: user.id,
+			authorId: userId,
 		},
 	});
 
@@ -81,7 +69,7 @@ async function main() {
 				titleEn: deckTitleEn,
 				description: deckDescriptionVn,
 				descriptionEn: deckDescriptionEn,
-				authorId: user.id,
+				authorId: userId,
 				isPublic: true,
 			},
 		});
@@ -101,21 +89,7 @@ async function main() {
 	}
 
 	for (const item of vocabList) {
-		// Map JSON fields to Prisma schema
-		// Note: Prism Json type accepts JS objects/arrays directly.
-
-		// Check for existing vocab to update or create
-		// Using wordSurface + deckId as unique constraint logic? Or just ID if stable?
-		// The JSON has UUIDs, let's try to preserve them if possible, or upsert by ID.
-
-		// Construct audio URL if predictable, or leave blank/null if not in JSON.
-		// The JSON in the prompt didn't show 'audio' field in the new structure,
-		// but the first request showed `src="/Audio/minnamoi/bai15/..."`.
-		// If the JSON *doesn't* have audio path, we might need to assume a pattern or leave it null.
-		// The simplified JSON example only had `wordSurface`, `readingKana`, etc.
-
 		const deterministicId = item.id ? uuidv5(item.id, UUID_NAMESPACE) : v7();
-
 		await prisma.vocab.upsert({
 			where: { id: deterministicId },
 			update: {
@@ -124,9 +98,9 @@ async function main() {
 				hanViet: item.hanViet,
 				meaning: item.meaning,
 				enMeaning: item.enMeaning,
-				kanjiBreakdown: item.kanjiBreakdown, // Pass array directly
-				wordParts: item.wordParts, // Pass array directly
-				exampleSentence: item.exampleSentence, // Pass object directly
+				kanjiBreakdown: item.kanjiBreakdown,
+				wordParts: item.wordParts,
+				exampleSentence: item.exampleSentence,
 				deckId: deck.id,
 			},
 			create: {
@@ -144,14 +118,35 @@ async function main() {
 		});
 	}
 
-	console.log('Import completed successfully!');
+	console.log(`Import completed for ${path.basename(filePath)}`);
 }
 
-main()
-	.catch((e) => {
-		console.error(e);
-		process.exit(1);
-	})
-	.finally(async () => {
+import { fileURLToPath } from 'url';
+
+async function main() {
+	// Only run if called directly (ESM equivalent)
+	const isMainModule = process.argv[1] === fileURLToPath(import.meta.url);
+	if (isMainModule) {
+		const unitFile = process.argv[2];
+		if (!unitFile) {
+			console.error('Please provide a unit file path (e.g. data/unit15.json)');
+			process.exit(1);
+		}
+
+		const filePath = path.resolve(process.cwd(), unitFile);
+
+		const user = await prisma.user.findFirst();
+		if (!user) {
+			console.error('No user found in DB. Please create a user first.');
+			process.exit(1);
+		}
+
+		await processUnitFile(filePath, user.id);
 		await prisma.$disconnect();
-	});
+	}
+}
+
+main().catch((e) => {
+	console.error(e);
+	process.exit(1);
+});

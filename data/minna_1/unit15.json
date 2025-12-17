@@ -1,0 +1,478 @@
+[
+    {
+        "id": "u15-01",
+        "wordSurface": "置きます",
+        "readingKana": "おきます",
+        "hanViet": "TRÍ",
+        "meaning": "đặt, để",
+        "enMeaning": "put, place",
+        "wordParts": [
+            {
+                "text": "置",
+                "furigana": "お"
+            },
+            {
+                "text": "きます",
+                "furigana": "きます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "机の上に本を置きます。",
+            "translation": "Đặt sách lên trên bàn.",
+            "enTranslation": "Put the book on the desk.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u15-02",
+        "wordSurface": "作ります",
+        "readingKana": "つくります",
+        "hanViet": "TÁC",
+        "meaning": "làm, chế tạo, sản xuất",
+        "enMeaning": "make, produce",
+        "wordParts": [
+            {
+                "text": "作",
+                "furigana": "つく"
+            },
+            {
+                "text": "ります",
+                "furigana": "ります"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "料理を作ります。",
+            "translation": "Nấu ăn.",
+            "enTranslation": "Make food.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u15-03",
+        "wordSurface": "売ります",
+        "readingKana": "うります",
+        "hanViet": "MẠI",
+        "meaning": "bán",
+        "enMeaning": "sell",
+        "wordParts": [
+            {
+                "text": "売",
+                "furigana": "う"
+            },
+            {
+                "text": "ります",
+                "furigana": "ります"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "車を売ります。",
+            "translation": "Bán xe ô tô.",
+            "enTranslation": "Sell a car.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u15-04",
+        "wordSurface": "知ります",
+        "readingKana": "しります",
+        "hanViet": "TRI, TRÍ",
+        "meaning": "biết",
+        "enMeaning": "know",
+        "wordParts": [
+            {
+                "text": "知",
+                "furigana": "し"
+            },
+            {
+                "text": "ります",
+                "furigana": "ります"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "あの人を知っていますか。",
+            "translation": "Có biết người kia không?",
+            "enTranslation": "Do you know that person?",
+            "parts": []
+        }
+    },
+    {
+        "id": "u15-05",
+        "wordSurface": "住みます",
+        "readingKana": "すみます",
+        "hanViet": "TRÚ",
+        "meaning": "sống, ở",
+        "enMeaning": "live",
+        "wordParts": [
+            {
+                "text": "住",
+                "furigana": "す"
+            },
+            {
+                "text": "みます",
+                "furigana": "みます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "大阪に住んでいます。",
+            "translation": "Đang sống ở Osaka.",
+            "enTranslation": "I live in Osaka.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u15-06",
+        "wordSurface": "研究します",
+        "readingKana": "けんきゅうします",
+        "hanViet": "NGHIÊN CỨU",
+        "meaning": "nghiên cứu",
+        "enMeaning": "do research",
+        "wordParts": [
+            {
+                "text": "研",
+                "furigana": "けん"
+            },
+            {
+                "text": "究",
+                "furigana": "きゅう"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "経済を研究しています。",
+            "translation": "Đang nghiên cứu kinh tế.",
+            "enTranslation": "I am researching economics.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u15-07",
+        "wordSurface": "資料",
+        "readingKana": "しりょう",
+        "hanViet": "TƯ LIỆU",
+        "meaning": "tài liệu, tư liệu",
+        "enMeaning": "materials, data",
+        "wordParts": [
+            {
+                "text": "資",
+                "furigana": "し"
+            },
+            {
+                "text": "料",
+                "furigana": "りょう"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "会議の資料",
+            "translation": "Tài liệu cuộc họp",
+            "enTranslation": "Meeting materials",
+            "parts": []
+        }
+    },
+    {
+        "id": "u15-08",
+        "wordSurface": "時刻表",
+        "readingKana": "じこくひょう",
+        "hanViet": "THỜI KHẮC BIỂU",
+        "meaning": "bảng giờ tàu chạy",
+        "enMeaning": "timetable",
+        "wordParts": [
+            {
+                "text": "時",
+                "furigana": "じ"
+            },
+            {
+                "text": "刻",
+                "furigana": "こく"
+            },
+            {
+                "text": "表",
+                "furigana": "ひょう"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "時刻表を見ます。",
+            "translation": "Xem bảng giờ tàu chạy.",
+            "enTranslation": "Look at the timetable.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u15-09",
+        "wordSurface": "服",
+        "readingKana": "ふく",
+        "hanViet": "PHỤC",
+        "meaning": "quần áo",
+        "enMeaning": "clothes",
+        "wordParts": [
+            {
+                "text": "服",
+                "furigana": "ふく"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "服を買います。",
+            "translation": "Mua quần áo.",
+            "enTranslation": "Buy clothes.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u15-10",
+        "wordSurface": "製品",
+        "readingKana": "せいひん",
+        "hanViet": "CHẾ PHẨM",
+        "meaning": "sản phẩm",
+        "enMeaning": "product",
+        "wordParts": [
+            {
+                "text": "製",
+                "furigana": "せい"
+            },
+            {
+                "text": "品",
+                "furigana": "ひん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "新しい製品",
+            "translation": "Sản phẩm mới",
+            "enTranslation": "New product",
+            "parts": []
+        }
+    },
+    {
+        "id": "u15-11",
+        "wordSurface": "電子辞書",
+        "readingKana": "でんしじしょ",
+        "hanViet": "ĐIỆN TỬ TỪ THƯ",
+        "meaning": "kim từ điển",
+        "enMeaning": "electronic dictionary",
+        "wordParts": [
+            {
+                "text": "電",
+                "furigana": "でん"
+            },
+            {
+                "text": "子",
+                "furigana": "し"
+            },
+            {
+                "text": "辞",
+                "furigana": "じ"
+            },
+            {
+                "text": "書",
+                "furigana": "しょ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "電子辞書を使います。",
+            "translation": "Sử dụng kim từ điển.",
+            "enTranslation": "Use an electronic dictionary.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u15-12",
+        "wordSurface": "経済",
+        "readingKana": "けいざい",
+        "hanViet": "KINH TẾ",
+        "meaning": "kinh tế",
+        "enMeaning": "economy",
+        "wordParts": [
+            {
+                "text": "経",
+                "furigana": "けい"
+            },
+            {
+                "text": "済",
+                "furigana": "ざい"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "日本の経済",
+            "translation": "Kinh tế Nhật Bản",
+            "enTranslation": "Japanese economy",
+            "parts": []
+        }
+    },
+    {
+        "id": "u15-13",
+        "wordSurface": "市役所",
+        "readingKana": "しやくしょ",
+        "hanViet": "THỊ DỊCH SỞ",
+        "meaning": "tòa thị chính",
+        "enMeaning": "city hall",
+        "wordParts": [
+            {
+                "text": "市",
+                "furigana": "し"
+            },
+            {
+                "text": "役",
+                "furigana": "やく"
+            },
+            {
+                "text": "所",
+                "furigana": "しょ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "市役所に行きます。",
+            "translation": "Đi đến tòa thị chính.",
+            "enTranslation": "Go to the city hall.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u15-14",
+        "wordSurface": "高校",
+        "readingKana": "こうこう",
+        "hanViet": "CAO HIỆU",
+        "meaning": "trường cấp 3",
+        "enMeaning": "high school",
+        "wordParts": [
+            {
+                "text": "高",
+                "furigana": "こう"
+            },
+            {
+                "text": "校",
+                "furigana": "こう"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "高校で勉強します。",
+            "translation": "Học ở trường cấp 3.",
+            "enTranslation": "Study at high school.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u15-15",
+        "wordSurface": "歯医者",
+        "readingKana": "はいしゃ",
+        "hanViet": "XỈ Y GIẢ",
+        "meaning": "nha sĩ",
+        "enMeaning": "dentist",
+        "wordParts": [
+            {
+                "text": "歯",
+                "furigana": "は"
+            },
+            {
+                "text": "医",
+                "furigana": "い"
+            },
+            {
+                "text": "者",
+                "furigana": "しゃ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "歯医者に行きます。",
+            "translation": "Đi nha sĩ.",
+            "enTranslation": "Go to the dentist.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u15-16",
+        "wordSurface": "独身",
+        "readingKana": "どくしん",
+        "hanViet": "ĐỘC THÂN",
+        "meaning": "độc thân",
+        "enMeaning": "single, unmarried",
+        "wordParts": [
+            {
+                "text": "独",
+                "furigana": "どく"
+            },
+            {
+                "text": "身",
+                "furigana": "しん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "田中さんは独身です。",
+            "translation": "Anh Tanaka còn độc thân.",
+            "enTranslation": "Mr. Tanaka is single.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u15-17",
+        "wordSurface": "思い出します",
+        "readingKana": "おもいだします",
+        "hanViet": "TƯ XUẤT",
+        "meaning": "nhớ lại, hồi tưởng lại",
+        "enMeaning": "remember, recall",
+        "wordParts": [
+            {
+                "text": "思",
+                "furigana": "おも"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            },
+            {
+                "text": "出",
+                "furigana": "だ"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "家族を思い出します。",
+            "translation": "Nhớ về gia đình.",
+            "enTranslation": "Recall my family.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u15-18",
+        "wordSurface": "カタログ",
+        "readingKana": "カタログ",
+        "hanViet": "",
+        "meaning": "ca ta lô",
+        "enMeaning": "catalog",
+        "wordParts": [
+            {
+                "text": "カタログ",
+                "furigana": "カタログ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "カタログをもらいました。",
+            "translation": "Tôi đã nhận được ca ta lô.",
+            "enTranslation": "I received a catalog.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u15-19",
+        "wordSurface": "ソフト",
+        "readingKana": "ソフト",
+        "hanViet": "",
+        "meaning": "phần mềm",
+        "enMeaning": "software",
+        "wordParts": [
+            {
+                "text": "ソフト",
+                "furigana": "ソフト"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "パソコンのソフト",
+            "translation": "Phần mềm máy tính",
+            "enTranslation": "Computer software",
+            "parts": []
+        }
+    }
+]

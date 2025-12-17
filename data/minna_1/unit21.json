@@ -1,0 +1,530 @@
+[
+    {
+        "id": "u21-01",
+        "wordSurface": "思います",
+        "readingKana": "おもいます",
+        "hanViet": "TƯ",
+        "meaning": "nghĩ",
+        "enMeaning": "think",
+        "wordParts": [
+            {
+                "text": "思",
+                "furigana": "おも"
+            },
+            {
+                "text": "います",
+                "furigana": "います"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "明日雨が降ると思います。",
+            "translation": "Tôi nghĩ ngày mai trời sẽ mưa.",
+            "enTranslation": "I think it will rain tomorrow.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-02",
+        "wordSurface": "言います",
+        "readingKana": "いいます",
+        "hanViet": "NGÔN",
+        "meaning": "nói, kể",
+        "enMeaning": "say",
+        "wordParts": [
+            {
+                "text": "言",
+                "furigana": "い"
+            },
+            {
+                "text": "います",
+                "furigana": "います"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "カインさんは「明日来ます」と言いました。",
+            "translation": "Anh Khanh nói là \"Ngày mai tôi sẽ đến\".",
+            "enTranslation": "Mr. Khanh said \"I will come tomorrow\".",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-03",
+        "wordSurface": "勝ちます",
+        "readingKana": "かちます",
+        "hanViet": "THẮNG",
+        "meaning": "thắng",
+        "enMeaning": "win",
+        "wordParts": [
+            {
+                "text": "勝",
+                "furigana": "か"
+            },
+            {
+                "text": "ちます",
+                "furigana": "ちます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "試合に勝ちます。",
+            "translation": "Thắng trận đấu.",
+            "enTranslation": "Win the game.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-04",
+        "wordSurface": "負けます",
+        "readingKana": "まけます",
+        "hanViet": "PHỤ",
+        "meaning": "thua",
+        "enMeaning": "lose",
+        "wordParts": [
+            {
+                "text": "負",
+                "furigana": "ま"
+            },
+            {
+                "text": "けます",
+                "furigana": "けます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "試合に負けました。",
+            "translation": "Đã thua trận đấu.",
+            "enTranslation": "Lost the game.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-05",
+        "wordSurface": "役に立ちます",
+        "readingKana": "やくにたちます",
+        "hanViet": "DỊCH LẬP",
+        "meaning": "hữu ích, giúp ích",
+        "enMeaning": "be useful",
+        "wordParts": [
+            {
+                "text": "役",
+                "furigana": "やく"
+            },
+            {
+                "text": "に",
+                "furigana": "に"
+            },
+            {
+                "text": "立",
+                "furigana": "た"
+            },
+            {
+                "text": "ちます",
+                "furigana": "ちます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "この本は役に立ちます。",
+            "translation": "Quyển sách này hữu ích.",
+            "enTranslation": "This book is useful.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-06",
+        "wordSurface": "動きます",
+        "readingKana": "うごきます",
+        "hanViet": "ĐỘNG",
+        "meaning": "chuyển động, chạy",
+        "enMeaning": "move, work (machine)",
+        "wordParts": [
+            {
+                "text": "動",
+                "furigana": "うご"
+            },
+            {
+                "text": "きます",
+                "furigana": "きます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "時計が動いていません。",
+            "translation": "Đồng hồ không chạy.",
+            "enTranslation": "The watch is not working.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-07",
+        "wordSurface": "気をつけます",
+        "readingKana": "きをつけます",
+        "hanViet": "KHÍ",
+        "meaning": "chú ý, bảo trọng",
+        "enMeaning": "be careful",
+        "wordParts": [
+            {
+                "text": "気",
+                "furigana": "き"
+            },
+            {
+                "text": "をつけます",
+                "furigana": "をつけます"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "車に気をつけてください。",
+            "translation": "Hãy cẩn thận xe cộ.",
+            "enTranslation": "Please be careful of cars.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-08",
+        "wordSurface": "留学します",
+        "readingKana": "りゅうがくします",
+        "hanViet": "LƯU HỌC",
+        "meaning": "du học",
+        "enMeaning": "study abroad",
+        "wordParts": [
+            {
+                "text": "留",
+                "furigana": "りゅう"
+            },
+            {
+                "text": "学",
+                "furigana": "がく"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "日本へ留学します。",
+            "translation": "Du học Nhật Bản.",
+            "enTranslation": "Study abroad in Japan.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-09",
+        "wordSurface": "不便",
+        "readingKana": "ふべん",
+        "hanViet": "BẤT TIỆN",
+        "meaning": "bất tiện",
+        "enMeaning": "inconvenient",
+        "wordParts": [
+            {
+                "text": "不",
+                "furigana": "ふ"
+            },
+            {
+                "text": "便",
+                "furigana": "べん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "交通が不便です。",
+            "translation": "Giao thông bất tiện.",
+            "enTranslation": "Transportation is inconvenient.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-10",
+        "wordSurface": "うそ",
+        "readingKana": "うそ",
+        "hanViet": "",
+        "meaning": "sự giả dối, giả dối",
+        "enMeaning": "lie",
+        "wordParts": [
+            {
+                "text": "うそ",
+                "furigana": "うそ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "うそを言わないでください。",
+            "translation": "Đừng nói dối.",
+            "enTranslation": "Please don't tell a lie.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-11",
+        "wordSurface": "自動車",
+        "readingKana": "じどうしゃ",
+        "hanViet": "TỰ ĐỘNG XA",
+        "meaning": "ô tô, xe hơi",
+        "enMeaning": "automobile, car",
+        "wordParts": [
+            {
+                "text": "自",
+                "furigana": "じ"
+            },
+            {
+                "text": "動",
+                "furigana": "どう"
+            },
+            {
+                "text": "車",
+                "furigana": "しゃ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "自動車会社",
+            "translation": "Công ty ô tô",
+            "enTranslation": "Automobile company",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-12",
+        "wordSurface": "交通",
+        "readingKana": "こうつう",
+        "hanViet": "GIAO THÔNG",
+        "meaning": "giao thông",
+        "enMeaning": "traffic, transportation",
+        "wordParts": [
+            {
+                "text": "交",
+                "furigana": "こう"
+            },
+            {
+                "text": "通",
+                "furigana": "つう"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "交通が便利です。",
+            "translation": "Giao thông thuận tiện.",
+            "enTranslation": "Transportation is convenient.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-13",
+        "wordSurface": "物価",
+        "readingKana": "ぶっか",
+        "hanViet": "VẬT GIÁ",
+        "meaning": "giá cả, mức giá",
+        "enMeaning": "commodity prices",
+        "wordParts": [
+            {
+                "text": "物",
+                "furigana": "ぶっ"
+            },
+            {
+                "text": "価",
+                "furigana": "か"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "東京は物価が高いです。",
+            "translation": "Giá cả ở Tokyo đắt đỏ.",
+            "enTranslation": "Prices in Tokyo are high.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-14",
+        "wordSurface": "放送",
+        "readingKana": "ほうそう",
+        "hanViet": "PHÓNG TỐNG",
+        "meaning": "phát, phát thanh",
+        "enMeaning": "broadcast",
+        "wordParts": [
+            {
+                "text": "放",
+                "furigana": "ほう"
+            },
+            {
+                "text": "送",
+                "furigana": "そう"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ニュースの放送",
+            "translation": "Phát sóng tin tức",
+            "enTranslation": "News broadcast",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-15",
+        "wordSurface": "夢",
+        "readingKana": "ゆめ",
+        "hanViet": "MỘNG",
+        "meaning": "giấc mơ",
+        "enMeaning": "dream",
+        "wordParts": [
+            {
+                "text": "夢",
+                "furigana": "ゆめ"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "夢を見ます。",
+            "translation": "Mơ một giấc mơ.",
+            "enTranslation": "Have a dream.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-16",
+        "wordSurface": "天才",
+        "readingKana": "てんさい",
+        "hanViet": "THIÊN TÀI",
+        "meaning": "thiên tài",
+        "enMeaning": "genius",
+        "wordParts": [
+            {
+                "text": "天",
+                "furigana": "てん"
+            },
+            {
+                "text": "才",
+                "furigana": "さい"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "彼は天才です。",
+            "translation": "Anh ấy là thiên tài.",
+            "enTranslation": "He is a genius.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-17",
+        "wordSurface": "試合",
+        "readingKana": "しあい",
+        "hanViet": "THÍ HỢP",
+        "meaning": "trận đấu",
+        "enMeaning": "game, match",
+        "wordParts": [
+            {
+                "text": "試",
+                "furigana": "し"
+            },
+            {
+                "text": "合",
+                "furigana": "あい"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "サッカーの試合",
+            "translation": "Trận đấu bóng đá",
+            "enTranslation": "Soccer match",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-18",
+        "wordSurface": "意見",
+        "readingKana": "いけん",
+        "hanViet": "Ý KIẾN",
+        "meaning": "ý kiến",
+        "enMeaning": "opinion",
+        "wordParts": [
+            {
+                "text": "意",
+                "furigana": "い"
+            },
+            {
+                "text": "見",
+                "furigana": "けん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "意見を言います。",
+            "translation": "Nói ý kiến.",
+            "enTranslation": "Express an opinion.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-19",
+        "wordSurface": "話",
+        "readingKana": "はなし",
+        "hanViet": "THOẠI",
+        "meaning": "câu chuyện",
+        "enMeaning": "talk, story",
+        "wordParts": [
+            {
+                "text": "話",
+                "furigana": "はなし"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "面白い話",
+            "translation": "Câu chuyện thú vị",
+            "enTranslation": "Interesting story",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-20",
+        "wordSurface": "地球",
+        "readingKana": "ちきゅう",
+        "hanViet": "ĐỊA CẦU",
+        "meaning": "trái đất, địa cầu",
+        "enMeaning": "Earth",
+        "wordParts": [
+            {
+                "text": "地",
+                "furigana": "ち"
+            },
+            {
+                "text": "球",
+                "furigana": "きゅう"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "地球を守ります。",
+            "translation": "Bảo vệ trái đất.",
+            "enTranslation": "Protect the Earth.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-21",
+        "wordSurface": "月",
+        "readingKana": "つき",
+        "hanViet": "NGUYỆT",
+        "meaning": "mặt trăng",
+        "enMeaning": "moon",
+        "wordParts": [
+            {
+                "text": "月",
+                "furigana": "つき"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "月がきれいです。",
+            "translation": "Mặt trăng đẹp.",
+            "enTranslation": "The moon is beautiful.",
+            "parts": []
+        }
+    },
+    {
+        "id": "u21-22",
+        "wordSurface": "最近",
+        "readingKana": "さいきん",
+        "hanViet": "TỐI CẬN",
+        "meaning": "gần đây",
+        "enMeaning": "recently",
+        "wordParts": [
+            {
+                "text": "最",
+                "furigana": "さい"
+            },
+            {
+                "text": "近",
+                "furigana": "きん"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "最近忙しいです。",
+            "translation": "Gần đây tôi bận.",
+            "enTranslation": "I am busy recently.",
+            "parts": []
+        }
+    }
+]
