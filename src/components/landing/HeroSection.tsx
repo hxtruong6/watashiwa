@@ -22,14 +22,14 @@ export default function HeroSection() {
 	return (
 		<section
 			style={{
-				minHeight: '100svh', // Use svh for better mobile viewport handling
+				minHeight: 'calc(100svh - 64px)', // Subtract NavBar height to fit viewport perfectly
 				position: 'relative',
 				overflow: 'hidden',
 				background: token.colorBgLayout,
 				display: 'flex',
 				alignItems: 'center',
 				justifyContent: 'center',
-				paddingTop: 0, // Flex center handles alignment better
+				paddingTop: 0,
 			}}
 		>
 			{/* Ambient Background Elements */}
@@ -65,7 +65,7 @@ export default function HeroSection() {
 
 			<div
 				style={{
-					width: '100%',
+					// width: '100%', // Removed to prevent overflow
 					maxWidth: 1200,
 					padding: '0 24px',
 					position: 'relative',

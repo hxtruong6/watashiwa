@@ -11,7 +11,7 @@ import KanjiEditor from '@/components/admin/KanjiEditor';
 import { useRouter } from 'next/navigation';
 
 // Define type based on Prisma result (simplified for now)
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+
 type Report = any;
 
 interface ClientReportsTableProps {

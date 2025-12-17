@@ -1,0 +1,557 @@
+#separator:tab
+#html:false
+私[わたし]	私	わたし	tôi	Tư			
+あなた		あなた	anh/chị/ông/bà/bạn				
+あの 人[ひと]	あの人	あのひと	người kia	Nhân			
+あの 方[かた]	あの方	あのかた	vị kia	Phương			
+~ 人[じん]		～じん	người ~	Nhân			
+先生[せんせい]		せんせい	thầy/cô	Tiên - Sinh			
+教師[きょうし]		きょうし	giáo viên	Giáo - Sư			
+学生[がくせい]		がくせい	học sinh, sinh viên	Học - Sinh			
+会社員[かいしゃいん]		かいしゃいん	nhân viên cty	Hội - Xã - Viên			
+社員[しゃいん]		しゃいん	nhân viên	Xã - Viên			
+銀行員[ぎんこういん]		ぎんこういん	nhân viên ngân hàng	Ngân - Hành - Viên			
+医者[いしゃ]		いしゃ	bác sĩ	Y - Giả			
+研究者[けんきゅうしゃ]		けんきゅうしゃ	nhà nghiên cứu	Nghiên - Cứu - Giả			
+大学[だいがく]		だいがく	đại học	Đại - Học			
+病院[びょういん]		びょういん	bệnh viện	Bệnh - Viện			
+だれ		だれ	ai				
+どなた		どなた	ai (lịch sự)				
+~ 歳[さい]		さい	~ tuổi	Tuế			
+何歳[なんさい]		なんさい	bao nhiêu tuổi	Hà - Tuế			
+おいくつ		おいくつ	bao nhiêu tuổi (lịch sự)				
+初[はじ]めまして		はじめまして	rất hân hạnh được gặp anh/chị	Sơ			
+～から 来[き]ました。		～から きました。	tôi đến từ ~	Lại			
+どうぞ　よろしく　お 願[ねが]いします。		どうぞ　よろしく　おねがいします。	rất vui được làm quen với anh/chị	Nguyện			
+失礼[しつれい]ですが		しつれいですが	xin lỗi...	Thất - Lễ			
+お 名前[なまえ]は		おなまえは	tên anh/chị là gì?	Danh - Tiền			
+こちらは～さんです。		こちらは～さんです。	đây là anh/chị...				
+アメリカ	mỹ						
+イギリス	Anh						
+インド	Ấn Độ						
+インドネシア	indonexia						
+韓国[かんこく]		かんこく	hàn quốc	Hàn - Quốc			
+中国[ちゅうごく]		ちゅうごく	trung quốc	Trung - Quốc			
+日本[にほん]		にほん	nhật bản	Nhật - Bản			
+ドイツ	Đức						
+ブラジル	Braxin						
+本[ほん]		ほん	sách	Bản			
+辞書[じしょ]		じしょ	từ điển	Từ - Thư			
+雑誌[ざっし]		ざっし	tạp chí	Tạp - Chí			
+新聞[しんぶん]		しんぶん	báo	Tân - Văn			
+手帳[てちょう]		てちょう	sổ tay	Thủ - Thiếp			
+名刺[めいし]		めいし	danh thiếp	Danh - Thích			
+鉛筆[えんぴつ]		えんぴつ	bút chì	Duyên - Bút			
+時計[とけい]		とけい	đồng hồ	Thời - Kế			
+傘[かさ]		かさ	dù	Tán			
+車[くるま]		くるま	xe hơi, ô tô	Xa			
+机[つくえ]		つくえ	bàn	Kỷ			
+お 土産[みやげ]		おみやげ	quà lưu niệm	Thổ - Sản			
+英語[えいご]		えいご	tiếng Anh	Anh - Ngữ			
+日本語[にほんご]		にほんご	tiếng Nhật	Nhật - Bản - Ngữ			
+～ 語[ご]		～ご	tiếng~	Ngữ			
+何[なん]		なん	cái gì, gì	Hà			
+ノート	vở						
+これ	cái này						
+それ	cái đó						
+あれ	cái kia						
+カード	thẻ, cạc						
+ボールペン	bút bi						
+シャープペンシル	bút chì kim, bút chì bấm						
+かぎ	chìa khóa						
+かばん	cặp sách, túi sách						
+テレビ	TV						
+ラジオ	Radio						
+カメラ	Máy ảnh						
+コンピューター	Máy vi tính						
+いす	Ghế						
+チョコレート	Socola						
+コーヒー	Cà phê						
+そう	Vậy						
+どうぞ	Xin mời						
+そうですか。	Thế à。						
+違[ちが]います。		ちがいます	không phải, không đúng	Vi			
+これから　お 世話[せわ]に　なります。		これから　おせわに　なります。	từ nay tôi rất mong được sự giúp đỡ của anh/chị	Thế - Thoại			
+この～	~ này						
+その～	~ đó						
+あの～	~ kia						
+ここ	Chỗ này						
+そこ	Chỗ đó						
+あそこ	Chỗ kia						
+どこ	Chỗ nào						
+こちら	Phía này						
+そちら	Phía đó						
+あちら	Phía kia						
+どちら	Phía nào						
+ロビー	Hành lang, sảnh						
+エレベーター	Thang máy						
+エスカレーター	Thang cuốn						
+うち	Nhà						
+ネクタイ	Cà vạt						
+ワイン	Rượu Vang						
+いくら	Bao nhiêu tiền						
+すみません	Xin lỗi						
+どうも	Cảm ơn						
+いらっしゃいませ	Kính chào quý khách						
+イタリア	Ý						
+スイス	Thụy Sĩ						
+フランス	Pháp						
+教室[きょうしつ]		きょうしつ	lớp học, phòng học	Giáo - Thất			
+食堂[しょくどう]		しょくどう	nhà ăn	Thực - Đường			
+事務所[じむしょ]		じむしょ	văn phòng	Sự - Vụ - Sở			
+会議室[かいぎしつ]		かいぎしつ	phòng họp	Hội - Nghị - Thất			
+受付[うけつけ]		うけつけ	quầy lễ tân, phòng thường trực	Thụ - Phó			
+部屋[へや]		へや	căn phòng	Bộ - Ốc			
+お 手洗[てあら]い		おてあらい	nhà vệ sinh	Thủ - Tẩy			
+トイレ	nhà vệ sinh						
+階段[かいだん]		かいだん	cầu thang	Giai - Đoạn			
+自動販売機[じどうはんばいき]		じどうはんばいき	máy bán hàng tự động	Tự - Động - Phiến - Mại - Cơ			
+電話[でんわ]		でんわ	điện thoại	Điện - Thoại			
+国[くに]		くに	đất nước	Quốc			
+会社[かいしゃ]		かいしゃ	công ty	Hội - Xã			
+靴[くつ]		くつ	giày	Ngoa			
+売り場[うりば]		うりば	quầy bán	Mại - Trường			
+地下[ちか]		ちか	tầng hầm	Địa - Hạ			
+~ 階[かい]・～ 階[がい]		～かい・～がい	tầng thứ ~	Giai			
+何階[なんがい]		なんがい	tầng mấy	Hà - Giai			
+~ 円[えん]		えん	yên	Viên			
+百[ひゃく]		ひゃく	trăm	Bách			
+千[せん]		せん	nghìn	Thiên			
+万[まん]		まん	mười nghìn	Vạn			
+デパート	bách hóa						
+おととい	hôm kia						
+きのう	hôm qua						
+きょう	hôm nay						
+あした	ngày mai						
+あさって	ngày kia						
+けさ	sáng nay						
+～から	~ từ						
+～まで	~ đến						
+～と～	~ và						
+起[お]きます		おきます	dậy, thức dậy	Khởi			
+寝[ね]ます		ねます	ngủ	Tẩm			
+働[はたら]きます		はたらきます	làm việc	Động			
+休[やす]みます		やすみます	nghỉ ngơi	Hưu			
+勉強[べんきょう]します		べんきょうします	học	Miễn - Cường			
+終[お]わります		おわります	kết thúc, hết	Chung			
+銀行[ぎんこう]		ぎんこう	ngân hàng	Ngân - Hành			
+郵便局[ゆうびんきょく]		ゆうびんきょく	bưu điện	Bưu - Tiện - Cục			
+図書館[としょかん]		としょかん	thư viện	Đồ - Thư - Quán			
+美術館[びじゅつかん]		びじゅつかん	bảo tàng mỹ thuật	Mỹ - Thuật - Quán			
+今[いま]		いま	bây giờ	Kim			
+～ 時[じ]		～じ	~giờ	Thời			
+～ 分[ふん]		～ふん・ぷん	phút	Phân			
+半[はん]		はん	rưỡi, nửa	Bán			
+何時[なんじ]		なんじ	mấy giờ	Hà - Thời			
+何分[なんぷん]		なんぷん	mấy phút	Hà - Phân			
+午前[ごぜん]		ごぜん	sáng - AM	Ngọ - Tiền			
+午後[ごご]		ごご	chiều - PM	Ngọ - Hậu			
+朝[あさ]		あさ	sáng	Triều			
+昼[ひる]		ひる	trưa	Trú			
+晩[ばん]		ばん	tối	Vãn			
+夜[よる]		よる	khuya	Dạ			
+今晩[こんばん]		こんばん	tối nay	Kim - Vãn			
+休[やす]み		やすみ	nghỉ	Hưu			
+昼休み[ひるやすみ]		ひるやすみ	nghỉ trưa	Trú - Hưu			
+試験[しけん]		しけん	kỳ thi, kiểm tra	Thí - Nghiệm			
+会議[かいぎ]		かいぎ	cuộc họp	Hội - Nghị			
+映画[えいが]		えいが	phim	Ánh - Họa			
+毎朝[まいあさ]		まいあさ	mỗi sáng	Mỗi - Triều			
+毎晩[まいばん]		まいばん	mỗi tối	Mỗi - Vãn			
+毎日[まいにち]		まいにち	mỗi ngày	Mỗi - Nhật			
+月曜日[げつようび]		げつようび	thứ 2	Nguyệt - Diệu - Nhật			
+火曜日[かようび]		かようび	thứ 3	Hỏa - Diệu - Nhật			
+水曜日[すいようび]		すいようび	thứ 4	Thủy - Diệu - Nhật			
+木曜日[もくようび]		もくようび	thứ 5	Mộc - Diệu - Nhật			
+金曜日[きんようび]		きんようび	thứ 6	Kim - Diệu - Nhật			
+土曜日[どようび]		どようび	thứ 7	Thổ - Diệu - Nhật			
+日曜日[にちようび]		にちようび	chủ nhật	Nhật - Diệu - Nhật			
+何曜日[なんようび]		なんようび	thứ mấy	Hà - Diệu - Nhật			
+番号[ばんごう]		ばんごう	số	Phiên - Hiệu			
+何番[なんばん]		なんばん	số mấy	Hà - Phiên			
+スーパー	siêu thị						
+バス	xe buýt						
+タクシー	taxi						
+ことし	năm nay						
+いつ	khi nào, bao giờ						
+どう　いたしまして	không có gì						
+どうも　ありがとう　ございました	xin cảm ơn						
+行[い]きます		いきます	đi	Hành			
+来[き]ます		きます	đến	Lai			
+帰[かえ]ります		かえります	về	Quy			
+学校[がっこう]		がっこう	trường học	Học - Hiệu			
+駅[えき]		えき	nhà ga	Dịch			
+飛行機[ひこうき]		ひこうき	máy bay	Phi - Hành - Cơ			
+船[ふね]		ふね	thuyền, tàu thủy	Thuyền			
+電車[でんしゃ]		でんしゃ	tàu điện	Điện - Xa			
+地下鉄[ちかてつ]		ちかてつ	tàu điện ngầm	Địa - Hạ - Thiết			
+新幹線[しんかんせん]		しんかんせん	tàu siêu tốc	Tân - Can - Tuyến			
+自転車[じてんしゃ]		じてんしゃ	xe đạp	Tự - Chuyển - Xa			
+歩[ある]いて		あるいて	đi bộ	Bộ			
+人[ひと]		ひと	người	Nhân			
+友達[ともだち]		ともだち	bạn bè	Hữu - Đạt			
+彼[かれ]		かれ	anh ấy	Bỉ			
+彼女[かのじょ]		かのじょ	chị ấy	Bỉ - Nữ			
+家族[かぞく]		かぞく	gia đình	Gia - Tộc			
+一人で[ひとりで]		ひとりで	một mình	Nhất - Nhân			
+先週[せんしゅう]		せんしゅう	tuần trước	Tiên - Chu			
+今週[こんしゅう]		こんしゅう	tuần này	Kim - Chu			
+来週[らいしゅう]		らいしゅう	tuần sau	Lai - Chu			
+先月[せんげつ]		せんげつ	tháng trước	Tiên - Nguyệt			
+今月[こんげつ]		こんげつ	tháng này	Kim - Nguyệt			
+来月[らいげつ]		らいげつ	tháng sau	Lai - Nguyệt			
+去年[きょねん]		きょねん	năm ngoái	Khứ - Niên			
+今年[ことし]		ことし	năm nay	Kim - Niên			
+来年[らいねん]		らいねん	sang năm	Lai - Niên			
+～ 年[ねん]		～ねん	~ năm	Niên			
+何年[なんねん]		なんねん	năm mấy	Hà - Niên			
+～ 月[がつ]		～がつ	tháng ~	Nguyệt			
+何月[なんがつ]		なんがつ	tháng mấy	Hà - Nguyệt			
+～ 日[にち]		～にち	ngày~	Nhật			
+何日[なんにち]		なんにち	ngày mấy	Hà - Nhật			
+誕生日[たんじょうび]		たんじょうび	ngày sinh nhật	Đản - Sinh - Nhật			
+~ 番線[ばんせん]		ばんせん	sân ga số ~	Phiên - Tuyến			
+次[つぎ]の		つぎの	tiếp theo	Thứ			
+普通[ふつう]		ふつう	thông thường, phổ thông	Phổ - Thông			
+急行[きゅうこう]		きゅうこう	tàu tốc hành	Cấp - Hành			
+します	làm						
+ごはん	bữa ăn, cơm						
+パン	bánh mì						
+ミルク	sữa						
+ジュース	nước hoa quả						
+ビール	bia						
+たばこ	thuốc lá						
+レポート	báo cáo						
+ビデオ	băng video						
+テニス・テニスをします	quần vợt - đánh quần vợt						
+サッカー・サッカーをします	bóng đá - chơi bóng đá						
+いっしょに	cùng, cùng nhau						
+ちょっと	một chút						
+いつも	luôn luôn, lúc nào cũng						
+それから	sau đó, tiếp theo						
+いいですね	được đấy nhỉ						
+わかりました	tôi hiểu rồi						
+じゃ、また「あした」	hẹn gặp lại [ngày mai]						
+メキシコ	Mexico						
+食[た]べます		たべます	ăn	Thực			
+飲[の]みます		のみます	uống	Ẩm			
+吸[す]います		すいます	hút	Hấp			
+見[み]ます		みます	nhìn, xem	Kiến			
+聞[き]きます		ききます	nghe	Văn			
+読[よ]みます		よみます	đọc	Độc			
+書[か]きます		かきます	viết	Thư			
+買[か]います		かいます	mua	Mãi			
+撮[と]ります		とります	chụp	Toát			
+会[あ]います		あいます	gặp	Hội			
+朝[あさ]ごはん		あさごはん	bữa sáng	Triều			
+昼[ひる]ごはん		ひるごはん	bữa trưa	Trú			
+晩[ばん]ごはん		ばんごはん	bữa tối	Vãn			
+卵[たまご]		たまご	trứng	Noãn			
+肉[にく]		にく	thịt	Nhục			
+魚[さかな]		さかな	cá	Ngư			
+野菜[やさい]		やさい	rau	Dã - Thái			
+果物[くだもの]		くだもの	hoa quả, trái cây	Quả - Vật			
+酒[さけ]		さけ	rượu, rượu gạo NB	Tửu			
+手紙[てがみ]		てがみ	thư	Thủ - Chỉ			
+写真[しゃしん]		しゃしん	bức ảnh	Tả - Chân			
+店[みせ]		みせ	tiệm, cửa hàng	Điếm			
+庭[にわ]		にわ	vườn	Thính			
+宿題[しゅくだい]		しゅくだい	bài tập về nhà	Túc - Đề			
+花見[はなみ]		はなみ	việc ngắm hoa anh đào	Hoa - Kiến			
+何[なに]		なに	cái gì	Hà			
+時々[ときどき]		ときどき	thỉnh thoảng	Thì			
+切[き]ります		きります	cắt	Thiết			
+送[おく]ります		おくります	gửi	Tống			
+貸[か]します		かします	cho mượn, cho vay	Thải			
+借[か]ります		かります	mượn, vay	Tá			
+教[おし]えます		おしえます	dạy	Giáo			
+習[なら]います		ならいます	học, tập	Tập			
+あげます	cho, tặng						
+もらいます	nhận						
+かけます	gọi						
+はし	đũa						
+スプーン	thìa						
+ナイフ	dao						
+フォーク	nĩa						
+はさみ	kéo						
+パソコン	máy vi tính cá nhân						
+ケータイ	điện thoại di động						
+メール	email						
+パンチ	cái đục lỗ						
+ホッチキス	cái dập ghim						
+セロテープ	băng dính						
+シャツ	áo sơ mi						
+プレゼント	quà tặng						
+クリスマス	giáng sinh						
+もう	đã, rồi						
+まだ	chưa						
+これから	từ bây giờ, sau đây						
+いらっしゃい	chào mừng a/c đã đến chơi						
+どうぞ　おあがりください	mời a/c vào						
+しつれいします	xin phép tôi vào						
+ごちそうさま「でした」	cảm ơn vì bữa ăn						
+年賀状[ねんがじょう]		ねんがじょう	thiệp mừng năm mới	Niên - Hạ - Trạng			
+消[け]しゴム		けしゴム	cục tẩy, cục gôm	Tiêu			
+紙[かみ]		かみ	giấy	Chỉ			
+花[はな]		はな	hoa	Hoa			
+荷物[にもつ]		にもつ	hành lý, đồ đạc	Hà - Vật			
+お 金[かね]		おかね	tiền	Kim			
+切符[きっぷ]		きっぷ	vé	Thiết - Phù			
+父[ちち]		ちち	bố	Phụ			
+母[はは]		はは	mẹ	Mẫu			
+ハンサム「な」	đẹp trai						
+きれい「な」	đẹp, sạch						
+にぎやか「な」	ồn ào, náo nhiệt						
+すてき「な」	đẹp, hay						
+いい（よい）	tốt						
+おもしろい	thú vị, hay						
+おいしい	ngon						
+レストラン	nhà hàng						
+どう～	thế nào						
+どんな～	~ như thế nào						
+とても	rất, lắm						
+あまり	không lắm ( + V phủ định)						
+そして	và,thêm nữa						
+～が、～	nhưng						
+静[しず]か「な」		しずか	yên tĩnh	Tĩnh			
+有名[ゆうめい]「な」		ゆうめい	nổi tiếng	Hữu - Danh			
+親切[しんせつ]「な」		しんせつ	tốt bụng	Thân - Thiết			
+元気[げんき]「な」		げんき	khỏe, khỏe khoắn	Nguyên - Khí			
+暇[ひま]「な」		ひま	rảnh rỗi	Hạ			
+便利[べんり]「な」		べんり	tiện lợi	Tiện - Lợi			
+大[おお]きい		おおきい	to, lớn	Đại			
+小[ちい]さい		ちいさい	nhỏ	Tiểu			
+新[あたら]しい		あたらしい	mới	Tân			
+古[ふる]い		ふるい	cũ	Cổ			
+悪[わる]い		わるい	xấu	Ác			
+熱[あつ]い		あつい	nóng	Nhiệt			
+暑[あつ]い		あつい	nóng	Thử			
+寒[さむ]い		さむい	lạnh (thời tiết)	Hàn			
+冷[つめ]たい		つめたい	lạnh (cảm giác)	Lãnh			
+難[むずか]しい		むずかしい	khó	Nạn			
+易[やさ]しい		やさしい	dễ	Dịch			
+高[たか]い		たかい	đắt, cao	Cao			
+安[やす]い		やすい	rẻ	An			
+低[ひく]い		ひくい	thấp	Đê			
+忙[いそが]しい		いそがしい	bận	Mang			
+楽[たの]しい		たのしい	vui	Lạc			
+白[しろ]い		しろい	trắng	Bạch			
+黒[くろ]い		くろい	đen	Hắc			
+赤[あか]い		あかい	đỏ	Xích			
+青[あお]い		あおい	xanh dương	Thanh			
+桜[さくら]		さくら	anh đào	Anh			
+山[やま]		やま	núi	Sơn			
+町[まち]		まち	thị trấn	Đinh			
+食[た]べ 物[もの]		たべもの	đồ ăn	Thực - Vật			
+所[ところ]		ところ	nơi, chỗ	Sở			
+寮[りょう]		りょう	ký túc xá	Liêu			
+生活[せいかつ]		せいかつ	cuộc sống, sinh hoạt	Sinh - Hoạt			
+お 仕事[しごと]		おしごと	việc, công việc	Sĩ - Sự			
+わかります	hiểu, nắm đc						
+あります	có (vật)						
+スポーツ	thể thao						
+ダンス・ダンスをします	nhảy, khiêu vũ						
+クラシック	nhạc cổ điển						
+ジャズ	nhạc jazz						
+コンサート	buổi hòa nhạc						
+カラオケ	karaoke						
+かたかな	katakana						
+アルバイト	việc làm thêm						
+よく	tốt, rõ, thường, hay						
+だいたい	đại khái, đại thể						
+たくさん	nhiều						
+～から。	vì ~						
+どうして	tại sao						
+好[す]き「な」		すき「な」	thích	An			
+嫌[きら]い「な」		きらい	ghét, không thích	Hiềm			
+上手[じょうず]「な」		じょうず	giỏi, khéo	Thượng - Thủ			
+下手[へた]「な」		へた	kém	Hạ - Thủ			
+飲[の]み 物[もの]		のみもの	đồ uống	Ẩm - Vật			
+料理[りょうり]		りょうり	món ăn, việc nấu ăn	Liệu - Lý			
+野球[やきゅう]		やきゅう	bóng chày	Dã - Cầu			
+旅行[りょこう]		りょこう	du lịch	Lữ - Hành			
+音楽[おんがく]		おんがく	âm nhạc	Âm - Lạc			
+歌[うた]		うた	bài hát	Ca			
+歌舞伎[かぶき]		かぶき	kabuki	Ca - Vũ - Kĩ			
+絵[え]		え	tranh, hội họa	Hội			
+字[じ]		じ	chữ	Tự			
+漢字[かんじ]		かんじ	chữ hán	Hán - Tự			
+ローマ 字[じ]		ローマじ	chữ la mã	Tự			
+細[こま]かいお 金[かね]		こまかいおかね	tiền lẻ	Tế - Kim			
+時間[じかん]		じかん	thời gian	Thời - Gian			
+用事[ようじ]		ようじ	việc bận, công chuyện	Dụng - Sự			
+約束[やくそく]		やくそく	cuộc hẹn, lời hứa	Ước - Thú			
+ご 主人[しゅじん]		ごしゅじん	chồng (người khác)	Chủ - Nhân			
+夫[おっと]		おっと	chồng (mình)	Phu			
+主人[しゅじん]		しゅじん	chồng (mình)	Chủ - Nhân			
+奥[おく]さん		おくさん	vợ (người khác)	Áo			
+妻[つま]		つま	vợ (mình)	Thê			
+家内[かない]		かない	vợ (mình)	Gia - Nội			
+子供[こども]		こども	con cái	Tử - Cung			
+少[すこ]し		すこし	ít, một ít	Thiểu			
+全然[ぜんぜん]		ぜんぜん	hoàn toàn ~ không	Toàn - Nhiên			
+早[はや]く		はやく	sớm, nhanh	Tảo			
+速[はや]く		はやく	sớm, nhanh	Tốc			
+残念[ざんねん]です		ざんねんです	đáng tiếc, tiếc nuối	Tàn - Niệm			
+います	có (người)						
+いろいろ「な」	nhiều, đa dạng						
+パンダ	gấu trúc						
+テーブル	bàn						
+ベッド	giường						
+ドア	cửa						
+ポスト	hộp thư						
+ビル	tòa nhà						
+コンビニ	cửa hàng tiện lợi						
+うしろ	sau						
+～や～	~ và ~, ~						
+コーナー	góc, khu vực						
+男[おとこ]の 人[ひと]		おとこのひと	người đàn ông	Nam - Nhân			
+女[おんな]の 人[ひと]		おんなのひと	người đàn bà	Nữ - Nhân			
+男[おとこ]の 子[こ]		おとこのこ	cậu con trai	Nam - Tử			
+女[おんな]の 子[こ]		おんなのこ	cô con gái	Nữ - Nhân			
+犬[いぬ]		いぬ	chó	Khuyển			
+猫[ねこ]		ねこ	mèo	Miêu			
+象[ぞう]		ぞう	voi	Tượng			
+木[き]		き	cây, gỗ	Mộc			
+物[もの]		もの	vật. đồ vật	Vật			
+電池[でんち]		でんち	pin	Điện - Trì			
+箱[はこ]		はこ	hộp	Tương			
+スイッチ	công tắc						
+冷蔵庫[れいぞうこ]		れいぞうこ	tủ lạnh	Lãnh - Táng - Khố			
+棚[たな]		たな	kệ sách, giá sách	Bằng			
+窓[まど]		まど	cửa sổ	Song			
+公園[こうえん]		こうえん	công viên	Công - Viên			
+喫茶店[きっさてん]		きっさてん	quán giải khát	Khiết - Trà - Điếm			
+～ 屋[や]		～や	hiệu ~, cửa hàng ~, người bán ~	Ốc			
+乗[の]り 場[ば]		のりば	điểm đón (taxi, tàu,...)	Thừa - Trường			
+県[けん]		けん	tỉnh	Huyện			
+上[うえ]		うえ	trên	Thượng			
+下[した]		した	dưới	Hạ			
+前[まえ]		まえ	trước	Tiền			
+右[みぎ]		みぎ	bên phải	Hữu			
+左[ひだり]		ひだり	bên trái	Tả			
+中[なか]		なか	trong, giữa	Trung			
+外[そと]		そと	ngoài	Ngoại			
+隣[となり]		となり	bên cạnh	Lân			
+近[ちか]く		ちかく	gần	Cận			
+間[あいだ]		あいだ	giữa, ở giữa	Gian			
+いちばん 下[した]		いちばんした	ở dưới cùng	Hạ			
+かかります	mất, tốn (thời gian, tiền bạc)						
+いくつ	mấy cái, bao nhiêu cái						
+リンゴ	táo						
+みかん	quýt						
+サンドイッチ	bánh san uých						
+カレーライス	cơm cà ri						
+アイスクリーム	kem						
+はがき	bưu thiếp						
+～ ぐらい	khoảng ~						
+どのくらい	bao lâu						
+みんな	tất cả						
+～だけ	chỉ ~						
+かしこまりました。	tôi đã rõ rồi						
+～ 台[だい]		～だい	cái, chiếc (xe, máy móc)	Đài			
+～ 枚[まい]		~枚	~ tờ, tấm (vật mỏng)	Mai			
+～ 回[かい]		～かい	~ lần	Hồi			
+切手[きって]		きって	tem	Thiết - Thủ			
+封筒[ふうとう]		ふうとう	phong bì	Phong - Đồng			
+両親[りょうしん]		りょうしん	bố mẹ	Lưỡng - Thân			
+兄弟[きょうだい]		きょうだい	anh chị em	Huynh - Đệ			
+兄[あに]		あに	anh trai (mình)	Huynh			
+お 兄[にい]さん		おにいさん	anh trai (người khác)	Huynh			
+姉[あね]		あね	chị gái (mình)	Tỉ			
+お 姉[ねえ]さん		おねえさん	chị gái (người khác)	Tỉ			
+弟[おとうと]		おとうと	em trai (mình)	Đệ			
+弟[おとうと]さん		おとうとさん	em trai (người khác)	Đệ			
+妹[いもとう]		いもとう	em gái (mình)	Muội			
+妹[いもうと]さん		いもうとさん	em gái (người khác)	Muội			
+外国[がいこく]		がいこく	nước ngoài	Ngoại - Quốc			
+留学生[りゅうがくせい]		りゅうがくせい	lưu học sinh, sinh viên người nước ngoài	Lưu - Học - Sinh			
+～ 時間[じかん]		じかん	~ tiếng	Thời - Gian			
+～ 週間[しゅうかん]		～しゅうかん	~ tuần	Chu - Gian			
+～か 月[げつ]		～かげつ	~ tháng	Nguyệt			
+全部で[ぜんぶで]		ぜんぶで	tổng cộng	Toàn - Bộ			
+いい 天気[てんき]ですね。		いいてんきですね。	trời đẹp nhỉ	Thiên - Khí			
+お 出[で]かけですか。		おでかけですか。	a/c đi ra ngoài đấy à?	Xuất			
+行[い]ってらっしゃい。		いってらっしゃい。	tôi đi đây.	Hành			
+船便[ふなびん]		ふなびん	(gửi) bằng đường biển	Thuyền - Tiện			
+航空便[こうくうびん]		こうくうびん	(gửi) bằng đường hàng không	Hàng - Không - Tiện			
+お 願[ねが]いします。		おねがいします	nhờ a/c	Nguyện			
+オーストラリア	úc						
+ホテル	khách sạn						
+パーティー	tiệc						
+おすし	sushi						
+てんぷら	tempura						
+レモン	chanh						
+どちらも	cả 2						
+いちばん	nhất						
+ずっと	(hơn) hẳn, suốt						
+ただいま。	tôi đã về đây.						
+簡単[かんたん]「な」		かんたん	đơn giản, dễ	Giản - Đơn			
+近[ちか]い		ちかい	gần	Cận			
+遠[とお]い		とおい	xa	Viễn			
+遅[おそ]い		おそい	chậm, muộn	Trì			
+多[おお]い		おおい	nhiều	Đa			
+少[すく]ない		すくない	ít	Thiểu			
+暖[あたた]かい		あたたかい	ôn hòa, tử tế, ấm áp (khí hậu)	Noãn			
+温[あたた]かい		あたたかい	ấm áp, ôn hòa, nồng ấm	Ôn			
+涼[すず]しい		すずしい	mát mẻ	Lương			
+甘[あま]い		あまい	ngọt	Cam			
+辛[から]い		からい	cay	Tân			
+重[おも]い		おもい	nặng	Trọng			
+軽[かる]い		かるい	nhẹ	Khinh			
+季節[きせつ]		きせつ	mùa, thời tiết	Quý - Tiết			
+春[はる]		はる	mùa xuân	Xuân			
+夏[なつ]		なつ	mùa hè	Hạ			
+秋[あき]		あき	mùa thu	Thu			
+冬[ふゆ]		ふゆ	mùa đông	Đông			
+天気[てんき]		てんき	thời tiết	Thiên - Khí			
+雨[あめ]		あめ	mưa	Vũ			
+雪[ゆき]		ゆき	tuyết	Tuyết			
+曇[くも]り		くもり	có mây	Đàm			
+空港[くうこう]		くうこう	sân bay	Không - Cảng			
+海[うみ]		うみ	biển	Hải			
+世界[せかい]		せいかい	thế giới	Thế - Giới			
+祭[まつ]り		まつり	lễ hội	Tế			
+すき 焼[や]き		すきやき	sukiyaki - thịt bò kiểu nhật	Thiêu			
+刺身[さしみ]		さしみ	sashimi - cá sống của Nhật	Thích - Thân			
+豚肉[ぶたにく]		ぶたにく	thịt heo	Đồn - Nhục			
+とり 肉[にく]		とりにく	thịt gà	Nhục			
+牛肉[ぎゅうにく]		ぎゅうにく	thịt bò	Ngưu - Nhục			
+生[い]け 花[ばな]		いけばな	nghệ thuật cắm hoa	Sinh - Hoa			
+紅葉[もみじ]		もみじ	cây lá đỏ, lá đỏ	Hồng - Diệp			
+初[はじ]めて		はじめて	lần đầu tiên	Sơ			
+お 帰[かえ]りなさい。		おかえりなさい。	a/c đã về đấy à	Quy			
+疲[つか]れました。		つかれました。	tôi mệt rồi	Bí			
+プール	bể bơi						
+スキー	việc trượt tuyết						
+～ごろ	khoảng ~						
+どこか	đâu đó, chỗ nào đó						
+のどが　かわきます	khát						
+のどが　かわきました	đang khát						
+おなかが　すきます	đói						
+おなかが　すきました	đang đói						
+そう　しましょう	nhất trí						
+遊[あそ]びます		あそびます	chơi	Du			
+泳[およ]ぎます		およぎます	bơi	Vịnh			
+迎[むか]えます		むかえます	đón	Ngênh			
+疲[つか]れます		つかれます	mệt	Bí			
+疲[つか]れました		つかれました	đã mệt	Bí			
+結婚[けっこん]します		けっこんします	kết hôn	Kết - Hôn			
+買[か]い 物[もの]します		かいものします	mua sắm, mua hàng	Mãi - Vật			
+食事[しょくじ]します		しょくじします	ăn cơm, dùng bữa	Thực - Sự			
+散歩[さんぽ]します		さんぽします	đi dạo	Tản - Bộ			
+大変[たいへん]「な」		たいへん	vất vả, khó khăn, khổ	Đại - Biến			
+欲[ほ]しい		ほしい	muốn	Dục			
+広[ひろ]い		ひろい	rộng	Quảng			
+狭[せま]い		せまい	chật, hẹp	Hiệp			
+川[かわ]		かわ	sông	Xuyên			
+美術[びじゅつ]		びじゅつ	mỹ thuật	Mĩ - Thuật			
+釣[つ]り		つり	câu cá	Điếu			
+月末[げつまつ]		げつまつ	cuối tháng	Nguyệt - Mạt			
+週末[しゅうまつ]		しゅうまつ	cuối tuần	Chu - Mạt			
+正月[しょうがつ]		しょうがつ	Tết	Chính - Nguyệt			
+何[なに]か		なにか	cái gì đó	Hà			
+定食[ていしょく]		ていしょく	cơm suất, cơm phần	Thực - Định			
+牛丼[ぎゅうどん]		ぎゅうどん	cơm thịt bò	Ngưu - Tỉnh			
+少々[しょうしょう] お 待[ま]ちください。		しょうしょう　おまちください。	xin a/c vui lòng đợi (1 chút)	Thiểu - Đãi			
+別々[べつべつ]に		べつべつに	riêng, riêng ra	Biệt			

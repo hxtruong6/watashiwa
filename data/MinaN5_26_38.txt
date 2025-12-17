@@ -1,0 +1,560 @@
+#separator:tab
+#html:false
+やります	làm						
+フリーマーケット	chợ đồ cũ, chợ trời						
+ボランティア	tình nguyện viên						
+ごみ	rác						
+いつでも	lúc nào cũng						
+どこでも	ở đâu cũng						
+だれでも	ai cũng						
+こんな～	~ như thế này						
+そんな～	~ như thế đó						
+あんな～	~ như thế kia						
+ガス	ga						
+見[み]ます、 診[み]ます		みます	kiểm tra, khám bệnh	Kiến - Chẩn			
+探[さが]します、 捜[さが]します		さがします	tìm, tìm kiếm	Thám - Sưu			
+遅[おく]れます		おくれます	chậm, muộn	Trì			
+拾[ひろ]います		ひろいます	nhặt, lượm	Thập			
+連絡[れんらく]します		れんらくします	liên lạc	Liên - Lạc			
+気分[きぶん]がいい		きぶんがいい	cảm thấy thoải mái, cảm thấy khỏe	Khí - Phân			
+気分[きぶん]が 悪[わる]い		きぶんがわるい	cảm thấy không thoải mái, cảm thấy mệt	Khí - Phân - Ác			
+運動会[うんどうかい]		うんどうかい	hội thi thể thao	Vận - Động - Hội			
+盆踊[ぼんおど]り		ぼんおどり	múa bon	Bồn - Dược			
+場所[ばしょ]		ばしょ	địa điểm, nơi	Trường - Sở			
+財布[さいふ]		さいふ	ví	Tài - Bố			
+国会議事堂[こっかいぎじどう]		こっかいぎじどう	tòa nhà quốc hội	Quốc - Hội - Nghị - Sự - Đường			
+平日[へいじつ]		へいじつ	ngày thường	Bình - Nhật			
+～ 弁[べん]		べん	phương ngữ ~, tiếng ~, giọng ~	Biện			
+今度[こんど]		こんど	lần tới	Kim - Độ			
+ずいぶん	khá, tương đối						
+直接[ちょくせつ]		ちょくせつ	trực tiếp	Trực - Tiếp			
+何[なん]でも		なんでも	cái gì cũng	Hà			
+片[かた]づきます		かたづきます	được dọn dẹp ngăn nắp	Phiến			
+出[だ]します		だします	đổ, để	Xuất			
+燃[も]えるごみ		もえるごおみ	rác cháy được	Nhiên			
+置[お]き 場[ば]		おきば	nơi để	Trí - Trường			
+横[よこ]		よこ	bên cạnh	Hoành			
+瓶[びん]		びん	chai	Bình			
+缶[かん]		かん	lon	Phữu, Phẫu, Phũ			
+宇宙[うちゅう]		うちゅう	vũ trụ	Vũ - Trụ			
+～ 様[さま]		さま	kính ngữ của San	Dạng			
+宇宙船[うちゅうせん]		うちゅうせん	tàu vũ trụ	Vũ - Trụ - Thuyền			
+怖[こわ]い		こわい	sợ	Bố			
+宇宙[うちゅう]ステーション		うちゅうステーション	trạm vũ trụ	Vũ - Trụ			
+違[ちが]います		ちがいます	khác, không giống, sai, nhầm	Vi			
+宇宙飛行士[うちゅうひこうし]		うちゅうひこうし	nhà du hành vũ trụ	Vũ - Trụ - Phi - Hành - Sĩ			
+できます	được làm, được hoàn thành						
+ペット	thú cưng, động vật nuôi						
+クリーニング	giặt là						
+マンション	chung cư						
+キッチン	bếp						
+パーティールーム	phòng tổ chức tiệc						
+～しか	chỉ ~ (được dùng với thể phủ định)						
+ほかの	khác						
+はっきり	rõ ràng						
+いつか	lúc nào đó						
+すばらしい	tuyệt vời						
+ポケット	chiếc túi						
+飼[か]います		かいます	nuôi	Tự			
+走[はし]ります		はしります	chạy	Tẩu			
+見[み]えます		みえます	nhìn thấy	Kiến			
+聞[き]こえます		きこえます	nghe thấy	Văn			
+開[ひら]きます		ひらきます	mở, tổ chức	Khai			
+心配[しんぱい]「な」		しんぱい	lo lắng	Tâm - Phối			
+鳥[とり]		とり	chim	Điểu			
+声[こえ]		こえ	tiếng nói, giọng nói	Thanh			
+波[なみ]		なみ	sóng	Ba			
+花火[はなび]		はなび	pháo hoa	Hoa - Hỏa			
+道具[どうぐ]		どうぐ	dụng cụ	Đạo - Cụ			
+家[いえ]		いえ	nhà	Gia			
+～ 教室[きょうしつ]		きょうしつ	lớp học ~	Giáo - Thất			
+方[かた]		かた	vị, ngài (kính ngữ của hito)	Phương			
+家具[かぐ]		かぐ	đồ gỗ trong nhà	Gia - Cụ			
+本棚[ほんだな]		ほんだな	giá sách	Bản - Bằng			
+建[た]てます		たてます	xây	Kiến			
+子[こ]どもたち		こどもたち	bọn trẻ	Tử			
+大好[だいす]き「な」		だいすき	rất thích	Đại - Hảo			
+主人公[しゅじんこう]		しゅじんこう	nhân vật chính	Chủ - Nhân - Công			
+形[かたち]		かたち	hình dạng	Hình			
+不思議[ふしぎ]「な」		ふしぎ	lạ, kỳ lạ	Bất - Tư - Nghị			
+例[たと]えば		たとえば	ví dụ	Lệ			
+付[つ]けます		つけます	gắn vào, ghép vào	Phó			
+自由[じゆう]に		じゆうに	một cách tự do, thoải mái	Tự - Do			
+空[そら]		そら	bầu trời	Không			
+飛[と]びます		とびます	bay	Phi			
+昔[むかし]		むかし	ngày xưa	Tích			
+自分[じぶん]		じぶん	tự mình	Tự - Phân			
+将来[しょうらい]		しょうらい	tương lai	Tương - Lai			
+かみます	nhai, cắn						
+メモします	ghi lại, memo						
+まじめ「な」	nghiêm túc, ngoan						
+ちょうどいい	vừa vặn						
+ガム	kẹo cao su						
+ボーナス	thưởng						
+ゲーム	trò chơi, game						
+ドラマ	phim truyền hình						
+しばらく	một lúc						
+たいてい	thường thì						
+それで	vì thế						
+イベント	sự kiện						
+売[う]れます		うれます	bán chạy	Mại			
+踊[おど]ります		おどります	múa	Dược			
+選[えら]びます		えらびます	lựa, lựa chọn	Tuyển			
+通[かよ]います		かよいます	đi học (đại học)	Thông			
+熱心[ねっしん]「な」		ねっしん	nhiệt tình	Nhiệt - Tâm			
+偉[えら]い		えらい	siêu, giỏi	Vĩ			
+景色[けしき]		けしき	phong cảnh	Cảnh - Sắc			
+美容院[びよういん]		びよういん	hiệu làm đẹp, thẩm mỹ viện	Mĩ - Dung - Viện			
+台所[だいどころ]		だいどころ	nhà bếp	Đài - Sở			
+経験[けいけん]「～があります・をします」		けいけん	kinh nghiệm	Kinh - Nghiệm			
+力[ちから]		ちから	sức mạnh	Lực			
+人気[にんき]「～があります」		にんき	được yêu thích	Nhân - Khí			
+形[かたち]		かたち	hình dạng	Hình			
+色[いろ]		いろ	màu sắc	Sắc			
+味[あじ]		あじ	mùi vị, hương vị	Vị			
+品物[しなもの]		しなもの	hàng hóa	Phẩm - Vật			
+値段[ねだん]		ねだん	giá cả	Trị - Đoạn	この服の値段は安い。 東京の物価は高い。 値段→price of goods 物価→cost of living		
+給料[きゅうりょう]		きゅうりょう	lương	Cấp - Liệu			
+番組[ばんぐみ]		ばんぐみ	chương trình	Phiên - Tổ			
+歌手[かしゅ]		かしゅ	ca sĩ	Ca - Thủ			
+小説[しょうせつ]		しょうせつ	tiểu thuyết	Tiểu - Thuyết			
+小説家[しょうせつか]		しょうせつか	tiểu thuyết gia, nhà văn	Tiểu - Thuyết - Gia			
+～ 家[か]		～か	nhà ~	Gia			
+～ 機[き]		～き	máy ~	Cơ			
+息子[むすこ]		むすこ	con trai mình	Tức - Tử			
+息子[むすこ]さん		むすこさん	con trai người khác	Tức - Tử			
+娘[むすめ]		むすめ	con gái mình	Nương			
+娘[むすめ]さん		むすめさん	con gái người khác	Nương			
+自分[じぶん]		じぶん	mình	Tự - Phân			
+実[じつ]は		じつは	thực ra là, sự thật là	Thực			
+会話[かいわ]		かいわ	hội thoại	Hội - Thoại			
+お 知[し]らせ		おしらせ	thông báo	Tri			
+参加[さんか]します		さんかします	tham gia	Tham - Gia			
+日[ひ]にち		ひにち	thời gian (ngày)	Nhật			
+体育館[たいいくかん]		たいいくかん	nhà thi đấu thể thao, phòng thể dục	Thể - Dục - Quán			
+無料[むりょう]		むりょう	miễn phí	Vô - Liệu			
+誘[さそ]います		さそいます	mời	Dụ			
+つきます	sáng (điện)						
+まちがえます	nhầm						
+ふきます	lau chùi						
+おちゃわん	bát, chén						
+コップ	cốc						
+ガラス	ly						
+スピーチ	diễn văn						
+このくらい	cỡ tầm này, khoảng chừng này						
+レポーター	phóng viên						
+開[あ]きます		あきます	được mở	Khai			
+閉[し]まります		しまります	được đóng	Bế			
+消[き]えます		きえます	tắt, biến mất	Tiêu			
+壊[こわ]れます		こわれます	hỏng, hư, trục trặc	Hoại			
+割[わ]れます		われます	bị hỏng, bể, vỡ	Cát			
+折[お]れます		おれます	gãy	Chiết			
+破[やぶ]れます		やぶれます	rách	Phá			
+汚[よご]れます		よごれます	bẩn, bị bẩn	Ô			
+付[つ]きます		つきます	có, dính	Phó			
+外[はず]れます		はずれます	bung, tuột, rơi	Ngoại			
+止[と]まります		とまります	dừng, đỗ	Chỉ			
+落[お]とします		おとします	thả xuống, đánh rơi	Lạc			
+掛[か]かります		かかります	được khóa (chìa)	Quải			
+取[と]り 替[か]えます		とりかえます	thay thế, đổi lại	Thủ - Thế			
+片付[かたづ]けます		かたづけます	dọn dẹp	Phiến - Phó			
+お 皿[さら]		おさら	đĩa	Mãnh			
+袋[ふくろ]		ふくろ	túi	Đại			
+書類[しょるい]		しょるい	giấy tờ, văn kiện	Thư - Loại			
+枝[えだ]		えだ	cành cây	Chi			
+駅員[えきいん]		えきいん	nhân viên nhà ga	Dịch - Viên			
+交番[こうばん]		こうばん	đồn cảnh sát	Giao - Phiên			
+返事[へんじ]「をします」		へんじ	trả lời	Phản - Sự			
+今[いま]の 電車[でんしゃ]		いまのでんしゃ	tàu điện vừa chạy	Kim - Điện - Xa			
+忘[わす] れ 物[もの]		わすれもの	đồ bỏ quên	Vong - Vật			
+～ 側[がわ]		～がわ	phía ~	Trắc			
+～ 辺[へん]		～へん	xung quanh ~, chỗ ~	Biên			
+覚[おぼ]えていません		おぼえていません	tôi không nhớ	Giác			
+網棚[あみだな]		あみだな	giá để hành lý	Võng - Bằng			
+確[たし]か		たしか	chắc là	Xác			
+地震[じしん]		じしん	động đất	Địa - Chấn			
+壁[かべ]		かべ	tường	Bích			
+針[はり]		はり	kim đồng hồ	Châm			
+指[さ]します		さします	chỉ (chỉ vào ai đó), điểm	Chỉ			
+駅前[えきまえ]		えきまえ	trước ga	Dịch - Tiền			
+倒[たお]れます		たおれます	đổ, sập	Đảo			
+～の 方[ほう]		～の ほう	bên ~	Phương			
+燃[も]えます		もえます	cháy	Nhiên			
+はります	dán						
+まとめます	nhóm lại, tóm tắt						
+しまいます	cất vào, để vào						
+そのままにします	để nguyên như thế						
+ミーティング	cuộc họp						
+ガイドブック	sách hướng dẫn du lịch						
+カレンダー	lịch						
+ポスター	poster						
+まだ	vẫn						
+リュック	ba lô						
+～とか、～とか	như (là)..., như (là)...						
+ある～	~ nọ						
+うれしい	vui						
+掛[か]けます		かけます	treo	Quải			
+飾[かざ]ります		かざります	trang trí	Sức			
+並[なら]べます		ならべます	sắp xếp	Tịnh			
+植[う]えます		うえます	trồng	Thực, Trĩ			
+戻[もど]します		もどします	để lại	Lệ			
+決[き]めます		きめます	quyết định	Quyết			
+予習[よしゅう]します		よしゅうします	chuẩn bị bài	Dự - Tập			
+復習[ふくしゅう]します		ふくしゅうします	ôn tập	Phục - Tập			
+授業[じゅぎょう]		じゅぎょう	giờ học	Thụ - Nghiệp			
+講義[こうぎ]		こうぎ	bài giảng, bài thuyết trình	Giảng - Nghĩa			
+予定[よてい]		よてい	dự định, kế hoạch	Dự - Định			
+お 知[し]らせ		おしらせ	thông báo	Tri			
+予定表[よていひょう]		よていひょう	lịch làm việc, thời khóa biểu	Dự - Định - Biểu			
+ごみ 箱[ばこ]		ごみばこ	thùng rác	Tương, Sương			
+人形[にんぎょう]		にんぎょう	búp bê	Nhân - Hình			
+花瓶[かびん]		かびん	bình hoa	Hoa - Bình			
+引[ひ]き 出[だ]し		ひきだし	ngăn kéo	Dẫn - Xuất			
+鏡[かがみ]		かがみ	gương	Kính			
+玄関[げんかん]		げんかん	lối vào nhà, sảnh vào nhà	Huyền - Quan			
+廊下[ろうか]		ろうか	hành lang	Lang - Hạ			
+壁[かべ]		かべ	tường	Bích			
+池[いけ]		いけ	ao, hồ	Trì			
+元[もと]のところ		もとのところ	chỗ cũ	Nguyên			
+周[まわ]り		まわり	xung quanh	Chu			
+真[ま]ん 中[なか]		まんなか	chính giữa	Chân - Trung			
+隅[すみ]		すみ	góc	Ôi			
+非[ひ] 常[じょう] 袋[ぶくろ]		ひじょうぶくろ	túi khẩn cấp	Phi - Thường - Đại			
+非[ひ] 常[じょう] 時[じ]		ひじょうじ	trường hợp khẩn cấp	Phi - Thường - Thời			
+生[せい] 活[かつ]します		せいかつします	sinh hoạt, sống	Sinh - Hoạt			
+懐[かい] 中[ちゅう] 電[でん] 灯[とう]		かいちゅうでんとう	đèn pin bỏ túi	Hoài - Trung - Điện - Đăng			
+丸[まる]い		まるい	tròn	Hoàn			
+夢[ゆめ]を 見[み]ます		ゆめをみます	mơ	Mộng - Kiến			
+嫌[いや]「な」		いや	ghét, không thích	Hiềm			
+目[め]が 覚[さ]めます		めがさめます	thức giấc, tỉnh giấc	Mục - Giác			
+続[つづ]けます		つづけます	tiếp tục	Tục			
+見[み]つけます		みつけます	tìm	Kiến			
+取[と]ります		とります	xin (nghỉ)	Thủ			
+受[う]けます		うけます	dự, tham dự	Thụ			
+申[もう]し 込[こ]みます		もうしこみます	đăng ký	Thân - Vô			
+休憩[きゅうけい]します		きゅうけいします	nghỉ ngơi, nghỉ giải lao	Hưu - Khế			
+連休[れんきゅう]		れんきゅう	ngày nghỉ liên tục	Liên - Hưu			
+作文[さくぶん]		さくぶん	bài tập làm văn	Tác - Văn			
+発表[はっぴょう]「～します」		はっぴょう	phát biểu, công bố	Phát - Biểu			
+展覧会[てんらんかい]		てんらんかい	cuộc triển lãm	Triển - Lãm - Hội			
+結婚式[けっこんしき]		けっこんしき	lễ cưới	Kết - Hôn - Thức			
+お 葬式[そうしき]		おそうしき	đám tang	Táng - Thức			
+式[しき]		しき	lễ	Thức			
+本社[ほんしゃ]		ほんしゃ	trụ sở chính, tổng công ty	Bổn - Xã			
+支店[してん]		してん	chi nhánh	Chi - Điếm			
+教会[きょうかい]		きょうかい	nhà thờ	Giáo - Hội			
+大学院[だいがくいん]		だいがくいん	cao học	Đại - Học - Viện			
+動物園[どうぶつえん]		どうぶつえん	sở thú	Động - Vật - Viên			
+温泉[おんせん]		おんせん	suối nước nóng	Ôn - Tuyền			
+帰[かえ]り		かえり	chiều về	Quy			
+お 子[こ]さん		おこさん	con (người khác)	Tử			
+~ 号[ごう]		～ごう	số ~	Hào			
+～の 方[ほう]		～のほう	phía ~	Phương			
+残[のこ]ります		のこります	ở lại, còn lại, dư ra	Tàn			
+入学試験[にゅうがくしけん]		にゅうがくしけん	kỳ thi đầu vào	Nhập - Học - Thí - Nghiệm			
+月[つき]に		つきに	trong 1 tháng	Nguyệt			
+村[むら]		むら	làng	Thôn			
+卒業[そつぎょう]します		そつぎょうします	tốt nghiệp	Tốt - Nghiệp			
+映画館[えいがかん]		えいがかん	rạp chiếu phim	Ảnh - Họa - Quán			
+嫌[いや]		いや	chán	Hiềm			
+閉[と]じます		とじます	nhắm (mắt)	Bế			
+都会[とかい]		とかい	thành phố	Đô - Hội			
+やみます	tạnh (mưa)						
+かぜをひきます	bị cảm						
+すきます	vắng (đường)						
+おかしい	kỳ lạ, thú vị						
+うるさい	ồn ào						
+やけど・やけどを　します		やけど	bỏng, bị bỏng				
+けが・けがを　します		けが	thương, bị thương				
+せき・せきを　します・せきが　でます		せき	ho, bị ho				
+インフルエンザ	cúm						
+エンジン	động cơ						
+チーム	đội						
+こんなに	như thế này						
+そんなに	như thế đó						
+あんなに	như thế kia						
+ストレス	căng thằng, stress						
+運動[うんどう]します		うんどうします	vận động	Vận - Động			
+成功[せいこう]します		せいこうします	thành công	Thành - Công			
+失敗[しっぱい]します		しっぱいします	thất bại	Thất - Bại			
+合格[ごうかく]します		ごうかくします	đỗ	Hợp - Cách			
+晴[は]れます		はれます	quang đãng	Tình			
+曇[くも]ります		くもります	có mây	Đàm			
+続[つづ]きます		つづきます	kéo dài	Tục			
+冷[ひ]やします		ひやします	làm mát, làm lạnh	Lãnh			
+込[こ]みます		こみます	đông	Vô			
+無理[むり]を　します		むりをします	làm việc quá sức	Vô - Lí			
+十分[じゅうぶん]「な」		じゅうぶん	đủ	Thập - Phân			
+太陽[たいよう]		たいよう	mặt trời	Thái - Dương			
+星[ほし]		ほし	sao	Tinh			
+風[かぜ]		かぜ	gió	Phong			
+国際[こくさい]～		こくさい～	~ quốc tế	Quốc - Tế			
+水道[すいどう]		すいどう	nước máy	Thủy - Đạo			
+今夜[こんや]		こんや	tối nay	Kim - Dạ			
+夕方[ゆうがた]		ゆうがた	chiều tối	Tịch - Phương			
+遅[おそ]く		おそく	muộn	Trì			
+元気[げんき]		げんき	khỏe	Nguyên - Khí			
+胃[い]		い	dạ dày	Vị			
+星占[ほしうらな]い		ほしうらない	bói sao, chiêm tinh	Tinh - Chiêm			
+牡牛座[おうしざ]		おうしざ	sao Kim Ngưu	Mẫu - Ngưu - Tọa			
+働[はたら]きすぎ		はたらきすぎ	làm việc quá sức	Động			
+困[こま]ります		こまります	khó khăn	Khốn			
+当[あ]たります		あたります	trúng	Đang			
+健康[けんこう]		けんこう	sức khỏe	Kiện - Khang			
+恋愛[れんあい]		れんあい	tình yêu	Luyến - Ái			
+恋人[こいびと]		こいびと	người yêu	Luyến - Nhân			
+石[いし]		いし	hòn đá	Thạch			
+あきらめます	bỏ cuộc, từ bỏ						
+リサイクルします	tái chế						
+だめ	không được						
+マーク	ký hiệu						
+ボール	bóng						
+どういう～	~ như thế nào						
+いくら「～ても」	[dù có] ~ bao nhiêu đi nữa						
+あと～	còn						
+～ほど	khoảng ~						
+あいさつ	chào hỏi						
+逃[に]げます		にげます	chạy trốn, bỏ chạy	Đào			
+騒[さわ]ぎます		さわぎます	làm ồn	Tao			
+投[な]げます		なげます	ném	Đầu			
+守[まも]ります		まもります	giữ gìn, bảo vệ, tuân thủ, duy trì	Thủ			
+始[はじ]まります		はじまります	bắt đầu	Thí			
+出席[しゅっせき]します		しゅっせきします	có mặt, tham dự	Xuất - Tịch			
+伝[つた]えます		つたえます	nói lại, truyền đạt lại	Truyền			
+注意[ちゅうい]します		ちゅういします	chú ý	Chú - Ý			
+外[はず]します		はずします	rời đi, đi ra (khỏi vị trí...)	Ngoại			
+戻[もど]ります		もどります	trở lại, quay trở lại	Lệ			
+同[おな]じ		おなじ	giống	Đồng			
+警察[けいさつ]		けいさつ	cảnh sát, sở cảnh sát	Cảnh - Sát			
+席[せき]		せき	ghế, chỗ ngồi	Tịch			
+締[し]め 切[き]り		しめきり	hạn chót, hạn cuối	Đế - Thiết			
+規則[きそく]		きそく	quy tắc	Quy - Tắc			
+危険[きけん]		きけん	nguy hiểm	Nguy - Hiểm			
+使用禁止[しようきんし]		しようきんし	cấm sử dụng	Sử - Dụng - Cấm - Chỉ			
+立入禁止[たちいりきんし]		たちいりきんし	cấm vào	Lập - Nhập - Cấm - Chỉ			
+徐行[じょこう]		じょこう	chạy chậm, đi chậm	Từ - Hành			
+非常口[ひじょうぐち]		ひじょうぐち	cửa thoát hiểm	Phi - Thường - Khẩu			
+割引[わりびき]		わりびき	giảm giá	Cát - Dẫn			
+飲[の]み 放題[ほうだい]		のみほうだい	uống thoải mái, uống thỏa thích	Ẩm - Phóng - Đề			
+使用中[しようちゅう]		しようちゅう	đang sử dụng	Sử - Dụng - Trung			
+募集中[ぼしゅうちゅう]		ぼしゅうちゅう	đang tuyển	Mộ - Tập - Trung			
+～ 中[ちゅう]		～ちゅう	đang ~	Trung			
+駐車違反[ちゅうしゃいはん]		ちゅうしゃいはん	vi phạm đậu xe, đỗ xe sai quy định	Trú - Xa - Vi - Phản			
+罰金[ばっきん]		ばっきん	tiền phạt	Phạt - Kim			
+助[たす]け 合[あ]います		たすけあいます	giúp đỡ lẫn nhau	Trợ - Hợp			
+悲[かな]しい		かなしい	buồn	Bi			
+気持[きも]ち		きもち	tâm trạng	Khí - Trì			
+もともと	vốn là, nguyên là						
+つけます	chấm (xì dầu)						
+さします	che (ô)						
+スポーツクラブ	clb thể thao						
+しょうゆ	xì dầu						
+ソース	nước sốt						
+～か～	~ hay là ~						
+ゆうべ	tối qua						
+さっき	lúc nãy						
+これでいいですか。	như thế này có được không?						
+いかがですか。	như thế nào ạ?						
+ーグラム	~ gram						
+たまねぎ	hành tây						
+なべ	nồi						
+どんぶり	bát tô lớn						
+たちます	trôi qua						
+磨[みが]きます		みがきます	đánh (răng)	Ma			
+組[く]み 立[た]てます		くみたてます	lắp ráp	Tổ - Lập			
+折[お]ります		おります	gập, bẻ	Chiết			
+気[き]が　つきます		きがつきます	để ý đến, chú ý đến	Khí			
+見[み]つかります		みつかります	tìm thấy (chìa khóa)	Kiến			
+質問[しつもん]します		しつもんします	hỏi	Chất - Vấn			
+「お」 城[しろ]		「お」しろ	thành lũy, lâu đài	Thành			
+説明書[せつめいしょ]		せつめいしょ	sách hướng dẫn	Thuyết - Minh - Thư			
+図[ず]		ず	hình vẽ minh họa	Đồ			
+線[せん]		せん	đường kẻ	Tuyến			
+矢印[やじるし]		やじるし	mũi tên	Thỉ - Ấn			
+赤[あか]		あか	màu đỏ	Xích			
+青[あお]		あお	màu xanh	Thanh			
+紺[こん]		こん	màu xanh đen, xanh sẫm	Cám			
+黄色[きいろ]		きいろ	màu vàng	Hoàng - Sắc			
+茶色[ちゃいろ]		ちゃいろ	màu nâu	Trà - Sắc			
+お客[きゃく]「さん」		おきゃくさん	[vị] khách	Khách			
+茶道[さどう]		さどう	trà đạo	Trà - Đạo			
+お 茶[ちゃ]をたてます		おちゃをたてます	đánh trà	Trà			
+先[さき]に		さきに	trước	Tiên			
+載[の]せます		のせます	để lên, cho lên	Tải			
+苦[にが]い		にがい	đắng	Khổ			
+親子[おやこ]どんぶり		おやこどんぶり	Oyakodonburi (cơm có thịt gà và trứng)	Thân - Tử			
+材料[ざいりょう]		ざいりょう	nguyên liệu	Tài - Liệu			
+４ 分[ぶん]の１		４ぶんの１	1 phần 4	Phân			
+調味料[ちょうみりょう]		ちょうみりょう	gia vị	Điều - Vị - Liệu			
+適当[てきとう]な 大[おお]きさに		てきとうなおおきさに	độ lớn thích hợp	Thích - Đang - Đại			
+火[ひ]		ひ	lửa	Hỏa			
+火[ひ]にかけます		ひにかけます	bắc lên bếp	Hỏa			
+煮[に]ます		にます	nấu	Chử			
+煮[に]えます		にえます	chín	Chử			
+クリックします	click chuột						
+ふりがな	furigana (chữ kana phiên âm kanji)						
+レバー	cần gạt, cái cần						
+キー	phím						
+カーテン	rèm cửa						
+ひも	sợi dây						
+それなら	nếu thế thì, nếu vậy thì						
+ことわざ	thành ngữ						
+咲[さ]きます		さきます	nở (hoa)	Tiếu			
+変[か]わります		かわります	đổi, thay đổi (màu)	Biến			
+困[こま]ります		こまります	khó khăn	Khốn			
+付[つ]けます		つけます	đánh (dấu tròn)	Phó			
+直[なお]ります・ 治[なお]ります		なおります	khỏi bệnh, được sửa xong	Trực - Trị			
+入力[にゅうりょく]します		にゅうりょくします	nhập vào	Nhập - Lực			
+正[ただ]しい		ただしい	đúng, chính xác	Chính			
+向[む]こう		むこう	đằng ấy, phía đối diện	Hướng			
+島[しま]		しま	đảo	Đảo			
+港[みなと]		みなと	cảng, bến cảng	Cảng			
+近所[きんじょ]		きんじょ	hàng xóm	Cận - Sở			
+屋上[おくじょう]		おくじょう	tầng thượng, mái nhà, nóc nhà	Ốc - Thượng			
+海外[かいがい]		かいがい	nước ngoài	Hải - Ngoại			
+山登り[やまのぼり]		やまのぼり	leo núi	Sơn - Đăng			
+歴史[れきし]		れきし	lịch sử	Lịch - Sử			
+機会[きかい]		きかい	cơ hội	Cơ - Hội			
+許可[きょか]		きょか	sự cho phép	Hổ - Khả			
+丸[まる]		まる	dấu tròn	Hoàn			
+設備[せつび]		せつび	thiết bị	Thiết - Bị			
+炊飯器[すいはんき]		すいはんき	nồi cơm điện	Xuy - Phạn - Khí			
+葉[は]		は	lá	Diệp			
+昔[むかし]		むかし	ngày xưa	Tích			
+夜行[やこう]バス		やこうバス	xe buýt đêm	Dạ - Hành			
+旅行者[りょこうしゃ]		りょこうしゃ	khách du lịch	Lữ - Hành - Giả			
+詳[くわ]しい		くわしい	cụ thể, chi tiết	Tường			
+スキー 場[じょう]		スキーじょう	khu trượt tuyết	Trường			
+朱[しゅ]		しゅ	màu đỏ tươi	Chu, Châu			
+交[まじ]わります		まじわります	chơi với, quen với	Giao			
+関係[かんけい]		かんけい	quan hệ, liên quan	Quan - Hệ			
+仲良[なか]よくします		なかよくします	chơi thân với, quan hệ tốt	Trọng - Lương			
+貯金[ちょきん]します		ちょきんします	tiết kiệm tiền	Trữ - Kim			
+過[す]ぎます		すぎます	quá (7 giờ), đi qua	Quá			
+慣[な]れます		なれます	quen với (công việc)	Quán			
+腐[くさ]ります		くさります	bị hỏng, bị thiu (thức ăn)	Hủ			
+剣道[けんどう]		けんどう	kiếm đạo	Kiếm - Đạo			
+柔道[じゅうどう]		じゅうどう	judo, nhu đạo	Nhu - Đạo			
+曲[きょく]		きょく	ca khúc, bản nhạc	Khúc			
+毎月[まいつき]		まいつき	hàng tháng	Mỗi - Nguyệt			
+毎年[まいとし]		まいとし	hàng năm	Mỗi - Niên			
+必[かなら]ず		かならず	nhất định	Tất			
+絶対[ぜったい]に		ぜったいに	tuyệt đối	Tuyệt - Đối			
+上手[じょうず]に		じょうずに	giỏi	Thượng - Thủ			
+お 客様[きゃくさま]		おきゃくさま	quý khách	Khách - Dạng			
+特別[とくべつ]「な」		とくべつ	đặc biệt	Đặc - Biệt			
+水泳[すいえい]		すいえい	bơi, bơi lội	Thủy - Vịnh			
+違[ちが]います		ちがいます	khác nhau	Vi			
+気持[きも]ち		きもち	tâm thế	Khí - Trì			
+乗[の]り 物[もの]		のりもの	phương tiện đi lại	Thừa - Vật			
+世紀[せいき]		せいき	thế kỉ	Thế - Kỉ			
+遠[とお]く		とおく	nơi xa	Viễn			
+汽車[きしゃ]		きしゃ	tàu hơi nước	Khí - Xa			
+汽船[きせん]		きせん	tàu thủy hơi nước	Khí - Thuyền			
+大勢[おおぜい]の～		おおぜいの～	nhiều ~ (dùng cho người)	Đại - Thế			
+運[はこ]びます		はこびます	vận chuyển	Vận			
+ラッシュ	tắc đường						
+このごろ	dạo này						
+やっと	cuối cùng thì cũng						
+かなり	khá						
+できるだけ	trong khả năng có thể						
+ほとんど	hầu hết, phần lớn						
+していらっしゃいます	đang làm (lịch sự)						
+チャレンジします	thử sức, thử làm						
+しかります	mắng						
+とります	lấy cắp						
+インスタントラーメン	mỳ ăn liền, mỳ gói						
+デート	hẹn hò						
+だれか	ai đó						
+よかったですね。	hay quá nhỉ, vui quá nhỉ						
+－キロ	kilogram, kilometer						
+しかし	tuy nhiên						
+そのあと	sau đó						
+ねずみ	chuột						
+褒[ほ]めます		ほめます	khen	Bầu			
+誘[さそ]います		さそいます	mời, rủ	Dụ			
+招待[しょうたい]します		しょうたいします	mời (trang trọng)	Chiêu - Đãi			
+頼[たの]みます		たのみます	nhờ vả, cầu xin	Lại			
+注意[ちゅうい]します		ちゅういします	nhắc nhở, chú ý, cẩn thận	Chú - Ý			
+踏[ふ]みます		ふみます	giẫm lên, giẫm	Đạp			
+壊[こわ]します		こわします	làm hỏng	Hoại			
+汚[よご]します		よごします	làm bẩn	Ô			
+行[おこな]います		おこないます	tổ chức	Hành			
+輸出[ゆしゅつ]します		ゆしゅつします	xuất khẩu	Xuất - Thâu			
+輸入[ゆにゅう]します		ゆにゅうします	nhập khẩu	Nhập - Thâu			
+翻訳[ほんやく]します		ほんやくします	biên dịch	Phiên - Dịch			
+発明[はつめい]します		はつめいします	phát minh	Phát - Minh			
+発見[はっけん]します		はっけんします	phát kiến, phát hiện, tìm thấy	Phát - Kiến			
+米[こめ]		こめ	gạo	Mễ			
+麦[むぎ]		むぎ	lúa mạch	Mạch			
+石油[せきゆ]		せきゆ	dầu mỏ	Thạch - Du			
+原料[げんりょう]		げんりょう	nguyên liệu	Nguyên - Liệu			
+泥棒[どろぼう]		どろぼう	kẻ trộm	Nê - Bổng			
+警官[けいかん]		けいかん	cảnh sát	Cảnh - Quan			
+世界中[せかいじゅう]		せかいじゅう	trên toàn thế giới	Thế - Giới - Trung			
+～ 中[じゅう]		～じゅう	toàn ~	Trung			
+~ 世紀[せいき]		せいき	thế kỷ~	Thế - Kỷ			
+何語[なにご]		なにご	tiếng gì	Hà - Ngữ			
+皆様[みなさま]		みなさま	quý vị	Giai - Dạng			
+焼[や]けます		やけます	cháy	Thiêu			
+その 後[ご]		そのご	sau đó	Hậu			
+世界遺産[せかいいさん]		せかいいさん	di sản thế giới	Thế - Giới - Di - Sản			
+～の　ひとつ	1 trong những ~						
+金色[きんいろ]		きんいろ	màu của vàng	Kim - Sắc			
+本物[ほんもの]		ほんもの	đồ thật	Bản - Vật			
+金[きん]		きん	vàng	Kim			
+美[うつく]しい		うつくしい	đẹp	Mĩ			
+豪華[ごうか]「な」		ごうか	sang trọng, hoành tráng	Hào - Hoa			
+彫刻[ちょうこく]		ちょうこく	điêu khắc	Điêu - Khắc			
+言[い]い 伝[つた]え		いいつたえ	truyền thuyết	Ngôn - Truyền			
+眠[ねむ]ります		ねむります	ngủ	Miên			
+彫[ほ]ります		ほります	khắc	Điêu			
+仲間[なかま]		なかま	đồng nghiệp	Trọng - Gian			
+一生懸命[いっしょうけんめい]		いっしょうけんめい	chăm chỉ, gắng hết sức	Nhất - Sinh - Huyền - Mệnh			
+うそを　つきます	nói dối						
+かな	chữ kana						
+おととし	năm kia						
+いけない	không được rồi						
+きちんと	ngay ngắn						
+～と　いう	có tên gọi là ~						
+はんこ	con dấu						
+おとなしい	ngoan ngoãn						
+けんかします	cãi nhau						
+しかた	cách làm						
+参加[さんか]します		さんかします	tham gia	Tham - Gia			
+育[そだ]てます		そだてます	chăm sóc	Dục			
+入院[にゅういん]します		にゅういんします	nhập viện	Nhập - Viện			
+退院[たいいん]します		たいいんします	ra viện	Thoái - Viện			
+入[い]れます		いれます	bật	Nhập			
+切[き]ります		きります	tắt	Thiết			
+掛[か]けます		かけます	khóa	Quải			
+気持[きも]ちがいい		きもちがいい	tâm trạng tốt	Khí - Trì			
+気持[きも]ちが 悪[わる]い		きもちがわるい	tâm trạng không tốt	Khí - Trì - Ác			
+赤[あか]ちゃん		あかちゃん	em bé	Xích			
+小学校[しょうがっこう]		しょうがっこう	trường tiểu học	Tiểu - Học - Hiệu			
+中学校[ちゅうがっこう]		ちゅうがっこう	trường trung học cơ sở	Trung - Học - Hiệu			
+海岸[かいがん]		かいがん	bờ biển	Hải - Ngạn			
+工場[こうじょう]		こうじょう	nhà máy	Công - Trường			
+村[むら]		むら	làng	Thôn			
+指輪[ゆびわ]		ゆびわ	nhẫn	Chỉ - Luân			
+電源[でんげん]		でんげん	nguồn điện, ổ cắm	Điện - Nguyên			
+習慣[しゅうかん]		しゅうかん	thói quen, tập quán	Tập - Quán			
+健康[けんこう]		けんこう	sức khỏe	Kiện - Khang			
+～ 製[せい]		～せい	hàng ~	Chế			
+回覧[かいらん]		かいらん	tài liệu thông báo	Hối - Lãm			
+研究室[けんきゅうしつ]		けんきゅうしつ	phòng nghiên cứu	Nghiên - Cứu - Thất			
+整理[せいり]します		せいりします	sắp xếp	Chỉnh - Lí			
+方法[ほうほう]		ほうほう	phương pháp	Phương - Pháp			
+押[お]します		おします	đóng (dấu)	Áp			
+双子[ふたご]		ふたご	sinh đôi	Song - Tử			
+姉妹[しまい]		しまい	chị em	Tỉ - Muội			
+五年生[ごねんせい]		ごねんせい	năm thứ 5	Ngũ - Niên - Sinh			
+似[に]ています		にています	giống	Tự			
+性格[せいかく]		せいかく	tính cách	Tính - Cách			
+優[やさ]しい		やさしい	hiền lành	Ưu			
+世話[せわ]をします		せわをします	chăm sóc	Thế - Thoại			
+時間[じかん]がたちます		じかんがたちます	thời gian trôi	Thời - Gian			
+～ 点[てん]		～てん	điểm	Điểm			
+気[き]が 強[つよ]い		きがつよい	tính cách mạnh mẽ	Khí - Cường			
+不思議[ふしぎ]「な」		ふしぎ	kỳ lạ	Bất - Tư - Nghị			
+年齢[ねんれい]		ねんれい	tuổi tác	Niên - Linh			

@@ -56,11 +56,13 @@ enum UserRole {
 
 // Deck Model: A collection of vocabulary
 model Deck {
-  id          String  @id @default(uuid())
-  title       String
-  description String?
-  isPublic    Boolean @default(false) @map("is_public")
-  headerImage String? @map("header_image")
+  id            String  @id @default(uuid())
+  title         String
+  titleEn       String? @map("title_en")
+  description   String?
+  descriptionEn String? @map("description_en")
+  isPublic      Boolean @default(false) @map("is_public")
+  headerImage   String? @map("header_image")
 
   authorId String @map("author_id")
   author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
@@ -87,7 +89,8 @@ model Vocab {
   // JSON fields require careful mapping in Prisma
   kanjiBreakdown  Json    @map("kanji_breakdown") // e.g., [{"kanji": "学", "han_viet": "HỌC", "meaning": "study"}]
   hanViet         String  @map("han_viet") // e.g., HỌC SINH
-  meaning         String // Native definition
+  meaning         String // Native definition (VN)
+  enMeaning       String? @map("en_meaning") // English definition
   exampleSentence Json    @map("example_sentence") // { "sentence": "...", "translation": "..." }
   audioUrl        String? @map("audio_url")
   imageUrl        String? @map("image_url")

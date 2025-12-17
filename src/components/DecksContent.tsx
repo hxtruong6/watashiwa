@@ -17,7 +17,7 @@ import {
 import Link from 'next/link';
 import { BookOutlined, RightOutlined, SearchOutlined } from '@ant-design/icons';
 import { motion } from 'motion/react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 
 const { Title, Text, Paragraph } = Typography;
@@ -32,6 +32,7 @@ interface DecksContentProps {
 export default function DecksContent({ decks, userId }: DecksContentProps) {
 	const { token } = useToken();
 	const t = useTranslations('Decks');
+	const locale = useLocale();
 	const router = useRouter();
 	const [searchTerm, setSearchTerm] = useState('');
 	const [filter, setFilter] = useState<'all' | 'mine' | 'public'>('all');
@@ -134,77 +135,87 @@ export default function DecksContent({ decks, userId }: DecksContentProps) {
 			{filteredDecks.length > 0 ? (
 				<Row gutter={[24, 24]}>
 					{/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-					{filteredDecks.map((deck: any) => (
-						<Col xs={24} sm={12} md={8} lg={6} key={deck.id}>
-							<motion.div variants={itemVariants} whileHover={{ y: -5 }} style={{ height: '100%' }}>
-								<Card
-									hoverable
-									onClick={() => router.push(`/decks/${deck.id}`)}
-									style={{
-										borderRadius: 16,
-										height: '100%',
-										display: 'flex',
-										flexDirection: 'column',
-										boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
-										cursor: 'pointer',
-									}}
-									styles={{ body: { flex: 1, display: 'flex', flexDirection: 'column' } }}
+					{filteredDecks.map((deck: any) => {
+						const displayTitle = locale === 'en' ? deck.titleEn || deck.title : deck.title;
+						const displayDescription =
+							locale === 'en' ? deck.descriptionEn || deck.description : deck.description;
+
+						return (
+							<Col xs={24} sm={12} md={8} lg={6} key={deck.id}>
+								<motion.div
+									variants={itemVariants}
+									whileHover={{ y: -5 }}
+									style={{ height: '100%' }}
 								>
-									<Flex justify="space-between" align="start" style={{ marginBottom: 16 }}>
-										<div
-											style={{
-												width: 48,
-												height: 48,
-												borderRadius: 12,
-												background: '#F0F2F5',
-												display: 'flex',
-												alignItems: 'center',
-												justifyContent: 'center',
-												overflow: 'hidden',
-											}}
-										>
-											{deck.headerImage ? (
-												/* eslint-disable-next-line @next/next/no-img-element */
-												<img
-													src={deck.headerImage}
-													alt={deck.title}
-													style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-												/>
-											) : (
-												<BookOutlined style={{ fontSize: 24, color: token.colorPrimary }} />
-											)}
-										</div>
-										{deck.isPublic && <Tag color="blue">{t('publicTag')}</Tag>}
-									</Flex>
-
-									<Title level={4} style={{ margin: '0 0 8px', color: token.colorPrimary }}>
-										{deck.title}
-									</Title>
-
-									<Paragraph
-										type="secondary"
-										ellipsis={{ rows: 2 }}
-										style={{ flex: 1, marginBottom: 24 }}
+									<Card
+										hoverable
+										onClick={() => router.push(`/decks/${deck.id}`)}
+										style={{
+											borderRadius: 16,
+											height: '100%',
+											display: 'flex',
+											flexDirection: 'column',
+											boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+											cursor: 'pointer',
+										}}
+										styles={{ body: { flex: 1, display: 'flex', flexDirection: 'column' } }}
 									>
-										{deck.description || t('noDescription')}
-									</Paragraph>
+										<Flex justify="space-between" align="start" style={{ marginBottom: 16 }}>
+											<div
+												style={{
+													width: 48,
+													height: 48,
+													borderRadius: 12,
+													background: '#F0F2F5',
+													display: 'flex',
+													alignItems: 'center',
+													justifyContent: 'center',
+													overflow: 'hidden',
+												}}
+											>
+												{deck.headerImage ? (
+													/* eslint-disable-next-line @next/next/no-img-element */
+													<img
+														src={deck.headerImage}
+														alt={displayTitle}
+														style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+													/>
+												) : (
+													<BookOutlined style={{ fontSize: 24, color: token.colorPrimary }} />
+												)}
+											</div>
+											{deck.isPublic && <Tag color="blue">{t('publicTag')}</Tag>}
+										</Flex>
 
-									<Flex align="center" justify="space-between" style={{ marginTop: 'auto' }}>
-										<Tag color="default" style={{ margin: 0 }}>
-											{t('cardsCount', { count: deck._count?.vocab || 0 })}
-										</Tag>
-										<div onClick={(e) => e.stopPropagation()}>
-											<Link href={`/decks/${deck.id}`}>
-												<Button type="text" icon={<RightOutlined />} iconPlacement="end">
-													{t('detailsButton')}
-												</Button>
-											</Link>
-										</div>
-									</Flex>
-								</Card>
-							</motion.div>
-						</Col>
-					))}
+										<Title level={4} style={{ margin: '0 0 8px', color: token.colorPrimary }}>
+											{displayTitle}
+										</Title>
+
+										<Paragraph
+											type="secondary"
+											ellipsis={{ rows: 2 }}
+											style={{ flex: 1, marginBottom: 24 }}
+										>
+											{displayDescription || t('noDescription')}
+										</Paragraph>
+
+										<Flex align="center" justify="space-between" style={{ marginTop: 'auto' }}>
+											<Tag color="default" style={{ margin: 0 }}>
+												{t('cardsCount', { count: deck._count?.vocab || 0 })}
+											</Tag>
+											<div onClick={(e) => e.stopPropagation()}>
+												<Link href={`/decks/${deck.id}`}>
+													<Button type="text" icon={<RightOutlined />} iconPlacement="end">
+														{t('detailsButton')}
+													</Button>
+												</Link>
+											</div>
+										</Flex>
+									</Card>
+								</motion.div>
+							</Col>
+						);
+					})}
 				</Row>
 			) : (
 				<motion.div variants={itemVariants}>

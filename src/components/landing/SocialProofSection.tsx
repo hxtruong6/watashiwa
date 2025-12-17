@@ -30,7 +30,7 @@ export default function SocialProofSection() {
 				overflow: 'hidden', // Prevent horizontal scroll from Row negative margins
 			}}
 		>
-			<div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', width: '100%' }}>
+			<div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
 				{/* Responsive gutter: Smaller on mobile to save space/prevent overflow */}
 				<Row
 					gutter={[

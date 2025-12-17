@@ -48,7 +48,6 @@ export default function SettingsModal({ open, onCancel, user }: SettingsModalPro
 		}
 	}, [open, user, form]);
 
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const handleAvatarChange = async (url: string | null) => {
 		if (!url) return;
 		setLoading(true);

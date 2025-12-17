@@ -14,6 +14,8 @@ import {
 	MyContributions,
 	DonationButton,
 	GlobalLeaderboard,
+	NextReviewWidget,
+	MatchaWisdomWidget,
 } from '@/components/dashboard';
 import { Divider, Drawer, theme } from 'antd';
 import Link from 'next/link';
@@ -51,6 +53,11 @@ interface DashboardContentProps {
 	leaderboard?: any[];
 	userId?: string;
 	userSettings?: Partial<User> | null;
+	forecast?: {
+		nextReview: Date | null;
+		urgentCard: { surface: string; meaning: string } | null;
+		forecastCount: number;
+	};
 }
 
 /**
@@ -67,6 +74,7 @@ export default function DashboardContent({
 	leaderboard = [],
 	userId,
 	userSettings,
+	forecast,
 }: DashboardContentProps) {
 	const { token } = useToken();
 	const [hasShownConfetti] = useState(false);
@@ -133,6 +141,24 @@ export default function DashboardContent({
 				dailyProgress={stats.totalReviewed}
 				dailyGoal={dailyGoal}
 			/>
+
+			{/* Forecast Widget */}
+			{forecast && (
+				<motion.div variants={itemVariants}>
+					<NextReviewWidget
+						nextReview={forecast.nextReview}
+						urgentCard={forecast.urgentCard}
+						forecastCount={forecast.forecastCount}
+						streak={stats.streak}
+						reviewedToday={stats.totalReviewed}
+					/>
+				</motion.div>
+			)}
+
+			{/* Ambient: Matcha Wisdom */}
+			<motion.div variants={itemVariants}>
+				<MatchaWisdomWidget />
+			</motion.div>
 
 			{/* Primary CTA: Start Review */}
 			<motion.div variants={itemVariants}>

@@ -1,0 +1,328 @@
+[
+    {
+        "id": "u13-01",
+        "wordSurface": "欲しい",
+        "readingKana": "ほしい",
+        "wordParts": [
+            {
+                "text": "欲",
+                "furigana": "ほ"
+            },
+            {
+                "text": "しい",
+                "furigana": "しい"
+            }
+        ],
+        "meaning": "muốn",
+        "enMeaning": "Want",
+        "hanViet": "DỤC",
+        "exampleSentence": {
+            "sentence": "私はカメラが欲しいです。",
+            "translation": "Tôi muốn có máy ảnh.",
+            "enTranslation": "I want a camera."
+        }
+    },
+    {
+        "id": "u13-02",
+        "wordSurface": "広い",
+        "readingKana": "ひろい",
+        "wordParts": [
+            {
+                "text": "広",
+                "furigana": "ひろ"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "meaning": "rộng",
+        "enMeaning": "Wide, Spacious",
+        "hanViet": "QUẢNG",
+        "exampleSentence": {
+            "sentence": "この部屋は広いです。",
+            "translation": "Căn phòng này rộng.",
+            "enTranslation": "This room is spacious."
+        }
+    },
+    {
+        "id": "u13-03",
+        "wordSurface": "狭い",
+        "readingKana": "せまい",
+        "wordParts": [
+            {
+                "text": "狭",
+                "furigana": "せま"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "meaning": "chật, hẹp",
+        "enMeaning": "Narrow, Small",
+        "hanViet": "HIỆP",
+        "exampleSentence": {
+            "sentence": "私の部屋は狭いです。",
+            "translation": "Phòng của tôi hẹp.",
+            "enTranslation": "My room is small."
+        }
+    },
+    {
+        "id": "u13-04",
+        "wordSurface": "川",
+        "readingKana": "かわ",
+        "wordParts": [
+            {
+                "text": "川",
+                "furigana": "かわ"
+            }
+        ],
+        "meaning": "sông",
+        "enMeaning": "River",
+        "hanViet": "XUYÊN",
+        "exampleSentence": {
+            "sentence": "きれいな川ですね。",
+            "translation": "Dòng sông đẹp nhỉ.",
+            "enTranslation": "It's a beautiful river."
+        }
+    },
+    {
+        "id": "u13-05",
+        "wordSurface": "美術",
+        "readingKana": "びじゅつ",
+        "wordParts": [
+            {
+                "text": "美",
+                "furigana": "び"
+            },
+            {
+                "text": "術",
+                "furigana": "じゅつ"
+            }
+        ],
+        "meaning": "mỹ thuật",
+        "enMeaning": "Fine arts",
+        "hanViet": "MỸ THUẬT",
+        "exampleSentence": {
+            "sentence": "大学で美術を勉強しました。",
+            "translation": "Tôi đã học mỹ thuật ở đại học.",
+            "enTranslation": "I studied fine arts at university."
+        }
+    },
+    {
+        "id": "u13-06",
+        "wordSurface": "釣り",
+        "readingKana": "つり",
+        "wordParts": [
+            {
+                "text": "釣",
+                "furigana": "つ"
+            },
+            {
+                "text": "り",
+                "furigana": "り"
+            }
+        ],
+        "meaning": "câu cá",
+        "enMeaning": "Fishing",
+        "hanViet": "ĐIẾU",
+        "exampleSentence": {
+            "sentence": "日曜日に釣りをします。",
+            "translation": "Tôi đi câu cá vào chủ nhật.",
+            "enTranslation": "I fish on Sundays."
+        }
+    },
+    {
+        "id": "u13-07",
+        "wordSurface": "月末",
+        "readingKana": "げつまつ",
+        "wordParts": [
+            {
+                "text": "月",
+                "furigana": "げつ"
+            },
+            {
+                "text": "末",
+                "furigana": "まつ"
+            }
+        ],
+        "meaning": "cuối tháng",
+        "enMeaning": "End of the month",
+        "hanViet": "NGUYỆT MẠT",
+        "exampleSentence": {
+            "sentence": "月末は忙しいです。",
+            "translation": "Cuối tháng thì bận.",
+            "enTranslation": "It is busy at the end of the month."
+        }
+    },
+    {
+        "id": "u13-08",
+        "wordSurface": "週末",
+        "readingKana": "しゅうまつ",
+        "wordParts": [
+            {
+                "text": "週",
+                "furigana": "しゅう"
+            },
+            {
+                "text": "末",
+                "furigana": "まつ"
+            }
+        ],
+        "meaning": "cuối tuần",
+        "enMeaning": "Weekend",
+        "hanViet": "CHU MẠT",
+        "exampleSentence": {
+            "sentence": "週末はたいてい家にいます。",
+            "translation": "Cuối tuần tôi thường ở nhà.",
+            "enTranslation": "I am usually at home on weekends."
+        }
+    },
+    {
+        "id": "u13-09",
+        "wordSurface": "正月",
+        "readingKana": "しょうがつ",
+        "wordParts": [
+            {
+                "text": "正",
+                "furigana": "しょう"
+            },
+            {
+                "text": "月",
+                "furigana": "がつ"
+            }
+        ],
+        "meaning": "Tết",
+        "enMeaning": "New Year",
+        "hanViet": "CHÍNH NGUYỆT",
+        "exampleSentence": {
+            "sentence": "正月に国へ帰ります。",
+            "translation": "Tôi về nước vào dịp Tết.",
+            "enTranslation": "I go back to my country for the New Year."
+        }
+    },
+    {
+        "id": "u13-10",
+        "wordSurface": "何か",
+        "readingKana": "なにか",
+        "wordParts": [
+            {
+                "text": "何",
+                "furigana": "なに"
+            },
+            {
+                "text": "か",
+                "furigana": "か"
+            }
+        ],
+        "meaning": "cái gì đó",
+        "enMeaning": "Something",
+        "hanViet": "HÀ",
+        "exampleSentence": {
+            "sentence": "おなかがすきましたから、何か食べたいです。",
+            "translation": "Vì đói bụng nên tôi muốn ăn cái gì đó.",
+            "enTranslation": "I am hungry, so I want to eat something."
+        }
+    },
+    {
+        "id": "u13-11",
+        "wordSurface": "定食",
+        "readingKana": "ていしょく",
+        "wordParts": [
+            {
+                "text": "定",
+                "furigana": "てい"
+            },
+            {
+                "text": "食",
+                "furigana": "しょく"
+            }
+        ],
+        "meaning": "cơm suất, cơm phần",
+        "enMeaning": "Set meal",
+        "hanViet": "THỰC ĐỊNH",
+        "exampleSentence": {
+            "sentence": "昼ご飯は定食を食べました。",
+            "translation": "Bữa trưa tôi đã ăn cơm suất.",
+            "enTranslation": "I had a set meal for lunch."
+        }
+    },
+    {
+        "id": "u13-12",
+        "wordSurface": "牛丼",
+        "readingKana": "ぎゅうどん",
+        "wordParts": [
+            {
+                "text": "牛",
+                "furigana": "ぎゅう"
+            },
+            {
+                "text": "丼",
+                "furigana": "どん"
+            }
+        ],
+        "meaning": "cơm thịt bò",
+        "enMeaning": "Gyudon (Bowl of rice topped with beef)",
+        "hanViet": "NGƯU TỈNH",
+        "exampleSentence": {
+            "sentence": "牛丼はおいしいです。",
+            "translation": "Cơm bò ngon.",
+            "enTranslation": "Gyudon is delicious."
+        }
+    },
+    {
+        "id": "u13-13",
+        "wordSurface": "少々お待ちください",
+        "readingKana": "しょうしょうおまちください",
+        "wordParts": [
+            {
+                "text": "少々",
+                "furigana": "しょうしょう"
+            },
+            {
+                "text": "お",
+                "furigana": "お"
+            },
+            {
+                "text": "待",
+                "furigana": "ま"
+            },
+            {
+                "text": "ちください",
+                "furigana": "ちください"
+            }
+        ],
+        "meaning": "xin anh/chị vui lòng đợi (1 chút)",
+        "enMeaning": "Please wait a moment",
+        "hanViet": "TIỂU ĐÃI",
+        "exampleSentence": {
+            "sentence": "はい、少々お待ちください。",
+            "translation": "Vâng, xin vui lòng đợi một chút.",
+            "enTranslation": "Yes, please wait a moment."
+        }
+    },
+    {
+        "id": "u13-14",
+        "wordSurface": "別々に",
+        "readingKana": "べつべつに",
+        "wordParts": [
+            {
+                "text": "別々",
+                "furigana": "べつべつ"
+            },
+            {
+                "text": "に",
+                "furigana": "に"
+            }
+        ],
+        "meaning": "riêng, riêng ra",
+        "enMeaning": "Separately",
+        "hanViet": "BIỆT",
+        "exampleSentence": {
+            "sentence": "別々にお願いします。",
+            "translation": "Làm ơn tính riêng ra.",
+            "enTranslation": "Please pay separately."
+        }
+    }
+]

@@ -9,3 +9,5 @@ export { default as TrendingTips } from './TrendingTips';
 export { default as MyContributions } from './MyContributions';
 export { default as DonationButton } from './DonationButton';
 export { default as GlobalLeaderboard } from './GlobalLeaderboard';
+export { default as NextReviewWidget } from './NextReviewWidget';
+export { default as MatchaWisdomWidget } from './MatchaWisdomWidget';

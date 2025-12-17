@@ -1,0 +1,2046 @@
+[
+    {
+        "id": "uuid-179",
+        "wordSurface": "行きます",
+        "readingKana": "いきます",
+        "hanViet": "HÀNH",
+        "meaning": "đi",
+        "enMeaning": "go",
+        "kanjiBreakdown": [
+            {
+                "kanji": "行",
+                "han_viet": "HÀNH",
+                "meaning": "go"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "行",
+                "furigana": "い",
+                "romaji": "i"
+            },
+            {
+                "text": "きます",
+                "romaji": "kimasu"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "学校へ行きます。",
+            "translation": "Tôi đi đến trường.",
+            "enTranslation": "I go to school.",
+            "parts": [
+                {
+                    "text": "学校",
+                    "furigana": "がっこう"
+                },
+                {
+                    "text": "へ"
+                },
+                {
+                    "text": "行",
+                    "furigana": "い"
+                },
+                {
+                    "text": "きます"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-180",
+        "wordSurface": "来ます",
+        "readingKana": "きます",
+        "hanViet": "LAI",
+        "meaning": "đến",
+        "enMeaning": "come",
+        "kanjiBreakdown": [
+            {
+                "kanji": "来",
+                "han_viet": "LAI",
+                "meaning": "come"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "来",
+                "furigana": "き",
+                "romaji": "ki"
+            },
+            {
+                "text": "ます",
+                "romaji": "masu"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "友達がうちへ来ます。",
+            "translation": "Bạn đến chơi nhà.",
+            "enTranslation": "A friend comes to my house.",
+            "parts": [
+                {
+                    "text": "友達",
+                    "furigana": "ともだち"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "うち"
+                },
+                {
+                    "text": "へ"
+                },
+                {
+                    "text": "来",
+                    "furigana": "き"
+                },
+                {
+                    "text": "ます"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-181",
+        "wordSurface": "帰ります",
+        "readingKana": "かえります",
+        "hanViet": "QUY",
+        "meaning": "về",
+        "enMeaning": "go home, return",
+        "kanjiBreakdown": [
+            {
+                "kanji": "帰",
+                "han_viet": "QUY",
+                "meaning": "return"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "帰",
+                "furigana": "かえ",
+                "romaji": "kae"
+            },
+            {
+                "text": "ります",
+                "romaji": "rimasu"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "うちへ帰ります。",
+            "translation": "Tôi về nhà.",
+            "enTranslation": "I go home.",
+            "parts": [
+                {
+                    "text": "うち"
+                },
+                {
+                    "text": "へ"
+                },
+                {
+                    "text": "帰",
+                    "furigana": "かえ"
+                },
+                {
+                    "text": "ります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-182",
+        "wordSurface": "学校",
+        "readingKana": "がっこう",
+        "hanViet": "HỌC HIỆU",
+        "meaning": "trường học",
+        "enMeaning": "school",
+        "kanjiBreakdown": [
+            {
+                "kanji": "学",
+                "han_viet": "HỌC",
+                "meaning": "study"
+            },
+            {
+                "kanji": "校",
+                "han_viet": "HIỆU",
+                "meaning": "school"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "学校",
+                "furigana": "がっこう",
+                "romaji": "gakkou"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "学校で勉強します。",
+            "translation": "Học ở trường.",
+            "enTranslation": "Study at school.",
+            "parts": [
+                {
+                    "text": "学校",
+                    "furigana": "がっこう"
+                },
+                {
+                    "text": "で"
+                },
+                {
+                    "text": "勉強",
+                    "furigana": "べんきょう"
+                },
+                {
+                    "text": "します"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-183",
+        "wordSurface": "駅",
+        "readingKana": "えき",
+        "hanViet": "DỊCH",
+        "meaning": "nhà ga",
+        "enMeaning": "station",
+        "kanjiBreakdown": [
+            {
+                "kanji": "駅",
+                "han_viet": "DỊCH",
+                "meaning": "station"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "駅",
+                "furigana": "えき",
+                "romaji": "eki"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "駅まで歩きます。",
+            "translation": "Đi bộ đến nhà ga.",
+            "enTranslation": "Walk to the station.",
+            "parts": [
+                {
+                    "text": "駅",
+                    "furigana": "えき"
+                },
+                {
+                    "text": "まで"
+                },
+                {
+                    "text": "歩",
+                    "furigana": "ある"
+                },
+                {
+                    "text": "きます"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-184",
+        "wordSurface": "飛行機",
+        "readingKana": "ひこうき",
+        "hanViet": "PHI HÀNH CƠ",
+        "meaning": "máy bay",
+        "enMeaning": "airplane",
+        "kanjiBreakdown": [
+            {
+                "kanji": "飛",
+                "han_viet": "PHI",
+                "meaning": "fly"
+            },
+            {
+                "kanji": "行",
+                "han_viet": "HÀNH",
+                "meaning": "go"
+            },
+            {
+                "kanji": "機",
+                "han_viet": "CƠ",
+                "meaning": "machine"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "飛行機",
+                "furigana": "ひこうき",
+                "romaji": "hikouki"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "飛行機で行きます。",
+            "translation": "Đi bằng máy bay.",
+            "enTranslation": "Go by airplane.",
+            "parts": [
+                {
+                    "text": "飛行機",
+                    "furigana": "ひこうき"
+                },
+                {
+                    "text": "で"
+                },
+                {
+                    "text": "行",
+                    "furigana": "い"
+                },
+                {
+                    "text": "きます"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-185",
+        "wordSurface": "船",
+        "readingKana": "ふね",
+        "hanViet": "THUYỀN",
+        "meaning": "thuyền, tàu thủy",
+        "enMeaning": "ship, boat",
+        "kanjiBreakdown": [
+            {
+                "kanji": "船",
+                "han_viet": "THUYỀN",
+                "meaning": "ship"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "船",
+                "furigana": "ふね",
+                "romaji": "fune"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "船に乗ります。",
+            "translation": "Lên tàu thủy.",
+            "enTranslation": "Get on a ship.",
+            "parts": [
+                {
+                    "text": "船",
+                    "furigana": "ふね"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "乗",
+                    "furigana": "の"
+                },
+                {
+                    "text": "ります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-186",
+        "wordSurface": "電車",
+        "readingKana": "でんしゃ",
+        "hanViet": "ĐIỆN XA",
+        "meaning": "tàu điện",
+        "enMeaning": "train",
+        "kanjiBreakdown": [
+            {
+                "kanji": "電",
+                "han_viet": "ĐIỆN",
+                "meaning": "electricity"
+            },
+            {
+                "kanji": "車",
+                "han_viet": "XA",
+                "meaning": "car"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "電車",
+                "furigana": "でんしゃ",
+                "romaji": "densha"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "電車で帰ります。",
+            "translation": "Về bằng tàu điện.",
+            "enTranslation": "Go home by train.",
+            "parts": [
+                {
+                    "text": "電車",
+                    "furigana": "でんしゃ"
+                },
+                {
+                    "text": "で"
+                },
+                {
+                    "text": "帰",
+                    "furigana": "かえ"
+                },
+                {
+                    "text": "ります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-187",
+        "wordSurface": "地下鉄",
+        "readingKana": "ちかてつ",
+        "hanViet": "ĐỊA HẠ THIẾT",
+        "meaning": "tàu điện ngầm",
+        "enMeaning": "subway",
+        "kanjiBreakdown": [
+            {
+                "kanji": "地",
+                "han_viet": "ĐỊA",
+                "meaning": "ground"
+            },
+            {
+                "kanji": "下",
+                "han_viet": "HẠ",
+                "meaning": "low"
+            },
+            {
+                "kanji": "鉄",
+                "han_viet": "THIẾT",
+                "meaning": "iron"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "地下鉄",
+                "furigana": "ちかてつ",
+                "romaji": "chikatetsu"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "地下鉄に乗ります。",
+            "translation": "Đi tàu điện ngầm.",
+            "enTranslation": "Take the subway.",
+            "parts": [
+                {
+                    "text": "地下鉄",
+                    "furigana": "ちかてつ"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "乗",
+                    "furigana": "の"
+                },
+                {
+                    "text": "ります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-188",
+        "wordSurface": "新幹線",
+        "readingKana": "しんかんせん",
+        "hanViet": "TÂN CAN TUYẾN",
+        "meaning": "tàu siêu tốc",
+        "enMeaning": "Shinkansen, bullet train",
+        "kanjiBreakdown": [
+            {
+                "kanji": "新",
+                "han_viet": "TÂN",
+                "meaning": "new"
+            },
+            {
+                "kanji": "幹",
+                "han_viet": "CAN",
+                "meaning": "trunk"
+            },
+            {
+                "kanji": "線",
+                "han_viet": "TUYẾN",
+                "meaning": "line"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "新幹線",
+                "furigana": "しんかんせん",
+                "romaji": "shinkansen"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "新幹線で東京へ行きます。",
+            "translation": "Đi Tokyo bằng Shinkansen.",
+            "enTranslation": "Go to Tokyo by Shinkansen.",
+            "parts": [
+                {
+                    "text": "新幹線",
+                    "furigana": "しんかんせん"
+                },
+                {
+                    "text": "で"
+                },
+                {
+                    "text": "東京",
+                    "furigana": "とうきょう"
+                },
+                {
+                    "text": "へ"
+                },
+                {
+                    "text": "行",
+                    "furigana": "い"
+                },
+                {
+                    "text": "きます"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-189",
+        "wordSurface": "自転車",
+        "readingKana": "じてんしゃ",
+        "hanViet": "TỰ CHUYỂN XA",
+        "meaning": "xe đạp",
+        "enMeaning": "bicycle",
+        "kanjiBreakdown": [
+            {
+                "kanji": "自",
+                "han_viet": "TỰ",
+                "meaning": "self"
+            },
+            {
+                "kanji": "転",
+                "han_viet": "CHUYỂN",
+                "meaning": "revolve"
+            },
+            {
+                "kanji": "車",
+                "han_viet": "XA",
+                "meaning": "car"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "自転車",
+                "furigana": "じてんしゃ",
+                "romaji": "jitensha"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "自転車で行きます。",
+            "translation": "Đi bằng xe đạp.",
+            "enTranslation": "Go by bicycle.",
+            "parts": [
+                {
+                    "text": "自転車",
+                    "furigana": "じてんしゃ"
+                },
+                {
+                    "text": "で"
+                },
+                {
+                    "text": "行",
+                    "furigana": "い"
+                },
+                {
+                    "text": "きます"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-190",
+        "wordSurface": "歩いて",
+        "readingKana": "あるいて",
+        "hanViet": "BỘ",
+        "meaning": "đi bộ",
+        "enMeaning": "on foot",
+        "kanjiBreakdown": [
+            {
+                "kanji": "歩",
+                "han_viet": "BỘ",
+                "meaning": "walk"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "歩",
+                "furigana": "ある",
+                "romaji": "aru"
+            },
+            {
+                "text": "いて",
+                "romaji": "ite"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "駅から歩いて帰ります。",
+            "translation": "Đi bộ từ ga về nhà.",
+            "enTranslation": "Walk home from the station.",
+            "parts": [
+                {
+                    "text": "駅",
+                    "furigana": "えき"
+                },
+                {
+                    "text": "から"
+                },
+                {
+                    "text": "歩",
+                    "furigana": "ある"
+                },
+                {
+                    "text": "いて"
+                },
+                {
+                    "text": "帰",
+                    "furigana": "かえ"
+                },
+                {
+                    "text": "ります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-191",
+        "wordSurface": "人",
+        "readingKana": "ひと",
+        "hanViet": "NHÂN",
+        "meaning": "người",
+        "enMeaning": "person",
+        "kanjiBreakdown": [
+            {
+                "kanji": "人",
+                "han_viet": "NHÂN",
+                "meaning": "person"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "人",
+                "furigana": "ひと",
+                "romaji": "hito"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "あの人は誰ですか。",
+            "translation": "Người kia là ai?",
+            "enTranslation": "Who is that person?",
+            "parts": [
+                {
+                    "text": "あの"
+                },
+                {
+                    "text": "人",
+                    "furigana": "ひと"
+                },
+                {
+                    "text": "は"
+                },
+                {
+                    "text": "誰",
+                    "furigana": "だれ"
+                },
+                {
+                    "text": "ですか"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-192",
+        "wordSurface": "友達",
+        "readingKana": "ともだち",
+        "hanViet": "HỮU ĐẠT",
+        "meaning": "bạn bè",
+        "enMeaning": "friend",
+        "kanjiBreakdown": [
+            {
+                "kanji": "友",
+                "han_viet": "HỮU",
+                "meaning": "friend"
+            },
+            {
+                "kanji": "達",
+                "han_viet": "ĐẠT",
+                "meaning": "plural"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "友達",
+                "furigana": "ともだち",
+                "romaji": "tomodachi"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "友達と会います。",
+            "translation": "Gặp bạn bè.",
+            "enTranslation": "Meet a friend.",
+            "parts": [
+                {
+                    "text": "友達",
+                    "furigana": "ともだち"
+                },
+                {
+                    "text": "と"
+                },
+                {
+                    "text": "会",
+                    "furigana": "あ"
+                },
+                {
+                    "text": "います"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-193",
+        "wordSurface": "彼",
+        "readingKana": "かれ",
+        "hanViet": "BỈ",
+        "meaning": "anh ấy",
+        "enMeaning": "he, boyfriend",
+        "kanjiBreakdown": [
+            {
+                "kanji": "彼",
+                "han_viet": "BỈ",
+                "meaning": "he"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "彼",
+                "furigana": "かれ",
+                "romaji": "kare"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "彼は学生です。",
+            "translation": "Anh ấy là sinh viên.",
+            "enTranslation": "He is a student.",
+            "parts": [
+                {
+                    "text": "彼",
+                    "furigana": "かれ"
+                },
+                {
+                    "text": "は"
+                },
+                {
+                    "text": "学生",
+                    "furigana": "がくせい"
+                },
+                {
+                    "text": "です"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-194",
+        "wordSurface": "彼女",
+        "readingKana": "かのじょ",
+        "hanViet": "BỈ NỮ",
+        "meaning": "chị ấy, cô ấy",
+        "enMeaning": "she, girlfriend",
+        "kanjiBreakdown": [
+            {
+                "kanji": "彼",
+                "han_viet": "BỈ",
+                "meaning": "he"
+            },
+            {
+                "kanji": "女",
+                "han_viet": "NỮ",
+                "meaning": "woman"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "彼女",
+                "furigana": "かのじょ",
+                "romaji": "kanojo"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "彼女は私の友達です。",
+            "translation": "Cô ấy là bạn tôi.",
+            "enTranslation": "She is my friend.",
+            "parts": [
+                {
+                    "text": "彼女",
+                    "furigana": "かのじょ"
+                },
+                {
+                    "text": "は"
+                },
+                {
+                    "text": "私",
+                    "furigana": "わたし"
+                },
+                {
+                    "text": "の"
+                },
+                {
+                    "text": "友達",
+                    "furigana": "ともだち"
+                },
+                {
+                    "text": "です"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-195",
+        "wordSurface": "家族",
+        "readingKana": "かぞく",
+        "hanViet": "GIA TỘC",
+        "meaning": "gia đình",
+        "enMeaning": "family",
+        "kanjiBreakdown": [
+            {
+                "kanji": "家",
+                "han_viet": "GIA",
+                "meaning": "house"
+            },
+            {
+                "kanji": "族",
+                "han_viet": "TỘC",
+                "meaning": "tribe"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "家族",
+                "furigana": "かぞく",
+                "romaji": "kazoku"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "家族と日本へ来ました。",
+            "translation": "Tôi đến Nhật cùng gia đình.",
+            "enTranslation": "I came to Japan with my family.",
+            "parts": [
+                {
+                    "text": "家族",
+                    "furigana": "かぞく"
+                },
+                {
+                    "text": "と"
+                },
+                {
+                    "text": "日本",
+                    "furigana": "にほん"
+                },
+                {
+                    "text": "へ"
+                },
+                {
+                    "text": "来",
+                    "furigana": "き"
+                },
+                {
+                    "text": "ました"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-196",
+        "wordSurface": "一人で",
+        "readingKana": "ひとりで",
+        "hanViet": "NHẤT NHÂN",
+        "meaning": "một mình",
+        "enMeaning": "alone",
+        "kanjiBreakdown": [
+            {
+                "kanji": "一",
+                "han_viet": "NHẤT",
+                "meaning": "one"
+            },
+            {
+                "kanji": "人",
+                "han_viet": "NHÂN",
+                "meaning": "person"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "一人",
+                "furigana": "ひとり",
+                "romaji": "hitori"
+            },
+            {
+                "text": "で",
+                "romaji": "de"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "一人で暮らしています。",
+            "translation": "Đang sống một mình.",
+            "enTranslation": "I am living alone.",
+            "parts": [
+                {
+                    "text": "一人",
+                    "furigana": "ひとり"
+                },
+                {
+                    "text": "で"
+                },
+                {
+                    "text": "暮",
+                    "furigana": "く"
+                },
+                {
+                    "text": "らしています"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-197",
+        "wordSurface": "先週",
+        "readingKana": "せんしゅう",
+        "hanViet": "TIÊN CHU",
+        "meaning": "tuần trước",
+        "enMeaning": "last week",
+        "kanjiBreakdown": [
+            {
+                "kanji": "先",
+                "han_viet": "TIÊN",
+                "meaning": "previous"
+            },
+            {
+                "kanji": "週",
+                "han_viet": "CHU",
+                "meaning": "week"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "先週",
+                "furigana": "せんしゅう",
+                "romaji": "senshuu"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "先週国へ帰りました。",
+            "translation": "Tuần trước tôi đã về nước.",
+            "enTranslation": "I went back to my country last week.",
+            "parts": [
+                {
+                    "text": "先週",
+                    "furigana": "せんしゅう"
+                },
+                {
+                    "text": "国",
+                    "furigana": "くに"
+                },
+                {
+                    "text": "へ"
+                },
+                {
+                    "text": "帰",
+                    "furigana": "かえ"
+                },
+                {
+                    "text": "りました"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-198",
+        "wordSurface": "今週",
+        "readingKana": "こんしゅう",
+        "hanViet": "KIM CHU",
+        "meaning": "tuần này",
+        "enMeaning": "this week",
+        "kanjiBreakdown": [
+            {
+                "kanji": "今",
+                "han_viet": "KIM",
+                "meaning": "now"
+            },
+            {
+                "kanji": "週",
+                "han_viet": "CHU",
+                "meaning": "week"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "今週",
+                "furigana": "こんしゅう",
+                "romaji": "konshuu"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "今週は忙しいです。",
+            "translation": "Tuần này tôi bận.",
+            "enTranslation": "I am busy this week.",
+            "parts": [
+                {
+                    "text": "今週",
+                    "furigana": "こんしゅう"
+                },
+                {
+                    "text": "は"
+                },
+                {
+                    "text": "忙",
+                    "furigana": "いそが"
+                },
+                {
+                    "text": "しいです"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-199",
+        "wordSurface": "来週",
+        "readingKana": "らいしゅう",
+        "hanViet": "LAI CHU",
+        "meaning": "tuần sau",
+        "enMeaning": "next week",
+        "kanjiBreakdown": [
+            {
+                "kanji": "来",
+                "han_viet": "LAI",
+                "meaning": "come"
+            },
+            {
+                "kanji": "週",
+                "han_viet": "CHU",
+                "meaning": "week"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "来週",
+                "furigana": "らいしゅう",
+                "romaji": "raishuu"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "来週テストがあります。",
+            "translation": "Tuần sau có bài kiểm tra.",
+            "enTranslation": "There is a test next week.",
+            "parts": [
+                {
+                    "text": "来週",
+                    "furigana": "らいしゅう"
+                },
+                {
+                    "text": "テスト"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "あります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-200",
+        "wordSurface": "先月",
+        "readingKana": "せんげつ",
+        "hanViet": "TIÊN NGUYỆT",
+        "meaning": "tháng trước",
+        "enMeaning": "last month",
+        "kanjiBreakdown": [
+            {
+                "kanji": "先",
+                "han_viet": "TIÊN",
+                "meaning": "previous"
+            },
+            {
+                "kanji": "月",
+                "han_viet": "NGUYỆT",
+                "meaning": "month"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "先月",
+                "furigana": "せんげつ",
+                "romaji": "sengetsu"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "先月日本へ来ました。",
+            "translation": "Tháng trước tôi đã đến Nhật.",
+            "enTranslation": "I came to Japan last month.",
+            "parts": [
+                {
+                    "text": "先月",
+                    "furigana": "せんげつ"
+                },
+                {
+                    "text": "日本",
+                    "furigana": "にほん"
+                },
+                {
+                    "text": "へ"
+                },
+                {
+                    "text": "来",
+                    "furigana": "き"
+                },
+                {
+                    "text": "ました"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-201",
+        "wordSurface": "今月",
+        "readingKana": "こんげつ",
+        "hanViet": "KIM NGUYỆT",
+        "meaning": "tháng này",
+        "enMeaning": "this month",
+        "kanjiBreakdown": [
+            {
+                "kanji": "今",
+                "han_viet": "KIM",
+                "meaning": "now"
+            },
+            {
+                "kanji": "月",
+                "han_viet": "NGUYỆT",
+                "meaning": "month"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "今月",
+                "furigana": "こんげつ",
+                "romaji": "kongetsu"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "今月は休みがありません。",
+            "translation": "Tháng này không có ngày nghỉ.",
+            "enTranslation": "There are no holidays this month.",
+            "parts": [
+                {
+                    "text": "今月",
+                    "furigana": "こんげつ"
+                },
+                {
+                    "text": "は"
+                },
+                {
+                    "text": "休",
+                    "furigana": "やす"
+                },
+                {
+                    "text": "み"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "ありません"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-202",
+        "wordSurface": "来月",
+        "readingKana": "らいげつ",
+        "hanViet": "LAI NGUYỆT",
+        "meaning": "tháng sau",
+        "enMeaning": "next month",
+        "kanjiBreakdown": [
+            {
+                "kanji": "来",
+                "han_viet": "LAI",
+                "meaning": "come"
+            },
+            {
+                "kanji": "月",
+                "han_viet": "NGUYỆT",
+                "meaning": "month"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "来月",
+                "furigana": "らいげつ",
+                "romaji": "raigetsu"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "来月旅行に行きます。",
+            "translation": "Tháng sau tôi đi du lịch.",
+            "enTranslation": "I will go on a trip next month.",
+            "parts": [
+                {
+                    "text": "来月",
+                    "furigana": "らいげつ"
+                },
+                {
+                    "text": "旅行",
+                    "furigana": "りょこう"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "行",
+                    "furigana": "い"
+                },
+                {
+                    "text": "きます"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-203",
+        "wordSurface": "去年",
+        "readingKana": "きょねん",
+        "hanViet": "KHỨ NIÊN",
+        "meaning": "năm ngoái",
+        "enMeaning": "last year",
+        "kanjiBreakdown": [
+            {
+                "kanji": "去",
+                "han_viet": "KHỨ",
+                "meaning": "past"
+            },
+            {
+                "kanji": "年",
+                "han_viet": "NIÊN",
+                "meaning": "year"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "去年",
+                "furigana": "きょねん",
+                "romaji": "kyonen"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "去年結婚しました。",
+            "translation": "Năm ngoái tôi đã kết hôn.",
+            "enTranslation": "I got married last year.",
+            "parts": [
+                {
+                    "text": "去年",
+                    "furigana": "きょねん"
+                },
+                {
+                    "text": "結婚",
+                    "furigana": "けっこん"
+                },
+                {
+                    "text": "しました"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-204",
+        "wordSurface": "今年",
+        "readingKana": "ことし",
+        "hanViet": "KIM NIÊN",
+        "meaning": "năm nay",
+        "enMeaning": "this year",
+        "kanjiBreakdown": [
+            {
+                "kanji": "今",
+                "han_viet": "KIM",
+                "meaning": "now"
+            },
+            {
+                "kanji": "年",
+                "han_viet": "NIÊN",
+                "meaning": "year"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "今年",
+                "furigana": "ことし",
+                "romaji": "kotoshi"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "今年は２０２３年です。",
+            "translation": "Năm nay là năm 2023.",
+            "enTranslation": "This year is 2023.",
+            "parts": [
+                {
+                    "text": "今年",
+                    "furigana": "ことし"
+                },
+                {
+                    "text": "は"
+                },
+                {
+                    "text": "２０２３"
+                },
+                {
+                    "text": "年",
+                    "furigana": "ねん"
+                },
+                {
+                    "text": "です"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-205",
+        "wordSurface": "来年",
+        "readingKana": "らいねん",
+        "hanViet": "LAI NIÊN",
+        "meaning": "sang năm",
+        "enMeaning": "next year",
+        "kanjiBreakdown": [
+            {
+                "kanji": "来",
+                "han_viet": "LAI",
+                "meaning": "come"
+            },
+            {
+                "kanji": "年",
+                "han_viet": "NIÊN",
+                "meaning": "year"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "来年",
+                "furigana": "らいねん",
+                "romaji": "rainen"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "来年大学へ行きます。",
+            "translation": "Sang năm tôi vào đại học.",
+            "enTranslation": "I will go to university next year.",
+            "parts": [
+                {
+                    "text": "来年",
+                    "furigana": "らいねん"
+                },
+                {
+                    "text": "大学",
+                    "furigana": "だいがく"
+                },
+                {
+                    "text": "へ"
+                },
+                {
+                    "text": "行",
+                    "furigana": "い"
+                },
+                {
+                    "text": "きます"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-206",
+        "wordSurface": "～年",
+        "readingKana": "～ねん",
+        "hanViet": "NIÊN",
+        "meaning": "~ năm",
+        "enMeaning": "~ year",
+        "kanjiBreakdown": [
+            {
+                "kanji": "年",
+                "han_viet": "NIÊN",
+                "meaning": "year"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "～"
+            },
+            {
+                "text": "年",
+                "furigana": "ねん",
+                "romaji": "nen"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "日本に２年いました。",
+            "translation": "Tôi đã ở Nhật 2 năm.",
+            "enTranslation": "I was in Japan for 2 years.",
+            "parts": [
+                {
+                    "text": "日本",
+                    "furigana": "にほん"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "２"
+                },
+                {
+                    "text": "年",
+                    "furigana": "ねん"
+                },
+                {
+                    "text": "いました"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-207",
+        "wordSurface": "何年",
+        "readingKana": "なんねん",
+        "hanViet": "HÀ NIÊN",
+        "meaning": "năm mấy, mấy năm",
+        "enMeaning": "what year / how many years",
+        "kanjiBreakdown": [
+            {
+                "kanji": "何",
+                "han_viet": "HÀ",
+                "meaning": "what"
+            },
+            {
+                "kanji": "年",
+                "han_viet": "NIÊN",
+                "meaning": "year"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "何年",
+                "furigana": "なんねん",
+                "romaji": "nannen"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "日本へ来て何年ですか。",
+            "translation": "Bạn đến Nhật được mấy năm rồi?",
+            "enTranslation": "How many years have you been in Japan?",
+            "parts": [
+                {
+                    "text": "日本",
+                    "furigana": "にほん"
+                },
+                {
+                    "text": "へ"
+                },
+                {
+                    "text": "来",
+                    "furigana": "き"
+                },
+                {
+                    "text": "て"
+                },
+                {
+                    "text": "何年",
+                    "furigana": "なんねん"
+                },
+                {
+                    "text": "です"
+                },
+                {
+                    "text": "か"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-208",
+        "wordSurface": "～月",
+        "readingKana": "～がつ",
+        "hanViet": "NGUYỆT",
+        "meaning": "tháng ~",
+        "enMeaning": "month ~",
+        "kanjiBreakdown": [
+            {
+                "kanji": "月",
+                "han_viet": "NGUYỆT",
+                "meaning": "month"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "～"
+            },
+            {
+                "text": "月",
+                "furigana": "がつ",
+                "romaji": "gatsu"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "誕生日は５月です。",
+            "translation": "Sinh nhật là tháng 5.",
+            "enTranslation": "My birthday is in May.",
+            "parts": [
+                {
+                    "text": "誕生日",
+                    "furigana": "たんじょうび"
+                },
+                {
+                    "text": "は"
+                },
+                {
+                    "text": "５"
+                },
+                {
+                    "text": "月",
+                    "furigana": "がつ"
+                },
+                {
+                    "text": "です"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-209",
+        "wordSurface": "何月",
+        "readingKana": "なんがつ",
+        "hanViet": "HÀ NGUYỆT",
+        "meaning": "tháng mấy",
+        "enMeaning": "what month",
+        "kanjiBreakdown": [
+            {
+                "kanji": "何",
+                "han_viet": "HÀ",
+                "meaning": "what"
+            },
+            {
+                "kanji": "月",
+                "han_viet": "NGUYỆT",
+                "meaning": "month"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "何月",
+                "furigana": "なんがつ",
+                "romaji": "nangatsu"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "今何月ですか。",
+            "translation": "Bây giờ là tháng mấy?",
+            "enTranslation": "What month is it now?",
+            "parts": [
+                {
+                    "text": "今",
+                    "furigana": "いま"
+                },
+                {
+                    "text": "何月",
+                    "furigana": "なんがつ"
+                },
+                {
+                    "text": "です"
+                },
+                {
+                    "text": "か"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-210",
+        "wordSurface": "～日",
+        "readingKana": "～にち",
+        "hanViet": "NHẬT",
+        "meaning": "ngày~",
+        "enMeaning": "day ~",
+        "kanjiBreakdown": [
+            {
+                "kanji": "日",
+                "han_viet": "NHẬT",
+                "meaning": "day"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "～"
+            },
+            {
+                "text": "日",
+                "furigana": "にち",
+                "romaji": "nichi"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "１５日に会議があります。",
+            "translation": "Ngày 15 có cuộc họp.",
+            "enTranslation": "There is a meeting on the 15th.",
+            "parts": [
+                {
+                    "text": "１５"
+                },
+                {
+                    "text": "日",
+                    "furigana": "にち"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "会議",
+                    "furigana": "かいぎ"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "あります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-211",
+        "wordSurface": "何日",
+        "readingKana": "なんにち",
+        "hanViet": "HÀ NHẬT",
+        "meaning": "ngày mấy",
+        "enMeaning": "what day",
+        "kanjiBreakdown": [
+            {
+                "kanji": "何",
+                "han_viet": "HÀ",
+                "meaning": "what"
+            },
+            {
+                "kanji": "日",
+                "han_viet": "NHẬT",
+                "meaning": "day"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "何日",
+                "furigana": "なんにち",
+                "romaji": "nannichi"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "今日は何日ですか。",
+            "translation": "Hôm nay là ngày mấy?",
+            "enTranslation": "What day of the month is it today?",
+            "parts": [
+                {
+                    "text": "今日",
+                    "furigana": "きょう"
+                },
+                {
+                    "text": "は"
+                },
+                {
+                    "text": "何日",
+                    "furigana": "なんにち"
+                },
+                {
+                    "text": "です"
+                },
+                {
+                    "text": "か"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-212",
+        "wordSurface": "誕生日",
+        "readingKana": "たんじょうび",
+        "hanViet": "ĐẢN SINH NHẬT",
+        "meaning": "ngày sinh nhật",
+        "enMeaning": "birthday",
+        "kanjiBreakdown": [
+            {
+                "kanji": "誕",
+                "han_viet": "ĐẢN",
+                "meaning": "nativity"
+            },
+            {
+                "kanji": "生",
+                "han_viet": "SINH",
+                "meaning": "life, birth"
+            },
+            {
+                "kanji": "日",
+                "han_viet": "NHẬT",
+                "meaning": "day"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "誕生日",
+                "furigana": "たんじょうび",
+                "romaji": "tanjoubi"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "誕生日はいつですか。",
+            "translation": "Sinh nhật bạn là khi nào?",
+            "enTranslation": "When is your birthday?",
+            "parts": [
+                {
+                    "text": "誕生日",
+                    "furigana": "たんじょうび"
+                },
+                {
+                    "text": "は"
+                },
+                {
+                    "text": "いつ"
+                },
+                {
+                    "text": "です"
+                },
+                {
+                    "text": "か"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-213",
+        "wordSurface": "～番線",
+        "readingKana": "～ばんせん",
+        "hanViet": "PHIÊN TUYẾN",
+        "meaning": "sân ga số ~",
+        "enMeaning": "track number ~",
+        "kanjiBreakdown": [
+            {
+                "kanji": "番",
+                "han_viet": "PHIÊN",
+                "meaning": "number"
+            },
+            {
+                "kanji": "線",
+                "han_viet": "TUYẾN",
+                "meaning": "line"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "～"
+            },
+            {
+                "text": "番線",
+                "furigana": "ばんせん",
+                "romaji": "bansen"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "２番線の電車に乗ります。",
+            "translation": "Lên tàu ở sân ga số 2.",
+            "enTranslation": "Take the train at track number 2.",
+            "parts": [
+                {
+                    "text": "２"
+                },
+                {
+                    "text": "番線",
+                    "furigana": "ばんせん"
+                },
+                {
+                    "text": "の"
+                },
+                {
+                    "text": "電車",
+                    "furigana": "でんしゃ"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "乗",
+                    "furigana": "の"
+                },
+                {
+                    "text": "ります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-214",
+        "wordSurface": "次の",
+        "readingKana": "つぎの",
+        "hanViet": "THỨ",
+        "meaning": "tiếp theo",
+        "enMeaning": "next",
+        "kanjiBreakdown": [
+            {
+                "kanji": "次",
+                "han_viet": "THỨ",
+                "meaning": "next"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "次",
+                "furigana": "つぎ",
+                "romaji": "tsugi"
+            },
+            {
+                "text": "の",
+                "romaji": "no"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "次の駅で降ります。",
+            "translation": "Xuống ở ga tiếp theo.",
+            "enTranslation": "Get off at the next station.",
+            "parts": [
+                {
+                    "text": "次",
+                    "furigana": "つぎ"
+                },
+                {
+                    "text": "の"
+                },
+                {
+                    "text": "駅",
+                    "furigana": "えき"
+                },
+                {
+                    "text": "で"
+                },
+                {
+                    "text": "降",
+                    "furigana": "お"
+                },
+                {
+                    "text": "ります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-215",
+        "wordSurface": "普通",
+        "readingKana": "ふつう",
+        "hanViet": "PHỔ THÔNG",
+        "meaning": "thông thường, phổ thông",
+        "enMeaning": "local train, ordinary",
+        "kanjiBreakdown": [
+            {
+                "kanji": "普",
+                "han_viet": "PHỔ",
+                "meaning": "general"
+            },
+            {
+                "kanji": "通",
+                "han_viet": "THÔNG",
+                "meaning": "pass through"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "普通",
+                "furigana": "ふつう",
+                "romaji": "futsuu"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "普通電車で行きます。",
+            "translation": "Đi bằng tàu thường.",
+            "enTranslation": "Go by local train.",
+            "parts": [
+                {
+                    "text": "普通",
+                    "furigana": "ふつう"
+                },
+                {
+                    "text": "電車",
+                    "furigana": "でんしゃ"
+                },
+                {
+                    "text": "で"
+                },
+                {
+                    "text": "行",
+                    "furigana": "い"
+                },
+                {
+                    "text": "きます"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-216",
+        "wordSurface": "急行",
+        "readingKana": "きゅうこう",
+        "hanViet": "CẤP HÀNH",
+        "meaning": "tàu tốc hành",
+        "enMeaning": "express train",
+        "kanjiBreakdown": [
+            {
+                "kanji": "急",
+                "han_viet": "CẤP",
+                "meaning": "hurry"
+            },
+            {
+                "kanji": "行",
+                "han_viet": "HÀNH",
+                "meaning": "go"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "急行",
+                "furigana": "きゅうこう",
+                "romaji": "kyuukou"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "急行に乗ります。",
+            "translation": "Lên tàu tốc hành.",
+            "enTranslation": "Take the express train.",
+            "parts": [
+                {
+                    "text": "急行",
+                    "furigana": "きゅうこう"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "乗",
+                    "furigana": "の"
+                },
+                {
+                    "text": "ります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    }
+]

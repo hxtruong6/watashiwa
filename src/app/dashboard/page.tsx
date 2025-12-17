@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation';
 import { UserRole } from '@prisma/client';
 import { getDashboardData, syncUser, getUserWithRole, getLeaderboard } from '@/services/actions';
+import { getReviewForecast } from '@/services/study-actions';
 import DashboardContent from '@/components/DashboardContent';
 import DashboardErrorState from '@/components/dashboard/DashboardErrorState';
 
@@ -15,10 +16,11 @@ export default async function Dashboard(props: Props) {
 	await syncUser();
 
 	// Parallelize fetching
-	const [user, data, leaderboard] = await Promise.all([
+	const [user, data, leaderboard, forecast] = await Promise.all([
 		getUserWithRole(),
 		getDashboardData(),
 		getLeaderboard(),
+		getReviewForecast(),
 	]);
 
 	// Check for role-based redirect
@@ -46,6 +48,7 @@ export default async function Dashboard(props: Props) {
 			leaderboard={leaderboard}
 			userId={user?.id}
 			userSettings={data.userSettings}
+			forecast={forecast}
 		/>
 	);
 }

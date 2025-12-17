@@ -159,3 +159,109 @@ export async function getExerciseQuestions(
 		return { success: false, error: 'Failed to generate exercises.' };
 	}
 }
+
+/**
+ * Calculates the 'Smart Review Forecast' for the user.
+ * 1. Finds the optimal 'Golden Time' to return based on upcoming review density.
+ * 2. Finds a 'Hook Card' (forgotten/hard item) to trigger active recall.
+ */
+export async function getReviewForecast(): Promise<{
+	nextReview: Date | null;
+	urgentCard: { surface: string; meaning: string } | null;
+	forecastCount: number;
+}> {
+	try {
+		const user = await getUser();
+		if (!user) return { nextReview: null, urgentCard: null, forecastCount: 0 };
+
+		const now = new Date();
+		// Look ahead 24 hours
+		const tomorrow = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+
+		// 1. Fetch upcoming reviews in the next 24h
+		const upcomingCards = await prisma.studyCard.findMany({
+			where: {
+				userId: user.id,
+				state: { in: [1, 2, 3] }, // Learning, Review, Relearning
+				due: {
+					gte: now,
+					lt: tomorrow,
+				},
+			},
+			select: { due: true },
+		});
+
+		let nextReview: Date | null = null;
+		let maxCount = 0;
+
+		if (upcomingCards.length > 0) {
+			// Bucket into 30-minute intervals
+			const buckets = new Map<number, number>(); // timestamp -> count
+
+			for (const card of upcomingCards) {
+				const time = card.due.getTime();
+				const bucketTime = Math.floor(time / (30 * 60 * 1000)) * (30 * 60 * 1000);
+				const currentCount = buckets.get(bucketTime) || 0;
+				buckets.set(bucketTime, currentCount + 1);
+			}
+
+			// Find max bucket
+			let bestBucketTime = 0;
+			for (const [time, count] of buckets.entries()) {
+				if (count > maxCount) {
+					maxCount = count;
+					bestBucketTime = time;
+				}
+			}
+
+			if (bestBucketTime > 0) {
+				nextReview = new Date(bestBucketTime);
+			}
+		}
+
+		// 2. Find 'Hook Card' (Recently failed or hard)
+		const hookLog = await prisma.reviewLog.findFirst({
+			where: {
+				userId: user.id,
+				rating: { in: [1, 2] }, // Again or Hard
+				review: {
+					gte: new Date(now.getTime() - 48 * 60 * 60 * 1000), // Last 48h
+				},
+			},
+			orderBy: { review: 'desc' },
+			include: {
+				card: {
+					include: {
+						vocab: { select: { wordSurface: true, meaning: true } },
+						kanji: { select: { kanji: true, meaning: true } },
+					},
+				},
+			},
+		});
+
+		let urgentCard: { surface: string; meaning: string } | null = null;
+
+		if (hookLog && hookLog.card) {
+			if (hookLog.card.vocab) {
+				urgentCard = {
+					surface: hookLog.card.vocab.wordSurface,
+					meaning: hookLog.card.vocab.meaning,
+				};
+			} else if (hookLog.card.kanji) {
+				urgentCard = {
+					surface: hookLog.card.kanji.kanji,
+					meaning: hookLog.card.kanji.meaning,
+				};
+			}
+		}
+
+		return {
+			nextReview,
+			urgentCard,
+			forecastCount: maxCount,
+		};
+	} catch (error) {
+		console.error('Error getting review forecast:', error);
+		return { nextReview: null, urgentCard: null, forecastCount: 0 };
+	}
+}

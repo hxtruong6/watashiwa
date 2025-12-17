@@ -40,7 +40,7 @@
         "myDecks": "Bộ thẻ của tôi",
         "courses": "Gợi ý học tập",
         "settings": "Cài đặt",
-        "login": "Đăng nhập (Vô chiến)",
+        "login": "Đăng nhập",
         "signup": "Ghi danh"
     },
     "Dashboard": {
@@ -115,7 +115,25 @@
         "exercises": "Luyện tập chủ động",
         "srsDistributionTooltip": "Phân bố thẻ theo trạng thái SRS (Mới / Đang học / Ôn tập)",
         "viewAnalytics": "Xem chi tiết",
-        "viewAnalyticsTooltip": "Xem thống kê nâng cao"
+        "viewAnalyticsTooltip": "Xem thống kê nâng cao",
+        "SmartForecast": {
+            "title": "Dự báo bộ nhớ",
+            "forecastChill": "Không có gì gấp. **{time}** nữa quay lại để **đỡ phải học lại** nhé.",
+            "forecastSleep": "Khuya rồi, ngủ lấy sức mai học tiếp nhé! 😴",
+            "forecastStreakRescue": "Nguy cơ mất chuỗi {streak} ngày! 🔥 Học 1 thẻ ngay để cứu chuỗi!",
+            "forecastReady": "Đến giờ rồi! {count} thẻ đang chờ bạn nạp data.",
+            "forecastUrgent": "Rớt não tới nơi rồi! Cứu bé {card} ngay!",
+            "forecastUrgentBackup": "Rớt não tới nơi rồi! Ôn tập ngay kẻo quên sạch.",
+            "actionReview": "Ôn ngay",
+            "actionQuick": "Nhanh 5 thẻ ⚡",
+            "actionWait": "Ok đợi xíu"
+        },
+        "QuickSession": {
+            "completeTitle": "Xong 5 thẻ rồi! ⚡",
+            "completeSubtitle": "Nhanh gọn lẹ. Bạn muốn học tiếp không?",
+            "actionContinue": "Học tiếp đi",
+            "actionHome": "Về trang chủ"
+        }
     },
     "Study": {
         "settingsTitle": "Cài đặt học tập",

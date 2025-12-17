@@ -119,7 +119,6 @@ export default function FeatureSection() {
 					maxWidth: 1200,
 					margin: '0 auto',
 					padding: isMd ? '0 24px' : '0 16px',
-					width: '100%',
 					// backgroundColor: 'red',
 				}}
 			>

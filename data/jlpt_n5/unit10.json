@@ -1,0 +1,2203 @@
+[
+    {
+        "id": "uuid-396",
+        "wordSurface": "います",
+        "readingKana": "います",
+        "hanViet": "",
+        "meaning": "có (người, động vật)",
+        "enMeaning": "exist, be (animate)",
+        "kanjiBreakdown": [],
+        "wordParts": [
+            {
+                "text": "います",
+                "romaji": "imasu"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "あそこに先生がいます。",
+            "translation": "Ở đằng kia có giáo viên.",
+            "enTranslation": "The teacher is over there.",
+            "parts": [
+                {
+                    "text": "あそこに"
+                },
+                {
+                    "text": "先生",
+                    "furigana": "せんせい"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "います"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-397",
+        "wordSurface": "いろいろ",
+        "readingKana": "いろいろ",
+        "hanViet": "",
+        "meaning": "nhiều, đa dạng",
+        "enMeaning": "various",
+        "kanjiBreakdown": [],
+        "wordParts": [
+            {
+                "text": "いろいろ",
+                "romaji": "iroiro"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "いろいろな国へ行きたいです。",
+            "translation": "Tôi muốn đi nhiều nước khác nhau.",
+            "enTranslation": "I want to go to various countries.",
+            "parts": [
+                {
+                    "text": "いろいろ"
+                },
+                {
+                    "text": "な"
+                },
+                {
+                    "text": "国",
+                    "furigana": "くに"
+                },
+                {
+                    "text": "へ"
+                },
+                {
+                    "text": "行",
+                    "furigana": "い"
+                },
+                {
+                    "text": "き"
+                },
+                {
+                    "text": "たい"
+                },
+                {
+                    "text": "です"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-398",
+        "wordSurface": "パンダ",
+        "readingKana": "パンダ",
+        "hanViet": "",
+        "meaning": "gấu trúc",
+        "enMeaning": "panda",
+        "kanjiBreakdown": [],
+        "wordParts": [
+            {
+                "text": "パンダ",
+                "romaji": "panda"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "パンダを見ました。",
+            "translation": "Tôi đã xem gấu trúc.",
+            "enTranslation": "I saw a panda.",
+            "parts": [
+                {
+                    "text": "パンダ"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "見",
+                    "furigana": "み"
+                },
+                {
+                    "text": "ました"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-399",
+        "wordSurface": "テーブル",
+        "readingKana": "テーブル",
+        "hanViet": "",
+        "meaning": "bàn",
+        "enMeaning": "table",
+        "kanjiBreakdown": [],
+        "wordParts": [
+            {
+                "text": "テーブル",
+                "romaji": "teeburu"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "テーブルの上に本があります。",
+            "translation": "Trên bàn có quyển sách.",
+            "enTranslation": "There is a book on the table.",
+            "parts": [
+                {
+                    "text": "テーブル"
+                },
+                {
+                    "text": "の"
+                },
+                {
+                    "text": "上",
+                    "furigana": "うえ"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "本",
+                    "furigana": "ほん"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "あります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-400",
+        "wordSurface": "ベッド",
+        "readingKana": "ベッド",
+        "hanViet": "",
+        "meaning": "giường",
+        "enMeaning": "bed",
+        "kanjiBreakdown": [],
+        "wordParts": [
+            {
+                "text": "ベッド",
+                "romaji": "beddo"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ベッドで寝ます。",
+            "translation": "Ngủ trên giường.",
+            "enTranslation": "Sleep in a bed.",
+            "parts": [
+                {
+                    "text": "ベッド"
+                },
+                {
+                    "text": "で"
+                },
+                {
+                    "text": "寝",
+                    "furigana": "ね"
+                },
+                {
+                    "text": "ます"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-401",
+        "wordSurface": "ドア",
+        "readingKana": "ドア",
+        "hanViet": "",
+        "meaning": "cửa",
+        "enMeaning": "door",
+        "kanjiBreakdown": [],
+        "wordParts": [
+            {
+                "text": "ドア",
+                "romaji": "doa"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ドアを開けてください。",
+            "translation": "Hãy mở cửa.",
+            "enTranslation": "Please open the door.",
+            "parts": [
+                {
+                    "text": "ドア"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "開",
+                    "furigana": "あ"
+                },
+                {
+                    "text": "けて"
+                },
+                {
+                    "text": "ください"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-402",
+        "wordSurface": "ポスト",
+        "readingKana": "ポスト",
+        "hanViet": "",
+        "meaning": "hộp thư",
+        "enMeaning": "mailbox, postbox",
+        "kanjiBreakdown": [],
+        "wordParts": [
+            {
+                "text": "ポスト",
+                "romaji": "posuto"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "手紙をポストに入れます。",
+            "translation": "Bỏ thư vào hộp thư.",
+            "enTranslation": "Put a letter in the mailbox.",
+            "parts": [
+                {
+                    "text": "手紙",
+                    "furigana": "てがみ"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "ポスト"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "入",
+                    "furigana": "い"
+                },
+                {
+                    "text": "れます"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-403",
+        "wordSurface": "ビル",
+        "readingKana": "ビル",
+        "hanViet": "",
+        "meaning": "tòa nhà",
+        "enMeaning": "building",
+        "kanjiBreakdown": [],
+        "wordParts": [
+            {
+                "text": "ビル",
+                "romaji": "biru"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "高いビルですね。",
+            "translation": "Tòa nhà cao nhỉ.",
+            "enTranslation": "That's a tall building.",
+            "parts": [
+                {
+                    "text": "高",
+                    "furigana": "たか"
+                },
+                {
+                    "text": "い"
+                },
+                {
+                    "text": "ビル"
+                },
+                {
+                    "text": "ですね"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-404",
+        "wordSurface": "コンビニ",
+        "readingKana": "コンビニ",
+        "hanViet": "",
+        "meaning": "cửa hàng tiện lợi",
+        "enMeaning": "convenience store",
+        "kanjiBreakdown": [],
+        "wordParts": [
+            {
+                "text": "コンビニ",
+                "romaji": "konbini"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "コンビニで買いました。",
+            "translation": "Tôi đã mua ở cửa hàng tiện lợi.",
+            "enTranslation": "I bought it at a convenience store.",
+            "parts": [
+                {
+                    "text": "コンビニ"
+                },
+                {
+                    "text": "で"
+                },
+                {
+                    "text": "買",
+                    "furigana": "か"
+                },
+                {
+                    "text": "いました"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-405",
+        "wordSurface": "うしろ",
+        "readingKana": "うしろ",
+        "hanViet": "",
+        "meaning": "sau",
+        "enMeaning": "back, behind",
+        "kanjiBreakdown": [],
+        "wordParts": [
+            {
+                "text": "うしろ",
+                "romaji": "ushiro"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "うしろを見てください。",
+            "translation": "Hãy nhìn đằng sau.",
+            "enTranslation": "Please look behind.",
+            "parts": [
+                {
+                    "text": "うしろ"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "見",
+                    "furigana": "み"
+                },
+                {
+                    "text": "て"
+                },
+                {
+                    "text": "ください"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-406",
+        "wordSurface": "～や～",
+        "readingKana": "～や～",
+        "hanViet": "",
+        "meaning": "~ và ~, ~",
+        "enMeaning": "~ and ~, ~",
+        "kanjiBreakdown": [],
+        "wordParts": [
+            {
+                "text": "～"
+            },
+            {
+                "text": "や",
+                "romaji": "ya"
+            },
+            {
+                "text": "～"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "ペンやノートを買いました。",
+            "translation": "Tôi đã mua bút, vở...",
+            "enTranslation": "I bought pens, notebooks, etc.",
+            "parts": [
+                {
+                    "text": "ペン"
+                },
+                {
+                    "text": "や"
+                },
+                {
+                    "text": "ノート"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "買",
+                    "furigana": "か"
+                },
+                {
+                    "text": "いました"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-407",
+        "wordSurface": "コーナー",
+        "readingKana": "コーナー",
+        "hanViet": "",
+        "meaning": "góc, khu vực",
+        "enMeaning": "corner, section",
+        "kanjiBreakdown": [],
+        "wordParts": [
+            {
+                "text": "コーナー",
+                "romaji": "koonaa"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "文房具コーナーはどこですか。",
+            "translation": "Khu văn phòng phẩm ở đâu?",
+            "enTranslation": "Where is the stationery section?",
+            "parts": [
+                {
+                    "text": "文房具",
+                    "furigana": "ぶんぼうぐ"
+                },
+                {
+                    "text": "コーナー"
+                },
+                {
+                    "text": "は"
+                },
+                {
+                    "text": "どこ"
+                },
+                {
+                    "text": "ですか"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-408",
+        "wordSurface": "男の人",
+        "readingKana": "おとこのひと",
+        "hanViet": "NAM NHÂN",
+        "meaning": "người đàn ông",
+        "enMeaning": "man",
+        "kanjiBreakdown": [
+            {
+                "kanji": "男",
+                "han_viet": "NAM",
+                "meaning": "man"
+            },
+            {
+                "kanji": "人",
+                "han_viet": "NHÂN",
+                "meaning": "person"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "男",
+                "furigana": "おとこ"
+            },
+            {
+                "text": "の"
+            },
+            {
+                "text": "人",
+                "furigana": "ひと",
+                "romaji": "hito"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "あそこに男の人がいます。",
+            "translation": "Ở đằng kia có người đàn ông.",
+            "enTranslation": "There is a man over there.",
+            "parts": [
+                {
+                    "text": "あそこに"
+                },
+                {
+                    "text": "男",
+                    "furigana": "おとこ"
+                },
+                {
+                    "text": "の"
+                },
+                {
+                    "text": "人",
+                    "furigana": "ひと"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "います"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-409",
+        "wordSurface": "女の人",
+        "readingKana": "おんなのひと",
+        "hanViet": "NỮ NHÂN",
+        "meaning": "người đàn bà",
+        "enMeaning": "woman",
+        "kanjiBreakdown": [
+            {
+                "kanji": "女",
+                "han_viet": "NỮ",
+                "meaning": "woman"
+            },
+            {
+                "kanji": "人",
+                "han_viet": "NHÂN",
+                "meaning": "person"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "女",
+                "furigana": "おんな"
+            },
+            {
+                "text": "の"
+            },
+            {
+                "text": "人",
+                "furigana": "ひと",
+                "romaji": "hito"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "きれいな女の人ですね。",
+            "translation": "Người phụ nữ đẹp nhỉ.",
+            "enTranslation": "That's a beautiful woman.",
+            "parts": [
+                {
+                    "text": "きれい"
+                },
+                {
+                    "text": "な"
+                },
+                {
+                    "text": "女",
+                    "furigana": "おんな"
+                },
+                {
+                    "text": "の"
+                },
+                {
+                    "text": "人",
+                    "furigana": "ひと"
+                },
+                {
+                    "text": "ですね"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-410",
+        "wordSurface": "男の子",
+        "readingKana": "おとこのこ",
+        "hanViet": "NAM TỬ",
+        "meaning": "cậu con trai",
+        "enMeaning": "boy",
+        "kanjiBreakdown": [
+            {
+                "kanji": "男",
+                "han_viet": "NAM",
+                "meaning": "man"
+            },
+            {
+                "kanji": "子",
+                "han_viet": "TỬ",
+                "meaning": "child"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "男",
+                "furigana": "おとこ"
+            },
+            {
+                "text": "の"
+            },
+            {
+                "text": "子",
+                "furigana": "こ",
+                "romaji": "ko"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "男の子が遊んでいます。",
+            "translation": "Bé trai đang chơi.",
+            "enTranslation": "A boy is playing.",
+            "parts": [
+                {
+                    "text": "男",
+                    "furigana": "おとこ"
+                },
+                {
+                    "text": "の"
+                },
+                {
+                    "text": "子",
+                    "furigana": "こ"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "遊",
+                    "furigana": "あそ"
+                },
+                {
+                    "text": "んで"
+                },
+                {
+                    "text": "います"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-411",
+        "wordSurface": "女の子",
+        "readingKana": "おんなのこ",
+        "hanViet": "NỮ NHÂN",
+        "meaning": "cô con gái",
+        "enMeaning": "girl",
+        "kanjiBreakdown": [
+            {
+                "kanji": "女",
+                "han_viet": "NỮ",
+                "meaning": "woman"
+            },
+            {
+                "kanji": "子",
+                "han_viet": "TỬ",
+                "meaning": "child"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "女",
+                "furigana": "おんな"
+            },
+            {
+                "text": "の"
+            },
+            {
+                "text": "子",
+                "furigana": "こ",
+                "romaji": "ko"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "女の子が泣いています。",
+            "translation": "Bé gái đang khóc.",
+            "enTranslation": "A girl is crying.",
+            "parts": [
+                {
+                    "text": "女",
+                    "furigana": "おんな"
+                },
+                {
+                    "text": "の"
+                },
+                {
+                    "text": "子",
+                    "furigana": "こ"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "泣",
+                    "furigana": "な"
+                },
+                {
+                    "text": "いて"
+                },
+                {
+                    "text": "います"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-412",
+        "wordSurface": "犬",
+        "readingKana": "いぬ",
+        "hanViet": "KHUYỂN",
+        "meaning": "chó",
+        "enMeaning": "dog",
+        "kanjiBreakdown": [
+            {
+                "kanji": "犬",
+                "han_viet": "KHUYỂN",
+                "meaning": "dog"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "犬",
+                "furigana": "いぬ",
+                "romaji": "inu"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "犬が好きです。",
+            "translation": "Tôi thích chó.",
+            "enTranslation": "I like dogs.",
+            "parts": [
+                {
+                    "text": "犬",
+                    "furigana": "いぬ"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "好",
+                    "furigana": "す"
+                },
+                {
+                    "text": "き"
+                },
+                {
+                    "text": "です"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-413",
+        "wordSurface": "猫",
+        "readingKana": "ねこ",
+        "hanViet": "MIÊU",
+        "meaning": "mèo",
+        "enMeaning": "cat",
+        "kanjiBreakdown": [
+            {
+                "kanji": "猫",
+                "han_viet": "MIÊU",
+                "meaning": "cat"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "猫",
+                "furigana": "ねこ",
+                "romaji": "neko"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "猫がいます。",
+            "translation": "Có con mèo.",
+            "enTranslation": "There is a cat.",
+            "parts": [
+                {
+                    "text": "猫",
+                    "furigana": "ねこ"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "います"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-414",
+        "wordSurface": "象",
+        "readingKana": "ぞう",
+        "hanViet": "TƯỢNG",
+        "meaning": "voi",
+        "enMeaning": "elephant",
+        "kanjiBreakdown": [
+            {
+                "kanji": "象",
+                "han_viet": "TƯỢNG",
+                "meaning": "elephant"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "象",
+                "furigana": "ぞう",
+                "romaji": "zou"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "象は大きいです。",
+            "translation": "Con voi thì to.",
+            "enTranslation": "Elephants are big.",
+            "parts": [
+                {
+                    "text": "象",
+                    "furigana": "ぞう"
+                },
+                {
+                    "text": "は"
+                },
+                {
+                    "text": "大",
+                    "furigana": "おお"
+                },
+                {
+                    "text": "きい"
+                },
+                {
+                    "text": "です"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-415",
+        "wordSurface": "木",
+        "readingKana": "き",
+        "hanViet": "MỘC",
+        "meaning": "cây, gỗ",
+        "enMeaning": "tree, wood",
+        "kanjiBreakdown": [
+            {
+                "kanji": "木",
+                "han_viet": "MỘC",
+                "meaning": "tree"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "木",
+                "furigana": "き",
+                "romaji": "ki"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "大きな木があります。",
+            "translation": "Có cái cây to.",
+            "enTranslation": "There is a big tree.",
+            "parts": [
+                {
+                    "text": "大",
+                    "furigana": "おお"
+                },
+                {
+                    "text": "きな"
+                },
+                {
+                    "text": "木",
+                    "furigana": "き"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "あります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-416",
+        "wordSurface": "物",
+        "readingKana": "もの",
+        "hanViet": "VẬT",
+        "meaning": "vật, đồ vật",
+        "enMeaning": "thing (concrete object)",
+        "kanjiBreakdown": [
+            {
+                "kanji": "物",
+                "han_viet": "VẬT",
+                "meaning": "thing"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "物",
+                "furigana": "もの",
+                "romaji": "mono"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "おいしい物を食べたいです。",
+            "translation": "Tôi muốn ăn đồ ngon.",
+            "enTranslation": "I want to eat something delicious.",
+            "parts": [
+                {
+                    "text": "おいしい"
+                },
+                {
+                    "text": "物",
+                    "furigana": "もの"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "食",
+                    "furigana": "た"
+                },
+                {
+                    "text": "べ"
+                },
+                {
+                    "text": "たい"
+                },
+                {
+                    "text": "です"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-417",
+        "wordSurface": "電池",
+        "readingKana": "でんち",
+        "hanViet": "ĐIỆN TRÌ",
+        "meaning": "pin",
+        "enMeaning": "battery",
+        "kanjiBreakdown": [
+            {
+                "kanji": "電",
+                "han_viet": "ĐIỆN",
+                "meaning": "electricity"
+            },
+            {
+                "kanji": "池",
+                "han_viet": "TRÌ",
+                "meaning": "pond, pool"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "電池",
+                "furigana": "でんち",
+                "romaji": "denchi"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "電池を買います。",
+            "translation": "Mua pin.",
+            "enTranslation": "Buy batteries.",
+            "parts": [
+                {
+                    "text": "電池",
+                    "furigana": "でんち"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "買",
+                    "furigana": "か"
+                },
+                {
+                    "text": "います"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-418",
+        "wordSurface": "箱",
+        "readingKana": "はこ",
+        "hanViet": "TƯƠNG",
+        "meaning": "hộp",
+        "enMeaning": "box",
+        "kanjiBreakdown": [
+            {
+                "kanji": "箱",
+                "han_viet": "TƯƠNG",
+                "meaning": "box"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "箱",
+                "furigana": "はこ",
+                "romaji": "hako"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "箱の中に何がありますか。",
+            "translation": "Trong hộp có cái gì?",
+            "enTranslation": "What is in the box?",
+            "parts": [
+                {
+                    "text": "箱",
+                    "furigana": "はこ"
+                },
+                {
+                    "text": "の"
+                },
+                {
+                    "text": "中",
+                    "furigana": "なか"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "何",
+                    "furigana": "なに"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "あります"
+                },
+                {
+                    "text": "か"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-419",
+        "wordSurface": "スイッチ",
+        "readingKana": "スイッチ",
+        "hanViet": "",
+        "meaning": "công tắc",
+        "enMeaning": "switch",
+        "kanjiBreakdown": [],
+        "wordParts": [
+            {
+                "text": "スイッチ",
+                "romaji": "suitchi"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "スイッチを入れてください。",
+            "translation": "Hãy bật công tắc.",
+            "enTranslation": "Please turn on the switch.",
+            "parts": [
+                {
+                    "text": "スイッチ"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "入",
+                    "furigana": "い"
+                },
+                {
+                    "text": "れて"
+                },
+                {
+                    "text": "ください"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-420",
+        "wordSurface": "冷蔵庫",
+        "readingKana": "れいぞうこ",
+        "hanViet": "LÃNH TÁNG KHỐ",
+        "meaning": "tủ lạnh",
+        "enMeaning": "refrigerator",
+        "kanjiBreakdown": [
+            {
+                "kanji": "冷",
+                "han_viet": "LÃNH",
+                "meaning": "cool"
+            },
+            {
+                "kanji": "蔵",
+                "han_viet": "TÁNG",
+                "meaning": "storehouse"
+            },
+            {
+                "kanji": "庫",
+                "han_viet": "KHỐ",
+                "meaning": "warehouse"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "冷蔵庫",
+                "furigana": "れいぞうこ",
+                "romaji": "reizouko"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "冷蔵庫の中にビールがあります。",
+            "translation": "Trong tủ lạnh có bia.",
+            "enTranslation": "There is beer in the refrigerator.",
+            "parts": [
+                {
+                    "text": "冷蔵庫",
+                    "furigana": "れいぞうこ"
+                },
+                {
+                    "text": "の"
+                },
+                {
+                    "text": "中",
+                    "furigana": "なか"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "ビール"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "あります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-421",
+        "wordSurface": "棚",
+        "readingKana": "たな",
+        "hanViet": "BẰNG",
+        "meaning": "kệ sách, giá sách",
+        "enMeaning": "shelf",
+        "kanjiBreakdown": [
+            {
+                "kanji": "棚",
+                "han_viet": "BẰNG",
+                "meaning": "shelf"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "棚",
+                "furigana": "たな",
+                "romaji": "tana"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "棚に本があります。",
+            "translation": "Trên kệ có sách.",
+            "enTranslation": "There are books on the shelf.",
+            "parts": [
+                {
+                    "text": "棚",
+                    "furigana": "たな"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "本",
+                    "furigana": "ほん"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "あります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-422",
+        "wordSurface": "窓",
+        "readingKana": "まど",
+        "hanViet": "SONG",
+        "meaning": "cửa sổ",
+        "enMeaning": "window",
+        "kanjiBreakdown": [
+            {
+                "kanji": "窓",
+                "han_viet": "SONG",
+                "meaning": "window"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "窓",
+                "furigana": "まど",
+                "romaji": "mado"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "窓を閉めてください。",
+            "translation": "Hãy đóng cửa sổ lại.",
+            "enTranslation": "Please close the window.",
+            "parts": [
+                {
+                    "text": "窓",
+                    "furigana": "まど"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "閉",
+                    "furigana": "し"
+                },
+                {
+                    "text": "めて"
+                },
+                {
+                    "text": "ください"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-423",
+        "wordSurface": "公園",
+        "readingKana": "こうえん",
+        "hanViet": "CÔNG VIÊN",
+        "meaning": "công viên",
+        "enMeaning": "park",
+        "kanjiBreakdown": [
+            {
+                "kanji": "公",
+                "han_viet": "CÔNG",
+                "meaning": "public"
+            },
+            {
+                "kanji": "園",
+                "han_viet": "VIÊN",
+                "meaning": "garden"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "公園",
+                "furigana": "こうえん",
+                "romaji": "kouen"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "公園で遊びます。",
+            "translation": "Chơi ở công viên.",
+            "enTranslation": "Play in the park.",
+            "parts": [
+                {
+                    "text": "公園",
+                    "furigana": "こうえん"
+                },
+                {
+                    "text": "で"
+                },
+                {
+                    "text": "遊",
+                    "furigana": "あそ"
+                },
+                {
+                    "text": "びます"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-424",
+        "wordSurface": "喫茶店",
+        "readingKana": "きっさてん",
+        "hanViet": "KHIẾT TRÀ ĐIẾM",
+        "meaning": "quán giải khát",
+        "enMeaning": "cafe, coffee shop",
+        "kanjiBreakdown": [
+            {
+                "kanji": "喫",
+                "han_viet": "KHIẾT",
+                "meaning": "consume"
+            },
+            {
+                "kanji": "茶",
+                "han_viet": "TRÀ",
+                "meaning": "tea"
+            },
+            {
+                "kanji": "店",
+                "han_viet": "ĐIẾM",
+                "meaning": "shop"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "喫茶店",
+                "furigana": "きっさてん",
+                "romaji": "kissaten"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "喫茶店でコーヒーを飲みます。",
+            "translation": "Uống cà phê ở quán giải khát.",
+            "enTranslation": "Drink coffee at a coffee shop.",
+            "parts": [
+                {
+                    "text": "喫茶店",
+                    "furigana": "きっさてん"
+                },
+                {
+                    "text": "で"
+                },
+                {
+                    "text": "コーヒー"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "飲",
+                    "furigana": "の"
+                },
+                {
+                    "text": "みます"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-425",
+        "wordSurface": "～屋",
+        "readingKana": "～や",
+        "hanViet": "ỐC",
+        "meaning": "hiệu ~, cửa hàng ~, người bán ~",
+        "enMeaning": "~ shop, ~ store",
+        "kanjiBreakdown": [
+            {
+                "kanji": "屋",
+                "han_viet": "ỐC",
+                "meaning": "shop, house"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "～"
+            },
+            {
+                "text": "屋",
+                "furigana": "や",
+                "romaji": "ya"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "花屋で花を買います。",
+            "translation": "Mua hoa ở cửa hàng hoa.",
+            "enTranslation": "Buy flowers at a flower shop.",
+            "parts": [
+                {
+                    "text": "花屋",
+                    "furigana": "はなや"
+                },
+                {
+                    "text": "で"
+                },
+                {
+                    "text": "花",
+                    "furigana": "はな"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "買",
+                    "furigana": "か"
+                },
+                {
+                    "text": "います"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-426",
+        "wordSurface": "乗り場",
+        "readingKana": "のりば",
+        "hanViet": "THỪA TRƯỜNG",
+        "meaning": "điểm đón (taxi, tàu,...)",
+        "enMeaning": "platform, boarding place, stop",
+        "kanjiBreakdown": [
+            {
+                "kanji": "乗",
+                "han_viet": "THỪA",
+                "meaning": "ride"
+            },
+            {
+                "kanji": "場",
+                "han_viet": "TRƯỜNG",
+                "meaning": "place"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "乗",
+                "furigana": "の"
+            },
+            {
+                "text": "り"
+            },
+            {
+                "text": "場",
+                "furigana": "ば",
+                "romaji": "ba"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "タクシー乗り場はどこですか。",
+            "translation": "Điểm đón taxi ở đâu?",
+            "enTranslation": "Where is the taxi stand?",
+            "parts": [
+                {
+                    "text": "タクシー"
+                },
+                {
+                    "text": "乗",
+                    "furigana": "の"
+                },
+                {
+                    "text": "り"
+                },
+                {
+                    "text": "場",
+                    "furigana": "ば"
+                },
+                {
+                    "text": "は"
+                },
+                {
+                    "text": "どこ"
+                },
+                {
+                    "text": "ですか"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-427",
+        "wordSurface": "県",
+        "readingKana": "けん",
+        "hanViet": "HUYỆN",
+        "meaning": "tỉnh",
+        "enMeaning": "prefecture",
+        "kanjiBreakdown": [
+            {
+                "kanji": "県",
+                "han_viet": "HUYỆN",
+                "meaning": "prefecture"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "県",
+                "furigana": "けん",
+                "romaji": "ken"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "愛知県に住んでいます。",
+            "translation": "Tôi đang sống ở tỉnh Aichi.",
+            "enTranslation": "I live in Aichi Prefecture.",
+            "parts": [
+                {
+                    "text": "愛知県",
+                    "furigana": "あいちけん"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "住",
+                    "furigana": "す"
+                },
+                {
+                    "text": "んで"
+                },
+                {
+                    "text": "います"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-428",
+        "wordSurface": "上",
+        "readingKana": "うえ",
+        "hanViet": "THƯỢNG",
+        "meaning": "trên",
+        "enMeaning": "up, above",
+        "kanjiBreakdown": [
+            {
+                "kanji": "上",
+                "han_viet": "THƯỢNG",
+                "meaning": "above"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "上",
+                "furigana": "うえ",
+                "romaji": "ue"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "机の上にあります。",
+            "translation": "Có ở trên bàn.",
+            "enTranslation": "It is on the desk.",
+            "parts": [
+                {
+                    "text": "机",
+                    "furigana": "つくえ"
+                },
+                {
+                    "text": "の"
+                },
+                {
+                    "text": "上",
+                    "furigana": "うえ"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "あります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-429",
+        "wordSurface": "下",
+        "readingKana": "した",
+        "hanViet": "HẠ",
+        "meaning": "dưới",
+        "enMeaning": "down, below",
+        "kanjiBreakdown": [
+            {
+                "kanji": "下",
+                "han_viet": "HẠ",
+                "meaning": "below"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "下",
+                "furigana": "した",
+                "romaji": "shita"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "いすの下にあります。",
+            "translation": "Có ở dưới ghế.",
+            "enTranslation": "It is under the chair.",
+            "parts": [
+                {
+                    "text": "いす"
+                },
+                {
+                    "text": "の"
+                },
+                {
+                    "text": "下",
+                    "furigana": "した"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "あります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-430",
+        "wordSurface": "前",
+        "readingKana": "まえ",
+        "hanViet": "TIỀN",
+        "meaning": "trước",
+        "enMeaning": "front, before",
+        "kanjiBreakdown": [
+            {
+                "kanji": "前",
+                "han_viet": "TIỀN",
+                "meaning": "before"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "前",
+                "furigana": "まえ",
+                "romaji": "mae"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "駅の前にあります。",
+            "translation": "Có ở trước nhà ga.",
+            "enTranslation": "It is in front of the station.",
+            "parts": [
+                {
+                    "text": "駅",
+                    "furigana": "えき"
+                },
+                {
+                    "text": "の"
+                },
+                {
+                    "text": "前",
+                    "furigana": "まえ"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "あります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-431",
+        "wordSurface": "右",
+        "readingKana": "みぎ",
+        "hanViet": "HỮU",
+        "meaning": "bên phải",
+        "enMeaning": "right",
+        "kanjiBreakdown": [
+            {
+                "kanji": "右",
+                "han_viet": "HỮU",
+                "meaning": "right"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "右",
+                "furigana": "みぎ",
+                "romaji": "migi"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "右へ曲がってください。",
+            "translation": "Hãy rẽ phải.",
+            "enTranslation": "Please turn right.",
+            "parts": [
+                {
+                    "text": "右",
+                    "furigana": "みぎ"
+                },
+                {
+                    "text": "へ"
+                },
+                {
+                    "text": "曲",
+                    "furigana": "ま"
+                },
+                {
+                    "text": "がって"
+                },
+                {
+                    "text": "ください"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-432",
+        "wordSurface": "左",
+        "readingKana": "ひだり",
+        "hanViet": "TẢ",
+        "meaning": "bên trái",
+        "enMeaning": "left",
+        "kanjiBreakdown": [
+            {
+                "kanji": "左",
+                "han_viet": "TẢ",
+                "meaning": "left"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "左",
+                "furigana": "ひだり",
+                "romaji": "hidari"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "左にあります。",
+            "translation": "Có ở bên trái.",
+            "enTranslation": "It is on the left.",
+            "parts": [
+                {
+                    "text": "左",
+                    "furigana": "ひだり"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "あります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-433",
+        "wordSurface": "中",
+        "readingKana": "なか",
+        "hanViet": "TRUNG",
+        "meaning": "trong, giữa",
+        "enMeaning": "in, inside",
+        "kanjiBreakdown": [
+            {
+                "kanji": "中",
+                "han_viet": "TRUNG",
+                "meaning": "inside"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "中",
+                "furigana": "なか",
+                "romaji": "naka"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "かばんの中にあります。",
+            "translation": "Có ở trong cặp.",
+            "enTranslation": "It is inside the bag.",
+            "parts": [
+                {
+                    "text": "かばん"
+                },
+                {
+                    "text": "の"
+                },
+                {
+                    "text": "中",
+                    "furigana": "なか"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "あります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-434",
+        "wordSurface": "外",
+        "readingKana": "そと",
+        "hanViet": "NGOẠI",
+        "meaning": "ngoài",
+        "enMeaning": "outside",
+        "kanjiBreakdown": [
+            {
+                "kanji": "外",
+                "han_viet": "NGOẠI",
+                "meaning": "outside"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "外",
+                "furigana": "そと",
+                "romaji": "soto"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "外で遊びます。",
+            "translation": "Chơi ở bên ngoài.",
+            "enTranslation": "Play outside.",
+            "parts": [
+                {
+                    "text": "外",
+                    "furigana": "そと"
+                },
+                {
+                    "text": "で"
+                },
+                {
+                    "text": "遊",
+                    "furigana": "あそ"
+                },
+                {
+                    "text": "びます"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-435",
+        "wordSurface": "隣",
+        "readingKana": "となり",
+        "hanViet": "LÂN",
+        "meaning": "bên cạnh",
+        "enMeaning": "next to",
+        "kanjiBreakdown": [
+            {
+                "kanji": "隣",
+                "han_viet": "LÂN",
+                "meaning": "neighbor"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "隣",
+                "furigana": "となり",
+                "romaji": "tonari"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "隣の部屋に誰がいますか。",
+            "translation": "Phòng bên cạnh có ai?",
+            "enTranslation": "Who is in the next room?",
+            "parts": [
+                {
+                    "text": "隣",
+                    "furigana": "となり"
+                },
+                {
+                    "text": "の"
+                },
+                {
+                    "text": "部屋",
+                    "furigana": "へや"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "誰",
+                    "furigana": "だれ"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "います"
+                },
+                {
+                    "text": "か"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-436",
+        "wordSurface": "近く",
+        "readingKana": "ちかく",
+        "hanViet": "CẬN",
+        "meaning": "gần",
+        "enMeaning": "near",
+        "kanjiBreakdown": [
+            {
+                "kanji": "近",
+                "han_viet": "CẬN",
+                "meaning": "near"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "近",
+                "furigana": "ちか",
+                "romaji": "chika"
+            },
+            {
+                "text": "く",
+                "romaji": "ku"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "近くにコンビニがありますか。",
+            "translation": "Gần đây có cửa hàng tiện lợi không?",
+            "enTranslation": "Is there a convenience store nearby?",
+            "parts": [
+                {
+                    "text": "近",
+                    "furigana": "ちか"
+                },
+                {
+                    "text": "く"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "コンビニ"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "あります"
+                },
+                {
+                    "text": "か"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-437",
+        "wordSurface": "間",
+        "readingKana": "あいだ",
+        "hanViet": "GIAN",
+        "meaning": "giữa, ở giữa",
+        "enMeaning": "between",
+        "kanjiBreakdown": [
+            {
+                "kanji": "間",
+                "han_viet": "GIAN",
+                "meaning": "interval"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "間",
+                "furigana": "あいだ",
+                "romaji": "aida"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "銀行と郵便局の間にあります。",
+            "translation": "Có ở giữa ngân hàng và bưu điện.",
+            "enTranslation": "It is between the bank and the post office.",
+            "parts": [
+                {
+                    "text": "銀行",
+                    "furigana": "ぎんこう"
+                },
+                {
+                    "text": "と"
+                },
+                {
+                    "text": "郵便局",
+                    "furigana": "ゆうびんきょく"
+                },
+                {
+                    "text": "の"
+                },
+                {
+                    "text": "間",
+                    "furigana": "あいだ"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "あります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-438",
+        "wordSurface": "いちばん下",
+        "readingKana": "いちばんした",
+        "hanViet": "HẠ",
+        "meaning": "ở dưới cùng",
+        "enMeaning": "at the very bottom",
+        "kanjiBreakdown": [
+            {
+                "kanji": "下",
+                "han_viet": "HẠ",
+                "meaning": "below"
+            }
+        ],
+        "wordParts": [
+            {
+                "text": "いちばん"
+            },
+            {
+                "text": "下",
+                "furigana": "した",
+                "romaji": "shita"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "いちばん下にあります。",
+            "translation": "Có ở dưới cùng.",
+            "enTranslation": "It is at the very bottom.",
+            "parts": [
+                {
+                    "text": "いちばん"
+                },
+                {
+                    "text": "下",
+                    "furigana": "した"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "あります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    },
+    {
+        "id": "uuid-439",
+        "wordSurface": "かかります",
+        "readingKana": "かかります",
+        "hanViet": "",
+        "meaning": "mất, tốn (thời gian, tiền bạc)",
+        "enMeaning": "take (time, money), cost",
+        "kanjiBreakdown": [],
+        "wordParts": [
+            {
+                "text": "かかります",
+                "romaji": "kakarimasu"
+            }
+        ],
+        "exampleSentence": {
+            "sentence": "時間がかかります。",
+            "translation": "Tốn thời gian.",
+            "enTranslation": "It takes time.",
+            "parts": [
+                {
+                    "text": "時間",
+                    "furigana": "じかん"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "かかります"
+                },
+                {
+                    "text": "。"
+                }
+            ]
+        }
+    }
+]

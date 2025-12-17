@@ -1,0 +1,1584 @@
+[
+    {
+        "id": "u12-01",
+        "wordSurface": "いい天気ですね",
+        "readingKana": "いいてんきですね",
+        "wordParts": [
+            {
+                "text": "いい",
+                "furigana": "いい"
+            },
+            {
+                "text": "天気",
+                "furigana": "てんき"
+            },
+            {
+                "text": "ですね",
+                "furigana": "ですね"
+            }
+        ],
+        "meaning": "trời đẹp nhỉ",
+        "enMeaning": "Nice weather, isn't it?",
+        "hanViet": "THIÊN KHÍ",
+        "exampleSentence": {
+            "sentence": "今日はいい天気ですね。",
+            "translation": "Hôm nay trời đẹp nhỉ.",
+            "enTranslation": "It's nice weather today, isn't it?"
+        }
+    },
+    {
+        "id": "u12-02",
+        "wordSurface": "お出かけですか",
+        "readingKana": "おでかけですか",
+        "wordParts": [
+            {
+                "text": "お",
+                "furigana": "お"
+            },
+            {
+                "text": "出",
+                "furigana": "で"
+            },
+            {
+                "text": "かけですか",
+                "furigana": "かけですか"
+            }
+        ],
+        "meaning": "anh/chị đi ra ngoài đấy à?",
+        "enMeaning": "Are you going out?",
+        "hanViet": "XUẤT",
+        "exampleSentence": {
+            "sentence": "ちょっとお出かけですか。",
+            "translation": "Anh đi ra ngoài một chút à?",
+            "enTranslation": "Are you going out for a bit?"
+        }
+    },
+    {
+        "id": "u12-03",
+        "wordSurface": "行ってらっしゃい",
+        "readingKana": "いってらっしゃい",
+        "wordParts": [
+            {
+                "text": "行",
+                "furigana": "い"
+            },
+            {
+                "text": "ってらっしゃい",
+                "furigana": "ってらっしゃい"
+            }
+        ],
+        "meaning": "anh/chị đi nhé (người ở nhà nói)",
+        "enMeaning": "Have a good trip / Take care (said to someone leaving)",
+        "hanViet": "HÀNH",
+        "exampleSentence": {
+            "sentence": "行ってらっしゃい。気をつけて。",
+            "translation": "Anh đi nhé. Bảo trọng.",
+            "enTranslation": "Take care. Be careful."
+        }
+    },
+    {
+        "id": "u12-04",
+        "wordSurface": "船便",
+        "readingKana": "ふなびん",
+        "wordParts": [
+            {
+                "text": "船",
+                "furigana": "ふな"
+            },
+            {
+                "text": "便",
+                "furigana": "びん"
+            }
+        ],
+        "meaning": "gửi bằng đường biển",
+        "enMeaning": "Surface mail (sea mail)",
+        "hanViet": "THUYỀN TIỆN",
+        "exampleSentence": {
+            "sentence": "これを船便でお願いします。",
+            "translation": "Làm ơn gửi cái này bằng đường biển.",
+            "enTranslation": "Please send this by sea mail."
+        }
+    },
+    {
+        "id": "u12-05",
+        "wordSurface": "航空便",
+        "readingKana": "こうくうびん",
+        "wordParts": [
+            {
+                "text": "航",
+                "furigana": "こう"
+            },
+            {
+                "text": "空",
+                "furigana": "くう"
+            },
+            {
+                "text": "便",
+                "furigana": "びん"
+            }
+        ],
+        "meaning": "gửi bằng đường hàng không",
+        "enMeaning": "Airmail",
+        "hanViet": "HÀNG KHÔNG TIỆN",
+        "exampleSentence": {
+            "sentence": "航空便は高いですが、速いです。",
+            "translation": "Gửi đường hàng không thì đắt nhưng nhanh.",
+            "enTranslation": "Airmail is expensive, but fast."
+        }
+    },
+    {
+        "id": "u12-06",
+        "wordSurface": "お願いします",
+        "readingKana": "おねがいします",
+        "wordParts": [
+            {
+                "text": "お",
+                "furigana": "お"
+            },
+            {
+                "text": "願",
+                "furigana": "ねが"
+            },
+            {
+                "text": "いします",
+                "furigana": "いします"
+            }
+        ],
+        "meaning": "nhờ anh/chị, làm ơn",
+        "enMeaning": "Please",
+        "hanViet": "NGUYỆN",
+        "exampleSentence": {
+            "sentence": "コピーをお願いします。",
+            "translation": "Nhờ anh copy giúp.",
+            "enTranslation": "Please make a copy."
+        }
+    },
+    {
+        "id": "u12-07",
+        "wordSurface": "オーストラリア",
+        "readingKana": "オーストラリア",
+        "wordParts": [
+            {
+                "text": "オーストラリア",
+                "furigana": "オーストラリア"
+            }
+        ],
+        "meaning": "Úc",
+        "enMeaning": "Australia",
+        "hanViet": "",
+        "exampleSentence": {
+            "sentence": "来月オーストラリアへ行きます。",
+            "translation": "Tháng sau tôi sẽ đi Úc.",
+            "enTranslation": "I will go to Australia next month."
+        }
+    },
+    {
+        "id": "u12-08",
+        "wordSurface": "ホテル",
+        "readingKana": "ホテル",
+        "wordParts": [
+            {
+                "text": "ホテル",
+                "furigana": "ホテル"
+            }
+        ],
+        "meaning": "khách sạn",
+        "enMeaning": "Hotel",
+        "hanViet": "",
+        "exampleSentence": {
+            "sentence": "いいホテルに泊まりました。",
+            "translation": "Tôi đã trọ ở một khách sạn tốt.",
+            "enTranslation": "I stayed at a nice hotel."
+        }
+    },
+    {
+        "id": "u12-09",
+        "wordSurface": "パーティー",
+        "readingKana": "パーティー",
+        "wordParts": [
+            {
+                "text": "パーティー",
+                "furigana": "パーティー"
+            }
+        ],
+        "meaning": "tiệc",
+        "enMeaning": "Party",
+        "hanViet": "",
+        "exampleSentence": {
+            "sentence": "明日パーティーをします。",
+            "translation": "Ngày mai tôi sẽ tổ chức tiệc.",
+            "enTranslation": "I will have a party tomorrow."
+        }
+    },
+    {
+        "id": "u12-10",
+        "wordSurface": "おすし",
+        "readingKana": "おすし",
+        "wordParts": [
+            {
+                "text": "おすし",
+                "furigana": "おすし"
+            }
+        ],
+        "meaning": "sushi",
+        "enMeaning": "Sushi",
+        "hanViet": "",
+        "exampleSentence": {
+            "sentence": "おすしを食べたことがありますか。",
+            "translation": "Bạn đã bao giờ ăn sushi chưa?",
+            "enTranslation": "Have you ever eaten sushi?"
+        }
+    },
+    {
+        "id": "u12-11",
+        "wordSurface": "てんぷら",
+        "readingKana": "てんぷら",
+        "wordParts": [
+            {
+                "text": "てんぷら",
+                "furigana": "てんぷら"
+            }
+        ],
+        "meaning": "tempura (món chiên)",
+        "enMeaning": "Tempura",
+        "hanViet": "",
+        "exampleSentence": {
+            "sentence": "てんぷらはおいしいです。",
+            "translation": "Tempura ngon.",
+            "enTranslation": "Tempura is delicious."
+        }
+    },
+    {
+        "id": "u12-12",
+        "wordSurface": "レモン",
+        "readingKana": "レモン",
+        "wordParts": [
+            {
+                "text": "レモン",
+                "furigana": "レモン"
+            }
+        ],
+        "meaning": "chanh",
+        "enMeaning": "Lemon",
+        "hanViet": "",
+        "exampleSentence": {
+            "sentence": "紅茶にレモンを入れます。",
+            "translation": "Tôi cho chanh vào hồng trà.",
+            "enTranslation": "I put lemon in the tea."
+        }
+    },
+    {
+        "id": "u12-13",
+        "wordSurface": "どちらも",
+        "readingKana": "どちらも",
+        "wordParts": [
+            {
+                "text": "どちらも",
+                "furigana": "どちらも"
+            }
+        ],
+        "meaning": "cả 2",
+        "enMeaning": "Both",
+        "hanViet": "",
+        "exampleSentence": {
+            "sentence": "りんごとみかんとどちらが好きですか。…どちらも好きです。",
+            "translation": "Táo và quýt, bạn thích cái nào hơn? ... Tôi thích cả hai.",
+            "enTranslation": "Which do you like better, apples or tangerines? ... I like both."
+        }
+    },
+    {
+        "id": "u12-14",
+        "wordSurface": "いちばん",
+        "readingKana": "いちばん",
+        "wordParts": [
+            {
+                "text": "いちばん",
+                "furigana": "いちばん"
+            }
+        ],
+        "meaning": "nhất",
+        "enMeaning": "Number one / The most",
+        "hanViet": "",
+        "exampleSentence": {
+            "sentence": "クラスで誰がいちばん背が高いですか。",
+            "translation": "Trong lớp ai cao nhất?",
+            "enTranslation": "Who is the tallest in the class?"
+        }
+    },
+    {
+        "id": "u12-15",
+        "wordSurface": "ずっと",
+        "readingKana": "ずっと",
+        "wordParts": [
+            {
+                "text": "ずっと",
+                "furigana": "ずっと"
+            }
+        ],
+        "meaning": "(hơn) hẳn, suốt",
+        "enMeaning": "Much more / All the time",
+        "hanViet": "",
+        "exampleSentence": {
+            "sentence": "兄は私よりずっと背が高いです。",
+            "translation": "Anh tôi cao hơn tôi hẳn.",
+            "enTranslation": "My older brother is much taller than me."
+        }
+    },
+    {
+        "id": "u12-16",
+        "wordSurface": "ただいま",
+        "readingKana": "ただいま",
+        "wordParts": [
+            {
+                "text": "ただいま",
+                "furigana": "ただいま"
+            }
+        ],
+        "meaning": "tôi đã về đây",
+        "enMeaning": "I'm home",
+        "hanViet": "",
+        "exampleSentence": {
+            "sentence": "ただいま。…お帰りなさい。",
+            "translation": "Tôi đã về đây. ... Anh đã về đấy à.",
+            "enTranslation": "I'm home. ... Welcome back."
+        }
+    },
+    {
+        "id": "u12-17",
+        "wordSurface": "簡単",
+        "readingKana": "かんたん",
+        "wordParts": [
+            {
+                "text": "簡",
+                "furigana": "かん"
+            },
+            {
+                "text": "単",
+                "furigana": "たん"
+            }
+        ],
+        "meaning": "đơn giản, dễ",
+        "enMeaning": "Simple, Easy",
+        "hanViet": "GIẢN ĐƠN",
+        "exampleSentence": {
+            "sentence": "この携帯は操作が簡単です。",
+            "translation": "Cái điện thoại này thao tác đơn giản.",
+            "enTranslation": "This mobile phone is easy to operate."
+        }
+    },
+    {
+        "id": "u12-18",
+        "wordSurface": "近い",
+        "readingKana": "ちかい",
+        "wordParts": [
+            {
+                "text": "近",
+                "furigana": "ちか"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "meaning": "gần",
+        "enMeaning": "Near",
+        "hanViet": "CẬN",
+        "exampleSentence": {
+            "sentence": "駅はここから近いです。",
+            "translation": "Nhà ga ở gần đây.",
+            "enTranslation": "The station is near here."
+        }
+    },
+    {
+        "id": "u12-19",
+        "wordSurface": "遠い",
+        "readingKana": "とおい",
+        "wordParts": [
+            {
+                "text": "遠",
+                "furigana": "とお"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "meaning": "xa",
+        "enMeaning": "Far",
+        "hanViet": "VIỄN",
+        "exampleSentence": {
+            "sentence": "会社は遠いです。",
+            "translation": "Công ty thì xa.",
+            "enTranslation": "The company is far away."
+        }
+    },
+    {
+        "id": "u12-20",
+        "wordSurface": "遅い",
+        "readingKana": "おそい",
+        "wordParts": [
+            {
+                "text": "遅",
+                "furigana": "おそ"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "meaning": "chậm, muộn",
+        "enMeaning": "Slow, Late",
+        "hanViet": "TRÌ",
+        "exampleSentence": {
+            "sentence": "歩くのが遅いです。",
+            "translation": "Đi bộ chậm.",
+            "enTranslation": "Walking is slow."
+        }
+    },
+    {
+        "id": "u12-21",
+        "wordSurface": "多い",
+        "readingKana": "おおい",
+        "wordParts": [
+            {
+                "text": "多",
+                "furigana": "おお"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "meaning": "nhiều",
+        "enMeaning": "Many, Much",
+        "hanViet": "ĐA",
+        "exampleSentence": {
+            "sentence": "京都は人が多いです。",
+            "translation": "Kyoto có nhiều người.",
+            "enTranslation": "There are many people in Kyoto."
+        }
+    },
+    {
+        "id": "u12-22",
+        "wordSurface": "少ない",
+        "readingKana": "すくない",
+        "wordParts": [
+            {
+                "text": "少",
+                "furigana": "すく"
+            },
+            {
+                "text": "な",
+                "furigana": "な"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "meaning": "ít",
+        "enMeaning": "Few, Little",
+        "hanViet": "THIỂU",
+        "exampleSentence": {
+            "sentence": "この町は車が少ないです。",
+            "translation": "Thị trấn này có ít xe hơi.",
+            "enTranslation": "There are few cars in this town."
+        }
+    },
+    {
+        "id": "u12-23",
+        "wordSurface": "暖かい",
+        "readingKana": "あたたかい",
+        "wordParts": [
+            {
+                "text": "暖",
+                "furigana": "あたた"
+            },
+            {
+                "text": "か",
+                "furigana": "か"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "meaning": "ấm áp (khí hậu)",
+        "enMeaning": "Warm (weather)",
+        "hanViet": "NOÃN",
+        "exampleSentence": {
+            "sentence": "今日は暖かいですね。",
+            "translation": "Hôm nay trời ấm nhỉ.",
+            "enTranslation": "It's warm today, isn't it?"
+        }
+    },
+    {
+        "id": "u12-24",
+        "wordSurface": "温かい",
+        "readingKana": "あたたかい",
+        "wordParts": [
+            {
+                "text": "温",
+                "furigana": "あたた"
+            },
+            {
+                "text": "か",
+                "furigana": "か"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "meaning": "ấm (nhiệt độ, cảm giác)",
+        "enMeaning": "Warm (to touch, soup, etc.)",
+        "hanViet": "ÔN",
+        "exampleSentence": {
+            "sentence": "温かいスープを飲みます。",
+            "translation": "Uống súp nóng (ấm).",
+            "enTranslation": "Drink warm soup."
+        }
+    },
+    {
+        "id": "u12-25",
+        "wordSurface": "涼しい",
+        "readingKana": "すずしい",
+        "wordParts": [
+            {
+                "text": "涼",
+                "furigana": "すず"
+            },
+            {
+                "text": "し",
+                "furigana": "し"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "meaning": "mát mẻ",
+        "enMeaning": "Cool",
+        "hanViet": "LƯƠNG",
+        "exampleSentence": {
+            "sentence": "秋は涼しいです。",
+            "translation": "Mùa thu thì mát mẻ.",
+            "enTranslation": "Autumn is cool."
+        }
+    },
+    {
+        "id": "u12-26",
+        "wordSurface": "甘い",
+        "readingKana": "あまい",
+        "wordParts": [
+            {
+                "text": "甘",
+                "furigana": "あま"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "meaning": "ngọt",
+        "enMeaning": "Sweet",
+        "hanViet": "CAM",
+        "exampleSentence": {
+            "sentence": "このケーキは甘いです。",
+            "translation": "Cái bánh này ngọt.",
+            "enTranslation": "This cake is sweet."
+        }
+    },
+    {
+        "id": "u12-27",
+        "wordSurface": "辛い",
+        "readingKana": "からい",
+        "wordParts": [
+            {
+                "text": "辛",
+                "furigana": "から"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "meaning": "cay",
+        "enMeaning": "Spicy",
+        "hanViet": "TÂN",
+        "exampleSentence": {
+            "sentence": "カレーは辛いです。",
+            "translation": "Cà ri cay.",
+            "enTranslation": "Curry is spicy."
+        }
+    },
+    {
+        "id": "u12-28",
+        "wordSurface": "重い",
+        "readingKana": "おもい",
+        "wordParts": [
+            {
+                "text": "重",
+                "furigana": "おも"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "meaning": "nặng",
+        "enMeaning": "Heavy",
+        "hanViet": "TRỌNG",
+        "exampleSentence": {
+            "sentence": "このかばんは重いです。",
+            "translation": "Cái cặp này nặng.",
+            "enTranslation": "This bag is heavy."
+        }
+    },
+    {
+        "id": "u12-29",
+        "wordSurface": "軽い",
+        "readingKana": "かるい",
+        "wordParts": [
+            {
+                "text": "軽",
+                "furigana": "かる"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            }
+        ],
+        "meaning": "nhẹ",
+        "enMeaning": "Light (weight)",
+        "hanViet": "KHINH",
+        "exampleSentence": {
+            "sentence": "この靴は軽いです。",
+            "translation": "Đôi giày này nhẹ.",
+            "enTranslation": "These shoes are light."
+        }
+    },
+    {
+        "id": "u12-30",
+        "wordSurface": "季節",
+        "readingKana": "きせつ",
+        "wordParts": [
+            {
+                "text": "季",
+                "furigana": "き"
+            },
+            {
+                "text": "節",
+                "furigana": "せつ"
+            }
+        ],
+        "meaning": "mùa, thời tiết",
+        "enMeaning": "Season",
+        "hanViet": "QUÝ TIẾT",
+        "exampleSentence": {
+            "sentence": "いい季節になりましたね。",
+            "translation": "Đã vào mùa đẹp rồi nhỉ.",
+            "enTranslation": "It has become a nice season."
+        }
+    },
+    {
+        "id": "u12-31",
+        "wordSurface": "春",
+        "readingKana": "はる",
+        "wordParts": [
+            {
+                "text": "春",
+                "furigana": "はる"
+            }
+        ],
+        "meaning": "mùa xuân",
+        "enMeaning": "Spring",
+        "hanViet": "XUÂN",
+        "exampleSentence": {
+            "sentence": "春は花がきれいです。",
+            "translation": "Mùa xuân hoa đẹp.",
+            "enTranslation": "Flowers are beautiful in spring."
+        }
+    },
+    {
+        "id": "u12-32",
+        "wordSurface": "夏",
+        "readingKana": "なつ",
+        "wordParts": [
+            {
+                "text": "夏",
+                "furigana": "なつ"
+            }
+        ],
+        "meaning": "mùa hè",
+        "enMeaning": "Summer",
+        "hanViet": "HẠ",
+        "exampleSentence": {
+            "sentence": "夏は暑いです。",
+            "translation": "Mùa hè nóng.",
+            "enTranslation": "Summer is hot."
+        }
+    },
+    {
+        "id": "u12-33",
+        "wordSurface": "秋",
+        "readingKana": "あき",
+        "wordParts": [
+            {
+                "text": "秋",
+                "furigana": "あき"
+            }
+        ],
+        "meaning": "mùa thu",
+        "enMeaning": "Autumn",
+        "hanViet": "THU",
+        "exampleSentence": {
+            "sentence": "秋は涼しいです。",
+            "translation": "Mùa thu mát mẻ.",
+            "enTranslation": "Autumn is cool."
+        }
+    },
+    {
+        "id": "u12-34",
+        "wordSurface": "冬",
+        "readingKana": "ふゆ",
+        "wordParts": [
+            {
+                "text": "冬",
+                "furigana": "ふゆ"
+            }
+        ],
+        "meaning": "mùa đông",
+        "enMeaning": "Winter",
+        "hanViet": "ĐÔNG",
+        "exampleSentence": {
+            "sentence": "冬は寒いです。",
+            "translation": "Mùa đông lạnh.",
+            "enTranslation": "Winter is cold."
+        }
+    },
+    {
+        "id": "u12-35",
+        "wordSurface": "天気",
+        "readingKana": "てんき",
+        "wordParts": [
+            {
+                "text": "天",
+                "furigana": "てん"
+            },
+            {
+                "text": "気",
+                "furigana": "き"
+            }
+        ],
+        "meaning": "thời tiết",
+        "enMeaning": "Weather",
+        "hanViet": "THIÊN KHÍ",
+        "exampleSentence": {
+            "sentence": "明日の天気はどうですか。",
+            "translation": "Thời tiết ngày mai thế nào?",
+            "enTranslation": "How is the weather tomorrow?"
+        }
+    },
+    {
+        "id": "u12-36",
+        "wordSurface": "雨",
+        "readingKana": "あめ",
+        "wordParts": [
+            {
+                "text": "雨",
+                "furigana": "あめ"
+            }
+        ],
+        "meaning": "mưa",
+        "enMeaning": "Rain",
+        "hanViet": "VŨ",
+        "exampleSentence": {
+            "sentence": "雨が降っています。",
+            "translation": "Mưa đang rơi.",
+            "enTranslation": "It is raining."
+        }
+    },
+    {
+        "id": "u12-37",
+        "wordSurface": "雪",
+        "readingKana": "ゆき",
+        "wordParts": [
+            {
+                "text": "雪",
+                "furigana": "ゆき"
+            }
+        ],
+        "meaning": "tuyết",
+        "enMeaning": "Snow",
+        "hanViet": "TUYẾT",
+        "exampleSentence": {
+            "sentence": "雪が降っています。",
+            "translation": "Tuyết đang rơi.",
+            "enTranslation": "It is snowing."
+        }
+    },
+    {
+        "id": "u12-38",
+        "wordSurface": "曇り",
+        "readingKana": "くもり",
+        "wordParts": [
+            {
+                "text": "曇",
+                "furigana": "くも"
+            },
+            {
+                "text": "り",
+                "furigana": "り"
+            }
+        ],
+        "meaning": "có mây",
+        "enMeaning": "Cloudy",
+        "hanViet": "ĐÀM",
+        "exampleSentence": {
+            "sentence": "今日は曇りです。",
+            "translation": "Hôm nay trời nhiều mây.",
+            "enTranslation": "It is cloudy today."
+        }
+    },
+    {
+        "id": "u12-39",
+        "wordSurface": "空港",
+        "readingKana": "くうこう",
+        "wordParts": [
+            {
+                "text": "空",
+                "furigana": "くう"
+            },
+            {
+                "text": "港",
+                "furigana": "こう"
+            }
+        ],
+        "meaning": "sân bay",
+        "enMeaning": "Airport",
+        "hanViet": "KHÔNG CẢNG",
+        "exampleSentence": {
+            "sentence": "空港へ行きます。",
+            "translation": "Tôi đi đến sân bay.",
+            "enTranslation": "I am going to the airport."
+        }
+    },
+    {
+        "id": "u12-40",
+        "wordSurface": "海",
+        "readingKana": "うみ",
+        "wordParts": [
+            {
+                "text": "海",
+                "furigana": "うみ"
+            }
+        ],
+        "meaning": "biển",
+        "enMeaning": "Sea / Ocean",
+        "hanViet": "HẢI",
+        "exampleSentence": {
+            "sentence": "夏休みに海へ行きました。",
+            "translation": "Nghỉ hè tôi đã đi biển.",
+            "enTranslation": "I went to the sea during summer vacation."
+        }
+    },
+    {
+        "id": "u12-41",
+        "wordSurface": "世界",
+        "readingKana": "せかい",
+        "wordParts": [
+            {
+                "text": "世",
+                "furigana": "せ"
+            },
+            {
+                "text": "界",
+                "furigana": "かい"
+            }
+        ],
+        "meaning": "thế giới",
+        "enMeaning": "World",
+        "hanViet": "THẾ GIỚI",
+        "exampleSentence": {
+            "sentence": "世界旅行をしたいです。",
+            "translation": "Tôi muốn đi du lịch thế giới.",
+            "enTranslation": "I want to travel the world."
+        }
+    },
+    {
+        "id": "u12-42",
+        "wordSurface": "祭り",
+        "readingKana": "まつり",
+        "wordParts": [
+            {
+                "text": "祭",
+                "furigana": "まつ"
+            },
+            {
+                "text": "り",
+                "furigana": "り"
+            }
+        ],
+        "meaning": "lễ hội",
+        "enMeaning": "Festival",
+        "hanViet": "TẾ",
+        "exampleSentence": {
+            "sentence": "京都の祭りを見に行きます。",
+            "translation": "Tôi đi xem lễ hội ở Kyoto.",
+            "enTranslation": "I am going to see the festival in Kyoto."
+        }
+    },
+    {
+        "id": "u12-43",
+        "wordSurface": "すき焼き",
+        "readingKana": "すきやき",
+        "wordParts": [
+            {
+                "text": "すき",
+                "furigana": "すき"
+            },
+            {
+                "text": "焼",
+                "furigana": "や"
+            },
+            {
+                "text": "き",
+                "furigana": "き"
+            }
+        ],
+        "meaning": "sukiyaki (thịt bò kiểu nhật)",
+        "enMeaning": "Sukiyaki",
+        "hanViet": "THIÊU",
+        "exampleSentence": {
+            "sentence": "今晩すき焼きを食べましょう。",
+            "translation": "Tối nay ăn sukiyaki nhé.",
+            "enTranslation": "Let's eat sukiyaki tonight."
+        }
+    },
+    {
+        "id": "u12-44",
+        "wordSurface": "刺身",
+        "readingKana": "さしみ",
+        "wordParts": [
+            {
+                "text": "刺",
+                "furigana": "さ"
+            },
+            {
+                "text": "身",
+                "furigana": "しみ"
+            }
+        ],
+        "meaning": "sashimi (cá sống)",
+        "enMeaning": "Sashimi",
+        "hanViet": "THÍCH THÂN",
+        "exampleSentence": {
+            "sentence": "刺身が好きですか。",
+            "translation": "Bạn có thích sashimi không?",
+            "enTranslation": "Do you like sashimi?"
+        }
+    },
+    {
+        "id": "u12-45",
+        "wordSurface": "豚肉",
+        "readingKana": "ぶたにく",
+        "wordParts": [
+            {
+                "text": "豚",
+                "furigana": "ぶた"
+            },
+            {
+                "text": "肉",
+                "furigana": "にく"
+            }
+        ],
+        "meaning": "thịt heo",
+        "enMeaning": "Pork",
+        "hanViet": "ĐỒN NHỤC",
+        "exampleSentence": {
+            "sentence": "豚肉を300グラムください。",
+            "translation": "Cho tôi 300g thịt heo.",
+            "enTranslation": "Please give me 300g of pork."
+        }
+    },
+    {
+        "id": "u12-46",
+        "wordSurface": "とり肉",
+        "readingKana": "とりにく",
+        "wordParts": [
+            {
+                "text": "とり",
+                "furigana": "とり"
+            },
+            {
+                "text": "肉",
+                "furigana": "にく"
+            }
+        ],
+        "meaning": "thịt gà",
+        "enMeaning": "Chicken meat",
+        "hanViet": "NHỤC",
+        "exampleSentence": {
+            "sentence": "とり肉の料理を作ります。",
+            "translation": "Tôi làm món thịt gà.",
+            "enTranslation": "I will make a chicken dish."
+        }
+    },
+    {
+        "id": "u12-47",
+        "wordSurface": "牛肉",
+        "readingKana": "ぎゅうにく",
+        "wordParts": [
+            {
+                "text": "牛",
+                "furigana": "ぎゅう"
+            },
+            {
+                "text": "肉",
+                "furigana": "にく"
+            }
+        ],
+        "meaning": "thịt bò",
+        "enMeaning": "Beef",
+        "hanViet": "NGƯU NHỤC",
+        "exampleSentence": {
+            "sentence": "この牛肉は安いです。",
+            "translation": "Thịt bò này rẻ.",
+            "enTranslation": "This beef is cheap."
+        }
+    },
+    {
+        "id": "u12-48",
+        "wordSurface": "生け花",
+        "readingKana": "いけばな",
+        "wordParts": [
+            {
+                "text": "生",
+                "furigana": "い"
+            },
+            {
+                "text": "け",
+                "furigana": "け"
+            },
+            {
+                "text": "花",
+                "furigana": "ばな"
+            }
+        ],
+        "meaning": "nghệ thuật cắm hoa",
+        "enMeaning": "Flower arrangement (Ikebana)",
+        "hanViet": "SINH HOA",
+        "exampleSentence": {
+            "sentence": "生け花を習っています。",
+            "translation": "Tôi đang học cắm hoa.",
+            "enTranslation": "I am learning flower arrangement."
+        }
+    },
+    {
+        "id": "u12-49",
+        "wordSurface": "紅葉",
+        "readingKana": "もみじ",
+        "wordParts": [
+            {
+                "text": "紅",
+                "furigana": "もみ"
+            },
+            {
+                "text": "葉",
+                "furigana": "じ"
+            }
+        ],
+        "meaning": "cây lá đỏ, lá đỏ",
+        "enMeaning": "Maple leaves / Autumn foliage",
+        "hanViet": "HỒNG DIỆP",
+        "exampleSentence": {
+            "sentence": "京都の紅葉はきれいです。",
+            "translation": "Lá đỏ ở Kyoto đẹp.",
+            "enTranslation": "The autumn leaves in Kyoto are beautiful."
+        }
+    },
+    {
+        "id": "u12-50",
+        "wordSurface": "初めて",
+        "readingKana": "はじめて",
+        "wordParts": [
+            {
+                "text": "初",
+                "furigana": "はじ"
+            },
+            {
+                "text": "め",
+                "furigana": "め"
+            },
+            {
+                "text": "て",
+                "furigana": "て"
+            }
+        ],
+        "meaning": "lần đầu tiên",
+        "enMeaning": "For the first time",
+        "hanViet": "SƠ",
+        "exampleSentence": {
+            "sentence": "初めて日本へ行きます。",
+            "translation": "Lần đầu tiên tôi đi Nhật.",
+            "enTranslation": "I am going to Japan for the first time."
+        }
+    },
+    {
+        "id": "u12-51",
+        "wordSurface": "お帰りなさい",
+        "readingKana": "おかえりなさい",
+        "wordParts": [
+            {
+                "text": "お",
+                "furigana": "お"
+            },
+            {
+                "text": "帰",
+                "furigana": "かえ"
+            },
+            {
+                "text": "りなさい",
+                "furigana": "りなさい"
+            }
+        ],
+        "meaning": "anh/chị đã về đấy à",
+        "enMeaning": "Welcome back",
+        "hanViet": "QUY",
+        "exampleSentence": {
+            "sentence": "お帰りなさい。…ただいま。",
+            "translation": "Mừng anh đã về. ... Tôi đã về.",
+            "enTranslation": "Welcome back. ... I'm home."
+        }
+    },
+    {
+        "id": "u12-52",
+        "wordSurface": "疲れました",
+        "readingKana": "つかれました",
+        "wordParts": [
+            {
+                "text": "疲",
+                "furigana": "つか"
+            },
+            {
+                "text": "れました",
+                "furigana": "れました"
+            }
+        ],
+        "meaning": "tôi mệt rồi",
+        "enMeaning": "I'm tired",
+        "hanViet": "BÍ",
+        "exampleSentence": {
+            "sentence": "今日はたくさん働いて、疲れました。",
+            "translation": "Hôm nay làm việc nhiều nên tôi mệt rồi.",
+            "enTranslation": "I worked a lot today and I'm tired."
+        }
+    },
+    {
+        "id": "u12-53",
+        "wordSurface": "プール",
+        "readingKana": "プール",
+        "wordParts": [
+            {
+                "text": "プール",
+                "furigana": "プール"
+            }
+        ],
+        "meaning": "bể bơi",
+        "enMeaning": "Swimming pool",
+        "hanViet": "",
+        "exampleSentence": {
+            "sentence": "夏休みはプールへ行きます。",
+            "translation": "Nghỉ hè tôi đi bể bơi.",
+            "enTranslation": "I go to the poo during summer vacation."
+        }
+    },
+    {
+        "id": "u12-54",
+        "wordSurface": "スキー",
+        "readingKana": "スキー",
+        "wordParts": [
+            {
+                "text": "スキー",
+                "furigana": "スキー"
+            }
+        ],
+        "meaning": "trượt tuyết",
+        "enMeaning": "Skiing",
+        "hanViet": "",
+        "exampleSentence": {
+            "sentence": "北海道でスキーをしました。",
+            "translation": "Tôi đã trượt tuyết ở Hokkaido.",
+            "enTranslation": "I went skiing in Hokkaido."
+        }
+    },
+    {
+        "id": "u12-55",
+        "wordSurface": "～ごろ",
+        "readingKana": "～ごろ",
+        "wordParts": [
+            {
+                "text": "～ごろ",
+                "furigana": "～ごろ"
+            }
+        ],
+        "meaning": "khoảng ~ (thời gian)",
+        "enMeaning": "Around ~ (time)",
+        "hanViet": "",
+        "exampleSentence": {
+            "sentence": "７時ごろ起きます。",
+            "translation": "Tôi dậy khoảng 7 giờ.",
+            "enTranslation": "I get up around 7 o'clock."
+        }
+    },
+    {
+        "id": "u12-56",
+        "wordSurface": "どこか",
+        "readingKana": "どこか",
+        "wordParts": [
+            {
+                "text": "どこか",
+                "furigana": "どこか"
+            }
+        ],
+        "meaning": "đâu đó, chỗ nào đó",
+        "enMeaning": "Somewhere",
+        "hanViet": "",
+        "exampleSentence": {
+            "sentence": "夏休みはどこかへ行きますか。",
+            "translation": "Nghỉ hè bạn có đi đâu không?",
+            "enTranslation": "Are you going anywhere for summer vacation?"
+        }
+    },
+    {
+        "id": "u12-57",
+        "wordSurface": "のどがかわきます",
+        "readingKana": "のどがかわきます",
+        "wordParts": [
+            {
+                "text": "のどが",
+                "furigana": "のどが"
+            },
+            {
+                "text": "かわきます",
+                "furigana": "かわきます"
+            }
+        ],
+        "meaning": "khát",
+        "enMeaning": "Get thirsty",
+        "hanViet": "",
+        "exampleSentence": {
+            "sentence": "暑いですから、のどがかわきます。",
+            "translation": "Vì trời nóng nên khát nước.",
+            "enTranslation": "It's hot, so I get thirsty."
+        }
+    },
+    {
+        "id": "u12-58",
+        "wordSurface": "のどがかわきました",
+        "readingKana": "のどがかわきました",
+        "wordParts": [
+            {
+                "text": "のどが",
+                "furigana": "のどが"
+            },
+            {
+                "text": "かわきました",
+                "furigana": "かわきました"
+            }
+        ],
+        "meaning": "đã khát (khát rồi)",
+        "enMeaning": "I am thirsty (state)",
+        "hanViet": "",
+        "exampleSentence": {
+            "sentence": "のどがかわきましたから、なにか飲みたいです。",
+            "translation": "Vì khát nước rồi nên tôi muốn uống cái gì đó.",
+            "enTranslation": "I'm thirsty, so I want to drink something."
+        }
+    },
+    {
+        "id": "u12-59",
+        "wordSurface": "おなかがすきます",
+        "readingKana": "おなかがすきます",
+        "wordParts": [
+            {
+                "text": "おなかが",
+                "furigana": "おなかが"
+            },
+            {
+                "text": "すきます",
+                "furigana": "すきます"
+            }
+        ],
+        "meaning": "đói",
+        "enMeaning": "Get hungry",
+        "hanViet": "",
+        "exampleSentence": {
+            "sentence": "たくさん運動しましたから、おなかがすきます。",
+            "translation": "Vì vận động nhiều nên sẽ đói.",
+            "enTranslation": "If you exercise a lot, you will get hungry."
+        }
+    },
+    {
+        "id": "u12-60",
+        "wordSurface": "おなかがすきました",
+        "readingKana": "おなかがすきました",
+        "wordParts": [
+            {
+                "text": "おなかが",
+                "furigana": "おなかが"
+            },
+            {
+                "text": "すきました",
+                "furigana": "すきました"
+            }
+        ],
+        "meaning": "đã đói (đói rồi)",
+        "enMeaning": "I am hungry (state)",
+        "hanViet": "",
+        "exampleSentence": {
+            "sentence": "おなかがすきましたね。食事に行きましょう。",
+            "translation": "Đói bụng rồi nhỉ. Đi ăn thôi.",
+            "enTranslation": "We are hungry, aren't we? Let's go eat."
+        }
+    },
+    {
+        "id": "u12-61",
+        "wordSurface": "そうしましょう",
+        "readingKana": "そうしましょう",
+        "wordParts": [
+            {
+                "text": "そう",
+                "furigana": "そう"
+            },
+            {
+                "text": "しましょう",
+                "furigana": "しましょう"
+            }
+        ],
+        "meaning": "nhất trí (làm như thế đi)",
+        "enMeaning": "Let's do that",
+        "hanViet": "",
+        "exampleSentence": {
+            "sentence": "お茶を飲みませんか。…ええ、そうしましょう。",
+            "translation": "Uống trà không? ... Ừ, làm thế đi (uống đi).",
+            "enTranslation": "Would you like some tea? ... Yes, let's do that."
+        }
+    },
+    {
+        "id": "u12-62",
+        "wordSurface": "遊びます",
+        "readingKana": "あそびます",
+        "wordParts": [
+            {
+                "text": "遊",
+                "furigana": "あそ"
+            },
+            {
+                "text": "びます",
+                "furigana": "びます"
+            }
+        ],
+        "meaning": "chơi",
+        "enMeaning": "Play",
+        "hanViet": "DU",
+        "exampleSentence": {
+            "sentence": "公園で遊びます。",
+            "translation": "Chơi ở công viên.",
+            "enTranslation": "Play in the park."
+        }
+    },
+    {
+        "id": "u12-63",
+        "wordSurface": "泳ぎます",
+        "readingKana": "およぎます",
+        "wordParts": [
+            {
+                "text": "泳",
+                "furigana": "およ"
+            },
+            {
+                "text": "ぎます",
+                "furigana": "ぎます"
+            }
+        ],
+        "meaning": "bơi",
+        "enMeaning": "Swim",
+        "hanViet": "VỊNH",
+        "exampleSentence": {
+            "sentence": "プールで泳ぎます。",
+            "translation": "Bơi ở bể bơi.",
+            "enTranslation": "Swim in the pool."
+        }
+    },
+    {
+        "id": "u12-64",
+        "wordSurface": "迎えます",
+        "readingKana": "むかえます",
+        "wordParts": [
+            {
+                "text": "迎",
+                "furigana": "むか"
+            },
+            {
+                "text": "えます",
+                "furigana": "えます"
+            }
+        ],
+        "meaning": "đón",
+        "enMeaning": "Welcome / Pick up (someone)",
+        "hanViet": "NGÊNH",
+        "exampleSentence": {
+            "sentence": "空港へ友達を迎えに行きます。",
+            "translation": "Tôi đi ra sân bay để đón bạn.",
+            "enTranslation": "I go to the airport to pick up my friend."
+        }
+    },
+    {
+        "id": "u12-65",
+        "wordSurface": "疲れます",
+        "readingKana": "つかれます",
+        "wordParts": [
+            {
+                "text": "疲",
+                "furigana": "つか"
+            },
+            {
+                "text": "れます",
+                "furigana": "れます"
+            }
+        ],
+        "meaning": "mệt",
+        "enMeaning": "Get tired",
+        "hanViet": "BÍ",
+        "exampleSentence": {
+            "sentence": "残業で疲れます。",
+            "translation": "Làm thêm giờ nên mệt.",
+            "enTranslation": "I get tired from overtime work."
+        }
+    },
+    {
+        "id": "u12-66",
+        "wordSurface": "結婚します",
+        "readingKana": "けっこんします",
+        "wordParts": [
+            {
+                "text": "結婚",
+                "furigana": "けっこん"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "meaning": "kết hôn",
+        "enMeaning": "Get married",
+        "hanViet": "KẾT HÔN",
+        "exampleSentence": {
+            "sentence": "来年結婚します。",
+            "translation": "Năm sau tôi kết hôn.",
+            "enTranslation": "I will get married next year."
+        }
+    },
+    {
+        "id": "u12-67",
+        "wordSurface": "買い物します",
+        "readingKana": "かいものします",
+        "wordParts": [
+            {
+                "text": "買",
+                "furigana": "か"
+            },
+            {
+                "text": "い",
+                "furigana": "い"
+            },
+            {
+                "text": "物",
+                "furigana": "もの"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "meaning": "mua sắm",
+        "enMeaning": "Do shopping",
+        "hanViet": "MÃI VẬT",
+        "exampleSentence": {
+            "sentence": "デパートで買い物します。",
+            "translation": "Mua sắm ở bách hóa.",
+            "enTranslation": "Shop at the department store."
+        }
+    },
+    {
+        "id": "u12-68",
+        "wordSurface": "食事します",
+        "readingKana": "しょくじします",
+        "wordParts": [
+            {
+                "text": "食事",
+                "furigana": "しょくじ"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "meaning": "ăn cơm, dùng bữa",
+        "enMeaning": "Have a meal",
+        "hanViet": "THỰC SỰ",
+        "exampleSentence": {
+            "sentence": "レストランで食事します。",
+            "translation": "Dùng bữa ở nhà hàng.",
+            "enTranslation": "Have a meal at a restaurant."
+        }
+    },
+    {
+        "id": "u12-69",
+        "wordSurface": "散歩します",
+        "readingKana": "さんぽします",
+        "wordParts": [
+            {
+                "text": "散歩",
+                "furigana": "さんぽ"
+            },
+            {
+                "text": "します",
+                "furigana": "します"
+            }
+        ],
+        "meaning": "đi dạo",
+        "enMeaning": "Take a walk",
+        "hanViet": "TẢN BỘ",
+        "exampleSentence": {
+            "sentence": "公園を散歩します。",
+            "translation": "Đi dạo ở công viên.",
+            "enTranslation": "Take a walk in the park."
+        }
+    },
+    {
+        "id": "u12-70",
+        "wordSurface": "大変",
+        "readingKana": "たいへん",
+        "wordParts": [
+            {
+                "text": "大",
+                "furigana": "たい"
+            },
+            {
+                "text": "変",
+                "furigana": "へん"
+            }
+        ],
+        "meaning": "vất vả, khó khăn",
+        "enMeaning": "Tough, Hard",
+        "hanViet": "ĐẠI BIẾN",
+        "exampleSentence": {
+            "sentence": "子育ては大変です。",
+            "translation": "Việc nuôi con thì vất vả.",
+            "enTranslation": "Raising children is tough."
+        }
+    }
+]

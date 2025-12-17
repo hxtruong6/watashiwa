@@ -5,7 +5,8 @@ import { prisma } from '../src/lib/db';
 
 import fs from 'fs';
 import path from 'path';
-import { v7 } from 'uuid';
+import { v7, v5 as uuidv5 } from 'uuid';
+const UUID_NAMESPACE = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
 
 // Interface matching the JSON file structure
 interface RawVocab {
@@ -14,6 +15,7 @@ interface RawVocab {
 	readingKana: string; // -> readingKana
 	hanViet: string; // -> hanViet
 	meaning: string; // -> meaning
+	enMeaning?: string; // -> enMeaning
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	kanjiBreakdown: any[]; // -> kanjiBreakdown (Json)
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -21,8 +23,9 @@ interface RawVocab {
 	exampleSentence: {
 		sentence: string;
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		parts: any[];
+		parts?: any[];
 		translation: string;
+		enTranslation?: string;
 	}; // -> exampleSentence (Json)
 	audio?: string; // Sometimes JSON might have this? Or maybe missing. Check mapping.
 }
@@ -54,23 +57,47 @@ async function main() {
 		process.exit(1);
 	}
 
-	const deckTitle = `Minna no Nihongo - ${path.basename(unitFile, '.json')}`;
+	const unitNumberMatch = unitFile.match(/unit(\d+)\.json$/);
+	const unitNumber = unitNumberMatch ? unitNumberMatch[1] : '??';
+
+	const deckTitleEn = `Minna no Nihongo Unit ${unitNumber}`;
+	const deckTitleVn = `Minna no Nihongo Bài ${unitNumber}`;
+	const deckDescriptionEn = `Vocabulary for Unit ${unitNumber}`;
+	const deckDescriptionVn = `Từ vựng bài ${unitNumber}`;
+
+	// Find existing deck by EN or VN title
 	let deck = await prisma.deck.findFirst({
-		where: { title: deckTitle, authorId: user.id },
+		where: {
+			OR: [{ title: deckTitleVn }, { titleEn: deckTitleEn }],
+			authorId: user.id,
+		},
 	});
 
 	if (!deck) {
-		console.log(`Creating new deck: ${deckTitle}`);
+		console.log(`Creating new deck: ${deckTitleEn} / ${deckTitleVn}`);
 		deck = await prisma.deck.create({
 			data: {
-				title: deckTitle,
-				description: 'Minna no Nihongo Unit 15',
+				title: deckTitleVn,
+				titleEn: deckTitleEn,
+				description: deckDescriptionVn,
+				descriptionEn: deckDescriptionEn,
 				authorId: user.id,
 				isPublic: true,
 			},
 		});
 	} else {
-		console.log(`Using existing deck: ${deckTitle}`);
+		console.log(`Using existing deck: ${deck.titleEn || deck.title}`);
+		// Update missing EN fields if needed
+		if (!deck.titleEn || !deck.descriptionEn) {
+			console.log('Updating missing localized fields...');
+			deck = await prisma.deck.update({
+				where: { id: deck.id },
+				data: {
+					titleEn: deck.titleEn || deckTitleEn,
+					descriptionEn: deck.descriptionEn || deckDescriptionEn,
+				},
+			});
+		}
 	}
 
 	for (const item of vocabList) {
@@ -87,25 +114,29 @@ async function main() {
 		// If the JSON *doesn't* have audio path, we might need to assume a pattern or leave it null.
 		// The simplified JSON example only had `wordSurface`, `readingKana`, etc.
 
+		const deterministicId = item.id ? uuidv5(item.id, UUID_NAMESPACE) : v7();
+
 		await prisma.vocab.upsert({
-			where: { id: v7() }, // If ID is in JSON, use it.
+			where: { id: deterministicId },
 			update: {
 				wordSurface: item.wordSurface,
 				readingKana: item.readingKana,
 				hanViet: item.hanViet,
 				meaning: item.meaning,
+				enMeaning: item.enMeaning,
 				kanjiBreakdown: item.kanjiBreakdown, // Pass array directly
 				wordParts: item.wordParts, // Pass array directly
 				exampleSentence: item.exampleSentence, // Pass object directly
 				deckId: deck.id,
 			},
 			create: {
-				id: v7(), // Optional: use ID from JSON if valid UUID
+				id: deterministicId,
 				wordSurface: item.wordSurface,
 				readingKana: item.readingKana,
 				hanViet: item.hanViet,
 				meaning: item.meaning,
-				kanjiBreakdown: item.kanjiBreakdown,
+				enMeaning: item.enMeaning,
+				kanjiBreakdown: item.kanjiBreakdown || [],
 				wordParts: item.wordParts,
 				exampleSentence: item.exampleSentence,
 				deckId: deck.id,
