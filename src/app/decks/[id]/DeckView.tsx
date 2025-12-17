@@ -6,7 +6,6 @@ import {
 	Typography,
 	Button,
 	Card,
-	List,
 	Tag,
 	Flex,
 	Divider,
@@ -25,7 +24,6 @@ import {
 import {
 	ReadOutlined,
 	TeamOutlined,
-	GlobalOutlined,
 	HomeOutlined,
 	AppstoreOutlined,
 	BarsOutlined,
@@ -234,11 +232,9 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 
 		// Grid View
 		return (
-			<List
-				grid={{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 3, xl: 4, xxl: 4 }}
-				dataSource={data}
-				renderItem={(item: any) => (
-					<List.Item>
+			<Row gutter={[16, 16]}>
+				{data.map((item: any) => (
+					<Col xs={24} sm={12} md={8} lg={8} xl={6} xxl={6} key={item.id}>
 						<Card
 							hoverable
 							style={{ height: '100%', borderRadius: 12, borderColor: token.colorBorderSecondary }}
@@ -277,9 +273,9 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 								</div>
 							</Flex>
 						</Card>
-					</List.Item>
-				)}
-			/>
+					</Col>
+				))}
+			</Row>
 		);
 	};
 
@@ -471,7 +467,7 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 										'0%': '#108ee9',
 										'100%': '#87d068',
 									}}
-									strokeWidth={12}
+									size={12}
 								/>
 							</Flex>
 						</Col>
@@ -480,19 +476,19 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 								<Statistic
 									title={t('statUnseen')}
 									value={stats.unseen}
-									valueStyle={{ color: token.colorWarning, fontSize: 20 }}
+									styles={{ content: { color: token.colorWarning, fontSize: 20 } }}
 									prefix={<SyncOutlined spin={false} />}
 								/>
 								<Statistic
 									title={t('statActive')}
 									value={stats.learning + stats.review} // Learning + Review
-									valueStyle={{ color: token.colorPrimary, fontSize: 20 }}
+									styles={{ content: { color: token.colorPrimary, fontSize: 20 } }}
 									prefix={<ReadOutlined />}
 								/>
 								<Statistic
 									title={t('statMastered')}
 									value={0} // Placeholder until strict 'Mastered' metric (e.g. maturity > 21 days)
-									valueStyle={{ color: token.colorSuccess, fontSize: 20 }}
+									styles={{ content: { color: token.colorSuccess, fontSize: 20 } }}
 									prefix={<CheckCircleOutlined />}
 								/>
 							</Flex>
@@ -535,7 +531,7 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 				open={previewOpen}
 				onCancel={() => setPreviewOpen(false)}
 				footer={null}
-				destroyOnClose
+				destroyOnHidden
 				width={600}
 				centered
 				style={{ maxWidth: '100vw' }}

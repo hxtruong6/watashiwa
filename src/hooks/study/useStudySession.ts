@@ -26,7 +26,7 @@ export function useStudySession({ courseId, deckId, mode, userSettings }: UseStu
 	// State
 	const [card, setCard] = useState<StudyCardWithDetails | null>(null);
 	const [queue, setQueue] = useState<StudyCardWithDetails[]>([]);
-	const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(false);
 	const [sessionComplete, setSessionComplete] = useState(false);
 	const [targetDeckIds, setTargetDeckIds] = useState<string | string[] | undefined>(
 		deckId || undefined,
@@ -85,6 +85,7 @@ export function useStudySession({ courseId, deckId, mode, userSettings }: UseStu
 						// eslint-disable-next-line @typescript-eslint/no-explicit-any
 						const ids = course.decks.map((cd: any) => cd.deckId);
 						setTargetDeckIds(ids);
+						setLoading(false); // Fix: Ensure loading is cleared so fetchNextCard can run
 					} else {
 						const msg = t('errorCourseNotFound');
 						message.error(msg);

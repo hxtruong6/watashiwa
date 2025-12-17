@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Button, Typography, Layout, theme, Flex, List, Tag } from 'antd';
+import { Button, Typography, Layout, theme, Flex, Tag } from 'antd';
 import { useTranslations } from 'next-intl';
 import { StudyCardWithDetails } from '@/services/actions';
 import { SoundOutlined, PlayCircleOutlined } from '@ant-design/icons';
@@ -97,9 +97,8 @@ export default function SessionBriefing({ queue, stats, onStart }: SessionBriefi
 									{t('briefing.sectionNew')}
 								</Text>
 							</Flex>
-							<List
-								dataSource={newCards}
-								renderItem={(card) => {
+							<Flex vertical gap="small">
+								{newCards.map((card) => {
 									const isVocab = !!card.vocab;
 									const mainText = isVocab ? card.vocab?.wordSurface : card.kanji?.kanji || '???';
 									const meaning = isVocab ? card.vocab?.meaning : card.kanji?.meaning || '';
@@ -112,8 +111,8 @@ export default function SessionBriefing({ queue, stats, onStart }: SessionBriefi
 											isNew
 										/>
 									);
-								}}
-							/>
+								})}
+							</Flex>
 						</div>
 					)}
 
@@ -128,17 +127,16 @@ export default function SessionBriefing({ queue, stats, onStart }: SessionBriefi
 									{t('briefing.sectionReview')}
 								</Text>
 							</Flex>
-							<List
-								dataSource={criticalReviewCards}
-								renderItem={(item) => {
+							<Flex vertical gap="small">
+								{criticalReviewCards.map((item) => {
 									const mainText = item.vocab?.wordSurface || item.kanji?.kanji || '???';
 									const meaning = item.vocab?.meaning || item.kanji?.meaning || '';
 
 									return (
 										<BriefingItem key={item.id} card={item} mainText={mainText} meaning={meaning} />
 									);
-								}}
-							/>
+								})}
+							</Flex>
 						</div>
 					)}
 				</div>
@@ -199,10 +197,9 @@ function BriefingItem({
 	});
 
 	return (
-		<List.Item
+		<div
 			style={{
 				padding: '12px 16px',
-				border: 'none',
 				marginBottom: 8,
 				background: token.colorFillQuaternary,
 				borderRadius: 12,
@@ -260,6 +257,6 @@ function BriefingItem({
 					</Tag>
 				)}
 			</Flex>
-		</List.Item>
+		</div>
 	);
 }

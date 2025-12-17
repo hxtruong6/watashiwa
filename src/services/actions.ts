@@ -800,6 +800,44 @@ export const getUserStats = cache(async (userId?: string) => {
 });
 
 /**
+ * Get the last study session information for the current user.
+ * Used to resume study from where they left off.
+ */
+export async function getLastStudySession() {
+	try {
+		const user = await getUser();
+		if (!user) return null;
+
+		// Find the most recent review log
+		const lastReview = await prisma.reviewLog.findFirst({
+			where: { userId: user.id },
+			orderBy: { review: 'desc' },
+			include: {
+				card: {
+					include: {
+						vocab: { select: { deckId: true } },
+						kanji: { select: { deckId: true } },
+					},
+				},
+			},
+		});
+
+		if (lastReview && lastReview.card) {
+			// Resolve deckId (prefer vocab, then kanji)
+			const deckId = lastReview.card.vocab?.deckId || lastReview.card.kanji?.deckId;
+			if (deckId) {
+				return { deckId };
+			}
+		}
+
+		return null;
+	} catch (error) {
+		console.error('Error getting last study session:', error);
+		return null;
+	}
+}
+
+/**
  * Recalculate and update the user's current streak
  * Logic: Consecutive days ending Today OR Yesterday.
  */
