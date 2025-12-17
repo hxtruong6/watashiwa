@@ -1,0 +1,2 @@
+export const DEFAULT_LIMIT_NEW_CARDS = 10;
+export const DEFAULT_LIMIT_REVIEWS = 100;

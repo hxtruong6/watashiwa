@@ -19,12 +19,11 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 	// Map ratings to Theme Tokens
 	// Design System:
 	// Again (1): Bordered Red
-	// Hard (2): Bordered Orange
 	// Good (3): Filled Green (Dominant)
 	// Easy (4): Bordered Indigo
+	// Note: We skip 2 (Hard) to simplify decision making ("Zen Mode")
 	const colors = {
 		1: { primary: token.colorError, bg: '#FFF1F0' },
-		2: { primary: token.colorWarning, bg: '#FFF7E6' },
 		3: { primary: token.colorSuccess, bg: '#F6FFED' },
 		4: { primary: token.colorPrimary, bg: '#F0F5FF' },
 	};
@@ -32,15 +31,6 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 	const getButtonStyle = (rating: number, colorTheme: { primary: string; bg: string }) => {
 		const isSelected = selectedRating === rating;
 		const isGood = rating === 3; // The "Golden Path" action
-
-		// If Good (3): Solid style by default.
-		// Others: Outlined style by default.
-		// On Selection: All become "Solid" or maintain dominance?
-		// Let's make selection just add a ring or scale, keeping base style logic but ensuring visibility.
-
-		// Actually, standard practice:
-		// Selected = Filled/Active state.
-		// Unselected = Default state (Bordered or Filled based on priority).
 
 		const isActive = isSelected;
 
@@ -71,8 +61,8 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 		}
 
 		return {
-			height: screens.xs ? 44 : 56,
-			fontSize: screens.xs ? 14 : 16,
+			height: screens.xs ? 48 : 56, // Increased mobile height slightly for better hit area
+			fontSize: screens.xs ? 15 : 16,
 			fontWeight: 600,
 			transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 			transform: isActive ? 'scale(1.02)' : 'scale(1)',
@@ -110,9 +100,9 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 			<div
 				style={{
 					display: 'grid',
-					// Always Horizontal (4 col) to maximize content visibility on mobile
-					gridTemplateColumns: 'repeat(4, 1fr)',
-					gap: 8, // Tighter gap on mobile if needed, but 8-12 is fine. Let's use 8 for safety with 4 cols.
+					// 3 columns for Zen simplicity
+					gridTemplateColumns: 'repeat(3, 1fr)',
+					gap: 12, // Increased gap slightly since we have more space
 				}}
 			>
 				<Button
@@ -125,15 +115,7 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 					{t('rateAgain')}
 				</Button>
 
-				<Button
-					size="large"
-					loading={selectedRating === 2}
-					onClick={() => onRate(2)}
-					disabled={disabled && selectedRating !== 2}
-					style={getButtonStyle(2, colors[2])}
-				>
-					{t('rateHard')}
-				</Button>
+				{/* Rating 2 (Hard) is intentionally omitted for simplicity */}
 
 				<Button
 					size="large"

@@ -6,21 +6,45 @@
         "hanViet": "ĐĂNG",
         "meaning": "leo (núi)",
         "enMeaning": "climb",
+        "kanjiBreakdown": [
+            {
+                "kanji": "登",
+                "hanViet": "ĐĂNG",
+                "meaning": "leo trèo, đăng ký"
+            }
+        ],
         "wordParts": [
             {
                 "text": "登",
-                "furigana": "のぼ"
+                "furigana": "のぼ",
+                "romaji": "nobo"
             },
             {
                 "text": "ります",
-                "furigana": "ります"
+                "furigana": "ります",
+                "romaji": "rimasu"
             }
         ],
         "exampleSentence": {
             "sentence": "山に登ります。",
             "translation": "Leo núi.",
             "enTranslation": "Climb a mountain.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "山",
+                    "furigana": "やま"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "登",
+                    "furigana": "のぼ"
+                },
+                {
+                    "text": "ります。"
+                }
+            ]
         }
     },
     {
@@ -30,21 +54,44 @@
         "hanViet": "BẠC",
         "meaning": "trọ (khách sạn)",
         "enMeaning": "stay (at a hotel)",
+        "kanjiBreakdown": [
+            {
+                "kanji": "泊",
+                "hanViet": "BẠC",
+                "meaning": "đỗ lại, qua đêm"
+            }
+        ],
         "wordParts": [
             {
                 "text": "泊",
-                "furigana": "と"
+                "furigana": "と",
+                "romaji": "to"
             },
             {
                 "text": "まります",
-                "furigana": "まります"
+                "furigana": "まります",
+                "romaji": "marimasu"
             }
         ],
         "exampleSentence": {
             "sentence": "ホテルに泊まります。",
             "translation": "Trọ ở khách sạn.",
             "enTranslation": "Stay at a hotel.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "ホテル"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "泊",
+                    "furigana": "と"
+                },
+                {
+                    "text": "まります。"
+                }
+            ]
         }
     },
     {
@@ -54,25 +101,55 @@
         "hanViet": "TẢO TRỪ",
         "meaning": "lau chùi, dọn dẹp",
         "enMeaning": "clean",
+        "kanjiBreakdown": [
+            {
+                "kanji": "掃",
+                "hanViet": "TẢO",
+                "meaning": "quét dọn"
+            },
+            {
+                "kanji": "除",
+                "hanViet": "TRỪ",
+                "meaning": "loại bỏ, trừ đi"
+            }
+        ],
         "wordParts": [
             {
                 "text": "掃",
-                "furigana": "そう"
+                "furigana": "そう",
+                "romaji": "sou"
             },
             {
                 "text": "除",
-                "furigana": "じ"
+                "furigana": "じ",
+                "romaji": "ji"
             },
             {
                 "text": "します",
-                "furigana": "します"
+                "furigana": "します",
+                "romaji": "shimasu"
             }
         ],
         "exampleSentence": {
             "sentence": "部屋を掃除します。",
             "translation": "Dọn dẹp phòng.",
             "enTranslation": "Clean the room.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "部屋",
+                    "furigana": "へや"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "掃除",
+                    "furigana": "そうじ"
+                },
+                {
+                    "text": "します。"
+                }
+            ]
         }
     },
     {
@@ -82,25 +159,55 @@
         "hanViet": "TẨY TRẠC",
         "meaning": "giặt (áo quần)",
         "enMeaning": "wash clothes",
+        "kanjiBreakdown": [
+            {
+                "kanji": "洗",
+                "hanViet": "TẨY",
+                "meaning": "rửa, làm sạch"
+            },
+            {
+                "kanji": "濯",
+                "hanViet": "TRẠC",
+                "meaning": "giặt giũ"
+            }
+        ],
         "wordParts": [
             {
                 "text": "洗",
-                "furigana": "せん"
+                "furigana": "せん",
+                "romaji": "sen"
             },
             {
                 "text": "濯",
-                "furigana": "たく"
+                "furigana": "たく",
+                "romaji": "taku"
             },
             {
                 "text": "します",
-                "furigana": "します"
+                "furigana": "します",
+                "romaji": "shimasu"
             }
         ],
         "exampleSentence": {
             "sentence": "服を洗濯します。",
             "translation": "Giặt quần áo.",
             "enTranslation": "Wash clothes.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "服",
+                    "furigana": "ふく"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "洗濯",
+                    "furigana": "せんたく"
+                },
+                {
+                    "text": "します。"
+                }
+            ]
         }
     },
     {
@@ -110,21 +217,38 @@
         "hanViet": "MIÊN",
         "meaning": "buồn ngủ",
         "enMeaning": "sleepy",
+        "kanjiBreakdown": [
+            {
+                "kanji": "眠",
+                "hanViet": "MIÊN",
+                "meaning": "ngủ, giấc ngủ"
+            }
+        ],
         "wordParts": [
             {
                 "text": "眠",
-                "furigana": "ねむ"
+                "furigana": "ねむ",
+                "romaji": "nemu"
             },
             {
                 "text": "い",
-                "furigana": "い"
+                "furigana": "い",
+                "romaji": "i"
             }
         ],
         "exampleSentence": {
             "sentence": "眠いです。",
             "translation": "Tôi buồn ngủ.",
             "enTranslation": "I am sleepy.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "眠",
+                    "furigana": "ねむ"
+                },
+                {
+                    "text": "いです。"
+                }
+            ]
         }
     },
     {
@@ -134,21 +258,45 @@
         "hanViet": "CƯỜNG",
         "meaning": "mạnh",
         "enMeaning": "strong",
+        "kanjiBreakdown": [
+            {
+                "kanji": "強",
+                "hanViet": "CƯỜNG",
+                "meaning": "mạnh mẽ, cường tráng"
+            }
+        ],
         "wordParts": [
             {
                 "text": "強",
-                "furigana": "つよ"
+                "furigana": "つよ",
+                "romaji": "tsuyo"
             },
             {
                 "text": "い",
-                "furigana": "い"
+                "furigana": "い",
+                "romaji": "i"
             }
         ],
         "exampleSentence": {
             "sentence": "風が強いです。",
             "translation": "Gió mạnh.",
             "enTranslation": "The wind is strong.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "風",
+                    "furigana": "かぜ"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "強",
+                    "furigana": "つよ"
+                },
+                {
+                    "text": "いです。"
+                }
+            ]
         }
     },
     {
@@ -158,21 +306,45 @@
         "hanViet": "NHƯỢC",
         "meaning": "yếu",
         "enMeaning": "weak",
+        "kanjiBreakdown": [
+            {
+                "kanji": "弱",
+                "hanViet": "NHƯỢC",
+                "meaning": "yếu đuối, nhu nhược"
+            }
+        ],
         "wordParts": [
             {
                 "text": "弱",
-                "furigana": "よわ"
+                "furigana": "よわ",
+                "romaji": "yowa"
             },
             {
                 "text": "い",
-                "furigana": "い"
+                "furigana": "い",
+                "romaji": "i"
             }
         ],
         "exampleSentence": {
             "sentence": "体が弱いです。",
             "translation": "Cơ thể yếu.",
             "enTranslation": "Body is weak.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "体",
+                    "furigana": "からだ"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "弱",
+                    "furigana": "よわ"
+                },
+                {
+                    "text": "いです。"
+                }
+            ]
         }
     },
     {
@@ -182,21 +354,43 @@
         "hanViet": "LUYỆN TẬP",
         "meaning": "luyện tập, rèn luyện",
         "enMeaning": "practice",
+        "kanjiBreakdown": [
+            {
+                "kanji": "練",
+                "hanViet": "LUYỆN",
+                "meaning": "luyện tập, rèn luyện"
+            },
+            {
+                "kanji": "習",
+                "hanViet": "TẬP",
+                "meaning": "học tập, tập luyện"
+            }
+        ],
         "wordParts": [
             {
                 "text": "練",
-                "furigana": "れん"
+                "furigana": "れん",
+                "romaji": "ren"
             },
             {
                 "text": "習",
-                "furigana": "しゅう"
+                "furigana": "しゅう",
+                "romaji": "shuu"
             }
         ],
         "exampleSentence": {
             "sentence": "練習します。",
             "translation": "Luyện tập.",
             "enTranslation": "Practice.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "練習",
+                    "furigana": "れんしゅう"
+                },
+                {
+                    "text": "します。"
+                }
+            ]
         }
     },
     {
@@ -206,21 +400,50 @@
         "hanViet": "TƯƠNG PHỐC",
         "meaning": "sumo",
         "enMeaning": "sumo wrestling",
+        "kanjiBreakdown": [
+            {
+                "kanji": "相",
+                "hanViet": "TƯƠNG",
+                "meaning": "tương hỗ, dáng vẻ"
+            },
+            {
+                "kanji": "撲",
+                "hanViet": "PHỐC",
+                "meaning": "đánh nhau"
+            }
+        ],
         "wordParts": [
             {
                 "text": "相",
-                "furigana": "す"
+                "furigana": "す",
+                "romaji": "su"
             },
             {
                 "text": "撲",
-                "furigana": "もう"
+                "furigana": "もう",
+                "romaji": "mou"
             }
         ],
         "exampleSentence": {
             "sentence": "相撲を見ます。",
             "translation": "Xem sumo.",
             "enTranslation": "Watch sumo.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "相撲",
+                    "furigana": "すもう"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "見",
+                    "furigana": "み"
+                },
+                {
+                    "text": "ます。"
+                }
+            ]
         }
     },
     {
@@ -230,21 +453,48 @@
         "hanViet": "TRÀ",
         "meaning": "trà",
         "enMeaning": "tea, tea ceremony",
+        "kanjiBreakdown": [
+            {
+                "kanji": "茶",
+                "hanViet": "TRÀ",
+                "meaning": "cây chè, nước trà"
+            }
+        ],
         "wordParts": [
             {
                 "text": "お",
-                "furigana": "お"
+                "furigana": "お",
+                "romaji": "o"
             },
             {
                 "text": "茶",
-                "furigana": "ちゃ"
+                "furigana": "ちゃ",
+                "romaji": "cha"
             }
         ],
         "exampleSentence": {
             "sentence": "お茶を習います。",
             "translation": "Học trà đạo.",
             "enTranslation": "Learn tea ceremony.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "お"
+                },
+                {
+                    "text": "茶",
+                    "furigana": "ちゃ"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "習",
+                    "furigana": "なら"
+                },
+                {
+                    "text": "います。"
+                }
+            ]
         }
     },
     {
@@ -254,17 +504,36 @@
         "hanViet": "NHẬT",
         "meaning": "ngày",
         "enMeaning": "day",
+        "kanjiBreakdown": [
+            {
+                "kanji": "日",
+                "hanViet": "NHẬT",
+                "meaning": "mặt trời, ngày"
+            }
+        ],
         "wordParts": [
             {
                 "text": "日",
-                "furigana": "ひ"
+                "furigana": "ひ",
+                "romaji": "hi"
             }
         ],
         "exampleSentence": {
             "sentence": "いい日です。",
             "translation": "Một ngày tốt lành.",
             "enTranslation": "It's a good day.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "いい"
+                },
+                {
+                    "text": "日",
+                    "furigana": "ひ"
+                },
+                {
+                    "text": "です。"
+                }
+            ]
         }
     },
     {
@@ -274,21 +543,53 @@
         "hanViet": "ĐIỀU TỬ",
         "meaning": "tình trạng",
         "enMeaning": "condition, state",
+        "kanjiBreakdown": [
+            {
+                "kanji": "調",
+                "hanViet": "ĐIỀU",
+                "meaning": "điều chỉnh, giai điệu"
+            },
+            {
+                "kanji": "子",
+                "hanViet": "TỬ",
+                "meaning": "con cái"
+            }
+        ],
         "wordParts": [
             {
                 "text": "調",
-                "furigana": "ちょう"
+                "furigana": "ちょう",
+                "romaji": "chou"
             },
             {
                 "text": "子",
-                "furigana": "し"
+                "furigana": "し",
+                "romaji": "shi"
             }
         ],
         "exampleSentence": {
             "sentence": "体の調子がいいです。",
             "translation": "Tình trạng cơ thể tốt.",
             "enTranslation": "I am in good condition.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "体",
+                    "furigana": "からだ"
+                },
+                {
+                    "text": "の"
+                },
+                {
+                    "text": "調子",
+                    "furigana": "ちょうし"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "いいです。"
+                }
+            ]
         }
     },
     {
@@ -298,21 +599,54 @@
         "hanViet": "NHẤT ĐỘ",
         "meaning": "một lần",
         "enMeaning": "once",
+        "kanjiBreakdown": [
+            {
+                "kanji": "一",
+                "hanViet": "NHẤT",
+                "meaning": "một"
+            },
+            {
+                "kanji": "度",
+                "hanViet": "ĐỘ",
+                "meaning": "mức độ, lần"
+            }
+        ],
         "wordParts": [
             {
                 "text": "一",
-                "furigana": "いち"
+                "furigana": "いち",
+                "romaji": "ichi"
             },
             {
                 "text": "度",
-                "furigana": "ど"
+                "furigana": "ど",
+                "romaji": "do"
             }
         ],
         "exampleSentence": {
             "sentence": "一度日本へ行きたいです。",
             "translation": "Tôi muốn đi Nhật một lần.",
             "enTranslation": "I want to go to Japan once.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "一度",
+                    "furigana": "いちど"
+                },
+                {
+                    "text": "日本",
+                    "furigana": "にほん"
+                },
+                {
+                    "text": "へ"
+                },
+                {
+                    "text": "行",
+                    "furigana": "い"
+                },
+                {
+                    "text": "きたいです。"
+                }
+            ]
         }
     },
     {
@@ -322,25 +656,55 @@
         "hanViet": "NHẤT ĐỘ",
         "meaning": "chưa lần nào, chưa bao giờ (với phủ định)",
         "enMeaning": "never (with negative)",
+        "kanjiBreakdown": [
+            {
+                "kanji": "一",
+                "hanViet": "NHẤT",
+                "meaning": "một"
+            },
+            {
+                "kanji": "度",
+                "hanViet": "ĐỘ",
+                "meaning": "mức độ, lần"
+            }
+        ],
         "wordParts": [
             {
                 "text": "一",
-                "furigana": "いち"
+                "furigana": "いち",
+                "romaji": "ichi"
             },
             {
                 "text": "度",
-                "furigana": "ど"
+                "furigana": "ど",
+                "romaji": "do"
             },
             {
                 "text": "も",
-                "furigana": "も"
+                "furigana": "も",
+                "romaji": "mo"
             }
         ],
         "exampleSentence": {
             "sentence": "一度も食べたことがありません。",
             "translation": "Tôi chưa ăn bao giờ.",
             "enTranslation": "I have never eaten it.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "一度",
+                    "furigana": "いちど"
+                },
+                {
+                    "text": "も"
+                },
+                {
+                    "text": "食",
+                    "furigana": "た"
+                },
+                {
+                    "text": "べたことがありません。"
+                }
+            ]
         }
     },
     {
@@ -350,21 +714,66 @@
         "hanViet": "ĐẶC",
         "meaning": "đặc biệt là",
         "enMeaning": "especially",
+        "kanjiBreakdown": [
+            {
+                "kanji": "特",
+                "hanViet": "ĐẶC",
+                "meaning": "đặc biệt"
+            }
+        ],
         "wordParts": [
             {
                 "text": "特",
-                "furigana": "とく"
+                "furigana": "とく",
+                "romaji": "toku"
             },
             {
                 "text": "に",
-                "furigana": "に"
+                "furigana": "に",
+                "romaji": "ni"
             }
         ],
         "exampleSentence": {
             "sentence": "日本料理が好きです。特にすしが好きです。",
             "translation": "Tôi thích món ăn Nhật. Đặc biệt là thích sushi.",
             "enTranslation": "I like Japanese food. Especially sushi.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "日本",
+                    "furigana": "にぽん"
+                },
+                {
+                    "text": "料理",
+                    "furigana": "りょうり"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "好き",
+                    "furigana": "すき"
+                },
+                {
+                    "text": "です。"
+                },
+                {
+                    "text": "特",
+                    "furigana": "とく"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "すしが"
+                },
+                {
+                    "text": "好き",
+                    "furigana": "すき"
+                },
+                {
+                    "text": "です。"
+                }
+            ]
         }
     },
     {
@@ -377,14 +786,26 @@
         "wordParts": [
             {
                 "text": "なります",
-                "furigana": "なります"
+                "furigana": "なります",
+                "romaji": "narimasu"
             }
         ],
         "exampleSentence": {
             "sentence": "元気になります。",
             "translation": "Trở nên khỏe mạnh.",
             "enTranslation": "Become healthy.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "元気",
+                    "furigana": "げんき"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "なります。"
+                }
+            ]
         }
     },
     {
@@ -397,14 +818,25 @@
         "wordParts": [
             {
                 "text": "ゴルフ",
-                "furigana": "ゴルフ"
+                "furigana": "ゴルフ",
+                "romaji": "gorufu"
             }
         ],
         "exampleSentence": {
             "sentence": "ゴルフをします。",
             "translation": "Chơi gôn.",
             "enTranslation": "Play golf.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "ゴルフ"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "します。"
+                }
+            ]
         }
     },
     {
@@ -417,14 +849,26 @@
         "wordParts": [
             {
                 "text": "だんだん",
-                "furigana": "だんだん"
+                "furigana": "だんだん",
+                "romaji": "dandan"
             }
         ],
         "exampleSentence": {
             "sentence": "だんだん暑くなります。",
             "translation": "Dần dần trở nên nóng.",
             "enTranslation": "Currently getting hotter.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "だんだん"
+                },
+                {
+                    "text": "暑",
+                    "furigana": "あつ"
+                },
+                {
+                    "text": "くなります。"
+                }
+            ]
         }
     },
     {
@@ -437,14 +881,26 @@
         "wordParts": [
             {
                 "text": "もうすぐ",
-                "furigana": "もうすぐ"
+                "furigana": "もうすぐ",
+                "romaji": "mousugu"
             }
         ],
         "exampleSentence": {
             "sentence": "もうすぐ冬です。",
             "translation": "Sắp đến mùa đông rồi.",
             "enTranslation": "It will be winter soon.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "もうすぐ"
+                },
+                {
+                    "text": "冬",
+                    "furigana": "ふゆ"
+                },
+                {
+                    "text": "です。"
+                }
+            ]
         }
     },
     {
@@ -457,14 +913,29 @@
         "wordParts": [
             {
                 "text": "でも",
-                "furigana": "でも"
+                "furigana": "でも",
+                "romaji": "demo"
             }
         ],
         "exampleSentence": {
             "sentence": "安いです。でも、おいしくないです。",
             "translation": "Rẻ. Nhưng không ngon.",
             "enTranslation": "It's cheap. But it's not delicious.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "安",
+                    "furigana": "やす"
+                },
+                {
+                    "text": "いです。"
+                },
+                {
+                    "text": "でも、"
+                },
+                {
+                    "text": "おいしくないです。"
+                }
+            ]
         }
     },
     {
@@ -477,14 +948,32 @@
         "wordParts": [
             {
                 "text": "なかなか",
-                "furigana": "なかなか"
+                "furigana": "なかなか",
+                "romaji": "nakanaka"
             }
         ],
         "exampleSentence": {
             "sentence": "バスがなかなか来ません。",
             "translation": "Xe buýt mãi mà không tới.",
             "enTranslation": "The bus isn't coming easily.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "バス"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "なかなか"
+                },
+                {
+                    "text": "来",
+                    "furigana": "き"
+                },
+                {
+                    "text": "ません。"
+                }
+            ]
         }
     },
     {
@@ -497,14 +986,33 @@
         "wordParts": [
             {
                 "text": "ぜひ",
-                "furigana": "ぜひ"
+                "furigana": "ぜひ",
+                "romaji": "zehi"
             }
         ],
         "exampleSentence": {
             "sentence": "ぜひ遊びに来てください。",
             "translation": "Nhất định phải đến chơi nhé.",
             "enTranslation": "Please come and visit by all means.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "ぜひ"
+                },
+                {
+                    "text": "遊",
+                    "furigana": "あそ"
+                },
+                {
+                    "text": "びに"
+                },
+                {
+                    "text": "来",
+                    "furigana": "き"
+                },
+                {
+                    "text": "てください。"
+                }
+            ]
         }
     }
 ]

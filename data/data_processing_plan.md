@@ -64,12 +64,80 @@
 | `meaning` | Text | **Required** | Vietnamese meaning from source. |
 | `enMeaning` | AI Gen | **Required** | English definition. Concise. |
 | `kanjiBreakdown`| JSON | Optional | Array of individual Kanji details. |
-| `wordParts` | JSON | **Required** | Tokenized parts for Furigana (e.g. `[{"text": "学", "furigana": "がく"}, ...]`). |
-| `exampleSentence`| JSON | **Required** | Object with `sentence` (JP), `translation` (VN), `enTranslation` (EN), and optional `parts`. |
+| `wordParts` | JSON | **Required** | Tokenized parts for Furigana and Romaji (e.g. `[{"text": "学", "furigana": "がく", "romaji": "gaku"}, ...]`). |
+| `exampleSentence`| JSON | **Required** | Object with `sentence` (JP), `translation` (VN), `enTranslation` (EN). **MUST include `parts`** array for tokenized breakdown with furigana. |
 
-### 3. Verification Steps
+### 3. Detail Generation (Enrichment)
+
+To ensure high-quality data (as seen in Unit 10), the following fields must be generated with precision:
+
+#### A. Example Sentence Breakdown (`exampleSentence.parts`)
+
+- **Goal**: Allow tap-to-scan and furigana display.
+- **Format**: Array of objects.
+- **Requirement**: Break the sentence into smallest meaningful tokens (morphemes).
+- **Schema**:
+
+  ```json
+  "parts": [
+    { "text": "私", "furigana": "わたし" },
+    { "text": "は" },
+    { "text": "学生", "furigana": "がくせい" },
+    { "text": "です" },
+    { "text": "。" }
+  ]
+  ```
+
+#### B. Kanji Breakdown (`kanjiBreakdown`)
+
+- **Goal**: Etymology and component analysis.
+- **Format**: Array of objects.
+- **Requirement**: Analyze clear Kanji compounds in `wordSurface`.
+- **Schema**:
+
+  ```json
+  "kanjiBreakdown": [
+    {
+      "kanji": "学",
+      "hanViet": "HỌC",
+      "meaning": "learning, science"
+    },
+    {
+      "kanji": "生",
+      "hanViet": "SINH",
+      "meaning": "life, birth"
+    }
+  ]
+  ```
+
+#### C. Word Parts Breakdown (`wordParts`)
+
+- **Goal**: Frontend display and pronunciation.
+- **Format**: Array of objects.
+- **Requirement**: Must include `romaji` for every part.
+- **Schema**:
+
+  ```json
+  "wordParts": [
+    {
+      "text": "学生",
+      "furigana": "がくせい",
+      "romaji": "gakusei"
+    }
+  ]
+  ```
+
+### 4. Verification Steps
 
 1. **Count Check**: The number of generated items must match the line count for that unit range.
 2. **Missing Field Check**: Ensure no empty `enMeaning` or `meaning`.
 3. **JSON Validity**: Must be valid JSON.
 4. **Example Check**: Ensure every word has a meaningful example sentence.
+
+Based on the audit, here are the units that need data enrichment:
+
+🔴 Critical (Missing Parts & Romaji & Kanji)
+Units 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 These units are missing exampleSentence.parts and romaji completely.
+
+🟡 Partial (Missing Kanji Breakdown)
+Units 03, 04, 06, 08, 09, 10, 11 These units have sentence parts and romaji (mostly), but are missing kanjiBreakdown.

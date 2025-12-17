@@ -1222,12 +1222,22 @@ export const getDailyProgress = cache(async () => {
 			},
 		});
 
+		// 4. Get Actual Reviews Available (State != 0)
+		const reviewsAvailable = await prisma.studyCard.count({
+			where: {
+				userId: user.id,
+				state: { not: 0 },
+				due: { lte: new Date() },
+			},
+		});
+
 		return {
 			reviewsToday,
 			limitReviews,
 			newCardsToday,
 			limitNewCards,
 			dueCount,
+			reviewsAvailable,
 		};
 	} catch (error) {
 		console.error('Error fetching daily progress:', error);

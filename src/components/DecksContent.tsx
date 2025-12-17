@@ -15,7 +15,7 @@ import {
 	theme,
 } from 'antd';
 import Link from 'next/link';
-import { BookOutlined, RightOutlined, SearchOutlined } from '@ant-design/icons';
+import { BookOutlined, RightOutlined, SearchOutlined, TeamOutlined } from '@ant-design/icons';
 import { motion } from 'motion/react';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
@@ -184,7 +184,16 @@ export default function DecksContent({ decks, userId }: DecksContentProps) {
 													<BookOutlined style={{ fontSize: 24, color: token.colorPrimary }} />
 												)}
 											</div>
-											{deck.isPublic && <Tag color="blue">{t('publicTag')}</Tag>}
+											{deck.isPublic ? (
+												// <Tag icon={<GlobalOutlined />} color="green">
+												// 	{t('publicTag')}
+												// </Tag>
+												<></>
+											) : (
+												<Tag icon={<TeamOutlined />} color="blue">
+													{t('privateTag')}
+												</Tag>
+											)}
 										</Flex>
 
 										<Title level={4} style={{ margin: '0 0 8px', color: token.colorPrimary }}>

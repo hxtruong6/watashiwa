@@ -6,21 +6,44 @@
         "hanViet": "YẾU",
         "meaning": "cần, cần thiết",
         "enMeaning": "need, require",
+        "kanjiBreakdown": [
+            {
+                "kanji": "要",
+                "hanViet": "YẾU",
+                "meaning": "cần thiết, quan trọng"
+            }
+        ],
         "wordParts": [
             {
                 "text": "要",
-                "furigana": "い"
+                "furigana": "い",
+                "romaji": "i"
             },
             {
                 "text": "ります",
-                "furigana": "ります"
+                "furigana": "ります",
+                "romaji": "rimasu"
             }
         ],
         "exampleSentence": {
             "sentence": "ビザが要ります。",
             "translation": "Cần visa.",
             "enTranslation": "I need a visa.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "ビザ"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "要",
+                    "furigana": "い"
+                },
+                {
+                    "text": "ります。"
+                }
+            ]
         }
     },
     {
@@ -30,21 +53,45 @@
         "hanViet": "ĐIỀU",
         "meaning": "tìm hiểu, kiểm tra, điều tra",
         "enMeaning": "check, investigate",
+        "kanjiBreakdown": [
+            {
+                "kanji": "調",
+                "hanViet": "SHIRABEMASU",
+                "meaning": "điều tra, nghiên cứu"
+            }
+        ],
         "wordParts": [
             {
                 "text": "調",
-                "furigana": "しら"
+                "furigana": "しら",
+                "romaji": "shira"
             },
             {
                 "text": "べます",
-                "furigana": "べます"
+                "furigana": "べます",
+                "romaji": "bemasu"
             }
         ],
         "exampleSentence": {
             "sentence": "電話番号を調べます。",
             "translation": "Tìm số điện thoại.",
             "enTranslation": "Look up a phone number.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "電話番号",
+                    "furigana": "でんわばんごう"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "調",
+                    "furigana": "しら"
+                },
+                {
+                    "text": "べます。"
+                }
+            ]
         }
     },
     {
@@ -54,25 +101,55 @@
         "hanViet": "TU LÍ",
         "meaning": "sửa chữa, tu sửa",
         "enMeaning": "repair",
+        "kanjiBreakdown": [
+            {
+                "kanji": "修",
+                "hanViet": "TU",
+                "meaning": "tu sửa, sửa chữa"
+            },
+            {
+                "kanji": "理",
+                "hanViet": "LÝ",
+                "meaning": "lý lẽ"
+            }
+        ],
         "wordParts": [
             {
                 "text": "修",
-                "furigana": "しゅう"
+                "furigana": "しゅう",
+                "romaji": "shuu"
             },
             {
                 "text": "理",
-                "furigana": "り"
+                "furigana": "り",
+                "romaji": "ri"
             },
             {
                 "text": "します",
-                "furigana": "します"
+                "furigana": "します",
+                "romaji": "shimasu"
             }
         ],
         "exampleSentence": {
             "sentence": "自転車を修理します。",
             "translation": "Sửa xe đạp.",
             "enTranslation": "Repair a bicycle.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "自転車",
+                    "furigana": "じてんしゃ"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "修理",
+                    "furigana": "しゅうり"
+                },
+                {
+                    "text": "します。"
+                }
+            ]
         }
     },
     {
@@ -82,21 +159,50 @@
         "hanViet": "TRƯỚC VẬT",
         "meaning": "kimono",
         "enMeaning": "kimono",
+        "kanjiBreakdown": [
+            {
+                "kanji": "着",
+                "hanViet": "TRƯỚC",
+                "meaning": "mặc, đến"
+            },
+            {
+                "kanji": "物",
+                "hanViet": "VẬT",
+                "meaning": "đồ vật"
+            }
+        ],
         "wordParts": [
             {
                 "text": "着",
-                "furigana": "き"
+                "furigana": "き",
+                "romaji": "ki"
             },
             {
                 "text": "物",
-                "furigana": "もの"
+                "furigana": "もの",
+                "romaji": "mono"
             }
         ],
         "exampleSentence": {
             "sentence": "着物を着ます。",
             "translation": "Mặc kimono.",
             "enTranslation": "Wear a kimono.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "着物",
+                    "furigana": "きもの"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "着",
+                    "furigana": "き"
+                },
+                {
+                    "text": "ます。"
+                }
+            ]
         }
     },
     {
@@ -106,17 +212,47 @@
         "hanViet": "SƠ",
         "meaning": "ban đầu, đầu tiên",
         "enMeaning": "beginning, first",
+        "kanjiBreakdown": [
+            {
+                "kanji": "初",
+                "hanViet": "SƠ",
+                "meaning": "ban đầu"
+            }
+        ],
         "wordParts": [
             {
                 "text": "初",
-                "furigana": "はじめ"
+                "furigana": "はじめ",
+                "romaji": "hajime"
             }
         ],
         "exampleSentence": {
             "sentence": "初めに名前を書いてください。",
             "translation": "Đầu tiên hãy viết tên.",
             "enTranslation": "Please write your name first.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "初",
+                    "furigana": "はじ"
+                },
+                {
+                    "text": "めに"
+                },
+                {
+                    "text": "名前",
+                    "furigana": "なまえ"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "書",
+                    "furigana": "か"
+                },
+                {
+                    "text": "いてください。"
+                }
+            ]
         }
     },
     {
@@ -126,21 +262,45 @@
         "hanViet": "CHUNG",
         "meaning": "kết thúc",
         "enMeaning": "end",
+        "kanjiBreakdown": [
+            {
+                "kanji": "終",
+                "hanViet": "CHUNG",
+                "meaning": "kết thúc"
+            }
+        ],
         "wordParts": [
             {
                 "text": "終",
-                "furigana": "お"
+                "furigana": "お",
+                "romaji": "o"
             },
             {
                 "text": "わり",
-                "furigana": "わり"
+                "furigana": "わり",
+                "romaji": "wari"
             }
         ],
         "exampleSentence": {
             "sentence": "夏休みの終わり",
             "translation": "Kết thúc kỳ nghỉ hè",
             "enTranslation": "End of summer vacation",
-            "parts": []
+            "parts": [
+                {
+                    "text": "夏休み",
+                    "furigana": "なつやすみ"
+                },
+                {
+                    "text": "の"
+                },
+                {
+                    "text": "終",
+                    "furigana": "お"
+                },
+                {
+                    "text": "わり"
+                }
+            ]
         }
     },
     {
@@ -153,14 +313,33 @@
         "wordParts": [
             {
                 "text": "ことば",
-                "furigana": "ことば"
+                "furigana": "ことば",
+                "romaji": "kotoba"
             }
         ],
         "exampleSentence": {
             "sentence": "新しいことばを覚えます。",
             "translation": "Nhớ từ mới.",
             "enTranslation": "Memorize new words.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "新",
+                    "furigana": "あたら"
+                },
+                {
+                    "text": "しい"
+                },
+                {
+                    "text": "ことばを"
+                },
+                {
+                    "text": "覚",
+                    "furigana": "おぼ"
+                },
+                {
+                    "text": "えます。"
+                }
+            ]
         }
     },
     {
@@ -173,14 +352,29 @@
         "wordParts": [
             {
                 "text": "ビザ",
-                "furigana": "ビザ"
+                "furigana": "ビザ",
+                "romaji": "biza"
             }
         ],
         "exampleSentence": {
             "sentence": "ビザを申請します。",
             "translation": "Xin visa.",
             "enTranslation": "Apply for a visa.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "ビザ"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "申請",
+                    "furigana": "しんせい"
+                },
+                {
+                    "text": "します。"
+                }
+            ]
         }
     },
     {
@@ -193,14 +387,26 @@
         "wordParts": [
             {
                 "text": "みんなで",
-                "furigana": "みんなで"
+                "furigana": "みんなで",
+                "romaji": "minnade"
             }
         ],
         "exampleSentence": {
             "sentence": "みんなで歌いましょう。",
             "translation": "Mọi người cùng hát nào.",
             "enTranslation": "Let's sing all together.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "みんなで"
+                },
+                {
+                    "text": "歌",
+                    "furigana": "うた"
+                },
+                {
+                    "text": "いましょう。"
+                }
+            ]
         }
     },
     {
@@ -213,14 +419,30 @@
         "wordParts": [
             {
                 "text": "けど",
-                "furigana": "けど"
+                "furigana": "けど",
+                "romaji": "kedo"
             }
         ],
         "exampleSentence": {
             "sentence": "行きたいけど、時間がありません。",
             "translation": "Muốn đi nhưng không có thời gian.",
             "enTranslation": "I want to go, but I don't have time.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "行",
+                    "furigana": "い"
+                },
+                {
+                    "text": "きたいけど、"
+                },
+                {
+                    "text": "時間",
+                    "furigana": "じかん"
+                },
+                {
+                    "text": "がありません。"
+                }
+            ]
         }
     },
     {
@@ -233,14 +455,22 @@
         "wordParts": [
             {
                 "text": "よかったら",
-                "furigana": "よかったら"
+                "furigana": "よかったら",
+                "romaji": "yokattara"
             }
         ],
         "exampleSentence": {
             "sentence": "よかったら、どうぞ。",
             "translation": "Nếu bạn thích thì xin mời.",
             "enTranslation": "If you like, please go ahead.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "よかったら、"
+                },
+                {
+                    "text": "どうぞ。"
+                }
+            ]
         }
     },
     {
@@ -253,14 +483,29 @@
         "wordParts": [
             {
                 "text": "いろいろ",
-                "furigana": "いろいろ"
+                "furigana": "いろいろ",
+                "romaji": "iroiro"
             }
         ],
         "exampleSentence": {
             "sentence": "いろいろお世話になりました。",
             "translation": "Cảm ơn đã giúp đỡ nhiều.",
             "enTranslation": "Thank you for everything.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "いろいろ"
+                },
+                {
+                    "text": "お"
+                },
+                {
+                    "text": "世話",
+                    "furigana": "せわ"
+                },
+                {
+                    "text": "になりました。"
+                }
+            ]
         }
     },
     {
@@ -273,14 +518,40 @@
         "wordParts": [
             {
                 "text": "くれます",
-                "furigana": "くれます"
+                "furigana": "くれます",
+                "romaji": "kuremasu"
             }
         ],
         "exampleSentence": {
             "sentence": "母は私に花をくれました。",
             "translation": "Mẹ tặng hoa cho tôi.",
             "enTranslation": "Mother gave me flowers.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "母",
+                    "furigana": "はは"
+                },
+                {
+                    "text": "は"
+                },
+                {
+                    "text": "私",
+                    "furigana": "わたし"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "花",
+                    "furigana": "はな"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "くれました。"
+                }
+            ]
         }
     },
     {
@@ -293,14 +564,26 @@
         "wordParts": [
             {
                 "text": "おじいさん",
-                "furigana": "おじいさん"
+                "furigana": "おじいさん",
+                "romaji": "ojiisan"
             }
         ],
         "exampleSentence": {
             "sentence": "親切なおじいさん",
-            "translation": "Ông lão tốt bụng",
-            "enTranslation": "Kind old man",
-            "parts": []
+            "translation": "Ông tốt bụng",
+            "enTranslation": "Kind grandfather",
+            "parts": [
+                {
+                    "text": "親切",
+                    "furigana": "しんせつ"
+                },
+                {
+                    "text": "な"
+                },
+                {
+                    "text": "おじいさん"
+                }
+            ]
         }
     },
     {
@@ -313,14 +596,26 @@
         "wordParts": [
             {
                 "text": "おばあさん",
-                "furigana": "おばあさん"
+                "furigana": "おばあさん",
+                "romaji": "obaasan"
             }
         ],
         "exampleSentence": {
             "sentence": "元気なおばあさん",
             "translation": "Bà lão khỏe mạnh",
             "enTranslation": "Healthy old woman",
-            "parts": []
+            "parts": [
+                {
+                    "text": "元気",
+                    "furigana": "げんき"
+                },
+                {
+                    "text": "な"
+                },
+                {
+                    "text": "おばあさん"
+                }
+            ]
         }
     },
     {
@@ -333,14 +628,25 @@
         "wordParts": [
             {
                 "text": "ホームステイ",
-                "furigana": "ホームステイ"
+                "furigana": "ホームステイ",
+                "romaji": "ho-musutei"
             }
         ],
         "exampleSentence": {
             "sentence": "ホームステイをします。",
             "translation": "Ở homestay.",
             "enTranslation": "Do a homestay.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "ホームステイ"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "します。"
+                }
+            ]
         }
     },
     {
@@ -353,14 +659,26 @@
         "wordParts": [
             {
                 "text": "ほかに",
-                "furigana": "ほかに"
+                "furigana": "ほかに",
+                "romaji": "hokani"
             }
         ],
         "exampleSentence": {
             "sentence": "ほかに質問がありますか。",
             "translation": "Còn câu hỏi nào khác không?",
             "enTranslation": "Any other questions?",
-            "parts": []
+            "parts": [
+                {
+                    "text": "ほかに"
+                },
+                {
+                    "text": "質問",
+                    "furigana": "しつもん"
+                },
+                {
+                    "text": "がありますか。"
+                }
+            ]
         }
     }
 ]

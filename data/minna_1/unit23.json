@@ -6,21 +6,45 @@
         "hanViet": "VĂN",
         "meaning": "hỏi (giáo viên)",
         "enMeaning": "ask",
+        "kanjiBreakdown": [
+            {
+                "kanji": "聞",
+                "hanViet": "VĂN",
+                "meaning": "nghe, hỏi"
+            }
+        ],
         "wordParts": [
             {
                 "text": "聞",
-                "furigana": "き"
+                "furigana": "き",
+                "romaji": "ki"
             },
             {
                 "text": "きます",
-                "furigana": "きます"
+                "furigana": "きます",
+                "romaji": "kimasu"
             }
         ],
         "exampleSentence": {
             "sentence": "先生に聞きます。",
             "translation": "Hỏi giáo viên.",
             "enTranslation": "Ask the teacher.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "先生",
+                    "furigana": "せんせい"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "聞",
+                    "furigana": "き"
+                },
+                {
+                    "text": "きます。"
+                }
+            ]
         }
     },
     {
@@ -30,21 +54,44 @@
         "hanViet": "HỒI",
         "meaning": "vặn",
         "enMeaning": "turn",
+        "kanjiBreakdown": [
+            {
+                "kanji": "回",
+                "hanViet": "HỒI",
+                "meaning": "xoay, hồi"
+            }
+        ],
         "wordParts": [
             {
                 "text": "回",
-                "furigana": "まわ"
+                "furigana": "まわ",
+                "romaji": "mawa"
             },
             {
                 "text": "します",
-                "furigana": "します"
+                "furigana": "します",
+                "romaji": "shimasu"
             }
         ],
         "exampleSentence": {
             "sentence": "これを回します。",
             "translation": "Vặn cái này.",
             "enTranslation": "Turn this.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "これ"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "回",
+                    "furigana": "まわ"
+                },
+                {
+                    "text": "します。"
+                }
+            ]
         }
     },
     {
@@ -54,21 +101,44 @@
         "hanViet": "DẪN",
         "meaning": "kéo",
         "enMeaning": "pull",
+        "kanjiBreakdown": [
+            {
+                "kanji": "引",
+                "hanViet": "DẪN",
+                "meaning": "kéo, dẫn"
+            }
+        ],
         "wordParts": [
             {
                 "text": "引",
-                "furigana": "ひ"
+                "furigana": "ひ",
+                "romaji": "hi"
             },
             {
                 "text": "きます",
-                "furigana": "きます"
+                "furigana": "きます",
+                "romaji": "kimasu"
             }
         ],
         "exampleSentence": {
             "sentence": "ドアを引きます。",
             "translation": "Kéo cửa.",
             "enTranslation": "Pull the door.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "ドア"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "引",
+                    "furigana": "ひ"
+                },
+                {
+                    "text": "きます。"
+                }
+            ]
         }
     },
     {
@@ -78,21 +148,44 @@
         "hanViet": "BIẾN",
         "meaning": "thay đổi, biến đổi",
         "enMeaning": "change",
+        "kanjiBreakdown": [
+            {
+                "kanji": "変",
+                "hanViet": "BIẾN",
+                "meaning": "biến đổi, lạ"
+            }
+        ],
         "wordParts": [
             {
                 "text": "変",
-                "furigana": "か"
+                "furigana": "か",
+                "romaji": "ka"
             },
             {
                 "text": "えます",
-                "furigana": "えます"
+                "furigana": "えます",
+                "romaji": "emasu"
             }
         ],
         "exampleSentence": {
             "sentence": "サイズを変えます。",
             "translation": "Đổi kích cỡ.",
             "enTranslation": "Change the size.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "サイズ"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "変",
+                    "furigana": "か"
+                },
+                {
+                    "text": "えます。"
+                }
+            ]
         }
     },
     {
@@ -102,21 +195,45 @@
         "hanViet": "XÚC",
         "meaning": "sờ, chạm vào",
         "enMeaning": "touch",
+        "kanjiBreakdown": [
+            {
+                "kanji": "触",
+                "hanViet": "XÚC",
+                "meaning": "xúc giác, chạm"
+            }
+        ],
         "wordParts": [
             {
                 "text": "触",
-                "furigana": "さわ"
+                "furigana": "さわ",
+                "romaji": "sawa"
             },
             {
                 "text": "ります",
-                "furigana": "ります"
+                "furigana": "ります",
+                "romaji": "rimasu"
             }
         ],
         "exampleSentence": {
             "sentence": "機械に触らないでください。",
             "translation": "Đừng chạm vào máy móc.",
             "enTranslation": "Please do not touch the machine.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "機械",
+                    "furigana": "きかい"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "触",
+                    "furigana": "さわ"
+                },
+                {
+                    "text": "らないでください。"
+                }
+            ]
         }
     },
     {
@@ -126,21 +243,45 @@
         "hanViet": "BỘ",
         "meaning": "đi bộ",
         "enMeaning": "walk",
+        "kanjiBreakdown": [
+            {
+                "kanji": "歩",
+                "hanViet": "BỘ",
+                "meaning": "đi bộ"
+            }
+        ],
         "wordParts": [
             {
                 "text": "歩",
-                "furigana": "ある"
+                "furigana": "ある",
+                "romaji": "aru"
             },
             {
                 "text": "きます",
-                "furigana": "きます"
+                "furigana": "きます",
+                "romaji": "kimasu"
             }
         ],
         "exampleSentence": {
             "sentence": "駅まで歩きます。",
             "translation": "Đi bộ đến nhà ga.",
             "enTranslation": "Walk to the station.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "駅",
+                    "furigana": "えき"
+                },
+                {
+                    "text": "まで"
+                },
+                {
+                    "text": "歩",
+                    "furigana": "ある"
+                },
+                {
+                    "text": "きます。"
+                }
+            ]
         }
     },
     {
@@ -150,21 +291,45 @@
         "hanViet": "ĐỘ",
         "meaning": "qua, đi qua (cầu)",
         "enMeaning": "cross",
+        "kanjiBreakdown": [
+            {
+                "kanji": "渡",
+                "hanViet": "ĐỘ",
+                "meaning": "qua, trao"
+            }
+        ],
         "wordParts": [
             {
                 "text": "渡",
-                "furigana": "わた"
+                "furigana": "わた",
+                "romaji": "wata"
             },
             {
                 "text": "ります",
-                "furigana": "ります"
+                "furigana": "ります",
+                "romaji": "rimasu"
             }
         ],
         "exampleSentence": {
             "sentence": "橋を渡ります。",
             "translation": "Qua cầu.",
             "enTranslation": "Cross the bridge.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "橋",
+                    "furigana": "はし"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "渡",
+                    "furigana": "わた"
+                },
+                {
+                    "text": "ります。"
+                }
+            ]
         }
     },
     {
@@ -174,21 +339,45 @@
         "hanViet": "KHÚC",
         "meaning": "rẽ, quẹo",
         "enMeaning": "turn",
+        "kanjiBreakdown": [
+            {
+                "kanji": "曲",
+                "hanViet": "KHÚC",
+                "meaning": "cong, ca khúc"
+            }
+        ],
         "wordParts": [
             {
                 "text": "曲",
-                "furigana": "ま"
+                "furigana": "ま",
+                "romaji": "ma"
             },
             {
                 "text": "がります",
-                "furigana": "がります"
+                "furigana": "がります",
+                "romaji": "garimasu"
             }
         ],
         "exampleSentence": {
             "sentence": "右へ曲がります。",
             "translation": "Rẽ phải.",
             "enTranslation": "Turn right.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "右",
+                    "furigana": "みぎ"
+                },
+                {
+                    "text": "へ"
+                },
+                {
+                    "text": "曲",
+                    "furigana": "ま"
+                },
+                {
+                    "text": "がります。"
+                }
+            ]
         }
     },
     {
@@ -198,21 +387,38 @@
         "hanViet": "TỊCH",
         "meaning": "buồn, cô đơn",
         "enMeaning": "lonely",
+        "kanjiBreakdown": [
+            {
+                "kanji": "寂",
+                "hanViet": "TỊCH",
+                "meaning": "tịch mịch, buồn"
+            }
+        ],
         "wordParts": [
             {
                 "text": "寂",
-                "furigana": "さび"
+                "furigana": "さび",
+                "romaji": "sabi"
             },
             {
                 "text": "しい",
-                "furigana": "しい"
+                "furigana": "しい",
+                "romaji": "shii"
             }
         ],
         "exampleSentence": {
             "sentence": "寂しいです。",
             "translation": "Tôi buồn / cô đơn.",
             "enTranslation": "I am lonely.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "寂",
+                    "furigana": "さび"
+                },
+                {
+                    "text": "しいです。"
+                }
+            ]
         }
     },
     {
@@ -222,17 +428,43 @@
         "hanViet": "THANG",
         "meaning": "nước nóng",
         "enMeaning": "hot water",
+        "kanjiBreakdown": [
+            {
+                "kanji": "湯",
+                "hanViet": "THANG",
+                "meaning": "nước nóng"
+            }
+        ],
         "wordParts": [
             {
                 "text": "湯",
-                "furigana": "ゆ"
+                "furigana": "ゆ",
+                "romaji": "yu"
             }
         ],
         "exampleSentence": {
             "sentence": "お湯が出ません。",
             "translation": "Nước nóng không chảy ra.",
             "enTranslation": "Hot water doesn't come out.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "お"
+                },
+                {
+                    "text": "湯",
+                    "furigana": "ゆ"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "出",
+                    "furigana": "で"
+                },
+                {
+                    "text": "ません。"
+                }
+            ]
         }
     },
     {
@@ -242,17 +474,40 @@
         "hanViet": "ÂM",
         "meaning": "âm thanh",
         "enMeaning": "sound",
+        "kanjiBreakdown": [
+            {
+                "kanji": "音",
+                "hanViet": "ÂM",
+                "meaning": "âm thanh"
+            }
+        ],
         "wordParts": [
             {
                 "text": "音",
-                "furigana": "おと"
+                "furigana": "おと",
+                "romaji": "oto"
             }
         ],
         "exampleSentence": {
             "sentence": "変な音がします。",
             "translation": "Có âm thanh lạ.",
             "enTranslation": "There is a strange sound.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "変",
+                    "furigana": "へん"
+                },
+                {
+                    "text": "な"
+                },
+                {
+                    "text": "音",
+                    "furigana": "おと"
+                },
+                {
+                    "text": "がします。"
+                }
+            ]
         }
     },
     {
@@ -262,21 +517,50 @@
         "hanViet": "CỐ CHƯỚNG",
         "meaning": "hỏng, hỏng hóc",
         "enMeaning": "breakdown, malfunction",
+        "kanjiBreakdown": [
+            {
+                "kanji": "故",
+                "hanViet": "CỐ",
+                "meaning": "cũ, nguyên cớ"
+            },
+            {
+                "kanji": "障",
+                "hanViet": "CHƯỚNG",
+                "meaning": "trở ngại, chướng ngại"
+            }
+        ],
         "wordParts": [
             {
                 "text": "故",
-                "furigana": "こ"
+                "furigana": "こ",
+                "romaji": "ko"
             },
             {
                 "text": "障",
-                "furigana": "しょう"
+                "furigana": "しょう",
+                "romaji": "shou"
             }
         ],
         "exampleSentence": {
             "sentence": "車が故障しました。",
             "translation": "Xe bị hỏng.",
             "enTranslation": "The car broke down.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "車",
+                    "furigana": "くるま"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "故障",
+                    "furigana": "こしょう"
+                },
+                {
+                    "text": "しました。"
+                }
+            ]
         }
     },
     {
@@ -286,17 +570,40 @@
         "hanViet": "ĐẠO",
         "meaning": "đường",
         "enMeaning": "road, street",
+        "kanjiBreakdown": [
+            {
+                "kanji": "道",
+                "hanViet": "ĐẠO",
+                "meaning": "đạo, đường"
+            }
+        ],
         "wordParts": [
             {
                 "text": "道",
-                "furigana": "みち"
+                "furigana": "みち",
+                "romaji": "michi"
             }
         ],
         "exampleSentence": {
             "sentence": "道を歩きます。",
             "translation": "Đi bộ trên đường.",
             "enTranslation": "Walk on the street.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "道",
+                    "furigana": "みち"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "歩",
+                    "furigana": "ある"
+                },
+                {
+                    "text": "きます。"
+                }
+            ]
         }
     },
     {
@@ -306,25 +613,60 @@
         "hanViet": "GIAO SOA ĐIỂM",
         "meaning": "ngã tư",
         "enMeaning": "crossing, intersection",
+        "kanjiBreakdown": [
+            {
+                "kanji": "交",
+                "hanViet": "GIAO",
+                "meaning": "giao nhau"
+            },
+            {
+                "kanji": "差",
+                "hanViet": "SOA",
+                "meaning": "sai khác"
+            },
+            {
+                "kanji": "点",
+                "hanViet": "ĐIỂM",
+                "meaning": "điểm"
+            }
+        ],
         "wordParts": [
             {
                 "text": "交",
-                "furigana": "こう"
+                "furigana": "こう",
+                "romaji": "kou"
             },
             {
                 "text": "差",
-                "furigana": "さ"
+                "furigana": "さ",
+                "romaji": "sa"
             },
             {
                 "text": "点",
-                "furigana": "てん"
+                "furigana": "てん",
+                "romaji": "ten"
             }
         ],
         "exampleSentence": {
             "sentence": "交差点を渡ります。",
             "translation": "Qua ngã tư.",
             "enTranslation": "Cross the intersection.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "交差点",
+                    "furigana": "こうさてん"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "渡",
+                    "furigana": "わた"
+                },
+                {
+                    "text": "ります。"
+                }
+            ]
         }
     },
     {
@@ -334,21 +676,50 @@
         "hanViet": "TÍN HIỆU",
         "meaning": "đèn giao thông, đèn tín hiệu",
         "enMeaning": "traffic light",
+        "kanjiBreakdown": [
+            {
+                "kanji": "信",
+                "hanViet": "TÍN",
+                "meaning": "tin tưởng, tính hiệu"
+            },
+            {
+                "kanji": "号",
+                "hanViet": "HIỆU",
+                "meaning": "số hiệu, tên hiệu"
+            }
+        ],
         "wordParts": [
             {
                 "text": "信",
-                "furigana": "しん"
+                "furigana": "しん",
+                "romaji": "shin"
             },
             {
                 "text": "号",
-                "furigana": "ごう"
+                "furigana": "ごう",
+                "romaji": "gou"
             }
         ],
         "exampleSentence": {
             "sentence": "信号が赤です。",
             "translation": "Đèn tín hiệu màu đỏ.",
             "enTranslation": "The traffic light is red.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "信号",
+                    "furigana": "しんごう"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "赤",
+                    "furigana": "あか"
+                },
+                {
+                    "text": "です。"
+                }
+            ]
         }
     },
     {
@@ -358,17 +729,40 @@
         "hanViet": "GIÁC",
         "meaning": "góc",
         "enMeaning": "corner",
+        "kanjiBreakdown": [
+            {
+                "kanji": "角",
+                "hanViet": "GIÁC",
+                "meaning": "góc, sừng"
+            }
+        ],
         "wordParts": [
             {
                 "text": "角",
-                "furigana": "かど"
+                "furigana": "かど",
+                "romaji": "kado"
             }
         ],
         "exampleSentence": {
             "sentence": "角を曲がります。",
             "translation": "Rẽ ở góc đường.",
             "enTranslation": "Turn at the corner.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "角",
+                    "furigana": "かど"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "曲",
+                    "furigana": "ま"
+                },
+                {
+                    "text": "がります。"
+                }
+            ]
         }
     },
     {
@@ -378,17 +772,40 @@
         "hanViet": "ĐOAN",
         "meaning": "cầu",
         "enMeaning": "bridge",
+        "kanjiBreakdown": [
+            {
+                "kanji": "端",
+                "hanViet": "ĐOAN",
+                "meaning": "đầu, cạnh"
+            }
+        ],
         "wordParts": [
             {
                 "text": "端",
-                "furigana": "はし"
+                "furigana": "はし",
+                "romaji": "hashi"
             }
         ],
         "exampleSentence": {
             "sentence": "橋を渡ります。",
             "translation": "Qua cầu.",
             "enTranslation": "Cross the bridge.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "橋",
+                    "furigana": "はし"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "渡",
+                    "furigana": "わた"
+                },
+                {
+                    "text": "ります。"
+                }
+            ]
         }
     },
     {
@@ -398,25 +815,62 @@
         "hanViet": "TRÚ XA TRƯỜNG",
         "meaning": "bãi đỗ xe",
         "enMeaning": "parking lot",
+        "kanjiBreakdown": [
+            {
+                "kanji": "駐",
+                "hanViet": "TRÚ",
+                "meaning": "đậu xe, trú lại"
+            },
+            {
+                "kanji": "車",
+                "hanViet": "XA",
+                "meaning": "xe"
+            },
+            {
+                "kanji": "場",
+                "hanViet": "TRƯỜNG",
+                "meaning": "nơi, chỗ"
+            }
+        ],
         "wordParts": [
             {
                 "text": "駐",
-                "furigana": "ちゅう"
+                "furigana": "ちゅう",
+                "romaji": "chuu"
             },
             {
                 "text": "車",
-                "furigana": "しゃ"
+                "furigana": "しゃ",
+                "romaji": "sha"
             },
             {
                 "text": "場",
-                "furigana": "じょう"
+                "furigana": "じょう",
+                "romaji": "jou"
             }
         ],
         "exampleSentence": {
             "sentence": "ここに駐車場があります。",
             "translation": "Ở đây có bãi đỗ xe.",
             "enTranslation": "There is a parking lot here.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "ここ"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "駐車場",
+                    "furigana": "ちゅうしゃじょう"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "あります。"
+                }
+            ]
         }
     },
     {
@@ -426,24 +880,51 @@
         "hanViet": "KIẾN VẬT",
         "meaning": "tòa nhà",
         "enMeaning": "building",
+        "kanjiBreakdown": [
+            {
+                "kanji": "建",
+                "hanViet": "KIẾN",
+                "meaning": "xây dựng"
+            },
+            {
+                "kanji": "物",
+                "hanViet": "VẬT",
+                "meaning": "vật"
+            }
+        ],
         "wordParts": [
             {
                 "text": "建",
-                "furigana": "た"
+                "furigana": "た",
+                "romaji": "ta"
             },
             {
-                "text": "て"
+                "text": "て",
+                "romaji": "te"
             },
             {
                 "text": "物",
-                "furigana": "もの"
+                "furigana": "もの",
+                "romaji": "mono"
             }
         ],
         "exampleSentence": {
             "sentence": "高い建物",
             "translation": "Tòa nhà cao",
             "enTranslation": "Tall building",
-            "parts": []
+            "parts": [
+                {
+                    "text": "高",
+                    "furigana": "たか"
+                },
+                {
+                    "text": "い"
+                },
+                {
+                    "text": "建物",
+                    "furigana": "たてもの"
+                }
+            ]
         }
     },
     {
@@ -453,25 +934,55 @@
         "hanViet": "HÀ HỒI",
         "meaning": "nhiều lần",
         "enMeaning": "many times",
+        "kanjiBreakdown": [
+            {
+                "kanji": "何",
+                "hanViet": "HÀ",
+                "meaning": "cái gì, bao nhiêu"
+            },
+            {
+                "kanji": "回",
+                "hanViet": "HỒI",
+                "meaning": "lần, hồi"
+            }
+        ],
         "wordParts": [
             {
                 "text": "何",
-                "furigana": "なん"
+                "furigana": "なん",
+                "romaji": "nan"
             },
             {
                 "text": "回",
-                "furigana": "かい"
+                "furigana": "かい",
+                "romaji": "kai"
             },
             {
                 "text": "も",
-                "furigana": "も"
+                "furigana": "も",
+                "romaji": "mo"
             }
         ],
         "exampleSentence": {
             "sentence": "何回も行きました。",
             "translation": "Tôi đã đi nhiều lần rồi.",
             "enTranslation": "I have been there many times.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "何回",
+                    "furigana": "なんかい"
+                },
+                {
+                    "text": "も"
+                },
+                {
+                    "text": "行",
+                    "furigana": "い"
+                },
+                {
+                    "text": "きました。"
+                }
+            ]
         }
     },
     {
@@ -484,14 +995,29 @@
         "wordParts": [
             {
                 "text": "こっち",
-                "furigana": "こっち"
+                "furigana": "こっち",
+                "romaji": "kocchi"
             }
         ],
         "exampleSentence": {
             "sentence": "こっちへ来てください。",
             "translation": "Lại đây.",
             "enTranslation": "Please come here.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "こっち"
+                },
+                {
+                    "text": "へ"
+                },
+                {
+                    "text": "来",
+                    "furigana": "き"
+                },
+                {
+                    "text": "てください。"
+                }
+            ]
         }
     },
     {
@@ -504,14 +1030,25 @@
         "wordParts": [
             {
                 "text": "そっち",
-                "furigana": "そっち"
+                "furigana": "そっち",
+                "romaji": "socchi"
             }
         ],
         "exampleSentence": {
             "sentence": "そっちはどうですか。",
             "translation": "Đằng đó thế nào?",
             "enTranslation": "How is it over there?",
-            "parts": []
+            "parts": [
+                {
+                    "text": "そっち"
+                },
+                {
+                    "text": "は"
+                },
+                {
+                    "text": "どうですか。"
+                }
+            ]
         }
     },
     {
@@ -524,14 +1061,29 @@
         "wordParts": [
             {
                 "text": "あっち",
-                "furigana": "あっち"
+                "furigana": "あっち",
+                "romaji": "acchi"
             }
         ],
         "exampleSentence": {
             "sentence": "あっちに行きましょう。",
             "translation": "Cùng đi đằng kia nào.",
             "enTranslation": "Let's go over there.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "あっち"
+                },
+                {
+                    "text": "に"
+                },
+                {
+                    "text": "行",
+                    "furigana": "い"
+                },
+                {
+                    "text": "きましょう。"
+                }
+            ]
         }
     },
     {
@@ -544,14 +1096,29 @@
         "wordParts": [
             {
                 "text": "どっち",
-                "furigana": "どっち"
+                "furigana": "どっち",
+                "romaji": "docchi"
             }
         ],
         "exampleSentence": {
             "sentence": "どっちが好きですか。",
             "translation": "Bạn thích cái nào?",
             "enTranslation": "Which one do you like?",
-            "parts": []
+            "parts": [
+                {
+                    "text": "どっち"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "好",
+                    "furigana": "す"
+                },
+                {
+                    "text": "きですか。"
+                }
+            ]
         }
     }
 ]

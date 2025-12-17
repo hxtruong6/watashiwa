@@ -6,21 +6,44 @@
         "hanViet": "TRƯỚC",
         "meaning": "mặc (áo sơ mi,...)",
         "enMeaning": "wear, put on (upper body)",
+        "kanjiBreakdown": [
+            {
+                "kanji": "着",
+                "hanViet": "TRƯỚC",
+                "meaning": "mặc, đến"
+            }
+        ],
         "wordParts": [
             {
                 "text": "着",
-                "furigana": "き"
+                "furigana": "き",
+                "romaji": "ki"
             },
             {
                 "text": "ます",
-                "furigana": "ます"
+                "furigana": "ます",
+                "romaji": "masu"
             }
         ],
         "exampleSentence": {
             "sentence": "シャツを着ます。",
             "translation": "Mặc áo sơ mi.",
             "enTranslation": "Wear a shirt.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "シャツ"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "着",
+                    "furigana": "き"
+                },
+                {
+                    "text": "ます。"
+                }
+            ]
         }
     },
     {
@@ -30,21 +53,45 @@
         "hanViet": "SINH",
         "meaning": "(được) sinh ra",
         "enMeaning": "be born",
+        "kanjiBreakdown": [
+            {
+                "kanji": "生",
+                "hanViet": "SINH",
+                "meaning": "sinh ra, sống"
+            }
+        ],
         "wordParts": [
             {
                 "text": "生",
-                "furigana": "う"
+                "furigana": "う",
+                "romaji": "u"
             },
             {
                 "text": "まれます",
-                "furigana": "まれます"
+                "furigana": "まれます",
+                "romaji": "maremasu"
             }
         ],
         "exampleSentence": {
             "sentence": "日本で生まれました。",
             "translation": "Tôi sinh ra ở Nhật Bản.",
             "enTranslation": "I was born in Japan.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "日本",
+                    "furigana": "にほん"
+                },
+                {
+                    "text": "で"
+                },
+                {
+                    "text": "生",
+                    "furigana": "う"
+                },
+                {
+                    "text": "まれました。"
+                }
+            ]
         }
     },
     {
@@ -54,21 +101,46 @@
         "hanViet": "MẠO TỬ",
         "meaning": "cái mũ, mũ",
         "enMeaning": "hat, cap",
+        "kanjiBreakdown": [
+            {
+                "kanji": "帽",
+                "hanViet": "MẠO",
+                "meaning": "mũ, nón"
+            },
+            {
+                "kanji": "子",
+                "hanViet": "TỬ",
+                "meaning": "con, cái"
+            }
+        ],
         "wordParts": [
             {
                 "text": "帽",
-                "furigana": "ぼう"
+                "furigana": "ぼう",
+                "romaji": "bou"
             },
             {
                 "text": "子",
-                "furigana": "し"
+                "furigana": "し",
+                "romaji": "shi"
             }
         ],
         "exampleSentence": {
             "sentence": "帽子をかぶります。",
             "translation": "Đội mũ.",
             "enTranslation": "Wear a hat.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "帽子",
+                    "furigana": "ぼうし"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "かぶります。"
+                }
+            ]
         }
     },
     {
@@ -78,21 +150,46 @@
         "hanViet": "NHÃN KÍNH",
         "meaning": "kính, kính đeo mắt",
         "enMeaning": "glasses",
+        "kanjiBreakdown": [
+            {
+                "kanji": "眼",
+                "hanViet": "NHÃN",
+                "meaning": "mắt"
+            },
+            {
+                "kanji": "鏡",
+                "hanViet": "KÍNH",
+                "meaning": "gương"
+            }
+        ],
         "wordParts": [
             {
                 "text": "眼",
-                "furigana": "め"
+                "furigana": "め",
+                "romaji": "me"
             },
             {
                 "text": "鏡",
-                "furigana": "がね"
+                "furigana": "がね",
+                "romaji": "gane"
             }
         ],
         "exampleSentence": {
             "sentence": "眼鏡をかけます。",
             "translation": "Đeo kính.",
             "enTranslation": "Wear glasses.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "眼鏡",
+                    "furigana": "めがね"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "かけます。"
+                }
+            ]
         }
     },
     {
@@ -102,21 +199,53 @@
         "hanViet": "BIỆN ĐƯƠNG",
         "meaning": "cơm hộp",
         "enMeaning": "bento, box lunch",
+        "kanjiBreakdown": [
+            {
+                "kanji": "弁",
+                "hanViet": "BIỆN",
+                "meaning": "biện hộ, hùng biện"
+            },
+            {
+                "kanji": "当",
+                "hanViet": "ĐƯƠNG",
+                "meaning": "đúng, thích đáng"
+            }
+        ],
         "wordParts": [
             {
                 "text": "弁",
-                "furigana": "べん"
+                "furigana": "べん",
+                "romaji": "ben"
             },
             {
                 "text": "当",
-                "furigana": "とう"
+                "furigana": "とう",
+                "romaji": "tou"
             }
         ],
         "exampleSentence": {
             "sentence": "お弁当を食べます。",
             "translation": "Ăn cơm hộp.",
             "enTranslation": "Eat a bento.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "お"
+                },
+                {
+                    "text": "弁当",
+                    "furigana": "べんとう"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "食",
+                    "furigana": "た"
+                },
+                {
+                    "text": "べます。"
+                }
+            ]
         }
     },
     {
@@ -126,21 +255,49 @@
         "hanViet": "ĐÔ HỢP",
         "meaning": "(sự) thuận tiện, thuận lợi",
         "enMeaning": "convenience",
+        "kanjiBreakdown": [
+            {
+                "kanji": "都",
+                "hanViet": "ĐÔ",
+                "meaning": "kinh đô, thành phố"
+            },
+            {
+                "kanji": "合",
+                "hanViet": "HỢP",
+                "meaning": "hợp, phù hợp"
+            }
+        ],
         "wordParts": [
             {
                 "text": "都",
-                "furigana": "つ"
+                "furigana": "つ",
+                "romaji": "tsu"
             },
             {
                 "text": "合",
-                "furigana": "ごう"
+                "furigana": "ごう",
+                "romaji": "gou"
             }
         ],
         "exampleSentence": {
             "sentence": "都合がいいですか。",
             "translation": "Bạn có tiện không?",
             "enTranslation": "Is it convenient for you?",
-            "parts": []
+            "parts": [
+                {
+                    "text": "都合",
+                    "furigana": "つごう"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "い"
+                },
+                {
+                    "text": "いですか。"
+                }
+            ]
         }
     },
     {
@@ -150,21 +307,50 @@
         "hanViet": "GIA NHẪM",
         "meaning": "tiền thuê nhà",
         "enMeaning": "rent (house)",
+        "kanjiBreakdown": [
+            {
+                "kanji": "家",
+                "hanViet": "GIA",
+                "meaning": "nhà, gia đình"
+            },
+            {
+                "kanji": "賃",
+                "hanViet": "NHẪM",
+                "meaning": "tiền thuê, tiền công"
+            }
+        ],
         "wordParts": [
             {
                 "text": "家",
-                "furigana": "や"
+                "furigana": "や",
+                "romaji": "ya"
             },
             {
                 "text": "賃",
-                "furigana": "ちん"
+                "furigana": "ちん",
+                "romaji": "chin"
             }
         ],
         "exampleSentence": {
             "sentence": "家賃が高いです。",
             "translation": "Tiền thuê nhà đắt.",
             "enTranslation": "The rent is expensive.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "家賃",
+                    "furigana": "やちん"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "高",
+                    "furigana": "たか"
+                },
+                {
+                    "text": "いです。"
+                }
+            ]
         }
     },
     {
@@ -174,21 +360,46 @@
         "hanViet": "HÒA THẤT",
         "meaning": "phòng kiểu Nhật",
         "enMeaning": "Japanese-style room",
+        "kanjiBreakdown": [
+            {
+                "kanji": "和",
+                "hanViet": "HÒA",
+                "meaning": "hòa bình, Nhật Bản"
+            },
+            {
+                "kanji": "室",
+                "hanViet": "THẤT",
+                "meaning": "phồng, buồng"
+            }
+        ],
         "wordParts": [
             {
                 "text": "和",
-                "furigana": "わ"
+                "furigana": "わ",
+                "romaji": "wa"
             },
             {
                 "text": "室",
-                "furigana": "しつ"
+                "furigana": "しつ",
+                "romaji": "shitsu"
             }
         ],
         "exampleSentence": {
             "sentence": "和室があります。",
             "translation": "Có phòng kiểu Nhật.",
             "enTranslation": "There is a Japanese-style room.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "和室",
+                    "furigana": "わしつ"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "あります。"
+                }
+            ]
         }
     },
     {
@@ -198,29 +409,67 @@
         "hanViet": "ÁP NHẬP",
         "meaning": "tủ âm tường",
         "enMeaning": "closet",
+        "kanjiBreakdown": [
+            {
+                "kanji": "押",
+                "hanViet": "ÁP",
+                "meaning": "ấn, ép"
+            },
+            {
+                "kanji": "入",
+                "hanViet": "NHẬP",
+                "meaning": "vào, nhập"
+            }
+        ],
         "wordParts": [
             {
                 "text": "押",
-                "furigana": "お"
+                "furigana": "お",
+                "romaji": "o"
             },
             {
                 "text": "し",
-                "furigana": "し"
+                "furigana": "し",
+                "romaji": "shi"
             },
             {
                 "text": "入",
-                "furigana": "い"
+                "furigana": "い",
+                "romaji": "i"
             },
             {
                 "text": "れ",
-                "furigana": "れ"
+                "furigana": "れ",
+                "romaji": "re"
             }
         ],
         "exampleSentence": {
             "sentence": "布団を押入れに入れます。",
             "translation": "Cất chăn đệm vào tủ âm tường.",
             "enTranslation": "Put the futon in the closet.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "布団",
+                    "furigana": "ふとん"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "押入",
+                    "furigana": "おしい"
+                },
+                {
+                    "text": "れに"
+                },
+                {
+                    "text": "入",
+                    "furigana": "い"
+                },
+                {
+                    "text": "れます。"
+                }
+            ]
         }
     },
     {
@@ -230,21 +479,50 @@
         "hanViet": "BỐ ĐOÀN",
         "meaning": "chăn đệm kiểu Nhật",
         "enMeaning": "futon",
+        "kanjiBreakdown": [
+            {
+                "kanji": "布",
+                "hanViet": "BỐ",
+                "meaning": "vải"
+            },
+            {
+                "kanji": "団",
+                "hanViet": "ĐOÀN",
+                "meaning": "đoàn thể, tròn"
+            }
+        ],
         "wordParts": [
             {
                 "text": "布",
-                "furigana": "ふ"
+                "furigana": "ふ",
+                "romaji": "fu"
             },
             {
                 "text": "団",
-                "furigana": "とん"
+                "furigana": "とん",
+                "romaji": "ton"
             }
         ],
         "exampleSentence": {
             "sentence": "布団で寝ます。",
             "translation": "Ngủ bằng chăn đệm.",
             "enTranslation": "Sleep on a futon.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "布団",
+                    "furigana": "ふとん"
+                },
+                {
+                    "text": "で"
+                },
+                {
+                    "text": "寝",
+                    "furigana": "ね"
+                },
+                {
+                    "text": "ます。"
+                }
+            ]
         }
     },
     {
@@ -257,14 +535,26 @@
         "wordParts": [
             {
                 "text": "はきます",
-                "furigana": "はきます"
+                "furigana": "はきます",
+                "romaji": "hakimasu"
             }
         ],
         "exampleSentence": {
             "sentence": "靴をはきます。",
             "translation": "Đi giày.",
             "enTranslation": "Put on shoes.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "靴",
+                    "furigana": "くつ"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "はきます。"
+                }
+            ]
         }
     },
     {
@@ -277,14 +567,26 @@
         "wordParts": [
             {
                 "text": "かぶります",
-                "furigana": "かぶります"
+                "furigana": "かぶります",
+                "romaji": "kaburimasu"
             }
         ],
         "exampleSentence": {
             "sentence": "帽子をかぶります。",
             "translation": "Đội mũ.",
             "enTranslation": "Wear a hat.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "帽子",
+                    "furigana": "ぼうし"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "かぶります。"
+                }
+            ]
         }
     },
     {
@@ -297,14 +599,26 @@
         "wordParts": [
             {
                 "text": "かけます",
-                "furigana": "かけます"
+                "furigana": "かけます",
+                "romaji": "kakemasu"
             }
         ],
         "exampleSentence": {
             "sentence": "眼鏡をかけます。",
             "translation": "Đeo kính.",
             "enTranslation": "Wear glasses.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "眼鏡",
+                    "furigana": "めがね"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "かけます。"
+                }
+            ]
         }
     },
     {
@@ -317,14 +631,25 @@
         "wordParts": [
             {
                 "text": "します",
-                "furigana": "します"
+                "furigana": "します",
+                "romaji": "shimasu"
             }
         ],
         "exampleSentence": {
             "sentence": "ネクタイをします。",
             "translation": "Đeo cà vạt.",
             "enTranslation": "Wear a tie.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "ネクタイ"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "します。"
+                }
+            ]
         }
     },
     {
@@ -337,14 +662,29 @@
         "wordParts": [
             {
                 "text": "コート",
-                "furigana": "コート"
+                "furigana": "コート",
+                "romaji": "ko-to"
             }
         ],
         "exampleSentence": {
             "sentence": "コートを着ます。",
             "translation": "Mặc áo khoác.",
             "enTranslation": "Wear a coat.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "コート"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "着",
+                    "furigana": "き"
+                },
+                {
+                    "text": "ます。"
+                }
+            ]
         }
     },
     {
@@ -357,14 +697,29 @@
         "wordParts": [
             {
                 "text": "セーター",
-                "furigana": "セーター"
+                "furigana": "セーター",
+                "romaji": "se-ta-"
             }
         ],
         "exampleSentence": {
             "sentence": "セーターを買います。",
             "translation": "Mua áo len.",
             "enTranslation": "Buy a sweater.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "セーター"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "買",
+                    "furigana": "か"
+                },
+                {
+                    "text": "います。"
+                }
+            ]
         }
     },
     {
@@ -377,14 +732,29 @@
         "wordParts": [
             {
                 "text": "スーツ",
-                "furigana": "スーツ"
+                "furigana": "スーツ",
+                "romaji": "su-tsu"
             }
         ],
         "exampleSentence": {
             "sentence": "スーツを着ます。",
             "translation": "Mặc com lê.",
             "enTranslation": "Wear a suit.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "スーツ"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "着",
+                    "furigana": "き"
+                },
+                {
+                    "text": "ます。"
+                }
+            ]
         }
     },
     {
@@ -397,14 +767,29 @@
         "wordParts": [
             {
                 "text": "ケーキ",
-                "furigana": "ケーキ"
+                "furigana": "ケーキ",
+                "romaji": "ke-ki"
             }
         ],
         "exampleSentence": {
             "sentence": "ケーキを食べます。",
             "translation": "Ăn bánh ngọt.",
             "enTranslation": "Eat cake.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "ケーキ"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "食",
+                    "furigana": "た"
+                },
+                {
+                    "text": "べます。"
+                }
+            ]
         }
     },
     {
@@ -417,14 +802,29 @@
         "wordParts": [
             {
                 "text": "ロボット",
-                "furigana": "ロボット"
+                "furigana": "ロボット",
+                "romaji": "robotto"
             }
         ],
         "exampleSentence": {
             "sentence": "ロボットを作ります。",
             "translation": "Chế tạo rô bốt.",
             "enTranslation": "Make a robot.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "ロボット"
+                },
+                {
+                    "text": "を"
+                },
+                {
+                    "text": "作",
+                    "furigana": "つく"
+                },
+                {
+                    "text": "ります。"
+                }
+            ]
         }
     },
     {
@@ -437,14 +837,25 @@
         "wordParts": [
             {
                 "text": "ユーモア",
-                "furigana": "ユーモア"
+                "furigana": "ユーモア",
+                "romaji": "yu-moa"
             }
         ],
         "exampleSentence": {
             "sentence": "ユーモアがあります。",
             "translation": "Có tính hài hước.",
             "enTranslation": "Have a sense of humor.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "ユーモア"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "あります。"
+                }
+            ]
         }
     },
     {
@@ -457,14 +868,26 @@
         "wordParts": [
             {
                 "text": "ダイニングキッチン",
-                "furigana": "ダイニングキッチン"
+                "furigana": "ダイニングキッチン",
+                "romaji": "dainingu kicchin"
             }
         ],
         "exampleSentence": {
             "sentence": "広いダイニングキッチン",
             "translation": "Phòng bếp rộng",
             "enTranslation": "Spacious dining kitchen",
-            "parts": []
+            "parts": [
+                {
+                    "text": "広",
+                    "furigana": "ひろ"
+                },
+                {
+                    "text": "い"
+                },
+                {
+                    "text": "ダイニングキッチン"
+                }
+            ]
         }
     },
     {
@@ -477,14 +900,29 @@
         "wordParts": [
             {
                 "text": "サイズ",
-                "furigana": "サイズ"
+                "furigana": "サイズ",
+                "romaji": "saizu"
             }
         ],
         "exampleSentence": {
             "sentence": "サイズが合いません。",
             "translation": "Không vừa kích cỡ.",
             "enTranslation": "The size doesn't fit.",
-            "parts": []
+            "parts": [
+                {
+                    "text": "サイズ"
+                },
+                {
+                    "text": "が"
+                },
+                {
+                    "text": "合",
+                    "furigana": "あ"
+                },
+                {
+                    "text": "いません。"
+                }
+            ]
         }
     }
 ]

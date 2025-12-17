@@ -1,11 +1,17 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useMemo } from 'react';
 import { Card, Button, Typography, theme } from 'antd';
 import { motion } from 'motion/react';
-import { ClockCircleOutlined, ThunderboltFilled, CoffeeOutlined } from '@ant-design/icons';
+import {
+	ClockCircleOutlined,
+	ThunderboltFilled,
+	CoffeeOutlined,
+	RocketOutlined,
+} from '@ant-design/icons';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { useReviewStatus } from '@/hooks/useReviewStatus';
 
 const { Title } = Typography;
 
@@ -26,108 +32,57 @@ export default function NextReviewWidget({
 }: NextReviewWidgetProps) {
 	const t = useTranslations('Dashboard.SmartForecast');
 	const { token } = theme.useToken();
-	// We only track "now" to trigger re-renders
-	const [now, setNow] = useState<Date>(new Date());
 
-	useEffect(() => {
-		// Update "now" every minute
-		const interval = setInterval(() => {
-			setNow(new Date());
-		}, 60000);
-		return () => clearInterval(interval);
-	}, []);
-
-	// Derive state
-	let status: 'chill' | 'ready' | 'urgent' | 'sleep' | 'streak-rescue' = 'chill';
-	let timeLeftString = '';
-
-	const hour = now.getHours();
-	const isSleepTime = hour >= 22 || hour < 5;
-
-	// Streak Savior Logic: Late (>20h), has streak, but 0 reviews today
-	const isStreakAtRisk = streak > 0 && reviewedToday === 0 && hour >= 20;
-
-	if (isStreakAtRisk) {
-		status = 'streak-rescue';
-	} else if (urgentCard) {
-		status = 'urgent';
-	} else if (nextReview) {
-		const diff = nextReview.getTime() - now.getTime();
-		if (diff <= 0) {
-			status = 'ready';
-		} else {
-			status = 'chill';
-			const hours = Math.floor(diff / (1000 * 60 * 60));
-			const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-			timeLeftString = `${hours}h ${minutes}m`;
-		}
-	} else {
-		status = isSleepTime ? 'sleep' : 'chill';
-	}
-
-	// Override chill to sleep if it's late and nothing is urgent/ready (and not rescuing streak)
-	if (status === 'chill' && isSleepTime) {
-		status = 'sleep';
-	}
+	const { status, timeLeftString } = useReviewStatus({
+		nextReview,
+		urgentCard,
+		streak,
+		reviewedToday,
+	});
 
 	// Format time for display (e.g. 18:30)
-	const formatTime = (date: Date) => {
+	// Memoize to avoid recreation on every render
+	const nextReviewTimeStr = useMemo(() => {
+		if (!nextReview) return '';
 		return new Intl.DateTimeFormat('vi-VN', {
 			hour: '2-digit',
 			minute: '2-digit',
-		}).format(date);
-	};
+		}).format(nextReview);
+	}, [nextReview]);
 
-	if (!nextReview && !urgentCard && !isSleepTime && !isStreakAtRisk) return null;
+	const styles = useMemo(() => {
+		// Common gradients based on token colors for Dark/Light mode compatibility
+		// We use standard tokens to ensure it looks good in both modes
+		const gradients = {
+			streak: `linear-gradient(135deg, ${token.colorWarningBg} 0%, ${token.colorErrorBg} 100%)`,
+			urgent: `linear-gradient(135deg, ${token.colorErrorBg} 0%, ${token.colorBgContainer} 100%)`,
+			ready: `linear-gradient(135deg, ${token.colorSuccessBg} 0%, ${token.colorBgContainer} 100%)`,
+			sleep: `linear-gradient(135deg, ${token.colorFillQuaternary} 0%, ${token.colorBgContainer} 100%)`,
+			chill: `linear-gradient(135deg, ${token.colorInfoBg || token.colorPrimaryBg} 0%, ${token.colorBgContainer} 100%)`,
+		};
 
-	const getGradient = () => {
-		switch (status) {
-			case 'streak-rescue':
-				// Intense orange/red gradient for rescue
-				return `linear-gradient(135deg, ${token.colorWarningBg} 0%, ${token.colorErrorBg} 100%)`;
-			case 'urgent':
-				// Red-ish gradient using ErrorBg
-				return `linear-gradient(135deg, ${token.colorErrorBg} 0%, ${token.colorBgContainer} 100%)`;
-			case 'ready':
-				// Green-ish gradient using SuccessBg
-				return `linear-gradient(135deg, ${token.colorSuccessBg} 0%, ${token.colorBgContainer} 100%)`;
-			case 'sleep':
-				// Grey-ish gradient
-				return `linear-gradient(135deg, ${token.colorFillQuaternary} 0%, ${token.colorBgContainer} 100%)`;
-			default: // chill
-				// Blue-ish gradient using InfoBg (or Check Primary)
-				return `linear-gradient(135deg, ${token.colorInfoBg || token.colorPrimaryBg} 0%, ${token.colorBgContainer} 100%)`;
-		}
-	};
-
-	const getBorderColor = () => {
-		// Zen philosophy: use token borders
-		switch (status) {
-			case 'streak-rescue':
-				return token.colorWarningBorder;
-			case 'urgent':
-				return token.colorErrorBorder;
-			case 'ready':
-				return token.colorSuccessBorder;
-			default:
-				return 'transparent';
-		}
-	};
-
-	const getIconColor = () => {
-		switch (status) {
-			case 'streak-rescue':
-				return token.colorWarning; // Use warning color (orange/fire)
-			case 'urgent':
-				return token.colorError;
-			case 'ready':
-				return token.colorSuccess;
-			case 'sleep':
-				return token.colorTextSecondary;
-			default: // Chill
-				return token.colorPrimary;
-		}
-	};
+		return {
+			gradient: gradients[status === 'streak-rescue' ? 'streak' : status],
+			borderColor: {
+				'streak-rescue': token.colorWarningBorder,
+				urgent: token.colorErrorBorder,
+				ready: token.colorSuccessBorder,
+				sleep: 'transparent',
+				chill: 'transparent',
+			}[status],
+			iconColor: {
+				'streak-rescue': token.colorWarning,
+				urgent: token.colorError,
+				ready: token.colorSuccess,
+				sleep: token.colorTextSecondary,
+				chill: token.colorPrimary,
+			}[status],
+			shadow:
+				status === 'urgent' || status === 'streak-rescue'
+					? `0 4px 12px ${token.colorError}1A`
+					: `0 4px 16px ${token.colorText}0A`,
+		};
+	}, [status, token]);
 
 	// Variants for icon animation
 	const iconVariants = {
@@ -148,6 +103,8 @@ export default function NextReviewWidget({
 
 	const shouldPulse = status === 'urgent' || status === 'ready' || status === 'streak-rescue';
 
+	if (!nextReview && !urgentCard && status !== 'sleep' && status !== 'streak-rescue') return null;
+
 	return (
 		<motion.div
 			initial={{ opacity: 0, y: 10 }}
@@ -161,27 +118,23 @@ export default function NextReviewWidget({
 			<Card
 				styles={{
 					body: {
-						padding: '20px 24px', // More breathing room
-						background: getGradient(),
+						padding: '20px 24px',
+						background: styles.gradient,
 					},
 				}}
 				style={{
-					border: `1px solid ${getBorderColor()}`,
+					border: `1px solid ${styles.borderColor}`,
 					borderRadius: 16,
 					overflow: 'hidden',
-					// Enhanced shadow using token-based colors if possible, or keep semantic rgba
-					boxShadow:
-						status === 'urgent' || status === 'streak-rescue'
-							? `0 4px 12px ${token.colorError}1A` // 10% opacity
-							: `0 4px 16px ${token.colorText}0A`, // 4% opacity
+					boxShadow: styles.shadow,
 				}}
 			>
 				<div
 					style={{
 						display: 'flex',
 						alignItems: 'center',
-						gap: 16, // Use tighter gap
-						flexWrap: 'wrap', // Allow wrapping
+						gap: 16,
+						flexWrap: 'wrap',
 					}}
 				>
 					{/* Icon Section */}
@@ -189,7 +142,7 @@ export default function NextReviewWidget({
 						variants={iconVariants}
 						animate={shouldPulse ? 'pulse' : 'static'}
 						style={{
-							width: 48, // Slightly smaller icon
+							width: 48,
 							height: 48,
 							borderRadius: '50%',
 							display: 'flex',
@@ -197,7 +150,7 @@ export default function NextReviewWidget({
 							justifyContent: 'center',
 							fontSize: 24,
 							background: token.colorBgContainer,
-							color: getIconColor(),
+							color: styles.iconColor,
 							flexShrink: 0,
 							boxShadow: `0 4px 12px ${token.colorText}1A`,
 						}}
@@ -217,8 +170,6 @@ export default function NextReviewWidget({
 
 					{/* Content Section */}
 					<div style={{ flex: '1 1 200px' }}>
-						{' '}
-						{/* Min width 200px to force wrap */}
 						<Title
 							level={4}
 							style={{ margin: 0, fontSize: 16, fontWeight: 600, color: token.colorText }}
@@ -252,7 +203,7 @@ export default function NextReviewWidget({
 											: t.rich('forecastChill', {
 													time: () => (
 														<span style={{ color: token.colorPrimary, fontWeight: 700 }}>
-															{timeLeftString || formatTime(nextReview!)}
+															{timeLeftString || nextReviewTimeStr}
 														</span>
 													),
 												})}
@@ -265,12 +216,12 @@ export default function NextReviewWidget({
 							display: 'flex',
 							gap: 8,
 							flexDirection: 'column',
-							flex: '1 1 auto', // Allow grow
-							minWidth: 120, // Min width for buttons
+							flex: '1 1 auto',
+							minWidth: 120,
 						}}
 					>
 						{(status === 'urgent' || status === 'ready' || status === 'streak-rescue') && (
-							<Link href="/study" tabIndex={-1}>
+							<Link href="/study" tabIndex={-1} style={{ width: '100%' }}>
 								<Button
 									type="primary"
 									shape="round"
@@ -279,7 +230,7 @@ export default function NextReviewWidget({
 									style={{
 										fontWeight: 600,
 										width: '100%',
-										height: 48, // Bigger touch target
+										height: 48,
 										boxShadow: `0 4px 12px ${token.colorText}1A`,
 									}}
 									aria-label={t('actionReview')}
@@ -288,28 +239,29 @@ export default function NextReviewWidget({
 								</Button>
 							</Link>
 						)}
-						{/* Quick 5 Button (Always show if reviews available/urgent OR chill but user wants to study) */}
-						{/* Actually, user might want to do quick 5 even if chill? Or only when ready? */}
-						{/* Plan says: "Do Quick 5" as friction reduction. So helps when reviews exist. */}
-						{(status === 'ready' || status === 'urgent') && (
-							<Link href="/study?mode=quick" tabIndex={-1}>
-								<Button
-									type="default"
-									shape="round"
-									size="small"
-									style={{
-										fontWeight: 600,
-										width: '100%',
-										border: 'none',
-										background: 'transparent',
-										color: token.colorTextSecondary,
-										boxShadow: 'none',
-									}}
-								>
-									{t('actionQuick')}
-								</Button>
-							</Link>
-						)}
+
+						{/* Study Ahead / Quick 5 Button */}
+						{/* Available in Ready, Urgent (as secondary) or Chill (as primary if user wants to study ahead) */}
+						<Link href="/study?mode=quick" tabIndex={-1} style={{ width: '100%' }}>
+							<Button
+								type={status === 'chill' ? 'primary' : 'default'}
+								ghost={status === 'chill'}
+								shape="round"
+								size={status === 'chill' ? 'large' : 'small'}
+								style={{
+									fontWeight: 600,
+									width: '100%',
+									border: status === 'chill' ? `1px solid ${token.colorPrimary}` : 'none',
+									background: 'transparent',
+									color: status === 'chill' ? token.colorPrimary : token.colorTextSecondary,
+									boxShadow: 'none',
+									marginTop: status === 'chill' ? 0 : 4,
+								}}
+								icon={status === 'chill' ? <RocketOutlined /> : undefined}
+							>
+								{status === 'chill' ? t('actionStudyAhead') : t('actionQuick')}
+							</Button>
+						</Link>
 					</div>
 				</div>
 			</Card>

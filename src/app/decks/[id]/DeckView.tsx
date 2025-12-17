@@ -401,12 +401,13 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 							</Title>
 							<div style={{ marginTop: 8 }}>
 								{deck.isPublic ? (
-									<Tag icon={<GlobalOutlined />} color="green">
-										{t('publicTag')}
-									</Tag>
+									// <Tag icon={<GlobalOutlined />} color="green">
+									// 	{t('publicTag')}
+									// </Tag>
+									<></>
 								) : (
 									<Tag icon={<TeamOutlined />} color="blue">
-										Private
+										{t('privateTag')}
 									</Tag>
 								)}
 								<Tag>{t('itemsCount', { count: vocabCount + kanjiCount })}</Tag>

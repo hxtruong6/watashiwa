@@ -47,6 +47,7 @@ export function useStudySession({ courseId, deckId, mode, userSettings }: UseStu
 		newCardsToday: 0,
 		limitNewCards: 20,
 		dueCount: 0,
+		reviewsAvailable: 0,
 	});
 
 	// Sync Stats with User Settings
@@ -55,7 +56,7 @@ export function useStudySession({ courseId, deckId, mode, userSettings }: UseStu
 			setDailyStats((prev) => ({
 				...prev,
 				limitReviews: userSettings.limitReviews,
-				limitNewCards: userSettings.limitNewCards, // Assuming userSettings has this
+				limitNewCards: userSettings.limitNewCards,
 			}));
 		}
 	}, [userSettings]);
@@ -63,14 +64,14 @@ export function useStudySession({ courseId, deckId, mode, userSettings }: UseStu
 	// Initial Stats Load
 	useEffect(() => {
 		getDailyProgress().then((stats) => {
-			if (stats) setDailyStats(stats);
+			if (stats) setDailyStats({ ...stats, reviewsAvailable: stats.reviewsAvailable || 0 });
 		});
 	}, []);
 
 	// Update Stats Helper
 	const updateStats = useCallback(() => {
 		getDailyProgress().then((stats) => {
-			if (stats) setDailyStats(stats);
+			if (stats) setDailyStats({ ...stats, reviewsAvailable: stats.reviewsAvailable || 0 });
 		});
 	}, []);
 
@@ -132,7 +133,7 @@ export function useStudySession({ courseId, deckId, mode, userSettings }: UseStu
 			setLoading(true);
 
 			// Calc how many to fetch
-			const fetchCount = sessionLimit ? Math.min(3, sessionLimit - cardsReviewedInSession) : 3;
+			const fetchCount = sessionLimit ? Math.min(5, sessionLimit - cardsReviewedInSession) : 5;
 			if (fetchCount <= 0) {
 				setCard(null);
 				setSessionComplete(true);
@@ -304,5 +305,6 @@ export function useStudySession({ courseId, deckId, mode, userSettings }: UseStu
 		targetDeckIds, // Exposed if needed
 		showAnswer,
 		setShowAnswer,
+		queue, // Exposed for Briefing
 	};
 }
