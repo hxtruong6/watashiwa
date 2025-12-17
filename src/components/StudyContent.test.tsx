@@ -74,6 +74,7 @@ vi.mock('@/hooks/useTutorialStore', () => ({
 	useTutorialStore: {
 		getState: () => ({
 			setCompletedTutorials: vi.fn(),
+			mergeTutorials: vi.fn(),
 		}),
 	},
 }));

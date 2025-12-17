@@ -1,6 +1,7 @@
 'use server';
 
 import { prisma } from '@/lib/db';
+import { Prisma } from '@prisma/client';
 import { getUser } from '@/services/actions';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
@@ -39,6 +40,158 @@ const CreateKanjiSchema = z.object({
 	imageUrl: z.string().optional(),
 });
 
+// Replaced simple getUserDecks with this stats-enriched version
+export async function getUserDecksWithStats() {
+	try {
+		const user = await getUser();
+		if (!user) return { learningDecks: [], createdDecks: [] };
+
+		const now = new Date();
+
+		// Get all decks user created
+		const createdDecks = await prisma.deck.findMany({
+			where: {
+				authorId: user.id,
+			},
+			include: {
+				_count: {
+					select: { vocab: true, kanji: true },
+				},
+			},
+			orderBy: {
+				createdAt: 'desc',
+			},
+		});
+
+		// Get all public decks the user might be learning from
+		const publicDecks = await prisma.deck.findMany({
+			where: {
+				isPublic: true,
+				authorId: { not: user.id }, // Exclude own decks
+			},
+			include: {
+				_count: {
+					select: { vocab: true, kanji: true },
+				},
+			},
+		});
+
+		// Check which decks user is actively learning (has cards from)
+		const allDecks = [...publicDecks, ...createdDecks];
+		const learningDecksWithStats = [];
+
+		for (const deck of allDecks) {
+			// Get all cards from this deck that the user has (inline stats calculation)
+			const userCards = await prisma.studyCard.findMany({
+				where: {
+					userId: user.id,
+					OR: [{ vocab: { deckId: deck.id } }, { kanji: { deckId: deck.id } }],
+				},
+				select: {
+					id: true,
+					due: true,
+					state: true,
+					stability: true,
+					lastReview: true,
+				},
+			});
+
+			if (userCards.length > 0) {
+				// Calculate statistics
+				const dueCount = userCards.filter((card) => card.due <= now).length;
+				const totalCards = userCards.length;
+				const masteredCount = userCards.filter(
+					(card) => card.state === 2 && card.stability !== null && card.stability > 21,
+				).length;
+
+				const lastStudiedCard = userCards
+					.filter((card) => card.lastReview !== null)
+					.sort((a, b) => {
+						if (!a.lastReview || !b.lastReview) return 0;
+						return b.lastReview.getTime() - a.lastReview.getTime();
+					})[0];
+
+				// Estimate Next Review (earliest due date in future)
+				const futureCards = userCards
+					.filter((c) => c.due > now)
+					.sort((a, b) => a.due.getTime() - b.due.getTime());
+				const nextReview = futureCards.length > 0 ? futureCards[0].due : null;
+
+				learningDecksWithStats.push({
+					...deck,
+					learningStats: {
+						hasCards: true,
+						dueCount,
+						totalCards,
+						masteredCount,
+						lastStudied: lastStudiedCard?.lastReview || null,
+						nextReview,
+					},
+				});
+			}
+		}
+
+		// Optimize Learner Count: Use SINGLE SQL query instead of N+1 loop
+		// This scales much better for 10,000 users.
+		const createdDeckIds = createdDecks.map((d) => d.id);
+
+		let learnersCounts: { deck_id: string; count: number }[] = [];
+
+		if (createdDeckIds.length > 0) {
+			try {
+				// We need to join StudyCard -> Vocab/Kanji -> Deck to group by deck_id
+				// "StudyCard", "Vocab", "Kanji" are table names (prisma defaults to PascalCase models if not mapped)
+				// Fields: user_id, vocab_id, kanji_id, deck_id are mapped in schema
+				learnersCounts = await prisma.$queryRaw`
+					SELECT 
+						COALESCE(v.deck_id, k.deck_id) as deck_id,
+						COUNT(DISTINCT sc.user_id)::int as count
+					FROM "StudyCard" sc
+					LEFT JOIN "Vocab" v ON sc.vocab_id = v.id
+					LEFT JOIN "Kanji" k ON sc.kanji_id = k.id
+					WHERE 
+						(v.deck_id IN (${Prisma.join(createdDeckIds)}) OR k.deck_id IN (${Prisma.join(createdDeckIds)}))
+						AND sc.user_id != ${user.id}
+					GROUP BY COALESCE(v.deck_id, k.deck_id)
+				`;
+			} catch (err) {
+				console.error('Failed to count learners via raw SQL, falling back to 0', err);
+				// Fallback to 0 if query fails (e.g. migration mismatch)
+			}
+		}
+
+		// Map counts back to decks
+		const createdDecksWithStats = createdDecks.map((deck) => {
+			const stat = learnersCounts.find((row) => row.deck_id === deck.id);
+			return {
+				...deck,
+				learnersCount: stat ? Number(stat.count) : 0,
+			};
+		});
+
+		// Sort learning decks by due count (desc), then last studied (desc)
+		learningDecksWithStats.sort((a, b) => {
+			// First by due count
+			if (b.learningStats.dueCount !== a.learningStats.dueCount) {
+				return b.learningStats.dueCount - a.learningStats.dueCount;
+			}
+			// Then by last studied (more recent first)
+			const aTime = a.learningStats.lastStudied?.getTime() || 0;
+			const bTime = b.learningStats.lastStudied?.getTime() || 0;
+			return bTime - aTime;
+		});
+
+		return {
+			learningDecks: learningDecksWithStats,
+			createdDecks: createdDecksWithStats,
+		};
+	} catch (error) {
+		console.error('Error fetching user decks with stats:', error);
+		return { learningDecks: [], createdDecks: [] };
+	}
+}
+
+// Kept for backward compatibility if needed, but updated page uses getUserDecksWithStats
 export async function getUserDecks() {
 	try {
 		const user = await getUser();

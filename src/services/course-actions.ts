@@ -256,10 +256,17 @@ export async function reorderDecks(courseId: string, deckIds: string[]) {
 
 export async function getCourses(options?: { userId?: string; isPublic?: boolean }) {
 	try {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		// Build where clause:
+		// - If userId is provided, return public courses OR user's own courses
+		// - If isPublic is explicitly set, filter by that
 		const whereClause: any = {};
-		if (options?.userId) whereClause.authorId = options.userId;
-		if (options?.isPublic !== undefined) whereClause.isPublic = options.isPublic;
+
+		if (options?.userId) {
+			// Return both public courses (suggestions) AND user's own courses
+			whereClause.OR = [{ isPublic: true }, { authorId: options.userId }];
+		} else if (options?.isPublic !== undefined) {
+			whereClause.isPublic = options.isPublic;
+		}
 
 		const courses = await prisma.course.findMany({
 			where: whereClause,
@@ -268,11 +275,23 @@ export async function getCourses(options?: { userId?: string; isPublic?: boolean
 					select: { decks: true },
 				},
 				author: {
-					select: { name: true },
+					select: { name: true, id: true },
 				},
 			},
 			orderBy: { updatedAt: 'desc' },
 		});
+
+		// Sort: public admin courses first (suggestions), then user's own courses
+		if (options?.userId) {
+			return courses.sort((a, b) => {
+				const aIsPublic = a.isPublic && a.authorId !== options.userId;
+				const bIsPublic = b.isPublic && b.authorId !== options.userId;
+				if (aIsPublic && !bIsPublic) return -1;
+				if (!aIsPublic && bIsPublic) return 1;
+				return 0;
+			});
+		}
+
 		return courses;
 	} catch (error) {
 		console.error('Failed to fetch courses:', error);

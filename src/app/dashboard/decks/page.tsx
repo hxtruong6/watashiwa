@@ -1,9 +1,9 @@
 import React from 'react';
-import { getUserDecks } from '@/services/user-content-actions';
+import { getUserDecksWithStats } from '@/services/user-content-actions';
 import MyDecksList from '@/components/dashboard/MyDecksList';
 
 export default async function MyDecksPage() {
-	const decks = await getUserDecks();
+	const { learningDecks, createdDecks } = await getUserDecksWithStats();
 
-	return <MyDecksList decks={decks} />;
+	return <MyDecksList learningDecks={learningDecks} createdDecks={createdDecks} />;
 }

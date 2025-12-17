@@ -110,7 +110,7 @@ export default function StudyContent() {
 		}
 
 		if (tutorials) {
-			useTutorialStore.getState().setCompletedTutorials(tutorials);
+			useTutorialStore.getState().mergeTutorials(tutorials);
 		}
 	}, []);
 

@@ -8,5 +8,5 @@ export default async function CoursesDashboardPage() {
 
 	const courses = await getCourses({ userId: user.id });
 
-	return <CourseList courses={courses} />;
+	return <CourseList courses={courses} userId={user.id} />;
 }

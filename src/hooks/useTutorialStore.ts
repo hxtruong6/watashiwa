@@ -8,6 +8,7 @@ interface TutorialState {
 
 	// Actions
 	markComplete: (tutorialId: string) => void;
+	mergeTutorials: (serverTutorials: Record<string, boolean>) => void;
 	setCompletedTutorials: (tutorials: Record<string, boolean>) => void;
 	reset: () => void;
 }
@@ -21,6 +22,19 @@ export const useTutorialStore = create<TutorialState>()(
 				set((state) => ({
 					completedTutorials: { ...state.completedTutorials, [tutorialId]: true },
 				})),
+
+			mergeTutorials: (serverTutorials) =>
+				set((state) => {
+					// Union of keys from both
+					const merged: Record<string, boolean> = { ...serverTutorials };
+					// If client has something marked as true, keep it true (client wins on 'true')
+					Object.keys(state.completedTutorials).forEach((key) => {
+						if (state.completedTutorials[key]) {
+							merged[key] = true;
+						}
+					});
+					return { completedTutorials: merged };
+				}),
 
 			setCompletedTutorials: (tutorials) => set({ completedTutorials: tutorials }),
 

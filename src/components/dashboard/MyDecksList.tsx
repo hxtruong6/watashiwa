@@ -1,9 +1,28 @@
 'use client';
 
 import React from 'react';
-import { Typography, Row, Col, Card, Button, Flex, Tag, Empty, theme } from 'antd';
+import {
+	Typography,
+	Row,
+	Col,
+	Card,
+	Button,
+	Flex,
+	Tag,
+	Empty,
+	Progress,
+	theme,
+	Divider,
+} from 'antd';
 import Link from 'next/link';
-import { BookOutlined } from '@ant-design/icons';
+import {
+	UserOutlined,
+	CalendarOutlined,
+	BookOutlined,
+	ClockCircleOutlined,
+	RocketOutlined,
+	TrophyOutlined,
+} from '@ant-design/icons';
 import { useTranslations, useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import DeckListActions from '@/app/dashboard/decks/DeckListActions';
@@ -11,12 +30,83 @@ import DeckListActions from '@/app/dashboard/decks/DeckListActions';
 const { Title, Text, Paragraph } = Typography;
 const { useToken } = theme;
 
-interface MyDecksListProps {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	decks: any[];
+interface LearningDeck {
+	id: string;
+	title: string;
+	titleEn: string | null;
+	description: string | null;
+	descriptionEn: string | null;
+	headerImage: string | null;
+	isPublic: boolean;
+	_count: {
+		vocab: number;
+		kanji: number;
+	};
+	learningStats: {
+		hasCards: boolean;
+		dueCount: number;
+		totalCards: number;
+		masteredCount: number;
+		lastStudied: Date | null;
+		nextReview: Date | null;
+	};
 }
 
-export default function MyDecksList({ decks }: MyDecksListProps) {
+interface CreatedDeck {
+	id: string;
+	title: string;
+	titleEn: string | null;
+	description: string | null;
+	descriptionEn: string | null;
+	headerImage: string | null;
+	isPublic: boolean;
+	authorId: string;
+	createdAt: Date;
+	learnersCount: number;
+	_count: {
+		vocab: number;
+		kanji: number;
+	};
+}
+
+interface MyDecksListProps {
+	learningDecks: LearningDeck[];
+	createdDecks: CreatedDeck[];
+}
+
+function formatRelativeTime(date: Date | null, t: any): string {
+	if (!date) return t('neverStudied');
+
+	const now = new Date();
+	const diff = now.getTime() - date.getTime();
+	const minutes = Math.floor(diff / 60000);
+	const hours = Math.floor(diff / 3600000);
+	const days = Math.floor(diff / 86400000);
+
+	if (minutes < 3) return t('justNow');
+	if (minutes < 60) return t('minutesAgo', { minutes });
+	if (hours < 24) return t('hoursAgo', { hours });
+	if (days === 1) return t('yesterday');
+	return t('daysAgo', { days });
+}
+
+function formatNextReview(date: Date | null, t: any): string {
+	if (!date) return t('noDue');
+	const now = new Date();
+	const diff = date.getTime() - now.getTime();
+
+	if (diff <= 0) return t('dueCount', { count: 1 }); // Should be covered by dueCount but fallback
+
+	const minutes = Math.floor(diff / 60000);
+	const hours = Math.floor(diff / 3600000);
+	const days = Math.floor(diff / 86400000);
+
+	if (minutes < 60) return `${minutes}m`;
+	if (hours < 24) return `${hours}h`;
+	return `${days}d`;
+}
+
+export default function MyDecksList({ learningDecks, createdDecks }: MyDecksListProps) {
 	const { token } = useToken();
 	const t = useTranslations('MyDecks');
 	const locale = useLocale();
@@ -24,6 +114,7 @@ export default function MyDecksList({ decks }: MyDecksListProps) {
 
 	return (
 		<div style={{ maxWidth: 1200, margin: '0 auto', padding: '24px 16px' }}>
+			{/* Header */}
 			<Row justify="space-between" align="middle" gutter={[16, 16]} style={{ marginBottom: 32 }}>
 				<Col xs={24} sm={16}>
 					<Title level={2} style={{ margin: 0, color: token.colorPrimary, fontSize: '1.75rem' }}>
@@ -43,98 +134,246 @@ export default function MyDecksList({ decks }: MyDecksListProps) {
 				</Col>
 			</Row>
 
-			{decks.length > 0 ? (
-				<Row gutter={[24, 24]}>
-					{/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-					{decks.map((deck: any) => {
-						const displayTitle = locale === 'en' ? deck.titleEn || deck.title : deck.title;
-						const displayDescription =
-							locale === 'en' ? deck.descriptionEn || deck.description : deck.description;
+			{/* Section 1: Active Learning */}
+			{learningDecks.length > 0 && (
+				<>
+					<div style={{ marginBottom: 16 }}>
+						<Title level={3} style={{ margin: 0, display: 'flex', alignItems: 'center', gap: 8 }}>
+							<RocketOutlined style={{ color: token.colorPrimary }} />
+							{t('activeLearning')}
+						</Title>
+						<Text type="secondary" style={{ fontSize: 14 }}>
+							{t('activeLearningDesc')}
+						</Text>
+					</div>
+					<Row gutter={[24, 24]} style={{ marginBottom: 48 }}>
+						{learningDecks.map((deck) => {
+							const displayTitle = locale === 'en' ? deck.titleEn || deck.title : deck.title;
+							const masteryPercent = Math.round(
+								(deck.learningStats.masteredCount / deck.learningStats.totalCards) * 100,
+							);
 
-						return (
-							<Col xs={24} sm={12} md={8} lg={6} key={deck.id}>
-								<Card
-									hoverable
-									onClick={() => router.push(`/decks/${deck.id}`)}
-									style={{
-										borderRadius: 16,
-										height: '100%',
-										display: 'flex',
-										flexDirection: 'column',
-										boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
-										cursor: 'pointer',
-									}}
-									styles={{ body: { flex: 1, display: 'flex', flexDirection: 'column' } }}
-								>
-									<Flex justify="space-between" align="start" style={{ marginBottom: 16 }}>
-										<div
-											style={{
-												width: 48,
-												height: 48,
-												borderRadius: 12,
-												background: '#F0F2F5',
-												display: 'flex',
-												alignItems: 'center',
-												justifyContent: 'center',
-												overflow: 'hidden',
-											}}
-										>
-											{deck.headerImage ? (
-												/* eslint-disable-next-line @next/next/no-img-element */
-												<img
-													src={deck.headerImage}
-													alt={displayTitle}
-													style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-												/>
-											) : (
-												<BookOutlined style={{ fontSize: 24, color: token.colorPrimary }} />
-											)}
-										</div>
-										{deck.isPublic ? (
-											<Tag color="blue">{t('public')}</Tag>
-										) : (
-											<Tag color="orange">{t('private')}</Tag>
-										)}
-									</Flex>
-
-									<Title level={4} style={{ margin: '0 0 8px', color: token.colorPrimary }}>
-										{displayTitle}
-									</Title>
-
-									<Paragraph
-										type="secondary"
-										ellipsis={{ rows: 2 }}
-										style={{ flex: 1, marginBottom: 24 }}
+							return (
+								<Col xs={24} sm={12} md={8} key={deck.id}>
+									<Card
+										hoverable
+										onClick={() => router.push(`/decks/${deck.id}`)}
+										style={{
+											borderRadius: 16,
+											height: '100%',
+											cursor: 'pointer',
+											border:
+												deck.learningStats.dueCount > 0
+													? `2px solid ${token.colorWarning}`
+													: undefined,
+										}}
 									>
-										{displayDescription || t('noDescription')}
-									</Paragraph>
+										{/* Due Badge (if any) */}
+										{deck.learningStats.dueCount > 0 && (
+											<Tag
+												color="orange"
+												style={{
+													position: 'absolute',
+													top: 12,
+													right: 12,
+													zIndex: 1,
+													fontWeight: 600,
+												}}
+											>
+												{t('dueCount', { count: deck.learningStats.dueCount })}
+											</Tag>
+										)}
 
-									<Flex align="center" justify="space-between" style={{ marginTop: 'auto' }}>
-										<Tag color="default" style={{ margin: 0 }}>
-											{t('cardsCount', {
-												count: (deck._count?.vocab || 0) + (deck._count?.kanji || 0),
-											})}
-										</Tag>
-										<Flex gap="small" onClick={(e) => e.stopPropagation()}>
+										<Flex gap="middle" vertical>
+											<Flex justify="space-between" align="start">
+												<Title level={4} style={{ margin: 0, color: token.colorPrimary, flex: 1 }}>
+													{displayTitle}
+												</Title>
+												{/* Progress Ring */}
+												<Progress
+													type="circle"
+													percent={masteryPercent}
+													size={50}
+													strokeColor={token.colorSuccess}
+													format={(percent) => (
+														<span style={{ fontSize: 10, color: token.colorTextSecondary }}>
+															{percent}%
+														</span>
+													)}
+												/>
+											</Flex>
+
+											{/* Stats Grid */}
+											<Flex vertical gap="small" style={{ marginTop: 8 }}>
+												<Text type="secondary" style={{ fontSize: 12 }}>
+													{t('mastered', {
+														count: deck.learningStats.masteredCount,
+														total: deck.learningStats.totalCards,
+													})}
+												</Text>
+
+												<Flex align="center" gap="small">
+													<ClockCircleOutlined style={{ color: token.colorTextSecondary }} />
+													<Text type="secondary" style={{ fontSize: 13 }}>
+														{t('lastStudied', {
+															time: formatRelativeTime(deck.learningStats.lastStudied, t),
+														})}
+													</Text>
+												</Flex>
+
+												{/* Next Review Time (if nothing due now) */}
+												{deck.learningStats.dueCount === 0 && deck.learningStats.nextReview && (
+													<Flex align="center" gap="small">
+														<CalendarOutlined style={{ color: token.colorTextSecondary }} />
+														<Text type="secondary" style={{ fontSize: 13 }}>
+															{t('nextReviewIn', {
+																time: formatNextReview(deck.learningStats.nextReview, t),
+															})}
+														</Text>
+													</Flex>
+												)}
+											</Flex>
+
+											{/* Study Button */}
+											<div style={{ marginTop: 'auto', paddingTop: 16 }}>
+												{deck.learningStats.dueCount > 0 ? (
+													<Link
+														href={`/study?deck=${deck.id}`}
+														onClick={(e) => e.stopPropagation()}
+													>
+														<Button type="primary" block size="large" icon={<RocketOutlined />}>
+															{t('studyNow')}
+														</Button>
+													</Link>
+												) : (
+													// Disabled / secondary button if nothing due
+													<Link
+														href={`/study?deck=${deck.id}`}
+														onClick={(e) => e.stopPropagation()}
+													>
+														<Button block icon={<BookOutlined />}>
+															{t('view')}
+														</Button>
+													</Link>
+												)}
+											</div>
+										</Flex>
+									</Card>
+								</Col>
+							);
+						})}
+					</Row>
+					<Divider />
+				</>
+			)}
+
+			{/* Section 2: My Created Decks */}
+			{createdDecks.length > 0 && (
+				<>
+					<div style={{ marginBottom: 16 }}>
+						<Title level={3} style={{ margin: 0, display: 'flex', alignItems: 'center', gap: 8 }}>
+							<TrophyOutlined style={{ color: token.colorWarning }} />
+							{t('createdDecks')}
+						</Title>
+						<Text type="secondary" style={{ fontSize: 14 }}>
+							{t('createdDecksDesc')}
+						</Text>
+					</div>
+					<Row gutter={[24, 24]}>
+						{createdDecks.map((deck) => {
+							const displayTitle = locale === 'en' ? deck.titleEn || deck.title : deck.title;
+							const displayDescription =
+								locale === 'en' ? deck.descriptionEn || deck.description : deck.description;
+
+							return (
+								<Col xs={24} sm={12} md={8} lg={6} key={deck.id}>
+									<Card
+										hoverable
+										onClick={() => router.push(`/decks/${deck.id}`)}
+										style={{
+											borderRadius: 16,
+											height: '100%',
+											cursor: 'pointer',
+										}}
+									>
+										<Flex justify="space-between" align="start" style={{ marginBottom: 12 }}>
+											<div
+												style={{
+													width: 48,
+													height: 48,
+													borderRadius: 12,
+													background: token.colorBgContainer,
+													display: 'flex',
+													alignItems: 'center',
+													justifyContent: 'center',
+												}}
+											>
+												<BookOutlined style={{ fontSize: 24, color: token.colorPrimary }} />
+											</div>
+											<Flex gap="small">
+												{deck.isPublic ? (
+													<Tag color="blue">{t('public')}</Tag>
+												) : (
+													<Tag color="orange">{t('private')}</Tag>
+												)}
+											</Flex>
+										</Flex>
+
+										<Title level={4} style={{ margin: '0 0 8px', color: token.colorPrimary }}>
+											{displayTitle}
+										</Title>
+
+										<Paragraph
+											type="secondary"
+											ellipsis={{ rows: 2 }}
+											style={{ marginBottom: 16, minHeight: 44 }}
+										>
+											{displayDescription || t('noDescription')}
+										</Paragraph>
+
+										{/* Learners Count & Items */}
+										<Flex gap="small" style={{ marginBottom: 16 }}>
+											<Tag icon={<RocketOutlined />} color="default">
+												{t('cardsCount', { count: deck._count.vocab + deck._count.kanji })}
+											</Tag>
+											{deck.learnersCount > 0 && (
+												<Tag icon={<UserOutlined />} color="gold">
+													{t('learners', { count: deck.learnersCount })}
+												</Tag>
+											)}
+										</Flex>
+
+										<Flex
+											align="center"
+											justify="end"
+											gap="small"
+											onClick={(e) => e.stopPropagation()}
+										>
 											<Link href={`/decks/${deck.id}`}>
-												<Button type="text" size="small">
-													{t('view')}
-												</Button>
+												<Button size="small">{t('view')}</Button>
 											</Link>
 											<DeckListActions mode="edit" deck={deck} />
 										</Flex>
-									</Flex>
-								</Card>
-							</Col>
-						);
-					})}
-				</Row>
-			) : (
+									</Card>
+								</Col>
+							);
+						})}
+					</Row>
+				</>
+			)}
+
+			{/* Empty States */}
+			{learningDecks.length === 0 && createdDecks.length === 0 && (
 				<Empty
 					image={Empty.PRESENTED_IMAGE_SIMPLE}
 					description={<Text type="secondary">{t('emptyState')}</Text>}
 				>
-					<DeckListActions mode="create" />
+					<Flex gap="small" justify="center" wrap="wrap">
+						<Link href="/decks">
+							<Button>{t('browseLibrary')}</Button>
+						</Link>
+						<DeckListActions mode="create" />
+					</Flex>
 				</Empty>
 			)}
 		</div>

@@ -36,7 +36,7 @@ export default function AppTutorial({
 			const timer = setTimeout(() => {
 				setOpen(true);
 				setCurrent(0);
-			}, 1000);
+			}, 2000);
 			return () => clearTimeout(timer);
 		}
 	}, [completedTutorials, tutorialId, steps]);

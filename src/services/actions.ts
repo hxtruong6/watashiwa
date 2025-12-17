@@ -843,6 +843,10 @@ export async function completeTutorial(tutorialId: string) {
 			},
 		});
 
+		// Revalidate paths to ensure next fetch gets fresh data
+		revalidatePath('/study');
+		revalidatePath('/dashboard');
+
 		return { success: true };
 	} catch (error) {
 		console.error('Error completing tutorial:', error);
