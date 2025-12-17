@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+# Run unit tests
+echo "Running unit tests..."
+pnpm test:run
+
+# Check if unit tests passed
+if [ $? -ne 0 ]; then
+  echo "❌ Unit tests failed. Push aborted."
+  exit 1
+fi
+
+# Run E2E tests
+echo "Running E2E tests..."
+pnpm e2e
+
+# Check if E2E tests passed
+if [ $? -ne 0 ]; then
+  echo "❌ E2E tests failed. Push aborted."
+  exit 1
+fi
+
+echo "✅ All tests passed! Proceeding with push..."

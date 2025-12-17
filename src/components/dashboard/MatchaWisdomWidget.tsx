@@ -12,8 +12,8 @@ const { Text } = Typography;
 const { useToken } = theme;
 
 interface AnimatedWordData extends WisdomWordData {
-	xVal: number; // Animation prop X
-	yVal: number; // Animation prop Y
+	xVal: number;
+	yVal: number;
 	duration: number;
 	delay: number;
 }
@@ -43,8 +43,6 @@ const FALLBACK_WORDS: WisdomWordData[] = [
 	},
 ];
 
-// ... imports remain same
-
 export default function MatchaWisdomWidget() {
 	const { token } = useToken();
 	const t = useTranslations('Dashboard');
@@ -59,16 +57,22 @@ export default function MatchaWisdomWidget() {
 				data = FALLBACK_WORDS;
 			}
 
-			// Map to animation props
-			const animatedData: AnimatedWordData[] = data.map((word, index) => ({
-				...word,
-				// Randomize start positions slightly to avoid monotonous stacking
-				// We still use the CSS transform for main movement, but these can seed the randomness
-				xVal: Math.random() * 20,
-				yVal: Math.random() * 30, // 0-30%
-				duration: 8 + Math.random() * 4, // 8-12s duration
-				delay: index * 4, // Stagger them out nicely
-			}));
+			// Map to animation props with better vertical distribution
+			const animatedData: AnimatedWordData[] = data.map((word, index) => {
+				// Create distinct vertical lanes to prevent overlap
+				const laneHeight = 60;
+				const laneCount = data.length;
+				const laneSize = laneHeight / laneCount;
+				const baseLane = 10 + index * laneSize;
+
+				return {
+					...word,
+					xVal: Math.random() * 20,
+					yVal: baseLane + Math.random() * laneSize * 0.5,
+					duration: 25 + Math.random() * 10, // Slower: 25-35 seconds for calm zen flow
+					delay: index * 5, // Increase stagger delay too
+				};
+			});
 
 			setWords(animatedData);
 		};
@@ -78,21 +82,23 @@ export default function MatchaWisdomWidget() {
 
 	const handleWordClick = (word: AnimatedWordData) => {
 		if (selectedWord === word.id) {
-			setSelectedWord(null); // Deselect
+			setSelectedWord(null);
 			return;
 		}
 
 		setSelectedWord(word.id);
 
-		// Simple Audio Synthesis
 		if ('speechSynthesis' in window) {
 			const utterance = new SpeechSynthesisUtterance(word.kanji);
 			utterance.lang = 'ja-JP';
 			window.speechSynthesis.speak(utterance);
 		}
+
+		setTimeout(() => {
+			setSelectedWord(null);
+		}, 3000);
 	};
 
-	// Keyboard handler for A11y
 	const handleKeyDown = (e: React.KeyboardEvent, word: AnimatedWordData) => {
 		if (e.key === 'Enter' || e.key === ' ') {
 			e.preventDefault();
@@ -105,19 +111,18 @@ export default function MatchaWisdomWidget() {
 			initial={{ opacity: 0, y: 20 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.6 }}
-			style={{ marginBottom: 24 }}
+			style={{ marginBottom: 24, position: 'relative' }}
 		>
 			<Card
 				styles={{
 					body: {
 						padding: 0,
-						// Responsive height: use simple query or safe default
-						height: 240, // Reduced from 300 for better mobile fit. Ideally use responsive CSS class.
+						height: 240,
 						position: 'relative',
 						overflow: 'hidden',
 						background: `linear-gradient(135deg, ${token.colorBgContainer} 0%, ${token.colorSuccessBg} 100%)`,
 						display: 'flex',
-						alignItems: 'center', // This centers the Lottie vertically
+						alignItems: 'center',
 						justifyContent: 'center',
 					},
 				}}
@@ -127,28 +132,29 @@ export default function MatchaWisdomWidget() {
 					boxShadow: `0 8px 32px ${token.colorSuccess}1A`,
 				}}
 			>
-				{/* Lottie Background - Positioned at bottom to start steam effect from cup */}
+				{/* Lottie Background */}
 				<div
 					aria-hidden="true"
 					style={{
 						width: '100%',
-						height: '80%', // Lottie takes bottom 80% to leave top space for words
+						height: '80%',
 						position: 'absolute',
 						bottom: 0,
 						opacity: 0.9,
-						pointerEvents: 'none', // Allow clicks to pass through to words if needed, though they are above
-						zIndex: 1, // Base layer
+						pointerEvents: 'none',
+						zIndex: 1,
 					}}
 				>
 					<DotLottieReact
 						src="/assets/animations/MatchaTea.lottie"
 						loop
 						autoplay
+						speed={0.5}
 						style={{ width: '100%', height: '100%', objectFit: 'contain' }}
 					/>
 				</div>
 
-				{/* Floating Words Layer - Explicitly ABOVE Lottie (z-index 10) */}
+				{/* Floating Words Layer - Inside Card for proper containment */}
 				<div style={{ position: 'absolute', inset: 0, zIndex: 10, pointerEvents: 'none' }}>
 					{words.map((word) => {
 						const isSelected = selectedWord === word.id;
@@ -161,56 +167,59 @@ export default function MatchaWisdomWidget() {
 								tabIndex={0}
 								aria-label={`View details for ${word.kanji}`}
 								onKeyDown={(e) => handleKeyDown(e, word)}
-								// Use transform (x/y) for GPU-accelerated smooth animation
 								animate={
 									isSelected
 										? {
-												x: '-50%',
-												y: '-50%',
-												left: '50%',
-												top: '40%',
-												scale: 1.2,
+												scale: 1.15,
 												opacity: 1,
 											}
 										: {
-												// Move from off-screen left (-50px) to off-screen right (calc(100% + 50px))
-												// We use Viewport width percentages (vw) or just percentages of parent
-												x: ['-20%', '120%'],
-												y: [0, -15, 0, 15, 0], // Bobbing effect
-												opacity: isOtherSelected ? 0.2 : [0, 1, 1, 0], // Fade in/out at edges
+												// Use viewport width (vw) for reliable cross-screen animation
+												// From slightly off left (-5vw) to full screen width (100vw)
+												x: ['-5vw', '100vw'],
+												y: [0, -10, 0, 10, 0],
+												opacity: isOtherSelected ? 0.3 : [0, 1, 1, 0],
 											}
 								}
 								transition={
 									isSelected
-										? { type: 'spring', stiffness: 300, damping: 20 }
+										? {
+												type: 'spring',
+												stiffness: 100,
+												damping: 30,
+												scale: { duration: 0.3 },
+											}
 										: {
 												x: {
-													duration: word.duration * 2, // Slower for smoother "zen" feel
+													duration: word.duration,
 													repeat: Infinity,
 													ease: 'linear',
 													delay: word.delay,
+													repeatType: 'loop',
 												},
 												y: {
-													duration: 4,
+													duration: 5,
 													repeat: Infinity,
 													ease: 'easeInOut',
+													repeatType: 'loop',
 												},
 												opacity: isOtherSelected
 													? { duration: 0.3 }
 													: {
-															duration: word.duration * 2,
-															times: [0, 0.1, 0.9, 1],
+															duration: word.duration,
+															times: [0, 0.15, 0.85, 1],
 															repeat: Infinity,
 															delay: word.delay,
+															repeatType: 'loop',
 														},
 											}
 								}
 								style={{
 									position: 'absolute',
-									top: `${20 + (word.yVal % 30)}%`, // Constrain Y to 20-50% range (Top half)
-									left: 0, // Base left, moved by x-transform
+									top: `${word.yVal}%`,
+									left: 0,
 									zIndex: isSelected ? 20 : 10,
-									pointerEvents: 'auto', // Re-enable clicks
+									pointerEvents: 'auto',
 									cursor: 'pointer',
 								}}
 								onClick={() => handleWordClick(word)}
@@ -219,7 +228,7 @@ export default function MatchaWisdomWidget() {
 							>
 								<div
 									style={{
-										background: 'rgba(255, 255, 255, 0.9)', // Higher opacity
+										background: 'rgba(255, 255, 255, 0.9)',
 										backdropFilter: 'blur(12px)',
 										padding: '6px 14px',
 										borderRadius: 20,
@@ -232,7 +241,6 @@ export default function MatchaWisdomWidget() {
 										whiteSpace: 'nowrap',
 									}}
 								>
-									{/* Always show Kanji + Reading for "Ambient Learning" */}
 									<div
 										style={{
 											display: 'flex',
@@ -250,9 +258,6 @@ export default function MatchaWisdomWidget() {
 											}}
 										>
 											{word.kanji}
-										</Text>
-										<Text type="secondary" style={{ fontSize: 10, marginTop: 0 }}>
-											{word.reading}
 										</Text>
 									</div>
 
@@ -289,11 +294,6 @@ export default function MatchaWisdomWidget() {
 													>
 														{word.meaning}
 													</Text>
-													{word.hanViet && (
-														<Text type="secondary" style={{ fontSize: 11, letterSpacing: 1 }}>
-															{word.hanViet}
-														</Text>
-													)}
 													<SoundOutlined style={{ marginTop: 4, color: token.colorSuccess }} />
 												</div>
 											</motion.div>
@@ -305,7 +305,7 @@ export default function MatchaWisdomWidget() {
 					})}
 				</div>
 
-				{/* Title / Instruction (Quietly in the corner) */}
+				{/* Title */}
 				<div style={{ position: 'absolute', bottom: 16, left: 24, zIndex: 0, opacity: 0.8 }}>
 					<Text strong style={{ color: token.colorSuccess, fontSize: 11, letterSpacing: 1.5 }}>
 						{t('matchaWisdom')}

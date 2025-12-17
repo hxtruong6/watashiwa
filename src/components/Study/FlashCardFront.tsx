@@ -1,8 +1,9 @@
 import React from 'react';
-import { Typography, Tag, Flex, Button, theme } from 'antd';
+import { Typography, Tag, Flex, Button, theme, Grid } from 'antd';
 import { PauseCircleOutlined, SoundOutlined } from '@ant-design/icons';
 
 const { useToken } = theme;
+const { useBreakpoint } = Grid;
 const { Title, Text } = Typography;
 
 interface FlashCardFrontProps {
@@ -35,10 +36,23 @@ export default function FlashCardFront({
 	onToggleAudio,
 }: FlashCardFrontProps) {
 	const { token } = useToken();
+	const screens = useBreakpoint();
+
+	// Responsive font sizes: smaller on mobile to prevent overflow
+	// wordParts layout uses smaller font
+	const wordPartsFontSize = screens.md ? 64 : screens.sm ? 56 : 48;
+	const singleTextFontSize = screens.md ? 80 : screens.sm ? 64 : 56;
 
 	return (
 		<Flex vertical align="center" justify="center" style={{ flex: 1 }}>
-			<div style={{ position: 'relative', width: '100%', textAlign: 'center' }}>
+			<div
+				style={{
+					position: 'relative',
+					width: '100%',
+					textAlign: 'center',
+					paddingRight: isVocab && onToggleAudio ? 80 : 0, // More space for audio button
+				}}
+			>
 				{/* Audio Button (Vocab Only) */}
 				{isVocab && onToggleAudio && (
 					<Button
@@ -54,8 +68,8 @@ export default function FlashCardFront({
 						onClick={onToggleAudio}
 						style={{
 							position: 'absolute',
-							top: 0,
-							right: 0,
+							top: -8, // Slightly higher
+							right: 8, // Small margin from edge
 							zIndex: 10,
 							width: 48,
 							height: 48,
@@ -81,9 +95,9 @@ export default function FlashCardFront({
 				)}
 
 				{/* Tag for Type (Vocab vs Kanji) - Optional but helpful */}
-				<div style={{ position: 'absolute', top: 0, left: 0 }}>
+				{/* <div style={{ position: 'absolute', top: 0, left: 0 }}>
 					<Tag color={isVocab ? 'geekblue' : 'purple'}>{isVocab ? 'Vocab' : 'Kanji'}</Tag>
-				</div>
+				</div> */}
 
 				{/* Main Content Area */}
 				{isVocab && wordParts && Array.isArray(wordParts) && wordParts.length > 0 ? (
@@ -117,7 +131,7 @@ export default function FlashCardFront({
 								<Title
 									level={1}
 									style={{
-										fontSize: '64px',
+										fontSize: `${wordPartsFontSize}px`,
 										margin: '0',
 										lineHeight: 1,
 										color: token.colorPrimary,
@@ -171,7 +185,11 @@ export default function FlashCardFront({
 						{/* Main Text */}
 						<Title
 							level={1}
-							style={{ fontSize: '80px', margin: '4px 0 16px', color: token.colorPrimary }}
+							style={{
+								fontSize: `${singleTextFontSize}px`,
+								margin: '4px 0 16px',
+								color: token.colorPrimary,
+							}}
 						>
 							{frontText}
 						</Title>

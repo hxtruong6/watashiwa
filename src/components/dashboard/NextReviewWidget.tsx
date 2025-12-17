@@ -221,7 +221,11 @@ export default function NextReviewWidget({
 						}}
 					>
 						{(status === 'urgent' || status === 'ready' || status === 'streak-rescue') && (
-							<Link href="/study" tabIndex={-1} style={{ width: '100%' }}>
+							<Link
+								href="/study"
+								tabIndex={-1}
+								style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
+							>
 								<Button
 									type="primary"
 									shape="round"
@@ -229,7 +233,8 @@ export default function NextReviewWidget({
 									danger={status === 'urgent' || status === 'streak-rescue'}
 									style={{
 										fontWeight: 600,
-										width: '100%',
+										width: 'fit-content',
+										minWidth: 150,
 										height: 48,
 										boxShadow: `0 4px 12px ${token.colorText}1A`,
 									}}

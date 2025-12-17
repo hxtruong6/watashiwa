@@ -7,18 +7,20 @@ type FlashCardAudioProps = {
 	autoPlayAudio: 'off' | 'question' | 'answer';
 };
 
+const AUDIO_SPEED = 0.8;
+
 export function useFlashCardAudio({ card, showAnswer, autoPlayAudio }: FlashCardAudioProps) {
 	const audioRef = useRef<HTMLAudioElement | null>(null);
 	const [isFilePlaying, setIsFilePlaying] = useState(false);
 
 	// TTS Player
 	const [ttsSettings] = useState(() => {
-		if (typeof window === 'undefined') return { voiceUri: '', speed: 1 };
+		if (typeof window === 'undefined') return { voiceUri: '', speed: AUDIO_SPEED };
 		const savedVoice = localStorage.getItem('watashiwa_audio_voice');
 		const savedSpeed = localStorage.getItem('watashiwa_audio_speed');
 		return {
 			voiceUri: savedVoice || '',
-			speed: savedSpeed ? parseFloat(savedSpeed) : 1,
+			speed: savedSpeed ? parseFloat(savedSpeed) : AUDIO_SPEED,
 		};
 	});
 
@@ -53,8 +55,10 @@ export function useFlashCardAudio({ card, showAnswer, autoPlayAudio }: FlashCard
 			} else {
 				// TTS Fallback
 				const savedSpeed =
-					typeof window !== 'undefined' ? localStorage.getItem('watashiwa_audio_speed') : '1';
-				const speed = savedSpeed ? parseFloat(savedSpeed) : 1;
+					typeof window !== 'undefined'
+						? localStorage.getItem('watashiwa_audio_speed')
+						: `${AUDIO_SPEED}`;
+				const speed = savedSpeed ? parseFloat(savedSpeed) : AUDIO_SPEED;
 				speak(reading || vocabKanji || frontText, { rate: speed });
 			}
 		}
@@ -79,8 +83,8 @@ export function useFlashCardAudio({ card, showAnswer, autoPlayAudio }: FlashCard
 
 		if (textToSpeak) {
 			const savedSpeed =
-				typeof window !== 'undefined' ? localStorage.getItem('watashiwa_audio_speed') : '1';
-			const speed = savedSpeed ? parseFloat(savedSpeed) : 1;
+				typeof window !== 'undefined' ? localStorage.getItem('watashiwa_audio_speed') : '0.8';
+			const speed = savedSpeed ? parseFloat(savedSpeed) : 0.8;
 			speak(textToSpeak, { rate: speed });
 		}
 	}, [isVocab, exampleSentence, speak]);

@@ -37,6 +37,11 @@ model User {
   currentStreak Int @default(0) @map("current_streak")
   longestStreak Int @default(0) @map("longest_streak")
 
+  // Tutorial & Feature Flags
+  // Flexible JSON to track seen tutorials, one-time banners, etc.
+  // e.g. { "study_page": true, "christmas_2025": true }
+  tutorials Json @default("{}")
+
   // Relations
   studyCards      StudyCard[]
   reviewLogs      ReviewLog[]
@@ -63,6 +68,7 @@ model Deck {
   descriptionEn String? @map("description_en")
   isPublic      Boolean @default(false) @map("is_public")
   headerImage   String? @map("header_image")
+  sortOrder     Int?    @map("sort_order") // For explicit deck ordering on /decks page
 
   authorId String @map("author_id")
   author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)

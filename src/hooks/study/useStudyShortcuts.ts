@@ -5,6 +5,7 @@ interface UseStudyShortcutsProps {
 	onRate: (rating: number) => void;
 	onAudio?: () => void;
 	onExampleAudio?: () => void;
+	onToggleHeader?: () => void;
 	onEscape?: () => void;
 	disabled?: boolean;
 	showAnswer: boolean;
@@ -15,6 +16,7 @@ export function useStudyShortcuts({
 	onRate,
 	onAudio,
 	onExampleAudio,
+	onToggleHeader,
 	onEscape,
 	disabled = false,
 	showAnswer,
@@ -57,6 +59,11 @@ export function useStudyShortcuts({
 				}
 			}
 
+			// Header Toggle (H key)
+			if (e.key.toLowerCase() === 'h') {
+				onToggleHeader?.();
+			}
+
 			// Audio Shortcuts
 			if (e.key.toLowerCase() === 'r') {
 				onAudio?.();
@@ -67,5 +74,5 @@ export function useStudyShortcuts({
 
 		window.addEventListener('keydown', handleKeyDown);
 		return () => window.removeEventListener('keydown', handleKeyDown);
-	}, [disabled, showAnswer, onSpace, onRate, onAudio, onExampleAudio, onEscape]);
+	}, [disabled, showAnswer, onSpace, onRate, onAudio, onExampleAudio, onToggleHeader, onEscape]);
 }

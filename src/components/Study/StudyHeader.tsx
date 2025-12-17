@@ -14,6 +14,7 @@ interface StudyHeaderProps {
 	commentCount: number;
 	courseId?: string | null;
 	deckId?: string | null;
+	settingsRef?: React.RefObject<HTMLButtonElement | null>;
 	onOpenSettings: () => void;
 	onOpenComments: () => void;
 }
@@ -25,6 +26,7 @@ export default function StudyHeader({
 	commentCount,
 	courseId,
 	deckId,
+	settingsRef,
 	onOpenSettings,
 	onOpenComments,
 }: StudyHeaderProps) {
@@ -71,6 +73,7 @@ export default function StudyHeader({
 			<div style={{ ...headerStyle, top: 16, left: 16 }}>
 				<Flex gap="small" align="center">
 					<Button
+						ref={settingsRef as React.RefObject<HTMLButtonElement>}
 						shape="circle"
 						icon={<SettingOutlined />}
 						onClick={onOpenSettings}

@@ -181,7 +181,21 @@
             "sectionNew": "New Arrivals",
             "sectionReview": "Refresh Memory",
             "startSession": "Start Session"
-        }
+        },
+        "Tutorial": {
+            "welcomeTitle": "Welcome to Study Mode",
+            "welcomeDesc": "This is where you master new vocabulary.",
+            "revealTitle": "Reveal the Answer",
+            "revealDesc": "Tap anywhere on the card or press Space to see the meaning and reading.",
+            "ratingTitle": "Rate Your Memory",
+            "ratingDesc": "Choose how well you remembered: 'Forgot' repeats soon, 'Got it' is optimal, 'Easy' spaces it out more.",
+            "settingsTitle": "Customize Your Experience",
+            "settingsDesc": "Adjust audio, furigana, and more settings here.",
+            "next": "Next",
+            "previous": "Previous",
+            "finish": "Finish"
+        },
+        "loadingNextCards": "Loading next cards..."
     },
     "Decks": {
         "libraryTitle": "Library",

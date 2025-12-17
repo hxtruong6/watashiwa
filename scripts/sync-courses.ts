@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { prisma } from '../src/lib/db';
 import { processUnitFile } from './import-unit-data';
+import { ADMIN_USER_ID } from '@/lib/constants';
 
 interface CourseDefinition {
 	id: string;
@@ -29,29 +30,29 @@ const COURSES: CourseDefinition[] = [
 		dataDir: 'data/minna_1',
 		unitRange: [1, 25],
 	},
-	{
-		id: 'n4-minna-2',
-		title: 'Minna no Nihongo II (N4)',
-		titleEn: 'Minna no Nihongo II (N4)',
-		description: 'Giáo trình sơ cấp 2. Bao gồm bài 26-50, tương đương trình độ N4.',
-		descriptionEn: 'Beginner Textbook 2. Covers Units 26-50, equivalent to JLPT N4 level.',
-		level: 'N4',
-		tags: ['jlpt', 'n4', 'vocabulary', 'minna', 'book2'],
-		deckFilter: 'Minna no Nihongo',
-		dataDir: 'data/minna_2',
-		unitRange: [26, 50],
-	},
-	{
-		id: 'n3-soumatome',
-		title: 'Từ vựng N3 (Soumatome)',
-		titleEn: 'N3 Vocabulary (Soumatome)',
-		description: 'Luyện thi N3 cấp tốc.',
-		descriptionEn: 'Intensive N3 preparation.',
-		level: 'N3',
-		tags: ['jlpt', 'n3', 'vocabulary'],
-		deckFilter: 'Soumatome N3',
-		dataDir: 'data/jlpt_n3',
-	},
+	// {
+	// 	id: 'n4-minna-2',
+	// 	title: 'Minna no Nihongo II (N4)',
+	// 	titleEn: 'Minna no Nihongo II (N4)',
+	// 	description: 'Giáo trình sơ cấp 2. Bao gồm bài 26-50, tương đương trình độ N4.',
+	// 	descriptionEn: 'Beginner Textbook 2. Covers Units 26-50, equivalent to JLPT N4 level.',
+	// 	level: 'N4',
+	// 	tags: ['jlpt', 'n4', 'vocabulary', 'minna', 'book2'],
+	// 	deckFilter: 'Minna no Nihongo',
+	// 	dataDir: 'data/minna_2',
+	// 	unitRange: [26, 50],
+	// },
+	// {
+	// 	id: 'n3-soumatome',
+	// 	title: 'Từ vựng N3 (Soumatome)',
+	// 	titleEn: 'N3 Vocabulary (Soumatome)',
+	// 	description: 'Luyện thi N3 cấp tốc.',
+	// 	descriptionEn: 'Intensive N3 preparation.',
+	// 	level: 'N3',
+	// 	tags: ['jlpt', 'n3', 'vocabulary'],
+	// 	deckFilter: 'Soumatome N3',
+	// 	dataDir: 'data/jlpt_n3',
+	// },
 ];
 
 async function main() {
@@ -105,7 +106,7 @@ async function main() {
 	let course = await prisma.course.findFirst({
 		where: {
 			OR: [{ title: targetCourse.title }, { titleEn: targetCourse.titleEn }],
-			authorId: user.id,
+			authorId: ADMIN_USER_ID,
 		},
 	});
 
@@ -174,6 +175,13 @@ async function main() {
 
 		for (let i = 0; i < sortedDecks.length; i++) {
 			const deck = sortedDecks[i];
+
+			// Update Deck's global sortOrder
+			await prisma.deck.update({
+				where: { id: deck.id },
+				data: { sortOrder: i + 1 },
+			});
+
 			await prisma.courseDeck.create({
 				data: {
 					courseId: course.id,
@@ -182,7 +190,7 @@ async function main() {
 				},
 			});
 		}
-		console.log(`✅ Linked ${sortedDecks.length} decks to course.`);
+		console.log(`✅ Linked ${sortedDecks.length} decks to course & set sortOrder.`);
 	}
 
 	console.log('\n🎉 Sync Complete!');

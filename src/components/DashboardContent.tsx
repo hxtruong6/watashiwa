@@ -132,7 +132,7 @@ export default function DashboardContent({
 			variants={containerVariants}
 			initial="hidden"
 			animate="visible"
-			style={{ maxWidth: 1000, margin: '0 auto', padding: '20px 16px 80px' }} // Reduced top padding, added bottom for nav
+			style={{ maxWidth: 1000, margin: '0 auto', padding: '20px 16px 80px', position: 'relative' }} // Reduced top padding, added bottom for nav
 		>
 			{/* Hero: Greeting + Streak + Daily Goal */}
 			<HeroSection
@@ -141,6 +141,10 @@ export default function DashboardContent({
 				dailyProgress={stats.totalReviewed}
 				dailyGoal={dailyGoal}
 			/>
+			{/* Primary CTA: Start Review */}
+			<motion.div variants={itemVariants}>
+				<DueCTA dueCount={reviewCount} />
+			</motion.div>
 
 			{/* Forecast Widget */}
 			{forecast && (
@@ -156,14 +160,7 @@ export default function DashboardContent({
 			)}
 
 			{/* Ambient: Matcha Wisdom */}
-			<motion.div variants={itemVariants}>
-				<MatchaWisdomWidget />
-			</motion.div>
-
-			{/* Primary CTA: Start Review */}
-			<motion.div variants={itemVariants}>
-				<DueCTA dueCount={reviewCount} />
-			</motion.div>
+			<MatchaWisdomWidget />
 
 			{/* Weekly Progress Chart */}
 			{weeklyStats && (

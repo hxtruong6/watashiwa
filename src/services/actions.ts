@@ -629,6 +629,10 @@ export async function getLeaderboard() {
 	}
 }
 
+/**
+ * Get all decks accessible to the current user (public + owned).
+ * Decks are sorted by sortOrder (if set), then by createdAt (newest first).
+ */
 export async function getDecks() {
 	try {
 		const user = await getUser();
@@ -643,10 +647,12 @@ export async function getDecks() {
 					select: { vocab: true, kanji: true },
 				},
 			},
-			orderBy: {
-				createdAt: 'desc',
-			},
+			orderBy: [
+				{ sortOrder: 'asc' }, // Primary: explicit sort order
+				{ createdAt: 'desc' }, // Fallback: newest first
+			],
 		});
+
 		return decks;
 	} catch (error) {
 		console.error('Error fetching decks:', error);
@@ -798,6 +804,71 @@ export const getUserStats = cache(async (userId?: string) => {
 		return { streak: 0, totalReviewed: 0 };
 	}
 });
+
+/**
+ * Mark a tutorial step/flow as completed
+ * Stores strictly in the `tutorials` JSON column
+ */
+export async function completeTutorial(tutorialId: string) {
+	try {
+		if (!IdSchema.safeParse(tutorialId).success) {
+			return { success: false, error: 'Invalid tutorial ID' };
+		}
+
+		const user = await getUser();
+		if (!user) return { success: false, error: 'Unauthorized' };
+
+		// Fetch current tutorials
+		const currentUser = await prisma.user.findUnique({
+			where: { id: user.id },
+			select: { tutorials: true },
+		});
+
+		const currentTutorials = (currentUser?.tutorials as Record<string, boolean>) || {};
+
+		// If already completed, skip update
+		if (currentTutorials[tutorialId]) {
+			return { success: true };
+		}
+
+		// Update DB
+		// Note: We merging new key into existing JSON
+		await prisma.user.update({
+			where: { id: user.id },
+			data: {
+				tutorials: {
+					...currentTutorials,
+					[tutorialId]: true,
+				},
+			},
+		});
+
+		return { success: true };
+	} catch (error) {
+		console.error('Error completing tutorial:', error);
+		return { success: false, error: 'Failed to complete tutorial' };
+	}
+}
+
+/**
+ * Get user's completed tutorials
+ */
+export async function getCompletedTutorials() {
+	try {
+		const user = await getUser();
+		if (!user) return {};
+
+		const userData = await prisma.user.findUnique({
+			where: { id: user.id },
+			select: { tutorials: true },
+		});
+
+		return (userData?.tutorials as Record<string, boolean>) || {};
+	} catch (error) {
+		console.error('Error fetching tutorials:', error);
+		return {};
+	}
+}
 
 /**
  * Get the last study session information for the current user.

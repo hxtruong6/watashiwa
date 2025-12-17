@@ -237,18 +237,24 @@ export function useStudySession({ courseId, deckId, mode, userSettings }: UseStu
 						console.error('Background review submission failed', result.error);
 						message.error(t('failedSubmitReview'));
 					} else {
-						// Replenish queue if low
-						if (queue.length < 2) {
-							getReviewQueue(targetDeckIds, 3).then((newCards) => {
-								setQueue((prev) => {
-									const allIds = new Set(prev.map((c) => c.id));
-									allIds.add(card.id);
-									if (nextCard) allIds.add(nextCard.id);
+						// Replenish queue if low (prefetch earlier for smoother UX)
+						// Background operation - non-blocking
+						if (queue.length < 3) {
+							getReviewQueue(targetDeckIds, 3)
+								.then((newCards) => {
+									setQueue((prev) => {
+										const allIds = new Set(prev.map((c) => c.id));
+										allIds.add(card.id);
+										if (nextCard) allIds.add(nextCard.id);
 
-									const validNew = newCards.filter((c) => !allIds.has(c.id));
-									return [...prev, ...validNew];
+										const validNew = newCards.filter((c) => !allIds.has(c.id));
+										return [...prev, ...validNew];
+									});
+								})
+								.catch((err) => {
+									// Silent background prefetch - log but don't show error to user
+									console.warn('Background queue prefetch failed:', err);
 								});
-							});
 						}
 					}
 				})

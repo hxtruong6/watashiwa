@@ -9,6 +9,7 @@ import { useSearchParams } from 'next/navigation';
 import { useStudySession } from '@/hooks/study/useStudySession';
 import { useStudyShortcuts } from '@/hooks/study/useStudyShortcuts';
 import { useZenMode } from '@/hooks/study/useZenMode';
+import { useStudyTutorialSteps } from '@/hooks/study/useStudyTutorialSteps';
 
 // Components
 import FlashCard, { FlashCardHandle } from '@/components/FlashCard';
@@ -21,8 +22,11 @@ import SessionSummary from '@/components/Study/SessionSummary';
 import SessionBriefing from '@/components/Study/SessionBriefing';
 import Loading from '@/components/Shared/Loading';
 import { getUserSettings } from '@/services/actions';
-import type { User } from '@prisma/client';
 import { DEFAULT_LIMIT_NEW_CARDS, DEFAULT_LIMIT_REVIEWS } from '@/lib/constants';
+import AppTutorial from '@/components/Shared/AppTutorial';
+import { useTutorialStore } from '@/hooks/useTutorialStore';
+import { getCompletedTutorials } from '@/services/actions';
+import type { User } from '@prisma/client';
 
 const { Content } = Layout;
 const { useToken } = theme;
@@ -50,8 +54,6 @@ export default function StudyContent() {
 	const [autoPlayAudio, setAutoPlayAudio] = useState<'off' | 'question' | 'answer'>('answer');
 	const [userSettings, setUserSettings] = useState<Partial<User> | null>(null);
 	const [spaceKeyRating, setSpaceKeyRating] = useState(3);
-	const [autoShowAnswer, setAutoShowAnswer] = useState(false);
-	const [autoShowAnswerDelay, setAutoShowAnswerDelay] = useState(10);
 
 	// 1. Core Logic Hook
 	const studySessionSettings = React.useMemo(() => {
@@ -84,17 +86,31 @@ export default function StudyContent() {
 	// 2. Refs
 	const flashCardRef = React.useRef<FlashCardHandle>(null);
 	const scrollRef = React.useRef<HTMLDivElement>(null);
+	const settingsRef = React.useRef<HTMLButtonElement>(null);
+	const cardWrapperRef = React.useRef<HTMLDivElement>(null);
+	const ratingBarRef = React.useRef<HTMLDivElement>(null);
 
-	// 3. Zen Mode Hook (Now using scrollRef)
-	const { headerVisible } = useZenMode(10, scrollRef);
+	// 3. Zen Mode Hook (Now using scrollRef with auto-hide)
+	const { headerVisible, forceShow, resetTimer } = useZenMode(10, scrollRef, 3000);
+
+	// 4. Tutorial Steps - must be called before any conditional returns
+	const tutorialSteps = useStudyTutorialSteps({
+		showAnswer,
+		cardWrapperRef,
+		ratingBarRef,
+		settingsRef,
+	});
 
 	const refreshSettings = useCallback(async () => {
-		const settings = await getUserSettings();
+		const [settings, tutorials] = await Promise.all([getUserSettings(), getCompletedTutorials()]);
+
 		if (settings) {
 			setSpaceKeyRating(settings.spaceKeyRating);
-			setAutoShowAnswer(settings.autoShowAnswer);
-			setAutoShowAnswerDelay(settings.autoShowAnswerDelay ?? 10);
 			setUserSettings(settings);
+		}
+
+		if (tutorials) {
+			useTutorialStore.getState().setCompletedTutorials(tutorials);
 		}
 	}, []);
 
@@ -111,10 +127,12 @@ export default function StudyContent() {
 	const handleSpaceKey = useCallback(() => {
 		if (!showAnswer) {
 			setShowAnswer(true);
+			resetTimer(); // Reset timer when revealing
 		} else {
 			handleRate(spaceKeyRating);
+			resetTimer(); // Reset timer when rating
 		}
-	}, [showAnswer, setShowAnswer, handleRate, spaceKeyRating]);
+	}, [showAnswer, setShowAnswer, handleRate, spaceKeyRating, resetTimer]);
 
 	useStudyShortcuts({
 		onSpace: handleSpaceKey,
@@ -122,6 +140,13 @@ export default function StudyContent() {
 		showAnswer,
 		disabled: isReportModalOpen || isCommentDrawerOpen || settingsVisible,
 		onAudio: () => flashCardRef.current?.playAudio(),
+		onToggleHeader: () => {
+			if (headerVisible) {
+				// Manual hide doesn't need timer logic
+			} else {
+				forceShow();
+			}
+		},
 		// onExampleAudio: () => flashCardRef.current?.playExampleAudio(),
 		onEscape: () => {
 			if (isReportModalOpen) setIsReportModalOpen(false);
@@ -176,6 +201,8 @@ export default function StudyContent() {
 
 	return (
 		<Layout style={{ minHeight: '100vh', background: token.colorBgLayout }}>
+			<AppTutorial tutorialId="study_page_v1" steps={tutorialSteps} />
+
 			<StudyHeader
 				visible={headerVisible}
 				progressPercent={progressPercent}
@@ -183,6 +210,7 @@ export default function StudyContent() {
 				commentCount={commentCount}
 				courseId={courseIdParam}
 				deckId={deckIdParam}
+				settingsRef={settingsRef}
 				onOpenSettings={() => setSettingsVisible(true)}
 				onOpenComments={() => setIsCommentDrawerOpen(true)}
 			/>
@@ -246,6 +274,27 @@ export default function StudyContent() {
 
 				{studyPhase === 'quiz' && (
 					<>
+						{/* Top-Edge Tap Zone - Show Header When Hidden */}
+						{!headerVisible && (
+							<div
+								onClick={(e) => {
+									e.stopPropagation();
+									forceShow();
+								}}
+								style={{
+									position: 'fixed',
+									top: 0,
+									left: 0,
+									right: 0,
+									height: 64,
+									zIndex: 999,
+									cursor: 'pointer',
+									background: 'transparent',
+								}}
+								aria-label="Tap to show header"
+							/>
+						)}
+
 						{/* Scrollable Card Area */}
 						<div
 							ref={scrollRef}
@@ -267,20 +316,65 @@ export default function StudyContent() {
 								cursor: !showAnswer ? 'pointer' : 'default', // Hint that it's clickable
 							}}
 						>
-							<FlashCard
-								ref={flashCardRef}
-								key={card?.id || 'empty'}
-								card={card}
-								showAnswer={showAnswer}
-								showFurigana={showFurigana}
-								showRomaji={showRomaji}
-								autoPlayAudio={autoPlayAudio}
-								onReveal={() => setShowAnswer(true)}
-							/>
+							<div
+								ref={cardWrapperRef}
+								style={{
+									width: '100%',
+									display: 'flex',
+									justifyContent: 'center',
+									position: 'relative',
+								}}
+							>
+								{/* Loading Indicator - Shown when fetching next batch */}
+								{loading && (
+									<div
+										style={{
+											position: 'absolute',
+											top: '50%',
+											left: '50%',
+											transform: 'translate(-50%, -50%)',
+											zIndex: 100,
+											background: `${token.colorBgContainer}CC`,
+											backdropFilter: 'blur(8px)',
+											padding: '16px 24px',
+											borderRadius: 12,
+											boxShadow: `0 4px 16px ${token.colorPrimary}1A`,
+										}}
+									>
+										<div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+											<div
+												style={{
+													width: 20,
+													height: 20,
+													border: `3px solid ${token.colorPrimary}30`,
+													borderTop: `3px solid ${token.colorPrimary}`,
+													borderRadius: '50%',
+													animation: 'spin 0.8s linear infinite',
+												}}
+											/>
+											<span style={{ color: token.colorText, fontSize: 14 }}>
+												{t('loadingNextCards')}
+											</span>
+										</div>
+									</div>
+								)}
+
+								<FlashCard
+									ref={flashCardRef}
+									key={card?.id || 'empty'}
+									card={card}
+									showAnswer={showAnswer}
+									showFurigana={showFurigana}
+									showRomaji={showRomaji}
+									autoPlayAudio={autoPlayAudio}
+									onReveal={() => setShowAnswer(true)}
+								/>
+							</div>
 						</div>
 
 						{/* Thumb Zone Controls - Rating Bar */}
 						<div
+							ref={ratingBarRef}
 							style={{
 								position: 'fixed',
 								bottom: 0,

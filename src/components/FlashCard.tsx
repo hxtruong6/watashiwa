@@ -1,7 +1,9 @@
 'use client';
 
 import React, { useState, forwardRef, useImperativeHandle } from 'react';
-import { Card as AntCard, Flex } from 'antd';
+import { Card as AntCard, Grid } from 'antd';
+
+const { useBreakpoint } = Grid;
 import { useFlashCardAudio } from '@/hooks/study/useFlashCardAudio';
 import FlashCardFront from '@/components/Study/FlashCardFront';
 import FlashCardBack from '@/components/Study/FlashCardBack';
@@ -26,7 +28,11 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 		{ card, showAnswer, showFurigana = true, showRomaji = false, autoPlayAudio = 'off', onReveal },
 		ref,
 	) => {
+		const screens = useBreakpoint();
 		const [imageError, setImageError] = useState(false);
+
+		// Responsive padding: smaller on mobile, larger on desktop
+		const topPadding = screens.md ? 40 : screens.sm ? 24 : 16;
 
 		// Audio Hook
 		const {
@@ -115,10 +121,17 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 						if (!showAnswer) e.currentTarget.style.transform = 'scale(1)';
 					}}
 					styles={{
-						body: { flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' },
+						body: {
+							flex: 1,
+							display: 'flex',
+							flexDirection: 'column',
+							padding: 0, // Remove default padding for full control
+							position: 'relative',
+						},
 					}}
 				>
-					<Flex vertical align="center" justify="center" style={{ flex: 1 }}>
+					{/* Front content in fixed position */}
+					<div style={{ position: 'absolute', top: topPadding, left: 0, right: 0, zIndex: 2 }}>
 						<FlashCardFront
 							isVocab={isVocab}
 							frontText={frontText}
@@ -131,7 +144,16 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 							isPlaying={isPlaying}
 							onToggleAudio={toggleAudio}
 						/>
+					</div>
 
+					{/* Back content flows below, doesn't affect front positioning */}
+					<div
+						style={{
+							paddingTop: screens.md ? 200 : screens.sm ? 180 : 160,
+							position: 'relative',
+							zIndex: 1,
+						}}
+					>
 						<FlashCardBack
 							card={card}
 							showAnswer={showAnswer}
@@ -141,7 +163,7 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 							playExampleAudio={playExampleAudio}
 							frontText={frontText}
 						/>
-					</Flex>
+					</div>
 				</AntCard>
 			</div>
 		);

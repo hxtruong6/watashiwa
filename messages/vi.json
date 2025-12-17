@@ -127,7 +127,7 @@
             "forecastUrgentBackup": "Rớt não tới nơi rồi! Ôn tập ngay kẻo quên sạch.",
             "actionReview": "Ôn ngay",
             "actionQuick": "Nhanh 5 thẻ mới ⚡",
-            "actionStudyAhead": "Học trước",
+            "actionStudyAhead": "Học trước nhé",
             "actionWait": "Ok đợi xíu"
         }
     },
@@ -173,7 +173,21 @@
             "sectionNew": "Hàng mới về",
             "sectionReview": "Cần ôn lại",
             "startSession": "Vô chiến"
-        }
+        },
+        "Tutorial": {
+            "welcomeTitle": "Chào mừng bạn đến với chế độ học",
+            "welcomeDesc": "Đây là nơi bạn chinh phục từ vựng mới.",
+            "revealTitle": "Xem đáp án",
+            "revealDesc": "Chạm vào thẻ hoặc nhấn Space để xem nghĩa và cách đọc.",
+            "ratingTitle": "Đánh giá trí nhớ",
+            "ratingDesc": "Chọn mức độ ghi nhớ: 'Quên' sẽ lặp lại sớm, 'Ok' là bạn đã nhớ từ này, còn 'Dễ' sẽ ít lặp lại.",
+            "settingsTitle": "Tùy chỉnh trải nghiệm",
+            "settingsDesc": "Điều chỉnh âm thanh, furigana và các cài đặt khác tại đây.",
+            "next": "Tiếp",
+            "previous": "Trước",
+            "finish": "Đã hoàn toàn hiểu 😉"
+        },
+        "loadingNextCards": "Đang tải thẻ tiếp theo..."
     },
     "Decks": {
         "libraryTitle": "Thư viện",
