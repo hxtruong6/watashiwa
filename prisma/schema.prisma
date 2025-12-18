@@ -1,5 +1,5 @@
-// Prisma Schema for WatashiWa
-// FSRS-compatible vocabulary learning system
+// Prisma Schema for WatashiWa V2 (Hybrid SQL Architecture)
+// Supports "Smart CUBE" Method, Dynamic Variants, and Interference Shielding
 
 generator client {
   provider   = "prisma-client-js"
@@ -10,7 +10,10 @@ datasource db {
   provider = "postgresql"
 }
 
-// User Model for Multi-tenancy
+// -----------------------------------------------------------------------------
+// 1. USER & SYSTEM
+// -----------------------------------------------------------------------------
+
 model User {
   id        String    @id @default(uuid())
   email     String    @unique
@@ -18,41 +21,42 @@ model User {
   lastLogin DateTime? @map("last_login")
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime  @updatedAt @map("updated_at")
-  avatarUrl String?   @map("avatar_url")
+  // Soft Delete
+  deletedAt DateTime? @map("deleted_at")
 
-  role UserRole @default(USER)
+  avatarUrl String?  @map("avatar_url")
+  role      UserRole @default(USER)
 
-  // Learning Limits
-  limitNewCards Int @default(20) @map("limit_new_cards")
-  limitReviews  Int @default(200) @map("limit_reviews")
+  // Settings
+  limitNewCards Int    @default(20) @map("limit_new_cards")
+  limitReviews  Int    @default(200) @map("limit_reviews")
+  timezone      String @default("UTC")
+  language      String @default("en") // "en", "vi", "ja"
 
-  // Study Preferences
-  allowSpaceKey       Boolean @default(true) @map("allow_space_key")
-  spaceKeyRating      Int     @default(3) @map("space_key_rating") // 1=Again, 2=Hard, 3=Good, 4=Easy
-  autoShowAnswer      Boolean @default(false) @map("auto_show_answer")
-  autoShowAnswerDelay Int     @default(40) @map("auto_show_answer_delay") // Seconds
-  timezone            String  @default("UTC")
-  language            String  @default("en") // "en", "vi", "ja"
-
-  // Gamification
-  currentStreak Int @default(0) @map("current_streak")
-  longestStreak Int @default(0) @map("longest_streak")
-
-  // Tutorial & Feature Flags
-  // Flexible JSON to track seen tutorials, one-time banners, etc.
-  // e.g. { "study_page": true, "christmas_2025": true }
+  // Feature Flags & Tutorials: { "feature_flags": {}, "tutorials": {}, study_card_v2: true }
   tutorials Json @default("{}")
 
+  // Gamification
+  currentStreak Int       @default(0) @map("current_streak")
+  longestStreak Int       @default(0) @map("longest_streak")
+  lastStudyDate DateTime? @map("last_study_date") @db.Date // For efficient streak calculation
+
   // Relations
-  studyCards        StudyCard[]
+  userReviews       UserReview[]
   reviewLogs        ReviewLog[]
-  reportsSent       CardReport[]       @relation("ReportedBy")
-  reportsResolved   CardReport[]       @relation("ResolvedBy")
   decks             Deck[]
   cardComments      CardComment[]
-  commentVotes      CommentVote[]
   createdCourses    Course[]
   pushSubscriptions PushSubscription[]
+
+  // Reports
+  reportsSent     CardReport[]     @relation("ReportedBy")
+  reportsResolved CardReport[]     @relation("ResolvedBy")
+  commentVotes    CommentVote[]
+  dailyStudyStats DailyStudyStat[]
+  studySessions   StudySession[]
+
+  @@index([email])
 }
 
 enum UserRole {
@@ -61,11 +65,8 @@ enum UserRole {
   ADMIN
 }
 
-// Push Notification Subscription
-// 1 User -> Many Devices
 model PushSubscription {
-  id String @id @default(uuid())
-
+  id     String @id @default(uuid())
   userId String @map("user_id")
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -84,7 +85,30 @@ model PushSubscription {
   @@index([userId])
 }
 
-// Deck Model: A collection of vocabulary
+// -----------------------------------------------------------------------------
+// 2. COURSE & DECK STRUCTURE
+// -----------------------------------------------------------------------------
+
+model Course {
+  id            String       @id @default(uuid())
+  title         String
+  titleEn       String?      @map("title_en")
+  description   String?
+  descriptionEn String?      @map("description_en")
+  isPublic      Boolean      @default(false) @map("is_public")
+  headerImage   String?      @map("header_image")
+  level         String?
+  tags          String[]
+  authorId      String       @map("author_id")
+  author        User         @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  decks         CourseDeck[]
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime     @updatedAt @map("updated_at")
+  deletedAt     DateTime?    @map("deleted_at")
+
+  @@index([authorId])
+}
+
 model Deck {
   id            String  @id @default(uuid())
   title         String
@@ -93,173 +117,359 @@ model Deck {
   descriptionEn String? @map("description_en")
   isPublic      Boolean @default(false) @map("is_public")
   headerImage   String? @map("header_image")
-  sortOrder     Int?    @map("sort_order") // For explicit deck ordering on /decks page
+  sortOrder     Int?    @map("sort_order")
+  authorId      String  @map("author_id")
+  author        User    @relation(fields: [authorId], references: [id], onDelete: Cascade)
 
-  authorId String @map("author_id")
-  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  // Relations to Content
+  vocabularies Vocabulary[]
+  stories      Story[]
+  courseDecks  CourseDeck[]
 
-  vocab Vocab[]
-  kanji Kanji[]
-
-  createdAt   DateTime     @default(now()) @map("created_at")
-  updatedAt   DateTime     @updatedAt @map("updated_at")
-  courseDecks CourseDeck[]
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
 
   @@index([authorId])
 }
 
-// Vocab Model: The definition/content of a word
-model Vocab {
+model CourseDeck {
+  id        String   @id @default(uuid())
+  courseId  String   @map("course_id")
+  course    Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  deckId    String   @map("deck_id")
+  deck      Deck     @relation(fields: [deckId], references: [id], onDelete: Cascade)
+  sortOrder Int      @default(0) @map("sort_order")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@unique([courseId, deckId])
+  @@index([courseId])
+  @@index([deckId])
+}
+
+// -----------------------------------------------------------------------------
+// 3. CORE CONTENT (HYBRID SQL)
+// -----------------------------------------------------------------------------
+
+// The Anchor
+model Vocabulary {
   id     String @id @default(uuid())
   deckId String @map("deck_id")
   deck   Deck   @relation(fields: [deckId], references: [id], onDelete: Cascade)
 
-  wordSurface     String  @map("word_surface") // e.g., 学生
-  readingKana     String? @map("reading_kana") // e.g., がくせい
-  wordParts       Json?   @map("word_parts") // e.g., [{"text": "...", "furigana": "...", "romaji": "..."}]
-  // JSON fields require careful mapping in Prisma
-  kanjiBreakdown  Json    @map("kanji_breakdown") // e.g., [{"kanji": "学", "han_viet": "HỌC", "meaning": "study"}]
-  hanViet         String  @map("han_viet") // e.g., HỌC SINH
-  meaning         String // Native definition (VN)
-  enMeaning       String? @map("en_meaning") // English definition
-  exampleSentence Json    @map("example_sentence") // { "sentence": "...", "translation": "..." }
-  audioUrl        String? @map("audio_url")
-  imageUrl        String? @map("image_url")
+  // Smart Tagging (Replaces legacy Kanji table)
+  // e.g., ["kanji", "n5", "noun", "verb-group-1"]
+  tags String[]
+
+  // Surface Forms
+  wordSurface String  @map("word_surface") // Kanji: 箸. For Kanji-only, this is the Character.
+  wordReading String? @map("word_reading") // Hiragana: はし. If word is hiragana/katakana, we do not need to store this field.
+  wordRomaji  String  @map("word_romaji") // hashi
+
+  // Pitch & Homonyms
+  // 0=Heiban (LHHHH), 1=Atamadaka (HLLLL), 2=Nakadaka (LHHHL), 3=Kakudaka (HHLLL), etc.
+  pitchPattern   Int?    @map("pitch_pattern")
+  pitchSvgPath   String? @map("pitch_svg_path") // Visual line path for UI
+  homonymGroupId String? @map("homonym_group_id") // UUID grouping same-reading words (Hashi/Hashi)
+
+  // Rich Data (JSONB)
+  // Contract: Object containing Hán Việt meta.
+  // {"kanji": "箸", "han_viet": "TRỨ", "meaning": "Đũa"}
+  hanVietInfo Json @map("han_viet_info")
+
+  // Contract: Object with language keys.
+  // {"vi": ["Đũa"], "en": ["Chopsticks", "Cutlery"]}
+  meanings Json
+
+  // Contract: Array of example objects.
+  // [{"sentence": "...", "translation_vi": "...", "translation_en": "...", "audio": "..."}]
+  examples Json
+
+  // Media
+  audioUrl String? @map("audio_url") // Custom audio, priority over OS TTS
+  imageUrl String? @map("image_url")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
 
   // Relations
-  studyCards StudyCard[]
-
-  createdAt    DateTime      @default(now()) @map("created_at")
-  updatedAt    DateTime      @updatedAt @map("updated_at")
-  cardReports  CardReport[]
-  cardComments CardComment[]
+  variants      CardVariant[]
+  confusionsAs1 ConfusionPair[] @relation("ConfusionA")
+  confusionsAs2 ConfusionPair[] @relation("ConfusionB")
+  userReviews   UserReview[]
+  cardComments  CardComment[]
+  cardReports   CardReport[]
+  // Generalized index for tag searching might be GIN index in raw SQL, 
+  // but Prisma doesn't fully support querying 'has' on arrays efficiently without specific PG extensions.
+  // For now, basic list filtering is acceptable.
 
   @@index([deckId])
+  @@index([homonymGroupId])
 }
 
-// Kanji Model: For single Kanji character learning
-model Kanji {
+// Dynamic Content (The Variants)
+model CardVariant {
+  id      String     @id @default(uuid())
+  vocabId String     @map("vocab_id")
+  vocab   Vocabulary @relation(fields: [vocabId], references: [id], onDelete: Cascade)
+
+  variantType VariantType @map("variant_type")
+
+  // Polymorphic Content Payload (The "Smart" part)
+  // Contract varies by variantType:
+  // - BASIC: null (Uses Vocab core data)
+  // - CONTEXT_SENTENCE: 
+  //   { 
+  //     "question": {"vi": "Tôi dùng [___]...", "en": "I use [___]..."}, 
+  //     "answer": {"vi": "đũa", "en": "chopsticks"}, 
+  //     "distractors": ["thìa", "spoon"] 
+  //   }
+  contentPayload Json @map("content_payload")
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([vocabId])
+}
+
+enum VariantType {
+  BASIC
+  CONTEXT_SENTENCE
+  AUDIO_MATCH
+  INTERVENTION // Was PAIR_MATCH
+}
+
+// Interference Shield (The Block)
+model ConfusionPair {
+  id       String     @id @default(uuid())
+  vocabId1 String     @map("vocab_id_1")
+  vocab1   Vocabulary @relation("ConfusionA", fields: [vocabId1], references: [id], onDelete: Cascade)
+  vocabId2 String     @map("vocab_id_2")
+  vocab2   Vocabulary @relation("ConfusionB", fields: [vocabId2], references: [id], onDelete: Cascade)
+
+  // Contract:
+  // { "vi": "Nghe dùng Tai...", "en": "Listen uses Ear..." }
+  explanation Json
+
+  type ConfusionType @default(HOMONYM)
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([vocabId1])
+  @@index([vocabId2])
+}
+
+enum ConfusionType {
+  HOMONYM
+  LOOKALIKE
+  SYNONYM
+}
+
+// Active Priming (The Context)
+model Story {
   id     String @id @default(uuid())
-  deckId String @map("deck_id")
-  deck   Deck   @relation(fields: [deckId], references: [id], onDelete: Cascade)
+  unitId String @map("unit_id")
+  unit   Deck   @relation(fields: [unitId], references: [id], onDelete: Cascade)
 
-  kanji     String
-  onyomi    String[] // e.g. ["ニチ", "ジツ"]
-  kunyomi   String[] // e.g. ["ひ", "び", "か"]
-  strokes   Int
-  hanViet   String   @map("han_viet")
-  meaning   String
-  jlptLevel String?  @map("jlpt_level") // N5, N4...
-  imageUrl  String?  @map("image_url")
-  radicals  Json // e.g. [{ "kanji": "日", "hanViet": "...", "meaning": "..." }]
-  examples  Json // e.g. [{ "word": "...", "kana": "...", "meaning": "..." }]
+  // Contract:
+  // { "title_vi": "...", "body_vi": "...", "title_en": "..." }
+  content  Json
+  audioUrl String? @map("audio_url")
 
-  // Relations
-  studyCards StudyCard[]
+  createdAt DateTime @default(now()) @map("created_at")
 
-  createdAt    DateTime      @default(now()) @map("created_at")
-  updatedAt    DateTime      @updatedAt @map("updated_at")
-  cardReports  CardReport[]
-  cardComments CardComment[]
-
-  @@index([deckId])
+  @@index([unitId])
 }
 
-// StudyCard Model: A user's progress on a specific Vocab OR Kanji (FSRS data)
-// Previously VocabCard
-model StudyCard {
-  id String @id @default(uuid())
+// NOTE: Legacy separate Kanji model removed in favor of `Vocabulary` with tags=["kanji"].
 
+// -----------------------------------------------------------------------------
+// 4. USER PROGRESS (FSRS & MEMORY)
+// -----------------------------------------------------------------------------
+
+// Analytics: Daily Aggregation for Heatmaps & Reports
+model DailyStudyStat {
+  id     String @id @default(uuid())
   userId String @map("user_id")
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  // Polymorphic relation: either vocab or kanji must be set, but not both (enforced by app logic)
-  vocabId String? @map("vocab_id")
-  vocab   Vocab?  @relation(fields: [vocabId], references: [id], onDelete: Cascade)
+  date             DateTime @db.Date // Store as YYYY-MM-DD
+  cardsReviewed    Int      @default(0) @map("cards_reviewed")
+  newCardsLearned  Int      @default(0) @map("new_cards_learned")
+  reviewDurationMs Int      @default(0) @map("review_duration_ms")
+  correctCount     Int      @default(0) @map("correct_count")
 
-  kanjiId String? @map("kanji_id")
-  kanji   Kanji?  @relation(fields: [kanjiId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
-  // FSRS Fields
-  due           DateTime  @default(now())
+  @@unique([userId, date])
+  @@index([userId])
+}
+
+// Session Persistence (Smart Queue Resume)
+model StudySession {
+  id     String @id @default(uuid())
+  userId String @map("user_id")
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // The queue of card IDs to study in this session
+  // e.g. ["uuid-1", "uuid-2"]
+  queue Json
+
+  // Current progress
+  status       SessionStatus @default(ACTIVE)
+  currentIndex Int           @default(0) @map("current_index")
+
+  startedAt DateTime @default(now()) @map("started_at")
+  expiresAt DateTime @map("expires_at")
+
+  @@index([userId])
+}
+
+enum SessionStatus {
+  ACTIVE
+  COMPLETED
+  ABANDONED
+}
+
+model UserReview {
+  id     String @id @default(uuid())
+  userId String @map("user_id")
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Target Content
+  vocabId String     @map("vocab_id")
+  vocab   Vocabulary @relation(fields: [vocabId], references: [id], onDelete: Cascade)
+  // Note: Kanji is now reviewed as a Vocabulary item with tag="kanji"
+
+  // FSRS Algorithms State
+  srsStage     Int      @default(0) @map("srs_stage") // 0=New, 1=Learning, 2=Review, 3=Relearning
+  nextReviewAt DateTime @default(now()) @map("next_review_at")
+
   stability     Float     @default(0)
   difficulty    Float     @default(0)
   elapsedDays   Int       @default(0) @map("elapsed_days")
   scheduledDays Int       @default(0) @map("scheduled_days")
   reps          Int       @default(0)
   lapses        Int       @default(0)
-  state         Int       @default(0) // 0=New, 1=Learning, 2=Review, 3=Relearning
+  state         Int       @default(0)
   lastReview    DateTime? @map("last_review")
+
+  // The 'E' in CUBE: Encoding
+  personalAnchor String? @map("personal_anchor") // User's custom mnemonic
+  isFavorite     Boolean @default(false) @map("is_favorite")
 
   reviewLogs ReviewLog[]
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  @@index([userId])
-  @@index([vocabId])
-  @@index([kanjiId])
-  @@index([due])
-  @@index([state])
+  @@unique([userId, vocabId])
+  // Composite Indexes for Dashboard Performance
+  // "Get my due cards": WHERE user_id = ? AND next_review_at <= NOW()
+  @@index([userId, nextReviewAt])
+  // "Get my learning breakdown": WHERE user_id = ? AND srs_stage = ?
+  @@index([userId, srsStage])
 }
 
 model ReviewLog {
   id String @id @default(uuid())
 
-  cardId String    @map("card_id")
-  card   StudyCard @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  reviewId   String     @map("review_id")
+  reviewItem UserReview @relation(fields: [reviewId], references: [id], onDelete: Cascade)
 
   userId String @map("user_id")
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  rating Int // 1=Again, 2=Hard, 3=Good, 4=Easy
-  review DateTime @default(now())
+  rating     Int // 1=Again, 2=Hard, 3=Good, 4=Easy
+  reviewDate DateTime @default(now()) @map("review_date")
+  duration   Int      @default(0) // Time taken in milliseconds -> know about user hesitation time response
 
   scheduledDays Int @map("scheduled_days")
   elapsedDays   Int @map("elapsed_days")
-  state         Int
+  state         Int // State BEFORE review
 
-  @@index([cardId])
-  @@index([review])
+  @@index([reviewId])
+  @@index([reviewDate])
   @@index([userId])
 }
 
-// Card Reporting System
+// -----------------------------------------------------------------------------
+// 5. COMMUNITY & REPORTING
+// -----------------------------------------------------------------------------
+
+model CardComment {
+  id String @id @default(uuid())
+
+  vocabId String     @map("vocab_id")
+  vocab   Vocabulary @relation(fields: [vocabId], references: [id], onDelete: Cascade)
+
+  authorId String @map("author_id")
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  content String
+  type    CommentType @default(GENERAL)
+
+  // Votes
+  upvotes   Int     @default(0)
+  downvotes Int     @default(0)
+  score     Int     @default(0)
+  isPinned  Boolean @default(false) @map("is_pinned")
+  isHidden  Boolean @default(false) @map("is_hidden")
+
+  votes CommentVote[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([vocabId])
+}
+
+enum CommentType {
+  MNEMONIC
+  USAGE_TIP
+  CULTURAL_NOTE
+  EXAMPLE
+  GRAMMAR
+  GENERAL
+}
+
+model CommentVote {
+  id        String      @id @default(uuid())
+  commentId String      @map("comment_id")
+  comment   CardComment @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  userId    String      @map("user_id")
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  value     Int
+
+  @@unique([commentId, userId])
+}
+
 model CardReport {
   id String @id @default(uuid())
 
-  // What is being reported
-  vocabId String? @map("vocab_id")
-  vocab   Vocab?  @relation(fields: [vocabId], references: [id], onDelete: Cascade)
+  vocabId String     @map("vocab_id")
+  vocab   Vocabulary @relation(fields: [vocabId], references: [id], onDelete: Cascade)
 
-  kanjiId String? @map("kanji_id")
-  kanji   Kanji?  @relation(fields: [kanjiId], references: [id], onDelete: Cascade)
-
-  // Who reported
   reporterId String @map("reporter_id")
   reporter   User   @relation("ReportedBy", fields: [reporterId], references: [id], onDelete: Cascade)
 
-  // Report details
   type           ReportType
-  field          String? // Which field is incorrect (e.g., "readingKana", "meaning")
+  field          String?
   currentValue   String?    @map("current_value")
   suggestedValue String?    @map("suggested_value")
   notes          String?
 
-  // Resolution
   status       ReportStatus @default(PENDING)
   resolvedById String?      @map("resolved_by_id")
   resolvedBy   User?        @relation("ResolvedBy", fields: [resolvedById], references: [id])
-  resolution   String? // Reason for reject, or confirmation message
+  resolution   String?
   resolvedAt   DateTime?    @map("resolved_at")
 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@index([status])
-  @@index([vocabId])
-  @@index([kanjiId])
-  @@index([reporterId])
 }
 
 enum ReportType {
@@ -278,107 +488,4 @@ enum ReportStatus {
   ACCEPTED
   REJECTED
   DUPLICATE
-}
-
-// Community Comments System
-model CardComment {
-  id String @id @default(uuid())
-
-  // Polymorphic: attach to Vocab OR Kanji
-  vocabId String? @map("vocab_id")
-  vocab   Vocab?  @relation(fields: [vocabId], references: [id], onDelete: Cascade)
-  kanjiId String? @map("kanji_id")
-  kanji   Kanji?  @relation(fields: [kanjiId], references: [id], onDelete: Cascade)
-
-  authorId String @map("author_id")
-  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
-
-  content String
-  type    CommentType @default(GENERAL)
-
-  // Votes cache (optional, but good for sorting)
-  upvotes   Int @default(0)
-  downvotes Int @default(0)
-  score     Int @default(0)
-
-  isPinned Boolean @default(false) @map("is_pinned")
-  isHidden Boolean @default(false) @map("is_hidden")
-
-  votes CommentVote[]
-
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  @@index([vocabId])
-  @@index([kanjiId])
-  @@index([authorId])
-  @@index([score]) // For trending queries
-}
-
-enum CommentType {
-  MNEMONIC
-  USAGE_TIP
-  CULTURAL_NOTE
-  EXAMPLE
-  GRAMMAR
-  GENERAL
-}
-
-model CommentVote {
-  id String @id @default(uuid())
-
-  commentId String      @map("comment_id")
-  comment   CardComment @relation(fields: [commentId], references: [id], onDelete: Cascade)
-
-  userId String @map("user_id")
-  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  value Int // +1 or -1
-
-  @@unique([commentId, userId])
-  @@index([commentId])
-}
-
-// Course System
-model Course {
-  id            String  @id @default(uuid())
-  title         String
-  titleEn       String? @map("title_en")
-  description   String?
-  descriptionEn String? @map("description_en")
-  isPublic      Boolean @default(false) @map("is_public")
-  headerImage   String? @map("header_image")
-
-  // Metadata
-  level String?
-  tags  String[]
-
-  authorId String @map("author_id")
-  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
-
-  // Relations
-  decks CourseDeck[]
-
-  createdAt DateTime @default(now()) @map("created_at")
-  updatedAt DateTime @updatedAt @map("updated_at")
-
-  @@index([authorId])
-}
-
-model CourseDeck {
-  id String @id @default(uuid())
-
-  courseId String @map("course_id")
-  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
-
-  deckId String @map("deck_id")
-  deck   Deck   @relation(fields: [deckId], references: [id], onDelete: Cascade)
-
-  sortOrder Int @default(0) @map("sort_order")
-
-  createdAt DateTime @default(now()) @map("created_at")
-
-  @@unique([courseId, deckId])
-  @@index([courseId])
-  @@index([deckId])
 }
