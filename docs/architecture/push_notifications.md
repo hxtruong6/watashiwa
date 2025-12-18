@@ -286,4 +286,6 @@ async function notifyUser(userId: string, event: EventType) {
 }
 ```
 
-```
+In future, we will use this interface to send notifications to users.
+
+Consider this: <https://www.inngest.com/docs>
