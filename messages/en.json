@@ -27,6 +27,13 @@
         "errorImageOnly": "You can only upload image files!",
         "errorImageSize": "Image must be smaller than 5MB!"
     },
+    "Offline": {
+        "title": "Lost in the clouds...",
+        "subtitle": "Drifting a bit too far.",
+        "desc": "Take a deep breath. Watch the cat chill. We'll reconnect as soon as the internet is back.",
+        "reconnectSuccess": "Back online! Reloading...",
+        "retry": "Retry Now"
+    },
     "NavBar": {
         "dashboard": "Home",
         "decks": "Decks",
@@ -279,7 +286,8 @@
         "uploadAvatar": "Click to upload new avatar",
         "goals": "Goals",
         "profile": "Profile",
-        "settings": "Settings"
+        "settings": "Settings",
+        "notifications": "Notifications"
     },
     "Admin": {
         "panelTitle": "Admin Panel",
@@ -290,9 +298,9 @@
         "activeToday": "Active Today"
     },
     "Landing": {
-        "heroTitle": "Master Japanese with",
-        "heroTitleAccent": "Zen Focus",
-        "heroSubtitle": "The distraction-free SRS platform built for serious learners. Optimize your study time with our smart algorithm, detailed analytics, and a beautiful, clean interface.",
+        "heroTitle": "WatashiWa:",
+        "heroTitleAccent": "Learn Smart, Not Hard",
+        "heroSubtitle": "Your personal buddy for mastering Japanese. SRS magic, Han-Viet insights, and zero stress. Just you and your progress.",
         "startLearning": "Start Learning Free",
         "exploreFeatures": "Explore Features",
         "badge": "New v2.0",
@@ -303,8 +311,8 @@
         "featuresSubtitle": "Everything you need to reach fluency, packed into a clean, modern experience.",
         "featureSRS": "Smart Repetition (SRS)",
         "featureSRSDesc": "Powered by the advanced FSRS algorithm to schedule cards exactly when you need them.",
-        "featureKanji": "Kanji Mastery",
-        "featureKanjiDesc": "Dedicated modes for Kanji strokes and meanings.",
+        "featureKanji": "Han-Viet Insights",
+        "featureKanjiDesc": "Unlock the logic behind Kanji. Understand the roots, don't just memorize strokes.",
         "featureMobile": "Mobile First",
         "featureMobileDesc": "Study anywhere, anytime with one-handed usage optimization.",
         "featureOffline": "Offline Capable",
@@ -521,5 +529,34 @@
         "title": "Oops!",
         "subTitle": "Sorry, the page you visited does not exist.",
         "backHome": "Back Home"
+    },
+    "PWA": {
+        "installTitle": "Install WatashiWa",
+        "installDesc": "Install the app for the best experience.",
+        "installButton": "Install App",
+        "iosGuideTitle": "Install on iOS",
+        "iosGuideStep1": "Tap the **Share** button in the Safari menu bar.",
+        "iosGuideStep2": "Scroll down and tap **Add to Home Screen**.",
+        "iosGuideStep3": "Tap **Add** in the top right corner.",
+        "dismiss": "Not now"
+    },
+    "Notifications": {
+        "title": "Notifications",
+        "settings": "Settings",
+        "enable": "Enable Notifications",
+        "blocked": "Notifications are blocked",
+        "blockedDesc": "Please reset permissions in your browser settings (lock icon).",
+        "promptTitle": "Don't miss your streak!",
+        "promptBody": "Get reminders for reviews and community replies.",
+        "successTitle": "You're all set!",
+        "successBody": "We'll let you know when it's time to study.",
+        "empty": "No new alerts",
+        "welcome": "Welcome to WatashiWa! 🎉",
+        "welcomeBody": "You will now receive study reminders to keep your streak alive.",
+        "streakRescueTitle": "🔥 Streak Danger!",
+        "streakRescueBody": "You're about to lose your {streak}-day streak. Do 1 review to save it!",
+        "streakRescueBodyVi": "",
+        "reviewAlertTitle": "{count} cards are waiting...",
+        "reviewAlertBody": "Clear your review queue now to keep your memory sharp."
     }
 }

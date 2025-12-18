@@ -158,7 +158,7 @@ describe('StudyContent Component', () => {
 		stability: 5,
 		scheduledDays: 1,
 		elapsedDays: 1,
-		step: 0,
+
 		createdAt: new Date(),
 		updatedAt: new Date(),
 		userId: 'u1',

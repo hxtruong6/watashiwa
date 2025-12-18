@@ -5,5 +5,16 @@
 	"printWidth": 100,
 	"tabWidth": 2,
 	"useTabs": true,
-	"endOfLine": "lf"
+	"endOfLine": "lf",
+	"importOrder": [
+		"^@core/(.*)$",
+		"^@server/(.*)$",
+		"^@ui/(.*)$",
+		"^[./]"
+	],
+	"importOrderSeparation": true,
+	"importOrderSortSpecifiers": true,
+	"plugins": [
+		"@trivago/prettier-plugin-sort-imports"
+	]
 }

@@ -27,6 +27,13 @@
         "errorImageOnly": "Chỉ được tải lên tệp hình ảnh!",
         "errorImageSize": "Kích thước ảnh phải nhỏ hơn 5MB!"
     },
+    "Offline": {
+        "title": "Lạc trôi...",
+        "subtitle": "Mây trôi xa quá rồi.",
+        "desc": "Hít thở sâu. Ngắm mèo chill. App sẽ tự kết nối lại ngay khi có mạng.",
+        "reconnectSuccess": "Đã kết nối lại! Đang tải lại...",
+        "retry": "Thử lại ngay"
+    },
     "NavBar": {
         "dashboard": "Trang chủ",
         "decks": "Bộ thẻ",
@@ -271,7 +278,8 @@
         "uploadAvatar": "Nhấn để tải lên ảnh đại diện mới",
         "goals": "Mục tiêu",
         "profile": "Hồ sơ",
-        "settings": "Cài đặt"
+        "settings": "Cài đặt",
+        "notifications": "Thông báo"
     },
     "Admin": {
         "panelTitle": "Trang quản trị",
@@ -282,9 +290,9 @@
         "activeToday": "Hoạt động hôm nay"
     },
     "Landing": {
-        "heroTitle": "Học Tiếng Nhật Cực Cuốn Cùng",
-        "heroTitleAccent": "WatashiWa - Gen Z Support",
-        "heroSubtitle": "Học từ vựng SRS cực dính. Không áp lực, không thi thót, chỉ có tiến bộ mỗi ngày.",
+        "heroTitle": "WatashiWa:",
+        "heroTitleAccent": "Học hết khoai, nhớ cực dai",
+        "heroSubtitle": "Người bạn đồng hành giúp bạn 'xử đẹp' Kanji & từ vựng với SRS thông minh. Không áp lực, học là dính.",
         "startLearning": "Chiến ngay đi ní (Free)",
         "exploreFeatures": "Xem có gì hot?",
         "badge": "Mới v2.0",
@@ -292,11 +300,11 @@
         "noAds": "Không Quảng Cáo",
         "openSource": "Mã Nguồn Mở",
         "featuresTitle": "Vì sao các đồng môn chọn WatashiWa?",
-        "featuresSubtitle": "App học tiếng Nhật 'bánh cuốn'. Học nhanh, nhớ lâu, vui như đi hội.",
-        "featureSRS": "SRS Siêu Dính",
-        "featureSRSDesc": "Học là nhớ, không cần cố. Thuật toán lo hết lịch ôn cho bạn.",
-        "featureKanji": "Kanji Tự Nhiên",
-        "featureKanjiDesc": "Thấm dần như crush thích mình. Hiểu sâu bộ thủ, không học vẹt.",
+        "featuresSubtitle": "Học chill mà chất. Đầy đủ đồ chơi cho dân chuyên.",
+        "featureSRS": "SRS Thông Minh",
+        "featureSRSDesc": "Lịch ôn tập cá nhân hóa. Nhắc lại đúng lúc bạn sắp quên. Học ít, nhớ dai.",
+        "featureKanji": "Kanji Hán Việt",
+        "featureKanjiDesc": "Hiểu sâu bản chất từ vựng qua lăng kính Hán Việt. Học 1 biết 10, nhớ từ siêu tốc.",
         "featureMobile": "Học Bất Chấp",
         "featureMobileDesc": "Mượt như lướt Tóp Tóp. Tiện lợi mọi lúc mọi nơi.",
         "featureOffline": "Chấp luôn mất mạng",
@@ -513,5 +521,33 @@
         "title": "Oops!",
         "subTitle": "Trang này đã đi lạc vào hư vô...",
         "backHome": "Về nhà thôi"
+    },
+    "PWA": {
+        "installTitle": "Cài đặt WatashiWa",
+        "installDesc": "Cài đặt ứng dụng để có trải nghiệm tốt nhất.",
+        "installButton": "Cài đặt ngay",
+        "iosGuideTitle": "Cài đặt trên iOS",
+        "iosGuideStep1": "Nhấn nút **Chia sẻ** trên thanh menu Safari.",
+        "iosGuideStep2": "Cuộn xuống và chọn **Thêm vào Màn hình chính**.",
+        "iosGuideStep3": "Nhấn **Thêm** ở góc trên cùng bên phải.",
+        "dismiss": "Để sau"
+    },
+    "Notifications": {
+        "title": "Thông báo",
+        "settings": "Cài đặt",
+        "enable": "Bật thông báo",
+        "blocked": "Thông báo bị chặn",
+        "blockedDesc": "Vui lòng mở lại quyền trong cài đặt trình duyệt (biểu tượng ổ khóa).",
+        "promptTitle": "Đừng để mất chuỗi!",
+        "promptBody": "Nhận nhắc nhở ôn tập và tin nhắn từ cộng đồng.",
+        "successTitle": "Đã xong!",
+        "successBody": "Chúng tôi sẽ nhắc bạn khi đến giờ học.",
+        "empty": "Không có thông báo mới",
+        "welcome": "Chào mừng đến với WatashiWa! 🎉",
+        "welcomeBody": "Giờ đây bạn sẽ nhận được nhắc nhở để giữ chuỗi học tập.",
+        "streakRescueTitle": "🔥 Nguy cơ mất chuỗi!",
+        "streakRescueBody": "Bạn sắp mất chuỗi {streak} ngày. Học ngay 1 bài để cứu chuỗi!",
+        "reviewAlertTitle": "{count} thẻ đang chờ...",
+        "reviewAlertBody": "Ôn tập ngay để trí nhớ luôn sắc bén."
     }
 }

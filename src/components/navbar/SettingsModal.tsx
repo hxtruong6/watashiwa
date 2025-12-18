@@ -13,12 +13,15 @@ import {
 	Divider,
 	InputNumber,
 	theme,
+	Select,
 } from 'antd';
-import { UserOutlined, SettingOutlined } from '@ant-design/icons';
+import { UserOutlined, SettingOutlined, GlobalOutlined, RocketOutlined } from '@ant-design/icons';
+import { useTranslations } from 'next-intl';
+import { useTheme } from 'next-themes';
+import NotificationManager from '@/components/PWA/NotificationManager';
 
 import ImageUploader from '@/components/Shared/ImageUploader';
 import { updateUserAvatar, updateUserSettings } from '@/services/actions';
-import { useTranslations } from 'next-intl';
 
 const { Text } = Typography;
 
@@ -35,18 +38,7 @@ export default function SettingsModal({ open, onCancel, user }: SettingsModalPro
 	const { token } = useToken();
 	const t = useTranslations('Settings');
 	const tCommon = useTranslations('Common');
-	const [form] = Form.useForm();
 	const [loading, setLoading] = useState(false);
-
-	// Initialize form when modal opens
-	React.useEffect(() => {
-		if (open && user) {
-			form.setFieldsValue({
-				limitNewCards: user.limitNewCards ?? 5,
-				limitReviews: user.limitReviews ?? 20,
-			});
-		}
-	}, [open, user, form]);
 
 	const handleAvatarChange = async (url: string | null) => {
 		if (!url) return;
@@ -66,22 +58,126 @@ export default function SettingsModal({ open, onCancel, user }: SettingsModalPro
 		}
 	};
 
-	const handleSaveSettings = async () => {
-		try {
-			const values = await form.validateFields();
-			setLoading(true);
-			const result = await updateUserSettings(values);
-			if (result.success) {
-				message.success(tCommon('saveSuccess'));
-				// Optionally refresh router or just rely on state update if upstream handles it
-			} else {
-				message.error(result.error || tCommon('saveError'));
+	const GeneralTab = () => {
+		const { theme, setTheme } = useTheme();
+
+		return (
+			<Flex vertical gap="large" style={{ padding: '24px 0' }}>
+				<div
+					style={{
+						padding: 16,
+						background: token.colorFillQuaternary,
+						borderRadius: 12,
+						border: `1px solid ${token.colorBorderSecondary}`,
+					}}
+				>
+					<Typography.Title level={5} style={{ marginTop: 0, marginBottom: 16 }}>
+						{t('appearance') || 'Appearance'}
+					</Typography.Title>
+					<Flex justify="space-between" align="center">
+						<Text>{t('theme') || 'Theme'}</Text>
+						<Select
+							value={theme}
+							onChange={(value) => setTheme(value)}
+							options={[
+								{ value: 'light', label: t('light') || 'Light' },
+								{ value: 'dark', label: t('dark') || 'Dark' },
+								{ value: 'system', label: t('system') || 'System' },
+							]}
+							style={{ width: 120 }}
+						/>
+					</Flex>
+				</div>
+
+				<div
+					style={{
+						padding: 16,
+						background: token.colorFillQuaternary,
+						borderRadius: 12,
+						border: `1px solid ${token.colorBorderSecondary}`,
+					}}
+				>
+					<Typography.Title level={5} style={{ marginTop: 0, marginBottom: 16 }}>
+						{t('notifications') || 'Notifications'}
+					</Typography.Title>
+					<Flex justify="space-between" align="center">
+						<Text>Reminders</Text>
+						<NotificationManager />
+					</Flex>
+				</div>
+			</Flex>
+		);
+	};
+
+	const GoalsTab = () => {
+		const [form] = Form.useForm();
+
+		// Initialize form when component mounts
+		React.useEffect(() => {
+			if (user) {
+				form.setFieldsValue({
+					limitNewCards: user.limitNewCards ?? 5,
+					limitReviews: user.limitReviews ?? 20,
+				});
 			}
-		} catch (error) {
-			console.error('Save failed:', error);
-		} finally {
-			setLoading(false);
-		}
+		}, [form]);
+
+		const handleSaveSettings = async () => {
+			try {
+				const values = await form.validateFields();
+				setLoading(true);
+				const result = await updateUserSettings(values);
+				if (result.success) {
+					message.success(tCommon('saveSuccess'));
+				} else {
+					message.error(result.error || tCommon('saveError'));
+				}
+			} catch (error) {
+				console.error('Save failed:', error);
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		return (
+			<Form form={form} layout="vertical" onFinish={handleSaveSettings} style={{ paddingTop: 16 }}>
+				<Flex vertical gap="middle">
+					<div
+						style={{
+							padding: 16,
+							background: token.colorFillQuaternary,
+							borderRadius: 12,
+							border: `1px solid ${token.colorBorderSecondary}`,
+						}}
+					>
+						<Typography.Title level={5} style={{ marginTop: 0, marginBottom: 12 }}>
+							{t('studyGoals') || 'Study Goals'}
+						</Typography.Title>
+						<Flex gap="middle">
+							<Form.Item
+								name="limitNewCards"
+								label={t('limitNewCards') || 'New Cards / Day'}
+								style={{ flex: 1, marginBottom: 0 }}
+								tooltip={t('limitNewCardsTooltip')}
+							>
+								<InputNumber min={0} max={100} style={{ width: '100%' }} />
+							</Form.Item>
+							<Form.Item
+								name="limitReviews"
+								label={t('limitReviews') || 'Reviews / Day'}
+								style={{ flex: 1, marginBottom: 0 }}
+								tooltip={t('limitReviewsTooltip')}
+							>
+								<InputNumber min={0} max={500} style={{ width: '100%' }} />
+							</Form.Item>
+						</Flex>
+					</div>
+					<Button type="primary" htmlType="submit" loading={loading} block>
+						{tCommon('save') || 'Save Changes'}
+					</Button>
+				</Flex>
+			</Form>
+		);
 	};
 
 	const renderProfileTab = () => (
@@ -115,47 +211,16 @@ export default function SettingsModal({ open, onCancel, user }: SettingsModalPro
 		</Flex>
 	);
 
-	const renderGoalsTab = () => (
-		<Form form={form} layout="vertical" onFinish={handleSaveSettings} style={{ paddingTop: 16 }}>
-			<Flex vertical gap="middle">
-				<div
-					style={{
-						padding: 16,
-						background: token.colorFillQuaternary,
-						borderRadius: 12,
-						border: `1px solid ${token.colorBorderSecondary}`,
-					}}
-				>
-					<Typography.Title level={5} style={{ marginTop: 0, marginBottom: 12 }}>
-						{t('studyGoals') || 'Study Goals'}
-					</Typography.Title>
-					<Flex gap="middle">
-						<Form.Item
-							name="limitNewCards"
-							label={t('limitNewCards') || 'New Cards / Day'}
-							style={{ flex: 1, marginBottom: 0 }}
-							tooltip={t('limitNewCardsTooltip')}
-						>
-							<InputNumber min={0} max={100} style={{ width: '100%' }} />
-						</Form.Item>
-						<Form.Item
-							name="limitReviews"
-							label={t('limitReviews') || 'Reviews / Day'}
-							style={{ flex: 1, marginBottom: 0 }}
-							tooltip={t('limitReviewsTooltip')}
-						>
-							<InputNumber min={0} max={500} style={{ width: '100%' }} />
-						</Form.Item>
-					</Flex>
-				</div>
-				<Button type="primary" htmlType="submit" loading={loading} block>
-					{tCommon('save') || 'Save Changes'}
-				</Button>
-			</Flex>
-		</Form>
-	);
-
 	const items = [
+		{
+			key: 'general',
+			label: (
+				<span>
+					<GlobalOutlined /> {t('general') || 'General'}
+				</span>
+			),
+			children: <GeneralTab />,
+		},
 		{
 			key: 'profile',
 			label: (
@@ -169,10 +234,10 @@ export default function SettingsModal({ open, onCancel, user }: SettingsModalPro
 			key: 'goals',
 			label: (
 				<span>
-					<SettingOutlined /> {t('goals') || 'Goals'}
+					<RocketOutlined /> {t('goals') || 'Goals'}
 				</span>
 			),
-			children: renderGoalsTab(),
+			children: <GoalsTab />,
 		},
 	];
 

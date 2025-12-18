@@ -41,10 +41,10 @@ describe('useStudySession Hook', () => {
 			limitNewCards: 20,
 			dueCount: 10,
 			reviewsAvailable: 10,
-			totalReviewCount: 0,
-			masteredCount: 0,
-			learningCount: 0,
-			newCount: 0,
+			// totalReviewCount: 0,
+			// masteredCount: 0,
+			// learningCount: 0,
+			// newCount: 0,
 		});
 	});
 

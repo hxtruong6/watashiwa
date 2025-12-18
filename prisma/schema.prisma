@@ -1,4 +1,4 @@
-// Prisma Schema for WatashiWa (SRS App)
+// Prisma Schema for WatashiWa
 // FSRS-compatible vocabulary learning system
 
 generator client {
@@ -32,6 +32,7 @@ model User {
   autoShowAnswer      Boolean @default(false) @map("auto_show_answer")
   autoShowAnswerDelay Int     @default(40) @map("auto_show_answer_delay") // Seconds
   timezone            String  @default("UTC")
+  language            String  @default("en") // "en", "vi", "ja"
 
   // Gamification
   currentStreak Int @default(0) @map("current_streak")
@@ -43,20 +44,44 @@ model User {
   tutorials Json @default("{}")
 
   // Relations
-  studyCards      StudyCard[]
-  reviewLogs      ReviewLog[]
-  reportsSent     CardReport[]  @relation("ReportedBy")
-  reportsResolved CardReport[]  @relation("ResolvedBy")
-  decks           Deck[]
-  cardComments    CardComment[]
-  commentVotes    CommentVote[]
-  createdCourses  Course[]
+  studyCards        StudyCard[]
+  reviewLogs        ReviewLog[]
+  reportsSent       CardReport[]       @relation("ReportedBy")
+  reportsResolved   CardReport[]       @relation("ResolvedBy")
+  decks             Deck[]
+  cardComments      CardComment[]
+  commentVotes      CommentVote[]
+  createdCourses    Course[]
+  pushSubscriptions PushSubscription[]
 }
 
 enum UserRole {
   USER
   MODERATOR
   ADMIN
+}
+
+// Push Notification Subscription
+// 1 User -> Many Devices
+model PushSubscription {
+  id String @id @default(uuid())
+
+  userId String @map("user_id")
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // Standard Web Push keys
+  endpoint String @unique
+  p256dh   String
+  auth     String
+
+  // Metadata for debugging/cleaning
+  userAgent   String? @map("user_agent")
+  failedCount Int     @default(0) @map("failed_count")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([userId])
 }
 
 // Deck Model: A collection of vocabulary

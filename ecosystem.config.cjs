@@ -41,6 +41,20 @@ module.exports = {
 			wait_ready: true,
 			listen_timeout: 10000,
 		},
+		{
+			name: 'cron-reminders',
+			script: 'scripts/trigger-reminders.js',
+			instances: 1,
+			exec_mode: 'fork',
+			autorestart: false,
+			cron_restart: '0 20 * * *', // Runs at 20:00 every day
+			watch: false,
+			env: {
+				NODE_ENV: 'production',
+				API_URL: 'http://localhost:3051', // Production port
+				// CRON_SECRET should be loaded from .env or injected
+			},
+		},
 	],
 
 	// Deployment Configuration

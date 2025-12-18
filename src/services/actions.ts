@@ -1,19 +1,18 @@
 'use server';
 
+import { hasRole, requireRole } from '@/lib/auth/roleGuard';
+import { getStartOfDayInTimezone } from '@/lib/date-utils';
 import { prisma } from '@/lib/db';
 import { createClient } from '@/utils/supabase/server';
+import { Kanji, ReportStatus, ReportType, StudyCard, User, UserRole, Vocab } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
-import { StudyCard, Vocab, Kanji, User, UserRole, ReportStatus, ReportType } from '@prisma/client';
-
-import { requireRole, hasRole } from '@/lib/auth/roleGuard';
-import { Card, fsrs, generatorParameters, Rating, State } from 'ts-fsrs';
+import { cache } from 'react';
+import { Card, Rating, State, fsrs, generatorParameters } from 'ts-fsrs';
+import { z } from 'zod';
 
 // Initialize FSRS with default parameters
 const params = generatorParameters({ enable_fuzz: true });
 const f = fsrs(params);
-
-import { z } from 'zod';
-import { getStartOfDayInTimezone } from '@/lib/date-utils';
 
 // --- Zod Schemas ---
 
@@ -38,6 +37,7 @@ const UserSettingsSchema = z.object({
 	autoShowAnswer: z.boolean().optional(),
 	autoShowAnswerDelay: z.number().int().min(0).optional(),
 	timezone: z.string().optional(),
+	language: z.string().optional(),
 });
 
 const ReportSchema = z
@@ -81,8 +81,6 @@ export type StudyCardWithDetails = StudyCard & {
 	vocab?: (Vocab & { _count?: { cardComments: number } }) | null;
 	kanji?: (Kanji & { _count?: { cardComments: number } }) | null;
 };
-
-import { cache } from 'react';
 
 /**
  * Helper to get current authenticated user
@@ -1382,6 +1380,7 @@ export async function updateUserSettings(data: Partial<User>) {
 				autoShowAnswer: data.autoShowAnswer,
 				autoShowAnswerDelay: data.autoShowAnswerDelay,
 				timezone: data.timezone,
+				language: data.language,
 				updatedAt: new Date(),
 			},
 		});

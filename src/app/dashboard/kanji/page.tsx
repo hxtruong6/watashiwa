@@ -36,7 +36,7 @@ export default function KanjiListPage() {
 		async function fetchData() {
 			setLoading(true);
 			const kanjiList = await getAllKanji();
-			const formatted: KanjiDataType[] = kanjiList.map((k) => {
+			const formatted: KanjiDataType[] = kanjiList.map((k: any) => {
 				const card = k.studyCards?.[0];
 				let stateText: CardState = 'new';
 				if (card) {

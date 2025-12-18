@@ -1,47 +1,48 @@
 'use client';
 
-import * as Sentry from '@sentry/nextjs';
-import React, { useState } from 'react';
-import {
-	Layout,
-	Menu,
-	Button,
-	Flex,
-	Typography,
-	Tooltip,
-	Tag,
-	Avatar,
-	Dropdown,
-	Space,
-	theme,
-	Grid,
-} from 'antd';
-import NavDrawer from './navbar/NavDrawer';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useTranslations } from 'next-intl';
-import LanguageSelector from './LanguageSelector';
-import ShareModal from './ShareModal';
-import SettingsModal from './navbar/SettingsModal';
 import { createClient } from '@/utils/supabase/client';
-import { useEffect } from 'react';
-
 import {
-	LogoutOutlined,
-	ReadOutlined,
-	BookOutlined,
-	MenuOutlined,
 	BarChartOutlined,
-	UserOutlined,
+	BookOutlined,
+	BugOutlined,
+	FolderOpenOutlined,
+	HomeOutlined,
+	LogoutOutlined,
+	MenuOutlined,
+	ReadOutlined,
 	SettingOutlined,
 	ShareAltOutlined,
-	FolderOpenOutlined,
-	BugOutlined,
-	HomeOutlined,
+	UserOutlined,
 } from '@ant-design/icons';
-import Link from 'next/link';
+import * as Sentry from '@sentry/nextjs';
+import {
+	Avatar,
+	Button,
+	Dropdown,
+	Flex,
+	Grid,
+	Layout,
+	Menu,
+	Space,
+	Tag,
+	Tooltip,
+	Typography,
+	theme,
+} from 'antd';
 import type { MenuProps } from 'antd';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+
+import LanguageSelector from './LanguageSelector';
+import ShareModal from './ShareModal';
 import ThemeToggle from './ThemeToggle';
+import NavDrawer from './navbar/NavDrawer';
+import NotificationPopover from './navbar/NotificationPopover';
+import SettingsModal from './navbar/SettingsModal';
 
 const { Header } = Layout;
 const { Text } = Typography;
@@ -324,6 +325,8 @@ export default function NavBar({ user }: { user?: User | null }) {
 							>
 								<LanguageSelector />
 
+								<NotificationPopover />
+
 								{!screens.xs && <ThemeToggle />}
 
 								{/* Share Button (Desktop) - Enhanced Visibility */}
@@ -395,7 +398,10 @@ export default function NavBar({ user }: { user?: User | null }) {
 				{/* Mobile Trigger */}
 				{!isPublic && (
 					<div className="mobile-trigger">
-						<Button type="text" icon={<MenuOutlined />} onClick={showDrawer} size="large" />
+						<Flex align="center" gap="small">
+							<NotificationPopover />
+							<Button type="text" icon={<MenuOutlined />} onClick={showDrawer} size="large" />
+						</Flex>
 					</div>
 				)}
 				{/* For public mobile */}

@@ -41,15 +41,16 @@ describe('SessionBriefing Component', () => {
 
 	const mockNewCard: StudyCardWithDetails = {
 		id: '1',
-		deckId: 'd1',
+		userId: 'test-user',
 		state: 0, // NEW
 		due: new Date(),
 		stability: 0,
 		difficulty: 0,
 		lapses: 0,
+		elapsedDays: 0,
+		scheduledDays: 0,
 		reps: 0,
 		lastReview: null,
-		step: 0,
 		createdAt: new Date(),
 		updatedAt: new Date(),
 		vocabId: 'v1',

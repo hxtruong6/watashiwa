@@ -24,7 +24,50 @@
     "categories": [
         "education",
         "productivity",
-        "language"
+        "language",
+        "japanese"
+    ],
+    "shortcuts": [
+        {
+            "name": "Quick Review",
+            "short_name": "Review",
+            "description": "Start your SRS review session",
+            "url": "/study",
+            "icons": [
+                {
+                    "src": "/assets/w_logo.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Dashboard",
+            "short_name": "Dashboard",
+            "description": "View your progress",
+            "url": "/dashboard",
+            "icons": [
+                {
+                    "src": "/assets/w_logo.png",
+                    "sizes": "192x192"
+                }
+            ]
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/assets/w_logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "WatashiWa Dashboard"
+        },
+        {
+            "src": "/assets/w_logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Mobile Study View"
+        }
     ],
     "id": "/"
 }
