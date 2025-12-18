@@ -287,7 +287,8 @@
         "goals": "Goals",
         "profile": "Profile",
         "settings": "Settings",
-        "notifications": "Notifications"
+        "notifications": "Notifications",
+        "general": "General"
     },
     "Admin": {
         "panelTitle": "Admin Panel",

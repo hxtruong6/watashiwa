@@ -279,7 +279,8 @@
         "goals": "Mục tiêu",
         "profile": "Hồ sơ",
         "settings": "Cài đặt",
-        "notifications": "Thông báo"
+        "notifications": "Thông báo",
+        "general": "Cài đặt chung"
     },
     "Admin": {
         "panelTitle": "Trang quản trị",
