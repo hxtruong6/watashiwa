@@ -1,7 +1,7 @@
-import React from 'react';
-import { redirect } from 'next/navigation';
-import { getLastStudySession, getUser } from '@/services/actions';
 import StudyContent from '@/components/StudyContent';
+import { getLastStudySession, getUser } from '@/services/actions';
+import { redirect } from 'next/navigation';
+import React from 'react';
 
 // Mark as Server Component (default in App Router, but good to be explicit by NOT having 'use client')
 export default async function StudyPage({

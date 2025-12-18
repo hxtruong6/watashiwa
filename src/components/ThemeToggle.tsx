@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { useTheme } from 'next-themes';
-import { Button } from 'antd';
 import { MoonOutlined, SunOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
+import { useTheme } from 'next-themes';
+import React, { useEffect, useState } from 'react';
 
 export default function ThemeToggle() {
 	const { resolvedTheme, setTheme } = useTheme();

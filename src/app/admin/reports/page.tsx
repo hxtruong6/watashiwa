@@ -1,9 +1,10 @@
-import React from 'react';
-import { getUserWithRole, getReports } from '@/services/actions';
+import themeConfig from '@/lib/theme/themeConfig';
+import { getReports, getUserWithRole } from '@/services/actions';
 import { UserRole } from '@prisma/client';
 import { redirect } from 'next/navigation';
+import React from 'react';
+
 import ClientReportsTable from './components/ClientReportsTable';
-import themeConfig from '@/lib/theme/themeConfig';
 
 export const dynamic = 'force-dynamic';
 

@@ -1,12 +1,12 @@
 'use client';
 
-import React from 'react';
-import { Button, Typography, Layout, theme, Flex, Tag } from 'antd';
-import { useTranslations } from 'next-intl';
-import { StudyCardWithDetails } from '@/services/actions';
-import { SoundOutlined, PlayCircleOutlined } from '@ant-design/icons';
 import { useFlashCardAudio } from '@/hooks/study/useFlashCardAudio';
 import { DEFAULT_LIMIT_NEW_CARDS, DEFAULT_LIMIT_REVIEWS } from '@/lib/constants';
+import { StudyCardWithDetails } from '@/services/actions';
+import { PlayCircleOutlined, SoundOutlined } from '@ant-design/icons';
+import { Button, Flex, Layout, Tag, Typography, theme } from 'antd';
+import { useTranslations } from 'next-intl';
+import React from 'react';
 
 const { Text, Title } = Typography;
 const { useToken } = theme;

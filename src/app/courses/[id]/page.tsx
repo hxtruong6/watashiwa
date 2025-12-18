@@ -1,6 +1,7 @@
 import { getUser } from '@/services/actions';
 import { getCourseWithUserProgress } from '@/services/course-actions';
 import { notFound } from 'next/navigation';
+
 import CourseDetailClient from './CourseDetailClient';
 
 export default async function CourseDetailPage({ params }: { params: Promise<{ id: string }> }) {

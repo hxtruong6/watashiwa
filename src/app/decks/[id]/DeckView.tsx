@@ -1,48 +1,48 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-import React, { useState } from 'react';
-import {
-	Typography,
-	Button,
-	Card,
-	Tag,
-	Flex,
-	Divider,
-	Breadcrumb,
-	Empty,
-	Tabs,
-	Segmented,
-	Table,
-	Progress,
-	Statistic,
-	Row,
-	Col,
-	theme,
-	Modal,
-} from 'antd';
-import {
-	ReadOutlined,
-	TeamOutlined,
-	HomeOutlined,
-	AppstoreOutlined,
-	BarsOutlined,
-	EditOutlined,
-	CheckCircleOutlined,
-	PlaySquareOutlined,
-	CommentOutlined,
-	CloseOutlined,
-	SyncOutlined,
-	RocketOutlined,
-} from '@ant-design/icons';
-import CommentDrawer from '@/components/comments/CommentDrawer';
-import Link from 'next/link';
-import confetti from 'canvas-confetti';
-import { useTranslations } from 'next-intl';
-import SmartContentInput from '@/components/SmartContentInput';
-import { useRouter } from 'next/navigation';
 import BackButton from '@/components/BackButton';
 import FlashCard from '@/components/FlashCard';
+import SmartContentInput from '@/components/SmartContentInput';
+import CommentDrawer from '@/components/comments/CommentDrawer';
+import {
+	AppstoreOutlined,
+	BarsOutlined,
+	CheckCircleOutlined,
+	CloseOutlined,
+	CommentOutlined,
+	EditOutlined,
+	HomeOutlined,
+	PlaySquareOutlined,
+	ReadOutlined,
+	RocketOutlined,
+	SyncOutlined,
+	TeamOutlined,
+} from '@ant-design/icons';
+import {
+	Breadcrumb,
+	Button,
+	Card,
+	Col,
+	Divider,
+	Empty,
+	Flex,
+	Modal,
+	Progress,
+	Row,
+	Segmented,
+	Statistic,
+	Table,
+	Tabs,
+	Tag,
+	Typography,
+	theme,
+} from 'antd';
+import confetti from 'canvas-confetti';
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 
 const { Title, Paragraph, Text } = Typography;
 const { useToken } = theme;

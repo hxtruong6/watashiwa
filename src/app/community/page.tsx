@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
-import { Typography, theme } from 'antd';
 import CommunityFeed from '@/components/community/CommunityFeed';
+import { Typography, theme } from 'antd';
 import { useTranslations } from 'next-intl';
+import React from 'react';
 
 const { Title } = Typography;
 const { useToken } = theme;

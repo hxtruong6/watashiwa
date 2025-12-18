@@ -1,7 +1,7 @@
-import React from 'react';
-import { Form, Input, Card, Button, Space, Divider, Row, Col } from 'antd';
-import { PlusOutlined, MinusCircleOutlined } from '@ant-design/icons';
 import ImageUploader from '@/components/Shared/ImageUploader';
+import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import { Button, Card, Col, Divider, Form, Input, Row, Space } from 'antd';
+import React from 'react';
 
 export default function KanjiEditor() {
 	return (

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Button, theme, Grid } from 'antd';
+import { Button, Grid, theme } from 'antd';
 import { useTranslations } from 'next-intl';
+import React from 'react';
 
 const { useToken } = theme;
 const { useBreakpoint } = Grid;

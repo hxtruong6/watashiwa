@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
-import { Card, Typography, Avatar, Flex, theme } from 'antd';
-import { TrophyOutlined, FireOutlined } from '@ant-design/icons';
+import { FireOutlined, TrophyOutlined } from '@ant-design/icons';
+import { Avatar, Card, Flex, Typography, theme } from 'antd';
 import { useTranslations } from 'next-intl';
+import React from 'react';
 
 const { Title, Text } = Typography;
 const { useToken } = theme;

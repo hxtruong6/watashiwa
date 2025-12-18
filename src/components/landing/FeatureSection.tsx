@@ -1,18 +1,17 @@
 'use client';
 
-import React from 'react';
-import { Typography, Row, Col, theme, Grid } from 'antd';
 import {
-	ThunderboltOutlined,
+	BarChartOutlined,
+	GlobalOutlined,
 	MobileOutlined,
 	ReadOutlined,
-	GlobalOutlined,
-	BarChartOutlined,
+	ThunderboltOutlined,
 } from '@ant-design/icons';
-import { motion } from 'framer-motion';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-
+import { Col, Grid, Row, Typography, theme } from 'antd';
+import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import React from 'react';
 
 const { Title, Paragraph } = Typography;
 const { useToken } = theme;

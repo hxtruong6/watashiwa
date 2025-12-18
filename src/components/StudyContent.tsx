@@ -1,32 +1,30 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
-import { Layout, theme, Drawer } from 'antd';
-import { useTranslations } from 'next-intl';
-import { useSearchParams } from 'next/navigation';
-
+// Components
+import FlashCard, { FlashCardHandle } from '@/components/FlashCard';
+import RatingBar from '@/components/RatingBar';
+import ReportModal from '@/components/ReportModal';
+import AppTutorial from '@/components/Shared/AppTutorial';
+import Loading from '@/components/Shared/Loading';
+import SessionBriefing from '@/components/Study/SessionBriefing';
+import SessionSummary from '@/components/Study/SessionSummary';
+import StudyHeader from '@/components/Study/StudyHeader';
+import VocabSettings from '@/components/VocabSettings';
+import CommentDrawer from '@/components/comments/CommentDrawer';
 // Hooks
 import { useStudySession } from '@/hooks/study/useStudySession';
 import { useStudyShortcuts } from '@/hooks/study/useStudyShortcuts';
-import { useZenMode } from '@/hooks/study/useZenMode';
 import { useStudyTutorialSteps } from '@/hooks/study/useStudyTutorialSteps';
-
-// Components
-import FlashCard, { FlashCardHandle } from '@/components/FlashCard';
-import VocabSettings from '@/components/VocabSettings';
-import ReportModal from '@/components/ReportModal';
-import RatingBar from '@/components/RatingBar';
-import CommentDrawer from '@/components/comments/CommentDrawer';
-import StudyHeader from '@/components/Study/StudyHeader';
-import SessionSummary from '@/components/Study/SessionSummary';
-import SessionBriefing from '@/components/Study/SessionBriefing';
-import Loading from '@/components/Shared/Loading';
-import { getUserSettings } from '@/services/actions';
-import { DEFAULT_LIMIT_NEW_CARDS, DEFAULT_LIMIT_REVIEWS } from '@/lib/constants';
-import AppTutorial from '@/components/Shared/AppTutorial';
+import { useZenMode } from '@/hooks/study/useZenMode';
 import { useTutorialStore } from '@/hooks/useTutorialStore';
+import { DEFAULT_LIMIT_NEW_CARDS, DEFAULT_LIMIT_REVIEWS } from '@/lib/constants';
+import { getUserSettings } from '@/services/actions';
 import { getCompletedTutorials } from '@/services/actions';
 import type { User } from '@prisma/client';
+import { Drawer, Layout, theme } from 'antd';
+import { useTranslations } from 'next-intl';
+import { useSearchParams } from 'next/navigation';
+import React, { useCallback, useEffect, useState } from 'react';
 
 const { Content } = Layout;
 const { useToken } = theme;

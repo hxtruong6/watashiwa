@@ -1,35 +1,37 @@
 'use client';
 
+import BackButton from '@/components/BackButton';
+import { removeDeckFromCourse, reorderDecks } from '@/services/course-actions';
 import {
-	Typography,
-	Flex,
-	Card,
-	Progress,
-	Button,
-	Tag,
-	Popconfirm,
-	message,
-	Empty,
-	Timeline,
-	theme,
-} from 'antd';
-import {
-	TrophyOutlined,
+	ArrowDownOutlined,
+	ArrowUpOutlined,
 	CheckCircleFilled,
+	ClockCircleFilled,
+	DeleteOutlined,
+	LinkOutlined,
 	PlayCircleFilled,
 	PlusOutlined,
-	DeleteOutlined,
-	ArrowUpOutlined,
-	ArrowDownOutlined,
-	ClockCircleFilled,
-	LinkOutlined,
+	TrophyOutlined,
 } from '@ant-design/icons';
-import { removeDeckFromCourse, reorderDecks } from '@/services/course-actions';
+import {
+	Button,
+	Card,
+	Empty,
+	Flex,
+	Popconfirm,
+	Progress,
+	Tag,
+	Timeline,
+	Typography,
+	message,
+	theme,
+} from 'antd';
+import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useTranslations, useLocale } from 'next-intl';
+
 import DeckSelector from './DeckSelector';
-import BackButton from '@/components/BackButton';
+
 const { Title, Text, Paragraph } = Typography;
 const { useToken } = theme;
 

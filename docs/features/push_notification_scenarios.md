@@ -85,11 +85,11 @@
 
 1. **Route**: `/api/cron/process-notifications` (Secured by `CRON_SECRET`).
 2. **Logic**:
-    - Fetch active `PushSubscriptions`.
-    - Join with `User` data (timezone, stats).
-    - Evaluate conditions for each scenario.
-    - Send in batches.
-    - Log results.
+   - Fetch active `PushSubscriptions`.
+   - Join with `User` data (timezone, stats).
+   - Evaluate conditions for each scenario.
+   - Send in batches.
+   - Log results.
 
 ### User Preferences
 

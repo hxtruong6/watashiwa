@@ -16,12 +16,12 @@ A powerful interface to explore, filter, and sort all vocabulary and kanji in th
 
 Based on FSRS `state` field:
 
-| Status | FSRS State | Description | Color |
-|:-------|:-----------|:------------|:------|
-| **New** | 0 | Never studied | Gray |
-| **Learning** | 1 | Currently learning | Blue |
-| **Reviewing** | 2 | In long-term review | Green |
-| **Relearning** | 3 | Forgotten, relearning | Orange |
+| Status         | FSRS State | Description           | Color  |
+| :------------- | :--------- | :-------------------- | :----- |
+| **New**        | 0          | Never studied         | Gray   |
+| **Learning**   | 1          | Currently learning    | Blue   |
+| **Reviewing**  | 2          | In long-term review   | Green  |
+| **Relearning** | 3          | Forgotten, relearning | Orange |
 
 **Additional Filters:**
 
@@ -31,15 +31,15 @@ Based on FSRS `state` field:
 
 ### 3. Sorting Options
 
-| Option | Description |
-|:-------|:------------|
-| Alphabetical (A-Z) | By `wordSurface` |
-| Alphabetical (Z-A) | Reverse |
-| Due Date (Soonest) | Cards due soon first |
-| Due Date (Latest) | Cards due later first |
-| Difficulty | By `difficulty` field (hardest first) |
-| Last Reviewed | Most recently reviewed first |
-| Lapses | Most forgotten cards first |
+| Option             | Description                           |
+| :----------------- | :------------------------------------ |
+| Alphabetical (A-Z) | By `wordSurface`                      |
+| Alphabetical (Z-A) | Reverse                               |
+| Due Date (Soonest) | Cards due soon first                  |
+| Due Date (Latest)  | Cards due later first                 |
+| Difficulty         | By `difficulty` field (hardest first) |
+| Last Reviewed      | Most recently reviewed first          |
+| Lapses             | Most forgotten cards first            |
 
 ### 4. Search
 
@@ -85,19 +85,19 @@ Based on FSRS `state` field:
 
 ## Status Color Legend
 
-| Color | Meaning |
-|:------|:--------|
-| 🔘 Gray | New (never studied) |
-| 🔵 Blue | Learning |
-| 🟢 Green | Reviewing (stable) |
-| 🟠 Orange | Relearning (lapsed) |
-| ⭐ Gold | Mastered (stability > 30 days) |
+| Color     | Meaning                        |
+| :-------- | :----------------------------- |
+| 🔘 Gray   | New (never studied)            |
+| 🔵 Blue   | Learning                       |
+| 🟢 Green  | Reviewing (stable)             |
+| 🟠 Orange | Relearning (lapsed)            |
+| ⭐ Gold   | Mastered (stability > 30 days) |
 
 ## API Endpoints
 
-| Method | Endpoint | Description |
-|:-------|:---------|:------------|
-| GET | `/api/browse` | Paginated list with filters |
+| Method | Endpoint      | Description                 |
+| :----- | :------------ | :-------------------------- |
+| GET    | `/api/browse` | Paginated list with filters |
 
 **Query Parameters:**
 

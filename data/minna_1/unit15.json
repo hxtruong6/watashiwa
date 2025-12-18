@@ -1,1060 +1,1060 @@
 [
-    {
-        "id": "u15-01",
-        "wordSurface": "置きます",
-        "readingKana": "おきます",
-        "hanViet": "TRÍ",
-        "meaning": "đặt, để",
-        "enMeaning": "put, place",
-        "wordParts": [
-            {
-                "text": "置",
-                "furigana": "お",
-                "romaji": "o"
-            },
-            {
-                "text": "きます",
-                "furigana": "きます",
-                "romaji": "kimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "机の上に本を置きます。",
-            "translation": "Đặt sách lên trên bàn.",
-            "enTranslation": "Put the book on the desk.",
-            "parts": [
-                {
-                    "text": "机",
-                    "furigana": "つくえ"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "上",
-                    "furigana": "うえ"
-                },
-                {
-                    "text": "に"
-                },
-                {
-                    "text": "本",
-                    "furigana": "ほん"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "置",
-                    "furigana": "お"
-                },
-                {
-                    "text": "きます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        },
-        "kanjiBreakdown": [
-            {
-                "kanji": "置",
-                "hanViet": "TRÍ",
-                "meaning": "placement, put"
-            }
-        ]
-    },
-    {
-        "id": "u15-02",
-        "wordSurface": "作ります",
-        "readingKana": "つくります",
-        "hanViet": "TÁC",
-        "meaning": "làm, chế tạo, sản xuất",
-        "enMeaning": "make, produce",
-        "wordParts": [
-            {
-                "text": "作",
-                "furigana": "つく",
-                "romaji": "tsuku"
-            },
-            {
-                "text": "ります",
-                "furigana": "ります",
-                "romaji": "rimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "料理を作ります。",
-            "translation": "Nấu ăn.",
-            "enTranslation": "Make food.",
-            "parts": [
-                {
-                    "text": "料理",
-                    "furigana": "りょうり"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "作",
-                    "furigana": "つく"
-                },
-                {
-                    "text": "ります"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        },
-        "kanjiBreakdown": [
-            {
-                "kanji": "作",
-                "hanViet": "TÁC",
-                "meaning": "make, production"
-            }
-        ]
-    },
-    {
-        "id": "u15-03",
-        "wordSurface": "売ります",
-        "readingKana": "うります",
-        "hanViet": "MẠI",
-        "meaning": "bán",
-        "enMeaning": "sell",
-        "wordParts": [
-            {
-                "text": "売",
-                "furigana": "う",
-                "romaji": "u"
-            },
-            {
-                "text": "ります",
-                "furigana": "ります",
-                "romaji": "rimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "車を売ります。",
-            "translation": "Bán xe ô tô.",
-            "enTranslation": "Sell a car.",
-            "parts": [
-                {
-                    "text": "車",
-                    "furigana": "くるま"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "売",
-                    "furigana": "う"
-                },
-                {
-                    "text": "ります"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        },
-        "kanjiBreakdown": [
-            {
-                "kanji": "売",
-                "hanViet": "MẠI",
-                "meaning": "sell"
-            }
-        ]
-    },
-    {
-        "id": "u15-04",
-        "wordSurface": "知ります",
-        "readingKana": "しります",
-        "hanViet": "TRI, TRÍ",
-        "meaning": "biết",
-        "enMeaning": "know",
-        "wordParts": [
-            {
-                "text": "知",
-                "furigana": "し",
-                "romaji": "shi"
-            },
-            {
-                "text": "ります",
-                "furigana": "ります",
-                "romaji": "rimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "あの人を知っていますか。",
-            "translation": "Có biết người kia không?",
-            "enTranslation": "Do you know that person?",
-            "parts": [
-                {
-                    "text": "あの"
-                },
-                {
-                    "text": "人",
-                    "furigana": "ひと"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "知",
-                    "furigana": "し"
-                },
-                {
-                    "text": "っていますか"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        },
-        "kanjiBreakdown": [
-            {
-                "kanji": "知",
-                "hanViet": "TRI",
-                "meaning": "know, wisdom"
-            }
-        ]
-    },
-    {
-        "id": "u15-05",
-        "wordSurface": "住みます",
-        "readingKana": "すみます",
-        "hanViet": "TRÚ",
-        "meaning": "sống, ở",
-        "enMeaning": "live",
-        "wordParts": [
-            {
-                "text": "住",
-                "furigana": "す",
-                "romaji": "su"
-            },
-            {
-                "text": "みます",
-                "furigana": "みます",
-                "romaji": "mimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "大阪に住んでいます。",
-            "translation": "Đang sống ở Osaka.",
-            "enTranslation": "I live in Osaka.",
-            "parts": [
-                {
-                    "text": "大阪",
-                    "furigana": "おおさか"
-                },
-                {
-                    "text": "に"
-                },
-                {
-                    "text": "住",
-                    "furigana": "す"
-                },
-                {
-                    "text": "んでいます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        },
-        "kanjiBreakdown": [
-            {
-                "kanji": "住",
-                "hanViet": "TRÚ",
-                "meaning": "dwell, reside"
-            }
-        ]
-    },
-    {
-        "id": "u15-06",
-        "wordSurface": "研究します",
-        "readingKana": "けんきゅうします",
-        "hanViet": "NGHIÊN CỨU",
-        "meaning": "nghiên cứu",
-        "enMeaning": "do research",
-        "wordParts": [
-            {
-                "text": "研",
-                "furigana": "けん",
-                "romaji": "ken"
-            },
-            {
-                "text": "究",
-                "furigana": "きゅう",
-                "romaji": "kyuu"
-            },
-            {
-                "text": "します",
-                "furigana": "します",
-                "romaji": "shimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "経済を研究しています。",
-            "translation": "Đang nghiên cứu kinh tế.",
-            "enTranslation": "I am researching economics.",
-            "parts": [
-                {
-                    "text": "経済",
-                    "furigana": "けいざい"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "研究",
-                    "furigana": "けんきゅう"
-                },
-                {
-                    "text": "しています"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        },
-        "kanjiBreakdown": [
-            {
-                "kanji": "研",
-                "hanViet": "NGHIÊN",
-                "meaning": "polish, study of"
-            },
-            {
-                "kanji": "究",
-                "hanViet": "CỨU",
-                "meaning": "research, study"
-            }
-        ]
-    },
-    {
-        "id": "u15-07",
-        "wordSurface": "資料",
-        "readingKana": "しりょう",
-        "hanViet": "TƯ LIỆU",
-        "meaning": "tài liệu, tư liệu",
-        "enMeaning": "materials, data",
-        "wordParts": [
-            {
-                "text": "資",
-                "furigana": "し",
-                "romaji": "shi"
-            },
-            {
-                "text": "料",
-                "furigana": "りょう",
-                "romaji": "ryou"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "会議の資料",
-            "translation": "Tài liệu cuộc họp",
-            "enTranslation": "Meeting materials",
-            "parts": [
-                {
-                    "text": "会議",
-                    "furigana": "かいぎ"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "資料",
-                    "furigana": "しりょう"
-                }
-            ]
-        },
-        "kanjiBreakdown": [
-            {
-                "kanji": "資",
-                "hanViet": "TƯ",
-                "meaning": "assets, resources"
-            },
-            {
-                "kanji": "料",
-                "hanViet": "LIỆU",
-                "meaning": "fee, material"
-            }
-        ]
-    },
-    {
-        "id": "u15-08",
-        "wordSurface": "時刻表",
-        "readingKana": "じこくひょう",
-        "hanViet": "THỜI KHẮC BIỂU",
-        "meaning": "bảng giờ tàu chạy",
-        "enMeaning": "timetable",
-        "wordParts": [
-            {
-                "text": "時",
-                "furigana": "じ",
-                "romaji": "ji"
-            },
-            {
-                "text": "刻",
-                "furigana": "こく",
-                "romaji": "koku"
-            },
-            {
-                "text": "表",
-                "furigana": "ひょう",
-                "romaji": "hyou"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "時刻表を見ます。",
-            "translation": "Xem bảng giờ tàu chạy.",
-            "enTranslation": "Look at the timetable.",
-            "parts": [
-                {
-                    "text": "時刻表",
-                    "furigana": "じこくひょう"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "見",
-                    "furigana": "み"
-                },
-                {
-                    "text": "ます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        },
-        "kanjiBreakdown": [
-            {
-                "kanji": "時",
-                "hanViet": "THỜI",
-                "meaning": "time, hour"
-            },
-            {
-                "kanji": "刻",
-                "hanViet": "KHẮC",
-                "meaning": "engrave, cut, time"
-            },
-            {
-                "kanji": "表",
-                "hanViet": "BIỂU",
-                "meaning": "surface, table, chart"
-            }
-        ]
-    },
-    {
-        "id": "u15-09",
-        "wordSurface": "服",
-        "readingKana": "ふく",
-        "hanViet": "PHỤC",
-        "meaning": "quần áo",
-        "enMeaning": "clothes",
-        "wordParts": [
-            {
-                "text": "服",
-                "furigana": "ふく",
-                "romaji": "fuku"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "服を買います。",
-            "translation": "Mua quần áo.",
-            "enTranslation": "Buy clothes.",
-            "parts": [
-                {
-                    "text": "服",
-                    "furigana": "ふく"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "買",
-                    "furigana": "か"
-                },
-                {
-                    "text": "います"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        },
-        "kanjiBreakdown": [
-            {
-                "kanji": "服",
-                "hanViet": "PHỤC",
-                "meaning": "clothing, admit"
-            }
-        ]
-    },
-    {
-        "id": "u15-10",
-        "wordSurface": "製品",
-        "readingKana": "せいひん",
-        "hanViet": "CHẾ PHẨM",
-        "meaning": "sản phẩm",
-        "enMeaning": "product",
-        "wordParts": [
-            {
-                "text": "製",
-                "furigana": "せい",
-                "romaji": "sei"
-            },
-            {
-                "text": "品",
-                "furigana": "ひん",
-                "romaji": "hin"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "新しい製品",
-            "translation": "Sản phẩm mới",
-            "enTranslation": "New product",
-            "parts": [
-                {
-                    "text": "新",
-                    "furigana": "あたら"
-                },
-                {
-                    "text": "しい"
-                },
-                {
-                    "text": "製品",
-                    "furigana": "せいひん"
-                }
-            ]
-        },
-        "kanjiBreakdown": [
-            {
-                "kanji": "製",
-                "hanViet": "CHẾ",
-                "meaning": "made in..., manufacture"
-            },
-            {
-                "kanji": "品",
-                "hanViet": "PHẨM",
-                "meaning": "goods, article"
-            }
-        ]
-    },
-    {
-        "id": "u15-11",
-        "wordSurface": "電子辞書",
-        "readingKana": "でんしじしょ",
-        "hanViet": "ĐIỆN TỬ TỪ THƯ",
-        "meaning": "kim từ điển",
-        "enMeaning": "electronic dictionary",
-        "wordParts": [
-            {
-                "text": "電",
-                "furigana": "でん",
-                "romaji": "den"
-            },
-            {
-                "text": "子",
-                "furigana": "し",
-                "romaji": "shi"
-            },
-            {
-                "text": "辞",
-                "furigana": "じ",
-                "romaji": "ji"
-            },
-            {
-                "text": "書",
-                "furigana": "しょ",
-                "romaji": "sho"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "電子辞書を使います。",
-            "translation": "Sử dụng kim từ điển.",
-            "enTranslation": "Use an electronic dictionary.",
-            "parts": [
-                {
-                    "text": "電子辞書",
-                    "furigana": "でんしじしょ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "使",
-                    "furigana": "つか"
-                },
-                {
-                    "text": "います"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        },
-        "kanjiBreakdown": [
-            {
-                "kanji": "電",
-                "hanViet": "ĐIỆN",
-                "meaning": "electricity"
-            },
-            {
-                "kanji": "子",
-                "hanViet": "TỬ",
-                "meaning": "child"
-            },
-            {
-                "kanji": "辞",
-                "hanViet": "TỪ",
-                "meaning": "resign, word"
-            },
-            {
-                "kanji": "書",
-                "hanViet": "THƯ",
-                "meaning": "write, book"
-            }
-        ]
-    },
-    {
-        "id": "u15-12",
-        "wordSurface": "経済",
-        "readingKana": "けいざい",
-        "hanViet": "KINH TẾ",
-        "meaning": "kinh tế",
-        "enMeaning": "economy",
-        "wordParts": [
-            {
-                "text": "経",
-                "furigana": "けい",
-                "romaji": "kei"
-            },
-            {
-                "text": "済",
-                "furigana": "ざい",
-                "romaji": "zai"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "日本の経済",
-            "translation": "Kinh tế Nhật Bản",
-            "enTranslation": "Japanese economy",
-            "parts": [
-                {
-                    "text": "日本",
-                    "furigana": "にほん"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "経済",
-                    "furigana": "けいざい"
-                }
-            ]
-        },
-        "kanjiBreakdown": [
-            {
-                "kanji": "経",
-                "hanViet": "KINH",
-                "meaning": "sutra, longitude, pass thru"
-            },
-            {
-                "kanji": "済",
-                "hanViet": "TẾ",
-                "meaning": "finish, come to an end"
-            }
-        ]
-    },
-    {
-        "id": "u15-13",
-        "wordSurface": "市役所",
-        "readingKana": "しやくしょ",
-        "hanViet": "THỊ DỊCH SỞ",
-        "meaning": "tòa thị chính",
-        "enMeaning": "city hall",
-        "wordParts": [
-            {
-                "text": "市",
-                "furigana": "し",
-                "romaji": "shi"
-            },
-            {
-                "text": "役",
-                "furigana": "やく",
-                "romaji": "yaku"
-            },
-            {
-                "text": "所",
-                "furigana": "しょ",
-                "romaji": "sho"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "市役所に行きます。",
-            "translation": "Đi đến tòa thị chính.",
-            "enTranslation": "Go to the city hall.",
-            "parts": [
-                {
-                    "text": "市役所",
-                    "furigana": "しやくしょ"
-                },
-                {
-                    "text": "に"
-                },
-                {
-                    "text": "行",
-                    "furigana": "い"
-                },
-                {
-                    "text": "きます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        },
-        "kanjiBreakdown": [
-            {
-                "kanji": "市",
-                "hanViet": "THỊ",
-                "meaning": "market, city"
-            },
-            {
-                "kanji": "役",
-                "hanViet": "DỊCH",
-                "meaning": "duty, war, service"
-            },
-            {
-                "kanji": "所",
-                "hanViet": "SỞ",
-                "meaning": "place"
-            }
-        ]
-    },
-    {
-        "id": "u15-14",
-        "wordSurface": "高校",
-        "readingKana": "こうこう",
-        "hanViet": "CAO HIỆU",
-        "meaning": "trường cấp 3",
-        "enMeaning": "high school",
-        "wordParts": [
-            {
-                "text": "高",
-                "furigana": "こう",
-                "romaji": "kou"
-            },
-            {
-                "text": "校",
-                "furigana": "こう",
-                "romaji": "kou"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "高校で勉強します。",
-            "translation": "Học ở trường cấp 3.",
-            "enTranslation": "Study at high school.",
-            "parts": [
-                {
-                    "text": "高校",
-                    "furigana": "こうこう"
-                },
-                {
-                    "text": "で"
-                },
-                {
-                    "text": "勉強",
-                    "furigana": "べんきょう"
-                },
-                {
-                    "text": "します"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        },
-        "kanjiBreakdown": [
-            {
-                "kanji": "高",
-                "hanViet": "CAO",
-                "meaning": "tall, high, expensive"
-            },
-            {
-                "kanji": "校",
-                "hanViet": "HIỆU",
-                "meaning": "exam, school"
-            }
-        ]
-    },
-    {
-        "id": "u15-15",
-        "wordSurface": "歯医者",
-        "readingKana": "はいしゃ",
-        "hanViet": "XỈ Y GIẢ",
-        "meaning": "nha sĩ",
-        "enMeaning": "dentist",
-        "wordParts": [
-            {
-                "text": "歯",
-                "furigana": "は",
-                "romaji": "ha"
-            },
-            {
-                "text": "医",
-                "furigana": "い",
-                "romaji": "i"
-            },
-            {
-                "text": "者",
-                "furigana": "しゃ",
-                "romaji": "sha"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "歯医者に行きます。",
-            "translation": "Đi nha sĩ.",
-            "enTranslation": "Go to the dentist.",
-            "parts": [
-                {
-                    "text": "歯医者",
-                    "furigana": "はいしゃ"
-                },
-                {
-                    "text": "に"
-                },
-                {
-                    "text": "行",
-                    "furigana": "い"
-                },
-                {
-                    "text": "きます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        },
-        "kanjiBreakdown": [
-            {
-                "kanji": "歯",
-                "hanViet": "XỈ",
-                "meaning": "tooth"
-            },
-            {
-                "kanji": "医",
-                "hanViet": "Y",
-                "meaning": "doctor, medicine"
-            },
-            {
-                "kanji": "者",
-                "hanViet": "GIẢ",
-                "meaning": "someone, person"
-            }
-        ]
-    },
-    {
-        "id": "u15-16",
-        "wordSurface": "独身",
-        "readingKana": "どくしん",
-        "hanViet": "ĐỘC THÂN",
-        "meaning": "độc thân",
-        "enMeaning": "single, unmarried",
-        "wordParts": [
-            {
-                "text": "独",
-                "furigana": "どく",
-                "romaji": "doku"
-            },
-            {
-                "text": "身",
-                "furigana": "しん",
-                "romaji": "shin"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "田中さんは独身です。",
-            "translation": "Anh Tanaka còn độc thân.",
-            "enTranslation": "Mr. Tanaka is single.",
-            "parts": [
-                {
-                    "text": "田中",
-                    "furigana": "たなか"
-                },
-                {
-                    "text": "さん"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "独身",
-                    "furigana": "どくしん"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        },
-        "kanjiBreakdown": [
-            {
-                "kanji": "独",
-                "hanViet": "ĐỘC",
-                "meaning": "single, alone"
-            },
-            {
-                "kanji": "身",
-                "hanViet": "THÂN",
-                "meaning": "somebody, person"
-            }
-        ]
-    },
-    {
-        "id": "u15-17",
-        "wordSurface": "思い出します",
-        "readingKana": "おもいだします",
-        "hanViet": "TƯ XUẤT",
-        "meaning": "nhớ lại, hồi tưởng lại",
-        "enMeaning": "remember, recall",
-        "wordParts": [
-            {
-                "text": "思",
-                "furigana": "おも",
-                "romaji": "omo"
-            },
-            {
-                "text": "い",
-                "furigana": "い",
-                "romaji": "i"
-            },
-            {
-                "text": "出",
-                "furigana": "だ",
-                "romaji": "da"
-            },
-            {
-                "text": "します",
-                "furigana": "します",
-                "romaji": "shimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "家族を思い出します。",
-            "translation": "Nhớ về gia đình.",
-            "enTranslation": "Recall my family.",
-            "parts": [
-                {
-                    "text": "家族",
-                    "furigana": "かぞく"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "思",
-                    "furigana": "おも"
-                },
-                {
-                    "text": "い"
-                },
-                {
-                    "text": "出",
-                    "furigana": "だ"
-                },
-                {
-                    "text": "します"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        },
-        "kanjiBreakdown": [
-            {
-                "kanji": "思",
-                "hanViet": "TƯ",
-                "meaning": "think"
-            },
-            {
-                "kanji": "出",
-                "hanViet": "XUẤT",
-                "meaning": "exit, leave"
-            }
-        ]
-    },
-    {
-        "id": "u15-18",
-        "wordSurface": "カタログ",
-        "readingKana": "カタログ",
-        "hanViet": "",
-        "meaning": "ca ta lô",
-        "enMeaning": "catalog",
-        "wordParts": [
-            {
-                "text": "カタログ",
-                "furigana": "カタログ",
-                "romaji": "katarogu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "カタログをもらいました。",
-            "translation": "Tôi đã nhận được ca ta lô.",
-            "enTranslation": "I received a catalog.",
-            "parts": [
-                {
-                    "text": "カタログ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "もらいました"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        },
-        "kanjiBreakdown": []
-    },
-    {
-        "id": "u15-19",
-        "wordSurface": "ソフト",
-        "readingKana": "ソフト",
-        "hanViet": "",
-        "meaning": "phần mềm",
-        "enMeaning": "software",
-        "wordParts": [
-            {
-                "text": "ソフト",
-                "furigana": "ソフト",
-                "romaji": "sofuto"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "パソコンのソフト",
-            "translation": "Phần mềm máy tính",
-            "enTranslation": "Computer software",
-            "parts": [
-                {
-                    "text": "パソコン"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "ソフト"
-                }
-            ]
-        },
-        "kanjiBreakdown": []
-    }
+	{
+		"id": "u15-01",
+		"wordSurface": "置きます",
+		"readingKana": "おきます",
+		"hanViet": "TRÍ",
+		"meaning": "đặt, để",
+		"enMeaning": "put, place",
+		"wordParts": [
+			{
+				"text": "置",
+				"furigana": "お",
+				"romaji": "o"
+			},
+			{
+				"text": "きます",
+				"furigana": "きます",
+				"romaji": "kimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "机の上に本を置きます。",
+			"translation": "Đặt sách lên trên bàn.",
+			"enTranslation": "Put the book on the desk.",
+			"parts": [
+				{
+					"text": "机",
+					"furigana": "つくえ"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "上",
+					"furigana": "うえ"
+				},
+				{
+					"text": "に"
+				},
+				{
+					"text": "本",
+					"furigana": "ほん"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "置",
+					"furigana": "お"
+				},
+				{
+					"text": "きます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		},
+		"kanjiBreakdown": [
+			{
+				"kanji": "置",
+				"hanViet": "TRÍ",
+				"meaning": "placement, put"
+			}
+		]
+	},
+	{
+		"id": "u15-02",
+		"wordSurface": "作ります",
+		"readingKana": "つくります",
+		"hanViet": "TÁC",
+		"meaning": "làm, chế tạo, sản xuất",
+		"enMeaning": "make, produce",
+		"wordParts": [
+			{
+				"text": "作",
+				"furigana": "つく",
+				"romaji": "tsuku"
+			},
+			{
+				"text": "ります",
+				"furigana": "ります",
+				"romaji": "rimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "料理を作ります。",
+			"translation": "Nấu ăn.",
+			"enTranslation": "Make food.",
+			"parts": [
+				{
+					"text": "料理",
+					"furigana": "りょうり"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "作",
+					"furigana": "つく"
+				},
+				{
+					"text": "ります"
+				},
+				{
+					"text": "。"
+				}
+			]
+		},
+		"kanjiBreakdown": [
+			{
+				"kanji": "作",
+				"hanViet": "TÁC",
+				"meaning": "make, production"
+			}
+		]
+	},
+	{
+		"id": "u15-03",
+		"wordSurface": "売ります",
+		"readingKana": "うります",
+		"hanViet": "MẠI",
+		"meaning": "bán",
+		"enMeaning": "sell",
+		"wordParts": [
+			{
+				"text": "売",
+				"furigana": "う",
+				"romaji": "u"
+			},
+			{
+				"text": "ります",
+				"furigana": "ります",
+				"romaji": "rimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "車を売ります。",
+			"translation": "Bán xe ô tô.",
+			"enTranslation": "Sell a car.",
+			"parts": [
+				{
+					"text": "車",
+					"furigana": "くるま"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "売",
+					"furigana": "う"
+				},
+				{
+					"text": "ります"
+				},
+				{
+					"text": "。"
+				}
+			]
+		},
+		"kanjiBreakdown": [
+			{
+				"kanji": "売",
+				"hanViet": "MẠI",
+				"meaning": "sell"
+			}
+		]
+	},
+	{
+		"id": "u15-04",
+		"wordSurface": "知ります",
+		"readingKana": "しります",
+		"hanViet": "TRI, TRÍ",
+		"meaning": "biết",
+		"enMeaning": "know",
+		"wordParts": [
+			{
+				"text": "知",
+				"furigana": "し",
+				"romaji": "shi"
+			},
+			{
+				"text": "ります",
+				"furigana": "ります",
+				"romaji": "rimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "あの人を知っていますか。",
+			"translation": "Có biết người kia không?",
+			"enTranslation": "Do you know that person?",
+			"parts": [
+				{
+					"text": "あの"
+				},
+				{
+					"text": "人",
+					"furigana": "ひと"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "知",
+					"furigana": "し"
+				},
+				{
+					"text": "っていますか"
+				},
+				{
+					"text": "。"
+				}
+			]
+		},
+		"kanjiBreakdown": [
+			{
+				"kanji": "知",
+				"hanViet": "TRI",
+				"meaning": "know, wisdom"
+			}
+		]
+	},
+	{
+		"id": "u15-05",
+		"wordSurface": "住みます",
+		"readingKana": "すみます",
+		"hanViet": "TRÚ",
+		"meaning": "sống, ở",
+		"enMeaning": "live",
+		"wordParts": [
+			{
+				"text": "住",
+				"furigana": "す",
+				"romaji": "su"
+			},
+			{
+				"text": "みます",
+				"furigana": "みます",
+				"romaji": "mimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "大阪に住んでいます。",
+			"translation": "Đang sống ở Osaka.",
+			"enTranslation": "I live in Osaka.",
+			"parts": [
+				{
+					"text": "大阪",
+					"furigana": "おおさか"
+				},
+				{
+					"text": "に"
+				},
+				{
+					"text": "住",
+					"furigana": "す"
+				},
+				{
+					"text": "んでいます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		},
+		"kanjiBreakdown": [
+			{
+				"kanji": "住",
+				"hanViet": "TRÚ",
+				"meaning": "dwell, reside"
+			}
+		]
+	},
+	{
+		"id": "u15-06",
+		"wordSurface": "研究します",
+		"readingKana": "けんきゅうします",
+		"hanViet": "NGHIÊN CỨU",
+		"meaning": "nghiên cứu",
+		"enMeaning": "do research",
+		"wordParts": [
+			{
+				"text": "研",
+				"furigana": "けん",
+				"romaji": "ken"
+			},
+			{
+				"text": "究",
+				"furigana": "きゅう",
+				"romaji": "kyuu"
+			},
+			{
+				"text": "します",
+				"furigana": "します",
+				"romaji": "shimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "経済を研究しています。",
+			"translation": "Đang nghiên cứu kinh tế.",
+			"enTranslation": "I am researching economics.",
+			"parts": [
+				{
+					"text": "経済",
+					"furigana": "けいざい"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "研究",
+					"furigana": "けんきゅう"
+				},
+				{
+					"text": "しています"
+				},
+				{
+					"text": "。"
+				}
+			]
+		},
+		"kanjiBreakdown": [
+			{
+				"kanji": "研",
+				"hanViet": "NGHIÊN",
+				"meaning": "polish, study of"
+			},
+			{
+				"kanji": "究",
+				"hanViet": "CỨU",
+				"meaning": "research, study"
+			}
+		]
+	},
+	{
+		"id": "u15-07",
+		"wordSurface": "資料",
+		"readingKana": "しりょう",
+		"hanViet": "TƯ LIỆU",
+		"meaning": "tài liệu, tư liệu",
+		"enMeaning": "materials, data",
+		"wordParts": [
+			{
+				"text": "資",
+				"furigana": "し",
+				"romaji": "shi"
+			},
+			{
+				"text": "料",
+				"furigana": "りょう",
+				"romaji": "ryou"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "会議の資料",
+			"translation": "Tài liệu cuộc họp",
+			"enTranslation": "Meeting materials",
+			"parts": [
+				{
+					"text": "会議",
+					"furigana": "かいぎ"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "資料",
+					"furigana": "しりょう"
+				}
+			]
+		},
+		"kanjiBreakdown": [
+			{
+				"kanji": "資",
+				"hanViet": "TƯ",
+				"meaning": "assets, resources"
+			},
+			{
+				"kanji": "料",
+				"hanViet": "LIỆU",
+				"meaning": "fee, material"
+			}
+		]
+	},
+	{
+		"id": "u15-08",
+		"wordSurface": "時刻表",
+		"readingKana": "じこくひょう",
+		"hanViet": "THỜI KHẮC BIỂU",
+		"meaning": "bảng giờ tàu chạy",
+		"enMeaning": "timetable",
+		"wordParts": [
+			{
+				"text": "時",
+				"furigana": "じ",
+				"romaji": "ji"
+			},
+			{
+				"text": "刻",
+				"furigana": "こく",
+				"romaji": "koku"
+			},
+			{
+				"text": "表",
+				"furigana": "ひょう",
+				"romaji": "hyou"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "時刻表を見ます。",
+			"translation": "Xem bảng giờ tàu chạy.",
+			"enTranslation": "Look at the timetable.",
+			"parts": [
+				{
+					"text": "時刻表",
+					"furigana": "じこくひょう"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "見",
+					"furigana": "み"
+				},
+				{
+					"text": "ます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		},
+		"kanjiBreakdown": [
+			{
+				"kanji": "時",
+				"hanViet": "THỜI",
+				"meaning": "time, hour"
+			},
+			{
+				"kanji": "刻",
+				"hanViet": "KHẮC",
+				"meaning": "engrave, cut, time"
+			},
+			{
+				"kanji": "表",
+				"hanViet": "BIỂU",
+				"meaning": "surface, table, chart"
+			}
+		]
+	},
+	{
+		"id": "u15-09",
+		"wordSurface": "服",
+		"readingKana": "ふく",
+		"hanViet": "PHỤC",
+		"meaning": "quần áo",
+		"enMeaning": "clothes",
+		"wordParts": [
+			{
+				"text": "服",
+				"furigana": "ふく",
+				"romaji": "fuku"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "服を買います。",
+			"translation": "Mua quần áo.",
+			"enTranslation": "Buy clothes.",
+			"parts": [
+				{
+					"text": "服",
+					"furigana": "ふく"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "買",
+					"furigana": "か"
+				},
+				{
+					"text": "います"
+				},
+				{
+					"text": "。"
+				}
+			]
+		},
+		"kanjiBreakdown": [
+			{
+				"kanji": "服",
+				"hanViet": "PHỤC",
+				"meaning": "clothing, admit"
+			}
+		]
+	},
+	{
+		"id": "u15-10",
+		"wordSurface": "製品",
+		"readingKana": "せいひん",
+		"hanViet": "CHẾ PHẨM",
+		"meaning": "sản phẩm",
+		"enMeaning": "product",
+		"wordParts": [
+			{
+				"text": "製",
+				"furigana": "せい",
+				"romaji": "sei"
+			},
+			{
+				"text": "品",
+				"furigana": "ひん",
+				"romaji": "hin"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "新しい製品",
+			"translation": "Sản phẩm mới",
+			"enTranslation": "New product",
+			"parts": [
+				{
+					"text": "新",
+					"furigana": "あたら"
+				},
+				{
+					"text": "しい"
+				},
+				{
+					"text": "製品",
+					"furigana": "せいひん"
+				}
+			]
+		},
+		"kanjiBreakdown": [
+			{
+				"kanji": "製",
+				"hanViet": "CHẾ",
+				"meaning": "made in..., manufacture"
+			},
+			{
+				"kanji": "品",
+				"hanViet": "PHẨM",
+				"meaning": "goods, article"
+			}
+		]
+	},
+	{
+		"id": "u15-11",
+		"wordSurface": "電子辞書",
+		"readingKana": "でんしじしょ",
+		"hanViet": "ĐIỆN TỬ TỪ THƯ",
+		"meaning": "kim từ điển",
+		"enMeaning": "electronic dictionary",
+		"wordParts": [
+			{
+				"text": "電",
+				"furigana": "でん",
+				"romaji": "den"
+			},
+			{
+				"text": "子",
+				"furigana": "し",
+				"romaji": "shi"
+			},
+			{
+				"text": "辞",
+				"furigana": "じ",
+				"romaji": "ji"
+			},
+			{
+				"text": "書",
+				"furigana": "しょ",
+				"romaji": "sho"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "電子辞書を使います。",
+			"translation": "Sử dụng kim từ điển.",
+			"enTranslation": "Use an electronic dictionary.",
+			"parts": [
+				{
+					"text": "電子辞書",
+					"furigana": "でんしじしょ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "使",
+					"furigana": "つか"
+				},
+				{
+					"text": "います"
+				},
+				{
+					"text": "。"
+				}
+			]
+		},
+		"kanjiBreakdown": [
+			{
+				"kanji": "電",
+				"hanViet": "ĐIỆN",
+				"meaning": "electricity"
+			},
+			{
+				"kanji": "子",
+				"hanViet": "TỬ",
+				"meaning": "child"
+			},
+			{
+				"kanji": "辞",
+				"hanViet": "TỪ",
+				"meaning": "resign, word"
+			},
+			{
+				"kanji": "書",
+				"hanViet": "THƯ",
+				"meaning": "write, book"
+			}
+		]
+	},
+	{
+		"id": "u15-12",
+		"wordSurface": "経済",
+		"readingKana": "けいざい",
+		"hanViet": "KINH TẾ",
+		"meaning": "kinh tế",
+		"enMeaning": "economy",
+		"wordParts": [
+			{
+				"text": "経",
+				"furigana": "けい",
+				"romaji": "kei"
+			},
+			{
+				"text": "済",
+				"furigana": "ざい",
+				"romaji": "zai"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "日本の経済",
+			"translation": "Kinh tế Nhật Bản",
+			"enTranslation": "Japanese economy",
+			"parts": [
+				{
+					"text": "日本",
+					"furigana": "にほん"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "経済",
+					"furigana": "けいざい"
+				}
+			]
+		},
+		"kanjiBreakdown": [
+			{
+				"kanji": "経",
+				"hanViet": "KINH",
+				"meaning": "sutra, longitude, pass thru"
+			},
+			{
+				"kanji": "済",
+				"hanViet": "TẾ",
+				"meaning": "finish, come to an end"
+			}
+		]
+	},
+	{
+		"id": "u15-13",
+		"wordSurface": "市役所",
+		"readingKana": "しやくしょ",
+		"hanViet": "THỊ DỊCH SỞ",
+		"meaning": "tòa thị chính",
+		"enMeaning": "city hall",
+		"wordParts": [
+			{
+				"text": "市",
+				"furigana": "し",
+				"romaji": "shi"
+			},
+			{
+				"text": "役",
+				"furigana": "やく",
+				"romaji": "yaku"
+			},
+			{
+				"text": "所",
+				"furigana": "しょ",
+				"romaji": "sho"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "市役所に行きます。",
+			"translation": "Đi đến tòa thị chính.",
+			"enTranslation": "Go to the city hall.",
+			"parts": [
+				{
+					"text": "市役所",
+					"furigana": "しやくしょ"
+				},
+				{
+					"text": "に"
+				},
+				{
+					"text": "行",
+					"furigana": "い"
+				},
+				{
+					"text": "きます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		},
+		"kanjiBreakdown": [
+			{
+				"kanji": "市",
+				"hanViet": "THỊ",
+				"meaning": "market, city"
+			},
+			{
+				"kanji": "役",
+				"hanViet": "DỊCH",
+				"meaning": "duty, war, service"
+			},
+			{
+				"kanji": "所",
+				"hanViet": "SỞ",
+				"meaning": "place"
+			}
+		]
+	},
+	{
+		"id": "u15-14",
+		"wordSurface": "高校",
+		"readingKana": "こうこう",
+		"hanViet": "CAO HIỆU",
+		"meaning": "trường cấp 3",
+		"enMeaning": "high school",
+		"wordParts": [
+			{
+				"text": "高",
+				"furigana": "こう",
+				"romaji": "kou"
+			},
+			{
+				"text": "校",
+				"furigana": "こう",
+				"romaji": "kou"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "高校で勉強します。",
+			"translation": "Học ở trường cấp 3.",
+			"enTranslation": "Study at high school.",
+			"parts": [
+				{
+					"text": "高校",
+					"furigana": "こうこう"
+				},
+				{
+					"text": "で"
+				},
+				{
+					"text": "勉強",
+					"furigana": "べんきょう"
+				},
+				{
+					"text": "します"
+				},
+				{
+					"text": "。"
+				}
+			]
+		},
+		"kanjiBreakdown": [
+			{
+				"kanji": "高",
+				"hanViet": "CAO",
+				"meaning": "tall, high, expensive"
+			},
+			{
+				"kanji": "校",
+				"hanViet": "HIỆU",
+				"meaning": "exam, school"
+			}
+		]
+	},
+	{
+		"id": "u15-15",
+		"wordSurface": "歯医者",
+		"readingKana": "はいしゃ",
+		"hanViet": "XỈ Y GIẢ",
+		"meaning": "nha sĩ",
+		"enMeaning": "dentist",
+		"wordParts": [
+			{
+				"text": "歯",
+				"furigana": "は",
+				"romaji": "ha"
+			},
+			{
+				"text": "医",
+				"furigana": "い",
+				"romaji": "i"
+			},
+			{
+				"text": "者",
+				"furigana": "しゃ",
+				"romaji": "sha"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "歯医者に行きます。",
+			"translation": "Đi nha sĩ.",
+			"enTranslation": "Go to the dentist.",
+			"parts": [
+				{
+					"text": "歯医者",
+					"furigana": "はいしゃ"
+				},
+				{
+					"text": "に"
+				},
+				{
+					"text": "行",
+					"furigana": "い"
+				},
+				{
+					"text": "きます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		},
+		"kanjiBreakdown": [
+			{
+				"kanji": "歯",
+				"hanViet": "XỈ",
+				"meaning": "tooth"
+			},
+			{
+				"kanji": "医",
+				"hanViet": "Y",
+				"meaning": "doctor, medicine"
+			},
+			{
+				"kanji": "者",
+				"hanViet": "GIẢ",
+				"meaning": "someone, person"
+			}
+		]
+	},
+	{
+		"id": "u15-16",
+		"wordSurface": "独身",
+		"readingKana": "どくしん",
+		"hanViet": "ĐỘC THÂN",
+		"meaning": "độc thân",
+		"enMeaning": "single, unmarried",
+		"wordParts": [
+			{
+				"text": "独",
+				"furigana": "どく",
+				"romaji": "doku"
+			},
+			{
+				"text": "身",
+				"furigana": "しん",
+				"romaji": "shin"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "田中さんは独身です。",
+			"translation": "Anh Tanaka còn độc thân.",
+			"enTranslation": "Mr. Tanaka is single.",
+			"parts": [
+				{
+					"text": "田中",
+					"furigana": "たなか"
+				},
+				{
+					"text": "さん"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "独身",
+					"furigana": "どくしん"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		},
+		"kanjiBreakdown": [
+			{
+				"kanji": "独",
+				"hanViet": "ĐỘC",
+				"meaning": "single, alone"
+			},
+			{
+				"kanji": "身",
+				"hanViet": "THÂN",
+				"meaning": "somebody, person"
+			}
+		]
+	},
+	{
+		"id": "u15-17",
+		"wordSurface": "思い出します",
+		"readingKana": "おもいだします",
+		"hanViet": "TƯ XUẤT",
+		"meaning": "nhớ lại, hồi tưởng lại",
+		"enMeaning": "remember, recall",
+		"wordParts": [
+			{
+				"text": "思",
+				"furigana": "おも",
+				"romaji": "omo"
+			},
+			{
+				"text": "い",
+				"furigana": "い",
+				"romaji": "i"
+			},
+			{
+				"text": "出",
+				"furigana": "だ",
+				"romaji": "da"
+			},
+			{
+				"text": "します",
+				"furigana": "します",
+				"romaji": "shimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "家族を思い出します。",
+			"translation": "Nhớ về gia đình.",
+			"enTranslation": "Recall my family.",
+			"parts": [
+				{
+					"text": "家族",
+					"furigana": "かぞく"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "思",
+					"furigana": "おも"
+				},
+				{
+					"text": "い"
+				},
+				{
+					"text": "出",
+					"furigana": "だ"
+				},
+				{
+					"text": "します"
+				},
+				{
+					"text": "。"
+				}
+			]
+		},
+		"kanjiBreakdown": [
+			{
+				"kanji": "思",
+				"hanViet": "TƯ",
+				"meaning": "think"
+			},
+			{
+				"kanji": "出",
+				"hanViet": "XUẤT",
+				"meaning": "exit, leave"
+			}
+		]
+	},
+	{
+		"id": "u15-18",
+		"wordSurface": "カタログ",
+		"readingKana": "カタログ",
+		"hanViet": "",
+		"meaning": "ca ta lô",
+		"enMeaning": "catalog",
+		"wordParts": [
+			{
+				"text": "カタログ",
+				"furigana": "カタログ",
+				"romaji": "katarogu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "カタログをもらいました。",
+			"translation": "Tôi đã nhận được ca ta lô.",
+			"enTranslation": "I received a catalog.",
+			"parts": [
+				{
+					"text": "カタログ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "もらいました"
+				},
+				{
+					"text": "。"
+				}
+			]
+		},
+		"kanjiBreakdown": []
+	},
+	{
+		"id": "u15-19",
+		"wordSurface": "ソフト",
+		"readingKana": "ソフト",
+		"hanViet": "",
+		"meaning": "phần mềm",
+		"enMeaning": "software",
+		"wordParts": [
+			{
+				"text": "ソフト",
+				"furigana": "ソフト",
+				"romaji": "sofuto"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "パソコンのソフト",
+			"translation": "Phần mềm máy tính",
+			"enTranslation": "Computer software",
+			"parts": [
+				{
+					"text": "パソコン"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "ソフト"
+				}
+			]
+		},
+		"kanjiBreakdown": []
+	}
 ]

@@ -1,6 +1,6 @@
-import posthog from 'posthog-js';
-import * as Sentry from '@sentry/nextjs';
 import themeConfig from '@/lib/theme/themeConfig';
+import * as Sentry from '@sentry/nextjs';
+import posthog from 'posthog-js';
 
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
 

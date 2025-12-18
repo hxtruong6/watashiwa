@@ -1,5 +1,5 @@
-import { useState, useCallback } from 'react';
-import { Question, ExerciseSessionState } from '@/types/exercises';
+import { ExerciseSessionState, Question } from '@/types/exercises';
+import { useCallback, useState } from 'react';
 
 interface UseExerciseSessionReturn extends ExerciseSessionState {
 	startSession: (questions: Question[]) => void;

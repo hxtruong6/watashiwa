@@ -24,19 +24,19 @@ Before writing a single line of code, ensure the "Why" and "What" are crystal cl
 
 ### A. Design Thinking: Make It Meaningful
 
-> **Principle**: Don't just show data. Create an *experience* that helps users achieve something.
+> **Principle**: Don't just show data. Create an _experience_ that helps users achieve something.
 
-- [ ] **User Goal**: What is the user trying to *achieve*? (Not "view data", but "feel confident they're progressing")
-- [ ] **Value Proposition**: Why would the user *care* about this feature?
-- [ ] **"So What?" Test**: For every piece of data displayed, ask: *"So what? What does this help the user do?"*
+- [ ] **User Goal**: What is the user trying to _achieve_? (Not "view data", but "feel confident they're progressing")
+- [ ] **Value Proposition**: Why would the user _care_ about this feature?
+- [ ] **"So What?" Test**: For every piece of data displayed, ask: _"So what? What does this help the user do?"_
   - [ ] If data doesn't lead to an action or insight → consider removing it.
-- [ ] **Emotional Design**: What should the user *feel* when using this?
+- [ ] **Emotional Design**: What should the user _feel_ when using this?
   - [ ] Empowered? Calm? Motivated? Accomplished?
 - [ ] **Modern & Elegant**: Is this design...
   - [ ] Visually clean and minimal (not cluttered)?
   - [ ] Using purposeful animations (not static or boring)?
   - [ ] Aesthetically aligned with the "Zen Mastery" philosophy?
-- [ ] **Design Philosophy**: document the *Why* behind major UX decisions (e.g., "Redirect vs Toast").
+- [ ] **Design Philosophy**: document the _Why_ behind major UX decisions (e.g., "Redirect vs Toast").
   - [ ] Explain trade-offs (Educational vs Fast).
   - [ ] Convince the future reader/maintainer.
 
@@ -189,18 +189,18 @@ Before writing a single line of code, ensure the "Why" and "What" are crystal cl
 
 ## Quick Reference: Common File Locations
 
-| Item | Location |
-| :--- | :--- |
-| Components | `src/components/[Feature]/[Name].tsx` |
-| Pages | `src/app/[route]/page.tsx` |
-| Hooks | `src/hooks/use[Name].ts` |
-| Server Actions | `src/services/actions.ts` or `src/services/[feature]-actions.ts` |
-| Zod Schemas | `src/services/schemas.ts` (or co-located) |
-| Theme Config | `src/lib/theme/themeConfig.ts` |
-| Translations (EN) | `messages/en.json` |
-| Translations (VI) | `messages/vi.json` |
-| Prisma Schema | `prisma/schema.prisma` |
-| Feature Docs | `docs/features/[feature_name].md` |
+| Item              | Location                                                         |
+| :---------------- | :--------------------------------------------------------------- |
+| Components        | `src/components/[Feature]/[Name].tsx`                            |
+| Pages             | `src/app/[route]/page.tsx`                                       |
+| Hooks             | `src/hooks/use[Name].ts`                                         |
+| Server Actions    | `src/services/actions.ts` or `src/services/[feature]-actions.ts` |
+| Zod Schemas       | `src/services/schemas.ts` (or co-located)                        |
+| Theme Config      | `src/lib/theme/themeConfig.ts`                                   |
+| Translations (EN) | `messages/en.json`                                               |
+| Translations (VI) | `messages/vi.json`                                               |
+| Prisma Schema     | `prisma/schema.prisma`                                           |
+| Feature Docs      | `docs/features/[feature_name].md`                                |
 
 ---
 

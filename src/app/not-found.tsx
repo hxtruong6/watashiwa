@@ -1,10 +1,10 @@
 'use client';
 
-import React from 'react';
-import { Result, Button, Flex, theme } from 'antd';
-import { useRouter } from 'next/navigation';
-import { useTranslations } from 'next-intl';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { Button, Flex, Result, theme } from 'antd';
+import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import React from 'react';
 
 const { useToken } = theme;
 

@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Button } from 'antd';
-import { PlusOutlined, EditOutlined } from '@ant-design/icons';
 import DeckFormModal from '@/components/DeckFormModal';
-import { useRouter } from 'next/navigation';
+import { EditOutlined, PlusOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 
 interface DeckListActionsProps {
 	mode: 'create' | 'edit';

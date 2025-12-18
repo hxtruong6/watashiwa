@@ -71,7 +71,7 @@ If the user explicitly requests a different way of working (e.g. “design only 
 ### 2.1 Core tools
 
 - **`read_file`**: Always read relevant files before making changes. For large files, focus on only the necessary ranges.
-- **`apply_patch`**: Primary method for code changes.  
+- **`apply_patch`**: Primary method for code changes.
   - When the user asks you to “implement” something, **do not stop at a proposal—actually apply patches** unless there is a blocker.
   - Keep each patch to a semantically coherent unit of change.
 - **`grep` / `codebase_search`**:
@@ -129,7 +129,7 @@ If the user explicitly requests a different way of working (e.g. “design only 
 
 ### 3.3 Critical tasks (🔴)
 
-- Follow the existing rule: `create_plan` → approval → phased execution.  
+- Follow the existing rule: `create_plan` → approval → phased execution.
 - Break code changes into **small, safe steps**, and check state at each step.
 - In `create_plan`, include at least: purpose, expected impact, major risks, and rollback approach (how to revert).
 

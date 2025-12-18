@@ -1,31 +1,31 @@
 'use client';
 
-import React from 'react';
+import DeckListActions from '@/app/dashboard/decks/DeckListActions';
 import {
-	Typography,
-	Row,
-	Col,
-	Card,
-	Button,
-	Flex,
-	Tag,
-	Empty,
-	Progress,
-	theme,
-	Divider,
-} from 'antd';
-import Link from 'next/link';
-import {
-	UserOutlined,
-	CalendarOutlined,
 	BookOutlined,
+	CalendarOutlined,
 	ClockCircleOutlined,
 	RocketOutlined,
 	TrophyOutlined,
+	UserOutlined,
 } from '@ant-design/icons';
-import { useTranslations, useLocale } from 'next-intl';
+import {
+	Button,
+	Card,
+	Col,
+	Divider,
+	Empty,
+	Flex,
+	Progress,
+	Row,
+	Tag,
+	Typography,
+	theme,
+} from 'antd';
+import { useLocale, useTranslations } from 'next-intl';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import DeckListActions from '@/app/dashboard/decks/DeckListActions';
+import React from 'react';
 
 const { Title, Text, Paragraph } = Typography;
 const { useToken } = theme;

@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState, forwardRef, useImperativeHandle } from 'react';
+import FlashCardBack from '@/components/Study/FlashCardBack';
+import FlashCardFront from '@/components/Study/FlashCardFront';
+import { useFlashCardAudio } from '@/hooks/study/useFlashCardAudio';
 import { Card as AntCard, Grid } from 'antd';
+import React, { forwardRef, useImperativeHandle, useState } from 'react';
 
 const { useBreakpoint } = Grid;
-import { useFlashCardAudio } from '@/hooks/study/useFlashCardAudio';
-import FlashCardFront from '@/components/Study/FlashCardFront';
-import FlashCardBack from '@/components/Study/FlashCardBack';
 
 interface FlashCardProps {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any

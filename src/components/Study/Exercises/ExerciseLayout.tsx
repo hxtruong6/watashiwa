@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
-import { Layout, Button, theme } from 'antd';
-import { CloseOutlined } from '@ant-design/icons';
 import ImmersiveProgressBar from '@/components/Study/ImmersiveProgressBar';
+import { CloseOutlined } from '@ant-design/icons';
+import { Button, Layout, theme } from 'antd';
+import React from 'react';
 
 const { Content } = Layout;
 const { useToken } = theme;

@@ -12,29 +12,31 @@ You are a **Senior Full-Stack Engineer with 10+ years of Japanese EdTech experie
 
 ## Version Context (Dec 2025)
 
-| Package | Version | Notes |
-|---------|---------|-------|
-| Next.js | 16.x+ <https://nextjs.org/docs> | **App Router only** (not Pages Router) |
-| Ant Design | 6.x <https://ant.design/components/overview> | Not v5 patterns |
-| ts-fsrs | 4.x | FSRS-5 algorithm |
-| React | 18.x | Server Components supported |
-| TypeScript | 5.x | Strict mode enabled |
+> **MASTERPLAN**: See [Product V2](./product_v2.md) for the "Smart CUBE" architecture (Current Strategy).
+
+| Package    | Version                                      | Notes                                  |
+| ---------- | -------------------------------------------- | -------------------------------------- |
+| Next.js    | 16.x+ <https://nextjs.org/docs>              | **App Router only** (not Pages Router) |
+| Ant Design | 6.x <https://ant.design/components/overview> | Not v5 patterns                        |
+| ts-fsrs    | 4.x                                          | FSRS-5 algorithm                       |
+| React      | 18.x                                         | Server Components supported            |
+| TypeScript | 5.x                                          | Strict mode enabled                    |
 
 ---
 
 ## Tech Stack (Non-Negotiable)
 
-| Layer | Technology |
-|-------|------------|
-| Framework | Next.js 16+ (App Router)  <https://nextjs.org/docs>|
-| Language | TypeScript (Strict mode) |
-| UI | Ant Design v6 <https://ant.design/components/overview> — **NO Tailwind** |
-| Styling | Ant Design Tokens (`src/lib/theme/themeConfig.ts`) |
-| Database | PostgreSQL + Prisma ORM |
-| State | `useState` (local), `Zustand` (complex global) |
-| SRS | `ts-fsrs` |
-| AI | OpenAI GPT-4o |
-| Package Manager | **pnpm only** |
+| Layer           | Technology                                                               |
+| --------------- | ------------------------------------------------------------------------ |
+| Framework       | Next.js 16+ (App Router) <https://nextjs.org/docs>                       |
+| Language        | TypeScript (Strict mode)                                                 |
+| UI              | Ant Design v6 <https://ant.design/components/overview> — **NO Tailwind** |
+| Styling         | Ant Design Tokens (`src/lib/theme/themeConfig.ts`)                       |
+| Database        | PostgreSQL + Prisma ORM                                                  |
+| State           | `useState` (local), `Zustand` (complex global)                           |
+| SRS             | `ts-fsrs`                                                                |
+| AI              | OpenAI GPT-4o                                                            |
+| Package Manager | **pnpm only**                                                            |
 
 ---
 
@@ -44,13 +46,13 @@ You are a **Senior Full-Stack Engineer with 10+ years of Japanese EdTech experie
 
 ### Colors (Ant Design Tokens)
 
-| Token | Hex | Name | Usage |
-|-------|-----|------|-------|
-| `colorPrimary` | `#1E3A5F` | Indigo (Ai-iro) | Headers, primary actions |
-| `colorSuccess` | `#708238` | Matcha (Uguisu-iro) | "Good" rating, progress |
-| `colorError` | `#E64A19` | Vermilion (Shuiro) | "Again" rating, destructive |
-| `colorWarning` | `#FAAD14` | Goldenrod | "Hard" rating |
-| `colorBgBase` | `#F9F7F2` | Washi (Paper) | Global background |
+| Token          | Hex       | Name                | Usage                       |
+| -------------- | --------- | ------------------- | --------------------------- |
+| `colorPrimary` | `#1E3A5F` | Indigo (Ai-iro)     | Headers, primary actions    |
+| `colorSuccess` | `#708238` | Matcha (Uguisu-iro) | "Good" rating, progress     |
+| `colorError`   | `#E64A19` | Vermilion (Shuiro)  | "Again" rating, destructive |
+| `colorWarning` | `#FAAD14` | Goldenrod           | "Hard" rating               |
+| `colorBgBase`  | `#F9F7F2` | Washi (Paper)       | Global background           |
 
 ### Typography
 
@@ -74,9 +76,9 @@ All Kanji data **MUST** include `han_viet` property.
 ```typescript
 // Example: 学生 (Gakusei) → HỌC SINH
 interface KanjiData {
-  character: string;      // 学
-  han_viet: string;       // HỌC
-  meaning: string;        // study, learn
+	character: string; // 学
+	han_viet: string; // HỌC
+	meaning: string; // study, learn
 }
 ```
 
@@ -103,11 +105,11 @@ States: `New(0)` → `Learning(1)` → `Review(2)` ⇄ `Relearning(3)`
 
 ### File Locations (Deviations Only)
 
-| Type | Path |
-|------|------|
-| Server Actions | `src/services/actions.ts` |
-| Theme Config | `src/lib/theme/themeConfig.ts` |
-| Types | `src/types/` or co-located |
+| Type           | Path                           |
+| -------------- | ------------------------------ |
+| Server Actions | `src/services/actions.ts`      |
+| Theme Config   | `src/lib/theme/themeConfig.ts` |
+| Types          | `src/types/` or co-located     |
 
 ### Ant Design Patterns
 
@@ -130,12 +132,12 @@ States: `New(0)` → `Learning(1)` → `Review(2)` ⇄ `Relearning(3)`
 
 ### Rating Colors
 
-| Rating | Value | Color | Ant Token |
-|--------|-------|-------|-----------|
-| Again | `1` | Red | `colorError` |
-| Hard | `2` | Orange | `colorWarning` |
-| Good | `3` | Green (Filled) | `colorSuccess` |
-| Easy | `4` | Indigo | `colorPrimary` |
+| Rating | Value | Color          | Ant Token      |
+| ------ | ----- | -------------- | -------------- |
+| Again  | `1`   | Red            | `colorError`   |
+| Hard   | `2`   | Orange         | `colorWarning` |
+| Good   | `3`   | Green (Filled) | `colorSuccess` |
+| Easy   | `4`   | Indigo         | `colorPrimary` |
 
 ### Common Anti-Patterns to Avoid
 
@@ -149,13 +151,13 @@ States: `New(0)` → `Learning(1)` → `Review(2)` ⇄ `Relearning(3)`
 
 ### When Stuck
 
-| Error Type | First Check | Solution |
-|------------|-------------|----------|
-| Type errors | `pnpm prisma generate` | Regenerate Prisma client |
-| Hydration mismatch | Look for `useEffect` | Wrap browser-only code in `useEffect` + state |
-| Module not found | `pnpm install` | Check import paths, run install |
-| Build fails | `pnpm lint` | Fix lint errors first |
-| Translation missing | Check `messages/*.json` | Add missing keys to both en/vi |
+| Error Type          | First Check             | Solution                                      |
+| ------------------- | ----------------------- | --------------------------------------------- |
+| Type errors         | `pnpm prisma generate`  | Regenerate Prisma client                      |
+| Hydration mismatch  | Look for `useEffect`    | Wrap browser-only code in `useEffect` + state |
+| Module not found    | `pnpm install`          | Check import paths, run install               |
+| Build fails         | `pnpm lint`             | Fix lint errors first                         |
+| Translation missing | Check `messages/*.json` | Add missing keys to both en/vi                |
 
 ### Debug Commands
 
@@ -171,12 +173,12 @@ pnpm dev           # Local development
 
 ### Approach
 
-| Type | Tool | When to Use |
-|------|------|-------------|
-| Type checking | TypeScript | Always (strict mode) |
-| Linting | ESLint | Every change |
-| Manual | Browser | UI changes |
-| E2E | Playwright | Critical flows (if configured) |
+| Type          | Tool       | When to Use                    |
+| ------------- | ---------- | ------------------------------ |
+| Type checking | TypeScript | Always (strict mode)           |
+| Linting       | ESLint     | Every change                   |
+| Manual        | Browser    | UI changes                     |
+| E2E           | Playwright | Critical flows (if configured) |
 
 ### Verification Checklist
 

@@ -6,16 +6,16 @@ Allow users to report incorrect or problematic card content. Moderators review r
 
 ## Report Types
 
-| Type | Description | Example |
-|:-----|:------------|:--------|
-| **Incorrect Reading** | Wrong kana reading | 学生: ごくせい → がくせい |
-| **Incorrect Meaning** | Wrong translation/definition | 先生: Doctor → Teacher |
-| **Incorrect Hán Việt** | Wrong Sino-Vietnamese | 学生: HỌC SINH → correct |
-| **Typo** | Spelling/formatting error | Sudent → Student |
-| **Missing Audio** | Audio file not working | - |
-| **Wrong Example** | Example sentence is wrong | - |
-| **Duplicate** | Card exists elsewhere | - |
-| **Other** | Any other issue | - |
+| Type                   | Description                  | Example                   |
+| :--------------------- | :--------------------------- | :------------------------ |
+| **Incorrect Reading**  | Wrong kana reading           | 学生: ごくせい → がくせい |
+| **Incorrect Meaning**  | Wrong translation/definition | 先生: Doctor → Teacher    |
+| **Incorrect Hán Việt** | Wrong Sino-Vietnamese        | 学生: HỌC SINH → correct  |
+| **Typo**               | Spelling/formatting error    | Sudent → Student          |
+| **Missing Audio**      | Audio file not working       | -                         |
+| **Wrong Example**      | Example sentence is wrong    | -                         |
+| **Duplicate**          | Card exists elsewhere        | -                         |
+| **Other**              | Any other issue              | -                         |
 
 ---
 
@@ -86,35 +86,35 @@ Admin Panel → Reports Queue
 ```prisma
 model CardReport {
   id          String   @id @default(uuid())
-  
+
   // What is being reported
   vocabId     String?  @map("vocab_id")
   vocab       Vocab?   @relation(fields: [vocabId], references: [id], onDelete: Cascade)
-  
+
   kanjiId     String?  @map("kanji_id")
   kanji       Kanji?   @relation(fields: [kanjiId], references: [id], onDelete: Cascade)
-  
+
   // Who reported
   reporterId  String   @map("reporter_id")
   reporter    User     @relation("ReportedBy", fields: [reporterId], references: [id], onDelete: Cascade)
-  
+
   // Report details
   type        ReportType
   field       String?  // Which field is incorrect (e.g., "readingKana", "meaning")
   currentValue String? @map("current_value")
   suggestedValue String? @map("suggested_value")
   notes       String?
-  
+
   // Resolution
   status      ReportStatus @default(PENDING)
   resolvedById String?  @map("resolved_by_id")
   resolvedBy  User?    @relation("ResolvedBy", fields: [resolvedById], references: [id])
   resolution  String?  // Reason for reject, or confirmation message
   resolvedAt  DateTime? @map("resolved_at")
-  
+
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
-  
+
   @@index([status])
   @@index([vocabId])
   @@index([kanjiId])
@@ -144,23 +144,23 @@ enum ReportStatus {
 
 ## API Endpoints
 
-| Method | Endpoint | Description |
-|:-------|:---------|:------------|
-| POST | `/api/reports` | Submit a new report |
-| GET | `/api/reports` | Get reports (mod only) |
-| GET | `/api/reports/my` | Get user's own reports |
-| PATCH | `/api/reports/:id/resolve` | Accept/Reject report (mod only) |
+| Method | Endpoint                   | Description                     |
+| :----- | :------------------------- | :------------------------------ |
+| POST   | `/api/reports`             | Submit a new report             |
+| GET    | `/api/reports`             | Get reports (mod only)          |
+| GET    | `/api/reports/my`          | Get user's own reports          |
+| PATCH  | `/api/reports/:id/resolve` | Accept/Reject report (mod only) |
 
 ### Submit Report Request
 
 ```json
 {
-  "vocabId": "uuid-here",
-  "type": "INCORRECT_READING",
-  "field": "readingKana",
-  "currentValue": "ごくせい",
-  "suggestedValue": "がくせい",
-  "notes": "Common mistake, verified with dictionary"
+	"vocabId": "uuid-here",
+	"type": "INCORRECT_READING",
+	"field": "readingKana",
+	"currentValue": "ごくせい",
+	"suggestedValue": "がくせい",
+	"notes": "Common mistake, verified with dictionary"
 }
 ```
 
@@ -206,11 +206,11 @@ When a report is **accepted**:
 
 ## Notifications
 
-| Event | Notify |
-|:------|:-------|
+| Event            | Notify                      |
+| :--------------- | :-------------------------- |
 | Report submitted | Moderators (in admin panel) |
-| Report accepted | Reporter (email optional) |
-| Report rejected | Reporter with reason |
+| Report accepted  | Reporter (email optional)   |
+| Report rejected  | Reporter with reason        |
 
 ---
 

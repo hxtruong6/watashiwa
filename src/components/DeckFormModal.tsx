@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { Modal, Form, Input, Switch, message } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
 import { createDeck, updateDeck } from '@/services/user-content-actions';
+import { UploadOutlined } from '@ant-design/icons';
+import { Form, Input, Modal, Switch, message } from 'antd';
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 import { useTranslations } from 'next-intl';
+import React, { useEffect, useState } from 'react';
 
 interface DeckFormModalProps {
 	visible: boolean;

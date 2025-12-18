@@ -1,14 +1,16 @@
-import type { Metadata, Viewport } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
-import { AntdRegistry } from '@ant-design/nextjs-registry';
-import ThemeProvider from '@/components/theme/ThemeProvider';
-import NavBar from '@/components/NavBar';
 import PostHogPageTracker from '@/components/Analytics/PostHogPageTracker';
 import DisableZoom from '@/components/DisableZoom';
+import NavBar from '@/components/NavBar';
 import PWAInstallPrompt from '@/components/PWA/PWAInstallPrompt';
 import PWALifecycle from '@/components/PWA/PWALifecycle';
-import './globals.css';
+import ThemeProvider from '@/components/theme/ThemeProvider';
+import { AntdRegistry } from '@ant-design/nextjs-registry';
+import type { Metadata, Viewport } from 'next';
+import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
+import { Geist, Geist_Mono } from 'next/font/google';
+
+import './globals.css';
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -105,8 +107,6 @@ export const viewport: Viewport = {
 	userScalable: false,
 	viewportFit: 'cover',
 };
-
-import { NextIntlClientProvider } from 'next-intl';
 
 export default async function RootLayout({
 	children,

@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
-import { Tag } from 'antd';
-import { UserRole } from '@prisma/client';
 import { getRoleColor } from '@/lib/auth/roleGuard';
+import { UserRole } from '@prisma/client';
+import { Tag } from 'antd';
+import React from 'react';
 
 interface RoleBadgeProps {
 	role: UserRole;

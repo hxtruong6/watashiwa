@@ -1,5 +1,7 @@
+import { getAllUsers, getUserWithRole } from '@/services/actions';
 import React from 'react';
-import { getAllUsers, getUserWithRole } from '@/services/actions'; // Updated import
+
+// Updated import
 import ClientUserTable from './components/ClientUserTable';
 
 export default async function AdminUsersPage() {

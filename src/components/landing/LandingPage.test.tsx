@@ -1,7 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
-import LandingPage from './LandingPage';
 import React from 'react';
+import { describe, expect, it, vi } from 'vitest';
+
+import LandingPage from './LandingPage';
 
 // Mock child components
 vi.mock('./HeroSection', () => ({

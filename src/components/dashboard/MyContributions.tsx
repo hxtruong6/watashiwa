@@ -1,13 +1,12 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { Card, Typography, Row, Col, Tag, Flex } from 'antd';
-import { FireOutlined, LikeOutlined } from '@ant-design/icons';
 import { getUserContributions } from '@/services/comments';
+import { FireOutlined, LikeOutlined } from '@ant-design/icons';
+import { Card, Col, Flex, Row, Tag, Typography } from 'antd';
+import { useTranslations } from 'next-intl';
+import React, { useEffect, useState } from 'react';
 
 const { Title, Text } = Typography;
-
-import { useTranslations } from 'next-intl';
 
 export default function MyContributions() {
 	const tDashboard = useTranslations('Dashboard');

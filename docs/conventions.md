@@ -8,14 +8,14 @@ This document covers project-specific patterns not obvious from standard convent
 
 ## File Structure
 
-| Type | Pattern | Example |
-|------|---------|---------|
-| Components | `src/components/[Feature]/` | `Dashboard/DeckList.tsx` |
-| Pages | `src/app/[route]/page.tsx` | `study/page.tsx` |
-| Server Actions | `src/services/actions.ts` | — |
-| Hooks | `src/hooks/use[Name].ts` | `useStudySession.ts` |
-| Utilities | `src/lib/[name].ts` | `srs-algorithm.ts` |
-| Types | `src/types/` or co-located | — |
+| Type           | Pattern                     | Example                  |
+| -------------- | --------------------------- | ------------------------ |
+| Components     | `src/components/[Feature]/` | `Dashboard/DeckList.tsx` |
+| Pages          | `src/app/[route]/page.tsx`  | `study/page.tsx`         |
+| Server Actions | `src/services/actions.ts`   | —                        |
+| Hooks          | `src/hooks/use[Name].ts`    | `useStudySession.ts`     |
+| Utilities      | `src/lib/[name].ts`         | `srs-algorithm.ts`       |
+| Types          | `src/types/` or co-located  | —                        |
 
 ---
 
@@ -50,9 +50,9 @@ All tokens defined in `src/lib/theme/themeConfig.ts`. Never use:
 ```typescript
 // Always return this shape
 type ActionResult<T> = {
-  success: boolean;
-  error?: string;
-  data?: T;
+	success: boolean;
+	error?: string;
+	data?: T;
 };
 ```
 

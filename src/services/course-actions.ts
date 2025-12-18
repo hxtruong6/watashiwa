@@ -1,9 +1,9 @@
 'use server';
 
 import { prisma } from '@/lib/db';
-import { revalidatePath } from 'next/cache';
 import { getUser } from '@/services/actions';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/client';
+import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 
 const IdSchema = z.string().min(1);

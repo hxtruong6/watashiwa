@@ -1,11 +1,10 @@
 'use client';
 
-import React from 'react';
-import { Button, Typography, theme, Grid } from 'antd';
-import Link from 'next/link';
+import { Button, Grid, Typography, theme } from 'antd';
 import { motion } from 'framer-motion';
-
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import React from 'react';
 
 const { Title, Paragraph } = Typography;
 const { useToken } = theme;

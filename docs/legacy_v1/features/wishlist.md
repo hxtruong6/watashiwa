@@ -33,21 +33,21 @@ Allow users to bookmark vocabulary or kanji cards for quick access and focused r
 ```prisma
 model Wishlist {
   id        String   @id @default(uuid())
-  
+
   userId    String   @map("user_id")
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
+
   // Polymorphic: either vocab or kanji
   vocabId   String?  @map("vocab_id")
   vocab     Vocab?   @relation(fields: [vocabId], references: [id], onDelete: Cascade)
-  
+
   kanjiId   String?  @map("kanji_id")
   kanji     Kanji?   @relation(fields: [kanjiId], references: [id], onDelete: Cascade)
-  
+
   note      String?  // Optional user note
-  
+
   createdAt DateTime @default(now()) @map("created_at")
-  
+
   @@unique([userId, vocabId])
   @@unique([userId, kanjiId])
   @@index([userId])
@@ -88,12 +88,12 @@ model Wishlist {
 
 ## API Endpoints
 
-| Method | Endpoint | Description |
-|:-------|:---------|:------------|
-| GET | `/api/wishlist` | Get user's wishlist |
-| POST | `/api/wishlist` | Add item to wishlist |
-| DELETE | `/api/wishlist/:id` | Remove item |
-| POST | `/api/wishlist/study` | Start study session for wishlist |
+| Method | Endpoint              | Description                      |
+| :----- | :-------------------- | :------------------------------- |
+| GET    | `/api/wishlist`       | Get user's wishlist              |
+| POST   | `/api/wishlist`       | Add item to wishlist             |
+| DELETE | `/api/wishlist/:id`   | Remove item                      |
+| POST   | `/api/wishlist/study` | Start study session for wishlist |
 
 ## Integration Points
 

@@ -1,16 +1,17 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { App, Spin, Flex, Button, Result } from 'antd';
+import { useExerciseSession } from '@/hooks/useExerciseSession';
+import { useSoundEffects } from '@/hooks/useSoundEffects';
+import { getExerciseQuestions } from '@/services/study-actions';
+import { ArrowLeftOutlined, CheckCircleFilled, RedoOutlined } from '@ant-design/icons';
+import { App, Button, Flex, Result, Spin } from 'antd';
+import confetti from 'canvas-confetti';
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+
 import ExerciseLayout from './ExerciseLayout';
 import MultipleChoiceExercise from './MultipleChoiceExercise';
-import { useExerciseSession } from '@/hooks/useExerciseSession';
-import { getExerciseQuestions } from '@/services/study-actions';
-import { useSoundEffects } from '@/hooks/useSoundEffects';
-import { useTranslations } from 'next-intl';
-import confetti from 'canvas-confetti';
-import { CheckCircleFilled, RedoOutlined, ArrowLeftOutlined } from '@ant-design/icons';
 
 interface ExerciseSessionContainerProps {
 	deckIds: string[];

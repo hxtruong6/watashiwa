@@ -1,6 +1,6 @@
-import { redirect } from 'next/navigation';
-import { getDecks, syncUser, getUser } from '@/services/actions';
 import DecksContent from '@/components/DecksContent';
+import { getDecks, getUser, syncUser } from '@/services/actions';
+import { redirect } from 'next/navigation';
 
 export default async function DecksPage() {
 	const user = await getUser();

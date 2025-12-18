@@ -1,9 +1,9 @@
 'use client';
 
-import React, { Suspense } from 'react';
 import { Button, Card, Flex, Result, theme } from 'antd';
-import { useRouter, useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { useRouter, useSearchParams } from 'next/navigation';
+import React, { Suspense } from 'react';
 
 const { useToken } = theme;
 

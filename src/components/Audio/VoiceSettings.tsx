@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { Select, Slider, Typography, Form, Space, Button } from 'antd';
 import { PlayCircleOutlined } from '@ant-design/icons';
+import { Button, Form, Select, Slider, Space, Typography } from 'antd';
 import { useTranslations } from 'next-intl';
+import React, { useEffect, useState } from 'react';
+
 import { useAudioPlayer } from './useAudioPlayer';
 
 const { Text } = Typography;

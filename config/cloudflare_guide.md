@@ -7,36 +7,36 @@
 1. **Add Site**: Log in to Cloudflare > Add Site > Enter `watashiwa.app`.
 2. **Select Plan**: Free (sufficient for now).
 3. **Update Nameservers**:
-    * Cloudflare will give you two nameservers (e.g., `bob.ns.cloudflare.com`, `alice.ns.cloudflare.com`).
-    * Go to your Registrar (Whois/Namecheap/GoDaddy).
-    * Change Custom DNS to these two keys.
+   - Cloudflare will give you two nameservers (e.g., `bob.ns.cloudflare.com`, `alice.ns.cloudflare.com`).
+   - Go to your Registrar (Whois/Namecheap/GoDaddy).
+   - Change Custom DNS to these two keys.
 4. **DNS Records**:
-    * Add **A Record**:
-        * Name: `@` (root)
-        * IPv4: `34.143.229.101`
-        * Proxy status: **Proxied (Orange Cloud)**
-    * Add **CNAME Record**:
-        * Name: `www`
-        * Target: `watashiwa.app`
-        * Proxy status: **Proxied (Orange Cloud)**
+   - Add **A Record**:
+     - Name: `@` (root)
+     - IPv4: `34.143.229.101`
+     - Proxy status: **Proxied (Orange Cloud)**
+   - Add **CNAME Record**:
+     - Name: `www`
+     - Target: `watashiwa.app`
+     - Proxy status: **Proxied (Orange Cloud)**
 
 ### Handling Other Records (Mail, FTP, etc.)
 
 Cloudflare typically scans and imports these for you, but if you need to add them manually:
 
-* **MX Records (Email)**:
-  * **Keep strictly Gray Cloud (DNS Only)**. Proxied MX records will break your email.
-  * Example: Type: `MX`, Name: `@`, Mail Server: `mail.watashiwa.app`, TTL: `Auto`.
+- **MX Records (Email)**:
+  - **Keep strictly Gray Cloud (DNS Only)**. Proxied MX records will break your email.
+  - Example: Type: `MX`, Name: `@`, Mail Server: `mail.watashiwa.app`, TTL: `Auto`.
 
-* **TXT Records (SPF, DKIM, Verification)**:
-  * **Keep Gray Cloud (DNS Only)**.
-  * These are for proving ownership or email security and don't involve web traffic.
+- **TXT Records (SPF, DKIM, Verification)**:
+  - **Keep Gray Cloud (DNS Only)**.
+  - These are for proving ownership or email security and don't involve web traffic.
 
-* **FTP / Mail Subdomains**:
-  * If you access your server via `ftp.watashiwa.app` or `mail.watashiwa.app`:
-  * Create an **A Record** for `ftp` or `mail` pointing to your VPS IP `34.143.229.101`.
-  * **IMPORTANT**: Set Proxy status to **DNS Only (Gray Cloud)**.
-  * Cloudflare's proxy does not support FTP traffic.
+- **FTP / Mail Subdomains**:
+  - If you access your server via `ftp.watashiwa.app` or `mail.watashiwa.app`:
+  - Create an **A Record** for `ftp` or `mail` pointing to your VPS IP `34.143.229.101`.
+  - **IMPORTANT**: Set Proxy status to **DNS Only (Gray Cloud)**.
+  - Cloudflare's proxy does not support FTP traffic.
 
 ---
 
@@ -46,15 +46,15 @@ Cloudflare typically scans and imports these for you, but if you need to add the
 **Solution**: Use **Cloudflare Origin CA Certificate**.
 
 1. **Go to SSL/TLS > Overview**:
-    * Set encryption mode to **Full (Strict)**.
+   - Set encryption mode to **Full (Strict)**.
 2. **Go to SSL/TLS > Origin Server**:
-    * Click **Create Certificate**.
-    * Leave defaults (RSA 2048, valid 15 years).
-    * Click **Create**.
+   - Click **Create Certificate**.
+   - Leave defaults (RSA 2048, valid 15 years).
+   - Click **Create**.
 3. **Save Key and Cert**:
-    * You will see a "Origin Certificate" and "Private Key".
-    * Copy the **Origin Certificate** to a file on your VPS: `/etc/ssl/certs/watashiwa_cf_cert.pem`
-    * Copy the **Private Key** to a file on your VPS: `/etc/ssl/private/watashiwa_cf_key.pem`
+   - You will see a "Origin Certificate" and "Private Key".
+   - Copy the **Origin Certificate** to a file on your VPS: `/etc/ssl/certs/watashiwa_cf_cert.pem`
+   - Copy the **Private Key** to a file on your VPS: `/etc/ssl/private/watashiwa_cf_key.pem`
 
 ---
 
@@ -76,7 +76,7 @@ server {
     # Cloudflare Origin Certs
     ssl_certificate /etc/ssl/certs/watashiwa_cf_cert.pem;
     ssl_certificate_key /etc/ssl/private/watashiwa_cf_key.pem;
-    
+
     ssl_protocols TLSv1.2 TLSv1.3;
     ssl_ciphers HIGH:!aNULL:!MD5;
 
@@ -89,23 +89,23 @@ server {
 ## 4. Security Settings
 
 1. **Security > Settings**:
-    * **Security Level**: Medium.
-    * **Challenge Passage**: 30 minutes.
-    * **Bot Fight Mode**: On. (Good for preventing scrapers).
+   - **Security Level**: Medium.
+   - **Challenge Passage**: 30 minutes.
+   - **Bot Fight Mode**: On. (Good for preventing scrapers).
 2. **Security > WAF**:
-    * (Optional) Block traffic not coming from your country if currently targeting specific region, or leave open.
+   - (Optional) Block traffic not coming from your country if currently targeting specific region, or leave open.
 
 ---
 
 ## 5. Speed & Optimization
 
 1. **Speed > Optimization**:
-    * **Auto Minify**: Check JavaScript, CSS, HTML. (Safe for Next.js usually, but test).
-    * **Brotli**: On.
-    * **Rocket Loader**: **OFF**. (Warning: Rocket Loader often breaks React/Next.js hydration).
+   - **Auto Minify**: Check JavaScript, CSS, HTML. (Safe for Next.js usually, but test).
+   - **Brotli**: On.
+   - **Rocket Loader**: **OFF**. (Warning: Rocket Loader often breaks React/Next.js hydration).
 2. **Caching > Configuration**:
-    * **Caching Level**: Standard.
-    * **Browser Cache TTL**: 4 hours or 1 year (since we set immutable headers in Nginx).
+   - **Caching Level**: Standard.
+   - **Browser Cache TTL**: 4 hours or 1 year (since we set immutable headers in Nginx).
 
 # Cloudflare Master Setup Guide (From Scratch) [NEW]
 
@@ -129,19 +129,19 @@ Go to Cloudflare Dashboard > **DNS** > **Records**. Delete everything there, the
 
 This makes `watashiwa.app` and `www.watashiwa.app` load your site.
 
-| Type | Name | Content | Proxy Status | Note |
-| :--- | :--- | :--- | :--- | :--- |
-| **A** | `@` | `34.143.229.101` | **Proxied (Orange)** | Points root domain to VPS |
-| **CNAME** | `www` | `watashiwa.app` | **Proxied (Orange)** | Points www to root |
+| Type      | Name  | Content          | Proxy Status         | Note                      |
+| :-------- | :---- | :--------------- | :------------------- | :------------------------ |
+| **A**     | `@`   | `34.143.229.101` | **Proxied (Orange)** | Points root domain to VPS |
+| **CNAME** | `www` | `watashiwa.app`  | **Proxied (Orange)** | Points www to root        |
 
 ### 2. Server Management (SSH / FTP)
 
 **Critical**: These must be **Gray Cloud (DNS Only)** so you can connect directly to the server. Cloudflare Proxy blocks SSH/FTP.
 
-| Type | Name | Content | Proxy Status | Note |
-| :--- | :--- | :--- | :--- | :--- |
+| Type  | Name  | Content          | Proxy Status        | Note                             |
+| :---- | :---- | :--------------- | :------------------ | :------------------------------- |
 | **A** | `ssh` | `34.143.229.101` | **DNS Only (Gray)** | Use `ssh user@ssh.watashiwa.app` |
-| **A** | `ftp` | `34.143.229.101` | **DNS Only (Gray)** | For FileZilla/FTP clients |
+| **A** | `ftp` | `34.143.229.101` | **DNS Only (Gray)** | For FileZilla/FTP clients        |
 
 ### 3. Email (Choose ONE Option)
 
@@ -158,8 +158,8 @@ If you want `admin@watashiwa.app` -> forwards to your Gmail `hxtruong6@gmail.com
 
 Only do this if you paid for business email.
 
-* **MX Records**: Provided by Zoho/Google. **Always Gray Cloud**.
-* **SPF/DKIM (TXT)**: Provided by Zoho/Google. **Always Gray Cloud**.
+- **MX Records**: Provided by Zoho/Google. **Always Gray Cloud**.
+- **SPF/DKIM (TXT)**: Provided by Zoho/Google. **Always Gray Cloud**.
 
 ---
 
@@ -168,9 +168,9 @@ Only do this if you paid for business email.
 1. **SSL/TLS > Overview**: Select **Full (Strict)**.
 2. **SSL/TLS > Edge Certificates**: Enable "Always Use HTTPS".
 3. **SSL/TLS > Origin Server**:
-    * Create Certificate.
-    * Save the `.pem` and `.key` files to your VPS as described in `watashiwa.conf`.
-    * Restart Nginx: `sudo systemctl restart nginx`.
+   - Create Certificate.
+   - Save the `.pem` and `.key` files to your VPS as described in `watashiwa.conf`.
+   - Restart Nginx: `sudo systemctl restart nginx`.
 
 ---
 

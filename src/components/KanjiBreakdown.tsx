@@ -1,7 +1,7 @@
 'use client';
 
+import { Card, Flex, Typography, theme } from 'antd';
 import React from 'react';
-import { Typography, Flex, Card, theme } from 'antd';
 
 const { Text } = Typography;
 const { useToken } = theme;

@@ -1,18 +1,19 @@
 'use client';
 
-import React from 'react';
-import { Drawer, Flex, Avatar, Typography, Button, Menu, Space, theme, Image } from 'antd';
 import {
-	UserOutlined,
-	ShareAltOutlined,
 	BugOutlined,
 	LogoutOutlined,
 	SettingOutlined,
+	ShareAltOutlined,
+	UserOutlined,
 } from '@ant-design/icons';
-import ThemeToggle from '../ThemeToggle';
-import LanguageSelector from '../LanguageSelector';
+import { Avatar, Button, Drawer, Flex, Image, Menu, Space, Typography, theme } from 'antd';
 import type { MenuProps } from 'antd';
 import { useTranslations } from 'next-intl';
+import React from 'react';
+
+import LanguageSelector from '../LanguageSelector';
+import ThemeToggle from '../ThemeToggle';
 
 const { Text } = Typography;
 const { useToken } = theme;

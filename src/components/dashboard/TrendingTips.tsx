@@ -1,15 +1,15 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { Card, Tag, Typography, Flex, theme } from 'antd';
-import { LikeOutlined } from '@ant-design/icons';
 import { getTrendingComments } from '@/services/comments';
+import { LikeOutlined } from '@ant-design/icons';
+import { Card, Flex, Tag, Typography, theme } from 'antd';
+import { Space } from 'antd';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
 
 const { Text, Title } = Typography;
 const { useToken } = theme;
-
-import { useTranslations } from 'next-intl';
 
 export default function TrendingTips() {
 	const { token } = useToken();
@@ -90,5 +90,3 @@ export default function TrendingTips() {
 		</Card>
 	);
 }
-
-import { Space } from 'antd';

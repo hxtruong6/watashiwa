@@ -1,10 +1,10 @@
 'use client';
 
-import React from 'react';
-import { Typography, Flex, Progress, theme } from 'antd';
 import { FireOutlined } from '@ant-design/icons';
+import { Flex, Progress, Typography, theme } from 'antd';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
+import React from 'react';
 
 const { Title, Text } = Typography;
 const { useToken } = theme;

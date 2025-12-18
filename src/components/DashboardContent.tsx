@@ -1,29 +1,30 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import confetti from 'canvas-confetti';
-import { motion, Variants } from 'motion/react';
 import {
-	HeroSection,
-	DueCTA,
-	StatsGrid,
-	WeeklyChart,
-	QuickActions,
-	MyDecks,
-	TrendingTips,
-	MyContributions,
 	DonationButton,
+	DueCTA,
 	GlobalLeaderboard,
-	NextReviewWidget,
+	HeroSection,
 	MatchaWisdomWidget,
+	MyContributions,
+	MyDecks,
+	NextReviewWidget,
+	QuickActions,
+	StatsGrid,
+	TrendingTips,
+	WeeklyChart,
 } from '@/components/dashboard';
+import type { User } from '@prisma/client';
 import { Divider, Drawer, theme } from 'antd';
+import confetti from 'canvas-confetti';
+import { Variants, motion } from 'motion/react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+
+import VocabSettings from './VocabSettings';
 
 const { useToken } = theme;
-import VocabSettings from './VocabSettings';
-import { useRouter } from 'next/navigation';
-import type { User } from '@prisma/client';
 
 interface WeeklyStatsData {
 	days: { day: string; count: number; isToday?: boolean }[];

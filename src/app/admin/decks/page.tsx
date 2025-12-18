@@ -1,5 +1,6 @@
-import React from 'react';
 import { getAdminDecks } from '@/services/admin-actions';
+import React from 'react';
+
 import AdminDeckTable from './components/AdminDeckTable';
 
 export const dynamic = 'force-dynamic';

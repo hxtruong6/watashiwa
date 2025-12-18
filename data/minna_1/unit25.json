@@ -1,888 +1,888 @@
 [
-    {
-        "id": "u25-01",
-        "wordSurface": "チャンス",
-        "readingKana": "チャンス",
-        "hanViet": "",
-        "meaning": "cơ hội",
-        "enMeaning": "chance, opportunity",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "チャンス",
-                "furigana": "チャンス",
-                "romaji": "chansu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "チャンスがあります。",
-            "translation": "Có cơ hội.",
-            "enTranslation": "Have a chance.",
-            "parts": [
-                {
-                    "text": "チャンス"
-                },
-                {
-                    "text": "が"
-                },
-                {
-                    "text": "あります。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-02",
-        "wordSurface": "もし",
-        "readingKana": "もし",
-        "hanViet": "",
-        "meaning": "nếu",
-        "enMeaning": "if",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "もし",
-                "furigana": "もし",
-                "romaji": "moshi"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "もし雨なら行きません。",
-            "translation": "Nếu mưa thì tôi sẽ không đi.",
-            "enTranslation": "If it rains, I won't go.",
-            "parts": [
-                {
-                    "text": "もし"
-                },
-                {
-                    "text": "雨",
-                    "furigana": "あめ"
-                },
-                {
-                    "text": "なら"
-                },
-                {
-                    "text": "行",
-                    "furigana": "い"
-                },
-                {
-                    "text": "きません。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-03",
-        "wordSurface": "こと",
-        "readingKana": "こと",
-        "hanViet": "",
-        "meaning": "việc, chuyện",
-        "enMeaning": "matter, thing",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "こと",
-                "furigana": "こと",
-                "romaji": "koto"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "大事なこと",
-            "translation": "Việc quan trọng",
-            "enTranslation": "Important matter",
-            "parts": [
-                {
-                    "text": "大事",
-                    "furigana": "だいじ"
-                },
-                {
-                    "text": "な"
-                },
-                {
-                    "text": "こと"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-04",
-        "wordSurface": "考えます",
-        "readingKana": "かんがえます",
-        "hanViet": "KHẢO",
-        "meaning": "nghĩ, suy nghĩ",
-        "enMeaning": "think, consider",
-        "kanjiBreakdown": [
-            {
-                "kanji": "考",
-                "hanViet": "KHẢO",
-                "meaning": "suy nghĩ, khảo sát"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "考",
-                "furigana": "かんが",
-                "romaji": "kanga"
-            },
-            {
-                "text": "えます",
-                "furigana": "えます",
-                "romaji": "emasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "よく考えます。",
-            "translation": "Suy nghĩ kỹ.",
-            "enTranslation": "Think carefully.",
-            "parts": [
-                {
-                    "text": "よく"
-                },
-                {
-                    "text": "考",
-                    "furigana": "かんが"
-                },
-                {
-                    "text": "えます。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-05",
-        "wordSurface": "着きます",
-        "readingKana": "つきます",
-        "hanViet": "TRƯỚC",
-        "meaning": "đến",
-        "enMeaning": "arrive",
-        "kanjiBreakdown": [
-            {
-                "kanji": "着",
-                "hanViet": "TRƯỚC",
-                "meaning": "đến, mặc"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "着",
-                "furigana": "つ",
-                "romaji": "tsu"
-            },
-            {
-                "text": "きます",
-                "furigana": "きます",
-                "romaji": "kimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "駅に着きます。",
-            "translation": "Đến nhà ga.",
-            "enTranslation": "Arrive at the station.",
-            "parts": [
-                {
-                    "text": "駅",
-                    "furigana": "えき"
-                },
-                {
-                    "text": "に"
-                },
-                {
-                    "text": "着",
-                    "furigana": "つ"
-                },
-                {
-                    "text": "きます。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-06",
-        "wordSurface": "取ります",
-        "readingKana": "とります",
-        "hanViet": "THỦ",
-        "meaning": "có, thêm (tuổi)",
-        "enMeaning": "grow older",
-        "kanjiBreakdown": [
-            {
-                "kanji": "取",
-                "hanViet": "THỦ",
-                "meaning": "lấy, cầm"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "取",
-                "furigana": "と",
-                "romaji": "to"
-            },
-            {
-                "text": "ります",
-                "furigana": "ります",
-                "romaji": "rimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "年を取ります。",
-            "translation": "Có tuổi, già đi.",
-            "enTranslation": "Grow older.",
-            "parts": [
-                {
-                    "text": "年",
-                    "furigana": "とし"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "取",
-                    "furigana": "と"
-                },
-                {
-                    "text": "ります。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-07",
-        "wordSurface": "足ります",
-        "readingKana": "たります",
-        "hanViet": "TÚC",
-        "meaning": "đủ, đầy đủ",
-        "enMeaning": "be encough",
-        "kanjiBreakdown": [
-            {
-                "kanji": "足",
-                "hanViet": "TÚC",
-                "meaning": "chân, đủ"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "足",
-                "furigana": "た",
-                "romaji": "ta"
-            },
-            {
-                "text": "ります",
-                "furigana": "ります",
-                "romaji": "rimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "時間が足りません。",
-            "translation": "Không đủ thời gian.",
-            "enTranslation": "Not enough time.",
-            "parts": [
-                {
-                    "text": "時間",
-                    "furigana": "じかん"
-                },
-                {
-                    "text": "が"
-                },
-                {
-                    "text": "足",
-                    "furigana": "た"
-                },
-                {
-                    "text": "りません。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-08",
-        "wordSurface": "億",
-        "readingKana": "おく",
-        "hanViet": "ỨC",
-        "meaning": "1 trăm triệu",
-        "enMeaning": "hundred million",
-        "kanjiBreakdown": [
-            {
-                "kanji": "億",
-                "hanViet": "ỨC",
-                "meaning": "trăm triệu"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "億",
-                "furigana": "おく",
-                "romaji": "oku"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "1億人",
-            "translation": "100 triệu người",
-            "enTranslation": "100 million people",
-            "parts": [
-                {
-                    "text": "1"
-                },
-                {
-                    "text": "億",
-                    "furigana": "おく"
-                },
-                {
-                    "text": "人",
-                    "furigana": "にん"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-09",
-        "wordSurface": "意味",
-        "readingKana": "いみ",
-        "hanViet": "Ý VỊ",
-        "meaning": "nghĩa, ý nghĩa",
-        "enMeaning": "meaning",
-        "kanjiBreakdown": [
-            {
-                "kanji": "意",
-                "hanViet": "Ý",
-                "meaning": "ý chí, ý nghĩa"
-            },
-            {
-                "kanji": "味",
-                "hanViet": "VỊ",
-                "meaning": "hương vị, ý nghĩa"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "意",
-                "furigana": "い",
-                "romaji": "i"
-            },
-            {
-                "text": "味",
-                "furigana": "み",
-                "romaji": "mi"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "言葉の意味",
-            "translation": "Ý nghĩa của từ",
-            "enTranslation": "Meaning of a word",
-            "parts": [
-                {
-                    "text": "言葉",
-                    "furigana": "ことば"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "意味",
-                    "furigana": "いみ"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-10",
-        "wordSurface": "転勤",
-        "readingKana": "てんきん",
-        "hanViet": "CHUYỂN CẦN",
-        "meaning": "chuyển việc (chuyển địa điểm làm việc)",
-        "enMeaning": "job transfer",
-        "kanjiBreakdown": [
-            {
-                "kanji": "転",
-                "hanViet": "CHUYỂN",
-                "meaning": "chuyển động"
-            },
-            {
-                "kanji": "勤",
-                "hanViet": "CẦN",
-                "meaning": "làm việc, cần cù"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "転",
-                "furigana": "てん",
-                "romaji": "ten"
-            },
-            {
-                "text": "勤",
-                "furigana": "きん",
-                "romaji": "kin"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "東京へ転勤します。",
-            "translation": "Chuyển công tác đến Tokyo.",
-            "enTranslation": "Transfer to Tokyo.",
-            "parts": [
-                {
-                    "text": "東京",
-                    "furigana": "とうきょう"
-                },
-                {
-                    "text": "へ"
-                },
-                {
-                    "text": "転勤",
-                    "furigana": "てんきん"
-                },
-                {
-                    "text": "します。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-11",
-        "wordSurface": "頑張ります",
-        "readingKana": "がんばります",
-        "hanViet": "NGOAN TRƯƠNG",
-        "meaning": "cố gắng",
-        "enMeaning": "do one's best",
-        "kanjiBreakdown": [
-            {
-                "kanji": "頑",
-                "hanViet": "NGOAN",
-                "meaning": "ngoan cố"
-            },
-            {
-                "kanji": "張",
-                "hanViet": "TRƯƠNG",
-                "meaning": "kéo căng, trương lên"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "頑",
-                "furigana": "がん",
-                "romaji": "gan"
-            },
-            {
-                "text": "張",
-                "furigana": "ば",
-                "romaji": "ba"
-            },
-            {
-                "text": "ります",
-                "furigana": "ります",
-                "romaji": "rimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "仕事を頑張ります。",
-            "translation": "Cố gắng làm việc.",
-            "enTranslation": "Do my best at work.",
-            "parts": [
-                {
-                    "text": "仕事",
-                    "furigana": "しごと"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "頑",
-                    "furigana": "がん"
-                },
-                {
-                    "text": "張",
-                    "furigana": "ば"
-                },
-                {
-                    "text": "ります。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-12",
-        "wordSurface": "やめます",
-        "readingKana": "やめます",
-        "hanViet": "",
-        "meaning": "bỏ, thôi (việc công ty)",
-        "enMeaning": "quit, resign",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "やめます",
-                "furigana": "やめます",
-                "romaji": "yamemasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "会社をやめます。",
-            "translation": "Nghỉ việc công ty.",
-            "enTranslation": "Quit the company.",
-            "parts": [
-                {
-                    "text": "会社",
-                    "furigana": "かいしゃ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "やめます。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-13",
-        "wordSurface": "むだ",
-        "readingKana": "むだ",
-        "hanViet": "",
-        "meaning": "lãng phí, vô ích",
-        "enMeaning": "wasteful",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "むだ",
-                "furigana": "むだ",
-                "romaji": "muda"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "むだな時間",
-            "translation": "Thời gian lãng phí",
-            "enTranslation": "Wasted time",
-            "parts": [
-                {
-                    "text": "むだな"
-                },
-                {
-                    "text": "時間",
-                    "furigana": "じかん"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-14",
-        "wordSurface": "すごい",
-        "readingKana": "すごい",
-        "hanViet": "",
-        "meaning": "ghê quá, giỏi quá",
-        "enMeaning": "amazing, wow",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "すごい",
-                "furigana": "すごい",
-                "romaji": "sugoi"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "すごいですね。",
-            "translation": "Giỏi quá nhỉ.",
-            "enTranslation": "That's amazing.",
-            "parts": [
-                {
-                    "text": "すごいですね。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-15",
-        "wordSurface": "ほんとう",
-        "readingKana": "ほんとう",
-        "hanViet": "",
-        "meaning": "sự thật",
-        "enMeaning": "really, truth",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "ほんとう",
-                "furigana": "ほんとう",
-                "romaji": "hontou"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "ほんとうですか。",
-            "translation": "Thật không?",
-            "enTranslation": "Is that true?",
-            "parts": [
-                {
-                    "text": "ほんとうですか。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-16",
-        "wordSurface": "ニュース",
-        "readingKana": "ニュース",
-        "hanViet": "",
-        "meaning": "tin tức, bản tin",
-        "enMeaning": "news",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "ニュース",
-                "furigana": "ニュース",
-                "romaji": "nyu-su"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "ニュースを見ます。",
-            "translation": "Xem tin tức.",
-            "enTranslation": "Watch the news.",
-            "parts": [
-                {
-                    "text": "ニュース"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "見",
-                    "furigana": "み"
-                },
-                {
-                    "text": "ます。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-17",
-        "wordSurface": "デザイン",
-        "readingKana": "デザイン",
-        "hanViet": "",
-        "meaning": "thiết kế",
-        "enMeaning": "design",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "デザイン",
-                "furigana": "デザイン",
-                "romaji": "dezain"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "このデザインが好きです。",
-            "translation": "Tôi thích thiết kế này.",
-            "enTranslation": "I like this design.",
-            "parts": [
-                {
-                    "text": "この"
-                },
-                {
-                    "text": "デザイン"
-                },
-                {
-                    "text": "が"
-                },
-                {
-                    "text": "好",
-                    "furigana": "す"
-                },
-                {
-                    "text": "きです。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-18",
-        "wordSurface": "たぶん",
-        "readingKana": "たぶん",
-        "hanViet": "",
-        "meaning": "chắc, có thể",
-        "enMeaning": "probably",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "たぶん",
-                "furigana": "たぶん",
-                "romaji": "tabun"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "たぶん大丈夫です。",
-            "translation": "Có lẽ là ổn.",
-            "enTranslation": "It's probably okay.",
-            "parts": [
-                {
-                    "text": "たぶん"
-                },
-                {
-                    "text": "大丈夫",
-                    "furigana": "だいじょうぶ"
-                },
-                {
-                    "text": "です。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-19",
-        "wordSurface": "きっと",
-        "readingKana": "きっと",
-        "hanViet": "",
-        "meaning": "chắc chắn, nhất định",
-        "enMeaning": "surely",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "きっと",
-                "furigana": "きっと",
-                "romaji": "kitto"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "きっと合格します。",
-            "translation": "Chắc chắn sẽ đỗ.",
-            "enTranslation": "Surely pass.",
-            "parts": [
-                {
-                    "text": "きっと"
-                },
-                {
-                    "text": "合格",
-                    "furigana": "ごうかく"
-                },
-                {
-                    "text": "します。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-20",
-        "wordSurface": "ほんとうに",
-        "readingKana": "ほんとうに",
-        "hanViet": "",
-        "meaning": "thật sự",
-        "enMeaning": "really",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "ほんとうに",
-                "furigana": "ほんとうに",
-                "romaji": "hontouni"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "ほんとうによかったです。",
-            "translation": "Thật sự tốt quá.",
-            "enTranslation": "I am really glad.",
-            "parts": [
-                {
-                    "text": "ほんとうに"
-                },
-                {
-                    "text": "よかったです。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-21",
-        "wordSurface": "そんなに",
-        "readingKana": "そんなに",
-        "hanViet": "",
-        "meaning": "(không) ~ lắm",
-        "enMeaning": "not so (much)",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "そんなに",
-                "furigana": "そんなに",
-                "romaji": "sonnani"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "そんなに難しくないです。",
-            "translation": "Không khó lắm đâu.",
-            "enTranslation": "It's not so difficult.",
-            "parts": [
-                {
-                    "text": "そんなに"
-                },
-                {
-                    "text": "難",
-                    "furigana": "むずか"
-                },
-                {
-                    "text": "しくないです。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-22",
-        "wordSurface": "～について",
-        "readingKana": "～について",
-        "hanViet": "",
-        "meaning": "về ~",
-        "enMeaning": "about, concerning",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "について",
-                "furigana": "について",
-                "romaji": "nitsuite"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "日本について勉強します。",
-            "translation": "Học về Nhật Bản.",
-            "enTranslation": "Study about Japan.",
-            "parts": [
-                {
-                    "text": "日本",
-                    "furigana": "にほん"
-                },
-                {
-                    "text": "について"
-                },
-                {
-                    "text": "勉強",
-                    "furigana": "べんきょう"
-                },
-                {
-                    "text": "します。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "u25-23",
-        "wordSurface": "もちろん",
-        "readingKana": "もちろん",
-        "hanViet": "",
-        "meaning": "tất nhiên, dĩ nhiên",
-        "enMeaning": "of course",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "もちろん",
-                "furigana": "もちろん",
-                "romaji": "mochiron"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "もちろん行きます。",
-            "translation": "Tất nhiên là tôi sẽ đi.",
-            "enTranslation": "Of course I will go.",
-            "parts": [
-                {
-                    "text": "もちろん"
-                },
-                {
-                    "text": "行",
-                    "furigana": "い"
-                },
-                {
-                    "text": "きます。"
-                }
-            ]
-        }
-    }
+	{
+		"id": "u25-01",
+		"wordSurface": "チャンス",
+		"readingKana": "チャンス",
+		"hanViet": "",
+		"meaning": "cơ hội",
+		"enMeaning": "chance, opportunity",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "チャンス",
+				"furigana": "チャンス",
+				"romaji": "chansu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "チャンスがあります。",
+			"translation": "Có cơ hội.",
+			"enTranslation": "Have a chance.",
+			"parts": [
+				{
+					"text": "チャンス"
+				},
+				{
+					"text": "が"
+				},
+				{
+					"text": "あります。"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-02",
+		"wordSurface": "もし",
+		"readingKana": "もし",
+		"hanViet": "",
+		"meaning": "nếu",
+		"enMeaning": "if",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "もし",
+				"furigana": "もし",
+				"romaji": "moshi"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "もし雨なら行きません。",
+			"translation": "Nếu mưa thì tôi sẽ không đi.",
+			"enTranslation": "If it rains, I won't go.",
+			"parts": [
+				{
+					"text": "もし"
+				},
+				{
+					"text": "雨",
+					"furigana": "あめ"
+				},
+				{
+					"text": "なら"
+				},
+				{
+					"text": "行",
+					"furigana": "い"
+				},
+				{
+					"text": "きません。"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-03",
+		"wordSurface": "こと",
+		"readingKana": "こと",
+		"hanViet": "",
+		"meaning": "việc, chuyện",
+		"enMeaning": "matter, thing",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "こと",
+				"furigana": "こと",
+				"romaji": "koto"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "大事なこと",
+			"translation": "Việc quan trọng",
+			"enTranslation": "Important matter",
+			"parts": [
+				{
+					"text": "大事",
+					"furigana": "だいじ"
+				},
+				{
+					"text": "な"
+				},
+				{
+					"text": "こと"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-04",
+		"wordSurface": "考えます",
+		"readingKana": "かんがえます",
+		"hanViet": "KHẢO",
+		"meaning": "nghĩ, suy nghĩ",
+		"enMeaning": "think, consider",
+		"kanjiBreakdown": [
+			{
+				"kanji": "考",
+				"hanViet": "KHẢO",
+				"meaning": "suy nghĩ, khảo sát"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "考",
+				"furigana": "かんが",
+				"romaji": "kanga"
+			},
+			{
+				"text": "えます",
+				"furigana": "えます",
+				"romaji": "emasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "よく考えます。",
+			"translation": "Suy nghĩ kỹ.",
+			"enTranslation": "Think carefully.",
+			"parts": [
+				{
+					"text": "よく"
+				},
+				{
+					"text": "考",
+					"furigana": "かんが"
+				},
+				{
+					"text": "えます。"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-05",
+		"wordSurface": "着きます",
+		"readingKana": "つきます",
+		"hanViet": "TRƯỚC",
+		"meaning": "đến",
+		"enMeaning": "arrive",
+		"kanjiBreakdown": [
+			{
+				"kanji": "着",
+				"hanViet": "TRƯỚC",
+				"meaning": "đến, mặc"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "着",
+				"furigana": "つ",
+				"romaji": "tsu"
+			},
+			{
+				"text": "きます",
+				"furigana": "きます",
+				"romaji": "kimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "駅に着きます。",
+			"translation": "Đến nhà ga.",
+			"enTranslation": "Arrive at the station.",
+			"parts": [
+				{
+					"text": "駅",
+					"furigana": "えき"
+				},
+				{
+					"text": "に"
+				},
+				{
+					"text": "着",
+					"furigana": "つ"
+				},
+				{
+					"text": "きます。"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-06",
+		"wordSurface": "取ります",
+		"readingKana": "とります",
+		"hanViet": "THỦ",
+		"meaning": "có, thêm (tuổi)",
+		"enMeaning": "grow older",
+		"kanjiBreakdown": [
+			{
+				"kanji": "取",
+				"hanViet": "THỦ",
+				"meaning": "lấy, cầm"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "取",
+				"furigana": "と",
+				"romaji": "to"
+			},
+			{
+				"text": "ります",
+				"furigana": "ります",
+				"romaji": "rimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "年を取ります。",
+			"translation": "Có tuổi, già đi.",
+			"enTranslation": "Grow older.",
+			"parts": [
+				{
+					"text": "年",
+					"furigana": "とし"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "取",
+					"furigana": "と"
+				},
+				{
+					"text": "ります。"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-07",
+		"wordSurface": "足ります",
+		"readingKana": "たります",
+		"hanViet": "TÚC",
+		"meaning": "đủ, đầy đủ",
+		"enMeaning": "be encough",
+		"kanjiBreakdown": [
+			{
+				"kanji": "足",
+				"hanViet": "TÚC",
+				"meaning": "chân, đủ"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "足",
+				"furigana": "た",
+				"romaji": "ta"
+			},
+			{
+				"text": "ります",
+				"furigana": "ります",
+				"romaji": "rimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "時間が足りません。",
+			"translation": "Không đủ thời gian.",
+			"enTranslation": "Not enough time.",
+			"parts": [
+				{
+					"text": "時間",
+					"furigana": "じかん"
+				},
+				{
+					"text": "が"
+				},
+				{
+					"text": "足",
+					"furigana": "た"
+				},
+				{
+					"text": "りません。"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-08",
+		"wordSurface": "億",
+		"readingKana": "おく",
+		"hanViet": "ỨC",
+		"meaning": "1 trăm triệu",
+		"enMeaning": "hundred million",
+		"kanjiBreakdown": [
+			{
+				"kanji": "億",
+				"hanViet": "ỨC",
+				"meaning": "trăm triệu"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "億",
+				"furigana": "おく",
+				"romaji": "oku"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "1億人",
+			"translation": "100 triệu người",
+			"enTranslation": "100 million people",
+			"parts": [
+				{
+					"text": "1"
+				},
+				{
+					"text": "億",
+					"furigana": "おく"
+				},
+				{
+					"text": "人",
+					"furigana": "にん"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-09",
+		"wordSurface": "意味",
+		"readingKana": "いみ",
+		"hanViet": "Ý VỊ",
+		"meaning": "nghĩa, ý nghĩa",
+		"enMeaning": "meaning",
+		"kanjiBreakdown": [
+			{
+				"kanji": "意",
+				"hanViet": "Ý",
+				"meaning": "ý chí, ý nghĩa"
+			},
+			{
+				"kanji": "味",
+				"hanViet": "VỊ",
+				"meaning": "hương vị, ý nghĩa"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "意",
+				"furigana": "い",
+				"romaji": "i"
+			},
+			{
+				"text": "味",
+				"furigana": "み",
+				"romaji": "mi"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "言葉の意味",
+			"translation": "Ý nghĩa của từ",
+			"enTranslation": "Meaning of a word",
+			"parts": [
+				{
+					"text": "言葉",
+					"furigana": "ことば"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "意味",
+					"furigana": "いみ"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-10",
+		"wordSurface": "転勤",
+		"readingKana": "てんきん",
+		"hanViet": "CHUYỂN CẦN",
+		"meaning": "chuyển việc (chuyển địa điểm làm việc)",
+		"enMeaning": "job transfer",
+		"kanjiBreakdown": [
+			{
+				"kanji": "転",
+				"hanViet": "CHUYỂN",
+				"meaning": "chuyển động"
+			},
+			{
+				"kanji": "勤",
+				"hanViet": "CẦN",
+				"meaning": "làm việc, cần cù"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "転",
+				"furigana": "てん",
+				"romaji": "ten"
+			},
+			{
+				"text": "勤",
+				"furigana": "きん",
+				"romaji": "kin"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "東京へ転勤します。",
+			"translation": "Chuyển công tác đến Tokyo.",
+			"enTranslation": "Transfer to Tokyo.",
+			"parts": [
+				{
+					"text": "東京",
+					"furigana": "とうきょう"
+				},
+				{
+					"text": "へ"
+				},
+				{
+					"text": "転勤",
+					"furigana": "てんきん"
+				},
+				{
+					"text": "します。"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-11",
+		"wordSurface": "頑張ります",
+		"readingKana": "がんばります",
+		"hanViet": "NGOAN TRƯƠNG",
+		"meaning": "cố gắng",
+		"enMeaning": "do one's best",
+		"kanjiBreakdown": [
+			{
+				"kanji": "頑",
+				"hanViet": "NGOAN",
+				"meaning": "ngoan cố"
+			},
+			{
+				"kanji": "張",
+				"hanViet": "TRƯƠNG",
+				"meaning": "kéo căng, trương lên"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "頑",
+				"furigana": "がん",
+				"romaji": "gan"
+			},
+			{
+				"text": "張",
+				"furigana": "ば",
+				"romaji": "ba"
+			},
+			{
+				"text": "ります",
+				"furigana": "ります",
+				"romaji": "rimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "仕事を頑張ります。",
+			"translation": "Cố gắng làm việc.",
+			"enTranslation": "Do my best at work.",
+			"parts": [
+				{
+					"text": "仕事",
+					"furigana": "しごと"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "頑",
+					"furigana": "がん"
+				},
+				{
+					"text": "張",
+					"furigana": "ば"
+				},
+				{
+					"text": "ります。"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-12",
+		"wordSurface": "やめます",
+		"readingKana": "やめます",
+		"hanViet": "",
+		"meaning": "bỏ, thôi (việc công ty)",
+		"enMeaning": "quit, resign",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "やめます",
+				"furigana": "やめます",
+				"romaji": "yamemasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "会社をやめます。",
+			"translation": "Nghỉ việc công ty.",
+			"enTranslation": "Quit the company.",
+			"parts": [
+				{
+					"text": "会社",
+					"furigana": "かいしゃ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "やめます。"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-13",
+		"wordSurface": "むだ",
+		"readingKana": "むだ",
+		"hanViet": "",
+		"meaning": "lãng phí, vô ích",
+		"enMeaning": "wasteful",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "むだ",
+				"furigana": "むだ",
+				"romaji": "muda"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "むだな時間",
+			"translation": "Thời gian lãng phí",
+			"enTranslation": "Wasted time",
+			"parts": [
+				{
+					"text": "むだな"
+				},
+				{
+					"text": "時間",
+					"furigana": "じかん"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-14",
+		"wordSurface": "すごい",
+		"readingKana": "すごい",
+		"hanViet": "",
+		"meaning": "ghê quá, giỏi quá",
+		"enMeaning": "amazing, wow",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "すごい",
+				"furigana": "すごい",
+				"romaji": "sugoi"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "すごいですね。",
+			"translation": "Giỏi quá nhỉ.",
+			"enTranslation": "That's amazing.",
+			"parts": [
+				{
+					"text": "すごいですね。"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-15",
+		"wordSurface": "ほんとう",
+		"readingKana": "ほんとう",
+		"hanViet": "",
+		"meaning": "sự thật",
+		"enMeaning": "really, truth",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "ほんとう",
+				"furigana": "ほんとう",
+				"romaji": "hontou"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "ほんとうですか。",
+			"translation": "Thật không?",
+			"enTranslation": "Is that true?",
+			"parts": [
+				{
+					"text": "ほんとうですか。"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-16",
+		"wordSurface": "ニュース",
+		"readingKana": "ニュース",
+		"hanViet": "",
+		"meaning": "tin tức, bản tin",
+		"enMeaning": "news",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "ニュース",
+				"furigana": "ニュース",
+				"romaji": "nyu-su"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "ニュースを見ます。",
+			"translation": "Xem tin tức.",
+			"enTranslation": "Watch the news.",
+			"parts": [
+				{
+					"text": "ニュース"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "見",
+					"furigana": "み"
+				},
+				{
+					"text": "ます。"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-17",
+		"wordSurface": "デザイン",
+		"readingKana": "デザイン",
+		"hanViet": "",
+		"meaning": "thiết kế",
+		"enMeaning": "design",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "デザイン",
+				"furigana": "デザイン",
+				"romaji": "dezain"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "このデザインが好きです。",
+			"translation": "Tôi thích thiết kế này.",
+			"enTranslation": "I like this design.",
+			"parts": [
+				{
+					"text": "この"
+				},
+				{
+					"text": "デザイン"
+				},
+				{
+					"text": "が"
+				},
+				{
+					"text": "好",
+					"furigana": "す"
+				},
+				{
+					"text": "きです。"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-18",
+		"wordSurface": "たぶん",
+		"readingKana": "たぶん",
+		"hanViet": "",
+		"meaning": "chắc, có thể",
+		"enMeaning": "probably",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "たぶん",
+				"furigana": "たぶん",
+				"romaji": "tabun"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "たぶん大丈夫です。",
+			"translation": "Có lẽ là ổn.",
+			"enTranslation": "It's probably okay.",
+			"parts": [
+				{
+					"text": "たぶん"
+				},
+				{
+					"text": "大丈夫",
+					"furigana": "だいじょうぶ"
+				},
+				{
+					"text": "です。"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-19",
+		"wordSurface": "きっと",
+		"readingKana": "きっと",
+		"hanViet": "",
+		"meaning": "chắc chắn, nhất định",
+		"enMeaning": "surely",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "きっと",
+				"furigana": "きっと",
+				"romaji": "kitto"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "きっと合格します。",
+			"translation": "Chắc chắn sẽ đỗ.",
+			"enTranslation": "Surely pass.",
+			"parts": [
+				{
+					"text": "きっと"
+				},
+				{
+					"text": "合格",
+					"furigana": "ごうかく"
+				},
+				{
+					"text": "します。"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-20",
+		"wordSurface": "ほんとうに",
+		"readingKana": "ほんとうに",
+		"hanViet": "",
+		"meaning": "thật sự",
+		"enMeaning": "really",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "ほんとうに",
+				"furigana": "ほんとうに",
+				"romaji": "hontouni"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "ほんとうによかったです。",
+			"translation": "Thật sự tốt quá.",
+			"enTranslation": "I am really glad.",
+			"parts": [
+				{
+					"text": "ほんとうに"
+				},
+				{
+					"text": "よかったです。"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-21",
+		"wordSurface": "そんなに",
+		"readingKana": "そんなに",
+		"hanViet": "",
+		"meaning": "(không) ~ lắm",
+		"enMeaning": "not so (much)",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "そんなに",
+				"furigana": "そんなに",
+				"romaji": "sonnani"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "そんなに難しくないです。",
+			"translation": "Không khó lắm đâu.",
+			"enTranslation": "It's not so difficult.",
+			"parts": [
+				{
+					"text": "そんなに"
+				},
+				{
+					"text": "難",
+					"furigana": "むずか"
+				},
+				{
+					"text": "しくないです。"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-22",
+		"wordSurface": "～について",
+		"readingKana": "～について",
+		"hanViet": "",
+		"meaning": "về ~",
+		"enMeaning": "about, concerning",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "について",
+				"furigana": "について",
+				"romaji": "nitsuite"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "日本について勉強します。",
+			"translation": "Học về Nhật Bản.",
+			"enTranslation": "Study about Japan.",
+			"parts": [
+				{
+					"text": "日本",
+					"furigana": "にほん"
+				},
+				{
+					"text": "について"
+				},
+				{
+					"text": "勉強",
+					"furigana": "べんきょう"
+				},
+				{
+					"text": "します。"
+				}
+			]
+		}
+	},
+	{
+		"id": "u25-23",
+		"wordSurface": "もちろん",
+		"readingKana": "もちろん",
+		"hanViet": "",
+		"meaning": "tất nhiên, dĩ nhiên",
+		"enMeaning": "of course",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "もちろん",
+				"furigana": "もちろん",
+				"romaji": "mochiron"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "もちろん行きます。",
+			"translation": "Tất nhiên là tôi sẽ đi.",
+			"enTranslation": "Of course I will go.",
+			"parts": [
+				{
+					"text": "もちろん"
+				},
+				{
+					"text": "行",
+					"furigana": "い"
+				},
+				{
+					"text": "きます。"
+				}
+			]
+		}
+	}
 ]

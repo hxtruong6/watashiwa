@@ -1,9 +1,10 @@
 /**
  * Usage: npx tsx scripts/import-kanji.ts data/kanji_n5.json
  */
-import { prisma } from '../src/lib/db';
 import fs from 'fs';
 import { v7 } from 'uuid';
+
+import { prisma } from '../src/lib/db';
 
 interface RawKanji {
 	kanji: string;

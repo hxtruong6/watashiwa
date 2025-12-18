@@ -1,11 +1,11 @@
 'use client';
 
-import React from 'react';
-import { Typography, Card, Row, Col, Button, Flex, Tag, theme } from 'antd';
-import Link from 'next/link';
-import { RightOutlined, PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined, RightOutlined } from '@ant-design/icons';
+import { Button, Card, Col, Flex, Row, Tag, Typography, theme } from 'antd';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import React from 'react';
 
 const { Title, Text } = Typography;
 const { useToken } = theme;

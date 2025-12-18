@@ -1,37 +1,37 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import VoiceSettings from './Audio/VoiceSettings';
+import { updateUserSettings } from '@/services/actions';
 import {
-	Card,
-	Switch,
-	Flex,
-	Typography,
-	Tooltip,
-	Button,
-	Form,
-	InputNumber,
-	Select,
-	Radio,
-	message,
-	Collapse,
-	Divider,
-	theme,
-} from 'antd';
-import {
-	SoundOutlined,
-	TranslationOutlined,
 	FontSizeOutlined,
 	SettingOutlined,
+	SoundOutlined,
+	TranslationOutlined,
 } from '@ant-design/icons';
-import { updateUserSettings } from '@/services/actions';
+import type { User } from '@prisma/client';
+import {
+	Button,
+	Card,
+	Collapse,
+	Divider,
+	Flex,
+	Form,
+	InputNumber,
+	Radio,
+	Select,
+	Switch,
+	Tooltip,
+	Typography,
+	message,
+	theme,
+} from 'antd';
 import { useTranslations } from 'next-intl';
+import React, { useEffect, useState } from 'react';
+
+import VoiceSettings from './Audio/VoiceSettings';
 
 const { Text } = Typography;
 
 const { useToken } = theme;
-
-import type { User } from '@prisma/client';
 
 interface VocabSettingsProps {
 	showFurigana: boolean;

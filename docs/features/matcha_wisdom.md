@@ -38,30 +38,30 @@ It solves the problem of "dashboard fatigue" by offering a visual break while st
 
 ### File Locations
 
-| Component | Path |
-| :--- | :--- |
-| **Widget** | `src/components/dashboard/MatchaWisdomWidget.tsx` |
+| Component         | Path                                                         |
+| :---------------- | :----------------------------------------------------------- |
+| **Widget**        | `src/components/dashboard/MatchaWisdomWidget.tsx`            |
 | **Server Action** | `src/services/dashboard-actions.ts` (`getMatchaWisdomWords`) |
-| **Animation** | `public/assets/animations/MatchaTea.lottie` |
-| **Translations** | `messages/*.json` (Keys: `Dashboard.matchaWisdom`) |
+| **Animation**     | `public/assets/animations/MatchaTea.lottie`                  |
+| **Translations**  | `messages/*.json` (Keys: `Dashboard.matchaWisdom`)           |
 
 ---
 
 ## 3. Data Strategy ("The Algorithm")
 
-The widget doesn't just show random words. It attempts to show *relevant* words using a waterfall strategy:
+The widget doesn't just show random words. It attempts to show _relevant_ words using a waterfall strategy:
 
 1. **Anti-Frustration (Leeches)**:
-    - *Condition*: `state = 3` (Relearning) OR `lapses > 2`.
-    - *Why*: Repeated exposure in a low-stress environment helps cement difficult items.
+   - _Condition_: `state = 3` (Relearning) OR `lapses > 2`.
+   - _Why_: Repeated exposure in a low-stress environment helps cement difficult items.
 2. **Active Engagement (Learning)**:
-    - *Condition*: `state = 1` (Learning).
-    - *Why*: Keeps current study material fresh in mind.
+   - _Condition_: `state = 1` (Learning).
+   - _Why_: Keeps current study material fresh in mind.
 3. **Priming (New)**:
-    - *Condition*: `state = 0` (New).
-    - *Why*: "Priming" effect—seeing a word before formally studying it increases retention during the first lesson.
+   - _Condition_: `state = 0` (New).
+   - _Why_: "Priming" effect—seeing a word before formally studying it increases retention during the first lesson.
 4. **Fallback (Zen Defaults)**:
-    - If no user data exists (new user), it falls back to a static list of beautiful Japanese words (e.g., *Komorebi*, *Tsundoku*) to maintain the aesthetic.
+   - If no user data exists (new user), it falls back to a static list of beautiful Japanese words (e.g., _Komorebi_, _Tsundoku_) to maintain the aesthetic.
 
 ---
 

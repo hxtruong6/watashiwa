@@ -1,8 +1,9 @@
+import { ADMIN_USER_ID } from '@/lib/constants';
 import fs from 'fs';
 import path from 'path';
+
 import { prisma } from '../src/lib/db';
 import { processUnitFile } from './import-unit-data';
-import { ADMIN_USER_ID } from '@/lib/constants';
 
 interface CourseDefinition {
 	id: string;

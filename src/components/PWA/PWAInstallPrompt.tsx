@@ -1,15 +1,15 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { useTranslations } from 'next-intl';
-import { Drawer, Typography, Steps, FloatButton } from 'antd';
-import {
-	DownloadOutlined,
-	ShareAltOutlined,
-	PlusSquareOutlined,
-	CloseOutlined,
-} from '@ant-design/icons';
 import { usePWA } from '@/hooks/usePWA';
+import {
+	CloseOutlined,
+	DownloadOutlined,
+	PlusSquareOutlined,
+	ShareAltOutlined,
+} from '@ant-design/icons';
+import { Drawer, FloatButton, Steps, Typography } from 'antd';
+import { useTranslations } from 'next-intl';
+import React, { useEffect, useState } from 'react';
 
 const { Text } = Typography;
 

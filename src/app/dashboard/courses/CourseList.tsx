@@ -1,16 +1,17 @@
 'use client';
 
-import { Typography, Card, Row, Col, Tag, Empty, Divider } from 'antd';
 import {
 	BookOutlined,
+	CheckCircleOutlined,
 	RocketOutlined,
 	StarOutlined,
-	CheckCircleOutlined,
 	UserOutlined,
 } from '@ant-design/icons';
+import { Card, Col, Divider, Empty, Row, Tag, Typography } from 'antd';
+import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
+
 import CreateCourseButton from './CreateCourseButton';
-import { useTranslations, useLocale } from 'next-intl';
 
 const { Title, Text, Paragraph } = Typography;
 

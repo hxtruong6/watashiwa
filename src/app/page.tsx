@@ -1,7 +1,7 @@
-import React from 'react';
-import { redirect } from 'next/navigation';
-import { getUser } from '@/services/actions';
 import LandingPage from '@/components/landing/LandingPage';
+import { getUser } from '@/services/actions';
+import { redirect } from 'next/navigation';
+import React from 'react';
 
 export default async function Page() {
 	// Check for authenticated user

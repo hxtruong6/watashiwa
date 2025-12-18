@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
-import { Tour, TourProps } from 'antd';
 import { useTutorialStore } from '@/hooks/useTutorialStore';
 import { completeTutorial } from '@/services/actions';
+import { Tour, TourProps } from 'antd';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface AppTutorialProps {
 	tutorialId: string;

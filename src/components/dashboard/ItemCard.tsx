@@ -1,10 +1,9 @@
+import { CardState } from '@/types/common.types';
+import { Card, Flex, Tag, Typography, theme } from 'antd';
 import React from 'react';
-import { Card, Tag, Typography, Flex, theme } from 'antd';
 
 const { Text, Title } = Typography;
 const { useToken } = theme;
-
-import { CardState } from '@/types/common.types';
 
 interface ItemCardProps {
 	mainText: string;

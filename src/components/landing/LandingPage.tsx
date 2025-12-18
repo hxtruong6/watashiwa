@@ -1,10 +1,11 @@
 'use client';
 
-import HeroSection from './HeroSection';
-import FeatureSection from './FeatureSection';
-import SocialProofSection from './SocialProofSection';
-import CTASection from './CTASection';
 import { theme } from 'antd';
+
+import CTASection from './CTASection';
+import FeatureSection from './FeatureSection';
+import HeroSection from './HeroSection';
+import SocialProofSection from './SocialProofSection';
 
 export default function LandingPage() {
 	const { token } = theme.useToken();

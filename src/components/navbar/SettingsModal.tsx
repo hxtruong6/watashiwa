@@ -1,27 +1,26 @@
 'use client';
 
-import React, { useState } from 'react';
-import {
-	Modal,
-	Form,
-	Input,
-	Button,
-	message,
-	Tabs,
-	Typography,
-	Flex,
-	Divider,
-	InputNumber,
-	theme,
-	Select,
-} from 'antd';
-import { UserOutlined, SettingOutlined, GlobalOutlined, RocketOutlined } from '@ant-design/icons';
-import { useTranslations } from 'next-intl';
-import { useTheme } from 'next-themes';
 import NotificationManager from '@/components/PWA/NotificationManager';
-
 import ImageUploader from '@/components/Shared/ImageUploader';
 import { updateUserAvatar, updateUserSettings } from '@/services/actions';
+import { GlobalOutlined, RocketOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
+import {
+	Button,
+	Divider,
+	Flex,
+	Form,
+	Input,
+	InputNumber,
+	Modal,
+	Select,
+	Tabs,
+	Typography,
+	message,
+	theme,
+} from 'antd';
+import { useTranslations } from 'next-intl';
+import { useTheme } from 'next-themes';
+import React, { useState } from 'react';
 
 const { Text } = Typography;
 

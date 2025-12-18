@@ -1,36 +1,35 @@
-import React, { useState } from 'react';
+import ImageUploader from '@/components/Shared/ImageUploader';
+import KanjiEditor from '@/components/admin/KanjiEditor';
+import VocabEditor from '@/components/admin/VocabEditor';
+import { createKanji, createVocab } from '@/services/user-content-actions';
 import {
+	EditOutlined,
+	PlusOutlined,
+	ThunderboltOutlined,
+	TranslationOutlined,
+} from '@ant-design/icons';
+import {
+	Button,
 	Card,
-	Tabs,
+	Col,
 	Form,
 	Input,
-	Button,
-	message,
-	Tag,
 	InputNumber,
-	Select,
 	Row,
-	Col,
+	Select,
+	Tabs,
+	Tag,
+	message,
 	theme,
 } from 'antd';
-import {
-	ThunderboltOutlined,
-	EditOutlined,
-	TranslationOutlined,
-	PlusOutlined,
-} from '@ant-design/icons';
-import { createVocab, createKanji } from '@/services/user-content-actions';
+import { Modal } from 'antd';
 import { useTranslations } from 'next-intl';
+import React, { useState } from 'react';
 
 interface SmartContentInputProps {
 	deckId: string;
 	onSuccess: () => void;
 }
-
-import VocabEditor from '@/components/admin/VocabEditor';
-import KanjiEditor from '@/components/admin/KanjiEditor';
-import { Modal } from 'antd';
-import ImageUploader from '@/components/Shared/ImageUploader';
 
 const { useToken } = theme;
 

@@ -1,17 +1,17 @@
 'use client';
 
-import React, { useMemo } from 'react';
-import { Card, Button, Typography, theme } from 'antd';
-import { motion } from 'motion/react';
+import { useReviewStatus } from '@/hooks/useReviewStatus';
 import {
 	ClockCircleOutlined,
-	ThunderboltFilled,
 	CoffeeOutlined,
 	RocketOutlined,
+	ThunderboltFilled,
 } from '@ant-design/icons';
+import { Button, Card, Typography, theme } from 'antd';
+import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { useReviewStatus } from '@/hooks/useReviewStatus';
+import React, { useMemo } from 'react';
 
 const { Title } = Typography;
 

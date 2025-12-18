@@ -1,6 +1,6 @@
-import React from 'react';
-import { Typography, Tag, Flex, Button, theme, Grid } from 'antd';
 import { PauseCircleOutlined, SoundOutlined } from '@ant-design/icons';
+import { Button, Flex, Grid, Tag, Typography, theme } from 'antd';
+import React from 'react';
 
 const { useToken } = theme;
 const { useBreakpoint } = Grid;

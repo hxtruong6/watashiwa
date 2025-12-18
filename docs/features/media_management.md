@@ -17,10 +17,11 @@ Enable users to upload and manage images for their profile avatars and vocabular
 
 ### 2.2. Database Changes
 
-* **User Model**: Add `avatarUrl` (String?).
-- **VocabCard Model**: Add `imageUrl` (String?).
-- **Kanji Model**: Add `imageUrl` (String?).
-- *(Future)*: separate `Media` table if we need to track usage/references, but direct URL string is sufficient for MVP.
+- **User Model**: Add `avatarUrl` (String?).
+
+* **VocabCard Model**: Add `imageUrl` (String?).
+* **Kanji Model**: Add `imageUrl` (String?).
+* _(Future)_: separate `Media` table if we need to track usage/references, but direct URL string is sufficient for MVP.
 
 ## 3. User Flows
 
@@ -47,7 +48,7 @@ Enable users to upload and manage images for their profile avatars and vocabular
 
 ### 4.1. Components
 
-* **`ImageUploader`**: Reusable component.
+- **`ImageUploader`**: Reusable component.
   - **Props**: `onUploadComplete(url: string)`, `currentImage`, `shape` (circle/rect).
   - **UI**:
     - Empty state: Icon + "Click to upload".
@@ -56,14 +57,16 @@ Enable users to upload and manage images for their profile avatars and vocabular
 
 ### 4.2. Pages Impacted
 
-* **`/profile` (or `src/components/NavBar` for quick access)**: Add Avatar settings.
-- **`/dashboard/decks/[id]/edit`**: Add Image upload to `VocabEditor` / `KanjiEditor`.
-- **Flashcard View**: Render image if exists (Standard `FlashCard.tsx`).
+- **`/profile` (or `src/components/NavBar` for quick access)**: Add Avatar settings.
+
+* **`/dashboard/decks/[id]/edit`**: Add Image upload to `VocabEditor` / `KanjiEditor`.
+* **Flashcard View**: Render image if exists (Standard `FlashCard.tsx`).
 
 ## 5. Security & Validation
 
-* **File Types**: `image/jpeg`, `image/png`, `image/webp`.
-- **Max Size**: 5MB.
-- **Path Naming**:
+- **File Types**: `image/jpeg`, `image/png`, `image/webp`.
+
+* **Max Size**: 5MB.
+* **Path Naming**:
   - Avatars: `avatars/{userId}_{timestamp}.ext`
   - Cards: `cards/{deckId}/{timestamp}_{random}.ext`

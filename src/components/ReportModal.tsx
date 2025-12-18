@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Modal, Select, Input, message } from 'antd';
-import { FlagOutlined } from '@ant-design/icons';
-import { ReportType } from '@prisma/client'; // Ensure this matches your Prisma Client location
+// Ensure this matches your Prisma Client location
 import { submitReport } from '@/services/actions';
+import { FlagOutlined } from '@ant-design/icons';
+import { ReportType } from '@prisma/client';
+import { Input, Modal, Select, message } from 'antd';
+import React, { useState } from 'react';
 
 const { TextArea } = Input;
 

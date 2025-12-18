@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Tabs, Table, Button, Space, Modal, Form, message, Popconfirm, Tag, Tooltip } from 'antd';
-import { PlusOutlined, EditOutlined, DeleteOutlined, ArrowLeftOutlined } from '@ant-design/icons';
-import { useRouter } from 'next/navigation';
-import VocabEditor from '@/components/admin/VocabEditor';
 import KanjiEditor from '@/components/admin/KanjiEditor';
-import { createVocab, deleteVocab, createKanji, deleteKanji } from '@/services/admin-actions';
-import { updateVocab, updateKanji } from '@/services/actions';
+import VocabEditor from '@/components/admin/VocabEditor';
+import { updateKanji, updateVocab } from '@/services/actions';
+import { createKanji, createVocab, deleteKanji, deleteVocab } from '@/services/admin-actions';
+import { ArrowLeftOutlined, DeleteOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
+import { Button, Form, Modal, Popconfirm, Space, Table, Tabs, Tag, Tooltip, message } from 'antd';
+import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 
 // Types (simplified from Prisma)
 interface Vocab {

@@ -1,15 +1,15 @@
 'use client';
 
-import React from 'react';
-import { Typography, Card, Statistic, Row, Col, theme } from 'antd';
 import {
-	FireOutlined,
-	ClockCircleOutlined,
 	BookOutlined,
 	CheckCircleOutlined,
+	ClockCircleOutlined,
+	FireOutlined,
 } from '@ant-design/icons';
+import { Card, Col, Row, Statistic, Typography, theme } from 'antd';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
+import React from 'react';
 
 const { Text } = Typography;
 const { useToken } = theme;

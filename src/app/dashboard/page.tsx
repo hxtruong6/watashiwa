@@ -1,9 +1,9 @@
-import { redirect } from 'next/navigation';
-import { UserRole } from '@prisma/client';
-import { getDashboardData, syncUser, getUserWithRole, getLeaderboard } from '@/services/actions';
-import { getReviewForecast } from '@/services/study-actions';
 import DashboardContent from '@/components/DashboardContent';
 import DashboardErrorState from '@/components/dashboard/DashboardErrorState';
+import { getDashboardData, getLeaderboard, getUserWithRole, syncUser } from '@/services/actions';
+import { getReviewForecast } from '@/services/study-actions';
+import { UserRole } from '@prisma/client';
+import { redirect } from 'next/navigation';
 
 interface Props {
 	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;

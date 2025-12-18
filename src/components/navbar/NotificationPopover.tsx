@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
-import { Button, Popover, Typography, Flex, Badge, theme } from 'antd';
-import { BellOutlined, BellFilled, SettingOutlined } from '@ant-design/icons';
 import { usePushNotifications } from '@/hooks/usePushNotifications';
+import { BellFilled, BellOutlined, SettingOutlined } from '@ant-design/icons';
+import { Badge, Button, Flex, Popover, Typography, theme } from 'antd';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { useState } from 'react';
 
 const { Text } = Typography;
 const { useToken } = theme;

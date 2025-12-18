@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
-import { Button, Drawer, Form, Input, Switch, message } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
 import { createCourse } from '@/services/course-actions';
-import { useRouter } from 'next/navigation';
+import { PlusOutlined } from '@ant-design/icons';
+import { Button, Drawer, Form, Input, Switch, message } from 'antd';
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 export default function CreateCourseButton({
 	text,

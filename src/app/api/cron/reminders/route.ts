@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
 import { NotificationService } from '@/services/NotificationService';
+import { NextResponse } from 'next/server';
 
 // Vercel Cron will hit this endpoint
 export async function GET(req: Request) {

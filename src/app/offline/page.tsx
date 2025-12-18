@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { Typography, Button, Flex, theme, message } from 'antd';
-import { WifiOutlined, ReloadOutlined } from '@ant-design/icons';
-import { useTranslations } from 'next-intl';
+import { ReloadOutlined, WifiOutlined } from '@ant-design/icons';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { Button, Flex, Typography, message, theme } from 'antd';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+import React, { useEffect, useState } from 'react';
 
 const { Title, Text } = Typography;
 const { useToken } = theme;

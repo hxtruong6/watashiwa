@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
-import { Flex, Result, Button, Typography, Progress, theme } from 'antd';
 import { CheckCircleFilled, FireOutlined, TrophyOutlined } from '@ant-design/icons';
-import { useRouter } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+import { Button, Flex, Progress, Result, Typography, theme } from 'antd';
 import confetti from 'canvas-confetti';
+import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import React, { useEffect } from 'react';
 
 const { Text } = Typography;
 const { useToken } = theme;

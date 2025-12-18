@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Card, Typography, theme } from 'antd';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { WisdomWordData, getMatchaWisdomWords } from '@/services/dashboard-actions';
 import { SoundOutlined } from '@ant-design/icons';
-import { getMatchaWisdomWords, WisdomWordData } from '@/services/dashboard-actions';
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { Card, Typography, theme } from 'antd';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import React, { useEffect, useState } from 'react';
 
 const { Text } = Typography;
 const { useToken } = theme;

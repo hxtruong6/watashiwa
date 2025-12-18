@@ -1,35 +1,35 @@
 'use client';
 
-import React, { useState } from 'react';
+import { deleteComment, updateComment, voteComment } from '@/services/comments';
 import {
-	Card,
-	Button,
-	Typography,
-	Tag,
-	Space,
+	CloseOutlined,
+	DeleteOutlined,
+	DislikeFilled,
+	DislikeOutlined,
+	EditOutlined,
+	LikeFilled,
+	LikeOutlined,
+	SaveOutlined,
+	UserOutlined,
+} from '@ant-design/icons';
+import { CommentType } from '@prisma/client';
+import {
 	Avatar,
+	Button,
+	Card,
 	Flex,
 	Input,
-	Select,
-	message,
 	Popconfirm,
+	Select,
+	Space,
+	Tag,
+	Typography,
+	message,
 	theme,
 } from 'antd';
-import {
-	LikeOutlined,
-	LikeFilled,
-	DislikeOutlined,
-	DislikeFilled,
-	UserOutlined,
-	DeleteOutlined,
-	EditOutlined,
-	SaveOutlined,
-	CloseOutlined,
-} from '@ant-design/icons';
 import { formatDistanceToNow } from 'date-fns';
-import { voteComment, deleteComment, updateComment } from '@/services/comments';
-import { CommentType } from '@prisma/client';
 import { useTranslations } from 'next-intl';
+import React, { useState } from 'react';
 
 const { Text } = Typography;
 const { TextArea } = Input;

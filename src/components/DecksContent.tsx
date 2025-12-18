@@ -1,24 +1,24 @@
 'use client';
 
-import React, { useState } from 'react';
+import { BookOutlined, RightOutlined, SearchOutlined, TeamOutlined } from '@ant-design/icons';
 import {
-	Typography,
-	Row,
-	Col,
-	Card,
 	Button,
-	Flex,
-	Tag,
+	Card,
+	Col,
 	Empty,
+	Flex,
 	Input,
+	Row,
 	Segmented,
+	Tag,
+	Typography,
 	theme,
 } from 'antd';
-import Link from 'next/link';
-import { BookOutlined, RightOutlined, SearchOutlined, TeamOutlined } from '@ant-design/icons';
 import { motion } from 'motion/react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 
 const { Title, Text, Paragraph } = Typography;
 const { useToken } = theme;

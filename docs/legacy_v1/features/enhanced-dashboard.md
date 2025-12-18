@@ -159,15 +159,15 @@ Best-in-class dashboard patterns from:
 
 ## Color Palette (Zen Mastery Theme)
 
-| Element | Color | Hex |
-|:--------|:------|:----|
+| Element    | Color     | Hex       |
+| :--------- | :-------- | :-------- |
 | Background | Off-white | `#FAF9F6` |
-| Card BG | White | `#FFFFFF` |
-| Primary | Indigo | `#4F46E5` |
-| Success | Matcha | `#708238` |
-| Warning | Orange | `#F59E0B` |
-| Text | Charcoal | `#1F2937` |
-| Muted | Gray | `#6B7280` |
+| Card BG    | White     | `#FFFFFF` |
+| Primary    | Indigo    | `#4F46E5` |
+| Success    | Matcha    | `#708238` |
+| Warning    | Orange    | `#F59E0B` |
+| Text       | Charcoal  | `#1F2937` |
+| Muted      | Gray      | `#6B7280` |
 
 ---
 

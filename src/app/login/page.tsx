@@ -1,14 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Form, Input, Button, Card, Typography, Alert, Flex, App, theme } from 'antd';
-import { createClient } from '@/utils/supabase/client';
-import { LockOutlined, UserOutlined, MailOutlined } from '@ant-design/icons';
-import Link from 'next/link';
-import { syncUser } from '@/services/actions';
-import { useTranslations } from 'next-intl';
 import { ambientGradients, customShadows } from '@/lib/theme/themeConfig';
+import { syncUser } from '@/services/actions';
+import { createClient } from '@/utils/supabase/client';
+import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
+import { Alert, App, Button, Card, Flex, Form, Input, Typography, theme } from 'antd';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import React, { useState } from 'react';
 
 const { Title, Text } = Typography;
 const { useToken } = theme;

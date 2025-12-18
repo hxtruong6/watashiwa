@@ -16,7 +16,7 @@ Most flashcard apps are cluttered. We provide a **distraction-free sanctuary** f
 
 - **Immersive Mode**: UI chrome (headers/menus) auto-hides when focusing.
 - **Bottom-Heavy Design**: All critical interactions happen in the "Thumb Zone" (bottom 30% of screen), preventing hand fatigue on mobile.
-- **Optimistic Latency**: Interacting with a card feels *instant*. We load the next card immediately while syncing data in the background.
+- **Optimistic Latency**: Interacting with a card feels _instant_. We load the next card immediately while syncing data in the background.
 
 ### B. Hán Việt Specialization (The "Secret Weapon")
 
@@ -29,7 +29,7 @@ For Vietnamese learners, Kanji is not just a symbol — it's a bridge to their n
 
 We don't just use "SRS"; we use the **Free Spaced Repetition Scheduler (FSRS) v5**, the gold standard in memory science.
 
-- **Smart Queue**: The app knows exactly *when* you're about to forget.
+- **Smart Queue**: The app knows exactly _when_ you're about to forget.
 - **Burden Management**: We cap daily reviews to prevent burnout/overwhelm.
 
 ---
@@ -40,27 +40,27 @@ We don't just use "SRS"; we use the **Free Spaced Repetition Scheduler (FSRS) v5
 
 1. **Entry**: One tap from Dashboard -> "Study Now".
 2. **Engagement**:
-    - Card appears. Audio auto-plays (configurable).
-    - **Thumb Zone Action**: Large, premium "Show Answer" button at the bottom.
-    - **Micro-interaction**: Button has a soft colored shadow and lift effect.
+   - Card appears. Audio auto-plays (configurable).
+   - **Thumb Zone Action**: Large, premium "Show Answer" button at the bottom.
+   - **Micro-interaction**: Button has a soft colored shadow and lift effect.
 3. **Reveal**:
-    - Card smoothly expands/reveals answer.
-    - Hán Việt badge is prominent.
+   - Card smoothly expands/reveals answer.
+   - Hán Việt badge is prominent.
 4. **Rating**:
-    - **Color Coded**: Ratings are visually distinct but harmonious.
-    - **Visual Hierarchy**: The "Good" (3) button is solid/filled, guiding users to the ideal behavior.
+   - **Color Coded**: Ratings are visually distinct but harmonious.
+   - **Visual Hierarchy**: The "Good" (3) button is solid/filled, guiding users to the ideal behavior.
 5. **Completion**:
-    - **Confetti**: Visual reward for finishing a session.
-    - **Stats**: Immediate breakdown of "Reviews" vs "New Words".
+   - **Confetti**: Visual reward for finishing a session.
+   - **Stats**: Immediate breakdown of "Reviews" vs "New Words".
 
 ### Key UX Decisions
 
-| Feature | Implementation Details | User Benefit |
-| :--- | :--- | :--- |
-| **Thumb Zone Controls** | Fixed bottom container with gradient fade-out. | **Ergonomics**: No reaching for top corners on large phones. |
-| **Immersive Header** | Hides on scroll down; shows on scroll up. | **Focus**: Maximizes screen real estate for content. |
-| **Keyboard Shortcuts** | `Space` (Show/Good), `1-4` (Rate), `R/E` (Audio). | **Speed**: Desktop power users can blitz through reviews. |
-| **Flashcard Typography** | Google Fonts Noto Sans JP (64px+). | **Legibility**: Kanji is complex; we make it huge and clear. |
+| Feature                  | Implementation Details                            | User Benefit                                                 |
+| :----------------------- | :------------------------------------------------ | :----------------------------------------------------------- |
+| **Thumb Zone Controls**  | Fixed bottom container with gradient fade-out.    | **Ergonomics**: No reaching for top corners on large phones. |
+| **Immersive Header**     | Hides on scroll down; shows on scroll up.         | **Focus**: Maximizes screen real estate for content.         |
+| **Keyboard Shortcuts**   | `Space` (Show/Good), `1-4` (Rate), `R/E` (Audio). | **Speed**: Desktop power users can blitz through reviews.    |
+| **Flashcard Typography** | Google Fonts Noto Sans JP (64px+).                | **Legibility**: Kanji is complex; we make it huge and clear. |
 
 ---
 
@@ -70,18 +70,18 @@ Use these hooks in landing pages, social media, and app store descriptions.
 
 ### Angle A: "The Anti-Burnout App"
 
-*Headline*: **Master Japanese without the headache.**
-*Sub*: "Stop fighting clunky apps. WatashiWa's Zen Mode gets out of your way so you can just learn."
+_Headline_: **Master Japanese without the headache.**
+_Sub_: "Stop fighting clunky apps. WatashiWa's Zen Mode gets out of your way so you can just learn."
 
 ### Angle B: "Unlock Your Native Advantage"
 
-*Headline*: **Don't learn Kanji like a Westerner.**
-*Sub*: "You already know 70% of Japanese vocabulary. Use our Hán Việt engine to unlock the rest instantly."
+_Headline_: **Don't learn Kanji like a Westerner.**
+_Sub_: "You already know 70% of Japanese vocabulary. Use our Hán Việt engine to unlock the rest instantly."
 
 ### Angle C: "Science, not Magic"
 
-*Headline*: **Memory Engineering, Built-in.**
-*Sub*: "Powered by the FSRS-5 algorithm. We predict the exact moment you'll forget, so you study less and remember more."
+_Headline_: **Memory Engineering, Built-in.**
+_Sub_: "Powered by the FSRS-5 algorithm. We predict the exact moment you'll forget, so you study less and remember more."
 
 ---
 

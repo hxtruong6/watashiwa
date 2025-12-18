@@ -13,7 +13,7 @@ To build this application effectively, we follow a **Phased Implementation Strat
 
 ## Phase 1: The Engine (FSRS & Core Loop)
 
-**Goal:** The application *works* as a study tool. Users can review cards, and the scheduler updates correctly.
+**Goal:** The application _works_ as a study tool. Users can review cards, and the scheduler updates correctly.
 
 - [x] **Library:** Integrate `ts-fsrs` with `actions.ts`.
 - [x] **Action:** Implement `submitReview(cardId, rating)` to update DB.
@@ -23,7 +23,7 @@ To build this application effectively, we follow a **Phased Implementation Strat
 
 ## Phase 2: The "Zen" Shell (Dashboard & Theme)
 
-**Goal:** The application *feels* professional.
+**Goal:** The application _feels_ professional.
 
 - [x] **Theme:** Implement `themeConfig.ts` with Indigo/Matcha/Washi palette.
 - [x] **Layout:** Create the Dashboard with "Start Review" CTA.

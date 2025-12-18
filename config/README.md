@@ -1,4 +1,3 @@
-
 # Google Cloud Storage CORS Configuration
 
 - Upload gcs_cors.json to GCS bucket
@@ -33,7 +32,7 @@ Fill in the condition:
 
 Title: Public Avatars Only
 
-Condition Editor: select Name (under Resource) -> Starts with -> projects/_/buckets/watashiwa_app/objects/avatars/
+Condition Editor: select Name (under Resource) -> Starts with -> projects/\_/buckets/watashiwa_app/objects/avatars/
 
 (Note: Make sure to include the trailing slash / after avatars)
 

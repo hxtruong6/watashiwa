@@ -32,7 +32,7 @@ Enable users to listen to the pronunciation of vocabulary and example sentences 
 
 1. User configures settings to "Play Audio in Question Mode".
 2. A new card appears.
-3. Audio plays *before* the answer is revealed.
+3. Audio plays _before_ the answer is revealed.
 4. User guesses the meaning based on sound (creating a "listening" flashcard).
 
 ## 4. UI/UX Design ("Zen Mastery" & "Invisible")
@@ -53,12 +53,12 @@ Enable users to listen to the pronunciation of vocabulary and example sentences 
 
 Add a new section to the **Study Settings** modal:
 
-| Setting | Description | Default |
-| :--- | :--- | :--- |
+| Setting             | Description                               | Default       |
+| :------------------ | :---------------------------------------- | :------------ |
 | **Auto-play Audio** | Toggle: Off / Answer Side / Question Side | `Answer Side` |
-| **Example Audio** | Auto-play example sentence audio too? | `Off` |
-| **Playback Speed** | Slider: 0.5x to 1.5x | `1.0x` |
-| **Voice** | Dropdown: Browser-provided JA voices | `Auto` |
+| **Example Audio**   | Auto-play example sentence audio too?     | `Off`         |
+| **Playback Speed**  | Slider: 0.5x to 1.5x                      | `1.0x`        |
+| **Voice**           | Dropdown: Browser-provided JA voices      | `Auto`        |
 
 ## 5. Technical Specification
 
@@ -73,9 +73,9 @@ Encapsulate logic in a React Hook:
 
 ```typescript
 const { speak, stop, isPlaying, voices } = useAudioPlayer({
-  text: string,
-  lang: 'ja-JP',
-  rate: number, // 0.8 for slower learning
+	text: string,
+	lang: 'ja-JP',
+	rate: number, // 0.8 for slower learning
 });
 ```
 

@@ -80,7 +80,7 @@ Ensure you have a PostgreSQL database connection string.
    npx prisma migrate deploy
    ```
 
-   *This applies pending migrations to your production database.*
+   _This applies pending migrations to your production database._
 
 5. **Generate Prisma Client**:
 
@@ -125,7 +125,7 @@ pm2 save
 sudo pm2 startup
 ```
 
-*(Run the command output by `sudo pm2 startup`)*
+_(Run the command output by `sudo pm2 startup`)_
 
 ### PM2 Commands Cheat Sheet
 
@@ -159,7 +159,7 @@ Edit the `deploy` section in `ecosystem.config.js` with your server details:
 
 ### 3. Setup Directories (Run Once)
 
-Run this from your *local machine*:
+Run this from your _local machine_:
 
 ```bash
 pm2 deploy ecosystem.config.js production setup

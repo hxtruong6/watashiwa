@@ -1,7 +1,7 @@
-import React from 'react';
-import { UserOutlined, ReadOutlined, FireOutlined } from '@ant-design/icons';
-import { getAdminStats } from '@/services/actions';
 import themeConfig from '@/lib/theme/themeConfig';
+import { getAdminStats } from '@/services/actions';
+import { FireOutlined, ReadOutlined, UserOutlined } from '@ant-design/icons';
+import React from 'react';
 
 export default async function AdminDashboard() {
 	const stats = await getAdminStats();

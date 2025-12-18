@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Form, Input, Button, Card, Typography, Alert, Flex, theme } from 'antd';
 import { createClient } from '@/utils/supabase/client';
-import { MailOutlined, ArrowLeftOutlined } from '@ant-design/icons';
+import { ArrowLeftOutlined, MailOutlined } from '@ant-design/icons';
+import { Alert, Button, Card, Flex, Form, Input, Typography, theme } from 'antd';
 import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 
 const { Title, Text } = Typography;
 const { useToken } = theme;

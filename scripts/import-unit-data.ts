@@ -1,11 +1,13 @@
 /**
 npx tsx scripts/import-unit-data.ts data/unit16.json
 */
-import { prisma } from '../src/lib/db';
-
 import fs from 'fs';
 import path from 'path';
-import { v7, v5 as uuidv5 } from 'uuid';
+import { fileURLToPath } from 'url';
+import { v5 as uuidv5, v7 } from 'uuid';
+
+import { prisma } from '../src/lib/db';
+
 const UUID_NAMESPACE = '6ba7b810-9dad-11d1-80b4-00c04fd430c8';
 
 // Interface matching the JSON file structure
@@ -120,8 +122,6 @@ export async function processUnitFile(filePath: string, userId: string) {
 
 	console.log(`Import completed for ${path.basename(filePath)}`);
 }
-
-import { fileURLToPath } from 'url';
 
 async function main() {
 	// Only run if called directly (ESM equivalent)

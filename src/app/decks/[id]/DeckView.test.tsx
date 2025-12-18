@@ -1,7 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
-import DeckView from './DeckView';
 import React from 'react';
+import { describe, expect, it, vi } from 'vitest';
+
+import DeckView from './DeckView';
 
 // Mock next/navigation
 vi.mock('next/navigation', () => ({

@@ -1,5 +1,5 @@
 # PRODUCT MASTERPLAN v2: THE "SMART CUBE" ARCHITECTURE
->
+
 > **Confidential for Internal Strategy**  
 > **Status:** APPROVED for Execution  
 > **Authors:** Senior Product Team & Engineering Leads  
@@ -32,7 +32,7 @@ We do not just "show cards". We **intervene** in the forgetting process through:
 ## 2. MARKET STRATEGY: "The Cure for Burnout"
 
 ### 2.1 Positioning Statement
->
+
 > **For** serious Japanese learners who feel overwhelmed by rote memorization,  
 > **WatashiWa** is the intelligent learning companion  
 > **That** guarantees "Sticky Memory" through the CUBE method,  
@@ -45,7 +45,7 @@ Most apps lose users when they hit the "Wall of Shame" (too many reviews due).
 
 1. **The Promise:** "You are not dumb; your method was flat (2D). Try 3D Learning."
 2. **The Hook:** "Insight-based" Moments (Etymology connections) create Dopamine.
-3. **The Safety Net:** The Smart Layer *throttles* new cards if reviews pile up. "Less is More."
+3. **The Safety Net:** The Smart Layer _throttles_ new cards if reviews pile up. "Less is More."
 
 ---
 
@@ -65,44 +65,44 @@ Most apps lose users when they hit the "Wall of Shame" (too many reviews due).
 
 ### 3.2 Micro-Copy Strategy (The "Smart" Voice)
 
-| Scenario | Standard App Copy | WatashiWa "Smart" Copy | Rationale |
-|----------|-------------------|------------------------|-----------|
-| **Error** | "Incorrect. The answer is X." | "Wait. You confused X with Y." | Intervene logic, not shame. |
-| **New Unit** | "Unit 5: Travel" | "Priming Brain: 15 New Concepts" | Sets expectation of effort. |
-| **Success** | "You got 10/10!" | "Validation Complete. 0 Leech Detected." | Emphasize long-term stability. |
-| **Pacing** | "Review 100 more cards!" | "Brain Saturation Reached. Rest now." | Protects against burnout. |
+| Scenario     | Standard App Copy             | WatashiWa "Smart" Copy                   | Rationale                      |
+| ------------ | ----------------------------- | ---------------------------------------- | ------------------------------ |
+| **Error**    | "Incorrect. The answer is X." | "Wait. You confused X with Y."           | Intervene logic, not shame.    |
+| **New Unit** | "Unit 5: Travel"              | "Priming Brain: 15 New Concepts"         | Sets expectation of effort.    |
+| **Success**  | "You got 10/10!"              | "Validation Complete. 0 Leech Detected." | Emphasize long-term stability. |
+| **Pacing**   | "Review 100 more cards!"      | "Brain Saturation Reached. Rest now."    | Protects against burnout.      |
 
 ---
 
 ## 4. SYSTEM ARCHITECTURE: The 3-Tier "Brain"
 
-To answer the engineering question: *"Is a Smart Layer necessary?"*
+To answer the engineering question: _"Is a Smart Layer necessary?"_
 **YES.** Without it, the Frontend becomes bloated with business logic, or the Database becomes a mess of stored procedures.
 
 ### The 3 Layers
 
-| Layer | Role | Responsibility | **Zen UX Integration** |
-|-------|------|----------------|------------------------|
-| **1. Persistence Layer** (Postgres) | **The Vault** | Source of Truth. Stores `Vocabularies`, `UserLogs`, `homonym_group_id`. | N/A |
-| **2. Smart Layer** (The Brain) | **The Orchestrator** | Decisions: *What* to show? *When* to intervene? | **Pacing Control:** Ensures the "rhythm" of learning is calm, not frantic. Prevents "Doom Review" piles. |
-| **3. Presentation Layer** (App/Web) | **The Stage** | Dumb rendering. | **Visual Feedback:** Uses *Color Psychology* (Matcha Green = mastery, Indigo = calm focus) to reduce anxiety during errors. |
+| Layer                               | Role                 | Responsibility                                                          | **Zen UX Integration**                                                                                                      |
+| ----------------------------------- | -------------------- | ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **1. Persistence Layer** (Postgres) | **The Vault**        | Source of Truth. Stores `Vocabularies`, `UserLogs`, `homonym_group_id`. | N/A                                                                                                                         |
+| **2. Smart Layer** (The Brain)      | **The Orchestrator** | Decisions: _What_ to show? _When_ to intervene?                         | **Pacing Control:** Ensures the "rhythm" of learning is calm, not frantic. Prevents "Doom Review" piles.                    |
+| **3. Presentation Layer** (App/Web) | **The Stage**        | Dumb rendering.                                                         | **Visual Feedback:** Uses _Color Psychology_ (Matcha Green = mastery, Indigo = calm focus) to reduce anxiety during errors. |
 
 ---
 
 ## 5. INTELLIGENT DATA ARCHITECTURE (Hybrid SQL)
 
-To answer the engineering question: *"SQL or NoSQL?"*
+To answer the engineering question: _"SQL or NoSQL?"_
 **Verdict:** **Hybrid SQL (Postgres + JSONB).** We need the relational integrity of SQL for user data, but the flexibility of NoSQL for content variants.
 
 ### 5.1 The "Anchor & Variant" Model
 
 We separate "Words" from "Learning Experiences".
 
-| Model | Role | Schema Highlights |
-|-------|------|-------------------|
-| **Vocabulary** (The Anchor) | Static Truth | `tags` (Array), `han_viet_info` (JSONB), `homonym_group_id` |
-| **CardVariant** (The Face) | Dynamic View | `content_payload` (JSONB). Stores Question/Answer/Distractors flexibly. |
-| **UserReview** (The Memory) | FSRS State | `srs_stage`, `stability`, `personal_anchor` (User Mnemonic). |
+| Model                       | Role         | Schema Highlights                                                       |
+| --------------------------- | ------------ | ----------------------------------------------------------------------- |
+| **Vocabulary** (The Anchor) | Static Truth | `tags` (Array), `han_viet_info` (JSONB), `homonym_group_id`             |
+| **CardVariant** (The Face)  | Dynamic View | `content_payload` (JSONB). Stores Question/Answer/Distractors flexibly. |
+| **UserReview** (The Memory) | FSRS State   | `srs_stage`, `stability`, `personal_anchor` (User Mnemonic).            |
 
 ### 5.2 Analytics & User Intelligence Strategy
 
@@ -123,8 +123,8 @@ We do not just track "Correct/Incorrect". We track **Hesitation & Habit**.
 
 ### 6.1 Feature: Active Priming (Replacing "Overview")
 
-*Old Way:* List of words -> User reads -> Enters Flashcards. (Passive)  
-*New Way:* **Context First.**
+_Old Way:_ List of words -> User reads -> Enters Flashcards. (Passive)  
+_New Way:_ **Context First.**
 
 **Scenario:**
 
@@ -139,17 +139,17 @@ The **Smart Layer** queries `Vocabularies`, checks user's `srs_stage`, and decid
 
 **Variant Matrix:**
 
-| SRS Stage | Variant Type | Front Face | Back Face | Goal |
-|-----------|--------------|------------|-----------|------|
-| **New (0)** | `Standard` | Kanji + Audio | Meaning + Hán Việt + Etymology | Acquisition |
-| **Learning (1)** | `Audio_Match` | Audio Only | 4 Images/Meanings Choice | Listening |
-| **Review (2-3)** | `Context_Gap` | "Tôi đi [___] mua táo" | "Supa" (Kanji) | Recall in Context |
-| **Leech (Fail)** | `Intervention` | "Kashimasu" vs "Karimasu" | Correction Explanation | Pattern Repair |
+| SRS Stage        | Variant Type   | Front Face                | Back Face                      | Goal              |
+| ---------------- | -------------- | ------------------------- | ------------------------------ | ----------------- |
+| **New (0)**      | `Standard`     | Kanji + Audio             | Meaning + Hán Việt + Etymology | Acquisition       |
+| **Learning (1)** | `Audio_Match`  | Audio Only                | 4 Images/Meanings Choice       | Listening         |
+| **Review (2-3)** | `Context_Gap`  | "Tôi đi [___] mua táo"    | "Supa" (Kanji)                 | Recall in Context |
+| **Leech (Fail)** | `Intervention` | "Kashimasu" vs "Karimasu" | Correction Explanation         | Pattern Repair    |
 
 ### 6.3 Feature: Interference Shield (Homonyms & Pitch Engine)
 
 **The Challenge:** Japanese has many **Homonyms** (same reading, different Kanji/Pitch).
-*Example:* `Hashi` (Chopsticks 🥢 - Atamadaka/High-Low) vs `Hashi` (Bridge 🌉 - Odaka/Low-High).
+_Example:_ `Hashi` (Chopsticks 🥢 - Atamadaka/High-Low) vs `Hashi` (Bridge 🌉 - Odaka/Low-High).
 
 **Solution Design:**
 
@@ -158,7 +158,7 @@ The **Smart Layer** queries `Vocabularies`, checks user's `srs_stage`, and decid
 We add explicit pitch and grouping data to `vocabularies`:
 
 ```sql
-ALTER TABLE vocabularies 
+ALTER TABLE vocabularies
 ADD COLUMN pitch_pattern INT, -- 1: Atamadaka, 0: Heiban, 2: Nakadaka
 ADD COLUMN pitch_svg_path TEXT, -- (Visual Render Path)
 ADD COLUMN homonym_group_id UUID; -- Shared ID for "Hashi" group
@@ -171,20 +171,20 @@ Instead of flat Hiragana, we render **Pitch-aware Text**:
 - **High Pitch:** Rendered with an overline or accent color `colorError` (Vermilion) to signify "Peak".
 - **Low Pitch:** Rendered in `secondary` text color (Gray).
 - **Visualization:** An SVG line weaves through the characters.
-  - *Chopsticks (箸):* Line starts High on 'Ha', drops Low on 'shi'.
-  - *Bridge (橋):* Line starts Low on 'Ha', rises High on 'shi'.
+  - _Chopsticks (箸):_ Line starts High on 'Ha', drops Low on 'shi'.
+  - _Bridge (橋):_ Line starts Low on 'Ha', rises High on 'shi'.
 
 #### C. Smart Logic: "Comparison Mode"
 
 1. **Trigger:** User learns "Bridge" (`Hashi`).
 2. **Check:** System sees `homonym_group_id` links to "Chopsticks".
 3. **Condition:** Has user learned "Chopsticks"?
-    - *No:* Do nothing (avoid cognitive overload).
-    - *Yes:* **Activate Comparison Mode.**
+   - _No:_ Do nothing (avoid cognitive overload).
+   - _Yes:_ **Activate Comparison Mode.**
 4. **Intervention UI (Split View):**
-    - **Left Card:** 🥢 Image + `Hashi` (High-Low Audio).
-    - **Right Card:** 🌉 Image + `Hashi` (Low-High Audio).
-    - **Task:** User must listen to a randomized audio clip and tap the correct image.
+   - **Left Card:** 🥢 Image + `Hashi` (High-Low Audio).
+   - **Right Card:** 🌉 Image + `Hashi` (Low-High Audio).
+   - **Task:** User must listen to a randomized audio clip and tap the correct image.
 
 #### D. Gamification: "Pitch Perfect Challenge"
 
@@ -197,14 +197,14 @@ Instead of flat Hiragana, we render **Pitch-aware Text**:
 **Goal:** Provide "Zen" insight, not just raw numbers.
 
 1. **Kanji Heatmap:**
-    - *Visual:* A grid of learned Kanji colored by `srs_stage`.
-    - *Green:* Mastered. *Orange:* Learning. *Red:* Leech.
+   - _Visual:_ A grid of learned Kanji colored by `srs_stage`.
+   - _Green:_ Mastered. _Orange:_ Learning. _Red:_ Leech.
 2. **The "Focus" Meter:**
-    - *Metric:* Average `ReviewLog.duration` trend.
-    - *Insight:* "You answered 20% faster today. Your fluency is improving."
+   - _Metric:_ Average `ReviewLog.duration` trend.
+   - _Insight:_ "You answered 20% faster today. Your fluency is improving."
 3. **Weekly Report (Email):**
-    - Generated from `DailyStudyStat`.
-    - "You learned 50 new words and shielded 12 confusions this week."
+   - Generated from `DailyStudyStat`.
+   - "You learned 50 new words and shielded 12 confusions this week."
 
 ---
 
@@ -227,8 +227,8 @@ We cannot generate content Real-Time (Cost + Latency risks).
 
 1. **Raw Data:** Manually curated Minna vocab lists.
 2. **Batch Job (Nightly):**
-    - GPT-4 generates 3 Context Sentences per word.
-    - GPT-4 identifies "Confusion Candidates" based on Levenshtein distance & radical similarity.
+   - GPT-4 generates 3 Context Sentences per word.
+   - GPT-4 identifies "Confusion Candidates" based on Levenshtein distance & radical similarity.
 3. **Human QA:** Admin dashboard to check "Hallucinations".
 4. **Production DB:** Only approved content goes live.
 
@@ -236,12 +236,12 @@ We cannot generate content Real-Time (Cost + Latency risks).
 
 ## 8. SUCCESS METRICS (North Star)
 
-| Metric | Definition | Goal (V2) |
-|--------|------------|-----------|
-| **Retention Rate (D30)** | % of users returning on Day 30 | > 15% (Industry avg: 5-8%) |
-| **Intervention Resolution** | % of users who answer Correctly *after* a Shield Trigger | > 85% |
-| **Session Completion** | % of started sessions finished | > 90% (Zen Design reduces burnout) |
-| **"Aha!" Signal** | User creates a "My Anchor" note on a card | > 1 note per 50 cards |
+| Metric                      | Definition                                               | Goal (V2)                          |
+| --------------------------- | -------------------------------------------------------- | ---------------------------------- |
+| **Retention Rate (D30)**    | % of users returning on Day 30                           | > 15% (Industry avg: 5-8%)         |
+| **Intervention Resolution** | % of users who answer Correctly _after_ a Shield Trigger | > 85%                              |
+| **Session Completion**      | % of started sessions finished                           | > 90% (Zen Design reduces burnout) |
+| **"Aha!" Signal**           | User creates a "My Anchor" note on a card                | > 1 note per 50 cards              |
 
 ---
 
@@ -283,4 +283,5 @@ We cannot generate content Real-Time (Cost + Latency risks).
 - [ ] **Performance:** Redis caching implementation.
 
 ---
+
 **Verdict:** The 3-Tier Architecture combined with a defined Process Pipeline ensures we build a product that is **Smart** (Adaptive), **Fast** (Performance Budgets), and **Scalable** (AI Factory).

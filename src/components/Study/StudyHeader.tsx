@@ -1,9 +1,9 @@
-import React from 'react';
-import { Button, Flex, Badge, theme } from 'antd';
-import { CloseOutlined, SettingOutlined, TeamOutlined } from '@ant-design/icons';
 import ImmersiveProgressBar from '@/components/Study/ImmersiveProgressBar';
-import { useRouter } from 'next/navigation';
+import { CloseOutlined, SettingOutlined, TeamOutlined } from '@ant-design/icons';
+import { Badge, Button, Flex, theme } from 'antd';
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import React from 'react';
 
 const { useToken } = theme;
 

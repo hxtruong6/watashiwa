@@ -1,5 +1,5 @@
-import { useRef, useState, useEffect, useCallback } from 'react';
 import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 type FlashCardAudioProps = {
 	card: any;

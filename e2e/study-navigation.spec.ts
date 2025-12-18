@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('Study Navigation Scenarios (Unauthenticated)', () => {
 	// Scenario 1: Resume Last Session (Default)

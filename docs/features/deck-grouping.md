@@ -77,9 +77,9 @@ graph LR
 
 1. **Entry**: User clicks "N5 Mastery" on Dashboard.
 2. **View**: Sees list of Decks.
-    - Deck 1: [DONE] (Green Check)
-    - Deck 2: [IN PROGRESS] (Show "Study Now" button)
-    - Deck 3: [LOCKED/WAITING] (Optional lock, or just visual gray match)
+   - Deck 1: [DONE] (Green Check)
+   - Deck 2: [IN PROGRESS] (Show "Study Now" button)
+   - Deck 3: [LOCKED/WAITING] (Optional lock, or just visual gray match)
 3. **Action**: Clicks "Study Now" on Deck 2.
 4. **Study Session**: Completes session for Deck 2.
 5. **Return**: Returned to Course Detail. Progress bar updates: "15% -> 18%".
@@ -88,7 +88,7 @@ graph LR
 
 ### A. The "Course Card" (Dashboard/List View)
 
-*Visuals*:
+_Visuals_:
 
 - **Shape**: Tall card (Portrait) or Wide Banner (Landscape), distinct from smaller Deck cards.
 - **Color**: Heavy use of **Indigo (#1E3A5F)** background for "Official/Featured" courses to signify weight/importance.
@@ -99,7 +99,7 @@ graph LR
 
 ### B. Course Detail Page (`/courses/[id]`)
 
-*Layout*:
+_Layout_:
 
 - **Header (Hero)**:
   - Full width `Washi` (Paper) background.
@@ -107,8 +107,8 @@ graph LR
   - Title: "Complete N5 Path".
   - Stats: "Students: 1,200" | "Avg Time: 3 Months".
   - **Primary Action**: Sticky CTA Button.
-    - *Not Enrolled*: "Begin Journey" (Indigo, filled).
-    - *Enrolled*: "Continue: [Next Deck Name]" (Green/Matcha).
+    - _Not Enrolled_: "Begin Journey" (Indigo, filled).
+    - _Enrolled_: "Continue: [Next Deck Name]" (Green/Matcha).
 
 - **The Path (Deck List)**:
   - A vertical "Timeline" or "Steps" visualization, not just a table.
@@ -122,7 +122,7 @@ graph LR
 
 ### C. Creation Interface (Admin/Teacher)
 
-*Interaction*:
+_Interaction_:
 
 - **Two-Pane Layout**:
   - **Left**: Course Structure (The "Ladder").
@@ -135,19 +135,19 @@ graph LR
 The "Course" feature embodies our core **Zen Mastery** philosophy by prioritizing focus and reducing decision fatigue.
 
 1. **Invisible Structure**:
-    - Users shouldn't feel the weight of "200 flashcards." They should see **"One Path."**
-    - The "Timeline" visualization hides the complexity of future decks, showing only the immediate next steps clearly (Pulse effect on current deck).
+   - Users shouldn't feel the weight of "200 flashcards." They should see **"One Path."**
+   - The "Timeline" visualization hides the complexity of future decks, showing only the immediate next steps clearly (Pulse effect on current deck).
 
 2. **Cognitive Ease**:
-    - We use a **Mobile-First** card design that presents critical information (Progress, Title, Status) in a glanceable format.
-    - **Color Coding**: Statuses are instantly recognizable without reading text.
-      - **Indigo (#1E3A5F)**: The Path/Current Focus.
-      - **Matcha (#708238)**: Mastery/Success.
-      - **Washi (#F9F7F2)**: The Canvas/Background.
+   - We use a **Mobile-First** card design that presents critical information (Progress, Title, Status) in a glanceable format.
+   - **Color Coding**: Statuses are instantly recognizable without reading text.
+     - **Indigo (#1E3A5F)**: The Path/Current Focus.
+     - **Matcha (#708238)**: Mastery/Success.
+     - **Washi (#F9F7F2)**: The Canvas/Background.
 
 3. **Positive Reinforcement**:
-    - "Mastered" decks are celebrated with distinct visual markers (Green Check + Success Text).
-    - Progress bars are ever-present but subtle, encouraging "filling the bar" rather than "doing work."
+   - "Mastered" decks are celebrated with distinct visual markers (Green Check + Success Text).
+   - Progress bars are ever-present but subtle, encouraging "filling the bar" rather than "doing work."
 
 ## 7. Edge Cases & Handling
 

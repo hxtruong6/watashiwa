@@ -1,5 +1,6 @@
 import { getUser } from '@/services/actions';
 import { getCourses } from '@/services/course-actions';
+
 import CourseList from './CourseList';
 
 export default async function CoursesDashboardPage() {

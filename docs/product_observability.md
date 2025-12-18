@@ -15,7 +15,7 @@ We categorize observability into three distinct pillars. A healthy product requi
 ### 1. The Quantitative Pillar (Telemetry)
 
 **Tool**: PostHog
-**Question**: *What is happening at scale?*
+**Question**: _What is happening at scale?_
 
 Data tells us **what** users are doing, but it is often devoid of context. We use it to identify patterns, bottlenecks, and conversion rates.
 
@@ -28,7 +28,7 @@ Data tells us **what** users are doing, but it is often devoid of context. We us
 ### 2. The Stability Pillar (Health)
 
 **Tool**: Sentry
-**Question**: *Is the system behaving as expected?*
+**Question**: _Is the system behaving as expected?_
 
 Stability is the foundation of trust. If the app crashes, 100% of your UX work is wasted. We treat errors as **unplanned work** that must be prioritized based on impact.
 
@@ -41,7 +41,7 @@ Stability is the foundation of trust. If the app crashes, 100% of your UX work i
 ### 3. The Qualitative Pillar (Empathy)
 
 **Tool**: PostHog Session Replay
-**Question**: *Why are they behaving this way?*
+**Question**: _Why are they behaving this way?_
 
 This is our empathy engine. It bridges the gap between massive data sets and individual user frustration.
 
@@ -60,28 +60,32 @@ When Sentry fires an alert, we follow the **OODA Loop** (Observe, Orient, Decide
 
 ### 1. Observe (The Alert)
 
-* **Trigger**: Sentry notifies `#engineering-alerts` via Slack/Discord.
-- **Signal**: "Uncaught Exception in `FlashCard.tsx`: undefined is not an object".
-- **Impact Assessment**: Check "Users Affected" count in Sentry. Is this one user on IE11, or 500 users on iPhone?
+- **Trigger**: Sentry notifies `#engineering-alerts` via Slack/Discord.
+
+* **Signal**: "Uncaught Exception in `FlashCard.tsx`: undefined is not an object".
+* **Impact Assessment**: Check "Users Affected" count in Sentry. Is this one user on IE11, or 500 users on iPhone?
 
 ### 2. Orient (Context Gathering)
 
-* **Link Trace**: Click the "Replay" button in Sentry to jump to the exact moment in PostHog where the error happened.
-- **Context**: What happened *before* the crash?
-  - *Did they click the audio button rapidly?*
-  - *Was their network flaky? (Check PostHog "Network" tab)*
+- **Link Trace**: Click the "Replay" button in Sentry to jump to the exact moment in PostHog where the error happened.
+
+* **Context**: What happened _before_ the crash?
+  - _Did they click the audio button rapidly?_
+  - _Was their network flaky? (Check PostHog "Network" tab)_
 
 ### 3. Decide (Triage)
 
-* Is this a P0/P1? (See defined policy above).
-- If **YES**: Rollback deployment or hotfix immediately.
-- If **NO**: Create a linear ticket, tag with `sentry-issue`, and schedule.
+- Is this a P0/P1? (See defined policy above).
+
+* If **YES**: Rollback deployment or hotfix immediately.
+* If **NO**: Create a linear ticket, tag with `sentry-issue`, and schedule.
 
 ### 4. Act (Remediation)
 
-* Write a failing test case that reproduces the bug.
-- Fix the code.
-- Verify the fix ensures the error count drops to zero.
+- Write a failing test case that reproduces the bug.
+
+* Fix the code.
+* Verify the fix ensures the error count drops to zero.
 
 ---
 
@@ -91,7 +95,7 @@ Senior engineers don't just write code; they own the outcome. We recommend a 30-
 
 1. **Metric Check**: Are WALs up or down? Why? (PostHog Trends)
 2. **Top Issues**: What are the top 3 errors by volume this week? (Sentry Issues)
-3. **Empathy Session**: Watch 3 random sessions of a *new user* signing up. Is the onboarding still smooth? (PostHog Replay)
+3. **Empathy Session**: Watch 3 random sessions of a _new user_ signing up. Is the onboarding still smooth? (PostHog Replay)
 
 ---
 

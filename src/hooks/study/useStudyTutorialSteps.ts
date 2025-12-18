@@ -1,5 +1,5 @@
-import { useTranslations } from 'next-intl';
 import type { TourProps } from 'antd';
+import { useTranslations } from 'next-intl';
 import type { RefObject } from 'react';
 
 interface UseStudyTutorialStepsParams {

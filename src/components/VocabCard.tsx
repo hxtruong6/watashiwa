@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { Card, Typography, Tag, Divider, Flex, Button, theme } from 'antd';
-import { PlayCircleOutlined, PauseCircleOutlined } from '@ant-design/icons';
-import KanjiBreakdown from './KanjiBreakdown';
+import { PauseCircleOutlined, PlayCircleOutlined } from '@ant-design/icons';
+import { Button, Card, Divider, Flex, Tag, Typography, theme } from 'antd';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
+
 import { useAudioPlayer } from './Audio/useAudioPlayer';
+import KanjiBreakdown from './KanjiBreakdown';
 
 const { Title, Text, Paragraph } = Typography;
 const { useToken } = theme;

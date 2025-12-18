@@ -1,9 +1,9 @@
 'use client';
 
+import { BarChartOutlined, BookOutlined, HomeOutlined, ReadOutlined } from '@ant-design/icons';
+import { Flex, Layout, Menu, Typography, theme } from 'antd';
+import { usePathname, useRouter } from 'next/navigation';
 import React from 'react';
-import { Layout, Menu, Typography, Flex, theme } from 'antd';
-import { HomeOutlined, ReadOutlined, BookOutlined, BarChartOutlined } from '@ant-design/icons';
-import { useRouter, usePathname } from 'next/navigation';
 
 const { Header, Sider, Content } = Layout;
 const { Title } = Typography;

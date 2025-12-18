@@ -1,9 +1,10 @@
 'use server';
 
 import { prisma } from '@/lib/db';
-import { getUser } from './actions';
 import { UserRole } from '@prisma/client';
 import { z } from 'zod';
+
+import { getUser } from './actions';
 
 const IdSchema = z.string().min(1);
 

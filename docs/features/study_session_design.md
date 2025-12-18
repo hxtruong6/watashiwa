@@ -39,7 +39,7 @@ The **Study Session** is the heart of WatashiWa. It is where users interface wit
     - **Hint (Optional)**: Audio auto-play (if enabled). Visual hint if struggling.
   - **Back (Answer)**:
     - **Reading**: Furigana (can be toggleable).
-    - **Hán Việt**: Distinct typography (e.g., uppercase serif or distinct color). *Crucial for Vietnamese learners.*
+    - **Hán Việt**: Distinct typography (e.g., uppercase serif or distinct color). _Crucial for Vietnamese learners._
     - **Meaning**: Primary definition.
     - **Context/Image**: Subtle, between meaning and examples.
     - **Examples**: 1-2 key sentences with audio.
@@ -93,11 +93,11 @@ Every review updates the `Card` record:
 
 1. User clicks Rating.
 2. **IMMEDIATELY**:
-    - Update Local State (Stats increment).
-    - Show Next Card.
+   - Update Local State (Stats increment).
+   - Show Next Card.
 3. **BACKGROUND**:
-    - Server Action: `submitReview(cardId, rating)`.
-    - On Error: Toast notification, maybe rollback (rare).
+   - Server Action: `submitReview(cardId, rating)`.
+   - On Error: Toast notification, maybe rollback (rare).
 
 ## 7. Technical Implementation Notes
 

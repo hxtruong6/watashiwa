@@ -23,11 +23,11 @@ This document outlines key considerations for optimizing the mobile experience, 
 **Scenarios**:
 
 - **Text Selection**: Long-pressing or double-tapping buttons often triggers browser text selection instead of the action.
-  - *Fix*: `user-select: none` on interactive elements.
+  - _Fix_: `user-select: none` on interactive elements.
 - **Event Bubbling**: Tapping a button inside a clickable container (or overlay) might trigger the parent's action (e.g., closing a menu) before the button's action.
-  - *Fix*: `e.stopPropagation()` on touch/click events.
+  - _Fix_: `e.stopPropagation()` on touch/click events.
 - **The "300ms Delay"**: Mobile browsers traditionally wait 300ms to see if a tap is a double-tap (zoom).
-  - *Fix*: `touch-action: manipulation` or modern frameworks usually handle this, but explicit handling helps.
+  - _Fix_: `touch-action: manipulation` or modern frameworks usually handle this, but explicit handling helps.
 
 ## 3. Visual Feedback & "Native Feel"
 
@@ -40,12 +40,12 @@ This document outlines key considerations for optimizing the mobile experience, 
 
 ## 4. Current Implementation Status (WatashiWa)
 
-| Feature | Status | Notes |
-| :--- | :--- | :--- |
-| **No Text Selection** | ✅ | Applied to Rating Buttons & Answers |
-| **No Event Bubbling** | ✅ | Applied to Rating Bar (fixes "Double Tap") |
-| **Vertical Stack (Mobile)** | ✅ | Applied to Rating Bar & Exercise Options |
-| **Reachability** | ⚠️ | Back Button is Top-Left (Hard for Righties) |
+| Feature                     | Status | Notes                                       |
+| :-------------------------- | :----- | :------------------------------------------ |
+| **No Text Selection**       | ✅     | Applied to Rating Buttons & Answers         |
+| **No Event Bubbling**       | ✅     | Applied to Rating Bar (fixes "Double Tap")  |
+| **Vertical Stack (Mobile)** | ✅     | Applied to Rating Bar & Exercise Options    |
+| **Reachability**            | ⚠️     | Back Button is Top-Left (Hard for Righties) |
 
 ## 5. Future Recommendations
 

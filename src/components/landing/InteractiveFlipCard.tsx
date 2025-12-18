@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Typography, Flex, theme } from 'antd';
-import { motion } from 'framer-motion';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { Flex, Typography, theme } from 'antd';
+import { motion } from 'framer-motion';
+import React, { useState } from 'react';
 
 const { Text } = Typography;
 const { useToken } = theme;

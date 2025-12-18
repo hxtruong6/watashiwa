@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
-import { Typography, Row, Col, Card, theme, Grid } from 'antd';
+import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
+import { useSoundEffects } from '@/hooks/useSoundEffects';
 import { Question } from '@/types/exercises';
 import { CheckCircleFilled, CloseCircleFilled, SoundOutlined } from '@ant-design/icons';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useSoundEffects } from '@/hooks/useSoundEffects';
-import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
+import { Card, Col, Grid, Row, Typography, theme } from 'antd';
+import { AnimatePresence, motion } from 'framer-motion';
+import React, { useCallback, useEffect, useState } from 'react';
 
 const { Title } = Typography;
 const { useBreakpoint } = Grid;

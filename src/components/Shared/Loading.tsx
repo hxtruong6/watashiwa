@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
-import { Flex, Spin, theme, Typography } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import { Flex, Spin, Typography, theme } from 'antd';
+import React from 'react';
 
 const { useToken } = theme;
 const { Text } = Typography;

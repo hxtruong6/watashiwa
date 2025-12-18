@@ -1,23 +1,23 @@
 'use client';
 
-import React from 'react';
-import { Typography, Card, Row, Col, Tooltip, theme } from 'antd';
-import Link from 'next/link';
 import {
-	ReadOutlined,
-	EditOutlined,
-	BookOutlined,
-	SearchOutlined,
-	ImportOutlined,
-	HeartOutlined,
 	BarChartOutlined,
-	TrophyOutlined,
-	SettingOutlined,
+	BookOutlined,
+	EditOutlined,
+	HeartOutlined,
+	ImportOutlined,
 	LockOutlined,
+	ReadOutlined,
 	RocketOutlined,
+	SearchOutlined,
+	SettingOutlined,
+	TrophyOutlined,
 } from '@ant-design/icons';
+import { Card, Col, Row, Tooltip, Typography, theme } from 'antd';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import React from 'react';
 
 const { Title, Text } = Typography;
 const { useToken } = theme;

@@ -3,7 +3,6 @@
 import { prisma } from '@/lib/db';
 import { getUser } from '@/services/actions';
 import { Question } from '@/types/exercises';
-
 import { z } from 'zod';
 
 const ExerciseSchema = z.object({

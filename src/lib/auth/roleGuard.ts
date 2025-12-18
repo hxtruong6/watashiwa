@@ -1,5 +1,5 @@
-import { UserRole } from '@prisma/client';
 import themeConfig from '@/lib/theme/themeConfig';
+import { UserRole } from '@prisma/client';
 
 export const ROLE_HIERARCHY: Record<UserRole, number> = {
 	[UserRole.USER]: 1,

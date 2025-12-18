@@ -1,10 +1,9 @@
 'use client';
 
-import React from 'react';
-import { Typography, Row, Col, theme } from 'antd';
+import { Col, Row, Typography, theme } from 'antd';
 import { motion } from 'framer-motion';
-
 import { useTranslations } from 'next-intl';
+import React from 'react';
 
 const { Text } = Typography;
 const { useToken } = theme;

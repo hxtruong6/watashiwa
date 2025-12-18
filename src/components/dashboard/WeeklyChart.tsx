@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
-import { Typography, Card, Flex, theme } from 'antd';
+import { Card, Flex, Typography, theme } from 'antd';
 import { motion } from 'motion/react';
 import { useTranslations } from 'next-intl';
+import React from 'react';
 
 const { Title, Text } = Typography;
 const { useToken } = theme;

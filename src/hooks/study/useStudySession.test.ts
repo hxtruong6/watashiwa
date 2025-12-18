@@ -1,8 +1,9 @@
-import { renderHook, act, waitFor } from '@testing-library/react';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { useStudySession } from './useStudySession';
 import * as actions from '@/services/actions';
 import * as courseActions from '@/services/course-actions';
+import { act, renderHook, waitFor } from '@testing-library/react';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+
+import { useStudySession } from './useStudySession';
 
 // Mock external actions
 vi.mock('@/services/actions', () => ({

@@ -57,32 +57,32 @@ Allow users to contribute knowledge, tips, and mnemonics to vocabulary/kanji car
 ```prisma
 model CardComment {
   id        String   @id @default(uuid())
-  
+
   // Polymorphic: attach to Vocab OR Kanji
   vocabId   String?  @map("vocab_id")
   vocab     Vocab?   @relation(fields: [vocabId], references: [id], onDelete: Cascade)
   kanjiId   String?  @map("kanji_id")
   kanji     Kanji?   @relation(fields: [kanjiId], references: [id], onDelete: Cascade)
-  
+
   authorId  String   @map("author_id")
   author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  
+
   content   String
   type      CommentType @default(GENERAL)
-  
+
   // Votes cache (optional, but good for sorting)
   upvotes   Int      @default(0)
   downvotes Int      @default(0)
   score     Int      @default(0)
-  
+
   isPinned  Boolean  @default(false) @map("is_pinned")
   isHidden  Boolean  @default(false) @map("is_hidden")
-  
+
   votes     CommentVote[]
-  
+
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
-  
+
   @@index([vocabId])
   @@index([kanjiId])
   @@index([authorId])
@@ -100,15 +100,15 @@ enum CommentType {
 
 model CommentVote {
   id        String  @id @default(uuid())
-  
+
   commentId String  @map("comment_id")
   comment   CardComment @relation(fields: [commentId], references: [id], onDelete: Cascade)
-  
+
   userId    String  @map("user_id")
   user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
+
   value     Int     // +1 or -1
-  
+
   @@unique([commentId, userId])
   @@index([commentId])
 }

@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { darkTheme, lightTheme } from '@/lib/theme/themeConfig';
+import { App, ConfigProvider } from 'antd';
 import { useTheme } from 'next-themes';
-import { ConfigProvider, App } from 'antd';
-import { lightTheme, darkTheme } from '@/lib/theme/themeConfig';
+import React, { useEffect, useState } from 'react';
 
 export default function AntdConfig({ children }: { children: React.ReactNode }) {
 	const { resolvedTheme } = useTheme();

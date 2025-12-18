@@ -12,7 +12,7 @@ We use **FSRS (Free Spaced Repetition Scheduler)** via the `ts-fsrs` library. FS
 ### Usage Logic
 
 ```typescript
-import { fsrs, generatorParameters, Rating } from 'ts-fsrs';
+import { Rating, fsrs, generatorParameters } from 'ts-fsrs';
 
 // Initialize Scheduler (Singleton)
 const params = generatorParameters({ enable_fuzz: true });
@@ -97,20 +97,20 @@ We do **not** need a separate "Import Table" in the database.
 - **Relations:**
   - `Vocab` belongs to a `Deck`.
   - `Vocab` has no study data initially.
-  - `StudyCard` is created *lazily* or *on-demand* when a user first studies the deck.
+  - `StudyCard` is created _lazily_ or _on-demand_ when a user first studies the deck.
 
 ### CSV Template Format
 
 The system expects a header row. Columns:
 
-| Column Name | Required | Description | Example |
-| :--- | :--- | :--- | :--- |
-| `term` | **Yes** | The word or expression | `学生` |
-| `reading` | **Yes** | Kana reading | `がくせい` |
-| `meaning` | **Yes** | Definition | `Student` |
-| `example_sentence` | No | Full sentence context | `私は学生です。` |
-| `example_translation` | No | Translation of sentence | `I am a student.` |
-| `han_viet` | No | Sino-Vietnamese (for VN users) | `HỌC SINH` |
+| Column Name           | Required | Description                    | Example           |
+| :-------------------- | :------- | :----------------------------- | :---------------- |
+| `term`                | **Yes**  | The word or expression         | `学生`            |
+| `reading`             | **Yes**  | Kana reading                   | `がくせい`        |
+| `meaning`             | **Yes**  | Definition                     | `Student`         |
+| `example_sentence`    | No       | Full sentence context          | `私は学生です。`  |
+| `example_translation` | No       | Translation of sentence        | `I am a student.` |
+| `han_viet`            | No       | Sino-Vietnamese (for VN users) | `HỌC SINH`        |
 
 ### Validation Rules
 
@@ -122,22 +122,22 @@ The system expects a header row. Columns:
 
 1. **Select/Drop File:** Support `.csv`.
 2. **Parse & Preview:** specialized Data Grid component.
-    - Show valid rows in normal text.
-    - **Highlight errors** in Red.
-    - Allow user to **edit cell data** directly in the grid to fix errors before importing.
-    - "Ignore" checkbox for each row.
+   - Show valid rows in normal text.
+   - **Highlight errors** in Red.
+   - Allow user to **edit cell data** directly in the grid to fix errors before importing.
+   - "Ignore" checkbox for each row.
 3. **Import:** Progress bar as items are sent to API.
 
 ## 5. Additional Features
 
 Detailed specifications for the following features are in separate documents:
 
-| Feature | Description | Spec |
-|:--------|:------------|:-----|
-| User Roles | Admin, Moderator, User permissions | [user-roles.md](features/user-roles.md) |
-| Community Comments | Card comments, voting, moderation | [community-comments.md](features/community-comments.md) |
-| Wishlist | Bookmark cards for later | [wishlist.md](features/wishlist.md) |
-| Vocab Browser | Filter/sort by memorization status | [vocab-browser.md](features/vocab-browser.md) |
-| Enhanced Dashboard | Gamification, streaks, UX | [enhanced-dashboard.md](features/enhanced-dashboard.md) |
-| User Ranking | Leaderboards by deck collection & time | [user-ranking.md](features/user-ranking.md) |
-| Card Reporting | Report incorrect content, corrections | [card-reporting.md](features/card-reporting.md) |
+| Feature            | Description                            | Spec                                                    |
+| :----------------- | :------------------------------------- | :------------------------------------------------------ |
+| User Roles         | Admin, Moderator, User permissions     | [user-roles.md](features/user-roles.md)                 |
+| Community Comments | Card comments, voting, moderation      | [community-comments.md](features/community-comments.md) |
+| Wishlist           | Bookmark cards for later               | [wishlist.md](features/wishlist.md)                     |
+| Vocab Browser      | Filter/sort by memorization status     | [vocab-browser.md](features/vocab-browser.md)           |
+| Enhanced Dashboard | Gamification, streaks, UX              | [enhanced-dashboard.md](features/enhanced-dashboard.md) |
+| User Ranking       | Leaderboards by deck collection & time | [user-ranking.md](features/user-ranking.md)             |
+| Card Reporting     | Report incorrect content, corrections  | [card-reporting.md](features/card-reporting.md)         |

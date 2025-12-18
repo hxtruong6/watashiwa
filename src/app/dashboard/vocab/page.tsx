@@ -1,16 +1,16 @@
 'use client';
 
-import React, { useEffect, useState, useMemo } from 'react';
-import { Table, Typography, Tag, Layout, Button, Flex, theme, List, Grid } from 'antd';
-import type { ColumnsType } from 'antd/es/table';
-import { getAllVocab } from '@/services/actions';
-import { ArrowLeftOutlined } from '@ant-design/icons';
-import { useRouter } from 'next/navigation';
 import DashboardHeader from '@/components/dashboard/DashboardHeader';
-import StatsOverview from '@/components/dashboard/StatsOverview';
 import ItemCard from '@/components/dashboard/ItemCard';
-import { useTranslations } from 'next-intl';
+import StatsOverview from '@/components/dashboard/StatsOverview';
+import { getAllVocab } from '@/services/actions';
 import { CardState, VocabDataType } from '@/types/common.types';
+import { ArrowLeftOutlined } from '@ant-design/icons';
+import { Button, Flex, Grid, Layout, List, Table, Tag, Typography, theme } from 'antd';
+import type { ColumnsType } from 'antd/es/table';
+import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useMemo, useState } from 'react';
 
 const { Content } = Layout;
 const { Text } = Typography;

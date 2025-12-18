@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-import React, { useState } from 'react';
-import { Table, Tag, Button, Space, Modal, message, Descriptions, Form } from 'antd';
+import KanjiEditor from '@/components/admin/KanjiEditor';
+import VocabEditor from '@/components/admin/VocabEditor';
+import { resolveReport, updateKanji, updateVocab } from '@/services/actions';
 import { CheckOutlined, EyeOutlined } from '@ant-design/icons';
 import { ReportStatus, ReportType } from '@prisma/client';
-import { resolveReport, updateVocab, updateKanji } from '@/services/actions';
-import VocabEditor from '@/components/admin/VocabEditor';
-import KanjiEditor from '@/components/admin/KanjiEditor';
+import { Button, Descriptions, Form, Modal, Space, Table, Tag, message } from 'antd';
 import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
 
 // Define type based on Prisma result (simplified for now)
 

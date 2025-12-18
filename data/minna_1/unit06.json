@@ -1,2084 +1,2084 @@
 [
-    {
-        "id": "uuid-217",
-        "wordSurface": "します",
-        "readingKana": "します",
-        "hanViet": "",
-        "meaning": "làm",
-        "enMeaning": "do, play (sports/games)",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "します",
-                "romaji": "shimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "テニスをします。",
-            "translation": "Chơi quần vợt.",
-            "enTranslation": "Play tennis.",
-            "parts": [
-                {
-                    "text": "テニス"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "します"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-218",
-        "wordSurface": "ごはん",
-        "readingKana": "ごはん",
-        "hanViet": "",
-        "meaning": "bữa ăn, cơm",
-        "enMeaning": "meal, cooked rice",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "ごはん",
-                "romaji": "gohan"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "ごはんを食べました。",
-            "translation": "Tôi đã ăn cơm.",
-            "enTranslation": "I ate a meal.",
-            "parts": [
-                {
-                    "text": "ごはん"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "食",
-                    "furigana": "た"
-                },
-                {
-                    "text": "べました"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-219",
-        "wordSurface": "パン",
-        "readingKana": "パン",
-        "hanViet": "",
-        "meaning": "bánh mì",
-        "enMeaning": "bread",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "パン",
-                "romaji": "pan"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "朝パンを食べます。",
-            "translation": "Buổi sáng ăn bánh mì.",
-            "enTranslation": "I eat bread in the morning.",
-            "parts": [
-                {
-                    "text": "朝",
-                    "furigana": "あさ"
-                },
-                {
-                    "text": "パン"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "食",
-                    "furigana": "た"
-                },
-                {
-                    "text": "べます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-220",
-        "wordSurface": "ミルク",
-        "readingKana": "ミルク",
-        "hanViet": "",
-        "meaning": "sữa",
-        "enMeaning": "milk",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "ミルク",
-                "romaji": "miruku"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "ミルクを飲みます。",
-            "translation": "Uống sữa.",
-            "enTranslation": "Drink milk.",
-            "parts": [
-                {
-                    "text": "ミルク"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "飲",
-                    "furigana": "の"
-                },
-                {
-                    "text": "みます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-221",
-        "wordSurface": "ジュース",
-        "readingKana": "ジュース",
-        "hanViet": "",
-        "meaning": "nước hoa quả",
-        "enMeaning": "juice",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "ジュース",
-                "romaji": "juusu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "ジュースをください。",
-            "translation": "Cho tôi nước hoa quả.",
-            "enTranslation": "Please give me juice.",
-            "parts": [
-                {
-                    "text": "ジュース"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "ください"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-222",
-        "wordSurface": "ビール",
-        "readingKana": "ビール",
-        "hanViet": "",
-        "meaning": "bia",
-        "enMeaning": "beer",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "ビール",
-                "romaji": "biiru"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "ビールが好きです。",
-            "translation": "Tôi thích bia.",
-            "enTranslation": "I like beer.",
-            "parts": [
-                {
-                    "text": "ビール"
-                },
-                {
-                    "text": "が"
-                },
-                {
-                    "text": "好",
-                    "furigana": "す"
-                },
-                {
-                    "text": "き"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-223",
-        "wordSurface": "たばこ",
-        "readingKana": "たばこ",
-        "hanViet": "",
-        "meaning": "thuốc lá",
-        "enMeaning": "tobacco, cigarette",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "たばこ",
-                "romaji": "tabako"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "たばこを吸います。",
-            "translation": "Hút thuốc lá.",
-            "enTranslation": "Smoke tobacco.",
-            "parts": [
-                {
-                    "text": "たばこ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "吸",
-                    "furigana": "す"
-                },
-                {
-                    "text": "います"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-224",
-        "wordSurface": "レポート",
-        "readingKana": "レポート",
-        "hanViet": "",
-        "meaning": "báo cáo",
-        "enMeaning": "report",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "レポート",
-                "romaji": "repooto"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "レポートを書きます。",
-            "translation": "Viết báo cáo.",
-            "enTranslation": "Write a report.",
-            "parts": [
-                {
-                    "text": "レポート"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "書",
-                    "furigana": "か"
-                },
-                {
-                    "text": "きます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-225",
-        "wordSurface": "ビデオ",
-        "readingKana": "ビデオ",
-        "hanViet": "",
-        "meaning": "băng video",
-        "enMeaning": "video",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "ビデオ",
-                "romaji": "bideo"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "ビデオを見ます。",
-            "translation": "Xem video.",
-            "enTranslation": "Watch a video.",
-            "parts": [
-                {
-                    "text": "ビデオ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "見",
-                    "furigana": "み"
-                },
-                {
-                    "text": "ます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-226",
-        "wordSurface": "テニス",
-        "readingKana": "テニス",
-        "hanViet": "",
-        "meaning": "quần vợt",
-        "enMeaning": "tennis",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "テニス",
-                "romaji": "tenisu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "週末テニスをします。",
-            "translation": "Cuối tuần chơi tennis.",
-            "enTranslation": "Play tennis on the weekend.",
-            "parts": [
-                {
-                    "text": "週末",
-                    "furigana": "しゅうまつ"
-                },
-                {
-                    "text": "テニス"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "します"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-227",
-        "wordSurface": "サッカー",
-        "readingKana": "サッカー",
-        "hanViet": "",
-        "meaning": "bóng đá",
-        "enMeaning": "soccer, football",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "サッカー",
-                "romaji": "sakkaa"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "サッカーをします。",
-            "translation": "Chơi bóng đá.",
-            "enTranslation": "Play soccer.",
-            "parts": [
-                {
-                    "text": "サッカー"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "します"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-228",
-        "wordSurface": "いっしょに",
-        "readingKana": "いっしょに",
-        "hanViet": "",
-        "meaning": "cùng, cùng nhau",
-        "enMeaning": "together",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "いっしょに",
-                "romaji": "isshoni"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "いっしょに帰りましょう。",
-            "translation": "Cùng về nhé.",
-            "enTranslation": "Let's go home together.",
-            "parts": [
-                {
-                    "text": "いっしょに"
-                },
-                {
-                    "text": "帰",
-                    "furigana": "かえ"
-                },
-                {
-                    "text": "りましょう"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-229",
-        "wordSurface": "ちょっと",
-        "readingKana": "ちょっと",
-        "hanViet": "",
-        "meaning": "một chút",
-        "enMeaning": "a little, a while",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "ちょっと",
-                "romaji": "chotto"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "ちょっと待ってください。",
-            "translation": "Xin chờ một chút.",
-            "enTranslation": "Please wait a moment.",
-            "parts": [
-                {
-                    "text": "ちょっと"
-                },
-                {
-                    "text": "待",
-                    "furigana": "ま"
-                },
-                {
-                    "text": "って"
-                },
-                {
-                    "text": "ください"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-230",
-        "wordSurface": "いつも",
-        "readingKana": "いつも",
-        "hanViet": "",
-        "meaning": "luôn luôn, lúc nào cũng",
-        "enMeaning": "always",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "いつも",
-                "romaji": "itsumo"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "いつも元気です。",
-            "translation": "Lúc nào cũng khỏe mạnh.",
-            "enTranslation": "Always healthy.",
-            "parts": [
-                {
-                    "text": "いつも"
-                },
-                {
-                    "text": "元気",
-                    "furigana": "げんき"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-231",
-        "wordSurface": "それから",
-        "readingKana": "それから",
-        "hanViet": "",
-        "meaning": "sau đó, tiếp theo",
-        "enMeaning": "and then, after that",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "それから",
-                "romaji": "sorekara"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "それから、映画を見ました。",
-            "translation": "Sau đó, tôi đã xem phim.",
-            "enTranslation": "And then, I watched a movie.",
-            "parts": [
-                {
-                    "text": "それから"
-                },
-                {
-                    "text": "、"
-                },
-                {
-                    "text": "映画",
-                    "furigana": "えいが"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "見",
-                    "furigana": "み"
-                },
-                {
-                    "text": "ました"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-232",
-        "wordSurface": "いいですね",
-        "readingKana": "いいですね",
-        "hanViet": "",
-        "meaning": "được đấy nhỉ",
-        "enMeaning": "That's good",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "いいですね",
-                "romaji": "iidesune"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "それはいいですね。",
-            "translation": "Cái đó được đấy nhỉ.",
-            "enTranslation": "That's nice.",
-            "parts": [
-                {
-                    "text": "それ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "いいですね"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-233",
-        "wordSurface": "わかりました",
-        "readingKana": "わかりました",
-        "hanViet": "",
-        "meaning": "tôi hiểu rồi",
-        "enMeaning": "I understand / I see",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "わかりました",
-                "romaji": "wakarimashita"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "はい、わかりました。",
-            "translation": "Vâng, tôi hiểu rồi.",
-            "enTranslation": "Yes, I understand.",
-            "parts": [
-                {
-                    "text": "はい"
-                },
-                {
-                    "text": "、"
-                },
-                {
-                    "text": "わかりました"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-234",
-        "wordSurface": "じゃまた",
-        "readingKana": "じゃまた",
-        "hanViet": "",
-        "meaning": "hẹn gặp lại",
-        "enMeaning": "See you again",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "じゃ",
-                "romaji": "ja"
-            },
-            {
-                "text": "また",
-                "romaji": "mata"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "じゃ、またあした。",
-            "translation": "Vậy thì, hẹn ngày mai gặp lại.",
-            "enTranslation": "Well then, see you tomorrow.",
-            "parts": [
-                {
-                    "text": "じゃ"
-                },
-                {
-                    "text": "、"
-                },
-                {
-                    "text": "また"
-                },
-                {
-                    "text": "あした"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-235",
-        "wordSurface": "メキシコ",
-        "readingKana": "メキシコ",
-        "hanViet": "",
-        "meaning": "Mexico",
-        "enMeaning": "Mexico",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "メキシコ",
-                "romaji": "mekishiko"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "メキシコへ行きたいです。",
-            "translation": "Tôi muốn đi Mexico.",
-            "enTranslation": "I want to go to Mexico.",
-            "parts": [
-                {
-                    "text": "メキシコ"
-                },
-                {
-                    "text": "へ"
-                },
-                {
-                    "text": "行",
-                    "furigana": "い"
-                },
-                {
-                    "text": "き"
-                },
-                {
-                    "text": "たい"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-236",
-        "wordSurface": "食べます",
-        "readingKana": "たべます",
-        "hanViet": "THỰC",
-        "meaning": "ăn",
-        "enMeaning": "eat",
-        "kanjiBreakdown": [
-            {
-                "kanji": "食",
-                "han_viet": "THỰC",
-                "meaning": "eat"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "食",
-                "furigana": "た"
-            },
-            {
-                "text": "べます",
-                "romaji": "tabemasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "野菜を食べます。",
-            "translation": "Ăn rau.",
-            "enTranslation": "Eat vegetables.",
-            "parts": [
-                {
-                    "text": "野菜",
-                    "furigana": "やさい"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "食",
-                    "furigana": "た"
-                },
-                {
-                    "text": "べます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-237",
-        "wordSurface": "飲みます",
-        "readingKana": "のみます",
-        "hanViet": "ẨM",
-        "meaning": "uống",
-        "enMeaning": "drink",
-        "kanjiBreakdown": [
-            {
-                "kanji": "飲",
-                "han_viet": "ẨM",
-                "meaning": "drink"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "飲",
-                "furigana": "の"
-            },
-            {
-                "text": "みます",
-                "romaji": "nomimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "水を飲みます。",
-            "translation": "Uống nước.",
-            "enTranslation": "Drink water.",
-            "parts": [
-                {
-                    "text": "水",
-                    "furigana": "みず"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "飲",
-                    "furigana": "の"
-                },
-                {
-                    "text": "みます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-238",
-        "wordSurface": "吸います",
-        "readingKana": "すいます",
-        "hanViet": "HẤP",
-        "meaning": "hút",
-        "enMeaning": "smoke, inhale",
-        "kanjiBreakdown": [
-            {
-                "kanji": "吸",
-                "han_viet": "HẤP",
-                "meaning": "suck, inhale"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "吸",
-                "furigana": "す"
-            },
-            {
-                "text": "います",
-                "romaji": "suimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "たばこを吸います。",
-            "translation": "Hút thuốc lá.",
-            "enTranslation": "Smoke a cigarette.",
-            "parts": [
-                {
-                    "text": "たばこ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "吸",
-                    "furigana": "す"
-                },
-                {
-                    "text": "います"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-239",
-        "wordSurface": "見ます",
-        "readingKana": "みます",
-        "hanViet": "KIẾN",
-        "meaning": "nhìn, xem",
-        "enMeaning": "see, watch",
-        "kanjiBreakdown": [
-            {
-                "kanji": "見",
-                "han_viet": "KIẾN",
-                "meaning": "see"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "見",
-                "furigana": "み"
-            },
-            {
-                "text": "ます",
-                "romaji": "mimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "写真を見ます。",
-            "translation": "Xem ảnh.",
-            "enTranslation": "Look at photos.",
-            "parts": [
-                {
-                    "text": "写真",
-                    "furigana": "しゃしん"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "見",
-                    "furigana": "み"
-                },
-                {
-                    "text": "ます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-240",
-        "wordSurface": "聞きます",
-        "readingKana": "ききます",
-        "hanViet": "VĂN",
-        "meaning": "nghe",
-        "enMeaning": "hear, listen, ask",
-        "kanjiBreakdown": [
-            {
-                "kanji": "聞",
-                "han_viet": "VĂN",
-                "meaning": "hear"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "聞",
-                "furigana": "き"
-            },
-            {
-                "text": "きます",
-                "romaji": "kikimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "音楽を聞きます。",
-            "translation": "Nghe nhạc.",
-            "enTranslation": "Listen to music.",
-            "parts": [
-                {
-                    "text": "音楽",
-                    "furigana": "おんがく"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "聞",
-                    "furigana": "き"
-                },
-                {
-                    "text": "きます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-241",
-        "wordSurface": "読みます",
-        "readingKana": "よみます",
-        "hanViet": "ĐỘC",
-        "meaning": "đọc",
-        "enMeaning": "read",
-        "kanjiBreakdown": [
-            {
-                "kanji": "読",
-                "han_viet": "ĐỘC",
-                "meaning": "read"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "読",
-                "furigana": "よ"
-            },
-            {
-                "text": "みます",
-                "romaji": "yomimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "新聞を読みます。",
-            "translation": "Đọc báo.",
-            "enTranslation": "Read a newspaper.",
-            "parts": [
-                {
-                    "text": "新聞",
-                    "furigana": "しんぶん"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "読",
-                    "furigana": "よ"
-                },
-                {
-                    "text": "みます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-242",
-        "wordSurface": "書きます",
-        "readingKana": "かきます",
-        "hanViet": "THƯ",
-        "meaning": "viết",
-        "enMeaning": "write",
-        "kanjiBreakdown": [
-            {
-                "kanji": "書",
-                "han_viet": "THƯ",
-                "meaning": "write"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "書",
-                "furigana": "か"
-            },
-            {
-                "text": "きます",
-                "romaji": "kakimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "手紙を書きます。",
-            "translation": "Viết thư.",
-            "enTranslation": "Write a letter.",
-            "parts": [
-                {
-                    "text": "手紙",
-                    "furigana": "てがみ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "書",
-                    "furigana": "か"
-                },
-                {
-                    "text": "きます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-243",
-        "wordSurface": "買います",
-        "readingKana": "かいます",
-        "hanViet": "MÃI",
-        "meaning": "mua",
-        "enMeaning": "buy",
-        "kanjiBreakdown": [
-            {
-                "kanji": "買",
-                "han_viet": "MÃI",
-                "meaning": "buy"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "買",
-                "furigana": "か"
-            },
-            {
-                "text": "います",
-                "romaji": "kaimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "服を買います。",
-            "translation": "Mua quần áo.",
-            "enTranslation": "Buy clothes.",
-            "parts": [
-                {
-                    "text": "服",
-                    "furigana": "ふく"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "買",
-                    "furigana": "か"
-                },
-                {
-                    "text": "います"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-244",
-        "wordSurface": "撮ります",
-        "readingKana": "とります",
-        "hanViet": "TOÁT",
-        "meaning": "chụp",
-        "enMeaning": "take (a photo)",
-        "kanjiBreakdown": [
-            {
-                "kanji": "撮",
-                "han_viet": "TOÁT",
-                "meaning": "snapshot"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "撮",
-                "furigana": "と"
-            },
-            {
-                "text": "ります",
-                "romaji": "torimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "写真を撮ります。",
-            "translation": "Chụp ảnh.",
-            "enTranslation": "Take a photo.",
-            "parts": [
-                {
-                    "text": "写真",
-                    "furigana": "しゃしん"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "撮",
-                    "furigana": "と"
-                },
-                {
-                    "text": "ります"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-245",
-        "wordSurface": "会います",
-        "readingKana": "あいます",
-        "hanViet": "HỘI",
-        "meaning": "gặp",
-        "enMeaning": "meet",
-        "kanjiBreakdown": [
-            {
-                "kanji": "会",
-                "han_viet": "HỘI",
-                "meaning": "meet"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "会",
-                "furigana": "あ"
-            },
-            {
-                "text": "います",
-                "romaji": "aimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "友達に会います。",
-            "translation": "Gặp bạn.",
-            "enTranslation": "Meet a friend.",
-            "parts": [
-                {
-                    "text": "友達",
-                    "furigana": "ともだち"
-                },
-                {
-                    "text": "に"
-                },
-                {
-                    "text": "会",
-                    "furigana": "あ"
-                },
-                {
-                    "text": "います"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-246",
-        "wordSurface": "朝ごはん",
-        "readingKana": "あさごはん",
-        "hanViet": "TRIỀU",
-        "meaning": "bữa sáng",
-        "enMeaning": "breakfast",
-        "kanjiBreakdown": [
-            {
-                "kanji": "朝",
-                "han_viet": "TRIỀU",
-                "meaning": "morning"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "朝",
-                "furigana": "あさ"
-            },
-            {
-                "text": "ごはん",
-                "romaji": "asagohan"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "朝ごはんを食べません。",
-            "translation": "Không ăn sáng.",
-            "enTranslation": "Do not eat breakfast.",
-            "parts": [
-                {
-                    "text": "朝",
-                    "furigana": "あさ"
-                },
-                {
-                    "text": "ごはん"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "食",
-                    "furigana": "た"
-                },
-                {
-                    "text": "べません"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-247",
-        "wordSurface": "昼ごはん",
-        "readingKana": "ひるごはん",
-        "hanViet": "TRÚ",
-        "meaning": "bữa trưa",
-        "enMeaning": "lunch",
-        "kanjiBreakdown": [
-            {
-                "kanji": "昼",
-                "han_viet": "TRÚ",
-                "meaning": "daytime"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "昼",
-                "furigana": "ひる"
-            },
-            {
-                "text": "ごはん",
-                "romaji": "hirugohan"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "いっしょに昼ごはんを食べませんか。",
-            "translation": "Cùng ăn trưa không?",
-            "enTranslation": "Would you like to eat lunch together?",
-            "parts": [
-                {
-                    "text": "いっしょに"
-                },
-                {
-                    "text": "昼",
-                    "furigana": "ひる"
-                },
-                {
-                    "text": "ごはん"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "食",
-                    "furigana": "た"
-                },
-                {
-                    "text": "べませんか"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-248",
-        "wordSurface": "晩ごはん",
-        "readingKana": "ばんごはん",
-        "hanViet": "VÃN",
-        "meaning": "bữa tối",
-        "enMeaning": "dinner",
-        "kanjiBreakdown": [
-            {
-                "kanji": "晩",
-                "han_viet": "VÃN",
-                "meaning": "nightfall"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "晩",
-                "furigana": "ばん"
-            },
-            {
-                "text": "ごはん",
-                "romaji": "bangohan"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "晩ごはんを作ります。",
-            "translation": "Nấu bữa tối.",
-            "enTranslation": "Make dinner.",
-            "parts": [
-                {
-                    "text": "晩",
-                    "furigana": "ばん"
-                },
-                {
-                    "text": "ごはん"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "作",
-                    "furigana": "つく"
-                },
-                {
-                    "text": "ります"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-249",
-        "wordSurface": "卵",
-        "readingKana": "たまご",
-        "hanViet": "NOÃN",
-        "meaning": "trứng",
-        "enMeaning": "egg",
-        "kanjiBreakdown": [
-            {
-                "kanji": "卵",
-                "han_viet": "NOÃN",
-                "meaning": "egg"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "卵",
-                "furigana": "たまご",
-                "romaji": "tamago"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "卵料理が好きです。",
-            "translation": "Tôi thích món trứng.",
-            "enTranslation": "I like egg dishes.",
-            "parts": [
-                {
-                    "text": "卵",
-                    "furigana": "たまご"
-                },
-                {
-                    "text": "料理",
-                    "furigana": "りょうり"
-                },
-                {
-                    "text": "が"
-                },
-                {
-                    "text": "好",
-                    "furigana": "す"
-                },
-                {
-                    "text": "き"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-250",
-        "wordSurface": "肉",
-        "readingKana": "にく",
-        "hanViet": "NHỤC",
-        "meaning": "thịt",
-        "enMeaning": "meat",
-        "kanjiBreakdown": [
-            {
-                "kanji": "肉",
-                "han_viet": "NHỤC",
-                "meaning": "meat"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "肉",
-                "furigana": "にく",
-                "romaji": "niku"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "肉を食べます。",
-            "translation": "Ăn thịt.",
-            "enTranslation": "Eat meat.",
-            "parts": [
-                {
-                    "text": "肉",
-                    "furigana": "にく"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "食",
-                    "furigana": "た"
-                },
-                {
-                    "text": "べます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-251",
-        "wordSurface": "魚",
-        "readingKana": "さかな",
-        "hanViet": "NGƯ",
-        "meaning": "cá",
-        "enMeaning": "fish",
-        "kanjiBreakdown": [
-            {
-                "kanji": "魚",
-                "han_viet": "NGƯ",
-                "meaning": "fish"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "魚",
-                "furigana": "さかな",
-                "romaji": "sakana"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "魚が好きです。",
-            "translation": "Tôi thích cá.",
-            "enTranslation": "I like fish.",
-            "parts": [
-                {
-                    "text": "魚",
-                    "furigana": "さかな"
-                },
-                {
-                    "text": "が"
-                },
-                {
-                    "text": "好",
-                    "furigana": "す"
-                },
-                {
-                    "text": "き"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-252",
-        "wordSurface": "野菜",
-        "readingKana": "やさい",
-        "hanViet": "DÃ THÁI",
-        "meaning": "rau",
-        "enMeaning": "vegetable",
-        "kanjiBreakdown": [
-            {
-                "kanji": "野",
-                "han_viet": "DÃ",
-                "meaning": "plains"
-            },
-            {
-                "kanji": "菜",
-                "han_viet": "THÁI",
-                "meaning": "vegetable"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "野菜",
-                "furigana": "やさい",
-                "romaji": "yasai"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "野菜をたくさん食べます。",
-            "translation": "Ăn nhiều rau.",
-            "enTranslation": "Eat a lot of vegetables.",
-            "parts": [
-                {
-                    "text": "野菜",
-                    "furigana": "やさい"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "たくさん"
-                },
-                {
-                    "text": "食",
-                    "furigana": "た"
-                },
-                {
-                    "text": "べます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-253",
-        "wordSurface": "果物",
-        "readingKana": "くだもの",
-        "hanViet": "QUẢ VẬT",
-        "meaning": "hoa quả, trái cây",
-        "enMeaning": "fruit",
-        "kanjiBreakdown": [
-            {
-                "kanji": "果",
-                "han_viet": "QUẢ",
-                "meaning": "fruit"
-            },
-            {
-                "kanji": "物",
-                "han_viet": "VẬT",
-                "meaning": "thing"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "果物",
-                "furigana": "くだもの",
-                "romaji": "kudamono"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "果物を買います。",
-            "translation": "Mua trái cây.",
-            "enTranslation": "Buy fruit.",
-            "parts": [
-                {
-                    "text": "果物",
-                    "furigana": "くだもの"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "買",
-                    "furigana": "か"
-                },
-                {
-                    "text": "います"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-254",
-        "wordSurface": "酒",
-        "readingKana": "さけ",
-        "hanViet": "TỬU",
-        "meaning": "rượu, rượu gạo NB",
-        "enMeaning": "sake, alcohol",
-        "kanjiBreakdown": [
-            {
-                "kanji": "酒",
-                "han_viet": "TỬU",
-                "meaning": "sake, wine"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "酒",
-                "furigana": "さけ",
-                "romaji": "sake"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "お酒を飲みますか。",
-            "translation": "Bạn có uống rượu không?",
-            "enTranslation": "Do you drink alcohol?",
-            "parts": [
-                {
-                    "text": "お"
-                },
-                {
-                    "text": "酒",
-                    "furigana": "さけ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "飲",
-                    "furigana": "の"
-                },
-                {
-                    "text": "みます"
-                },
-                {
-                    "text": "か"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-255",
-        "wordSurface": "手紙",
-        "readingKana": "てがみ",
-        "hanViet": "THỦ CHỈ",
-        "meaning": "thư",
-        "enMeaning": "letter",
-        "kanjiBreakdown": [
-            {
-                "kanji": "手",
-                "han_viet": "THỦ",
-                "meaning": "hand"
-            },
-            {
-                "kanji": "紙",
-                "han_viet": "CHỈ",
-                "meaning": "paper"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "手紙",
-                "furigana": "てがみ",
-                "romaji": "tegami"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "手紙を出します。",
-            "translation": "Gửi thư.",
-            "enTranslation": "Send a letter.",
-            "parts": [
-                {
-                    "text": "手紙",
-                    "furigana": "てがみ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "出",
-                    "furigana": "だ"
-                },
-                {
-                    "text": "します"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-256",
-        "wordSurface": "写真",
-        "readingKana": "しゃしん",
-        "hanViet": "TẢ CHÂN",
-        "meaning": "bức ảnh",
-        "enMeaning": "photograph",
-        "kanjiBreakdown": [
-            {
-                "kanji": "写",
-                "han_viet": "TẢ",
-                "meaning": "copy"
-            },
-            {
-                "kanji": "真",
-                "han_viet": "CHÂN",
-                "meaning": "truth"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "写真",
-                "furigana": "しゃしん",
-                "romaji": "shashin"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "写真を撮ってください。",
-            "translation": "Hãy chụp ảnh giúp tôi.",
-            "enTranslation": "Please take a photo.",
-            "parts": [
-                {
-                    "text": "写真",
-                    "furigana": "しゃしん"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "撮",
-                    "furigana": "と"
-                },
-                {
-                    "text": "って"
-                },
-                {
-                    "text": "ください"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-257",
-        "wordSurface": "店",
-        "readingKana": "みせ",
-        "hanViet": "ĐIẾM",
-        "meaning": "tiệm, cửa hàng",
-        "enMeaning": "shop, store",
-        "kanjiBreakdown": [
-            {
-                "kanji": "店",
-                "han_viet": "ĐIẾM",
-                "meaning": "store"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "店",
-                "furigana": "みせ",
-                "romaji": "mise"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "いい店を知っています。",
-            "translation": "Tôi biết một cửa hàng tốt.",
-            "enTranslation": "I know a good shop.",
-            "parts": [
-                {
-                    "text": "いい"
-                },
-                {
-                    "text": "店",
-                    "furigana": "みせ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "知",
-                    "furigana": "し"
-                },
-                {
-                    "text": "って"
-                },
-                {
-                    "text": "います"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-258",
-        "wordSurface": "庭",
-        "readingKana": "にわ",
-        "hanViet": "THÍNH",
-        "meaning": "vườn",
-        "enMeaning": "garden",
-        "kanjiBreakdown": [
-            {
-                "kanji": "庭",
-                "han_viet": "THÍNH",
-                "meaning": "courtyard"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "庭",
-                "furigana": "にわ",
-                "romaji": "niwa"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "庭に花があります。",
-            "translation": "Trong vườn có hoa.",
-            "enTranslation": "There are flowers in the garden.",
-            "parts": [
-                {
-                    "text": "庭",
-                    "furigana": "にわ"
-                },
-                {
-                    "text": "に"
-                },
-                {
-                    "text": "花",
-                    "furigana": "はな"
-                },
-                {
-                    "text": "が"
-                },
-                {
-                    "text": "あります"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-259",
-        "wordSurface": "宿題",
-        "readingKana": "しゅくだい",
-        "hanViet": "TÚC ĐỀ",
-        "meaning": "bài tập về nhà",
-        "enMeaning": "homework",
-        "kanjiBreakdown": [
-            {
-                "kanji": "宿",
-                "han_viet": "TÚC",
-                "meaning": "inn, lodge"
-            },
-            {
-                "kanji": "題",
-                "han_viet": "ĐỀ",
-                "meaning": "topic"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "宿題",
-                "furigana": "しゅくだい",
-                "romaji": "shukudai"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "宿題をしましたか。",
-            "translation": "Bạn đã làm bài tập chưa?",
-            "enTranslation": "Did you do your homework?",
-            "parts": [
-                {
-                    "text": "宿題",
-                    "furigana": "しゅくだい"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "しました"
-                },
-                {
-                    "text": "か"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-260",
-        "wordSurface": "花見",
-        "readingKana": "はなみ",
-        "hanViet": "HOA KIẾN",
-        "meaning": "việc ngắm hoa anh đào",
-        "enMeaning": "cherry blossom viewing",
-        "kanjiBreakdown": [
-            {
-                "kanji": "花",
-                "han_viet": "HOA",
-                "meaning": "flower"
-            },
-            {
-                "kanji": "見",
-                "han_viet": "KIẾN",
-                "meaning": "see"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "花見",
-                "furigana": "はなみ",
-                "romaji": "hanami"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "週末花見に行きます。",
-            "translation": "Cuối tuần đi ngắm hoa.",
-            "enTranslation": "Go flower viewing on the weekend.",
-            "parts": [
-                {
-                    "text": "週末",
-                    "furigana": "しゅうまつ"
-                },
-                {
-                    "text": "花見",
-                    "furigana": "はなみ"
-                },
-                {
-                    "text": "に"
-                },
-                {
-                    "text": "行",
-                    "furigana": "い"
-                },
-                {
-                    "text": "きます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-261",
-        "wordSurface": "何",
-        "readingKana": "なに",
-        "hanViet": "HÀ",
-        "meaning": "cái gì",
-        "enMeaning": "what",
-        "kanjiBreakdown": [
-            {
-                "kanji": "何",
-                "han_viet": "HÀ",
-                "meaning": "what"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "何",
-                "furigana": "なに",
-                "romaji": "nani"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "何を買いましたか。",
-            "translation": "Bạn đã mua cái gì?",
-            "enTranslation": "What did you buy?",
-            "parts": [
-                {
-                    "text": "何",
-                    "furigana": "なに"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "買",
-                    "furigana": "か"
-                },
-                {
-                    "text": "いました"
-                },
-                {
-                    "text": "か"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-262",
-        "wordSurface": "時々",
-        "readingKana": "ときどき",
-        "hanViet": "THÌ",
-        "meaning": "thỉnh thoảng",
-        "enMeaning": "sometimes",
-        "kanjiBreakdown": [
-            {
-                "kanji": "時",
-                "han_viet": "THÌ",
-                "meaning": "time"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "時々",
-                "furigana": "ときどき",
-                "romaji": "tokidoki"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "時々映画を見ます。",
-            "translation": "Thỉnh thoảng tôi xem phim.",
-            "enTranslation": "Sometimes I watch movies.",
-            "parts": [
-                {
-                    "text": "時々",
-                    "furigana": "ときどき"
-                },
-                {
-                    "text": "映画",
-                    "furigana": "えいが"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "見",
-                    "furigana": "み"
-                },
-                {
-                    "text": "ます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    }
+	{
+		"id": "uuid-217",
+		"wordSurface": "します",
+		"readingKana": "します",
+		"hanViet": "",
+		"meaning": "làm",
+		"enMeaning": "do, play (sports/games)",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "します",
+				"romaji": "shimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "テニスをします。",
+			"translation": "Chơi quần vợt.",
+			"enTranslation": "Play tennis.",
+			"parts": [
+				{
+					"text": "テニス"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "します"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-218",
+		"wordSurface": "ごはん",
+		"readingKana": "ごはん",
+		"hanViet": "",
+		"meaning": "bữa ăn, cơm",
+		"enMeaning": "meal, cooked rice",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "ごはん",
+				"romaji": "gohan"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "ごはんを食べました。",
+			"translation": "Tôi đã ăn cơm.",
+			"enTranslation": "I ate a meal.",
+			"parts": [
+				{
+					"text": "ごはん"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "食",
+					"furigana": "た"
+				},
+				{
+					"text": "べました"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-219",
+		"wordSurface": "パン",
+		"readingKana": "パン",
+		"hanViet": "",
+		"meaning": "bánh mì",
+		"enMeaning": "bread",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "パン",
+				"romaji": "pan"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "朝パンを食べます。",
+			"translation": "Buổi sáng ăn bánh mì.",
+			"enTranslation": "I eat bread in the morning.",
+			"parts": [
+				{
+					"text": "朝",
+					"furigana": "あさ"
+				},
+				{
+					"text": "パン"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "食",
+					"furigana": "た"
+				},
+				{
+					"text": "べます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-220",
+		"wordSurface": "ミルク",
+		"readingKana": "ミルク",
+		"hanViet": "",
+		"meaning": "sữa",
+		"enMeaning": "milk",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "ミルク",
+				"romaji": "miruku"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "ミルクを飲みます。",
+			"translation": "Uống sữa.",
+			"enTranslation": "Drink milk.",
+			"parts": [
+				{
+					"text": "ミルク"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "飲",
+					"furigana": "の"
+				},
+				{
+					"text": "みます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-221",
+		"wordSurface": "ジュース",
+		"readingKana": "ジュース",
+		"hanViet": "",
+		"meaning": "nước hoa quả",
+		"enMeaning": "juice",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "ジュース",
+				"romaji": "juusu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "ジュースをください。",
+			"translation": "Cho tôi nước hoa quả.",
+			"enTranslation": "Please give me juice.",
+			"parts": [
+				{
+					"text": "ジュース"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "ください"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-222",
+		"wordSurface": "ビール",
+		"readingKana": "ビール",
+		"hanViet": "",
+		"meaning": "bia",
+		"enMeaning": "beer",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "ビール",
+				"romaji": "biiru"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "ビールが好きです。",
+			"translation": "Tôi thích bia.",
+			"enTranslation": "I like beer.",
+			"parts": [
+				{
+					"text": "ビール"
+				},
+				{
+					"text": "が"
+				},
+				{
+					"text": "好",
+					"furigana": "す"
+				},
+				{
+					"text": "き"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-223",
+		"wordSurface": "たばこ",
+		"readingKana": "たばこ",
+		"hanViet": "",
+		"meaning": "thuốc lá",
+		"enMeaning": "tobacco, cigarette",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "たばこ",
+				"romaji": "tabako"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "たばこを吸います。",
+			"translation": "Hút thuốc lá.",
+			"enTranslation": "Smoke tobacco.",
+			"parts": [
+				{
+					"text": "たばこ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "吸",
+					"furigana": "す"
+				},
+				{
+					"text": "います"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-224",
+		"wordSurface": "レポート",
+		"readingKana": "レポート",
+		"hanViet": "",
+		"meaning": "báo cáo",
+		"enMeaning": "report",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "レポート",
+				"romaji": "repooto"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "レポートを書きます。",
+			"translation": "Viết báo cáo.",
+			"enTranslation": "Write a report.",
+			"parts": [
+				{
+					"text": "レポート"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "書",
+					"furigana": "か"
+				},
+				{
+					"text": "きます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-225",
+		"wordSurface": "ビデオ",
+		"readingKana": "ビデオ",
+		"hanViet": "",
+		"meaning": "băng video",
+		"enMeaning": "video",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "ビデオ",
+				"romaji": "bideo"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "ビデオを見ます。",
+			"translation": "Xem video.",
+			"enTranslation": "Watch a video.",
+			"parts": [
+				{
+					"text": "ビデオ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "見",
+					"furigana": "み"
+				},
+				{
+					"text": "ます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-226",
+		"wordSurface": "テニス",
+		"readingKana": "テニス",
+		"hanViet": "",
+		"meaning": "quần vợt",
+		"enMeaning": "tennis",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "テニス",
+				"romaji": "tenisu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "週末テニスをします。",
+			"translation": "Cuối tuần chơi tennis.",
+			"enTranslation": "Play tennis on the weekend.",
+			"parts": [
+				{
+					"text": "週末",
+					"furigana": "しゅうまつ"
+				},
+				{
+					"text": "テニス"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "します"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-227",
+		"wordSurface": "サッカー",
+		"readingKana": "サッカー",
+		"hanViet": "",
+		"meaning": "bóng đá",
+		"enMeaning": "soccer, football",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "サッカー",
+				"romaji": "sakkaa"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "サッカーをします。",
+			"translation": "Chơi bóng đá.",
+			"enTranslation": "Play soccer.",
+			"parts": [
+				{
+					"text": "サッカー"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "します"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-228",
+		"wordSurface": "いっしょに",
+		"readingKana": "いっしょに",
+		"hanViet": "",
+		"meaning": "cùng, cùng nhau",
+		"enMeaning": "together",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "いっしょに",
+				"romaji": "isshoni"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "いっしょに帰りましょう。",
+			"translation": "Cùng về nhé.",
+			"enTranslation": "Let's go home together.",
+			"parts": [
+				{
+					"text": "いっしょに"
+				},
+				{
+					"text": "帰",
+					"furigana": "かえ"
+				},
+				{
+					"text": "りましょう"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-229",
+		"wordSurface": "ちょっと",
+		"readingKana": "ちょっと",
+		"hanViet": "",
+		"meaning": "một chút",
+		"enMeaning": "a little, a while",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "ちょっと",
+				"romaji": "chotto"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "ちょっと待ってください。",
+			"translation": "Xin chờ một chút.",
+			"enTranslation": "Please wait a moment.",
+			"parts": [
+				{
+					"text": "ちょっと"
+				},
+				{
+					"text": "待",
+					"furigana": "ま"
+				},
+				{
+					"text": "って"
+				},
+				{
+					"text": "ください"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-230",
+		"wordSurface": "いつも",
+		"readingKana": "いつも",
+		"hanViet": "",
+		"meaning": "luôn luôn, lúc nào cũng",
+		"enMeaning": "always",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "いつも",
+				"romaji": "itsumo"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "いつも元気です。",
+			"translation": "Lúc nào cũng khỏe mạnh.",
+			"enTranslation": "Always healthy.",
+			"parts": [
+				{
+					"text": "いつも"
+				},
+				{
+					"text": "元気",
+					"furigana": "げんき"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-231",
+		"wordSurface": "それから",
+		"readingKana": "それから",
+		"hanViet": "",
+		"meaning": "sau đó, tiếp theo",
+		"enMeaning": "and then, after that",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "それから",
+				"romaji": "sorekara"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "それから、映画を見ました。",
+			"translation": "Sau đó, tôi đã xem phim.",
+			"enTranslation": "And then, I watched a movie.",
+			"parts": [
+				{
+					"text": "それから"
+				},
+				{
+					"text": "、"
+				},
+				{
+					"text": "映画",
+					"furigana": "えいが"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "見",
+					"furigana": "み"
+				},
+				{
+					"text": "ました"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-232",
+		"wordSurface": "いいですね",
+		"readingKana": "いいですね",
+		"hanViet": "",
+		"meaning": "được đấy nhỉ",
+		"enMeaning": "That's good",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "いいですね",
+				"romaji": "iidesune"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "それはいいですね。",
+			"translation": "Cái đó được đấy nhỉ.",
+			"enTranslation": "That's nice.",
+			"parts": [
+				{
+					"text": "それ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "いいですね"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-233",
+		"wordSurface": "わかりました",
+		"readingKana": "わかりました",
+		"hanViet": "",
+		"meaning": "tôi hiểu rồi",
+		"enMeaning": "I understand / I see",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "わかりました",
+				"romaji": "wakarimashita"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "はい、わかりました。",
+			"translation": "Vâng, tôi hiểu rồi.",
+			"enTranslation": "Yes, I understand.",
+			"parts": [
+				{
+					"text": "はい"
+				},
+				{
+					"text": "、"
+				},
+				{
+					"text": "わかりました"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-234",
+		"wordSurface": "じゃまた",
+		"readingKana": "じゃまた",
+		"hanViet": "",
+		"meaning": "hẹn gặp lại",
+		"enMeaning": "See you again",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "じゃ",
+				"romaji": "ja"
+			},
+			{
+				"text": "また",
+				"romaji": "mata"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "じゃ、またあした。",
+			"translation": "Vậy thì, hẹn ngày mai gặp lại.",
+			"enTranslation": "Well then, see you tomorrow.",
+			"parts": [
+				{
+					"text": "じゃ"
+				},
+				{
+					"text": "、"
+				},
+				{
+					"text": "また"
+				},
+				{
+					"text": "あした"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-235",
+		"wordSurface": "メキシコ",
+		"readingKana": "メキシコ",
+		"hanViet": "",
+		"meaning": "Mexico",
+		"enMeaning": "Mexico",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "メキシコ",
+				"romaji": "mekishiko"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "メキシコへ行きたいです。",
+			"translation": "Tôi muốn đi Mexico.",
+			"enTranslation": "I want to go to Mexico.",
+			"parts": [
+				{
+					"text": "メキシコ"
+				},
+				{
+					"text": "へ"
+				},
+				{
+					"text": "行",
+					"furigana": "い"
+				},
+				{
+					"text": "き"
+				},
+				{
+					"text": "たい"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-236",
+		"wordSurface": "食べます",
+		"readingKana": "たべます",
+		"hanViet": "THỰC",
+		"meaning": "ăn",
+		"enMeaning": "eat",
+		"kanjiBreakdown": [
+			{
+				"kanji": "食",
+				"han_viet": "THỰC",
+				"meaning": "eat"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "食",
+				"furigana": "た"
+			},
+			{
+				"text": "べます",
+				"romaji": "tabemasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "野菜を食べます。",
+			"translation": "Ăn rau.",
+			"enTranslation": "Eat vegetables.",
+			"parts": [
+				{
+					"text": "野菜",
+					"furigana": "やさい"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "食",
+					"furigana": "た"
+				},
+				{
+					"text": "べます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-237",
+		"wordSurface": "飲みます",
+		"readingKana": "のみます",
+		"hanViet": "ẨM",
+		"meaning": "uống",
+		"enMeaning": "drink",
+		"kanjiBreakdown": [
+			{
+				"kanji": "飲",
+				"han_viet": "ẨM",
+				"meaning": "drink"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "飲",
+				"furigana": "の"
+			},
+			{
+				"text": "みます",
+				"romaji": "nomimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "水を飲みます。",
+			"translation": "Uống nước.",
+			"enTranslation": "Drink water.",
+			"parts": [
+				{
+					"text": "水",
+					"furigana": "みず"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "飲",
+					"furigana": "の"
+				},
+				{
+					"text": "みます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-238",
+		"wordSurface": "吸います",
+		"readingKana": "すいます",
+		"hanViet": "HẤP",
+		"meaning": "hút",
+		"enMeaning": "smoke, inhale",
+		"kanjiBreakdown": [
+			{
+				"kanji": "吸",
+				"han_viet": "HẤP",
+				"meaning": "suck, inhale"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "吸",
+				"furigana": "す"
+			},
+			{
+				"text": "います",
+				"romaji": "suimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "たばこを吸います。",
+			"translation": "Hút thuốc lá.",
+			"enTranslation": "Smoke a cigarette.",
+			"parts": [
+				{
+					"text": "たばこ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "吸",
+					"furigana": "す"
+				},
+				{
+					"text": "います"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-239",
+		"wordSurface": "見ます",
+		"readingKana": "みます",
+		"hanViet": "KIẾN",
+		"meaning": "nhìn, xem",
+		"enMeaning": "see, watch",
+		"kanjiBreakdown": [
+			{
+				"kanji": "見",
+				"han_viet": "KIẾN",
+				"meaning": "see"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "見",
+				"furigana": "み"
+			},
+			{
+				"text": "ます",
+				"romaji": "mimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "写真を見ます。",
+			"translation": "Xem ảnh.",
+			"enTranslation": "Look at photos.",
+			"parts": [
+				{
+					"text": "写真",
+					"furigana": "しゃしん"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "見",
+					"furigana": "み"
+				},
+				{
+					"text": "ます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-240",
+		"wordSurface": "聞きます",
+		"readingKana": "ききます",
+		"hanViet": "VĂN",
+		"meaning": "nghe",
+		"enMeaning": "hear, listen, ask",
+		"kanjiBreakdown": [
+			{
+				"kanji": "聞",
+				"han_viet": "VĂN",
+				"meaning": "hear"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "聞",
+				"furigana": "き"
+			},
+			{
+				"text": "きます",
+				"romaji": "kikimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "音楽を聞きます。",
+			"translation": "Nghe nhạc.",
+			"enTranslation": "Listen to music.",
+			"parts": [
+				{
+					"text": "音楽",
+					"furigana": "おんがく"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "聞",
+					"furigana": "き"
+				},
+				{
+					"text": "きます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-241",
+		"wordSurface": "読みます",
+		"readingKana": "よみます",
+		"hanViet": "ĐỘC",
+		"meaning": "đọc",
+		"enMeaning": "read",
+		"kanjiBreakdown": [
+			{
+				"kanji": "読",
+				"han_viet": "ĐỘC",
+				"meaning": "read"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "読",
+				"furigana": "よ"
+			},
+			{
+				"text": "みます",
+				"romaji": "yomimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "新聞を読みます。",
+			"translation": "Đọc báo.",
+			"enTranslation": "Read a newspaper.",
+			"parts": [
+				{
+					"text": "新聞",
+					"furigana": "しんぶん"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "読",
+					"furigana": "よ"
+				},
+				{
+					"text": "みます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-242",
+		"wordSurface": "書きます",
+		"readingKana": "かきます",
+		"hanViet": "THƯ",
+		"meaning": "viết",
+		"enMeaning": "write",
+		"kanjiBreakdown": [
+			{
+				"kanji": "書",
+				"han_viet": "THƯ",
+				"meaning": "write"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "書",
+				"furigana": "か"
+			},
+			{
+				"text": "きます",
+				"romaji": "kakimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "手紙を書きます。",
+			"translation": "Viết thư.",
+			"enTranslation": "Write a letter.",
+			"parts": [
+				{
+					"text": "手紙",
+					"furigana": "てがみ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "書",
+					"furigana": "か"
+				},
+				{
+					"text": "きます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-243",
+		"wordSurface": "買います",
+		"readingKana": "かいます",
+		"hanViet": "MÃI",
+		"meaning": "mua",
+		"enMeaning": "buy",
+		"kanjiBreakdown": [
+			{
+				"kanji": "買",
+				"han_viet": "MÃI",
+				"meaning": "buy"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "買",
+				"furigana": "か"
+			},
+			{
+				"text": "います",
+				"romaji": "kaimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "服を買います。",
+			"translation": "Mua quần áo.",
+			"enTranslation": "Buy clothes.",
+			"parts": [
+				{
+					"text": "服",
+					"furigana": "ふく"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "買",
+					"furigana": "か"
+				},
+				{
+					"text": "います"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-244",
+		"wordSurface": "撮ります",
+		"readingKana": "とります",
+		"hanViet": "TOÁT",
+		"meaning": "chụp",
+		"enMeaning": "take (a photo)",
+		"kanjiBreakdown": [
+			{
+				"kanji": "撮",
+				"han_viet": "TOÁT",
+				"meaning": "snapshot"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "撮",
+				"furigana": "と"
+			},
+			{
+				"text": "ります",
+				"romaji": "torimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "写真を撮ります。",
+			"translation": "Chụp ảnh.",
+			"enTranslation": "Take a photo.",
+			"parts": [
+				{
+					"text": "写真",
+					"furigana": "しゃしん"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "撮",
+					"furigana": "と"
+				},
+				{
+					"text": "ります"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-245",
+		"wordSurface": "会います",
+		"readingKana": "あいます",
+		"hanViet": "HỘI",
+		"meaning": "gặp",
+		"enMeaning": "meet",
+		"kanjiBreakdown": [
+			{
+				"kanji": "会",
+				"han_viet": "HỘI",
+				"meaning": "meet"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "会",
+				"furigana": "あ"
+			},
+			{
+				"text": "います",
+				"romaji": "aimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "友達に会います。",
+			"translation": "Gặp bạn.",
+			"enTranslation": "Meet a friend.",
+			"parts": [
+				{
+					"text": "友達",
+					"furigana": "ともだち"
+				},
+				{
+					"text": "に"
+				},
+				{
+					"text": "会",
+					"furigana": "あ"
+				},
+				{
+					"text": "います"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-246",
+		"wordSurface": "朝ごはん",
+		"readingKana": "あさごはん",
+		"hanViet": "TRIỀU",
+		"meaning": "bữa sáng",
+		"enMeaning": "breakfast",
+		"kanjiBreakdown": [
+			{
+				"kanji": "朝",
+				"han_viet": "TRIỀU",
+				"meaning": "morning"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "朝",
+				"furigana": "あさ"
+			},
+			{
+				"text": "ごはん",
+				"romaji": "asagohan"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "朝ごはんを食べません。",
+			"translation": "Không ăn sáng.",
+			"enTranslation": "Do not eat breakfast.",
+			"parts": [
+				{
+					"text": "朝",
+					"furigana": "あさ"
+				},
+				{
+					"text": "ごはん"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "食",
+					"furigana": "た"
+				},
+				{
+					"text": "べません"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-247",
+		"wordSurface": "昼ごはん",
+		"readingKana": "ひるごはん",
+		"hanViet": "TRÚ",
+		"meaning": "bữa trưa",
+		"enMeaning": "lunch",
+		"kanjiBreakdown": [
+			{
+				"kanji": "昼",
+				"han_viet": "TRÚ",
+				"meaning": "daytime"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "昼",
+				"furigana": "ひる"
+			},
+			{
+				"text": "ごはん",
+				"romaji": "hirugohan"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "いっしょに昼ごはんを食べませんか。",
+			"translation": "Cùng ăn trưa không?",
+			"enTranslation": "Would you like to eat lunch together?",
+			"parts": [
+				{
+					"text": "いっしょに"
+				},
+				{
+					"text": "昼",
+					"furigana": "ひる"
+				},
+				{
+					"text": "ごはん"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "食",
+					"furigana": "た"
+				},
+				{
+					"text": "べませんか"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-248",
+		"wordSurface": "晩ごはん",
+		"readingKana": "ばんごはん",
+		"hanViet": "VÃN",
+		"meaning": "bữa tối",
+		"enMeaning": "dinner",
+		"kanjiBreakdown": [
+			{
+				"kanji": "晩",
+				"han_viet": "VÃN",
+				"meaning": "nightfall"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "晩",
+				"furigana": "ばん"
+			},
+			{
+				"text": "ごはん",
+				"romaji": "bangohan"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "晩ごはんを作ります。",
+			"translation": "Nấu bữa tối.",
+			"enTranslation": "Make dinner.",
+			"parts": [
+				{
+					"text": "晩",
+					"furigana": "ばん"
+				},
+				{
+					"text": "ごはん"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "作",
+					"furigana": "つく"
+				},
+				{
+					"text": "ります"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-249",
+		"wordSurface": "卵",
+		"readingKana": "たまご",
+		"hanViet": "NOÃN",
+		"meaning": "trứng",
+		"enMeaning": "egg",
+		"kanjiBreakdown": [
+			{
+				"kanji": "卵",
+				"han_viet": "NOÃN",
+				"meaning": "egg"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "卵",
+				"furigana": "たまご",
+				"romaji": "tamago"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "卵料理が好きです。",
+			"translation": "Tôi thích món trứng.",
+			"enTranslation": "I like egg dishes.",
+			"parts": [
+				{
+					"text": "卵",
+					"furigana": "たまご"
+				},
+				{
+					"text": "料理",
+					"furigana": "りょうり"
+				},
+				{
+					"text": "が"
+				},
+				{
+					"text": "好",
+					"furigana": "す"
+				},
+				{
+					"text": "き"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-250",
+		"wordSurface": "肉",
+		"readingKana": "にく",
+		"hanViet": "NHỤC",
+		"meaning": "thịt",
+		"enMeaning": "meat",
+		"kanjiBreakdown": [
+			{
+				"kanji": "肉",
+				"han_viet": "NHỤC",
+				"meaning": "meat"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "肉",
+				"furigana": "にく",
+				"romaji": "niku"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "肉を食べます。",
+			"translation": "Ăn thịt.",
+			"enTranslation": "Eat meat.",
+			"parts": [
+				{
+					"text": "肉",
+					"furigana": "にく"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "食",
+					"furigana": "た"
+				},
+				{
+					"text": "べます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-251",
+		"wordSurface": "魚",
+		"readingKana": "さかな",
+		"hanViet": "NGƯ",
+		"meaning": "cá",
+		"enMeaning": "fish",
+		"kanjiBreakdown": [
+			{
+				"kanji": "魚",
+				"han_viet": "NGƯ",
+				"meaning": "fish"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "魚",
+				"furigana": "さかな",
+				"romaji": "sakana"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "魚が好きです。",
+			"translation": "Tôi thích cá.",
+			"enTranslation": "I like fish.",
+			"parts": [
+				{
+					"text": "魚",
+					"furigana": "さかな"
+				},
+				{
+					"text": "が"
+				},
+				{
+					"text": "好",
+					"furigana": "す"
+				},
+				{
+					"text": "き"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-252",
+		"wordSurface": "野菜",
+		"readingKana": "やさい",
+		"hanViet": "DÃ THÁI",
+		"meaning": "rau",
+		"enMeaning": "vegetable",
+		"kanjiBreakdown": [
+			{
+				"kanji": "野",
+				"han_viet": "DÃ",
+				"meaning": "plains"
+			},
+			{
+				"kanji": "菜",
+				"han_viet": "THÁI",
+				"meaning": "vegetable"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "野菜",
+				"furigana": "やさい",
+				"romaji": "yasai"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "野菜をたくさん食べます。",
+			"translation": "Ăn nhiều rau.",
+			"enTranslation": "Eat a lot of vegetables.",
+			"parts": [
+				{
+					"text": "野菜",
+					"furigana": "やさい"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "たくさん"
+				},
+				{
+					"text": "食",
+					"furigana": "た"
+				},
+				{
+					"text": "べます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-253",
+		"wordSurface": "果物",
+		"readingKana": "くだもの",
+		"hanViet": "QUẢ VẬT",
+		"meaning": "hoa quả, trái cây",
+		"enMeaning": "fruit",
+		"kanjiBreakdown": [
+			{
+				"kanji": "果",
+				"han_viet": "QUẢ",
+				"meaning": "fruit"
+			},
+			{
+				"kanji": "物",
+				"han_viet": "VẬT",
+				"meaning": "thing"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "果物",
+				"furigana": "くだもの",
+				"romaji": "kudamono"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "果物を買います。",
+			"translation": "Mua trái cây.",
+			"enTranslation": "Buy fruit.",
+			"parts": [
+				{
+					"text": "果物",
+					"furigana": "くだもの"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "買",
+					"furigana": "か"
+				},
+				{
+					"text": "います"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-254",
+		"wordSurface": "酒",
+		"readingKana": "さけ",
+		"hanViet": "TỬU",
+		"meaning": "rượu, rượu gạo NB",
+		"enMeaning": "sake, alcohol",
+		"kanjiBreakdown": [
+			{
+				"kanji": "酒",
+				"han_viet": "TỬU",
+				"meaning": "sake, wine"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "酒",
+				"furigana": "さけ",
+				"romaji": "sake"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "お酒を飲みますか。",
+			"translation": "Bạn có uống rượu không?",
+			"enTranslation": "Do you drink alcohol?",
+			"parts": [
+				{
+					"text": "お"
+				},
+				{
+					"text": "酒",
+					"furigana": "さけ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "飲",
+					"furigana": "の"
+				},
+				{
+					"text": "みます"
+				},
+				{
+					"text": "か"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-255",
+		"wordSurface": "手紙",
+		"readingKana": "てがみ",
+		"hanViet": "THỦ CHỈ",
+		"meaning": "thư",
+		"enMeaning": "letter",
+		"kanjiBreakdown": [
+			{
+				"kanji": "手",
+				"han_viet": "THỦ",
+				"meaning": "hand"
+			},
+			{
+				"kanji": "紙",
+				"han_viet": "CHỈ",
+				"meaning": "paper"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "手紙",
+				"furigana": "てがみ",
+				"romaji": "tegami"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "手紙を出します。",
+			"translation": "Gửi thư.",
+			"enTranslation": "Send a letter.",
+			"parts": [
+				{
+					"text": "手紙",
+					"furigana": "てがみ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "出",
+					"furigana": "だ"
+				},
+				{
+					"text": "します"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-256",
+		"wordSurface": "写真",
+		"readingKana": "しゃしん",
+		"hanViet": "TẢ CHÂN",
+		"meaning": "bức ảnh",
+		"enMeaning": "photograph",
+		"kanjiBreakdown": [
+			{
+				"kanji": "写",
+				"han_viet": "TẢ",
+				"meaning": "copy"
+			},
+			{
+				"kanji": "真",
+				"han_viet": "CHÂN",
+				"meaning": "truth"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "写真",
+				"furigana": "しゃしん",
+				"romaji": "shashin"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "写真を撮ってください。",
+			"translation": "Hãy chụp ảnh giúp tôi.",
+			"enTranslation": "Please take a photo.",
+			"parts": [
+				{
+					"text": "写真",
+					"furigana": "しゃしん"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "撮",
+					"furigana": "と"
+				},
+				{
+					"text": "って"
+				},
+				{
+					"text": "ください"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-257",
+		"wordSurface": "店",
+		"readingKana": "みせ",
+		"hanViet": "ĐIẾM",
+		"meaning": "tiệm, cửa hàng",
+		"enMeaning": "shop, store",
+		"kanjiBreakdown": [
+			{
+				"kanji": "店",
+				"han_viet": "ĐIẾM",
+				"meaning": "store"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "店",
+				"furigana": "みせ",
+				"romaji": "mise"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "いい店を知っています。",
+			"translation": "Tôi biết một cửa hàng tốt.",
+			"enTranslation": "I know a good shop.",
+			"parts": [
+				{
+					"text": "いい"
+				},
+				{
+					"text": "店",
+					"furigana": "みせ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "知",
+					"furigana": "し"
+				},
+				{
+					"text": "って"
+				},
+				{
+					"text": "います"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-258",
+		"wordSurface": "庭",
+		"readingKana": "にわ",
+		"hanViet": "THÍNH",
+		"meaning": "vườn",
+		"enMeaning": "garden",
+		"kanjiBreakdown": [
+			{
+				"kanji": "庭",
+				"han_viet": "THÍNH",
+				"meaning": "courtyard"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "庭",
+				"furigana": "にわ",
+				"romaji": "niwa"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "庭に花があります。",
+			"translation": "Trong vườn có hoa.",
+			"enTranslation": "There are flowers in the garden.",
+			"parts": [
+				{
+					"text": "庭",
+					"furigana": "にわ"
+				},
+				{
+					"text": "に"
+				},
+				{
+					"text": "花",
+					"furigana": "はな"
+				},
+				{
+					"text": "が"
+				},
+				{
+					"text": "あります"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-259",
+		"wordSurface": "宿題",
+		"readingKana": "しゅくだい",
+		"hanViet": "TÚC ĐỀ",
+		"meaning": "bài tập về nhà",
+		"enMeaning": "homework",
+		"kanjiBreakdown": [
+			{
+				"kanji": "宿",
+				"han_viet": "TÚC",
+				"meaning": "inn, lodge"
+			},
+			{
+				"kanji": "題",
+				"han_viet": "ĐỀ",
+				"meaning": "topic"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "宿題",
+				"furigana": "しゅくだい",
+				"romaji": "shukudai"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "宿題をしましたか。",
+			"translation": "Bạn đã làm bài tập chưa?",
+			"enTranslation": "Did you do your homework?",
+			"parts": [
+				{
+					"text": "宿題",
+					"furigana": "しゅくだい"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "しました"
+				},
+				{
+					"text": "か"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-260",
+		"wordSurface": "花見",
+		"readingKana": "はなみ",
+		"hanViet": "HOA KIẾN",
+		"meaning": "việc ngắm hoa anh đào",
+		"enMeaning": "cherry blossom viewing",
+		"kanjiBreakdown": [
+			{
+				"kanji": "花",
+				"han_viet": "HOA",
+				"meaning": "flower"
+			},
+			{
+				"kanji": "見",
+				"han_viet": "KIẾN",
+				"meaning": "see"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "花見",
+				"furigana": "はなみ",
+				"romaji": "hanami"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "週末花見に行きます。",
+			"translation": "Cuối tuần đi ngắm hoa.",
+			"enTranslation": "Go flower viewing on the weekend.",
+			"parts": [
+				{
+					"text": "週末",
+					"furigana": "しゅうまつ"
+				},
+				{
+					"text": "花見",
+					"furigana": "はなみ"
+				},
+				{
+					"text": "に"
+				},
+				{
+					"text": "行",
+					"furigana": "い"
+				},
+				{
+					"text": "きます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-261",
+		"wordSurface": "何",
+		"readingKana": "なに",
+		"hanViet": "HÀ",
+		"meaning": "cái gì",
+		"enMeaning": "what",
+		"kanjiBreakdown": [
+			{
+				"kanji": "何",
+				"han_viet": "HÀ",
+				"meaning": "what"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "何",
+				"furigana": "なに",
+				"romaji": "nani"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "何を買いましたか。",
+			"translation": "Bạn đã mua cái gì?",
+			"enTranslation": "What did you buy?",
+			"parts": [
+				{
+					"text": "何",
+					"furigana": "なに"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "買",
+					"furigana": "か"
+				},
+				{
+					"text": "いました"
+				},
+				{
+					"text": "か"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-262",
+		"wordSurface": "時々",
+		"readingKana": "ときどき",
+		"hanViet": "THÌ",
+		"meaning": "thỉnh thoảng",
+		"enMeaning": "sometimes",
+		"kanjiBreakdown": [
+			{
+				"kanji": "時",
+				"han_viet": "THÌ",
+				"meaning": "time"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "時々",
+				"furigana": "ときどき",
+				"romaji": "tokidoki"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "時々映画を見ます。",
+			"translation": "Thỉnh thoảng tôi xem phim.",
+			"enTranslation": "Sometimes I watch movies.",
+			"parts": [
+				{
+					"text": "時々",
+					"furigana": "ときどき"
+				},
+				{
+					"text": "映画",
+					"furigana": "えいが"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "見",
+					"furigana": "み"
+				},
+				{
+					"text": "ます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	}
 ]

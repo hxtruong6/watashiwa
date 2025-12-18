@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Card, Typography, Flex, Tag, Button, Space, Avatar, Tooltip, theme } from 'antd';
-import { LikeOutlined, LikeFilled, UserOutlined, ArrowRightOutlined } from '@ant-design/icons';
+import { voteComment } from '@/services/comments';
+import { ArrowRightOutlined, LikeFilled, LikeOutlined, UserOutlined } from '@ant-design/icons';
+import { Avatar, Button, Card, Flex, Space, Tag, Tooltip, Typography, theme } from 'antd';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { voteComment } from '@/services/comments';
+import React, { useState } from 'react';
 
 const { Text, Title } = Typography;
 const { useToken } = theme;

@@ -1,2328 +1,2328 @@
 [
-    {
-        "id": "uuid-302",
-        "wordSurface": "ハンサム",
-        "readingKana": "ハンサム",
-        "hanViet": "",
-        "meaning": "đẹp trai",
-        "enMeaning": "handsome",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "ハンサム",
-                "romaji": "hansamu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "彼はハンサムです。",
-            "translation": "Anh ấy đẹp trai.",
-            "enTranslation": "He is handsome.",
-            "parts": [
-                {
-                    "text": "彼",
-                    "furigana": "かれ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "ハンサム",
-                    "furigana": "はんさむ"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-303",
-        "wordSurface": "きれい",
-        "readingKana": "きれい",
-        "hanViet": "",
-        "meaning": "đẹp, sạch",
-        "enMeaning": "beautiful, clean",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "きれい",
-                "romaji": "kirei"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "部屋がきれいになりました。",
-            "translation": "Căn phòng đã trở nên sạch sẽ.",
-            "enTranslation": "The room became clean.",
-            "parts": [
-                {
-                    "text": "部屋",
-                    "furigana": "へや"
-                },
-                {
-                    "text": "が"
-                },
-                {
-                    "text": "きれい"
-                },
-                {
-                    "text": "に"
-                },
-                {
-                    "text": "なりました"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-304",
-        "wordSurface": "にぎやか",
-        "readingKana": "にぎやか",
-        "hanViet": "",
-        "meaning": "ồn ào, náo nhiệt",
-        "enMeaning": "lively",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "にぎやか",
-                "romaji": "nigiyaka"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "祭りはにぎやかでした。",
-            "translation": "Lễ hội rất náo nhiệt.",
-            "enTranslation": "The festival was lively.",
-            "parts": [
-                {
-                    "text": "祭",
-                    "furigana": "まつ"
-                },
-                {
-                    "text": "り"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "にぎやか"
-                },
-                {
-                    "text": "でした"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-305",
-        "wordSurface": "すてき",
-        "readingKana": "すてき",
-        "hanViet": "",
-        "meaning": "đẹp, hay",
-        "enMeaning": "lovely, nice",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "すてき",
-                "romaji": "suteki"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "すてきなプレゼントですね。",
-            "translation": "Món quà đẹp quá nhỉ.",
-            "enTranslation": "That's a lovely present.",
-            "parts": [
-                {
-                    "text": "すてき"
-                },
-                {
-                    "text": "な"
-                },
-                {
-                    "text": "プレゼント"
-                },
-                {
-                    "text": "ですね"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-306",
-        "wordSurface": "いい",
-        "readingKana": "いい",
-        "hanViet": "",
-        "meaning": "tốt",
-        "enMeaning": "good",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "いい",
-                "romaji": "ii"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "天気がいいです。",
-            "translation": "Thời tiết đẹp.",
-            "enTranslation": "The weather is nice.",
-            "parts": [
-                {
-                    "text": "天気",
-                    "furigana": "てんき"
-                },
-                {
-                    "text": "が"
-                },
-                {
-                    "text": "いい"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-307",
-        "wordSurface": "おもしろい",
-        "readingKana": "おもしろい",
-        "hanViet": "",
-        "meaning": "thú vị, hay",
-        "enMeaning": "interesting, funny",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "おもしろい",
-                "romaji": "omoshiroi"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "この本はおもしろいです。",
-            "translation": "Quyển sách này thú vị.",
-            "enTranslation": "This book is interesting.",
-            "parts": [
-                {
-                    "text": "この"
-                },
-                {
-                    "text": "本",
-                    "furigana": "ほん"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "おもしろい"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-308",
-        "wordSurface": "おいしい",
-        "readingKana": "おいしい",
-        "hanViet": "",
-        "meaning": "ngon",
-        "enMeaning": "delicious",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "おいしい",
-                "romaji": "oishii"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "料理がおいしいです。",
-            "translation": "Món ăn ngon.",
-            "enTranslation": "The food is delicious.",
-            "parts": [
-                {
-                    "text": "料理",
-                    "furigana": "りょうり"
-                },
-                {
-                    "text": "が"
-                },
-                {
-                    "text": "おいしい"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-309",
-        "wordSurface": "レストラン",
-        "readingKana": "レストラン",
-        "hanViet": "",
-        "meaning": "nhà hàng",
-        "enMeaning": "restaurant",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "レストラン",
-                "romaji": "resutoran"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "レストランで食べます。",
-            "translation": "Ăn ở nhà hàng.",
-            "enTranslation": "Eat at a restaurant.",
-            "parts": [
-                {
-                    "text": "レストラン"
-                },
-                {
-                    "text": "で"
-                },
-                {
-                    "text": "食",
-                    "furigana": "た"
-                },
-                {
-                    "text": "べます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-310",
-        "wordSurface": "どう",
-        "readingKana": "どう",
-        "hanViet": "",
-        "meaning": "thế nào",
-        "enMeaning": "how",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "どう",
-                "romaji": "dou"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "調子はどうですか。",
-            "translation": "Tình hình thế nào?",
-            "enTranslation": "How is it going?",
-            "parts": [
-                {
-                    "text": "調子",
-                    "furigana": "ちょうし"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "どう"
-                },
-                {
-                    "text": "ですか"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-311",
-        "wordSurface": "どんな",
-        "readingKana": "どんな",
-        "hanViet": "",
-        "meaning": "~ như thế nào",
-        "enMeaning": "what kind of",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "どんな",
-                "romaji": "donna"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "どんな人ですか。",
-            "translation": "Là người như thế nào?",
-            "enTranslation": "What kind of person is he/she?",
-            "parts": [
-                {
-                    "text": "どんな"
-                },
-                {
-                    "text": "人",
-                    "furigana": "ひと"
-                },
-                {
-                    "text": "ですか"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-312",
-        "wordSurface": "とても",
-        "readingKana": "とても",
-        "hanViet": "",
-        "meaning": "rất, lắm",
-        "enMeaning": "very",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "とても",
-                "romaji": "totemo"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "とても楽しかったです。",
-            "translation": "Đã rất vui.",
-            "enTranslation": "It was very fun.",
-            "parts": [
-                {
-                    "text": "とても"
-                },
-                {
-                    "text": "楽",
-                    "furigana": "たの"
-                },
-                {
-                    "text": "しかったです"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-313",
-        "wordSurface": "あまり",
-        "readingKana": "あまり",
-        "hanViet": "",
-        "meaning": "không lắm",
-        "enMeaning": "not very",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "あまり",
-                "romaji": "amari"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "あまり好きじゃありません。",
-            "translation": "Tôi không thích lắm.",
-            "enTranslation": "I don't like it very much.",
-            "parts": [
-                {
-                    "text": "あまり"
-                },
-                {
-                    "text": "好",
-                    "furigana": "す"
-                },
-                {
-                    "text": "きじゃありません"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-314",
-        "wordSurface": "そして",
-        "readingKana": "そして",
-        "hanViet": "",
-        "meaning": "và, thêm nữa",
-        "enMeaning": "and then",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "そして",
-                "romaji": "soshite"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "そして、寝ました。",
-            "translation": "Và rồi, tôi đã ngủ.",
-            "enTranslation": "And then, I slept.",
-            "parts": [
-                {
-                    "text": "そして"
-                },
-                {
-                    "text": "、"
-                },
-                {
-                    "text": "寝",
-                    "furigana": "ね"
-                },
-                {
-                    "text": "ました"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-315",
-        "wordSurface": "が",
-        "readingKana": "が",
-        "hanViet": "",
-        "meaning": "nhưng",
-        "enMeaning": "but",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "が",
-                "romaji": "ga"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "高いですが、おいしいです。",
-            "translation": "Đắt nhưng ngon.",
-            "enTranslation": "It's expensive, but delicious.",
-            "parts": [
-                {
-                    "text": "高",
-                    "furigana": "たか"
-                },
-                {
-                    "text": "いですが"
-                },
-                {
-                    "text": "、"
-                },
-                {
-                    "text": "おいしい"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-316",
-        "wordSurface": "静か",
-        "readingKana": "しずか",
-        "hanViet": "TĨNH",
-        "meaning": "yên tĩnh",
-        "enMeaning": "quiet",
-        "kanjiBreakdown": [
-            {
-                "kanji": "静",
-                "han_viet": "TĨNH",
-                "meaning": "quiet"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "静",
-                "furigana": "しず",
-                "romaji": "shizu"
-            },
-            {
-                "text": "か",
-                "romaji": "ka"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "静かな公園です。",
-            "translation": "Công viên yên tĩnh.",
-            "enTranslation": "It is a quiet park.",
-            "parts": [
-                {
-                    "text": "静",
-                    "furigana": "しず"
-                },
-                {
-                    "text": "かな"
-                },
-                {
-                    "text": "公園",
-                    "furigana": "こうえん"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-317",
-        "wordSurface": "有名",
-        "readingKana": "ゆうめい",
-        "hanViet": "HỮU DANH",
-        "meaning": "nổi tiếng",
-        "enMeaning": "famous",
-        "kanjiBreakdown": [
-            {
-                "kanji": "有",
-                "han_viet": "HỮU",
-                "meaning": "possess"
-            },
-            {
-                "kanji": "名",
-                "han_viet": "DANH",
-                "meaning": "name"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "有名",
-                "furigana": "ゆうめい",
-                "romaji": "yuumei"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "有名な歌手です。",
-            "translation": "Là ca sĩ nổi tiếng.",
-            "enTranslation": "He/She is a famous singer.",
-            "parts": [
-                {
-                    "text": "有名",
-                    "furigana": "ゆうめい"
-                },
-                {
-                    "text": "な"
-                },
-                {
-                    "text": "歌手",
-                    "furigana": "かしゅ"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-318",
-        "wordSurface": "親切",
-        "readingKana": "しんせつ",
-        "hanViet": "THÂN THIẾT",
-        "meaning": "tốt bụng",
-        "enMeaning": "kind",
-        "kanjiBreakdown": [
-            {
-                "kanji": "親",
-                "han_viet": "THÂN",
-                "meaning": "parent"
-            },
-            {
-                "kanji": "切",
-                "han_viet": "THIẾT",
-                "meaning": "cut"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "親切",
-                "furigana": "しんせつ",
-                "romaji": "shinsetsu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "先生は親切です。",
-            "translation": "Giáo viên tốt bụng.",
-            "enTranslation": "The teacher is kind.",
-            "parts": [
-                {
-                    "text": "先生",
-                    "furigana": "せんせい"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "親切",
-                    "furigana": "しんせつ"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-319",
-        "wordSurface": "元気",
-        "readingKana": "げんき",
-        "hanViet": "NGUYÊN KHÍ",
-        "meaning": "khỏe, khỏe khoắn",
-        "enMeaning": "healthy, energetic",
-        "kanjiBreakdown": [
-            {
-                "kanji": "元",
-                "han_viet": "NGUYÊN",
-                "meaning": "origin"
-            },
-            {
-                "kanji": "気",
-                "han_viet": "KHÍ",
-                "meaning": "spirit"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "元気",
-                "furigana": "げんき",
-                "romaji": "genki"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "お元気ですか。",
-            "translation": "Bạn có khỏe không?",
-            "enTranslation": "How are you?",
-            "parts": [
-                {
-                    "text": "お"
-                },
-                {
-                    "text": "元気",
-                    "furigana": "げんき"
-                },
-                {
-                    "text": "ですか"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-320",
-        "wordSurface": "暇",
-        "readingKana": "ひま",
-        "hanViet": "HẠ",
-        "meaning": "rảnh rỗi",
-        "enMeaning": "free time",
-        "kanjiBreakdown": [
-            {
-                "kanji": "暇",
-                "han_viet": "HẠ",
-                "meaning": "spare time"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "暇",
-                "furigana": "ひま",
-                "romaji": "hima"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "日曜日は暇です。",
-            "translation": "Chủ nhật tôi rảnh.",
-            "enTranslation": "I am free on Sunday.",
-            "parts": [
-                {
-                    "text": "日曜日",
-                    "furigana": "にちようび"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "暇",
-                    "furigana": "ひま"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-321",
-        "wordSurface": "便利",
-        "readingKana": "べんり",
-        "hanViet": "TIỆN LỢI",
-        "meaning": "tiện lợi",
-        "enMeaning": "convenient",
-        "kanjiBreakdown": [
-            {
-                "kanji": "便",
-                "han_viet": "TIỆN",
-                "meaning": "convenience"
-            },
-            {
-                "kanji": "利",
-                "han_viet": "LỢI",
-                "meaning": "profit"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "便利",
-                "furigana": "べんり",
-                "romaji": "benri"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "ここは便利です。",
-            "translation": "Chỗ này tiện lợi.",
-            "enTranslation": "This place is convenient.",
-            "parts": [
-                {
-                    "text": "ここ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "便利",
-                    "furigana": "べんり"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-322",
-        "wordSurface": "大きい",
-        "readingKana": "おおきい",
-        "hanViet": "ĐẠI",
-        "meaning": "to, lớn",
-        "enMeaning": "big, large",
-        "kanjiBreakdown": [
-            {
-                "kanji": "大",
-                "han_viet": "ĐẠI",
-                "meaning": "big"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "大",
-                "furigana": "おお",
-                "romaji": "oo"
-            },
-            {
-                "text": "きい",
-                "romaji": "kii"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "大きい家ですね。",
-            "translation": "Nhà to nhỉ.",
-            "enTranslation": "That's a big house.",
-            "parts": [
-                {
-                    "text": "大",
-                    "furigana": "おお"
-                },
-                {
-                    "text": "きい"
-                },
-                {
-                    "text": "家",
-                    "furigana": "いえ"
-                },
-                {
-                    "text": "ですね"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-323",
-        "wordSurface": "小さい",
-        "readingKana": "ちいさい",
-        "hanViet": "TIỂU",
-        "meaning": "nhỏ",
-        "enMeaning": "small",
-        "kanjiBreakdown": [
-            {
-                "kanji": "小",
-                "han_viet": "TIỂU",
-                "meaning": "small"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "小",
-                "furigana": "ちい",
-                "romaji": "chii"
-            },
-            {
-                "text": "さい",
-                "romaji": "sai"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "小さいかばんです。",
-            "translation": "Cái cặp nhỏ.",
-            "enTranslation": "It is a small bag.",
-            "parts": [
-                {
-                    "text": "小",
-                    "furigana": "ちい"
-                },
-                {
-                    "text": "さい"
-                },
-                {
-                    "text": "かばん"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-324",
-        "wordSurface": "新しい",
-        "readingKana": "あたらしい",
-        "hanViet": "TÂN",
-        "meaning": "mới",
-        "enMeaning": "new",
-        "kanjiBreakdown": [
-            {
-                "kanji": "新",
-                "han_viet": "TÂN",
-                "meaning": "new"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "新",
-                "furigana": "あたら",
-                "romaji": "atara"
-            },
-            {
-                "text": "しい",
-                "romaji": "shii"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "新しい車を買いました。",
-            "translation": "Tôi đã mua xe mới.",
-            "enTranslation": "I bought a new car.",
-            "parts": [
-                {
-                    "text": "新",
-                    "furigana": "あたら"
-                },
-                {
-                    "text": "しい"
-                },
-                {
-                    "text": "車",
-                    "furigana": "くるま"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "買",
-                    "furigana": "か"
-                },
-                {
-                    "text": "いました"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-325",
-        "wordSurface": "古い",
-        "readingKana": "ふるい",
-        "hanViet": "CỔ",
-        "meaning": "cũ",
-        "enMeaning": "old",
-        "kanjiBreakdown": [
-            {
-                "kanji": "古",
-                "han_viet": "CỔ",
-                "meaning": "old"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "古",
-                "furigana": "ふる",
-                "romaji": "furu"
-            },
-            {
-                "text": "い",
-                "romaji": "i"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "古い時計です。",
-            "translation": "Đồng hồ cũ.",
-            "enTranslation": "It is an old clock.",
-            "parts": [
-                {
-                    "text": "古",
-                    "furigana": "ふる"
-                },
-                {
-                    "text": "い"
-                },
-                {
-                    "text": "時計",
-                    "furigana": "とけい"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-326",
-        "wordSurface": "悪い",
-        "readingKana": "わるい",
-        "hanViet": "ÁC",
-        "meaning": "xấu",
-        "enMeaning": "bad",
-        "kanjiBreakdown": [
-            {
-                "kanji": "悪",
-                "han_viet": "ÁC",
-                "meaning": "bad"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "悪",
-                "furigana": "わる",
-                "romaji": "waru"
-            },
-            {
-                "text": "い",
-                "romaji": "i"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "目が悪いです。",
-            "translation": "Mắt kém.",
-            "enTranslation": "My eyesight is bad.",
-            "parts": [
-                {
-                    "text": "目",
-                    "furigana": "め"
-                },
-                {
-                    "text": "が"
-                },
-                {
-                    "text": "悪",
-                    "furigana": "わる"
-                },
-                {
-                    "text": "い"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-327",
-        "wordSurface": "熱い",
-        "readingKana": "あつい",
-        "hanViet": "NHIỆT",
-        "meaning": "nóng",
-        "enMeaning": "hot (touch)",
-        "kanjiBreakdown": [
-            {
-                "kanji": "熱",
-                "han_viet": "NHIỆT",
-                "meaning": "heat"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "熱",
-                "furigana": "あつ",
-                "romaji": "atsu"
-            },
-            {
-                "text": "い",
-                "romaji": "i"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "熱いお茶を飲みます。",
-            "translation": "Uống trà nóng.",
-            "enTranslation": "Drink hot tea.",
-            "parts": [
-                {
-                    "text": "熱",
-                    "furigana": "あつ"
-                },
-                {
-                    "text": "い"
-                },
-                {
-                    "text": "お"
-                },
-                {
-                    "text": "茶",
-                    "furigana": "ちゃ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "飲",
-                    "furigana": "の"
-                },
-                {
-                    "text": "みます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-328",
-        "wordSurface": "暑い",
-        "readingKana": "あつい",
-        "hanViet": "THỬ",
-        "meaning": "nóng",
-        "enMeaning": "hot (weather)",
-        "kanjiBreakdown": [
-            {
-                "kanji": "暑",
-                "han_viet": "THỬ",
-                "meaning": "hot"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "暑",
-                "furigana": "あつ",
-                "romaji": "atsu"
-            },
-            {
-                "text": "い",
-                "romaji": "i"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "今日は暑いですね。",
-            "translation": "Hôm nay nóng nhỉ.",
-            "enTranslation": "It is hot today.",
-            "parts": [
-                {
-                    "text": "今日",
-                    "furigana": "きょう"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "暑",
-                    "furigana": "あつ"
-                },
-                {
-                    "text": "い"
-                },
-                {
-                    "text": "ですね"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-329",
-        "wordSurface": "寒い",
-        "readingKana": "さむい",
-        "hanViet": "HÀN",
-        "meaning": "lạnh (thời tiết)",
-        "enMeaning": "cold (weather)",
-        "kanjiBreakdown": [
-            {
-                "kanji": "寒",
-                "han_viet": "HÀN",
-                "meaning": "cold"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "寒",
-                "furigana": "さむ",
-                "romaji": "samu"
-            },
-            {
-                "text": "い",
-                "romaji": "i"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "外は寒いです。",
-            "translation": "Bên ngoài lạnh.",
-            "enTranslation": "It is cold outside.",
-            "parts": [
-                {
-                    "text": "外",
-                    "furigana": "そと"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "寒",
-                    "furigana": "さむ"
-                },
-                {
-                    "text": "い"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-330",
-        "wordSurface": "冷たい",
-        "readingKana": "つめたい",
-        "hanViet": "LÃNH",
-        "meaning": "lạnh (cảm giác)",
-        "enMeaning": "cold (touch)",
-        "kanjiBreakdown": [
-            {
-                "kanji": "冷",
-                "han_viet": "LÃNH",
-                "meaning": "chill"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "冷",
-                "furigana": "つめ",
-                "romaji": "tsume"
-            },
-            {
-                "text": "たい",
-                "romaji": "tai"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "冷たい水をお願いします。",
-            "translation": "Cho tôi nước lạnh.",
-            "enTranslation": "Cold water, please.",
-            "parts": [
-                {
-                    "text": "冷",
-                    "furigana": "つめ"
-                },
-                {
-                    "text": "たい"
-                },
-                {
-                    "text": "水",
-                    "furigana": "みず"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "お"
-                },
-                {
-                    "text": "願",
-                    "furigana": "ねが"
-                },
-                {
-                    "text": "いします"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-331",
-        "wordSurface": "難しい",
-        "readingKana": "むずかしい",
-        "hanViet": "NẠN",
-        "meaning": "khó",
-        "enMeaning": "difficult",
-        "kanjiBreakdown": [
-            {
-                "kanji": "難",
-                "han_viet": "NẠN",
-                "meaning": "difficult"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "難",
-                "furigana": "むずか",
-                "romaji": "muzuka"
-            },
-            {
-                "text": "しい",
-                "romaji": "shii"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "日本語は難しいです。",
-            "translation": "Tiếng Nhật khó.",
-            "enTranslation": "Japanese is difficult.",
-            "parts": [
-                {
-                    "text": "日本語",
-                    "furigana": "にほんご"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "難",
-                    "furigana": "むずか"
-                },
-                {
-                    "text": "しい"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-332",
-        "wordSurface": "易しい",
-        "readingKana": "やさしい",
-        "hanViet": "DỊCH",
-        "meaning": "dễ",
-        "enMeaning": "easy",
-        "kanjiBreakdown": [
-            {
-                "kanji": "易",
-                "han_viet": "DỊCH",
-                "meaning": "easy"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "易",
-                "furigana": "やさ",
-                "romaji": "yasa"
-            },
-            {
-                "text": "しい",
-                "romaji": "shii"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "この問題は易しいです。",
-            "translation": "Bài tập này dễ.",
-            "enTranslation": "This problem is easy.",
-            "parts": [
-                {
-                    "text": "この"
-                },
-                {
-                    "text": "問題",
-                    "furigana": "もんだい"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "易",
-                    "furigana": "やさ"
-                },
-                {
-                    "text": "しい"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-333",
-        "wordSurface": "高い",
-        "readingKana": "たかい",
-        "hanViet": "CAO",
-        "meaning": "đắt, cao",
-        "enMeaning": "expensive, high",
-        "kanjiBreakdown": [
-            {
-                "kanji": "高",
-                "han_viet": "CAO",
-                "meaning": "tall, high"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "高",
-                "furigana": "たか",
-                "romaji": "taka"
-            },
-            {
-                "text": "い",
-                "romaji": "i"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "背が高いです。",
-            "translation": "Dáng cao.",
-            "enTranslation": "He/she is tall.",
-            "parts": [
-                {
-                    "text": "背",
-                    "furigana": "せ"
-                },
-                {
-                    "text": "が"
-                },
-                {
-                    "text": "高",
-                    "furigana": "たか"
-                },
-                {
-                    "text": "い"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-334",
-        "wordSurface": "安い",
-        "readingKana": "やすい",
-        "hanViet": "AN",
-        "meaning": "rẻ",
-        "enMeaning": "cheap",
-        "kanjiBreakdown": [
-            {
-                "kanji": "安",
-                "han_viet": "AN",
-                "meaning": "cheap, safe"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "安",
-                "furigana": "やす",
-                "romaji": "yasu"
-            },
-            {
-                "text": "い",
-                "romaji": "i"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "これは安いです。",
-            "translation": "Cái này rẻ.",
-            "enTranslation": "This is cheap.",
-            "parts": [
-                {
-                    "text": "これ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "安",
-                    "furigana": "やす"
-                },
-                {
-                    "text": "い"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-335",
-        "wordSurface": "低い",
-        "readingKana": "ひくい",
-        "hanViet": "ĐÊ",
-        "meaning": "thấp",
-        "enMeaning": "low",
-        "kanjiBreakdown": [
-            {
-                "kanji": "低",
-                "han_viet": "ĐÊ",
-                "meaning": "low"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "低",
-                "furigana": "ひく",
-                "romaji": "hiku"
-            },
-            {
-                "text": "い",
-                "romaji": "i"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "山が低いです。",
-            "translation": "Núi thấp.",
-            "enTranslation": "The mountain is low.",
-            "parts": [
-                {
-                    "text": "山",
-                    "furigana": "やま"
-                },
-                {
-                    "text": "が"
-                },
-                {
-                    "text": "低",
-                    "furigana": "ひく"
-                },
-                {
-                    "text": "い"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-336",
-        "wordSurface": "忙しい",
-        "readingKana": "いそがしい",
-        "hanViet": "MANG",
-        "meaning": "bận",
-        "enMeaning": "busy",
-        "kanjiBreakdown": [
-            {
-                "kanji": "忙",
-                "han_viet": "MANG",
-                "meaning": "busy"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "忙",
-                "furigana": "いそが",
-                "romaji": "isoga"
-            },
-            {
-                "text": "しい",
-                "romaji": "shii"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "毎日忙しいです。",
-            "translation": "Hàng ngày đều bận rộn.",
-            "enTranslation": "I am busy every day.",
-            "parts": [
-                {
-                    "text": "毎日",
-                    "furigana": "まいにち"
-                },
-                {
-                    "text": "忙",
-                    "furigana": "いそが"
-                },
-                {
-                    "text": "しい"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-337",
-        "wordSurface": "楽しい",
-        "readingKana": "たのしい",
-        "hanViet": "LẠC",
-        "meaning": "vui",
-        "enMeaning": "fun, enjoyable",
-        "kanjiBreakdown": [
-            {
-                "kanji": "楽",
-                "han_viet": "LẠC",
-                "meaning": "pleasure"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "楽",
-                "furigana": "たの",
-                "romaji": "tano"
-            },
-            {
-                "text": "しい",
-                "romaji": "shii"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "旅行は楽しかったです。",
-            "translation": "Chuyến du lịch đã rất vui.",
-            "enTranslation": "The trip was fun.",
-            "parts": [
-                {
-                    "text": "旅行",
-                    "furigana": "りょこう"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "楽",
-                    "furigana": "たの"
-                },
-                {
-                    "text": "しかった"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-338",
-        "wordSurface": "白い",
-        "readingKana": "しろい",
-        "hanViet": "BẠCH",
-        "meaning": "trắng",
-        "enMeaning": "white",
-        "kanjiBreakdown": [
-            {
-                "kanji": "白",
-                "han_viet": "BẠCH",
-                "meaning": "white"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "白",
-                "furigana": "しろ",
-                "romaji": "shiro"
-            },
-            {
-                "text": "い",
-                "romaji": "i"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "白いシャツを着ます。",
-            "translation": "Mặc áo sơ mi trắng.",
-            "enTranslation": "Wear a white shirt.",
-            "parts": [
-                {
-                    "text": "白",
-                    "furigana": "しろ"
-                },
-                {
-                    "text": "い"
-                },
-                {
-                    "text": "シャツ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "着",
-                    "furigana": "き"
-                },
-                {
-                    "text": "ます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-339",
-        "wordSurface": "黒い",
-        "readingKana": "くろい",
-        "hanViet": "HẮC",
-        "meaning": "đen",
-        "enMeaning": "black",
-        "kanjiBreakdown": [
-            {
-                "kanji": "黒",
-                "han_viet": "HẮC",
-                "meaning": "black"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "黒",
-                "furigana": "くろ",
-                "romaji": "kuro"
-            },
-            {
-                "text": "い",
-                "romaji": "i"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "黒い靴を買いました。",
-            "translation": "Tôi đã mua đôi giày đen.",
-            "enTranslation": "I bought black shoes.",
-            "parts": [
-                {
-                    "text": "黒",
-                    "furigana": "くろ"
-                },
-                {
-                    "text": "い"
-                },
-                {
-                    "text": "靴",
-                    "furigana": "くつ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "買",
-                    "furigana": "か"
-                },
-                {
-                    "text": "いました"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-340",
-        "wordSurface": "赤い",
-        "readingKana": "あかい",
-        "hanViet": "XÍCH",
-        "meaning": "đỏ",
-        "enMeaning": "red",
-        "kanjiBreakdown": [
-            {
-                "kanji": "赤",
-                "han_viet": "XÍCH",
-                "meaning": "red"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "赤",
-                "furigana": "あか",
-                "romaji": "aka"
-            },
-            {
-                "text": "い",
-                "romaji": "i"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "赤い車です。",
-            "translation": "Là chiếc xe màu đỏ.",
-            "enTranslation": "It is a red car.",
-            "parts": [
-                {
-                    "text": "赤",
-                    "furigana": "あか"
-                },
-                {
-                    "text": "い"
-                },
-                {
-                    "text": "車",
-                    "furigana": "くるま"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-341",
-        "wordSurface": "青い",
-        "readingKana": "あおい",
-        "hanViet": "THANH",
-        "meaning": "xanh dương",
-        "enMeaning": "blue",
-        "kanjiBreakdown": [
-            {
-                "kanji": "青",
-                "han_viet": "THANH",
-                "meaning": "blue"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "青",
-                "furigana": "あお",
-                "romaji": "ao"
-            },
-            {
-                "text": "い",
-                "romaji": "i"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "青い海です。",
-            "translation": "Biển xanh.",
-            "enTranslation": "It is a blue sea.",
-            "parts": [
-                {
-                    "text": "青",
-                    "furigana": "あお"
-                },
-                {
-                    "text": "い"
-                },
-                {
-                    "text": "海",
-                    "furigana": "うみ"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-342",
-        "wordSurface": "桜",
-        "readingKana": "さくら",
-        "hanViet": "ANH",
-        "meaning": "anh đào",
-        "enMeaning": "cherry blossom",
-        "kanjiBreakdown": [
-            {
-                "kanji": "桜",
-                "han_viet": "ANH",
-                "meaning": "cherry blossom"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "桜",
-                "furigana": "さくら",
-                "romaji": "sakura"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "桜がきれいです。",
-            "translation": "Hoa anh đào đẹp.",
-            "enTranslation": "The cherry blossoms are beautiful.",
-            "parts": [
-                {
-                    "text": "桜",
-                    "furigana": "さくら"
-                },
-                {
-                    "text": "が"
-                },
-                {
-                    "text": "きれい"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-343",
-        "wordSurface": "山",
-        "readingKana": "やま",
-        "hanViet": "SƠN",
-        "meaning": "núi",
-        "enMeaning": "mountain",
-        "kanjiBreakdown": [
-            {
-                "kanji": "山",
-                "han_viet": "SƠN",
-                "meaning": "mountain"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "山",
-                "furigana": "やま",
-                "romaji": "yama"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "富士山は高い山です。",
-            "translation": "Núi Phú Sĩ là ngọn núi cao.",
-            "enTranslation": "Mt. Fuji is a high mountain.",
-            "parts": [
-                {
-                    "text": "富士山",
-                    "furigana": "ふじさん"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "高",
-                    "furigana": "たか"
-                },
-                {
-                    "text": "い"
-                },
-                {
-                    "text": "山",
-                    "furigana": "やま"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-344",
-        "wordSurface": "町",
-        "readingKana": "まち",
-        "hanViet": "ĐINH",
-        "meaning": "thị trấn",
-        "enMeaning": "town, city",
-        "kanjiBreakdown": [
-            {
-                "kanji": "町",
-                "han_viet": "ĐINH",
-                "meaning": "town"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "町",
-                "furigana": "まち",
-                "romaji": "machi"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "静かな町です。",
-            "translation": "Thị trấn yên tĩnh.",
-            "enTranslation": "It is a quiet town.",
-            "parts": [
-                {
-                    "text": "静",
-                    "furigana": "しず"
-                },
-                {
-                    "text": "かな"
-                },
-                {
-                    "text": "町",
-                    "furigana": "まち"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-345",
-        "wordSurface": "食べ物",
-        "readingKana": "たべもの",
-        "hanViet": "THỰC VẬT",
-        "meaning": "đồ ăn",
-        "enMeaning": "food",
-        "kanjiBreakdown": [
-            {
-                "kanji": "食",
-                "han_viet": "THỰC",
-                "meaning": "eat"
-            },
-            {
-                "kanji": "物",
-                "han_viet": "VẬT",
-                "meaning": "thing"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "食",
-                "furigana": "た"
-            },
-            {
-                "text": "べ"
-            },
-            {
-                "text": "物",
-                "furigana": "もの",
-                "romaji": "mono"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "日本の食べ物は高いです。",
-            "translation": "Đồ ăn Nhật đắt.",
-            "enTranslation": "Japanese food is expensive.",
-            "parts": [
-                {
-                    "text": "日本",
-                    "furigana": "にほん"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "食",
-                    "furigana": "た"
-                },
-                {
-                    "text": "べ"
-                },
-                {
-                    "text": "物",
-                    "furigana": "もの"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "高",
-                    "furigana": "たか"
-                },
-                {
-                    "text": "い"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-346",
-        "wordSurface": "所",
-        "readingKana": "ところで",
-        "hanViet": "SỞ",
-        "meaning": "nơi, chỗ",
-        "enMeaning": "place",
-        "kanjiBreakdown": [
-            {
-                "kanji": "所",
-                "han_viet": "SỞ",
-                "meaning": "place"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "所",
-                "furigana": "ところで",
-                "romaji": "tokorode"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "どんな所ですか。",
-            "translation": "Là nơi như thế nào?",
-            "enTranslation": "What kind of place is it?",
-            "parts": [
-                {
-                    "text": "どんな"
-                },
-                {
-                    "text": "所",
-                    "furigana": "ところ"
-                },
-                {
-                    "text": "ですか"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-347",
-        "wordSurface": "寮",
-        "readingKana": "りょう",
-        "hanViet": "LIÊU",
-        "meaning": "ký túc xá",
-        "enMeaning": "dormitory",
-        "kanjiBreakdown": [
-            {
-                "kanji": "寮",
-                "han_viet": "LIÊU",
-                "meaning": "dormitory"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "寮",
-                "furigana": "りょう",
-                "romaji": "ryou"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "寮に住んでいます。",
-            "translation": "Tôi đang sống ở ký túc xá.",
-            "enTranslation": "I live in a dormitory.",
-            "parts": [
-                {
-                    "text": "寮",
-                    "furigana": "りょう"
-                },
-                {
-                    "text": "に"
-                },
-                {
-                    "text": "住",
-                    "furigana": "す"
-                },
-                {
-                    "text": "んで"
-                },
-                {
-                    "text": "います"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-348",
-        "wordSurface": "生活",
-        "readingKana": "せいかつ",
-        "hanViet": "SINH HOẠT",
-        "meaning": "cuộc sống, sinh hoạt",
-        "enMeaning": "life, lifestyle",
-        "kanjiBreakdown": [
-            {
-                "kanji": "生",
-                "han_viet": "SINH",
-                "meaning": "life"
-            },
-            {
-                "kanji": "活",
-                "han_viet": "HOẠT",
-                "meaning": "living"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "生活",
-                "furigana": "せいかつ",
-                "romaji": "seikatsu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "日本の生活は楽しいです。",
-            "translation": "Cuộc sống ở Nhật rất vui.",
-            "enTranslation": "Life in Japan is fun.",
-            "parts": [
-                {
-                    "text": "日本",
-                    "furigana": "にほん"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "生活",
-                    "furigana": "せいかつ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "楽",
-                    "furigana": "たの"
-                },
-                {
-                    "text": "しい"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-349",
-        "wordSurface": "お仕事",
-        "readingKana": "おしごと",
-        "hanViet": "SĨ SỰ",
-        "meaning": "việc, công việc",
-        "enMeaning": "work, job",
-        "kanjiBreakdown": [
-            {
-                "kanji": "仕",
-                "han_viet": "SĨ",
-                "meaning": "attend"
-            },
-            {
-                "kanji": "事",
-                "han_viet": "SỰ",
-                "meaning": "matter"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "お"
-            },
-            {
-                "text": "仕事",
-                "furigana": "しごと",
-                "romaji": "shigoto"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "お仕事は何ですか。",
-            "translation": "Công việc của bạn là gì?",
-            "enTranslation": "What is your job?",
-            "parts": [
-                {
-                    "text": "お"
-                },
-                {
-                    "text": "仕事",
-                    "furigana": "しごと"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "何",
-                    "furigana": "なん"
-                },
-                {
-                    "text": "ですか"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    }
+	{
+		"id": "uuid-302",
+		"wordSurface": "ハンサム",
+		"readingKana": "ハンサム",
+		"hanViet": "",
+		"meaning": "đẹp trai",
+		"enMeaning": "handsome",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "ハンサム",
+				"romaji": "hansamu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "彼はハンサムです。",
+			"translation": "Anh ấy đẹp trai.",
+			"enTranslation": "He is handsome.",
+			"parts": [
+				{
+					"text": "彼",
+					"furigana": "かれ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "ハンサム",
+					"furigana": "はんさむ"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-303",
+		"wordSurface": "きれい",
+		"readingKana": "きれい",
+		"hanViet": "",
+		"meaning": "đẹp, sạch",
+		"enMeaning": "beautiful, clean",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "きれい",
+				"romaji": "kirei"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "部屋がきれいになりました。",
+			"translation": "Căn phòng đã trở nên sạch sẽ.",
+			"enTranslation": "The room became clean.",
+			"parts": [
+				{
+					"text": "部屋",
+					"furigana": "へや"
+				},
+				{
+					"text": "が"
+				},
+				{
+					"text": "きれい"
+				},
+				{
+					"text": "に"
+				},
+				{
+					"text": "なりました"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-304",
+		"wordSurface": "にぎやか",
+		"readingKana": "にぎやか",
+		"hanViet": "",
+		"meaning": "ồn ào, náo nhiệt",
+		"enMeaning": "lively",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "にぎやか",
+				"romaji": "nigiyaka"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "祭りはにぎやかでした。",
+			"translation": "Lễ hội rất náo nhiệt.",
+			"enTranslation": "The festival was lively.",
+			"parts": [
+				{
+					"text": "祭",
+					"furigana": "まつ"
+				},
+				{
+					"text": "り"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "にぎやか"
+				},
+				{
+					"text": "でした"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-305",
+		"wordSurface": "すてき",
+		"readingKana": "すてき",
+		"hanViet": "",
+		"meaning": "đẹp, hay",
+		"enMeaning": "lovely, nice",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "すてき",
+				"romaji": "suteki"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "すてきなプレゼントですね。",
+			"translation": "Món quà đẹp quá nhỉ.",
+			"enTranslation": "That's a lovely present.",
+			"parts": [
+				{
+					"text": "すてき"
+				},
+				{
+					"text": "な"
+				},
+				{
+					"text": "プレゼント"
+				},
+				{
+					"text": "ですね"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-306",
+		"wordSurface": "いい",
+		"readingKana": "いい",
+		"hanViet": "",
+		"meaning": "tốt",
+		"enMeaning": "good",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "いい",
+				"romaji": "ii"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "天気がいいです。",
+			"translation": "Thời tiết đẹp.",
+			"enTranslation": "The weather is nice.",
+			"parts": [
+				{
+					"text": "天気",
+					"furigana": "てんき"
+				},
+				{
+					"text": "が"
+				},
+				{
+					"text": "いい"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-307",
+		"wordSurface": "おもしろい",
+		"readingKana": "おもしろい",
+		"hanViet": "",
+		"meaning": "thú vị, hay",
+		"enMeaning": "interesting, funny",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "おもしろい",
+				"romaji": "omoshiroi"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "この本はおもしろいです。",
+			"translation": "Quyển sách này thú vị.",
+			"enTranslation": "This book is interesting.",
+			"parts": [
+				{
+					"text": "この"
+				},
+				{
+					"text": "本",
+					"furigana": "ほん"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "おもしろい"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-308",
+		"wordSurface": "おいしい",
+		"readingKana": "おいしい",
+		"hanViet": "",
+		"meaning": "ngon",
+		"enMeaning": "delicious",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "おいしい",
+				"romaji": "oishii"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "料理がおいしいです。",
+			"translation": "Món ăn ngon.",
+			"enTranslation": "The food is delicious.",
+			"parts": [
+				{
+					"text": "料理",
+					"furigana": "りょうり"
+				},
+				{
+					"text": "が"
+				},
+				{
+					"text": "おいしい"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-309",
+		"wordSurface": "レストラン",
+		"readingKana": "レストラン",
+		"hanViet": "",
+		"meaning": "nhà hàng",
+		"enMeaning": "restaurant",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "レストラン",
+				"romaji": "resutoran"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "レストランで食べます。",
+			"translation": "Ăn ở nhà hàng.",
+			"enTranslation": "Eat at a restaurant.",
+			"parts": [
+				{
+					"text": "レストラン"
+				},
+				{
+					"text": "で"
+				},
+				{
+					"text": "食",
+					"furigana": "た"
+				},
+				{
+					"text": "べます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-310",
+		"wordSurface": "どう",
+		"readingKana": "どう",
+		"hanViet": "",
+		"meaning": "thế nào",
+		"enMeaning": "how",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "どう",
+				"romaji": "dou"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "調子はどうですか。",
+			"translation": "Tình hình thế nào?",
+			"enTranslation": "How is it going?",
+			"parts": [
+				{
+					"text": "調子",
+					"furigana": "ちょうし"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "どう"
+				},
+				{
+					"text": "ですか"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-311",
+		"wordSurface": "どんな",
+		"readingKana": "どんな",
+		"hanViet": "",
+		"meaning": "~ như thế nào",
+		"enMeaning": "what kind of",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "どんな",
+				"romaji": "donna"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "どんな人ですか。",
+			"translation": "Là người như thế nào?",
+			"enTranslation": "What kind of person is he/she?",
+			"parts": [
+				{
+					"text": "どんな"
+				},
+				{
+					"text": "人",
+					"furigana": "ひと"
+				},
+				{
+					"text": "ですか"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-312",
+		"wordSurface": "とても",
+		"readingKana": "とても",
+		"hanViet": "",
+		"meaning": "rất, lắm",
+		"enMeaning": "very",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "とても",
+				"romaji": "totemo"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "とても楽しかったです。",
+			"translation": "Đã rất vui.",
+			"enTranslation": "It was very fun.",
+			"parts": [
+				{
+					"text": "とても"
+				},
+				{
+					"text": "楽",
+					"furigana": "たの"
+				},
+				{
+					"text": "しかったです"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-313",
+		"wordSurface": "あまり",
+		"readingKana": "あまり",
+		"hanViet": "",
+		"meaning": "không lắm",
+		"enMeaning": "not very",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "あまり",
+				"romaji": "amari"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "あまり好きじゃありません。",
+			"translation": "Tôi không thích lắm.",
+			"enTranslation": "I don't like it very much.",
+			"parts": [
+				{
+					"text": "あまり"
+				},
+				{
+					"text": "好",
+					"furigana": "す"
+				},
+				{
+					"text": "きじゃありません"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-314",
+		"wordSurface": "そして",
+		"readingKana": "そして",
+		"hanViet": "",
+		"meaning": "và, thêm nữa",
+		"enMeaning": "and then",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "そして",
+				"romaji": "soshite"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "そして、寝ました。",
+			"translation": "Và rồi, tôi đã ngủ.",
+			"enTranslation": "And then, I slept.",
+			"parts": [
+				{
+					"text": "そして"
+				},
+				{
+					"text": "、"
+				},
+				{
+					"text": "寝",
+					"furigana": "ね"
+				},
+				{
+					"text": "ました"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-315",
+		"wordSurface": "が",
+		"readingKana": "が",
+		"hanViet": "",
+		"meaning": "nhưng",
+		"enMeaning": "but",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "が",
+				"romaji": "ga"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "高いですが、おいしいです。",
+			"translation": "Đắt nhưng ngon.",
+			"enTranslation": "It's expensive, but delicious.",
+			"parts": [
+				{
+					"text": "高",
+					"furigana": "たか"
+				},
+				{
+					"text": "いですが"
+				},
+				{
+					"text": "、"
+				},
+				{
+					"text": "おいしい"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-316",
+		"wordSurface": "静か",
+		"readingKana": "しずか",
+		"hanViet": "TĨNH",
+		"meaning": "yên tĩnh",
+		"enMeaning": "quiet",
+		"kanjiBreakdown": [
+			{
+				"kanji": "静",
+				"han_viet": "TĨNH",
+				"meaning": "quiet"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "静",
+				"furigana": "しず",
+				"romaji": "shizu"
+			},
+			{
+				"text": "か",
+				"romaji": "ka"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "静かな公園です。",
+			"translation": "Công viên yên tĩnh.",
+			"enTranslation": "It is a quiet park.",
+			"parts": [
+				{
+					"text": "静",
+					"furigana": "しず"
+				},
+				{
+					"text": "かな"
+				},
+				{
+					"text": "公園",
+					"furigana": "こうえん"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-317",
+		"wordSurface": "有名",
+		"readingKana": "ゆうめい",
+		"hanViet": "HỮU DANH",
+		"meaning": "nổi tiếng",
+		"enMeaning": "famous",
+		"kanjiBreakdown": [
+			{
+				"kanji": "有",
+				"han_viet": "HỮU",
+				"meaning": "possess"
+			},
+			{
+				"kanji": "名",
+				"han_viet": "DANH",
+				"meaning": "name"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "有名",
+				"furigana": "ゆうめい",
+				"romaji": "yuumei"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "有名な歌手です。",
+			"translation": "Là ca sĩ nổi tiếng.",
+			"enTranslation": "He/She is a famous singer.",
+			"parts": [
+				{
+					"text": "有名",
+					"furigana": "ゆうめい"
+				},
+				{
+					"text": "な"
+				},
+				{
+					"text": "歌手",
+					"furigana": "かしゅ"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-318",
+		"wordSurface": "親切",
+		"readingKana": "しんせつ",
+		"hanViet": "THÂN THIẾT",
+		"meaning": "tốt bụng",
+		"enMeaning": "kind",
+		"kanjiBreakdown": [
+			{
+				"kanji": "親",
+				"han_viet": "THÂN",
+				"meaning": "parent"
+			},
+			{
+				"kanji": "切",
+				"han_viet": "THIẾT",
+				"meaning": "cut"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "親切",
+				"furigana": "しんせつ",
+				"romaji": "shinsetsu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "先生は親切です。",
+			"translation": "Giáo viên tốt bụng.",
+			"enTranslation": "The teacher is kind.",
+			"parts": [
+				{
+					"text": "先生",
+					"furigana": "せんせい"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "親切",
+					"furigana": "しんせつ"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-319",
+		"wordSurface": "元気",
+		"readingKana": "げんき",
+		"hanViet": "NGUYÊN KHÍ",
+		"meaning": "khỏe, khỏe khoắn",
+		"enMeaning": "healthy, energetic",
+		"kanjiBreakdown": [
+			{
+				"kanji": "元",
+				"han_viet": "NGUYÊN",
+				"meaning": "origin"
+			},
+			{
+				"kanji": "気",
+				"han_viet": "KHÍ",
+				"meaning": "spirit"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "元気",
+				"furigana": "げんき",
+				"romaji": "genki"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "お元気ですか。",
+			"translation": "Bạn có khỏe không?",
+			"enTranslation": "How are you?",
+			"parts": [
+				{
+					"text": "お"
+				},
+				{
+					"text": "元気",
+					"furigana": "げんき"
+				},
+				{
+					"text": "ですか"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-320",
+		"wordSurface": "暇",
+		"readingKana": "ひま",
+		"hanViet": "HẠ",
+		"meaning": "rảnh rỗi",
+		"enMeaning": "free time",
+		"kanjiBreakdown": [
+			{
+				"kanji": "暇",
+				"han_viet": "HẠ",
+				"meaning": "spare time"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "暇",
+				"furigana": "ひま",
+				"romaji": "hima"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "日曜日は暇です。",
+			"translation": "Chủ nhật tôi rảnh.",
+			"enTranslation": "I am free on Sunday.",
+			"parts": [
+				{
+					"text": "日曜日",
+					"furigana": "にちようび"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "暇",
+					"furigana": "ひま"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-321",
+		"wordSurface": "便利",
+		"readingKana": "べんり",
+		"hanViet": "TIỆN LỢI",
+		"meaning": "tiện lợi",
+		"enMeaning": "convenient",
+		"kanjiBreakdown": [
+			{
+				"kanji": "便",
+				"han_viet": "TIỆN",
+				"meaning": "convenience"
+			},
+			{
+				"kanji": "利",
+				"han_viet": "LỢI",
+				"meaning": "profit"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "便利",
+				"furigana": "べんり",
+				"romaji": "benri"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "ここは便利です。",
+			"translation": "Chỗ này tiện lợi.",
+			"enTranslation": "This place is convenient.",
+			"parts": [
+				{
+					"text": "ここ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "便利",
+					"furigana": "べんり"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-322",
+		"wordSurface": "大きい",
+		"readingKana": "おおきい",
+		"hanViet": "ĐẠI",
+		"meaning": "to, lớn",
+		"enMeaning": "big, large",
+		"kanjiBreakdown": [
+			{
+				"kanji": "大",
+				"han_viet": "ĐẠI",
+				"meaning": "big"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "大",
+				"furigana": "おお",
+				"romaji": "oo"
+			},
+			{
+				"text": "きい",
+				"romaji": "kii"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "大きい家ですね。",
+			"translation": "Nhà to nhỉ.",
+			"enTranslation": "That's a big house.",
+			"parts": [
+				{
+					"text": "大",
+					"furigana": "おお"
+				},
+				{
+					"text": "きい"
+				},
+				{
+					"text": "家",
+					"furigana": "いえ"
+				},
+				{
+					"text": "ですね"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-323",
+		"wordSurface": "小さい",
+		"readingKana": "ちいさい",
+		"hanViet": "TIỂU",
+		"meaning": "nhỏ",
+		"enMeaning": "small",
+		"kanjiBreakdown": [
+			{
+				"kanji": "小",
+				"han_viet": "TIỂU",
+				"meaning": "small"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "小",
+				"furigana": "ちい",
+				"romaji": "chii"
+			},
+			{
+				"text": "さい",
+				"romaji": "sai"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "小さいかばんです。",
+			"translation": "Cái cặp nhỏ.",
+			"enTranslation": "It is a small bag.",
+			"parts": [
+				{
+					"text": "小",
+					"furigana": "ちい"
+				},
+				{
+					"text": "さい"
+				},
+				{
+					"text": "かばん"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-324",
+		"wordSurface": "新しい",
+		"readingKana": "あたらしい",
+		"hanViet": "TÂN",
+		"meaning": "mới",
+		"enMeaning": "new",
+		"kanjiBreakdown": [
+			{
+				"kanji": "新",
+				"han_viet": "TÂN",
+				"meaning": "new"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "新",
+				"furigana": "あたら",
+				"romaji": "atara"
+			},
+			{
+				"text": "しい",
+				"romaji": "shii"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "新しい車を買いました。",
+			"translation": "Tôi đã mua xe mới.",
+			"enTranslation": "I bought a new car.",
+			"parts": [
+				{
+					"text": "新",
+					"furigana": "あたら"
+				},
+				{
+					"text": "しい"
+				},
+				{
+					"text": "車",
+					"furigana": "くるま"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "買",
+					"furigana": "か"
+				},
+				{
+					"text": "いました"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-325",
+		"wordSurface": "古い",
+		"readingKana": "ふるい",
+		"hanViet": "CỔ",
+		"meaning": "cũ",
+		"enMeaning": "old",
+		"kanjiBreakdown": [
+			{
+				"kanji": "古",
+				"han_viet": "CỔ",
+				"meaning": "old"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "古",
+				"furigana": "ふる",
+				"romaji": "furu"
+			},
+			{
+				"text": "い",
+				"romaji": "i"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "古い時計です。",
+			"translation": "Đồng hồ cũ.",
+			"enTranslation": "It is an old clock.",
+			"parts": [
+				{
+					"text": "古",
+					"furigana": "ふる"
+				},
+				{
+					"text": "い"
+				},
+				{
+					"text": "時計",
+					"furigana": "とけい"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-326",
+		"wordSurface": "悪い",
+		"readingKana": "わるい",
+		"hanViet": "ÁC",
+		"meaning": "xấu",
+		"enMeaning": "bad",
+		"kanjiBreakdown": [
+			{
+				"kanji": "悪",
+				"han_viet": "ÁC",
+				"meaning": "bad"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "悪",
+				"furigana": "わる",
+				"romaji": "waru"
+			},
+			{
+				"text": "い",
+				"romaji": "i"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "目が悪いです。",
+			"translation": "Mắt kém.",
+			"enTranslation": "My eyesight is bad.",
+			"parts": [
+				{
+					"text": "目",
+					"furigana": "め"
+				},
+				{
+					"text": "が"
+				},
+				{
+					"text": "悪",
+					"furigana": "わる"
+				},
+				{
+					"text": "い"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-327",
+		"wordSurface": "熱い",
+		"readingKana": "あつい",
+		"hanViet": "NHIỆT",
+		"meaning": "nóng",
+		"enMeaning": "hot (touch)",
+		"kanjiBreakdown": [
+			{
+				"kanji": "熱",
+				"han_viet": "NHIỆT",
+				"meaning": "heat"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "熱",
+				"furigana": "あつ",
+				"romaji": "atsu"
+			},
+			{
+				"text": "い",
+				"romaji": "i"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "熱いお茶を飲みます。",
+			"translation": "Uống trà nóng.",
+			"enTranslation": "Drink hot tea.",
+			"parts": [
+				{
+					"text": "熱",
+					"furigana": "あつ"
+				},
+				{
+					"text": "い"
+				},
+				{
+					"text": "お"
+				},
+				{
+					"text": "茶",
+					"furigana": "ちゃ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "飲",
+					"furigana": "の"
+				},
+				{
+					"text": "みます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-328",
+		"wordSurface": "暑い",
+		"readingKana": "あつい",
+		"hanViet": "THỬ",
+		"meaning": "nóng",
+		"enMeaning": "hot (weather)",
+		"kanjiBreakdown": [
+			{
+				"kanji": "暑",
+				"han_viet": "THỬ",
+				"meaning": "hot"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "暑",
+				"furigana": "あつ",
+				"romaji": "atsu"
+			},
+			{
+				"text": "い",
+				"romaji": "i"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "今日は暑いですね。",
+			"translation": "Hôm nay nóng nhỉ.",
+			"enTranslation": "It is hot today.",
+			"parts": [
+				{
+					"text": "今日",
+					"furigana": "きょう"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "暑",
+					"furigana": "あつ"
+				},
+				{
+					"text": "い"
+				},
+				{
+					"text": "ですね"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-329",
+		"wordSurface": "寒い",
+		"readingKana": "さむい",
+		"hanViet": "HÀN",
+		"meaning": "lạnh (thời tiết)",
+		"enMeaning": "cold (weather)",
+		"kanjiBreakdown": [
+			{
+				"kanji": "寒",
+				"han_viet": "HÀN",
+				"meaning": "cold"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "寒",
+				"furigana": "さむ",
+				"romaji": "samu"
+			},
+			{
+				"text": "い",
+				"romaji": "i"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "外は寒いです。",
+			"translation": "Bên ngoài lạnh.",
+			"enTranslation": "It is cold outside.",
+			"parts": [
+				{
+					"text": "外",
+					"furigana": "そと"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "寒",
+					"furigana": "さむ"
+				},
+				{
+					"text": "い"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-330",
+		"wordSurface": "冷たい",
+		"readingKana": "つめたい",
+		"hanViet": "LÃNH",
+		"meaning": "lạnh (cảm giác)",
+		"enMeaning": "cold (touch)",
+		"kanjiBreakdown": [
+			{
+				"kanji": "冷",
+				"han_viet": "LÃNH",
+				"meaning": "chill"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "冷",
+				"furigana": "つめ",
+				"romaji": "tsume"
+			},
+			{
+				"text": "たい",
+				"romaji": "tai"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "冷たい水をお願いします。",
+			"translation": "Cho tôi nước lạnh.",
+			"enTranslation": "Cold water, please.",
+			"parts": [
+				{
+					"text": "冷",
+					"furigana": "つめ"
+				},
+				{
+					"text": "たい"
+				},
+				{
+					"text": "水",
+					"furigana": "みず"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "お"
+				},
+				{
+					"text": "願",
+					"furigana": "ねが"
+				},
+				{
+					"text": "いします"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-331",
+		"wordSurface": "難しい",
+		"readingKana": "むずかしい",
+		"hanViet": "NẠN",
+		"meaning": "khó",
+		"enMeaning": "difficult",
+		"kanjiBreakdown": [
+			{
+				"kanji": "難",
+				"han_viet": "NẠN",
+				"meaning": "difficult"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "難",
+				"furigana": "むずか",
+				"romaji": "muzuka"
+			},
+			{
+				"text": "しい",
+				"romaji": "shii"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "日本語は難しいです。",
+			"translation": "Tiếng Nhật khó.",
+			"enTranslation": "Japanese is difficult.",
+			"parts": [
+				{
+					"text": "日本語",
+					"furigana": "にほんご"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "難",
+					"furigana": "むずか"
+				},
+				{
+					"text": "しい"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-332",
+		"wordSurface": "易しい",
+		"readingKana": "やさしい",
+		"hanViet": "DỊCH",
+		"meaning": "dễ",
+		"enMeaning": "easy",
+		"kanjiBreakdown": [
+			{
+				"kanji": "易",
+				"han_viet": "DỊCH",
+				"meaning": "easy"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "易",
+				"furigana": "やさ",
+				"romaji": "yasa"
+			},
+			{
+				"text": "しい",
+				"romaji": "shii"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "この問題は易しいです。",
+			"translation": "Bài tập này dễ.",
+			"enTranslation": "This problem is easy.",
+			"parts": [
+				{
+					"text": "この"
+				},
+				{
+					"text": "問題",
+					"furigana": "もんだい"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "易",
+					"furigana": "やさ"
+				},
+				{
+					"text": "しい"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-333",
+		"wordSurface": "高い",
+		"readingKana": "たかい",
+		"hanViet": "CAO",
+		"meaning": "đắt, cao",
+		"enMeaning": "expensive, high",
+		"kanjiBreakdown": [
+			{
+				"kanji": "高",
+				"han_viet": "CAO",
+				"meaning": "tall, high"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "高",
+				"furigana": "たか",
+				"romaji": "taka"
+			},
+			{
+				"text": "い",
+				"romaji": "i"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "背が高いです。",
+			"translation": "Dáng cao.",
+			"enTranslation": "He/she is tall.",
+			"parts": [
+				{
+					"text": "背",
+					"furigana": "せ"
+				},
+				{
+					"text": "が"
+				},
+				{
+					"text": "高",
+					"furigana": "たか"
+				},
+				{
+					"text": "い"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-334",
+		"wordSurface": "安い",
+		"readingKana": "やすい",
+		"hanViet": "AN",
+		"meaning": "rẻ",
+		"enMeaning": "cheap",
+		"kanjiBreakdown": [
+			{
+				"kanji": "安",
+				"han_viet": "AN",
+				"meaning": "cheap, safe"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "安",
+				"furigana": "やす",
+				"romaji": "yasu"
+			},
+			{
+				"text": "い",
+				"romaji": "i"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "これは安いです。",
+			"translation": "Cái này rẻ.",
+			"enTranslation": "This is cheap.",
+			"parts": [
+				{
+					"text": "これ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "安",
+					"furigana": "やす"
+				},
+				{
+					"text": "い"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-335",
+		"wordSurface": "低い",
+		"readingKana": "ひくい",
+		"hanViet": "ĐÊ",
+		"meaning": "thấp",
+		"enMeaning": "low",
+		"kanjiBreakdown": [
+			{
+				"kanji": "低",
+				"han_viet": "ĐÊ",
+				"meaning": "low"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "低",
+				"furigana": "ひく",
+				"romaji": "hiku"
+			},
+			{
+				"text": "い",
+				"romaji": "i"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "山が低いです。",
+			"translation": "Núi thấp.",
+			"enTranslation": "The mountain is low.",
+			"parts": [
+				{
+					"text": "山",
+					"furigana": "やま"
+				},
+				{
+					"text": "が"
+				},
+				{
+					"text": "低",
+					"furigana": "ひく"
+				},
+				{
+					"text": "い"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-336",
+		"wordSurface": "忙しい",
+		"readingKana": "いそがしい",
+		"hanViet": "MANG",
+		"meaning": "bận",
+		"enMeaning": "busy",
+		"kanjiBreakdown": [
+			{
+				"kanji": "忙",
+				"han_viet": "MANG",
+				"meaning": "busy"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "忙",
+				"furigana": "いそが",
+				"romaji": "isoga"
+			},
+			{
+				"text": "しい",
+				"romaji": "shii"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "毎日忙しいです。",
+			"translation": "Hàng ngày đều bận rộn.",
+			"enTranslation": "I am busy every day.",
+			"parts": [
+				{
+					"text": "毎日",
+					"furigana": "まいにち"
+				},
+				{
+					"text": "忙",
+					"furigana": "いそが"
+				},
+				{
+					"text": "しい"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-337",
+		"wordSurface": "楽しい",
+		"readingKana": "たのしい",
+		"hanViet": "LẠC",
+		"meaning": "vui",
+		"enMeaning": "fun, enjoyable",
+		"kanjiBreakdown": [
+			{
+				"kanji": "楽",
+				"han_viet": "LẠC",
+				"meaning": "pleasure"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "楽",
+				"furigana": "たの",
+				"romaji": "tano"
+			},
+			{
+				"text": "しい",
+				"romaji": "shii"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "旅行は楽しかったです。",
+			"translation": "Chuyến du lịch đã rất vui.",
+			"enTranslation": "The trip was fun.",
+			"parts": [
+				{
+					"text": "旅行",
+					"furigana": "りょこう"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "楽",
+					"furigana": "たの"
+				},
+				{
+					"text": "しかった"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-338",
+		"wordSurface": "白い",
+		"readingKana": "しろい",
+		"hanViet": "BẠCH",
+		"meaning": "trắng",
+		"enMeaning": "white",
+		"kanjiBreakdown": [
+			{
+				"kanji": "白",
+				"han_viet": "BẠCH",
+				"meaning": "white"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "白",
+				"furigana": "しろ",
+				"romaji": "shiro"
+			},
+			{
+				"text": "い",
+				"romaji": "i"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "白いシャツを着ます。",
+			"translation": "Mặc áo sơ mi trắng.",
+			"enTranslation": "Wear a white shirt.",
+			"parts": [
+				{
+					"text": "白",
+					"furigana": "しろ"
+				},
+				{
+					"text": "い"
+				},
+				{
+					"text": "シャツ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "着",
+					"furigana": "き"
+				},
+				{
+					"text": "ます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-339",
+		"wordSurface": "黒い",
+		"readingKana": "くろい",
+		"hanViet": "HẮC",
+		"meaning": "đen",
+		"enMeaning": "black",
+		"kanjiBreakdown": [
+			{
+				"kanji": "黒",
+				"han_viet": "HẮC",
+				"meaning": "black"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "黒",
+				"furigana": "くろ",
+				"romaji": "kuro"
+			},
+			{
+				"text": "い",
+				"romaji": "i"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "黒い靴を買いました。",
+			"translation": "Tôi đã mua đôi giày đen.",
+			"enTranslation": "I bought black shoes.",
+			"parts": [
+				{
+					"text": "黒",
+					"furigana": "くろ"
+				},
+				{
+					"text": "い"
+				},
+				{
+					"text": "靴",
+					"furigana": "くつ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "買",
+					"furigana": "か"
+				},
+				{
+					"text": "いました"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-340",
+		"wordSurface": "赤い",
+		"readingKana": "あかい",
+		"hanViet": "XÍCH",
+		"meaning": "đỏ",
+		"enMeaning": "red",
+		"kanjiBreakdown": [
+			{
+				"kanji": "赤",
+				"han_viet": "XÍCH",
+				"meaning": "red"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "赤",
+				"furigana": "あか",
+				"romaji": "aka"
+			},
+			{
+				"text": "い",
+				"romaji": "i"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "赤い車です。",
+			"translation": "Là chiếc xe màu đỏ.",
+			"enTranslation": "It is a red car.",
+			"parts": [
+				{
+					"text": "赤",
+					"furigana": "あか"
+				},
+				{
+					"text": "い"
+				},
+				{
+					"text": "車",
+					"furigana": "くるま"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-341",
+		"wordSurface": "青い",
+		"readingKana": "あおい",
+		"hanViet": "THANH",
+		"meaning": "xanh dương",
+		"enMeaning": "blue",
+		"kanjiBreakdown": [
+			{
+				"kanji": "青",
+				"han_viet": "THANH",
+				"meaning": "blue"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "青",
+				"furigana": "あお",
+				"romaji": "ao"
+			},
+			{
+				"text": "い",
+				"romaji": "i"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "青い海です。",
+			"translation": "Biển xanh.",
+			"enTranslation": "It is a blue sea.",
+			"parts": [
+				{
+					"text": "青",
+					"furigana": "あお"
+				},
+				{
+					"text": "い"
+				},
+				{
+					"text": "海",
+					"furigana": "うみ"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-342",
+		"wordSurface": "桜",
+		"readingKana": "さくら",
+		"hanViet": "ANH",
+		"meaning": "anh đào",
+		"enMeaning": "cherry blossom",
+		"kanjiBreakdown": [
+			{
+				"kanji": "桜",
+				"han_viet": "ANH",
+				"meaning": "cherry blossom"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "桜",
+				"furigana": "さくら",
+				"romaji": "sakura"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "桜がきれいです。",
+			"translation": "Hoa anh đào đẹp.",
+			"enTranslation": "The cherry blossoms are beautiful.",
+			"parts": [
+				{
+					"text": "桜",
+					"furigana": "さくら"
+				},
+				{
+					"text": "が"
+				},
+				{
+					"text": "きれい"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-343",
+		"wordSurface": "山",
+		"readingKana": "やま",
+		"hanViet": "SƠN",
+		"meaning": "núi",
+		"enMeaning": "mountain",
+		"kanjiBreakdown": [
+			{
+				"kanji": "山",
+				"han_viet": "SƠN",
+				"meaning": "mountain"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "山",
+				"furigana": "やま",
+				"romaji": "yama"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "富士山は高い山です。",
+			"translation": "Núi Phú Sĩ là ngọn núi cao.",
+			"enTranslation": "Mt. Fuji is a high mountain.",
+			"parts": [
+				{
+					"text": "富士山",
+					"furigana": "ふじさん"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "高",
+					"furigana": "たか"
+				},
+				{
+					"text": "い"
+				},
+				{
+					"text": "山",
+					"furigana": "やま"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-344",
+		"wordSurface": "町",
+		"readingKana": "まち",
+		"hanViet": "ĐINH",
+		"meaning": "thị trấn",
+		"enMeaning": "town, city",
+		"kanjiBreakdown": [
+			{
+				"kanji": "町",
+				"han_viet": "ĐINH",
+				"meaning": "town"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "町",
+				"furigana": "まち",
+				"romaji": "machi"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "静かな町です。",
+			"translation": "Thị trấn yên tĩnh.",
+			"enTranslation": "It is a quiet town.",
+			"parts": [
+				{
+					"text": "静",
+					"furigana": "しず"
+				},
+				{
+					"text": "かな"
+				},
+				{
+					"text": "町",
+					"furigana": "まち"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-345",
+		"wordSurface": "食べ物",
+		"readingKana": "たべもの",
+		"hanViet": "THỰC VẬT",
+		"meaning": "đồ ăn",
+		"enMeaning": "food",
+		"kanjiBreakdown": [
+			{
+				"kanji": "食",
+				"han_viet": "THỰC",
+				"meaning": "eat"
+			},
+			{
+				"kanji": "物",
+				"han_viet": "VẬT",
+				"meaning": "thing"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "食",
+				"furigana": "た"
+			},
+			{
+				"text": "べ"
+			},
+			{
+				"text": "物",
+				"furigana": "もの",
+				"romaji": "mono"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "日本の食べ物は高いです。",
+			"translation": "Đồ ăn Nhật đắt.",
+			"enTranslation": "Japanese food is expensive.",
+			"parts": [
+				{
+					"text": "日本",
+					"furigana": "にほん"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "食",
+					"furigana": "た"
+				},
+				{
+					"text": "べ"
+				},
+				{
+					"text": "物",
+					"furigana": "もの"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "高",
+					"furigana": "たか"
+				},
+				{
+					"text": "い"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-346",
+		"wordSurface": "所",
+		"readingKana": "ところで",
+		"hanViet": "SỞ",
+		"meaning": "nơi, chỗ",
+		"enMeaning": "place",
+		"kanjiBreakdown": [
+			{
+				"kanji": "所",
+				"han_viet": "SỞ",
+				"meaning": "place"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "所",
+				"furigana": "ところで",
+				"romaji": "tokorode"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "どんな所ですか。",
+			"translation": "Là nơi như thế nào?",
+			"enTranslation": "What kind of place is it?",
+			"parts": [
+				{
+					"text": "どんな"
+				},
+				{
+					"text": "所",
+					"furigana": "ところ"
+				},
+				{
+					"text": "ですか"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-347",
+		"wordSurface": "寮",
+		"readingKana": "りょう",
+		"hanViet": "LIÊU",
+		"meaning": "ký túc xá",
+		"enMeaning": "dormitory",
+		"kanjiBreakdown": [
+			{
+				"kanji": "寮",
+				"han_viet": "LIÊU",
+				"meaning": "dormitory"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "寮",
+				"furigana": "りょう",
+				"romaji": "ryou"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "寮に住んでいます。",
+			"translation": "Tôi đang sống ở ký túc xá.",
+			"enTranslation": "I live in a dormitory.",
+			"parts": [
+				{
+					"text": "寮",
+					"furigana": "りょう"
+				},
+				{
+					"text": "に"
+				},
+				{
+					"text": "住",
+					"furigana": "す"
+				},
+				{
+					"text": "んで"
+				},
+				{
+					"text": "います"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-348",
+		"wordSurface": "生活",
+		"readingKana": "せいかつ",
+		"hanViet": "SINH HOẠT",
+		"meaning": "cuộc sống, sinh hoạt",
+		"enMeaning": "life, lifestyle",
+		"kanjiBreakdown": [
+			{
+				"kanji": "生",
+				"han_viet": "SINH",
+				"meaning": "life"
+			},
+			{
+				"kanji": "活",
+				"han_viet": "HOẠT",
+				"meaning": "living"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "生活",
+				"furigana": "せいかつ",
+				"romaji": "seikatsu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "日本の生活は楽しいです。",
+			"translation": "Cuộc sống ở Nhật rất vui.",
+			"enTranslation": "Life in Japan is fun.",
+			"parts": [
+				{
+					"text": "日本",
+					"furigana": "にほん"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "生活",
+					"furigana": "せいかつ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "楽",
+					"furigana": "たの"
+				},
+				{
+					"text": "しい"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-349",
+		"wordSurface": "お仕事",
+		"readingKana": "おしごと",
+		"hanViet": "SĨ SỰ",
+		"meaning": "việc, công việc",
+		"enMeaning": "work, job",
+		"kanjiBreakdown": [
+			{
+				"kanji": "仕",
+				"han_viet": "SĨ",
+				"meaning": "attend"
+			},
+			{
+				"kanji": "事",
+				"han_viet": "SỰ",
+				"meaning": "matter"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "お"
+			},
+			{
+				"text": "仕事",
+				"furigana": "しごと",
+				"romaji": "shigoto"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "お仕事は何ですか。",
+			"translation": "Công việc của bạn là gì?",
+			"enTranslation": "What is your job?",
+			"parts": [
+				{
+					"text": "お"
+				},
+				{
+					"text": "仕事",
+					"furigana": "しごと"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "何",
+					"furigana": "なん"
+				},
+				{
+					"text": "ですか"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	}
 ]

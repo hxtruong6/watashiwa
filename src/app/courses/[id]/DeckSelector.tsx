@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
-import { Modal, Input, List, Button, Tag, Typography, message, Empty, Spin, Tooltip } from 'antd';
+import { addDeckToCourse, searchDecks } from '@/services/course-actions';
 import {
-	SearchOutlined,
-	PlusOutlined,
-	CheckOutlined,
 	CheckCircleFilled,
+	CheckOutlined,
 	EyeOutlined,
+	PlusOutlined,
+	SearchOutlined,
 } from '@ant-design/icons';
-import { searchDecks, addDeckToCourse } from '@/services/course-actions';
+import { Button, Empty, Input, List, Modal, Spin, Tag, Tooltip, Typography, message } from 'antd';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 const { Text } = Typography;
 

@@ -1,7 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import DashboardContent from './DashboardContent';
 import React from 'react';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+
+import DashboardContent from './DashboardContent';
 
 // Mock sub-components to avoid deep rendering issues and focus on Dashboard layout
 vi.mock('@/components/dashboard', () => ({

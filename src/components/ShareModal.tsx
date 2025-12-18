@@ -1,16 +1,16 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Modal, Typography, Flex, Input, Button, Tooltip, Space, theme } from 'antd';
 import {
-	CopyOutlined,
 	CheckOutlined,
-	ShareAltOutlined,
+	CopyOutlined,
 	FacebookFilled,
-	TwitterSquareFilled,
 	LinkedinFilled,
+	ShareAltOutlined,
+	TwitterSquareFilled,
 } from '@ant-design/icons';
+import { Button, Flex, Input, Modal, Space, Tooltip, Typography, theme } from 'antd';
 import { useTranslations } from 'next-intl';
+import React, { useState } from 'react';
 
 const { Title, Paragraph, Text } = Typography;
 const { useToken } = theme;

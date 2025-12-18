@@ -1,4 +1,4 @@
-import { Storage, GetSignedUrlConfig } from '@google-cloud/storage';
+import { GetSignedUrlConfig, Storage } from '@google-cloud/storage';
 import mime from 'mime-types';
 import fs from 'node:fs';
 import path from 'node:path';

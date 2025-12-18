@@ -1,11 +1,12 @@
 'use client';
 
-import React from 'react';
-import { Button, Typography, Flex, Badge, theme } from 'antd';
+import { CheckCircleFilled, RightOutlined, RocketOutlined } from '@ant-design/icons';
+import { Badge, Button, Flex, Typography, theme } from 'antd';
 import { motion } from 'framer-motion';
-import { RocketOutlined, RightOutlined, CheckCircleFilled } from '@ant-design/icons';
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import React from 'react';
+
 import InteractiveFlipCard from './InteractiveFlipCard';
 
 const { Title, Paragraph, Text } = Typography;

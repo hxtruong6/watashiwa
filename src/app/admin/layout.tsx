@@ -1,17 +1,17 @@
-import { redirect } from 'next/navigation';
-import { getUserWithRole } from '@/services/actions';
 import { hasRole } from '@/lib/auth/roleGuard';
-import { UserRole } from '@prisma/client';
-import React from 'react';
 import themeConfig from '@/lib/theme/themeConfig';
+import { getUserWithRole } from '@/services/actions';
 import {
-	DashboardOutlined,
-	UserOutlined,
 	ArrowLeftOutlined,
-	ReadOutlined,
+	DashboardOutlined,
 	FlagOutlined,
+	ReadOutlined,
+	UserOutlined,
 } from '@ant-design/icons';
+import { UserRole } from '@prisma/client';
 import Link from 'next/link';
+import { redirect } from 'next/navigation';
+import React from 'react';
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
 	// Note: Server component, but theme token usage might require client component or just inline style for layout.

@@ -1,11 +1,12 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { Flex, Segmented, Button, Spin, Empty, Tag as AntTag, theme } from 'antd';
-import { ReloadOutlined } from '@ant-design/icons';
 import { getCommunityFeed } from '@/services/comments';
-import FeedItem from './FeedItem';
+import { ReloadOutlined } from '@ant-design/icons';
+import { Tag as AntTag, Button, Empty, Flex, Segmented, Spin, theme } from 'antd';
 import { useTranslations } from 'next-intl';
+import React, { useEffect, useState } from 'react';
+
+import FeedItem from './FeedItem';
 
 const TAGS = ['ALL', 'MNEMONIC', 'USAGE_TIP', 'CULTURAL_NOTE', 'EXAMPLE', 'GRAMMAR', 'GENERAL'];
 

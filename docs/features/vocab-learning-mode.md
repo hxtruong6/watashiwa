@@ -34,8 +34,8 @@ Users should be able to toggle the visibility of specific vocabulary details to 
 ### 3.1 Data Model
 
 The `Vocab` data structure needs to support the new fields.
-*Existing fields*: `kanji`, `reading` (Furigana), `meaning`.
-*New fields required*:
+_Existing fields_: `kanji`, `reading` (Furigana), `meaning`.
+_New fields required_:
 
 - `audioUrl`: String (URL to the audio file).
 - `romaji`: String (Romaji text).
@@ -48,25 +48,25 @@ Location: `src/components/VocabCard.tsx`
 
 - **Props Update**:
 
-    ```typescript
-    interface VocabCardProps {
-        card: {
-            vocab: {
-                kanji: string;
-                reading: string; // Furigana
-                meaning: string;
-                romaji?: string; // New
-                audioUrl?: string; // New
-                // ... other existing fields
-            }
-        };
-        showAnswer: boolean;
-        // Settings Props
-        showFurigana: boolean;
-        showRomaji: boolean;
-        autoPlayAudio: boolean;
-    }
-    ```
+  ```typescript
+  interface VocabCardProps {
+  	card: {
+  		vocab: {
+  			kanji: string;
+  			reading: string; // Furigana
+  			meaning: string;
+  			romaji?: string; // New
+  			audioUrl?: string; // New
+  			// ... other existing fields
+  		};
+  	};
+  	showAnswer: boolean;
+  	// Settings Props
+  	showFurigana: boolean;
+  	showRomaji: boolean;
+  	autoPlayAudio: boolean;
+  }
+  ```
 
 - **Audio Logic**:
   - Use HTML5 `<audio>` element or `new Audio()` API.
@@ -90,8 +90,8 @@ Location: `src/components/VocabCard.tsx`
 
 1. User enters "Study" or "Review" mode.
 2. User sees the front of the card (Kanji).
-    - *If Auto-play is ON*: Audio plays immediately.
-    - *If Show Furigana is ON*: Furigana is visible.
-    - *If Show Romaji is ON*: Romaji is visible.
+   - _If Auto-play is ON_: Audio plays immediately.
+   - _If Show Furigana is ON_: Furigana is visible.
+   - _If Show Romaji is ON_: Romaji is visible.
 3. User can click "Play Audio" manually at any time.
 4. User flips the card to see the meaning and examples.

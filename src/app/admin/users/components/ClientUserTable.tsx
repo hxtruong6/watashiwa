@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Table, Select, message, Modal } from 'antd';
-import { UserRole } from '@prisma/client';
 import RoleBadge from '@/components/RoleBadge';
 import { updateUserRole } from '@/services/actions';
+import { UserRole } from '@prisma/client';
+import { Modal, Select, Table, message } from 'antd';
+import React, { useState } from 'react';
 
 interface User {
 	id: string;

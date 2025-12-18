@@ -1,8 +1,11 @@
-import React from 'react';
-import { Typography, Tag, Divider, Flex, Button, theme, Image } from 'antd';
 import { EyeOutlined, SoundOutlined } from '@ant-design/icons';
+import { Button, Divider, Flex, Image, Tag, Typography, theme } from 'antd';
 import { useTranslations } from 'next-intl';
-import KanjiBreakdown from '../KanjiBreakdown'; // Check relative path
+import React from 'react';
+
+import KanjiBreakdown from '../KanjiBreakdown';
+
+// Check relative path
 
 const { useToken } = theme;
 const { Title, Text, Paragraph } = Typography;

@@ -26,7 +26,7 @@
 
 - **User Goal**: "I want to know what I'm getting into." (Context setting).
 - **Emotional Design**: **Calm & Prepared**. The briefing should feel like a strategic map before battle, or a menu before a meal.
-- **"So What?" Test**: Why show the list? -> So I can listen to the audio *passively* and connect the sound to meaning without pressure.
+- **"So What?" Test**: Why show the list? -> So I can listen to the audio _passively_ and connect the sound to meaning without pressure.
 
 ### B. User Flow Analysis
 
@@ -54,8 +54,8 @@
 
   ```typescript
   interface SessionBriefingProps {
-    queue: StudyCardWithDetails[];
-    onStart: () => void;
+  	queue: StudyCardWithDetails[];
+  	onStart: () => void;
   }
   ```
 
@@ -92,7 +92,7 @@
 ### B. Component Build (`SessionBriefing.tsx`)
 
 - [ ] **Mobile Layout**: `Flex vertical` with `flex: 1` scroll area.
-- [ ] **Audio Integration**: Re-use `useFlashCardAudio` or simple `Audio` element for preview? -> *Decision: Simple Audio button for list items.*
+- [ ] **Audio Integration**: Re-use `useFlashCardAudio` or simple `Audio` element for preview? -> _Decision: Simple Audio button for list items._
 - [ ] **Translations**: Add keys for "Mission Today", "New Arrivals", "Critical Review".
 
 ### C. Integration

@@ -14,14 +14,14 @@ Authentication is the gateway to the application, ensuring that users can secure
   1. User enters credentials.
   2. System creates a Supabase Auth user.
   3. **Auto-Login vs Confirmation**:
-     - *If "Confirm Email" is Disabled in Supabase*: User is logged in immediately and redirected to `/`.
-     - *If "Confirm Email" is Enabled*: Application shows "Check your email" message.
+     - _If "Confirm Email" is Disabled in Supabase_: User is logged in immediately and redirected to `/`.
+     - _If "Confirm Email" is Enabled_: Application shows "Check your email" message.
   4. **Email Confirmation Flow** (If Enabled):
      - User receives email with link: `…/auth/callback?code=xyz`.
      - Clicking link hits `/auth/callback` route.
      - Server exchanges `code` for `session`.
      - **Redirect**: User is automatically logged in and redirected to `/` (Dashboard).
-  5. **Important**: User is *not* considered active until they have a `User` record in our PostgreSQL database (handled via Seed or Signals).
+  5. **Important**: User is _not_ considered active until they have a `User` record in our PostgreSQL database (handled via Seed or Signals).
 
 ### 2. Login
 

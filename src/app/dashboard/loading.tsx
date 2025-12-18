@@ -1,7 +1,7 @@
 'use client';
 
+import { Card, Col, Flex, Row, Skeleton } from 'antd';
 import React from 'react';
-import { Card, Skeleton, Flex, Row, Col } from 'antd';
 
 export default function Loading() {
 	return (

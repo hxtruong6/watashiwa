@@ -1,8 +1,8 @@
 'use server';
 
 import { prisma } from '@/lib/db';
-import { Prisma } from '@prisma/client';
 import { getUser } from '@/services/actions';
+import { Prisma } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 

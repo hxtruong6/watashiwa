@@ -1,9 +1,10 @@
 'use client';
 
-import React from 'react';
-import { Empty, Spin, Flex } from 'antd';
-import CommentItem from './CommentItem';
 import { CommentType } from '@prisma/client';
+import { Empty, Flex, Spin } from 'antd';
+import React from 'react';
+
+import CommentItem from './CommentItem';
 
 interface CommentListProps {
 	comments: {

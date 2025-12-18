@@ -1,20 +1,20 @@
 'use client';
 
-import React, { useState } from 'react';
+import { BankOutlined, CheckOutlined, CopyOutlined, HeartFilled } from '@ant-design/icons';
 import {
+	Button,
+	ConfigProvider,
+	Flex,
 	FloatButton,
+	Image,
 	Modal,
 	Tabs,
-	Typography,
-	Flex,
 	Tooltip,
-	ConfigProvider,
-	Image,
-	Button,
+	Typography,
 } from 'antd';
-import { HeartFilled, CopyOutlined, CheckOutlined, BankOutlined } from '@ant-design/icons';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import React, { useState } from 'react';
 
 const { Text, Paragraph, Title } = Typography;
 

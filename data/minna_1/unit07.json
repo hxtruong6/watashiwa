@@ -1,1649 +1,1649 @@
 [
-    {
-        "id": "uuid-263",
-        "wordSurface": "切ります",
-        "readingKana": "きります",
-        "hanViet": "THIẾT",
-        "meaning": "cắt",
-        "enMeaning": "cut",
-        "kanjiBreakdown": [
-            {
-                "kanji": "切",
-                "han_viet": "THIẾT",
-                "meaning": "cut"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "切",
-                "furigana": "き",
-                "romaji": "ki"
-            },
-            {
-                "text": "ります",
-                "romaji": "rimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "紙を切ります。",
-            "translation": "Cắt giấy.",
-            "enTranslation": "Cut paper.",
-            "parts": [
-                {
-                    "text": "紙",
-                    "furigana": "かみ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "切",
-                    "furigana": "き"
-                },
-                {
-                    "text": "ります"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-264",
-        "wordSurface": "送ります",
-        "readingKana": "おくります",
-        "hanViet": "TỐNG",
-        "meaning": "gửi",
-        "enMeaning": "send",
-        "kanjiBreakdown": [
-            {
-                "kanji": "送",
-                "han_viet": "TỐNG",
-                "meaning": "send"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "送",
-                "furigana": "おく",
-                "romaji": "oku"
-            },
-            {
-                "text": "ります",
-                "romaji": "rimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "手紙を送ります。",
-            "translation": "Gửi thư.",
-            "enTranslation": "Send a letter.",
-            "parts": [
-                {
-                    "text": "手紙",
-                    "furigana": "てがみ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "送",
-                    "furigana": "おく"
-                },
-                {
-                    "text": "ります"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-265",
-        "wordSurface": "貸します",
-        "readingKana": "かします",
-        "hanViet": "THẢI",
-        "meaning": "cho mượn, cho vay",
-        "enMeaning": "lend",
-        "kanjiBreakdown": [
-            {
-                "kanji": "貸",
-                "han_viet": "THẢI",
-                "meaning": "lend"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "貸",
-                "furigana": "か",
-                "romaji": "ka"
-            },
-            {
-                "text": "します",
-                "romaji": "shimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "傘を貸します。",
-            "translation": "Cho mượn ô.",
-            "enTranslation": "Lend an umbrella.",
-            "parts": [
-                {
-                    "text": "傘",
-                    "furigana": "かさ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "貸",
-                    "furigana": "か"
-                },
-                {
-                    "text": "します"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-266",
-        "wordSurface": "借ります",
-        "readingKana": "かります",
-        "hanViet": "TÁ",
-        "meaning": "mượn, vay",
-        "enMeaning": "borrow",
-        "kanjiBreakdown": [
-            {
-                "kanji": "借",
-                "han_viet": "TÁ",
-                "meaning": "borrow"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "借",
-                "furigana": "か",
-                "romaji": "ka"
-            },
-            {
-                "text": "ります",
-                "romaji": "rimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "お金を借ります。",
-            "translation": "Vay tiền.",
-            "enTranslation": "Borrow money.",
-            "parts": [
-                {
-                    "text": "お"
-                },
-                {
-                    "text": "金",
-                    "furigana": "かね"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "借",
-                    "furigana": "か"
-                },
-                {
-                    "text": "ります"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-267",
-        "wordSurface": "教えます",
-        "readingKana": "おしえます",
-        "hanViet": "GIÁO",
-        "meaning": "dạy",
-        "enMeaning": "teach",
-        "kanjiBreakdown": [
-            {
-                "kanji": "教",
-                "han_viet": "GIÁO",
-                "meaning": "teach"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "教",
-                "furigana": "おし",
-                "romaji": "oshi"
-            },
-            {
-                "text": "えます",
-                "romaji": "emasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "日本語を教えます。",
-            "translation": "Dạy tiếng Nhật.",
-            "enTranslation": "Teach Japanese.",
-            "parts": [
-                {
-                    "text": "日本語",
-                    "furigana": "にほんご"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "教",
-                    "furigana": "おし"
-                },
-                {
-                    "text": "えます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-268",
-        "wordSurface": "習います",
-        "readingKana": "ならいます",
-        "hanViet": "TẬP",
-        "meaning": "học, tập",
-        "enMeaning": "learn",
-        "kanjiBreakdown": [
-            {
-                "kanji": "習",
-                "han_viet": "TẬP",
-                "meaning": "learn"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "習",
-                "furigana": "なら",
-                "romaji": "nara"
-            },
-            {
-                "text": "います",
-                "romaji": "imasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "英語を習います。",
-            "translation": "Học tiếng Anh.",
-            "enTranslation": "Learn English.",
-            "parts": [
-                {
-                    "text": "英語",
-                    "furigana": "えいご"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "習",
-                    "furigana": "なら"
-                },
-                {
-                    "text": "います"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-269",
-        "wordSurface": "あげます",
-        "readingKana": "あげます",
-        "hanViet": "",
-        "meaning": "cho, tặng",
-        "enMeaning": "give",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "あげます",
-                "romaji": "agemasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "花をあげます。",
-            "translation": "Tặng hoa.",
-            "enTranslation": "Give flowers.",
-            "parts": [
-                {
-                    "text": "花",
-                    "furigana": "はな"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "あげます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-270",
-        "wordSurface": "もらいます",
-        "readingKana": "もらいます",
-        "hanViet": "",
-        "meaning": "nhận",
-        "enMeaning": "receive",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "もらいます",
-                "romaji": "moraimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "プレゼントをもらいます。",
-            "translation": "Nhận quà.",
-            "enTranslation": "Receive a present.",
-            "parts": [
-                {
-                    "text": "プレゼント"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "もらいます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-271",
-        "wordSurface": "かけます",
-        "readingKana": "かけます",
-        "hanViet": "",
-        "meaning": "gọi (điện thoại)",
-        "enMeaning": "call (by phone)",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "かけます",
-                "romaji": "kakemasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "電話をかけます。",
-            "translation": "Gọi điện thoại.",
-            "enTranslation": "Make a phone call.",
-            "parts": [
-                {
-                    "text": "電話",
-                    "furigana": "でんわ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "かけます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-272",
-        "wordSurface": "はし",
-        "readingKana": "はし",
-        "hanViet": "",
-        "meaning": "đũa",
-        "enMeaning": "chopsticks",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "はし",
-                "romaji": "hashi"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "はしで食べます。",
-            "translation": "Ăn bằng đũa.",
-            "enTranslation": "Eat with chopsticks.",
-            "parts": [
-                {
-                    "text": "はし"
-                },
-                {
-                    "text": "で"
-                },
-                {
-                    "text": "食",
-                    "furigana": "た"
-                },
-                {
-                    "text": "べます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-273",
-        "wordSurface": "スプーン",
-        "readingKana": "スプーン",
-        "hanViet": "",
-        "meaning": "thìa",
-        "enMeaning": "spoon",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "スプーン",
-                "romaji": "supuun"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "スプーンを使います。",
-            "translation": "Dùng thìa.",
-            "enTranslation": "Use a spoon.",
-            "parts": [
-                {
-                    "text": "スプーン"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "使",
-                    "furigana": "つか"
-                },
-                {
-                    "text": "います"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-274",
-        "wordSurface": "ナイフ",
-        "readingKana": "ナイフ",
-        "hanViet": "",
-        "meaning": "dao",
-        "enMeaning": "knife",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "ナイフ",
-                "romaji": "naifu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "ナイフで切ります。",
-            "translation": "Cắt bằng dao.",
-            "enTranslation": "Cut with a knife.",
-            "parts": [
-                {
-                    "text": "ナイフ"
-                },
-                {
-                    "text": "で"
-                },
-                {
-                    "text": "切",
-                    "furigana": "き"
-                },
-                {
-                    "text": "ります"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-275",
-        "wordSurface": "フォーク",
-        "readingKana": "フォーク",
-        "hanViet": "",
-        "meaning": "nĩa",
-        "enMeaning": "fork",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "フォーク",
-                "romaji": "fooku"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "フォークで食べます。",
-            "translation": "Ăn bằng dĩa.",
-            "enTranslation": "Eat with a fork.",
-            "parts": [
-                {
-                    "text": "フォーク"
-                },
-                {
-                    "text": "で"
-                },
-                {
-                    "text": "食",
-                    "furigana": "た"
-                },
-                {
-                    "text": "べます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-276",
-        "wordSurface": "はさみ",
-        "readingKana": "はさみ",
-        "hanViet": "",
-        "meaning": "kéo",
-        "enMeaning": "scissors",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "はさみ",
-                "romaji": "hasami"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "はさみで切ります。",
-            "translation": "Cắt bằng kéo.",
-            "enTranslation": "Cut with scissors.",
-            "parts": [
-                {
-                    "text": "はさみ"
-                },
-                {
-                    "text": "で"
-                },
-                {
-                    "text": "切",
-                    "furigana": "き"
-                },
-                {
-                    "text": "ります"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-277",
-        "wordSurface": "パソコン",
-        "readingKana": "パソコン",
-        "hanViet": "",
-        "meaning": "máy vi tính cá nhân",
-        "enMeaning": "personal computer",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "パソコン",
-                "romaji": "pasokon"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "パソコンで仕事をします。",
-            "translation": "Làm việc bằng máy tính.",
-            "enTranslation": "Work on a personal computer.",
-            "parts": [
-                {
-                    "text": "パソコン"
-                },
-                {
-                    "text": "で"
-                },
-                {
-                    "text": "仕事",
-                    "furigana": "しごと"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "します"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-278",
-        "wordSurface": "ケータイ",
-        "readingKana": "ケータイ",
-        "hanViet": "",
-        "meaning": "điện thoại di động",
-        "enMeaning": "mobile phone",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "ケータイ",
-                "romaji": "keetai"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "ケータイを持っていますか。",
-            "translation": "Bạn có điện thoại di động không?",
-            "enTranslation": "Do you have a mobile phone?",
-            "parts": [
-                {
-                    "text": "ケータイ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "持",
-                    "furigana": "も"
-                },
-                {
-                    "text": "っていますか"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-279",
-        "wordSurface": "メール",
-        "readingKana": "メール",
-        "hanViet": "",
-        "meaning": "email",
-        "enMeaning": "email",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "メール",
-                "romaji": "meeru"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "メールを送ります。",
-            "translation": "Gửi email.",
-            "enTranslation": "Send an email.",
-            "parts": [
-                {
-                    "text": "メール"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "送",
-                    "furigana": "おく"
-                },
-                {
-                    "text": "ります"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-280",
-        "wordSurface": "パンチ",
-        "readingKana": "パンチ",
-        "hanViet": "",
-        "meaning": "cái đục lỗ",
-        "enMeaning": "punch",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "パンチ",
-                "romaji": "panchi"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "パンチで穴をあけます。",
-            "translation": "Đục lỗ bằng cái đục lỗ.",
-            "enTranslation": "Punch holes with a punch.",
-            "parts": [
-                {
-                    "text": "パンチ"
-                },
-                {
-                    "text": "で"
-                },
-                {
-                    "text": "穴",
-                    "furigana": "あな"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "あけます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-281",
-        "wordSurface": "ホッチキス",
-        "readingKana": "ホッチキス",
-        "hanViet": "",
-        "meaning": "cái dập ghim",
-        "enMeaning": "stapler",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "ホッチキス",
-                "romaji": "hotchikisu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "ホッチキスでとめます。",
-            "translation": "Ghim bằng dập ghim.",
-            "enTranslation": "Staple with a stapler.",
-            "parts": [
-                {
-                    "text": "ホッチキス"
-                },
-                {
-                    "text": "で"
-                },
-                {
-                    "text": "とめます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-282",
-        "wordSurface": "セロテープ",
-        "readingKana": "セロテープ",
-        "hanViet": "",
-        "meaning": "băng dính",
-        "enMeaning": "scotch tape",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "セロテープ",
-                "romaji": "seroteepu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "セロテープで貼ります。",
-            "translation": "Dán bằng băng dính.",
-            "enTranslation": "Stick with scotch tape.",
-            "parts": [
-                {
-                    "text": "セロテープ"
-                },
-                {
-                    "text": "で"
-                },
-                {
-                    "text": "貼",
-                    "furigana": "は"
-                },
-                {
-                    "text": "ります"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-283",
-        "wordSurface": "シャツ",
-        "readingKana": "シャツ",
-        "hanViet": "",
-        "meaning": "áo sơ mi",
-        "enMeaning": "shirt",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "シャツ",
-                "romaji": "shatsu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "シャツをもらいました。",
-            "translation": "Tôi đã được nhận áo sơ mi.",
-            "enTranslation": "I received a shirt.",
-            "parts": [
-                {
-                    "text": "シャツ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "もらいました"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-284",
-        "wordSurface": "プレゼント",
-        "readingKana": "プレゼント",
-        "hanViet": "",
-        "meaning": "quà tặng",
-        "enMeaning": "present, gift",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "プレゼント",
-                "romaji": "purezento"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "誕生日プレゼントをあげます。",
-            "translation": "Tặng quà sinh nhật.",
-            "enTranslation": "Give a birthday present.",
-            "parts": [
-                {
-                    "text": "誕生日",
-                    "furigana": "たんじょうび"
-                },
-                {
-                    "text": "プレゼント"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "あげます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-285",
-        "wordSurface": "クリスマス",
-        "readingKana": "クリスマス",
-        "hanViet": "",
-        "meaning": "giáng sinh",
-        "enMeaning": "Christmas",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "クリスマス",
-                "romaji": "kurisumasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "もうすぐクリスマスです。",
-            "translation": "Sắp đến giáng sinh rồi.",
-            "enTranslation": "It is almost Christmas.",
-            "parts": [
-                {
-                    "text": "もうすぐ"
-                },
-                {
-                    "text": "クリスマス"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-286",
-        "wordSurface": "もう",
-        "readingKana": "もう",
-        "hanViet": "",
-        "meaning": "đã, rồi",
-        "enMeaning": "already",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "もう",
-                "romaji": "mou"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "もう昼ごはんを食べましたか。",
-            "translation": "Bạn đã ăn trưa chưa?",
-            "enTranslation": "Have you eaten lunch yet?",
-            "parts": [
-                {
-                    "text": "もう"
-                },
-                {
-                    "text": "昼",
-                    "furigana": "ひる"
-                },
-                {
-                    "text": "ごはん"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "食",
-                    "furigana": "た"
-                },
-                {
-                    "text": "べました"
-                },
-                {
-                    "text": "か"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-287",
-        "wordSurface": "まだ",
-        "readingKana": "まだ",
-        "hanViet": "",
-        "meaning": "chưa",
-        "enMeaning": "not yet",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "まだ",
-                "romaji": "mada"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "いいえ、まだです。",
-            "translation": "Chưa, tôi chưa ăn.",
-            "enTranslation": "No, not yet.",
-            "parts": [
-                {
-                    "text": "いいえ"
-                },
-                {
-                    "text": "、"
-                },
-                {
-                    "text": "まだ"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-288",
-        "wordSurface": "これから",
-        "readingKana": "これから",
-        "hanViet": "",
-        "meaning": "từ bây giờ, sau đây",
-        "enMeaning": "from now on",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "これから",
-                "romaji": "korekara"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "これから食べます。",
-            "translation": "Bây giờ tôi sẽ ăn.",
-            "enTranslation": "I will eat now.",
-            "parts": [
-                {
-                    "text": "これから"
-                },
-                {
-                    "text": "食",
-                    "furigana": "た"
-                },
-                {
-                    "text": "べます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-289",
-        "wordSurface": "いらっしゃい",
-        "readingKana": "いらっしゃい",
-        "hanViet": "",
-        "meaning": "chào mừng a/c đã đến chơi",
-        "enMeaning": "Welcome",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "いらっしゃい",
-                "romaji": "irasshai"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "よくいらっしゃいました。",
-            "translation": "Chào mừng bạn đã đến.",
-            "enTranslation": "Welcome.",
-            "parts": [
-                {
-                    "text": "よく"
-                },
-                {
-                    "text": "いらっしゃいました"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-290",
-        "wordSurface": "どうぞおあがりください",
-        "readingKana": "どうぞおあがりください",
-        "hanViet": "",
-        "meaning": "mời a/c vào",
-        "enMeaning": "Please come in",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "どうぞ",
-                "romaji": "douzo"
-            },
-            {
-                "text": "お"
-            },
-            {
-                "text": "あがり"
-            },
-            {
-                "text": "ください"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "どうぞお上がりください。",
-            "translation": "Xin mời vào.",
-            "enTranslation": "Please come in.",
-            "parts": [
-                {
-                    "text": "どうぞ"
-                },
-                {
-                    "text": "お"
-                },
-                {
-                    "text": "上",
-                    "furigana": "あ"
-                },
-                {
-                    "text": "がりください"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-291",
-        "wordSurface": "失礼します",
-        "readingKana": "しつれいします",
-        "hanViet": "",
-        "meaning": "xin phép tôi vào",
-        "enMeaning": "Excuse me, May I come in?",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "失礼",
-                "furigana": "しつれい",
-                "romaji": "shitsurei"
-            },
-            {
-                "text": "します",
-                "romaji": "shimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "失礼します。",
-            "translation": "Xin phép.",
-            "enTranslation": "Excuse me.",
-            "parts": [
-                {
-                    "text": "失礼",
-                    "furigana": "しつれい"
-                },
-                {
-                    "text": "します"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-292",
-        "wordSurface": "ごちそうさまでした",
-        "readingKana": "ごちそうさまでした",
-        "hanViet": "",
-        "meaning": "cảm ơn vì bữa ăn",
-        "enMeaning": "Thank you for the meal",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "ごちそうさまでした",
-                "romaji": "gochisousamadeshita"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "ごちそうさまでした。",
-            "translation": "Cảm ơn vì bữa ăn.",
-            "enTranslation": "That was a delicious meal.",
-            "parts": [
-                {
-                    "text": "ごちそうさまでした"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-293",
-        "wordSurface": "年賀状",
-        "readingKana": "ねんがじょう",
-        "hanViet": "NIÊN HẠ TRẠNG",
-        "meaning": "thiệp mừng năm mới",
-        "enMeaning": "New Year's card",
-        "kanjiBreakdown": [
-            {
-                "kanji": "年",
-                "han_viet": "NIÊN",
-                "meaning": "year"
-            },
-            {
-                "kanji": "賀",
-                "han_viet": "HẠ",
-                "meaning": "congratulations"
-            },
-            {
-                "kanji": "状",
-                "han_viet": "TRẠNG",
-                "meaning": "condition, letter"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "年賀状",
-                "furigana": "ねんがじょう",
-                "romaji": "nengajou"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "年賀状を書きます。",
-            "translation": "Viết thiệp mừng năm mới.",
-            "enTranslation": "Write New Year's cards.",
-            "parts": [
-                {
-                    "text": "年賀状",
-                    "furigana": "ねんがじょう"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "書",
-                    "furigana": "か"
-                },
-                {
-                    "text": "きます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-294",
-        "wordSurface": "消しゴム",
-        "readingKana": "けしゴム",
-        "hanViet": "TIÊU",
-        "meaning": "cục tẩy, cục gôm",
-        "enMeaning": "eraser",
-        "kanjiBreakdown": [
-            {
-                "kanji": "消",
-                "han_viet": "TIÊU",
-                "meaning": "extinguish"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "消",
-                "furigana": "け"
-            },
-            {
-                "text": "し"
-            },
-            {
-                "text": "ゴム",
-                "romaji": "keshigomu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "消しゴムを貸してください。",
-            "translation": "Cho tôi mượn cục tẩy.",
-            "enTranslation": "Please lend me an eraser.",
-            "parts": [
-                {
-                    "text": "消",
-                    "furigana": "け"
-                },
-                {
-                    "text": "し"
-                },
-                {
-                    "text": "ゴム"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "貸",
-                    "furigana": "か"
-                },
-                {
-                    "text": "して"
-                },
-                {
-                    "text": "ください"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-295",
-        "wordSurface": "紙",
-        "readingKana": "かみ",
-        "hanViet": "CHỈ",
-        "meaning": "giấy",
-        "enMeaning": "paper",
-        "kanjiBreakdown": [
-            {
-                "kanji": "紙",
-                "han_viet": "CHỈ",
-                "meaning": "paper"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "紙",
-                "furigana": "かみ",
-                "romaji": "kami"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "紙に書きます。",
-            "translation": "Viết vào giấy.",
-            "enTranslation": "Write on paper.",
-            "parts": [
-                {
-                    "text": "紙",
-                    "furigana": "かみ"
-                },
-                {
-                    "text": "に"
-                },
-                {
-                    "text": "書",
-                    "furigana": "か"
-                },
-                {
-                    "text": "きます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-296",
-        "wordSurface": "花",
-        "readingKana": "はな",
-        "hanViet": "HOA",
-        "meaning": "hoa",
-        "enMeaning": "flower",
-        "kanjiBreakdown": [
-            {
-                "kanji": "花",
-                "han_viet": "HOA",
-                "meaning": "flower"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "花",
-                "furigana": "はな",
-                "romaji": "hana"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "花を買います。",
-            "translation": "Mua hoa.",
-            "enTranslation": "Buy flowers.",
-            "parts": [
-                {
-                    "text": "花",
-                    "furigana": "はな"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "買",
-                    "furigana": "か"
-                },
-                {
-                    "text": "います"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-297",
-        "wordSurface": "荷物",
-        "readingKana": "にもつ",
-        "hanViet": "HÀ VẬT",
-        "meaning": "hành lý, đồ đạc",
-        "enMeaning": "luggage, baggage",
-        "kanjiBreakdown": [
-            {
-                "kanji": "荷",
-                "han_viet": "HÀ",
-                "meaning": "baggage"
-            },
-            {
-                "kanji": "物",
-                "han_viet": "VẬT",
-                "meaning": "thing"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "荷物",
-                "furigana": "にもつ",
-                "romaji": "nimotsu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "荷物を送ります。",
-            "translation": "Gửi hành lý.",
-            "enTranslation": "Send luggage.",
-            "parts": [
-                {
-                    "text": "荷物",
-                    "furigana": "にもつ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "送",
-                    "furigana": "おく"
-                },
-                {
-                    "text": "ります"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-298",
-        "wordSurface": "お金",
-        "readingKana": "おかね",
-        "hanViet": "KIM",
-        "meaning": "tiền",
-        "enMeaning": "money",
-        "kanjiBreakdown": [
-            {
-                "kanji": "金",
-                "han_viet": "KIM",
-                "meaning": "gold, money"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "お"
-            },
-            {
-                "text": "金",
-                "furigana": "かね",
-                "romaji": "okane"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "お金がありません。",
-            "translation": "Tôi không có tiền.",
-            "enTranslation": "I have no money.",
-            "parts": [
-                {
-                    "text": "お"
-                },
-                {
-                    "text": "金",
-                    "furigana": "かね"
-                },
-                {
-                    "text": "が"
-                },
-                {
-                    "text": "ありません"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-299",
-        "wordSurface": "切符",
-        "readingKana": "きっぷ",
-        "hanViet": "THIẾT PHÙ",
-        "meaning": "vé",
-        "enMeaning": "ticket",
-        "kanjiBreakdown": [
-            {
-                "kanji": "切",
-                "han_viet": "THIẾT",
-                "meaning": "cut"
-            },
-            {
-                "kanji": "符",
-                "han_viet": "PHÙ",
-                "meaning": "mark"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "切符",
-                "furigana": "きっぷ",
-                "romaji": "kippu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "切符を買います。",
-            "translation": "Mua vé.",
-            "enTranslation": "Buy a ticket.",
-            "parts": [
-                {
-                    "text": "切符",
-                    "furigana": "きっぷ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "買",
-                    "furigana": "か"
-                },
-                {
-                    "text": "います"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-300",
-        "wordSurface": "父",
-        "readingKana": "ちち",
-        "hanViet": "PHỤ",
-        "meaning": "bố",
-        "enMeaning": "father (my)",
-        "kanjiBreakdown": [
-            {
-                "kanji": "父",
-                "han_viet": "PHỤ",
-                "meaning": "father"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "父",
-                "furigana": "ちち",
-                "romaji": "chichi"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "私の父です。",
-            "translation": "Đây là bố tôi.",
-            "enTranslation": "This is my father.",
-            "parts": [
-                {
-                    "text": "私",
-                    "furigana": "わたし"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "父",
-                    "furigana": "ちち"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-301",
-        "wordSurface": "母",
-        "readingKana": "はは",
-        "hanViet": "MẪU",
-        "meaning": "mẹ",
-        "enMeaning": "mother (my)",
-        "kanjiBreakdown": [
-            {
-                "kanji": "母",
-                "han_viet": "MẪU",
-                "meaning": "mother"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "母",
-                "furigana": "はは",
-                "romaji": "haha"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "母は元気です。",
-            "translation": "Mẹ tôi khỏe.",
-            "enTranslation": "My mother is healthy.",
-            "parts": [
-                {
-                    "text": "母",
-                    "furigana": "はは"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "元気",
-                    "furigana": "げんき"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    }
+	{
+		"id": "uuid-263",
+		"wordSurface": "切ります",
+		"readingKana": "きります",
+		"hanViet": "THIẾT",
+		"meaning": "cắt",
+		"enMeaning": "cut",
+		"kanjiBreakdown": [
+			{
+				"kanji": "切",
+				"han_viet": "THIẾT",
+				"meaning": "cut"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "切",
+				"furigana": "き",
+				"romaji": "ki"
+			},
+			{
+				"text": "ります",
+				"romaji": "rimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "紙を切ります。",
+			"translation": "Cắt giấy.",
+			"enTranslation": "Cut paper.",
+			"parts": [
+				{
+					"text": "紙",
+					"furigana": "かみ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "切",
+					"furigana": "き"
+				},
+				{
+					"text": "ります"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-264",
+		"wordSurface": "送ります",
+		"readingKana": "おくります",
+		"hanViet": "TỐNG",
+		"meaning": "gửi",
+		"enMeaning": "send",
+		"kanjiBreakdown": [
+			{
+				"kanji": "送",
+				"han_viet": "TỐNG",
+				"meaning": "send"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "送",
+				"furigana": "おく",
+				"romaji": "oku"
+			},
+			{
+				"text": "ります",
+				"romaji": "rimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "手紙を送ります。",
+			"translation": "Gửi thư.",
+			"enTranslation": "Send a letter.",
+			"parts": [
+				{
+					"text": "手紙",
+					"furigana": "てがみ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "送",
+					"furigana": "おく"
+				},
+				{
+					"text": "ります"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-265",
+		"wordSurface": "貸します",
+		"readingKana": "かします",
+		"hanViet": "THẢI",
+		"meaning": "cho mượn, cho vay",
+		"enMeaning": "lend",
+		"kanjiBreakdown": [
+			{
+				"kanji": "貸",
+				"han_viet": "THẢI",
+				"meaning": "lend"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "貸",
+				"furigana": "か",
+				"romaji": "ka"
+			},
+			{
+				"text": "します",
+				"romaji": "shimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "傘を貸します。",
+			"translation": "Cho mượn ô.",
+			"enTranslation": "Lend an umbrella.",
+			"parts": [
+				{
+					"text": "傘",
+					"furigana": "かさ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "貸",
+					"furigana": "か"
+				},
+				{
+					"text": "します"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-266",
+		"wordSurface": "借ります",
+		"readingKana": "かります",
+		"hanViet": "TÁ",
+		"meaning": "mượn, vay",
+		"enMeaning": "borrow",
+		"kanjiBreakdown": [
+			{
+				"kanji": "借",
+				"han_viet": "TÁ",
+				"meaning": "borrow"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "借",
+				"furigana": "か",
+				"romaji": "ka"
+			},
+			{
+				"text": "ります",
+				"romaji": "rimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "お金を借ります。",
+			"translation": "Vay tiền.",
+			"enTranslation": "Borrow money.",
+			"parts": [
+				{
+					"text": "お"
+				},
+				{
+					"text": "金",
+					"furigana": "かね"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "借",
+					"furigana": "か"
+				},
+				{
+					"text": "ります"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-267",
+		"wordSurface": "教えます",
+		"readingKana": "おしえます",
+		"hanViet": "GIÁO",
+		"meaning": "dạy",
+		"enMeaning": "teach",
+		"kanjiBreakdown": [
+			{
+				"kanji": "教",
+				"han_viet": "GIÁO",
+				"meaning": "teach"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "教",
+				"furigana": "おし",
+				"romaji": "oshi"
+			},
+			{
+				"text": "えます",
+				"romaji": "emasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "日本語を教えます。",
+			"translation": "Dạy tiếng Nhật.",
+			"enTranslation": "Teach Japanese.",
+			"parts": [
+				{
+					"text": "日本語",
+					"furigana": "にほんご"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "教",
+					"furigana": "おし"
+				},
+				{
+					"text": "えます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-268",
+		"wordSurface": "習います",
+		"readingKana": "ならいます",
+		"hanViet": "TẬP",
+		"meaning": "học, tập",
+		"enMeaning": "learn",
+		"kanjiBreakdown": [
+			{
+				"kanji": "習",
+				"han_viet": "TẬP",
+				"meaning": "learn"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "習",
+				"furigana": "なら",
+				"romaji": "nara"
+			},
+			{
+				"text": "います",
+				"romaji": "imasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "英語を習います。",
+			"translation": "Học tiếng Anh.",
+			"enTranslation": "Learn English.",
+			"parts": [
+				{
+					"text": "英語",
+					"furigana": "えいご"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "習",
+					"furigana": "なら"
+				},
+				{
+					"text": "います"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-269",
+		"wordSurface": "あげます",
+		"readingKana": "あげます",
+		"hanViet": "",
+		"meaning": "cho, tặng",
+		"enMeaning": "give",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "あげます",
+				"romaji": "agemasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "花をあげます。",
+			"translation": "Tặng hoa.",
+			"enTranslation": "Give flowers.",
+			"parts": [
+				{
+					"text": "花",
+					"furigana": "はな"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "あげます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-270",
+		"wordSurface": "もらいます",
+		"readingKana": "もらいます",
+		"hanViet": "",
+		"meaning": "nhận",
+		"enMeaning": "receive",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "もらいます",
+				"romaji": "moraimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "プレゼントをもらいます。",
+			"translation": "Nhận quà.",
+			"enTranslation": "Receive a present.",
+			"parts": [
+				{
+					"text": "プレゼント"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "もらいます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-271",
+		"wordSurface": "かけます",
+		"readingKana": "かけます",
+		"hanViet": "",
+		"meaning": "gọi (điện thoại)",
+		"enMeaning": "call (by phone)",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "かけます",
+				"romaji": "kakemasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "電話をかけます。",
+			"translation": "Gọi điện thoại.",
+			"enTranslation": "Make a phone call.",
+			"parts": [
+				{
+					"text": "電話",
+					"furigana": "でんわ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "かけます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-272",
+		"wordSurface": "はし",
+		"readingKana": "はし",
+		"hanViet": "",
+		"meaning": "đũa",
+		"enMeaning": "chopsticks",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "はし",
+				"romaji": "hashi"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "はしで食べます。",
+			"translation": "Ăn bằng đũa.",
+			"enTranslation": "Eat with chopsticks.",
+			"parts": [
+				{
+					"text": "はし"
+				},
+				{
+					"text": "で"
+				},
+				{
+					"text": "食",
+					"furigana": "た"
+				},
+				{
+					"text": "べます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-273",
+		"wordSurface": "スプーン",
+		"readingKana": "スプーン",
+		"hanViet": "",
+		"meaning": "thìa",
+		"enMeaning": "spoon",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "スプーン",
+				"romaji": "supuun"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "スプーンを使います。",
+			"translation": "Dùng thìa.",
+			"enTranslation": "Use a spoon.",
+			"parts": [
+				{
+					"text": "スプーン"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "使",
+					"furigana": "つか"
+				},
+				{
+					"text": "います"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-274",
+		"wordSurface": "ナイフ",
+		"readingKana": "ナイフ",
+		"hanViet": "",
+		"meaning": "dao",
+		"enMeaning": "knife",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "ナイフ",
+				"romaji": "naifu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "ナイフで切ります。",
+			"translation": "Cắt bằng dao.",
+			"enTranslation": "Cut with a knife.",
+			"parts": [
+				{
+					"text": "ナイフ"
+				},
+				{
+					"text": "で"
+				},
+				{
+					"text": "切",
+					"furigana": "き"
+				},
+				{
+					"text": "ります"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-275",
+		"wordSurface": "フォーク",
+		"readingKana": "フォーク",
+		"hanViet": "",
+		"meaning": "nĩa",
+		"enMeaning": "fork",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "フォーク",
+				"romaji": "fooku"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "フォークで食べます。",
+			"translation": "Ăn bằng dĩa.",
+			"enTranslation": "Eat with a fork.",
+			"parts": [
+				{
+					"text": "フォーク"
+				},
+				{
+					"text": "で"
+				},
+				{
+					"text": "食",
+					"furigana": "た"
+				},
+				{
+					"text": "べます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-276",
+		"wordSurface": "はさみ",
+		"readingKana": "はさみ",
+		"hanViet": "",
+		"meaning": "kéo",
+		"enMeaning": "scissors",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "はさみ",
+				"romaji": "hasami"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "はさみで切ります。",
+			"translation": "Cắt bằng kéo.",
+			"enTranslation": "Cut with scissors.",
+			"parts": [
+				{
+					"text": "はさみ"
+				},
+				{
+					"text": "で"
+				},
+				{
+					"text": "切",
+					"furigana": "き"
+				},
+				{
+					"text": "ります"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-277",
+		"wordSurface": "パソコン",
+		"readingKana": "パソコン",
+		"hanViet": "",
+		"meaning": "máy vi tính cá nhân",
+		"enMeaning": "personal computer",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "パソコン",
+				"romaji": "pasokon"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "パソコンで仕事をします。",
+			"translation": "Làm việc bằng máy tính.",
+			"enTranslation": "Work on a personal computer.",
+			"parts": [
+				{
+					"text": "パソコン"
+				},
+				{
+					"text": "で"
+				},
+				{
+					"text": "仕事",
+					"furigana": "しごと"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "します"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-278",
+		"wordSurface": "ケータイ",
+		"readingKana": "ケータイ",
+		"hanViet": "",
+		"meaning": "điện thoại di động",
+		"enMeaning": "mobile phone",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "ケータイ",
+				"romaji": "keetai"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "ケータイを持っていますか。",
+			"translation": "Bạn có điện thoại di động không?",
+			"enTranslation": "Do you have a mobile phone?",
+			"parts": [
+				{
+					"text": "ケータイ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "持",
+					"furigana": "も"
+				},
+				{
+					"text": "っていますか"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-279",
+		"wordSurface": "メール",
+		"readingKana": "メール",
+		"hanViet": "",
+		"meaning": "email",
+		"enMeaning": "email",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "メール",
+				"romaji": "meeru"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "メールを送ります。",
+			"translation": "Gửi email.",
+			"enTranslation": "Send an email.",
+			"parts": [
+				{
+					"text": "メール"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "送",
+					"furigana": "おく"
+				},
+				{
+					"text": "ります"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-280",
+		"wordSurface": "パンチ",
+		"readingKana": "パンチ",
+		"hanViet": "",
+		"meaning": "cái đục lỗ",
+		"enMeaning": "punch",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "パンチ",
+				"romaji": "panchi"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "パンチで穴をあけます。",
+			"translation": "Đục lỗ bằng cái đục lỗ.",
+			"enTranslation": "Punch holes with a punch.",
+			"parts": [
+				{
+					"text": "パンチ"
+				},
+				{
+					"text": "で"
+				},
+				{
+					"text": "穴",
+					"furigana": "あな"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "あけます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-281",
+		"wordSurface": "ホッチキス",
+		"readingKana": "ホッチキス",
+		"hanViet": "",
+		"meaning": "cái dập ghim",
+		"enMeaning": "stapler",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "ホッチキス",
+				"romaji": "hotchikisu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "ホッチキスでとめます。",
+			"translation": "Ghim bằng dập ghim.",
+			"enTranslation": "Staple with a stapler.",
+			"parts": [
+				{
+					"text": "ホッチキス"
+				},
+				{
+					"text": "で"
+				},
+				{
+					"text": "とめます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-282",
+		"wordSurface": "セロテープ",
+		"readingKana": "セロテープ",
+		"hanViet": "",
+		"meaning": "băng dính",
+		"enMeaning": "scotch tape",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "セロテープ",
+				"romaji": "seroteepu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "セロテープで貼ります。",
+			"translation": "Dán bằng băng dính.",
+			"enTranslation": "Stick with scotch tape.",
+			"parts": [
+				{
+					"text": "セロテープ"
+				},
+				{
+					"text": "で"
+				},
+				{
+					"text": "貼",
+					"furigana": "は"
+				},
+				{
+					"text": "ります"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-283",
+		"wordSurface": "シャツ",
+		"readingKana": "シャツ",
+		"hanViet": "",
+		"meaning": "áo sơ mi",
+		"enMeaning": "shirt",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "シャツ",
+				"romaji": "shatsu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "シャツをもらいました。",
+			"translation": "Tôi đã được nhận áo sơ mi.",
+			"enTranslation": "I received a shirt.",
+			"parts": [
+				{
+					"text": "シャツ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "もらいました"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-284",
+		"wordSurface": "プレゼント",
+		"readingKana": "プレゼント",
+		"hanViet": "",
+		"meaning": "quà tặng",
+		"enMeaning": "present, gift",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "プレゼント",
+				"romaji": "purezento"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "誕生日プレゼントをあげます。",
+			"translation": "Tặng quà sinh nhật.",
+			"enTranslation": "Give a birthday present.",
+			"parts": [
+				{
+					"text": "誕生日",
+					"furigana": "たんじょうび"
+				},
+				{
+					"text": "プレゼント"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "あげます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-285",
+		"wordSurface": "クリスマス",
+		"readingKana": "クリスマス",
+		"hanViet": "",
+		"meaning": "giáng sinh",
+		"enMeaning": "Christmas",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "クリスマス",
+				"romaji": "kurisumasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "もうすぐクリスマスです。",
+			"translation": "Sắp đến giáng sinh rồi.",
+			"enTranslation": "It is almost Christmas.",
+			"parts": [
+				{
+					"text": "もうすぐ"
+				},
+				{
+					"text": "クリスマス"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-286",
+		"wordSurface": "もう",
+		"readingKana": "もう",
+		"hanViet": "",
+		"meaning": "đã, rồi",
+		"enMeaning": "already",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "もう",
+				"romaji": "mou"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "もう昼ごはんを食べましたか。",
+			"translation": "Bạn đã ăn trưa chưa?",
+			"enTranslation": "Have you eaten lunch yet?",
+			"parts": [
+				{
+					"text": "もう"
+				},
+				{
+					"text": "昼",
+					"furigana": "ひる"
+				},
+				{
+					"text": "ごはん"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "食",
+					"furigana": "た"
+				},
+				{
+					"text": "べました"
+				},
+				{
+					"text": "か"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-287",
+		"wordSurface": "まだ",
+		"readingKana": "まだ",
+		"hanViet": "",
+		"meaning": "chưa",
+		"enMeaning": "not yet",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "まだ",
+				"romaji": "mada"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "いいえ、まだです。",
+			"translation": "Chưa, tôi chưa ăn.",
+			"enTranslation": "No, not yet.",
+			"parts": [
+				{
+					"text": "いいえ"
+				},
+				{
+					"text": "、"
+				},
+				{
+					"text": "まだ"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-288",
+		"wordSurface": "これから",
+		"readingKana": "これから",
+		"hanViet": "",
+		"meaning": "từ bây giờ, sau đây",
+		"enMeaning": "from now on",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "これから",
+				"romaji": "korekara"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "これから食べます。",
+			"translation": "Bây giờ tôi sẽ ăn.",
+			"enTranslation": "I will eat now.",
+			"parts": [
+				{
+					"text": "これから"
+				},
+				{
+					"text": "食",
+					"furigana": "た"
+				},
+				{
+					"text": "べます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-289",
+		"wordSurface": "いらっしゃい",
+		"readingKana": "いらっしゃい",
+		"hanViet": "",
+		"meaning": "chào mừng a/c đã đến chơi",
+		"enMeaning": "Welcome",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "いらっしゃい",
+				"romaji": "irasshai"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "よくいらっしゃいました。",
+			"translation": "Chào mừng bạn đã đến.",
+			"enTranslation": "Welcome.",
+			"parts": [
+				{
+					"text": "よく"
+				},
+				{
+					"text": "いらっしゃいました"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-290",
+		"wordSurface": "どうぞおあがりください",
+		"readingKana": "どうぞおあがりください",
+		"hanViet": "",
+		"meaning": "mời a/c vào",
+		"enMeaning": "Please come in",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "どうぞ",
+				"romaji": "douzo"
+			},
+			{
+				"text": "お"
+			},
+			{
+				"text": "あがり"
+			},
+			{
+				"text": "ください"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "どうぞお上がりください。",
+			"translation": "Xin mời vào.",
+			"enTranslation": "Please come in.",
+			"parts": [
+				{
+					"text": "どうぞ"
+				},
+				{
+					"text": "お"
+				},
+				{
+					"text": "上",
+					"furigana": "あ"
+				},
+				{
+					"text": "がりください"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-291",
+		"wordSurface": "失礼します",
+		"readingKana": "しつれいします",
+		"hanViet": "",
+		"meaning": "xin phép tôi vào",
+		"enMeaning": "Excuse me, May I come in?",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "失礼",
+				"furigana": "しつれい",
+				"romaji": "shitsurei"
+			},
+			{
+				"text": "します",
+				"romaji": "shimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "失礼します。",
+			"translation": "Xin phép.",
+			"enTranslation": "Excuse me.",
+			"parts": [
+				{
+					"text": "失礼",
+					"furigana": "しつれい"
+				},
+				{
+					"text": "します"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-292",
+		"wordSurface": "ごちそうさまでした",
+		"readingKana": "ごちそうさまでした",
+		"hanViet": "",
+		"meaning": "cảm ơn vì bữa ăn",
+		"enMeaning": "Thank you for the meal",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "ごちそうさまでした",
+				"romaji": "gochisousamadeshita"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "ごちそうさまでした。",
+			"translation": "Cảm ơn vì bữa ăn.",
+			"enTranslation": "That was a delicious meal.",
+			"parts": [
+				{
+					"text": "ごちそうさまでした"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-293",
+		"wordSurface": "年賀状",
+		"readingKana": "ねんがじょう",
+		"hanViet": "NIÊN HẠ TRẠNG",
+		"meaning": "thiệp mừng năm mới",
+		"enMeaning": "New Year's card",
+		"kanjiBreakdown": [
+			{
+				"kanji": "年",
+				"han_viet": "NIÊN",
+				"meaning": "year"
+			},
+			{
+				"kanji": "賀",
+				"han_viet": "HẠ",
+				"meaning": "congratulations"
+			},
+			{
+				"kanji": "状",
+				"han_viet": "TRẠNG",
+				"meaning": "condition, letter"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "年賀状",
+				"furigana": "ねんがじょう",
+				"romaji": "nengajou"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "年賀状を書きます。",
+			"translation": "Viết thiệp mừng năm mới.",
+			"enTranslation": "Write New Year's cards.",
+			"parts": [
+				{
+					"text": "年賀状",
+					"furigana": "ねんがじょう"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "書",
+					"furigana": "か"
+				},
+				{
+					"text": "きます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-294",
+		"wordSurface": "消しゴム",
+		"readingKana": "けしゴム",
+		"hanViet": "TIÊU",
+		"meaning": "cục tẩy, cục gôm",
+		"enMeaning": "eraser",
+		"kanjiBreakdown": [
+			{
+				"kanji": "消",
+				"han_viet": "TIÊU",
+				"meaning": "extinguish"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "消",
+				"furigana": "け"
+			},
+			{
+				"text": "し"
+			},
+			{
+				"text": "ゴム",
+				"romaji": "keshigomu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "消しゴムを貸してください。",
+			"translation": "Cho tôi mượn cục tẩy.",
+			"enTranslation": "Please lend me an eraser.",
+			"parts": [
+				{
+					"text": "消",
+					"furigana": "け"
+				},
+				{
+					"text": "し"
+				},
+				{
+					"text": "ゴム"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "貸",
+					"furigana": "か"
+				},
+				{
+					"text": "して"
+				},
+				{
+					"text": "ください"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-295",
+		"wordSurface": "紙",
+		"readingKana": "かみ",
+		"hanViet": "CHỈ",
+		"meaning": "giấy",
+		"enMeaning": "paper",
+		"kanjiBreakdown": [
+			{
+				"kanji": "紙",
+				"han_viet": "CHỈ",
+				"meaning": "paper"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "紙",
+				"furigana": "かみ",
+				"romaji": "kami"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "紙に書きます。",
+			"translation": "Viết vào giấy.",
+			"enTranslation": "Write on paper.",
+			"parts": [
+				{
+					"text": "紙",
+					"furigana": "かみ"
+				},
+				{
+					"text": "に"
+				},
+				{
+					"text": "書",
+					"furigana": "か"
+				},
+				{
+					"text": "きます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-296",
+		"wordSurface": "花",
+		"readingKana": "はな",
+		"hanViet": "HOA",
+		"meaning": "hoa",
+		"enMeaning": "flower",
+		"kanjiBreakdown": [
+			{
+				"kanji": "花",
+				"han_viet": "HOA",
+				"meaning": "flower"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "花",
+				"furigana": "はな",
+				"romaji": "hana"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "花を買います。",
+			"translation": "Mua hoa.",
+			"enTranslation": "Buy flowers.",
+			"parts": [
+				{
+					"text": "花",
+					"furigana": "はな"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "買",
+					"furigana": "か"
+				},
+				{
+					"text": "います"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-297",
+		"wordSurface": "荷物",
+		"readingKana": "にもつ",
+		"hanViet": "HÀ VẬT",
+		"meaning": "hành lý, đồ đạc",
+		"enMeaning": "luggage, baggage",
+		"kanjiBreakdown": [
+			{
+				"kanji": "荷",
+				"han_viet": "HÀ",
+				"meaning": "baggage"
+			},
+			{
+				"kanji": "物",
+				"han_viet": "VẬT",
+				"meaning": "thing"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "荷物",
+				"furigana": "にもつ",
+				"romaji": "nimotsu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "荷物を送ります。",
+			"translation": "Gửi hành lý.",
+			"enTranslation": "Send luggage.",
+			"parts": [
+				{
+					"text": "荷物",
+					"furigana": "にもつ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "送",
+					"furigana": "おく"
+				},
+				{
+					"text": "ります"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-298",
+		"wordSurface": "お金",
+		"readingKana": "おかね",
+		"hanViet": "KIM",
+		"meaning": "tiền",
+		"enMeaning": "money",
+		"kanjiBreakdown": [
+			{
+				"kanji": "金",
+				"han_viet": "KIM",
+				"meaning": "gold, money"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "お"
+			},
+			{
+				"text": "金",
+				"furigana": "かね",
+				"romaji": "okane"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "お金がありません。",
+			"translation": "Tôi không có tiền.",
+			"enTranslation": "I have no money.",
+			"parts": [
+				{
+					"text": "お"
+				},
+				{
+					"text": "金",
+					"furigana": "かね"
+				},
+				{
+					"text": "が"
+				},
+				{
+					"text": "ありません"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-299",
+		"wordSurface": "切符",
+		"readingKana": "きっぷ",
+		"hanViet": "THIẾT PHÙ",
+		"meaning": "vé",
+		"enMeaning": "ticket",
+		"kanjiBreakdown": [
+			{
+				"kanji": "切",
+				"han_viet": "THIẾT",
+				"meaning": "cut"
+			},
+			{
+				"kanji": "符",
+				"han_viet": "PHÙ",
+				"meaning": "mark"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "切符",
+				"furigana": "きっぷ",
+				"romaji": "kippu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "切符を買います。",
+			"translation": "Mua vé.",
+			"enTranslation": "Buy a ticket.",
+			"parts": [
+				{
+					"text": "切符",
+					"furigana": "きっぷ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "買",
+					"furigana": "か"
+				},
+				{
+					"text": "います"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-300",
+		"wordSurface": "父",
+		"readingKana": "ちち",
+		"hanViet": "PHỤ",
+		"meaning": "bố",
+		"enMeaning": "father (my)",
+		"kanjiBreakdown": [
+			{
+				"kanji": "父",
+				"han_viet": "PHỤ",
+				"meaning": "father"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "父",
+				"furigana": "ちち",
+				"romaji": "chichi"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "私の父です。",
+			"translation": "Đây là bố tôi.",
+			"enTranslation": "This is my father.",
+			"parts": [
+				{
+					"text": "私",
+					"furigana": "わたし"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "父",
+					"furigana": "ちち"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-301",
+		"wordSurface": "母",
+		"readingKana": "はは",
+		"hanViet": "MẪU",
+		"meaning": "mẹ",
+		"enMeaning": "mother (my)",
+		"kanjiBreakdown": [
+			{
+				"kanji": "母",
+				"han_viet": "MẪU",
+				"meaning": "mother"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "母",
+				"furigana": "はは",
+				"romaji": "haha"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "母は元気です。",
+			"translation": "Mẹ tôi khỏe.",
+			"enTranslation": "My mother is healthy.",
+			"parts": [
+				{
+					"text": "母",
+					"furigana": "はは"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "元気",
+					"furigana": "げんき"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	}
 ]

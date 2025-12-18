@@ -1,1845 +1,1845 @@
 [
-    {
-        "id": "uuid-036",
-        "wordSurface": "本",
-        "readingKana": "ほん",
-        "hanViet": "BẢN",
-        "meaning": "sách",
-        "enMeaning": "book",
-        "kanjiBreakdown": [
-            {
-                "kanji": "本",
-                "han_viet": "BẢN",
-                "meaning": "origin, book, counter for long things"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "本",
-                "furigana": "ほん",
-                "romaji": "hon"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "これは本です。",
-            "translation": "Đây là quyển sách.",
-            "enTranslation": "This is a book.",
-            "parts": [
-                {
-                    "text": "これ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "本",
-                    "furigana": "ほん"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-037",
-        "wordSurface": "辞書",
-        "readingKana": "じしょ",
-        "hanViet": "TỪ THƯ",
-        "meaning": "từ điển",
-        "enMeaning": "dictionary",
-        "kanjiBreakdown": [
-            {
-                "kanji": "辞",
-                "han_viet": "TỪ",
-                "meaning": "word, resign"
-            },
-            {
-                "kanji": "書",
-                "han_viet": "THƯ",
-                "meaning": "write, book"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "辞書",
-                "furigana": "じしょ",
-                "romaji": "jisho"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "それは英語の辞書です。",
-            "translation": "Đó là từ điển tiếng Anh.",
-            "enTranslation": "That is an English dictionary.",
-            "parts": [
-                {
-                    "text": "それ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "英語",
-                    "furigana": "えいご"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "辞書",
-                    "furigana": "じしょ"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-038",
-        "wordSurface": "雑誌",
-        "readingKana": "ざっし",
-        "hanViet": "TẠP CHÍ",
-        "meaning": "tạp chí",
-        "enMeaning": "magazine",
-        "kanjiBreakdown": [
-            {
-                "kanji": "雑",
-                "han_viet": "TẠP",
-                "meaning": "miscellaneous"
-            },
-            {
-                "kanji": "誌",
-                "han_viet": "CHÍ",
-                "meaning": "document, records"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "雑誌",
-                "furigana": "ざっし",
-                "romaji": "zasshi"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "この雑誌はいくらですか。",
-            "translation": "Tạp chí này bao nhiêu tiền?",
-            "enTranslation": "How much is this magazine?",
-            "parts": [
-                {
-                    "text": "この"
-                },
-                {
-                    "text": "雑誌",
-                    "furigana": "ざっし"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "いくら"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "か"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-039",
-        "wordSurface": "新聞",
-        "readingKana": "しんぶん",
-        "hanViet": "TÂN VĂN",
-        "meaning": "báo",
-        "enMeaning": "newspaper",
-        "kanjiBreakdown": [
-            {
-                "kanji": "新",
-                "han_viet": "TÂN",
-                "meaning": "new"
-            },
-            {
-                "kanji": "聞",
-                "han_viet": "VĂN",
-                "meaning": "hear, ask"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "新聞",
-                "furigana": "しんぶん",
-                "romaji": "shinbun"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "これは日本の新聞です。",
-            "translation": "Đây là báo Nhật Bản.",
-            "enTranslation": "This is a Japanese newspaper.",
-            "parts": [
-                {
-                    "text": "これ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "日本",
-                    "furigana": "にほん"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "新聞",
-                    "furigana": "しんぶん"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-040",
-        "wordSurface": "手帳",
-        "readingKana": "てちょう",
-        "hanViet": "THỦ THIẾP",
-        "meaning": "sổ tay",
-        "enMeaning": "notebook, pocketbook",
-        "kanjiBreakdown": [
-            {
-                "kanji": "手",
-                "han_viet": "THỦ",
-                "meaning": "hand"
-            },
-            {
-                "kanji": "帳",
-                "han_viet": "THIẾP",
-                "meaning": "notebook, account book"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "手帳",
-                "furigana": "てちょう",
-                "romaji": "techou"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "これは私の手帳です。",
-            "translation": "Đây là sổ tay của tôi.",
-            "enTranslation": "This is my notebook.",
-            "parts": [
-                {
-                    "text": "これ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "私",
-                    "furigana": "わたし"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "手帳",
-                    "furigana": "てちょう"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-041",
-        "wordSurface": "名刺",
-        "readingKana": "めいし",
-        "hanViet": "DANH THÍCH",
-        "meaning": "danh thiếp",
-        "enMeaning": "business card",
-        "kanjiBreakdown": [
-            {
-                "kanji": "名",
-                "han_viet": "DANH",
-                "meaning": "name"
-            },
-            {
-                "kanji": "刺",
-                "han_viet": "THÍCH",
-                "meaning": "stab, card"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "名刺",
-                "furigana": "めいし",
-                "romaji": "meishi"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "名刺をください。",
-            "translation": "Cho tôi xin danh thiếp.",
-            "enTranslation": "Please give me your business card.",
-            "parts": [
-                {
-                    "text": "名刺",
-                    "furigana": "めいし"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "ください"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-042",
-        "wordSurface": "鉛筆",
-        "readingKana": "えんぴつ",
-        "hanViet": "DUYÊN BÚT",
-        "meaning": "bút chì",
-        "enMeaning": "pencil",
-        "kanjiBreakdown": [
-            {
-                "kanji": "鉛",
-                "han_viet": "DUYÊN",
-                "meaning": "lead (metal)"
-            },
-            {
-                "kanji": "筆",
-                "han_viet": "BÚT",
-                "meaning": "writing brush"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "鉛筆",
-                "furigana": "えんぴつ",
-                "romaji": "enpitsu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "これは鉛筆ですか。",
-            "translation": "Đây có phải là bút chì không?",
-            "enTranslation": "Is this a pencil?",
-            "parts": [
-                {
-                    "text": "これ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "鉛筆",
-                    "furigana": "えんぴつ"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "か"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-043",
-        "wordSurface": "時計",
-        "readingKana": "とけい",
-        "hanViet": "THỜI KẾ",
-        "meaning": "đồng hồ",
-        "enMeaning": "watch, clock",
-        "kanjiBreakdown": [
-            {
-                "kanji": "時",
-                "han_viet": "THỜI",
-                "meaning": "time"
-            },
-            {
-                "kanji": "計",
-                "han_viet": "KẾ",
-                "meaning": "measure"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "時計",
-                "furigana": "とけい",
-                "romaji": "tokei"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "この時計は誰のですか。",
-            "translation": "Cái đồng hồ này là của ai?",
-            "enTranslation": "Whose watch is this?",
-            "parts": [
-                {
-                    "text": "この"
-                },
-                {
-                    "text": "時計",
-                    "furigana": "とけい"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "誰",
-                    "furigana": "だれ"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "か"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-044",
-        "wordSurface": "傘",
-        "readingKana": "かさ",
-        "hanViet": "TÁN",
-        "meaning": "dù, ô",
-        "enMeaning": "umbrella",
-        "kanjiBreakdown": [
-            {
-                "kanji": "傘",
-                "han_viet": "TÁN",
-                "meaning": "umbrella"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "傘",
-                "furigana": "かさ",
-                "romaji": "kasa"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "それは私の傘です。",
-            "translation": "Đó là cái ô của tôi.",
-            "enTranslation": "That is my umbrella.",
-            "parts": [
-                {
-                    "text": "それ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "私",
-                    "furigana": "わたし"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "傘",
-                    "furigana": "かさ"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-045",
-        "wordSurface": "車",
-        "readingKana": "くるま",
-        "hanViet": "XA",
-        "meaning": "xe hơi, ô tô",
-        "enMeaning": "car",
-        "kanjiBreakdown": [
-            {
-                "kanji": "車",
-                "han_viet": "XA",
-                "meaning": "car, wheel"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "車",
-                "furigana": "くるま",
-                "romaji": "kuruma"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "これは日本の車です。",
-            "translation": "Đây là xe ô tô Nhật.",
-            "enTranslation": "This is a Japanese car.",
-            "parts": [
-                {
-                    "text": "これ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "日本",
-                    "furigana": "にほん"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "車",
-                    "furigana": "くるま"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-046",
-        "wordSurface": "机",
-        "readingKana": "つくえ",
-        "hanViet": "KỶ",
-        "meaning": "bàn",
-        "enMeaning": "desk",
-        "kanjiBreakdown": [
-            {
-                "kanji": "机",
-                "han_viet": "KỶ",
-                "meaning": "desk"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "机",
-                "furigana": "つくえ",
-                "romaji": "tsukue"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "机の上に本があります。",
-            "translation": "Trên bàn có quyển sách.",
-            "enTranslation": "There is a book on the desk.",
-            "parts": [
-                {
-                    "text": "机",
-                    "furigana": "つくえ"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "上",
-                    "furigana": "うえ"
-                },
-                {
-                    "text": "に"
-                },
-                {
-                    "text": "本",
-                    "furigana": "ほん"
-                },
-                {
-                    "text": "が"
-                },
-                {
-                    "text": "あります"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-047",
-        "wordSurface": "お土産",
-        "readingKana": "おみやげ",
-        "hanViet": "THỔ SẢN",
-        "meaning": "quà lưu niệm",
-        "enMeaning": "souvenir, gift",
-        "kanjiBreakdown": [
-            {
-                "kanji": "土",
-                "han_viet": "THỔ",
-                "meaning": "soil"
-            },
-            {
-                "kanji": "産",
-                "han_viet": "SẢN",
-                "meaning": "product, birth"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "お"
-            },
-            {
-                "text": "土産",
-                "furigana": "みやげ",
-                "romaji": "miyage"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "これはお土産です。",
-            "translation": "Đây là quà lưu niệm.",
-            "enTranslation": "This is a souvenir.",
-            "parts": [
-                {
-                    "text": "これ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "お"
-                },
-                {
-                    "text": "土産",
-                    "furigana": "みやげ"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-048",
-        "wordSurface": "英語",
-        "readingKana": "えいご",
-        "hanViet": "ANH NGỮ",
-        "meaning": "tiếng Anh",
-        "enMeaning": "English language",
-        "kanjiBreakdown": [
-            {
-                "kanji": "英",
-                "han_viet": "ANH",
-                "meaning": "English, hero"
-            },
-            {
-                "kanji": "語",
-                "han_viet": "NGỮ",
-                "meaning": "language, narrate"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "英語",
-                "furigana": "えいご",
-                "romaji": "eigo"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "これは英語の本です。",
-            "translation": "Đây là sách tiếng Anh.",
-            "enTranslation": "This is an English book.",
-            "parts": [
-                {
-                    "text": "これ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "英語",
-                    "furigana": "えいご"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "本",
-                    "furigana": "ほん"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-049",
-        "wordSurface": "日本語",
-        "readingKana": "にほんご",
-        "hanViet": "NHẬT BẢN NGỮ",
-        "meaning": "tiếng Nhật",
-        "enMeaning": "Japanese language",
-        "kanjiBreakdown": [
-            {
-                "kanji": "日",
-                "han_viet": "NHẬT",
-                "meaning": "sun, day"
-            },
-            {
-                "kanji": "本",
-                "han_viet": "BẢN",
-                "meaning": "origin, book"
-            },
-            {
-                "kanji": "語",
-                "han_viet": "NGỮ",
-                "meaning": "language"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "日本語",
-                "furigana": "にほんご",
-                "romaji": "nihongo"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "日本語を勉強します。",
-            "translation": "Tôi học tiếng Nhật.",
-            "enTranslation": "I study Japanese.",
-            "parts": [
-                {
-                    "text": "日本語",
-                    "furigana": "にほんご"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "勉強",
-                    "furigana": "べんきょう"
-                },
-                {
-                    "text": "します"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-050",
-        "wordSurface": "～語",
-        "readingKana": "～ご",
-        "hanViet": "NGỮ",
-        "meaning": "tiếng~",
-        "enMeaning": "~ language",
-        "kanjiBreakdown": [
-            {
-                "kanji": "語",
-                "han_viet": "NGỮ",
-                "meaning": "language"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "～"
-            },
-            {
-                "text": "語",
-                "furigana": "ご",
-                "romaji": "go"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "ベトナム語を話します。",
-            "translation": "Nói tiếng Việt.",
-            "enTranslation": "Speak Vietnamese.",
-            "parts": [
-                {
-                    "text": "ベトナム"
-                },
-                {
-                    "text": "語",
-                    "furigana": "ご"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "話",
-                    "furigana": "はな"
-                },
-                {
-                    "text": "します"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-051",
-        "wordSurface": "何",
-        "readingKana": "なん",
-        "hanViet": "HÀ",
-        "meaning": "cái gì, gì",
-        "enMeaning": "what",
-        "kanjiBreakdown": [
-            {
-                "kanji": "何",
-                "han_viet": "HÀ",
-                "meaning": "what"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "何",
-                "furigana": "なん",
-                "romaji": "nan"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "これは何ですか。",
-            "translation": "Cái này là cái gì?",
-            "enTranslation": "What is this?",
-            "parts": [
-                {
-                    "text": "これ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "何",
-                    "furigana": "なん"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "か"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-052",
-        "wordSurface": "ノート",
-        "readingKana": "ノート",
-        "hanViet": "",
-        "meaning": "vở",
-        "enMeaning": "notebook",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "ノート",
-                "romaji": "nooto"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "ノートに書きます。",
-            "translation": "Viết vào vở.",
-            "enTranslation": "Write in the notebook.",
-            "parts": [
-                {
-                    "text": "ノート"
-                },
-                {
-                    "text": "に"
-                },
-                {
-                    "text": "書",
-                    "furigana": "か"
-                },
-                {
-                    "text": "きます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-053",
-        "wordSurface": "これ",
-        "readingKana": "これ",
-        "hanViet": "",
-        "meaning": "cái này",
-        "enMeaning": "this (one)",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "これ",
-                "romaji": "kore"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "これは本です。",
-            "translation": "Cái này là sách.",
-            "enTranslation": "This is a book.",
-            "parts": [
-                {
-                    "text": "これ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "本",
-                    "furigana": "ほん"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-054",
-        "wordSurface": "それ",
-        "readingKana": "それ",
-        "hanViet": "",
-        "meaning": "cái đó",
-        "enMeaning": "that (one near you)",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "それ",
-                "romaji": "sore"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "それは何ですか。",
-            "translation": "Cái đó là cái gì?",
-            "enTranslation": "What is that?",
-            "parts": [
-                {
-                    "text": "それ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "何",
-                    "furigana": "なん"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "か"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-055",
-        "wordSurface": "あれ",
-        "readingKana": "あれ",
-        "hanViet": "",
-        "meaning": "cái kia",
-        "enMeaning": "that (one over there)",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "あれ",
-                "romaji": "are"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "あれは私の車です。",
-            "translation": "Cái kia là xe của tôi.",
-            "enTranslation": "That is my car.",
-            "parts": [
-                {
-                    "text": "あれ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "私",
-                    "furigana": "わたし"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "車",
-                    "furigana": "くるま"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-056",
-        "wordSurface": "カード",
-        "readingKana": "カード",
-        "hanViet": "",
-        "meaning": "thẻ, cạc",
-        "enMeaning": "card",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "カード",
-                "romaji": "kaado"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "カードで払います。",
-            "translation": "Tôi trả bằng thẻ.",
-            "enTranslation": "I play by card.",
-            "parts": [
-                {
-                    "text": "カード"
-                },
-                {
-                    "text": "で"
-                },
-                {
-                    "text": "払",
-                    "furigana": "はら"
-                },
-                {
-                    "text": "います"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-057",
-        "wordSurface": "ボールペン",
-        "readingKana": "ボールペン",
-        "hanViet": "",
-        "meaning": "bút bi",
-        "enMeaning": "ballpoint pen",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "ボールペン",
-                "romaji": "boorupen"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "ボールペンを貸してください。",
-            "translation": "Cho tôi mượn bút bi.",
-            "enTranslation": "Please lend me a ballpoint pen.",
-            "parts": [
-                {
-                    "text": "ボールペン"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "貸",
-                    "furigana": "か"
-                },
-                {
-                    "text": "して"
-                },
-                {
-                    "text": "ください"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-058",
-        "wordSurface": "シャープペンシル",
-        "readingKana": "シャープペンシル",
-        "hanViet": "",
-        "meaning": "bút chì kim",
-        "enMeaning": "mechanical pencil",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "シャープペンシル",
-                "romaji": "shaapupenshiru"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "シャープペンシルがありますか。",
-            "translation": "Có bút chì kim không?",
-            "enTranslation": "Do you have a mechanical pencil?",
-            "parts": [
-                {
-                    "text": "シャープペンシル"
-                },
-                {
-                    "text": "が"
-                },
-                {
-                    "text": "あります"
-                },
-                {
-                    "text": "か"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-059",
-        "wordSurface": "かぎ",
-        "readingKana": "かぎ",
-        "hanViet": "",
-        "meaning": "chìa khóa",
-        "enMeaning": "key",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "かぎ",
-                "romaji": "kagi"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "これは車のかぎです。",
-            "translation": "Đây là chìa khóa xe.",
-            "enTranslation": "This is a car key.",
-            "parts": [
-                {
-                    "text": "これ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "車",
-                    "furigana": "くるま"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "かぎ"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-060",
-        "wordSurface": "かばん",
-        "readingKana": "かばん",
-        "hanViet": "",
-        "meaning": "cặp sách, túi sách",
-        "enMeaning": "bag, briefcase",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "かばん",
-                "romaji": "kaban"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "かばんを買いました。",
-            "translation": "Tôi đã mua cái túi.",
-            "enTranslation": "I bought a bag.",
-            "parts": [
-                {
-                    "text": "かばん"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "買",
-                    "furigana": "か"
-                },
-                {
-                    "text": "いました"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-061",
-        "wordSurface": "テレビ",
-        "readingKana": "テレビ",
-        "hanViet": "",
-        "meaning": "TV",
-        "enMeaning": "television",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "テレビ",
-                "romaji": "terebi"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "テレビを見ます。",
-            "translation": "Tôi xem tivi.",
-            "enTranslation": "I watch TV.",
-            "parts": [
-                {
-                    "text": "テレビ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "見",
-                    "furigana": "み"
-                },
-                {
-                    "text": "ます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-062",
-        "wordSurface": "ラジオ",
-        "readingKana": "ラジオ",
-        "hanViet": "",
-        "meaning": "Radio",
-        "enMeaning": "radio",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "ラジオ",
-                "romaji": "rajio"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "ラジオを聞きます。",
-            "translation": "Tôi nghe radio.",
-            "enTranslation": "I listen to the radio.",
-            "parts": [
-                {
-                    "text": "ラジオ"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "聞",
-                    "furigana": "き"
-                },
-                {
-                    "text": "きます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-063",
-        "wordSurface": "カメラ",
-        "readingKana": "カメラ",
-        "hanViet": "",
-        "meaning": "Máy ảnh",
-        "enMeaning": "camera",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "カメラ",
-                "romaji": "kamera"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "それは私のカメラです。",
-            "translation": "Đó là máy ảnh của tôi.",
-            "enTranslation": "That is my camera.",
-            "parts": [
-                {
-                    "text": "それ"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "私",
-                    "furigana": "わたし"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "カメラ"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-064",
-        "wordSurface": "コンピューター",
-        "readingKana": "コンピューター",
-        "hanViet": "",
-        "meaning": "Máy vi tính",
-        "enMeaning": "computer",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "コンピューター",
-                "romaji": "konpyuutaa"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "コンピューターの会社です。",
-            "translation": "Là công ty máy tính.",
-            "enTranslation": "It is a computer company.",
-            "parts": [
-                {
-                    "text": "コンピューター"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "会社",
-                    "furigana": "かいしゃ"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-065",
-        "wordSurface": "いす",
-        "readingKana": "いす",
-        "hanViet": "",
-        "meaning": "Ghế",
-        "enMeaning": "chair",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "いす",
-                "romaji": "isu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "いすに座ります。",
-            "translation": "Ngồi lên ghế.",
-            "enTranslation": "Sit on the chair.",
-            "parts": [
-                {
-                    "text": "いす"
-                },
-                {
-                    "text": "に"
-                },
-                {
-                    "text": "座",
-                    "furigana": "すわ"
-                },
-                {
-                    "text": "ります"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-066",
-        "wordSurface": "チョコレート",
-        "readingKana": "チョコレート",
-        "hanViet": "",
-        "meaning": "Socola",
-        "enMeaning": "chocolate",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "チョコレート",
-                "romaji": "chokoreeto"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "チョコレートを食べます。",
-            "translation": "Tôi ăn sô cô la.",
-            "enTranslation": "I eat chocolate.",
-            "parts": [
-                {
-                    "text": "チョコレート"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "食",
-                    "furigana": "た"
-                },
-                {
-                    "text": "べます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-067",
-        "wordSurface": "コーヒー",
-        "readingKana": "コーヒー",
-        "hanViet": "",
-        "meaning": "Cà phê",
-        "enMeaning": "coffee",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "コーヒー",
-                "romaji": "koohii"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "コーヒーを飲みます。",
-            "translation": "Tôi uống cà phê.",
-            "enTranslation": "I drink coffee.",
-            "parts": [
-                {
-                    "text": "コーヒー"
-                },
-                {
-                    "text": "を"
-                },
-                {
-                    "text": "飲",
-                    "furigana": "の"
-                },
-                {
-                    "text": "みます"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-068",
-        "wordSurface": "そう",
-        "readingKana": "そう",
-        "hanViet": "",
-        "meaning": "Vậy",
-        "enMeaning": "so",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "そう",
-                "romaji": "sou"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "はい、そうです。",
-            "translation": "Vâng, đúng vậy.",
-            "enTranslation": "Yes, that's right.",
-            "parts": [
-                {
-                    "text": "はい"
-                },
-                {
-                    "text": "、"
-                },
-                {
-                    "text": "そう"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-069",
-        "wordSurface": "どうぞ",
-        "readingKana": "どうぞ",
-        "hanViet": "",
-        "meaning": "Xin mời",
-        "enMeaning": "Please, here you are",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "どうぞ",
-                "romaji": "douzo"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "どうぞ食べてください。",
-            "translation": "Xin mời ăn.",
-            "enTranslation": "Please eat.",
-            "parts": [
-                {
-                    "text": "どうぞ"
-                },
-                {
-                    "text": "食",
-                    "furigana": "た"
-                },
-                {
-                    "text": "べて"
-                },
-                {
-                    "text": "ください"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-070",
-        "wordSurface": "そうですか",
-        "readingKana": "そうですか",
-        "hanViet": "",
-        "meaning": "Thế à",
-        "enMeaning": "Is that so?",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "そうですか",
-                "romaji": "soudesuka"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "あ、そうですか。",
-            "translation": "À, thế à.",
-            "enTranslation": "Oh, is that so?",
-            "parts": [
-                {
-                    "text": "あ"
-                },
-                {
-                    "text": "、"
-                },
-                {
-                    "text": "そうですか"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-071",
-        "wordSurface": "違います",
-        "readingKana": "ちがいます",
-        "hanViet": "VI",
-        "meaning": "không phải, không đúng",
-        "enMeaning": "No, it isn't / You are wrong",
-        "kanjiBreakdown": [
-            {
-                "kanji": "違",
-                "han_viet": "VI",
-                "meaning": "differ, mistake"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "違",
-                "furigana": "ちが",
-                "romaji": "chiga"
-            },
-            {
-                "text": "います",
-                "romaji": "imasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "いいえ、違います。",
-            "translation": "Không, không phải.",
-            "enTranslation": "No, that's wrong.",
-            "parts": [
-                {
-                    "text": "いいえ"
-                },
-                {
-                    "text": "、"
-                },
-                {
-                    "text": "違",
-                    "furigana": "ちが"
-                },
-                {
-                    "text": "います"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-072",
-        "wordSurface": "これからお世話になります",
-        "readingKana": "これからおせわになります",
-        "hanViet": "THẾ THOẠI",
-        "meaning": "từ nay tôi rất mong được sự giúp đỡ của anh/chị",
-        "enMeaning": "Thank you in advance for your kindness",
-        "kanjiBreakdown": [
-            {
-                "kanji": "世",
-                "han_viet": "THẾ",
-                "meaning": "world, generation"
-            },
-            {
-                "kanji": "話",
-                "han_viet": "THOẠI",
-                "meaning": "talk"
-            }
-        ],
-        "wordParts": [
-            {
-                "text": "これからお"
-            },
-            {
-                "text": "世話",
-                "furigana": "せわ",
-                "romaji": "sewa"
-            },
-            {
-                "text": "になります",
-                "romaji": "ninarimasu"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "これからお世話になります。",
-            "translation": "Từ nay rất mong được giúp đỡ.",
-            "enTranslation": "Thank you in advance for your help.",
-            "parts": [
-                {
-                    "text": "これから"
-                },
-                {
-                    "text": "お"
-                },
-                {
-                    "text": "世話",
-                    "furigana": "せわ"
-                },
-                {
-                    "text": "になります"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-073",
-        "wordSurface": "この～",
-        "readingKana": "この",
-        "hanViet": "",
-        "meaning": "~ này",
-        "enMeaning": "this ~",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "この",
-                "romaji": "kono"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "この本は私のです。",
-            "translation": "Quyển sách này là của tôi.",
-            "enTranslation": "This book is mine.",
-            "parts": [
-                {
-                    "text": "この"
-                },
-                {
-                    "text": "本",
-                    "furigana": "ほん"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "私",
-                    "furigana": "わたし"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-074",
-        "wordSurface": "その～",
-        "readingKana": "その",
-        "hanViet": "",
-        "meaning": "~ đó",
-        "enMeaning": "that ~",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "その",
-                "romaji": "sono"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "その鞄は誰のですか。",
-            "translation": "Cái cặp đó là của ai?",
-            "enTranslation": "Whose bag is that?",
-            "parts": [
-                {
-                    "text": "その"
-                },
-                {
-                    "text": "鞄",
-                    "furigana": "かばん"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "誰",
-                    "furigana": "だれ"
-                },
-                {
-                    "text": "の"
-                },
-                {
-                    "text": "です"
-                },
-                {
-                    "text": "か"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    },
-    {
-        "id": "uuid-075",
-        "wordSurface": "あの～",
-        "readingKana": "あの",
-        "hanViet": "",
-        "meaning": "~ kia",
-        "enMeaning": "that ~ (over there)",
-        "kanjiBreakdown": [],
-        "wordParts": [
-            {
-                "text": "あの",
-                "romaji": "ano"
-            }
-        ],
-        "exampleSentence": {
-            "sentence": "あの人は誰ですか。",
-            "translation": "Người kia là ai?",
-            "enTranslation": "Who is that person?",
-            "parts": [
-                {
-                    "text": "あの"
-                },
-                {
-                    "text": "人",
-                    "furigana": "ひと"
-                },
-                {
-                    "text": "は"
-                },
-                {
-                    "text": "誰",
-                    "furigana": "だれ"
-                },
-                {
-                    "text": "ですか"
-                },
-                {
-                    "text": "。"
-                }
-            ]
-        }
-    }
+	{
+		"id": "uuid-036",
+		"wordSurface": "本",
+		"readingKana": "ほん",
+		"hanViet": "BẢN",
+		"meaning": "sách",
+		"enMeaning": "book",
+		"kanjiBreakdown": [
+			{
+				"kanji": "本",
+				"han_viet": "BẢN",
+				"meaning": "origin, book, counter for long things"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "本",
+				"furigana": "ほん",
+				"romaji": "hon"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "これは本です。",
+			"translation": "Đây là quyển sách.",
+			"enTranslation": "This is a book.",
+			"parts": [
+				{
+					"text": "これ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "本",
+					"furigana": "ほん"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-037",
+		"wordSurface": "辞書",
+		"readingKana": "じしょ",
+		"hanViet": "TỪ THƯ",
+		"meaning": "từ điển",
+		"enMeaning": "dictionary",
+		"kanjiBreakdown": [
+			{
+				"kanji": "辞",
+				"han_viet": "TỪ",
+				"meaning": "word, resign"
+			},
+			{
+				"kanji": "書",
+				"han_viet": "THƯ",
+				"meaning": "write, book"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "辞書",
+				"furigana": "じしょ",
+				"romaji": "jisho"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "それは英語の辞書です。",
+			"translation": "Đó là từ điển tiếng Anh.",
+			"enTranslation": "That is an English dictionary.",
+			"parts": [
+				{
+					"text": "それ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "英語",
+					"furigana": "えいご"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "辞書",
+					"furigana": "じしょ"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-038",
+		"wordSurface": "雑誌",
+		"readingKana": "ざっし",
+		"hanViet": "TẠP CHÍ",
+		"meaning": "tạp chí",
+		"enMeaning": "magazine",
+		"kanjiBreakdown": [
+			{
+				"kanji": "雑",
+				"han_viet": "TẠP",
+				"meaning": "miscellaneous"
+			},
+			{
+				"kanji": "誌",
+				"han_viet": "CHÍ",
+				"meaning": "document, records"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "雑誌",
+				"furigana": "ざっし",
+				"romaji": "zasshi"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "この雑誌はいくらですか。",
+			"translation": "Tạp chí này bao nhiêu tiền?",
+			"enTranslation": "How much is this magazine?",
+			"parts": [
+				{
+					"text": "この"
+				},
+				{
+					"text": "雑誌",
+					"furigana": "ざっし"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "いくら"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "か"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-039",
+		"wordSurface": "新聞",
+		"readingKana": "しんぶん",
+		"hanViet": "TÂN VĂN",
+		"meaning": "báo",
+		"enMeaning": "newspaper",
+		"kanjiBreakdown": [
+			{
+				"kanji": "新",
+				"han_viet": "TÂN",
+				"meaning": "new"
+			},
+			{
+				"kanji": "聞",
+				"han_viet": "VĂN",
+				"meaning": "hear, ask"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "新聞",
+				"furigana": "しんぶん",
+				"romaji": "shinbun"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "これは日本の新聞です。",
+			"translation": "Đây là báo Nhật Bản.",
+			"enTranslation": "This is a Japanese newspaper.",
+			"parts": [
+				{
+					"text": "これ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "日本",
+					"furigana": "にほん"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "新聞",
+					"furigana": "しんぶん"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-040",
+		"wordSurface": "手帳",
+		"readingKana": "てちょう",
+		"hanViet": "THỦ THIẾP",
+		"meaning": "sổ tay",
+		"enMeaning": "notebook, pocketbook",
+		"kanjiBreakdown": [
+			{
+				"kanji": "手",
+				"han_viet": "THỦ",
+				"meaning": "hand"
+			},
+			{
+				"kanji": "帳",
+				"han_viet": "THIẾP",
+				"meaning": "notebook, account book"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "手帳",
+				"furigana": "てちょう",
+				"romaji": "techou"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "これは私の手帳です。",
+			"translation": "Đây là sổ tay của tôi.",
+			"enTranslation": "This is my notebook.",
+			"parts": [
+				{
+					"text": "これ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "私",
+					"furigana": "わたし"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "手帳",
+					"furigana": "てちょう"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-041",
+		"wordSurface": "名刺",
+		"readingKana": "めいし",
+		"hanViet": "DANH THÍCH",
+		"meaning": "danh thiếp",
+		"enMeaning": "business card",
+		"kanjiBreakdown": [
+			{
+				"kanji": "名",
+				"han_viet": "DANH",
+				"meaning": "name"
+			},
+			{
+				"kanji": "刺",
+				"han_viet": "THÍCH",
+				"meaning": "stab, card"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "名刺",
+				"furigana": "めいし",
+				"romaji": "meishi"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "名刺をください。",
+			"translation": "Cho tôi xin danh thiếp.",
+			"enTranslation": "Please give me your business card.",
+			"parts": [
+				{
+					"text": "名刺",
+					"furigana": "めいし"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "ください"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-042",
+		"wordSurface": "鉛筆",
+		"readingKana": "えんぴつ",
+		"hanViet": "DUYÊN BÚT",
+		"meaning": "bút chì",
+		"enMeaning": "pencil",
+		"kanjiBreakdown": [
+			{
+				"kanji": "鉛",
+				"han_viet": "DUYÊN",
+				"meaning": "lead (metal)"
+			},
+			{
+				"kanji": "筆",
+				"han_viet": "BÚT",
+				"meaning": "writing brush"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "鉛筆",
+				"furigana": "えんぴつ",
+				"romaji": "enpitsu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "これは鉛筆ですか。",
+			"translation": "Đây có phải là bút chì không?",
+			"enTranslation": "Is this a pencil?",
+			"parts": [
+				{
+					"text": "これ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "鉛筆",
+					"furigana": "えんぴつ"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "か"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-043",
+		"wordSurface": "時計",
+		"readingKana": "とけい",
+		"hanViet": "THỜI KẾ",
+		"meaning": "đồng hồ",
+		"enMeaning": "watch, clock",
+		"kanjiBreakdown": [
+			{
+				"kanji": "時",
+				"han_viet": "THỜI",
+				"meaning": "time"
+			},
+			{
+				"kanji": "計",
+				"han_viet": "KẾ",
+				"meaning": "measure"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "時計",
+				"furigana": "とけい",
+				"romaji": "tokei"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "この時計は誰のですか。",
+			"translation": "Cái đồng hồ này là của ai?",
+			"enTranslation": "Whose watch is this?",
+			"parts": [
+				{
+					"text": "この"
+				},
+				{
+					"text": "時計",
+					"furigana": "とけい"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "誰",
+					"furigana": "だれ"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "か"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-044",
+		"wordSurface": "傘",
+		"readingKana": "かさ",
+		"hanViet": "TÁN",
+		"meaning": "dù, ô",
+		"enMeaning": "umbrella",
+		"kanjiBreakdown": [
+			{
+				"kanji": "傘",
+				"han_viet": "TÁN",
+				"meaning": "umbrella"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "傘",
+				"furigana": "かさ",
+				"romaji": "kasa"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "それは私の傘です。",
+			"translation": "Đó là cái ô của tôi.",
+			"enTranslation": "That is my umbrella.",
+			"parts": [
+				{
+					"text": "それ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "私",
+					"furigana": "わたし"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "傘",
+					"furigana": "かさ"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-045",
+		"wordSurface": "車",
+		"readingKana": "くるま",
+		"hanViet": "XA",
+		"meaning": "xe hơi, ô tô",
+		"enMeaning": "car",
+		"kanjiBreakdown": [
+			{
+				"kanji": "車",
+				"han_viet": "XA",
+				"meaning": "car, wheel"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "車",
+				"furigana": "くるま",
+				"romaji": "kuruma"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "これは日本の車です。",
+			"translation": "Đây là xe ô tô Nhật.",
+			"enTranslation": "This is a Japanese car.",
+			"parts": [
+				{
+					"text": "これ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "日本",
+					"furigana": "にほん"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "車",
+					"furigana": "くるま"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-046",
+		"wordSurface": "机",
+		"readingKana": "つくえ",
+		"hanViet": "KỶ",
+		"meaning": "bàn",
+		"enMeaning": "desk",
+		"kanjiBreakdown": [
+			{
+				"kanji": "机",
+				"han_viet": "KỶ",
+				"meaning": "desk"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "机",
+				"furigana": "つくえ",
+				"romaji": "tsukue"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "机の上に本があります。",
+			"translation": "Trên bàn có quyển sách.",
+			"enTranslation": "There is a book on the desk.",
+			"parts": [
+				{
+					"text": "机",
+					"furigana": "つくえ"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "上",
+					"furigana": "うえ"
+				},
+				{
+					"text": "に"
+				},
+				{
+					"text": "本",
+					"furigana": "ほん"
+				},
+				{
+					"text": "が"
+				},
+				{
+					"text": "あります"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-047",
+		"wordSurface": "お土産",
+		"readingKana": "おみやげ",
+		"hanViet": "THỔ SẢN",
+		"meaning": "quà lưu niệm",
+		"enMeaning": "souvenir, gift",
+		"kanjiBreakdown": [
+			{
+				"kanji": "土",
+				"han_viet": "THỔ",
+				"meaning": "soil"
+			},
+			{
+				"kanji": "産",
+				"han_viet": "SẢN",
+				"meaning": "product, birth"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "お"
+			},
+			{
+				"text": "土産",
+				"furigana": "みやげ",
+				"romaji": "miyage"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "これはお土産です。",
+			"translation": "Đây là quà lưu niệm.",
+			"enTranslation": "This is a souvenir.",
+			"parts": [
+				{
+					"text": "これ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "お"
+				},
+				{
+					"text": "土産",
+					"furigana": "みやげ"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-048",
+		"wordSurface": "英語",
+		"readingKana": "えいご",
+		"hanViet": "ANH NGỮ",
+		"meaning": "tiếng Anh",
+		"enMeaning": "English language",
+		"kanjiBreakdown": [
+			{
+				"kanji": "英",
+				"han_viet": "ANH",
+				"meaning": "English, hero"
+			},
+			{
+				"kanji": "語",
+				"han_viet": "NGỮ",
+				"meaning": "language, narrate"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "英語",
+				"furigana": "えいご",
+				"romaji": "eigo"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "これは英語の本です。",
+			"translation": "Đây là sách tiếng Anh.",
+			"enTranslation": "This is an English book.",
+			"parts": [
+				{
+					"text": "これ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "英語",
+					"furigana": "えいご"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "本",
+					"furigana": "ほん"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-049",
+		"wordSurface": "日本語",
+		"readingKana": "にほんご",
+		"hanViet": "NHẬT BẢN NGỮ",
+		"meaning": "tiếng Nhật",
+		"enMeaning": "Japanese language",
+		"kanjiBreakdown": [
+			{
+				"kanji": "日",
+				"han_viet": "NHẬT",
+				"meaning": "sun, day"
+			},
+			{
+				"kanji": "本",
+				"han_viet": "BẢN",
+				"meaning": "origin, book"
+			},
+			{
+				"kanji": "語",
+				"han_viet": "NGỮ",
+				"meaning": "language"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "日本語",
+				"furigana": "にほんご",
+				"romaji": "nihongo"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "日本語を勉強します。",
+			"translation": "Tôi học tiếng Nhật.",
+			"enTranslation": "I study Japanese.",
+			"parts": [
+				{
+					"text": "日本語",
+					"furigana": "にほんご"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "勉強",
+					"furigana": "べんきょう"
+				},
+				{
+					"text": "します"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-050",
+		"wordSurface": "～語",
+		"readingKana": "～ご",
+		"hanViet": "NGỮ",
+		"meaning": "tiếng~",
+		"enMeaning": "~ language",
+		"kanjiBreakdown": [
+			{
+				"kanji": "語",
+				"han_viet": "NGỮ",
+				"meaning": "language"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "～"
+			},
+			{
+				"text": "語",
+				"furigana": "ご",
+				"romaji": "go"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "ベトナム語を話します。",
+			"translation": "Nói tiếng Việt.",
+			"enTranslation": "Speak Vietnamese.",
+			"parts": [
+				{
+					"text": "ベトナム"
+				},
+				{
+					"text": "語",
+					"furigana": "ご"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "話",
+					"furigana": "はな"
+				},
+				{
+					"text": "します"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-051",
+		"wordSurface": "何",
+		"readingKana": "なん",
+		"hanViet": "HÀ",
+		"meaning": "cái gì, gì",
+		"enMeaning": "what",
+		"kanjiBreakdown": [
+			{
+				"kanji": "何",
+				"han_viet": "HÀ",
+				"meaning": "what"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "何",
+				"furigana": "なん",
+				"romaji": "nan"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "これは何ですか。",
+			"translation": "Cái này là cái gì?",
+			"enTranslation": "What is this?",
+			"parts": [
+				{
+					"text": "これ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "何",
+					"furigana": "なん"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "か"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-052",
+		"wordSurface": "ノート",
+		"readingKana": "ノート",
+		"hanViet": "",
+		"meaning": "vở",
+		"enMeaning": "notebook",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "ノート",
+				"romaji": "nooto"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "ノートに書きます。",
+			"translation": "Viết vào vở.",
+			"enTranslation": "Write in the notebook.",
+			"parts": [
+				{
+					"text": "ノート"
+				},
+				{
+					"text": "に"
+				},
+				{
+					"text": "書",
+					"furigana": "か"
+				},
+				{
+					"text": "きます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-053",
+		"wordSurface": "これ",
+		"readingKana": "これ",
+		"hanViet": "",
+		"meaning": "cái này",
+		"enMeaning": "this (one)",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "これ",
+				"romaji": "kore"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "これは本です。",
+			"translation": "Cái này là sách.",
+			"enTranslation": "This is a book.",
+			"parts": [
+				{
+					"text": "これ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "本",
+					"furigana": "ほん"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-054",
+		"wordSurface": "それ",
+		"readingKana": "それ",
+		"hanViet": "",
+		"meaning": "cái đó",
+		"enMeaning": "that (one near you)",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "それ",
+				"romaji": "sore"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "それは何ですか。",
+			"translation": "Cái đó là cái gì?",
+			"enTranslation": "What is that?",
+			"parts": [
+				{
+					"text": "それ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "何",
+					"furigana": "なん"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "か"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-055",
+		"wordSurface": "あれ",
+		"readingKana": "あれ",
+		"hanViet": "",
+		"meaning": "cái kia",
+		"enMeaning": "that (one over there)",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "あれ",
+				"romaji": "are"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "あれは私の車です。",
+			"translation": "Cái kia là xe của tôi.",
+			"enTranslation": "That is my car.",
+			"parts": [
+				{
+					"text": "あれ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "私",
+					"furigana": "わたし"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "車",
+					"furigana": "くるま"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-056",
+		"wordSurface": "カード",
+		"readingKana": "カード",
+		"hanViet": "",
+		"meaning": "thẻ, cạc",
+		"enMeaning": "card",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "カード",
+				"romaji": "kaado"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "カードで払います。",
+			"translation": "Tôi trả bằng thẻ.",
+			"enTranslation": "I play by card.",
+			"parts": [
+				{
+					"text": "カード"
+				},
+				{
+					"text": "で"
+				},
+				{
+					"text": "払",
+					"furigana": "はら"
+				},
+				{
+					"text": "います"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-057",
+		"wordSurface": "ボールペン",
+		"readingKana": "ボールペン",
+		"hanViet": "",
+		"meaning": "bút bi",
+		"enMeaning": "ballpoint pen",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "ボールペン",
+				"romaji": "boorupen"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "ボールペンを貸してください。",
+			"translation": "Cho tôi mượn bút bi.",
+			"enTranslation": "Please lend me a ballpoint pen.",
+			"parts": [
+				{
+					"text": "ボールペン"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "貸",
+					"furigana": "か"
+				},
+				{
+					"text": "して"
+				},
+				{
+					"text": "ください"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-058",
+		"wordSurface": "シャープペンシル",
+		"readingKana": "シャープペンシル",
+		"hanViet": "",
+		"meaning": "bút chì kim",
+		"enMeaning": "mechanical pencil",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "シャープペンシル",
+				"romaji": "shaapupenshiru"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "シャープペンシルがありますか。",
+			"translation": "Có bút chì kim không?",
+			"enTranslation": "Do you have a mechanical pencil?",
+			"parts": [
+				{
+					"text": "シャープペンシル"
+				},
+				{
+					"text": "が"
+				},
+				{
+					"text": "あります"
+				},
+				{
+					"text": "か"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-059",
+		"wordSurface": "かぎ",
+		"readingKana": "かぎ",
+		"hanViet": "",
+		"meaning": "chìa khóa",
+		"enMeaning": "key",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "かぎ",
+				"romaji": "kagi"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "これは車のかぎです。",
+			"translation": "Đây là chìa khóa xe.",
+			"enTranslation": "This is a car key.",
+			"parts": [
+				{
+					"text": "これ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "車",
+					"furigana": "くるま"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "かぎ"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-060",
+		"wordSurface": "かばん",
+		"readingKana": "かばん",
+		"hanViet": "",
+		"meaning": "cặp sách, túi sách",
+		"enMeaning": "bag, briefcase",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "かばん",
+				"romaji": "kaban"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "かばんを買いました。",
+			"translation": "Tôi đã mua cái túi.",
+			"enTranslation": "I bought a bag.",
+			"parts": [
+				{
+					"text": "かばん"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "買",
+					"furigana": "か"
+				},
+				{
+					"text": "いました"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-061",
+		"wordSurface": "テレビ",
+		"readingKana": "テレビ",
+		"hanViet": "",
+		"meaning": "TV",
+		"enMeaning": "television",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "テレビ",
+				"romaji": "terebi"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "テレビを見ます。",
+			"translation": "Tôi xem tivi.",
+			"enTranslation": "I watch TV.",
+			"parts": [
+				{
+					"text": "テレビ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "見",
+					"furigana": "み"
+				},
+				{
+					"text": "ます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-062",
+		"wordSurface": "ラジオ",
+		"readingKana": "ラジオ",
+		"hanViet": "",
+		"meaning": "Radio",
+		"enMeaning": "radio",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "ラジオ",
+				"romaji": "rajio"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "ラジオを聞きます。",
+			"translation": "Tôi nghe radio.",
+			"enTranslation": "I listen to the radio.",
+			"parts": [
+				{
+					"text": "ラジオ"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "聞",
+					"furigana": "き"
+				},
+				{
+					"text": "きます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-063",
+		"wordSurface": "カメラ",
+		"readingKana": "カメラ",
+		"hanViet": "",
+		"meaning": "Máy ảnh",
+		"enMeaning": "camera",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "カメラ",
+				"romaji": "kamera"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "それは私のカメラです。",
+			"translation": "Đó là máy ảnh của tôi.",
+			"enTranslation": "That is my camera.",
+			"parts": [
+				{
+					"text": "それ"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "私",
+					"furigana": "わたし"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "カメラ"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-064",
+		"wordSurface": "コンピューター",
+		"readingKana": "コンピューター",
+		"hanViet": "",
+		"meaning": "Máy vi tính",
+		"enMeaning": "computer",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "コンピューター",
+				"romaji": "konpyuutaa"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "コンピューターの会社です。",
+			"translation": "Là công ty máy tính.",
+			"enTranslation": "It is a computer company.",
+			"parts": [
+				{
+					"text": "コンピューター"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "会社",
+					"furigana": "かいしゃ"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-065",
+		"wordSurface": "いす",
+		"readingKana": "いす",
+		"hanViet": "",
+		"meaning": "Ghế",
+		"enMeaning": "chair",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "いす",
+				"romaji": "isu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "いすに座ります。",
+			"translation": "Ngồi lên ghế.",
+			"enTranslation": "Sit on the chair.",
+			"parts": [
+				{
+					"text": "いす"
+				},
+				{
+					"text": "に"
+				},
+				{
+					"text": "座",
+					"furigana": "すわ"
+				},
+				{
+					"text": "ります"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-066",
+		"wordSurface": "チョコレート",
+		"readingKana": "チョコレート",
+		"hanViet": "",
+		"meaning": "Socola",
+		"enMeaning": "chocolate",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "チョコレート",
+				"romaji": "chokoreeto"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "チョコレートを食べます。",
+			"translation": "Tôi ăn sô cô la.",
+			"enTranslation": "I eat chocolate.",
+			"parts": [
+				{
+					"text": "チョコレート"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "食",
+					"furigana": "た"
+				},
+				{
+					"text": "べます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-067",
+		"wordSurface": "コーヒー",
+		"readingKana": "コーヒー",
+		"hanViet": "",
+		"meaning": "Cà phê",
+		"enMeaning": "coffee",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "コーヒー",
+				"romaji": "koohii"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "コーヒーを飲みます。",
+			"translation": "Tôi uống cà phê.",
+			"enTranslation": "I drink coffee.",
+			"parts": [
+				{
+					"text": "コーヒー"
+				},
+				{
+					"text": "を"
+				},
+				{
+					"text": "飲",
+					"furigana": "の"
+				},
+				{
+					"text": "みます"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-068",
+		"wordSurface": "そう",
+		"readingKana": "そう",
+		"hanViet": "",
+		"meaning": "Vậy",
+		"enMeaning": "so",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "そう",
+				"romaji": "sou"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "はい、そうです。",
+			"translation": "Vâng, đúng vậy.",
+			"enTranslation": "Yes, that's right.",
+			"parts": [
+				{
+					"text": "はい"
+				},
+				{
+					"text": "、"
+				},
+				{
+					"text": "そう"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-069",
+		"wordSurface": "どうぞ",
+		"readingKana": "どうぞ",
+		"hanViet": "",
+		"meaning": "Xin mời",
+		"enMeaning": "Please, here you are",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "どうぞ",
+				"romaji": "douzo"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "どうぞ食べてください。",
+			"translation": "Xin mời ăn.",
+			"enTranslation": "Please eat.",
+			"parts": [
+				{
+					"text": "どうぞ"
+				},
+				{
+					"text": "食",
+					"furigana": "た"
+				},
+				{
+					"text": "べて"
+				},
+				{
+					"text": "ください"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-070",
+		"wordSurface": "そうですか",
+		"readingKana": "そうですか",
+		"hanViet": "",
+		"meaning": "Thế à",
+		"enMeaning": "Is that so?",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "そうですか",
+				"romaji": "soudesuka"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "あ、そうですか。",
+			"translation": "À, thế à.",
+			"enTranslation": "Oh, is that so?",
+			"parts": [
+				{
+					"text": "あ"
+				},
+				{
+					"text": "、"
+				},
+				{
+					"text": "そうですか"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-071",
+		"wordSurface": "違います",
+		"readingKana": "ちがいます",
+		"hanViet": "VI",
+		"meaning": "không phải, không đúng",
+		"enMeaning": "No, it isn't / You are wrong",
+		"kanjiBreakdown": [
+			{
+				"kanji": "違",
+				"han_viet": "VI",
+				"meaning": "differ, mistake"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "違",
+				"furigana": "ちが",
+				"romaji": "chiga"
+			},
+			{
+				"text": "います",
+				"romaji": "imasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "いいえ、違います。",
+			"translation": "Không, không phải.",
+			"enTranslation": "No, that's wrong.",
+			"parts": [
+				{
+					"text": "いいえ"
+				},
+				{
+					"text": "、"
+				},
+				{
+					"text": "違",
+					"furigana": "ちが"
+				},
+				{
+					"text": "います"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-072",
+		"wordSurface": "これからお世話になります",
+		"readingKana": "これからおせわになります",
+		"hanViet": "THẾ THOẠI",
+		"meaning": "từ nay tôi rất mong được sự giúp đỡ của anh/chị",
+		"enMeaning": "Thank you in advance for your kindness",
+		"kanjiBreakdown": [
+			{
+				"kanji": "世",
+				"han_viet": "THẾ",
+				"meaning": "world, generation"
+			},
+			{
+				"kanji": "話",
+				"han_viet": "THOẠI",
+				"meaning": "talk"
+			}
+		],
+		"wordParts": [
+			{
+				"text": "これからお"
+			},
+			{
+				"text": "世話",
+				"furigana": "せわ",
+				"romaji": "sewa"
+			},
+			{
+				"text": "になります",
+				"romaji": "ninarimasu"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "これからお世話になります。",
+			"translation": "Từ nay rất mong được giúp đỡ.",
+			"enTranslation": "Thank you in advance for your help.",
+			"parts": [
+				{
+					"text": "これから"
+				},
+				{
+					"text": "お"
+				},
+				{
+					"text": "世話",
+					"furigana": "せわ"
+				},
+				{
+					"text": "になります"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-073",
+		"wordSurface": "この～",
+		"readingKana": "この",
+		"hanViet": "",
+		"meaning": "~ này",
+		"enMeaning": "this ~",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "この",
+				"romaji": "kono"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "この本は私のです。",
+			"translation": "Quyển sách này là của tôi.",
+			"enTranslation": "This book is mine.",
+			"parts": [
+				{
+					"text": "この"
+				},
+				{
+					"text": "本",
+					"furigana": "ほん"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "私",
+					"furigana": "わたし"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-074",
+		"wordSurface": "その～",
+		"readingKana": "その",
+		"hanViet": "",
+		"meaning": "~ đó",
+		"enMeaning": "that ~",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "その",
+				"romaji": "sono"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "その鞄は誰のですか。",
+			"translation": "Cái cặp đó là của ai?",
+			"enTranslation": "Whose bag is that?",
+			"parts": [
+				{
+					"text": "その"
+				},
+				{
+					"text": "鞄",
+					"furigana": "かばん"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "誰",
+					"furigana": "だれ"
+				},
+				{
+					"text": "の"
+				},
+				{
+					"text": "です"
+				},
+				{
+					"text": "か"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	},
+	{
+		"id": "uuid-075",
+		"wordSurface": "あの～",
+		"readingKana": "あの",
+		"hanViet": "",
+		"meaning": "~ kia",
+		"enMeaning": "that ~ (over there)",
+		"kanjiBreakdown": [],
+		"wordParts": [
+			{
+				"text": "あの",
+				"romaji": "ano"
+			}
+		],
+		"exampleSentence": {
+			"sentence": "あの人は誰ですか。",
+			"translation": "Người kia là ai?",
+			"enTranslation": "Who is that person?",
+			"parts": [
+				{
+					"text": "あの"
+				},
+				{
+					"text": "人",
+					"furigana": "ひと"
+				},
+				{
+					"text": "は"
+				},
+				{
+					"text": "誰",
+					"furigana": "だれ"
+				},
+				{
+					"text": "ですか"
+				},
+				{
+					"text": "。"
+				}
+			]
+		}
+	}
 ]

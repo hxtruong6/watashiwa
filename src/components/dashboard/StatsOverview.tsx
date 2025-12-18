@@ -1,15 +1,15 @@
-import React from 'react';
-import { Row, Col, Card, Statistic, theme, Flex, Tooltip, Typography, Button } from 'antd';
-import { useRouter } from 'next/navigation';
 import {
-	DatabaseOutlined,
-	SafetyCertificateOutlined,
-	ReadOutlined,
-	StarOutlined,
-	InfoCircleOutlined,
 	ArrowRightOutlined,
+	DatabaseOutlined,
+	InfoCircleOutlined,
+	ReadOutlined,
+	SafetyCertificateOutlined,
+	StarOutlined,
 } from '@ant-design/icons';
+import { Button, Card, Col, Flex, Row, Statistic, Tooltip, Typography, theme } from 'antd';
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
+import React from 'react';
 
 const { useToken } = theme;
 const { Text } = Typography;

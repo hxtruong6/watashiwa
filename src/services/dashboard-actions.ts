@@ -2,7 +2,7 @@
 
 import { prisma } from '@/lib/db';
 import { getUser } from '@/services/actions';
-import { StudyCard, Vocab, Kanji } from '@prisma/client';
+import { Kanji, StudyCard, Vocab } from '@prisma/client';
 
 export interface WisdomWordData {
 	id: string; // Card ID

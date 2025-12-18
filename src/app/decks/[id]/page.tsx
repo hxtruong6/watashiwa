@@ -1,6 +1,8 @@
-import React from 'react'; // Added explicit React import if needed, or keeping existing
-import { getDeck, syncUser, getUser } from '@/services/actions';
+// Added explicit React import if needed, or keeping existing
+import { getDeck, getUser, syncUser } from '@/services/actions';
 import { notFound } from 'next/navigation';
+import React from 'react';
+
 import DeckView from './DeckView';
 
 export default async function DeckDetailPage({ params }: { params: Promise<{ id: string }> }) {
