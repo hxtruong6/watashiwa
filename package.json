@@ -82,5 +82,18 @@
     "prettier": "^3.7.4",
     "vitest": "^4.0.16"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "@prisma/engines",
+      "@sentry/cli",
+      "@swc/core",
+      "core-js",
+      "esbuild",
+      "prisma",
+      "sharp",
+      "unrs-resolver"
+    ]
+  },
   "type": "module"
 }
