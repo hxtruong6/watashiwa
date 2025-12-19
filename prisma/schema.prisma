@@ -151,6 +151,15 @@ model CourseDeck {
 // 3. CORE CONTENT (HYBRID SQL)
 // -----------------------------------------------------------------------------
 
+// 1. Define the Lifecycle
+enum ContentStatus {
+  DRAFT // Created manually, incomplete
+  AI_GENERATED // Created by Script, needs Human eyes
+  FLAGGED // User reported an error, needs review
+  VERIFIED // Human approved (Safe for Beta users)
+  PUBLISHED // Live in Production (Safe for everyone)
+}
+
 // The Anchor
 model Vocabulary {
   id     String @id @default(uuid())
@@ -163,8 +172,8 @@ model Vocabulary {
 
   // Surface Forms
   wordSurface String  @map("word_surface") // Kanji: 箸. For Kanji-only, this is the Character.
-  wordReading String? @map("word_reading") // Hiragana: はし. If word is hiragana/katakana, we do not need to store this field.
-  wordRomaji  String  @map("word_romaji") // hashi
+  wordReading String  @map("word_reading") // Hiragana: はし. (Mandatory for sorting/search)
+  wordRomaji  String? @map("word_romaji") // hashi (Optional, calculated)
 
   // Pitch & Homonyms
   // 0=Heiban (LHHHH), 1=Atamadaka (HLLLL), 2=Nakadaka (LHHHL), 3=Kakudaka (HHLLL), etc.
@@ -173,9 +182,9 @@ model Vocabulary {
   homonymGroupId String? @map("homonym_group_id") // UUID grouping same-reading words (Hashi/Hashi)
 
   // Rich Data (JSONB)
-  // Contract: Object containing Hán Việt meta.
-  // {"kanji": "箸", "han_viet": "TRỨ", "meaning": "Đũa"}
-  hanVietInfo Json @map("han_viet_info")
+  // Contract: EtymologyData (zod: EtymologySchema)
+  // { "parts": [{ "kanji": "大", "han_viet": "ĐẠI" }], "note_vi": "..." }
+  etymology Json @map("etymology")
 
   // Contract: Object with language keys.
   // {"vi": ["Đũa"], "en": ["Chopsticks", "Cutlery"]}
@@ -188,6 +197,12 @@ model Vocabulary {
   // Media
   audioUrl String? @map("audio_url") // Custom audio, priority over OS TTS
   imageUrl String? @map("image_url")
+
+  // Lifecycle
+  contentStatus ContentStatus @default(DRAFT) @map("content_status")
+  // Tracks the LAST person who signed off on this word.
+  verifiedAt    DateTime?     @map("verified_at")
+  verifiedBy    String?       @map("verified_by") // Store Admin/Intern ID (e.g., from Clerk/Auth)
 
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime  @updatedAt @map("updated_at")
@@ -205,6 +220,7 @@ model Vocabulary {
   // For now, basic list filtering is acceptable.
 
   @@index([deckId])
+  @@index([contentStatus])
   @@index([homonymGroupId])
 }
 
@@ -217,14 +233,10 @@ model CardVariant {
   variantType VariantType @map("variant_type")
 
   // Polymorphic Content Payload (The "Smart" part)
-  // Contract varies by variantType:
-  // - BASIC: null (Uses Vocab core data)
-  // - CONTEXT_SENTENCE: 
-  //   { 
-  //     "question": {"vi": "Tôi dùng [___]...", "en": "I use [___]..."}, 
-  //     "answer": {"vi": "đũa", "en": "chopsticks"}, 
-  //     "distractors": ["thìa", "spoon"] 
-  //   }
+  // Contract varies by variantType (zod: VariantPayloadSchema):
+  // - BASIC: null
+  // - CONTEXT_GAP_FILL: GapFillPayload
+  // - AUDIO_MATCH: AudioMatchPayload
   contentPayload Json @map("content_payload")
 
   createdAt DateTime @default(now()) @map("created_at")
@@ -234,7 +246,7 @@ model CardVariant {
 
 enum VariantType {
   BASIC
-  CONTEXT_SENTENCE
+  CONTEXT_GAP_FILL
   AUDIO_MATCH
   INTERVENTION // Was PAIR_MATCH
 }
@@ -247,8 +259,8 @@ model ConfusionPair {
   vocabId2 String     @map("vocab_id_2")
   vocab2   Vocabulary @relation("ConfusionB", fields: [vocabId2], references: [id], onDelete: Cascade)
 
-  // Contract:
-  // { "vi": "Nghe dùng Tai...", "en": "Listen uses Ear..." }
+  // Contract: ConfusionExplanation (zod: ConfusionExplanationSchema)
+  // { "mnemonic": { "vi": "..." }, "item1_nuance": "...", "item2_nuance": "..." }
   explanation Json
 
   type ConfusionType @default(HOMONYM)
@@ -271,8 +283,8 @@ model Story {
   unitId String @map("unit_id")
   unit   Deck   @relation(fields: [unitId], references: [id], onDelete: Cascade)
 
-  // Contract:
-  // { "title_vi": "...", "body_vi": "...", "title_en": "..." }
+  // Contract: StoryContent (zod: StoryContentSchema)
+  // { "title": { "vi": "..." }, "body_text": "...", "highlights": [...] }
   content  Json
   audioUrl String? @map("audio_url")
 
