@@ -190,8 +190,13 @@ model Vocabulary {
   // {"vi": ["Đũa"], "en": ["Chopsticks", "Cutlery"]}
   meanings Json
 
+  // Story/Mnemonic (The Hook)
+  // Contract: Language-specific memory aids.
+  // { "vi": "...", "en": "..." }
+  mnemonic Json? @map("mnemonic")
+
   // Contract: Array of example objects.
-  // [{"sentence": "...", "translation_vi": "...", "translation_en": "...", "audio": "..."}]
+  // [{"sentence": "...", "translation": {"vi": "...", "en": "..."}, "audio": "..."}]
   examples Json
 
   // Media
@@ -239,9 +244,15 @@ model CardVariant {
   // - AUDIO_MATCH: AudioMatchPayload
   contentPayload Json @map("content_payload")
 
+  // Quality Gate
+  contentStatus ContentStatus @default(DRAFT) @map("content_status")
+  verifiedAt    DateTime?     @map("verified_at")
+  verifiedBy    String?       @map("verified_by")
+
   createdAt DateTime @default(now()) @map("created_at")
 
   @@index([vocabId])
+  @@index([contentStatus])
 }
 
 enum VariantType {

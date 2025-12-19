@@ -140,6 +140,9 @@ CREATE TABLE "CardVariant" (
     "vocab_id" TEXT NOT NULL,
     "variant_type" "VariantType" NOT NULL,
     "content_payload" JSONB NOT NULL,
+    "content_status" "ContentStatus" NOT NULL DEFAULT 'DRAFT',
+    "verified_at" TIMESTAMP(3),
+    "verified_by" TEXT,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "CardVariant_pkey" PRIMARY KEY ("id")
@@ -320,6 +323,9 @@ CREATE INDEX "Vocabulary_homonym_group_id_idx" ON "Vocabulary"("homonym_group_id
 
 -- CreateIndex
 CREATE INDEX "CardVariant_vocab_id_idx" ON "CardVariant"("vocab_id");
+
+-- CreateIndex
+CREATE INDEX "CardVariant_content_status_idx" ON "CardVariant"("content_status");
 
 -- CreateIndex
 CREATE INDEX "ConfusionPair_vocab_id_1_idx" ON "ConfusionPair"("vocab_id_1");

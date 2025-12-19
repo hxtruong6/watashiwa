@@ -70,7 +70,7 @@ Place these comments directly above the test code or within the steps so that re
 ## 5. Execution commands and coverage
 
 1. At the end of test implementation, always document the **execution command** and **coverage collection method** at the end of the documentation or PR description.
-   - Examples: `npm run test`, `pnpm vitest run --coverage`, `pytest --cov=...`
+   - Examples: `pnpm run test`, `pnpm vitest run --coverage`, `pytest --cov=...`
 2. Check branch coverage and statement coverage, aiming for 100% branch coverage as a target (when it is not reasonably achievable, prioritize covering high‑impact business branches and primary error paths).
 3. Attach coverage report results (screenshots or summaries) where reasonably possible.
 

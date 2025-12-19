@@ -5,6 +5,23 @@ export const LocalizedStringSchema = z.object({
 	vi: z.string(),
 	en: z.string(),
 });
+export type LocalizedString = z.infer<typeof LocalizedStringSchema>;
+export type MnemonicData = LocalizedString;
+
+// -----------------------------------------------------------------------------
+// 0. SHARED SCHEMAS
+// -----------------------------------------------------------------------------
+
+export const MeaningsSchema = z.record(z.string(), z.array(z.string()));
+export type MeaningsData = z.infer<typeof MeaningsSchema>;
+
+export const ExampleSentenceSchema = z.object({
+	sentence: z.string(),
+	translation: LocalizedStringSchema,
+	audio: z.string().optional(),
+});
+export const ExamplesSchema = z.array(ExampleSentenceSchema);
+export type ExamplesData = z.infer<typeof ExamplesSchema>;
 
 // -----------------------------------------------------------------------------
 // 1. ETYMOLOGY (Vocabulary.etymology)
@@ -22,7 +39,7 @@ export const EtymologyPartSchema = z
 export const EtymologySchema = z
 	.object({
 		parts: z.array(EtymologyPartSchema),
-		note: LocalizedStringSchema.optional(), // Was note_vi, note_en
+		note: LocalizedStringSchema.optional(),
 	})
 	.strict();
 

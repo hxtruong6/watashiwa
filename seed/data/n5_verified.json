@@ -1,0 +1,465 @@
+[
+  {
+    "kanji": "先生",
+    "han_viet": "TIÊN SINH",
+    "kana": "せんせい",
+    "romaji": "sensei",
+    "tags": [
+      "n5",
+      "noun",
+      "polite",
+      "title"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,20 L50,20 L75,20 L100,20",
+    "mnemonic": {
+      "vi": "Hãy hình dung một vị 先生 già, thông thái đứng trước lớp học. Ông ấy đã sinh ra trước (先) học trò của mình, và qua cuộc đời (生) cùng kinh nghiệm, ông đã tích lũy kiến thức sâu rộng. Ông là người đã đến trước họ, dẫn dắt họ trên hành trình của mình.",
+      "en": "Imagine an old, wise 先生 standing at the front of a classroom. He was born prior (先) to his students, and through his life (生) and experience, he has accumulated vast knowledge. He is the one who came before them, guiding them through their journey."
+    },
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "先",
+          "han_viet": "TIÊN",
+          "meaning": {
+            "vi": "trước, trước đó, đi trước",
+            "en": "prior, ahead, future, first"
+          }
+        },
+        {
+          "kanji": "生",
+          "han_viet": "SINH",
+          "meaning": {
+            "vi": "sống, sinh ra",
+            "en": "life, birth, grow"
+          }
+        }
+      ],
+      "note": {
+        "vi": "\"TIÊN SINH\" (先生) nghĩa đen là \"người sinh trước\" hoặc \"người đi trước\". Trong Hán Việt, \"TIÊN\" (先) là \"trước, đi trước\" và \"SINH\" (生) là \"sinh ra, sống\". Kết hợp lại, từ này chỉ người có kinh nghiệm, kiến thức đi trước người khác.",
+        "en": "\"Sensei\" literally means \"one who was born before\" or \"one who comes before.\" The kanji 先 (sen) means \"prior\" or \"ahead,\" and 生 (sei) means \"life\" or \"birth.\" Together, they refer to someone who has gained knowledge or experience ahead of others."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "giáo viên",
+        "thầy/cô giáo",
+        "bác sĩ",
+        "luật sư",
+        "người có kinh nghiệm/kiến thức",
+        "chuyên gia"
+      ],
+      "en": [
+        "teacher",
+        "master",
+        "doctor",
+        "lawyer",
+        "professor",
+        "experienced person",
+        "expert"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "彼は日本語の先生です。",
+        "translation": {
+          "vi": "Anh ấy là giáo viên tiếng Nhật.",
+          "en": "He is a Japanese teacher."
+        }
+      },
+      {
+        "sentence": "先生、お元気ですか？",
+        "translation": {
+          "vi": "Thưa thầy/cô, thầy/cô có khỏe không ạ?",
+          "en": "Teacher, how are you?"
+        }
+      },
+      {
+        "sentence": "山田先生に相談しましょう。",
+        "translation": {
+          "vi": "Chúng ta hãy hỏi ý kiến thầy Yamada.",
+          "en": "Let's consult with Mr./Ms. Yamada (our teacher/doctor/lawyer)."
+        }
+      }
+    ],
+    "confusions": [
+      {
+        "word": "学生",
+        "explanation": {
+          "mnemonic": {
+            "vi": "\"HỌC SINH\" (学生) là \"người học, sinh viên\". \"HỌC\" (学) là học, \"SINH\" (生) là sống/sinh ra. Kết hợp lại là người đang trong quá trình học tập.",
+            "en": "The kanji 学 (gaku) means \"study\" or \"learn,\" and 生 (sei) means \"life\" or \"birth.\" So, 学生 (gakusei) means someone in the process of learning or studying."
+          },
+          "item1_nuance": {
+            "vi": "先生 (TIÊN SINH) là người đã có kinh nghiệm và kiến thức, đóng vai trò giảng dạy hoặc hướng dẫn.",
+            "en": "先生 (Sensei) refers to an experienced individual, often a teacher or expert, who imparts knowledge or guidance."
+          },
+          "item2_nuance": {
+            "vi": "学生 (HỌC SINH) là người đang học hỏi, nhận sự hướng dẫn từ 先生.",
+            "en": "学生 (Gakusei) refers to a student, someone who is currently learning and receiving guidance from a 先生."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "学生",
+    "han_viet": "HỌC SINH",
+    "kana": "がくせい",
+    "romaji": "gakusei",
+    "tags": [
+      "n5",
+      "noun"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L12.5,5 L25,5 L37.5,5",
+    "mnemonic": {
+      "vi": "Hãy tưởng tượng một mầm non, khao khát lớn lên và học hỏi. 'Cuộc sống' (生) của mầm non này dành trọn cho việc 'học tập' (学), thể hiện ý nghĩa của một học sinh.",
+      "en": "Imagine a young sprout, eager to grow and learn. This 'life' (生) of a sprout is dedicated to 'learning' (学), embodying what it means to be a 学生."
+    },
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "学",
+          "han_viet": "HỌC",
+          "meaning": {
+            "vi": "học tập, trường học",
+            "en": "study, learning, school"
+          }
+        },
+        {
+          "kanji": "生",
+          "han_viet": "SINH",
+          "meaning": {
+            "vi": "sống, sinh ra, người",
+            "en": "life, birth, raw, student"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Trong Hán Việt, 'HỌC' (学) có nghĩa là 'học tập, trường học', và 'SINH' (生) có nghĩa là 'người, sinh ra, sống'. Khi kết hợp lại, 'HỌC SINH' (学生) mang ý nghĩa trực tiếp là 'người đi học' hoặc 'người sinh ra để học tập'. Đây là một từ ghép rất dễ hiểu đối với người học tiếng Việt.",
+        "en": "The kanji 学 (gaku) represents 'study' or 'learning', often depicted as a child under a roof or a structure, signifying a school. The kanji 生 (sei) means 'life', 'birth', or 'to grow', often drawn to resemble a sprout emerging from the ground. Together, 学生 literally means 'a person who studies' or 'one who is born to learn', forming the concept of a 'student'."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "học sinh",
+        "sinh viên"
+      ],
+      "en": [
+        "student",
+        "pupil"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "私は学生です。",
+        "translation": {
+          "vi": "Tôi là học sinh/sinh viên.",
+          "en": "I am a student."
+        }
+      },
+      {
+        "sentence": "彼女は優秀な学生だ。",
+        "translation": {
+          "vi": "Cô ấy là một học sinh/sinh viên xuất sắc.",
+          "en": "She is an excellent student."
+        }
+      },
+      {
+        "sentence": "この学校には多くの学生がいます。",
+        "translation": {
+          "vi": "Trường này có nhiều học sinh/sinh viên.",
+          "en": "There are many students at this school."
+        }
+      }
+    ],
+    "confusions": [
+      {
+        "word": "生徒 (seito)",
+        "explanation": {
+          "mnemonic": {
+            "vi": "'SINH ĐỒ' (生徒) cũng có 'SINH' (生) nghĩa là 'học sinh, người sinh ra' và 'ĐỒ' (徒) nghĩa là 'đồ đệ, học trò'. Từ Hán Việt này cũng ám chỉ một 'học trò' hoặc 'đồ đệ' đang học tập, tương tự nhưng có sắc thái khác với 'HỌC SINH'.",
+            "en": "The kanji 生 (sei) means 'life' or 'student', and 徒 (to) means 'disciple' or 'follower'. So, 生徒 literally translates to 'a student or disciple who follows teachings'."
+          },
+          "item1_nuance": {
+            "vi": "学生 (がくせい - Gakusei): Thường dùng để chỉ học sinh, sinh viên ở mọi cấp độ, đặc biệt là sinh viên đại học và cao đẳng. Đây là từ chung nhất cho 'student'.",
+            "en": "学生 (Gakusei) is the general term for 'student', encompassing all levels from elementary school to university, but is most commonly used for students in higher education (university, college, graduate school)."
+          },
+          "item2_nuance": {
+            "vi": "生徒 (せいと - Seito): Thường dùng để chỉ học sinh tiểu học, trung học cơ sở và trung học phổ thông (K-12). Nó nhấn mạnh mối quan hệ thầy-trò trong một trường phổ thông.",
+            "en": "生徒 (Seito) is typically used for students in elementary school, junior high school, and high school (K-12). It emphasizes the student's role as a pupil under the direct guidance of a teacher in a school setting."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "学校",
+    "han_viet": "HỌC HIỆU",
+    "kana": "がっこう",
+    "romaji": "gakkō",
+    "tags": [
+      "n5",
+      "noun"
+    ],
+    "pitch_pattern": 2,
+    "pitch_svg_path": "M0,20 L25,20 L50,5 L75,5 L100,20",
+    "mnemonic": {
+      "vi": "Hãy tưởng tượng một tòa nhà lớn nơi mọi người đến để HỌC 学 (học tập). Nó có nhiều HIỆU 校 (trường/sảnh) bên trong, mỗi cái dành cho một môn học khác nhau. Đây là HỌC HIỆU (trường học) của bạn, một nơi kiến thức được chia sẻ và theo đuổi.",
+      "en": "Imagine a large building where everyone goes to 学 (learn). It has many 校 (schools/halls) inside, each dedicated to a different subject. This is your 学校 (school), a place where knowledge is shared and pursued."
+    },
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "学",
+          "han_viet": "HỌC",
+          "meaning": {
+            "vi": "học tập, trường học",
+            "en": "study, learning"
+          }
+        },
+        {
+          "kanji": "校",
+          "han_viet": "HIỆU",
+          "meaning": {
+            "vi": "trường học, kiểm tra, sửa chữa",
+            "en": "school, correction, examine"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ Hán Việt là 'HỌC HIỆU'. 'HỌC' nghĩa là học tập, 'HIỆU' nghĩa là trường học hoặc kiểm tra, sửa chữa. Ghép lại là nơi để học tập, rèn luyện. Đây là một cách gọi rất trực quan và dễ hiểu cho người Việt.",
+        "en": "The first kanji, 学 (gaku), visually represents a child learning under a roof, symbolizing 'study' or 'learning'. The second kanji, 校 (kō), combines 木 (ki - tree/wood) and 交 (kō - mix/intersect), historically referring to a wooden device for correction or an assembly ground, which evolved to mean 'school' or 'correction'."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "trường học"
+      ],
+      "en": [
+        "school"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "毎日学校へ行きます。",
+        "translation": {
+          "vi": "Mỗi ngày tôi đi đến trường.",
+          "en": "I go to school every day."
+        }
+      },
+      {
+        "sentence": "私の学校はとても大きいです。",
+        "translation": {
+          "vi": "Trường của tôi rất lớn.",
+          "en": "My school is very big."
+        }
+      },
+      {
+        "sentence": "子供たちが学校で勉強しています。",
+        "translation": {
+          "vi": "Các em nhỏ đang học ở trường.",
+          "en": "Children are studying at school."
+        }
+      }
+    ],
+    "confusions": [
+      {
+        "word": "会社",
+        "explanation": {
+          "mnemonic": {
+            "vi": "会社 (HỘI XÃ) là nơi mọi người HỘI họp để làm việc, còn 学校 (HỌC HIỆU) là nơi HỌC tập, rèn luyện kiến thức.",
+            "en": "会社 (kaisha) represents a 'company' or 'gathering place for work', while 学校 (gakkō) is a 'school', a place for learning. Think of 会社 as people coming together for business, and 学校 as a place where you 'ga-kko' (go to school)."
+          },
+          "item1_nuance": {
+            "vi": "会社 (HỘI XÃ) là tổ chức kinh doanh, nơi mọi người làm việc để tạo ra sản phẩm hoặc dịch vụ và lợi nhuận.",
+            "en": "会社 (kaisha) refers to a business organization or company, a place where people work to produce goods, services, or profit."
+          },
+          "item2_nuance": {
+            "vi": "学校 (HỌC HIỆU) là tổ chức giáo dục, nơi học sinh, sinh viên đến để tiếp thu kiến thức và kỹ năng.",
+            "en": "学校 (gakkō) refers to an educational institution, a place where students go to acquire knowledge and skills."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "銀行",
+    "han_viet": "NGÂN HÀNG",
+    "kana": "ぎんこう",
+    "romaji": "ginkō",
+    "tags": [
+      "n5",
+      "noun"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,20 L50,20 L75,20",
+    "mnemonic": {
+      "vi": "Hãy tưởng tượng một con phố dài với những đồng tiền **bạc** 銀 lấp lánh. Mọi người *đi* 行 dọc con 'phố bạc' này để gửi hoặc rút tiền. Đây chính là **ngân hàng**, nơi giao dịch bạc (tiền tệ).",
+      "en": "Imagine a long street lined with sparkling **silver** 銀 coins. People are *walking* 行 along this 'silver street' to deposit or withdraw their money. This is the **bank**, a place where silver (money) is handled."
+    },
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "銀",
+          "han_viet": "NGÂN",
+          "meaning": {
+            "vi": "bạc",
+            "en": "silver"
+          }
+        },
+        {
+          "kanji": "行",
+          "han_viet": "HÀNG",
+          "meaning": {
+            "vi": "hàng, thương nghiệp",
+            "en": "line, business, going"
+          }
+        }
+      ],
+      "note": {
+        "vi": "NGÂN (銀) nghĩa là 'bạc' (tiền tệ). HÀNG (行) ở đây nghĩa là 'hàng/thương nghiệp' hoặc 'nơi diễn ra'. Kết hợp lại thành 'Ngân hàng', tức là nơi giao dịch bạc (tiền tệ).",
+        "en": "銀 (gin) means 'silver' or by extension 'money/currency'. 行 (kō) here means 'line' or 'business/trade', referring to a place where business is conducted. Together, it forms a 'money business' or 'silver establishment', which is a 'bank'."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "Ngân hàng"
+      ],
+      "en": [
+        "Bank"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "銀行に行きます。",
+        "translation": {
+          "vi": "Tôi đi đến ngân hàng.",
+          "en": "I'm going to the bank."
+        }
+      },
+      {
+        "sentence": "銀行でお金を下ろす。",
+        "translation": {
+          "vi": "Rút tiền ở ngân hàng.",
+          "en": "Withdraw money at the bank."
+        }
+      },
+      {
+        "sentence": "彼の父は銀行で働いています。",
+        "translation": {
+          "vi": "Cha anh ấy làm việc ở ngân hàng.",
+          "en": "His father works at a bank."
+        }
+      }
+    ],
+    "confusions": [
+      {
+        "word": "病院",
+        "explanation": {
+          "mnemonic": {
+            "vi": "NGÂN (銀) là bạc, HÀNG (行) là hàng/thương nghiệp, nên NGÂN HÀNG là nơi giao dịch tiền tệ. BỆNH (病) là bệnh tật, VIỆN (院) là viện/nơi chốn, nên BỆNH VIỆN là nơi chữa bệnh.",
+            "en": "銀行 (ginkō) has 銀 (gin) for 'silver/money' and 行 (kō) for 'business/line', making it a 'bank'. 病院 (byōin) has 病 (byō) for 'sick/illness' and 院 (in) for 'institution', making it a 'hospital'."
+          },
+          "item1_nuance": {
+            "vi": "銀行 (Ngân hàng): Nơi liên quan đến tiền bạc, tài chính.",
+            "en": "銀行 (Ginkō - Bank): A financial institution dealing with money."
+          },
+          "item2_nuance": {
+            "vi": "病院 (Bệnh viện): Nơi liên quan đến sức khỏe, khám chữa bệnh.",
+            "en": "病院 (Byōin - Hospital): A medical institution for treating illnesses."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "食べる",
+    "han_viet": "THỰC",
+    "kana": "たべる",
+    "romaji": "taberu",
+    "tags": [
+      "n5",
+      "verb",
+      "ichidan-verb",
+      "transitive"
+    ],
+    "pitch_pattern": 2,
+    "pitch_svg_path": "M0,20 L25,5 L50,20",
+    "mnemonic": {
+      "vi": "Hãy tưởng tượng một chú gấu to lớn, đói bụng tên là Ta-BEAR-u. Chú lúc nào cũng đói. Một ngày nọ, chú tìm thấy một đống cá hồi khổng lồ. 'Ta sẽ *ăn* hết chỗ này!' chú gầm lên, và bắt đầu ăn (食べる) một cách ngon lành. Chú ăn nhiều đến mức trở thành một chú gấu tròn trịa, hạnh phúc.",
+      "en": "Imagine a giant, hungry bear named Ta-BEAR-u. He's always hungry. One day, he found a huge pile of salmon. 'I'm going to *eat* all of this!' he roared, and started to 食べる (taberu) with gusto. He ate so much he became a round, happy bear."
+    },
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "食",
+          "han_viet": "THỰC",
+          "meaning": {
+            "vi": "ăn, thực phẩm, nuôi dưỡng",
+            "en": "eat, food, support"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ THỰC (食) gợi nhớ ngay đến việc 'ăn uống', 'thực phẩm'. Trong tiếng Hán Việt, các từ như 'thực đơn' (menu), 'thực vật' (plants), 'thực phẩm' (foodstuffs) đều liên quan đến ý nghĩa này. Nó là một từ rất trực quan và phổ biến.",
+        "en": "The kanji 食 (shoku/tabe) originally depicted a lidded container full of food. The top part (亼) represents a lid, the middle part (艮) represents food inside, and the bottom (器 or 皿) suggests a container or mouth. It visually connects to the idea of eating or consuming."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "ăn",
+        "dùng bữa",
+        "tiêu thụ (thức ăn)"
+      ],
+      "en": [
+        "to eat",
+        "to consume (food)",
+        "to have a meal"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "ご飯を食べる。",
+        "translation": {
+          "vi": "Ăn cơm.",
+          "en": "Eat rice/meal."
+        }
+      },
+      {
+        "sentence": "毎日果物を食べます。",
+        "translation": {
+          "vi": "Hàng ngày tôi ăn trái cây.",
+          "en": "I eat fruit every day."
+        }
+      },
+      {
+        "sentence": "彼は速く食べる。",
+        "translation": {
+          "vi": "Anh ấy ăn nhanh.",
+          "en": "He eats quickly."
+        }
+      }
+    ],
+    "confusions": [
+      {
+        "word": "飲む",
+        "explanation": {
+          "mnemonic": {
+            "vi": "NOM (飲) là NÔM, nghĩ đến NOM nước uống (ngụm nước).",
+            "en": "NOMu sounds like 'gnome' who *drinks* tea from a tiny cup."
+          },
+          "item1_nuance": {
+            "vi": "食べる (THỰC): Dùng để chỉ hành động 'ăn' các loại thực phẩm rắn hoặc bán rắn.",
+            "en": "食べる (taberu): Specifically for 'eating' solid or semi-solid foods. It describes consuming food."
+          },
+          "item2_nuance": {
+            "vi": "飲む (ẨM): Dùng cho hành động 'uống' các loại chất lỏng.",
+            "en": "飲む (nomu): Specifically for 'drinking' liquids. It describes consuming beverages."
+          }
+        }
+      }
+    ]
+  }
+]

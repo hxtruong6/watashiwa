@@ -57,8 +57,10 @@ This is exactly how the data should look in your database (and pass your Zod val
   "examples": [
     {
       "sentence": "図書館で本を借ります。",
-      "translation_vi": "Tôi mượn sách ở thư viện.",
-      "translation_en": "I borrow books at the library.",
+      "translation" : {
+        "vi": "Tôi mượn sách ở thư viện.",
+        "en": "I borrow books at the library."
+      },
       "audio_url": "https://s3.watashiwa.com/audio/ex_karimasu_1.mp3"
     }
   ],

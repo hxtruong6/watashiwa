@@ -22,10 +22,14 @@
 - [ ] **Validator**: Script validates AI output against `EtymologySchema`, `StoryContentSchema`, etc.
 - [ ] **Seeding**: Robust `prisma seed` script to insert validated data.
 
-### 3. Admin Verification (QA)
+### 3. Admin Verification (QA) - [NEXT STEP]
 
-- [ ] **Admin Page**: Simple route (`/admin/items`) to view generated Vocabulary.
-- [ ] **Verify Action**: Button to toggle `is_verified` (conceptually, or just manual review before commit).
+- [ ] **Admin Dashboard (`/admin/dashboard`)**
+  - [ ] `GET /api/admin/pending`: Fetches `Vocabulary` where `contentStatus = AI_GENERATED`.
+  - [ ] UI: "Tinder for Words" (Approve/Reject/Edit).
+- [ ] **Quality Actions Integration**
+  - [ ] Approve Button -> Calls `vocabulary.actions.approveContent`.
+  - [ ] Flag/Reject Button -> Calls `vocabulary.actions.reportContent`.
 
 ---
 
@@ -35,22 +39,23 @@
 
 ### 1. FSRS & Scheduling
 
-- [ ] **Algorithm**: Implement pure FSRS logic (Next Review Date calc).
-- [ ] **Session Engine**: `getNextBatch(userId)` service.
+- [x] **Algorithm**: Implement pure FSRS logic (Next Review Date calc) -> `study.service.ts`.
+- [x] **Session Engine**: `getNextBatch(userId)` service -> `getReviewQueue`.
   - Priorities: Leeches -> Overdue -> New.
 
 ### 2. CUBE Variant Logic
 
+- [x] **Study Architecture**: Modular "Vertical Slice" (`src/modules/study`).
 - [ ] **Variant Selector**: Logic to determine *which* card face to show.
   - New Card -> Basic.
   - Review -> Gap Fill.
   - Leech -> Intervention.
-- [ ] **DTOs**: Ensure API returns frontend-ready payloads.
+- [x] **DTOs**: Ensure API returns frontend-ready payloads (`study.dto.ts`).
 
 ### 3. API Endpoints
 
-- [ ] `GET /api/session`: Returns queue.
-- [ ] `POST /api/review`: Handles rating and updates FSRS state.
+- [x] `GET /api/session` (via Server Action `getReviewQueue`).
+- [x] `POST /api/review` (via Server Action `submitReview`).
 
 ---
 

@@ -126,7 +126,21 @@ We do not just track "Correct/Incorrect". We track **Hesitation & Habit**.
 _Old Way:_ List of words -> User reads -> Enters Flashcards. (Passive)  
 _New Way:_ **Context First.**
 
-**Scenario:**
+**Two Levels of Story:**
+
+1. **Unit Level (The "Active Priming" Story):**
+    - **Goal:** Immersion. Connects all 20 words of a unit into one narrative.
+    - **Model:** `Story` (linked to `Deck`).
+    - **Format:** Mixed-Language Text (e.g., "I went to the **Gakkou** because...").
+
+2. **Word Level (The "Memory Hook"):**
+    - **Goal:** Retention of a single difficult word.
+    - **Model:** `Vocabulary.mnemonic` (JSON).
+    - **Format:** Language-Specific Pun/Hook (NOT a direct translation).
+        - _EN:_ "I seek **SENSEI**tional wisdom."
+        - _VI:_ "Ông ấy là **TIÊN** sinh ra trước."
+
+**Scenario (Unit Priming):**
 
 1. User starts "Unit 5 (Travel)".
 2. **Smart Layer** generates a "Mini-Story" payload using Unit 5 words + familiar words from Unit 1-4.
