@@ -1,5 +1,6 @@
 ---
-alwaysApply: true
+trigger: model_decision
+description: when create test case
 ---
 
 ## Test strategy rules
@@ -89,4 +90,3 @@ Place these comments directly above the test code or within the steps so that re
 ---
 
 Always adhere to these rules and continuously self‑check for missing perspectives when designing and implementing tests.
-

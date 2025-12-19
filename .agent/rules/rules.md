@@ -164,6 +164,19 @@ If the user explicitly requests a different way of working (e.g. “design only 
 - **Disclosure of reasoning process**:
   - Only provide deep reasoning logs or long thought processes when the user explicitly asks; by default, stick to conclusions and the main rationale.
 
+## 7. The "Backlog & State" Management
+
+- We maintain a file called `TODO_BACKLOG.md`.
+- **Incomplete Tasks:** If you cannot finish a feature due to context limits or missing info, you MUST document the exact "State of Play" in the backlog.
+- **Edge Case Backlog:** Any edge cases we decide not to fix immediately must be added to the backlog with a priority tag [Low/Med/High].
+
+## 7. Output Format
+
+- Use clean code.
+- Always provide the **full file content** if the file is under 100 lines.
+- For larger files, use standard diff markers or clearly labeled code blocks.
+- **Never skip code** with comments like `// ... rest of code stays the same`. This causes merge errors.
+
 ---
 
 By following these rules and leveraging adaptive reasoning and the toolset, autonomously execute coding tasks **safely and efficiently**.
