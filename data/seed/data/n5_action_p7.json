@@ -1,0 +1,739 @@
+[
+    {
+        "kanji": "洗濯する",
+        "han_viet": "TẨY TRẠC",
+        "kana": "せんたくする",
+        "romaji": "sentaku suru",
+        "tags": [
+            "n5",
+            "suru-verb",
+            "chores"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5 L125,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "洗",
+                    "han_viet": "TẨY",
+                    "meaning": {
+                        "vi": "rửa, tẩy",
+                        "en": "wash"
+                    }
+                },
+                {
+                    "kanji": "濯",
+                    "han_viet": "TRẠC",
+                    "meaning": {
+                        "vi": "giũ, làm sạch",
+                        "en": "rinse"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TẨY (rửa bằng nước) kết hợp với TRẠC (làm sạch quần áo). Trong tiếng Việt, 'Tẩy' là làm sạch vết bẩn.",
+                "en": "Both kanji contain the water radical (氵). The first means wash, the second means rinse. Together, they mean doing laundry."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "giặt giũ",
+                "giặt quần áo"
+            ],
+            "en": [
+                "to do laundry",
+                "to wash clothes"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "週末に洗濯します。",
+                "translation": {
+                    "vi": "Tôi giặt đồ vào cuối tuần.",
+                    "en": "I do laundry on the weekend."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Dùng nước để TẨY TRẠC quần áo. 'Sen-taku' giống như 'Sen-tại-cụ' (người giúp việc giặt tại nhà cụ).",
+            "en": "Send (Sen) the tack (taku)y clothes to the washing machine!"
+        },
+        "confusions": [
+            {
+                "word": "洗う",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "TẨY (洗う) là rửa cái gì đó bằng nước, TẨY TRẠC (洗濯) chỉ chuyên dùng cho quần áo.",
+                        "en": "Arau is for general washing; Sentaku is specifically for laundry."
+                    },
+                    "item1_nuance": {
+                        "vi": "Chỉ việc giặt quần áo (thường dùng máy giặt).",
+                        "en": "Refers specifically to washing clothes/laundry."
+                    },
+                    "item2_nuance": {
+                        "vi": "Rửa tay, rửa mặt, rửa bát đĩa.",
+                        "en": "General act of washing things with water (hands, dishes)."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "散歩する",
+        "han_viet": "TÁN BỘ",
+        "kana": "さんぽする",
+        "romaji": "sanpo suru",
+        "tags": [
+            "n5",
+            "suru-verb",
+            "leisure"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "散",
+                    "han_viet": "TÁN",
+                    "meaning": {
+                        "vi": "phân tán, thư giãn",
+                        "en": "scatter/relax"
+                    }
+                },
+                {
+                    "kanji": "歩",
+                    "han_viet": "BỘ",
+                    "meaning": {
+                        "vi": "đi bộ",
+                        "en": "walk"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TÁN (phân tán tâm trí cho thoải mái) và BỘ (nhịp bước chân). TÁN BỘ là đi dạo thư giãn.",
+                "en": "The first kanji means scatter/relax, and the second means walk. It's 'scattered walking'—walking without a fixed destination for fun."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đi dạo",
+                "tản bộ"
+            ],
+            "en": [
+                "to take a walk",
+                "to stroll"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "公園を散歩します。",
+                "translation": {
+                    "vi": "Tôi đi dạo trong công viên.",
+                    "en": "I take a walk in the park."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Đi TÁN BỘ để tâm trí phân TÁN. 'San-po' nghe như 'Sáng-phố' (sáng đi dạo phố).",
+            "en": "I need some Sun (San) while I go to the Po(le) for a walk."
+        },
+        "confusions": [
+            {
+                "word": "歩く",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "TÁN BỘ là đi chơi thong thả, BỘ (歩く) là hành động đi lại nói chung.",
+                        "en": "Sanpo is for pleasure; Aruku is the physical movement."
+                    },
+                    "item1_nuance": {
+                        "vi": "Đi bộ với mục đích thư giãn, ngắm cảnh.",
+                        "en": "Walking as a leisure activity or exercise."
+                    },
+                    "item2_nuance": {
+                        "vi": "Hành động di chuyển bằng chân (đi tới ga, đi làm).",
+                        "en": "The basic physical act of walking toward a destination."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "ある",
+        "han_viet": "HỮU",
+        "kana": "ある",
+        "romaji": "aru",
+        "tags": [
+            "n5",
+            "verb",
+            "intransitive",
+            "existence"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "有",
+                    "han_viet": "HỮU",
+                    "meaning": {
+                        "vi": "có, tồn tại",
+                        "en": "exist/have"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ HỮU (có) thường được viết bằng Hiragana khi dùng cho sự tồn tại của vật. Trong Hán Việt, 'Sở hữu' là có trong tay.",
+                "en": "Usually written in kana. It represents the existence of things that do not move on their own."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "có (vật)",
+                "tồn tại",
+                "ở (vật)"
+            ],
+            "en": [
+                "to exist (inanimate)",
+                "to have",
+                "to be located at"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "机の上に本があります。",
+                "translation": {
+                    "vi": "Có cuốn sách ở trên bàn.",
+                    "en": "There is a book on the desk."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HỮU là có. 'A-ru' nghe như 'À, rương' (À, có cái rương ở đây).",
+            "en": "Ah (A), a Roo(ru)m exists here!"
+        },
+        "confusions": [
+            {
+                "word": "いる",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "HỮU (ある) cho vật, CƯ (いる) cho người/động vật.",
+                        "en": "Aru for objects; Iru for living things."
+                    },
+                    "item1_nuance": {
+                        "vi": "Dùng cho đồ vật, cây cỏ, sự kiện.",
+                        "en": "Used for inanimate objects and plants."
+                    },
+                    "item2_nuance": {
+                        "vi": "Dùng cho người và động vật.",
+                        "en": "Used for people and animals."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "いる",
+        "han_viet": "CƯ",
+        "kana": "いる",
+        "romaji": "iru",
+        "tags": [
+            "n5",
+            "verb",
+            "intransitive",
+            "existence"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "居",
+                    "han_viet": "CƯ",
+                    "meaning": {
+                        "vi": "ở, trú ngụ",
+                        "en": "reside/be"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ CƯ trong 'Cư dân', 'Cư trú'. Dùng để chỉ sự hiện diện của sinh vật sống.",
+                "en": "Usually written in kana. It specifically targets living beings that can move of their own volition."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "có (người/động vật)",
+                "ở"
+            ],
+            "en": [
+                "to exist (animate)",
+                "to be present"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "あそこに猫がいます。",
+                "translation": {
+                    "vi": "Ở đằng kia có con mèo.",
+                    "en": "There is a cat over there."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "CƯ là ở. 'I-ru' nghe như 'Y-ru' (Yên ru - em bé nằm yên ru ở đây).",
+            "en": "I (I) am here, and I'm an Eagle (iru)!"
+        },
+        "confusions": [
+            {
+                "word": "ある",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "Vật dùng ARU, người dùng IRU.",
+                        "en": "Aru for rocks, Iru for foxes."
+                    },
+                    "item1_nuance": {
+                        "vi": "Sự hiện diện của người, chó, mèo, v.v.",
+                        "en": "Existence of humans and animals."
+                    },
+                    "item2_nuance": {
+                        "vi": "Sự hiện diện của bàn, ghế, hoa, v.v.",
+                        "en": "Existence of non-living things."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "住む",
+        "han_viet": "TRÚ",
+        "kana": "すむ",
+        "romaji": "sumu",
+        "tags": [
+            "n5",
+            "verb",
+            "intransitive",
+            "residence"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "住",
+                    "han_viet": "TRÚ",
+                    "meaning": {
+                        "vi": "cư trú",
+                        "en": "reside"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ TRÚ (住) gồm bộ NHÂN (亻- người) đứng cạnh chữ CHỦ (主 - chủ nhân). Người làm chủ một mảnh đất để sinh sống lâu dài.",
+                "en": "A Person (亻) + Master/Host (主). When a person becomes the master of a location, they reside there."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "sống",
+                "trú ngụ",
+                "cư trú"
+            ],
+            "en": [
+                "to live",
+                "to reside",
+                "to inhabit"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "私はベトナムに住んでいます。",
+                "translation": {
+                    "vi": "Tôi đang sống ở Việt Nam.",
+                    "en": "I am living in Vietnam."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Người làm CHỦ thì có nơi cư TRÚ. 'Su-mu' nghe như 'Sứ-mù' (sống ở xứ sở sương mù).",
+            "en": "Soon move (sumu) into the house where I will live!"
+        },
+        "confusions": [
+            {
+                "word": "いる",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "TRÚ (住む) là định cư lâu dài, CƯ (いる) là có mặt ở đó ngay lúc này.",
+                        "en": "Sumu is your permanent address; Iru is just being there."
+                    },
+                    "item1_nuance": {
+                        "vi": "Nhấn mạnh vào việc sinh sống, có địa chỉ cư trú.",
+                        "en": "Long-term living or having a permanent residence."
+                    },
+                    "item2_nuance": {
+                        "vi": "Nhấn mạnh vào sự hiện diện tạm thời hoặc ngay lúc nói.",
+                        "en": "Being present at a location at a specific moment."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "座る",
+        "han_viet": "TỌA",
+        "kana": "すわる",
+        "romaji": "suwaru",
+        "tags": [
+            "n5",
+            "verb",
+            "intransitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "座",
+                    "han_viet": "TỌA",
+                    "meaning": {
+                        "vi": "chỗ ngồi",
+                        "en": "seat"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ TỌA (座) gồm hai người (人) đang ngồi trên đất (土) dưới một mái nhà (广). Tọa độ là điểm xác định vị trí.",
+                "en": "The kanji 座 shows two people (人) sitting on the ground (土) under a roof (广). It's a perfect image of people gathering to sit."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ngồi"
+            ],
+            "en": [
+                "to sit",
+                "to take a seat"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "椅子に座ってください。",
+                "translation": {
+                    "vi": "Hãy ngồi xuống ghế.",
+                    "en": "Please sit on the chair."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TỌA là ngồi. 'Su-wa-ru' nghe như 'Suýt-quỵt-rồi' (suýt ngã nên phải ngồi xuống).",
+            "en": "S-U-W-A-R-U... SO (SU) WA(it) a minute and sit down!"
+        },
+        "confusions": [
+            {
+                "word": "立つ",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "TỌA (座る) là hạ trọng tâm xuống, LẬP (立つ) là nâng người lên.",
+                        "en": "Suwaru is down, Tatsu is up."
+                    },
+                    "item1_nuance": {
+                        "vi": "Hành động ngồi xuống.",
+                        "en": "To be in or move into a sitting position."
+                    },
+                    "item2_nuance": {
+                        "vi": "Hành động đứng lên hoặc đang đứng.",
+                        "en": "To be in or move into a standing position."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "立つ",
+        "han_viet": "LẬP",
+        "kana": "たつ",
+        "romaji": "tatsu",
+        "tags": [
+            "n5",
+            "verb",
+            "intransitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "立",
+                    "han_viet": "LẬP",
+                    "meaning": {
+                        "vi": "đứng, thiết lập",
+                        "en": "stand"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ LẬP (立) mô tả hình ảnh một người đang đứng thẳng trên mặt đất. 'Độc lập' là tự đứng một mình.",
+                "en": "The kanji 立 is a pictograph of a person standing firmly on the ground with arms outstretched."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đứng",
+                "đứng dậy"
+            ],
+            "en": [
+                "to stand",
+                "to stand up"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "あそこに立っている人は誰ですか。",
+                "translation": {
+                    "vi": "Người đang đứng đằng kia là ai vậy?",
+                    "en": "Who is the person standing over there?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "LẬP là đứng. 'Ta-tsu' nghe như 'Ta-tu' (Ta tu hành nên đứng tĩnh tâm).",
+            "en": "Stand up on your TWO (TA) TOES (TSU)!"
+        },
+        "confusions": [
+            {
+                "word": "建てる",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "LẬP (立つ) là người đứng, KIẾN (建てる) là xây nhà cho đứng vững.",
+                        "en": "Tatsu is for people standing; Tateru is for building structures."
+                    },
+                    "item1_nuance": {
+                        "vi": "Người hoặc vật (như cột) đứng thẳng.",
+                        "en": "Physical posture of standing."
+                    },
+                    "item2_nuance": {
+                        "vi": "Xây dựng nhà cửa, công trình.",
+                        "en": "To build or construct a building."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "あげる",
+        "han_viet": "CỬ / THƯỢNG",
+        "kana": "あげる",
+        "romaji": "ageru",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "ru-verb",
+            "giving"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "上",
+                    "han_viet": "THƯỢNG",
+                    "meaning": {
+                        "vi": "trên, đưa lên",
+                        "en": "up"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Thường viết bằng Hiragana. Gốc từ chữ THƯỢNG (上), nghĩa là đưa 'lên' cho người khác (thể hiện sự lịch sự/khiêm nhường).",
+                "en": "Often written in kana. Rooted in the concept of 'lifting up' (上) something to give it to someone else."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "cho",
+                "tặng (mình cho người khác)"
+            ],
+            "en": [
+                "to give (from me to you/others)"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "友達にプレゼントをあげます。",
+                "translation": {
+                    "vi": "Tôi tặng quà cho bạn.",
+                    "en": "I give a present to my friend."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "CỬ là đưa lên để cho. 'A-ge-ru' nghe như 'Anh-ghé-rủ' (Anh ghé rủ đi chơi rồi cho quà).",
+            "en": "At any AGE (age-ru), it feels good to GIVE."
+        },
+        "confusions": [
+            {
+                "word": "くれる",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "AGERU là 'đi ra' (từ mình), KURERU là 'đi vào' (về phía mình).",
+                        "en": "Ageru goes out; Kureru comes in."
+                    },
+                    "item1_nuance": {
+                        "vi": "Dùng khi mình cho người khác, hoặc người A cho người B.",
+                        "en": "Speaker gives to someone else."
+                    },
+                    "item2_nuance": {
+                        "vi": "Dùng khi người khác cho mình (hoặc gia đình mình).",
+                        "en": "Someone else gives to the speaker."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "もらう",
+        "han_viet": "THỤ",
+        "kana": "もらう",
+        "romaji": "morau",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb",
+            "receiving"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "貰",
+                    "han_viet": "THẾ",
+                    "meaning": {
+                        "vi": "nhận",
+                        "en": "receive"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Thường viết Hiragana. Trong Hán Việt không phổ biến nhưng mang nghĩa là nhận lấy vật gì đó từ tay người khác.",
+                "en": "Usually written in kana. It focuses on the recipient as the subject of the sentence."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nhận"
+            ],
+            "en": [
+                "to receive",
+                "to get"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "母に花をもらいました。",
+                "translation": {
+                    "vi": "Tôi đã nhận hoa từ mẹ.",
+                    "en": "I received flowers from my mother."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "NHẬN quà từ người thân. 'Mo-ra-u' nghe như 'Mò-ra-u' (Mò ra quà từ mẹ/u).",
+            "en": "Can I have MORE (Mo) for ME (rau)? I want to receive more."
+        },
+        "confusions": [
+            {
+                "word": "くれる",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "MORAU là chủ ngữ nhận, KURERU là chủ ngữ cho (mình).",
+                        "en": "Morau is 'I receive'; Kureru is 'You give to me'."
+                    },
+                    "item1_nuance": {
+                        "vi": "Chủ ngữ là người nhận (Tôi nhận quà từ bạn).",
+                        "en": "Focus on the receiver getting something."
+                    },
+                    "item2_nuance": {
+                        "vi": "Chủ ngữ là người cho (Bạn cho tôi quà).",
+                        "en": "Focus on the giver bestowing something upon the speaker."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "くれる",
+        "han_viet": "N/A",
+        "kana": "くれる",
+        "romaji": "kureru",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "ru-verb",
+            "giving"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "呉",
+                    "han_viet": "NGÔ",
+                    "meaning": {
+                        "vi": "cho (đến mình)",
+                        "en": "give (to me)"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Thường viết Hiragana. Đây là động từ đặc biệt chỉ việc người khác tặng quà cho chính người nói.",
+                "en": "Always written in kana in N5. It is a 'directional' verb meaning someone gives something to YOU."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "cho (mình)",
+                "tặng (cho mình)"
+            ],
+            "en": [
+                "to give (to me/us)"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "妹が本をくれました。",
+                "translation": {
+                    "vi": "Em gái đã tặng sách cho tôi.",
+                    "en": "My younger sister gave me a book."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Ai đó CHO mình. 'Ku-re-ru' nghe như 'Cứ-rủ' (Họ cứ rủ mình đi rồi cho quà).",
+            "en": "A COOL (KU) RAY (RE) of sun was given to me."
+        },
+        "confusions": [
+            {
+                "word": "あげる",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "AGERU là 'ra', KURERU là 'vào'.",
+                        "en": "Ageru = Give away; Kureru = Give to me."
+                    },
+                    "item1_nuance": {
+                        "vi": "Người khác cho mình/người thân mình.",
+                        "en": "Used only when someone gives something to the speaker."
+                    },
+                    "item2_nuance": {
+                        "vi": "Mình cho người khác.",
+                        "en": "Used when the speaker is the giver."
+                    }
+                }
+            }
+        ]
+    }
+]

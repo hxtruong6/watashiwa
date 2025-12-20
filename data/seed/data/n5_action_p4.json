@@ -1,0 +1,643 @@
+[
+    {
+        "kanji": "書く",
+        "han_viet": "THƯ",
+        "kana": "かく",
+        "romaji": "kaku",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "書",
+                    "han_viet": "THƯ",
+                    "meaning": {
+                        "vi": "viết, sách",
+                        "en": "write, book"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ THƯ (書) gồm bộ DUẬT (cây bút) và chữ GIẢ phía dưới. Hình ảnh bàn tay cầm bút viết lên giấy. 'THƯ pháp' là nghệ thuật viết chữ.",
+                "en": "The top part represents a brush held by a hand over a line, signifying the act of writing or recording."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "viết",
+                "vẽ"
+            ],
+            "en": [
+                "to write",
+                "to draw",
+                "to compose"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "手紙を書きます。",
+                "translation": {
+                    "vi": "Viết thư.",
+                    "en": "Write a letter."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THƯ là viết. 'Ka-ku' nghe như tiếng bút 'Cà-kêu' trên giấy.",
+            "en": "A pen makes a CACKling (KAKU) sound when you write fast."
+        },
+        "confusions": [
+            {
+                "word": "描く",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "THƯ (書く) là viết chữ, MIÊU (描く) là vẽ tranh.",
+                        "en": "Kaku (write) uses the 'book' kanji, Kaku (draw) uses the 'hand/seed' kanji."
+                    },
+                    "item1_nuance": {
+                        "vi": "Tập trung vào việc tạo ra văn bản hoặc ký tự.",
+                        "en": "Used for writing characters or text."
+                    },
+                    "item2_nuance": {
+                        "vi": "Tập trung vào việc vẽ hình ảnh hoặc phác họa.",
+                        "en": "Used for drawing pictures or sketches."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "読む",
+        "han_viet": "ĐỘC",
+        "kana": "よむ",
+        "romaji": "yomu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "読",
+                    "han_viet": "ĐỘC",
+                    "meaning": {
+                        "vi": "đọc",
+                        "en": "read"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ ĐỘC (読) gồm bộ NGÔN (lời nói) và chữ MẠI (bán). Ngày xưa người đọc sách thường là người rao bán lời hay ý đẹp. 'ĐỘC giả' là người đọc sách.",
+                "en": "Combines 'words' with 'selling,' suggesting someone sharing or reciting information aloud from a text."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đọc"
+            ],
+            "en": [
+                "to read"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "本を読みます。",
+                "translation": {
+                    "vi": "Đọc sách.",
+                    "en": "Read a book."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "ĐỘC là đọc. 'Yo-mu' giống như 'Vô-mút' (đắm mình vào trang sách).",
+            "en": "YO! (YO) is there MU-ch (MU) to read today?"
+        },
+        "confusions": []
+    },
+    {
+        "kanji": "呼ぶ",
+        "han_viet": "HÔ",
+        "kana": "よぶ",
+        "romaji": "yobu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "呼",
+                    "han_viet": "HÔ",
+                    "meaning": {
+                        "vi": "gọi, thở ra",
+                        "en": "call, exhale"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "HÔ (呼) gồm bộ KHẨU (miệng). Miệng mở ra để phát tín hiệu. 'HÔ hào' là gọi lớn.",
+                "en": "A mouth radical next to a symbol for 'breath,' depicting someone calling out or exhaling loudly."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "gọi",
+                "mời",
+                "vẫy"
+            ],
+            "en": [
+                "to call out",
+                "to invite",
+                "to hail (a taxi)"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "タクシーを呼びます。",
+                "translation": {
+                    "vi": "Gọi taxi.",
+                    "en": "Call a taxi."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HÔ là gọi. 'Yo-bu' nghe như 'Vô-bu' (gọi ai đó vào buồng).",
+            "en": "YO, BOO! (YOBU) I'm calling you!"
+        },
+        "confusions": []
+    },
+    {
+        "kanji": "会う",
+        "han_viet": "HỘI",
+        "kana": "あう",
+        "romaji": "au",
+        "tags": [
+            "n5",
+            "verb",
+            "intransitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "会",
+                    "han_viet": "HỘI",
+                    "meaning": {
+                        "vi": "gặp, tụ họp",
+                        "en": "meet, gather"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "HỘI (会) mô phỏng hình ảnh ba người tụ họp dưới một mái nhà. 'HỘI ngộ' là gặp gỡ.",
+                "en": "The kanji originally depicted a lid over a container, symbolizing things coming together or people gathering."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "gặp"
+            ],
+            "en": [
+                "to meet",
+                "to encounter"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "友達に会います。",
+                "translation": {
+                    "vi": "Gặp bạn bè.",
+                    "en": "Meet a friend."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HỘI là gặp. 'A-u' giống như tiếng kêu 'A-u' khi vô tình va phải người quen.",
+            "en": "OUCH (AU)! I bumped into you while meeting up!"
+        },
+        "confusions": []
+    },
+    {
+        "kanji": "貸す",
+        "han_viet": "THẢI",
+        "kana": "かす",
+        "romaji": "kasu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "貸",
+                    "han_viet": "THẢI",
+                    "meaning": {
+                        "vi": "cho mượn",
+                        "en": "lend"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "THẢI (貸) gồm bộ BỐI (tiền/vỏ sò) và chữ ĐẠI (thay thế). Cho mượn tiền để người khác dùng thay mình.",
+                "en": "Combines 'money/shells' with 'replacement,' signifying letting someone else use your resources."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "cho mượn",
+                "cho thuê"
+            ],
+            "en": [
+                "to lend",
+                "to loan",
+                "to rent out"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "本を貸してください。",
+                "translation": {
+                    "vi": "Làm ơn cho tôi mượn sách.",
+                    "en": "Please lend me the book."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THẢI là cho mượn. 'Ka-su' nghe như 'Cà-su' (cầm tiền đi cà khịa cho mượn).",
+            "en": "Lending CASH (KASU) to a friend."
+        },
+        "confusions": [
+            {
+                "word": "借りる",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "THẢI (貸す) là mình cho đi, TÁ (借りる) là mình nhận về.",
+                        "en": "Kasu (Lend) sounds like Cash going out, Kariru (Borrow) sounds like Carrying in."
+                    },
+                    "item1_nuance": {
+                        "vi": "Hành động cho người khác sử dụng đồ của mình.",
+                        "en": "The act of giving something temporarily."
+                    },
+                    "item2_nuance": {
+                        "vi": "Hành động lấy đồ của người khác để sử dụng tạm.",
+                        "en": "The act of taking something temporarily."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "借りる",
+        "han_viet": "TÁ",
+        "kana": "かりる",
+        "romaji": "kariru",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "ru-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "借",
+                    "han_viet": "TÁ",
+                    "meaning": {
+                        "vi": "mượn",
+                        "en": "borrow"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ TÁ (借) gồm bộ NHÂN (người) và chữ TÍCH (xưa). Mượn đồ của người khác là hành động có từ xưa. Trong tiếng Việt, 'TÁ túc' là ở nhờ/mượn chỗ ở.",
+                "en": "The kanji combines 'person' and 'ancient/overlap,' suggesting a person taking something that belongs to another's past or stock."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "mượn",
+                "thuê"
+            ],
+            "en": [
+                "to borrow",
+                "to rent"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "図書館で本を借ります。",
+                "translation": {
+                    "vi": "Mượn sách ở thư viện.",
+                    "en": "Borrow a book from the library."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TÁ là mượn. 'Ka-ri-ru' nghe như 'Cà-rình-rủ' (rình rình rủ bạn cho mượn đồ).",
+            "en": "I need to borrow a CAR (KARI) to get home."
+        },
+        "confusions": [
+            {
+                "word": "貸す",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "THẢI (貸す) là mình cho đi, TÁ (借りる) là mình nhận về.",
+                        "en": "Kasu (Lend) = Cash goes out. Kariru (Borrow) = Carry it in."
+                    },
+                    "item1_nuance": {
+                        "vi": "Dùng khi bạn là chủ sở hữu cho người khác mượn.",
+                        "en": "Used when you are the lender."
+                    },
+                    "item2_nuance": {
+                        "vi": "Dùng khi bạn là người đi mượn từ người khác.",
+                        "en": "Used when you are the borrower."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "教える",
+        "han_viet": "GIÁO",
+        "kana": "おしえる",
+        "romaji": "oshieru",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "ru-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "教",
+                    "han_viet": "GIÁO",
+                    "meaning": {
+                        "vi": "dạy bảo",
+                        "en": "teach"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ GIÁO (教) gồm chữ HIẾU (đạo con) và bộ PHẢN (đánh khẽ). Dạy bảo đứa trẻ giữ đạo hiếu bằng cách răn đe. 'GIÁO dục' là dạy dỗ.",
+                "en": "Shows a child being guided by an elder, symbolizing the transmission of knowledge or discipline."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "dạy",
+                "chỉ bảo",
+                "cho biết (thông tin)"
+            ],
+            "en": [
+                "to teach",
+                "to inform",
+                "to tell",
+                "to explain"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "日本語を教えます。",
+                "translation": {
+                    "vi": "Dạy tiếng Nhật.",
+                    "en": "Teach Japanese."
+                }
+            },
+            {
+                "sentence": "電話番号を教えてください。",
+                "translation": {
+                    "vi": "Hãy cho tôi biết số điện thoại.",
+                    "en": "Please tell me your phone number."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "GIÁO là dạy. 'O-shi-e-ru' nghe như 'Ô-sĩ-ế-rồi' (ông sĩ tử này ế kiến thức nên cần được dạy).",
+            "en": "A coach says 'OH SHI! (OSHI)' when teaching players the wrong move."
+        },
+        "confusions": []
+    },
+    {
+        "kanji": "習う",
+        "han_viet": "TẬP",
+        "kana": "ならう",
+        "romaji": "narau",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "習",
+                    "han_viet": "TẬP",
+                    "meaning": {
+                        "vi": "học tập, luyện tập",
+                        "en": "learn, practice"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ TẬP (習) gồm bộ VŨ (lông chim) và chữ BẠCH (tự mình). Hình ảnh chú chim non tự mình tập bay bằng đôi cánh. 'Học TẬP' là rèn luyện.",
+                "en": "Depicts young wings (羽) over a sun/self radical, like a bird practicing flight every day."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "học (từ người khác)",
+                "luyện tập"
+            ],
+            "en": [
+                "to learn (from a teacher)",
+                "to take lessons"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ピアノを習っています。",
+                "translation": {
+                    "vi": "Tôi đang học đàn piano.",
+                    "en": "I am taking piano lessons."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TẬP là học. 'Na-ra-u' giống như 'Nà-ra-u' (nào ra u chỉ cho mà học).",
+            "en": "NARA (NARAU) is a great place to learn about Japanese history."
+        },
+        "confusions": [
+            {
+                "word": "勉強する",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "TẬP (習う) là học kỹ năng từ người dạy, MIỄN CƯỠNG (勉強) là tự mình dùi mài kinh sử.",
+                        "en": "Narau is learning a skill from someone; Benkyou is academic self-study."
+                    },
+                    "item1_nuance": {
+                        "vi": "Thường dùng cho học kỹ năng, nghệ thuật, ngôn ngữ có người hướng dẫn.",
+                        "en": "Focuses on receiving lessons or learning a specific craft."
+                    },
+                    "item2_nuance": {
+                        "vi": "Dùng cho việc học tập nghiên cứu chung, thường là học thuật.",
+                        "en": "General academic studying, often implying effort/toil."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "わかる",
+        "han_viet": "PHÂN",
+        "kana": "わかる",
+        "romaji": "wakaru",
+        "tags": [
+            "n5",
+            "verb",
+            "intransitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "分",
+                    "han_viet": "PHÂN",
+                    "meaning": {
+                        "vi": "chia ra, hiểu",
+                        "en": "divide, understand"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "PHÂN (分) gồm bộ BÁT (chia) và bộ ĐAO (con dao). Chia nhỏ vấn đề ra để thấu hiểu. 'PHÂN tích' là để hiểu rõ.",
+                "en": "A knife (刀) dividing something in two (八). To understand is to 'divide' or clarify a subject."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "hiểu",
+                "nắm rõ"
+            ],
+            "en": [
+                "to understand",
+                "to comprehend",
+                "to be clear"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "意味がわかりますか。",
+                "translation": {
+                    "vi": "Bạn có hiểu ý nghĩa không?",
+                    "en": "Do you understand the meaning?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "PHÂN là hiểu. 'Wa-ka-ru' giống như 'Quá-kỹ-rồi' nên hiểu ngay.",
+            "en": "WALK (WAKA) through the logic to understand it."
+        },
+        "confusions": [
+            {
+                "word": "知る",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "PHÂN (わかる) là hiểu thấu logic, TRI (知る) là có thông tin trong đầu.",
+                        "en": "Wakaru = Understanding (Logic). Shiru = Knowing (Information)."
+                    },
+                    "item1_nuance": {
+                        "vi": "Kết quả của quá trình suy luận hoặc thấu hiểu.",
+                        "en": "Refers to the state of comprehension or logical clarity."
+                    },
+                    "item2_nuance": {
+                        "vi": "Việc tiếp nhận và lưu trữ dữ liệu/sự thật.",
+                        "en": "Refers to having information or knowledge of a fact."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "知る",
+        "han_viet": "TRI",
+        "kana": "しる",
+        "romaji": "shiru",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "知",
+                    "han_viet": "TRI",
+                    "meaning": {
+                        "vi": "biết",
+                        "en": "know"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TRI (知) gồm bộ THI (mũi tên) và bộ KHẨU (miệng). Lời nói ra thẳng và nhanh như mũi tên nhắm vào sự thật. 'TRI thức' là hiểu biết.",
+                "en": "Combines 'arrow' and 'mouth,' meaning words that hit the target of truth—to know."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "biết"
+            ],
+            "en": [
+                "to know",
+                "to be aware of"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "そのニュースを知っていますか。",
+                "translation": {
+                    "vi": "Bạn có biết tin đó không?",
+                    "en": "Do you know that news?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TRI là biết. 'Shi-ru' nghe như 'Sư-rủ' (sư rủ đi học để biết nhiều hơn).",
+            "en": "SHE (SHI) knows the truth."
+        },
+        "confusions": []
+    }
+]

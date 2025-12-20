@@ -1,0 +1,999 @@
+[
+    {
+        "kanji": "磨く",
+        "han_viet": "MA",
+        "kana": "みがく",
+        "romaji": "migaku",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "磨",
+                    "han_viet": "MA",
+                    "meaning": {
+                        "vi": "mài, chà xát",
+                        "en": "grind, polish"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ MA (磨) gồm bộ THẠCH (đá) ở dưới. Hình ảnh mài đá cho trơn láng. Trong tiếng Việt, 'MA sát' là chà xát.",
+                "en": "The kanji shows a hand rubbing a stone, representing the act of polishing or grinding."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đánh (răng)",
+                "chà",
+                "đánh bóng"
+            ],
+            "en": [
+                "to brush (teeth)",
+                "to polish",
+                "to scour"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "歯を磨きます。",
+                "translation": {
+                    "vi": "Đánh răng.",
+                    "en": "Brush teeth."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "MA là mài/chà. 'Mi-ga-ku' nghe như 'Mi-gà-cú' (cầm con gà đi chà xát).",
+            "en": "ME (MI) GOT (GA) COOL (KU) shiny shoes after I polished them."
+        },
+        "confusions": []
+    },
+    {
+        "kanji": "脱ぐ",
+        "han_viet": "THOÁT",
+        "kana": "ぬぐ",
+        "romaji": "nugu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "脱",
+                    "han_viet": "THOÁT",
+                    "meaning": {
+                        "vi": "cởi bỏ, thoát ra",
+                        "en": "take off, strip"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "THOÁT (脱) có bộ NHỤC (thịt/cơ thể). Cởi bỏ thứ gì đó ra khỏi cơ thể. 'Giải THOÁT' là cởi bỏ ràng buộc.",
+                "en": "Represents the act of releasing or shedding something from the body."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "cởi (đồ, giày)"
+            ],
+            "en": [
+                "to take off (clothes, shoes, etc.)"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "靴を脱いでください。",
+                "translation": {
+                    "vi": "Vui lòng cởi giày.",
+                    "en": "Please take off your shoes."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THOÁT là cởi ra. 'Nu-gu' giống như 'Nụ-gỡ' (gỡ nút ra để cởi).",
+            "en": "NEW (NU) GOO (GU) on my shirt, I must take it off!"
+        },
+        "confusions": []
+    },
+    {
+        "kanji": "着る",
+        "han_viet": "TRƯỚC",
+        "kana": "きる",
+        "romaji": "kiru",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "ru-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "着",
+                    "han_viet": "TRƯỚC",
+                    "meaning": {
+                        "vi": "mặc, đến",
+                        "en": "wear, arrive"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TRƯỚC (着) vốn là chữ TRỨ. Nghĩa là dính vào, mặc vào. Trong tiếng Việt, 'Y phục tề TRỨ' (mặc đồ ngay ngắn).",
+                "en": "Originally meant 'to touch' or 'to attach,' evolving into putting clothes onto the torso."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "mặc (áo, đồ phần trên)"
+            ],
+            "en": [
+                "to wear (upper body)",
+                "to put on"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "シャツを着ます。",
+                "translation": {
+                    "vi": "Mặc áo sơ mi.",
+                    "en": "Put on a shirt."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TRƯỚC là mặc. 'Ki-ru' nghe như 'Kì-rồi-u' (kêu u mặc đồ vào).",
+            "en": "KEE (KI) keeps his shirt on."
+        },
+        "confusions": [
+            {
+                "word": "履く",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "TRƯỚC (着る) là mặc từ đầu xuống, LÝ (履く) là xỏ từ chân lên.",
+                        "en": "Kiru for upper body, Haku for lower body."
+                    },
+                    "item1_nuance": {
+                        "vi": "Dùng cho áo, áo khoác, váy liền.",
+                        "en": "Used for shirts, jackets, dresses."
+                    },
+                    "item2_nuance": {
+                        "vi": "Dùng cho quần, tất, giày.",
+                        "en": "Used for pants, socks, shoes."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "履く",
+        "han_viet": "LÝ",
+        "kana": "はく",
+        "romaji": "haku",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "履",
+                    "han_viet": "LÝ",
+                    "meaning": {
+                        "vi": "giày, xỏ vào",
+                        "en": "footwear, put on"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "LÝ (履) gồm bộ THI (xác chết/người nằm) và chữ PHỤC (lặp lại). Hình ảnh bàn chân xỏ vào giày. 'LÝ lịch' là bước đường đã đi.",
+                "en": "Relates to the feet and the repetitive action of stepping or wearing footwear."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "mặc (quần), xỏ (giày, tất)"
+            ],
+            "en": [
+                "to wear (lower body)",
+                "to put on (shoes, pants)"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ズボンを履きます。",
+                "translation": {
+                    "vi": "Mặc quần dài.",
+                    "en": "Put on pants."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "LÝ là xỏ giày. 'Ha-ku' nghe như 'Hạ-củ' (hạ cái chân xuống để xỏ giày).",
+            "en": "HOCKEY (HAKU) players need to put on their skates."
+        },
+        "confusions": []
+    },
+    {
+        "kanji": "被る",
+        "han_viet": "BỊ",
+        "kana": "かぶる",
+        "romaji": "kaburu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "被",
+                    "han_viet": "BỊ",
+                    "meaning": {
+                        "vi": "đội, bao phủ",
+                        "en": "covered, put on head"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "BỊ (被) có bộ Y (áo). Nghĩa là che phủ lên. 'BỊ cáo' là người bị bao phủ bởi tội lỗi.",
+                "en": "Signifies covering the body or head with fabric or a garment."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đội (mũ)",
+                "đắp (chăn)"
+            ],
+            "en": [
+                "to put on (head)",
+                "to wear (hat)",
+                "to cover one's head"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "帽子を被ります。",
+                "translation": {
+                    "vi": "Đội mũ.",
+                    "en": "Put on a hat."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "BỊ là đội lên. 'Ka-bu-ru' giống như 'Cà-bù-rù' (đội mũ che cái mặt lù đù).",
+            "en": "A CAB (KABU) covers you like a hat covers your head."
+        },
+        "confusions": []
+    },
+    {
+        "kanji": "見る",
+        "han_viet": "KIẾN",
+        "kana": "みる",
+        "romaji": "miru",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "ru-verb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "見",
+                    "han_viet": "KIẾN",
+                    "meaning": {
+                        "vi": "nhìn, thấy",
+                        "en": "see, look"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ KIẾN (見) gồm bộ MỤC (mắt) đặt trên đôi chân. Con mắt đang đi để nhìn thế giới. 'KIẾN thức' là những gì nhìn thấy và học được.",
+                "en": "A large eye (目) on legs (儿), representing someone walking to look at things."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nhìn",
+                "xem",
+                "thấy"
+            ],
+            "en": [
+                "to see",
+                "to look at",
+                "to watch"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "テレビを見ます。",
+                "translation": {
+                    "vi": "Xem tivi.",
+                    "en": "Watch TV."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "KIẾN là nhìn. 'Mi-ru' giống như 'Mắt-rủ' xuống để nhìn.",
+            "en": "Look in the MIRROR (MIRU) to see yourself."
+        },
+        "confusions": [
+            {
+                "word": "観る",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "KIẾN (見る) là nhìn chung, QUAN (観る) là quan sát kỹ (xem phim, kịch).",
+                        "en": "Miru (see) is general, while Kan-miru (watch) is for performances."
+                    },
+                    "item1_nuance": {
+                        "vi": "Dùng cho việc nhìn thấy tự nhiên hoặc nhìn đồ vật.",
+                        "en": "General seeing or looking."
+                    },
+                    "item2_nuance": {
+                        "vi": "Dùng cho việc xem giải trí tập trung (phim, kịch).",
+                        "en": "Focused watching of entertainment."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "聞く",
+        "han_viet": "VĂN",
+        "kana": "きく",
+        "romaji": "kiku",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "聞",
+                    "han_viet": "VĂN",
+                    "meaning": {
+                        "vi": "nghe, hỏi",
+                        "en": "hear, listen, ask"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ VĂN (聞) gồm bộ MÔN (cửa) và bộ NHĨ (tai). Ghé tai vào cửa để nghe. 'Tân VĂN' là tin tức nghe được.",
+                "en": "Shows an ear (耳) inside a gate (門), like someone listening at a door."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nghe",
+                "hỏi"
+            ],
+            "en": [
+                "to hear",
+                "to listen",
+                "to ask"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "音楽を聞きます。",
+                "translation": {
+                    "vi": "Nghe nhạc.",
+                    "en": "Listen to music."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "VĂN là nghe. 'Ki-ku' giống như 'Kỹ-cú' lắng nghe.",
+            "en": "Use your ear to hear the KEY (KI) of the song."
+        },
+        "confusions": [
+            {
+                "word": "聴く",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "VĂN (聞く) là nghe thấy âm thanh, THÍNH (聴く) là thưởng thức âm nhạc.",
+                        "en": "Kiku (hear) is passive, while Chousu-kiku (listen) is active/appreciative."
+                    },
+                    "item1_nuance": {
+                        "vi": "Nghe thấy âm thanh hoặc hỏi thông tin.",
+                        "en": "Hearing sounds or asking questions."
+                    },
+                    "item2_nuance": {
+                        "vi": "Nghe nhạc hoặc lắng nghe chăm chú.",
+                        "en": "Listening to music or paying close attention."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "吸う",
+        "han_viet": "HẤP",
+        "kana": "すう",
+        "romaji": "suu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "吸",
+                    "han_viet": "HẤP",
+                    "meaning": {
+                        "vi": "hút, hít",
+                        "en": "suck, inhale"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "HẤP (吸) gồm bộ KHẨU (miệng) và chữ CẬP. Miệng hít khí vào. 'HẤP thụ' là hút vào trong.",
+                "en": "The mouth radical combined with 'reach,' depicting breath or liquid being pulled into the mouth."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "hút (thuốc)",
+                "hít",
+                "hút (nước)"
+            ],
+            "en": [
+                "to inhale",
+                "to smoke",
+                "to suck"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "たばこを吸います。",
+                "translation": {
+                    "vi": "Hút thuốc.",
+                    "en": "Smoke a cigarette."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HẤP là hít. 'Su-u' nghe như tiếng 'Suýt-xoa' hít vào.",
+            "en": "SUU sounds like the sound of suction."
+        },
+        "confusions": []
+    },
+    {
+        "kanji": "言う",
+        "han_viet": "NGÔN",
+        "kana": "いう",
+        "romaji": "iu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "言",
+                    "han_viet": "NGÔN",
+                    "meaning": {
+                        "vi": "nói",
+                        "en": "say, word"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "NGÔN (言) mô tả miệng và những vạch âm thanh phát ra. 'NGÔN ngữ' là lời nói.",
+                "en": "A pictograph of a mouth with sound waves or words coming out."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nói"
+            ],
+            "en": [
+                "to say",
+                "to utter"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "「さようなら」と言いました。",
+                "translation": {
+                    "vi": "Đã nói là 'Tạm biệt'.",
+                    "en": "Said 'Goodbye'."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "NGÔN là nói. 'I-u' nghe như 'Ai-u' (ai nói gì đó).",
+            "en": "I (I) want to say something to U (U)."
+        },
+        "confusions": [
+            {
+                "word": "話す",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "NGÔN (言う) là nói ra từ ngữ, THOẠI (話す) là nói chuyện qua lại.",
+                        "en": "Iu is to say a word, Hanasu is to converse."
+                    },
+                    "item1_nuance": {
+                        "vi": "Tập trung vào nội dung được nói ra.",
+                        "en": "Focuses on the content being uttered."
+                    },
+                    "item2_nuance": {
+                        "vi": "Tập trung vào hành động giao tiếp, đối thoại.",
+                        "en": "Focuses on the act of conversing or telling a story."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "話す",
+        "han_viet": "THOẠI",
+        "kana": "はなす",
+        "romaji": "hanasu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "話",
+                    "han_viet": "THOẠI",
+                    "meaning": {
+                        "vi": "nói chuyện",
+                        "en": "talk, story"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "THOẠI (話) gồm bộ NGÔN (lời nói) và chữ THIỆT (cái lưỡi). Dùng lưỡi uốn lời để nói chuyện. 'Điện THOẠI' là nói chuyện qua điện.",
+                "en": "Combines 'words' and 'tongue,' representing the flow of conversation or storytelling."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nói chuyện",
+                "bàn bạc"
+            ],
+            "en": [
+                "to speak",
+                "to talk",
+                "to converse"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "英語で話します。",
+                "translation": {
+                    "vi": "Nói chuyện bằng tiếng Anh.",
+                    "en": "Speak in English."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THOẠI là nói chuyện. 'Ha-na-su' nghe như 'Hả-nói-sử' (hả, đang nói sử à).",
+            "en": "HANNA (HANA) SOO (SU) likes to talk a lot."
+        },
+        "confusions": []
+    },
+    {
+        "kanji": "仕事する",
+        "han_viet": "SĨ SỰ",
+        "kana": "しごとする",
+        "romaji": "shigoto suru",
+        "tags": [
+            "n5",
+            "suru-verb",
+            "work"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "仕",
+                    "han_viet": "SĨ",
+                    "meaning": {
+                        "vi": "phục vụ, làm quan",
+                        "en": "serve/official"
+                    }
+                },
+                {
+                    "kanji": "事",
+                    "han_viet": "SỰ",
+                    "meaning": {
+                        "vi": "sự việc, công việc",
+                        "en": "matter/thing"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "SĨ (người làm quan) thực hiện SỰ (công việc). 'Sĩ' trong 'sĩ tử', 'Sự' trong 'sự nghiệp'.",
+                "en": "The first kanji means 'to serve' and the second means 'matter'. Doing a service/matter is 'work'."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "làm việc",
+                "lao động"
+            ],
+            "en": [
+                "to work",
+                "to do a job"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "毎日８時間仕事します。",
+                "translation": {
+                    "vi": "Mỗi ngày tôi làm việc 8 tiếng.",
+                    "en": "I work 8 hours every day."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Quan SĨ lo SỰ việc là đi làm. 'Shi-go-to' nghe như 'Sĩ-có-tổ' (có tổ chức mới làm việc được).",
+            "en": "She (Shi) got to (goto) work now!"
+        },
+        "confusions": [
+            {
+                "word": "働く",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "SĨ SỰ là làm nghề nghiệp, ĐỘNG (働く) là vận động lao động chân tay.",
+                        "en": "Shigoto suru is the profession/job; Hataraku is the physical act of working."
+                    },
+                    "item1_nuance": {
+                        "vi": "Tập trung vào nghề nghiệp, vị trí công việc.",
+                        "en": "Focuses on the job or business activity."
+                    },
+                    "item2_nuance": {
+                        "vi": "Tập trung vào hành động lao động để kiếm tiền.",
+                        "en": "Focuses on the exertion/labor itself."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "練習する",
+        "han_viet": "LUYỆN TẬP",
+        "kana": "れんしゅうする",
+        "romaji": "renshū suru",
+        "tags": [
+            "n5",
+            "suru-verb",
+            "practice"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "練",
+                    "han_viet": "LUYỆN",
+                    "meaning": {
+                        "vi": "rèn luyện, mài giũa",
+                        "en": "refine/drill"
+                    }
+                },
+                {
+                    "kanji": "習",
+                    "han_viet": "TẬP",
+                    "meaning": {
+                        "vi": "học tập, làm quen",
+                        "en": "learn/custom"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "LUYỆN (mài rèn sợi chỉ) kết hợp với TẬP (đôi cánh chim tập bay). Nghĩa là mài dũa kỹ năng qua việc lặp lại.",
+                "en": "The first kanji means 'to polish/drill' and the second means 'to learn'. Together they represent repeated practice."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "luyện tập",
+                "thực hành"
+            ],
+            "en": [
+                "to practice",
+                "to drill"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ピアノを練習します。",
+                "translation": {
+                    "vi": "Tôi luyện tập piano.",
+                    "en": "I practice the piano."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "LUYỆN TẬP là chìa khóa thành công. 'Ren-shū' giống 'Rèn-sâu' (rèn luyện sâu).",
+            "en": "Rain (Ren) or shine (shū), you must practice!"
+        },
+        "confusions": [
+            {
+                "word": "勉強する",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "LUYỆN TẬP là rèn kỹ năng, MIỄN CƯỜNG (勉強) là học kiến thức.",
+                        "en": "Renshū is for skills; Benkyō is for academic study."
+                    },
+                    "item1_nuance": {
+                        "vi": "Thường dùng cho thể thao, nhạc cụ, kỹ năng thực hành.",
+                        "en": "Used for sports, instruments, or repetitive physical skills."
+                    },
+                    "item2_nuance": {
+                        "vi": "Dùng cho việc học tập kiến thức, sách vở.",
+                        "en": "Used for studying subjects like math or history."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "掃除する",
+        "han_viet": "TẢO TRỪ",
+        "kana": "そうじする",
+        "romaji": "sōji suru",
+        "tags": [
+            "n5",
+            "suru-verb",
+            "cleaning"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "掃",
+                    "han_viet": "TẢO",
+                    "meaning": {
+                        "vi": "quét",
+                        "en": "sweep"
+                    }
+                },
+                {
+                    "kanji": "除",
+                    "han_viet": "TRỪ",
+                    "meaning": {
+                        "vi": "loại bỏ",
+                        "en": "exclude/remove"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TẢO (cầm chổi quét) và TRỪ (loại bỏ đi). TẢO TRỪ nghĩa là dọn dẹp sạch sẽ.",
+                "en": "Sweep (掃) and remove (除). It describes the process of clearing out dirt and organizing a space."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "dọn dẹp",
+                "vệ sinh"
+            ],
+            "en": [
+                "to clean",
+                "to sweep up"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "土曜日に部屋を掃除します。",
+                "translation": {
+                    "vi": "Tôi dọn phòng vào thứ Bảy.",
+                    "en": "I clean my room on Saturday."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TẢO TRỪ rác rưởi. 'Sō-ji' nghe như 'Sạch-gì-đâu' (nếu không dọn dẹp).",
+            "en": "So (sō) much G (ji)unk! I need to clean!"
+        },
+        "confusions": [
+            {
+                "word": "洗濯する",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "TẢO TRỪ (掃除) là dọn phòng, TẨY TRẠC (洗濯) là giặt đồ.",
+                        "en": "Sōji is for rooms; Sentaku is for clothes."
+                    },
+                    "item1_nuance": {
+                        "vi": "Dọn dẹp không gian sống, nhà cửa.",
+                        "en": "Cleaning a physical space or room."
+                    },
+                    "item2_nuance": {
+                        "vi": "Chỉ việc giặt quần áo, vải vóc.",
+                        "en": "Specifically washing laundry."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "覚える",
+        "han_viet": "GIÁC",
+        "kana": "おぼえる",
+        "romaji": "oboeru",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "ru-verb"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "覚",
+                    "han_viet": "GIÁC",
+                    "meaning": {
+                        "vi": "nhớ, cảm nhận, tỉnh ra",
+                        "en": "memorize/awake"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ GIÁC gồm bộ KIẾN (見 - nhìn) ở dưới. Nghĩa là nhìn và cảm nhận được thì sẽ 'Ghi nhớ'.",
+                "en": "Includes the radical for 'see' (見). If you see it and feel it, you memorize it."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nhớ",
+                "ghi nhớ",
+                "học thuộc"
+            ],
+            "en": [
+                "to remember",
+                "to memorize",
+                "to learn by heart"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "漢字を覚えます。",
+                "translation": {
+                    "vi": "Tôi học thuộc Kanji.",
+                    "en": "I memorize Kanji."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Cảm GIÁC được thì sẽ NHỚ. 'O-boe-ru' nghe như 'Ô-bồi-rồi' (nhớ lại cảm xúc bồi hồi).",
+            "en": "Oh boy (Oboe), I finally remembered it!"
+        },
+        "confusions": [
+            {
+                "word": "思い出す",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "GIÁC (覚える) là nạp vào bộ nhớ, TƯ XUẤT (思い出す) là lôi từ bộ nhớ ra.",
+                        "en": "Oboeru is putting it in your brain; Omoidasu is pulling it out."
+                    },
+                    "item1_nuance": {
+                        "vi": "Quá trình ghi nhớ hoặc đang giữ trong trí nhớ.",
+                        "en": "The state of knowing or the act of committing to memory."
+                    },
+                    "item2_nuance": {
+                        "vi": "Chợt nhớ ra một điều gì đó đã quên.",
+                        "en": "Suddenly recalling something."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "忘れる",
+        "han_viet": "VONG",
+        "kana": "わすれる",
+        "romaji": "wasureru",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "ru-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "忘",
+                    "han_viet": "VONG",
+                    "meaning": {
+                        "vi": "quên",
+                        "en": "forget"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ VONG gồm chữ VONG (亡 - mất đi) trên chữ TÂM (心 - lòng). Khi cái gì đó biến mất khỏi tâm trí thì gọi là QUÊN.",
+                "en": "Top part is 'dead/lost' (亡) and bottom is 'heart' (心). When something is lost from the heart, it is forgotten."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "quên"
+            ],
+            "en": [
+                "to forget"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "宿題を忘れました。",
+                "translation": {
+                    "vi": "Tôi đã quên bài tập về nhà rồi.",
+                    "en": "I forgot my homework."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Tâm (心) bị mất (亡) là VONG (quên). 'Wa-su-re' nghe như 'Quá-sơ-rơ' (đầu óc trống rỗng vì quên).",
+            "en": "Was (Wa) it there? Sure (su-re) I forgot it."
+        },
+        "confusions": [
+            {
+                "word": "無くす",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "VONG (忘れる) là quên trong đầu, VÔ (無くす) là làm mất đồ vật.",
+                        "en": "Wasureru is forgetting information; Nakusu is losing a physical object."
+                    },
+                    "item1_nuance": {
+                        "vi": "Quên kiến thức, quên hẹn, quên mang đồ.",
+                        "en": "Forgetting something intangible or leaving an object behind."
+                    },
+                    "item2_nuance": {
+                        "vi": "Làm mất, không tìm thấy đồ vật đâu nữa.",
+                        "en": "Losing an item so you no longer possess it."
+                    }
+                }
+            }
+        ]
+    }
+]

@@ -60,3 +60,134 @@ export async function reportContent(input: { vocabId: string; reason?: string })
 		return { message: 'Content flagged for review.' };
 	});
 }
+/**
+ * Admin: Get Pending Vocabulary Queue
+ */
+export async function getPendingVocabularySafe() {
+	return executeSafeAction(z.void(), undefined, async (_data, { userId }) => {
+		if (!userId) throw new Error('Unauthorized');
+
+		const items = await VocabularyData.getPending();
+
+		// Transform to ExtendedVocabulary format (flatten confusions)
+		return items.map((item) => {
+			const confusions = [
+				...item.confusionsAs1.map((c) => ({
+					word: c.vocab2.wordSurface,
+					explanation: c.explanation as any, // Typed in frontend
+				})),
+				...item.confusionsAs2.map((c) => ({
+					word: c.vocab1.wordSurface,
+					explanation: c.explanation as any,
+				})),
+			];
+
+			return {
+				...item,
+				confusions,
+			};
+		});
+	});
+}
+
+/**
+ * Admin: Verify Content
+ */
+export async function verifyContent(input: { vocabId: string }) {
+	const Schema = z.object({ vocabId: z.string().uuid() });
+
+	return executeSafeAction(Schema, input, async (data, { userId }) => {
+		if (!userId) throw new Error('Unauthorized');
+		await VocabularyData.updateStatus(data.vocabId, 'VERIFIED', userId);
+		return { message: 'Content verified.' };
+	});
+}
+
+/**
+ * Admin: Reject Content
+ */
+export async function rejectContent(input: { vocabId: string }) {
+	const Schema = z.object({ vocabId: z.string().uuid() });
+
+	return executeSafeAction(Schema, input, async (data, { userId }) => {
+		if (!userId) throw new Error('Unauthorized');
+		await VocabularyData.updateStatus(data.vocabId, 'FLAGGED', userId);
+		return { message: 'Content rejected/flagged.' };
+	});
+}
+
+/**
+ * Admin: Update Content
+ */
+export async function updateContent(input: { id: string; data: any }) {
+	// BEST PRACTICE: Use strict schemas instead of 'any' to enforce data integrity.
+	// We handle both camelCase (Form) and snake_case (Import) keys here.
+	const DataSchema = z.object({
+		// CamelCase (Standard)
+		wordSurface: z.string().optional(),
+		wordReading: z.string().optional(),
+		wordRomaji: z.string().optional(),
+		tags: z.array(z.string()).optional(),
+		pitchPattern: z.number().int().optional(),
+		pitchSvgPath: z.string().optional(),
+
+		// SnakeCase (Legacy/Import support)
+		kanji: z.string().optional(),
+		kana: z.string().optional(),
+		romaji: z.string().optional(),
+		pitch_pattern: z.number().int().optional(),
+		pitch_svg_path: z.string().optional(),
+
+		// JSONB Fields (Strictly Validated against our Contracts)
+		meanings: z.record(z.string(), z.array(z.string())).optional(), // Matches MeaningsSchema
+		etymology: z
+			.object({
+				parts: z.array(
+					z.object({
+						kanji: z.string(),
+						han_viet: z.string(),
+						meaning: z.object({ vi: z.string(), en: z.string() }),
+						stroke_count: z.number().optional(),
+					}),
+				),
+				note: z.object({ vi: z.string(), en: z.string() }).optional(),
+			})
+			.optional(), // Matches EtymologySchema (inline for simplicity or import)
+		mnemonic: z.object({ vi: z.string(), en: z.string() }).optional(), // Matches LocalizedStringSchema
+		examples: z
+			.array(
+				z.object({
+					sentence: z.string(),
+					translation: z.object({ vi: z.string(), en: z.string() }),
+					audio: z.string().optional(),
+				}),
+			)
+			.optional(), // Matches ExamplesSchema
+	});
+
+	const Schema = z.object({
+		id: z.string().uuid(),
+		data: DataSchema,
+	});
+
+	return executeSafeAction(Schema, input, async ({ id, data }, { userId }) => {
+		if (!userId) throw new Error('Unauthorized');
+
+		// MAPPER: Support snake_case (Raw JSON) -> camelCase (Prisma)
+		const updateData = {
+			wordSurface: data.wordSurface ?? data.kanji,
+			wordReading: data.wordReading ?? data.kana,
+			wordRomaji: data.wordRomaji ?? data.romaji,
+			tags: data.tags,
+			pitchPattern: data.pitchPattern ?? data.pitch_pattern,
+			pitchSvgPath: data.pitchSvgPath ?? data.pitch_svg_path,
+			meanings: data.meanings,
+			etymology: data.etymology,
+			mnemonic: data.mnemonic,
+			examples: data.examples,
+		};
+
+		await VocabularyData.update(id, updateData);
+		return { message: 'Content updated.' };
+	});
+}

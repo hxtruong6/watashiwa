@@ -1,3 +1,4 @@
+import { VerificationDeck } from '@/components/Admin/QA/VerificationDeck';
 import themeConfig from '@/lib/theme/themeConfig';
 import { getAdminStats } from '@/services/actions';
 import { FireOutlined, ReadOutlined, UserOutlined } from '@ant-design/icons';
@@ -81,6 +82,11 @@ export default async function AdminDashboard() {
 						{stats.activeToday}
 					</div>
 				</div>
+			</div>
+
+			{/* QA Section */}
+			<div style={{ marginTop: 48 }}>
+				<VerificationDeck />
 			</div>
 		</div>
 	);

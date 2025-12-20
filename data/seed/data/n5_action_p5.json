@@ -1,0 +1,611 @@
+[
+    {
+        "kanji": "買う",
+        "han_viet": "MÃI",
+        "kana": "かう",
+        "romaji": "kau",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "買",
+                    "han_viet": "MÃI",
+                    "meaning": {
+                        "vi": "mua",
+                        "en": "buy"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ MÃI (買) gồm bộ VÕNG (mạng lưới) ở trên và bộ BỐI (vỏ sò/tiền) ở dưới. Dùng lưới để gom tiền/vỏ sò đi mua đồ. Trong tiếng Việt, 'Khuyến MÃI' là khuyến khích mua hàng.",
+                "en": "The kanji features a 'net' (网) over 'money/shells' (貝), symbolizing the gathering of resources to purchase something."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "mua"
+            ],
+            "en": [
+                "to buy",
+                "to purchase"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "パンを買います。",
+                "translation": {
+                    "vi": "Mua bánh mì.",
+                    "en": "Buy bread."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "MÃI là mua. 'Ka-u' nghe như 'Cà-u' (cầm tiền cà khịa u để đòi đi mua đồ).",
+            "en": "A COW (KAU) buying some grass at the store."
+        },
+        "confusions": [
+            {
+                "word": "売る",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "MÃI (買) là mua (không có dấu trên đầu), MẠI (売) là bán (có chữ Sĩ trên đầu - kẻ sĩ đi bán đồ).",
+                        "en": "Kau (Buy) is simple; Uru (Sell) has an extra stroke on top representing goods to be sold."
+                    },
+                    "item1_nuance": {
+                        "vi": "Hành động dùng tiền để đổi lấy vật phẩm.",
+                        "en": "The act of purchasing."
+                    },
+                    "item2_nuance": {
+                        "vi": "Hành động đổi vật phẩm để lấy tiền.",
+                        "en": "The act of selling."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "売る",
+        "han_viet": "MẠI",
+        "kana": "うる",
+        "romaji": "uru",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "売",
+                    "han_viet": "MẠI",
+                    "meaning": {
+                        "vi": "bán",
+                        "en": "sell"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ MẠI (売) gồm chữ SĨ (kẻ sĩ) ở trên chữ MÃI (mua). Kẻ sĩ mang đồ đi bán. Trong tiếng Việt, 'Thương MẠI' là việc buôn bán.",
+                "en": "A person (士) standing over a simplified version of 'buy,' representing the outgoing movement of goods."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "bán"
+            ],
+            "en": [
+                "to sell"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "車を売りました。",
+                "translation": {
+                    "vi": "Đã bán xe hơi.",
+                    "en": "Sold the car."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "MẠI là bán. 'U-ru' nghe như 'U-rủ' (u rủ đi bán hàng cùng u).",
+            "en": "UR (URU) selling your old stuff online."
+        },
+        "confusions": []
+    },
+    {
+        "kanji": "持つ",
+        "han_viet": "TRÌ",
+        "kana": "持つ",
+        "romaji": "motsu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "持",
+                    "han_viet": "TRÌ",
+                    "meaning": {
+                        "vi": "cầm, nắm, giữ",
+                        "en": "hold, have"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ TRÌ (持) gồm bộ THỦ (tay) và chữ TỰ (chùa). Tay bưng đồ lễ đi chùa. Trong tiếng Việt, 'Duy TRÌ' là giữ vững.",
+                "en": "A hand (扌) radical next to a temple (寺), suggesting carrying an offering or holding something with care."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "cầm",
+                "nắm",
+                "mang theo",
+                "có (sở hữu)"
+            ],
+            "en": [
+                "to hold",
+                "to carry",
+                "to possess",
+                "to own"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "鞄を持っています。",
+                "translation": {
+                    "vi": "Đang cầm túi xách.",
+                    "en": "Holding a bag."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TRÌ là cầm/giữ. 'Mo-tsu' giống như 'Móc-túi' (cầm đồ bỏ vào móc túi).",
+            "en": "Most (MOTSU) of the items are in my hands."
+        },
+        "confusions": [
+            {
+                "word": "待つ",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "TRÌ (持) có bộ THỦ (tay) nên là CẦM. ĐÃI (待) có bộ XÍCH (bước chân) nên là ĐỢI.",
+                        "en": "Motsu uses the 'hand' radical (hold); Matsu uses the 'go' radical (wait)."
+                    },
+                    "item1_nuance": {
+                        "vi": "Hành động vật lý dùng tay hoặc sở hữu.",
+                        "en": "Physical possession or carrying."
+                    },
+                    "item2_nuance": {
+                        "vi": "Trạng thái chờ đợi thời gian trôi qua.",
+                        "en": "The state of waiting for time/person."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "待つ",
+        "han_viet": "ĐÃI",
+        "kana": "まつ",
+        "romaji": "matsu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "待",
+                    "han_viet": "ĐÃI",
+                    "meaning": {
+                        "vi": "đợi, đối đãi",
+                        "en": "wait"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ ĐÃI (待) gồm bộ XÍCH (bước chân) và chữ TỰ (chùa). Dừng bước chân ở cổng chùa để đợi bạn. 'Chiêu ĐÃI' là đón đợi và mời ăn.",
+                "en": "Movement radical with a temple, symbolizing waiting at a meeting place or halting one's steps."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đợi",
+                "chờ"
+            ],
+            "en": [
+                "to wait"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ちょっと待ってください。",
+                "translation": {
+                    "vi": "Vui lòng đợi một chút.",
+                    "en": "Please wait a moment."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "ĐÃI là đợi. 'Ma-tsu' giống như 'Mắt-u' (mắt u cứ ngóng đợi con về).",
+            "en": "Don't step on the MAT (MATSU) while you wait."
+        },
+        "confusions": []
+    },
+    {
+        "kanji": "使う",
+        "han_viet": "SỬ",
+        "kana": "つかう",
+        "romaji": "tsukau",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "使",
+                    "han_viet": "SỬ",
+                    "meaning": {
+                        "vi": "sử dụng, sai khiến",
+                        "en": "use, envoy"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ SỬ (使) gồm bộ NHÂN (người) và chữ LẠI (quan lại). Người quan lại được vua sai đi sử dụng quyền lực. Trong tiếng Việt, 'SỬ dụng' là dùng.",
+                "en": "Shows a person as an official or messenger, representing someone carrying out a task or using an instrument."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "dùng",
+                "sử dụng"
+            ],
+            "en": [
+                "to use",
+                "to employ",
+                "to make use of"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "お箸を使います。",
+                "translation": {
+                    "vi": "Sử dụng đũa.",
+                    "en": "Use chopsticks."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "SỬ là dùng. 'Tsu-ka-u' nghe như 'Chứ-cả-u' (chứ cả u cũng phải dùng cái này).",
+            "en": "TWO COWS (TSUKAU) using a tractor."
+        },
+        "confusions": []
+    },
+    {
+        "kanji": "作る",
+        "han_viet": "TÁC",
+        "kana": "つくる",
+        "romaji": "tsukuru",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "作",
+                    "han_viet": "TÁC",
+                    "meaning": {
+                        "vi": "làm, tạo ra",
+                        "en": "make, create"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ TÁC (作) gồm bộ NHÂN (người) và chữ TẠP (bắt đầu). Người bắt đầu làm việc gì đó. Trong tiếng Việt, 'TÁC phẩm' là đồ vật được làm ra.",
+                "en": "Combines 'person' and 'suddenly/start,' depicting a person starting a task or crafting an object."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "làm",
+                "chế biến",
+                "tạo ra"
+            ],
+            "en": [
+                "to make",
+                "to create",
+                "to cook",
+                "to produce"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "料理を作ります。",
+                "translation": {
+                    "vi": "Nấu ăn.",
+                    "en": "Make/cook a meal."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TÁC là làm. 'Tsu-ku-ru' nghe như 'Chú-cứ-rủ' (chú cứ rủ cháu làm cái này).",
+            "en": "TWO COOL (TSUKURU) kids making a sandcastle."
+        },
+        "confusions": []
+    },
+    {
+        "kanji": "取る",
+        "han_viet": "THỦ",
+        "kana": "とる",
+        "romaji": "toru",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "取",
+                    "han_viet": "THỦ",
+                    "meaning": {
+                        "vi": "lấy, cầm",
+                        "en": "take"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ THỦ (取) gồm bộ NHĨ (tai) và bộ HỰU (lại/bàn tay). Ngày xưa khi thắng trận người ta thường cắt tai mang về để tính công. 'THỦ tiêu' là lấy đi/diệt đi.",
+                "en": "The kanji originally depicted a hand (又) taking an ear (耳) as a trophy of war, symbolizing the act of taking or seizing."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "lấy",
+                "cầm",
+                "chụp (ảnh)"
+            ],
+            "en": [
+                "to take",
+                "to pass (an object)",
+                "to take (a photo)"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "塩を取ってください。",
+                "translation": {
+                    "vi": "Làm ơn lấy hộ tôi lọ muối.",
+                    "en": "Please pass the salt."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THỦ là lấy. 'To-ru' giống như 'To-rồi' (lấy cái to rồi mang về).",
+            "en": "TORU! (Toro) I'll take this fatty tuna (toro) please!"
+        },
+        "confusions": [
+            {
+                "word": "撮る",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "THỦ (取) là lấy đồ vật, TOÁT (撮) là chụp ảnh.",
+                        "en": "Both are 'Toru.' Take an object (取) vs Take a photo (撮)."
+                    },
+                    "item1_nuance": {
+                        "vi": "Hành động lấy vật lý bằng tay.",
+                        "en": "Physical act of picking up or passing."
+                    },
+                    "item2_nuance": {
+                        "vi": "Chỉ dùng cho việc quay phim, chụp ảnh.",
+                        "en": "Specifically for photography or filming."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "kanji": "置く",
+        "han_viet": "TRÍ",
+        "kana": "おく",
+        "romaji": "oku",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "置",
+                    "han_viet": "TRÍ",
+                    "meaning": {
+                        "vi": "đặt, để",
+                        "en": "put, place"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ TRÍ (置) gồm bộ VÕNG (lưới) và chữ TRỰC (thẳng). Đặt cái lưới thẳng thớm để bẫy cá. Trong tiếng Việt, 'Bố TRÍ' là đặt để mọi thứ.",
+                "en": "Combines a net radical and 'straight/upright,' representing placing something down correctly or in its spot."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đặt",
+                "để"
+            ],
+            "en": [
+                "to put",
+                "to place",
+                "to leave behind"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ここに置いてください。",
+                "translation": {
+                    "vi": "Hãy đặt ở đây.",
+                    "en": "Please put it here."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TRÍ là đặt. 'O-ku' giống như 'Ô-kìa' (ô kìa, sao lại đặt ở đó).",
+            "en": "OK (OKU), you can put it there."
+        },
+        "confusions": []
+    },
+    {
+        "kanji": "する",
+        "han_viet": "VI",
+        "kana": "する",
+        "romaji": "suru",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "irregular-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "する",
+                    "han_viet": "VI",
+                    "meaning": {
+                        "vi": "làm",
+                        "en": "do"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Từ thuần Nhật (Yamato Kotoba), không có Kanji chính thức thường dùng. Trong Hán Việt tương đương chữ VI (như Hành VI).",
+                "en": "A functional word in Japanese with no standard kanji usage, acting as the primary 'do' verb."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "làm",
+                "thực hiện"
+            ],
+            "en": [
+                "to do",
+                "to perform",
+                "to play (sports)"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "テニスをします。",
+                "translation": {
+                    "vi": "Chơi tennis.",
+                    "en": "Play tennis."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Làm. 'Su-ru' giống như 'Su-rủ' (rủ nhau cùng làm).",
+            "en": "SUE (SURU) will do the work for you."
+        },
+        "confusions": []
+    },
+    {
+        "kanji": "勉強する",
+        "han_viet": "HỌC MIỄN",
+        "kana": "べんきょうする",
+        "romaji": "benkyōsuru",
+        "tags": [
+            "n5",
+            "verb",
+            "intransitive",
+            "suru-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "勉",
+                    "han_viet": "MIỄN",
+                    "meaning": {
+                        "vi": "cố gắng",
+                        "en": "exertion"
+                    }
+                },
+                {
+                    "kanji": "強",
+                    "han_viet": "CƯỜNG",
+                    "meaning": {
+                        "vi": "mạnh mẽ",
+                        "en": "strong"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "MIỄN CƯỜNG (勉强) nghĩa đen là gắng sức một cách mạnh mẽ. Người xưa coi việc học là phải nỗ lực vượt qua khó khăn.",
+                "en": "Combines 'effort' and 'strong.' It implies forcing oneself to exert strength, which evolved to mean academic study."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "học tập",
+                "nghiên cứu"
+            ],
+            "en": [
+                "to study"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "日本語を勉強します。",
+                "translation": {
+                    "vi": "Học tiếng Nhật.",
+                    "en": "Study Japanese."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Gắng sức học. 'Ben-kyou' giống như 'Bên-kiệu' (ngồi bên kiệu chăm chỉ học hành).",
+            "en": "BEN (BEN) is a KYOTI (KYO) student who studies all day."
+        },
+        "confusions": []
+    }
+]

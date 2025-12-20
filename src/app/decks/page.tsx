@@ -1,5 +1,6 @@
 import DecksContent from '@/components/DecksContent';
-import { getDecks, getUser, syncUser } from '@/services/actions';
+import { getUser, syncUser } from '@/modules/auth/auth.actions';
+import { getDecks } from '@/services/actions';
 import { redirect } from 'next/navigation';
 
 export default async function DecksPage() {

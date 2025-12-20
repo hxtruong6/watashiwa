@@ -1,0 +1,878 @@
+[
+  {
+    "kanji": "休む",
+    "han_viet": "HƯU",
+    "kana": "やすむ",
+    "romaji": "yasumu",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive",
+      "u-verb"
+    ],
+    "pitch_pattern": 2,
+    "pitch_svg_path": "M0,20 L25,5 L50,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "休",
+          "han_viet": "HƯU",
+          "meaning": {
+            "vi": "nghỉ ngơi",
+            "en": "rest"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ HƯU (休) gồm bộ NHÂN (人 - người) đứng cạnh bộ MỘC (木 - cây). Hình ảnh một người đang tựa vào gốc cây để nghỉ ngơi. Hưu trí là nghỉ việc.",
+        "en": "The kanji 休 consists of a person (人) leaning against a tree (木). It’s a perfect pictograph of someone taking a break in the shade."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "nghỉ ngơi",
+        "vắng mặt",
+        "ngủ"
+      ],
+      "en": [
+        "to rest",
+        "to take a break",
+        "to be absent"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "少し休みましょう。",
+        "translation": {
+          "vi": "Nghỉ một lát thôi nào.",
+          "en": "Let's rest for a bit."
+        }
+      },
+      {
+        "sentence": "風邪で学校を休みました。",
+        "translation": {
+          "vi": "Tôi đã nghỉ học vì bị cảm.",
+          "en": "I was absent from school because of a cold."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Người (人) tựa vào Cây (木) là HƯU (nghỉ). 'Ya-su-mu' nghe như 'Dạ, xuống mủ' (đi ngủ/nghỉ).",
+      "en": "A person (亻) next to a tree (木) wants to REST. Yeah (Ya), soon (su) move (mu) to the couch to rest!"
+    },
+    "confusions": [
+      {
+        "word": "寝る",
+        "explanation": {
+          "mnemonic": {
+            "vi": "HƯU (休む) là nghỉ ngơi nói chung, TẨM (寝る) là đi ngủ thực sự.",
+            "en": "Yasumu is a break or day off; Neru is the act of lying down to sleep."
+          },
+          "item1_nuance": {
+            "vi": "Có thể là nghỉ giải lao, nghỉ lễ, hoặc vắng mặt.",
+            "en": "Taking a break, a day off, or being absent from a commitment."
+          },
+          "item2_nuance": {
+            "vi": "Hành động nằm xuống và nhắm mắt ngủ.",
+            "en": "Specifically the physical act of sleeping/going to bed."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "疲れる",
+    "han_viet": "BÌ",
+    "kana": "つかれる",
+    "romaji": "tsukareru",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive",
+      "ru-verb"
+    ],
+    "pitch_pattern": 3,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "疲",
+          "han_viet": "BÌ",
+          "meaning": {
+            "vi": "mệt mỏi",
+            "en": "tired"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ BÌ (疲) có bộ NẠCH (疒 - bệnh tật) bao quanh chữ BÌ (皮 - da). Khi cơ thể mệt mỏi, cảm giác như đang mang bệnh trong da thịt.",
+        "en": "The kanji 疲 features the 'sickness' radical (疒) over the kanji for 'skin/surface' (皮), suggesting exhaustion that feels like an illness."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "mệt mỏi"
+      ],
+      "en": [
+        "to get tired",
+        "to become exhausted"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "今日はとても疲れました。",
+        "translation": {
+          "vi": "Hôm nay tôi rất mệt.",
+          "en": "I'm very tired today."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Mệt mỏi đến mức BÌ (da) cũng thấy bệnh (疒). 'Tsu-ka-re' nghe như 'Thúc cả rễ' (làm đến kiệt sức).",
+      "en": "I'm so tired, I want to take two (tsu) cars (ka) to get home (re) faster."
+    },
+    "confusions": [
+      {
+        "word": "困る",
+        "explanation": {
+          "mnemonic": {
+            "vi": "BÌ (疲れる) là mệt thân xác, KHỐN (困る) là khốn đốn, gặp rắc rối.",
+            "en": "Tsukareru is physical fatigue; Komaru is mental distress/trouble."
+          },
+          "item1_nuance": {
+            "vi": "Mệt mỏi về thể chất sau khi làm việc.",
+            "en": "Physical exhaustion or lack of energy."
+          },
+          "item2_nuance": {
+            "vi": "Gặp khó khăn, bối rối, không biết giải quyết thế nào.",
+            "en": "To be in a fix, to be troubled or inconvenienced."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "降る",
+    "han_viet": "GIÁNG/HÀNG",
+    "kana": "ふる",
+    "romaji": "furu",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive",
+      "u-verb"
+    ],
+    "pitch_pattern": 1,
+    "pitch_svg_path": "M0,5 L25,20 L50,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "降",
+          "han_viet": "GIÁNG",
+          "meaning": {
+            "vi": "rơi, xuống",
+            "en": "descend, fall"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ GIÁNG (降) gồm bộ PHỤ (阝- gò đất) và chữ hạ (夂 - bước chân đi xuống). Nghĩa là từ trên cao bước xuống. Giáng trần là từ trời rơi xuống.",
+        "en": "The kanji 降 shows movement down (夂) from a hill (阝). It represents things descending from the sky like rain."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "rơi (mưa, tuyết)",
+        "đổ (mưa)"
+      ],
+      "en": [
+        "to fall (rain, snow, etc.)"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "雨が降っています。",
+        "translation": {
+          "vi": "Trời đang mưa.",
+          "en": "It is raining."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "GIÁNG xuống là rơi. Mưa rơi 'Fu-ru' nghe như 'Vù vù'.",
+      "en": "When rain falls, it's FULL (furu) of water!"
+    },
+    "confusions": [
+      {
+        "word": "下りる",
+        "explanation": {
+          "mnemonic": {
+            "vi": "GIÁNG (降る) dùng cho thời tiết, HẠ (下りる) dùng cho người/vật đi xuống.",
+            "en": "Furu is for precipitation; Oriru is for descending stairs/mountains."
+          },
+          "item1_nuance": {
+            "vi": "Chỉ dùng cho hiện tượng tự nhiên rơi từ trên trời xuống.",
+            "en": "Exclusively used for rain, snow, or hail falling."
+          },
+          "item2_nuance": {
+            "vi": "Hành động đi xuống cầu thang, xuống xe.",
+            "en": "To physically move downward or get off a vehicle."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "晴れる",
+    "han_viet": "TÌNH",
+    "kana": "はれる",
+    "romaji": "hareru",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive",
+      "ru-verb"
+    ],
+    "pitch_pattern": 2,
+    "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "晴",
+          "han_viet": "TÌNH",
+          "meaning": {
+            "vi": "nắng, trời quang",
+            "en": "clear up"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ TÌNH (晴) gồm bộ NHẬT (日 - mặt trời) và chữ THANH (青 - màu xanh). Khi mặt trời lên, bầu trời có màu xanh nghĩa là trời nắng ráo.",
+        "en": "The kanji 晴 combines Sun (日) and Blue/Green (青). When the sun makes the sky blue, it's clearing up."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "nắng",
+        "trở nên quang đãng"
+      ],
+      "en": [
+        "to clear up",
+        "to become sunny"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "午後から晴れました。",
+        "translation": {
+          "vi": "Trời đã nắng từ chiều.",
+          "en": "It cleared up from the afternoon."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Nhật (日) lên trời Xanh (青) là TÌNH (nắng). Trời nắng thì đi 'Ha-re' (Hạ Lễ).",
+      "en": "The Sun (日) is out and it's Blue (青). 'Hello' (Ha-re) Sun!"
+    },
+    "confusions": [
+      {
+        "word": "曇る",
+        "explanation": {
+          "mnemonic": {
+            "vi": "TÌNH (晴) là nắng xanh, ĐÀM (曇) là mây mù.",
+            "en": "Hareru is sun/blue sky; Kumoru is clouds."
+          },
+          "item1_nuance": {
+            "vi": "Bầu trời ít mây, có ánh nắng.",
+            "en": "Sky clearing up, sunny weather."
+          },
+          "item2_nuance": {
+            "vi": "Bầu trời nhiều mây, xám xịt.",
+            "en": "Sky becoming overcast or cloudy."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "曇る",
+    "han_viet": "ĐÀM",
+    "kana": "くもる",
+    "romaji": "kumoru",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive",
+      "u-verb"
+    ],
+    "pitch_pattern": 2,
+    "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "曇",
+          "han_viet": "ĐÀM",
+          "meaning": {
+            "vi": "mây mù",
+            "en": "cloudy"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ ĐÀM (曇) gồm bộ NHẬT (日 - mặt trời) bị che bởi chữ VÂN (雲 - mây). Mây che mặt trời tạo ra trời u ám.",
+        "en": "The kanji 曇 shows the Sun (日) covered by Clouds (雲). Sunlight is blocked, meaning it's cloudy."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "nhiều mây",
+        "u ám",
+        "mờ đi"
+      ],
+      "en": [
+        "to become cloudy",
+        "to become fogged up"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "空が曇ってきました。",
+        "translation": {
+          "vi": "Bầu trời đang dần trở nên âm u.",
+          "en": "The sky is becoming cloudy."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "ĐÀM là mây che Nhật. 'Ku-mo-ru' nghe như 'Cứ mờ rũ' (vì mây che).",
+      "en": "Clouds (Kumo) cover the sun, so it's KUMORU."
+    },
+    "confusions": [
+      {
+        "word": "雨",
+        "explanation": {
+          "mnemonic": {
+            "vi": "ĐÀM (曇) mới chỉ là mây mờ, VŨ (雨) mới là có nước rơi.",
+            "en": "Kumoru is just clouds; Ame is actual water falling."
+          },
+          "item1_nuance": {
+            "vi": "Chỉ trạng thái bầu trời tối, không nhất thiết có mưa.",
+            "en": "Condition of the sky being overcast."
+          },
+          "item2_nuance": {
+            "vi": "Hiện tượng nước rơi từ trên trời.",
+            "en": "The substance/event of rain itself."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "考える",
+    "han_viet": "KHẢO",
+    "kana": "かんがえる",
+    "romaji": "kangaeru",
+    "tags": [
+      "n4",
+      "n5",
+      "verb",
+      "transitive",
+      "ru-verb"
+    ],
+    "pitch_pattern": 3,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "考",
+          "han_viet": "KHẢO",
+          "meaning": {
+            "vi": "suy nghĩ, nghiên cứu",
+            "en": "think/consider"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ KHẢO (考) gồm bộ LÃO (lão già) và một nét biến thể bên dưới. Người già có kinh nghiệm ngồi suy ngẫm. 'Khảo sát' là xem xét kỹ.",
+        "en": "The kanji 考 shows an elderly person with a cane, symbolizing the wisdom and time taken to deliberate or think deeply."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "suy nghĩ",
+        "cân nhắc",
+        "xem xét"
+      ],
+      "en": [
+        "to think about",
+        "to consider",
+        "to ponder"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "将来のことを考えます。",
+        "translation": {
+          "vi": "Tôi suy nghĩ về tương lai.",
+          "en": "I think about the future."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "KHẢO sát là phải NGHĨ. 'Kan-gae-ru' nghe như 'Càng-nghĩ-rõ'.",
+      "en": "A Kangaroo (Kanga) thinking (eru) about which way to jump."
+    },
+    "confusions": [
+      {
+        "word": "思う",
+        "explanation": {
+          "mnemonic": {
+            "vi": "KHẢO (考える) là tư duy logic, TƯ (思う) là cảm nhận chủ quan.",
+            "en": "Kangaeru is logical processing; Omou is emotional opinion."
+          },
+          "item1_nuance": {
+            "vi": "Suy nghĩ để tìm giải pháp, tính toán.",
+            "en": "Logical thinking or considering a specific problem."
+          },
+          "item2_nuance": {
+            "vi": "Nêu quan điểm, suy nghĩ tức thời hoặc cảm xúc.",
+            "en": "Expressing an opinion or feeling ('I think that...')."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "始まる",
+    "han_viet": "THỦY",
+    "kana": "はじまる",
+    "romaji": "hajimaru",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive",
+      "u-verb"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "始",
+          "han_viet": "THỦY",
+          "meaning": {
+            "vi": "bắt đầu",
+            "en": "beginning"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ THỦY (始) gồm bộ NỮ (女) và chữ ĐÀI (台). Ý nghĩa gốc là người phụ nữ bắt đầu thai nghén. Tương ứng với 'Nguyên thủy'.",
+        "en": "The kanji 始 combines Woman (女) and a Platform/Podium (台). Imagine a woman starting a ceremony at a podium."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "bắt đầu",
+        "khởi đầu"
+      ],
+      "en": [
+        "to begin",
+        "to start"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "会議が始まります。",
+        "translation": {
+          "vi": "Cuộc họp bắt đầu.",
+          "en": "The meeting begins."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "THỦY tổ là cái BẮT ĐẦU. 'Ha-ji-ma-ru' nghe như 'Hạ-gì-mà-rủ' (hạ màn rồi rủ nhau bắt đầu cái mới).",
+      "en": "Ha! (Ha) Jeez (ji), the match (ma) is starting already (ru)!"
+    },
+    "confusions": [
+      {
+        "word": "始める",
+        "explanation": {
+          "mnemonic": {
+            "vi": "Hajimaru là tự nó bắt đầu, Hajimeru là mình bắt đầu nó.",
+            "en": "Hajimaru = It starts; Hajimeru = I start it."
+          },
+          "item1_nuance": {
+            "vi": "Tự động từ (Cái gì đó tự bắt đầu).",
+            "en": "Intransitive: The event itself starts."
+          },
+          "item2_nuance": {
+            "vi": "Tha động từ (Ai đó bắt đầu việc gì).",
+            "en": "Transitive: Someone initiates the action."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "終わる",
+    "han_viet": "CHUNG",
+    "kana": "おわる",
+    "romaji": "owaru",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive",
+      "u-verb"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "終",
+          "han_viet": "CHUNG",
+          "meaning": {
+            "vi": "cuối cùng, kết thúc",
+            "en": "end"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ CHUNG (終) gồm bộ MỊCH (糸 - sợi chỉ) và chữ ĐÔNG (冬 - mùa đông). Mùa đông là mùa cuối cùng, sợi chỉ thắt nút ở cuối.",
+        "en": "The kanji 終 shows thread (糸) and winter (冬). Winter is the end of the seasonal thread of the year."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "kết thúc",
+        "xong",
+        "hết"
+      ],
+      "en": [
+        "to end",
+        "to finish",
+        "to close"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "仕事が終わりました。",
+        "translation": {
+          "vi": "Công việc đã xong rồi.",
+          "en": "Work has finished."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "CHUNG kết là KẾT THÚC. 'O-wa-ru' nghe như 'Ô-vã-rồi' (làm xong mệt vã mồ hôi).",
+      "en": "Oh-Wow (Owa)! It's over already!"
+    },
+    "confusions": [
+      {
+        "word": "止まる",
+        "explanation": {
+          "mnemonic": {
+            "vi": "CHUNG (終わる) là hoàn thành, CHỈ (止まる) là dừng lại giữa chừng.",
+            "en": "Owaru is completion; Tomaru is just stopping."
+          },
+          "item1_nuance": {
+            "vi": "Kết thúc toàn bộ quá trình.",
+            "en": "To finish or complete a task/period."
+          },
+          "item2_nuance": {
+            "vi": "Ngừng di chuyển hoặc ngừng hoạt động.",
+            "en": "To come to a halt or stop moving."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "開ける",
+    "han_viet": "KHAI",
+    "kana": "あける",
+    "romaji": "akeru",
+    "tags": [
+      "n5",
+      "verb",
+      "transitive",
+      "ru-verb"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "開",
+          "han_viet": "KHAI",
+          "meaning": {
+            "vi": "mở",
+            "en": "open"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ KHAI (開) mô tả hai cánh cổng (門) và một thanh then cài đang được hai tay (开) nhấc ra để mở.",
+        "en": "The kanji 開 shows hands (开) pulling a bolt off the gate (門) to open it."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "mở (cửa, hộp, mắt)"
+      ],
+      "en": [
+        "to open (something)"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "窓を開けてください。",
+        "translation": {
+          "vi": "Hãy mở cửa sổ giúp tôi.",
+          "en": "Please open the window."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "KHAI trương là MỞ. 'A-ke-ru' nghe như 'Ăn-ké-rủ' (Mở cửa rủ bạn vào ăn ké).",
+      "en": "A (A) can (ke) opener opens things."
+    },
+    "confusions": [
+      {
+        "word": "開く",
+        "explanation": {
+          "mnemonic": {
+            "vi": "Akeru là mình mở, Aku là nó tự mở.",
+            "en": "Akeru is manual; Aku is automatic."
+          },
+          "item1_nuance": {
+            "vi": "Dùng khi có tác động của con người.",
+            "en": "Transitive: Someone opens the door."
+          },
+          "item2_nuance": {
+            "vi": "Cái gì đó tự mở ra (như cửa tự động).",
+            "en": "Intransitive: The door opens."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "閉める",
+    "han_viet": "BẾ",
+    "kana": "しめる",
+    "romaji": "shimeru",
+    "tags": [
+      "n5",
+      "verb",
+      "transitive",
+      "ru-verb"
+    ],
+    "pitch_pattern": 2,
+    "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "閉",
+          "han_viet": "BẾ",
+          "meaning": {
+            "vi": "đóng, bít lại",
+            "en": "close"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ BẾ (閉) gồm bộ MÔN (門 - cửa) và chữ TÀI (才 - thanh chắn). Cài thanh chắn vào cửa để đóng lại. 'Bế mạc' là đóng lại buổi lễ.",
+        "en": "The kanji 閉 depicts a gate (門) with a bar across it to keep it shut."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "đóng (cửa, vali)"
+      ],
+      "en": [
+        "to close (something)",
+        "to shut"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "ドアを閉めてください。",
+        "translation": {
+          "vi": "Hãy đóng cửa lại.",
+          "en": "Please close the door."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "BẾ mạc là ĐÓNG. 'Shi-me-ru' nghe như 'Si-mê-rồi' (Si mê quá nên đóng cửa ở trong nhà).",
+      "en": "She (Shi) may (me) ruin (ru) the mood if she doesn't close the door."
+    },
+    "confusions": [
+      {
+        "word": "閉まる",
+        "explanation": {
+          "mnemonic": {
+            "vi": "Shimeru là tay mình đóng, Shimaru là cửa tự đóng.",
+            "en": "Shimeru = I shut it; Shimaru = It shuts."
+          },
+          "item1_nuance": {
+            "vi": "Hành động đóng do con người thực hiện.",
+            "en": "Transitive: Closing something purposefully."
+          },
+          "item2_nuance": {
+            "vi": "Trạng thái cái gì đó bị đóng hoặc tự đóng.",
+            "en": "Intransitive: Something closing on its own."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "つける",
+    "han_viet": "PHỤ / ĐIỂM",
+    "kana": "つける",
+    "romaji": "tsukeru",
+    "tags": [
+      "n5",
+      "verb",
+      "transitive",
+      "ru-verb"
+    ],
+    "pitch_pattern": 2,
+    "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "付",
+          "han_viet": "PHỤ",
+          "meaning": {
+            "vi": "gắn vào, đính kèm",
+            "en": "attach"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Thường viết Hiragana. PHỤ (付) là người (亻) đưa vật cho người khác (寸). Nghĩa rộng là gắn điện vào để bật thiết bị.",
+        "en": "Usually written in kana. It means to attach or fix something. When used with lights, it means 'attaching' electricity to the bulb."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "bật (điện, đèn, TV)",
+        "gắn vào"
+      ],
+      "en": [
+        "to turn on (light, electronics)",
+        "to switch on"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "電気をつけます。",
+        "translation": {
+          "vi": "Tôi bật đèn.",
+          "en": "I turn on the light."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "PHỤ là gắn vào, bật lên. 'Tsu-ke-ru' nghe như 'Tứ-kế-rủ' (nghĩ ra tứ kế để rủ bạn bật TV xem phim).",
+      "en": "Two (Tsu) kids (ke) run (ru) to turn on the TV."
+    },
+    "confusions": [
+      {
+        "word": "消す",
+        "explanation": {
+          "mnemonic": {
+            "vi": "Tsukeru là bật (on), Kesu là tắt (off).",
+            "en": "Tsukeru is ON, Kesu is OFF."
+          },
+          "item1_nuance": {
+            "vi": "Bật các thiết bị sử dụng năng lượng.",
+            "en": "Powering on a device or light."
+          },
+          "item2_nuance": {
+            "vi": "Tắt thiết bị hoặc xóa bỏ dấu vết.",
+            "en": "Powering off or erasing."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "消す",
+    "han_viet": "TIÊU",
+    "kana": "けす",
+    "romaji": "kesu",
+    "tags": [
+      "n5",
+      "verb",
+      "transitive",
+      "u-verb"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "消",
+          "han_viet": "TIÊU",
+          "meaning": {
+            "vi": "tiêu diệt, tắt, xóa",
+            "en": "extinguish"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ TIÊU (消) gồm bộ THỦY (氵- nước) và chữ TIÊU (肖 - tia lửa/nhỏ). Dùng nước dập tắt tia lửa là TIÊU diệt.",
+        "en": "The kanji 消 combines Water (氵) and a spark/small (肖). Water being poured on a spark extinguishes it."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "tắt (điện, đèn)",
+        "xóa",
+        "dập tắt"
+      ],
+      "en": [
+        "to turn off",
+        "to erase",
+        "to extinguish"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "テレビを消してください。",
+        "translation": {
+          "vi": "Hãy tắt TV đi.",
+          "en": "Please turn off the TV."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "TIÊU diệt bóng tối hoặc ánh sáng. 'Ke-su' nghe như 'Kệ-sư' (Sư tắt đèn đi ngủ, kệ sự đời).",
+      "en": "Use the Case (Ke) soon (su) to cover the light and turn it off."
+    },
+    "confusions": [
+      {
+        "word": "切る",
+        "explanation": {
+          "mnemonic": {
+            "vi": "TIÊU (消す) là tắt thiết bị, THIẾT (切る) là cắt đứt hoàn toàn.",
+            "en": "Kesu is to turn off/erase; Kiru is to cut/disconnect."
+          },
+          "item1_nuance": {
+            "vi": "Tắt đèn, TV, xóa bảng.",
+            "en": "Turning off lights or erasing something."
+          },
+          "item2_nuance": {
+            "vi": "Cắt giấy, hoặc ngắt kết nối cuộc gọi.",
+            "en": "Cutting physical objects or hanging up a phone."
+          }
+        }
+      }
+    ]
+  }
+]

@@ -1,7 +1,7 @@
 'use client';
 
 import { ambientGradients, customShadows } from '@/lib/theme/themeConfig';
-import { syncUser } from '@/services/actions';
+import { syncUser } from '@/modules/auth/auth.actions';
 import { createClient } from '@/utils/supabase/client';
 import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
 import { Alert, App, Button, Card, Flex, Form, Input, Typography, theme } from 'antd';
@@ -44,14 +44,18 @@ export default function AuthPage() {
 				antdMessage.success(t('loginSuccess'));
 				// Check session and sync user to DB
 				try {
-					await syncUser();
+					const result = await syncUser();
+					if (result.success && result.role === 'ADMIN') {
+						window.location.href = '/admin';
+						return;
+					}
 				} catch (syncErr) {
 					console.error('User sync failed (non-blocking):', syncErr);
 				}
 				// Force full reload ensures middleware sees the new cookie
 				window.location.href = '/';
 			}
-		} catch (err) {
+		} catch {
 			setError(t('unexpectedError'));
 			antdMessage.error(t('unexpectedError'));
 		} finally {
@@ -86,9 +90,13 @@ export default function AuthPage() {
 				antdMessage.success(t('signupSuccess'));
 				// Logged in immediately
 				try {
-					await syncUser();
+					const result = await syncUser();
+					if (result.success && result.role === 'ADMIN') {
+						window.location.href = '/admin';
+						return;
+					}
 				} catch (syncErr) {
-					antdMessage.error(t('unexpectedError'));
+					console.error('User sync failed (non-blocking):', syncErr);
 				}
 				// Force full reload to ensure middleware catches the new session
 				window.location.href = '/';
@@ -96,7 +104,7 @@ export default function AuthPage() {
 				setMessage(t('checkEmail'));
 				antdMessage.success(t('registrationSuccess'));
 			}
-		} catch (err) {
+		} catch {
 			setError(t('unexpectedError'));
 			antdMessage.error(t('unexpectedError'));
 		} finally {

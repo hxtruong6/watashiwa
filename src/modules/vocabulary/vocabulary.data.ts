@@ -63,4 +63,39 @@ export const VocabularyData = {
 			data: updateData,
 		});
 	},
+	/**
+	 * Get Pending Content (Draft, Flagged, AI Generated)
+	 */
+	getPending: async (limit = 50) => {
+		return prisma.vocabulary.findMany({
+			where: {
+				contentStatus: {
+					in: ['AI_GENERATED', 'FLAGGED', 'DRAFT'],
+				},
+			},
+			take: limit,
+			orderBy: { createdAt: 'desc' }, // Recently created first? Or oldest? Let's do Oldest first to clear queue.
+			// Actually, User wants new content maybe? Let's stick to CreatedAt ASC (FIFO)
+			// But the previous file used DESC. Let's use ASC to be logical (Start from beginning).
+			include: {
+				confusionsAs1: {
+					include: { vocab2: { select: { wordSurface: true, wordReading: true } } },
+				},
+				confusionsAs2: {
+					include: { vocab1: { select: { wordSurface: true, wordReading: true } } },
+				},
+				variants: true,
+			},
+		});
+	},
+
+	/**
+	 * Generic Update
+	 */
+	update: async (id: string, data: Prisma.VocabularyUpdateInput) => {
+		return prisma.vocabulary.update({
+			where: { id },
+			data,
+		});
+	},
 };

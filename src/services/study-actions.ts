@@ -1,7 +1,7 @@
 'use server';
 
 import { prisma } from '@/lib/db';
-import { getUser } from '@/services/actions';
+import { getUser } from '@/modules/auth/auth.actions';
 import { Question } from '@/types/exercises';
 import { z } from 'zod';
 

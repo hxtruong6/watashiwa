@@ -1,0 +1,758 @@
+[
+  {
+    "kanji": "先生",
+    "han_viet": "TIÊN SINH",
+    "kana": "せんせい",
+    "romaji": "sensei",
+    "tags": [
+      "n5",
+      "noun",
+      "polite",
+      "title"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5",
+    "mnemonic": {
+      "vi": "Người 'TIÊN' (先 - đi trước) và 'SINH' (生 - sinh ra). Người sinh ra trước và đi trước chúng ta trên con đường tri thức chính là thầy cô.",
+      "en": "A SENior (先) in life (生). Imagine a senior person who has lived longer and gained more life experience than you."
+    },
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "先",
+          "han_viet": "TIÊN",
+          "meaning": {
+            "vi": "trước",
+            "en": "before"
+          }
+        },
+        {
+          "kanji": "生",
+          "han_viet": "SINH",
+          "meaning": {
+            "vi": "sống, sinh ra",
+            "en": "life, birth"
+          }
+        }
+      ],
+      "note": {
+        "vi": "TIÊN SINH (先生) vốn để chỉ người có học vấn cao, sinh ra trước nên hiểu biết rộng hơn. Trong tiếng Việt, 'Tiên' cũng xuất hiện trong 'Tiên phong', 'Tiên tiến'.",
+        "en": "The kanji 先 shows a footprint (止) above a person (儿), suggesting moving ahead. 生 represents a plant growing out of the soil, symbolizing life."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "thầy giáo",
+        "cô giáo",
+        "bác sĩ",
+        "luật sư",
+        "tiên sinh"
+      ],
+      "en": [
+        "teacher",
+        "doctor",
+        "lawyer",
+        "master",
+        "professor"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "先生、質問があります。",
+        "translation": {
+          "vi": "Thưa thầy, em có câu hỏi.",
+          "en": "Teacher, I have a question."
+        }
+      }
+    ],
+    "confusions": [
+      {
+        "word": "学生",
+        "explanation": {
+          "mnemonic": {
+            "vi": "TIÊN sinh đi trước dạy bảo, HỌC sinh đi sau học tập.",
+            "en": "The SENior (Teacher) vs. the student studying for life (Gaku-sei)."
+          },
+          "item1_nuance": {
+            "vi": "Dùng cho người dạy hoặc người có địa vị xã hội cao.",
+            "en": "Respectful title for mentors or professionals."
+          },
+          "item2_nuance": {
+            "vi": "Dùng cho người đang tiếp nhận kiến thức.",
+            "en": "Refers to the learner."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "学生",
+    "han_viet": "HỌC SINH",
+    "kana": "がくせい",
+    "romaji": "gakusei",
+    "tags": [
+      "n5",
+      "noun"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "学",
+          "han_viet": "HỌC",
+          "meaning": {
+            "vi": "học tập",
+            "en": "study"
+          }
+        },
+        {
+          "kanji": "生",
+          "han_viet": "SINH",
+          "meaning": {
+            "vi": "người, sinh ra",
+            "en": "life, person"
+          }
+        }
+      ],
+      "note": {
+        "vi": "HỌC SINH (学生) là người dành trọn cuộc 'SINH' (đời) của mình để 'HỌC' tập tại trường.",
+        "en": "The top of 学 shows hands teaching a child under a roof. 生 is a sprout growing, symbolizing a developing person."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "học sinh",
+        "sinh viên"
+      ],
+      "en": [
+        "student"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "私は大学生です。",
+        "translation": {
+          "vi": "Tôi là sinh viên đại học.",
+          "en": "I am a university student."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "HỌC SINH là người đang trong độ tuổi 'SINH' sôi nảy nở về trí tuệ thông qua việc 'HỌC'.",
+      "en": "A student spends their life (SEI) in a building of learning (GAKU)."
+    },
+    "confusions": [
+      {
+        "word": "生徒",
+        "explanation": {
+          "mnemonic": {
+            "vi": "HỌC SINH là từ chung, SINH ĐỒ (生徒) là học trò cấp thấp hơn (phổ thông).",
+            "en": "Gakusei is the general 'Student' (often Uni), Seito is a 'Pupil' (K-12)."
+          },
+          "item1_nuance": {
+            "vi": "Bao quát, thường dùng cho sinh viên đại học.",
+            "en": "General, often implies higher education."
+          },
+          "item2_nuance": {
+            "vi": "Dùng cho học sinh cấp 1, 2, 3.",
+            "en": "Used for elementary/middle/high school pupils."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "学校",
+    "han_viet": "HỌC HIỆU",
+    "kana": "がっこう",
+    "romaji": "gakkō",
+    "tags": [
+      "n5",
+      "noun"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "学",
+          "han_viet": "HỌC",
+          "meaning": {
+            "vi": "học",
+            "en": "study"
+          }
+        },
+        {
+          "kanji": "校",
+          "han_viet": "HIỆU",
+          "meaning": {
+            "vi": "trường, nơi kiểm tra",
+            "en": "school, exam"
+          }
+        }
+      ],
+      "note": {
+        "vi": "HỌC HIỆU (学校) là tên gọi Hán Việt của trường học. Trong tiếng Việt, 'Hiệu' còn thấy trong 'Hiệu trưởng'.",
+        "en": "校 contains the radical for wood (木). In ancient times, school buildings or the shackles used for discipline were made of wood."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "trường học"
+      ],
+      "en": [
+        "school"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "学校は八時に始まります。",
+        "translation": {
+          "vi": "Trường học bắt đầu lúc 8 giờ.",
+          "en": "School starts at 8 o'clock."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Tới HỌC HIỆU để HỌC (学) tập cho HIỆU (校) quả.",
+      "en": "GA-KKO sounds like 'Go call' your friends to school. It's the wood (木) building where you learn (学)."
+    },
+    "confusions": [
+      {
+        "word": "会社",
+        "explanation": {
+          "mnemonic": {
+            "vi": "HỌC HIỆU để học, HỘI XÃ để làm.",
+            "en": "Gakkou for learning, Kaisha for earning."
+          },
+          "item1_nuance": {
+            "vi": "Nơi đào tạo kiến thức.",
+            "en": "Educational institution."
+          },
+          "item2_nuance": {
+            "vi": "Nơi làm việc, kinh doanh.",
+            "en": "Business company."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "銀行",
+    "han_viet": "NGÂN HÀNG",
+    "kana": "ぎんこう",
+    "romaji": "ginkō",
+    "tags": [
+      "n5",
+      "noun"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "銀",
+          "han_viet": "NGÂN",
+          "meaning": {
+            "vi": "bạc",
+            "en": "silver"
+          }
+        },
+        {
+          "kanji": "行",
+          "han_viet": "HÀNG",
+          "meaning": {
+            "vi": "tiệm, hàng, đi",
+            "en": "shop, line, go"
+          }
+        }
+      ],
+      "note": {
+        "vi": "NGÂN (銀) là bạc. HÀNG (行) là cửa hàng hoặc nơi giao dịch. Ngày xưa người ta dùng bạc làm tiền tệ, nên NGÂN HÀNG là tiệm bạc.",
+        "en": "銀 (Silver) is made of metal (金). 行 means to walk or a row. A row of silver shops became the modern 'Bank'."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "ngân hàng"
+      ],
+      "en": [
+        "bank"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "銀行は三時に閉まります。",
+        "translation": {
+          "vi": "Ngân hàng đóng cửa lúc 3 giờ.",
+          "en": "The bank closes at 3 o'clock."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "NGÂN (銀) là bạc. Cứ đi (HÀNG - 行) đến nơi có nhiều bạc là thấy NGÂN HÀNG.",
+      "en": "I drink GIN (銀) while GO-ing (行 - kō) to the bank."
+    },
+    "confusions": [
+      {
+        "word": "病院",
+        "explanation": {
+          "mnemonic": {
+            "vi": "Đến NGÂN HÀNG rút tiền, đến BỆNH VIỆN chữa bệnh.",
+            "en": "Ginkou for Gold, Byouin for Bodies (health)."
+          },
+          "item1_nuance": {
+            "vi": "Liên quan đến tài chính.",
+            "en": "Finance."
+          },
+          "item2_nuance": {
+            "vi": "Liên quan đến sức khỏe.",
+            "en": "Medical."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "食べる",
+    "han_viet": "THỰC",
+    "kana": "たべる",
+    "romaji": "taberu",
+    "tags": [
+      "n5",
+      "verb",
+      "ichidan-verb",
+      "transitive"
+    ],
+    "pitch_pattern": 2,
+    "pitch_svg_path": "M0,20 L25,5 L50,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "食",
+          "han_viet": "THỰC",
+          "meaning": {
+            "vi": "ăn",
+            "en": "eat"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ THỰC (食) tượng hình một cái bát có nắp đậy (亼) chứa đồ ăn (良). Trong tiếng Việt, 'Thực' xuất hiện trong 'Ẩm thực', 'Thực phẩm'.",
+        "en": "The kanji 食 looks like a person (人) over a bowl of good (良) food. It represents the act of consuming nutrients."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "ăn"
+      ],
+      "en": [
+        "to eat"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "朝ごはんを食べましたか。",
+        "translation": {
+          "vi": "Bạn đã ăn sáng chưa?",
+          "en": "Did you eat breakfast?"
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "THỰC là ăn. 'Ta-be-ru' nghe như 'Ta-bê-rổ' đồ ăn ra để ăn.",
+      "en": "TA-BEAR-U: A hungry Bear wants to eat (taberu)!"
+    },
+    "confusions": [
+      {
+        "word": "飲む",
+        "explanation": {
+          "mnemonic": {
+            "vi": "THỰC (ăn) - ẨM (uống).",
+            "en": "Taberu (Solid) vs. Nomu (Liquid)."
+          },
+          "item1_nuance": {
+            "vi": "Dùng cho thức ăn có thể nhai.",
+            "en": "Used for solid foods."
+          },
+          "item2_nuance": {
+            "vi": "Dùng cho chất lỏng hoặc thuốc viên (uống thuốc).",
+            "en": "Used for liquids or pills."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "飲む",
+    "han_viet": "ẨM",
+    "kana": "のむ",
+    "romaji": "nomu",
+    "tags": [
+      "n5",
+      "verb",
+      "transitive",
+      "u-verb"
+    ],
+    "pitch_pattern": 1,
+    "pitch_svg_path": "M0,5 L25,20 L50,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "飲",
+          "han_viet": "ẨM",
+          "meaning": {
+            "vi": "uống",
+            "en": "drink"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ ẨM (飲) gồm bộ THỰC (食 - đồ ăn) và chữ KHIẾM (欠 - thiếu/ngáp). Gợi nhớ hình ảnh một người đang mở miệng để đưa đồ ăn thức uống vào.",
+        "en": "The kanji 飲 combines the 'food' radical (食) with 'lack/yawn' (欠), depicting a person opening their mouth wide to consume something."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "uống",
+        "húp",
+        "uống thuốc"
+      ],
+      "en": [
+        "to drink",
+        "to gulp",
+        "to take medicine"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "水を飲みます。",
+        "translation": {
+          "vi": "Tôi uống nước.",
+          "en": "I drink water."
+        }
+      },
+      {
+        "sentence": "薬を飲みましたか？",
+        "translation": {
+          "vi": "Bạn đã uống thuốc chưa?",
+          "en": "Did you take your medicine?"
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "ẨM thực là ăn uống. ẨM là uống, phát âm là 'Nô-mu' (Nốc-mù-tạt thì phải uống nước).",
+      "en": "NO MORE (NOMU) drinks for me, I've had enough!"
+    },
+    "confusions": [
+      {
+        "word": "吸う",
+        "explanation": {
+          "mnemonic": {
+            "vi": "HẤP (吸) là hít, hút. Như 'hấp thụ' không khí.",
+            "en": "SUU sounds like the suction sound of inhaling."
+          },
+          "item1_nuance": {
+            "vi": "飲む dùng cho chất lỏng đi xuống cổ họng.",
+            "en": "飲む is for swallowing liquids."
+          },
+          "item2_nuance": {
+            "vi": "吸う dùng cho hút thuốc hoặc hít không khí.",
+            "en": "吸う is for inhaling smoke or air."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "見る",
+    "han_viet": "KIẾN",
+    "kana": "みる",
+    "romaji": "miru",
+    "tags": [
+      "n5",
+      "verb",
+      "transitive",
+      "ru-verb"
+    ],
+    "pitch_pattern": 1,
+    "pitch_svg_path": "M0,5 L25,20 L50,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "見",
+          "han_viet": "KIẾN",
+          "meaning": {
+            "vi": "nhìn, thấy",
+            "en": "see, look"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ KIẾN (見) gồm bộ MỤC (目 - mắt) đặt trên đôi chân (儿). Hình ảnh con mắt đang đi để quan sát thế giới.",
+        "en": "The kanji 見 is a large eye (目) on legs (儿), representing someone walking to look at things."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "nhìn",
+        "xem",
+        "thấy",
+        "quan sát"
+      ],
+      "en": [
+        "to see",
+        "to look at",
+        "to watch",
+        "to observe"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "映画を見ます。",
+        "translation": {
+          "vi": "Tôi xem phim.",
+          "en": "I watch a movie."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "KIẾN thức đến từ việc nhìn (KIẾN). 'Mi-ru' giống như 'Mắt-ru' (mắt rủ xuống để nhìn).",
+      "en": "Look in the MIRROR (MIRU) to see yourself."
+    },
+    "confusions": [
+      {
+        "word": "観る",
+        "explanation": {
+          "mnemonic": {
+            "vi": "QUAN (観) trong quan sát, xem kỹ.",
+            "en": "The kanji looks more complex because the watching is more focused."
+          },
+          "item1_nuance": {
+            "vi": "見る là từ chung nhất cho việc nhìn.",
+            "en": "見る is the general term for seeing."
+          },
+          "item2_nuance": {
+            "vi": "観る dùng khi xem giải trí một cách chăm chú.",
+            "en": "観る is for watching performances with focus."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "聞く",
+    "han_viet": "VĂN",
+    "kana": "きく",
+    "romaji": "kiku",
+    "tags": [
+      "n5",
+      "verb",
+      "transitive",
+      "u-verb"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,20 L50,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "聞",
+          "han_viet": "VĂN",
+          "meaning": {
+            "vi": "nghe, hỏi",
+            "en": "hear, listen, ask"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ VĂN (聞) gồm bộ MÔN (門 - cửa) và bộ NHĨ (耳 - tai). Ghé tai vào cửa để nghe ngóng.",
+        "en": "The kanji 聞 shows an ear (耳) inside a gate (門), depicting someone listening at a door."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "nghe",
+        "hỏi"
+      ],
+      "en": [
+        "to hear",
+        "to listen",
+        "to ask"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "音楽を聞きます。",
+        "translation": {
+          "vi": "Tôi nghe nhạc.",
+          "en": "I listen to music."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Tân VĂN là tin tức nghe được. 'Ki-ku' giống như tiếng 'Kỹ-cú' lắng nghe.",
+      "en": "Use your ear to hear the KEY (KI) of the song."
+    },
+    "confusions": [
+      {
+        "word": "聴く",
+        "explanation": {
+          "mnemonic": {
+            "vi": "THÍNH (聴) trong thính giả, nghe bằng cả trái tim.",
+            "en": "It has a heart (心) radical because you listen with your heart."
+          },
+          "item1_nuance": {
+            "vi": "聞く dùng cho việc nghe âm thanh tự nhiên hoặc hỏi.",
+            "en": "聞く is for general hearing or asking."
+          },
+          "item2_nuance": {
+            "vi": "聴く dùng khi nghe nhạc hoặc lắng nghe chăm chú.",
+            "en": "聴く is for active or appreciative listening."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "行く",
+    "han_viet": "HÀNH",
+    "kana": "いく",
+    "romaji": "iku",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive",
+      "u-verb"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,20 L50,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "行",
+          "han_viet": "HÀNH",
+          "meaning": {
+            "vi": "đi",
+            "en": "go"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ HÀNH (行) mô phỏng hình ảnh ngã tư đường nơi mọi người đi lại.",
+        "en": "The kanji 行 is a pictograph of a crossroad where people travel."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "đi"
+      ],
+      "en": [
+        "to go"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "学校へ行きます。",
+        "translation": {
+          "vi": "Tôi đi đến trường.",
+          "en": "I go to school."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Lữ HÀNH là đi du lịch. 'I-ku' giống như 'Đi-cứ' thế mà đi.",
+      "en": "I-KU! (Eek!) I have to GO now!"
+    },
+    "confusions": [
+      {
+        "word": "来る",
+        "explanation": {
+          "mnemonic": {
+            "vi": "LAI (来) là đến. 'Tương lai' là cái đang đến.",
+            "en": "Visualize someone coming toward you."
+          },
+          "item1_nuance": {
+            "vi": "行く là chuyển động rời xa vị trí hiện tại.",
+            "en": "Going away from the speaker."
+          },
+          "item2_nuance": {
+            "vi": "来る là chuyển động hướng về phía người nói.",
+            "en": "Coming toward the speaker."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "kanji": "来る",
+    "han_viet": "LAI",
+    "kana": "くる",
+    "romaji": "kuru",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive",
+      "irregular-verb"
+    ],
+    "pitch_pattern": 1,
+    "pitch_svg_path": "M0,5 L25,20 L50,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "来",
+          "han_viet": "LAI",
+          "meaning": {
+            "vi": "đến",
+            "en": "come"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ LAI (来) vốn là hình bông lúa mạch được du nhập từ bên ngoài 'đến'.",
+        "en": "Originally a pictograph of wheat, which 'came' from abroad."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "đến",
+        "tới"
+      ],
+      "en": [
+        "to come"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "友達が家に来ます。",
+        "translation": {
+          "vi": "Bạn tôi sẽ đến nhà.",
+          "en": "A friend is coming to my house."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Vị LAI là chưa đến. 'Ku-ru' giống như 'Cứ-rủ' bạn đến chơi.",
+      "en": "Give them a CLUE (KURU) on how to come here."
+    },
+    "confusions": [
+      {
+        "word": "帰る",
+        "explanation": {
+          "mnemonic": {
+            "vi": "QUY (帰) là về. 'Quy cố hương' là về quê.",
+            "en": "You 'care' to return to your home."
+          },
+          "item1_nuance": {
+            "vi": "来る là đến một địa điểm bất kỳ.",
+            "en": "Coming to any location."
+          },
+          "item2_nuance": {
+            "vi": "帰る là quay về nơi mình thuộc về.",
+            "en": "Returning home or to a base."
+          }
+        }
+      }
+    ]
+  }
+]

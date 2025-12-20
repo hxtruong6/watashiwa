@@ -1,5 +1,6 @@
 import StudyContent from '@/components/StudyContent';
-import { getLastStudySession, getUser } from '@/services/actions';
+import { getUser } from '@/modules/auth/auth.actions';
+import { getLastStudySession } from '@/services/actions';
 import { redirect } from 'next/navigation';
 import React from 'react';
 

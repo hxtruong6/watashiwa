@@ -1,7 +1,7 @@
 'use server';
 
 import { prisma } from '@/lib/db';
-import { getUser } from '@/services/actions';
+import { getUser } from '@/modules/auth/auth.actions';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/client';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';

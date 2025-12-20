@@ -14,22 +14,41 @@
 
 ### 2. The "AI Factory" Pipeline
 
-- [ ] **Raw Data**: Create `seed/n5_raw.json` (50 basic words to start).
-- [ ] **Generator Script**: Build `scripts/generate_content.ts`.
+- [x] **Raw Data**: Create `seed/n5_raw.json` (50 basic words to start).
+- [x] **Generator Script**: Build `scripts/generate_content.ts`.
   - Input: Raw word.
   - Process: Call OpenAI (GPT-4o) to generate Etymology, Context, Story, Confusions.
   - Output: JSON object matching strict Zod schemas.
-- [ ] **Validator**: Script validates AI output against `EtymologySchema`, `StoryContentSchema`, etc.
+- [x] **Validator**: Script validates AI output against `EtymologySchema`, `StoryContentSchema`, etc.
 - [ ] **Seeding**: Robust `prisma seed` script to insert validated data.
 
 ### 3. Admin Verification (QA) - [NEXT STEP]
 
-- [ ] **Admin Dashboard (`/admin/dashboard`)**
-  - [ ] `GET /api/admin/pending`: Fetches `Vocabulary` where `contentStatus = AI_GENERATED`.
-  - [ ] UI: "Tinder for Words" (Approve/Reject/Edit).
-- [ ] **Quality Actions Integration**
-  - [ ] Approve Button -> Calls `vocabulary.actions.approveContent`.
-  - [ ] Flag/Reject Button -> Calls `vocabulary.actions.reportContent`.
+### 3. Admin Verification (QA) - [IN PROGRESS]
+
+#### A. Frontend (UI/UX) - [COMPLETED]
+
+- [x] **Verification Deck Component**: `VerificationDeck.tsx` & `VerificationCard.tsx`.
+  - [x] "Tinder for Words" interface (Swipe/Stack).
+  - [x] Keyboard Shortcuts (`→` Approve, `←` Reject, `Space` Audio, `E` Edit).
+  - [x] Undo Action (Toast notification).
+- [x] **Rich Data Visualization**:
+  - [x] Pitch Accent (SVG + Fallback Tag).
+  - [x] Interference Shield (Confusion Pair Highlighting).
+  - [x] Etymology (Hán Việt breakdown).
+  - [x] Color-coded Tags (N5, Verb, etc.).
+- [x] **Deep Editing**: `EditVocabularyForm.tsx`.
+  - [x] Edit complex JSON fields (`etymology`, `confusions`).
+  - [x] Mobile-friendly sticky action bar.
+
+#### B. Backend Integration (Server Actions) - [NEXT STEP]
+
+- [ ] **Data Fetching**:
+  - [ ] `getPendingContent`: Fetch `AI_GENERATED` items.
+- [ ] **Actions**:
+  - [ ] `approveVocabulary`: Update status to `VERIFIED`.
+  - [ ] `rejectVocabulary`: Update status to `FLAGGED`.
+  - [ ] `saveAndApprove`: Save edits + Approve.
 
 ---
 

@@ -1,5 +1,5 @@
 import LandingPage from '@/components/landing/LandingPage';
-import { getUser } from '@/services/actions';
+import { getUser } from '@/modules/auth/auth.actions';
 import { redirect } from 'next/navigation';
 import React from 'react';
 

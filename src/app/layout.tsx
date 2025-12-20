@@ -117,7 +117,7 @@ export default async function RootLayout({
 	const messages = await getMessages();
 
 	// Fetch user for NavBar state
-	const { getUser } = await import('@/services/actions');
+	const { getUser } = await import('@/modules/auth/auth.actions');
 	const user = await getUser();
 
 	return (
