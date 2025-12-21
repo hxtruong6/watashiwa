@@ -23,172 +23,1942 @@
         }
       ],
       "note": {
-        "vi": "Chữ '私' có Hán Việt là TƯ, mang nghĩa 'riêng tư', 'cá nhân', 'thuộc về mình'. Từ ý nghĩa này, nó được dùng để chỉ bản thân mình, tức là 'tôi'. Chữ TƯ (私) trong tiếng Việt cũng thường được dùng trong các từ ghép như 'tư nhân', 'tư lợi' để chỉ sự riêng biệt, cá thể.",
-        "en": "The Kanji 私 (shi, watashi) visually combines 禾 (he, grain, but often simplified here) and 厶 (mu, meaning private, personal, or self). The combination emphasizes something held individually or belonging to oneself, hence its core meaning of 'private' or 'personal'. From this, it evolved to mean 'I' or 'me', referring to one's private self."
+        "vi": "Chữ TƯ (私) mang nghĩa 'riêng tư'. Trong xã hội Á Đông, cái 'tôi' cá nhân thường được coi là sự riêng tư, đối lập với cái 'công' (chung).",
+        "en": "The Kanji 私 combines 'grain' (禾) and 'private/self' (厶). Originally meant 'private' (opposite of public), strictly used for 'I/myself'."
       }
     },
     "meanings": {
       "vi": [
         "tôi",
         "tớ",
-        "mình (cách xưng trung lập, phổ biến)"
+        "mình"
       ],
       "en": [
         "I",
         "me",
-        "myself (neutral, common form)"
+        "myself"
       ]
     },
     "examples": [
       {
-        "sentence": "私の名前は山田です。",
+        "sentence": "私は学生です。",
         "translation": {
-          "vi": "Tên tôi là Yamada.",
-          "en": "My name is Yamada."
-        }
-      },
-      {
-        "sentence": "これは私の本です。",
-        "translation": {
-          "vi": "Đây là sách của tôi.",
-          "en": "This is my book."
+          "vi": "Tôi là học sinh.",
+          "en": "I am a student."
         }
       }
     ],
     "mnemonic": {
-      "vi": "**TƯ** duy về cách xưng **TƯ** nhân (tôi) trong mọi trường hợp.",
-      "en": "**WA-TA-SHI** sounds like \"WHAT A SHE!\" — *I* am wondering, \"What a she!\""
+      "vi": "**TƯ** trang của **TÔI**.",
+      "en": "**WA-TA-SHI** sounds like 'What a she!' -> 'What a she (I) am!'"
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "あなた",
+    "han_viet": "BỈ PHƯƠNG",
+    "kana": "あなた",
+    "romaji": "anata",
+    "tags": [
+      "n5",
+      "pronoun",
+      "personal pronoun"
+    ],
+    "pitch_pattern": 2,
+    "pitch_svg_path": "M0,20 L33,5 L66,5 L100,20",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "Gốc từ BỈ PHƯƠNG (nơi kia/phía kia). Người Nhật xưa tránh gọi trực diện, nên dùng 'phía kia' để chỉ 'bạn'.",
+        "en": "Originally meant 'over there'. Used to refer to someone indirectly ('the person over there') to be polite."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "bạn",
+        "anh/chị (ngôi thứ 2)",
+        "mình (vợ gọi chồng)"
+      ],
+      "en": [
+        "you",
+        "dear (wife to husband)"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "あなたは学生ですか。",
+        "translation": {
+          "vi": "Bạn có phải là học sinh không?",
+          "en": "Are you a student?"
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "A nà, tạ ơn bạn.",
+      "en": "**ANATA** (Anna) is **YOU**."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "あの人",
+    "han_viet": "NHÂN",
+    "kana": "あのひと",
+    "romaji": "anohito",
+    "tags": [
+      "n5",
+      "pronoun",
+      "noun"
+    ],
+    "pitch_pattern": 2,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "人",
+          "han_viet": "NHÂN",
+          "meaning": {
+            "vi": "người",
+            "en": "person"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Người (NHÂN) ở đằng kia (ANO).",
+        "en": "That (ano) person (hito)."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "người kia",
+        "người đó"
+      ],
+      "en": [
+        "that person",
+        "he/she"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "あの人は誰ですか。",
+        "translation": {
+          "vi": "Người kia là ai vậy?",
+          "en": "Who is that person?"
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "NHÂN từ với người kia.",
+      "en": "**ANO**ther **HITO** (person)."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "あの方",
+    "han_viet": "PHƯƠNG",
+    "kana": "あのかた",
+    "romaji": "anokata",
+    "tags": [
+      "n5",
+      "pronoun",
+      "polite"
+    ],
+    "pitch_pattern": 3,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "方",
+          "han_viet": "PHƯƠNG",
+          "meaning": {
+            "vi": "hướng, phương hướng",
+            "en": "direction/way"
+          }
+        }
+      ],
+      "note": {
+        "vi": "PHƯƠNG (方) chỉ phương hướng. Gọi người bằng 'vị/ngài' (hướng kia) lịch sự hơn gọi là 'người' (NHÂN).",
+        "en": "Uses 'direction' (kata) to refer to a person indirectly, which is more polite/honorific than 'person' (hito)."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "vị kia",
+        "ngài ấy (lịch sự của あの人)"
+      ],
+      "en": [
+        "that person (polite)",
+        "that gentleman/lady"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "あの方はどなたですか。",
+        "translation": {
+          "vi": "Vị kia là ai vậy ạ?",
+          "en": "Who is that gentleman/lady?"
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Vị PHƯƠNG phi ấy là ai?",
+      "en": "That person needs a **CUT A** (Kata) above the rest."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "～人",
+    "han_viet": "NHÂN",
+    "kana": "～じん",
+    "romaji": "~jin",
+    "tags": [
+      "n5",
+      "suffix"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "人",
+          "han_viet": "NHÂN",
+          "meaning": {
+            "vi": "người",
+            "en": "person"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Hậu tố NHÂN chỉ quốc tịch/người thuộc nhóm nào đó.",
+        "en": "Suffix indicating nationality or group membership."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "người (nước ~)"
+      ],
+      "en": [
+        "-ian",
+        "person of (country)"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "私はベトナム人です。",
+        "translation": {
+          "vi": "Tôi là người Việt Nam.",
+          "en": "I am Vietnamese."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Mỹ NHÂN, Giai NHÂN -> Người.",
+      "en": "Jean is a person (Jin)."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "先生",
+    "han_viet": "TIÊN SINH",
+    "kana": "せんせい",
+    "romaji": "sensei",
+    "tags": [
+      "n5",
+      "noun",
+      "honorific"
+    ],
+    "pitch_pattern": 3,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "先",
+          "han_viet": "TIÊN",
+          "meaning": {
+            "vi": "trước",
+            "en": "before"
+          }
+        },
+        {
+          "kanji": "生",
+          "han_viet": "SINH",
+          "meaning": {
+            "vi": "sinh ra",
+            "en": "birth/life"
+          }
+        }
+      ],
+      "note": {
+        "vi": "TIÊN SINH là người sinh ra trước, hàm ý người đi trước có kinh nghiệm truyền đạt lại.",
+        "en": "One born (sei) before (sen), implying an elder or someone with mastery to teach."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "thầy/cô giáo",
+        "giáo sư",
+        "bác sĩ (cách gọi tôn trọng)"
+      ],
+      "en": [
+        "teacher",
+        "master",
+        "doctor (addressed)"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "ワット先生は親切です。",
+        "translation": {
+          "vi": "Thầy Watt rất tốt bụng.",
+          "en": "Mr. Watt (teacher) is kind."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "TIÊN sinh ra trước nên làm thầy.",
+      "en": "**SEN**se the wisdom? **SAY** it!"
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "教師",
+    "han_viet": "GIÁO SƯ",
+    "kana": "きょうし",
+    "romaji": "kyoushi",
+    "tags": [
+      "n5",
+      "noun",
+      "occupation"
+    ],
+    "pitch_pattern": 1,
+    "pitch_svg_path": "M0,5 L50,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "教",
+          "han_viet": "GIÁO",
+          "meaning": {
+            "vi": "dạy",
+            "en": "teach"
+          }
+        },
+        {
+          "kanji": "師",
+          "han_viet": "SƯ",
+          "meaning": {
+            "vi": "thầy",
+            "en": "master/teacher"
+          }
+        }
+      ],
+      "note": {
+        "vi": "GIÁO (dạy) + SƯ (thầy). Đây là từ chỉ nghề nghiệp 'Giáo viên', dùng khi kê khai lý lịch.",
+        "en": "Teacher (SƯ) who teaches (GIÁO). Used for the occupation itself."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "giáo viên (nghề nghiệp)"
+      ],
+      "en": [
+        "teacher (occupation)",
+        "instructor"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "私は教師です。",
+        "translation": {
+          "vi": "Tôi là giáo viên. (Nghề của tôi là giáo viên)",
+          "en": "I am a teacher (by profession)."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "GIÁO (dạy) SƯ (thầy) là nghề cao quý.",
+      "en": "**KYOU** (Today) **SHE** is a teacher."
     },
     "confusions": [
       {
-        "word": "僕 (boku)",
+        "word": "先生 (sensei)",
         "explanation": {
           "mnemonic": {
-            "vi": "BỘC (僕) nghe như \"bóc\" (lột) - từ này thường dùng cho nam giới trẻ tuổi, như một cậu bé đang \"bóc\" lớp vỏ tuổi thơ.",
-            "en": "BOKU sounds like \"BOY-ku\" - a boy uses this."
+            "vi": "Sensei để gọi (Thầy ơi!). Kyoushi để khai nghề (Tôi là giáo viên).",
+            "en": "Sensei is a Title. Kyoushi is a Job."
           },
           "item1_nuance": {
-            "vi": "“Boku” (僕) là cách xưng “tôi” của nam giới, thường mang sắc thái khiêm tốn, thân thiện hoặc lịch sự hơn “Ore”. Nó thường được dùng bởi nam giới trẻ, học sinh, hoặc trong môi trường thân mật, hoặc khi nói chuyện với người ngang hàng/hơn mình một chút để thể hiện sự tôn trọng. Hán Việt là BỘC (僕), nghĩa gốc là \"người hầu\", \"tôi tớ\", phản ánh sắc thái khiêm tốn.",
-            "en": "“Boku” (僕) is a masculine way to say 'I/me'. It carries a humble, friendly, or slightly more polite nuance than 'Ore'. It's commonly used by younger males, students, or in intimate settings, or when speaking to equals/slightly superiors to show respect."
+            "vi": "Danh từ chỉ nghề nghiệp (dùng khi nói về mình).",
+            "en": "Occupation noun (humble/neutral)."
           },
           "item2_nuance": {
-            "vi": "Không phải phụ nữ dùng.",
-            "en": "Not used by females."
-          }
-        }
-      },
-      {
-        "word": "俺 (ore)",
-        "explanation": {
-          "mnemonic": {
-            "vi": "ORE nghe như \"Ô RÊ!\" (\"Oh yeah!\") - thể hiện sự tự tin, mạnh mẽ của \"tôi\" (nam).",
-            "en": "ORE sounds like \"OH RE!\" (Oh yeah!) - *I* am confident, *I* am strong!"
-          },
-          "item1_nuance": {
-            "vi": "“Ore” (俺) là cách xưng “tôi” của nam giới, mang sắc thái mạnh mẽ, nam tính, đôi khi thô tục hoặc suồng sã. Thường dùng trong ngữ cảnh rất thân mật với bạn bè thân, gia đình, hoặc khi muốn thể hiện sự vượt trội, tự tin. Không dùng với người cấp trên, người lớn tuổi hơn, hoặc người không quen biết vì có thể bị coi là thiếu lịch sự.",
-            "en": "“Ore” (俺) is a masculine way to say 'I/me'. It carries a strong, masculine, sometimes rude or arrogant nuance. It's typically used in very intimate settings with close friends or family, or when wanting to assert dominance or confidence. It should not be used with superiors, elders, or strangers as it can be considered impolite."
-          },
-          "item2_nuance": {
-            "vi": "Không phải phụ nữ dùng.",
-            "en": "Not used by females."
+            "vi": "Danh xưng tôn trọng (người khác gọi mình hoặc mình gọi người khác).",
+            "en": "Honorific title (addressing others)."
           }
         }
       }
     ]
   },
   {
-    "word_surface": "あなた",
-    "han_viet": "",
-    "kana": "あなた",
-    "romaji": "anata",
+    "word_surface": "学生",
+    "han_viet": "HỌC SINH",
+    "kana": "がくせい",
+    "romaji": "gakusei",
     "tags": [
       "n5",
-      "pronoun",
       "noun"
     ],
     "pitch_pattern": 0,
-    "pitch_svg_path": "M0,20 L33,20 L66,20 L100,20",
+    "pitch_svg_path": "M0,20 L25,20 L50,20 L75,20",
     "etymology": {
       "parts": [
         {
-          "kanji": "彼方",
-          "han_viet": "BỈ PHƯƠNG",
+          "kanji": "学",
+          "han_viet": "HỌC",
           "meaning": {
-            "vi": "Đằng kia, nơi đó",
-            "en": "That way, over there, yonder"
+            "vi": "học",
+            "en": "study/learning"
+          }
+        },
+        {
+          "kanji": "生",
+          "han_viet": "SINH",
+          "meaning": {
+            "vi": "sinh sống/người",
+            "en": "life/student"
           }
         }
       ],
       "note": {
-        "vi": "Từ 彼方 (BỈ PHƯƠNG - đằng kia, nơi đó) ban đầu chỉ một địa điểm xa xôi, sau đó chuyển nghĩa thành người ở nơi xa xôi đó, và cuối cùng trở thành đại từ nhân xưng 'bạn'.",
-        "en": "Originally derived from 彼方 (kanata), meaning 'that way, over there, yonder'. It evolved from referring to a distant place, then to the person at that distant place, eventually becoming a general pronoun for 'you'."
+        "vi": "HỌC SINH là người đang theo học (thường chỉ sinh viên đại học, nhưng N5 dùng chung).",
+        "en": "A life (sei) dedicated to learning (gaku)."
       }
     },
     "meanings": {
       "vi": [
-        "Bạn, anh, chị, cô, chú (thường dùng cho người ngang hàng hoặc thấp hơn, hoặc khi không biết tên người đối diện)",
-        "Ông xã, bà xã (khi vợ chồng gọi nhau)"
+        "bạn học",
+        "sinh viên",
+        "học sinh"
       ],
       "en": [
-        "You (general, often used when the speaker doesn't know the listener's name, or for someone of equal/lower status; can be impolite if used frequently with superiors)",
-        "My dear, darling (used by a married couple to address each other)"
+        "student"
       ]
     },
     "examples": [
       {
-        "sentence": "あなた、どこにいるの？",
+        "sentence": "彼は学生です。",
         "translation": {
-          "vi": "Anh/Em ơi, anh/em đang ở đâu vậy?",
-          "en": "Darling, where are you?"
-        }
-      },
-      {
-        "sentence": "あなたのお名前は何ですか？",
-        "translation": {
-          "vi": "Tên của bạn là gì?",
-          "en": "What is your name?"
+          "vi": "Anh ấy là sinh viên.",
+          "en": "He is a student."
         }
       }
     ],
     "mnemonic": {
-      "vi": "AHA! NÀY TẠ! Bạn có nhớ không?",
-      "en": "A Naughty TAmagotchi. You are a naughty Tamagotchi!"
+      "vi": "HỌC SINH phải đi học.",
+      "en": "**GAKU** (School) **SAY**, study!"
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "会社員",
+    "han_viet": "HỘI XÃ VIÊN",
+    "kana": "かいしゃいん",
+    "romaji": "kaishain",
+    "tags": [
+      "n5",
+      "noun",
+      "occupation"
+    ],
+    "pitch_pattern": 3,
+    "pitch_svg_path": "M0,20 L20,5 L40,5 L60,5 L80,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "会",
+          "han_viet": "HỘI",
+          "meaning": {
+            "vi": "gặp gỡ/hội nhóm",
+            "en": "meet/association"
+          }
+        },
+        {
+          "kanji": "社",
+          "han_viet": "XÃ",
+          "meaning": {
+            "vi": "xã hội/công ty",
+            "en": "company/shrine"
+          }
+        },
+        {
+          "kanji": "員",
+          "han_viet": "VIÊN",
+          "meaning": {
+            "vi": "thành viên",
+            "en": "member"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Thành VIÊN của HỘI XÃ (Công ty).",
+        "en": "Member (in) of a Company (Kaisha)."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "nhân viên công ty"
+      ],
+      "en": [
+        "company employee",
+        "office worker"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "父は会社員です。",
+        "translation": {
+          "vi": "Bố tôi là nhân viên công ty.",
+          "en": "My father is a company employee."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "HỘI XÃ VIÊN đi làm ở công ty.",
+      "en": "**KAI** (Buy) **SHA** (Share) **IN** the company."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "社員",
+    "han_viet": "XÃ VIÊN",
+    "kana": "しゃいん",
+    "romaji": "shain",
+    "tags": [
+      "n5",
+      "noun"
+    ],
+    "pitch_pattern": 1,
+    "pitch_svg_path": "M0,5 L50,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "社",
+          "han_viet": "XÃ",
+          "meaning": {
+            "vi": "công ty",
+            "en": "company"
+          }
+        },
+        {
+          "kanji": "員",
+          "han_viet": "VIÊN",
+          "meaning": {
+            "vi": "thành viên",
+            "en": "member"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Thành VIÊN của XÃ (Công ty). Thường đi kèm tên công ty (VD: ABC no Shain).",
+        "en": "Member (in) of Company (Sha). Used with company name."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "nhân viên (của công ty nào đó)"
+      ],
+      "en": [
+        "employee (of ~)"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "私はIMCの社員です。",
+        "translation": {
+          "vi": "Tôi là nhân viên của IMC.",
+          "en": "I am an employee of IMC."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "XÃ VIÊN của hợp tác xã.",
+      "en": "**SHINE** bright like an employee."
     },
     "confusions": [
       {
-        "word": "君 (きみ)",
+        "word": "会社員 (kaishain)",
         "explanation": {
           "mnemonic": {
-            "vi": "KIMI CÚI (君): Người đứng trên gọi người dưới.",
-            "en": "KIMI (You, male): A KING might say 'Kimi' to a vassal."
+            "vi": "Kaishain là nghề. Shain là người của công ty cụ thể.",
+            "en": "Kaishain = Job Title. Shain = Belonging to a specific company."
           },
           "item1_nuance": {
-            "vi": "`あなた` (Bạn): Trung lập hơn, hoặc vợ chồng gọi nhau. Có thể thiếu tôn trọng nếu dùng với người trên.",
-            "en": "`あなた` (You): More general or neutral, or used by spouses. Can be impolite if used often with superiors."
+            "vi": "Đi kèm tên công ty (IMC no Shain).",
+            "en": "Used with specific company context."
           },
           "item2_nuance": {
-            "vi": "`君` (Em, Cậu): Người trên (nam giới) gọi người dưới, hoặc nam giới gọi bạn bè thân thiết/người yêu. Thân mật hơn `あなた` nhưng có sắc thái 'ra lệnh' hoặc 'kém tôn trọng' nếu dùng không đúng.",
-            "en": "`君` (You, informal): Used by a male superior to address a subordinate, or by males to close friends/lovers. More intimate than `anata` but carries a nuance of 'command' or 'less respect' if used improperly."
-          }
-        }
-      },
-      {
-        "word": "お前 (おまえ)",
-        "explanation": {
-          "mnemonic": {
-            "vi": "Ô! MA-E! (Ông mẹ): Quá thô tục, chỉ dùng khi cãi nhau hoặc cực thân thiết.",
-            "en": "OH MY! You are so RUDE! (O-MAE is very rude)."
-          },
-          "item1_nuance": {
-            "vi": "`あなた` (Bạn): Trung lập, hoặc vợ chồng gọi nhau. Tránh dùng liên tục với người trên.",
-            "en": "`あなた` (You): Neutral, or used by spouses. Avoid continuous use with superiors."
-          },
-          "item2_nuance": {
-            "vi": "`お前` (Mày, Mi): Rất thô tục, nam giới dùng cho người ngang hàng hoặc thấp hơn trong tình huống rất thân thiết (bạn bè) hoặc tức giận, cãi vã. Tuyệt đối không dùng với người lạ hay người trên.",
-            "en": "`お前` (You, extremely informal/rude): Very informal, often rude. Used by males to equals or inferiors in very intimate (close friends) or angry situations. Never use with strangers or superiors."
+            "vi": "Nói chung về nghề nghiệp.",
+            "en": "General occupation."
           }
         }
       }
     ]
+  },
+  {
+    "word_surface": "銀行員",
+    "han_viet": "NGÂN HÀNH VIÊN",
+    "kana": "ぎんこういん",
+    "romaji": "ginkouin",
+    "tags": [
+      "n5",
+      "noun",
+      "occupation"
+    ],
+    "pitch_pattern": 3,
+    "pitch_svg_path": "M0,20 L20,5 L40,5 L60,5 L80,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "銀",
+          "han_viet": "NGÂN",
+          "meaning": {
+            "vi": "bạc/tiền",
+            "en": "silver"
+          }
+        },
+        {
+          "kanji": "行",
+          "han_viet": "HÀNH",
+          "meaning": {
+            "vi": "đi/tổ chức",
+            "en": "go/bank"
+          }
+        },
+        {
+          "kanji": "員",
+          "han_viet": "VIÊN",
+          "meaning": {
+            "vi": "thành viên",
+            "en": "member"
+          }
+        }
+      ],
+      "note": {
+        "vi": "VIÊN chức làm ở NGÂN HÀNH (nơi lưu chuyển Bạc).",
+        "en": "Member (in) of the Silver (Gin) Bank (Kou)."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "nhân viên ngân hàng"
+      ],
+      "en": [
+        "bank employee"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "母は銀行員です。",
+        "translation": {
+          "vi": "Mẹ tôi làm nhân viên ngân hàng.",
+          "en": "My mother is a bank employee."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Ông NGÂN đi làm ngân HÀNH.",
+      "en": "**GIN** (Silver) **COIN**."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "医者",
+    "han_viet": "Y GIẢ",
+    "kana": "いしゃ",
+    "romaji": "isha",
+    "tags": [
+      "n5",
+      "noun",
+      "occupation"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L50,20 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "医",
+          "han_viet": "Y",
+          "meaning": {
+            "vi": "y học/chữa bệnh",
+            "en": "medicine"
+          }
+        },
+        {
+          "kanji": "者",
+          "han_viet": "GIẢ",
+          "meaning": {
+            "vi": "người (có chuyên môn)",
+            "en": "person"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Y GIẢ là người làm nghề y.",
+        "en": "Person (sha) of Medicine (i)."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "bác sĩ"
+      ],
+      "en": [
+        "medical doctor"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "彼は医者です。",
+        "translation": {
+          "vi": "Anh ấy là bác sĩ.",
+          "en": "He is a doctor."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Y tá và Y GIẢ.",
+      "en": "**E**-mergency **SHA**man (doctor)."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "研究者",
+    "han_viet": "NGHIÊN CỨU GIẢ",
+    "kana": "けんきゅうしゃ",
+    "romaji": "kenkyuusha",
+    "tags": [
+      "n5",
+      "noun",
+      "occupation"
+    ],
+    "pitch_pattern": 3,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "研",
+          "han_viet": "NGHIÊN",
+          "meaning": {
+            "vi": "mài giũa/nghiên cứu",
+            "en": "sharpen/study"
+          }
+        },
+        {
+          "kanji": "究",
+          "han_viet": "CỨU",
+          "meaning": {
+            "vi": "nghiên cứu sâu/truy tìm",
+            "en": "research"
+          }
+        },
+        {
+          "kanji": "者",
+          "han_viet": "GIẢ",
+          "meaning": {
+            "vi": "người",
+            "en": "person"
+          }
+        }
+      ],
+      "note": {
+        "vi": "NGHIÊN CỨU GIẢ là người chuyên mài giũa (nghiên) và truy tìm (cứu) kiến thức.",
+        "en": "Person (sha) who sharpens (ken) and masters (kyuu) knowledge."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "nhà nghiên cứu"
+      ],
+      "en": [
+        "researcher",
+        "scholar"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "彼は大学の研究者です。",
+        "translation": {
+          "vi": "Anh ấy là nhà nghiên cứu ở trường đại học.",
+          "en": "He is a researcher at the university."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "NGHIÊN CỨU mãi mới thành Giả (người).",
+      "en": "**KEN** and **Q** (Kyuu) are researchers."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "大学",
+    "han_viet": "ĐẠI HỌC",
+    "kana": "だいがく",
+    "romaji": "daigaku",
+    "tags": [
+      "n5",
+      "noun",
+      "place"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L50,20 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "大",
+          "han_viet": "ĐẠI",
+          "meaning": {
+            "vi": "lớn",
+            "en": "big"
+          }
+        },
+        {
+          "kanji": "学",
+          "han_viet": "HỌC",
+          "meaning": {
+            "vi": "học",
+            "en": "study/school"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Trường học (HỌC) lớn (ĐẠI), cấp cao.",
+        "en": "Big (Dai) School (Gaku)."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "trường đại học"
+      ],
+      "en": [
+        "university",
+        "college"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "ここは大学です。",
+        "translation": {
+          "vi": "Đây là trường đại học.",
+          "en": "This is a university."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Học ĐẠI HỌC to lắm.",
+      "en": "**DIE** (Dai) **GAK** (Gaku) - Study until you drop."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "病院",
+    "han_viet": "BỆNH VIỆN",
+    "kana": "びょういん",
+    "romaji": "byouin",
+    "tags": [
+      "n5",
+      "noun",
+      "place"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L50,20 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "病",
+          "han_viet": "BỆNH",
+          "meaning": {
+            "vi": "ốm đau",
+            "en": "sick/illness"
+          }
+        },
+        {
+          "kanji": "院",
+          "han_viet": "VIỆN",
+          "meaning": {
+            "vi": "công trình/viện",
+            "en": "institution"
+          }
+        }
+      ],
+      "note": {
+        "vi": "VIỆN chữa BỆNH.",
+        "en": "Institution (in) for Illness (byou)."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "bệnh viện"
+      ],
+      "en": [
+        "hospital"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "病院へ行きます。",
+        "translation": {
+          "vi": "Tôi đi đến bệnh viện.",
+          "en": "I go to the hospital."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "BỆNH nhân vào VIỆN.",
+      "en": "**BY O**ur **IN**stitution (Hospital)."
+    },
+    "confusions": [
+      {
+        "word": "美容院 (biyouin)",
+        "explanation": {
+          "mnemonic": {
+            "vi": "BYOU (Bệnh) là ốm. BIYOU (Mỹ Dung) là đẹp.",
+            "en": "Byouin (Hospital) vs Biyouin (Beauty Salon). Short 'byo' is sick, long 'biyo' is beautiful."
+          },
+          "item1_nuance": {
+            "vi": "Nơi chữa bệnh. (Byou - 1 âm tiết)",
+            "en": "Hospital. (Byou - 1 beat)"
+          },
+          "item2_nuance": {
+            "vi": "Thẩm mỹ viện/Tiệm cắt tóc. (Bi-you - 2 âm tiết)",
+            "en": "Beauty Salon. (Bi-you - 2 beats)"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "word_surface": "だれ",
+    "han_viet": "",
+    "kana": "だれ",
+    "romaji": "dare",
+    "tags": [
+      "n5",
+      "pronoun",
+      "interrogative"
+    ],
+    "pitch_pattern": 1,
+    "pitch_svg_path": "M0,5 L50,20",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "Từ để hỏi thông thường 'Ai?'.",
+        "en": "Basic question word for 'Who?'."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "ai"
+      ],
+      "en": [
+        "who"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "あの人はだれですか。",
+        "translation": {
+          "vi": "Người kia là ai vậy?",
+          "en": "Who is that person?"
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Người đó LÀ ai? (Đa-lê)",
+      "en": "**DARE** to ask who it is?"
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "どなた",
+    "han_viet": "HÀ PHƯƠNG",
+    "kana": "どなた",
+    "romaji": "donata",
+    "tags": [
+      "n5",
+      "pronoun",
+      "interrogative",
+      "polite"
+    ],
+    "pitch_pattern": 1,
+    "pitch_svg_path": "M0,5 L33,20 L66,20 L100,20",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "Vốn là 'hướng nào' (HÀ PHƯƠNG - dùng kanji cổ), chuyển nghĩa lịch sự hỏi người 'vị nào'.",
+        "en": "Polite equivalent of 'dare'. Literally 'which way/side', implying 'which person'."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "vị nào",
+        "ai (lịch sự)"
+      ],
+      "en": [
+        "who (polite)"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "失礼ですが、どなたですか。",
+        "translation": {
+          "vi": "Xin lỗi, ngài là ai vậy ạ?",
+          "en": "Excuse me, but who are you (polite)?"
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "ĐÔ-NA-TA (Donate) cho vị nào?",
+      "en": "**DONATE a** coin to **WHO** (polite)?"
+    },
+    "confusions": [
+      {
+        "word": "だれ (dare)",
+        "explanation": {
+          "mnemonic": {
+            "vi": "Dare sỗ sàng. Donata đàng hoàng.",
+            "en": "Dare is plain. Donata is polite."
+          },
+          "item1_nuance": {
+            "vi": "Lịch sự, tôn trọng (dùng với cấp trên, khách hàng, người lạ lớn tuổi).",
+            "en": "Polite, respectful (superiors, customers)."
+          },
+          "item2_nuance": {
+            "vi": "Thông thường (dùng với bạn bè, người dưới).",
+            "en": "Casual, standard."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "word_surface": "～歳",
+    "han_viet": "TUẾ",
+    "kana": "～さい",
+    "romaji": "~sai",
+    "tags": [
+      "n5",
+      "suffix",
+      "counter"
+    ],
+    "pitch_pattern": 1,
+    "pitch_svg_path": "M0,5 L50,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "歳",
+          "han_viet": "TUẾ",
+          "meaning": {
+            "vi": "tuổi / năm",
+            "en": "age / years"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Vạn TUẾ (Vạn năm/tuổi).",
+        "en": "Counter for age."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "~ tuổi"
+      ],
+      "en": [
+        "-years old"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "私は20歳です。",
+        "translation": {
+          "vi": "Tôi 20 tuổi.",
+          "en": "I am 20 years old."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Vạn TUẾ, vạn vạn TUẾ.",
+      "en": "**SIGH** (Sai), I am getting old."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "何歳",
+    "han_viet": "HÀ TUẾ",
+    "kana": "なんさい",
+    "romaji": "nansai",
+    "tags": [
+      "n5",
+      "pronoun",
+      "interrogative",
+      "counter"
+    ],
+    "pitch_pattern": 1,
+    "pitch_svg_path": "M0,5 L25,20 L50,20 L75,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "何",
+          "han_viet": "HÀ",
+          "meaning": {
+            "vi": "cái gì/bao nhiêu",
+            "en": "what/how many"
+          }
+        },
+        {
+          "kanji": "歳",
+          "han_viet": "TUẾ",
+          "meaning": {
+            "vi": "tuổi",
+            "en": "age"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Bao nhiêu (HÀ) + Tuổi (TUẾ) = Mấy tuổi.",
+        "en": "How many (nan) + Ages (sai)."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "mấy tuổi",
+        "bao nhiêu tuổi"
+      ],
+      "en": [
+        "how old"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "お子さんは何歳ですか。",
+        "translation": {
+          "vi": "Con anh/chị mấy tuổi rồi?",
+          "en": "How old is your child?"
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "HÀ TUẾ là hỏi tuổi.",
+      "en": "**NAN**ny **SIGH**ed asking how old."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "おいくつ",
+    "han_viet": "",
+    "kana": "おいくつ",
+    "romaji": "oikutsu",
+    "tags": [
+      "n5",
+      "pronoun",
+      "interrogative",
+      "polite"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,20 L50,20 L75,20",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "Dạng lịch sự của 'Mấy cái' (Ikutsu), dùng để hỏi tuổi một cách trang trọng.",
+        "en": "Polite form of 'How many' (Ikutsu), used to ask age politely."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "bao nhiêu tuổi (lịch sự)"
+      ],
+      "en": [
+        "how old (polite)"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "失礼ですが、おいくつですか。",
+        "translation": {
+          "vi": "Xin lỗi, anh/chị bao nhiêu tuổi ạ?",
+          "en": "Excuse me, may I ask your age?"
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Ôi (O) bao nhiêu cái (ikutsu)?",
+      "en": "**O**h **I** **CUT S**ue's cake? (How old is she?)"
+    },
+    "confusions": [
+      {
+        "word": "何歳 (nansai)",
+        "explanation": {
+          "mnemonic": {
+            "vi": "Nansai hỏi bạn. Oikutsu hỏi bác.",
+            "en": "Nansai is standard. Oikutsu is polite."
+          },
+          "item1_nuance": {
+            "vi": "Lịch sự hơn, dùng cho người lớn tuổi, cấp trên.",
+            "en": "More polite/honorific."
+          },
+          "item2_nuance": {
+            "vi": "Thông thường.",
+            "en": "Standard."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "word_surface": "初めまして",
+    "han_viet": "SƠ",
+    "kana": "はじめまして",
+    "romaji": "hajimemashite",
+    "tags": [
+      "n5",
+      "expression",
+      "greeting"
+    ],
+    "pitch_pattern": 4,
+    "pitch_svg_path": "M0,20 L16,5 L33,5 L50,5 L66,20 L83,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "初",
+          "han_viet": "SƠ",
+          "meaning": {
+            "vi": "lần đầu/ban đầu",
+            "en": "first/beginning"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Từ động từ 始める (bắt đầu). Nghĩa đen: 'Lần đầu gặp gỡ', 'Chúng ta bắt đầu (mối quan hệ)'.",
+        "en": "From verb 'hajimeru' (to begin). Literally 'It is the beginning (of our relationship)'."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "rất hân hạnh được gặp bạn (lần đầu)"
+      ],
+      "en": [
+        "nice to meet you (first time)",
+        "how do you do"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "初めまして、マイクです。",
+        "translation": {
+          "vi": "Hân hạnh làm quen, tôi là Mike.",
+          "en": "Nice to meet you, I'm Mike."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "SƠ cấp thì gặp nhau lần đầu.",
+      "en": "**HAJI** (Shame) if we **ME**t and didn't say hi."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "～から来ました",
+    "han_viet": "LAI",
+    "kana": "～からきました",
+    "romaji": "~karakimashita",
+    "tags": [
+      "n5",
+      "expression"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "来",
+          "han_viet": "LAI",
+          "meaning": {
+            "vi": "đến",
+            "en": "come"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Từ (Kara) + Đã đến (Kimashita - LAI).",
+        "en": "From (kara) + Came (kimashita)."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "tôi đến từ ~"
+      ],
+      "en": [
+        "I came from ~"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "ベトナムから来ました。",
+        "translation": {
+          "vi": "Tôi đến từ Việt Nam.",
+          "en": "I came from Vietnam."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Vãng LAI là đến và đi.",
+      "en": "I **CAME** from a **CAR** (Kara)."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "どうぞよろしくお願いします",
+    "han_viet": "NGUYỆN",
+    "kana": "どうぞよろしくおねがいします",
+    "romaji": "douzoyoroshikuonegaishimasu",
+    "tags": [
+      "n5",
+      "expression",
+      "greeting"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "願",
+          "han_viet": "NGUYỆN",
+          "meaning": {
+            "vi": "cầu mong/xin",
+            "en": "wish/request"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Yoroshiku (Tốt đẹp) + Onegaishimasu (Cầu NGUYỆN/Xin). Nghĩa: 'Mong được anh chị giúp đỡ/đối xử tốt'.",
+        "en": "Douzo (Please) + Yoroshiku (Well/Good favor) + Onegaishimasu (I request). Lit: Be good to me please."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "rất vui được làm quen",
+        "mong được giúp đỡ"
+      ],
+      "en": [
+        "pleased to meet you",
+        "please treat me well"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "どうぞよろしくお願いします。",
+        "translation": {
+          "vi": "Rất vui được làm quen với anh/chị.",
+          "en": "Pleased to meet you."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Tự NGUYỆN xin giúp đỡ.",
+      "en": "A really long phrase to say 'Hi'."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "失礼ですが",
+    "han_viet": "THẤT LỄ",
+    "kana": "しつれいですが",
+    "romaji": "shitsureidesuga",
+    "tags": [
+      "n5",
+      "expression"
+    ],
+    "pitch_pattern": 2,
+    "pitch_svg_path": "M0,20 L33,5 L66,20 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "失",
+          "han_viet": "THẤT",
+          "meaning": {
+            "vi": "mất/lỗi",
+            "en": "lose/error"
+          }
+        },
+        {
+          "kanji": "礼",
+          "han_viet": "LỄ",
+          "meaning": {
+            "vi": "lễ nghi",
+            "en": "manners/bow"
+          }
+        }
+      ],
+      "note": {
+        "vi": "THẤT LỄ (Mất lịch sự) + Desu ga (nhưng mà). Dùng làm rào đón trước khi hỏi thông tin cá nhân.",
+        "en": "Shitsurei (Rude/Impolite) + Desu ga (is it, but...). Lit: 'It is rude of me, but...'."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "xin lỗi (khi muốn hỏi chuyện riêng tư, hoặc làm phiền ai)"
+      ],
+      "en": [
+        "excuse me, but..."
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "失礼ですが、お名前は？",
+        "translation": {
+          "vi": "Xin lỗi, tên anh/chị là gì ạ?",
+          "en": "Excuse me, but what is your name?"
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Sợ THẤT LỄ nên phải xin lỗi trước.",
+      "en": "**SHE** (Shi) **TWO** (Tsu) **RAY**s (Rei) is rude."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "お名前は",
+    "han_viet": "DANH TIỀN",
+    "kana": "おなまえは",
+    "romaji": "onamaewa",
+    "tags": [
+      "n5",
+      "expression",
+      "question"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,20 L50,20 L75,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "名",
+          "han_viet": "DANH",
+          "meaning": {
+            "vi": "tên",
+            "en": "name"
+          }
+        },
+        {
+          "kanji": "前",
+          "han_viet": "TIỀN",
+          "meaning": {
+            "vi": "trước",
+            "en": "front"
+          }
+        }
+      ],
+      "note": {
+        "vi": "O (Kính ngữ) + Namae (DANH TIỀN - Tên). Câu hỏi rút gọn 'Tên bạn là gì?'.",
+        "en": "O (Polite) + Name (Namae) + Wa (Topic marker). Short for 'As for your name...?'."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "tên bạn là gì?"
+      ],
+      "en": [
+        "what is your name? (polite)"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "お名前は？",
+        "translation": {
+          "vi": "Tên bạn là gì?",
+          "en": "Your name, please?"
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Xưng DANH.",
+      "en": "**NA, MY** (Namae) name is..."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "こちらは～さんです",
+    "han_viet": "",
+    "kana": "こちらは～さんです",
+    "romaji": "kochira wa ~san desu",
+    "tags": [
+      "n5",
+      "expression",
+      "introduction"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "Kochira (Phía này/Vị này) + Wa + San (Ông/Bà) + Desu (Là). Dùng để giới thiệu người khác.",
+        "en": "This person/side (Kochira) is Mr/Ms (San)."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "đây là anh/chị/ông/bà ~"
+      ],
+      "en": [
+        "this is Mr./Ms. ~"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "こちらはミラーさんです。",
+        "translation": {
+          "vi": "Đây là anh Miller.",
+          "en": "This is Mr. Miller."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "CÔ CHI LẠ (Kochira) ở phía này.",
+      "en": "**COACH** (Kochi) is right here."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "アメリカ",
+    "han_viet": "",
+    "kana": "あめりか",
+    "romaji": "amerika",
+    "tags": [
+      "n5",
+      "noun",
+      "katakana",
+      "country"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "Từ mượn tiếng Anh: America.",
+        "en": "Loan word from English: America."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "Mỹ",
+        "Hoa Kỳ"
+      ],
+      "en": [
+        "USA",
+        "America"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "私はアメリカから来ました。",
+        "translation": {
+          "vi": "Tôi đến từ Mỹ.",
+          "en": "I came from America."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "A Mê Ri Ca.",
+      "en": "Sounds like America."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "イギリス",
+    "han_viet": "",
+    "kana": "いぎりす",
+    "romaji": "igirisu",
+    "tags": [
+      "n5",
+      "noun",
+      "katakana",
+      "country"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "Từ tiếng Bồ Đào Nha 'Inglez' (người Anh).",
+        "en": "Derived from Portuguese 'Inglez' (English)."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "Anh (quốc)"
+      ],
+      "en": [
+        "UK",
+        "Britain"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "彼はイギリス人です。",
+        "translation": {
+          "vi": "Anh ấy là người Anh.",
+          "en": "He is British."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Y ghi (Igi) vào lịch sử (risu) nước Anh.",
+      "en": "**IGGY** (Igi) the squirrel (Risu) is British."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "インド",
+    "han_viet": "ẤN ĐỘ",
+    "kana": "いんど",
+    "romaji": "indo",
+    "tags": [
+      "n5",
+      "noun",
+      "katakana",
+      "country"
+    ],
+    "pitch_pattern": 1,
+    "pitch_svg_path": "M0,5 L33,20 L66,20",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "Phiên âm: Ấn Độ.",
+        "en": "Loan word: India."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "Ấn Độ"
+      ],
+      "en": [
+        "India"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "インドのカレーはおいしいです。",
+        "translation": {
+          "vi": "Cà ri Ấn Độ rất ngon.",
+          "en": "Indian curry is delicious."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "In (in) một Độ (do) (Ấn Độ).",
+      "en": "**INDO**ors in India."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "インドネシア",
+    "han_viet": "",
+    "kana": "いんどねしあ",
+    "romaji": "indoneshia",
+    "tags": [
+      "n5",
+      "noun",
+      "katakana",
+      "country"
+    ],
+    "pitch_pattern": 3,
+    "pitch_svg_path": "M0,20 L20,5 L40,5 L60,5 L80,20",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "Phiên âm: Indonesia.",
+        "en": "Loan word: Indonesia."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "Indonesia"
+      ],
+      "en": [
+        "Indonesia"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "インドネシア人です。",
+        "translation": {
+          "vi": "Là người Indonesia.",
+          "en": "I am Indonesian."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Vang âm Indonesia.",
+      "en": "Sounds like Indonesia."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "韓国",
+    "han_viet": "HÀN QUỐC",
+    "kana": "かんこく",
+    "romaji": "kankoku",
+    "tags": [
+      "n5",
+      "noun",
+      "country"
+    ],
+    "pitch_pattern": 1,
+    "pitch_svg_path": "M0,5 L50,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "韓",
+          "han_viet": "HÀN",
+          "meaning": {
+            "vi": "nước Hàn",
+            "en": "Korea"
+          }
+        },
+        {
+          "kanji": "国",
+          "han_viet": "QUỐC",
+          "meaning": {
+            "vi": "nước/quốc gia",
+            "en": "country"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Đất nước (QUỐC) của người HÀN.",
+        "en": "Country (Koku) of Kan (Korea)."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "Hàn Quốc"
+      ],
+      "en": [
+        "South Korea"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "韓国料理が好きです。",
+        "translation": {
+          "vi": "Tôi thích món ăn Hàn Quốc.",
+          "en": "I like Korean food."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "HÀN QUỐC thì lạnh (Hàn).",
+      "en": "**CAN** (Kan) of **COKE** (Koku) in Korea."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "中国",
+    "han_viet": "TRUNG QUỐC",
+    "kana": "ちゅうごく",
+    "romaji": "chuugoku",
+    "tags": [
+      "n5",
+      "noun",
+      "country"
+    ],
+    "pitch_pattern": 1,
+    "pitch_svg_path": "M0,5 L50,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "中",
+          "han_viet": "TRUNG",
+          "meaning": {
+            "vi": "giữa/trung tâm",
+            "en": "middle/center"
+          }
+        },
+        {
+          "kanji": "国",
+          "han_viet": "QUỐC",
+          "meaning": {
+            "vi": "nước",
+            "en": "country"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Nước (QUỐC) ở trung tâm (TRUNG). Quan niệm xưa Trung Quốc là trung tâm thế giới.",
+        "en": "Middle (Chuu) Country (Goku)."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "Trung Quốc"
+      ],
+      "en": [
+        "China"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "中国は大きいです。",
+        "translation": {
+          "vi": "Trung Quốc rất lớn.",
+          "en": "China is big."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Nước TRUNG tâm.",
+      "en": "**CHEW** (Chuu) **GO** (Go) **COO**l (Ku) Chinese food."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "日本",
+    "han_viet": "NHẬT BẢN",
+    "kana": "にほん",
+    "romaji": "nihon",
+    "tags": [
+      "n5",
+      "noun",
+      "country"
+    ],
+    "pitch_pattern": 2,
+    "pitch_svg_path": "M0,20 L50,5 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "日",
+          "han_viet": "NHẬT",
+          "meaning": {
+            "vi": "mặt trời/ngày",
+            "en": "sun/day"
+          }
+        },
+        {
+          "kanji": "本",
+          "han_viet": "BẢN",
+          "meaning": {
+            "vi": "gốc/sách",
+            "en": "origin/book"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Gốc (BẢN) của Mặt trời (NHẬT). Đất nước mặt trời mọc.",
+        "en": "Sun (Ni) Origin (Hon). Land of the Rising Sun."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "Nhật Bản"
+      ],
+      "en": [
+        "Japan"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "私は日本へ行きます。",
+        "translation": {
+          "vi": "Tôi đi Nhật Bản.",
+          "en": "I go to Japan."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "NHẬT BẢN là gốc mặt trời.",
+      "en": "**KNEE** (Ni) **HON**ey (Hon), let's go to Japan."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ドイツ",
+    "han_viet": "",
+    "kana": "どいつ",
+    "romaji": "doitsu",
+    "tags": [
+      "n5",
+      "noun",
+      "katakana",
+      "country"
+    ],
+    "pitch_pattern": 1,
+    "pitch_svg_path": "M0,5 L50,20",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "Từ tiếng Đức 'Deutsch'.",
+        "en": "From German 'Deutsch'."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "Đức"
+      ],
+      "en": [
+        "Germany"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "ドイツのビール。",
+        "translation": {
+          "vi": "Bia Đức.",
+          "en": "German beer."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Đổi (Doi) tiền xu (tsu) đi Đức.",
+      "en": "**DOI**tsu sounds like Deutsch."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ブラジル",
+    "han_viet": "",
+    "kana": "ぶらじる",
+    "romaji": "burajiru",
+    "tags": [
+      "n5",
+      "noun",
+      "katakana",
+      "country"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "Phiên âm: Brazil.",
+        "en": "Loan word: Brazil."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "Brazil"
+      ],
+      "en": [
+        "Brazil"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "ブラジルのコーヒー。",
+        "translation": {
+          "vi": "Cà phê Brazil.",
+          "en": "Brazilian coffee."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Bư ra xin (Brazil).",
+      "en": "**BRA**zil."
+    },
+    "confusions": []
   }
 ]

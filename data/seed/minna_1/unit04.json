@@ -1,0 +1,3052 @@
+[
+    {
+        "word_surface": "おととい",
+        "han_viet": "",
+        "kana": "おととい",
+        "romaji": "ototoi",
+        "tags": [
+            "n5",
+            "noun",
+            "time"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Hôm kia (ngày trước hôm qua).",
+                "en": "The day before yesterday."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "hôm kia"
+            ],
+            "en": [
+                "day before yesterday"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "おととい、デパートへ行きました。",
+                "translation": {
+                    "vi": "Hôm kia tôi đã đi bách hóa.",
+                    "en": "I went to the department store the day before yesterday."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Ô-tô tôi đi hôm kia.",
+            "en": "OH, TOTO (Ototoi) went there two days ago."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "きのう",
+        "han_viet": "",
+        "kana": "きのう",
+        "romaji": "kinou",
+        "tags": [
+            "n5",
+            "noun",
+            "time"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Hôm qua.",
+                "en": "Yesterday."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "hôm qua"
+            ],
+            "en": [
+                "yesterday"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "きのうは雨でした。",
+                "translation": {
+                    "vi": "Hôm qua trời mưa.",
+                    "en": "It was rainy yesterday."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Kí nó (Kinou) vào hôm qua.",
+            "en": "KEY NO (Kinou) use for yesterday's lock."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "きょう",
+        "han_viet": "",
+        "kana": "きょう",
+        "romaji": "kyou",
+        "tags": [
+            "n5",
+            "noun",
+            "time"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Hôm nay.",
+                "en": "Today."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "hôm nay"
+            ],
+            "en": [
+                "today"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "きょうは暑いです。",
+                "translation": {
+                    "vi": "Hôm nay nóng.",
+                    "en": "It is hot today."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Kiêu (Kyou) sa hôm nay.",
+            "en": "Killing YOU (Kyou) with work today."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "あした",
+        "han_viet": "",
+        "kana": "あした",
+        "romaji": "ashita",
+        "tags": [
+            "n5",
+            "noun",
+            "time"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Ngày mai.",
+                "en": "Tomorrow."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ngày mai"
+            ],
+            "en": [
+                "tomorrow"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "あした勉強します。",
+                "translation": {
+                    "vi": "Ngày mai tôi sẽ học.",
+                    "en": "I will study tomorrow."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "A! Sì ta (Ashita) ngày mai.",
+            "en": "ASHita is cloudy tomorrow?"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "あさって",
+        "han_viet": "",
+        "kana": "あさって",
+        "romaji": "asatte",
+        "tags": [
+            "n5",
+            "noun",
+            "time"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Ngày kia (ngày sau ngày mai).",
+                "en": "Day after tomorrow."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ngày kia"
+            ],
+            "en": [
+                "day after tomorrow"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "あさって会いましょう。",
+                "translation": {
+                    "vi": "Gặp nhau vào ngày kia nhé.",
+                    "en": "Let's meet the day after tomorrow."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "A sắt tê (Asatte) chân vì đi bộ đến ngày kia.",
+            "en": "A SAT day (Asatte)? No, two days from now."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "けさ",
+        "han_viet": "",
+        "kana": "けさ",
+        "romaji": "kesa",
+        "tags": [
+            "n5",
+            "noun",
+            "time"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Sáng nay.",
+                "en": "This morning."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "sáng nay"
+            ],
+            "en": [
+                "this morning"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "けさ、パンを食べました。",
+                "translation": {
+                    "vi": "Sáng nay tôi đã ăn bánh mì.",
+                    "en": "I ate bread this morning."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Kê-sa (Kesa) sáng nay.",
+            "en": "KISS A (Kesa) girl this morning?"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "～から",
+        "han_viet": "",
+        "kana": "～から",
+        "romaji": "kara",
+        "tags": [
+            "n5",
+            "particle"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Điểm bắt đầu (thời gian/địa điểm).",
+                "en": "Starting point."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "từ ~"
+            ],
+            "en": [
+                "from"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "9時から働きます。",
+                "translation": {
+                    "vi": "Làm việc từ 9 giờ.",
+                    "en": "Work from 9 o'clock."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Ca ra (Kara) trường từ lúc mấy giờ?",
+            "en": "CAR A (Kara) comes FROM the garage."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "～まで",
+        "han_viet": "",
+        "kana": "～まで",
+        "romaji": "made",
+        "tags": [
+            "n5",
+            "particle"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Điểm kết thúc.",
+                "en": "Ending point."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đến ~",
+                "tới ~"
+            ],
+            "en": [
+                "until",
+                "to"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "5時まで働きます。",
+                "translation": {
+                    "vi": "Làm việc đến 5 giờ.",
+                    "en": "Work until 5 o'clock."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Đi đến khi Mà đê (Made) hết tiền.",
+            "en": "I MA-DE (Made) it TO the finish line."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "～と～",
+        "han_viet": "",
+        "kana": "と",
+        "romaji": "to",
+        "tags": [
+            "n5",
+            "particle"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Nối danh từ.",
+                "en": "Noun connector."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "và",
+                "với"
+            ],
+            "en": [
+                "and",
+                "with"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "これとそれ。",
+                "translation": {
+                    "vi": "Cái này và cái đó.",
+                    "en": "This and that."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Tớ (To) và cậu.",
+            "en": "TOgether with."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "起きます",
+        "han_viet": "KHỞI",
+        "kana": "おきます",
+        "romaji": "okimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "masu-form"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "起",
+                    "han_viet": "KHỞI",
+                    "meaning": {
+                        "vi": "thức dậy/bắt đầu",
+                        "en": "wake/rise"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "KHỞI (dậy). Khởi đầu ngày mới.",
+                "en": "Wake up (起) and start moving (走)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thức dậy"
+            ],
+            "en": [
+                "wake up",
+                "get up"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "毎朝6時に起きます。",
+                "translation": {
+                    "vi": "Mỗi sáng tôi dậy lúc 6 giờ.",
+                    "en": "I wake up at 6 every morning."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "KHỞI động ngày mới. Ô kìa (Oki) dậy đi.",
+            "en": "O-KEY (Oki)! Time to wake up!"
+        },
+        "confusions": [
+            {
+                "word": "置きます",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "Oki (Dậy) và Oki (Đặt) giống nhau. Xem Kanji: Khởi vs Trí.",
+                        "en": "Same sound (Okimasu). Check Context/Kanji."
+                    },
+                    "item1_nuance": {
+                        "vi": "Thức dậy (Khởi).",
+                        "en": "Wake up."
+                    },
+                    "item2_nuance": {
+                        "vi": "Đặt để (Trí).",
+                        "en": "Put/Place."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "word_surface": "寝ます",
+        "han_viet": "TẨM",
+        "kana": "ねます",
+        "romaji": "nemasu",
+        "tags": [
+            "n5",
+            "verb",
+            "masu-form"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "寝",
+                    "han_viet": "TẨM",
+                    "meaning": {
+                        "vi": "ngủ",
+                        "en": "sleep"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TẨM cung là nơi vua ngủ (Tẩm).",
+                "en": "Go to sleep inside the house (宀)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ngủ",
+                "đi ngủ"
+            ],
+            "en": [
+                "sleep",
+                "go to bed"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "昨夜、10時に寝ました。",
+                "translation": {
+                    "vi": "Tối qua tôi ngủ lúc 10 giờ.",
+                    "en": "I went to bed at 10 last night."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TẨM bổ rồi đi ngủ nhe (Ne).",
+            "en": "NE-ver (Ne) sleep in class."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "働きます",
+        "han_viet": "ĐỘNG",
+        "kana": "はたらきます",
+        "romaji": "hatarakimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "masu-form"
+        ],
+        "pitch_pattern": 5,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5 L125,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "働",
+                    "han_viet": "ĐỘNG",
+                    "meaning": {
+                        "vi": "làm việc",
+                        "en": "work"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Nhân (người) + Động (chuyển động) = Lao động.",
+                "en": "Person (イ) Moving (動) = Work (働). This is a Kokuji (Japan-made Kanji)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "làm việc"
+            ],
+            "en": [
+                "work"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "銀行で働きます。",
+                "translation": {
+                    "vi": "Tôi làm việc ở ngân hàng.",
+                    "en": "I work at a bank."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Lao ĐỘNG vất vả, ha-ta-ra-ki.",
+            "en": "HOT A RACKY (Hataraki) job? You gotta work."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "休みます",
+        "han_viet": "HƯU",
+        "kana": "やすみます",
+        "romaji": "yasumimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "masu-form"
+        ],
+        "pitch_pattern": 4,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "休",
+                    "han_viet": "HƯU",
+                    "meaning": {
+                        "vi": "nghỉ ngơi",
+                        "en": "rest"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Người (Nhân) dựa vào Cây (Mộc) để nghỉ HƯU.",
+                "en": "Person (イ) resting by a Tree (木)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nghỉ ngơi",
+                "nghỉ"
+            ],
+            "en": [
+                "rest",
+                "take a day off"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "明日休みます。",
+                "translation": {
+                    "vi": "Ngày mai tôi nghỉ.",
+                    "en": "I will take a day off tomorrow."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Về HƯU nên nghỉ ngơi. Ya-su-mi.",
+            "en": "YES, SUE MI (Yasumi) if I take a break."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "勉強します",
+        "han_viet": "MIỄN CƯỜNG",
+        "kana": "べんきょうします",
+        "romaji": "benkyoushimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "masu-form",
+            "suru-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5 L125,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "勉",
+                    "han_viet": "MIỄN",
+                    "meaning": {
+                        "vi": "gắng sức",
+                        "en": "exertion"
+                    }
+                },
+                {
+                    "kanji": "強",
+                    "han_viet": "CƯỜNG",
+                    "meaning": {
+                        "vi": "mạnh",
+                        "en": "strong"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "MIỄN CƯỜNG (cố gắng mạnh mẽ) để học hành.",
+                "en": "Exert effort (勉) to become strong (強)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "học",
+                "học bài"
+            ],
+            "en": [
+                "study"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "日本語を勉強します。",
+                "translation": {
+                    "vi": "Tôi học tiếng Nhật.",
+                    "en": "I study Japanese."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Học hành là việc MIỄN CƯỜNG nhưng phải cố.",
+            "en": "BANK YO (Benkyou) money after you study hard."
+        },
+        "confusions": [
+            {
+                "word": "習います",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "Benkyou là tự học/nghiên cứu. Narau là học từ ai đó (Tập).",
+                        "en": "Benkyou = Study. Narau = Learn (from someone)."
+                    },
+                    "item1_nuance": {
+                        "vi": "Học tập nói chung (Miễn Cường).",
+                        "en": "Study (General)."
+                    },
+                    "item2_nuance": {
+                        "vi": "Học hỏi, thực hành (Tập).",
+                        "en": "Learn a skill."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "word_surface": "終わります",
+        "han_viet": "CHUNG",
+        "kana": "おわります",
+        "romaji": "owarimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "masu-form",
+            "intransitive"
+        ],
+        "pitch_pattern": 4,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "終",
+                    "han_viet": "CHUNG",
+                    "meaning": {
+                        "vi": "kết thúc",
+                        "en": "end"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "CHUNG kết là kết thúc. Sợi tơ (Mịch) mùa đông (Đông) là hết năm.",
+                "en": "Thread (糸) ends in Winter (冬)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "kết thúc",
+                "hết"
+            ],
+            "en": [
+                "finish",
+                "end"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "仕事が終わりました。",
+                "translation": {
+                    "vi": "Công việc đã kết thúc.",
+                    "en": "Work is finished."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "CHUNG cuộc là O qua ri (Owari).",
+            "en": "OH, WHAT A (Owari) relief, it's over."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "銀行",
+        "han_viet": "NGÂN HÀNH",
+        "kana": "ぎんこう",
+        "romaji": "ginkou",
+        "tags": [
+            "n5",
+            "noun",
+            "place"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "銀",
+                    "han_viet": "NGÂN",
+                    "meaning": {
+                        "vi": "bạc/tiền",
+                        "en": "silver"
+                    }
+                },
+                {
+                    "kanji": "行",
+                    "han_viet": "HÀNH",
+                    "meaning": {
+                        "vi": "tổ chức/đi",
+                        "en": "bank/go"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "NGÂN HÀNH là nơi dòng tiền (Bạc) lưu thông (Hành).",
+                "en": "Silver (銀) institution (行)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ngân hàng"
+            ],
+            "en": [
+                "bank"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "銀行へ行きます。",
+                "translation": {
+                    "vi": "Tôi đi đến ngân hàng.",
+                    "en": "I go to the bank."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "NGÂN lượng để ở NGÂN HÀNH.",
+            "en": "GINKO (Ginkou) tree outside the bank."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "郵便局",
+        "han_viet": "BƯU TIỆN CỤC",
+        "kana": "ゆうびんきょく",
+        "romaji": "yuubinkyoku",
+        "tags": [
+            "n5",
+            "noun",
+            "place"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20 L125,20 L150,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "郵",
+                    "han_viet": "BƯU",
+                    "meaning": {
+                        "vi": "thư từ/trạm",
+                        "en": "mail"
+                    }
+                },
+                {
+                    "kanji": "便",
+                    "han_viet": "TIỆN",
+                    "meaning": {
+                        "vi": "thuận tiện/tin tức",
+                        "en": "convenience/mail"
+                    }
+                },
+                {
+                    "kanji": "局",
+                    "han_viet": "CỤC",
+                    "meaning": {
+                        "vi": "cục/phòng",
+                        "en": "bureau"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "BƯU TIỆN CỤC là cơ quan (Cục) xử lý thư từ (Bưu kiện).",
+                "en": "Mail (郵便) Bureau (局)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "bưu điện"
+            ],
+            "en": [
+                "post office"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "郵便局で切手を買います。",
+                "translation": {
+                    "vi": "Tôi mua tem ở bưu điện.",
+                    "en": "I buy stamps at the post office."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "BƯU điện là nơi gửi BƯU kiện. You-bin-kyo-ku.",
+            "en": "YOU BIN (Yuubin) waiting at the post office?"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "図書館",
+        "han_viet": "ĐỒ THƯ QUÁN",
+        "kana": "としょかん",
+        "romaji": "toshokan",
+        "tags": [
+            "n5",
+            "noun",
+            "place"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "図",
+                    "han_viet": "ĐỒ",
+                    "meaning": {
+                        "vi": "bản đồ/tranh vẽ",
+                        "en": "map/drawing"
+                    }
+                },
+                {
+                    "kanji": "書",
+                    "han_viet": "THƯ",
+                    "meaning": {
+                        "vi": "sách",
+                        "en": "book"
+                    }
+                },
+                {
+                    "kanji": "館",
+                    "han_viet": "QUÁN",
+                    "meaning": {
+                        "vi": "tòa nhà/hội quán",
+                        "en": "building"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "ĐỒ THƯ QUÁN là tòa nhà (Quán) chứa sách (Thư) và bản đồ (Đồ).",
+                "en": "Building (館) for Maps (図) and Books (書)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thư viện"
+            ],
+            "en": [
+                "library"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "図書館で勉強します。",
+                "translation": {
+                    "vi": "Tôi học ở thư viện.",
+                    "en": "I study at the library."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Vào ĐỒ THƯ QUÁN đọc sách. To-sho-kan.",
+            "en": "TO SHOW KHAN (Toshokan) the library."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "美術館",
+        "han_viet": "MỸ THUẬT QUÁN",
+        "kana": "びじゅつかん",
+        "romaji": "bijutsukan",
+        "tags": [
+            "n5",
+            "noun",
+            "place"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20 L125,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "美",
+                    "han_viet": "MỸ",
+                    "meaning": {
+                        "vi": "đẹp",
+                        "en": "beauty"
+                    }
+                },
+                {
+                    "kanji": "術",
+                    "han_viet": "THUẬT",
+                    "meaning": {
+                        "vi": "kỹ thuật/nghệ thuật",
+                        "en": "art/technique"
+                    }
+                },
+                {
+                    "kanji": "館",
+                    "han_viet": "QUÁN",
+                    "meaning": {
+                        "vi": "tòa nhà",
+                        "en": "building"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "MỸ THUẬT QUÁN là tòa nhà (Quán) trưng bày nghệ thuật (Mỹ Thuật).",
+                "en": "Building (館) for Fine Arts (美術)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "bảo tàng mỹ thuật"
+            ],
+            "en": [
+                "art museum"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "美術館を見学します。",
+                "translation": {
+                    "vi": "Tham quan bảo tàng mỹ thuật.",
+                    "en": "Visit the art museum."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "MỸ nhân đi MỸ THUẬT quán.",
+            "en": "BE JEW (Biju) elled at the Art Museum."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "今",
+        "han_viet": "KIM",
+        "kana": "いま",
+        "romaji": "ima",
+        "tags": [
+            "n5",
+            "noun",
+            "time"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "今",
+                    "han_viet": "KIM",
+                    "meaning": {
+                        "vi": "hiện tại",
+                        "en": "now"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "KIM (nay) trong Cổ Kim (xưa nay), Kim Nhật (hôm nay).",
+                "en": "Roof (ane) over a Clock (or 'contact'). Just remember the shape."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "bây giờ"
+            ],
+            "en": [
+                "now"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "今、何時ですか。",
+                "translation": {
+                    "vi": "Bây giờ là mấy giờ?",
+                    "en": "What time is it now?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "KIM đồng hồ chỉ 'bây giờ'.",
+            "en": "I'M A (Ima) bit busy NOW."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "～時",
+        "han_viet": "THỜI",
+        "kana": "～じ",
+        "romaji": "ji",
+        "tags": [
+            "n5",
+            "suffix",
+            "counter",
+            "time"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "時",
+                    "han_viet": "THỜI",
+                    "meaning": {
+                        "vi": "thời gian/giờ",
+                        "en": "time/hour"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "THỜI gian (Nhật + Tự). Mặt trời (Nhật) đi qua Chùa (Tự) là đếm giờ.",
+                "en": "Sun (日) over a Temple (寺). Time was measured by the sun."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "~ giờ"
+            ],
+            "en": [
+                "~ o'clock"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "9時です。",
+                "translation": {
+                    "vi": "Là 9 giờ.",
+                    "en": "It is 9 o'clock."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THỜI gian tính bằng GIỜ (Ji).",
+            "en": "GEE (Ji), look at the time."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "～分",
+        "han_viet": "PHÂN",
+        "kana": "～ふん・ぷん",
+        "romaji": "fun",
+        "tags": [
+            "n5",
+            "suffix",
+            "counter",
+            "time"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "分",
+                    "han_viet": "PHÂN",
+                    "meaning": {
+                        "vi": "chia ra/phút",
+                        "en": "part/minute"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "PHÂN chia (Dao_Đao cắt đứt Bát). Giờ chia nhỏ ra là Phút.",
+                "en": "Knife (刀) cutting something apart (八)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "~ phút"
+            ],
+            "en": [
+                "~ minute"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "5分",
+                "translation": {
+                    "vi": "5 phút",
+                    "en": "5 minutes"
+                }
+            },
+            {
+                "sentence": "10分 (Juppun)",
+                "translation": {
+                    "vi": "10 phút",
+                    "en": "10 minutes"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "PHÂN chia thời gian. Phun (Fun) ra từng phút.",
+            "en": "Make FUN (Fun) every minute."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "半",
+        "han_viet": "BÁN",
+        "kana": "はん",
+        "romaji": "han",
+        "tags": [
+            "n5",
+            "noun",
+            "suffix",
+            "time"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "半",
+                    "han_viet": "BÁN",
+                    "meaning": {
+                        "vi": "một nửa",
+                        "en": "half"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "BÁN cầu là nửa quả cầu.",
+                "en": "Cut in half."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "rưỡi",
+                "nửa"
+            ],
+            "en": [
+                "half"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "9時半です。",
+                "translation": {
+                    "vi": "9 rưỡi.",
+                    "en": "It is half past 9."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Buôn BÁN lãi một nửa (Han).",
+            "en": "My HAND (Han) covers half my face."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "何時",
+        "han_viet": "HÀ THỜI",
+        "kana": "なんじ",
+        "romaji": "nanji",
+        "tags": [
+            "n5",
+            "interrogative",
+            "time"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "何",
+                    "han_viet": "HÀ",
+                    "meaning": {
+                        "vi": "cái gì/mấy",
+                        "en": "what"
+                    }
+                },
+                {
+                    "kanji": "時",
+                    "han_viet": "THỜI",
+                    "meaning": {
+                        "vi": "giờ",
+                        "en": "hour"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "HÀ THỜI = Mấy giờ.",
+                "en": "What (何) time (時)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "mấy giờ"
+            ],
+            "en": [
+                "what time"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "今、何時ですか。",
+                "translation": {
+                    "vi": "Bây giờ là mấy giờ?",
+                    "en": "What time is it now?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HÀ cớ gì hỏi giờ?",
+            "en": "NAN-JIng (Nanji) time?"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "何分",
+        "han_viet": "HÀ PHÂN",
+        "kana": "なんぷん",
+        "romaji": "nanpun",
+        "tags": [
+            "n5",
+            "interrogative",
+            "time"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "何",
+                    "han_viet": "HÀ",
+                    "meaning": {
+                        "vi": "mấy",
+                        "en": "what"
+                    }
+                },
+                {
+                    "kanji": "分",
+                    "han_viet": "PHÂN",
+                    "meaning": {
+                        "vi": "phút",
+                        "en": "minute"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "HÀ PHÂN = Mấy phút.",
+                "en": "What (何) minute (分)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "mấy phút"
+            ],
+            "en": [
+                "what minute"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "何分かかりますか。",
+                "translation": {
+                    "vi": "Mất mấy phút?",
+                    "en": "How many minutes does it take?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Mấy PHÂN (phút)?",
+            "en": "NAN bread or PUN (Nanpun) cake?"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "午前",
+        "han_viet": "NGỌ TIỀN",
+        "kana": "ごぜん",
+        "romaji": "gozen",
+        "tags": [
+            "n5",
+            "noun",
+            "time"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "午",
+                    "han_viet": "NGỌ",
+                    "meaning": {
+                        "vi": "giữa trưa",
+                        "en": "noon"
+                    }
+                },
+                {
+                    "kanji": "前",
+                    "han_viet": "TIỀN",
+                    "meaning": {
+                        "vi": "trước",
+                        "en": "before"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "NGỌ TIỀN là trước giờ Ngọ (trước 12h trưa).",
+                "en": "Before (前) Noon (午) = AM."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "buổi sáng (AM)",
+                "trước 12h trưa"
+            ],
+            "en": [
+                "AM",
+                "morning"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "午前9時",
+                "translation": {
+                    "vi": "9 giờ sáng (9AM)",
+                    "en": "9 AM"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Trước giờ NGỌ là GO-ZEN.",
+            "en": "GO ZEN garden in the morning."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "午後",
+        "han_viet": "NGỌ HẬU",
+        "kana": "ごご",
+        "romaji": "gogo",
+        "tags": [
+            "n5",
+            "noun",
+            "time"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "午",
+                    "han_viet": "NGỌ",
+                    "meaning": {
+                        "vi": "giữa trưa",
+                        "en": "noon"
+                    }
+                },
+                {
+                    "kanji": "後",
+                    "han_viet": "HẬU",
+                    "meaning": {
+                        "vi": "sau",
+                        "en": "after"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "NGỌ HẬU là sau giờ Ngọ (sau 12h trưa).",
+                "en": "After (後) Noon (午) = PM."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "buổi chiều (PM)",
+                "sau 12h trưa"
+            ],
+            "en": [
+                "PM",
+                "afternoon"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "午後1時",
+                "translation": {
+                    "vi": "1 giờ chiều (1PM)",
+                    "en": "1 PM"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Sau giờ NGỌ thì Gô-Gô (Gogo - let's go).",
+            "en": "GO GO (Gogo) dancers perform in the afternoon/night."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "朝",
+        "han_viet": "TRIỀU",
+        "kana": "あさ",
+        "romaji": "asa",
+        "tags": [
+            "n5",
+            "noun",
+            "time"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "朝",
+                    "han_viet": "TRIỀU",
+                    "meaning": {
+                        "vi": "buổi sáng/triều đình",
+                        "en": "morning/dynasty"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TRIỀU đình họp vào buổi sáng.",
+                "en": "Sun (日) rising through the Mist/Moon (月)?"
+            }
+        },
+        "meanings": {
+            "vi": [
+                "buổi sáng"
+            ],
+            "en": [
+                "morning"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "朝ごはんを食べます。",
+                "translation": {
+                    "vi": "Ăn bữa sáng.",
+                    "en": "Eat breakfast."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Sáng ra A xả (Asa) nước.",
+            "en": "A SAD (Asa) morning?"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "昼",
+        "han_viet": "TRÚ",
+        "kana": "ひる",
+        "romaji": "hiru",
+        "tags": [
+            "n5",
+            "noun",
+            "time"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "昼",
+                    "han_viet": "TRÚ",
+                    "meaning": {
+                        "vi": "buổi trưa",
+                        "en": "noon/daytime"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TRÚ ẩn tránh nắng buổi trưa.",
+                "en": "Sun is high."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "buổi trưa",
+                "ban ngày"
+            ],
+            "en": [
+                "noon",
+                "daytime"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "昼休み",
+                "translation": {
+                    "vi": "Nghỉ trưa",
+                    "en": "Lunch break"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Buổi TRÚa (Trưa) thì hí hú (Hiru).",
+            "en": "HEEL (Hiru). Sun is on your heels at noon."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "晩",
+        "han_viet": "VÃN",
+        "kana": "ばん",
+        "romaji": "ban",
+        "tags": [
+            "n5",
+            "noun",
+            "time"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "晩",
+                    "han_viet": "VÃN",
+                    "meaning": {
+                        "vi": "buổi tối/muộn",
+                        "en": "night"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "VÃN cảnh chùa vào buổi tối. (Nhật + Miễn).",
+                "en": "Sun (日) is gone (免 - exempt)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "buổi tối"
+            ],
+            "en": [
+                "evening",
+                "night"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "晩ごはん",
+                "translation": {
+                    "vi": "Bữa tối",
+                    "en": "Dinner"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "VÃN hồi trật tự ban (Ban) đêm.",
+            "en": "BAN (Ban) going out at night."
+        },
+        "confusions": [
+            {
+                "word": "夜",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "Ban là 'tối' (chập tối). Yoru là 'đêm' (khuya).",
+                        "en": "Ban = Evening (Dinner time). Yoru = Night (Late)."
+                    },
+                    "item1_nuance": {
+                        "vi": "Khoảng 6pm - 9pm.",
+                        "en": "Early evening."
+                    },
+                    "item2_nuance": {
+                        "vi": "Sau khi mặt trời lặn hẳn, đêm khuya.",
+                        "en": "Late night."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "word_surface": "夜",
+        "han_viet": "DẠ",
+        "kana": "よる",
+        "romaji": "yoru",
+        "tags": [
+            "n5",
+            "noun",
+            "time"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "夜",
+                    "han_viet": "DẠ",
+                    "meaning": {
+                        "vi": "ban đêm",
+                        "en": "night"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "DẠ hội tổ chức ban đêm (Dạ).",
+                "en": "Person standing under a cover at night?"
+            }
+        },
+        "meanings": {
+            "vi": [
+                "buổi tối",
+                "ban đêm"
+            ],
+            "en": [
+                "night"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "夜11時に寝ます。",
+                "translation": {
+                    "vi": "Ngủ lúc 11 giờ đêm.",
+                    "en": "Sleep at 11 at night."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "DẠ (vâng), đêm rồi ạ (Yoru).",
+            "en": "YO! RU (Yoru) awake at night?"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "今晩",
+        "han_viet": "KIM VÃN",
+        "kana": "こんばん",
+        "romaji": "konban",
+        "tags": [
+            "n5",
+            "noun",
+            "time"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "今",
+                    "han_viet": "KIM",
+                    "meaning": {
+                        "vi": "nay",
+                        "en": "this"
+                    }
+                },
+                {
+                    "kanji": "晩",
+                    "han_viet": "VÃN",
+                    "meaning": {
+                        "vi": "tối",
+                        "en": "evening"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "KIM VÃN = Tối nay.",
+                "en": "This (今) Evening (晩)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "tối nay"
+            ],
+            "en": [
+                "this evening",
+                "tonight"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "今晩、勉強します。",
+                "translation": {
+                    "vi": "Tối nay tôi học bài.",
+                    "en": "I study tonight."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Tối nay chào nhau 'Konban-wa'.",
+            "en": "CORN BARN (Konban). Party at the corn barn tonight."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "休み",
+        "han_viet": "HƯU",
+        "kana": "やすみ",
+        "romaji": "yasumi",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "休",
+                    "han_viet": "HƯU",
+                    "meaning": {
+                        "vi": "nghỉ",
+                        "en": "rest"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Sự nghỉ ngơi (Danh từ hóa của Yasumimasu).",
+                "en": "Rest / Holiday."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ngày nghỉ",
+                "sự nghỉ ngơi"
+            ],
+            "en": [
+                "rest",
+                "holiday",
+                "vacation"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "明日は休みです。",
+                "translation": {
+                    "vi": "Ngày mai là ngày nghỉ.",
+                    "en": "Tomorrow is a holiday."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Nghỉ HƯU.",
+            "en": "YAS, SUE MI (Yasumi)."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "昼休み",
+        "han_viet": "TRÚ HƯU",
+        "kana": "ひるやすみ",
+        "romaji": "hiruyasumi",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20 L125,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "昼",
+                    "han_viet": "TRÚ",
+                    "meaning": {
+                        "vi": "trưa",
+                        "en": "noon"
+                    }
+                },
+                {
+                    "kanji": "休",
+                    "han_viet": "HƯU",
+                    "meaning": {
+                        "vi": "nghỉ",
+                        "en": "rest"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Nghỉ trưa.",
+                "en": "Noon (昼) Rest (休み)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nghỉ trưa"
+            ],
+            "en": [
+                "lunch break"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "昼休みは12時からです。",
+                "translation": {
+                    "vi": "Nghỉ trưa từ 12 giờ.",
+                    "en": "Lunch break starts at 12."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Trưa (Hiru) nghỉ (Yasumi).",
+            "en": "Heel (Hiru) Yasumi."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "試験",
+        "han_viet": "THÍ NGHIỆM",
+        "kana": "しけん",
+        "romaji": "shiken",
+        "tags": [
+            "n5",
+            "noun",
+            "event"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "試",
+                    "han_viet": "THÍ",
+                    "meaning": {
+                        "vi": "thử",
+                        "en": "test/try"
+                    }
+                },
+                {
+                    "kanji": "験",
+                    "han_viet": "NGHIỆM",
+                    "meaning": {
+                        "vi": "kiểm nghiệm",
+                        "en": "examine/verification"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "THÍ NGHIỆM trong tiếng Việt thường là 'Experiment', nhưng tiếng Nhật là 'Kỳ thi/Kiểm tra'.",
+                "en": "Test (試) and Verify (験)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "kỳ thi",
+                "bài kiểm tra"
+            ],
+            "en": [
+                "examination",
+                "test"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "明日は試験です。",
+                "translation": {
+                    "vi": "Ngày mai có bài kiểm tra.",
+                    "en": "Tomorrow is the exam."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Đi thi (THÍ) mà sợ sệt (Shi-ken) (chicken).",
+            "en": "SHE CAN (Shiken) pass the test."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "会議",
+        "han_viet": "HỘI NGHỊ",
+        "kana": "かいぎ",
+        "romaji": "kaigi",
+        "tags": [
+            "n5",
+            "noun",
+            "event"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "会",
+                    "han_viet": "HỘI",
+                    "meaning": {
+                        "vi": "gặp gỡ",
+                        "en": "meet"
+                    }
+                },
+                {
+                    "kanji": "議",
+                    "han_viet": "NGHỊ",
+                    "meaning": {
+                        "vi": "thảo luận/nghị viện",
+                        "en": "deliberation"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "HỘI (họp) để NGHỊ (luận).",
+                "en": "Meeting (会) for deliberation (議)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "cuộc họp",
+                "hội nghị"
+            ],
+            "en": [
+                "meeting",
+                "conference"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "会議をします。",
+                "translation": {
+                    "vi": "Tổ chức cuộc họp.",
+                    "en": "Hold a meeting."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HỘI NGHỊ bàn tròn. Cai quản (Kai-gi).",
+            "en": "KAY, GEE (Kaigi), another meeting?"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "映画",
+        "han_viet": "ÁNH HỌA",
+        "kana": "えいが",
+        "romaji": "eiga",
+        "tags": [
+            "n5",
+            "noun",
+            "object"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "映",
+                    "han_viet": "ÁNH",
+                    "meaning": {
+                        "vi": "phản chiếu",
+                        "en": "reflect/projection"
+                    }
+                },
+                {
+                    "kanji": "画",
+                    "han_viet": "HỌA",
+                    "meaning": {
+                        "vi": "tranh/hình ảnh",
+                        "en": "picture"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "ÁNH HỌA là hình ảnh phản chiếu (phim chiếu rạp).",
+                "en": "Projected (映) Pictures (画)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "phim",
+                "điện ảnh"
+            ],
+            "en": [
+                "movie",
+                "film"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "映画を見ます。",
+                "translation": {
+                    "vi": "Xem phim.",
+                    "en": "Watch a movie."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "ÁNH HỌA (điện ảnh).",
+            "en": "EGG (Eiga) movie?"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "毎朝",
+        "han_viet": "MỖI TRIỀU",
+        "kana": "まいあさ",
+        "romaji": "maiasa",
+        "tags": [
+            "n5",
+            "noun",
+            "frequency",
+            "time"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "毎",
+                    "han_viet": "MỖI",
+                    "meaning": {
+                        "vi": "mọi/mỗi",
+                        "en": "every"
+                    }
+                },
+                {
+                    "kanji": "朝",
+                    "han_viet": "TRIỀU",
+                    "meaning": {
+                        "vi": "sáng",
+                        "en": "morning"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Mỗi buổi sáng.",
+                "en": "Every (毎) Morning (朝)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "mỗi sáng",
+                "hàng sáng"
+            ],
+            "en": [
+                "every morning"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "毎朝コーヒーを飲みます。",
+                "translation": {
+                    "vi": "Mỗi sáng tôi uống cà phê.",
+                    "en": "I drink coffee every morning."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Mỗi sáng đều Mài (Mai) dũa.",
+            "en": "MY ASA (Maiasa) is mine."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "毎晩",
+        "han_viet": "MỖI VÃN",
+        "kana": "まいばん",
+        "romaji": "maiban",
+        "tags": [
+            "n5",
+            "noun",
+            "frequency",
+            "time"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "毎",
+                    "han_viet": "MỖI",
+                    "meaning": {
+                        "vi": "mọi/mỗi",
+                        "en": "every"
+                    }
+                },
+                {
+                    "kanji": "晩",
+                    "han_viet": "VÃN",
+                    "meaning": {
+                        "vi": "tối",
+                        "en": "evening"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Mỗi buổi tối.",
+                "en": "Every (毎) Evening (晩)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "mỗi tối",
+                "hàng tối"
+            ],
+            "en": [
+                "every night"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "毎晩テレビを見ます。",
+                "translation": {
+                    "vi": "Mỗi tối tôi xem tivi.",
+                    "en": "I watch TV every night."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Mỗi tối đều Mai (mơ) tưởng Ban (nhạc).",
+            "en": "MY BUN (Maiban) gets eaten every night."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "毎日",
+        "han_viet": "MỖI NHẬT",
+        "kana": "まいにち",
+        "romaji": "mainichi",
+        "tags": [
+            "n5",
+            "noun",
+            "frequency",
+            "time"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "毎",
+                    "han_viet": "MỖI",
+                    "meaning": {
+                        "vi": "mọi/mỗi",
+                        "en": "every"
+                    }
+                },
+                {
+                    "kanji": "日",
+                    "han_viet": "NHẬT",
+                    "meaning": {
+                        "vi": "ngày",
+                        "en": "day"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Mỗi ngày.",
+                "en": "Every (毎) Day (日)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "mỗi ngày",
+                "hàng ngày"
+            ],
+            "en": [
+                "every day"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "毎日日本語を勉強します。",
+                "translation": {
+                    "vi": "Tôi học tiếng Nhật hàng ngày.",
+                    "en": "I study Japanese every day."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Mỗi ngày đều Mai (mài) Nhật (miệt mài).",
+            "en": "MY KNEE, GEE (Mainichi)! My knee hurts every day."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "月曜日",
+        "han_viet": "NGUYỆT DIỆU NHẬT",
+        "kana": "げつようび",
+        "romaji": "getsuyoubi",
+        "tags": [
+            "n5",
+            "noun",
+            "day"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20 L125,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "月",
+                    "han_viet": "NGUYỆT",
+                    "meaning": {
+                        "vi": "trăng",
+                        "en": "moon"
+                    }
+                },
+                {
+                    "kanji": "曜日",
+                    "han_viet": "DIỆU NHẬT",
+                    "meaning": {
+                        "vi": "thứ trong tuần",
+                        "en": "day of week"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Ngày của Mặt Trăng (Nguyệt). Người Nhật coi Thứ 2 là ngày bắt đầu làm việc giống phương Tây (Moon-day).",
+                "en": "Moon Day (Monday)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thứ hai"
+            ],
+            "en": [
+                "Monday"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "月曜日に働きます。",
+                "translation": {
+                    "vi": "Làm việc vào thứ hai.",
+                    "en": "Work on Monday."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "NGUYỆT (Trăng) là thứ 2. Getsu.",
+            "en": "GET SUE (Getsu) on Monday."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "火曜日",
+        "han_viet": "HỎA DIỆU NHẬT",
+        "kana": "かようび",
+        "romaji": "kayoubi",
+        "tags": [
+            "n5",
+            "noun",
+            "day"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "火",
+                    "han_viet": "HỎA",
+                    "meaning": {
+                        "vi": "lửa",
+                        "en": "fire"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Ngày của Sao Hỏa (Lửa).",
+                "en": "Fire Day (Tuesday - Tyr's Day, god of war/fire)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thứ ba"
+            ],
+            "en": [
+                "Tuesday"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "火曜日は休みです。",
+                "translation": {
+                    "vi": "Thứ ba được nghỉ.",
+                    "en": "Tuesday is a day off."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HỎA hoạn vào thứ 3. Ca (Ka) hát bên lửa.",
+            "en": "CAR (Ka) on fire on Tuesday."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "水曜日",
+        "han_viet": "THỦY DIỆU NHẬT",
+        "kana": "すいようび",
+        "romaji": "suiyoubi",
+        "tags": [
+            "n5",
+            "noun",
+            "day"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20 L125,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "水",
+                    "han_viet": "THỦY",
+                    "meaning": {
+                        "vi": "nước",
+                        "en": "water"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Ngày của Sao Thủy (Nước).",
+                "en": "Water Day (Wednesday - Woden's Day/Odin)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thứ tư"
+            ],
+            "en": [
+                "Wednesday"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "水曜日に映画を見ます。",
+                "translation": {
+                    "vi": "Xem phim vào thứ tư.",
+                    "en": "Watch a movie on Wednesday."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THỦY triều lên thứ 4. Suỵt (Sui) đừng nói.",
+            "en": "SWEET (Sui) water on Wednesday."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "木曜日",
+        "han_viet": "MỘC DIỆU NHẬT",
+        "kana": "もくようび",
+        "romaji": "mokuyoubi",
+        "tags": [
+            "n5",
+            "noun",
+            "day"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20 L125,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "木",
+                    "han_viet": "MỘC",
+                    "meaning": {
+                        "vi": "cây/gỗ",
+                        "en": "tree/wood"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Ngày của Sao Mộc (Cây).",
+                "en": "Tree Day (Thursday - Thor's Day)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thứ năm"
+            ],
+            "en": [
+                "Thursday"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "木曜日は会議です。",
+                "translation": {
+                    "vi": "Thứ năm có cuộc họp.",
+                    "en": "Meeting on Thursday."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "MỘC mạc thứ 5. Mốc (Moku) meo.",
+            "en": "MOCK (Moku) trial on Thursday."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "金曜日",
+        "han_viet": "KIM DIỆU NHẬT",
+        "kana": "きんようび",
+        "romaji": "kinyoubi",
+        "tags": [
+            "n5",
+            "noun",
+            "day"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20 L125,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "金",
+                    "han_viet": "KIM",
+                    "meaning": {
+                        "vi": "vàng/tiền",
+                        "en": "gold/money"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Ngày của Sao Kim (Vàng). Ngày nhận lương (cuối tuần).",
+                "en": "Gold Day (Friday - Frigg's Day/Venus)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thứ sáu"
+            ],
+            "en": [
+                "Friday"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "金曜日の晩",
+                "translation": {
+                    "vi": "Tối thứ sáu",
+                    "en": "Friday night"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "KIM tiền vào thứ 6. Kin tiền.",
+            "en": "KIN (Kin) folks come over on Friday."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "土曜日",
+        "han_viet": "THỔ DIỆU NHẬT",
+        "kana": "どようび",
+        "romaji": "doyoubi",
+        "tags": [
+            "n5",
+            "noun",
+            "day"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "土",
+                    "han_viet": "THỔ",
+                    "meaning": {
+                        "vi": "đất",
+                        "en": "soil/earth"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Ngày của Sao Thổ (Đất).",
+                "en": "Earth/Soil Day (Saturday - Saturn's Day)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thứ bảy"
+            ],
+            "en": [
+                "Saturday"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "土曜日は休みです。",
+                "translation": {
+                    "vi": "Thứ bảy được nghỉ.",
+                    "en": "Saturday is a day off."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THỔ địa nghỉ thứ 7. Đô (Do) vật.",
+            "en": "DO (Do) your chores on Saturday."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "日曜日",
+        "han_viet": "NHẬT DIỆU NHẬT",
+        "kana": "にちようび",
+        "romaji": "nichiyoubi",
+        "tags": [
+            "n5",
+            "noun",
+            "day"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20 L125,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "日",
+                    "han_viet": "NHẬT",
+                    "meaning": {
+                        "vi": "mặt trời",
+                        "en": "sun"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Ngày của Mặt Trời (Nhật).",
+                "en": "Sun Day (Sunday)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "chủ nhật"
+            ],
+            "en": [
+                "Sunday"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "日曜日にデパートへ行きます。",
+                "translation": {
+                    "vi": "Chủ nhật tôi đi bách hóa.",
+                    "en": "I go to the department store on Sunday."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "NHẬT là Mặt trời, Chủ nhật rực rỡ.",
+            "en": "NICHE (Nichi) market on Sunday."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "何曜日",
+        "han_viet": "HÀ DIỆU NHẬT",
+        "kana": "なんようび",
+        "romaji": "nanyoubi",
+        "tags": [
+            "n5",
+            "interrogative",
+            "time"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "何",
+                    "han_viet": "HÀ",
+                    "meaning": {
+                        "vi": "mấy/cái gì",
+                        "en": "what"
+                    }
+                },
+                {
+                    "kanji": "曜日",
+                    "han_viet": "DIỆU NHẬT",
+                    "meaning": {
+                        "vi": "thứ",
+                        "en": "day of week"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Thứ mấy.",
+                "en": "What day of the week."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thứ mấy"
+            ],
+            "en": [
+                "what day of the week"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "今日は何曜日ですか。",
+                "translation": {
+                    "vi": "Hôm nay là thứ mấy?",
+                    "en": "What day is it today?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Thứ mấy?",
+            "en": "NANyo."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "番号",
+        "han_viet": "PHIÊN HIỆU",
+        "kana": "ばんごう",
+        "romaji": "bangou",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "番",
+                    "han_viet": "PHIÊN",
+                    "meaning": {
+                        "vi": "lượt/phiên",
+                        "en": "turn/number"
+                    }
+                },
+                {
+                    "kanji": "号",
+                    "han_viet": "HIỆU",
+                    "meaning": {
+                        "vi": "dấu hiệu/số",
+                        "en": "mark/number"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "PHIÊN HIỆU là số hiệu.",
+                "en": "Number (番) Mark (号)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "số",
+                "số hiệu"
+            ],
+            "en": [
+                "number"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "電話番号",
+                "translation": {
+                    "vi": "Số điện thoại",
+                    "en": "Phone number"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "PHIÊN bản có số HIỆU Đàng hoàng.",
+            "en": "BUNGALO (Bangou) number 5."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "何番",
+        "han_viet": "HÀ PHIÊN",
+        "kana": "なんばん",
+        "romaji": "nanban",
+        "tags": [
+            "n5",
+            "interrogative"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "何",
+                    "han_viet": "HÀ",
+                    "meaning": {
+                        "vi": "mấy",
+                        "en": "what"
+                    }
+                },
+                {
+                    "kanji": "番",
+                    "han_viet": "PHIÊN",
+                    "meaning": {
+                        "vi": "số",
+                        "en": "number"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Số mấy.",
+                "en": "What number."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "số mấy"
+            ],
+            "en": [
+                "what number"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "何番ですか。",
+                "translation": {
+                    "vi": "Số mấy vậy?",
+                    "en": "What number is it?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Số mấy?",
+            "en": "NAN-BAN chicken number?"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "スーパー",
+        "han_viet": "",
+        "kana": "すーぱー",
+        "romaji": "su-pa-",
+        "tags": [
+            "n5",
+            "noun",
+            "katakana",
+            "place"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Supermarket.",
+                "en": "Supermarket."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "siêu thị"
+            ],
+            "en": [
+                "supermarket"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "スーパーで買います。",
+                "translation": {
+                    "vi": "Mua ở siêu thị.",
+                    "en": "Buy at the supermarket."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Su-pờ (Super).",
+            "en": "Super."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "バス",
+        "han_viet": "",
+        "kana": "ばす",
+        "romaji": "basu",
+        "tags": [
+            "n5",
+            "noun",
+            "katakana",
+            "transport"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Bus.",
+                "en": "Bus."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "xe buýt"
+            ],
+            "en": [
+                "bus"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "バスで来ました。",
+                "translation": {
+                    "vi": "Tôi đến bằng xe buýt.",
+                    "en": "I came by bus."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Bát-xự (Bus). Ba sụ mặt vì lỡ xe.",
+            "en": "Bus."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "タクシー",
+        "han_viet": "",
+        "kana": "たくしー",
+        "romaji": "takushi-",
+        "tags": [
+            "n5",
+            "noun",
+            "katakana",
+            "transport"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Taxi.",
+                "en": "Taxi."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "taxi"
+            ],
+            "en": [
+                "taxi"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "タクシーで帰ります。",
+                "translation": {
+                    "vi": "Tôi về bằng taxi.",
+                    "en": "I go home by taxi."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Tắc-xi.",
+            "en": "Taxi."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ことし",
+        "han_viet": "",
+        "kana": "ことし",
+        "romaji": "kotoshi",
+        "tags": [
+            "n5",
+            "noun",
+            "time"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Năm nay. (Hán tự: Kim Niên, nhưng đọc Kotoshi là âm Thuần Nhật).",
+                "en": "This year."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "năm nay"
+            ],
+            "en": [
+                "this year"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ことし、日本へ行きます。",
+                "translation": {
+                    "vi": "Năm nay tôi sẽ đi Nhật.",
+                    "en": "I will go to Japan this year."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Năm nay CÔ TÔ (Koto) sĩ đi thi.",
+            "en": "COAT, OH SHE (Kotoshi) bought a coat this year."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "いつ",
+        "han_viet": "",
+        "kana": "いつ",
+        "romaji": "itsu",
+        "tags": [
+            "n5",
+            "interrogative",
+            "time"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Khi nào.",
+                "en": "When."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "khi nào",
+                "bao giờ"
+            ],
+            "en": [
+                "when"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "誕生日はいつですか。",
+                "translation": {
+                    "vi": "Sinh nhật bạn là khi nào?",
+                    "en": "When is your birthday?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Khi nào đi? Đi su (Itsu) su?",
+            "en": "IT'S SOO (Itsu) late, when?"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "どういたしまして",
+        "han_viet": "",
+        "kana": "どういたしまして",
+        "romaji": "douitashimashite",
+        "tags": [
+            "n5",
+            "phrase",
+            "polite"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Không có chi. Đáp lại lời cảm ơn.",
+                "en": "You're welcome."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "không có gì"
+            ],
+            "en": [
+                "you're welcome",
+                "don't mention it"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "A: ありがとう。 B: どういたしまして。",
+                "translation": {
+                    "vi": "A: Cảm ơn. B: Không có gì.",
+                    "en": "A: Thank you. B: You're welcome."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Đâu (Dou) có (Ita) gì đâu mà.",
+            "en": "DON'T TOUCH MY MOUSTACHE (Sounds somewhat similar)."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "どうもありがとう",
+        "han_viet": "",
+        "kana": "どうもありがとう",
+        "romaji": "doumoarigatou",
+        "tags": [
+            "n5",
+            "phrase",
+            "polite"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Cảm ơn rất nhiều.",
+                "en": "Thank you very much."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "xin cảm ơn",
+                "cảm ơn rất nhiều"
+            ],
+            "en": [
+                "thank you very much"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "Domo Arigatou.",
+            "en": "Domo Arigato Mr. Roboto."
+        },
+        "confusions": []
+    }
+]
