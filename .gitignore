@@ -2,6 +2,9 @@
 
 playwright-report
 test-results
+data/minna_1
+data/minna_2
+data/units
 
 # dependencies
 /node_modules

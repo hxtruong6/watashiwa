@@ -2,8 +2,8 @@
 
 > **Objective**: Generate Japanese Vocabulary Data that is "Native-Level" accurate for both Vietnamese and English learners, enforcing a strict separation of concerns between Hán-Việt (VN) and Pictographic/Phonetic (EN) mnemonics.
 
-> **Source**: `data/MinaN5_1_13.txt`
-> **Destination**: `data/seed/minna_n5/unitXX.json`
+> **Source**: `data/All Decks_2.txt`
+> **Destination**: `data/seed/minna_1/unitXX.json`
 
 ## Unit Tracking
 

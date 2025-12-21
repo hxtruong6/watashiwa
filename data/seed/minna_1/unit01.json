@@ -1,0 +1,194 @@
+[
+  {
+    "word_surface": "私",
+    "han_viet": "TƯ",
+    "kana": "わたし",
+    "romaji": "watashi",
+    "tags": [
+      "n5",
+      "pronoun",
+      "personal pronoun"
+    ],
+    "pitch_pattern": 2,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "私",
+          "han_viet": "TƯ",
+          "meaning": {
+            "vi": "riêng tư, cá nhân",
+            "en": "private, personal, self"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ '私' có Hán Việt là TƯ, mang nghĩa 'riêng tư', 'cá nhân', 'thuộc về mình'. Từ ý nghĩa này, nó được dùng để chỉ bản thân mình, tức là 'tôi'. Chữ TƯ (私) trong tiếng Việt cũng thường được dùng trong các từ ghép như 'tư nhân', 'tư lợi' để chỉ sự riêng biệt, cá thể.",
+        "en": "The Kanji 私 (shi, watashi) visually combines 禾 (he, grain, but often simplified here) and 厶 (mu, meaning private, personal, or self). The combination emphasizes something held individually or belonging to oneself, hence its core meaning of 'private' or 'personal'. From this, it evolved to mean 'I' or 'me', referring to one's private self."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "tôi",
+        "tớ",
+        "mình (cách xưng trung lập, phổ biến)"
+      ],
+      "en": [
+        "I",
+        "me",
+        "myself (neutral, common form)"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "私の名前は山田です。",
+        "translation": {
+          "vi": "Tên tôi là Yamada.",
+          "en": "My name is Yamada."
+        }
+      },
+      {
+        "sentence": "これは私の本です。",
+        "translation": {
+          "vi": "Đây là sách của tôi.",
+          "en": "This is my book."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "**TƯ** duy về cách xưng **TƯ** nhân (tôi) trong mọi trường hợp.",
+      "en": "**WA-TA-SHI** sounds like \"WHAT A SHE!\" — *I* am wondering, \"What a she!\""
+    },
+    "confusions": [
+      {
+        "word": "僕 (boku)",
+        "explanation": {
+          "mnemonic": {
+            "vi": "BỘC (僕) nghe như \"bóc\" (lột) - từ này thường dùng cho nam giới trẻ tuổi, như một cậu bé đang \"bóc\" lớp vỏ tuổi thơ.",
+            "en": "BOKU sounds like \"BOY-ku\" - a boy uses this."
+          },
+          "item1_nuance": {
+            "vi": "“Boku” (僕) là cách xưng “tôi” của nam giới, thường mang sắc thái khiêm tốn, thân thiện hoặc lịch sự hơn “Ore”. Nó thường được dùng bởi nam giới trẻ, học sinh, hoặc trong môi trường thân mật, hoặc khi nói chuyện với người ngang hàng/hơn mình một chút để thể hiện sự tôn trọng. Hán Việt là BỘC (僕), nghĩa gốc là \"người hầu\", \"tôi tớ\", phản ánh sắc thái khiêm tốn.",
+            "en": "“Boku” (僕) is a masculine way to say 'I/me'. It carries a humble, friendly, or slightly more polite nuance than 'Ore'. It's commonly used by younger males, students, or in intimate settings, or when speaking to equals/slightly superiors to show respect."
+          },
+          "item2_nuance": {
+            "vi": "Không phải phụ nữ dùng.",
+            "en": "Not used by females."
+          }
+        }
+      },
+      {
+        "word": "俺 (ore)",
+        "explanation": {
+          "mnemonic": {
+            "vi": "ORE nghe như \"Ô RÊ!\" (\"Oh yeah!\") - thể hiện sự tự tin, mạnh mẽ của \"tôi\" (nam).",
+            "en": "ORE sounds like \"OH RE!\" (Oh yeah!) - *I* am confident, *I* am strong!"
+          },
+          "item1_nuance": {
+            "vi": "“Ore” (俺) là cách xưng “tôi” của nam giới, mang sắc thái mạnh mẽ, nam tính, đôi khi thô tục hoặc suồng sã. Thường dùng trong ngữ cảnh rất thân mật với bạn bè thân, gia đình, hoặc khi muốn thể hiện sự vượt trội, tự tin. Không dùng với người cấp trên, người lớn tuổi hơn, hoặc người không quen biết vì có thể bị coi là thiếu lịch sự.",
+            "en": "“Ore” (俺) is a masculine way to say 'I/me'. It carries a strong, masculine, sometimes rude or arrogant nuance. It's typically used in very intimate settings with close friends or family, or when wanting to assert dominance or confidence. It should not be used with superiors, elders, or strangers as it can be considered impolite."
+          },
+          "item2_nuance": {
+            "vi": "Không phải phụ nữ dùng.",
+            "en": "Not used by females."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "word_surface": "あなた",
+    "han_viet": "",
+    "kana": "あなた",
+    "romaji": "anata",
+    "tags": [
+      "n5",
+      "pronoun",
+      "noun"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L33,20 L66,20 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "彼方",
+          "han_viet": "BỈ PHƯƠNG",
+          "meaning": {
+            "vi": "Đằng kia, nơi đó",
+            "en": "That way, over there, yonder"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Từ 彼方 (BỈ PHƯƠNG - đằng kia, nơi đó) ban đầu chỉ một địa điểm xa xôi, sau đó chuyển nghĩa thành người ở nơi xa xôi đó, và cuối cùng trở thành đại từ nhân xưng 'bạn'.",
+        "en": "Originally derived from 彼方 (kanata), meaning 'that way, over there, yonder'. It evolved from referring to a distant place, then to the person at that distant place, eventually becoming a general pronoun for 'you'."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "Bạn, anh, chị, cô, chú (thường dùng cho người ngang hàng hoặc thấp hơn, hoặc khi không biết tên người đối diện)",
+        "Ông xã, bà xã (khi vợ chồng gọi nhau)"
+      ],
+      "en": [
+        "You (general, often used when the speaker doesn't know the listener's name, or for someone of equal/lower status; can be impolite if used frequently with superiors)",
+        "My dear, darling (used by a married couple to address each other)"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "あなた、どこにいるの？",
+        "translation": {
+          "vi": "Anh/Em ơi, anh/em đang ở đâu vậy?",
+          "en": "Darling, where are you?"
+        }
+      },
+      {
+        "sentence": "あなたのお名前は何ですか？",
+        "translation": {
+          "vi": "Tên của bạn là gì?",
+          "en": "What is your name?"
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "AHA! NÀY TẠ! Bạn có nhớ không?",
+      "en": "A Naughty TAmagotchi. You are a naughty Tamagotchi!"
+    },
+    "confusions": [
+      {
+        "word": "君 (きみ)",
+        "explanation": {
+          "mnemonic": {
+            "vi": "KIMI CÚI (君): Người đứng trên gọi người dưới.",
+            "en": "KIMI (You, male): A KING might say 'Kimi' to a vassal."
+          },
+          "item1_nuance": {
+            "vi": "`あなた` (Bạn): Trung lập hơn, hoặc vợ chồng gọi nhau. Có thể thiếu tôn trọng nếu dùng với người trên.",
+            "en": "`あなた` (You): More general or neutral, or used by spouses. Can be impolite if used often with superiors."
+          },
+          "item2_nuance": {
+            "vi": "`君` (Em, Cậu): Người trên (nam giới) gọi người dưới, hoặc nam giới gọi bạn bè thân thiết/người yêu. Thân mật hơn `あなた` nhưng có sắc thái 'ra lệnh' hoặc 'kém tôn trọng' nếu dùng không đúng.",
+            "en": "`君` (You, informal): Used by a male superior to address a subordinate, or by males to close friends/lovers. More intimate than `anata` but carries a nuance of 'command' or 'less respect' if used improperly."
+          }
+        }
+      },
+      {
+        "word": "お前 (おまえ)",
+        "explanation": {
+          "mnemonic": {
+            "vi": "Ô! MA-E! (Ông mẹ): Quá thô tục, chỉ dùng khi cãi nhau hoặc cực thân thiết.",
+            "en": "OH MY! You are so RUDE! (O-MAE is very rude)."
+          },
+          "item1_nuance": {
+            "vi": "`あなた` (Bạn): Trung lập, hoặc vợ chồng gọi nhau. Tránh dùng liên tục với người trên.",
+            "en": "`あなた` (You): Neutral, or used by spouses. Avoid continuous use with superiors."
+          },
+          "item2_nuance": {
+            "vi": "`お前` (Mày, Mi): Rất thô tục, nam giới dùng cho người ngang hàng hoặc thấp hơn trong tình huống rất thân thiết (bạn bè) hoặc tức giận, cãi vã. Tuyệt đối không dùng với người lạ hay người trên.",
+            "en": "`お前` (You, extremely informal/rude): Very informal, often rude. Used by males to equals or inferiors in very intimate (close friends) or angry situations. Never use with strangers or superiors."
+          }
+        }
+      }
+    ]
+  }
+]

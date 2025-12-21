@@ -110,8 +110,8 @@ async function generateWordContent(word: string): Promise<AIResponse | null> {
 }
 
 async function main() {
-	const rawFile = path.join(process.cwd(), 'seed/n5_raw.json');
-	const outFile = path.join(process.cwd(), 'seed/data/n5_verified.json');
+	const rawFile = path.join(process.cwd(), 'data/seed/unit_01_raw.json');
+	const outFile = path.join(process.cwd(), 'data/seed/minna_1/unit01.json');
 
 	// Ensure output dir exists
 	await fs.mkdir(path.dirname(outFile), { recursive: true });
