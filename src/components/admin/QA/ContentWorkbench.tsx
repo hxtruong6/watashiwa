@@ -1,5 +1,6 @@
 'use client';
 
+import { useWorkbenchStore } from '@/modules/admin/store/useWorkbenchStore';
 import {
 	getPendingVocabularySafe,
 	getVocabularyByStatus,
@@ -10,18 +11,21 @@ import {
 import {
 	CheckCircleOutlined,
 	CloseCircleOutlined,
+	CloseOutlined,
 	EditOutlined,
+	ExclamationCircleOutlined,
 	QuestionCircleOutlined,
 	SaveOutlined,
 } from '@ant-design/icons';
 import {
+	Badge,
 	Button,
-	Card,
 	Empty,
 	Flex,
 	Layout,
 	List,
 	Modal,
+	Select,
 	Space,
 	Spin,
 	Tag,
@@ -31,7 +35,7 @@ import {
 	theme,
 } from 'antd';
 import { useTranslations } from 'next-intl';
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { EditVocabularyForm } from './EditVocabularyForm';
@@ -42,36 +46,54 @@ const { Sider, Content } = Layout;
 
 export const ContentWorkbench: React.FC = () => {
 	const t = useTranslations('Admin.Content');
-	// State
+
+	// Store
+	const { activeItem, isDirty, init, updateField } = useWorkbenchStore();
+
+	// Local State (Queue Management)
 	const [queue, setQueue] = useState<ExtendedVocabulary[]>([]);
 	const [selectedIndex, setSelectedIndex] = useState<number>(0);
 	const [loading, setLoading] = useState(true);
-	const [isEditing, setIsEditing] = useState(false);
 	const [saveLoading, setSaveLoading] = useState(false);
 	const [helpOpen, setHelpOpen] = useState(false);
+	const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
 	const searchParams = useSearchParams();
+	const router = useRouter();
+	const pathname = usePathname();
 	const statusFilter = searchParams.get('status');
+
+	const handleFilterChange = (value: string) => {
+		const params = new URLSearchParams(searchParams.toString());
+		if (value && value !== 'Pending') {
+			params.set('status', value);
+		} else {
+			params.delete('status');
+		}
+		router.push(`${pathname}?${params.toString()}`);
+	};
 
 	// Access Ant Design Token
 	const { token } = theme.useToken();
 
-	// Refs
+	// Refs for keyboard shortcuts to access latest state
 	const queueRef = useRef(queue);
 	const selectedIndexRef = useRef(selectedIndex);
-	const isEditingRef = useRef(isEditing);
+	const isDirtyRef = useRef(isDirty);
+	const activeItemRef = useRef(activeItem);
 
 	useEffect(() => {
 		queueRef.current = queue;
 		selectedIndexRef.current = selectedIndex;
-		isEditingRef.current = isEditing;
+		isDirtyRef.current = isDirty;
+		activeItemRef.current = activeItem;
 
 		// Auto-scroll
 		const el = document.getElementById(`queue-item-${selectedIndex}`);
 		if (el) {
 			el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
 		}
-	}, [queue, selectedIndex, isEditing]);
+	}, [queue, selectedIndex, isDirty, activeItem]);
 
 	// Fetch Data
 	useEffect(() => {
@@ -87,6 +109,7 @@ export const ContentWorkbench: React.FC = () => {
 			if (res.success && res.data) {
 				setQueue(res.data as unknown as ExtendedVocabulary[]);
 				setSelectedIndex(0); // Reset selection on fetch
+				// Note: The Effect below will catch selectedIndex change and init store
 			} else {
 				message.error(res.error || 'Failed to fetch vocabulary');
 			}
@@ -95,40 +118,102 @@ export const ContentWorkbench: React.FC = () => {
 		fetchData();
 	}, [statusFilter]);
 
-	// Current Item
-	const currentItem = queue[selectedIndex];
+	// Sync Store with Selection
+	useEffect(() => {
+		if (queue[selectedIndex]) {
+			init(queue[selectedIndex]);
+		}
+	}, [queue, selectedIndex, init]);
 
 	// Actions
+	const confirmNavigation = (callback: () => void) => {
+		if (isDirty) {
+			Modal.confirm({
+				title: t('unsavedTitle') || 'Unsaved Changes',
+				icon: <ExclamationCircleOutlined />,
+				content: t('unsavedMessage') || 'You have unsaved changes. Discard them?',
+				okText: 'Discard',
+				okType: 'danger',
+				cancelText: 'Cancel',
+				onOk: callback,
+			});
+		} else {
+			callback();
+		}
+	};
+
 	const handleSelect = (index: number) => {
 		if (index >= 0 && index < queue.length) {
-			setSelectedIndex(index);
-			setIsEditing(false); // Exit edit mode when switching
+			confirmNavigation(() => {
+				setSelectedIndex(index);
+			});
 		}
 	};
 
 	const handleNext = useCallback(() => {
-		if (queueRef.current.length === 0) return;
-
-		// Move selection or Remove item?
-		// For "Queue" workflow, usually we remove processed items or mark them done.
-		// Let's remove for now to keep the list clean, similar to previous deck.
-		// OR: Keep in list but mark status visually?
-		// Current logic removes from queue state for "nextCard". Let's update that to behave like a queue.
-
+		// Queue logic: splice out current item
 		setQueue((prev) => {
 			const next = [...prev];
 			next.splice(selectedIndexRef.current, 1);
 			return next;
 		});
-		// Selection stays at current index (next item shifts up), unless it was last
+		// Adjust index
 		if (selectedIndexRef.current >= queueRef.current.length - 1) {
 			setSelectedIndex(Math.max(0, queueRef.current.length - 2));
 		}
+		// No need confirmNavigation here because we are "Committing" the action (Approve/Reject) usually
+		// But if just skipping? We don't have a "Skip" button mapped currently.
 	}, []);
+
+	const handleSave = useCallback(
+		async (silent = false) => {
+			if (!activeItemRef.current) return false;
+			setSaveLoading(true);
+
+			// API Call
+			const res = await updateContent({
+				id: activeItemRef.current.id,
+				data: activeItemRef.current,
+			});
+
+			setSaveLoading(false);
+
+			if (res.success) {
+				if (!silent) message.success('Saved changes');
+
+				// Update Queue with new data to prevent "re-init" reverting changes if we navigated back
+				setQueue((prev) => {
+					const next = [...prev];
+					next[selectedIndex] = activeItemRef.current!;
+					return next;
+				});
+
+				// Re-init store to reset "originalItem" to "activeItem" (clear dirty)
+				init(activeItemRef.current);
+				return true;
+			} else {
+				message.error(res.error || 'Failed to save');
+				return false;
+			}
+		},
+		[selectedIndex, init],
+	); // init is stable from store usually, but ok to add.
 
 	const handleApprove = useCallback(async () => {
 		const item = queueRef.current[selectedIndexRef.current];
 		if (!item) return;
+
+		// If dirty, save first
+		if (isDirtyRef.current) {
+			const saved = await updateContent({
+				id: activeItemRef.current!.id,
+				data: activeItemRef.current!,
+			});
+			if (!saved.success) {
+				message.error('Failed to save before approving');
+				return;
+			}
+		}
 
 		// Optimistic UI
 		handleNext();
@@ -137,11 +222,11 @@ export const ContentWorkbench: React.FC = () => {
 		const res = await verifyContent({ vocabId: item.id });
 		if (!res.success) {
 			message.error('Server error: ' + res.error);
-			// In real app, re-fetch or rollback
 		}
-	}, [handleNext, t]);
+	}, [handleNext, t]); // handleSave dep missing but we use ref logic inside logic if we extracted
 
 	const handleReject = useCallback(async () => {
+		// Rejecting usually implies data doesn't matter, just flag it.
 		const item = queueRef.current[selectedIndexRef.current];
 		if (!item) return;
 
@@ -154,70 +239,105 @@ export const ContentWorkbench: React.FC = () => {
 		}
 	}, [handleNext, t]);
 
-	const handleSaveEdit = async (values: Partial<ExtendedVocabulary>) => {
-		if (!currentItem) return;
-		setSaveLoading(true);
+	const handlePlayAudio = useCallback(() => {
+		const current = activeItemRef.current; // Store source for audio
+		if (!current) return;
 
-		const res = await updateContent({ id: currentItem.id, data: values });
-		if (res.success) {
-			// Update local state BUT DON'T REMOVE
-			const updated = { ...currentItem, ...values };
-			const newQueue = [...queue];
-			newQueue[selectedIndex] = updated as unknown as ExtendedVocabulary;
-			setQueue(newQueue);
-
-			setIsEditing(false);
-			message.success('Saved changes');
+		if (current.audioUrl) {
+			const audio = new Audio(current.audioUrl);
+			audio.play().catch((e) => console.error('Audio playback error', e));
 		} else {
-			message.error(res.error || 'Failed to save');
+			const text = current.wordReading || current.wordSurface;
+			if (text) {
+				const u = new SpeechSynthesisUtterance(text);
+				u.lang = 'ja-JP';
+				const voices = window.speechSynthesis.getVoices();
+				const kyoko = voices.find((v) => v.name === 'Kyoko' || v.name.includes('Kyoko'));
+				if (kyoko) u.voice = kyoko;
+				window.speechSynthesis.speak(u);
+			}
 		}
-		setSaveLoading(false);
-	};
+	}, []);
 
-	// Keyboard Shortcuts
+	// KEYBOARD SHORTCUTS
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
-			// Provide global ignore for inputs if in Edit Mode
-			if (isEditingRef.current) {
-				// Allow Esc to cancel edit
-				if (e.key === 'Escape') setIsEditing(false);
-				// Allow Cmd+S to save? (Handled inside form usually, but can trigger global submit if needed)
-				return;
+			// Disable shortcuts if editing form or input is focused
+			if (isEditModalOpen) return;
+			// Ignore if input focused (global check)
+			if (
+				document.activeElement?.tagName === 'INPUT' ||
+				document.activeElement?.tagName === 'TEXTAREA' ||
+				(document.activeElement as HTMLElement)?.isContentEditable
+			) {
+				// Allow Cmd/Ctrl+S for saving even if an input is focused
+				if (e.key === 's' && (e.metaKey || e.ctrlKey)) {
+					// Do nothing, let the save shortcut proceed
+				} else {
+					return;
+				}
 			}
+
+			// Check if we are in an input/textarea
+			const isInput =
+				document.activeElement?.tagName === 'INPUT' ||
+				document.activeElement?.tagName === 'TEXTAREA' ||
+				(document.activeElement as HTMLElement)?.isContentEditable;
 
 			switch (e.key) {
 				case 'j':
 				case 'J':
 				case 'ArrowDown':
+					if (isInput) return;
 					e.preventDefault();
 					if (selectedIndexRef.current < queueRef.current.length - 1) {
+						// We need to trigger handleSelect logic to check dirty
+						// But we are in event listener.
+						// Check ref dirty
+						if (isDirtyRef.current) {
+							message.warning('Please save or discard current changes'); // Simple block for shortcut
+							return;
+						}
 						setSelectedIndex((s) => s + 1);
 					}
 					break;
 				case 'k':
 				case 'K':
 				case 'ArrowUp':
+					if (isInput) return;
 					e.preventDefault();
 					if (selectedIndexRef.current > 0) {
+						if (isDirtyRef.current) {
+							message.warning('Please save or discard current changes');
+							return;
+						}
 						setSelectedIndex((s) => s - 1);
 					}
 					break;
 				case 'a':
 				case 'A':
+					if (isInput) return;
 					e.preventDefault();
 					handleApprove();
 					break;
-				// case 'r':
-				// case 'R':
+				case 's':
+					if (e.metaKey || e.ctrlKey) {
+						e.preventDefault();
+						handleSave();
+					}
+					break;
+				// case 'r': // Dangerous to match with R key?
+				//     if (isInput) return;
 				// 	e.preventDefault();
 				// 	handleReject();
 				// 	break;
-				case 'e':
-				case 'E':
+				case ' ': // Space to play audio
+					if (isInput) return;
 					e.preventDefault();
-					setIsEditing(true);
+					handlePlayAudio();
 					break;
 				case '?':
+					if (isInput) return;
 					e.preventDefault();
 					setHelpOpen(true);
 					break;
@@ -226,56 +346,70 @@ export const ContentWorkbench: React.FC = () => {
 
 		window.addEventListener('keydown', handleKeyDown);
 		return () => window.removeEventListener('keydown', handleKeyDown);
-	}, [handleApprove, handleReject]);
-
+	}, [handleApprove, handleReject, handlePlayAudio, handleSave, isEditModalOpen]);
 	// RENDER HELPERS
 	const renderStatusTag = (status: string) => {
-		let color = 'default';
+		let color: 'default' | 'processing' | 'success' | 'error' | 'warning' = 'default';
 		if (status === 'Pending') color = 'processing';
-		if (status === 'AI_GENERATED') color = 'cyan';
+		if (status === 'AI_GENERATED') color = 'processing';
 		if (status === 'VERIFIED') color = 'success';
 		if (status === 'FLAGGED') color = 'error';
+
 		return (
-			<Tag color={color} style={{ marginRight: 0 }}>
-				{status.slice(0, 2)}
-			</Tag>
+			<Badge status={color} text={status.slice(0, 2)} style={{ color: token.colorTextSecondary }} />
 		);
 	};
 
 	return (
 		<Layout
 			style={{
-				height: '100%', // Take full height of parent
+				height: '100%',
 				background: token.colorBgContainer,
-				// border: `1px solid ${token.colorBorderSecondary}`, // Remove double border if preferred
-				// borderRadius: 8, // Remove rounded corners if full bleed
 			}}
 		>
 			{/* LEFT PANEL: QUEUE */}
 			<Sider
-				width={320}
+				width={300}
 				theme="light"
 				style={{ borderRight: `1px solid ${token.colorBorderSecondary}` }}
 			>
 				<div
 					style={{
-						padding: '16px',
+						padding: '12px 16px',
 						borderBottom: `1px solid ${token.colorBorderSecondary}`,
 						background: token.colorFillQuaternary,
 					}}
 				>
-					<Text strong>
-						{t('queueTitle')} ({queue.length})
-					</Text>
-					<Tooltip title={`${t('shortcutsTitle')} (?)`}>
-						<Button
-							type="text"
-							size="small"
-							icon={<QuestionCircleOutlined />}
-							style={{ float: 'right' }}
-							onClick={() => setHelpOpen(true)}
-						/>
-					</Tooltip>
+					<Flex justify="space-between" align="center">
+						<Text strong>
+							{t('queueTitle')} ({queue.length})
+						</Text>
+						<Space size="small">
+							<Select
+								defaultValue={statusFilter || 'Pending'}
+								value={statusFilter || 'Pending'}
+								onChange={handleFilterChange}
+								size="small"
+								style={{ width: 130, fontSize: 14 }}
+								variant="borderless"
+								dropdownMatchSelectWidth={false}
+								options={[
+									{ value: 'Pending', label: 'Pending' },
+									{ value: 'AI_GENERATED', label: 'AI Generated' },
+									{ value: 'VERIFIED', label: 'Verified' },
+									{ value: 'FLAGGED', label: 'Flagged' },
+								]}
+							/>
+							<Tooltip title={`${t('shortcutsTitle')} (?)`}>
+								<Button
+									type="text"
+									size="small"
+									icon={<QuestionCircleOutlined />}
+									onClick={() => setHelpOpen(true)}
+								/>
+							</Tooltip>
+						</Space>
+					</Flex>
 				</div>
 				<div style={{ overflowY: 'auto', height: 'calc(100% - 53px)' }}>
 					{loading ? (
@@ -291,13 +425,14 @@ export const ContentWorkbench: React.FC = () => {
 									id={`queue-item-${index}`}
 									className={index === selectedIndex ? 'bg-primary-light' : ''}
 									style={{
-										padding: '12px 16px',
+										padding: '16px 20px',
 										cursor: 'pointer',
-										background: index === selectedIndex ? token.colorPrimaryBg : 'transparent',
+										background: index === selectedIndex ? token.colorFillQuaternary : 'transparent',
 										borderLeft:
 											index === selectedIndex
 												? `3px solid ${token.colorPrimary}`
 												: '3px solid transparent',
+										transition: 'background 0.2s',
 									}}
 									onClick={() => handleSelect(index)}
 								>
@@ -306,11 +441,33 @@ export const ContentWorkbench: React.FC = () => {
 											style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
 										>
 											<Text strong>{item.wordSurface}</Text>
-											<div style={{ fontSize: 12, color: token.colorTextSecondary }}>
-												{item.wordReading}
-											</div>
+											<Flex vertical gap="small" justify="space-between">
+												<Text
+													style={{
+														fontSize: 11,
+														color: token.colorTextSecondary,
+													}}
+												>
+													{item.wordReading}
+												</Text>
+												<Text
+													style={{
+														fontSize: 12,
+														color: token.colorTextSecondary,
+													}}
+												>
+													{item.meanings?.vi?.join(', ')}
+												</Text>
+											</Flex>
 										</div>
-										{renderStatusTag(item.contentStatus)}
+										<Flex gap="small" align="center">
+											{/* Dirty Indicator (Small dot if unsaved) */}
+											{/* Only show if this item is the currently selected one AND dirty */}
+											{index === selectedIndex && isDirty && (
+												<Badge status="warning" style={{ marginRight: 0 }} />
+											)}
+											{renderStatusTag(item.contentStatus)}
+										</Flex>
 									</Flex>
 								</List.Item>
 							)}
@@ -330,84 +487,106 @@ export const ContentWorkbench: React.FC = () => {
 			<Content
 				style={{ padding: 0, overflowY: 'auto', background: token.colorBgLayout, height: '100%' }}
 			>
-				{currentItem ? (
+				{activeItem ? (
 					<div
 						style={{
-							// Add internal padding to container instead of Content
 							padding: '24px',
-							maxWidth: isEditing ? '100%' : 550, // Slightly wider mobile view
+							maxWidth: '100%',
 							margin: '0 auto',
 							transition: 'max-width 0.3s ease',
 						}}
 					>
 						{/* HEADER ACTIONS */}
-						<Flex justify="space-between" align="center" style={{ marginBottom: 16 }}>
-							{/* Hide Title in Review Mode (it's redundant with Card) */}
-							{isEditing ? (
-								<Space>
-									<Title level={3} style={{ margin: 0 }}>
-										{currentItem.wordSurface}
-									</Title>
-									<Tag>{currentItem.wordReading}</Tag>
-								</Space>
-							) : (
-								<div /> // spacer
-							)}
+						<Flex
+							justify="space-between"
+							align="center"
+							style={{
+								marginBottom: 16,
+								position: 'sticky',
+								top: 0,
+								zIndex: 100,
+								background: token.colorBgLayout,
+								margin: '-24px -24px 16px -24px',
+								padding: '16px 24px',
+								borderBottom: `1px solid ${token.colorBorderSecondary}`,
+							}}
+						>
 							<Space>
-								{isEditing ? (
-									<>
-										<Button onClick={() => setIsEditing(false)}>{t('actionCancel')}</Button>
+								<Title level={3} style={{ margin: 0 }}>
+									{activeItem.wordSurface}
+								</Title>
+								{isDirty && (
+									<Tag color="warning" icon={<ExclamationCircleOutlined />}>
+										Unsaved
+									</Tag>
+								)}
+							</Space>
+							<Space>
+								<>
+									<Tooltip title={`${t('actionSave')} (⌘S)`}>
 										<Button
 											type="primary"
 											icon={<SaveOutlined />}
-											onClick={() => document.getElementById('workbench-submit')?.click()}
+											onClick={() => handleSave()}
 											loading={saveLoading}
+											disabled={!isDirty}
 										>
-											{t('actionSave')}{' '}
+											{t('actionSave')}
 											<span style={{ fontSize: 10, opacity: 0.8, marginLeft: 4 }}>⌘S</span>
 										</Button>
-									</>
-								) : (
-									<>
-										{/* <Tooltip title={`${t('actionReject')} (R)`}> */}
+									</Tooltip>
+
+									<Tooltip title={`${t('actionReject')} (R)`}>
 										<Button danger icon={<CloseCircleOutlined />} onClick={handleReject}>
 											{t('actionReject')}
 										</Button>
-										{/* </Tooltip> */}
-										<Tooltip title={`${t('actionEdit')} (E)`}>
-											<Button icon={<EditOutlined />} onClick={() => setIsEditing(true)}>
-												{t('actionEdit')}
+									</Tooltip>
+
+									{!isEditModalOpen && (
+										<Button icon={<EditOutlined />} onClick={() => setIsEditModalOpen(true)}>
+											Edit
+										</Button>
+									)}
+									{/* // show cancel button if isEditModalOpen */}
+									{isEditModalOpen && (
+										<Tooltip title={`${t('actionCancel')} (Esc)`}>
+											<Button icon={<CloseOutlined />} onClick={() => setIsEditModalOpen(false)}>
+												Cancel
 											</Button>
 										</Tooltip>
-										<Tooltip title={`${t('actionApprove')} (A)`}>
-											<Button type="primary" icon={<CheckCircleOutlined />} onClick={handleApprove}>
-												{t('actionApprove')}
-											</Button>
-										</Tooltip>
-									</>
-								)}
+									)}
+
+									<Tooltip title={`${t('actionApprove')} (A)`}>
+										<Button type="primary" icon={<CheckCircleOutlined />} onClick={handleApprove}>
+											{t('actionApprove')}
+										</Button>
+									</Tooltip>
+								</>
 							</Space>
 						</Flex>
 
 						{/* CONTENT AREA */}
-						<Card bordered={false} style={{ boxShadow: token.boxShadowTertiary }}>
-							{isEditing ? (
-								<EditVocabularyForm
-									initialValues={currentItem}
-									onSubmit={handleSaveEdit}
-									onCancel={() => setIsEditing(false)}
-									loading={saveLoading}
-									id="workbench-submit" // Trigger ID
-								/>
-							) : (
-								<VerificationCard
-									data={currentItem}
-									mode="review"
-									// Disable card internal actions, we use workbench header
-									hideActions
-								/>
-							)}
-						</Card>
+						{isEditModalOpen ? (
+							<EditVocabularyForm
+								initialValues={activeItem}
+								onCancel={() => setIsEditModalOpen(false)}
+								onSubmit={(values: Partial<ExtendedVocabulary>) => {
+									Object.entries(values).forEach(([k, v]) => {
+										// @ts-expect-error - Dynamic key assignment
+										updateField(k, v);
+									});
+									setIsEditModalOpen(false);
+									message.success('Draft updated. Click Save to persist.');
+								}}
+							/>
+						) : (
+							<VerificationCard
+								mode="review"
+								hideActions // We use the workbench header actions
+								onPlayAudio={handlePlayAudio}
+								// Store handles data
+							/>
+						)}
 					</div>
 				) : (
 					<Flex justify="center" align="center" style={{ height: '100%' }}>
@@ -445,21 +624,15 @@ export const ContentWorkbench: React.FC = () => {
 					</List.Item>
 					<List.Item>
 						<Text strong style={{ width: 60 }}>
-							R
+							Cmd+S
 						</Text>{' '}
-						<Tag color="error">{t('shortcutReject')}</Tag>
+						<Tag color="warning">{t('actionSave')}</Tag>
 					</List.Item>
 					<List.Item>
 						<Text strong style={{ width: 60 }}>
-							E
+							T
 						</Text>{' '}
-						{t('shortcutEdit')}
-					</List.Item>
-					<List.Item>
-						<Text strong style={{ width: 60 }}>
-							?
-						</Text>{' '}
-						{t('shortcutHelp')}
+						Switch Locale
 					</List.Item>
 				</List>
 			</Modal>

@@ -1,68 +1,53 @@
 'use client';
 
-import type { EtymologyData, ExamplesData, MeaningsData, MnemonicData } from '@/lib/schemas/jsonb';
-import {
-	BulbOutlined,
-	CheckOutlined,
-	CloseOutlined,
-	EditOutlined,
-	HistoryOutlined,
-	SoundOutlined,
-	ThunderboltOutlined,
-} from '@ant-design/icons';
-import type { Vocabulary } from '@prisma/client';
+import { useWorkbenchStore } from '@/modules/admin/store/useWorkbenchStore';
+import { ExtendedVocabulary } from '@/types/admin-types';
+import { CheckOutlined, CloseOutlined, EditOutlined, SoundOutlined } from '@ant-design/icons';
 import {
 	Badge,
 	Button,
 	Card,
-	Collapse,
-	Divider,
 	Flex,
+	Segmented,
+	Select,
 	Tag,
 	Tooltip,
 	Typography,
 	theme,
 } from 'antd';
-import { useTranslations } from 'next-intl';
-import React from 'react';
+import React, { useEffect } from 'react';
 
-const { Title, Text, Paragraph } = Typography;
+import { InlineInput } from './InlineInput';
+import { CardEtymology } from './parts/CardEtymology';
+import { CardExamples } from './parts/CardExamples';
+import { CardMeanings } from './parts/CardMeanings';
+import { CardMnemonic } from './parts/CardMnemonic';
+import { CardShield } from './parts/CardShield';
 
-// Extended Type with Strict JSONB checking
-export interface ExtendedVocabulary extends Omit<
-	Vocabulary,
-	'meanings' | 'etymology' | 'examples' | 'mnemonic'
-> {
-	meanings: MeaningsData;
-	etymology: EtymologyData;
-	examples: ExamplesData;
-	mnemonic: MnemonicData | null;
-	confusions?: {
-		word: string;
-		explanation: {
-			mnemonic: { vi: string; en: string };
-			item1_nuance: { vi: string; en: string };
-			item2_nuance: { vi: string; en: string };
-		};
-	}[];
-}
+const { Text } = Typography;
+
+// Re-export type for compatibility if needed (though prefer import from types)
+export type { ExtendedVocabulary };
 
 export interface VerificationCardProps {
-	data: ExtendedVocabulary;
+	// data prop is now optional or used for initialization if provided,
+	// but ideally we rely on store.
+	// For specificReadOnly cases, we might need a separate ReadOnlyCard,
+	// but here we assume this is the Workbench Editor.
 	mode?: 'review' | 'readonly';
 	loading?: boolean;
 	onApprove?: () => void;
 	onReject?: () => void;
-	onEdit?: () => void;
 	onPlayAudio?: () => void;
+	// Hide actions if workbench header handles them
 	hideActions?: boolean;
 }
 
 const TagColors: Record<string, string> = {
 	// Levels
 	n5: 'blue',
-	n4: 'geekblue',
-	n3: 'cyan',
+	n4: 'cyan',
+	n3: 'geekblue',
 	n2: 'purple',
 	n1: 'magenta',
 	// POS
@@ -87,46 +72,47 @@ const PitchPatternLabels: Record<number, string> = {
 };
 
 export const VerificationCard: React.FC<VerificationCardProps> = ({
-	data,
 	mode = 'readonly',
 	loading = false,
 	onApprove,
 	onReject,
-	onEdit,
 	onPlayAudio,
 	hideActions = false,
 }) => {
 	const { token } = theme.useToken();
-	const t = useTranslations('Admin.Content');
 
-	// Destructure strictly typed fields
-	const { meanings, mnemonic, etymology, examples } = data;
+	const { activeItem: data, locale, setLocale, updateField } = useWorkbenchStore();
 
-	const renderMeanings = () => (
-		<Flex gap="small" wrap="wrap" className="mb-4">
-			{meanings?.vi?.map((m, i) => (
-				<Tag
-					key={`vi-${i}`}
-					color="blue"
-					style={{ fontSize: token.fontSizeLG, padding: '4px 8px' }}
-				>
-					{m}
-				</Tag>
-			))}
-			{meanings?.en?.map((m, i) => (
-				<Tag key={`en-${i}`} bordered={false} style={{ fontSize: token.fontSize }}>
-					{m}
-				</Tag>
-			))}
-		</Flex>
-	);
+	// Keyboard shortcut 'T' for translation switch (Global listening still useful here?)
+	// Note: InlineInput might swallow some inputs, but global listener usually catches non-input focus.
+	useEffect(() => {
+		const handleKeyDown = (e: KeyboardEvent) => {
+			if (e.key === 't' || e.key === 'T') {
+				const target = e.target as HTMLElement;
+				// Avoid switching if typing in input
+				if (
+					target.tagName !== 'INPUT' &&
+					target.tagName !== 'TEXTAREA' &&
+					!target.isContentEditable
+				) {
+					e.preventDefault();
+					setLocale(String(locale) === 'vi' ? 'en' : 'vi');
+				}
+			}
+		};
+		window.addEventListener('keydown', handleKeyDown);
+		return () => window.removeEventListener('keydown', handleKeyDown);
+	}, [locale, setLocale]);
+
+	if (!data) {
+		return <Card loading={true} variant="borderless" />;
+	}
 
 	return (
 		<Card
 			loading={loading}
-			bordered={false}
+			variant="borderless"
 			style={{
-				maxWidth: 500,
 				width: '100%',
 				margin: '0 auto',
 				background: token.colorBgContainer,
@@ -134,12 +120,14 @@ export const VerificationCard: React.FC<VerificationCardProps> = ({
 				borderRadius: token.borderRadiusLG * 1.5,
 				overflow: 'hidden',
 			}}
-			bodyStyle={{
-				padding: 0,
-				display: 'flex',
-				flexDirection: 'column',
-				height: '70vh', // Fixed height for "Tinder" feel
-				maxHeight: 700,
+			styles={{
+				body: {
+					padding: 0,
+					display: 'flex',
+					flexDirection: 'column',
+					height: 'auto',
+					minHeight: '600px',
+				},
 			}}
 			className="verification-card"
 			actions={
@@ -153,13 +141,9 @@ export const VerificationCard: React.FC<VerificationCardProps> = ({
 								onClick={onReject}
 								style={{ height: 60, width: '100%' }}
 							/>,
-							<Button
-								key="edit"
-								type="text"
-								icon={<EditOutlined style={{ fontSize: 24, color: token.colorPrimary }} />}
-								onClick={onEdit}
-								style={{ height: 60, width: '100%' }}
-							/>,
+							// Edit button no longer needed as we have inline edit?
+							// Or keeps it to toggle "Edit Mode"?
+							// With inline edit, we are arguably ALWAYS in edit mode or "Quick Edit".
 							<Button
 								key="approve"
 								type="text"
@@ -181,31 +165,52 @@ export const VerificationCard: React.FC<VerificationCardProps> = ({
 					className="relative py-4"
 					style={{ flexShrink: 0, borderBottom: '1px solid #f0f0f0' }}
 				>
-					<Badge
-						status={data.contentStatus === 'AI_GENERATED' ? 'processing' : 'default'}
-						text={data.contentStatus}
-						style={{ position: 'absolute', top: 12, right: 12, opacity: 0.5 }}
-					/>
-
 					{/* Pitch Accent Visualization */}
 					<div
 						style={{
 							position: 'relative',
-							display: 'inline-block',
-							textAlign: 'center',
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
 							marginTop: 12,
+							width: 'fit-content',
 						}}
 					>
 						{/* Reading & Fallback Pitch */}
-						<Text type="secondary" style={{ fontSize: token.fontSize }}>
-							{data.wordReading} {data.wordRomaji && `• ${data.wordRomaji}`}
-							{/* Pitch Fallback if SVG missing but pattern exists */}
-							{!data.pitchSvgPath && data.pitchPattern !== null && (
-								<Tag bordered={false} style={{ marginLeft: 8, fontSize: 10 }}>
-									{data.pitchPattern} ({PitchPatternLabels[data.pitchPattern] || '?'})
-								</Tag>
-							)}
-						</Text>
+						<Flex gap="small" align="baseline" style={{ width: 'fit-content' }}>
+							<InlineInput
+								value={data.wordReading}
+								onChange={(val) => updateField('wordReading', val)}
+								placeholder="Reading"
+								textStyle={{ fontSize: token.fontSize, color: token.colorTextSecondary }}
+							/>
+							<Text type="secondary">•</Text>
+							<InlineInput
+								value={data.wordRomaji || ''}
+								onChange={(val) => updateField('wordRomaji', val)}
+								placeholder="Romaji"
+								textStyle={{ fontSize: token.fontSize, color: token.colorTextSecondary }}
+							/>
+						</Flex>
+
+						<div
+							style={{ marginTop: 4, display: 'flex', alignItems: 'center', gap: 8, zIndex: 10 }}
+						>
+							{/* Pitch Select */}
+							<Select
+								size="small"
+								variant="borderless"
+								value={data.pitchPattern}
+								onChange={(val) => updateField('pitchPattern', val)}
+								options={[0, 1, 2, 3, 4, 5].map((v) => ({
+									label: `${v} (${PitchPatternLabels[v]})`,
+									value: v,
+								}))}
+								popupMatchSelectWidth={false}
+								style={{ width: 'auto', minWidth: 100, fontSize: 12 }}
+								suffixIcon={<EditOutlined style={{ fontSize: 10, opacity: 0.5 }} />}
+							/>
+						</div>
 
 						{/* SVG Overlay if available */}
 						{data.pitchSvgPath && (
@@ -213,7 +218,7 @@ export const VerificationCard: React.FC<VerificationCardProps> = ({
 								viewBox="0 0 100 25"
 								style={{
 									position: 'absolute',
-									top: -10,
+									top: 20, // Adjusted for input height
 									left: 0,
 									width: '100%',
 									height: '25px',
@@ -233,37 +238,39 @@ export const VerificationCard: React.FC<VerificationCardProps> = ({
 					</div>
 
 					{/* HERO KANJI */}
-					<Title
-						level={1}
-						style={{
-							fontSize: 64,
-							margin: '4px 0 0 0',
-							fontWeight: 500,
-							fontFamily: '"Noto Serif JP", serif', // More elegant for Kanji
-							color: token.colorTextHeading,
-						}}
-					>
-						{data.wordSurface}
-					</Title>
+					<div style={{ margin: '4px 0 0 0', width: '100%', textAlign: 'center' }}>
+						<InlineInput
+							value={data.wordSurface}
+							onChange={(val) => updateField('wordSurface', val)}
+							textStyle={{
+								fontSize: 64,
+								fontWeight: 500,
+								fontFamily: '"Noto Serif JP", serif',
+								color: token.colorTextHeading,
+								textAlign: 'center',
+							}}
+							placeholder="Kanji"
+						/>
+					</div>
 
 					{/* Audio Button */}
-					<Button
-						type="primary"
-						shape="circle"
-						icon={<SoundOutlined />}
-						size="middle"
-						onClick={(e) => {
-							e.stopPropagation();
-							onPlayAudio?.();
-						}}
-						style={{
-							backgroundColor: token.colorPrimaryBg,
-							color: token.colorPrimary,
-							boxShadow: 'none',
-							marginTop: 16,
-							marginBottom: 8,
-						}}
-					/>
+					<Tooltip title="Play Audio (Space)">
+						<Button
+							type="text"
+							shape="circle"
+							icon={<SoundOutlined style={{ fontSize: 20 }} />}
+							size="large"
+							onClick={(e) => {
+								e.stopPropagation();
+								onPlayAudio?.();
+							}}
+							style={{
+								marginTop: 8,
+								color: token.colorTextSecondary,
+								background: 'transparent',
+							}}
+						/>
+					</Tooltip>
 				</Flex>
 
 				{/* SCROLLABLE BODY */}
@@ -277,163 +284,51 @@ export const VerificationCard: React.FC<VerificationCardProps> = ({
 						background: '#fafafa',
 					}}
 				>
-					{/* Tags Row */}
+					{/* Tags Row - Subtle */}
 					<Flex gap="4px" wrap="wrap" justify="center" style={{ marginBottom: 16 }}>
 						{data.tags.map((tag) => (
 							<Tag
 								key={tag}
-								bordered={false}
+								variant="filled"
 								color={TagColors[tag] || 'default'}
-								style={{ fontSize: 11, margin: 0 }}
+								style={{
+									fontSize: 11,
+									margin: 0,
+									opacity: 0.8,
+								}}
 							>
 								#{tag}
 							</Tag>
 						))}
+						{/* Locale Switcher */}
+						<Segmented
+							size="small"
+							options={[
+								{ label: 'VI', value: 'vi' },
+								{ label: 'EN', value: 'en' },
+							]}
+							value={locale}
+							onChange={(v) => setLocale(v as 'vi' | 'en')}
+							style={{ marginLeft: 8 }}
+						/>
 					</Flex>
 
 					{/* Meanings */}
-					<div style={{ textAlign: 'center' }}>{renderMeanings()}</div>
+					<div style={{ textAlign: 'center' }}>
+						<CardMeanings />
+					</div>
 
 					{/* Etymology / Han Viet */}
-					{(etymology?.parts?.length > 0 || etymology?.note) && (
-						<Card
-							size="small"
-							style={{ border: 'none', boxShadow: 'none', background: 'transparent' }}
-						>
-							<Title
-								level={5}
-								type="secondary"
-								style={{ fontSize: 12, textTransform: 'uppercase', letterSpacing: 1 }}
-							>
-								<HistoryOutlined /> {t('cardEtymology')}
-							</Title>
-
-							{/* Parts */}
-							<Flex gap="small" wrap="wrap" className="mb-2">
-								{etymology?.parts?.map((p, i) => (
-									<Tooltip key={i} title={p.meaning.vi}>
-										<Tag color="geekblue" style={{ fontSize: 14, padding: '4px 8px' }}>
-											{p.kanji} : {p.han_viet}
-										</Tag>
-									</Tooltip>
-								))}
-							</Flex>
-
-							{/* Note */}
-							{etymology?.note && (etymology.note.vi || etymology.note.en) && (
-								<Text
-									type="secondary"
-									style={{ fontSize: 13, display: 'block', fontStyle: 'italic', marginTop: 8 }}
-								>
-									{etymology.note.vi || etymology.note.en}
-								</Text>
-							)}
-						</Card>
-					)}
+					<CardEtymology />
 
 					{/* Mnemonic */}
-					{mnemonic && (mnemonic.vi || mnemonic.en) && (
-						<div
-							style={{
-								background: token.colorSuccessBg,
-								padding: token.padding,
-								borderRadius: token.borderRadius,
-								borderLeft: `4px solid ${token.colorSuccess}`,
-							}}
-						>
-							<Title level={5} style={{ color: token.colorSuccess, margin: 0, fontSize: 14 }}>
-								<BulbOutlined /> {t('cardMemoryHook')}
-							</Title>
-							<Paragraph style={{ margin: 0, marginTop: 8, fontSize: 15 }}>
-								{mnemonic.vi || mnemonic.en}
-							</Paragraph>
-						</div>
-					)}
+					<CardMnemonic />
 
 					{/* INTERFERENCE SHIELD (Confusions) */}
-					{data.confusions && data.confusions.length > 0 && (
-						<div
-							style={{
-								background: token.colorWarningBg,
-								padding: token.padding,
-								borderRadius: token.borderRadius,
-								border: `1px solid ${token.colorWarningBorder}`,
-							}}
-						>
-							<Title level={5} style={{ color: token.colorWarning, margin: 0, fontSize: 14 }}>
-								<ThunderboltOutlined /> {t('cardShield')}
-							</Title>
-							{data.confusions.map((conf, idx) => (
-								<div key={idx} style={{ marginTop: 8 }}>
-									<Text strong style={{ color: token.colorError }}>
-										{t('cardVs')} {conf.word}
-									</Text>
-									<Paragraph
-										style={{ margin: '4px 0 0 0', fontSize: 13, color: token.colorTextSecondary }}
-									>
-										{conf.explanation.item1_nuance.vi} (vs {conf.explanation.item2_nuance.vi})
-									</Paragraph>
-									<Paragraph style={{ margin: '4px 0 0 0', fontSize: 13, fontWeight: 500 }}>
-										💡 {conf.explanation.mnemonic.vi}
-									</Paragraph>
-									{idx < data.confusions!.length - 1 && <Divider style={{ margin: '8px 0' }} />}
-								</div>
-							))}
-						</div>
-					)}
+					<CardShield />
 
 					{/* EXAMPLES (Footer) */}
-					{examples && examples.length > 0 && (
-						<Collapse
-							ghost
-							size="small"
-							items={[
-								{
-									key: '1',
-									label: (
-										<Text type="secondary">
-											{t('cardExamples')} ({examples.length})
-										</Text>
-									),
-									children: (
-										<Flex vertical gap="small">
-											{examples.map((ex, i) => (
-												<div key={i} className="mb-2">
-													<Flex justify="space-between" align="start">
-														<Text strong>{ex.sentence}</Text>
-														<Button
-															type="text"
-															size="small"
-															icon={<SoundOutlined />}
-															onClick={(e) => {
-																e.stopPropagation();
-																if (ex.audio) {
-																	const audio = new Audio(ex.audio);
-																	audio
-																		.play()
-																		.catch((err) => console.error('Audio play error', err));
-																} else {
-																	const u = new SpeechSynthesisUtterance(ex.sentence);
-																	u.lang = 'ja-JP';
-																	const voices = window.speechSynthesis.getVoices();
-																	const kyoko = voices.find((v) => v.name === 'Kyoko');
-																	if (kyoko) u.voice = kyoko;
-																	window.speechSynthesis.speak(u);
-																}
-															}}
-														/>
-													</Flex>
-													<Text type="secondary" style={{ fontSize: 13 }}>
-														{ex.translation.vi}
-													</Text>
-												</div>
-											))}
-										</Flex>
-									),
-								},
-							]}
-						/>
-					)}
+					<CardExamples />
 				</Flex>
 			</Flex>
 		</Card>

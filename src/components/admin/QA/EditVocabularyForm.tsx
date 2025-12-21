@@ -1,3 +1,4 @@
+import type { ExtendedVocabulary } from '@/types/admin-types';
 import {
 	HistoryOutlined,
 	MinusCircleOutlined,
@@ -5,10 +6,8 @@ import {
 	ThunderboltOutlined,
 } from '@ant-design/icons';
 // Import from sibling
-import { Button, Divider, Flex, Form, Input, Select, Space, Typography } from 'antd';
+import { Button, Divider, Flex, Form, Input, Modal, Select, Space, Typography } from 'antd';
 import React, { useEffect } from 'react';
-
-import type { ExtendedVocabulary } from './VerificationCard';
 
 const { Title, Text } = Typography;
 const { TextArea } = Input;
@@ -41,8 +40,45 @@ export const EditVocabularyForm: React.FC<EditVocabularyFormProps> = ({
 		form.setFieldsValue(vals);
 	}, [initialValues, form]);
 
+	// Handle ESC key
+	useEffect(() => {
+		const handleEsc = (e: KeyboardEvent) => {
+			if (e.key === 'Escape') {
+				if (form.isFieldsTouched()) {
+					Modal.confirm({
+						title: 'Unsaved Changes',
+						content: 'You have unsaved changes in the form. Discard them?',
+						okText: 'Discard',
+						okType: 'danger',
+						cancelText: 'Keep Editing',
+						onOk: onCancel,
+					});
+				} else {
+					onCancel();
+				}
+			}
+		};
+		window.addEventListener('keydown', handleEsc);
+		return () => window.removeEventListener('keydown', handleEsc);
+	}, [form, onCancel]);
+
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const handleFinish = (values: any) => {
 		onSubmit(values); // In real app, we might need to transform 'confusions' back to relations
+	};
+
+	const handleCancelWithCheck = () => {
+		if (form.isFieldsTouched()) {
+			Modal.confirm({
+				title: 'Unsaved Changes',
+				content: 'You have unsaved changes. Discard?',
+				okText: 'Discard',
+				okType: 'danger',
+				onOk: onCancel,
+			});
+		} else {
+			onCancel();
+		}
 	};
 
 	return (
@@ -288,7 +324,7 @@ export const EditVocabularyForm: React.FC<EditVocabularyFormProps> = ({
 					borderRadius: '0 0 8px 8px',
 				}}
 			>
-				<Button onClick={onCancel}>Cancel</Button>
+				<Button onClick={handleCancelWithCheck}>Cancel</Button>
 				<Button type="primary" htmlType="submit" loading={loading}>
 					Save Changes
 				</Button>

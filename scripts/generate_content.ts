@@ -28,7 +28,7 @@ async function callGemini(prompt: string) {
 
 // Define the output structure we want from AI
 const AIResponseSchema = z.object({
-	kanji: z.string(),
+	word_surface: z.string(),
 	han_viet: z.string(),
 	kana: z.string(),
 	romaji: z.string(),
@@ -64,7 +64,7 @@ async function generateWordContent(word: string): Promise<AIResponse | null> {
     2. English ("en"): Focus on Kanji breakdown (pictographs) or English sound-alike mnemonics. DO NOT reference Hán Việt in the English field.
 
     Required Fields:
-    1. Basic info: kanji, han_viet (UPPERCASE), kana, romaji.
+    1. Basic info: word_surface (Kanji/Kana), han_viet (UPPERCASE), kana, romaji.
     2. Tags: Array of tags (e.g., "n5", "noun", "suru-verb", "transitive").
     3. Pitch Accent: 
        - pattern: Integer (0=Heiban, 1=Atamadaka, 2=Nakadaka, 3=Odaka).
@@ -79,7 +79,7 @@ async function generateWordContent(word: string): Promise<AIResponse | null> {
 
     Format strictly according to this JSON schema:
     {
-      "kanji": "string",
+      "word_surface": "string",
       "han_viet": "string",
       "kana": "string",
       "romaji": "string",
@@ -127,13 +127,13 @@ async function main() {
 			verifiedData.push(...parsed);
 			console.log(`Loaded ${verifiedData.length} existing words from ${outFile}`);
 		}
-	} catch (error) {
+	} catch {
 		console.log('No existing data found, starting fresh.');
 	}
 
 	// Create a Set of existing words for fast lookup
 	// We assume the 'kanji' field in the output matches the input word
-	const existingWords = new Set(verifiedData.map((item) => item.kanji));
+	const existingWords = new Set(verifiedData.map((item) => item.word_surface));
 
 	for (const word of rawWords) {
 		if (existingWords.has(word)) {

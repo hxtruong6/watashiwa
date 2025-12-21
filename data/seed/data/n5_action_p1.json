@@ -1,6 +1,6 @@
 [
   {
-    "kanji": "行く",
+    "word_surface": "行く",
     "han_viet": "HÀNH",
     "kana": "いく",
     "romaji": "iku",
@@ -15,7 +15,7 @@
     "etymology": {
       "parts": [
         {
-          "kanji": "行",
+          "word_surface": "行",
           "han_viet": "HÀNH",
           "meaning": {
             "vi": "đi, tổ chức",
@@ -70,7 +70,7 @@
     ]
   },
   {
-    "kanji": "来る",
+    "word_surface": "来る",
     "han_viet": "LAI",
     "kana": "くる",
     "romaji": "kuru",
@@ -85,7 +85,7 @@
     "etymology": {
       "parts": [
         {
-          "kanji": "来",
+          "word_surface": "来",
           "han_viet": "LAI",
           "meaning": {
             "vi": "đến",
@@ -140,7 +140,7 @@
     ]
   },
   {
-    "kanji": "帰る",
+    "word_surface": "帰る",
     "han_viet": "QUY",
     "kana": "かえる",
     "romaji": "kaeru",
@@ -155,7 +155,7 @@
     "etymology": {
       "parts": [
         {
-          "kanji": "帰",
+          "word_surface": "帰",
           "han_viet": "QUY",
           "meaning": {
             "vi": "về, quay lại",
@@ -194,7 +194,7 @@
     "confusions": []
   },
   {
-    "kanji": "歩く",
+    "word_surface": "歩く",
     "han_viet": "BỘ",
     "kana": "あるく",
     "romaji": "aruku",
@@ -209,7 +209,7 @@
     "etymology": {
       "parts": [
         {
-          "kanji": "歩",
+          "word_surface": "歩",
           "han_viet": "BỘ",
           "meaning": {
             "vi": "đi bộ, bước chân",
@@ -264,7 +264,7 @@
     ]
   },
   {
-    "kanji": "走る",
+    "word_surface": "走る",
     "han_viet": "TẨU",
     "kana": "はしる",
     "romaji": "hashiru",
@@ -279,7 +279,7 @@
     "etymology": {
       "parts": [
         {
-          "kanji": "走",
+          "word_surface": "走",
           "han_viet": "TẨU",
           "meaning": {
             "vi": "chạy",
@@ -316,7 +316,7 @@
     "confusions": []
   },
   {
-    "kanji": "起きる",
+    "word_surface": "起きる",
     "han_viet": "KHỞI",
     "kana": "おきる",
     "romaji": "okiru",
@@ -331,7 +331,7 @@
     "etymology": {
       "parts": [
         {
-          "kanji": "起",
+          "word_surface": "起",
           "han_viet": "KHỞI",
           "meaning": {
             "vi": "dậy, bắt đầu",
@@ -389,7 +389,7 @@
     ]
   },
   {
-    "kanji": "寝る",
+    "word_surface": "寝る",
     "han_viet": "TẨM",
     "kana": "ねる",
     "romaji": "neru",
@@ -404,7 +404,7 @@
     "etymology": {
       "parts": [
         {
-          "kanji": "寝",
+          "word_surface": "寝",
           "han_viet": "TẨM",
           "meaning": {
             "vi": "ngủ",
@@ -443,7 +443,7 @@
     "confusions": []
   },
   {
-    "kanji": "入る",
+    "word_surface": "入る",
     "han_viet": "NHẬP",
     "kana": "はいる",
     "romaji": "hairu",
@@ -458,7 +458,7 @@
     "etymology": {
       "parts": [
         {
-          "kanji": "入",
+          "word_surface": "入",
           "han_viet": "NHẬP",
           "meaning": {
             "vi": "vào",
@@ -515,7 +515,7 @@
     ]
   },
   {
-    "kanji": "出る",
+    "word_surface": "出る",
     "han_viet": "XUẤT",
     "kana": "でる",
     "romaji": "deru",
@@ -530,7 +530,7 @@
     "etymology": {
       "parts": [
         {
-          "kanji": "出",
+          "word_surface": "出",
           "han_viet": "XUẤT",
           "meaning": {
             "vi": "ra, rời khỏi",
@@ -571,7 +571,7 @@
     "confusions": []
   },
   {
-    "kanji": "乗る",
+    "word_surface": "乗る",
     "han_viet": "THỪA",
     "kana": "のる",
     "romaji": "noru",
@@ -586,7 +586,7 @@
     "etymology": {
       "parts": [
         {
-          "kanji": "乗",
+          "word_surface": "乗",
           "han_viet": "THỪA",
           "meaning": {
             "vi": "lên xe, cưỡi",
@@ -645,7 +645,7 @@
     ]
   },
   {
-    "kanji": "降りる",
+    "word_surface": "降りる",
     "han_viet": "GIÁNG/HÀNG",
     "kana": "おりる",
     "romaji": "oriru",
@@ -660,7 +660,7 @@
     "etymology": {
       "parts": [
         {
-          "kanji": "降",
+          "word_surface": "降",
           "han_viet": "GIÁNG",
           "meaning": {
             "vi": "xuống, rơi",

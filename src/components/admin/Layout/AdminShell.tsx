@@ -99,7 +99,7 @@ export const AdminShell: React.FC<AdminShellProps> = ({ children, user }) => {
 				collapsible
 				collapsed={collapsed}
 				theme="light"
-				width={260}
+				width={200}
 				style={{ borderRight: '1px solid #f0f0f0' }}
 			>
 				<div
@@ -133,7 +133,7 @@ export const AdminShell: React.FC<AdminShellProps> = ({ children, user }) => {
 						{!collapsed && (
 							<span
 								style={{
-									fontSize: 16,
+									fontSize: 14,
 									fontWeight: 700,
 									color: token.colorTextHeading,
 									fontFamily: 'var(--font-geist-sans)',

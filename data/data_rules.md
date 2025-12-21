@@ -371,3 +371,38 @@ When you generate this data using AI (GPT-4), your prompt must be explicit about
 > 2. **English (en):** Focus on Kanji breakdown (pictographs) or English sound-alike mnemonics. Do not reference Hán Việt in the English field."
 >
 >
+
+## 3 The "Zen Mastery" Admin QA Checklist
+
+### I. Linguistic Accuracy (The "Truth" Check)
+
+* [ ] **Pitch Accuracy:** Does the `pitchPattern` match a reputable source (e.g., NHK Pitch Accent Dictionary)?
+* [ ] **Part of Speech (POS):** Is the verb group correct? (e.g., Is *Kuru* marked as an irregular verb?)
+* [ ] **Hán-Việt Integrity:** Is the Hán-Việt character correct for the Vietnamese mnemonic? (e.g., *来る* is LAI, not LAI-LÁI).
+
+### II. The "CUBE" Quality Check (The "Stickiness" Check)
+
+* [ ] **Mnemonic Sanity:** Is the mnemonic actually helpful? (AI sometimes writes weird, nonsensical stories).
+* [ ] **No "Breadth" Meanings:** Does the card only show the **Minna-specific** meaning? (Example: *Ageru* has 20 meanings, but N5 users only need "To give").
+* [ ] **Context Sentence Logic:** Does the example sentence use only N5-level grammar? (Don't use N1 grammar to teach an N5 word).
+
+### III. UI/UX Asset Check (The "Zen" Check)
+
+* [ ] **SVG Validity:** Does the `pitchSvgPath` render correctly without overlapping text?
+* [ ] **Audio-Visual Match:** If there is an image, does it represent the word without ambiguity? (e.g., for "Hashi," is it clearly a Bridge and not just "scenery"?)
+
+---
+
+## 4. Technical Tip: The AI Prompting "Factory"
+
+To get high-quality data from the start, use a "Chain-of-Thought" prompt.
+
+**Example Prompt for your Script:**
+
+> "Acting as a Japanese Linguistics Expert, analyze the N5 word '来る'.
+>
+> 1. Identify its Hán-Việt (Vietnamese).
+> 2. Create a mnemonic for a Vietnamese student using that Hán-Việt.
+> 3. Create a mnemonic for an English student using a phonetic pun.
+> 4. Identify if it has a common homonym (same reading).
+> Output only in the following JSON format..."
