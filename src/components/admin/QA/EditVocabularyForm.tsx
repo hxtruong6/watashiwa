@@ -18,6 +18,7 @@ export interface EditVocabularyFormProps {
 	onSubmit: (values: Partial<ExtendedVocabulary>) => void;
 	onCancel: () => void;
 	loading?: boolean;
+	id?: string;
 }
 
 export const EditVocabularyForm: React.FC<EditVocabularyFormProps> = ({
@@ -25,6 +26,7 @@ export const EditVocabularyForm: React.FC<EditVocabularyFormProps> = ({
 	onSubmit,
 	onCancel,
 	loading,
+	id,
 }) => {
 	const [form] = Form.useForm();
 
@@ -50,6 +52,7 @@ export const EditVocabularyForm: React.FC<EditVocabularyFormProps> = ({
 			onFinish={handleFinish}
 			initialValues={initialValues}
 			requiredMark="optional"
+			id={id}
 		>
 			<Title level={4}>Core Data</Title>
 			<Flex gap="middle" wrap="wrap">

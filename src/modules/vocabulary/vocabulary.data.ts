@@ -24,7 +24,15 @@ export const VocabularyData = {
 			where: { contentStatus: status },
 			take: limit,
 			orderBy: { createdAt: 'desc' },
-			include: { variants: true },
+			include: {
+				variants: true,
+				confusionsAs1: {
+					include: { vocab2: { select: { wordSurface: true, wordReading: true } } },
+				},
+				confusionsAs2: {
+					include: { vocab1: { select: { wordSurface: true, wordReading: true } } },
+				},
+			},
 		});
 	},
 
@@ -97,5 +105,37 @@ export const VocabularyData = {
 			where: { id },
 			data,
 		});
+	},
+
+	/**
+	 * Get Statistics by Status
+	 */
+	getStats: async () => {
+		const groups = await prisma.vocabulary.groupBy({
+			by: ['contentStatus'],
+			_count: {
+				_all: true,
+			},
+		});
+
+		// Transform to a clean object
+		const stats: Record<string, number> = {};
+		groups.forEach((g) => {
+			stats[g.contentStatus] = g._count._all;
+		});
+
+		// Ensure all keys exist with 0 if missing
+		const allStatuses: ContentStatus[] = [
+			'DRAFT',
+			'AI_GENERATED',
+			'VERIFIED',
+			'PUBLISHED',
+			'FLAGGED',
+		];
+		allStatuses.forEach((s) => {
+			if (!stats[s]) stats[s] = 0;
+		});
+
+		return stats;
 	},
 };

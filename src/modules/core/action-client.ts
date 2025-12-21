@@ -92,7 +92,7 @@ export async function executeSafeAction<TInput, TOutput>(
 			return {
 				success: false,
 				error: 'Validation Failed',
-				validationErrors: validationResult.error.flatten().fieldErrors,
+				validationErrors: z.treeifyError(validationResult.error).errors,
 			};
 		}
 

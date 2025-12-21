@@ -191,3 +191,50 @@ export async function updateContent(input: { id: string; data: any }) {
 		return { message: 'Content updated.' };
 	});
 }
+
+/**
+ * Admin: Get Vocabulary Stats
+ */
+export async function getVocabularyStats() {
+	return executeSafeAction(z.void(), undefined, async (_data, { userId }) => {
+		if (!userId) throw new Error('Unauthorized');
+		// TODO: Add Role Check (Admin/Mod)
+
+		const stats = await VocabularyData.getStats();
+		return stats;
+	});
+}
+
+/**
+ * Admin: Get Vocabulary by Status
+ */
+export async function getVocabularyByStatus(status: string) {
+	const Schema = z.object({ status: z.string() });
+
+	return executeSafeAction(Schema, { status }, async ({ status }, { userId }) => {
+		if (!userId) throw new Error('Unauthorized');
+
+		// Map input string to ContentStatus if strictly typed, or pass as is (Prisma validates enum)
+		// We use existing getWithStatus data method
+		const items = await VocabularyData.getWithStatus(status as any);
+
+		// Transform to ExtendedVocabulary format
+		return items.map((item) => {
+			const confusions = [
+				...item.confusionsAs1.map((c) => ({
+					word: c.vocab2.wordSurface,
+					explanation: c.explanation as any,
+				})),
+				...item.confusionsAs2.map((c) => ({
+					word: c.vocab1.wordSurface,
+					explanation: c.explanation as any,
+				})),
+			];
+
+			return {
+				...item,
+				confusions,
+			};
+		});
+	});
+}

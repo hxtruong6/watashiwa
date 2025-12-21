@@ -7,7 +7,7 @@ export type ApiResponse<T = void> = {
 	success: boolean;
 	data?: T;
 	error?: string;
-	validationErrors?: Record<string, string[]>;
+	validationErrors?: Record<string, string[]> | string[];
 };
 
 /**

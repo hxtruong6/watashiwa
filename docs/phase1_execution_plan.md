@@ -43,12 +43,13 @@
 
 #### B. Backend Integration (Server Actions) - [NEXT STEP]
 
-- [ ] **Data Fetching**:
-  - [ ] `getPendingContent`: Fetch `AI_GENERATED` items.
-- [ ] **Actions**:
-  - [ ] `approveVocabulary`: Update status to `VERIFIED`.
-  - [ ] `rejectVocabulary`: Update status to `FLAGGED`.
-  - [ ] `saveAndApprove`: Save edits + Approve.
+- [x] **Data Fetching**:
+  - [x] `getPendingContent`: Fetch `AI_GENERATED` items.
+  - [x] `getVocabularyStats`: Stats for Dashboard.
+- [x] **Actions**:
+  - [x] `approveVocabulary`: Update status to `VERIFIED`.
+  - [x] `rejectVocabulary`: Update status to `FLAGGED`.
+  - [x] `saveAndApprove`: Save edits + Approve.
 
 ---
 

@@ -23,12 +23,20 @@ import {
 	Typography,
 	theme,
 } from 'antd';
+import { useTranslations } from 'next-intl';
 import React from 'react';
 
 const { Title, Text, Paragraph } = Typography;
 
-// Extended Type to support the flattened "Confusion" structure from the API/Mock
-export interface ExtendedVocabulary extends Vocabulary {
+// Extended Type with Strict JSONB checking
+export interface ExtendedVocabulary extends Omit<
+	Vocabulary,
+	'meanings' | 'etymology' | 'examples' | 'mnemonic'
+> {
+	meanings: MeaningsData;
+	etymology: EtymologyData;
+	examples: ExamplesData;
+	mnemonic: MnemonicData | null;
 	confusions?: {
 		word: string;
 		explanation: {
@@ -47,6 +55,7 @@ export interface VerificationCardProps {
 	onReject?: () => void;
 	onEdit?: () => void;
 	onPlayAudio?: () => void;
+	hideActions?: boolean;
 }
 
 const TagColors: Record<string, string> = {
@@ -85,14 +94,13 @@ export const VerificationCard: React.FC<VerificationCardProps> = ({
 	onReject,
 	onEdit,
 	onPlayAudio,
+	hideActions = false,
 }) => {
 	const { token } = theme.useToken();
+	const t = useTranslations('Admin.Content');
 
-	// Type Casting
-	const meanings = data.meanings as unknown as MeaningsData;
-	const mnemonic = data.mnemonic as unknown as MnemonicData | null;
-	const etymology = data.etymology as unknown as EtymologyData;
-	const examples = data.examples as unknown as ExamplesData;
+	// Destructure strictly typed fields
+	const { meanings, mnemonic, etymology, examples } = data;
 
 	const renderMeanings = () => (
 		<Flex gap="small" wrap="wrap" className="mb-4">
@@ -135,7 +143,7 @@ export const VerificationCard: React.FC<VerificationCardProps> = ({
 			}}
 			className="verification-card"
 			actions={
-				mode === 'review'
+				mode === 'review' && !hideActions
 					? [
 							<Button
 								key="reject"
@@ -252,11 +260,8 @@ export const VerificationCard: React.FC<VerificationCardProps> = ({
 							backgroundColor: token.colorPrimaryBg,
 							color: token.colorPrimary,
 							boxShadow: 'none',
-							position: 'absolute',
-							left: '50%',
-							bottom: -16,
-							transform: 'translateX(-50%)',
-							zIndex: 10,
+							marginTop: 16,
+							marginBottom: 8,
 						}}
 					/>
 				</Flex>
@@ -268,7 +273,7 @@ export const VerificationCard: React.FC<VerificationCardProps> = ({
 					style={{
 						flex: 1,
 						overflowY: 'auto',
-						padding: '32px 24px 24px 24px', // Extra top padding for Audio button
+						padding: '16px 24px 24px 24px',
 						background: '#fafafa',
 					}}
 				>
@@ -300,7 +305,7 @@ export const VerificationCard: React.FC<VerificationCardProps> = ({
 								type="secondary"
 								style={{ fontSize: 12, textTransform: 'uppercase', letterSpacing: 1 }}
 							>
-								<HistoryOutlined /> Etymology (Hán Việt)
+								<HistoryOutlined /> {t('cardEtymology')}
 							</Title>
 
 							{/* Parts */}
@@ -337,7 +342,7 @@ export const VerificationCard: React.FC<VerificationCardProps> = ({
 							}}
 						>
 							<Title level={5} style={{ color: token.colorSuccess, margin: 0, fontSize: 14 }}>
-								<BulbOutlined /> Memory Hook
+								<BulbOutlined /> {t('cardMemoryHook')}
 							</Title>
 							<Paragraph style={{ margin: 0, marginTop: 8, fontSize: 15 }}>
 								{mnemonic.vi || mnemonic.en}
@@ -356,12 +361,12 @@ export const VerificationCard: React.FC<VerificationCardProps> = ({
 							}}
 						>
 							<Title level={5} style={{ color: token.colorWarning, margin: 0, fontSize: 14 }}>
-								<ThunderboltOutlined /> Interference Shield
+								<ThunderboltOutlined /> {t('cardShield')}
 							</Title>
 							{data.confusions.map((conf, idx) => (
 								<div key={idx} style={{ marginTop: 8 }}>
 									<Text strong style={{ color: token.colorError }}>
-										vs. {conf.word}
+										{t('cardVs')} {conf.word}
 									</Text>
 									<Paragraph
 										style={{ margin: '4px 0 0 0', fontSize: 13, color: token.colorTextSecondary }}
@@ -385,7 +390,11 @@ export const VerificationCard: React.FC<VerificationCardProps> = ({
 							items={[
 								{
 									key: '1',
-									label: <Text type="secondary">Examples ({examples.length})</Text>,
+									label: (
+										<Text type="secondary">
+											{t('cardExamples')} ({examples.length})
+										</Text>
+									),
 									children: (
 										<Flex vertical gap="small">
 											{examples.map((ex, i) => (
@@ -406,6 +415,9 @@ export const VerificationCard: React.FC<VerificationCardProps> = ({
 																} else {
 																	const u = new SpeechSynthesisUtterance(ex.sentence);
 																	u.lang = 'ja-JP';
+																	const voices = window.speechSynthesis.getVoices();
+																	const kyoko = voices.find((v) => v.name === 'Kyoko');
+																	if (kyoko) u.voice = kyoko;
 																	window.speechSynthesis.speak(u);
 																}
 															}}

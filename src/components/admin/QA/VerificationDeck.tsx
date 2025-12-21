@@ -6,7 +6,9 @@ import {
 	updateContent,
 	verifyContent,
 } from '@/modules/vocabulary/vocabulary.actions';
+import { getVocabularyByStatus } from '@/modules/vocabulary/vocabulary.actions';
 import { Button, Empty, Flex, Modal, Spin, Typography, message, notification } from 'antd';
+import { useSearchParams } from 'next/navigation';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { EditVocabularyForm } from './EditVocabularyForm';
@@ -22,6 +24,9 @@ export const VerificationDeck: React.FC = () => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [modalLoading, setModalLoading] = useState(false);
 
+	const searchParams = useSearchParams();
+	const statusFilter = searchParams.get('status');
+
 	// Refs for avoiding stale closures in Keydown handlers
 	const queueRef = useRef(queue);
 	const isModalOpenRef = useRef(isModalOpen);
@@ -31,21 +36,27 @@ export const VerificationDeck: React.FC = () => {
 		isModalOpenRef.current = isModalOpen;
 	}, [queue, isModalOpen]);
 
-	// Fetch Data on Mount
+	// Fetch Data on Mount or Status Change
 	useEffect(() => {
 		const fetchData = async () => {
 			setLoading(true);
-			const res = await getPendingVocabularySafe();
+			let res;
+			if (statusFilter) {
+				res = await getVocabularyByStatus(statusFilter);
+			} else {
+				res = await getPendingVocabularySafe();
+			}
+
 			if (res.success && res.data) {
 				// Cast strictly because Prisma JSON types are loose
 				setQueue(res.data as unknown as ExtendedVocabulary[]);
 			} else {
-				message.error(res.error || 'Failed to fetch pending vocabulary');
+				message.error(res.error || 'Failed to fetch vocabulary');
 			}
 			setLoading(false);
 		};
 		fetchData();
-	}, []);
+	}, [statusFilter]);
 
 	// Derived
 	const currentCard = queue[0];
@@ -200,10 +211,10 @@ export const VerificationDeck: React.FC = () => {
 	}
 
 	return (
-		<div style={{ position: 'relative', maxWidth: 600, margin: '0 auto', padding: '20px 0' }}>
+		<div style={styles.container}>
 			{contextHolder}
-			<Title level={2} style={{ textAlign: 'center', marginBottom: 32 }}>
-				Pending Review ({queue.length})
+			<Title level={2} style={styles.title}>
+				{statusFilter ? `${statusFilter} Content` : 'Pending Review'} ({queue.length})
 			</Title>
 
 			<VerificationCard
@@ -215,11 +226,11 @@ export const VerificationDeck: React.FC = () => {
 				onPlayAudio={handlePlayAudio}
 			/>
 
-			<div style={{ textAlign: 'center', marginTop: 16, color: '#999', fontSize: 12 }}>
-				<span style={{ margin: '0 8px' }}>← Reject</span>
-				<span style={{ margin: '0 8px' }}>→ Approve</span>
-				<span style={{ margin: '0 8px' }}>Space: Audio</span>
-				<span style={{ margin: '0 8px' }}>E: Edit</span>
+			<div style={styles.controls}>
+				<span style={styles.keyHint}>← Reject</span>
+				<span style={styles.keyHint}>→ Approve</span>
+				<span style={styles.keyHint}>Space: Audio</span>
+				<span style={styles.keyHint}>E: Edit</span>
 			</div>
 
 			<Modal
@@ -242,4 +253,26 @@ export const VerificationDeck: React.FC = () => {
 			</Modal>
 		</div>
 	);
+};
+
+const styles = {
+	container: {
+		position: 'relative' as const,
+		maxWidth: 600,
+		margin: '0 auto',
+		padding: '20px 0',
+	},
+	title: {
+		textAlign: 'center' as const,
+		marginBottom: 32,
+	},
+	controls: {
+		textAlign: 'center' as const,
+		marginTop: 16,
+		color: '#999',
+		fontSize: 12,
+	},
+	keyHint: {
+		margin: '0 8px',
+	},
 };
