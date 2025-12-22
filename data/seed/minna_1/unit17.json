@@ -1,0 +1,1425 @@
+[
+    {
+        "word_surface": "覚えます",
+        "han_viet": "GIÁC",
+        "kana": "おぼえます",
+        "romaji": "oboemasu",
+        "tags": [
+            "n5",
+            "verb",
+            "masu-form",
+            "nai-form-group"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L20,5 L40,5 L60,5 L80,20 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "覚",
+                    "han_viet": "GIÁC",
+                    "meaning": {
+                        "vi": "nhớ, cảm giác",
+                        "en": "memorize/awake"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "GIÁC (覚) ngộ, ghi nhớ.",
+                "en": "Schoolhouse (⺍) see (見) to memorize."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nhớ",
+                "ghi nhớ"
+            ],
+            "en": [
+                "memorize",
+                "remember"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "Cảm GIÁC nhớ nhung.",
+            "en": "OBOE (Oboe) player remembers the song."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "忘れます",
+        "han_viet": "VONG",
+        "kana": "わすれます",
+        "romaji": "wasuremasu",
+        "tags": [
+            "n5",
+            "verb",
+            "masu-form",
+            "nai-form-group"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L20,5 L40,5 L60,5 L80,20 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "忘",
+                    "han_viet": "VONG",
+                    "meaning": {
+                        "vi": "quên",
+                        "en": "forget"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "VONG (忘) là quên, vong tình.",
+                "en": "Lose (亡) Heart (心) -> Forget."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "quên"
+            ],
+            "en": [
+                "forget"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "VONG ân bội nghĩa (quên ơn).",
+            "en": "WAFFLE (Wasure) was forgotten."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "なくします",
+        "han_viet": "",
+        "kana": "なくします",
+        "romaji": "nakushimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "masu-form"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L20,5 L40,5 L60,5 L80,20 L100,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Làm mất (Naku - không có).",
+                "en": "Make it not exist (Naku)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "làm mất",
+                "đánh mất"
+            ],
+            "en": [
+                "lose (something)"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "Làm NÁT (Naku) nên mất rồi.",
+            "en": "KNACK (Naku) for losing things."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "払います",
+        "han_viet": "PHẤT",
+        "kana": "はらいます",
+        "romaji": "haraimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "masu-form"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L20,5 L40,5 L60,5 L80,20 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "払",
+                    "han_viet": "PHẤT",
+                    "meaning": {
+                        "vi": "trả tiền, phủi",
+                        "en": "pay/sweep"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "PHẤT (払) tay trả tiền.",
+                "en": "Hand (扌) pays private (ム) debt."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "trả tiền",
+                "thanh toán"
+            ],
+            "en": [
+                "pay"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "PHẤT tay trả tiền.",
+            "en": "HA! RIGHT (Harai) I will pay."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "返します",
+        "han_viet": "PHẢN",
+        "kana": "かえします",
+        "romaji": "kaeshimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "masu-form"
+        ],
+        "pitch_pattern": 4,
+        "pitch_svg_path": "M0,20 L20,5 L40,5 L60,5 L80,5 L100,20 L120,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "返",
+                    "han_viet": "PHẢN",
+                    "meaning": {
+                        "vi": "trả lại",
+                        "en": "return"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "PHẢN (返) hồi, trả lại.",
+                "en": "Return (返) on the road (辶)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "trả lại"
+            ],
+            "en": [
+                "give back",
+                "return"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "PHẢN đối phải trả lại.",
+            "en": "KAY SHE (Kaeshi) returns the book."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "出かけます",
+        "han_viet": "XUẤT",
+        "kana": "でかけます",
+        "romaji": "dekakemasu",
+        "tags": [
+            "n5",
+            "verb",
+            "masu-form"
+        ],
+        "pitch_pattern": 4,
+        "pitch_svg_path": "M0,20 L20,5 L40,5 L60,5 L80,5 L100,20 L120,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "出",
+                    "han_viet": "XUẤT",
+                    "meaning": {
+                        "vi": "ra, xuất",
+                        "en": "exit"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "XUẤT (出) hành ra ngoài.",
+                "en": "Exit (出) and Go."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ra ngoài",
+                "đi ra ngoài"
+            ],
+            "en": [
+                "go out"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "XUẤT phát đi chơi.",
+            "en": "DECK A (Deka) car to go out."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "脱ぎます",
+        "han_viet": "THOÁT",
+        "kana": "ぬぎます",
+        "romaji": "nugimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "masu-form"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L20,5 L40,5 L60,5 L80,20 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "脱",
+                    "han_viet": "THOÁT",
+                    "meaning": {
+                        "vi": "cởi, thoát",
+                        "en": "undress/escape"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "THOÁT (脱) y (cởi áo).",
+                "en": "Moon/Flesh (月) Devil (兑) strips."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "cởi (giày, quần áo)"
+            ],
+            "en": [
+                "take off (clothes, shoes)"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "THOÁT y vũ.",
+            "en": "NEW GUI-tar (Nugi) player takes off jacket."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "持って行きます",
+        "han_viet": "TRÌ HÀNH",
+        "kana": "もっていきます",
+        "romaji": "motteikimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "masu-form",
+            "compound-verb"
+        ],
+        "pitch_pattern": 6,
+        "pitch_svg_path": "M0,20 L20,5 L40,5 L60,5 L80,5 L100,5 L120,5 L140,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "持",
+                    "han_viet": "TRÌ",
+                    "meaning": {
+                        "vi": "cầm, mang",
+                        "en": "hold"
+                    }
+                },
+                {
+                    "kanji": "行",
+                    "han_viet": "HÀNH",
+                    "meaning": {
+                        "vi": "đi",
+                        "en": "go"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TRÌ (mang) rồi HÀNH (đi).",
+                "en": "Hold (持) and Go (行)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "mang đi",
+                "mang theo"
+            ],
+            "en": [
+                "take (something)"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "TRÌ trệ mang đi.",
+            "en": "MOE TAKE (Motteiki) the cake."
+        },
+        "confusions": [
+            {
+                "word": "持って来ます",
+                "explanation": {
+                    "vi": "Mang đi (Iku) vs Mang đến (Kuru).",
+                    "en": "Take (Go) vs Bring (Come)."
+                }
+            }
+        ]
+    },
+    {
+        "word_surface": "持って来ます",
+        "han_viet": "TRÌ LAI",
+        "kana": "もってきます",
+        "romaji": "mottekimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "masu-form",
+            "compound-verb"
+        ],
+        "pitch_pattern": 6,
+        "pitch_svg_path": "M0,20 L20,5 L40,5 L60,5 L80,5 L100,5 L120,5 L140,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "持",
+                    "han_viet": "TRÌ",
+                    "meaning": {
+                        "vi": "cầm, mang",
+                        "en": "hold"
+                    }
+                },
+                {
+                    "kanji": "来",
+                    "han_viet": "LAI",
+                    "meaning": {
+                        "vi": "đến",
+                        "en": "come"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TRÌ (mang) rồi LAI (đến).",
+                "en": "Hold (持) and Come (来)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "mang đến"
+            ],
+            "en": [
+                "bring (something)"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "Vãng LAI mang đến.",
+            "en": "MOE TAKE KEY (Motteki) here."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "心配します",
+        "han_viet": "TÂM PHỐI",
+        "kana": "しんぱいします",
+        "romaji": "shinpaishimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "masu-form",
+            "suru-verb"
+        ],
+        "pitch_pattern": 6,
+        "pitch_svg_path": "M0,20 L20,5 L40,5 L60,5 L80,5 L100,5 L120,5 L140,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "心",
+                    "han_viet": "TÂM",
+                    "meaning": {
+                        "vi": "tim, lòng",
+                        "en": "heart/mind"
+                    }
+                },
+                {
+                    "kanji": "配",
+                    "han_viet": "PHỐI",
+                    "meaning": {
+                        "vi": "phân phối, quan tâm",
+                        "en": "distribute"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Trong lòng (TÂM) phải phân chia (PHỐI) suy nghĩ nên lo lắng.",
+                "en": "Heart (心) Distributing (配) thoughts = Worry."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "lo lắng"
+            ],
+            "en": [
+                "worry"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "TÂM PHỐI lo âu.",
+            "en": "SHIN PIE (Shinpai) makes me worry about calories."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "残業します",
+        "han_viet": "TÀN NGHIỆP",
+        "kana": "ざんぎょうします",
+        "romaji": "zangyoushimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "masu-form",
+            "suru-verb"
+        ],
+        "pitch_pattern": 6,
+        "pitch_svg_path": "M0,20 L20,5 L40,5 L60,5 L80,5 L100,5 L120,5 L140,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "残",
+                    "han_viet": "TÀN",
+                    "meaning": {
+                        "vi": "tàn dư, còn lại",
+                        "en": "remain"
+                    }
+                },
+                {
+                    "kanji": "業",
+                    "han_viet": "NGHIỆP",
+                    "meaning": {
+                        "vi": "công việc, sự nghiệp",
+                        "en": "business/work"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Làm nốt công việc (NGHIỆP) còn lại (TÀN).",
+                "en": "Remaining (残) Work (業)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "làm thêm giờ",
+                "tăng ca"
+            ],
+            "en": [
+                "work overtime"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "TÀN sư NGHIỆP vì làm thêm.",
+            "en": "ZAN GO (Zangyou) home late due to overtime."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "出張します",
+        "han_viet": "XUẤT TRƯƠNG",
+        "kana": "しゅっちょうします",
+        "romaji": "shucchoushimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "masu-form",
+            "suru-verb"
+        ],
+        "pitch_pattern": 6,
+        "pitch_svg_path": "M0,20 L20,5 L40,5 L60,5 L80,5 L100,5 L120,5 L140,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "出",
+                    "han_viet": "XUẤT",
+                    "meaning": {
+                        "vi": "ra, xuất",
+                        "en": "exit"
+                    }
+                },
+                {
+                    "kanji": "張",
+                    "han_viet": "TRƯƠNG",
+                    "meaning": {
+                        "vi": "kéo dài, trương lên",
+                        "en": "stretch/spread"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Đi ra ngoài (XUẤT) để mở rộng (TRƯƠNG) công việc.",
+                "en": "Go out (出) and Spread (張)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đi công tác"
+            ],
+            "en": [
+                "go on a business trip"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "XUẤT TRƯƠNG đi công tác.",
+            "en": "SHOOT CHOW (Shucchou) while on business trip."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "大切",
+        "han_viet": "ĐẠI THIẾT",
+        "kana": "たいせつ",
+        "romaji": "taisetsu",
+        "tags": [
+            "n5",
+            "adjective",
+            "na-adjective"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "大",
+                    "han_viet": "ĐẠI",
+                    "meaning": {
+                        "vi": "lớn",
+                        "en": "big"
+                    }
+                },
+                {
+                    "kanji": "切",
+                    "han_viet": "THIẾT",
+                    "meaning": {
+                        "vi": "cắt, thiết thực",
+                        "en": "cut/important"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Rất (ĐẠI) thiết thực/cần thiết (THIẾT).",
+                "en": "Big (大) Cut (切) -> Urgent/Important."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "quan trọng",
+                "quý giá"
+            ],
+            "en": [
+                "important",
+                "precious"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "ĐẠI THIẾT yếu.",
+            "en": "TIE SETS (Taisetsu) are important."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "大丈夫",
+        "han_viet": "ĐẠI TRƯỢNG PHU",
+        "kana": "だいじょうぶ",
+        "romaji": "daijoubu",
+        "tags": [
+            "n5",
+            "adjective",
+            "na-adjective",
+            "phrase"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L20,5 L40,5 L60,5 L80,20 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "大",
+                    "han_viet": "ĐẠI",
+                    "meaning": {
+                        "vi": "lớn",
+                        "en": "big"
+                    }
+                },
+                {
+                    "kanji": "丈",
+                    "han_viet": "TRƯỢNG",
+                    "meaning": {
+                        "vi": "đơn vị đo, trượng",
+                        "en": "measure/strong"
+                    }
+                },
+                {
+                    "kanji": "夫",
+                    "han_viet": "PHU",
+                    "meaning": {
+                        "vi": "chồng, người đàn ông",
+                        "en": "husband/man"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "ĐẠI TRƯỢNG PHU thì không sao cả, vững vàng.",
+                "en": "Big (大) Strong Man (丈夫) is okay."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "không sao",
+                "ổn"
+            ],
+            "en": [
+                "all right",
+                "okay"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "ĐẠI TRƯỢNG PHU không sao đâu.",
+            "en": "DIE JOE BOO (Daijoubu)? It's okay."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "危ない",
+        "han_viet": "NGUY",
+        "kana": "あぶない",
+        "romaji": "abunai",
+        "tags": [
+            "n5",
+            "adjective",
+            "i-adjective"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "危",
+                    "han_viet": "NGUY",
+                    "meaning": {
+                        "vi": "nguy hiểm",
+                        "en": "dangerous"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "NGUY (危) hiểm.",
+                "en": "Dangerous (危) cliff (厂)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nguy hiểm"
+            ],
+            "en": [
+                "dangerous"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "NGUY rồi.",
+            "en": "A BOO KNIGHT (Abunai) is dangerous."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "禁煙",
+        "han_viet": "CẤM YÊN",
+        "kana": "きんえん",
+        "romaji": "kinen",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "禁",
+                    "han_viet": "CẤM",
+                    "meaning": {
+                        "vi": "cấm đoán",
+                        "en": "prohibit"
+                    }
+                },
+                {
+                    "kanji": "煙",
+                    "han_viet": "YÊN",
+                    "meaning": {
+                        "vi": "khói",
+                        "en": "smoke"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "CẤM (禁) khói (YÊN - thuốc lá).",
+                "en": "Prohibit (禁) Smoke (煙)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "cấm hút thuốc"
+            ],
+            "en": [
+                "no smoking"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "CẤM YÊN (lặng).",
+            "en": "KEEN END (Kinen) to smoking."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "保険証",
+        "han_viet": "BẢO HIỂM CHỨNG",
+        "kana": "ほけんしょう",
+        "romaji": "hokenshou",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L20,5 L40,5 L60,5 L80,5 L100,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "保",
+                    "han_viet": "BẢO",
+                    "meaning": {
+                        "vi": "bảo vệ, giữ gìn",
+                        "en": "protect/preserve"
+                    }
+                },
+                {
+                    "kanji": "険",
+                    "han_viet": "HIỂM",
+                    "meaning": {
+                        "vi": "nguy hiểm",
+                        "en": "danger/steep"
+                    }
+                },
+                {
+                    "kanji": "証",
+                    "han_viet": "CHỨNG",
+                    "meaning": {
+                        "vi": "chứng nhận",
+                        "en": "evidence/proof"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Giấy CHỨNG nhận BẢO vệ trước nguy HIỂM.",
+                "en": "Protect (保) Danger (険) Proof (証)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thẻ bảo hiểm y tế"
+            ],
+            "en": [
+                "insurance card"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "BẢO HIỂM làm CHỨNG.",
+            "en": "HOE CAN SHOW (Hokenshou) the card."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "熱",
+        "han_viet": "NHIỆT",
+        "kana": "ねつ",
+        "romaji": "netsu",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "熱",
+                    "han_viet": "NHIỆT",
+                    "meaning": {
+                        "vi": "nóng, sốt",
+                        "en": "heat/fever"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "NHIỆT (熱) độ cao là sốt.",
+                "en": "Fire (灬) heats up implies fever."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "sốt"
+            ],
+            "en": [
+                "fever"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "NHIỆT tình bị sốt.",
+            "en": "NETS (Netsu) are hot."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "病気",
+        "han_viet": "BỆNH KHÍ",
+        "kana": "びょうき",
+        "romaji": "byouki",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "病",
+                    "han_viet": "BỆNH",
+                    "meaning": {
+                        "vi": "bệnh tật",
+                        "en": "sick"
+                    }
+                },
+                {
+                    "kanji": "気",
+                    "han_viet": "KHÍ",
+                    "meaning": {
+                        "vi": "khí chất, tinh thần",
+                        "en": "spirit"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "BỊNH/BỆNH (病) trong người (KHÍ).",
+                "en": "Sick (病) Spirit (気)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ốm",
+                "bệnh"
+            ],
+            "en": [
+                "illness",
+                "sickness"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "BỆNH trong người (KHÍ).",
+            "en": "BE YOLKY (Byouki) when sick."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "薬",
+        "han_viet": "DƯỢC",
+        "kana": "くすり",
+        "romaji": "kusuri",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "薬",
+                    "han_viet": "DƯỢC",
+                    "meaning": {
+                        "vi": "thuốc",
+                        "en": "medicine"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "DƯỢC (薬) thảo là thuốc.",
+                "en": "Grass (艹) for Enjoyment (楽) -> Healing."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thuốc"
+            ],
+            "en": [
+                "medicine"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "DƯỢC sĩ bán thuốc.",
+            "en": "COO SUE REA (Kusuri) needs medicine."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "上着",
+        "han_viet": "THƯỢNG TRƯỚC",
+        "kana": "うわぎ",
+        "romaji": "uwagi",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "上",
+                    "han_viet": "THƯỢNG",
+                    "meaning": {
+                        "vi": "trên",
+                        "en": "upper/up"
+                    }
+                },
+                {
+                    "kanji": "着",
+                    "han_viet": "TRƯỚC",
+                    "meaning": {
+                        "vi": "mặc, dính",
+                        "en": "wear/arrive"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Mặc (TRƯỚC) ở bên trên (THƯỢNG).",
+                "en": "Upper (上) Wear (着)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "áo khoác"
+            ],
+            "en": [
+                "jacket",
+                "outerwear"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "THƯỢNG sách là mặc áo khoác TRƯỚC.",
+            "en": "OOH WAGGY (Uwagi) dog wears a jacket."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "下着",
+        "han_viet": "HẠ TRƯỚC",
+        "kana": "したぎ",
+        "romaji": "shitagi",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "下",
+                    "han_viet": "HẠ",
+                    "meaning": {
+                        "vi": "dưới",
+                        "en": "under/down"
+                    }
+                },
+                {
+                    "kanji": "着",
+                    "han_viet": "TRƯỚC",
+                    "meaning": {
+                        "vi": "mặc",
+                        "en": "wear"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Mặc (TRƯỚC) ở bên dưới (HẠ).",
+                "en": "Under (下) Wear (着)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đồ lót",
+                "quần áo lót"
+            ],
+            "en": [
+                "underwear"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "HẠ thấp xuống TRƯỚC khi mặc.",
+            "en": "SHE TAGGY (Shitagi) implies underwear."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "緑",
+        "han_viet": "LỤC",
+        "kana": "みどり",
+        "romaji": "midori",
+        "tags": [
+            "n5",
+            "noun",
+            "color"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "緑",
+                    "han_viet": "LỤC",
+                    "meaning": {
+                        "vi": "màu xanh lục",
+                        "en": "green"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "LỤC (緑) là màu xanh lá.",
+                "en": "Thread (糸) Green (録 - partial)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "màu xanh lá"
+            ],
+            "en": [
+                "green"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "LỤC lọi xem màu xanh.",
+            "en": "ME DORY (Midori) is green."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "お寺",
+        "han_viet": "TỰ",
+        "kana": "おてら",
+        "romaji": "otera",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "寺",
+                    "han_viet": "TỰ",
+                    "meaning": {
+                        "vi": "chùa",
+                        "en": "temple"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TỰ (寺) là chùa.",
+                "en": "Soil (土) Inch (寸) -> Temple ground."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "chùa"
+            ],
+            "en": [
+                "Buddhist temple"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "Đi tu ở TỰ (chùa).",
+            "en": "OH TERROR (Otera) at the temple."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "神社",
+        "han_viet": "THẦN XÃ",
+        "kana": "じんじゃ",
+        "romaji": "jinja",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "神",
+                    "han_viet": "THẦN",
+                    "meaning": {
+                        "vi": "thần thánh",
+                        "en": "god"
+                    }
+                },
+                {
+                    "kanji": "社",
+                    "han_viet": "XÃ",
+                    "meaning": {
+                        "vi": "xã hội, công ty, đền",
+                        "en": "shrine/company"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Nơi thờ THẦN của XÃ hội (đền).",
+                "en": "God (神) Shine (社)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đền thờ đạo Thần"
+            ],
+            "en": [
+                "Shinto shrine"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "THẦN XÃ.",
+            "en": "GIN JAR (Jinja) in the shrine."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "次に",
+        "han_viet": "THỨ",
+        "kana": "つぎに",
+        "romaji": "tsugini",
+        "tags": [
+            "n5",
+            "adverb"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "次",
+                    "han_viet": "THỨ",
+                    "meaning": {
+                        "vi": "tiếp theo",
+                        "en": "next"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "THỨ (次) tự tiếp theo.",
+                "en": "Ice (冫) Lacking (欠) -> Next."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "tiếp theo",
+                "sau đó"
+            ],
+            "en": [
+                "next"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "THỨ tự tiếp theo.",
+            "en": "SUE GINNY (Tsugini) next."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "暗証番号",
+        "han_viet": "ÁM CHỨNG PHIÊN HIỆU",
+        "kana": "あんしょうばんごう",
+        "romaji": "anshoubangou",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 5,
+        "pitch_svg_path": "M0,20 L14,5 L28,5 L42,5 L57,5 L71,5 L85,20 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "暗",
+                    "han_viet": "ÁM",
+                    "meaning": {
+                        "vi": "tối, ngầm",
+                        "en": "dark/secret"
+                    }
+                },
+                {
+                    "kanji": "証",
+                    "han_viet": "CHỨNG",
+                    "meaning": {
+                        "vi": "bằng chứng",
+                        "en": "proof"
+                    }
+                },
+                {
+                    "kanji": "番",
+                    "han_viet": "PHIÊN",
+                    "meaning": {
+                        "vi": "phiên, số",
+                        "en": "number"
+                    }
+                },
+                {
+                    "kanji": "号",
+                    "han_viet": "HIỆU",
+                    "meaning": {
+                        "vi": "số hiệu",
+                        "en": "number/mark"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Số (PHIÊN HIỆU) làm bằng chứng (CHỨNG) bí mật (ÁM).",
+                "en": "Secret (暗) Proof (証) Number (番号)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "mật khẩu",
+                "số PIN"
+            ],
+            "en": [
+                "PIN",
+                "password"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "ÁM hiệu CHỨNG nhận số.",
+            "en": "ANNE SHOW (Anshou) me the number."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "金額",
+        "han_viet": "KIM NGẠCH",
+        "kana": "きんがく",
+        "romaji": "kingaku",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "金",
+                    "han_viet": "KIM",
+                    "meaning": {
+                        "vi": "tiền, vàng",
+                        "en": "gold/money"
+                    }
+                },
+                {
+                    "kanji": "額",
+                    "han_viet": "NGẠCH",
+                    "meaning": {
+                        "vi": "trán, hạn ngạch",
+                        "en": "amount/forehead"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "KIM (tiền) NGẠCH (hạn mức).",
+                "en": "Money (金) Amount (額)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "số tiền",
+                "khoản tiền"
+            ],
+            "en": [
+                "amount of money"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "KIM NGẠCH xuất khẩu.",
+            "en": "KING GOT (Kingaku) the money."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "確認",
+        "han_viet": "XÁC NHẬN",
+        "kana": "かくにん",
+        "romaji": "kakunin",
+        "tags": [
+            "n5",
+            "noun",
+            "suru-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "確",
+                    "han_viet": "XÁC",
+                    "meaning": {
+                        "vi": "chính xác",
+                        "en": "certain"
+                    }
+                },
+                {
+                    "kanji": "認",
+                    "han_viet": "NHẬN",
+                    "meaning": {
+                        "vi": "nhận biết",
+                        "en": "recognize"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "XÁC (chính xác) NHẬN (thừa nhận).",
+                "en": "Certain (確) Recognize (認)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "sự xác nhận",
+                "kiểm tra"
+            ],
+            "en": [
+                "confirmation"
+            ]
+        },
+        "examples": [],
+        "mnemonic": {
+            "vi": "XÁC NHẬN lại.",
+            "en": "COCK U NIN-ja (Kakunin) confirms the kill."
+        },
+        "confusions": []
+    }
+]

@@ -9,8 +9,8 @@
 
 ### 1. Type Hardening & Infrastructure
 
-- [ ] **Unified Types**: Create `src/types/schema.d.ts` that extends Prisma types with Zod validation types (e.g., `Vocabulary` + `EtymologyData`).
-- [ ] **Validation Utils**: Ensure `src/lib/schemas/jsonb.ts` is accessible and strictly typed.
+- [x] **Unified Types**: Create `src/types/schema.d.ts` that extends Prisma types with Zod validation types (e.g., `Vocabulary` + `EtymologyData`).
+- [x] **Validation Utils**: Ensure `src/lib/schemas/jsonb.ts` is accessible and strictly typed.
 
 ### 2. The "AI Factory" Pipeline
 
@@ -20,7 +20,7 @@
   - Process: Call OpenAI (GPT-4o) to generate Etymology, Context, Story, Confusions.
   - Output: JSON object matching strict Zod schemas.
 - [x] **Validator**: Script validates AI output against `EtymologySchema`, `StoryContentSchema`, etc.
-- [ ] **Seeding**: Robust `prisma seed` script to insert validated data.
+- [x] **Seeding**: Robust `prisma seed` script to insert validated data.
 
 ### 3. Admin Verification (QA) - [NEXT STEP]
 

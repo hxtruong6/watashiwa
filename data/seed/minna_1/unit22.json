@@ -1,0 +1,563 @@
+[
+    {
+        "word_surface": "はきます",
+        "han_viet": "LÝ",
+        "kana": "はきます",
+        "romaji": "hakimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "履",
+                    "han_viet": "LÝ",
+                    "meaning": {
+                        "vi": "giày/đi",
+                        "en": "footwear/wear"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "LÝ (履) trong lý lịch (bước đi). Xác (Thi) phục (Phục) hồi để đi lại.",
+                "en": "Corpse (尸) Restore (復) -> Walk/Wear shoes."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đi",
+                "mặc (giày, quần)"
+            ],
+            "en": [
+                "put on (shoes, trousers)",
+                "wear"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "靴をはきます。",
+                "translation": {
+                    "vi": "Đi giày.",
+                    "en": "Put on shoes."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "LÝ do phải đi giày là sợ há (ha) hốc mồm vì đau chân (ki).",
+            "en": "Hockey (Haki) -> Wear gear to play Hockey."
+        },
+        "confusions": [
+            {
+                "word": "着ます",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "Kimasu (Áo) - Hakimasu (Quần/Giày).",
+                        "en": "Kimasu (Upper) - Hakimasu (Lower)."
+                    },
+                    "item1_nuance": {
+                        "vi": "Mặc áo (trên).",
+                        "en": "Wear (upper)."
+                    },
+                    "item2_nuance": {
+                        "vi": "Mặc quần/giày (dưới).",
+                        "en": "Wear (lower)."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "word_surface": "かぶります",
+        "han_viet": "BỊ",
+        "kana": "かぶります",
+        "romaji": "kaburimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "被",
+                    "han_viet": "BỊ",
+                    "meaning": {
+                        "vi": "bị/trùm",
+                        "en": "cover"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "BỊ (被) trong bị động. Áo (Y) bị Rách (Bì) nên phải trùm lên.",
+                "en": "Clothing (衤) Skin (皮) -> Cover skin with clothes."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đội (mũ)"
+            ],
+            "en": [
+                "put on (a hat)"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "帽子をかぶります。",
+                "translation": {
+                    "vi": "Đội mũ.",
+                    "en": "Put on a hat."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "BỊt đầu lại bằng cái ca (ka) bự (bu) ri (ri).",
+            "en": "Kabuki (Kaburi) -> Wear a Kabuki mask/hat."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "かけます",
+        "han_viet": "QUẢI",
+        "kana": "かけます",
+        "romaji": "kakemasu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "ru-verb"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "掛",
+                    "han_viet": "QUẢI",
+                    "meaning": {
+                        "vi": "treo",
+                        "en": "hang"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "QUẢI (掛) là treo. Tay (Thủ) treo Quẻ (Quải) bói.",
+                "en": "Hand (扌) Divination (卦) -> Hang up."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đeo (kính)",
+                "treo"
+            ],
+            "en": [
+                "put on (glasses)",
+                "hang"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "眼鏡をかけます。",
+                "translation": {
+                    "vi": "Đeo kính.",
+                    "en": "Put on glasses."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "QUẢI cái kính lên mắc ca (ka) kệ (ke) nó.",
+            "en": "Car key (Kake) -> Hang the car keys."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "します",
+        "han_viet": "",
+        "kana": "します",
+        "romaji": "shimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "suru-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Làm/Đeo (phụ kiện).",
+                "en": "Do/Wear (accessory)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đeo (cà vạt)",
+                "làm"
+            ],
+            "en": [
+                "put on (a tie)",
+                "do"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ネクタイをします。",
+                "translation": {
+                    "vi": "Thắt cà vạt.",
+                    "en": "Put on a tie."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Sư (Shi) đeo cà vạt.",
+            "en": "She (Shi) -> She wears a tie."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "コート",
+        "han_viet": "",
+        "kana": "コート",
+        "romaji": "kooto",
+        "tags": [
+            "n5",
+            "noun",
+            "katakana"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L50,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh: Coat.",
+                "en": "Loan word: Coat."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "áo khoác"
+            ],
+            "en": [
+                "coat"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "コートを着ます。",
+                "translation": {
+                    "vi": "Mặc áo khoác.",
+                    "en": "Put on a coat."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Coat.",
+            "en": "Coat."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "セーター",
+        "han_viet": "",
+        "kana": "セーター",
+        "romaji": "seetaa",
+        "tags": [
+            "n5",
+            "noun",
+            "katakana"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L50,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh: Sweater.",
+                "en": "Loan word: Sweater."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "áo len"
+            ],
+            "en": [
+                "sweater"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "セーターを着ます。",
+                "translation": {
+                    "vi": "Mặc áo len.",
+                    "en": "Put on a sweater."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Sweater.",
+            "en": "Sweater."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "スーツ",
+        "han_viet": "",
+        "kana": "スーツ",
+        "romaji": "suutsu",
+        "tags": [
+            "n5",
+            "noun",
+            "katakana"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L50,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh: Suit.",
+                "en": "Loan word: Suit."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "com lê",
+                "vét"
+            ],
+            "en": [
+                "suit"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "スーツを着ます。",
+                "translation": {
+                    "vi": "Mặc com lê.",
+                    "en": "Put on a suit."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Suit.",
+            "en": "Suit."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ケーキ",
+        "han_viet": "",
+        "kana": "ケーキ",
+        "romaji": "keeki",
+        "tags": [
+            "n5",
+            "noun",
+            "katakana"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L50,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh: Cake.",
+                "en": "Loan word: Cake."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "bánh ngọt"
+            ],
+            "en": [
+                "cake"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ケーキを食べます。",
+                "translation": {
+                    "vi": "Ăn bánh ngọt.",
+                    "en": "Eat cake."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Cake.",
+            "en": "Cake."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ロボット",
+        "han_viet": "",
+        "kana": "ロボット",
+        "romaji": "robotto",
+        "tags": [
+            "n5",
+            "noun",
+            "katakana"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L50,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh: Robot.",
+                "en": "Loan word: Robot."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "rô bốt"
+            ],
+            "en": [
+                "robot"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ロボットを作ります。",
+                "translation": {
+                    "vi": "Chế tạo rô bốt.",
+                    "en": "Make a robot."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Robot.",
+            "en": "Robot."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ユーモア",
+        "han_viet": "",
+        "kana": "ユーモア",
+        "romaji": "yuumoa",
+        "tags": [
+            "n5",
+            "noun",
+            "katakana"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L50,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh: Humor.",
+                "en": "Loan word: Humor."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "sự hài hước"
+            ],
+            "en": [
+                "humor"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ユーモアがあります。",
+                "translation": {
+                    "vi": "Có khiếu hài hước.",
+                    "en": "Have a sense of humor."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Humor.",
+            "en": "Humor."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ダイニングキッチン",
+        "han_viet": "",
+        "kana": "ダイニングキッチン",
+        "romaji": "dainingu kicchin",
+        "tags": [
+            "n5",
+            "noun",
+            "katakana"
+        ],
+        "pitch_pattern": 5,
+        "pitch_svg_path": "M0,20 L25,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh: Dining Kitchen.",
+                "en": "Loan word: Dining Kitchen."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "bếp kèm phòng ăn"
+            ],
+            "en": [
+                "dining kitchen"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "広いダイニングキッチン。",
+                "translation": {
+                    "vi": "Phòng ăn rộng.",
+                    "en": "Spacious dining kitchen."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Dining Kitchen.",
+            "en": "Dining Kitchen."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "サイズ",
+        "han_viet": "",
+        "kana": "サイズ",
+        "romaji": "saizu",
+        "tags": [
+            "n5",
+            "noun",
+            "katakana"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L50,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh: Size.",
+                "en": "Loan word: Size."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "cỡ",
+                "kích cỡ"
+            ],
+            "en": [
+                "size"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "サイズが合います。",
+                "translation": {
+                    "vi": "Vừa cỡ.",
+                    "en": "The size fits."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Size.",
+            "en": "Size."
+        },
+        "confusions": []
+    }
+]

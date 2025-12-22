@@ -1,0 +1,2210 @@
+[
+    {
+        "word_surface": "わかります",
+        "han_viet": "PHÂN",
+        "kana": "わかります",
+        "romaji": "wakarimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "intransitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "分",
+                    "han_viet": "PHÂN",
+                    "meaning": {
+                        "vi": "phân chia/hiểu",
+                        "en": "divide/understand"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "PHÂN (分) là phân chia. Hiểu vấn đề là phân tích nó ra từng phần.",
+                "en": "Knife (刀) cutting something into Eight (八) parts -> Understand details."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "hiểu",
+                "nắm được"
+            ],
+            "en": [
+                "to understand"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "日本語がわかります。",
+                "translation": {
+                    "vi": "Tôi hiểu tiếng Nhật.",
+                    "en": "I understand Japanese."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "PHÂN tích ra thì mới hiểu được.",
+            "en": "Wa-ka (Waka) -> Waka Waka eh eh (Shakira song) -> I understand the lyrics."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "あります",
+        "han_viet": "HỮU",
+        "kana": "あります",
+        "romaji": "arimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "intransitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "有",
+                    "han_viet": "HỮU",
+                    "meaning": {
+                        "vi": "có",
+                        "en": "have"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "HỮU (有) là sở hữu, có. Có đồ vật (dùng cho vật vô tri).",
+                "en": "Hand (𠂇) holding Meat (月) -> To have/possess."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "có (đồ vật)"
+            ],
+            "en": [
+                "have",
+                "exist (inanimate)"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "車があります。",
+                "translation": {
+                    "vi": "Tôi có ô tô.",
+                    "en": "I have a car."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Sở HỮU tài sản.",
+            "en": "A-ri (Ari) -> Are we there yet? Yes, there IS a sign."
+        },
+        "confusions": [
+            {
+                "word": "います",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "HỮU (Arimasu) dùng cho đồ vật. CƯ (Imasu) dùng cho người/con vật.",
+                        "en": "Arimasu (Inanimate objects), Imasu (Living things)."
+                    },
+                    "item1_nuance": {
+                        "vi": "Vật vô tri (cây cối, đồ đạc).",
+                        "en": "Inanimate things (plants, objects)."
+                    },
+                    "item2_nuance": {
+                        "vi": "Vật có tri giác (người, động vật).",
+                        "en": "Animate things (people, animals)."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "word_surface": "好き",
+        "han_viet": "HẢO",
+        "kana": "すき",
+        "romaji": "suki",
+        "tags": [
+            "n5",
+            "na-adjective"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "好",
+                    "han_viet": "HẢO",
+                    "meaning": {
+                        "vi": "thích/tốt",
+                        "en": "like/good"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "HẢO (好) trong hoàn hảo, hiếu khách. Phụ nữ (女) yêu con (子) là điều tốt đẹp nhất -> Thích.",
+                "en": "Woman (女) + Child (子) = Fondness/Like."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thích"
+            ],
+            "en": [
+                "like"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "イタリア料理が好きです。",
+                "translation": {
+                    "vi": "Tôi thích món Ý.",
+                    "en": "I like Italian food."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HẢO hán thì thích uống rượu.",
+            "en": "Ski (Suki) -> I LIKE to Ski."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "嫌い",
+        "han_viet": "HIỀM",
+        "kana": "きらい",
+        "romaji": "kirai",
+        "tags": [
+            "n5",
+            "na-adjective"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "嫌",
+                    "han_viet": "HIỀM",
+                    "meaning": {
+                        "vi": "ghét/nghi ngờ",
+                        "en": "dislike/suspicion"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "HIỀM (嫌) trong hiềm khích, hiềm nghi. Con gái (女) mà kiêm nhiệm (兼) nhiều việc quá thì dễ sinh sự ghét bỏ.",
+                "en": "Woman (女) holding wheats (兼) looks unhappy -> Dislike."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ghét",
+                "không thích"
+            ],
+            "en": [
+                "dislike",
+                "hate"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "タバコが嫌いです。",
+                "translation": {
+                    "vi": "Tôi ghét thuốc lá.",
+                    "en": "I dislike cigarettes."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HIỀM khích nên ghét nhau.",
+            "en": "Ki-right? (Kirai) -> Kill right? No, I just dislike it."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "上手",
+        "han_viet": "THƯỢNG THỦ",
+        "kana": "じょうず",
+        "romaji": "jouzu",
+        "tags": [
+            "n5",
+            "na-adjective"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "上",
+                    "han_viet": "THƯỢNG",
+                    "meaning": {
+                        "vi": "trên",
+                        "en": "up/above"
+                    }
+                },
+                {
+                    "kanji": "手",
+                    "han_viet": "THỦ",
+                    "meaning": {
+                        "vi": "tay",
+                        "en": "hand"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "THƯỢNG THỦ (上手) là tay nghề cao -> Giỏi.",
+                "en": "Upper (上) Hand (手) -> Skillful."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "giỏi",
+                "khéo"
+            ],
+            "en": [
+                "skillful",
+                "good at"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "絵が上手です。",
+                "translation": {
+                    "vi": "Vẽ giỏi (Tranh giỏi).",
+                    "en": "Good at drawing."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THƯỢNG thừa (Jouz) về THỦ thuật.",
+            "en": "Jo-z (Jouzu) -> Joe is good at Zoo keeping."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "下手",
+        "han_viet": "HẠ THỦ",
+        "kana": "へた",
+        "romaji": "heta",
+        "tags": [
+            "n5",
+            "na-adjective"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "下",
+                    "han_viet": "HẠ",
+                    "meaning": {
+                        "vi": "dưới",
+                        "en": "down/below"
+                    }
+                },
+                {
+                    "kanji": "手",
+                    "han_viet": "THỦ",
+                    "meaning": {
+                        "vi": "tay",
+                        "en": "hand"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "HẠ THỦ (下手) là tay nghề thấp -> Kém.",
+                "en": "Lower (下) Hand (手) -> Unskillful."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "kém",
+                "dở"
+            ],
+            "en": [
+                "unskillful",
+                "bad at"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "歌が下手です。",
+                "translation": {
+                    "vi": "Hát kém.",
+                    "en": "Bad at singing."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HẠ thấp tay nghề xuống.",
+            "en": "He-ta (Heta) -> He is ta-rrible at this."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "スポーツ",
+        "han_viet": "",
+        "kana": "すぽーつ",
+        "romaji": "supootsu",
+        "tags": [
+            "n5",
+            "noun",
+            "katakana"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh: Sports.",
+                "en": "Loan word from English: Sports."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thể thao"
+            ],
+            "en": [
+                "sports"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "スポーツが好きです。",
+                "translation": {
+                    "vi": "Tôi thích thể thao.",
+                    "en": "I like sports."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Sợ (Su) bố (po) sư (tsu) chơi thể thao mệt.",
+            "en": "Sounds like Sports."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "野球",
+        "han_viet": "DÃ CẦU",
+        "kana": "やきゅう",
+        "romaji": "yakyuu",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "野",
+                    "han_viet": "DÃ",
+                    "meaning": {
+                        "vi": "cánh đồng",
+                        "en": "field"
+                    }
+                },
+                {
+                    "kanji": "球",
+                    "han_viet": "CẦU",
+                    "meaning": {
+                        "vi": "quả bóng",
+                        "en": "ball"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "DÃ CẦU (野球) là bóng chày (chơi bóng trên cánh đồng).",
+                "en": "Field (野) Ball (球) -> Baseball."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "bóng chày"
+            ],
+            "en": [
+                "baseball"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "野球をします。",
+                "translation": {
+                    "vi": "Chơi bóng chày.",
+                    "en": "Play baseball."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "DÃ ngoại chơi CẦU (bóng chày).",
+            "en": "Ya-Q (Yakyuu) -> Ya! Queue up for baseball."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ダンス",
+        "han_viet": "",
+        "kana": "だんす",
+        "romaji": "dansu",
+        "tags": [
+            "n5",
+            "noun",
+            "katakana"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L50,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh: Dance.",
+                "en": "Loan word from English: Dance."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "khiêu vũ",
+                "nhảy"
+            ],
+            "en": [
+                "dance"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ダンスが好きです。",
+                "translation": {
+                    "vi": "Tôi thích khiêu vũ.",
+                    "en": "I like dancing."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Đang (Dan) nhảy sung (su).",
+            "en": "Sounds like Dance."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "旅行",
+        "han_viet": "LỮ HÀNH",
+        "kana": "りょこう",
+        "romaji": "ryokou",
+        "tags": [
+            "n5",
+            "noun",
+            "suru-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "旅",
+                    "han_viet": "LỮ",
+                    "meaning": {
+                        "vi": "du lịch/lữ khách",
+                        "en": "trip"
+                    }
+                },
+                {
+                    "kanji": "行",
+                    "han_viet": "HÀNH",
+                    "meaning": {
+                        "vi": "đi",
+                        "en": "go"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "LỮ HÀNH (旅行) là đi du lịch. Lữ khách đi hành trình.",
+                "en": "Travel (旅) Go (行) -> Trip."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "du lịch"
+            ],
+            "en": [
+                "travel",
+                "trip"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "旅行へ行きます。",
+                "translation": {
+                    "vi": "Đi du lịch.",
+                    "en": "Go on a trip."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "LỮ khách HÀNH hương.",
+            "en": "Rio (Ryo) Co (kou) -> Traveling to Rio is Cool."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "音楽",
+        "han_viet": "ÂM LẠC",
+        "kana": "おんがく",
+        "romaji": "ongaku",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "音",
+                    "han_viet": "ÂM",
+                    "meaning": {
+                        "vi": "âm thanh",
+                        "en": "sound"
+                    }
+                },
+                {
+                    "kanji": "楽",
+                    "han_viet": "LẠC/NHẠC",
+                    "meaning": {
+                        "vi": "vui/nhạc",
+                        "en": "music/fun"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "ÂM NHẠC (音楽) là âm thanh vui vẻ.",
+                "en": "Sound (音) Fun (楽) -> Music."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "âm nhạc"
+            ],
+            "en": [
+                "music"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "音楽を聞きます。",
+                "translation": {
+                    "vi": "Nghe nhạc.",
+                    "en": "Listen to music."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "ÂM thanh LẠC quan là nhạc.",
+            "en": "On (On) ga (ga) ku (ku) -> Turn ON the music Gaga, Cool!"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "歌",
+        "han_viet": "CA",
+        "kana": "うた",
+        "romaji": "uta",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "歌",
+                    "han_viet": "CA",
+                    "meaning": {
+                        "vi": "bài hát/ca hát",
+                        "en": "song"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "CA (歌) là bài hát. Khả (khả năng) + Khiếm (thiếu)?? Không, bộ Ca gồm 2 chữ Khả (có thể) và Khiếm (ngáp/hát).",
+                "en": "Brother (兄) yawning/singing (欠) twice?? No, Can (可) Sing (欠)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "bài hát"
+            ],
+            "en": [
+                "song"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "歌を歌います。",
+                "translation": {
+                    "vi": "Hát một bài hát.",
+                    "en": "Sing a song."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "CA sĩ hát vang.",
+            "en": "U-tah (Uta) -> They sing songs in Utah."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "クラシック",
+        "han_viet": "",
+        "kana": "くらしっく",
+        "romaji": "kurashikku",
+        "tags": [
+            "n5",
+            "noun",
+            "katakana"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh: Classic (Music).",
+                "en": "Loan word from English: Classic."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nhạc cổ điển"
+            ],
+            "en": [
+                "classical music"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "クラシックが好きです。",
+                "translation": {
+                    "vi": "Tôi thích nhạc cổ điển.",
+                    "en": "I like classical music."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Cứ (Ku) ra (ra) rả si (shi) mê nhạc Cổ điển.",
+            "en": "Sounds like Classic."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ジャズ",
+        "han_viet": "",
+        "kana": "じゃず",
+        "romaji": "jazu",
+        "tags": [
+            "n5",
+            "noun",
+            "katakana"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L50,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh: Jazz.",
+                "en": "Loan word from English: Jazz."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nhạc jazz"
+            ],
+            "en": [
+                "jazz"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ジャズを聞きます。",
+                "translation": {
+                    "vi": "Nghe nhạc Jazz.",
+                    "en": "Listen to Jazz."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Già (Ja) dữ (zu) vẫn nghe Jazz.",
+            "en": "Sounds like Jazz."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "コンサート",
+        "han_viet": "",
+        "kana": "こんさーと",
+        "romaji": "konsaato",
+        "tags": [
+            "n5",
+            "noun",
+            "katakana"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L50,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh: Concert.",
+                "en": "Loan word from English: Concert."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "buổi hòa nhạc"
+            ],
+            "en": [
+                "concert"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "コンサートへ行きます。",
+                "translation": {
+                    "vi": "Đi xem hòa nhạc.",
+                    "en": "Go to a concert."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Con (Kon) Sa (sa) đi xem hòa nhạc.",
+            "en": "Sounds like Concert."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "カラオケ",
+        "han_viet": "",
+        "kana": "からおけ",
+        "romaji": "karaoke",
+        "tags": [
+            "n5",
+            "noun",
+            "katakana"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Kara (Trống rỗng - Không) + Oke (Orchestra - Dàn nhạc). Dàn nhạc trống (Không có người chơi, chỉ có máy).",
+                "en": "Kara (Empty) + Oke (Orchestra)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "karaoke"
+            ],
+            "en": [
+                "karaoke"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "カラオケで歌います。",
+                "translation": {
+                    "vi": "Hát karaoke.",
+                    "en": "Sing karaoke."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Hát Karaoke.",
+            "en": "Sounds like Karaoke."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "歌舞伎",
+        "han_viet": "CA VŨ KĨ",
+        "kana": "かぶき",
+        "romaji": "kabuki",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "歌",
+                    "han_viet": "CA",
+                    "meaning": {
+                        "vi": "hát",
+                        "en": "sing"
+                    }
+                },
+                {
+                    "kanji": "舞",
+                    "han_viet": "VŨ",
+                    "meaning": {
+                        "vi": "múa",
+                        "en": "dance"
+                    }
+                },
+                {
+                    "kanji": "伎",
+                    "han_viet": "KĨ",
+                    "meaning": {
+                        "vi": "kĩ nghệ",
+                        "en": "skill"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "CA VŨ KĨ (歌舞伎) là kịch Kabuki (loại kịch truyền thống Nhật Bản gồm hát, múa và kỹ năng).",
+                "en": "Sing (歌) Dance (舞) Skill (伎)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "kịch Kabuki"
+            ],
+            "en": [
+                "Kabuki (traditional Japanese musical drama)"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "歌舞伎を見ます。",
+                "translation": {
+                    "vi": "Xem kịch Kabuki.",
+                    "en": "Watch Kabuki."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "CA VŨ KĨ là nghệ thuật đỉnh cao.",
+            "en": "Car (Ka) Book (Buki) -> Reading a book in the car about Kabuki."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "絵",
+        "han_viet": "HỘI",
+        "kana": "え",
+        "romaji": "e",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "絵",
+                    "han_viet": "HỘI",
+                    "meaning": {
+                        "vi": "tranh",
+                        "en": "picture"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "HỘI (絵) là hội họa, tranh vẽ. Sợi chỉ (Mịch 糸) thêu dệt nên buổi họp (Hội 会) -> Bức tranh.",
+                "en": "Thread (糸) Meeting (会) -> Picture."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "tranh"
+            ],
+            "en": [
+                "picture",
+                "painting"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "絵を書きます。",
+                "translation": {
+                    "vi": "Vẽ tranh.",
+                    "en": "Draw a picture."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HỘI họa cho Ê (E) chề.",
+            "en": "Eh? (E) -> Eh? Is that a picture?"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "字",
+        "han_viet": "TỰ",
+        "kana": "じ",
+        "romaji": "ji",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "字",
+                    "han_viet": "TỰ",
+                    "meaning": {
+                        "vi": "chữ",
+                        "en": "character"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TỰ (字) là chữ viết. Đứa trẻ (Tử) ở trong nhà (Miên) học chữ.",
+                "en": "Child (子) under Roof (宀) learning Characters."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "chữ"
+            ],
+            "en": [
+                "letter",
+                "character"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "字を読みます。",
+                "translation": {
+                    "vi": "Đọc chữ.",
+                    "en": "Read letters."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TỰ học chữ thì khó.",
+            "en": "Gee (Ji) -> Gee, these letters are small."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "漢字",
+        "han_viet": "HÁN TỰ",
+        "kana": "かんじ",
+        "romaji": "kanji",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "漢",
+                    "han_viet": "HÁN",
+                    "meaning": {
+                        "vi": "nhà Hán/TQ",
+                        "en": "Han (China)"
+                    }
+                },
+                {
+                    "kanji": "字",
+                    "han_viet": "TỰ",
+                    "meaning": {
+                        "vi": "chữ",
+                        "en": "character"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "HÁN TỰ (漢字) là chữ Hán. Chữ của người Hán.",
+                "en": "Han (China) characters."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "chữ Hán",
+                "Kanji"
+            ],
+            "en": [
+                "Chinese character",
+                "Kanji"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "漢字がわかります。",
+                "translation": {
+                    "vi": "Tôi biết chữ Hán.",
+                    "en": "I understand Kanji."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HÁN TỰ là Kanji.",
+            "en": "Can (Kan) G (ji) -> Can G write Kanji?"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ひらがな",
+        "han_viet": "",
+        "kana": "ひらがな",
+        "romaji": "hiragana",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Chữ mềm (Bình giả danh).",
+                "en": "Smooth (Hira) Kana."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "chữ Hiragana"
+            ],
+            "en": [
+                "Hiragana script"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ひらがなで書きます。",
+                "translation": {
+                    "vi": "Viết bằng Hiragana.",
+                    "en": "Write in Hiragana."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Hira là Bình (phẳng/dễ).",
+            "en": "He-ra (Hira) -> Hera writes Hiragana."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "かたかな",
+        "han_viet": "",
+        "kana": "かたかな",
+        "romaji": "katakana",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Chữ cứng (Phiến giả danh). Kata là một phần/mảnh.",
+                "en": "Fragment (Kata) Kana."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "chữ Katakana"
+            ],
+            "en": [
+                "Katakana script"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "かたかなは難しいです。",
+                "translation": {
+                    "vi": "Katakana khó.",
+                    "en": "Katakana is difficult."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Kata là cứng.",
+            "en": "Cut-a-kana (Katakana)."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ローマ字",
+        "han_viet": "TỰ",
+        "kana": "ローマじ",
+        "romaji": "roomaji",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "字",
+                    "han_viet": "TỰ",
+                    "meaning": {
+                        "vi": "chữ",
+                        "en": "character"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ La tinh (Rome character).",
+                "en": "Roman characters."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "chữ La Mã"
+            ],
+            "en": [
+                "Roman alphabet"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ローマ字で書きます。",
+                "translation": {
+                    "vi": "Viết bằng chữ La Mã.",
+                    "en": "Write in Roman alphabet."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Chữ của thành Roma.",
+            "en": "Ro-ma (Roma) -> Roman alphabet."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "細かいお金",
+        "han_viet": "TẾ KIM",
+        "kana": "こまかいおかね",
+        "romaji": "komakaiokane",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 4,
+        "pitch_svg_path": "M0,20 L25,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "細",
+                    "han_viet": "TẾ",
+                    "meaning": {
+                        "vi": "nhỏ/lẻ",
+                        "en": "tiny/thin"
+                    }
+                },
+                {
+                    "kanji": "金",
+                    "han_viet": "KIM",
+                    "meaning": {
+                        "vi": "tiền",
+                        "en": "money"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TẾ KIM (細金) là tiền nhỏ -> Tiền lẻ.",
+                "en": "Tiny (細) Money (金)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "tiền lẻ"
+            ],
+            "en": [
+                "small change"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "細かいお金がありますか。",
+                "translation": {
+                    "vi": "Có tiền lẻ không?",
+                    "en": "Do you have small change?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TẾ (nhỏ) như hạt cát. Tiền nhỏ.",
+            "en": "Coma (Koma) Kai (kai) -> Put in a coma for small change."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "チケット",
+        "han_viet": "",
+        "kana": "ちけっと",
+        "romaji": "chiketto",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh: Ticket (bé xem hòa nhạc, phim...). Khác với Kippu (vé tàu xe).",
+                "en": "Loan word: Ticket."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "vé (xem phim, hòa nhạc)"
+            ],
+            "en": [
+                "ticket (concert/movie)"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "コンサートのチケット。",
+                "translation": {
+                    "vi": "Vé hòa nhạc.",
+                    "en": "Concert ticket."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Chi (Chi) tiền mua Két (ket) vé to (to).",
+            "en": "Sounds like Ticket."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "時間",
+        "han_viet": "THỜI GIAN",
+        "kana": "じかん",
+        "romaji": "jikan",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "時",
+                    "han_viet": "THỜI",
+                    "meaning": {
+                        "vi": "thời gian/giờ",
+                        "en": "time"
+                    }
+                },
+                {
+                    "kanji": "間",
+                    "han_viet": "GIAN",
+                    "meaning": {
+                        "vi": "khoảng/ở giữa",
+                        "en": "interval"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "THỜI GIAN (時間). Khoảng thời gian.",
+                "en": "Time (時) Interval (間)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thời gian"
+            ],
+            "en": [
+                "time"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "時間がありません。",
+                "translation": {
+                    "vi": "Không có thời gian.",
+                    "en": "I don't have time."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THỜI GIAN là vàng.",
+            "en": "G-Can (Jikan) -> G CAN tell time."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "用事",
+        "han_viet": "DỤNG SỰ",
+        "kana": "ようじ",
+        "romaji": "youji",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "用",
+                    "han_viet": "DỤNG",
+                    "meaning": {
+                        "vi": "dùng/việc",
+                        "en": "use/business"
+                    }
+                },
+                {
+                    "kanji": "事",
+                    "han_viet": "SỰ",
+                    "meaning": {
+                        "vi": "việc/sự việc",
+                        "en": "matter"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "DỤNG SỰ (用事) là việc cần dùng đến -> Việc bận.",
+                "en": "Business (用) Matter (事) -> Errand."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "việc bận",
+                "công chuyện"
+            ],
+            "en": [
+                "something to do",
+                "errand"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "用事があります。",
+                "translation": {
+                    "vi": "Tôi có việc bận.",
+                    "en": "I have something to do."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "DỤNG SỰ là có việc phải làm.",
+            "en": "Yo (You) G (ji) -> Yo G, I got things to do."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "約束",
+        "han_viet": "ƯỚC THÚC",
+        "kana": "やくそく",
+        "romaji": "yakusoku",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "約",
+                    "han_viet": "ƯỚC",
+                    "meaning": {
+                        "vi": "ước hẹn",
+                        "en": "promise"
+                    }
+                },
+                {
+                    "kanji": "束",
+                    "han_viet": "THÚC",
+                    "meaning": {
+                        "vi": "bó buộc",
+                        "en": "bundle/tie"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "ƯỚC THÚC (約束) là lời hứa. Sự ràng buộc (Thúc) bởi lời thề ước (Ước).",
+                "en": "Promise (約) Tie (束) -> Binding Promise."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "cuộc hẹn",
+                "lời hứa"
+            ],
+            "en": [
+                "promise",
+                "appointment"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "友達と約束があります。",
+                "translation": {
+                    "vi": "Có hẹn với bạn.",
+                    "en": "I have an appointment with a friend."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "ƯỚC hẹn sẽ THÚC thủ (giữ lời).",
+            "en": "Yak (Yaku) Sock (Soku) -> I promise to wash your Yak Socks."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ご主人",
+        "han_viet": "CHỦ NHÂN",
+        "kana": "ごしゅじん",
+        "romaji": "goshujin",
+        "tags": [
+            "n5",
+            "noun",
+            "polite"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "主",
+                    "han_viet": "CHỦ",
+                    "meaning": {
+                        "vi": "chủ",
+                        "en": "master"
+                    }
+                },
+                {
+                    "kanji": "人",
+                    "han_viet": "NHÂN",
+                    "meaning": {
+                        "vi": "người",
+                        "en": "person"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "CHỦ NHÂN (主人) là chồng/ông chủ. Go (Kính ngữ).",
+                "en": "Master (主) Person (人) -> Husband (Polite)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "chồng (người khác)"
+            ],
+            "en": [
+                "someone else's husband"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ご主人はお元気ですか。",
+                "translation": {
+                    "vi": "Chồng chị có khỏe không?",
+                    "en": "Is your husband well?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Kính trọng CHỦ NHÂN nhà người ta (Go).",
+            "en": "Go (Go) Shoe (Shu) Gene (Jin) -> Go get Shoe Gene, your husband."
+        },
+        "confusions": [
+            {
+                "word": "夫",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "PHU (Otto) là chồng mình. Go-shujin là chồng người khác.",
+                        "en": "Otto (My husband), Goshujin (Your husband)."
+                    },
+                    "item1_nuance": {
+                        "vi": "Chồng mình (khiêm tốn).",
+                        "en": "My husband (Humble)."
+                    },
+                    "item2_nuance": {
+                        "vi": "Chồng người khác (lịch sự).",
+                        "en": "Someone else's husband."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "word_surface": "夫",
+        "han_viet": "PHU",
+        "kana": "おっと",
+        "romaji": "otto",
+        "tags": [
+            "n5",
+            "noun",
+            "humble"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "夫",
+                    "han_viet": "PHU",
+                    "meaning": {
+                        "vi": "chồng/đàn ông",
+                        "en": "husband"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "PHU (夫) là chồng. Phu quân.",
+                "en": "Man (大) with a pin in his hair (one top line) -> Husband."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "chồng (mình)"
+            ],
+            "en": [
+                "my husband"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "夫は会社員です。",
+                "translation": {
+                    "vi": "Chồng tôi là nhân viên công ty.",
+                    "en": "My husband is a company employee."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "PHU quân của mình là Otto.",
+            "en": "Otto (Otto) -> My husband's name is Otto."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "奥さん",
+        "han_viet": "ÁO",
+        "kana": "おくさん",
+        "romaji": "okusan",
+        "tags": [
+            "n5",
+            "noun",
+            "polite"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "奥",
+                    "han_viet": "ÁO",
+                    "meaning": {
+                        "vi": "bên trong (nhà)",
+                        "en": "interior"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "ÁO (奥) là phía trong sâu. Ngày xưa vợ thường ở trong nhà -> Vợ (người khác).",
+                "en": "Inner part (奥) -> Lady of the house."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "vợ (người khác)"
+            ],
+            "en": [
+                "someone else's wife"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "奥さんはきれいですね。",
+                "translation": {
+                    "vi": "Vợ anh đẹp quá.",
+                    "en": "Your wife is beautiful."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "ÁO nghĩa là bí ẩn sâu bên trong. Vợ người ta thật bí ẩn.",
+            "en": "Oak (Oku) San (San) -> Mrs. Oak San is his wife."
+        },
+        "confusions": [
+            {
+                "word": "妻",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "THÊ (Tsuma) là vợ mình. Okusan là vợ người ta.",
+                        "en": "Tsu-ma (My wife), Oku-san (Your wife)."
+                    },
+                    "item1_nuance": {
+                        "vi": "Vợ mình (khiêm tốn).",
+                        "en": "My wife (Humble)."
+                    },
+                    "item2_nuance": {
+                        "vi": "Vợ người khác (lịch sự).",
+                        "en": "Someone else's wife."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "word_surface": "妻",
+        "han_viet": "THÊ",
+        "kana": "つま",
+        "romaji": "tsuma",
+        "tags": [
+            "n5",
+            "noun",
+            "humble"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "妻",
+                    "han_viet": "THÊ",
+                    "meaning": {
+                        "vi": "vợ",
+                        "en": "wife"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "THÊ (妻) là vợ. Thê tử.",
+                "en": "Woman (女) holding a hair pin -> Wife."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "vợ (mình)"
+            ],
+            "en": [
+                "my wife"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "妻は料理が上手です。",
+                "translation": {
+                    "vi": "Vợ tôi nấu ăn giỏi.",
+                    "en": "My wife is good at cooking."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THÊ tử là vợ mình.",
+            "en": "Sue-Ma (Tsuma) -> Sue Ma is my wife."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "子供",
+        "han_viet": "TỬ CUNG",
+        "kana": "こども",
+        "romaji": "kodomo",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "子",
+                    "han_viet": "TỬ",
+                    "meaning": {
+                        "vi": "con",
+                        "en": "child"
+                    }
+                },
+                {
+                    "kanji": "供",
+                    "han_viet": "CUNG",
+                    "meaning": {
+                        "vi": "cung cấp/cùng",
+                        "en": "attendant/offer"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TỬ CUNG (子供) là trẻ con. Sự kết hợp của Tử (con) và Cung (cùng nhau).",
+                "en": "Child (子) Attendant (供) -> Children."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "con cái",
+                "trẻ em"
+            ],
+            "en": [
+                "child",
+                "children"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "子供がいます。",
+                "translation": {
+                    "vi": "Tôi có con.",
+                    "en": "I have children."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TỬ (con) CUNG (cấp) niềm vui.",
+            "en": "Co-do-mo (Kodomo) -> Code some mo' (more) for the children."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "よく",
+        "han_viet": "",
+        "kana": "よく",
+        "romaji": "yoku",
+        "tags": [
+            "n5",
+            "adverb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L50,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ 'Yoi' (Tốt) biến âm. Nghĩa là 'Rõ' hoặc 'Thường xuyên'.",
+                "en": "Adverb form of 'Ii/Yoi' (Good)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "tốt",
+                "rõ",
+                "thường xuyên"
+            ],
+            "en": [
+                "well",
+                "often"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "よくわかります。",
+                "translation": {
+                    "vi": "Hiểu rõ.",
+                    "en": "Understand well."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Yố cự (Yoku) -> Zô cụng ly thường xuyên.",
+            "en": "Yolk (Yoku) -> I like my yolk cooked WELL."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "だいたい",
+        "han_viet": "ĐẠI THỂ",
+        "kana": "だいたい",
+        "romaji": "daitai",
+        "tags": [
+            "n5",
+            "adverb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "大",
+                    "han_viet": "ĐẠI",
+                    "meaning": {
+                        "vi": "lớn",
+                        "en": "big"
+                    }
+                },
+                {
+                    "kanji": "体",
+                    "han_viet": "THỂ",
+                    "meaning": {
+                        "vi": "thân thể/hình dáng",
+                        "en": "body/form"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "ĐẠI THỂ (大体) là nhìn tổng thể -> Đại khái.",
+                "en": "Big (大) Body (体) -> Roughly/Generally."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đại khái",
+                "khoảng"
+            ],
+            "en": [
+                "mostly",
+                "roughly"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "だいたいわかります。",
+                "translation": {
+                    "vi": "Hiểu đại khái.",
+                    "en": "Understand mostly."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "ĐẠI THỂ là gần hết (Đại khái).",
+            "en": "Die (Dai) Thai (Tai) -> I roughly want to Dye my Tie."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "たくさん",
+        "han_viet": "",
+        "kana": "たくさん",
+        "romaji": "takusan",
+        "tags": [
+            "n5",
+            "adverb"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Nhiều. Hán tự: TRẠCH SƠN (沢山) - Núi đầm lầy (Nhiều).",
+                "en": "Kanji 沢山 means Many."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nhiều"
+            ],
+            "en": [
+                "many",
+                "a lot"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "お金がたくさんあります。",
+                "translation": {
+                    "vi": "Có nhiều tiền.",
+                    "en": "I have a lot of money."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Tắc (Taku) đường ở sàn (san) vì nhiều người.",
+            "en": "Tacos (Taku) Son (San) -> I want many TACOS, SON."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "少し",
+        "han_viet": "THIỂU",
+        "kana": "すこし",
+        "romaji": "sukoshi",
+        "tags": [
+            "n5",
+            "adverb"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "少",
+                    "han_viet": "THIỂU",
+                    "meaning": {
+                        "vi": "ít",
+                        "en": "few/little"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "THIỂU (少) là thiểu số, ít.",
+                "en": "Small (小) with an extra slash -> Few."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ít",
+                "một chút"
+            ],
+            "en": [
+                "a little",
+                "few"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "少しわかります。",
+                "translation": {
+                    "vi": "Hiểu một chút.",
+                    "en": "Understand a little."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THIỂU năng nên chỉ hiểu một chút.",
+            "en": "S-Kosher (Sukoshi) -> A little bit Kosher."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "全然",
+        "han_viet": "TOÀN NHIÊN",
+        "kana": "ぜんぜん",
+        "romaji": "zenzen",
+        "tags": [
+            "n5",
+            "adverb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "全",
+                    "han_viet": "TOÀN",
+                    "meaning": {
+                        "vi": "toàn bộ",
+                        "en": "whole"
+                    }
+                },
+                {
+                    "kanji": "然",
+                    "han_viet": "NHIÊN",
+                    "meaning": {
+                        "vi": "tự nhiên",
+                        "en": "so/nature"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TOÀN NHIÊN (全然) đi với phủ định -> Hoàn toàn không.",
+                "en": "Whole (全) Nature (然) -> (Not) at all."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "hoàn toàn (không)"
+            ],
+            "en": [
+                "not at all (with negative)"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "全然わかりません。",
+                "translation": {
+                    "vi": "Hoàn toàn không hiểu.",
+                    "en": "I don't understand at all."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TOÀN NHIÊN là hoàn toàn không.",
+            "en": "Zen (Zen) Zen (Zen) -> Strict Zen monks have NO fun AT ALL."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "早く",
+        "han_viet": "TẢO",
+        "kana": "はやく",
+        "romaji": "hayaku",
+        "tags": [
+            "n5",
+            "adverb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "早",
+                    "han_viet": "TẢO",
+                    "meaning": {
+                        "vi": "sớm",
+                        "en": "early"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TẢO (早) là sớm. Tảo hôn (cưới sớm). Mặt trời (Nhật) trên Thập (Mười) -> 10h sáng là sớm??",
+                "en": "Sun (日) on a Ten (十) -> Early."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "sớm",
+                "nhanh"
+            ],
+            "en": [
+                "early",
+                "fast"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "早く寝ます。",
+                "translation": {
+                    "vi": "Ngủ sớm.",
+                    "en": "Go to bed early/quickly."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TẢO mộ từ sáng sớm.",
+            "en": "Ha-ya (Haya) -> Hi-ya! Ninja moves fast."
+        },
+        "confusions": [
+            {
+                "word": "速く",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "TẢO (早) là sớm (thời gian). TỐC (速) là nhanh (tốc độ).",
+                        "en": "Haya (Early - Time), Haya (Fast - Speed)."
+                    },
+                    "item1_nuance": {
+                        "vi": "Về mặt thời gian (Sớm).",
+                        "en": "Time-related (Early)."
+                    },
+                    "item2_nuance": {
+                        "vi": "Về mặt tốc độ (Nhanh).",
+                        "en": "Speed-related (Fast)."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "word_surface": "速く",
+        "han_viet": "TỐC",
+        "kana": "はやく",
+        "romaji": "hayaku",
+        "tags": [
+            "n5",
+            "adverb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "速",
+                    "han_viet": "TỐC",
+                    "meaning": {
+                        "vi": "nhanh/tốc độ",
+                        "en": "fast"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TỐC (速) trong tốc độ. Bó (Thúc) lại chạy cho nhanh (Xước).",
+                "en": "Road (辶) and Bundle (束) -> Move a bundle fast."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nhanh (tốc độ)"
+            ],
+            "en": [
+                "fast",
+                "quickly"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "速く走ります。",
+                "translation": {
+                    "vi": "Chạy nhanh.",
+                    "en": "Run fast."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TỐC độ nhanh.",
+            "en": "Hay-a (Haya) -> Hay, you run fast!"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "残念です",
+        "han_viet": "TÀN NIỆM",
+        "kana": "ざんねんです",
+        "romaji": "zannendesu",
+        "tags": [
+            "n5",
+            "phrase",
+            "na-adjective"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "残",
+                    "han_viet": "TÀN",
+                    "meaning": {
+                        "vi": "còn lại/tàn dư",
+                        "en": "remainder"
+                    }
+                },
+                {
+                    "kanji": "念",
+                    "han_viet": "NIỆM",
+                    "meaning": {
+                        "vi": "suy nghĩ/tâm niệm",
+                        "en": "thought/sense"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TÀN NIỆM (残念) là suy nghĩ còn sót lại -> Tiếc nuối.",
+                "en": "Remaining (残) Thoughts (念) -> Regret."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đáng tiếc",
+                "tiếc nuối"
+            ],
+            "en": [
+                "it's a pity",
+                "regrettable"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "それは残念ですね。",
+                "translation": {
+                    "vi": "Thật đáng tiếc nhỉ.",
+                    "en": "That's a pity."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TÀN cuộc mà vẫn còn NIỆM tình -> Tiếc.",
+            "en": "Zen (Zan) Nen (Nen) -> Zen nuns have regrets."
+        },
+        "confusions": []
+    }
+]

@@ -1,0 +1,1606 @@
+[
+    {
+        "word_surface": "つけます",
+        "han_viet": "",
+        "kana": "つけます",
+        "romaji": "tsukemasu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "ru-verb"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Hán tự: PHÓ (付). Dính vào -> Bật (công tắc).",
+                "en": "Attach -> Turn on (switch)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "bật (điện, máy điều hòa)"
+            ],
+            "en": [
+                "turn on"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "電気をつけます。",
+                "translation": {
+                    "vi": "Bật đèn.",
+                    "en": "Turn on the light."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Bật công tắc nó kêu Tách (Tsu-ke).",
+            "en": "Sue (Tsu) Kay (Ke) -> Sue and Kay turn on the lights."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "消します",
+        "han_viet": "TIÊU",
+        "kana": "けします",
+        "romaji": "keshimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "消",
+                    "han_viet": "TIÊU",
+                    "meaning": {
+                        "vi": "tiêu diệt/tắt",
+                        "en": "extinguish"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TIÊU (消) trong tiêu diệt, thủ tiêu. Dùng nước (Thủy) làm tan biến (Tiếu) lửa -> Tắt.",
+                "en": "Water (氵) Sparks (肖) -> Extinguish/Turn off."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "tắt (điện, máy điều hòa)",
+                "xóa"
+            ],
+            "en": [
+                "turn off",
+                "erase"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "テレビを消します。",
+                "translation": {
+                    "vi": "Tắt tivi.",
+                    "en": "Turn off the TV."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TIÊU diệt ngọn lửa là tắt.",
+            "en": "Case (Keshi) -> Close the case and turn off the lights."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "開けます",
+        "han_viet": "KHAI",
+        "kana": "あけます",
+        "romaji": "akemasu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "ru-verb"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "開",
+                    "han_viet": "KHAI",
+                    "meaning": {
+                        "vi": "mở/khai trương",
+                        "en": "open"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "KHAI (開) trong khai trương. Hai tay mở cổng (Môn).",
+                "en": "Gate (門) Two Hands (廾) -> Open."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "mở (cửa, cửa sổ)"
+            ],
+            "en": [
+                "open"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ドアを開けます。",
+                "translation": {
+                    "vi": "Mở cửa.",
+                    "en": "Open the door."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "KHAI trương quán mới.",
+            "en": "Arcade (Ake) -> Open the arcade."
+        },
+        "confusions": [
+            {
+                "word": "開きます",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "KHAI (Akemasu) là tha động từ (Tôi mở cửa). KHAI (Akimasu) là tự động từ (Cửa tự mở).",
+                        "en": "Akemasu (I Open), Akimasu (It Opens)."
+                    },
+                    "item1_nuance": {
+                        "vi": "Mình mở (chủ động).",
+                        "en": "I open it."
+                    },
+                    "item2_nuance": {
+                        "vi": "Nó tự mở (trạng thái).",
+                        "en": "It opens."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "word_surface": "閉めます",
+        "han_viet": "BẾ",
+        "kana": "しめます",
+        "romaji": "shimemasu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "ru-verb"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "閉",
+                    "han_viet": "BẾ",
+                    "meaning": {
+                        "vi": "đóng/bế mạc",
+                        "en": "close"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "BẾ (閉) trong bế mạc, bế quan. Cổng (Môn) có then cài (Tài) -> Đóng.",
+                "en": "Gate (門) Talent/Bar (才) -> Close."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đóng (cửa, cửa sổ)"
+            ],
+            "en": [
+                "close",
+                "shut"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "窓を閉めます。",
+                "translation": {
+                    "vi": "Đóng cửa sổ.",
+                    "en": "Close the window."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "BẾ quan tỏa cảng (Đóng cửa).",
+            "en": "She (Shi) May (Me) -> She may close the store."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "急ぎます",
+        "han_viet": "CẤP",
+        "kana": "いそぎます",
+        "romaji": "isogimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "intransitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "急",
+                    "han_viet": "CẤP",
+                    "meaning": {
+                        "vi": "gấp/vội",
+                        "en": "hurry"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "CẤP (急) trong khẩn cấp. Tim (Tâm) bị đè nén (Tranh) nên gấp gáp.",
+                "en": "Bound (刍) Heart (心) -> Anxious/Hurry."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "vội",
+                "gấp"
+            ],
+            "en": [
+                "hurry"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "急いでください。",
+                "translation": {
+                    "vi": "Hãy nhanh lên.",
+                    "en": "Please hurry."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "CẤP cứu phải nhanh.",
+            "en": "It's so (Iso) late -> Hurry up!"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "待ちます",
+        "han_viet": "ĐÃI",
+        "kana": "まちます",
+        "romaji": "machimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "待",
+                    "han_viet": "ĐÃI",
+                    "meaning": {
+                        "vi": "chờ đợi/đối đãi",
+                        "en": "wait"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "ĐÃI (待) trong chờ đợi. Bước chân (Xích) dừng lại ở Chùa (Tự) đợi.",
+                "en": "Step (彳) Temple (寺) -> Wait at the temple."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đợi",
+                "chờ"
+            ],
+            "en": [
+                "wait"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ちょっと待ってください。",
+                "translation": {
+                    "vi": "Xin đợi một chút.",
+                    "en": "Please wait a moment."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Mãi (Ma) chi (chi) mới ĐÃI khách.",
+            "en": "March (Machi) -> Wait for the march to start."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "持ちます",
+        "han_viet": "TRÌ",
+        "kana": "もちます",
+        "romaji": "mochimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "持",
+                    "han_viet": "TRÌ",
+                    "meaning": {
+                        "vi": "cầm/nắm/duy trì",
+                        "en": "hold"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TRÌ (持) trong duy trì. Tay (Thủ) cầm trịch ơ Chùa (Tự).",
+                "en": "Hand (扌) Temple (寺) -> Hold responsibility."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "mang",
+                "cầm"
+            ],
+            "en": [
+                "hold",
+                "carry"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "荷物を持ちます。",
+                "translation": {
+                    "vi": "Mang hành lý.",
+                    "en": "Carry luggage."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TRÌ trệ vì phải mang nặng.",
+            "en": "Mochi (Mochi) -> Hold the Mochi rice cake."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "取ります",
+        "han_viet": "THỦ",
+        "kana": "とります",
+        "romaji": "torimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "取",
+                    "han_viet": "THỦ",
+                    "meaning": {
+                        "vi": "lấy",
+                        "en": "take"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "THỦ (取) trong lấy, tuyển thủ. Tay (Thủ) cắt Tai (Nhĩ) quân địch đem về -> Lấy.",
+                "en": "Ear (耳) Hand (又) -> Take an ear (trophy)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "lấy",
+                "chuyển"
+            ],
+            "en": [
+                "take",
+                "pass"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "塩を取ってください。",
+                "translation": {
+                    "vi": "Lấy giúp tôi muối.",
+                    "en": "Please pass me the salt."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Lấy THỦ cấp.",
+            "en": "To-re (Tori) -> To re-cord, you take the mic."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "手伝います",
+        "han_viet": "THỦ TRUYỀN",
+        "kana": "てつだいます",
+        "romaji": "tetsudaimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "手",
+                    "han_viet": "THỦ",
+                    "meaning": {
+                        "vi": "tay",
+                        "en": "hand"
+                    }
+                },
+                {
+                    "kanji": "伝",
+                    "han_viet": "TRUYỀN",
+                    "meaning": {
+                        "vi": "truyền đạt",
+                        "en": "transmit/convey"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "THỦ TRUYỀN (手伝) -> Truyền tay nhau giúp đỡ.",
+                "en": "Hand (手) Convey (伝) -> Help/Assist."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "giúp",
+                "giúp đỡ"
+            ],
+            "en": [
+                "help",
+                "assist"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "仕事を手伝います。",
+                "translation": {
+                    "vi": "Giúp việc.",
+                    "en": "Help with work."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Truyền tay (THỦ TRUYỀN) nhau giúp đỡ.",
+            "en": "Tetris (Tetsudai) -> Help me play Tetris."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "呼びます",
+        "han_viet": "HÔ",
+        "kana": "よびます",
+        "romaji": "yobimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "呼",
+                    "han_viet": "HÔ",
+                    "meaning": {
+                        "vi": "gọi/hô hào",
+                        "en": "call"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "HÔ (呼) trong hô hào, hô hấp. Miệng (Khẩu) thở ra (Hồ).",
+                "en": "Mouth (口) Axe (乎)?? No, Mouth + Exhale -> Call out."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "gọi"
+            ],
+            "en": [
+                "call"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "タクシーを呼びます。",
+                "translation": {
+                    "vi": "Gọi taxi.",
+                    "en": "Call a taxi."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HÔ to lên gọi người ta.",
+            "en": "Yo (Yo) B (bi) -> Yo B, come here! (Calling)."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "話します",
+        "han_viet": "THOẠI",
+        "kana": "はなします",
+        "romaji": "hanashimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "話",
+                    "han_viet": "THOẠI",
+                    "meaning": {
+                        "vi": "nói chuyện",
+                        "en": "talk"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "THOẠI (話) trong hội thoại. Ngôn ngữ (Ngôn) dùng lưỡi (Thiệt) nói.",
+                "en": "Words (言) Tongue (舌) -> Speak."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nói",
+                "nói chuyện"
+            ],
+            "en": [
+                "speak",
+                "talk"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "日本語を話します。",
+                "translation": {
+                    "vi": "Nói tiếng Nhật.",
+                    "en": "Speak Japanese."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Đàm THOẠI với Hana.",
+            "en": "Hannah (Hana) -> Hannah speaks a lot."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "使います",
+        "han_viet": "SỬ",
+        "kana": "つかいます",
+        "romaji": "tsukaimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "使",
+                    "han_viet": "SỬ",
+                    "meaning": {
+                        "vi": "sử dụng",
+                        "en": "use"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "SỬ (使) trong sử dụng, sứ giả. Người (Nhân) lại (Lại) sai phái -> Sai bảo, dùng.",
+                "en": "Person (亻) Officer (吏) -> Use."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "dùng",
+                "sử dụng"
+            ],
+            "en": [
+                "use"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "パソコンを使います。",
+                "translation": {
+                    "vi": "Dùng máy tính.",
+                    "en": "Use a PC."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "SỬ dụng đồ cũ (tsu-kai).",
+            "en": "Sky (Tsukai) -> Use the sky limit."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "止めます",
+        "han_viet": "CHỈ",
+        "kana": "とめます",
+        "romaji": "tomemasu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "ru-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "止",
+                    "han_viet": "CHỈ",
+                    "meaning": {
+                        "vi": "dừng",
+                        "en": "stop"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "CHỈ (止) trong đình chỉ. Dấu chân dừng lại.",
+                "en": "Footprint -> Stop."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "dừng",
+                "đỗ"
+            ],
+            "en": [
+                "stop",
+                "park"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "車を止めます。",
+                "translation": {
+                    "vi": "Đỗ xe.",
+                    "en": "Stop/Park the car."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Đình CHỈ, không cho Tô (To) mì (me).",
+            "en": "Toe (To) May (Me) -> Stop, you stepped on my Toe in May."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "見せます",
+        "han_viet": "KIẾN",
+        "kana": "みせます",
+        "romaji": "misemasu",
+        "tags": [
+            "n5",
+            "verb",
+            "transitive",
+            "ru-verb"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "見",
+                    "han_viet": "KIẾN",
+                    "meaning": {
+                        "vi": "nhìn/thấy",
+                        "en": "see"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "KIẾN (見) là nhìn. Tha động từ: Cho nhìn -> Cho xem.",
+                "en": "Eye (目) on Legs (儿) -> See. Causative: Make see -> Show."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "cho xem",
+                "trình"
+            ],
+            "en": [
+                "show"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "パスポートを見せます。",
+                "translation": {
+                    "vi": "Cho xem hộ chiếu.",
+                    "en": "Show the passport."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Cho xem KIẾN thức mới.",
+            "en": "Me say (Mise) -> Look at me say this."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "座ります",
+        "han_viet": "TỌA",
+        "kana": "すわります",
+        "romaji": "suwarimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "intransitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "座",
+                    "han_viet": "TỌA",
+                    "meaning": {
+                        "vi": "chỗ ngồi",
+                        "en": "sit/seat"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TỌA (座) trong an tọa. Hai người (Nhân) ngồi trên đất (Thổ) dưới mái nhà (Nghiễm).",
+                "en": "Two people (人人) on Soil (土) under Roof (广) -> Sit."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ngồi"
+            ],
+            "en": [
+                "sit"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ここに座ってください。",
+                "translation": {
+                    "vi": "Hãy ngồi ở đây.",
+                    "en": "Please sit here."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "An TỌA rồi hẵng Sờ (Su) quà (wa).",
+            "en": "Swat (Suwa) -> Sit down or I'll swat you."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "立ちます",
+        "han_viet": "LẬP",
+        "kana": "たちます",
+        "romaji": "tachimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "intransitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "立",
+                    "han_viet": "LẬP",
+                    "meaning": {
+                        "vi": "đứng",
+                        "en": "stand"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "LẬP (立) trong thiết lập, đứng. Người đứng trên mặt đất.",
+                "en": "Person standing on ground."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đứng"
+            ],
+            "en": [
+                "stand"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "立ってください。",
+                "translation": {
+                    "vi": "Hãy đứng lên.",
+                    "en": "Please stand up."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "LẬP trường là phải đứng vững.",
+            "en": "Touch (Tachi) -> Stand up and touch the ceiling."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "入ります",
+        "han_viet": "NHẬP",
+        "kana": "はいります",
+        "romaji": "hairimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "intransitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "入",
+                    "han_viet": "NHẬP",
+                    "meaning": {
+                        "vi": "vào",
+                        "en": "enter"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "NHẬP (入) là đi vào. Ngược với Nhân (人).",
+                "en": "Enter (入) -> Going in."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "vào"
+            ],
+            "en": [
+                "enter"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "喫茶店に入ります。",
+                "translation": {
+                    "vi": "Vào quán giải khát.",
+                    "en": "Enter a cafe."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "NHẬP khẩu là Hại (Hai) người dân (ri).",
+            "en": "Hi, Lee (Hairi) -> Hi Lee, come on in (Enter)."
+        },
+        "confusions": [
+            {
+                "word": "入れます",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "NHẬP (Hairimasu - Vào), NHẬP (Iremasu - Cho vào).",
+                        "en": "Hairimasu (Enter), Iremasu (Put in)."
+                    },
+                    "item1_nuance": {
+                        "vi": "Tự động từ (Đi vào).",
+                        "en": "Intransitive (Enter)."
+                    },
+                    "item2_nuance": {
+                        "vi": "Tha động từ (Bỏ vào).",
+                        "en": "Transitive (Insert)."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "word_surface": "出ます",
+        "han_viet": "XUẤT",
+        "kana": "でます",
+        "romaji": "demasu",
+        "tags": [
+            "n5",
+            "verb",
+            "intransitive",
+            "ru-verb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "出",
+                    "han_viet": "XUẤT",
+                    "meaning": {
+                        "vi": "ra",
+                        "en": "exit"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "XUẤT (出) là đi ra. Hai ngọn núi (Sơn) chồng lên nhau đi ra.",
+                "en": "Mountain (山) on Mountain (山) -> Going out."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ra",
+                "ra khỏi"
+            ],
+            "en": [
+                "go out",
+                "exit"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "部屋を出ます。",
+                "translation": {
+                    "vi": "Ra khỏi phòng.",
+                    "en": "Leave the room."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "XUẤT khẩu Đê (De) điều.",
+            "en": "Day (De) -> Go out for the Day."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "降ります",
+        "han_viet": "GIÁNG",
+        "kana": "ふります",
+        "romaji": "furimasu",
+        "tags": [
+            "n5",
+            "verb",
+            "intransitive",
+            "u-verb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "降",
+                    "han_viet": "GIÁNG",
+                    "meaning": {
+                        "vi": "xuống/rơi",
+                        "en": "descend/fall"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "GIÁNG (降) trong giáng trần. Chân (Suy) đi xuống Núi (Phụ).",
+                "en": "Hill (阝) Walking legs (夂) -> Descend."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "rơi (mưa, tuyết)"
+            ],
+            "en": [
+                "fall (rain, snow)"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "雨が降ります。",
+                "translation": {
+                    "vi": "Mưa rơi.",
+                    "en": "It rains."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Giáng sinh tuyết rơi phù (Fu) phù.",
+            "en": "Furry (Furi) -> Furry snow falls."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "住所",
+        "han_viet": "TRỤ SỞ",
+        "kana": "じゅうしょ",
+        "romaji": "juusho",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "住",
+                    "han_viet": "TRỤ",
+                    "meaning": {
+                        "vi": "ở/cư trú",
+                        "en": "dwell"
+                    }
+                },
+                {
+                    "kanji": "所",
+                    "han_viet": "SỞ",
+                    "meaning": {
+                        "vi": "nơi chốn",
+                        "en": "place"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TRỤ SỞ (住所) là nơi cư trú -> Địa chỉ.",
+                "en": "Dwelling (住) Place (所) -> Address."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "địa chỉ"
+            ],
+            "en": [
+                "address"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "住所を教えてください。",
+                "translation": {
+                    "vi": "Hãy cho tôi biết địa chỉ.",
+                    "en": "Please tell me your address."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TRỤ SỞ này là địa chỉ của ai?",
+            "en": "Jew (Juu) Show (Sho) -> The Jew Show's address."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "名前",
+        "han_viet": "DANH TIỀN",
+        "kana": "なまえ",
+        "romaji": "namae",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "名",
+                    "han_viet": "DANH",
+                    "meaning": {
+                        "vi": "tên",
+                        "en": "name"
+                    }
+                },
+                {
+                    "kanji": "前",
+                    "han_viet": "TIỀN",
+                    "meaning": {
+                        "vi": "phía trước",
+                        "en": "front"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "DANH TIỀN (名前) là cái tên đặt phía trước.",
+                "en": "Name (名) Front (前) -> Name."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "tên"
+            ],
+            "en": [
+                "name"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "お名前は？",
+                "translation": {
+                    "vi": "Tên bạn là gì?",
+                    "en": "What is your name?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "DANH tiếng nằm (Na) mãi (mae) ở cái tên.",
+            "en": "Nah, my A (Namae) -> Nah, my name starts with A."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "電気",
+        "han_viet": "ĐIỆN KHÍ",
+        "kana": "でんき",
+        "romaji": "denki",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "電",
+                    "han_viet": "ĐIỆN",
+                    "meaning": {
+                        "vi": "điện",
+                        "en": "electricity"
+                    }
+                },
+                {
+                    "kanji": "気",
+                    "han_viet": "KHÍ",
+                    "meaning": {
+                        "vi": "khí chất/tinh thần",
+                        "en": "spirit"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "ĐIỆN KHÍ (電気) là điện năng.",
+                "en": "Electricity (電) Spirit (気) -> Electricity/Light."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "điện",
+                "đèn điện"
+            ],
+            "en": [
+                "electricity",
+                "electric light"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "電気を消します。",
+                "translation": {
+                    "vi": "Tắt điện.",
+                    "en": "Turn off the light."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "ĐIỆN KHÍ hóa nông thôn đến ki (ki) rồi.",
+            "en": "Den (Den) Key (Ki) -> The key to the den controls the electricity."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "問題",
+        "han_viet": "VẤN ĐỀ",
+        "kana": "もんだい",
+        "romaji": "mondai",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "問",
+                    "han_viet": "VẤN",
+                    "meaning": {
+                        "vi": "hỏi",
+                        "en": "ask"
+                    }
+                },
+                {
+                    "kanji": "題",
+                    "han_viet": "ĐỀ",
+                    "meaning": {
+                        "vi": "đề bài",
+                        "en": "topic"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "VẤN ĐỀ (問題) là câu hỏi, bài tập, vấn đề cần giải quyết.",
+                "en": "Ask (問) Topic (題) -> Problem/Question."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "vấn đề",
+                "câu hỏi"
+            ],
+            "en": [
+                "problem",
+                "question"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "問題があります。",
+                "translation": {
+                    "vi": "Có vấn đề.",
+                    "en": "I have a problem."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "VẤN ĐỀ môn (Mon) đại (dai) số.",
+            "en": "Mon (Mon) Die (Dai) -> Monday I will die from problems."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "答え",
+        "han_viet": "ĐÁP",
+        "kana": "こたえ",
+        "romaji": "kotae",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "答",
+                    "han_viet": "ĐÁP",
+                    "meaning": {
+                        "vi": "trả lời",
+                        "en": "answer"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "ĐÁP (答) là câu trả lời. Trúc (Trúc) Phù (Hợp) -> Trả lời đúng khớp.",
+                "en": "Bamboo (竹) Fit (合) -> Answer."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "câu trả lời"
+            ],
+            "en": [
+                "answer"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "答えを書いてください。",
+                "translation": {
+                    "vi": "Hãy viết câu trả lời.",
+                    "en": "Please write the answer."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Cô ta (Kota) ê (e) chề vì không ĐÁP được.",
+            "en": "Coat (Kota) Eh? (e) -> Is that coat the answer?"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "塩",
+        "han_viet": "DIÊM",
+        "kana": "しお",
+        "romaji": "shio",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "塩",
+                    "han_viet": "DIÊM",
+                    "meaning": {
+                        "vi": "muối",
+                        "en": "salt"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "DIÊM (塩) là muối (Diêm dân). Đất (Thổ) có người (Nhân) làm ra muối (Mãnh) bên đĩa (Khẩu).",
+                "en": "Soil (土) Person (亻) Dish (皿) -> Salt."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "muối"
+            ],
+            "en": [
+                "salt"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "塩をください。",
+                "translation": {
+                    "vi": "Cho tôi muối.",
+                    "en": "Salt, please."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "DIÊM dân làm ra Si (Shi) ô (o) muối.",
+            "en": "She (Shi) O (o) -> She owes me salt."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "砂糖",
+        "han_viet": "SA ĐƯỜNG",
+        "kana": "さとう",
+        "romaji": "satou",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "砂",
+                    "han_viet": "SA",
+                    "meaning": {
+                        "vi": "cát",
+                        "en": "sand"
+                    }
+                },
+                {
+                    "kanji": "糖",
+                    "han_viet": "ĐƯỜNG",
+                    "meaning": {
+                        "vi": "đường ăn",
+                        "en": "sugar"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "SA ĐƯỜNG (砂糖) là đường hạt (như cát).",
+                "en": "Sand (砂) Sugar (糖)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đường"
+            ],
+            "en": [
+                "sugar"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "砂糖を入れます。",
+                "translation": {
+                    "vi": "Cho đường vào.",
+                    "en": "Put sugar in."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "SA ĐƯỜNG ngọt như chị Sa (Sa) tô (tou) son.",
+            "en": "Sat on (Satou) -> He Sat On the sugar."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "まっすぐ",
+        "han_viet": "",
+        "kana": "まっすぐ",
+        "romaji": "massugu",
+        "tags": [
+            "n5",
+            "adverb"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Chân (Ma) trực (Sugu) -> Thẳng tắp.",
+                "en": "True (Ma) Straight (Sugu)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thẳng"
+            ],
+            "en": [
+                "straight"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "まっすぐ行ってください。",
+                "translation": {
+                    "vi": "Hãy đi thẳng.",
+                    "en": "Please go straight."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Mắc (Mat) cái sự (su) cố vẫn đi thẳng (gu).",
+            "en": "Maths (Massu) Good (gu) -> Maths is good for straight logic."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ゆっくり",
+        "han_viet": "",
+        "kana": "ゆっくり",
+        "romaji": "yukkuri",
+        "tags": [
+            "n5",
+            "adverb"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ tượng thanh/hình.",
+                "en": "Onomatopoeia."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "chậm",
+                "thong thả"
+            ],
+            "en": [
+                "slowly",
+                "leisurely"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ゆっくり話してください。",
+                "translation": {
+                    "vi": "Hãy nói chậm lại.",
+                    "en": "Please speak slowly."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Giục (Yuk) cứ lì (kuri) ra hoài -> Chậm chạp.",
+            "en": "You (Yu) Curry (Kuri) -> You eat curry slowly."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "すぐ",
+        "han_viet": "",
+        "kana": "すぐ",
+        "romaji": "sugu",
+        "tags": [
+            "n5",
+            "adverb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L50,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Hán tự: TRỰC (直).",
+                "en": "Kanji 直 (Direct)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ngay",
+                "lập tức"
+            ],
+            "en": [
+                "immediately"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "すぐ行きます。",
+                "translation": {
+                    "vi": "Tôi đi ngay.",
+                    "en": "I'll go immediately."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Sư (Su) cụ (gu) đi ngay.",
+            "en": "Sue (Su) Goo (gu) -> Sue stepped in Goo immediately."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "また",
+        "han_viet": "",
+        "kana": "また",
+        "romaji": "mata",
+        "tags": [
+            "n5",
+            "adverb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L75,5",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Hán tự: HỰU (又). Lại nữa.",
+                "en": "Kanji 又 (Again)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "lại",
+                "nữa"
+            ],
+            "en": [
+                "again"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "また明日。",
+                "translation": {
+                    "vi": "Hẹn mai gặp lại.",
+                    "en": "See you again tomorrow."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Lại gặp ma (Ma) ta (ta).",
+            "en": "Matador (Mata) -> The Matador fights again."
+        },
+        "confusions": []
+    }
+]

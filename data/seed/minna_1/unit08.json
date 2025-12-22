@@ -1,0 +1,2534 @@
+[
+    {
+        "word_surface": "ハンサム",
+        "han_viet": "",
+        "kana": "はんさむ",
+        "romaji": "hansamu",
+        "tags": [
+            "n5",
+            "na-adjective",
+            "katakana"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20 L100,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh: Handsome.",
+                "en": "Loan word from English: Handsome."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đẹp trai"
+            ],
+            "en": [
+                "handsome"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "彼はハンサムですね。",
+                "translation": {
+                    "vi": "Anh ấy đẹp trai nhỉ.",
+                    "en": "He is handsome, isn't he?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Đọc giống 'Handsome' trong tiếng Anh.",
+            "en": "Sounds exactly like 'Handsome'."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "きれい",
+        "han_viet": "KỲ LỆ",
+        "kana": "きれい",
+        "romaji": "kirei",
+        "tags": [
+            "n5",
+            "na-adjective"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "奇",
+                    "han_viet": "KỲ",
+                    "meaning": {
+                        "vi": "lạ, hiếm",
+                        "en": "strange/rare"
+                    }
+                },
+                {
+                    "kanji": "麗",
+                    "han_viet": "LỆ",
+                    "meaning": {
+                        "vi": "đẹp, rực rỡ",
+                        "en": "lovely/beautiful"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "KỲ LỆ (奇麗) là vẻ đẹp hiếm có (KỲ) và rực rỡ (LỆ). *Lưu ý: Dù tận cùng là 'i' nhưng là tính từ đuôi Na.*",
+                "en": "The kanji originally meant 'rare beauty'. *Note: Ends in 'i' but behaves as a Na-adjective.*"
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đẹp",
+                "sạch"
+            ],
+            "en": [
+                "beautiful",
+                "clean"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "きれいな花ですね。",
+                "translation": {
+                    "vi": "Hoa đẹp nhỉ.",
+                    "en": "Beautiful flower, isn't it?"
+                }
+            },
+            {
+                "sentence": "部屋をきれいにします。",
+                "translation": {
+                    "vi": "Tôi làm sạch phòng.",
+                    "en": "I make the room clean."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Cô ấy KỲ thực rất diễm LỆ (đẹp).",
+            "en": "That 'KEY-RAY' (Kirei) of light is beautiful and clean."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "静か",
+        "han_viet": "TĨNH",
+        "kana": "しずか",
+        "romaji": "shizuka",
+        "tags": [
+            "n5",
+            "na-adjective"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "静",
+                    "han_viet": "TĨNH",
+                    "meaning": {
+                        "vi": "yên lặng",
+                        "en": "quiet"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ TĨNH (静) gợi nhớ đến sự bình tĩnh, yên tĩnh.",
+                "en": "The Kanji implies 'blue' (青) color preventing 'conflict' (争), leading to quietness."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "yên tĩnh"
+            ],
+            "en": [
+                "quiet"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "静かな公園です。",
+                "translation": {
+                    "vi": "Công viên yên tĩnh.",
+                    "en": "It is a quiet park."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Bình TĨNH thì mới yên TĨNH được.",
+            "en": "SHE'S a CAR (Shizuka) that runs really quiet."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "にぎやか",
+        "han_viet": "",
+        "kana": "にぎやか",
+        "romaji": "nigiyaka",
+        "tags": [
+            "n5",
+            "na-adjective"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ gốc Nhật, thường viết là 賑やか (CHẨN).",
+                "en": "Native Japanese word."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "náo nhiệt",
+                "nhộn nhịp"
+            ],
+            "en": [
+                "lively",
+                "bustling"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "にぎやかな町です。",
+                "translation": {
+                    "vi": "Thị trấn nhộn nhịp.",
+                    "en": "It is a lively town."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Nghi (Nigi) là nhà gà (Yaka) đang rất náo nhiệt.",
+            "en": "The 'NIGI' (Nigerian) market is very 'YAKA' (noisy/lively)."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "有名",
+        "han_viet": "HỮU DANH",
+        "kana": "ゆうめい",
+        "romaji": "yuumei",
+        "tags": [
+            "n5",
+            "na-adjective"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "有",
+                    "han_viet": "HỮU",
+                    "meaning": {
+                        "vi": "có",
+                        "en": "have"
+                    }
+                },
+                {
+                    "kanji": "名",
+                    "han_viet": "DANH",
+                    "meaning": {
+                        "vi": "tên",
+                        "en": "name"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "HỮU DANH là có (HỮU) tên tuổi (DANH), tức là nổi tiếng.",
+                "en": "If you 'have' (有) a 'name' (名), you are famous."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nổi tiếng"
+            ],
+            "en": [
+                "famous"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "有名な人です。",
+                "translation": {
+                    "vi": "Là người nổi tiếng.",
+                    "en": "He/she is a famous person."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Người HỮU DANH thì ai cũng biết.",
+            "en": "YOU MAY (Yuumei) be famous one day."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "親切",
+        "han_viet": "THÂN THIẾT",
+        "kana": "しんせつ",
+        "romaji": "shinsetsu",
+        "tags": [
+            "n5",
+            "na-adjective"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "親",
+                    "han_viet": "THÂN",
+                    "meaning": {
+                        "vi": "cha mẹ, thân thiết",
+                        "en": "parent, close"
+                    }
+                },
+                {
+                    "kanji": "切",
+                    "han_viet": "THIẾT",
+                    "meaning": {
+                        "vi": "cắt, thiết thực",
+                        "en": "cut, eager"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "THÂN THIẾT là sự quan tâm gần gũi như người thân.",
+                "en": "Closeness (親) that is eager/earnest (切) implies kindness."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "tốt bụng",
+                "thân thiện"
+            ],
+            "en": [
+                "kind",
+                "helpful"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "親切な人ですね。",
+                "translation": {
+                    "vi": "Người tốt bụng nhỉ.",
+                    "en": "A kind person, isn't he/she?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Đối xử THÂN THIẾT như người nhà.",
+            "en": "She SETS (shinsetsu) a high standard for kindness."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "元気",
+        "han_viet": "NGUYÊN KHÍ",
+        "kana": "げんき",
+        "romaji": "genki",
+        "tags": [
+            "n5",
+            "na-adjective"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "元",
+                    "han_viet": "NGUYÊN",
+                    "meaning": {
+                        "vi": "gốc, nguồn",
+                        "en": "origin"
+                    }
+                },
+                {
+                    "kanji": "気",
+                    "han_viet": "KHÍ",
+                    "meaning": {
+                        "vi": "khí chất, tinh thần",
+                        "en": "spirit/air"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "NGUYÊN KHÍ là cái khí chất ban đầu, tức là sự khỏe mạnh, đầy sức sống.",
+                "en": "Original (元) Spirit (気) means energy and health."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "khỏe",
+                "khỏe mạnh"
+            ],
+            "en": [
+                "healthy",
+                "energetic"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "お元気ですか。",
+                "translation": {
+                    "vi": "Bạn có khỏe không?",
+                    "en": "How are you? (Are you healthy?)"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Giữ gìn NGUYÊN KHÍ để luôn khỏe mạnh.",
+            "en": "GENKIGHIS KHAN (Genki) was very energetic."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "暇",
+        "han_viet": "HẠ",
+        "kana": "ひま",
+        "romaji": "hima",
+        "tags": [
+            "n5",
+            "na-adjective"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "暇",
+                    "han_viet": "HẠ",
+                    "meaning": {
+                        "vi": "rảnh rỗi",
+                        "en": "spare time"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ HẠ (暇) chỉ thời gian nhàn rỗi.",
+                "en": "Sun (日) shining on spare time."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "rảnh rỗi"
+            ],
+            "en": [
+                "freetime",
+                "idle"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "暇な時、何をしますか。",
+                "translation": {
+                    "vi": "Khi rảnh rỗi bạn làm gì?",
+                    "en": "What do you do in your free time?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Mùa HẠ thì rảnh rỗi đi chơi.",
+            "en": "HE (hima) has too much free time."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "便利",
+        "han_viet": "TIỆN LỢI",
+        "kana": "べんり",
+        "romaji": "benri",
+        "tags": [
+            "n5",
+            "na-adjective"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "便",
+                    "han_viet": "TIỆN",
+                    "meaning": {
+                        "vi": "thuận tiện",
+                        "en": "convenience/mail"
+                    }
+                },
+                {
+                    "kanji": "利",
+                    "han_viet": "LỢI",
+                    "meaning": {
+                        "vi": "lợi ích",
+                        "en": "profit/benefit"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TIỆN LỢI là thuận tiện (TIỆN) và có ích (LỢI).",
+                "en": "Benefit (利) and Convenience (便) together."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "tiện lợi"
+            ],
+            "en": [
+                "convenient"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "便利ですね。",
+                "translation": {
+                    "vi": "Tiện lợi nhỉ.",
+                    "en": "It is convenient, isn't it?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Đồ dùng TIỆN LỢI ai cũng thích.",
+            "en": "BEN REALI-zed (Benri) how convenient it was."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "すてき",
+        "han_viet": "TỐ ĐỊCH",
+        "kana": "すてき",
+        "romaji": "suteki",
+        "tags": [
+            "n5",
+            "na-adjective"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "素",
+                    "han_viet": "TỐ",
+                    "meaning": {
+                        "vi": "vốn, chất",
+                        "en": "element/naked"
+                    }
+                },
+                {
+                    "kanji": "敵",
+                    "han_viet": "ĐỊCH",
+                    "meaning": {
+                        "vi": "kẻ địch",
+                        "en": "enemy"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TỐ ĐỊCH (素敵) - chữ ĐỊCH ở đây dùng theo nghĩa cổ là 'sánh bằng'. 'Tuyệt vời đến mức không ai sánh bằng'.",
+                "en": "Originally meant 'unrivaled' (no enemy/rival could match)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "tuyệt vời",
+                "đẹp",
+                "hay"
+            ],
+            "en": [
+                "wonderful",
+                "lovely",
+                "nice"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "すてきなプレゼントですね。",
+                "translation": {
+                    "vi": "Món quà tuyệt vời nhỉ.",
+                    "en": "That's a wonderful present."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Anh ấy tuyệt vời như đại HIỆP (Gần giống Địch).",
+            "en": "A STEAK (Suteki) dinner is wonderful."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "大きい",
+        "han_viet": "ĐẠI",
+        "kana": "おおきい",
+        "romaji": "ookii",
+        "tags": [
+            "n5",
+            "i-adjective"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "大",
+                    "han_viet": "ĐẠI",
+                    "meaning": {
+                        "vi": "to, lớn",
+                        "en": "big"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ ĐẠI (大) hình người dang rộng tay chân.",
+                "en": "Pictograph of a person stretching out arms and legs to look BIG."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "to",
+                "lớn"
+            ],
+            "en": [
+                "big",
+                "large"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "大きいカバンです。",
+                "translation": {
+                    "vi": "Cái cặp to.",
+                    "en": "It is a big bag."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "ĐẠI ca thì to lớn.",
+            "en": "OH! KEY! (Ookii) That is a BIG key!"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "小さい",
+        "han_viet": "TIỂU",
+        "kana": "ちいさい",
+        "romaji": "chiisai",
+        "tags": [
+            "n5",
+            "i-adjective"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "小",
+                    "han_viet": "TIỂU",
+                    "meaning": {
+                        "vi": "nhỏ",
+                        "en": "small"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ TIỂU (小) là hình 3 hạt cát nhỏ.",
+                "en": "Pictograph of three small dots or grains."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nhỏ",
+                "bé"
+            ],
+            "en": [
+                "small",
+                "little"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "小さい犬です。",
+                "translation": {
+                    "vi": "Con chó nhỏ.",
+                    "en": "It is a small dog."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Tiểu nhân là kẻ nhỏ mọn.",
+            "en": "CHEE-SE (Chiisai) cubes are small."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "新しい",
+        "han_viet": "TÂN",
+        "kana": "あたらしい",
+        "romaji": "atarashii",
+        "tags": [
+            "n5",
+            "i-adjective"
+        ],
+        "pitch_pattern": 4,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5 L125,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "新",
+                    "han_viet": "TÂN",
+                    "meaning": {
+                        "vi": "mới",
+                        "en": "new"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "TÂN (新) dùng rìu (斤) chặt cây lập (立) bài vị mới.",
+                "en": "Using an axe (斤) to cut a tree (木) and make a new stand (立)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "mới"
+            ],
+            "en": [
+                "new"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "新しい車です。",
+                "translation": {
+                    "vi": "Xe mới.",
+                    "en": "It is a new car."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TÂN trang lại cho nó mới.",
+            "en": "AT A RUSH (Atarashii) to get the new phone."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "古い",
+        "han_viet": "CỔ",
+        "kana": "ふるい",
+        "romaji": "furui",
+        "tags": [
+            "n5",
+            "i-adjective"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "古",
+                    "han_viet": "CỔ",
+                    "meaning": {
+                        "vi": "cũ",
+                        "en": "old"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "CỔ (古) - Mười (十) cái miệng (口) kể chuyện xưa cũ.",
+                "en": "Ten (十) mouths (口) telling old stories."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "cũ",
+                "cổ"
+            ],
+            "en": [
+                "old (not for people)"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "古い時計です。",
+                "translation": {
+                    "vi": "Đồng hồ cũ.",
+                    "en": "It is an old clock."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Đồ CỔ thường cũ kỹ.",
+            "en": "WHO KNEW (Furui) it was so old?"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "いい（よい）",
+        "han_viet": "LƯƠNG",
+        "kana": "いい",
+        "romaji": "ii",
+        "tags": [
+            "n5",
+            "i-adjective"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "良",
+                    "han_viet": "LƯƠNG",
+                    "meaning": {
+                        "vi": "tốt",
+                        "en": "good"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "LƯƠNG (良) trong lương thiện, tốt lành.",
+                "en": "Looks like a dot on top of a limit (艮), good quality is limited."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "tốt",
+                "đẹp",
+                "hay"
+            ],
+            "en": [
+                "good",
+                "nice"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "いいですね。",
+                "translation": {
+                    "vi": "Được đấy nhỉ / Tốt nhỉ.",
+                    "en": "That's good."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Lương thiện là điều tốt.",
+            "en": "EE (ii)! That looks good!"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "悪い",
+        "han_viet": "ÁC",
+        "kana": "わるい",
+        "romaji": "warui",
+        "tags": [
+            "n5",
+            "i-adjective"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "悪",
+                    "han_viet": "ÁC",
+                    "meaning": {
+                        "vi": "xấu, ác",
+                        "en": "bad/evil"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "ÁC (悪) là tâm (心) xấu xa.",
+                "en": "A Heart (心) feeling Bad/Evil."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "xấu",
+                "tồi"
+            ],
+            "en": [
+                "bad"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "悪い天気です。",
+                "translation": {
+                    "vi": "Thời tiết xấu.",
+                    "en": "Bad weather."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Người ÁC thì xấu.",
+            "en": "WARio (Warui) is a bad guy."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "暑い",
+        "han_viet": "THỬ",
+        "kana": "あつい",
+        "romaji": "atsui",
+        "tags": [
+            "n5",
+            "i-adjective"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "暑",
+                    "han_viet": "THỬ",
+                    "meaning": {
+                        "vi": "nóng (thời tiết)",
+                        "en": "hot (weather)"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "THỬ (暑) là mặt trời (日) chiếu lên người (者) gây nóng.",
+                "en": "The Sun (日) shining on a Person (者) makes them Hot."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nóng (thời tiết)"
+            ],
+            "en": [
+                "hot (weather)"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "今日は暑いです。",
+                "translation": {
+                    "vi": "Hôm nay trời nóng.",
+                    "en": "It is hot today."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Nắng chiếu vào người (Giả) thì nóng (Thử).",
+            "en": "AH-TSU (Atsui)! It's hot! (Sneeze from heat allergy?)"
+        },
+        "confusions": [
+            {
+                "word": "熱い",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "NHIỆT (熱) có lửa dưới, dùng cho vật nóng. THỬ (暑) có mặt trời trên, dùng cho trời nóng.",
+                        "en": "Heat (熱) has Fire at the bottom (things). Summer Heat (暑) has Sun at the top (weather)."
+                    },
+                    "item1_nuance": {
+                        "vi": "Nóng của thời tiết, môi trường.",
+                        "en": "Hot climate/weather."
+                    },
+                    "item2_nuance": {
+                        "vi": "Nóng của vật (nước, đồ ăn) hoặc cảm xúc.",
+                        "en": "Hot objects/touch/passion."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "word_surface": "熱い",
+        "han_viet": "NHIỆT",
+        "kana": "あつい",
+        "romaji": "atsui",
+        "tags": [
+            "n5",
+            "i-adjective"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "熱",
+                    "han_viet": "NHIỆT",
+                    "meaning": {
+                        "vi": "nóng (vật)",
+                        "en": "heat"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "NHIỆT (熱) tình nóng như lửa (灬) đốt.",
+                "en": "Fire (灬) heating up something stable."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nóng (cảm giác sờ)"
+            ],
+            "en": [
+                "hot (touch/object)"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "熱いお茶です。",
+                "translation": {
+                    "vi": "Trà nóng.",
+                    "en": "Hot tea."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Nhiệt độ cao quá, nóng thật.",
+            "en": "A SOUP (Atsui) is hot."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "寒い",
+        "han_viet": "HÀN",
+        "kana": "さむい",
+        "romaji": "samui",
+        "tags": [
+            "n5",
+            "i-adjective"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "寒",
+                    "han_viet": "HÀN",
+                    "meaning": {
+                        "vi": "lạnh (thời tiết)",
+                        "en": "cold"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "HÀN (寒) là trong nhà mái (宀) vùi rơm rạ dưới băng (冫).",
+                "en": "Person inside a house (宀) among frozen ice (冫)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "lạnh (thời tiết)"
+            ],
+            "en": [
+                "cold (weather)"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "冬は寒いです。",
+                "translation": {
+                    "vi": "Mùa đông thì lạnh.",
+                    "en": "Winter is cold."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HÀN băng lạnh giá.",
+            "en": "SAM (Samui) is cold in the snow."
+        },
+        "confusions": [
+            {
+                "word": "冷たい",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "HÀN (寒い) là trời lạnh. LÃNH (冷たい) là sờ vào thấy lạnh.",
+                        "en": "Samui is for weather. Tsumetai is to the touch."
+                    },
+                    "item1_nuance": {
+                        "vi": "Lạnh thời tiết (cảm nhận toàn thân).",
+                        "en": "Atmospheric cold."
+                    },
+                    "item2_nuance": {
+                        "vi": "Lạnh xúc giác (nước đá, đồ vật).",
+                        "en": "Tactile cold."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "word_surface": "冷たい",
+        "han_viet": "LÃNH",
+        "kana": "つめたい",
+        "romaji": "tsumetai",
+        "tags": [
+            "n5",
+            "i-adjective"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "冷",
+                    "han_viet": "LÃNH",
+                    "meaning": {
+                        "vi": "lạnh, nguội",
+                        "en": "cool/cold"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "LÃNH (冷) - Ra lệnh (令) cho băng (冫) tan ra thì lạnh.",
+                "en": "Ice (冫) and Orders (令): Cold/Cool logic."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "lạnh (cảm giác sờ)",
+                "nguội"
+            ],
+            "en": [
+                "cold (touch/drink)"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "冷たい水をお願いします。",
+                "translation": {
+                    "vi": "Cho tôi nước lạnh.",
+                    "en": "Cold water please."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "LÃNH cung thì lạnh lẽo kinh khủng.",
+            "en": "SUE ME TIE (Tsumetai)? That's cold hearted."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "難しい",
+        "han_viet": "NAN",
+        "kana": "むずかしい",
+        "romaji": "muzukashii",
+        "tags": [
+            "n5",
+            "i-adjective"
+        ],
+        "pitch_pattern": 4,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20 L125,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "難",
+                    "han_viet": "NAN",
+                    "meaning": {
+                        "vi": "khó, nan giải",
+                        "en": "difficult"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "NAN (難) là chim (隹) gặp đất vàng (黄) khô cằn -> khó sống.",
+                "en": "Bird (隹) in yellow (黄) dry earth implies hardship."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "khó"
+            ],
+            "en": [
+                "difficult"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "日本語は難しいです。",
+                "translation": {
+                    "vi": "Tiếng Nhật khó.",
+                    "en": "Japanese is difficult."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Gian NAN thì khó khăn.",
+            "en": "MOOSE-Car-She (Muzukashii) drove? That's difficult to believe."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "易しい",
+        "han_viet": "DỊCH",
+        "kana": "やさしい",
+        "romaji": "yasashii",
+        "tags": [
+            "n5",
+            "i-adjective"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "易",
+                    "han_viet": "DỊCH",
+                    "meaning": {
+                        "vi": "dễ",
+                        "en": "easy"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "DỊCH (易) là con tắc kè hoa thay đổi màu dễ dàng. Cũng là DỊCH trong Dịch chuyển.",
+                "en": "Lizard changing colors easily: Easy/Simple."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "dễ"
+            ],
+            "en": [
+                "easy"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "この本は易しいです。",
+                "translation": {
+                    "vi": "Sách này dễ.",
+                    "en": "This book is easy."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Giao DỊCH này rất dễ.",
+            "en": "YA, SASSY (Yasashii) girl finds it easy."
+        },
+        "confusions": [
+            {
+                "word": "優しい",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "Cùng đọc là 'Yasashii'. DỊCH (易) là Dễ. ƯU (優) là Hiền (Ưu tú).",
+                        "en": "Same pronunciation 'Yasashii'. 易 is Easy. 優 is Kind."
+                    },
+                    "item1_nuance": {
+                        "vi": "Dễ dàng (bài tập).",
+                        "en": "Easy/Simple (task)."
+                    },
+                    "item2_nuance": {
+                        "vi": "Hiền lành, tốt bụng (tính cách).",
+                        "en": "Kind/Gentle (personality)."
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "word_surface": "高い",
+        "han_viet": "CAO",
+        "kana": "たかい",
+        "romaji": "takai",
+        "tags": [
+            "n5",
+            "i-adjective"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "高",
+                    "han_viet": "CAO",
+                    "meaning": {
+                        "vi": "cao",
+                        "en": "high"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "CAO (高) là hình tòa tháp cao.",
+                "en": "Pictograph of a tall tower."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "cao",
+                "đắt"
+            ],
+            "en": [
+                "high",
+                "expensive",
+                "tall"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "このカメラは高いです。",
+                "translation": {
+                    "vi": "Cái máy ảnh này đắt.",
+                    "en": "This camera is expensive."
+                }
+            },
+            {
+                "sentence": "あの山は高いです。",
+                "translation": {
+                    "vi": "Ngọn núi kia cao.",
+                    "en": "That mountain is high."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Giá CAO quá! Núi CAO quá!",
+            "en": "TACO (Takai) is expensive here."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "安い",
+        "han_viet": "AN",
+        "kana": "やすい",
+        "romaji": "yasui",
+        "tags": [
+            "n5",
+            "i-adjective"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "安",
+                    "han_viet": "AN",
+                    "meaning": {
+                        "vi": "an toàn, rẻ",
+                        "en": "peaceful/cheap"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "AN (安) - Người phụ nữ (女) ở trong nhà (宀) thì an tâm. Hàng rẻ thì an tâm mua.",
+                "en": "Woman (女) under a roof (宀) is safe/peaceful. Cheap things are safe to buy."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "rẻ"
+            ],
+            "en": [
+                "cheap"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "このシャツは安いです。",
+                "translation": {
+                    "vi": "Cái áo này rẻ.",
+                    "en": "This shirt is cheap."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Giá rẻ nên AN tâm.",
+            "en": "YA, SUE (Yasui) me! It's cheap!"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "低い",
+        "han_viet": "ĐÊ",
+        "kana": "ひくい",
+        "romaji": "hikui",
+        "tags": [
+            "n5",
+            "i-adjective"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "低",
+                    "han_viet": "ĐÊ",
+                    "meaning": {
+                        "vi": "thấp",
+                        "en": "low"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "ĐÊ (低) - Người (亻) đứng dưới cái để thị (氏) -> thấp hèn.",
+                "en": "Person (亻) reaching down to the base/foundation (氏)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thấp"
+            ],
+            "en": [
+                "low"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "背が低いです。",
+                "translation": {
+                    "vi": "Dáng người thấp.",
+                    "en": "Short stature (Low height)."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "ĐÊ tiện là thấp hèn.",
+            "en": "HE COOED (Hikui) in a low voice."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "おもしろい",
+        "han_viet": "DIỆN BẠCH",
+        "kana": "おもしろい",
+        "romaji": "omoshiroi",
+        "tags": [
+            "n5",
+            "i-adjective"
+        ],
+        "pitch_pattern": 4,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5 L125,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "面",
+                    "han_viet": "DIỆN",
+                    "meaning": {
+                        "vi": "mặt",
+                        "en": "face"
+                    }
+                },
+                {
+                    "kanji": "白",
+                    "han_viet": "BẠCH",
+                    "meaning": {
+                        "vi": "trắng",
+                        "en": "white"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "DIỆN BẠCH (面白い) - Mặt (DIỆN) trắng (BẠCH) ra vì ngạc nhiên thú vị (Theo điển tích lửa trại làm mặt trắng sáng).",
+                "en": "Face (面) turning White/Bright (白) implies amusement/interest."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thú vị",
+                "hay"
+            ],
+            "en": [
+                "interesting",
+                "amusing"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "おもしろい映画です。",
+                "translation": {
+                    "vi": "Phim hay/thú vị.",
+                    "en": "It is an interesting movie."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Mặt trắng (DIỆN BẠCH) cười hì hì thật thú vị.",
+            "en": "OH MOe! SHE ROW-ed (Omoshiroi) the boat! Interesting!"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "おいしい",
+        "han_viet": "MĨ VỊ",
+        "kana": "おいしい",
+        "romaji": "oishii",
+        "tags": [
+            "n5",
+            "i-adjective"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "美",
+                    "han_viet": "MĨ",
+                    "meaning": {
+                        "vi": "ngon, đẹp",
+                        "en": "beauty"
+                    }
+                },
+                {
+                    "kanji": "味",
+                    "han_viet": "VỊ",
+                    "meaning": {
+                        "vi": "mùi vị",
+                        "en": "taste"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "MĨ VỊ (美味しい) là vị ngon. Thường viết Kana.",
+                "en": "Beautiful (美) Taste (味). Often written in Hiragana."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ngon"
+            ],
+            "en": [
+                "delicious",
+                "tasty"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "これはおいしいです。",
+                "translation": {
+                    "vi": "Cái này ngon.",
+                    "en": "This is delicious."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Ôi (Oi) ngon (Shii) quá!",
+            "en": "OY! SHE (Oishii) makes delicious food."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "忙しい",
+        "han_viet": "MANG",
+        "kana": "いそがしい",
+        "romaji": "isogashii",
+        "tags": [
+            "n5",
+            "i-adjective"
+        ],
+        "pitch_pattern": 4,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5 L125,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "忙",
+                    "han_viet": "MANG",
+                    "meaning": {
+                        "vi": "bận rộn",
+                        "en": "busy"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "MANG (忙) - Tim/Tâm (忄) bị Vong/Mất (亡) vì quá bận.",
+                "en": "Heart (忄) is Perishing/Lost (亡) due to being too busy."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "bận"
+            ],
+            "en": [
+                "busy"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "今忙しいですか。",
+                "translation": {
+                    "vi": "Bây giờ bạn có bận không?",
+                    "en": "Are you busy now?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Đa MANG nhiều việc thì bận.",
+            "en": "I SAW A GUY SHE (Isogashii) likes, but she is busy."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "楽しい",
+        "han_viet": "LẠC",
+        "kana": "たのしい",
+        "romaji": "tanoshii",
+        "tags": [
+            "n5",
+            "i-adjective"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "楽",
+                    "han_viet": "LẠC",
+                    "meaning": {
+                        "vi": "vui, nhạc",
+                        "en": "music/comfort"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "LẠC (楽) trong An Lạc, Lạc Quan. Vui vẻ.",
+                "en": "Drums on a stand (tree). Music brings fun."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "vui",
+                "vui vẻ"
+            ],
+            "en": [
+                "fun",
+                "enjoyable"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "楽しいパーティーでした。",
+                "translation": {
+                    "vi": "Bữa tiệc vui vẻ.",
+                    "en": "It was a fun party."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "LẠC quan thì thấy vui.",
+            "en": "THANOS (Tanoshii) having fun?"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "白い",
+        "han_viet": "BẠCH",
+        "kana": "しろい",
+        "romaji": "shiroi",
+        "tags": [
+            "n5",
+            "i-adjective",
+            "color"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "白",
+                    "han_viet": "BẠCH",
+                    "meaning": {
+                        "vi": "trắng",
+                        "en": "white"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "BẠCH (白) - Mặt trời (日) với tia nắng trắng ở trên.",
+                "en": "Sun (日) with a ray of white light."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "trắng"
+            ],
+            "en": [
+                "white"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "白いシャツを買いました。",
+                "translation": {
+                    "vi": "Tôi đã mua áo sơ mi trắng.",
+                    "en": "I bought a white shirt."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "BẠCH Tuyết da trắng.",
+            "en": "SHE ROW-ed (Shiroi) a white boat."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "黒い",
+        "han_viet": "HẮC",
+        "kana": "くろい",
+        "romaji": "kuroi",
+        "tags": [
+            "n5",
+            "i-adjective",
+            "color"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "黒",
+                    "han_viet": "HẮC",
+                    "meaning": {
+                        "vi": "đen",
+                        "en": "black"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "HẮC (黒) - Bồ lóng do lửa (灬) hun ám vào cửa sổ (里) thì đen.",
+                "en": "Flames (灬) depositing soot making things Black."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đen"
+            ],
+            "en": [
+                "black"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "黒い猫です。",
+                "translation": {
+                    "vi": "Con mèo đen.",
+                    "en": "It is a black cat."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HẮC ám là đen tối.",
+            "en": "CREW (Kuroi) wears black."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "赤い",
+        "han_viet": "XÍCH",
+        "kana": "あかい",
+        "romaji": "akai",
+        "tags": [
+            "n5",
+            "i-adjective",
+            "color"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "赤",
+                    "han_viet": "XÍCH",
+                    "meaning": {
+                        "vi": "đỏ",
+                        "en": "red"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "XÍCH (赤) - Lửa (灬) lớn thì màu đỏ.",
+                "en": "Big (大) Fire (灬) is Red."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đỏ"
+            ],
+            "en": [
+                "red"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "赤い車です。",
+                "translation": {
+                    "vi": "Xe đỏ.",
+                    "en": "It is a red car."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "XÍCH thố là ngựa đỏ.",
+            "en": "A KITE (Akai) that is red."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "青い",
+        "han_viet": "THANH",
+        "kana": "あおい",
+        "romaji": "aoi",
+        "tags": [
+            "n5",
+            "i-adjective",
+            "color"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "青",
+                    "han_viet": "THANH",
+                    "meaning": {
+                        "vi": "xanh",
+                        "en": "blue"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "THANH (青) - Màu xanh của cây cỏ (sinh - 生) dưới ánh trăng (nguyệt - 月). (Biến thể tự dạng).",
+                "en": "Color of pure water/nature."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "xanh dương",
+                "xanh da trời"
+            ],
+            "en": [
+                "blue"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "青いシャツです。",
+                "translation": {
+                    "vi": "Áo xanh.",
+                    "en": "It is a blue shirt."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THANH thiên là trời xanh.",
+            "en": "OW! (Aoi) I'm black and blue."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "桜",
+        "han_viet": "ANH",
+        "kana": "さくら",
+        "romaji": "sakura",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "桜",
+                    "han_viet": "ANH",
+                    "meaning": {
+                        "vi": "anh đào",
+                        "en": "cherry blossom"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "ANH (桜) - Cây (木) có những bông hoa như người phụ nữ (女) đội mũ (ツ - cách điệu).",
+                "en": "Tree (木) with blossoms like a woman (女) with ornaments."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "hoa anh đào"
+            ],
+            "en": [
+                "cherry blossom",
+                "cherry tree"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "桜がきれいです。",
+                "translation": {
+                    "vi": "Hoa anh đào đẹp.",
+                    "en": "Cherry blossoms are beautiful."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "ANH đào nở rộ.",
+            "en": "SAKURA (Sakura) sounds like a Japanese name."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "山",
+        "han_viet": "SƠN",
+        "kana": "やま",
+        "romaji": "yama",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "山",
+                    "han_viet": "SƠN",
+                    "meaning": {
+                        "vi": "núi",
+                        "en": "mountain"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "SƠN (山) - Hình ba ngọn núi.",
+                "en": "Pictograph of three mountain peaks."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "núi"
+            ],
+            "en": [
+                "mountain"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "山へ行きます。",
+                "translation": {
+                    "vi": "Tôi đi núi.",
+                    "en": "I go to the mountain."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Giang SƠN là sông núi.",
+            "en": "YA, MA (Yama)! That's a big mountain."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "町",
+        "han_viet": "ĐINH",
+        "kana": "まち",
+        "romaji": "machi",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "町",
+                    "han_viet": "ĐINH",
+                    "meaning": {
+                        "vi": "phố, thị trấn",
+                        "en": "town"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "ĐINH (町) - Khu ruộng (田) có đường đi (丁) chia cắt thành phố phường.",
+                "en": "Field (田) and Street/Nail (丁) make a town block."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thị trấn",
+                "thành phố"
+            ],
+            "en": [
+                "town",
+                "city"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "静かな町です。",
+                "translation": {
+                    "vi": "Thị trấn yên tĩnh.",
+                    "en": "It is a quiet town."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "ĐINH ninh là phố này.",
+            "en": "MATCH (Machi) making in the town."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "食べ物",
+        "han_viet": "THỰC VẬT",
+        "kana": "たべもの",
+        "romaji": "tabemono",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "食",
+                    "han_viet": "THỰC",
+                    "meaning": {
+                        "vi": "ăn",
+                        "en": "eat"
+                    }
+                },
+                {
+                    "kanji": "物",
+                    "han_viet": "VẬT",
+                    "meaning": {
+                        "vi": "vật",
+                        "en": "thing"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "THỰC VẬT là đồ để ăn.",
+                "en": "Thing (物) to Eat (食)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đồ ăn"
+            ],
+            "en": [
+                "food"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "日本の食べ物はどうですか。",
+                "translation": {
+                    "vi": "Đồ ăn Nhật thế nào?",
+                    "en": "How is Japanese food?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THỰC VẬT là đồ ăn.",
+            "en": "TABBY (Tabemono) cat wants food."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "所",
+        "han_viet": "SỞ",
+        "kana": "ところ",
+        "romaji": "tokoro",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "所",
+                    "han_viet": "SỞ",
+                    "meaning": {
+                        "vi": "nơi, chốn",
+                        "en": "place"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "SỞ (所) - Nơi cầm rìu (斤) giữ cửa (戸) là trụ sở.",
+                "en": "Door (戸) and Axe (斤). A marked place."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nơi",
+                "chỗ"
+            ],
+            "en": [
+                "place"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "どんな所ですか。",
+                "translation": {
+                    "vi": "Là nơi như thế nào?",
+                    "en": "What kind of place is it?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Trụ SỞ là nơi làm việc.",
+            "en": "TOKO (Tokoro) lost in this place."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "寮",
+        "han_viet": "LIÊU",
+        "kana": "りょう",
+        "romaji": "ryou",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "寮",
+                    "han_viet": "LIÊU",
+                    "meaning": {
+                        "vi": "kí túc xá",
+                        "en": "dormitory"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "LIÊU (寮) - Nhà lớn (宀) có lửa sáng (Tiểu - biến thể) ngày xưa.",
+                "en": "Large building (宀) for official stays."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ký túc xá"
+            ],
+            "en": [
+                "dormitory"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "寮へ帰ります。",
+                "translation": {
+                    "vi": "Tôi về kí túc xá.",
+                    "en": "I go back to the dorm."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Tịch LIÊU một mình ở kí túc xá.",
+            "en": "RIO (Ryou) stays in a dorm."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "生活",
+        "han_viet": "SINH HOẠT",
+        "kana": "せいかつ",
+        "romaji": "seikatsu",
+        "tags": [
+            "n5",
+            "noun",
+            "suru-verb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "生",
+                    "han_viet": "SINH",
+                    "meaning": {
+                        "vi": "sống",
+                        "en": "life"
+                    }
+                },
+                {
+                    "kanji": "活",
+                    "han_viet": "HOẠT",
+                    "meaning": {
+                        "vi": "hoạt động",
+                        "en": "lively/active"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "SINH HOẠT là cuộc sống hàng ngày.",
+                "en": "Life (生) + Active (活) = Daily Life."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "cuộc sống",
+                "sinh hoạt"
+            ],
+            "en": [
+                "life",
+                "daily life"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "日本の生活は楽しいです。",
+                "translation": {
+                    "vi": "Cuộc sống ở Nhật vui.",
+                    "en": "Life in Japan is fun."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "SINH HOẠT hàng ngày.",
+            "en": "SAY, CATS (Seikatsu) have a good life."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "お仕事",
+        "han_viet": "SĨ SỰ",
+        "kana": "おしごと",
+        "romaji": "oshigoto",
+        "tags": [
+            "n5",
+            "noun"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "仕",
+                    "han_viet": "SĨ",
+                    "meaning": {
+                        "vi": "làm việc",
+                        "en": "serve"
+                    }
+                },
+                {
+                    "kanji": "事",
+                    "han_viet": "SỰ",
+                    "meaning": {
+                        "vi": "việc",
+                        "en": "matter"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "SĨ SỰ (仕事) là công việc. Thêm 'O' để lịch sự.",
+                "en": "Serving (仕) Matters (事) = Work."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "công việc"
+            ],
+            "en": [
+                "work",
+                "job"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "お仕事はなんですか。",
+                "translation": {
+                    "vi": "Công việc của bạn là gì?",
+                    "en": "What is your job?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "SĨ diện hão thì không làm việc.",
+            "en": "SHE GO TO (Shigoto) work."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "レストラン",
+        "han_viet": "",
+        "kana": "れすとらん",
+        "romaji": "resutoran",
+        "tags": [
+            "n5",
+            "noun",
+            "katakana"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20 L100,20 L125,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn: Restaurant.",
+                "en": "Loan word: Restaurant."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nhà hàng"
+            ],
+            "en": [
+                "restaurant"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "あのレストランはおいしいです。",
+                "translation": {
+                    "vi": "Nhà hàng kia ngon.",
+                    "en": "That restaurant is delicious."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Đọc giống 'Restaurant'.",
+            "en": "Sounds like Restaurant."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "どう",
+        "han_viet": "",
+        "kana": "どう",
+        "romaji": "dou",
+        "tags": [
+            "n5",
+            "adverb"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ để hỏi.",
+                "en": "Question word."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thế nào"
+            ],
+            "en": [
+                "how"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "日本の生活はどうですか。",
+                "translation": {
+                    "vi": "Cuộc sống ở Nhật thế nào?",
+                    "en": "How is life in Japan?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Làm thế nào (DOU) bây giờ?",
+            "en": "DOU-gh (Dou) is how you make bread."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "どんな",
+        "han_viet": "",
+        "kana": "どんな",
+        "romaji": "donna",
+        "tags": [
+            "n5",
+            "adjective"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,20 L25,5 L50,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ để hỏi bổ nghĩa cho danh từ.",
+                "en": "Question word modifying a noun."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "như thế nào (về tính chất)"
+            ],
+            "en": [
+                "what kind of"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "どんな町ですか。",
+                "translation": {
+                    "vi": "Là thị trấn như thế nào?",
+                    "en": "What kind of town is it?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "DONNA (tên người) là người như thế nào?",
+            "en": "DONNA (Donna) is what kind of girl?"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "とても",
+        "han_viet": "",
+        "kana": "とても",
+        "romaji": "totemo",
+        "tags": [
+            "n5",
+            "adverb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Phó từ chỉ mức độ.",
+                "en": "Degree adverb."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "rất"
+            ],
+            "en": [
+                "very"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "とてもおいしいです。",
+                "translation": {
+                    "vi": "Rất ngon.",
+                    "en": "It is very delicious."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TO TƯỚNG (Totemo) là rất to.",
+            "en": "TOTE-EM (Totemo) all, very heavy."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "あまり",
+        "han_viet": "DƯ",
+        "kana": "あまり",
+        "romaji": "amari",
+        "tags": [
+            "n5",
+            "adverb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "余",
+                    "han_viet": "DƯ",
+                    "meaning": {
+                        "vi": "dư thừa",
+                        "en": "excess/surplus"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "DƯ (余) trong dư thừa. Dùng với phủ định nghĩa là 'không ~ lắm' (vẫn còn dư mức độ).",
+                "en": "Originally 'remainder'. With negative verb = not much."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "không ~ lắm (dùng với phủ định)"
+            ],
+            "en": [
+                "not very (used with negative)"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "あまり寒くないです。",
+                "translation": {
+                    "vi": "Không lạnh lắm.",
+                    "en": "It is not very cold."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "DƯ (Amari) thừa thì không tốt lắm.",
+            "en": "A MARI-ne (Amari) is not very afraid."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "そして",
+        "han_viet": "",
+        "kana": "そして",
+        "romaji": "soshite",
+        "tags": [
+            "n5",
+            "conjunction"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Liên từ nối câu.",
+                "en": "Conjunction."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "và",
+                "thêm nữa"
+            ],
+            "en": [
+                "and",
+                "then"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "あそこは静かです。そしてきれいです。",
+                "translation": {
+                    "vi": "Chỗ kia yên tĩnh. Và đẹp nữa.",
+                    "en": "That place is quiet. And it is beautiful."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Sợ (So) chị (Shi) tè (Te)? Và rồi sao?",
+            "en": "SO SHE TE-lls (Soshite) me... AND..."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "～が",
+        "han_viet": "",
+        "kana": "が",
+        "romaji": "ga",
+        "tags": [
+            "n5",
+            "particle"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Trợ từ nối câu mang nghĩa trái ngược.",
+                "en": "Conjunction particle."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nhưng"
+            ],
+            "en": [
+                "but"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "日本の食べ物は美味しいですが、高いです。",
+                "translation": {
+                    "vi": "Đồ ăn Nhật ngon nhưng đắt.",
+                    "en": "Japanese food is delicious, but expensive."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "GÃ (Ga) đó tốt NHƯNG nghèo.",
+            "en": "LADY GA-GA (Ga) is strange BUT talented."
+        },
+        "confusions": []
+    }
+]
