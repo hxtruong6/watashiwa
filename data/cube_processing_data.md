@@ -29,14 +29,14 @@
 | **18** | [x]    | 33           | 1018-1050      | `できます`, `趣味` (Actual: 24)                       |
 | **19** | [x] (Verified - Generated Manually) | 36           | 995-1017       | `登ります`, `泊まります` (Source: `All Decks_2.txt`)   |
 | **20** | [x]    | 13           | 1042-1053+1059 | `要ります`, `ビザ` (Actual: 13)                       |
-| **21** | ⏳ Pending    | 35           | 238-259        | `思います` (Source: `MinaN5_14_25.txt`)               |
+| **21** | [x] (Manual) | 38           | 10422-10800    | `思います` (Source: `ref_minna_vocab.yaml`)           |
 | **22** | [x]    | 12           | 1126-1137      | `はきます`, `かぶります` (Actual: 12)                 |
 | **23** | [x]    | 20           | 1138-1157      | `聞きます`, `交差点` (Actual: 20)                     |
 | **24** | [x]    | 17           | 1054-1070      | `くれます`, `おじいさん` (Actual: 17)                 |
 | **25** | [x]    | 23           | 1071-1093      | `考えます`, `着きます` (Actual: 23)                   |
 | **26** | [x]    | 55           | 1158-1212      | `見ます`, `探します` (Actual: 20)                     |
 | **27** | [x]        | 43           | 1213-1255      | `飼います` (Source: `All Decks_2.txt`)                |
-| **28** | [x] (Verified - Generated Manually) | 46           | 1256-1294      | `売れます`, `踊ります` (Source: `All Decks_2.txt`)    |
+| **28** | [x] (Verified - Generated Manually) | 38           | 1243-1285      | `かみます`, `売れます` (Source: `All Decks_2.txt`)    |
 | **29** | ⏳ Pending | 37           | 146-182        | `開きます` (Source: `MinaN4_26_38.txt`)               |
 | **30** | ⏳ Pending | 41           | 183-223        | `貼ります` (Source: `MinaN4_26_38.txt`)               |
 | **31** | ⏳ Pending | 53           | 224-276        | `生活します` (Source: `MinaN4_26_38.txt`)             |

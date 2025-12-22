@@ -5,12 +5,12 @@ export interface SmartCard {
 	vocabId: string;
 	variant: CardVariantType;
 	front: {
-		hero: string; // The big text
-		sub?: string;
+		hero: string; // BASIC: Kanji, GAP_FILL: Sentence with [___]
+		sub?: string; // BASIC: Romaji/Meaning key, GAP_FILL: Hint
 		audio?: string;
 	};
 	back: {
-		answer: string;
+		answer: string; // The "Reveal" answer
 		// Simplified for now, will expand with real Vocabulary type
 		details: {
 			han_viet: string;
@@ -22,9 +22,21 @@ export interface SmartCard {
 				image_url?: string;
 			};
 		};
+		// Payload for GapFill specific logic (if needed beyond front/back)
+		gapFill?: {
+			sentence_full: string;
+			focus_word: string;
+		};
+		// Payload for Intervention (Quiz Mode)
 		intervention?: {
 			type: 'homonym_clash';
 			confusing_vocab_id: string;
+			options: {
+				id: string;
+				label: string;
+				isCorrect: boolean;
+				audio?: string;
+			}[];
 		};
 	};
 }

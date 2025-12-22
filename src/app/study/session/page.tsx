@@ -1,7 +1,6 @@
 'use client';
 
 import { CardShell } from '@/components/FlashCard/CardShell';
-import { BasicFace } from '@/components/FlashCard/Faces/BasicFace';
 import { SessionLayout } from '@/modules/study/components/SessionLayout';
 import { useSessionStore } from '@/modules/study/store/useSessionStore';
 import { SmartCard } from '@/types/smart-cube';
@@ -83,12 +82,18 @@ export default function SessionPage() {
 	// Hydration Check (Zustand persist might need this, or just safe practice)
 	const [mounted, setMounted] = useState(false);
 	useEffect(() => {
+		// Hydration fix
+		// eslint-disable-next-line react-hooks/set-state-in-effect
 		setMounted(true);
+	}, []);
+
+	useEffect(() => {
 		// Auto-start session with mock data if empty
-		if (queue.length === 0) {
-			startSession(MOCK_CARDS);
+		if (queue.length === 0 && mounted) {
+			// In real app, we might wait for API here or check if empty
+			// startSession(MOCK_CARDS); // MOCK REMOVED
 		}
-	}, [queue.length, startSession]);
+	}, [queue.length, startSession, mounted]);
 
 	if (!mounted) return null;
 
@@ -113,10 +118,9 @@ export default function SessionPage() {
 						return (
 							<CardShell
 								key={card.id}
+								card={card}
 								isActive={isActive}
 								isNext={isNext}
-								frontContent={<BasicFace card={card} side="front" />}
-								backContent={<BasicFace card={card} side="back" />}
 								onSwipeRight={() => submitRating(3)} // Good
 								onSwipeLeft={() => submitRating(1)} // Again
 								onSwipeUp={() => submitRating(4)} // Easy

@@ -204,7 +204,17 @@
 			"previous": "Previous",
 			"finish": "Finish"
 		},
-		"loadingNextCards": "Loading next cards..."
+		"loadingNextCards": "Loading next cards...",
+		"SmartCube": {
+			"Hint": "Hint",
+			"ConfusingPair": "Confusing Pair",
+			"WhichOneMatches": "Which one matches the sound?",
+			"Solved": "Solved!",
+			"PitchAccentDifference": "The difference is in the Pitch Accent.",
+			"NotQuite": "Not quite. Listen again!",
+			"TapToSeeDetails": "Tap card to see details →",
+			"Origin": "ORIGIN"
+		}
 	},
 	"Decks": {
 		"libraryTitle": "Library",

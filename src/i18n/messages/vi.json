@@ -196,7 +196,17 @@
 			"previous": "Trước",
 			"finish": "Đã hoàn toàn hiểu 😉"
 		},
-		"loadingNextCards": "Đang tải thẻ tiếp theo..."
+		"loadingNextCards": "Đang tải thẻ tiếp theo...",
+		"SmartCube": {
+			"Hint": "Gợi ý",
+			"ConfusingPair": "Cặp từ dễ nhầm",
+			"WhichOneMatches": "Từ nào khớp với âm thanh?",
+			"Solved": "Đã giải quyết!",
+			"PitchAccentDifference": "Sự khác biệt nằm ở Trọng âm (Pitch Accent).",
+			"NotQuite": "Chưa đúng. Nghe lại nhé!",
+			"TapToSeeDetails": "Chạm vào thẻ để xem chi tiết →",
+			"Origin": "NGUỒN GỐC"
+		}
 	},
 	"Decks": {
 		"libraryTitle": "Thư viện",

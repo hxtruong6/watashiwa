@@ -1,6 +1,6 @@
 // Added explicit React import if needed, or keeping existing
 import { getUser, syncUser } from '@/modules/auth/auth.actions';
-import { getDeck } from '@/services/actions';
+import { getDeck } from '@/modules/deck/deck.actions';
 import { notFound } from 'next/navigation';
 import React from 'react';
 

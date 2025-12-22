@@ -30,7 +30,7 @@ export default function DueCTA({ dueCount }: DueCTAProps) {
 				style={{ marginBottom: 32 }}
 			>
 				<Link
-					href="/study"
+					href="/study/session"
 					style={{
 						display: 'block',
 						maxWidth: 360,

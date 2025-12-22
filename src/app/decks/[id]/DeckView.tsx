@@ -279,10 +279,9 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 		);
 	};
 
-	// Counts
-	const vocabCount = deck.vocab ? deck.vocab.length : 0;
-	// Use deck.kanji if available, else empty
-	const kanjiCount = deck.kanji ? deck.kanji.length : 0;
+	// Counts (FIXED: vocabularies & stories)
+	const vocabCount = deck.vocabularies ? deck.vocabularies.length : 0;
+	const storiesCount = deck.stories ? deck.stories.length : 0;
 
 	const tabItems = [
 		{
@@ -292,16 +291,16 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 					<ReadOutlined /> {t('tabVocab', { count: vocabCount })}
 				</span>
 			),
-			children: renderContent('vocab', deck.vocab || []),
+			children: renderContent('vocab', deck.vocabularies || []),
 		},
 		{
 			key: 'kanji',
 			label: (
 				<span>
-					<EditOutlined /> {t('tabKanji', { count: kanjiCount })}
+					<EditOutlined /> Stories ({storiesCount})
 				</span>
 			),
-			children: renderContent('kanji', deck.kanji || []),
+			children: renderContent('kanji', deck.stories || []),
 		},
 	];
 
@@ -406,7 +405,7 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 										{t('privateTag')}
 									</Tag>
 								)}
-								<Tag>{t('itemsCount', { count: vocabCount + kanjiCount })}</Tag>
+								<Tag>{t('itemsCount', { count: vocabCount + storiesCount })}</Tag>
 							</div>
 							<Paragraph
 								style={{
@@ -419,7 +418,7 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 							</Paragraph>
 						</div>
 						<div style={{ display: 'flex', flexDirection: 'column', gap: 8, minWidth: 200 }}>
-							<Link href={`/study?deckId=${deck.id}`} style={{ width: '100%' }}>
+							<Link href={`/study/session?deckId=${deck.id}`} style={{ width: '100%' }}>
 								<Button
 									type="primary"
 									icon={<PlaySquareOutlined />}

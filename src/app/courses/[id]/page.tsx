@@ -1,5 +1,5 @@
 import { getUser } from '@/modules/auth/auth.actions';
-import { getCourseWithUserProgress } from '@/services/course-actions';
+import { getCourseWithUserProgress } from '@/modules/course/course.actions';
 import { notFound } from 'next/navigation';
 
 import CourseDetailClient from './CourseDetailClient';

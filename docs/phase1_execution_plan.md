@@ -85,13 +85,13 @@
 
 ### 1. Core Components
 
-- [ ] `FlashCard` Shell (Framer Motion).
-- [ ] `BasicCard` (Kanji/Etymology).
+- [x] `FlashCard` Shell (Framer Motion).
+- [x] `BasicCard` (Kanji/Etymology).
 - [ ] `GapFillCard` (Sentence context).
 - [ ] `InterventionCard` (Confusion shield).
 
 ### 2. The Learning Loop
 
-- [ ] Session State (Zustand).
-- [ ] Queue Management (Next/Prev).
-- [ ] Optimistic UI updates.
+- [x] Session State (Zustand).
+- [x] Queue Management (Next/Prev).
+- [x] Optimistic UI updates.

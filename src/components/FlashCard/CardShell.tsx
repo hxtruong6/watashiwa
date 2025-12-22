@@ -1,25 +1,29 @@
 'use client';
 
+import { SmartCard } from '@/types/smart-cube';
 import { theme } from 'antd';
 import { PanInfo, motion, useAnimation, useMotionValue, useTransform } from 'framer-motion';
 import React, { useState } from 'react';
 
+import { BasicFace } from './Faces/BasicFace';
+import { GapFillFace } from './Faces/GapFillFace';
+import { InterventionFace } from './Faces/InterventionFace';
+
 interface CardShellProps {
-	children: React.ReactNode;
-	frontContent: React.ReactNode;
-	backContent: React.ReactNode;
+	card: SmartCard;
 	isActive: boolean;
 	isNext: boolean; // Used for stack visuals
+	children?: React.ReactNode; // Optional overlay
 	onSwipeRight?: () => void;
 	onSwipeLeft?: () => void;
 	onSwipeUp?: () => void;
 }
 
 export const CardShell: React.FC<CardShellProps> = ({
-	frontContent,
-	backContent,
+	card,
 	isActive,
 	isNext,
+	children,
 	onSwipeRight,
 	onSwipeLeft,
 	onSwipeUp,
@@ -67,6 +71,19 @@ export const CardShell: React.FC<CardShellProps> = ({
 		setIsFlipped(!isFlipped);
 	};
 
+	// --- VARIANT RENDER LOGIC ---
+	const renderFace = (side: 'front' | 'back') => {
+		switch (card.variant) {
+			case 'GAP_FILL':
+				return <GapFillFace card={card} side={side} />;
+			case 'INTERVENTION':
+				return <InterventionFace card={card} side={side} />;
+			case 'BASIC':
+			default:
+				return <BasicFace card={card} side={side} />;
+		}
+	};
+
 	// Shell Styles based on Active/Next state
 	const variants = {
 		active: {
@@ -106,10 +123,9 @@ export const CardShell: React.FC<CardShellProps> = ({
 			initial="hidden"
 			animate={isActive ? 'active' : isNext ? 'next' : 'hidden'}
 			transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-			drag={isActive ? 'x' : false} // Only active card is draggable (mostly x-axis, y for 'Easy' logic manually handled if needed, or enable 'true' for free drag)
+			drag={isActive ? 'x' : false} // Only active card is draggable (mostly x-axis)
 			dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
 			onDragEnd={handleDragEnd}
-			animate={controls}
 		>
 			{/* 3D Flip Container */}
 			<motion.div
@@ -159,8 +175,20 @@ export const CardShell: React.FC<CardShellProps> = ({
 							zIndex: 1,
 						}}
 					/>
+					<motion.div
+						style={{
+							position: 'absolute',
+							inset: 0,
+							background: token.colorPrimary, // Using Primary/Blue for "Easy"
+							opacity: opacityUp,
+							zIndex: 1,
+						}}
+					/>
 
-					<div style={{ zIndex: 2, width: '100%', height: '100%' }}>{frontContent}</div>
+					<div style={{ zIndex: 2, width: '100%', height: '100%' }}>
+						{renderFace('front')}
+						{children}
+					</div>
 				</div>
 
 				{/* BACK FACE */}
@@ -179,7 +207,7 @@ export const CardShell: React.FC<CardShellProps> = ({
 						overflow: 'hidden',
 					}}
 				>
-					<div style={{ width: '100%', height: '100%' }}>{backContent}</div>
+					<div style={{ width: '100%', height: '100%' }}>{renderFace('back')}</div>
 				</div>
 			</motion.div>
 		</motion.div>
