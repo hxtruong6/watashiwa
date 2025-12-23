@@ -487,6 +487,40 @@ export async function getReviewForecast(): Promise<{
 		};
 	} catch (error) {
 		console.error('Error getting review forecast:', error);
-		return { nextReview: null, urgentCard: null, forecastCount: 0 };
+
+/**
+ * Get the last study session information for the current user.
+ * Used to resume study from where they left off.
+ */
+export async function getLastStudySession() {
+	try {
+		const user = await getUser();
+		if (!user) return null;
+
+		// Find the most recent review log
+		const lastReview = await prisma.reviewLog.findFirst({
+			where: { userId: user.id },
+			orderBy: { reviewDate: 'desc' }, // V2: reviewDate
+			include: {
+				reviewItem: {
+					// V2: reviewItem (UserReview)
+					include: {
+						vocab: { select: { deckId: true } },
+					},
+				},
+			},
+		});
+
+		if (lastReview && lastReview.reviewItem) {
+			const deckId = lastReview.reviewItem.vocab?.deckId;
+			if (deckId) {
+				return { deckId };
+			}
+		}
+
+		return null;
+	} catch (error) {
+		console.error('Error getting last study session:', error);
+		return null;
 	}
 }

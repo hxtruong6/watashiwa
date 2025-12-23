@@ -1,4 +1,4 @@
-import { getAdminDeck } from '@/services/admin-actions';
+import { getAdminDeck } from '@/modules/admin/admin.actions';
 import React from 'react';
 
 import DeckContentManager from './components/DeckContentManager';

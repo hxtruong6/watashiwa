@@ -3,7 +3,7 @@
 import DashboardHeader from '@/components/dashboard/DashboardHeader';
 import ItemCard from '@/components/dashboard/ItemCard';
 import StatsOverview from '@/components/dashboard/StatsOverview';
-import { getAllKanji } from '@/services/actions';
+import { getAllVocabulary } from '@/modules/vocabulary/vocabulary.actions';
 import { CardState, KanjiDataType } from '@/types/common.types';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Button, Flex, Grid, Layout, List, Space, Table, Tag, Typography, theme } from 'antd';
@@ -35,7 +35,7 @@ export default function KanjiListPage() {
 	useEffect(() => {
 		async function fetchData() {
 			setLoading(true);
-			const kanjiList = await getAllKanji();
+			const kanjiList = await getAllVocabulary();
 			const formatted: KanjiDataType[] = kanjiList.map((k: any) => {
 				const card = k.studyCards?.[0];
 				let stateText: CardState = 'new';

@@ -3,7 +3,7 @@
 import DashboardHeader from '@/components/dashboard/DashboardHeader';
 import ItemCard from '@/components/dashboard/ItemCard';
 import StatsOverview from '@/components/dashboard/StatsOverview';
-import { getAllVocab } from '@/services/actions';
+import { getAllVocabulary } from '@/modules/vocabulary/vocabulary.actions';
 import { CardState, VocabDataType } from '@/types/common.types';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Button, Flex, Grid, Layout, List, Table, Tag, Typography, theme } from 'antd';
@@ -35,7 +35,7 @@ export default function VocabListPage() {
 	useEffect(() => {
 		async function fetchData() {
 			setLoading(true);
-			const vocab = await getAllVocab();
+			const vocab = await getAllVocabulary();
 			const formatted: VocabDataType[] = vocab.map((v) => {
 				const card = v.studyCards?.[0];
 				let stateText: CardState = 'new';

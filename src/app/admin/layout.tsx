@@ -1,6 +1,6 @@
 import { AdminShell } from '@/components/admin/Layout/AdminShell';
 import { hasRole } from '@/lib/auth/roleGuard';
-import { getUserWithRole } from '@/services/actions';
+import { getUserWithRole } from '@/modules/auth/auth.actions';
 import { UserRole } from '@prisma/client';
 import { redirect } from 'next/navigation';
 import React from 'react';

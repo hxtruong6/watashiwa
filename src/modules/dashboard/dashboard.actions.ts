@@ -86,14 +86,6 @@ export async function getMatchaWisdomWords(limit: number = 10): Promise<WisdomWo
 	}
 }
 
-function mapReviewToWisdom(review: UserReviewWithContent): WisdomWordData {
-	const vocab = review.vocab;
-	const isKanji = vocab.tags.includes('kanji');
-
-	// Extract meaning from JSON
-	const meaningsEn = (vocab.meanings as any)?.en || [];
-	const meaning = meaningsEn[0] || '';
-
 	return {
 		id: vocab.id,
 		kanji: vocab.wordSurface,
@@ -101,4 +93,52 @@ function mapReviewToWisdom(review: UserReviewWithContent): WisdomWordData {
 		meaning: meaning,
 		hanViet: vocab.hanViet || '',
 	};
+}
+
+// -----------------------------------------------------------------------------
+// Dashboard Data Aggregation
+// -----------------------------------------------------------------------------
+
+import { getWeeklyStats } from '@/modules/analytics/analytics.actions';
+import { getDecksWithDue } from '@/modules/deck/deck.actions';
+import { getReviewCount } from '@/modules/study/study.actions';
+import { getUserSettings, getUserStats } from '@/modules/user/user.actions';
+
+/**
+ * Get dashboard data (combined call for efficiency)
+ */
+export async function getDashboardData() {
+	try {
+		const user = await getUser();
+		if (!user) return null;
+
+		const [reviewCount, stats, weeklyStats, decksWithDue, userSettings] = await Promise.all([
+			getReviewCount(user.id),
+			getUserStats(user.id),
+			getWeeklyStats(user.id),
+			getDecksWithDue(user.id),
+			getUserSettings(),
+		]);
+
+		let userName: string | null = null;
+		if (user) {
+			const dbUser = await prisma.user.findUnique({
+				where: { id: user.id },
+				select: { name: true },
+			});
+			userName = dbUser?.name ?? null;
+		}
+
+		return {
+			reviewCount: reviewCount.success ? reviewCount.data : 0,
+			stats,
+			weeklyStats,
+			decksWithDue,
+			userSettings,
+			userName,
+		};
+	} catch (error) {
+		console.error('Error fetching dashboard data:', error);
+		return null;
+	}
 }

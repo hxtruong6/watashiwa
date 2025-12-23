@@ -3,7 +3,8 @@
 
 import KanjiEditor from '@/components/admin/KanjiEditor';
 import VocabEditor from '@/components/admin/VocabEditor';
-import { resolveReport, updateKanji, updateVocab } from '@/services/actions';
+import { resolveReport } from '@/modules/admin/admin.actions';
+import { updateContent } from '@/modules/vocabulary/vocabulary.actions';
 import { CheckOutlined, EyeOutlined } from '@ant-design/icons';
 import { ReportStatus, ReportType } from '@prisma/client';
 import { Button, Descriptions, Form, Modal, Space, Table, Tag, message } from 'antd';
@@ -90,10 +91,10 @@ export default function ClientReportsTable({ initialReports }: ClientReportsTabl
 
 			// 1. Update Content
 			if (currentReport.vocab) {
-				const res = await updateVocab(currentReport.vocab.id, values);
+				const res = await updateContent({ id: currentReport.vocab.id, data: values });
 				if (!res.success) throw new Error(res.error);
 			} else if (currentReport.kanji) {
-				const res = await updateKanji(currentReport.kanji.id, values);
+				const res = await updateContent({ id: currentReport.kanji.id, data: values });
 				if (!res.success) throw new Error(res.error);
 			}
 

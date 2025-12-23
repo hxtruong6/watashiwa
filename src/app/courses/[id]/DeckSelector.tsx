@@ -1,4 +1,4 @@
-import { addDeckToCourse, searchDecks } from '@/services/course-actions';
+import { addDeckToCourse, searchDecks } from '@/modules/course/course.actions';
 import {
 	CheckCircleFilled,
 	CheckOutlined,

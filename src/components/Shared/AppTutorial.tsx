@@ -1,7 +1,7 @@
 'use client';
 
 import { useTutorialStore } from '@/hooks/useTutorialStore';
-import { completeTutorial } from '@/services/actions';
+import { completeTutorial } from '@/modules/user/user.actions';
 import { Tour, TourProps } from 'antd';
 import React, { useEffect, useRef, useState } from 'react';
 

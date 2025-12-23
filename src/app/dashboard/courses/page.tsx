@@ -1,5 +1,5 @@
 import { getUser } from '@/modules/auth/auth.actions';
-import { getCourses } from '@/services/course-actions';
+import { getCourses } from '@/modules/course/course.actions';
 
 import CourseList from './CourseList';
 

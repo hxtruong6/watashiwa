@@ -2,7 +2,7 @@
 
 import NotificationManager from '@/components/PWA/NotificationManager';
 import ImageUploader from '@/components/Shared/ImageUploader';
-import { updateUserAvatar, updateUserSettings } from '@/services/actions';
+import { updateUserAvatar, updateUserSettings } from '@/modules/user/user.actions';
 import { GlobalOutlined, RocketOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import {
 	Button,

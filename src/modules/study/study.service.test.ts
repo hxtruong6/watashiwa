@@ -1,4 +1,4 @@
-import { StudyCard } from '@prisma/client';
+import { StudyCard } from '@/lib/db';
 import { describe, it } from 'node:test';
 import { expect } from 'vitest';
 

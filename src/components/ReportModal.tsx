@@ -1,7 +1,7 @@
 'use client';
 
 // Ensure this matches your Prisma Client location
-import { submitReport } from '@/services/actions';
+import { submitReport } from '@/modules/admin/admin.actions';
 import { FlagOutlined } from '@ant-design/icons';
 import { ReportType } from '@prisma/client';
 import { Input, Modal, Select, message } from 'antd';

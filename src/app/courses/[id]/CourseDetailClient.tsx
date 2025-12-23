@@ -1,7 +1,7 @@
 'use client';
 
 import BackButton from '@/components/BackButton';
-import { removeDeckFromCourse, reorderDecks } from '@/services/course-actions';
+import { removeDeckFromCourse, reorderDecks } from '@/modules/course/course.actions';
 import {
 	ArrowDownOutlined,
 	ArrowUpOutlined,

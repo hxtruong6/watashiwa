@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/db';
+import { NotificationService } from '@/lib/notifications/NotificationService';
 import { getUser } from '@/modules/auth/auth.actions';
-import { NotificationService } from '@/services/NotificationService';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {

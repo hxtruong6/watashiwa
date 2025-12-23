@@ -1,4 +1,5 @@
-import { getAllUsers, getUserWithRole } from '@/services/actions';
+import { getAllUsers } from '@/modules/admin/admin.actions';
+import { getUserWithRole } from '@/modules/auth/auth.actions';
 import React from 'react';
 
 // Updated import

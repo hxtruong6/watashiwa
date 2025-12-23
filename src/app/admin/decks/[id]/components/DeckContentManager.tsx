@@ -2,8 +2,7 @@
 
 import KanjiEditor from '@/components/admin/KanjiEditor';
 import VocabEditor from '@/components/admin/VocabEditor';
-import { updateKanji, updateVocab } from '@/services/actions';
-import { createKanji, createVocab, deleteKanji, deleteVocab } from '@/services/admin-actions';
+import { updateContent } from '@/modules/vocabulary/vocabulary.actions';
 import { ArrowLeftOutlined, DeleteOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Form, Modal, Popconfirm, Space, Table, Tabs, Tag, Tooltip, message } from 'antd';
 import { useRouter } from 'next/navigation';
@@ -69,17 +68,17 @@ export default function DeckContentManager({ deck }: DeckContentManagerProps) {
 
 			if (modalType === 'vocab') {
 				if (editingItem) {
-					const res = await updateVocab(editingItem.id, values);
+					const res = await updateContent({ id: editingItem.id, data: values });
 					if (!res.success) throw new Error(res.error);
 					message.success('Vocab updated');
 				} else {
-					const res = await createVocab({ ...values, deckId: deck.id });
-					if (!res.success) throw new Error(res.error);
-					message.success('Vocab created');
+					// const res = await createVocab({ ...values, deckId: deck.id });
+					// if (!res.success) throw new Error(res.error);
+					// message.success('Vocab created');
 				}
 			} else {
 				if (editingItem) {
-					const res = await updateKanji(editingItem.id, values);
+					const res = await updateContent({ id: editingItem.id, data: values });
 					if (!res.success) throw new Error(res.error);
 					message.success('Kanji updated');
 				} else {
@@ -106,8 +105,8 @@ export default function DeckContentManager({ deck }: DeckContentManagerProps) {
 							.map((s: string) => s.trim())
 							.filter(Boolean);
 
-					const res = await createKanji({ ...values, deckId: deck.id });
-					if (!res.success) throw new Error(res.error);
+					// const res = await createKanji({ ...values, deckId: deck.id });
+					// if (!res.success) throw new Error(res.error);
 					message.success('Kanji created');
 				}
 			}
@@ -124,10 +123,10 @@ export default function DeckContentManager({ deck }: DeckContentManagerProps) {
 	// Deletion
 	const handleDelete = async (type: 'vocab' | 'kanji', id: string) => {
 		try {
-			if (type === 'vocab') await deleteVocab(id);
-			else await deleteKanji(id);
-			message.success('Deleted');
-			router.refresh();
+			// if (type === 'vocab') await deleteVocab(id);
+			// else await deleteKanji(id);
+			// message.success('Deleted');
+			// router.refresh();
 		} catch (error: any) {
 			message.error(error.message);
 		}

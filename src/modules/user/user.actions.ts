@@ -326,3 +326,44 @@ export async function recalculateUserStreak(userId: string) {
 		return 0;
 	}
 }
+
+/**
+ * Get user statistics (Streak, Total Reviews)
+ */
+export const getUserStats = cache(async (userId?: string) => {
+	try {
+		if (userId && !IdSchema.safeParse(userId).success) return { streak: 0, totalReviewed: 0 };
+
+		let uid = userId;
+		if (!uid) {
+			const user = await getUser();
+			if (!user) return { streak: 0, totalReviewed: 0 };
+			uid = user.id;
+		}
+
+		// Simple Today's Review Count
+		const startOfDay = new Date();
+		startOfDay.setHours(0, 0, 0, 0);
+
+		const todaysReviews = await prisma.reviewLog.count({
+			where: {
+				userId: uid,
+				reviewDate: {
+					gte: startOfDay,
+				},
+			},
+		});
+
+		// Calculate/Sync Streak
+		// This ensures that if they missed a day since last login, it resets.
+		const currentStreak = await recalculateUserStreak(uid);
+
+		return {
+			streak: currentStreak,
+			totalReviewed: todaysReviews,
+		};
+	} catch (error) {
+		console.error('Error fetching stats:', error);
+		return { streak: 0, totalReviewed: 0 };
+	}
+});

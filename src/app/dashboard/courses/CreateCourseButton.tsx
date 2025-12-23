@@ -1,6 +1,6 @@
 'use client';
 
-import { createCourse } from '@/services/course-actions';
+import { createCourse } from '@/modules/course/course.actions';
 import { PlusOutlined } from '@ant-design/icons';
 import { Button, Drawer, Form, Input, Switch, message } from 'antd';
 import { useTranslations } from 'next-intl';

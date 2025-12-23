@@ -1,6 +1,6 @@
 'use client';
 
-import { updateUserSettings } from '@/services/actions';
+import { updateUserSettings } from '@/modules/user/user.actions';
 import { Select } from 'antd';
 import { useLocale } from 'next-intl';
 

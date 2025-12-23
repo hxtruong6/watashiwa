@@ -54,11 +54,11 @@
 | **43** | ⏳ Pending | 30           | 210-223        | `増えます`                |
 | **44** | ⏳ Pending | 32           | 224-255        | `泣きます`                |
 | **45** | [x] | 33           | 256-270        | `信じます` (Actual: 39)                |
-| **46** | ⏳ Pending | 28           | 271-298        | `渡します`                |
+| **46** | [x] | 28           | 271-298        | `渡します` (Actual: 48)                |
 | **47** | ⏳ Pending | 32           | 299-330        | `集まります`                |
 | **48** | ⏳ Pending | 32           | 331-342        | `降ろします`                |
 | **49** | [x] (Verified - Generated Manually) | 36           | Missing Candidates | `勤めます` (Source: `missing_candidates.json`) |
-| **50** | ⏳ Pending | 28           | 368-395        | `参ります`               |
+| **50** | [x] (Verified - Generated Manually) | 52           | -              | `参ります` (Source: `ref_minna_vocab.yaml`) |
 
 ---
 

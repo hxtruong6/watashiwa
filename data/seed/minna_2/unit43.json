@@ -1,0 +1,2130 @@
+[
+    {
+        "word_surface": "～日",
+        "han_viet": "NHẬT",
+        "kana": "～にち",
+        "romaji": "-nichi",
+        "tags": [
+            "suffix",
+            "counter",
+            "unit-43"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "日",
+                    "han_viet": "NHẬT",
+                    "meaning": {
+                        "vi": "mặt trời, ngày",
+                        "en": "sun, day"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ Nhật (日) hình mặt trời. Dùng đếm số ngày.",
+                "en": "Pictograph of the sun. Used as a counter for days."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ngày (đếm số lượng)",
+                "ngày (mùng)"
+            ],
+            "en": [
+                "days (counter)",
+                "day of the month"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "３日かかります。",
+                "translation": {
+                    "vi": "Mất 3 ngày.",
+                    "en": "It takes 3 days."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "NHẬT (日) ký viết từng ngày.",
+            "en": "It takes a NICHE (nichi) skill to count days."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "何日",
+        "han_viet": "HÀ NHẬT",
+        "kana": "なんにち",
+        "romaji": "nannichi",
+        "tags": [
+            "interrogative",
+            "unit-43"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L10,20 L20,20 L30,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "何",
+                    "han_viet": "HÀ",
+                    "meaning": {
+                        "vi": "cái gì, mấy",
+                        "en": "what"
+                    }
+                },
+                {
+                    "kanji": "日",
+                    "han_viet": "NHẬT",
+                    "meaning": {
+                        "vi": "ngày",
+                        "en": "day"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Hà (cái gì) + Nhật (ngày).",
+                "en": "Nan (what) + Nichi (day)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ngày mấy",
+                "bao nhiêu ngày"
+            ],
+            "en": [
+                "what day",
+                "how many days"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "今日は何日ですか。",
+                "translation": {
+                    "vi": "Hôm nay là ngày mấy?",
+                    "en": "What is the date today?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HÀ (何) cớ gì không nhớ ngày NHẬT (日).",
+            "en": "NANNY (nanni) checks the CHI-ldren (chi) every day."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "誕生日",
+        "han_viet": "ĐẢN SINH NHẬT",
+        "kana": "たんじょうび",
+        "romaji": "tanjōbi",
+        "tags": [
+            "noun",
+            "unit-43"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,5 L40,20 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "誕",
+                    "han_viet": "ĐẢN",
+                    "meaning": {
+                        "vi": "sinh ra",
+                        "en": "nativity"
+                    }
+                },
+                {
+                    "kanji": "生",
+                    "han_viet": "SINH",
+                    "meaning": {
+                        "vi": "sống, sinh",
+                        "en": "birth"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Đản (sinh ra) + Sinh (sống) + Nhật (ngày). Ngày mình được sinh ra.",
+                "en": "Tan (birth) + Jou (living) + Bi (day)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "sinh nhật"
+            ],
+            "en": [
+                "birthday"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "誕生日はいつですか。",
+                "translation": {
+                    "vi": "Sinh nhật bạn là khi nào?",
+                    "en": "When is your birthday?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "ĐẢN SINH (誕生) là sự ra đời.",
+            "en": "TAN Joe (Tanjou) on his BIrthday."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "～番線",
+        "han_viet": "PHIÊN TUYẾN",
+        "kana": "ばんせん",
+        "romaji": "-bansen",
+        "tags": [
+            "noun",
+            "counter",
+            "unit-43"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,5 L40,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "番",
+                    "han_viet": "PHIÊN",
+                    "meaning": {
+                        "vi": "lượt, số",
+                        "en": "number, turn"
+                    }
+                },
+                {
+                    "kanji": "線",
+                    "han_viet": "TUYẾN",
+                    "meaning": {
+                        "vi": "tuyến, đường dây",
+                        "en": "line"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Phiên (số thứ tự) + Tuyến (đường ray).",
+                "en": "Ban (Number) + Sen (Line/Track)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "sân ga số ~",
+                "tuyến số ~"
+            ],
+            "en": [
+                "track number ~",
+                "platform number ~"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "３番線に乗ります。",
+                "translation": {
+                    "vi": "Lên tàu ở sân ga số 3.",
+                    "en": "Board at track number 3."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TUYẾN (線) đường theo PHIÊN (番) hiệu.",
+            "en": "Wait at the BUN (Ban) center (sen) track."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "次の",
+        "han_viet": "THỨ",
+        "kana": "つぎの",
+        "romaji": "tsugino",
+        "tags": [
+            "noun",
+            "adjective-no",
+            "unit-43"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L10,5 L20,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "次",
+                    "han_viet": "THỨ",
+                    "meaning": {
+                        "vi": "tiếp theo, thứ nhì",
+                        "en": "next"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ 'Thứ' (次) trong 'thứ nam', 'thứ nữ'.",
+                "en": "Ice (冫) + Lack (欠). Next in line."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "tiếp theo"
+            ],
+            "en": [
+                "next"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "次の駅で降ります。",
+                "translation": {
+                    "vi": "Tôi xuống ở ga tiếp theo.",
+                    "en": "I get off at the next station."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THỨ (次) tự tiếp theo.",
+            "en": "SUE GIVES (Tsugi) me the next one."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "普通",
+        "han_viet": "PHỔ THÔNG",
+        "kana": "ふつう",
+        "romaji": "futsū",
+        "tags": [
+            "noun",
+            "adj-no",
+            "unit-43"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L10,5 L20,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "普",
+                    "han_viet": "PHỔ",
+                    "meaning": {
+                        "vi": "rộng khắp",
+                        "en": "universal"
+                    }
+                },
+                {
+                    "kanji": "通",
+                    "han_viet": "THÔNG",
+                    "meaning": {
+                        "vi": "thông qua, giao thông",
+                        "en": "traffic, pass through"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Phổ thông = Bình thường. Trong tàu điện là tàu thường (dừng các ga).",
+                "en": "Universal (普) + Traffic (通) = Ordinary."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thông thường",
+                "tàu thường (dừng mọi ga)"
+            ],
+            "en": [
+                "ordinary",
+                "local train"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "普通電車で行きます。",
+                "translation": {
+                    "vi": "Đi bằng tàu thường.",
+                    "en": "Go by local train."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "PHỔ THÔNG (普通) là bình thường.",
+            "en": "FOOT SUE (Futsuu)? That's a normal name."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "急行",
+        "han_viet": "CẤP HÀNH",
+        "kana": "きゅうこう",
+        "romaji": "kyūkō",
+        "tags": [
+            "noun",
+            "unit-43"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,5 L40,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "急",
+                    "han_viet": "CẤP",
+                    "meaning": {
+                        "vi": "khẩn cấp, vội",
+                        "en": "hurry"
+                    }
+                },
+                {
+                    "kanji": "行",
+                    "han_viet": "HÀNH",
+                    "meaning": {
+                        "vi": "đi",
+                        "en": "go"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Cấp (gấp) + Hành (đi). Đi gấp -> Tàu tốc hành.",
+                "en": "Hurry (急) + Go (行) = Express train."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "tàu tốc hành"
+            ],
+            "en": [
+                "express train"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "急行に乗ります。",
+                "translation": {
+                    "vi": "Lên tàu tốc hành.",
+                    "en": "Take the express train."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Khẩn CẤP HÀNH (急行) quân bằng tàu nhanh.",
+            "en": "QUEUE (Kyuu) for the CO-mpany (kou) express train."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "します",
+        "han_viet": "NONE",
+        "kana": "します",
+        "romaji": "shimasu",
+        "tags": [
+            "verb",
+            "unit-43"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L10,5 L20,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Động từ 'Suru' (làm).",
+                "en": "Polite form of 'Suru' (to do)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "làm"
+            ],
+            "en": [
+                "do"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "宿題をします。",
+                "translation": {
+                    "vi": "Làm bài tập.",
+                    "en": "Do homework."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Si (shi) năng làm việc.",
+            "en": "SHE MAS-ters (Shimasu) doing everything."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ご飯",
+        "han_viet": "PHẠN",
+        "kana": "ごはん",
+        "romaji": "gohan",
+        "tags": [
+            "noun",
+            "unit-43"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L10,20 L20,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "飯",
+                    "han_viet": "PHẠN",
+                    "meaning": {
+                        "vi": "cơm",
+                        "en": "meal, rice"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Bộ Thực (ăn) + Phản (ngược).",
+                "en": "Food (⻞) + Anti (反)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "bữa ăn",
+                "cơm"
+            ],
+            "en": [
+                "meal",
+                "cooked rice"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "朝ごはんを食べます。",
+                "translation": {
+                    "vi": "Ăn bữa sáng.",
+                    "en": "Eat breakfast."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Gõ (Go) bát đòi Cơm.",
+            "en": "GO HAN-g out and have rice."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "パン",
+        "han_viet": "NONE",
+        "kana": "パン",
+        "romaji": "pan",
+        "tags": [
+            "noun",
+            "katakana",
+            "unit-43"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L10,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Bồ Đào Nha 'Pão'.",
+                "en": "Loanword from Portuguese 'Pão'."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "bánh mì"
+            ],
+            "en": [
+                "bread"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "パンと卵。",
+                "translation": {
+                    "vi": "Bánh mì và trứng.",
+                    "en": "Bread and eggs."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Pắn (bắn) nhân vào bánh mì.",
+            "en": "A PAN made of bread."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "牛乳",
+        "han_viet": "NGƯU NHŨ",
+        "kana": "ぎゅうにゅう",
+        "romaji": "gyūnyū",
+        "tags": [
+            "noun",
+            "unit-43"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,5 L40,5 L50,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "牛",
+                    "han_viet": "NGƯU",
+                    "meaning": {
+                        "vi": "con bò",
+                        "en": "cow"
+                    }
+                },
+                {
+                    "kanji": "乳",
+                    "han_viet": "NHŨ",
+                    "meaning": {
+                        "vi": "sữa, vú",
+                        "en": "milk"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Sữa (Nhũ) của Bò (Ngưu).",
+                "en": "Cow (牛) + Milk (乳)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "sữa bò"
+            ],
+            "en": [
+                "milk"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "牛乳を飲みます。",
+                "translation": {
+                    "vi": "Uống sữa.",
+                    "en": "Drink milk."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "NGƯU (牛) là bò, NHŨ (乳) là sữa.",
+            "en": "GYU (Cow) gives NEW (nyuu) milk."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ジュース",
+        "han_viet": "NONE",
+        "kana": "ジュース",
+        "romaji": "jūsu",
+        "tags": [
+            "noun",
+            "katakana",
+            "unit-43"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L10,20 L20,20 L30,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh 'Juice'.",
+                "en": "Loanword from 'Juice'."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nước trái cây",
+                "nước ngọt"
+            ],
+            "en": [
+                "juice",
+                "soft drink"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "オレンジジュース。",
+                "translation": {
+                    "vi": "Nước cam.",
+                    "en": "Orange juice."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Giù (Ju) giữ lấy nước ép.",
+            "en": "Juice -> Juusu."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ビール",
+        "han_viet": "NONE",
+        "kana": "ビール",
+        "romaji": "bīru",
+        "tags": [
+            "noun",
+            "katakana",
+            "unit-43"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L10,20 L20,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Hà Lan 'Bier'.",
+                "en": "Loanword from Dutch 'Bier'."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "bia"
+            ],
+            "en": [
+                "beer"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "冷たいビール。",
+                "translation": {
+                    "vi": "Bia lạnh.",
+                    "en": "Cold beer."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Bi (Bī) a uống bia.",
+            "en": "Beer -> Biiru. [Image of beer mug]"
+        },
+        "confusions": [
+            {
+                "word": "ビル",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "Biru (ngắn) là Tòa nhà (Building). Bīru (dài) là Bia.",
+                        "en": "Biru = Building. Biiru = Beer."
+                    },
+                    "item1_nuance": {
+                        "vi": "Bia (âm dài)",
+                        "en": "Beer (long vowel)"
+                    },
+                    "item2_nuance": {
+                        "vi": "Tòa nhà (âm ngắn)",
+                        "en": "Building (short vowel)"
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "word_surface": "たばこ",
+        "han_viet": "NONE",
+        "kana": "たばこ",
+        "romaji": "tabako",
+        "tags": [
+            "noun",
+            "unit-43"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L10,5 L20,5",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Bồ Đào Nha 'Tabaco'.",
+                "en": "Loanword from Portuguese 'Tabaco'."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thuốc lá"
+            ],
+            "en": [
+                "tobacco",
+                "cigarette"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "たばこを吸います。",
+                "translation": {
+                    "vi": "Hút thuốc.",
+                    "en": "Smoke tobacco."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Ta ba cô (Tabako) đều ghét thuốc lá.",
+            "en": "TABACCO -> Tabako."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "増えます",
+        "han_viet": "TĂNG",
+        "kana": "ふえます",
+        "romaji": "fuemasu",
+        "tags": [
+            "verb",
+            "intransitive",
+            "unit-43"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,5 L40,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "増",
+                    "han_viet": "TĂNG",
+                    "meaning": {
+                        "vi": "tăng lên, thêm",
+                        "en": "increase"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ 'Tăng' (増) trong 'tăng ca', 'tăng trưởng'.",
+                "en": "Soil (土) adds up to INCREASE land."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "tăng lên [xuất khẩu ~]"
+            ],
+            "en": [
+                "increase [exports ~]"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "輸出が増えます。",
+                "translation": {
+                    "vi": "Xuất khẩu tăng lên.",
+                    "en": "Exports increase."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TĂNG (増) thêm thì Phù (Fue) mỏ.",
+            "en": "WHO ATE (Fue) more? The weight INCREASED. [Image of bar chart increasing]"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "減ります",
+        "han_viet": "GIẢM",
+        "kana": "へります",
+        "romaji": "herimasu",
+        "tags": [
+            "verb",
+            "intransitive",
+            "unit-43"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L10,5 L20,20 L30,20 L40,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "減",
+                    "han_viet": "GIẢM",
+                    "meaning": {
+                        "vi": "giảm bớt",
+                        "en": "decrease"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ 'Giảm' (減) trong 'giảm giá', 'suy giảm'.",
+                "en": "Water (氵) decreases in the heat."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "giảm xuống [xuất khẩu ~]"
+            ],
+            "en": [
+                "decrease [exports ~]"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "体重が減りました。",
+                "translation": {
+                    "vi": "Cân nặng đã giảm.",
+                    "en": "Weight has decreased."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "GIẢM (減) cân nên bụng Hẹp (Heri) lại.",
+            "en": "HARRY (Heri) caused the numbers to DECREASE."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "上がります",
+        "han_viet": "THƯỢNG",
+        "kana": "あがります",
+        "romaji": "agarimasu",
+        "tags": [
+            "verb",
+            "intransitive",
+            "unit-43"
+        ],
+        "pitch_pattern": 5,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,5 L40,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "上",
+                    "han_viet": "THƯỢNG",
+                    "meaning": {
+                        "vi": "lên, trên",
+                        "en": "up, above"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ 'Thượng' (上) chỉ hướng lên.",
+                "en": "Pointer indicating UP."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "tăng lên, cao lên [giá ~]"
+            ],
+            "en": [
+                "rise [price ~]"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "値段が上がります。",
+                "translation": {
+                    "vi": "Giá cả tăng lên.",
+                    "en": "Prices rise."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THƯỢNG (上) lộ bình An (A) nha.",
+            "en": "A GARden (Agaru) path going UP."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "下がります",
+        "han_viet": "HẠ",
+        "kana": "さがります",
+        "romaji": "sagarimasu",
+        "tags": [
+            "verb",
+            "intransitive",
+            "unit-43"
+        ],
+        "pitch_pattern": 4,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,20 L40,20 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "下",
+                    "han_viet": "HẠ",
+                    "meaning": {
+                        "vi": "xuống, dưới",
+                        "en": "down, below"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ 'Hạ' (下) chỉ hướng xuống.",
+                "en": "Pointer indicating DOWN."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "giảm xuống, hạ xuống [giá ~]"
+            ],
+            "en": [
+                "fall, drop [price ~]"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "熱が下がりました。",
+                "translation": {
+                    "vi": "Đã hạ sốt.",
+                    "en": " The fever has gone down."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HẠ (下) xuống Sàn (Sa).",
+            "en": "SAGA (Saga) continues as ratings FALL."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "切れます",
+        "han_viet": "THIẾT",
+        "kana": "きれます",
+        "romaji": "kiremasu",
+        "tags": [
+            "verb",
+            "intransitive",
+            "unit-43"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,5 L40,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "切",
+                    "han_viet": "THIẾT",
+                    "meaning": {
+                        "vi": "cắt, đứt",
+                        "en": "cut"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ 'Thiết' (切) trong 'thiết thực', 'cắt đứt'.",
+                "en": "Seven (七) Swords (刀) CUT well."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "đứt [sợi dây ~]"
+            ],
+            "en": [
+                "break, snap [a string ~]"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ひもが切れそうです。",
+                "translation": {
+                    "vi": "Sợi dây có vẻ sắp đứt.",
+                    "en": "The string looks like it will snap."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THIẾT (切) bị cắt thì Kĩ (Ki) thuật kém.",
+            "en": "The KEY (Ki) chain will SNAP (kire)."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "とれます",
+        "han_viet": "THỦ",
+        "kana": "とれます",
+        "romaji": "toremasu",
+        "tags": [
+            "verb",
+            "intransitive",
+            "unit-43"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,5 L40,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "取",
+                    "han_viet": "THỦ",
+                    "meaning": {
+                        "vi": "lấy",
+                        "en": "take"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Tự nhiên bị tuột ra (trạng thái).",
+                "en": "Intransitive form of Toru (to take)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "tuột, bung [cái cúc ~]"
+            ],
+            "en": [
+                "come off [a button ~]"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ボタンがとれました。",
+                "translation": {
+                    "vi": "Cái cúc áo đã bị tuột.",
+                    "en": "The button came off."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THỦ (取) tiêu cái cúc bị tuột Tồ (To) tồ.",
+            "en": "TORE (Tore) my pants and the button CAME OFF. "
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "落ちます",
+        "han_viet": "LẠC",
+        "kana": "おちます",
+        "romaji": "ochimasu",
+        "tags": [
+            "verb",
+            "intransitive",
+            "unit-43"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,5 L40,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "落",
+                    "han_viet": "LẠC",
+                    "meaning": {
+                        "vi": "rơi, rụng",
+                        "en": "fall"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ 'Lạc' (落) trong 'thất lạc', 'lạc trôi' (rơi rụng).",
+                "en": "Leaves (艹) falling to Water (氵) individually (各)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "rơi [hành lý ~]"
+            ],
+            "en": [
+                "fall down [baggage ~]"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "荷物が落ちました。",
+                "translation": {
+                    "vi": "Hành lý bị rơi.",
+                    "en": "The baggage fell down."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "LẠC (落) mất đồ vì bị Ô (O) chi (chi) rơi.",
+            "en": "OUCH (Ochi)! Something FELL on me."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "なくなります",
+        "han_viet": "VÔ",
+        "kana": "なく なります",
+        "romaji": "nakunarimasu",
+        "tags": [
+            "verb",
+            "intransitive",
+            "unit-43"
+        ],
+        "pitch_pattern": 5,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,5 L40,5 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "無",
+                    "han_viet": "VÔ",
+                    "meaning": {
+                        "vi": "không có",
+                        "en": "nothing"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Trở nên (narimasu) không có (nai).",
+                "en": "Become (narimasu) not existing (nai)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "hết, mất [xăng ~]"
+            ],
+            "en": [
+                "run out, be lost [petrol ~]"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ガソリンがなくなりました。",
+                "translation": {
+                    "vi": "Hết xăng rồi.",
+                    "en": "The gasoline has run out."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Hư vô (VÔ) là KHÔNG (naku) còn gì.",
+            "en": "KNACK (Naku) for losing things."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "変［な］",
+        "han_viet": "BIẾN",
+        "kana": "へん［な］",
+        "romaji": "hen [na]",
+        "tags": [
+            "adj-na",
+            "unit-43"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L10,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "変",
+                    "han_viet": "BIẾN",
+                    "meaning": {
+                        "vi": "biến đổi, lạ",
+                        "en": "strange, change"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ 'Biến' (変) trong 'biến thái' (kỳ lạ).",
+                "en": "Red (赤) + Strike (攵). Change is STRANGE."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "lạ, kỳ quặc"
+            ],
+            "en": [
+                "strange, peculiar"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "変な音がします。",
+                "translation": {
+                    "vi": "Có tiếng động lạ.",
+                    "en": "I hear a strange sound."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "BIẾN (変) thái thì Hèn (Hen).",
+            "en": "A HEN is a STRANGE bird."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "幸せ［な］",
+        "han_viet": "HẠNH",
+        "kana": "しあわせ［な］",
+        "romaji": "shiawase [na]",
+        "tags": [
+            "adj-na",
+            "unit-43"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,5 L40,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "幸",
+                    "han_viet": "HẠNH",
+                    "meaning": {
+                        "vi": "hạnh phúc",
+                        "en": "happiness"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ 'Hạnh' (幸) trong 'hạnh phúc'.",
+                "en": "Shield + Earth + Dry? Pictograph of handcuffs (avoiding them is happiness)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "hạnh phúc"
+            ],
+            "en": [
+                "happy"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "私は幸せです。",
+                "translation": {
+                    "vi": "Tôi hạnh phúc.",
+                    "en": "I am happy."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HẠNH (幸) phúc vì Si (Shi) tình.",
+            "en": "SHE WAS (Shiawase) very HAPPY."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "楽［な］",
+        "han_viet": "LẠC",
+        "kana": "らく［な］",
+        "romaji": "raku [na]",
+        "tags": [
+            "adj-na",
+            "unit-43"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L10,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "楽",
+                    "han_viet": "LẠC",
+                    "meaning": {
+                        "vi": "vui, an lạc",
+                        "en": "comfort, music"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chữ 'Lạc' (楽) trong 'an lạc' (nhàn hạ, thoải mái).",
+                "en": "Music brings COMFORT and EASE."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "nhàn nhã, thoải mái"
+            ],
+            "en": [
+                "easy, comfortable"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "楽な仕事。",
+                "translation": {
+                    "vi": "Công việc nhàn hạ.",
+                    "en": "An easy job."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "An LẠC (楽) là Rất (Raku) vui.",
+            "en": "ROCK (Raku) music is EASY to listen to."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "うまい",
+        "han_viet": "MĨ",
+        "kana": "うまい",
+        "romaji": "umai",
+        "tags": [
+            "adj-i",
+            "unit-43"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L10,5 L20,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Có thể viết là 美味い (Mĩ Vị) hoặc 上手い (Thượng Thủ - giỏi).",
+                "en": "Can mean tasty (美味い) or skillful (上手い)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ngon",
+                "giỏi, thuận lợi"
+            ],
+            "en": [
+                "tasty",
+                "skillful"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "これはうまい！",
+                "translation": {
+                    "vi": "Cái này ngon quá!",
+                    "en": "This is tasty!"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Ăn ngon Ư (U) mãi (mai).",
+            "en": "OOO, MY (Umai)! This is tasty."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "まずい",
+        "han_viet": "BẤT VỊ",
+        "kana": "まずい",
+        "romaji": "mazui",
+        "tags": [
+            "adj-i",
+            "unit-43"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L10,5 L20,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "不",
+                    "han_viet": "BẤT",
+                    "meaning": {
+                        "vi": "không",
+                        "en": "not"
+                    }
+                },
+                {
+                    "kanji": "味",
+                    "han_viet": "VỊ",
+                    "meaning": {
+                        "vi": "vị",
+                        "en": "taste"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Kanji thường là 不味い (Không có vị ngon).",
+                "en": "Kanji is 不味い (Not Tasty)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "dở",
+                "không ngon"
+            ],
+            "en": [
+                "not tasty",
+                "bad"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "この料理はまずいです。",
+                "translation": {
+                    "vi": "Món này dở tệ.",
+                    "en": "This dish tastes bad."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Món này dở mà cứ mời Dừ (zu) mãi (ma).",
+            "en": "MA'S ZOO (Mazui) food tastes bad."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "つまらない",
+        "han_viet": "CẬT",
+        "kana": "つまらない",
+        "romaji": "tsumaranai",
+        "tags": [
+            "adj-i",
+            "unit-43"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,20 L40,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "詰",
+                    "han_viet": "CẬT",
+                    "meaning": {
+                        "vi": "nhồi nhét, kết thúc",
+                        "en": "stuffed, conclusion"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Động từ Tsumaru (tắc, nghẽn). Tsumaranai = Không đọng lại gì -> Chán.",
+                "en": "From Tsumaru (to be blocked/stuffed). Tsumaranai = Nothing sticks/matters."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "chán",
+                "nhàm chán",
+                "vô vị"
+            ],
+            "en": [
+                "boring",
+                "uninteresting"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "つまらない映画。",
+                "translation": {
+                    "vi": "Bộ phim nhàm chán.",
+                    "en": "A boring movie."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Phim chán nên cứ Tự (Tsu) mân (ma) mê ra (ra) cái tay.",
+            "en": "SUE, MA RAN (Tsumaran) away because it was BORING."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ガソリン",
+        "han_viet": "NONE",
+        "kana": "ガソリン",
+        "romaji": "gasorin",
+        "tags": [
+            "noun",
+            "katakana",
+            "unit-43"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,5",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh 'Gasoline'.",
+                "en": "Loanword from 'Gasoline'."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "xăng"
+            ],
+            "en": [
+                "petrol",
+                "gasoline"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ガソリンを入れる。",
+                "translation": {
+                    "vi": "Đổ xăng.",
+                    "en": "Put in gasoline."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Gà (Ga) sợ (so) mùi xăng.",
+            "en": "GASOLINE -> Gasorin. "
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "パンフレット",
+        "han_viet": "NONE",
+        "kana": "パンフレット",
+        "romaji": "panfuretto",
+        "tags": [
+            "noun",
+            "katakana",
+            "unit-43"
+        ],
+        "pitch_pattern": 5,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,5 L40,5 L50,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh 'Pamphlet'.",
+                "en": "Loanword from 'Pamphlet'."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "tờ rơi",
+                "tờ quảng cáo"
+            ],
+            "en": [
+                "pamphlet",
+                "brochure"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "パンフレットをもらう。",
+                "translation": {
+                    "vi": "Nhận tờ quảng cáo.",
+                    "en": "Get a pamphlet."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Păng (Pan) phu (fu) phát tờ rơi.",
+            "en": "PAMPHLET -> Panfuretto."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "わあ",
+        "han_viet": "NONE",
+        "kana": "わあ",
+        "romaji": "wā",
+        "tags": [
+            "interjection",
+            "unit-43"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L10,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Thán từ ngạc nhiên.",
+                "en": "Interjection of surprise."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "Ồ!",
+                "Chà!"
+            ],
+            "en": [
+                "Oh!",
+                "Wow!"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "わあ、すごい！",
+                "translation": {
+                    "vi": "Chà, ghê quá!",
+                    "en": "Wow, amazing!"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Woa -> Wa.",
+            "en": "Wow -> Waa."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ばら",
+        "han_viet": "TƯỜNG VI",
+        "kana": "ばら",
+        "romaji": "bara",
+        "tags": [
+            "noun",
+            "unit-43"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L10,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "薔薇",
+                    "han_viet": "TƯỜNG VI",
+                    "meaning": {
+                        "vi": "hoa hồng",
+                        "en": "rose"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Kanji Tường Vi (薔薇) rất khó viết, thường dùng Kana.",
+                "en": "Kanji is complex, usually written in Kana."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "hoa hồng"
+            ],
+            "en": [
+                "rose"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ばらの花。",
+                "translation": {
+                    "vi": "Hoa hồng.",
+                    "en": "Rose flower."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Bà ra (Bara) xem hoa hồng.",
+            "en": "A SHEEP (Baa) eating a Rose (Ra). [Image of red rose]"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ドライブ",
+        "han_viet": "NONE",
+        "word_surface": "ドライブ",
+        "han_viet": "NONE",
+        "kana": "ドライブ",
+        "romaji": "doraibu",
+        "tags": [
+            "noun",
+            "katakana",
+            "unit-43"
+        ],
+        "pitch_pattern": 2,
+        "pitch_svg_path": "M0,20 L10,5 L20,20 L30,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh 'Drive'.",
+                "en": "Loanword from 'Drive'."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "lái xe đi chơi",
+                "chuyến đi dạo bằng xe"
+            ],
+            "en": [
+                "driving",
+                "drive"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ドライブに行きます。",
+                "translation": {
+                    "vi": "Đi lái xe dạo mát.",
+                    "en": "Go for a drive."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Đồ lại (Dorai) xe để đi lái (bu).",
+            "en": "DRIVE -> Doraibu. "
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "丈夫［な］",
+        "han_viet": "TRƯỢNG PHU",
+        "kana": "じょうぶ［な］",
+        "romaji": "jōbu [na]",
+        "tags": [
+            "adj-na",
+            "unit-43"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L10,5 L20,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "丈",
+                    "han_viet": "TRƯỢNG",
+                    "meaning": {
+                        "vi": "đo lường, trượng phu",
+                        "en": "measure, sturdy"
+                    }
+                },
+                {
+                    "kanji": "夫",
+                    "han_viet": "PHU",
+                    "meaning": {
+                        "vi": "đàn ông, chồng",
+                        "en": "husband, man"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Trượng Phu (người đàn ông) thì phải khỏe mạnh, bền bỉ.",
+                "en": "A Man (夫) of stature (丈) is STRONG/DURABLE."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "khỏe mạnh",
+                "bền, chắc"
+            ],
+            "en": [
+                "strong",
+                "healthy",
+                "durable"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "この靴は丈夫です。",
+                "translation": {
+                    "vi": "Đôi giày này rất bền.",
+                    "en": "These shoes are durable."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "TRƯỢNG PHU (丈夫) thì khỏe mạnh.",
+            "en": "JOE (Jo) is my BOO (bu), he is very STRONG."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "センス",
+        "han_viet": "NONE",
+        "kana": "センス",
+        "romaji": "sensu",
+        "tags": [
+            "noun",
+            "katakana",
+            "unit-43"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L10,20 L20,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh 'Sense'.",
+                "en": "Loanword from 'Sense'."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "gu thẩm mỹ",
+                "khiếu, cảm giác"
+            ],
+            "en": [
+                "taste",
+                "sense"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "服のセンスがあります。",
+                "translation": {
+                    "vi": "Có gu ăn mặc.",
+                    "en": "Have good taste in clothing."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Sen (Sen) sứ (su) có gu thẩm mỹ.",
+            "en": "SENSE -> Sensu."
+        },
+        "confusions": [
+            {
+                "word": "扇子",
+                "explanation": {
+                    "mnemonic": {
+                        "vi": "Cũng đọc là Sensu nhưng nghĩa là cái quạt giấy.",
+                        "en": "Also pronounced 'Sensu' but means 'folding fan'."
+                    },
+                    "item1_nuance": {
+                        "vi": "Gu thẩm mỹ (Katakana)",
+                        "en": "Taste/Sense"
+                    },
+                    "item2_nuance": {
+                        "vi": "Quạt giấy (Kanji)",
+                        "en": "Folding fan"
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "word_surface": "会員",
+        "han_viet": "HỘI VIÊN",
+        "kana": "かいいん",
+        "romaji": "kaiin",
+        "tags": [
+            "noun",
+            "unit-43"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "会",
+                    "han_viet": "HỘI",
+                    "meaning": {
+                        "vi": "gặp gỡ, hội nhóm",
+                        "en": "meeting, association"
+                    }
+                },
+                {
+                    "kanji": "員",
+                    "han_viet": "VIÊN",
+                    "meaning": {
+                        "vi": "người, thành viên",
+                        "en": "member"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Hội (nhóm) + Viên (người).",
+                "en": "Kai (Meeting/Group) + In (Member)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "hội viên",
+                "thành viên"
+            ],
+            "en": [
+                "member"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "会員になります。",
+                "translation": {
+                    "vi": "Trở thành hội viên.",
+                    "en": "Become a member."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HỘI VIÊN (会員) phải đóng tiền.",
+            "en": "KAY (Kai) is IN (in) the club as a MEMBER."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "適当［な］",
+        "han_viet": "THÍCH ĐƯƠNG",
+        "kana": "てきとう［な］",
+        "romaji": "tekitō [na]",
+        "tags": [
+            "adj-na",
+            "unit-43"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "適",
+                    "han_viet": "THÍCH",
+                    "meaning": {
+                        "vi": "thích hợp",
+                        "en": "suitable"
+                    }
+                },
+                {
+                    "kanji": "当",
+                    "han_viet": "ĐƯƠNG",
+                    "meaning": {
+                        "vi": "tương đương, đúng",
+                        "en": "hit, right"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Thích (hợp) + Đương (đúng). Đôi khi dùng với nghĩa 'qua loa/đại khái'.",
+                "en": "Suitable (適) + Right (当). Can sometimes mean 'irresponsible/random' depending on context."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thích hợp",
+                "vừa phải"
+            ],
+            "en": [
+                "suitable",
+                "proper"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "適当な大きさ。",
+                "translation": {
+                    "vi": "Độ lớn thích hợp.",
+                    "en": "Suitable size."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THÍCH ĐƯƠNG (適当) là phù hợp.",
+            "en": "TECH (Teki) talk is TOO (tou) SUITABLE for him."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "収入",
+        "han_viet": "THU NHẬP",
+        "kana": "しゅうにゅう",
+        "romaji": "shūnyū",
+        "tags": [
+            "noun",
+            "unit-43"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,5 L40,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "収",
+                    "han_viet": "THU",
+                    "meaning": {
+                        "vi": "thu vào",
+                        "en": "income, obtain"
+                    }
+                },
+                {
+                    "kanji": "入",
+                    "han_viet": "NHẬP",
+                    "meaning": {
+                        "vi": "vào",
+                        "en": "enter"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Thu (nhận) + Nhập (vào). Tiền thu vào.",
+                "en": "Obtain (収) + Enter (入)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "thu nhập"
+            ],
+            "en": [
+                "income"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "収入が増える。",
+                "translation": {
+                    "vi": "Thu nhập tăng.",
+                    "en": "Income increases."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THU NHẬP (収入) cao.",
+            "en": "SHOE (Shuu) is NEW (nyuu), bought with my INCOME."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ぴったり",
+        "han_viet": "NONE",
+        "kana": "ぴったり",
+        "romaji": "pittari",
+        "tags": [
+            "adverb",
+            "unit-43"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ tượng thanh/tượng hình (Onomatopoeia).",
+                "en": "Onomatopoeia for things fitting tightly."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "vừa vặn",
+                "chính xác"
+            ],
+            "en": [
+                "exactly",
+                "just right"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "サイズがぴったりです。",
+                "translation": {
+                    "vi": "Kích cỡ vừa vặn.",
+                    "en": "The size is just right."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Bịt (Pit) lại vừa vặn.",
+            "en": "PIT (Pita) the cherry EXACTLY right."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "その上",
+        "han_viet": "THƯỢNG",
+        "kana": "そのうえ",
+        "romaji": "sonoue",
+        "tags": [
+            "conjunction",
+            "unit-43"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "上",
+                    "han_viet": "THƯỢNG",
+                    "meaning": {
+                        "vi": "trên",
+                        "en": "above"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Sono (cái đó) + Ue (trên). Trên cái đó -> Hơn nữa.",
+                "en": "Sono (that) + Ue (above/top). On top of that."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "hơn nữa",
+                "thêm vào đó"
+            ],
+            "en": [
+                "in addition to that",
+                "moreover"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "彼は親切で、その上頭がいい。",
+                "translation": {
+                    "vi": "Anh ấy tốt bụng, hơn nữa lại thông minh.",
+                    "en": "He is kind, and moreover, smart."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Ở trên (UE) cái đó (SONO).",
+            "en": "SO, NO (Sono) WAY (ue)? Moreover, yes."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "～と言います",
+        "han_viet": "NGÔN",
+        "kana": "～と いいます",
+        "romaji": "~to iimasu",
+        "tags": [
+            "phrase",
+            "unit-43"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L10,5 L20,5 L30,5 L40,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "言",
+                    "han_viet": "NGÔN",
+                    "meaning": {
+                        "vi": "nói",
+                        "en": "say"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Động từ Iu (nói). Dùng để giới thiệu tên.",
+                "en": "From Iu (to say)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "tên là ~",
+                "gọi là ~"
+            ],
+            "en": [
+                "(one's name) is ~",
+                "call ~"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ワンと言います。",
+                "translation": {
+                    "vi": "Tôi tên là Wang.",
+                    "en": "My name is Wang."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "NGÔN (言) ngữ để nói.",
+            "en": "Say IT (i) to the MASS (masu)."
+        },
+        "confusions": []
+    }
+]

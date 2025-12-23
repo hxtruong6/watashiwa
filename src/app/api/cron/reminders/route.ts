@@ -1,5 +1,5 @@
 import { prisma } from '@/lib/db';
-import { NotificationService } from '@/services/NotificationService';
+import { NotificationService } from '@/lib/notifications/NotificationService';
 import { NextResponse } from 'next/server';
 
 // Vercel Cron will hit this endpoint

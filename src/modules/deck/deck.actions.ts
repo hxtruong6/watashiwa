@@ -17,6 +17,7 @@ import { getUser } from '@/modules/auth/auth.actions';
 
 import { StudyData } from '@/modules/study/study.data';
 import { revalidatePath } from 'next/cache';
+import { cache } from 'react';
 import { z } from 'zod';
 
 import * as deckData from './deck.data';
@@ -291,3 +292,58 @@ export async function getDecks() {
 		return [];
 	}
 }
+
+/**
+ * Get decks with due counts for dashboard
+ */
+export const getDecksWithDue = cache(async (userId?: string) => {
+	try {
+		if (userId && !IdSchema.safeParse(userId).success) return [];
+
+		let uid = userId;
+		if (!uid) {
+			const user = await getUser();
+			if (!user) return [];
+			uid = user.id;
+		}
+
+		const decks = await prisma.deck.findMany({
+			where: {
+				OR: [{ isPublic: true }, { authorId: uid }],
+			},
+			include: {
+				_count: {
+					select: { vocabularies: true },
+				},
+			},
+			orderBy: {
+				createdAt: 'desc',
+			},
+		});
+
+		// Get due counts for each deck
+		const decksWithDue = await Promise.all(
+			decks.map(async (deck) => {
+				const dueCount = await prisma.userReview.count({
+					where: {
+						userId: uid,
+						nextReviewAt: { lte: new Date() },
+						vocab: { deckId: deck.id },
+					},
+				});
+
+				return {
+					id: deck.id,
+					title: deck.title,
+					cardCount: deck._count.vocabularies,
+					dueCount,
+				};
+			}),
+		);
+
+		return decksWithDue;
+	} catch (error) {
+		console.error('Error fetching decks with due:', error);
+		return [];
+	}
+});

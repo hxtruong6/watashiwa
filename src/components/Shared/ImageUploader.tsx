@@ -1,6 +1,6 @@
 'use client';
 
-import { UploadPurpose, getPresignedUrl } from '@/services/upload-actions';
+import { UploadPurpose, getPresignedUrl } from '@/lib/upload/upload.actions';
 import { DeleteOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Modal, Upload, message, theme } from 'antd';
 import type { UploadFile, UploadProps } from 'antd';

@@ -1,5 +1,5 @@
 import themeConfig from '@/lib/theme/themeConfig';
-import { getAdminStats } from '@/services/actions';
+import { getAdminStats } from '@/modules/admin/admin.actions';
 import { FireOutlined, ReadOutlined, UserOutlined } from '@ant-design/icons';
 import { Col, Row } from 'antd';
 import React from 'react';

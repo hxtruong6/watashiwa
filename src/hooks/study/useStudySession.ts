@@ -1,10 +1,6 @@
-import {
-	type StudyCardWithDetails,
-	getDailyProgress,
-	getReviewQueue,
-	submitReview,
-} from '@/services/actions';
-import { getCourseById } from '@/services/course-actions';
+import { getCourseById } from '@/modules/course/course.actions';
+import { getDailyProgress, getReviewQueue, submitReview } from '@/modules/study/study.actions';
+import type { StudyCardWithDetails } from '@/modules/study/study.types';
 import { App } from 'antd';
 import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useState } from 'react';

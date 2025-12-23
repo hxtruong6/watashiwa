@@ -1,5 +1,6 @@
 import themeConfig from '@/lib/theme/themeConfig';
-import { getReports, getUserWithRole } from '@/services/actions';
+import { getReports } from '@/modules/admin/admin.actions';
+import { getUserWithRole } from '@/modules/auth/auth.actions';
 import { UserRole } from '@prisma/client';
 import { redirect } from 'next/navigation';
 import React from 'react';

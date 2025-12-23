@@ -1,6 +1,6 @@
 'use client';
 
-import { updateUserSettings } from '@/services/actions';
+import { updateUserSettings } from '@/modules/user/user.actions';
 import {
 	FontSizeOutlined,
 	SettingOutlined,
