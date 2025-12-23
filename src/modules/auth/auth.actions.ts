@@ -56,3 +56,19 @@ export async function syncUser() {
 		return { success: false, error: 'Failed to sync user' };
 	}
 }
+
+/**
+ * Get authenticated user with their role from DB
+ * Useful for role-based access control checks
+ */
+export const getUserWithRole = cache(async () => {
+	const user = await getUser();
+	if (!user) return null;
+
+	const dbUser = await prisma.user.findUnique({
+		where: { id: user.id },
+		select: { id: true, role: true, name: true, email: true },
+	});
+
+	return dbUser;
+});

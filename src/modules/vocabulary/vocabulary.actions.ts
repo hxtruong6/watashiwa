@@ -1,5 +1,6 @@
 'use server';
 
+import { prisma } from '@/lib/db';
 import { executeSafeAction } from '@/modules/core/action-client';
 import { z } from 'zod';
 
@@ -236,5 +237,36 @@ export async function getVocabularyByStatus(status: string) {
 				confusions,
 			};
 		});
+	});
+}
+
+/**
+ * Get All Vocabulary for Current User (Studied Items)
+ * Replaces legacy getAllVocab/getAllKanji
+ */
+export async function getAllVocabulary() {
+	return executeSafeAction(z.void(), undefined, async (_data, { userId }) => {
+		if (!userId) throw new Error('Unauthorized');
+
+		const items = await prisma.vocabulary.findMany({
+			where: {
+				userReviews: {
+					some: { userId },
+				},
+			},
+			include: {
+				deck: true,
+				userReviews: {
+					where: { userId },
+					select: {
+						state: true,
+						nextReviewAt: true,
+						// due is effectively nextReviewAt in V2
+					},
+				},
+			},
+			orderBy: { createdAt: 'desc' },
+		});
+		return items;
 	});
 }

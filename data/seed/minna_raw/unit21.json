@@ -1,0 +1,1211 @@
+[
+  {
+    "word_surface": "あります［お祭りが～］",
+    "han_viet": "",
+    "kana": "あります［おまつりが～］",
+    "romaji": "arimasu [omatsuriga~]",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "[a festival] be held, take place"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "やめます［会社を～］",
+    "han_viet": "",
+    "kana": "やめます［かいしゃを～］",
+    "romaji": "yamemasu [kaishawo~]",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "quit or retire from [a company], stop, give up"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "むだ［な］",
+    "han_viet": "",
+    "kana": "むだ［な］",
+    "romaji": "muda [na]",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "wasteful"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "不便［な］",
+    "han_viet": "",
+    "kana": "ふべん［な］",
+    "romaji": "fuben [na]",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "inconvenient"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "すごい",
+    "han_viet": "",
+    "kana": "すごい",
+    "romaji": "sugoi",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "awful, great (expresses astonishment or admiration)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ほんとう",
+    "han_viet": "",
+    "kana": "ほんとう",
+    "romaji": "hontō",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "true"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "うそ",
+    "han_viet": "",
+    "kana": "うそ",
+    "romaji": "uso",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "lie"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ニュース",
+    "han_viet": "",
+    "kana": "ニュース",
+    "romaji": "nyūsu",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "news"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "アニメ",
+    "han_viet": "",
+    "kana": "アニメ",
+    "romaji": "anime",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "anime (Japanese animated film)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "マンガ",
+    "han_viet": "",
+    "kana": "マンガ",
+    "romaji": "manga",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "comic book"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "デザイン",
+    "han_viet": "",
+    "kana": "デザイン",
+    "romaji": "dezain",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "design, artwork"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "たぶん",
+    "han_viet": "",
+    "kana": "たぶん",
+    "romaji": "tabun",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "probably, perhaps, maybe"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "きっと",
+    "han_viet": "",
+    "kana": "きっと",
+    "romaji": "kitto",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "surely, definitely"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ほんとうに",
+    "han_viet": "",
+    "kana": "ほんとうに",
+    "romaji": "hontōni",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "really"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "そんなに",
+    "han_viet": "",
+    "kana": "そんなに",
+    "romaji": "sonnani",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "not so (used with negatives)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "～に ついて",
+    "han_viet": "",
+    "kana": "～に ついて",
+    "romaji": "~ni tsuite",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "about ～, concerning ～"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "久しぶりですね。",
+    "han_viet": "",
+    "kana": "ひさしぶりですね。",
+    "romaji": "hisashiburidesune.",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "It's been a long time [since we last met]."
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "～でも 飲みませんか。",
+    "han_viet": "",
+    "kana": "～でも のみませんか。",
+    "romaji": "~demo nomimasenka.",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "How about drinking ～ or something?"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "もちろん",
+    "han_viet": "",
+    "kana": "もちろん",
+    "romaji": "mochiron",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "of course"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "もう 帰らないと……。",
+    "han_viet": "",
+    "kana": "もう かえらないと……。",
+    "romaji": "mō kaeranaito…….",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "I have to get home now......"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "アインシュタイン",
+    "han_viet": "",
+    "kana": "アインシュタイン",
+    "romaji": "ainshutain",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Albert Einstein (1879-1955)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ガガーリン",
+    "han_viet": "",
+    "kana": "ガガーリン",
+    "romaji": "gagārin",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Yuri Alekseyevich Gagarin (1934-1968)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ガリレオ",
+    "han_viet": "",
+    "kana": "ガリレオ",
+    "romaji": "garireo",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Galileo Galilei (1564-1642)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "キング牧師",
+    "han_viet": "",
+    "kana": "キングぼくし",
+    "romaji": "kingubokushi",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Martin Luther King, Jr. (1929-1968)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "フランクリン",
+    "han_viet": "",
+    "kana": "フランクリン",
+    "romaji": "furankurin",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Benjamin Franklin (1706-1790)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "かぐや姫",
+    "han_viet": "",
+    "kana": "かぐやひめ",
+    "romaji": "kaguyahime",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Princess Kaguya (heroine of the old Japanese folk tale 'Taketori Monogatari')"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "天神祭",
+    "han_viet": "",
+    "kana": "てんじんまつり",
+    "romaji": "tenjinmatsuri",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Tenjin Festival (a festival in Osaka)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "吉野山",
+    "han_viet": "",
+    "kana": "よしのやま",
+    "romaji": "yoshinoyama",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Mt. Yoshino (a mountain in Nara Prefecture)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "カンガルー",
+    "han_viet": "",
+    "kana": "カンガルー",
+    "romaji": "kangarū",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "kangaroo"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "キャプテン・クック",
+    "han_viet": "",
+    "kana": "キャプテン・クック",
+    "romaji": "kyaputen kukku",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Captain James Cook (1728-1779)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ヨーネン",
+    "han_viet": "",
+    "kana": "ヨーネン",
+    "romaji": "yōnen",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "a fictitious company"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "スピーチ",
+    "han_viet": "",
+    "kana": "スピーチ",
+    "romaji": "supiichi",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "speech (～を します : talk, tell a story)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "アルバイト",
+    "han_viet": "",
+    "kana": "アルバイト",
+    "romaji": "arubaito",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "side job (～を します : work part time)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ユーモア",
+    "han_viet": "",
+    "kana": "ユーモア",
+    "romaji": "yūmoa",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "humor"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "むだ",
+    "han_viet": "",
+    "kana": "むだ",
+    "romaji": "muda",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "waste"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ラッシュ",
+    "han_viet": "",
+    "kana": "ラッシュ",
+    "romaji": "rasshu",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "rush hour"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "しかたが ありません。",
+    "han_viet": "",
+    "kana": "しかたが ありません。",
+    "romaji": "shikataga arimasen.",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "There is no other choice./It can't be helped."
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "しばらくですね。",
+    "han_viet": "",
+    "kana": "しばらくですね。",
+    "romaji": "shibarakudesune.",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "It's been a long time (since I last saw you)./Long time no see."
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "見ないと……。",
+    "han_viet": "",
+    "kana": "みないと……。",
+    "romaji": "minaito…….",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "I've got to watch it."
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-21"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  }
+]

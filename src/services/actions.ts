@@ -4,9 +4,24 @@ import { hasRole, requireRole } from '@/lib/auth/roleGuard';
 import { getStartOfDayInTimezone } from '@/lib/date-utils';
 import { prisma } from '@/lib/db';
 import { getUser } from '@/modules/auth/auth.actions';
-import { createClient } from '@/utils/supabase/server';
-import { Kanji, ReportStatus, ReportType, StudyCard, User, UserRole, Vocab } from '@prisma/client';
-import { revalidatePath } from 'next/cache';
+import { getDeck, getDecks } from '@/modules/deck/deck.actions';
+// getUser moved to @/modules/auth/auth.actions
+import {
+	completeTutorial,
+	getCompletedTutorials,
+	getUserSettings,
+	recalculateUserStreak,
+	updateUserAvatar,
+	updateUserSettings,
+} from '@/modules/user/user.actions';
+/**
+ * Fetch all Vocabulary for the current user (from all decks user has access to)
+ */
+// Vocab/Kanji getters replaced by unified getAllVocabulary
+import { getAllVocabulary } from '@/modules/vocabulary/vocabulary.actions';
+// Update actions mapped to unified updateContent
+import { updateContent } from '@/modules/vocabulary/vocabulary.actions';
+import { UserReview, Vocabulary } from '@prisma/client';
 import { cache } from 'react';
 import { Card, Rating, State, fsrs, generatorParameters } from 'ts-fsrs';
 import { z } from 'zod';
@@ -26,64 +41,11 @@ const SubmitReviewSchema = z.object({
 	deckIdOrIds: DeckIdOrIdsSchema,
 });
 
-const UpdateAvatarSchema = z.object({
-	avatarUrl: z.string().url(),
-});
+// Update schemas removed, logic moved to @/modules/vocabulary/vocabulary.actions.ts
 
-const UserSettingsSchema = z.object({
-	limitNewCards: z.number().int().min(0).optional(),
-	limitReviews: z.number().int().min(0).optional(),
-	allowSpaceKey: z.boolean().optional(),
-	spaceKeyRating: z.number().int().min(1).max(4).optional(),
-	autoShowAnswer: z.boolean().optional(),
-	autoShowAnswerDelay: z.number().int().min(0).optional(),
-	timezone: z.string().optional(),
-	language: z.string().optional(),
-});
-
-const ReportSchema = z
-	.object({
-		vocabId: z.string().optional(),
-		kanjiId: z.string().optional(),
-		type: z.nativeEnum(ReportType),
-		field: z.string().optional(),
-		currentValue: z.string().optional(),
-		suggestedValue: z.string().optional(),
-		notes: z.string().optional(),
-	})
-	.refine((data) => data.vocabId || data.kanjiId, {
-		message: 'Must specify a Vocab or Kanji ID',
-		path: ['vocabId'],
-	});
-
-const ResolveReportSchema = z.object({
-	reportId: IdSchema,
-	action: z.enum(['ACCEPT', 'REJECT']),
-	resolutionStr: z.string().optional(),
-});
-
-const UpdateVocabSchema = z.object({
-	wordSurface: z.string().min(1).optional(),
-	readingKana: z.string().min(1).optional(),
-	meaning: z.string().min(1).optional(),
-	exampleSentence: z.any().optional(),
-	wordParts: z.any().optional(),
-});
-
-const UpdateKanjiSchema = z.object({
-	kanji: z.string().min(1).optional(),
-	onyomi: z.string().optional(),
-	kunyomi: z.string().optional(),
-	meaning: z.string().optional(),
-	examples: z.any().optional(),
-});
-
-export type StudyCardWithDetails = StudyCard & {
-	vocab?: (Vocab & { _count?: { cardComments: number } }) | null;
-	kanji?: (Kanji & { _count?: { cardComments: number } }) | null;
+export type StudyCardWithDetails = UserReview & {
+	vocab?: (Vocabulary & { _count?: { cardComments: number } }) | null;
 };
-
-// getUser moved to @/modules/auth/auth.actions
 
 /**
  * Get the next card due for review for the CURRENT user
@@ -615,76 +577,9 @@ export async function getLeaderboard() {
  * Get all decks accessible to the current user (public + owned).
  * Decks are sorted by sortOrder (if set), then by createdAt (newest first).
  */
-export async function getDecks() {
-	try {
-		const user = await getUser();
-		if (!user) return [];
-
-		const decks = await prisma.deck.findMany({
-			where: {
-				OR: [{ isPublic: true }, { authorId: user.id }],
-			},
-			include: {
-				_count: {
-					select: { vocab: true, kanji: true },
-				},
-			},
-			orderBy: [
-				{ sortOrder: 'asc' }, // Primary: explicit sort order
-				{ createdAt: 'desc' }, // Fallback: newest first
-			],
-		});
-
-		return decks;
-	} catch (error) {
-		console.error('Error fetching decks:', error);
-		return [];
-	}
-}
-
-// syncUser moved to @/modules/auth/auth.actions
-
-export async function updateUserAvatar(avatarUrl: string) {
-	try {
-		const validation = UpdateAvatarSchema.safeParse({ avatarUrl });
-		if (!validation.success) {
-			return { success: false, error: 'Invalid avatar URL' };
-		}
-
-		const user = await getUser();
-		if (!user) return { success: false, error: 'Unauthorized' };
-
-		await prisma.user.update({
-			where: { id: user.id },
-			data: { avatarUrl },
-		});
-
-		// Also update Supabase metadata if possible?
-		// Supabase Auth metadata is separate, but we primarily use it for initial sync.
-		// For now, we rely on our App's User table for the displayed avatar if we switch to using it.
-		// However, NavBar uses `user?.user_metadata?.avatar_url`.
-		// We might need to update Supabase User Metadata OR change NavBar to use Prisma User.
-		// Given time constraints, updating Prisma User is robust.
-		// But NavBar fetches `getUser()` which returns Supabase User.
-		// We should probably update Supabase too.
-
-		const supabase = await createClient();
-		const { error } = await supabase.auth.updateUser({
-			data: { avatar_url: avatarUrl },
-		});
-
-		if (error) {
-			console.error('Error updating supabase user metadata:', error);
-			// Continue, as we updated Prisma
-		}
-
-		revalidatePath('/');
-		return { success: true };
-	} catch (error) {
-		console.error('Error updating avatar:', error);
-		return { success: false, error: 'Failed to update avatar' };
-	}
-}
+// getDecks moved to @/modules/deck/deck.actions.ts
+// updateUserAvatar moved to @/modules/user/user.actions.ts
+export { getDecks, updateUserAvatar };
 
 /**
  * Get count of cards due for review
@@ -759,72 +654,10 @@ export const getUserStats = cache(async (userId?: string) => {
 
 /**
  * Mark a tutorial step/flow as completed
- * Stores strictly in the `tutorials` JSON column
+ * Stores in the `preferences.tutorials` JSON structure
  */
-export async function completeTutorial(tutorialId: string) {
-	try {
-		if (!IdSchema.safeParse(tutorialId).success) {
-			return { success: false, error: 'Invalid tutorial ID' };
-		}
-
-		const user = await getUser();
-		if (!user) return { success: false, error: 'Unauthorized' };
-
-		// Fetch current tutorials
-		const currentUser = await prisma.user.findUnique({
-			where: { id: user.id },
-			select: { tutorials: true },
-		});
-
-		const currentTutorials = (currentUser?.tutorials as Record<string, boolean>) || {};
-
-		// If already completed, skip update
-		if (currentTutorials[tutorialId]) {
-			return { success: true };
-		}
-
-		// Update DB
-		// Note: We merging new key into existing JSON
-		await prisma.user.update({
-			where: { id: user.id },
-			data: {
-				tutorials: {
-					...currentTutorials,
-					[tutorialId]: true,
-				},
-			},
-		});
-
-		// Revalidate paths to ensure next fetch gets fresh data
-		revalidatePath('/study');
-		revalidatePath('/dashboard');
-
-		return { success: true };
-	} catch (error) {
-		console.error('Error completing tutorial:', error);
-		return { success: false, error: 'Failed to complete tutorial' };
-	}
-}
-
-/**
- * Get user's completed tutorials
- */
-export async function getCompletedTutorials() {
-	try {
-		const user = await getUser();
-		if (!user) return {};
-
-		const userData = await prisma.user.findUnique({
-			where: { id: user.id },
-			select: { tutorials: true },
-		});
-
-		return (userData?.tutorials as Record<string, boolean>) || {};
-	} catch (error) {
-		console.error('Error fetching tutorials:', error);
-		return {};
-	}
-}
+// completeTutorial and getCompletedTutorials moved to @/modules/user/user.actions.ts
+export { completeTutorial, getCompletedTutorials };
 
 /**
  * Get the last study session information for the current user.
@@ -868,211 +701,17 @@ export async function getLastStudySession() {
  * Recalculate and update the user's current streak
  * Logic: Consecutive days ending Today OR Yesterday.
  */
-export async function recalculateUserStreak(userId: string) {
-	try {
-		if (!IdSchema.safeParse(userId).success) return 0;
-
-		// Fetch all review dates for the user
-		// Optimization: We could limit to last 365 days or something if logs get huge
-		const logs = await prisma.reviewLog.findMany({
-			where: { userId },
-			select: { review: true },
-			orderBy: { review: 'desc' },
-		});
-
-		if (logs.length === 0) {
-			await prisma.user.update({ where: { id: userId }, data: { currentStreak: 0 } });
-			return 0;
-		}
-
-		// Normalize to YYYY-MM-DD Set
-		// Use user's local time?
-		// "Streak" is typically based on the user's perceived "Days".
-		// Ideally we use the user's timezone. For now, we'll use Server Time/UTC to be consistent with 'startOfDay' used elsewhere.
-		// If we want to be perfect, we should store timezone in User settings (which we added!).
-		// For now, let's assume default/UTC to keep it simple and consistent with other actions.
-		const uniqueDates = new Set<string>();
-		logs.forEach((log) => {
-			uniqueDates.add(log.review.toISOString().split('T')[0]); // YYYY-MM-DD
-		});
-
-		const today = new Date();
-		const todayStr = today.toISOString().split('T')[0];
-
-		const yesterday = new Date();
-		yesterday.setDate(yesterday.getDate() - 1);
-
-		let streak = 0;
-
-		// Check Today
-		if (uniqueDates.has(todayStr)) {
-			streak++;
-		}
-
-		// Walk backwards from Yesterday
-		const currentCheck = new Date(yesterday);
-		while (true) {
-			const checkStr = currentCheck.toISOString().split('T')[0];
-			if (uniqueDates.has(checkStr)) {
-				streak++;
-				currentCheck.setDate(currentCheck.getDate() - 1);
-			} else {
-				// If today is NOT present, we MUST have Yesterday to keep the streak alive.
-				// If we have Today (streak=1), and misses Yesterday -> Streak is 1.
-				if (streak === 0) {
-					// We didn't have today, and we don't have this check (yesterday).
-					// Streak is broken/zero.
-					break;
-				} else {
-					// We had some streak (maybe just Today), but hit a gap.
-					// However, if we didn't have Today, we already checked Yesterday effectively here.
-					// Wait, the logic: "If Today is missing, Streak continues from Yesterday".
-					// If Today is present, Streak continues from Yesterday.
-					// So actually we ALWAYS check backwards from Yesterday.
-					// BUT, if Today is missing AND Yesterday is missing, the loop breaks instantly at Yesterday.
-					break;
-				}
-			}
-		}
-
-		// Update User
-		await prisma.user.update({
-			where: { id: userId },
-			data: { currentStreak: streak },
-		});
-
-		return streak;
-	} catch (error) {
-		console.error('Error recalculating streak:', error);
-		return 0;
-	}
-}
+// recalculateUserStreak moved to @/modules/user/user.actions.ts
+export { recalculateUserStreak };
 
 /**
  * Fetch a single deck by ID with vocab
  */
-export async function getDeck(id: string) {
-	try {
-		if (!IdSchema.safeParse(id).success) return null;
+// getDeck moved to @/modules/deck/deck.actions.ts
+export { getDeck };
 
-		const user = await getUser();
-		if (!user) return null;
-
-		const deck = await prisma.deck.findFirst({
-			where: {
-				id,
-				OR: [{ isPublic: true }, { authorId: user.id }],
-			},
-			include: {
-				vocab: {
-					orderBy: { createdAt: 'desc' },
-					include: {
-						_count: {
-							select: { cardComments: true },
-						},
-					},
-				},
-				kanji: {
-					orderBy: { createdAt: 'desc' },
-					include: {
-						_count: {
-							select: { cardComments: true },
-						},
-					},
-				},
-				_count: {
-					select: { vocab: true, kanji: true },
-				},
-			},
-		});
-
-		if (!deck) return null;
-
-		// Calculate Stats for User
-		const studyCards = await prisma.studyCard.findMany({
-			where: {
-				userId: user.id,
-				OR: [{ vocab: { deckId: id } }, { kanji: { deckId: id } }],
-			},
-			select: { state: true },
-		});
-
-		const stats = {
-			total: deck._count.vocab + deck._count.kanji,
-			started: studyCards.length,
-			new: studyCards.filter((c) => c.state === 0).length,
-			learning: studyCards.filter((c) => c.state === 1 || c.state === 3).length,
-			review: studyCards.filter((c) => c.state === 2).length,
-			unseen: deck._count.vocab + deck._count.kanji - studyCards.length,
-		};
-
-		return { ...deck, stats };
-	} catch (error) {
-		console.error('Error fetching deck:', error);
-		return null;
-	}
-}
-
-/**
- * Fetch all Vocabulary for the current user (from all decks user has access to)
- */
-export async function getAllVocab() {
-	try {
-		const user = await getUser();
-		if (!user) return [];
-
-		// Fetch only Vocab that the user is actually studying (has a StudyCard)
-		const vocab = await prisma.vocab.findMany({
-			where: {
-				studyCards: {
-					some: { userId: user.id },
-				},
-			},
-			include: {
-				deck: true,
-				studyCards: {
-					where: { userId: user.id },
-					select: { state: true, due: true },
-				},
-			},
-			orderBy: { createdAt: 'desc' },
-		});
-		return vocab;
-	} catch (error) {
-		console.error('Error fetching all vocab:', error);
-		return [];
-	}
-}
-
-/**
- * Fetch all Kanji for the current user
- */
-export async function getAllKanji() {
-	try {
-		const user = await getUser();
-		if (!user) return [];
-
-		const kanji = await prisma.kanji.findMany({
-			where: {
-				studyCards: {
-					some: { userId: user.id },
-				},
-			},
-			include: {
-				deck: true,
-				studyCards: {
-					where: { userId: user.id },
-					select: { state: true, due: true },
-				},
-			},
-			orderBy: { createdAt: 'desc' },
-		});
-		return kanji;
-	} catch (error) {
-		console.error('Error fetching all kanji:', error);
-		return [];
-	}
-}
+export const getAllVocab = getAllVocabulary;
+export const getAllKanji = getAllVocabulary;
 
 /**
  * Get weekly review stats for the chart (last 7 days)
@@ -1176,7 +815,7 @@ export const getDecksWithDue = cache(async (userId?: string) => {
 			},
 			include: {
 				_count: {
-					select: { vocab: true, kanji: true },
+					select: { vocabularies: true },
 				},
 			},
 			orderBy: {
@@ -1214,137 +853,8 @@ export const getDecksWithDue = cache(async (userId?: string) => {
 /**
  * Fetch User Settings (Limits and Preferences)
  */
-export const getUserSettings = cache(async (userId?: string) => {
-	try {
-		if (userId && !IdSchema.safeParse(userId).success) return null;
-
-		let uid = userId;
-		if (!uid) {
-			const user = await getUser();
-			if (!user) return null;
-			uid = user.id;
-		}
-
-		const settings = await prisma.user.findUnique({
-			where: { id: uid },
-			select: {
-				limitNewCards: true,
-				limitReviews: true,
-				allowSpaceKey: true,
-				spaceKeyRating: true,
-				autoShowAnswer: true,
-				autoShowAnswerDelay: true,
-			},
-		});
-
-		return settings;
-	} catch (error) {
-		console.error('Error fetching user settings:', error);
-		return null;
-	}
-});
-
-/**
- * Get daily progress stats for the user
- */
-export const getDailyProgress = cache(async () => {
-	try {
-		const user = await getUser();
-		if (!user) return null;
-
-		// 1. Get Limits & Timezone
-		const userConfig = await prisma.user.findUnique({
-			where: { id: user.id },
-			select: { limitReviews: true, limitNewCards: true, timezone: true },
-		});
-		const limitReviews = userConfig?.limitReviews ?? 200;
-		const limitNewCards = userConfig?.limitNewCards ?? 20;
-		const timezone = userConfig?.timezone ?? 'UTC';
-
-		// 2. Get Today's Counts (Timezone Aware)
-		const startOfDay = getStartOfDayInTimezone(timezone);
-
-		const reviewsToday = await prisma.reviewLog.count({
-			where: {
-				userId: user.id,
-				review: { gte: startOfDay },
-			},
-		});
-
-		const newCardsToday = await prisma.studyCard.count({
-			where: {
-				userId: user.id,
-				createdAt: { gte: startOfDay },
-				state: 0,
-			},
-		});
-
-		// 3. Get Due Count
-		const dueCount = await prisma.studyCard.count({
-			where: {
-				userId: user.id,
-				due: { lte: new Date() },
-			},
-		});
-
-		// 4. Get Actual Reviews Available (State != 0)
-		const reviewsAvailable = await prisma.studyCard.count({
-			where: {
-				userId: user.id,
-				state: { not: 0 },
-				due: { lte: new Date() },
-			},
-		});
-
-		return {
-			reviewsToday,
-			limitReviews,
-			newCardsToday,
-			limitNewCards,
-			dueCount,
-			reviewsAvailable,
-		};
-	} catch (error) {
-		console.error('Error fetching daily progress:', error);
-		return null;
-	}
-});
-
-/**
- * Update User Settings
- */
-export async function updateUserSettings(data: Partial<User>) {
-	try {
-		const validation = UserSettingsSchema.safeParse(data);
-		if (!validation.success) {
-			return { success: false, error: 'Invalid settings data' };
-		}
-
-		const user = await getUser();
-		if (!user) return { success: false, error: 'Unauthorized' };
-
-		// update
-		await prisma.user.update({
-			where: { id: user.id },
-			data: {
-				limitNewCards: data.limitNewCards,
-				limitReviews: data.limitReviews,
-				allowSpaceKey: data.allowSpaceKey,
-				spaceKeyRating: data.spaceKeyRating,
-				autoShowAnswer: data.autoShowAnswer,
-				autoShowAnswerDelay: data.autoShowAnswerDelay,
-				timezone: data.timezone,
-				language: data.language,
-				updatedAt: new Date(),
-			},
-		});
-
-		return { success: true };
-	} catch (error) {
-		console.error('Error updating user settings:', error);
-		return { success: false, error: 'Failed to update settings' };
-	}
-}
+// User settings actions moved to @/modules/user/user.actions.ts
+export { getUserSettings, updateUserSettings };
 
 /**
  * Get dashboard data (combined call for efficiency)
@@ -1401,240 +911,19 @@ export const getUserWithRole = cache(async () => {
 	return dbUser;
 });
 
-/**
- * Get stats for Admin Dashboard
- * Requires MODERATOR or higher
- */
-export async function getAdminStats() {
-	try {
-		const currentUser = await getUserWithRole();
-		requireRole(currentUser?.role, UserRole.MODERATOR);
+// getAdminStats moved to @/modules/admin/admin.actions.ts
 
-		const [userCount, reviewCount, activeToday] = await Promise.all([
-			prisma.user.count(),
-			prisma.reviewLog.count(),
-			prisma.user.count({
-				where: {
-					OR: [
-						{ lastLogin: { gte: new Date(new Date().setHours(0, 0, 0, 0)) } },
-						{ updatedAt: { gte: new Date(new Date().setHours(0, 0, 0, 0)) } },
-					],
-				},
-			}),
-		]);
+// getAllUsers moved to @/modules/admin/admin.actions.ts
 
-		return { userCount, reviewCount, activeToday };
-	} catch (error) {
-		console.error('Admin stats error:', error);
-		throw error; // Let UI handle it
-	}
+// updateUserRole moved to @/modules/admin/admin.actions.ts
+
+// Report actions moved to @/modules/admin/admin.actions.ts
+export * from '@/modules/admin/admin.actions';
+
+export async function updateVocab(id: string, data: any) {
+	return updateContent({ id, data });
 }
 
-/**
- * Get all users for management
- * Requires ADMIN
- */
-export async function getAllUsers() {
-	try {
-		const currentUser = await getUserWithRole();
-		requireRole(currentUser?.role, UserRole.ADMIN);
-
-		// Limit to 100 for now
-		return await prisma.user.findMany({
-			take: 100,
-			orderBy: { createdAt: 'desc' },
-		});
-	} catch (error) {
-		console.error('Get users error:', error);
-		return [];
-	}
-}
-
-/**
- * Update a user's role
- * Requires ADMIN
- */
-export async function updateUserRole(targetUserId: string, newRole: UserRole) {
-	try {
-		if (!IdSchema.safeParse(targetUserId).success)
-			return { success: false, error: 'Invalid User ID' };
-
-		const currentUser = await getUserWithRole();
-		requireRole(currentUser?.role, UserRole.ADMIN);
-
-		const updatedUser = await prisma.user.update({
-			where: { id: targetUserId },
-			data: { role: newRole },
-		});
-		return { success: true, data: updatedUser };
-	} catch (error) {
-		console.error('Error updating user role:', error);
-		return { success: false, error: 'Failed to update user role' };
-	}
-}
-
-// --- Card Reporting Actions ---
-
-export async function submitReport(data: {
-	vocabId?: string;
-	kanjiId?: string;
-	type: ReportType;
-	field?: string;
-	currentValue?: string;
-	suggestedValue?: string;
-	notes?: string;
-}) {
-	try {
-		const validation = ReportSchema.safeParse(data);
-		if (!validation.success) {
-			return { success: false, error: validation.error.issues[0].message };
-		}
-
-		const user = await getUser();
-		if (!user) return { success: false, error: 'Unauthorized' };
-
-		// Basic Validation: Must define what is reported
-		if (!data.vocabId && !data.kanjiId) {
-			return { success: false, error: 'Must specify a Vocab or Kanji ID' };
-		}
-
-		await prisma.cardReport.create({
-			data: {
-				reporterId: user.id,
-				vocabId: data.vocabId,
-				kanjiId: data.kanjiId,
-				type: data.type,
-				field: data.field,
-				currentValue: data.currentValue,
-				suggestedValue: data.suggestedValue,
-				notes: data.notes,
-			},
-		});
-
-		return { success: true };
-	} catch (error) {
-		console.error('Error submitting report:', error);
-		return { success: false, error: 'Failed to submit report' };
-	}
-}
-
-export async function getReports(limit: number = 50, status: ReportStatus = ReportStatus.PENDING) {
-	try {
-		const user = await getUserWithRole();
-		if (!user || user.role === UserRole.USER) {
-			return { success: false, error: 'Unauthorized' };
-		}
-
-		const reports = await prisma.cardReport.findMany({
-			where: { status },
-			take: limit,
-			orderBy: { createdAt: 'desc' },
-			include: {
-				reporter: { select: { name: true, email: true } },
-				vocab: true, // Fetch full vocab details
-				kanji: true, // Fetch full kanji details
-			},
-		});
-		return { success: true, data: reports };
-	} catch (error) {
-		console.error('Error fetching reports:', error);
-		return { success: false, error: 'Failed to fetch reports' };
-	}
-}
-
-export async function resolveReport(
-	reportId: string,
-	action: 'ACCEPT' | 'REJECT',
-	resolutionStr?: string,
-) {
-	try {
-		const validation = ResolveReportSchema.safeParse({ reportId, action, resolutionStr });
-		if (!validation.success) {
-			return { success: false, error: 'Invalid resolution data' };
-		}
-
-		const currentUser = await getUserWithRole();
-		if (!currentUser || !hasRole(currentUser.role, UserRole.MODERATOR)) {
-			return { success: false, error: 'Unauthorized' };
-		}
-
-		const status = action === 'ACCEPT' ? ReportStatus.ACCEPTED : ReportStatus.REJECTED;
-
-		const updated = await prisma.cardReport.update({
-			where: { id: reportId },
-			data: {
-				status,
-				resolution: resolutionStr,
-				resolvedById: currentUser.id,
-				resolvedAt: new Date(),
-			},
-		});
-
-		// Logic for points could go here (e.g. if ACCEPT => awarding points to reporter)
-		if (status === ReportStatus.ACCEPTED) {
-			// Placeholder: await awardPoints(updated.reporterId, 5);
-			console.log(`Accepted report ${reportId}, would award points to ${updated.reporterId}`);
-		}
-
-		return { success: true };
-	} catch (error) {
-		console.error('Error resolving report:', error);
-		return { success: false, error: 'Failed to resolve report' };
-	}
-}
-
-export async function updateVocab(id: string, data: Partial<Vocab>) {
-	try {
-		if (!IdSchema.safeParse(id).success) return { success: false, error: 'Invalid ID' };
-		const validation = UpdateVocabSchema.safeParse(data);
-		if (!validation.success) return { success: false, error: 'Invalid data' };
-
-		const user = await getUserWithRole();
-		if (!user || !hasRole(user.role, UserRole.MODERATOR)) {
-			return { success: false, error: 'Unauthorized' };
-		}
-
-		await prisma.vocab.update({
-			where: { id },
-			data: {
-				wordSurface: data.wordSurface,
-				readingKana: data.readingKana,
-				meaning: data.meaning,
-				exampleSentence: data.exampleSentence as any,
-				wordParts: data.wordParts as any,
-			},
-		});
-		return { success: true };
-	} catch (error) {
-		console.error('Error updating vocab:', error);
-		return { success: false, error: 'Failed to update vocab' };
-	}
-}
-
-export async function updateKanji(id: string, data: Partial<Kanji>) {
-	try {
-		if (!IdSchema.safeParse(id).success) return { success: false, error: 'Invalid ID' };
-		const validation = UpdateKanjiSchema.safeParse(data);
-		if (!validation.success) return { success: false, error: 'Invalid data' };
-
-		const user = await getUserWithRole();
-		if (!user || !hasRole(user.role, UserRole.MODERATOR)) {
-			return { success: false, error: 'Unauthorized' };
-		}
-
-		await prisma.kanji.update({
-			where: { id },
-			data: {
-				kanji: data.kanji,
-				onyomi: data.onyomi,
-				kunyomi: data.kunyomi,
-				meaning: data.meaning,
-				examples: data.examples as any,
-			},
-		});
-		return { success: true };
-	} catch (error) {
-		console.error('Error updating kanji:', error);
-		return { success: false, error: 'Failed to update kanji' };
-	}
+export async function updateKanji(id: string, data: any) {
+	return updateContent({ id, data });
 }

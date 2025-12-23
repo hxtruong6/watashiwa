@@ -7,13 +7,15 @@ async function main() {
 	let user = await prisma.user.findFirst();
 	if (!user) {
 		console.log('No user found, creating default user...');
-		user = await prisma.user.create({
-			data: {
+		user = await prisma.user.upsert({
+			where: { id: ADMIN_USER_ID },
+			create: {
 				id: ADMIN_USER_ID,
-				email: 'admin@watashi.app',
+				email: 'admin@watashiwa.app',
 				name: 'WatashiWa',
 				role: 'ADMIN',
 			},
+			update: {},
 		});
 	}
 	console.log(`Created user: ${user.email} (${user.id})`);

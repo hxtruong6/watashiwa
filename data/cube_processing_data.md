@@ -2,8 +2,8 @@
 
 > **Objective**: Generate Japanese Vocabulary Data that is "Native-Level" accurate for both Vietnamese and English learners, enforcing a strict separation of concerns between Hán-Việt (VN) and Pictographic/Phonetic (EN) mnemonics.
 
-> **Source**: `data/All Decks_2.txt`
-> **Destination**: `data/seed/minna_1/unitXX.json`
+> **Source**: `data/seed/minna_raw` folder for each unit
+> **Destination**: `data/seed/minna_2/unitXX.json` for units from 26 to 50
 
 ## Unit Tracking
 
@@ -37,14 +37,14 @@
 | **26** | [x]    | 55           | 1158-1212      | `見ます`, `探します` (Actual: 20)                     |
 | **27** | [x]        | 43           | 1213-1255      | `飼います` (Source: `All Decks_2.txt`)                |
 | **28** | [x] (Verified - Generated Manually) | 38           | 1243-1285      | `かみます`, `売れます` (Source: `All Decks_2.txt`)    |
-| **29** | ⏳ Pending | 37           | 146-182        | `開きます` (Source: `MinaN4_26_38.txt`)               |
+| **29** | [x] (Verified - Generated Manually) | 37           | 1295-1341      | `開きます` (Source: `All Decks_2.txt`)                |
 | **30** | ⏳ Pending | 41           | 183-223        | `貼ります` (Source: `MinaN4_26_38.txt`)               |
 | **31** | ⏳ Pending | 53           | 224-276        | `生活します` (Source: `MinaN4_26_38.txt`)             |
 | **32** | ⏳ Pending | 40           | 277-316        | `運動します` (Source: `MinaN4_26_38.txt`)             |
 | **33** | ⏳ Pending | 46           | 317-362        | `逃げます` (Source: `MinaN4_26_38.txt`)               |
 | **34** | ⏳ Pending | 39           | 363-401        | `磨きます` (Source: `MinaN4_26_38.txt`)               |
 | **35** | ⏳ Pending | 30           | 402-431        | `咲きます` (Source: `MinaN4_26_38.txt`)               |
-| **36** | ⏳ Pending | 42           | 432-473        | `貯金します` (Source: `MinaN4_26_38.txt`)             |
+| **36** | [x] (Verified - Generated Manually) | 40           | 432-473        | `貯金します` (Source: `ref_minna_vocab.yaml`)         |
 | **37** | ⏳ Pending | 50           | 474-523        | `褒めます` (Source: `MinaN4_26_38.txt`)               |
 | **38** | ⏳ Pending | 37           | 524-560        | `参加します` (Source: `MinaN4_26_38.txt`)             |
 | **39** | ⏳ Pending | 61           | 3-63           | `びっくりします` (Source: `MinaN4_39_50.txt`)         |

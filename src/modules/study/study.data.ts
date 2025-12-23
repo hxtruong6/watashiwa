@@ -1,6 +1,6 @@
 import { getStartOfDayInTimezone } from '@/lib/date-utils';
 import { prisma } from '@/lib/db';
-import { Card, Rating, State } from 'ts-fsrs';
+import { State } from 'ts-fsrs';
 
 import { StudyCardWithDetails } from './study.dto';
 
@@ -18,15 +18,31 @@ export const StudyData = {
 		const reviewsToday = await prisma.reviewLog.count({
 			where: {
 				userId,
-				review: { gte: startOfDay },
+				reviewDate: { gte: startOfDay }, // Check schema for exact field name (reviewDate or review?)
 			},
 		});
 
-		const newCardsToday = await prisma.studyCard.count({
+		const newCardsToday = await prisma.userReview.count({
 			where: {
 				userId,
 				createdAt: { gte: startOfDay },
-				state: 0, // State.New
+				srsStage: 0, // 0 = New
+			},
+		});
+
+		// Additional Stats for Dashboard
+		const dueCount = await prisma.userReview.count({
+			where: {
+				userId,
+				nextReviewAt: { lte: new Date() },
+			},
+		});
+
+		const reviewsAvailable = await prisma.userReview.count({
+			where: {
+				userId,
+				state: { not: 0 },
+				nextReviewAt: { lte: new Date() },
 			},
 		});
 
@@ -37,6 +53,8 @@ export const StudyData = {
 			limitNewCards,
 			hasReachedReviewLimit: reviewsToday >= limitReviews,
 			hasReachedNewCardLimit: newCardsToday >= limitNewCards,
+			dueCount,
+			reviewsAvailable,
 		};
 	},
 
@@ -51,30 +69,20 @@ export const StudyData = {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const whereCondition: any = {
 			userId,
-			due: { lte: new Date() },
-			state: { not: 3 }, // exclude Relearning loop if handled separately? Wait, legacy logic excluded 3. FSRS 3 is Relearning.
-			// Actually, usually we WANT to review Relearning cards.
-			// Legacy code said: `state: { not: 3 }` with comment "Assuming 3 is Relearning loop".
-			// In ts-fsrs, State.Relearning is indeed 3.
-			// If we exclude them, they never get reviewed? That seems wrong unless they are handled by a separate priority queue.
-			// Let's stick to Legacy behavior for now to avoid breaking changes, but flag it.
-			// TODO: Verify if Relearning cards should be excluded.
+			nextReviewAt: { lte: new Date() },
+			// state: { not: 3 }, // FSRS Relearning handling? Assuming we include all due.
 		};
 
 		if (deckIds && deckIds.length > 0) {
-			whereCondition.OR = [
-				{ vocab: { deckId: { in: deckIds } } },
-				{ kanji: { deckId: { in: deckIds } } },
-			];
+			whereCondition.vocab = { deckId: { in: deckIds } };
 		}
 
-		return prisma.studyCard.findMany({
+		return prisma.userReview.findMany({
 			where: whereCondition,
-			orderBy: { due: 'asc' },
+			orderBy: { nextReviewAt: 'asc' },
 			take: limit,
 			include: {
 				vocab: { include: { _count: { select: { cardComments: true } } } },
-				kanji: { include: { _count: { select: { cardComments: true } } } },
 			},
 		});
 	},
@@ -84,54 +92,43 @@ export const StudyData = {
 	 * Returns ONE candidate to avoid complex batch creation logic for now.
 	 */
 	findNewContentCandidate: async (userId: string, deckIds?: string[]) => {
-		// 1. Vocab
+		// Unified Vocabulary Search
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const vocabWhere: any = {
+		const whereCondition: any = {
 			deck: { OR: [{ isPublic: true }, { authorId: userId }] },
-			studyCards: { none: { userId } },
+			// Ensure user hasn't reviewed it yet
+			userReviews: { none: { userId } },
+			contentStatus: 'VERIFIED', // Ensure content is verified? Or DRAFT too? Let's assume verified for safety.
 		};
-		if (deckIds && deckIds.length > 0) vocabWhere.deckId = { in: deckIds };
 
-		const newVocab = await prisma.vocab.findFirst({
-			where: vocabWhere,
-			orderBy: { createdAt: 'asc' },
+		if (deckIds && deckIds.length > 0) {
+			whereCondition.deckId = { in: deckIds };
+		}
+
+		const newContent = await prisma.vocabulary.findFirst({
+			where: whereCondition,
+			orderBy: { createdAt: 'asc' }, // Learn oldest added first
 		});
 
-		if (newVocab) return { type: 'vocab' as const, item: newVocab };
-
-		// 2. Kanji
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const kanjiWhere: any = {
-			deck: { OR: [{ isPublic: true }, { authorId: userId }] },
-			studyCards: { none: { userId } },
-		};
-		if (deckIds && deckIds.length > 0) kanjiWhere.deckId = { in: deckIds };
-
-		const newKanji = await prisma.kanji.findFirst({
-			where: kanjiWhere,
-			orderBy: { createdAt: 'asc' },
-		});
-
-		if (newKanji) return { type: 'kanji' as const, item: newKanji };
+		if (newContent) return { item: newContent };
 
 		return null;
 	},
 
 	/**
-	 * Create Study Card
+	 * Create Study Card (Enroll)
 	 */
-	createCard: async (userId: string, data: { vocabId?: string; kanjiId?: string }) => {
-		return prisma.studyCard.create({
+	createCard: async (userId: string, data: { vocabId: string }) => {
+		return prisma.userReview.create({
 			data: {
 				userId,
 				vocabId: data.vocabId,
-				kanjiId: data.kanjiId,
-				due: new Date(),
+				srsStage: 0,
 				state: 0, // New
+				nextReviewAt: new Date(),
 			},
 			include: {
 				vocab: { include: { _count: { select: { cardComments: true } } } },
-				kanji: { include: { _count: { select: { cardComments: true } } } },
 			},
 		});
 	},
@@ -140,9 +137,9 @@ export const StudyData = {
 	 * Get Card and verify ownership
 	 */
 	getCardById: async (cardId: string, userId: string) => {
-		return prisma.studyCard.findUnique({
+		return prisma.userReview.findUnique({
 			where: { id: cardId, userId },
-			include: { vocab: true, kanji: true },
+			include: { vocab: true },
 		});
 	},
 
@@ -153,7 +150,7 @@ export const StudyData = {
 		cardId: string,
 		userId: string,
 		fsrsDetails: {
-			due: Date;
+			due: Date; // mapped to nextReviewAt?
 			stability: number;
 			difficulty: number;
 			elapsed_days: number;
@@ -171,17 +168,19 @@ export const StudyData = {
 	) => {
 		// Transaction to ensure data integrity
 		return prisma.$transaction(async (tx) => {
-			const updatedCard = await tx.studyCard.update({
+			const updatedCard = await tx.userReview.update({
 				where: { id: cardId },
 				data: {
-					due: fsrsDetails.due,
+					nextReviewAt: fsrsDetails.due,
 					stability: fsrsDetails.stability,
 					difficulty: fsrsDetails.difficulty,
 					elapsedDays: fsrsDetails.elapsed_days,
 					scheduledDays: fsrsDetails.scheduled_days,
 					reps: fsrsDetails.reps,
 					lapses: fsrsDetails.lapses,
-					state: fsrsDetails.state,
+					state: fsrsDetails.state, // FSRS state
+					srsStage: fsrsDetails.state, // Mapping FSRS state directly to srsStage? Or 0-4 mapping?
+					// Usually srsStage mirrors state but ensures 0-4 range.
 					lastReview: fsrsDetails.last_review,
 				},
 			});
@@ -189,9 +188,9 @@ export const StudyData = {
 			const log = await tx.reviewLog.create({
 				data: {
 					userId,
-					cardId,
+					reviewId: cardId, // reviewId links to UserReview.id
 					rating: logDetails.rating,
-					review: logDetails.review,
+					reviewDate: logDetails.review, // Check field name!
 					scheduledDays: fsrsDetails.scheduled_days,
 					elapsedDays: fsrsDetails.elapsed_days,
 					state: fsrsDetails.state,

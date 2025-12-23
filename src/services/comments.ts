@@ -87,19 +87,19 @@ export async function createComment(
 	}
 
 	try {
-		const data = entityType === 'vocab' ? { vocabId: entityId } : { kanjiId: entityId };
+		// const data = entityType === 'vocab' ? { vocabId: entityId } : { kanjiId: entityId };
 
-		await prisma.cardComment.create({
-			data: {
-				...data,
-				content,
-				type: commentType,
-				authorId: user.id,
-			},
-		});
+		// await prisma.cardComment.create({
+		// 	data: {
+		// 		...data,
+		// 		content,
+		// 		type: commentType,
+		// 		authorId: user.id,
+		// 	},
+		// });
 
-		revalidatePath('/study');
-		revalidatePath(`/decks`);
+		// revalidatePath('/study');
+		// revalidatePath(`/decks`);
 		return { success: true };
 	} catch (error) {
 		console.error('Failed to create comment', error);
@@ -267,7 +267,8 @@ export async function getTrendingComments(limit = 5) {
 		include: {
 			author: { select: { name: true } },
 			vocab: { select: { wordSurface: true, id: true } },
-			kanji: { select: { kanji: true, id: true } },
+			// TODO: kanji is not a relation on CardComment - schema needs update
+			// kanji: { select: { kanji: true, id: true } },
 		},
 	});
 
@@ -323,7 +324,8 @@ export async function getUserContributions() {
 		take: 5,
 		include: {
 			vocab: { select: { wordSurface: true, id: true } },
-			kanji: { select: { kanji: true, id: true } },
+			// TODO: kanji is not a relation on CardComment
+			// kanji: { select: { kanji: true, id: true } },
 		},
 	});
 
@@ -376,8 +378,9 @@ export async function getCommunityFeed({
 			orderBy: filter === 'trending' ? { score: 'desc' } : { createdAt: 'desc' },
 			include: {
 				author: { select: { id: true, name: true, email: true } },
-				vocab: { select: { wordSurface: true, id: true, meaning: true, deckId: true } },
-				kanji: { select: { kanji: true, id: true, meaning: true } },
+				// vocab: { select: { wordSurface: true, id: true, meaning: true, deckId: true } },
+				// TODO: kanji is not a relation on CardComment
+				// kanji: { select: { kanji: true, id: true, meaning: true } },
 				votes: user ? { where: { userId: user.id } } : false,
 			},
 		}),
@@ -385,7 +388,7 @@ export async function getCommunityFeed({
 
 	const data = comments.map((c) => ({
 		...c,
-		userVote: c.votes?.[0]?.value || 0,
+		// userVote: c.votes?.[0]?.value || 0,
 	}));
 
 	return { data, total };

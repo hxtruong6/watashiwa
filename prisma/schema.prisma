@@ -27,16 +27,31 @@ model User {
   avatarUrl String?  @map("avatar_url")
   role      UserRole @default(USER)
 
-  // Settings
-  limitNewCards Int    @default(20) @map("limit_new_cards")
-  limitReviews  Int    @default(200) @map("limit_reviews")
-  timezone      String @default("UTC")
-  language      String @default("en") // "en", "vi", "ja"
+  // === DAILY PACING CONTROLS ===
+  limitNewCards     Int     @default(10) @map("limit_new_cards")
+  limitReviews      Int     @default(50) @map("limit_reviews")
+  dailyGoal         Int     @default(20) @map("daily_goal")
+  enableSmartPacing Boolean @default(true) @map("enable_smart_pacing")
 
-  // Feature Flags & Tutorials: { "feature_flags": {}, "tutorials": {}, study_card_v2: true }
-  tutorials Json @default("{}")
+  // === LOCALIZATION ===
+  timezone String @default("UTC")
+  language String @default("en") // "en", "vi", "ja"
 
-  // Gamification
+  // === STUDY PREFERENCES ===
+  autoPlayAudio   Boolean @default(true) @map("auto_play_audio")
+  showPitchAccent Boolean @default(true) @map("show_pitch_accent")
+  showEtymology   Boolean @default(true) @map("show_etymology")
+  enablePriming   Boolean @default(true) @map("enable_priming")
+
+  // === NOTIFICATION SETTINGS ===
+  enableNotifications Boolean @default(true) @map("enable_notifications")
+  reminderTime        String? @map("reminder_time") // "HH:MM" format
+
+  // === FLEXIBLE PREFERENCES (JSONB) ===
+  // Contract: UserPreferences (tutorials, haptic, fsrsParams, etc.)
+  preferences Json @default("{}") @map("preferences")
+
+  // === GAMIFICATION ===
   currentStreak Int       @default(0) @map("current_streak")
   longestStreak Int       @default(0) @map("longest_streak")
   lastStudyDate DateTime? @map("last_study_date") @db.Date // For efficient streak calculation

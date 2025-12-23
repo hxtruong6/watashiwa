@@ -39,8 +39,7 @@ interface LearningDeck {
 	headerImage: string | null;
 	isPublic: boolean;
 	_count: {
-		vocab: number;
-		kanji: number;
+		vocabularies: number;
 	};
 	learningStats: {
 		hasCards: boolean;
@@ -64,8 +63,7 @@ interface CreatedDeck {
 	createdAt: Date;
 	learnersCount: number;
 	_count: {
-		vocab: number;
-		kanji: number;
+		vocabularies: number;
 	};
 }
 
@@ -334,7 +332,7 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 										{/* Learners Count & Items */}
 										<Flex gap="small" style={{ marginBottom: 16 }}>
 											<Tag icon={<RocketOutlined />} color="default">
-												{t('cardsCount', { count: deck._count.vocab + deck._count.kanji })}
+												{t('cardsCount', { count: deck._count.vocabularies })}
 											</Tag>
 											{deck.learnersCount > 0 && (
 												<Tag icon={<UserOutlined />} color="gold">

@@ -55,7 +55,7 @@ export async function getUserDecksWithStats() {
 			},
 			include: {
 				_count: {
-					select: { vocab: true, kanji: true },
+					select: { vocabularies: true },
 				},
 			},
 			orderBy: {
@@ -71,7 +71,7 @@ export async function getUserDecksWithStats() {
 			},
 			include: {
 				_count: {
-					select: { vocab: true, kanji: true },
+					select: { vocabularies: true },
 				},
 			},
 		});
@@ -203,7 +203,7 @@ export async function getUserDecks() {
 			},
 			include: {
 				_count: {
-					select: { vocab: true, kanji: true },
+					select: { vocabularies: true },
 				},
 			},
 			orderBy: {

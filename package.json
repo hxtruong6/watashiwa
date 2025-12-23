@@ -13,6 +13,7 @@
     "db:migrate": "prisma migrate deploy",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
+    "db:seed": "prisma db seed",
     "pm2:deploy:prod": "pm2 deploy ecosystem.config.cjs vps_prod",
     "test": "vitest",
     "test:run": "vitest run",

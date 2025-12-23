@@ -1,0 +1,2742 @@
+[
+  {
+    "word_surface": "おでかけですか。",
+    "han_viet": "Xuất",
+    "kana": "おでかけですか。",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "a/c đi ra ngoài đấy à?"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "いってらっしゃい。",
+    "han_viet": "Hành",
+    "kana": "いってらっしゃい。",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "tôi đi đây."
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ふなびん",
+    "han_viet": "Thuyền - Tiện",
+    "kana": "ふなびん",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "(gửi) bằng đường biển"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "こうくうびん",
+    "han_viet": "Hàng - Không - Tiện",
+    "kana": "こうくうびん",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "(gửi) bằng đường hàng không"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "おねがいします",
+    "han_viet": "Nguyện",
+    "kana": "おねがいします",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "nhờ a/c"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "úc",
+    "han_viet": "",
+    "kana": "",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        ""
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "khách sạn",
+    "han_viet": "",
+    "kana": "",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        ""
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "tiệc",
+    "han_viet": "",
+    "kana": "",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        ""
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "sushi",
+    "han_viet": "",
+    "kana": "",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        ""
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "tempura",
+    "han_viet": "",
+    "kana": "",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        ""
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "chanh",
+    "han_viet": "",
+    "kana": "",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        ""
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "cả 2",
+    "han_viet": "",
+    "kana": "",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        ""
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "nhất",
+    "han_viet": "",
+    "kana": "",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        ""
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "(hơn) hẳn, suốt",
+    "han_viet": "",
+    "kana": "",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        ""
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "tôi đã về đây.",
+    "han_viet": "",
+    "kana": "",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        ""
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "かんたん",
+    "han_viet": "Giản - Đơn",
+    "kana": "かんたん",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "đơn giản, dễ"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ちかい",
+    "han_viet": "Cận",
+    "kana": "ちかい",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "gần"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "とおい",
+    "han_viet": "Viễn",
+    "kana": "とおい",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "xa"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "おそい",
+    "han_viet": "Trì",
+    "kana": "おそい",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "chậm, muộn"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "おおい",
+    "han_viet": "Đa",
+    "kana": "おおい",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "nhiều"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "すくない",
+    "han_viet": "Thiểu",
+    "kana": "すくない",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "ít"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "あたたかい",
+    "han_viet": "Noãn",
+    "kana": "あたたかい",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "ôn hòa, tử tế, ấm áp (khí hậu)"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "あたたかい",
+    "han_viet": "Ôn",
+    "kana": "あたたかい",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "ấm áp, ôn hòa, nồng ấm"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "すずしい",
+    "han_viet": "Lương",
+    "kana": "すずしい",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "mát mẻ"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "あまい",
+    "han_viet": "Cam",
+    "kana": "あまい",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "ngọt"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "からい",
+    "han_viet": "Tân",
+    "kana": "からい",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "cay"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "おもい",
+    "han_viet": "Trọng",
+    "kana": "おもい",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "nặng"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "かるい",
+    "han_viet": "Khinh",
+    "kana": "かるい",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "nhẹ"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "きせつ",
+    "han_viet": "Quý - Tiết",
+    "kana": "きせつ",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "mùa, thời tiết"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "はる",
+    "han_viet": "Xuân",
+    "kana": "はる",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "mùa xuân"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "なつ",
+    "han_viet": "Hạ",
+    "kana": "なつ",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "mùa hè"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "あき",
+    "han_viet": "Thu",
+    "kana": "あき",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "mùa thu"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ふゆ",
+    "han_viet": "Đông",
+    "kana": "ふゆ",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "mùa đông"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "てんき",
+    "han_viet": "Thiên - Khí",
+    "kana": "てんき",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "thời tiết"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "あめ",
+    "han_viet": "Vũ",
+    "kana": "あめ",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "mưa"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ゆき",
+    "han_viet": "Tuyết",
+    "kana": "ゆき",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "tuyết"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "くもり",
+    "han_viet": "Đàm",
+    "kana": "くもり",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "có mây"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "くうこう",
+    "han_viet": "Không - Cảng",
+    "kana": "くうこう",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "sân bay"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "うみ",
+    "han_viet": "Hải",
+    "kana": "うみ",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "biển"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "せいかい",
+    "han_viet": "Thế - Giới",
+    "kana": "せいかい",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "thế giới"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "まつり",
+    "han_viet": "Tế",
+    "kana": "まつり",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "lễ hội"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "すきやき",
+    "han_viet": "Thiêu",
+    "kana": "すきやき",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "sukiyaki - thịt bò kiểu nhật"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "さしみ",
+    "han_viet": "Thích - Thân",
+    "kana": "さしみ",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "sashimi - cá sống của Nhật"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ぶたにく",
+    "han_viet": "Đồn - Nhục",
+    "kana": "ぶたにく",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "thịt heo"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "とりにく",
+    "han_viet": "Nhục",
+    "kana": "とりにく",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "thịt gà"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ぎゅうにく",
+    "han_viet": "Ngưu - Nhục",
+    "kana": "ぎゅうにく",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "thịt bò"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "いけばな",
+    "han_viet": "Sinh - Hoa",
+    "kana": "いけばな",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "nghệ thuật cắm hoa"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "もみじ",
+    "han_viet": "Hồng - Diệp",
+    "kana": "もみじ",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "cây lá đỏ, lá đỏ"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "はじめて",
+    "han_viet": "Sơ",
+    "kana": "はじめて",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "lần đầu tiên"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "おかえりなさい。",
+    "han_viet": "Quy",
+    "kana": "おかえりなさい。",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "a/c đã về đấy à"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "しかります",
+    "han_viet": "",
+    "kana": "しかります",
+    "romaji": "shikarimasu",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "scold"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "インスタントラーメン",
+    "han_viet": "",
+    "kana": "インスタントラーメン",
+    "romaji": "insutantorāmen",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "instant noodles"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "デート",
+    "han_viet": "",
+    "kana": "デート",
+    "romaji": "dēto",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "date"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "－世紀",
+    "han_viet": "",
+    "kana": "－せいき",
+    "romaji": "-seiki",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "-th century"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "誰か",
+    "han_viet": "",
+    "kana": "だれか",
+    "romaji": "dareka",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "somebody"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "よかったですね。",
+    "han_viet": "",
+    "kana": "よかったですね。",
+    "romaji": "yokattadesune.",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Sounds good."
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "オリンピック",
+    "han_viet": "",
+    "kana": "オリンピック",
+    "romaji": "orinpikku",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Olympic Games"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ワールドカップ",
+    "han_viet": "",
+    "kana": "ワールドカップ",
+    "romaji": "wārudokappu",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "World Cup"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "東大寺",
+    "han_viet": "",
+    "kana": "とうだいじ",
+    "romaji": "tōdaiji",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Todaiji Temple"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "大仏",
+    "han_viet": "",
+    "kana": "だいぶつ",
+    "romaji": "daibutsu",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Great Buddha"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "江戸時代",
+    "han_viet": "",
+    "kana": "えどじだい",
+    "romaji": "edojidai",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Edo Period (1603-1868)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ポルトガル",
+    "han_viet": "",
+    "kana": "ポルトガル",
+    "romaji": "porutogaru",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Portugal"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "サウジアラビア",
+    "han_viet": "",
+    "kana": "サウジアラビア",
+    "romaji": "saujiarabia",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Saudia Arabia"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ロシア",
+    "han_viet": "",
+    "kana": "ロシア",
+    "romaji": "roshia",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Russia"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "焼けます［うちが～］",
+    "han_viet": "",
+    "kana": "やけます［うちが～］",
+    "romaji": "yakemasu [uchiga~]",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "[house] burn down"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "～の 一つ",
+    "han_viet": "",
+    "kana": "～の ひとつ",
+    "romaji": "~no hitotsu",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "one of the ～"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "－キロ",
+    "han_viet": "",
+    "kana": "－キロ",
+    "romaji": "-kiro",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "－ kilogrammes, － kilometres"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "豪華［な］",
+    "han_viet": "",
+    "kana": "ごうか［な］",
+    "romaji": "gōka [na]",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "gorgeous"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "しかし",
+    "han_viet": "",
+    "kana": "しかし",
+    "romaji": "shikashi",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "however, but"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "その あと",
+    "han_viet": "",
+    "kana": "その あと",
+    "romaji": "sono ato",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "after that"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ねずみ",
+    "han_viet": "",
+    "kana": "ねずみ",
+    "romaji": "nezumi",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "mouse"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "東照宮",
+    "han_viet": "",
+    "kana": "とうしょうぐう",
+    "romaji": "tōshōgū",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "shrine dedicated to Tokugawa Ieyasu in Nikko, Tochigi prefecture"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "眠り猫",
+    "han_viet": "",
+    "kana": "ねむりねこ",
+    "romaji": "nemurineko",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "The Sleeping Cat"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "左甚五郎",
+    "han_viet": "",
+    "kana": "ひだりじんごろう",
+    "romaji": "hidarijingorō",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "famous Japanese sculptor of the Edo Period (1594-1651)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "起こします",
+    "han_viet": "",
+    "kana": "おこします",
+    "romaji": "okoshimasu",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "wake (someone) up"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "設計します",
+    "han_viet": "",
+    "kana": "せっけいします",
+    "romaji": "sekkeishimasu",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "design, plan"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "建築家",
+    "han_viet": "",
+    "kana": "けんちくか",
+    "romaji": "kenchikuka",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "architect"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "科学者",
+    "han_viet": "",
+    "kana": "かがくしゃ",
+    "romaji": "kagakusha",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "scientist"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "漫画",
+    "han_viet": "",
+    "kana": "まんが",
+    "romaji": "manga",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "cartoon"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "～に よって",
+    "han_viet": "",
+    "kana": "～に よって",
+    "romaji": "~ni yotte",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "by ～"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ドミニカ",
+    "han_viet": "",
+    "kana": "ドミニカ",
+    "romaji": "dominika",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Dominica"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ライト兄弟",
+    "han_viet": "",
+    "kana": "ライトきょうだい",
+    "romaji": "raitokyōdai",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Wright brothers, American pioneers in aviation ; Wilbur Wright (1867-1912) Orville Wright (1871-1948)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "源氏物語",
+    "han_viet": "",
+    "kana": "げんじものがたり",
+    "romaji": "genjimonogatari",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "\"The Tale of Genji\" (Japanese novel)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "紫式部",
+    "han_viet": "",
+    "kana": "むらさきしきぶ",
+    "romaji": "murasakishikibu",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Heian Period (9th Century) female novelist who wrote \"The Tale of Genji\" (973?-1014?)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "グラハムーベル",
+    "han_viet": "",
+    "kana": "グラハムーベル",
+    "romaji": "gurahamūberu",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Alexander Graham Bell, American inventor (1847-1922)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "埋め立てます",
+    "han_viet": "",
+    "kana": "うめたてます",
+    "romaji": "umetatemasu",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "reclaim"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "技術",
+    "han_viet": "",
+    "kana": "ぎじゅつ",
+    "romaji": "gijutsu",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "technology, technique"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "土地",
+    "han_viet": "",
+    "kana": "とち",
+    "romaji": "tochi",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "land"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "騒音",
+    "han_viet": "",
+    "kana": "そうおん",
+    "romaji": "sōon",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "noise"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "アクセス",
+    "han_viet": "",
+    "kana": "アクセス",
+    "romaji": "akusesu",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "access"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-37"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  }
+]

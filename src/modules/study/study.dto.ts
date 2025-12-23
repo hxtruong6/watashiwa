@@ -1,12 +1,11 @@
 import { IdSchema } from '@/modules/core/dto';
-import { Kanji, ReviewLog, StudyCard, Vocab } from '@prisma/client';
+import { ReviewLog, UserReview, Vocabulary } from '@prisma/client';
 import { z } from 'zod';
 
 // --- Domain Models ---
 
-export type StudyCardWithDetails = StudyCard & {
-	vocab?: (Vocab & { _count?: { cardComments: number } }) | null;
-	kanji?: (Kanji & { _count?: { cardComments: number } }) | null;
+export type StudyCardWithDetails = UserReview & {
+	vocab?: (Vocabulary & { _count?: { cardComments: number } }) | null;
 };
 
 // --- Input Schemas ---

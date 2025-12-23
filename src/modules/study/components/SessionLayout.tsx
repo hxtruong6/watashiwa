@@ -54,7 +54,7 @@ export const SessionLayout: React.FC<SessionLayoutProps> = ({ children, progress
 							showInfo={false}
 							size="small"
 							strokeColor={token.colorSuccess}
-							trailColor="rgba(0,0,0,0.05)"
+							railColor="rgba(0,0,0,0.05)"
 						/>
 					</div>
 

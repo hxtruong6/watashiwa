@@ -1,7 +1,9 @@
-import { PrismaClient } from '@prisma/client';
+// ❯ npx tsx scripts/seed_minna_course.ts
+// 🚀 Starting Minna no Nihongo N5 Course Seed...
+// 👤 Using Author: admin@watashi.app
+// ✨ Creating Course: Minna no Nihongo N5
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 
 // Initialize Prisma directly or import from lib if available
 // Assuming ../src/lib/db exists and exports prisma
@@ -34,10 +36,8 @@ async function seedMinnaCourse() {
 			data: {
 				title: 'Minna no Nihongo N5 (Sơ cấp 1)',
 				titleEn: 'Minna no Nihongo N5 (Beginner 1)',
-				description:
-					'Trọn bộ từ vựng giáo trình Minna no Nihongo I (Bài 1-25) dành cho người mới bắt đầu.',
-				descriptionEn:
-					'Complete vocabulary list for Minna no Nihongo I (Units 1-25) for beginners.',
+				description: 'Trọn bộ từ vựng giáo trình Minna no Nihongo I (Bài 1-25)',
+				descriptionEn: 'Complete vocabulary list for Minna no Nihongo I (Units 1-25)',
 				authorId: author.id,
 				isPublic: true,
 				level: 'N5',
@@ -51,10 +51,8 @@ async function seedMinnaCourse() {
 			where: { id: course.id },
 			data: {
 				title: 'Minna no Nihongo N5 (Sơ cấp 1)',
-				description:
-					'Trọn bộ từ vựng giáo trình Minna no Nihongo I (Bài 1-25) dành cho người mới bắt đầu.',
-				descriptionEn:
-					'Complete vocabulary list for Minna no Nihongo I (Units 1-25) for beginners.',
+				description: 'Trọn bộ từ vựng giáo trình Minna no Nihongo I (Bài 1-25)',
+				descriptionEn: 'Complete vocabulary list for Minna no Nihongo I (Units 1-25)',
 			},
 		});
 	}

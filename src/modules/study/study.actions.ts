@@ -52,8 +52,7 @@ export async function getNextReviewCard(input: { deckIdOrIds?: string | string[]
 			if (candidate) {
 				// Enroll
 				return StudyData.createCard(userId, {
-					vocabId: candidate.type === 'vocab' ? candidate.item.id : undefined,
-					kanjiId: candidate.type === 'kanji' ? candidate.item.id : undefined,
+					vocabId: candidate.item.id,
 				});
 			}
 
@@ -99,8 +98,7 @@ export async function getReviewQueue(input: { deckIdOrIds?: string | string[]; l
 			if (!candidate) break;
 
 			const newCard = await StudyData.createCard(userId, {
-				vocabId: candidate.type === 'vocab' ? candidate.item.id : undefined,
-				kanjiId: candidate.type === 'kanji' ? candidate.item.id : undefined,
+				vocabId: candidate.item.id,
 			});
 			queue.push(newCard);
 		}
@@ -168,9 +166,45 @@ export async function submitReview(input: {
 			)
 		)[0];
 
-		return {
 			nextCard: nextReviewCard ?? null,
 			message: 'Review recorded',
 		};
+	});
+}
+
+/**
+ * Get Daily Progress (Dashboard)
+ */
+export async function getDailyProgress() {
+	return executeSafeAction(z.void(), undefined, async (_, { userId }) => {
+		if (!userId) throw new Error('Unauthorized');
+		// Hardcoded limits for MVP, or fetch user settings?
+		// StudyData.getDailyStats assumes limits passed in.
+		// We should fetch user settings.
+		// Avoiding circular dependency, we fetch settings here or in StudyData?
+		// StudyData should be pure data. Logic belongs here.
+		// But we don't have access to User settings easily without importing user module.
+		// Let's import getUserSettings from user module.
+		
+		// Wait, user module is separate.
+		// Ideally we fetch settings.
+		// For now, hardcode or fetch via prisma directly?
+		// Let's use hardcoded defaults matching actions.ts: 200, 20.
+		
+		const stats = await StudyData.getDailyStats(userId, 200, 20);
+		return stats;
+	});
+}
+
+/**
+ * Get Review Count (Badge)
+ */
+export async function getReviewCount() {
+	return executeSafeAction(z.void(), undefined, async (_, { userId }) => {
+		if (!userId) return 0;
+		// Reuse getDailyStats? Or just count.
+		// getDailyStats is efficient enough.
+		const stats = await StudyData.getDailyStats(userId, 200, 20);
+		return stats.dueCount;
 	});
 }

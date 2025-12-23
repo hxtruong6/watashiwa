@@ -1,6 +1,7 @@
 'use client';
 
 import { CardShell } from '@/components/FlashCard/CardShell';
+import { SessionEmptyState } from '@/modules/study/components/SessionEmptyState';
 import { SessionLayout } from '@/modules/study/components/SessionLayout';
 import { useSessionStore } from '@/modules/study/store/useSessionStore';
 import { SmartCard } from '@/types/smart-cube';
@@ -88,11 +89,30 @@ export default function SessionPage() {
 	}, []);
 
 	useEffect(() => {
-		// Auto-start session with mock data if empty
-		if (queue.length === 0 && mounted) {
-			// In real app, we might wait for API here or check if empty
-			// startSession(MOCK_CARDS); // MOCK REMOVED
+		async function initializeSession() {
+			if (queue.length > 0 || !mounted) return; // Already initialized
+
+			// Get deckId from URL params
+			const params = new URLSearchParams(window.location.search);
+			const deckId = params.get('deckId') || undefined;
+
+			try {
+				const { getReviewQueue } = await import('@/modules/study/actions/getReviewQueue');
+				const { queue: fetchedQueue, source } = await getReviewQueue(deckId);
+
+				if (fetchedQueue.length > 0) {
+					console.log(`Session initialized with ${fetchedQueue.length} cards from ${source}`);
+					startSession(fetchedQueue);
+				} else {
+					console.log('No cards available for this deck');
+					// Show empty state (Session Complete is fine for now)
+				}
+			} catch (error) {
+				console.error('Failed to initialize session:', error);
+			}
 		}
+
+		initializeSession();
 	}, [queue.length, startSession, mounted]);
 
 	if (!mounted) return null;
@@ -131,10 +151,14 @@ export default function SessionPage() {
 					})}
 
 				{!isSessionActive && (
-					<div style={{ textAlign: 'center' }}>
-						<h1>Session Complete</h1>
-						<p>Zen Mastery Achieved.</p>
-					</div>
+					<SessionEmptyState
+						scenario={queue.length === 0 ? 'DECK_EMPTY' : 'ALL_CAUGHT_UP'}
+						deckId={
+							typeof window !== 'undefined'
+								? new URLSearchParams(window.location.search).get('deckId') || undefined
+								: undefined
+						}
+					/>
 				)}
 			</div>
 		</SessionLayout>

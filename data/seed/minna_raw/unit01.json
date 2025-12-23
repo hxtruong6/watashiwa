@@ -1,0 +1,1765 @@
+[
+  {
+    "word_surface": "私",
+    "han_viet": "Tư",
+    "kana": "わたし",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "tôi"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "あなた",
+    "han_viet": "",
+    "kana": "あなた",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "anh/chị/ông/bà/bạn"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "あの人",
+    "han_viet": "Nhân",
+    "kana": "あのひと",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "người kia"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "あの方",
+    "han_viet": "Phương",
+    "kana": "あのかた",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "vị kia"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "～じん",
+    "han_viet": "Nhân",
+    "kana": "～じん",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "người ~"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "せんせい",
+    "han_viet": "Tiên - Sinh",
+    "kana": "せんせい",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "thầy/cô"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "きょうし",
+    "han_viet": "Giáo - Sư",
+    "kana": "きょうし",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "giáo viên"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "がくせい",
+    "han_viet": "Học - Sinh",
+    "kana": "がくせい",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "học sinh, sinh viên"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "かいしゃいん",
+    "han_viet": "Hội - Xã - Viên",
+    "kana": "かいしゃいん",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "nhân viên cty"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "しゃいん",
+    "han_viet": "Xã - Viên",
+    "kana": "しゃいん",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "nhân viên"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ぎんこういん",
+    "han_viet": "Ngân - Hành - Viên",
+    "kana": "ぎんこういん",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "nhân viên ngân hàng"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "いしゃ",
+    "han_viet": "Y - Giả",
+    "kana": "いしゃ",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "bác sĩ"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "けんきゅうしゃ",
+    "han_viet": "Nghiên - Cứu - Giả",
+    "kana": "けんきゅうしゃ",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "nhà nghiên cứu"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "だいがく",
+    "han_viet": "Đại - Học",
+    "kana": "だいがく",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "đại học"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "びょういん",
+    "han_viet": "Bệnh - Viện",
+    "kana": "びょういん",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "bệnh viện"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "だれ",
+    "han_viet": "",
+    "kana": "だれ",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "ai"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "どなた",
+    "han_viet": "",
+    "kana": "どなた",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "ai (lịch sự)"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "さい",
+    "han_viet": "Tuế",
+    "kana": "さい",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "~ tuổi"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "なんさい",
+    "han_viet": "Hà - Tuế",
+    "kana": "なんさい",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "bao nhiêu tuổi"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "おいくつ",
+    "han_viet": "",
+    "kana": "おいくつ",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "bao nhiêu tuổi (lịch sự)"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "はじめまして",
+    "han_viet": "Sơ",
+    "kana": "はじめまして",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "rất hân hạnh được gặp anh/chị"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "～から きました。",
+    "han_viet": "Lại",
+    "kana": "～から きました。",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "tôi đến từ ~"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "どうぞ　よろしく　おねがいします。",
+    "han_viet": "Nguyện",
+    "kana": "どうぞ　よろしく　おねがいします。",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "rất vui được làm quen với anh/chị"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "しつれいですが",
+    "han_viet": "Thất - Lễ",
+    "kana": "しつれいですが",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "xin lỗi..."
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "おなまえは",
+    "han_viet": "Danh - Tiền",
+    "kana": "おなまえは",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "tên anh/chị là gì?"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "こちらは～さんです。",
+    "han_viet": "",
+    "kana": "こちらは～さんです。",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "đây là anh/chị..."
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "mỹ",
+    "han_viet": "",
+    "kana": "",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        ""
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "Anh",
+    "han_viet": "",
+    "kana": "",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        ""
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "Ấn Độ",
+    "han_viet": "",
+    "kana": "",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        ""
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "indonexia",
+    "han_viet": "",
+    "kana": "",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        ""
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "かんこく",
+    "han_viet": "Hàn - Quốc",
+    "kana": "かんこく",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "hàn quốc"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ちゅうごく",
+    "han_viet": "Trung - Quốc",
+    "kana": "ちゅうごく",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "trung quốc"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "にほん",
+    "han_viet": "Nhật - Bản",
+    "kana": "にほん",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        "nhật bản"
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "Đức",
+    "han_viet": "",
+    "kana": "",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        ""
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "Braxin",
+    "han_viet": "",
+    "kana": "",
+    "romaji": "",
+    "meanings": {
+      "vi": [
+        ""
+      ],
+      "en": []
+    },
+    "tags": [
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "～さん",
+    "han_viet": "",
+    "kana": "～さん",
+    "romaji": "~san",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Mr., Ms. (suffix added to a name for expressing politeness)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "～ちゃん",
+    "han_viet": "",
+    "kana": "～ちゃん",
+    "romaji": "~chan",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "(suffix often added to a child's name instead of ～さん)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "－歳",
+    "han_viet": "",
+    "kana": "－さい",
+    "romaji": "-sai",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "－ years old"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "はい",
+    "han_viet": "",
+    "kana": "はい",
+    "romaji": "hai",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "yes"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "いいえ",
+    "han_viet": "",
+    "kana": "いいえ",
+    "romaji": "iie",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "no"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "［どうぞ］よろしく［お願いします］。",
+    "han_viet": "",
+    "kana": "［どうぞ］よろしく［おねがいします］。",
+    "romaji": "[dōzo] yoroshiku [onegaishimasu].",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Pleased to meet you. (lit. Please be nice to me. Usually used at the end of a self-introduction.)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "お名前は？",
+    "han_viet": "",
+    "kana": "おなまえは？",
+    "romaji": "onamaewa？",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "May I have your name?"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "アメリカ",
+    "han_viet": "",
+    "kana": "アメリカ",
+    "romaji": "amerika",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "U.S.A."
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "イギリス",
+    "han_viet": "",
+    "kana": "イギリス",
+    "romaji": "igirisu",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "U.K."
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "インド",
+    "han_viet": "",
+    "kana": "インド",
+    "romaji": "indo",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "India"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "インドネシア",
+    "han_viet": "",
+    "kana": "インドネシア",
+    "romaji": "indoneshia",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Indonesia"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "タイ",
+    "han_viet": "",
+    "kana": "タイ",
+    "romaji": "tai",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Thailand"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ドイツ",
+    "han_viet": "",
+    "kana": "ドイツ",
+    "romaji": "doitsu",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Germany"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ブラジル",
+    "han_viet": "",
+    "kana": "ブラジル",
+    "romaji": "burajiru",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "Brazil"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "IMC／パワー電気／ブラジルエアー",
+    "han_viet": "",
+    "kana": "IMC／パワーでんき／ブラジルエアー",
+    "romaji": "IMC/pawādenki/burajirueā",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "fictitious companies"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "AKC",
+    "han_viet": "",
+    "kana": "AKC",
+    "romaji": "AKC",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "a fictitious institute"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "神戸病院",
+    "han_viet": "",
+    "kana": "こうべびょういん",
+    "romaji": "kōbebyōin",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "a fictitious hospital"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "さくら大学／富士大学",
+    "han_viet": "",
+    "kana": "さくらだいがく／ふじだいがく",
+    "romaji": "sakuradaigaku/fujidaigaku",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "fictitious universities"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "わたしたち",
+    "han_viet": "",
+    "kana": "わたしたち",
+    "romaji": "watashitachi",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "we"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "皆さん",
+    "han_viet": "",
+    "kana": "みなさん",
+    "romaji": "minasan",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "ladies and gentlemen, all of you"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "～君",
+    "han_viet": "",
+    "kana": "～くん",
+    "romaji": "~kun",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "(suffix often added to a boy's name)"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "エンジニア",
+    "han_viet": "",
+    "kana": "エンジニア",
+    "romaji": "enjinia",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "engineer"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "フランス",
+    "han_viet": "",
+    "kana": "フランス",
+    "romaji": "furansu",
+    "meanings": {
+      "vi": [],
+      "en": [
+        "France"
+      ]
+    },
+    "tags": [
+      "missing_candidate",
+      "unit-1"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "",
+        "en": ""
+      }
+    },
+    "examples": [],
+    "mnemonic": {
+      "vi": "",
+      "en": ""
+    },
+    "confusions": []
+  }
+]
