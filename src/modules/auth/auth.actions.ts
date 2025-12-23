@@ -1,8 +1,10 @@
 'use server';
 
 import { prisma } from '@/lib/db';
+import { executeSafeAction } from '@/modules/core/action-client';
 import { createClient } from '@/utils/supabase/server';
 import { cache } from 'react';
+import { z } from 'zod';
 
 /**
  * Helper to get current authenticated user
@@ -28,9 +30,13 @@ export const getUser = cache(async () => {
  * Called from auth callbacks or ensures consistency
  */
 export async function syncUser() {
-	try {
-		const user = await getUser();
-		if (!user) return { success: false, error: 'No authenticated user' };
+	return executeSafeAction(z.void(), undefined, async (_, { userId }) => {
+		const supabase = await createClient();
+		const {
+			data: { user },
+		} = await supabase.auth.getUser();
+
+		if (!user) throw new Error('No authenticated user');
 
 		// Upsert user to ensure they exist
 		const dbUser = await prisma.user.upsert({
@@ -50,11 +56,8 @@ export async function syncUser() {
 			},
 		});
 
-		return { success: true, role: dbUser.role };
-	} catch (error) {
-		console.error('Error syncing user:', error);
-		return { success: false, error: 'Failed to sync user' };
-	}
+		return { role: dbUser.role };
+	});
 }
 
 /**

@@ -1,11 +1,11 @@
 'use server';
 
 import { prisma } from '@/lib/db';
-import { UpdateUserSettingsSchema } from '@/lib/schemas/user';
+import { UpdateUserSettingsInput, UpdateUserSettingsSchema } from '@/lib/schemas/user';
 import { getUser } from '@/modules/auth/auth.actions';
+import { executeSafeAction } from '@/modules/core/action-client';
 import { UserPreferences } from '@/types/user';
 import { createClient } from '@/utils/supabase/server';
-import { User } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 import { cache } from 'react';
 import { z } from 'zod';
@@ -52,19 +52,13 @@ export const getUserSettings = cache(async (userId?: string) => {
 /**
  * Update User Settings
  */
-export async function updateUserSettings(data: Partial<User> & { preferences?: UserPreferences }) {
-	try {
-		const validation = UpdateUserSettingsSchema.safeParse(data);
-		if (!validation.success) {
-			return { success: false, error: 'Invalid settings data' };
-		}
-
-		const user = await getUser();
-		if (!user) return { success: false, error: 'Unauthorized' };
+export async function updateUserSettings(input: UpdateUserSettingsInput) {
+	return executeSafeAction(UpdateUserSettingsSchema, input, async (data, { userId }) => {
+		if (!userId) throw new Error('Unauthorized');
 
 		// update
 		await prisma.user.update({
-			where: { id: user.id },
+			where: { id: userId },
 			data: {
 				limitNewCards: data.limitNewCards,
 				limitReviews: data.limitReviews,
@@ -78,30 +72,21 @@ export async function updateUserSettings(data: Partial<User> & { preferences?: U
 		revalidatePath('/dashboard');
 		revalidatePath('/settings');
 		return { success: true };
-	} catch (error) {
-		console.error('Error updating user settings:', error);
-		return { success: false, error: 'Failed to update settings' };
-	}
+	});
 }
 
 export async function updateUserAvatar(avatarUrl: string) {
-	try {
-		const validation = UpdateAvatarSchema.safeParse({ avatarUrl });
-		if (!validation.success) {
-			return { success: false, error: 'Invalid avatar URL' };
-		}
-
-		const user = await getUser();
-		if (!user) return { success: false, error: 'Unauthorized' };
+	return executeSafeAction(UpdateAvatarSchema, { avatarUrl }, async (data, { userId }) => {
+		if (!userId) throw new Error('Unauthorized');
 
 		await prisma.user.update({
-			where: { id: user.id },
-			data: { avatarUrl },
+			where: { id: userId },
+			data: { avatarUrl: data.avatarUrl },
 		});
 
 		const supabase = await createClient();
 		const { error } = await supabase.auth.updateUser({
-			data: { avatar_url: avatarUrl },
+			data: { avatar_url: data.avatarUrl },
 		});
 
 		if (error) {
@@ -110,10 +95,7 @@ export async function updateUserAvatar(avatarUrl: string) {
 
 		revalidatePath('/');
 		return { success: true };
-	} catch (error) {
-		console.error('Error updating avatar:', error);
-		return { success: false, error: 'Failed to update avatar' };
-	}
+	});
 }
 
 /**
@@ -121,17 +103,12 @@ export async function updateUserAvatar(avatarUrl: string) {
  * Stores in the `preferences.tutorials` JSON structure
  */
 export async function completeTutorial(tutorialId: string) {
-	try {
-		if (!IdSchema.safeParse(tutorialId).success) {
-			return { success: false, error: 'Invalid tutorial ID' };
-		}
-
-		const user = await getUser();
-		if (!user) return { success: false, error: 'Unauthorized' };
+	return executeSafeAction(IdSchema, tutorialId, async (id, { userId }) => {
+		if (!userId) throw new Error('Unauthorized');
 
 		// Fetch current preferences
 		const currentUser = await prisma.user.findUnique({
-			where: { id: user.id },
+			where: { id: userId },
 			select: { preferences: true },
 		});
 
@@ -139,19 +116,19 @@ export async function completeTutorial(tutorialId: string) {
 		const currentTutorials = (currentPrefs.tutorials as Record<string, boolean>) || {};
 
 		// If already completed, skip update
-		if (currentTutorials[tutorialId]) {
+		if (currentTutorials[id]) {
 			return { success: true };
 		}
 
 		// Update DB - merge tutorial into preferences.tutorials
 		await prisma.user.update({
-			where: { id: user.id },
+			where: { id: userId },
 			data: {
 				preferences: {
 					...currentPrefs,
 					tutorials: {
 						...currentTutorials,
-						[tutorialId]: true,
+						[id]: true,
 					},
 				},
 			},
@@ -162,31 +139,24 @@ export async function completeTutorial(tutorialId: string) {
 		revalidatePath('/dashboard');
 
 		return { success: true };
-	} catch (error) {
-		console.error('Error completing tutorial:', error);
-		return { success: false, error: 'Failed to complete tutorial' };
-	}
+	});
 }
 
 /**
  * Get user's completed tutorials
  */
 export async function getCompletedTutorials() {
-	try {
-		const user = await getUser();
-		if (!user) return {};
+	return executeSafeAction(z.void(), undefined, async (_, { userId }) => {
+		if (!userId) return {};
 
 		const userData = await prisma.user.findUnique({
-			where: { id: user.id },
+			where: { id: userId },
 			select: { preferences: true },
 		});
 
 		const prefs = (userData?.preferences as UserPreferences) || {};
 		return (prefs.tutorials as Record<string, boolean>) || {};
-	} catch (error) {
-		console.error('Error fetching tutorials:', error);
-		return {};
-	}
+	});
 }
 
 export async function recalculateUserStreak(userId: string) {

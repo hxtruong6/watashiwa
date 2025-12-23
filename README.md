@@ -34,10 +34,25 @@ Detailed documentation for this project is located in the `docs/` directory:
 - [Feature Specification](docs/feature_spec.md): SRS Algorithm, Exercise Types, and Logic.
 - [AI Integration](docs/ai_integration.md): Prompts and Agents for Grammar and Content.
 - [Design System](docs/design_system.md): UI/UX Rules, Color Palette, and Learner Heuristics.
+- [Testing Strategy](docs/testing_strategy.md): Real-DB Integration and E2E guide.
 - [Project Roadmap](docs/project_roadmap.md): Phased implementation status.
 - [Conventions](docs/conventions.md): Code Style, Naming, and Best Practices.
 
 Please refer to these documents before making changes.
+
+## Testing Strategy
+
+The project follows the **Startup Quality Stack** (Expert Strategy):
+
+- **Static Quality**: Strict TypeScript and Zod validation on all mutations.
+- **Integration Testing**: Testing against a **real PostgreSQL database** instead of mocks.
+- **E2E Testing**: Playwright for critical "Money Maker" flows.
+
+### Running Integration Tests
+
+1. **Start the Test DB**: `pnpm test:db:setup` (Requires Docker)
+2. **Run Tests**: `pnpm test:integration`
+3. **Teardown**: `pnpm test:db:teardown`
 
 ## Getting Started
 

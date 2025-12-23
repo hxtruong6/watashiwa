@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  test_db:
+    image: postgres:16-alpine
+    container_name: watashiwa_test_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: watashiwa_test
+    ports:
+      - '5433:5432'
+    tmpfs:
+      - /var/lib/postgresql/data

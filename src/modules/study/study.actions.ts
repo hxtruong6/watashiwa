@@ -14,69 +14,64 @@ import { StudyService } from './study.service';
  * Get Next Review Card
  */
 export async function getNextReviewCard(input: { deckIdOrIds?: string | string[] }) {
-	// Manually wrapping because createSafeAction wrapper is abstract
-	// Reusing GetQueueSchema for simplicity or defining a new one
-	// Let's rely on flexible input for now or use a proper schema
+	try {
+		const user = await getUser();
+		const userId = user?.id;
+		if (!userId) return null;
 
-	// Note: The input here comes from the client component usually as args.
-	// We'll wrap it.
-	return executeSafeAction(
-		GetQueueSchema.pick({ deckIdOrIds: true }),
-		input,
-		async (data, { userId }) => {
-			if (!userId) throw new Error('Unauthorized');
+		// 1. Check Limits
+		const stats = await StudyData.getDailyStats(userId, 200, 20);
+		if (stats.hasReachedReviewLimit) return null;
 
-			// 1. Check Limits (Basic check, optimizations later)
-			const stats = await StudyData.getDailyStats(userId, 200, 20); // Hardcoded limits for V2 MVP
-			if (stats.hasReachedReviewLimit) return null;
+		// 2. Find Due
+		const dueCards = await StudyData.findDueCards(
+			userId,
+			1,
+			Array.isArray(input.deckIdOrIds)
+				? input.deckIdOrIds
+				: input.deckIdOrIds
+					? [input.deckIdOrIds]
+					: undefined,
+		);
+		if (dueCards.length > 0) return dueCards[0];
 
-			// 2. Find Due
-			const dueCards = await StudyData.findDueCards(
-				userId,
-				1,
-				Array.isArray(data.deckIdOrIds)
-					? data.deckIdOrIds
-					: data.deckIdOrIds
-						? [data.deckIdOrIds]
-						: undefined,
-			);
-			if (dueCards.length > 0) return dueCards[0];
+		// 3. Find New
+		if (stats.hasReachedNewCardLimit) return null;
+		const candidate = await StudyData.findNewContentCandidate(
+			userId,
+			Array.isArray(input.deckIdOrIds)
+				? input.deckIdOrIds
+				: input.deckIdOrIds
+					? [input.deckIdOrIds]
+					: undefined,
+		);
 
-			// 3. Find New
-			if (stats.hasReachedNewCardLimit) return null;
-			const candidate = await StudyData.findNewContentCandidate(
-				userId,
-				Array.isArray(data.deckIdOrIds)
-					? data.deckIdOrIds
-					: data.deckIdOrIds
-						? [data.deckIdOrIds]
-						: undefined,
-			);
+		if (candidate) {
+			return StudyData.createCard(userId, {
+				vocabId: candidate.item.id,
+			});
+		}
 
-			if (candidate) {
-				// Enroll
-				return StudyData.createCard(userId, {
-					vocabId: candidate.item.id,
-				});
-			}
-
-			return null;
-		},
-	);
+		return null;
+	} catch (error) {
+		console.error('Error getting next review card:', error);
+		return null;
+	}
 }
 
 /**
  * Get Queue (Smart Prefetching)
  */
-export async function getReviewQueue(input: { deckIdOrIds?: string | string[]; limit?: number }) {
-	return executeSafeAction(GetQueueSchema, input, async (data, { userId }) => {
-		if (!userId) throw new Error('Unauthorized');
+export async function getReviewQueue(deckIdOrIds?: string | string[], limit: number = 3) {
+	try {
+		const user = await getUser();
+		const userId = user?.id;
+		if (!userId) return [];
 
-		const limit = data.limit ?? 3;
-		const deckIds = Array.isArray(data.deckIdOrIds)
-			? data.deckIdOrIds
-			: data.deckIdOrIds
-				? [data.deckIdOrIds]
+		const deckIds = Array.isArray(deckIdOrIds)
+			? deckIdOrIds
+			: deckIdOrIds
+				? [deckIdOrIds]
 				: undefined;
 
 		// 1. Check Limits
@@ -84,7 +79,6 @@ export async function getReviewQueue(input: { deckIdOrIds?: string | string[]; l
 		if (stats.hasReachedReviewLimit) return [];
 
 		// 2. Due Cards
-		// Fetch up to limit
 		const dueCards = await StudyData.findDueCards(userId, limit, deckIds);
 
 		if (dueCards.length >= limit) return dueCards;
@@ -95,8 +89,6 @@ export async function getReviewQueue(input: { deckIdOrIds?: string | string[]; l
 
 		if (stats.hasReachedNewCardLimit || needed <= 0) return queue;
 
-		// Try to enroll 'needed' amount
-		// Naive loop for MVP (optimized in V3)
 		for (let i = 0; i < needed; i++) {
 			const candidate = await StudyData.findNewContentCandidate(userId, deckIds);
 			if (!candidate) break;
@@ -108,7 +100,10 @@ export async function getReviewQueue(input: { deckIdOrIds?: string | string[]; l
 		}
 
 		return queue;
-	});
+	} catch (error) {
+		console.error('Error getting review queue:', error);
+		return [];
+	}
 }
 
 /**
@@ -182,38 +177,34 @@ export async function submitReview(input: {
  * Get Daily Progress (Dashboard)
  */
 export async function getDailyProgress() {
-	return executeSafeAction(z.void(), undefined, async (_, { userId }) => {
-		if (!userId) throw new Error('Unauthorized');
-		// Hardcoded limits for MVP, or fetch user settings?
-		// StudyData.getDailyStats assumes limits passed in.
-		// We should fetch user settings.
-		// Avoiding circular dependency, we fetch settings here or in StudyData?
-		// StudyData should be pure data. Logic belongs here.
-		// But we don't have access to User settings easily without importing user module.
-		// Let's import getUserSettings from user module.
-
-		// Wait, user module is separate.
-		// Ideally we fetch settings.
-		// For now, hardcode or fetch via prisma directly?
-		// Let's use hardcoded defaults matching actions.ts: 200, 20.
+	try {
+		const user = await getUser();
+		if (!user) return null;
+		const userId = user.id;
 
 		const stats = await StudyData.getDailyStats(userId, 200, 20);
-
 		return stats;
-	});
+	} catch (error) {
+		console.error('Error getting daily progress:', error);
+		return null;
+	}
 }
 
 /**
  * Get Review Count (Badge)
  */
 export async function getReviewCount() {
-	return executeSafeAction(z.void(), undefined, async (_, { userId }) => {
-		if (!userId) return 0;
-		// Reuse getDailyStats? Or just count.
-		// getDailyStats is efficient enough.
+	try {
+		const user = await getUser();
+		if (!user) return 0;
+		const userId = user.id;
+
 		const stats = await StudyData.getDailyStats(userId, 200, 20);
 		return stats.dueCount;
-	});
+	} catch (error) {
+		console.error('Error getting review count:', error);
+		return 0;
+	}
 }
 
 const ExerciseSchema = z.object({
