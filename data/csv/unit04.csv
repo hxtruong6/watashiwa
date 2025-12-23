@@ -1,0 +1,68 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+4-1,4,1,起きます,おきます,okimasu,"get up, wake up","đặt, để",Trí
+4-2,4,2,寝ます,ねます,nemasu,"sleep, go to bed",ngủ,Tẩm
+4-3,4,3,働きます,はたらきます,hatarakimasu,work,làm việc,Động
+4-4,4,4,休みます,やすみます,yasumimasu,"take a rest, take a holiday",nghỉ ngơi,Hưu
+4-5,4,5,勉強します,べんきょうします,benkyōshimasu,study,học,Miễn - Cường
+4-6,4,6,終わります,おわります,owarimasu,finish,"kết thúc, hết",Chung
+4-7,4,7,,デパート,depāto,department store,,
+4-8,4,8,銀行,ぎんこう,ginkō,bank,ngân hàng,Ngân - Hành
+4-9,4,9,郵便局,ゆうびんきょく,yūbinkyoku,post office,bưu điện,Bưu - Tiện - Cục
+4-10,4,10,図書館,としょかん,toshokan,library,thư viện,Đồ - Thư - Quán
+4-11,4,11,美術館,びじゅつかん,bijutsukan,"art museum, art gallery",bảo tàng mỹ thuật,Mỹ - Thuật - Quán
+4-12,4,12,今,いま,ima,now,bây giờ,Kim
+4-13,4,13,－時,－じ,-ji,－ o'clock,,
+4-14,4,14,－分,－ふん（－ぷん）,-fun (-pun),－ minute,,
+4-15,4,15,半,はん,han,half,"rưỡi, nửa",Bán
+4-16,4,16,何時,なんじ,nanji,what time,mấy giờ,Hà - Thời
+4-17,4,17,何分,なんぷん,nanpun,what minute,mấy phút,Hà - Phân
+4-18,4,18,午前,ごぜん,gozen,"a.m., morning",sáng - AM,Ngọ - Tiền
+4-19,4,19,午後,ごご,gogo,"p.m., afternoon",chiều - PM,Ngọ - Hậu
+4-20,4,20,朝,あさ,asa,morning,sáng,Triều
+4-21,4,21,昼,ひる,hiru,"daytime, noon",trưa,Trú
+4-22,4,22,晩（夜）,ばん（よる）,ban (yoru),"night, evening",,
+4-23,4,23,,おととい,ototoi,the day before yesterday,,
+4-24,4,24,,きのう,kinō,yesterday,,
+4-25,4,25,,きょう,kyō,today,,
+4-26,4,26,,あした,ashita,tomorrow,,
+4-27,4,27,,あさって,asatte,the day after tomorrow,,
+4-28,4,28,,けさ,kesa,this morning,,
+4-29,4,29,今晩,こんばん,konban,"this evening, tonight",tối nay,Kim - Vãn
+4-30,4,30,休み,やすみ,yasumi,"rest, a holiday, a day off",nghỉ,Hưu
+4-31,4,31,昼休み,ひるやすみ,hiruyasumi,lunchtime,nghỉ trưa,Trú - Hưu
+4-32,4,32,試験,しけん,shiken,"examination, test","kỳ thi, kiểm tra",Thí - Nghiệm
+4-33,4,33,会議,かいぎ,kaigi,"meeting, conference (～を します : hold a meeting)",cuộc họp,Hội - Nghị
+4-34,4,34,映画,えいが,eiga,"film, movie",phim,Ánh - Họa
+4-35,4,35,毎朝,まいあさ,maiasa,every morning,mỗi sáng,Mỗi - Triều
+4-36,4,36,毎晩,まいばん,maiban,every evening,mỗi tối,Mỗi - Vãn
+4-37,4,37,毎日,まいにち,mainichi,every day,mỗi ngày,Mỗi - Nhật
+4-38,4,38,月曜日,げつようび,getsuyōbi,Monday,thứ 2,Nguyệt - Diệu - Nhật
+4-39,4,39,火曜日,かようび,kayōbi,Tuesday,thứ 3,Hỏa - Diệu - Nhật
+4-40,4,40,水曜日,すいようび,suiyōbi,Wednesday,thứ 4,Thủy - Diệu - Nhật
+4-41,4,41,木曜日,もくようび,mokuyōbi,Thursday,thứ 5,Mộc - Diệu - Nhật
+4-42,4,42,金曜日,きんようび,kin'yōbi,Friday,thứ 6,Kim - Diệu - Nhật
+4-43,4,43,土曜日,どようび,doyōbi,Saturday,thứ 7,Thổ - Diệu - Nhật
+4-44,4,44,日曜日,にちようび,nichiyōbi,Sunday,chủ nhật,Nhật - Diệu - Nhật
+4-45,4,45,何曜日,なんようび,naniyōbi,what day of the week,thứ mấy,Hà - Diệu - Nhật
+4-46,4,46,,～から,~kara,from ～,,
+4-47,4,47,,～まで,~made,"up to ～, until ～",,
+4-48,4,48,,～と ～,~to ~,and (used to connect nouns),,
+4-49,4,49,大変ですね。,たいへんですね。,taihendesune.,"That's tough, isn't it? (used when expressing sympathy)",,
+4-50,4,50,番号,ばんごう,bangō,number,số,Phiên - Hiệu
+4-51,4,51,何番,なんばん,nanban,what number,số mấy,Hà - Phiên
+4-52,4,52,,そちら,sochira,your place,,
+4-53,4,53,,ニューヨーク,nyūyōku,New York,,
+4-54,4,54,,ペキン,pekin,Beijing (北京),,
+4-55,4,55,,ロサンゼルス,rosanzerusu,Los Angeles,,
+4-56,4,56,,ロンドン,rondon,London,,
+4-57,4,57,,あすか,asuka,a fictitious Japanese restaurant,,
+4-58,4,58,アップル銀行,アップルぎんこう,appuruginkō,a fictitious bank,,
+4-59,4,59,みどり図書館,みどりとしょかん,midoritoshokan,a fictitious library,,
+4-60,4,60,やまと美術館,やまとびじゅつかん,yamatobijutsukan,a fictitious art gallery,,
+4-61,4,61,,えーと,eeto,"well, let me see",,
+4-62,4,62,,１０４,104,"information, directory assistance",,
+4-63,4,63,お願いします。,おねがいします。,onegaishimasu.,Please. (lit. ask for a favor),,
+4-64,4,64,,かしこまりました。,kashikomarimashita.,"Certainly (sir, madam)",,
+4-65,4,65,お問い合わせの番号,おといあわせのばんごう,otoiawasenobangō,the number being inquired about,,
+4-66,4,66,,［どうも］ありがとう ございました。,[dōmo] arigatō gozaimashita.,Thank you very much.,,
+4-67,4,67,大阪デパート,おおさかデパート,ōsakadepāto,fictitious department store,,

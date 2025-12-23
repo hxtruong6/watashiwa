@@ -1,0 +1,32 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+45-1,45,1,信じます,しんじます,shinjimasu,"believe, trust",tin tưởng,Tín
+45-2,45,2,,キャンセルします,kyanserushimasu,cancel,,
+45-3,45,3,保証書,ほしょうしょ,hoshōsho,guarantee,phiếu bảo hành,Bảo - Chứng - Thư
+45-4,45,4,領収書,りょうしゅうしょ,ryōshūsho,receipt,"biên lai, hóa đơn",Lĩnh - Thu - Thư
+45-5,45,5,,キャンプ,kyanpu,camp,,
+45-6,45,6,中止,ちゅうし,chūshi,"calling off, cancelling, suspension",hủy,Trung - Chỉ
+45-7,45,7,点,てん,ten,"point, score",điểm,Điểm
+45-8,45,8,梅,うめ,ume,plum (blossom),hoa mơ của nhật,Mai
+45-9,45,9,１１０番,１１０ばん,110ban,the emergency police telephone number,,
+45-10,45,10,１１９番,１１９ばん,119ban,the emergency fire service telephone number,,
+45-11,45,11,無理に,むりに,murini,unreasonably,"quá sức, vô lý, quá khả năng",Vô - Lý
+45-12,45,12,楽しみに して います,たのしみに して います,tanoshimini shite imasu,"be looking forward to, be expecting",,
+45-13,45,13,以上です。,いじょうです。,ijōdesu.,That's all,,
+45-14,45,14,係員,かかりいん,kakariin,"person in charge, organiser",người phụ trách,Hệ - Viên
+45-15,45,15,,コース,kōsu,course,,
+45-16,45,16,,スタート,sutāto,start,,
+45-17,45,17,－位,－い,-i,-th (ranking),,
+45-18,45,18,優勝します,ゆうしょうします,yūshōshimasu,"win the championship, come first","chiến thắng, vô địch",Ưu - Thắng
+45-19,45,19,悩み,なやみ,nayami,"trouble, worry","điều bận tâm, lo nghĩ, trăn trở",Não
+45-20,45,20,目覚まし［時計］,めざまし［どけい］,mezamashi [dokei],alarm clock,,
+45-21,45,21,大学生,だいがくせい,daigakusei,university student,,
+45-22,45,22,回答,かいとう,kaitō,"answer, reply (～します : answer, reply)",câu trả lời,Hồi - Đáp
+45-23,45,23,鳴ります,なります,narimasu,ring,"reng, kêu",Minh
+45-24,45,24,,セットします,settoshimasu,set,,
+45-25,45,25,,それでも,soredemo,"nevertheless, for all that",,
+45-26,45,26,用意します,よういします,yōishimasu,prepare,chuẩn bị sẵn,Điền - Ý
+45-27,45,27,贈り物,おくりもの,okurimono,"gift, present (～を します : give a present)",,
+45-28,45,28,間違い電話,まちがいでんわ,machigaidenwa,wrong (telephone) number,,
+45-29,45,29,係,かかり,kakari,person in charge,,
+45-30,45,30,［－円］札,［－えん］さつ,[-en] satsu,"[－ yen] note, bill",,
+45-31,45,31,,ちゃんと,chanto,"regularly, properly",,

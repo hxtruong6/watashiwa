@@ -1,0 +1,61 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+42-1,42,1,包みます,つつみます,tsutsumimasu,wrap,"gói, bọc lại, bao quanh",Bao
+42-2,42,2,沸かします,わかします,wakashimasu,boil,đun sôi,Phí
+42-3,42,3,混ぜます,まぜます,mazemasu,mix,"pha trộn, trộn",Hỗn
+42-4,42,4,計算します,けいさんします,keisanshimasu,calculate,tính toán,Kế - Toán
+42-5,42,5,丈夫［な］,じょうぶ［な］,jōbu [na],"strong, healthy",,
+42-6,42,6,,アパート,apāto,"apartment, flat",,
+42-7,42,7,弁護士,べんごし,bengoshi,"lawyer, attorney, solicitor, barrister",luật sư,Biện - Hộ - Sĩ
+42-8,42,8,音楽家,おんがくか,ongakuka,musician,nhạc sĩ,Âm - Lạc - Gia
+42-9,42,9,教育,きょういく,kyōiku,education,giáo dục,Giáo - Dục
+42-10,42,10,文化,ぶんか,bunka,culture,văn hóa,Văn - Hóa
+42-11,42,11,社会,しゃかい,shakai,society,xã hội,Xã - Hội
+42-12,42,12,法律,ほうりつ,hōritsu,law,pháp luật,Pháp - Luật
+42-13,42,13,戦争,せんそう,sensō,war,chiến tranh,Chiến - Tranh
+42-14,42,14,平和,へいわ,heiwa,peace,hòa bình,Hòa - Bình
+42-15,42,15,目的,もくてき,mokuteki,purpose,mục đích,Mục - Đích
+42-16,42,16,論文,ろんぶん,ronbun,"thesis, academic paper",luận văn,Luận - Văn
+42-17,42,17,,ミキサー,mikisā,"mixer, blender",,
+42-18,42,18,,やかん,yakan,kettle,ấm đun nước,Dược - Phẫu
+42-19,42,19,栓抜き,せんぬき,sennuki,cap opener,cái bật nắp chai,Xuyên - Bạt
+42-20,42,20,缶切,かんきり,kankiri,can opener,dụng cụ mở đồ hộp,Phẫu - Thiết
+42-21,42,21,缶詰,かんづめ,kanzume,"canned food, tinned food","đồ hộp, thực phẩm đóng hộp",Phẫu - Cật
+42-22,42,22,のし袋,のしぶくろ,noshibukuro,envelope for a gift of money,phong bì lì xì (tiền mừng),Úy - Đấu - Đại
+42-23,42,23,,ふろしき,furoshiki,wrapping cloth used to carry things,khăn vuông đề gói quần áo,Phong - Lữ - Phu
+42-24,42,24,,そろばん,soroban,abacus,bàn tính,Toán - Bàn
+42-25,42,25,体温計,たいおんけい,taionkei,(clinical) thermometer,nhiệt kế,Thể - Ôn - Kế
+42-26,42,26,,なぜ,naze,why,,
+42-27,42,27,,どのくらい,donokurai,"how much, how many",,
+42-28,42,28,国連,こくれん,kokuren,United Nations,liên hợp quốc,Liên - Quốc
+42-29,42,29,,エリーゼの ために,eriizeno tameni,Für Elise (For Elise),,
+42-30,42,30,,ベートーベン,bētōben,"Ludwig van Beethoven, German composer (1770-1827)",,
+42-31,42,31,,こどもニュース,kodomonyūsu,a fictitious news programme,,
+42-32,42,32,出ます［ボーナスが～］,でます［ボーナスが～］,demasu [bōnasuga~],[bonus] be paid,,
+42-33,42,33,半分,はんぶん,hanbun,half,1 nửa,Bán - Phân
+42-34,42,34,,ローン,rōn,loan,,
+42-35,42,35,,カップめん,kappumen,"instant noodles sold in a ready-to-use disposable container, pot noodles",,
+42-36,42,36,世界初,せかいはつ,sekaihatsu,world's first,đầu tiên trên thế giới,Thế - Giới - Sơ
+42-37,42,37,,めん,men,noodles,mì,Miến
+42-38,42,38,広めます,ひろめます,hiromemasu,spread,"phổ cập, truyền bá, phát triển",Quảng
+42-39,42,39,市場調査,しじょうちょうさ,shijōchōsa,"market survey, market research",điều tra thị trường,Thị - Trường - Điều - Tra
+42-40,42,40,割ります,わります,warimasu,break,"bẻ ra, chia nhỏ ra, làm nhạt đi, giảm đi",Cát
+42-41,42,41,注ぎます,そそぎます,sosogimasu,pour,đổ vào,Chú
+42-42,42,42,,チキンラーメン,chikinrāmen,brand name of instant noodles,,
+42-43,42,43,安藤百福,あんどうももふく,andōmomofuku,Japanese businessman and inventor (1910-2007),,
+42-44,42,44,厚い,あつい,atsui,thick,dày,Hậu
+42-45,42,45,薄い,うすい,usui,thin,"loãng, nhạt",Bạc
+42-46,42,46,安全,あんぜん,anzen,safety,an toàn,An - Toàn
+42-47,42,47,関係,かんけい,kankei,"relation, connection",quan hệ,Quan - Hệ
+42-48,42,48,,ピラミッド,piramiddo,pyramid,,
+42-49,42,49,,データ,dēta,data,,
+42-50,42,50,,ファイル,fuairu,file,,
+42-51,42,51,,ポーランド,pōrando,Poland,,
+42-52,42,52,,セット,setto,set,,
+42-53,42,53,,あと,ato,"the amount left unused, the rest",,
+42-54,42,54,,カップラーメン,kappurāmen,instant Chinese noodles sold in a ready-to-use disposable container,,
+42-55,42,55,,インスタントラーメン,insutantorāmen,instant Chinese noodles,,
+42-56,42,56,食品,しょくひん,shokuhin,food,,
+42-57,42,57,調査,ちょうさ,chōsa,"investigation, survey",,
+42-58,42,58,,カップ,kappu,cup,,
+42-59,42,59,～の 代わりに,～の かわりに,~no kawarini,"in place of ～, instead of ～",,
+42-60,42,60,,どこででも,dokodedemo,in any place,,

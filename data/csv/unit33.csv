@@ -1,0 +1,70 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+33-1,33,1,逃げます,にげます,nigemasu,run away,"chạy trốn, bỏ chạy",Đào
+33-2,33,2,騒ぎます,さわぎます,sawagimasu,make a noise,làm ồn,Tao
+33-3,33,3,,あきらめます,akiramemasu,give up,,
+33-4,33,4,投げます,なげます,nagemasu,throw,ném,Đầu
+33-5,33,5,守ります,まもります,mamorimasu,"keep, follow, obey","giữ gìn, bảo vệ, tuân thủ, duy trì",Thủ
+33-6,33,6,伝えます,つたえます,tsutaemasu,convey,"nói lại, truyền đạt lại",Truyền
+33-7,33,7,注意します［車に～］,ちゅういします［くるまに～］,chūishimasu [kurumani~],be careful [of the cars],,
+33-8,33,8,外します［席を～］,はずします［せきを～］,hazushimasu [sekiwo~],be away [from one's desk],,
+33-9,33,9,戻ります,もどります,modorimasu,"come back, return","trở lại, quay trở lại",Lệ
+33-10,33,10,あります［電話が～］,あります［でんわが～］,arimasu [denwaga~],have [a telephone call],,
+33-11,33,11,,リサイクルします,risaikurushimasu,recycle,,
+33-12,33,12,,だめ［な］,dame [na],"no good, not permitted, impossible",,
+33-13,33,13,同じ,おなじ,onaji,same,giống,Đồng
+33-14,33,14,警察,けいさつ,keisatsu,police (station),"cảnh sát, sở cảnh sát",Cảnh - Sát
+33-15,33,15,席,せき,seki,seat,"ghế, chỗ ngồi",Tịch
+33-16,33,16,,マーク,māku,"mark, symbol",,
+33-17,33,17,,ボール,bōru,ball,,
+33-18,33,18,締め切り,しめきり,shimekiri,deadline,"hạn chót, hạn cuối",Đế - Thiết
+33-19,33,19,規則,きそく,kisoku,"regulation, rule",quy tắc,Quy tắc
+33-20,33,20,危険,きけん,kiken,Danger,nguy hiểm,Nguy - Hiểm
+33-21,33,21,使用禁止,しようきんし,shiyōkinshi,Do Not Use,cấm sử dụng,Sử - Dụng - Cấm - Chỉ
+33-22,33,22,立入禁止,たちいりきんし,tachiirikinshi,Keep Out,cấm vào,Lập - Nhập - Cấm - Chỉ
+33-23,33,23,徐行,じょこう,jokō,Go Slow,"chạy chậm, đi chậm",Từ - Hành
+33-24,33,24,入口,いりぐち,iriguchi,entrance,lối vào,Nhập - Khẩu
+33-25,33,25,出口,でぐち,deguchi,exit,lối ra,Xuất - Khẩu
+33-26,33,26,非常口,ひじょうぐち,hijōguchi,emergency exit,cửa thoát hiểm,Phi - Thường - Khẩu
+33-27,33,27,割引,わりびき,waribiki,Discount,giảm giá,Cát - Dẫn
+33-28,33,28,飲み放題,のみほうだい,nomihōdai,All You Can Drink,"uống thoải mái, uống thỏa thích",Ẩm - Phóng - Đề
+33-29,33,29,使用中,しようちゅう,shiyōchū,In Use,đang sử dụng,Sử - Dụng - Trung
+33-30,33,30,募集中,ぼしゅうちゅう,boshūchū,Applications Wanted,đang tuyển,Mộ - Tập - Trung
+33-31,33,31,～中,～ちゅう,~chū,-ing,đang ~,Trung
+33-32,33,32,,どういう ～,dōiu ~,what (kind of ～),,
+33-33,33,33,,もう,mō,(not) any longer (used with negatives),,
+33-34,33,34,,あと ～,ato ~,～ left,,
+33-35,33,35,駐車違反,ちゅうしゃいはん,chūshaihan,parking violation,"vi phạm đậu xe, đỗ xe sai quy định",Trú - Xa - Vi - Phản
+33-36,33,36,罰金,ばっきん,bakkin,fine,tiền phạt,Phạt - Kim
+33-37,33,37,置きます,おきます,okimasu,happen,"đặt, để",Trí
+33-38,33,38,助け合います,たすけあいます,tasukeaimasu,help each other,giúp đỡ lẫn nhau,Trợ - Hợp
+33-39,33,39,,もともと,motomoto,originally,,
+33-40,33,40,悲しい,かなしい,kanashii,sad,buồn,Bi
+33-41,33,41,,もっと,motto,more,,
+33-42,33,42,,あいさつ,aisatsu,"greeting, address (～を します : greet, give an address)",,
+33-43,33,43,相手,あいて,aite,the other person,"đối thủ, đối tượng, bạn cùng phe",Tương - Thủ
+33-44,33,44,気持ち,きもち,kimochi,feeling,tâm thế,Khí - Trì
+33-45,33,45,上げます,あげます,agemasu,"raise, lift up",tăng,Thượng
+33-46,33,46,下げます,さげます,sagemasu,"lower, pull down",giảm,Hạ
+33-47,33,47,,ファイト,fuaito,fight,,
+33-48,33,48,洗濯機,せんたくき,sentakuki,washing machine,,
+33-49,33,49,本日休業,ほんじつきゅうぎょう,honjitsukyūgyō,closed today,,
+33-50,33,50,営業中,えいぎょうちゅう,eigyōchū,open for business,,
+33-51,33,51,,そりゃあ,soryā,well,,
+33-52,33,52,～以内,～いない,~inai,within ～,,
+33-53,33,53,電報,でんぽう,denpō,telegram,,
+33-54,33,54,人々,ひとびと,hitobito,people,,
+33-55,33,55,急用,きゅうよう,kyūyō,urgent business,,
+33-56,33,56,打ちます［電報を～］,うちます［でんぽうを～］,uchimasu [denpōwo~],send [a telegram],,
+33-57,33,57,電報代,でんぽうだい,denpōdai,telegram charge,,
+33-58,33,58,,できるだけ,dekirudake,as much as possible,,
+33-59,33,59,短く,みじかく,mijikaku,"shortly, briefly",,
+33-60,33,60,,また,mata,and,,
+33-61,33,61,危篤,キトク,kitoku,in a critical condition,,
+33-62,33,62,重い 病気,おもい びょうき,omoi byōki,serious illness,,
+33-63,33,63,明日,あす,asu,tomorrow,,
+33-64,33,64,留守,るす,rusu,absence,vắng nhà,Lưu - Thủ
+33-65,33,65,留守番,るすばん,rusuban,looking after the house during the owner's absence,,
+33-66,33,66,［お］祝い,［お］いわい,[o] iwai,celebration,,
+33-67,33,67,亡くなります,なくなります,nakunarimasu,"pass away, die",qua đời,Vong
+33-68,33,68,悲しみ,かなしみ,kanashimi,"sorrow, sadness",,
+33-69,33,69,利用します,りようします,riyōshimasu,use,sử dụng,Lợi - Dụng

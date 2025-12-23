@@ -1,0 +1,58 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+12-1,12,1,簡単［な］,かんたん［な］,kantan [na],"easy, simple",,
+12-2,12,2,近い,ちかい,chikai,near,gần,Cận
+12-3,12,3,遠い,とおい,tōi,far,xa,Viễn
+12-4,12,4,速い、早い,はやい,hayai,"fast, early",,
+12-5,12,5,遅い,おそい,osoi,"slow, late","chậm, muộn",Trì
+12-6,12,6,多い［人が～］,おおい［ひとが～］,ōi [hitoga~],"many [people], much",,
+12-7,12,7,少ない［人が～］,すくない［ひとが～］,sukunai [hitoga~],"few [people], a little",,
+12-8,12,8,暖かい、温かい,あたたかい,atatakai,warm,"ấm áp, ôn hòa, nồng ấm",Ôn
+12-9,12,9,涼しい,すずしい,suzushii,cool,mát mẻ,Lương
+12-10,12,10,甘い,あまい,amai,sweet,ngọt,Cam
+12-11,12,11,辛い,からい,karai,"hot (taste), spicy",cay,Tân
+12-12,12,12,重い,おもい,omoi,heavy,nặng,Trọng
+12-13,12,13,軽い,かるい,karui,light (of weight),nhẹ,Khinh
+12-14,12,14,,いい［コーヒーが～］,ii [kōhiiga~],prefer [coffee],,
+12-15,12,15,季節,きせつ,kisetsu,season,"mùa, thời tiết",Quý - Tiết
+12-16,12,16,春,はる,haru,spring,mùa xuân,Xuân
+12-17,12,17,夏,なつ,natsu,summer,mùa hè,Hạ
+12-18,12,18,秋,あき,aki,"autumn, fall",mùa thu,Thu
+12-19,12,19,冬,ふゆ,fuyu,winter,mùa đông,Đông
+12-20,12,20,天気,てんき,tenki,weather,thời tiết,Thiên - Khí
+12-21,12,21,雨,あめ,ame,"rain, rainy",mưa,Vũ
+12-22,12,22,雪,ゆき,yuki,"snow, snowy",tuyết,Tuyết
+12-23,12,23,曇り,くもり,kumori,cloudy,có mây,Đàm
+12-24,12,24,,ホテル,hoteru,hotel,,
+12-25,12,25,空港,くうこう,kūkō,airport,sân bay,Không - Cảng
+12-26,12,26,海,うみ,umi,"sea, ocean",biển,Hải
+12-27,12,27,世界,せかい,sekai,world,,
+12-28,12,28,,パーティー,pāteii,party (～を します : give a party),,
+12-29,12,29,［お］祭り,［お］まつり,[o] matsuri,festival,,
+12-30,12,30,すき焼き,すきやき,sukiyaki,sukiyaki (beef and vegetables hot pot),sukiyaki - thịt bò kiểu nhật,Thiêu
+12-31,12,31,刺身,さしみ,sashimi,sashimi (sliced raw fish),sashimi - cá sống của Nhật,Thích - Thân
+12-32,12,32,,［お］すし,[o] sushi,sushi (vinegared rice topped with raw fish),,
+12-33,12,33,,てんぷら,tenpura,tempura (seafood and vegetables deep fried in batter),,
+12-34,12,34,豚肉,ぶたにく,butaniku,pork,thịt heo,Đồn - Nhục
+12-35,12,35,とり肉,とりにく,toriniku,chicken,thịt gà,Nhục
+12-36,12,36,牛肉,ぎゅうにく,gyūniku,beef,thịt bò,Ngưu - Nhục
+12-37,12,37,,レモン,remon,lemon,,
+12-38,12,38,生け花,いけばな,ikebana,flower arrangement (～を します : practise flower arrangement),nghệ thuật cắm hoa,Sinh - Hoa
+12-39,12,39,紅葉,もみじ,momiji,"maple, red leaves of autumn","cây lá đỏ, lá đỏ",Hồng - Diệp
+12-40,12,40,,どちら,dochira,which one (of two things),,
+12-41,12,41,,どちらも,dochiramo,both,,
+12-42,12,42,,いちばん,ichiban,the most,,
+12-43,12,43,,ずっと,zutto,by far,,
+12-44,12,44,初めて,はじめて,hajimete,for the first time,lần đầu tiên,Sơ
+12-45,12,45,,ただいま。,tadaima.,I'm home.,,
+12-46,12,46,お帰りなさい。,おかえりなさい。,okaerinasai.,Welcome home,a/c đã về đấy à,Quy
+12-47,12,47,わあ、すごい 人ですね。,わあ、すごい ひとですね。,"wā, sugoi hitodesune.",Wow! Look at all those people!,,
+12-48,12,48,疲れました。,つかれました。,tsukaremashita.,I'm tired,tôi mệt rồi,Bí
+12-49,12,49,祇園祭,ぎおんまつり,gionmatsuri,the Gion Festival (the most famous festival in Kyoto),,
+12-50,12,50,香港,ホンコン,honkon,Hong Kong (香港),,
+12-51,12,51,,シンガポール,shingapōru,Singapore,,
+12-52,12,52,,ABC ストア,ABC sutoa,a fictitious supermarket,,
+12-53,12,53,,ジャパン,japan,a fictitious supermarket,,
+12-54,12,54,試験,しけん,shiken,examination,"kỳ thi, kiểm tra",Thí - Nghiệm
+12-55,12,55,,すごいですね。,sugoidesune.,That's amazing.,,
+12-56,12,56,,でも,demo,but,,
+12-57,12,57,毎日屋,まいにちや,mainichiya,fictitious supermarket,,

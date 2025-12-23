@@ -1,0 +1,57 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+49-1,49,1,勤めます［会社に～］,つとめます［かいしゃに～］,tsutomemasu [kaishani~],work [for a company],,
+49-2,49,2,掛けます［いすに～］,かけます［いすに～］,kakemasu [isuni~],sit on [a chair],,
+49-3,49,3,過ごします,すごします,sugoshimasu,"spend (time), pass (time)",trải qua,Quá
+49-4,49,4,,いらっしゃいます,irasshaimasu,"be, go, come (respectful equivalent of います, いきます and きます)",,
+49-5,49,5,召し上がります,めしあがります,meshiagarimasu,"eat, drink (respectful equivalent of たべます and のみます)",ăn uống,Triệu - Thượng
+49-6,49,6,,おっしゃいます,osshaimasu,"say, (one's name) is ～ (respectful equivalent of いいます)",,
+49-7,49,7,,なさいます,nasaimasu,do (respectful equivalent of します),,
+49-8,49,8,ご覧に なります,ごらんに なります,goranni narimasu,"see, look at (respectful equivalent of みます)",,
+49-9,49,9,ご存じです,ごぞんじです,gozonjidesu,know (respectful equivalent of しっています),biết,Tồn
+49-10,49,10,旅館,りょかん,ryokan,Japanese-style hotel or inn,khách sạn kiểu nhật,Lữ - Quán
+49-11,49,11,バス停,バスてい,basutei,bus stop,bến xe buýt,Đình
+49-12,49,12,奥様,おくさま,okusama,(someone else's) wife (respectful equivalent of おくさん),vợ của người khác (kính ngữ của 奥さん),Áo - Dạng
+49-13,49,13,～様,～さま,~sama,(respectful equivalent of ～さん),,
+49-14,49,14,,たまに,tamani,once in a while,,
+49-15,49,15,,どなたでも,donatademo,anybody (respectful equivalent of だれでも),,
+49-16,49,16,－年－組,－ねん－くみ,-nen-kumi,class － of -th grade,,
+49-17,49,17,出します［熱を～］,だします［ねつを～］,dashimasu [netsuwo~],run [a fever],,
+49-18,49,18,よろしく お伝え ください。,よろしく おつたえ ください。,yoroshiku otsutae kudasai.,Give my best regards./Please say hello.,,
+49-19,49,19,失礼いたします。,しつれいいたします。,shitsureiitashimasu.,Goodbye. (humble equivalent of しつれいします),,
+49-20,49,20,ひまわり小学校,ひまわりしょうがっこう,himawarishōgakkō,fictitious elementary school,,
+49-21,49,21,経歴,けいれき,keireki,background,lí lịch,Kinh - Lịch
+49-22,49,22,医学部,いがくぶ,igakubu,the medical department,khoa y,Y - Học - Bộ
+49-23,49,23,目指します,めざします,mezashimasu,aim for,"nhằm mục tiêu, hướng đến, muốn trở thành",Mục - Chỉ
+49-24,49,24,進みます,すすみます,susumimasu,go on (to graduate school),"học lên, thăng chức",Tiến
+49-25,49,25,iPS細胞,iPSさいぼう,iPSsaibō,induced pluripotent stem cell,,
+49-26,49,26,開発します,かいはつします,kaihatsushimasu,"develop, create",phát triển,Khai - Phát
+49-27,49,27,,マウス,mausu,mouse,,
+49-28,49,28,,ヒト,hito,human,,
+49-29,49,29,授賞します,じゅしょうします,jushōshimasu,be awarded a prize,nhận giải thưởng,Thụ - Thưởng
+49-30,49,30,講演会,こうえんかい,kōenkai,lecture meeting,buổi nói chuyện,Giảng - Diễn - Hội
+49-31,49,31,山中伸弥,やまなかしんや,yamanakashin'ya,Japanese medical scientist (1962-),,
+49-32,49,32,ノーベル賞,ノーベルしょう,nōberushō,Nobel Prize,,
+49-33,49,33,休みます,やすみます,yasumimasu,"go to bed, sleep",nghỉ ngơi,Hưu
+49-34,49,34,寄ります［銀行に～］,よります［ぎんこうに～］,yorimasu [ginkōni~],drop into [a bank],,
+49-35,49,35,灰皿,はいざら,haizara,ashtray,,
+49-36,49,36,会場,かいじょう,kaijō,"meeting place, hall",hội trường,Hội - Trường
+49-37,49,37,貿易,ぼうえき,bōeki,trade,,
+49-38,49,38,帰りに,かえりに,kaerini,on the way back,,
+49-39,49,39,,ちっとも,chittomo,not at all (used with negatives),,
+49-40,49,40,遠慮なく,えんりょなく,enryonaku,"without reserve, without hesitation",,
+49-41,49,41,,では,dewa,"well, then (polite equivalent of じゃ)",,
+49-42,49,42,講師,こうし,kōshi,lecturer,,
+49-43,49,43,多くの ～,おおくの ～,ōkuno ~,"many ～, much ～",,
+49-44,49,44,作品,さくひん,sakuhin,"work (of art, etc.)",,
+49-45,49,45,世界的に,せかいてきに,sekaitekini,world-wide,,
+49-46,49,46,作家,さっか,sakka,"novelist, writer",,
+49-47,49,47,,～で いらっしゃいます,~de irasshaimasu,be (respectful equivalent of です),,
+49-48,49,48,長男,ちょうなん,chōnan,one's eldest son,,
+49-49,49,49,障害,しょうがい,shōgai,"handicap, defect",,
+49-50,49,50,お持ちです,おもちです,omochidesu,have (respectful way of saying もって います),,
+49-51,49,51,作曲,さっきょく,sakkyoku,composition (music),,
+49-52,49,52,活動,かつどう,katsudō,activity,,
+49-53,49,53,,それでは,soredewa,"well, so (indicating an end or beginning)",,
+49-54,49,54,大江 健三郎,おおえ けんざぶろう,ōe kenzaburō,Japanese novelist (1935- ),,
+49-55,49,55,東京大学,とうきょうだいがく,tōkyōdaigaku,Tokyo University,,
+49-56,49,56,ノーベル文学賞,ノーベルぶんがくしょう,nōberu bungakushō,Nobel Prize for literature,,

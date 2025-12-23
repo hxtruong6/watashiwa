@@ -1,0 +1,57 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+27-1,27,1,飼います,かいます,kaimasu,"keep (a pet), raise (an animal)",nuôi,Tự
+27-2,27,2,走ります［道を～］,はしります［みちを～］,hashirimasu [michiwo~],"run, drive [along a road]",,
+27-3,27,3,見えます［山が～］,みえます［やまが～］,miemasu [yamaga~],[a mountain] can be seen,,
+27-4,27,4,聞こえます［音が～］,きこえます［おとが～］,kikoemasu [otoga~],[a sound] can be heard,,
+27-5,27,5,できます［道が～］,できます［みちが～］,dekimasu [michiga~],"[a road] be made, be completed, come into existence",,
+27-6,27,6,開きます［教室を～］,ひらきます［きょうしつを～］,hirakimasu [kyōshitsuwo~],"set up [a class], open, hold",,
+27-7,27,7,心配［な］,しんぱい［な］,shinpai [na],"worried, anxious",,
+27-8,27,8,,ペット,petto,pet,,
+27-9,27,9,鳥,とり,tori,bird,chim,Điểu
+27-10,27,10,声,こえ,koe,voice,"tiếng nói, giọng nói",Thanh
+27-11,27,11,波,なみ,nami,wave,sóng,Ba
+27-12,27,12,花火,はなび,hanabi,fireworks,pháo hoa,Hoa - Hỏa
+27-13,27,13,道具,どうぐ,dōgu,"tool, instrument, equipment",dụng cụ,Đạo - Cụ
+27-14,27,14,,クリーニング,kuriiningu,"(dry) cleaning, laundry",,
+27-15,27,15,家,いえ,ie,"house, home",nhà,Gia
+27-16,27,16,,マンション,manshon,"condominium, apartment house, blocks of flats",,
+27-17,27,17,,キッチン,kitchin,kitchen,,
+27-18,27,18,～教室,～きょうしつ,~kyōshitsu,～ class,,
+27-19,27,19,,パーティールーム,pāteiirūmu,party room,,
+27-20,27,20,方,かた,kata,person (respectful of ひと),"vị, ngài (kính ngữ của hito)",Phương
+27-21,27,21,～後,～ご,~go,after ～ (duration of time),tiếng~,Ngữ
+27-22,27,22,,～しか,~shika,only ～ (used with negatives),,
+27-23,27,23,,ほかの,hokano,other,,
+27-24,27,24,,はっきり,hakkiri,clearly,,
+27-25,27,25,家具,かぐ,kagu,furniture,đồ gỗ trong nhà,Gia - Cụ
+27-26,27,26,本棚,ほんだな,hondana,bookcase,giá sách,Bản - Bằng
+27-27,27,27,,いつか,itsuka,"one day, some day",,
+27-28,27,28,建てます,たてます,tatemasu,build,xây,Kiến
+27-29,27,29,,すばらしい,subarashii,wonderful,,
+27-30,27,30,子どもたち,こどもたち,kodomotachi,children,bọn trẻ,Tử
+27-31,27,31,大好き［な］,だいすき［な］,daisuki [na],like very much,,
+27-32,27,32,主人公,しゅじんこう,shujinkō,"hero, heroine",nhân vật chính,Chủ - Nhân - Công
+27-33,27,33,形,かたち,katachi,shape,hình dạng,Hình
+27-34,27,34,不思議［な］,ふしぎ［な］,fushigi [na],"fantastic, mysterious",,
+27-35,27,35,,ポケット,poketto,pocket,,
+27-36,27,36,例えば,たとえば,tatoeba,for example,ví dụ,Lệ
+27-37,27,37,付けます,つけます,tsukemasu,"attach, put on",đánh (dấu tròn),Phó
+27-38,27,38,自由に,じゆうに,jiyūni,freely,"một cách tự do, thoải mái",Tự - Do
+27-39,27,39,空,そら,sora,sky,bầu trời,Không
+27-40,27,40,飛びます,とびます,tobimasu,fly,bay,Phi
+27-41,27,41,昔,むかし,mukashi,"old times, ancient times",ngày xưa,Tích
+27-42,27,42,自分,じぶん,jibun,oneself,mình,Tự - Phân
+27-43,27,43,将来,しょうらい,shōrai,future,tương lai,Tương - Lai
+27-44,27,44,,ドラえもん,doraemon,name of a cartoon character,,
+27-45,27,45,取ります［休みを～］,とります［やすみを～］,torimasu [yasumiwo~],take [a holiday],,
+27-46,27,46,景色,けしき,keshiki,"scenery, view",phong cảnh,Cảnh - Sắc
+27-47,27,47,昼間,ひるま,hiruma,daytime,,
+27-48,27,48,通信販売,つうしんはんばい,tsūshinhanbai,"mail order, mail-order sales",,
+27-49,27,49,台所,だいどころ,daidokoro,kitchen,nhà bếp,Đài - Sở
+27-50,27,50,,ほとんど,hotondo,"almost all (in affirmative sentences), hardly, scarcely (in negative sentences)",,
+27-51,27,51,関西空港,かんさいくうこう,kansaikūkō,Kansai International Airport,,
+27-52,27,52,秋葉原,あきはばら,akihabara,name of a shopping district in Tokyo with many electrical stores,,
+27-53,27,53,伊豆,いず,izu,peninsula in Shizuoka Prefecture,,
+27-54,27,54,日曜大工,にちようだいく,nichiyōdaiku,Sunday carpenter,,
+27-55,27,55,夢,ゆめ,yume,dream (～を みます : have a dream),giấc mơ,Mộng
+27-56,27,56,漫画,まんが,manga,"cartoon, comic strip",,

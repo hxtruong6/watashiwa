@@ -1,0 +1,58 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+29-1,29,1,開きます［ドアが～］,あきます［ドアが～］,akimasu [doaga~],[a door] open,,
+29-2,29,2,閉まりる［ドアが～］,しまります［ドアが～］,shimarimasu [doaga~],"[a door] close, shut",,
+29-3,29,3,つきます［電気が～］,つきます［でんきが～］,tsukimasu [denkiga~],"[a light] come on, be turned on",,
+29-4,29,4,消えます［電気が～］,きえます［でんきが～］,kiemasu [denkiga~],[a light] go off,,
+29-5,29,5,壊れます［いすが～］,こわれます［いすが～］,kowaremasu [isuga~],[a chair] break,,
+29-6,29,6,割れます［コップが～］,われます［コップが～］,waremasu [koppuga~],"[a glass] break, smash",,
+29-7,29,7,折れます［木が～］,おれます［きが～］,oremasu [kiga~],"[a tree] break, snap",,
+29-8,29,8,破れます［紙が～］,やぶれます［かみが～］,yaburemasu [kamiga~],[paper] tear,,
+29-9,29,9,汚れます［服が～］,よごれます［ふくが～］,yogoremasu [fukuga~],[clothes] get dirty,,
+29-10,29,10,付きます［ポケットが～］,つきます［ポケットが～］,tsukimasu [pokettoga~],[a pocket] be attached,,
+29-11,29,11,外れます［ボタンが～］,はずれます［ボタンが～］,hazuremasu [botanga~],[a button] be undone,,
+29-12,29,12,止まります［車が～］,とまります［くるまが～］,tomarimasu [kurumaga~],"[a car] stop, park",,
+29-13,29,13,,まちがえます,machigaemasu,make a mistake,,
+29-14,29,14,落します,おとします,otoshimasu,"drop, loose","thả xuống, đánh rơi",Lạc
+29-15,29,15,掛かります［かぎが～］,かかります［かぎが～］,kakarimasu [kagiga~],be locked,,
+29-16,29,16,,ふきます,fukimasu,wipe,thổi (gió),Xuy
+29-17,29,17,取り替えます,とりかえます,torikaemasu,change,"thay thế, đổi lại",Thủ - Thế
+29-18,29,18,片付けます,かたづけます,katazukemasu,"put (things) in order, tidy up",dọn dẹp,Phiến - Phó
+29-19,29,19,［お］皿,［お］さら,[o] sara,"plate, dish",,
+29-20,29,20,,［お］ちゃわん,[o] chawan,(rice) bowl,,
+29-21,29,21,,コップ,koppu,glass (vessel),,
+29-22,29,22,,ガラス,garasu,glass (material),,
+29-23,29,23,袋,ふくろ,fukuro,bag,túi,Đại
+29-24,29,24,書類,しょるい,shorui,"documents, paper","giấy tờ, văn kiện",Thư - Loại
+29-25,29,25,枝,えだ,eda,"branch, twig",cành cây,Chi
+29-26,29,26,駅員,えきいん,ekiin,station attendant,nhân viên nhà ga,Dịch - Viên
+29-27,29,27,交番,こうばん,kōban,police box,đồn cảnh sát,Giao - Phiên
+29-28,29,28,,スピーチ,supiichi,speech (～を します : give/make a speech),,
+29-29,29,29,返事,へんじ,henji,"reply, answer (～を します : reply, answer)",trả lời,Phản - Sự
+29-30,29,30,お先に どうぞ。,おさきに どうぞ。,osakini dōzo.,"After you./Go ahead, please",,
+29-31,29,31,源氏物語,げんじものがたり,genjimonogatari,'The Tale of Genji' (a novel written by Murasaki Shikibu in the Heian Era),,
+29-32,29,32,今の 電車,いまの でんしゃ,imano densha,the train which has just left,,
+29-33,29,33,忘れ物,わすれもの,wasuremono,"things left behind, lost property",đồ bỏ quên,Vong - Vật
+29-34,29,34,,このくらい,konokurai,about this (big),,
+29-35,29,35,～側,～がわ,~gawa,～ side,phía ~,Trắc
+29-36,29,36,～ 辺,～ へん,~ hen,"around ～, ～ about",,
+29-37,29,37,覚えて いません。,おぼえて いません。,oboete imasen.,I don't remember.,,
+29-38,29,38,網棚,あみだな,amidana,overhead rack,giá để hành lý,Võng - Bằng
+29-39,29,39,確か,たしか,tashika,I'm pretty sure,chắc là,Xác
+29-40,29,40,,［ああ、］よかった。,"[ā,] yokatta.","[Oh,] that's great!/Thank goodness! (used to express a feeling of relief)",,
+29-41,29,41,新宿,しんじゅく,shinjuku,name of a station/district in Tokyo,,
+29-42,29,42,地震,じしん,jishin,earthquake,động đất,Địa - Chấn
+29-43,29,43,壁,かべ,kabe,wall,tường,Bích
+29-44,29,44,針,はり,hari,hands (of a clock),kim đồng hồ,Châm
+29-45,29,45,指します,さします,sashimasu,point,"chỉ (chỉ vào ai đó), điểm",Chỉ
+29-46,29,46,駅前,えきまえ,ekimae,the area in front of the station,trước ga,Dịch - Tiền
+29-47,29,47,倒れます,たおれます,taoremasu,fall down,đổ,Đảo
+29-48,29,48,西,にし,nishi,west,tây,Tây
+29-49,29,49,～の 方,～の ほう,~no hou,direction of ～,bên ~,Phương
+29-50,29,50,燃えます,もえます,moemasu,burn,cháy (rác),Nhiên
+29-51,29,51,,レポーター,repōtā,reporter,,
+29-52,29,52,込みます［道が～］,こみます［みちが～］,komimasu [michiga~],[a road] get crowded,,
+29-53,29,53,すきます［道が～］,すきます［みちが～］,sukimasu [michiga~],[a road] get empty,,
+29-54,29,54,この 辺,この へん,kono hen,"this neighborhood, around here",,
+29-55,29,55,四ツ谷,よつや,yotsuya,name of a station in Tokyo,,
+29-56,29,56,方,ほう,hō,direction,,
+29-57,29,57,三宮,さんのみや,sannomiya,name of a place in Kobe,,

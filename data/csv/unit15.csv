@@ -1,0 +1,30 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+15-1,15,1,置きます,おきます,okimasu,put,"đặt, để",Trí
+15-2,15,2,作ります、造ります,つくります,tsukurimasu,"make, produce","làm, chế tạo, sản xuất",Tác
+15-3,15,3,売ります,うります,urimasu,sell,bán chạy,Mại
+15-4,15,4,知ります,しります,shirimasu,get to know,biết,"Tri, Trí"
+15-5,15,5,住ます,すみます,sumimasu,be going to live,"sống, ở",Trú
+15-6,15,6,研究します,けんきゅうします,kenkyūshimasu,do research,nghiên cứu,Nghiên - Cứu
+15-7,15,7,資料,しりょう,shiryō,"materials, data","tài liệu, tư liệu",Tư - Liệu
+15-8,15,8,,カタログ,katarogu,catalog,,
+15-9,15,9,時刻表,じこくひょう,jigokuhyō,timetable,bảng giờ tàu chạy,Thời - Khắc - Biểu
+15-10,15,10,服,ふく,fuku,clothes,quần áo,Phục
+15-11,15,11,製品,せいひん,seihin,products,sản phẩm,Chế - Phẩm
+15-12,15,12,,ソフト,sofuto,software,,
+15-13,15,13,電子辞書,でんしじしょ,denshijisho,electronic dictionary,kim từ điển,Điện - Tử - Từ - Thư
+15-14,15,14,高校,こうこう,kōkō,senior high school,trường cấp 3,Cao - Hiệu
+15-15,15,15,歯医者,はいしゃ,haisha,"dentist, dentist's",nha sĩ,Xỉ - Y - Giả
+15-16,15,16,独身,どくしん,dokushin,"single, unmarried",độc thân,Độc - Thân
+15-17,15,17,,すみません,sumimasen,I'm sorry.,,
+15-18,15,18,皆さん,みなさん,minasan,"Ladies and Gentlemen, everybody",,
+15-19,15,19,思い出します,おもいだします,omoidashimasu,"remember, recollect","nhớ lại, hồi tưởng lại",Tư - Xuất
+15-20,15,20,,いらっしゃいます,irasshaimasu,be (honorific equivalent of います),,
+15-21,15,21,日本橋,にっぽんばし,nipponbashi,a shopping district in Osaka,,
+15-22,15,22,,みんなの インタビュー,minnano intabyū,a fictitious TV programme,,
+15-23,15,23,知って います,しって います,shitte imasu,know,,
+15-24,15,24,住んで います［大阪に～］,すんで います［おおさかに～］,sunde imasu [ōsakani~],live [in Osaka],,
+15-25,15,25,専門,せんもん,senmon,"specialty, field of study",,
+15-26,15,26,床屋,とこや,tokoya,"barber, barber's",,
+15-27,15,27,,プレイガイド,pureigaido,(theater) ticket agency,,
+15-28,15,28,特に,とくに,tokuni,especially,đặc biệt là,Đặc
+15-29,15,29,ご家族,ごかぞく,gokazoku,your family,,

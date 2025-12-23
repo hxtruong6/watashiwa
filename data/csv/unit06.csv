@@ -1,0 +1,58 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+6-1,6,1,食べます,たべます,tabemasu,eat,ăn,Thực
+6-2,6,2,飲みます,のみます,nomimasu,drink,uống,Ẩm
+6-3,6,3,吸います［たばこを～］,すいます［たばこを～］,suimasu [tabakowo~],smoke [a cigarette],,
+6-4,6,4,見ます,みます,mimasu,"see, look at, watch","kiểm tra, khám bệnh",Kiến - Chẩn
+6-5,6,5,聞きます,ききます,kikimasu,"hear, listen",hỏi (giáo viên),Vãn
+6-6,6,6,読みます,よみます,yomimasu,read,đọc,Độc
+6-7,6,7,書きます,かきます,kakimasu,"write (かきます can also mean to draw or paint, but in this case it is written with hiragana in this book)",viết,Thư
+6-8,6,8,買います,かいます,kaimasu,buy,nuôi,Tự
+6-9,6,9,撮ります［写真を～］,とります［しゃしんを～］,torimasu [shashinwo~],take [a photograph],,
+6-10,6,10,,します,shimasu,"do, play",,
+6-11,6,11,会います［友達に～］,あいます［ともだちに～］,aimasu [tomodachini~],meet [a friend],,
+6-12,6,12,,ごはん,gohan,"a meal, cooked rice",,
+6-13,6,13,朝ごはん,あさごはん,asagohan,breakfast,bữa sáng,Triều
+6-14,6,14,昼ごはん,ひるごはん,hirugohan,lunch,bữa trưa,Trú
+6-15,6,15,晩ごはん,ばんごはん,bangohan,supper,bữa tối,Vãn
+6-16,6,16,,パン,pan,bread,,
+6-17,6,17,卵,たまご,tamago,egg,trứng,Noãn
+6-18,6,18,肉,にく,niku,meat,thịt,Nhục
+6-19,6,19,魚,さかな,sakana,fish,cá,Ngư
+6-20,6,20,野菜,やさい,yasai,vegetable,rau,Dã - Thái
+6-21,6,21,果物,くだもの,kudamono,fruit,"hoa quả, trái cây",Quả - Vật
+6-22,6,22,水,みず,mizu,water,,
+6-23,6,23,お茶,おちゃ,ocha,"tea, green tea",trà,Trà
+6-24,6,24,紅茶,こうちゃ,kōcha,black tea,,
+6-25,6,25,牛乳（ミルク）,ぎゅうにゅう（ミルク）,gyūnyū (miruku),milk,,
+6-26,6,26,,ジュース,jūsu,juice,,
+6-27,6,27,,ビール,biiru,beer,,
+6-28,6,28,［お］酒,［お］さけ,[o] sake,"alcohol, Japanese rice wine",,
+6-29,6,29,手紙,てがみ,tegami,letter,thư,Thủ - Chỉ
+6-30,6,30,,レポート,repōto,report,,
+6-31,6,31,写真,しゃしん,shashin,photograph,bức ảnh,Tả - Chân
+6-32,6,32,,ビデオ,bideo,"video [tape], video deck",,
+6-33,6,33,店,みせ,mise,"store, shop","tiệm, cửa hàng",Điếm
+6-34,6,34,庭,にわ,niwa,garden,vườn,Thính
+6-35,6,35,宿題,しゅくだい,shukudai,homework (～を します : do homework),bài tập về nhà,Túc - Đề
+6-36,6,36,,テニス,tenisu,tennis (～を します : play tennis),,
+6-37,6,37,,サッカー,sakkā,"soccer, football (～を します : play soccer)",,
+6-38,6,38,［お］花見,［お］はなみ,[o] hanami,cherry-blossom viewing (～を します : view the cherry blossoms),,
+6-39,6,39,何,なに,nani,what,cái gì,Hà
+6-40,6,40,,いっしょに,isshoni,together,,
+6-41,6,41,,ちょっと,chotto,"a little while, a little bit",,
+6-42,6,42,,いつも,itsumo,"always, usually",,
+6-43,6,43,時々,ときどき,tokidoki,sometimes,thỉnh thoảng,Thì
+6-44,6,44,,それから,sorekara,"after that, and then",,
+6-45,6,45,,ええ,ee,yes,,
+6-46,6,46,,いいですね。,iidesune.,That's good.,,
+6-47,6,47,,わかりました。,wakarimashita.,I see,,
+6-48,6,48,何ですか。,なんですか。,nandesuka.,Yes? (lit: What is it?),,
+6-49,6,49,,じゃ、また［あした］。,"ja, mata [ashita].",See you [tomorrow].,,
+6-50,6,50,,メキシコ,mekishiko,Mexico,,
+6-51,6,51,大阪デパート,おおさかデパート,ōsakadepāto,a fictitious department store,,
+6-52,6,52,,つるや,tsuruya,a fictitious restaurant,,
+6-53,6,53,フランス屋,フランスや,furansuya,a fictitious supermarket,,
+6-54,6,54,毎日屋,まいにちや,mainichiya,a fictitious supermarket,,
+6-55,6,55,映画,えいが,eiga,movie,phim,Ánh - Họa
+6-56,6,56,,レストラン,resutoran,restaurant,,
+6-57,6,57,大阪城公園,おおさかじょうこうえん,ōsakajōkōen,Osaka Castle park,,

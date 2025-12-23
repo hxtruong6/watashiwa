@@ -1,0 +1,64 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+35-1,35,1,咲きます［花が～］,さきます［はなが～］,sakimasu [hanaga~],[flowers] bloom,,
+35-2,35,2,変わります［色が～］,かわります［いろが～］,kawarimasu [iroga~],[the color] change,,
+35-3,35,3,付けます［丸を～］,つけます［まるを～］,tsukemasu [maruwo~],"draw [a circle], mark [with a circle], add",,
+35-4,35,4,,くりっくします,kurikkushimasu,click,,
+35-5,35,5,入力します,にゅうりょくします,nyūryokushimasu,input,nhập vào,Nhập - Lực
+35-6,35,6,正しい,ただしい,tadashii,"correct, right",đúng,Chính
+35-7,35,7,向こう,むこう,mukō,"over there, the other side","đằng ấy, phía đối diện",Hướng
+35-8,35,8,島,しま,shima,island,đảo,Đảo
+35-9,35,9,港,みなと,minato,"port, harbour","cảng, bến cảng",Cảng
+35-10,35,10,近所,きんじょ,kinjo,"neighborhood, vicinity",hàng xóm,Cận - Sở
+35-11,35,11,屋上,おくじょう,okujō,rooftop,"tầng thượng, mái nhà, nóc nhà",Ốc - Thượng
+35-12,35,12,海外,かいがい,kaigai,overseas,nước ngoài,Hải - Ngoại
+35-13,35,13,山登り,やまのぼり,yamanobori,mountain climbing,leo núi,Sơn - Đăng
+35-14,35,14,歴史,れきし,rekishi,history,lịch sử,Lịch - Sử
+35-15,35,15,機会,きかい,kikai,"chance, opportunity",cơ hội,Cơ - Hội
+35-16,35,16,許可,きょか,kyoka,permission,sự cho phép,Hổ - Khả
+35-17,35,17,丸,まる,maru,circle,dấu tròn,Hoàn
+35-18,35,18,,ふりがな,furigana,(kana above or beside kanji indicating its pronunciation),,
+35-19,35,19,設備,せつび,setsubi,"equipment, facilities",thiết bị,Thiết - Bị
+35-20,35,20,,レバー,rebā,lever,,
+35-21,35,21,,カーテン,kāten,curtain,,
+35-22,35,22,,ひも,himo,string,,
+35-23,35,23,炊飯器,すいはんき,suihanki,rice cooker,nồi cơm điện,Xuy - Phạn - Khí
+35-24,35,24,葉,は,ha,leaf,lá,Diệp
+35-25,35,25,これで 終わりましょう。,これで おわりましょう。,korede owarimashou.,Let's finish now.,,
+35-26,35,26,箱根,はこね,hakone,resort and tourist spot in Kanagawa prefecture,,
+35-27,35,27,日光,にっこう,nikkō,tourist spot in Tochigi prefecture,,
+35-28,35,28,,アフリカ,afurika,Africa,,
+35-29,35,29,,マンガミュージアム,mangamyūjiamu,Kyoto International Manga Museum,,
+35-30,35,30,みんなの 学校,みんなの がっこう,minnano gakkō,école de japonais fictive,,
+35-31,35,31,大黒ずし,だいこくずし,daikokuzushi,a fictitious sushi restaurant,,
+35-32,35,32,IMCパソコン教室,IMCパソコンきょうしつ,IMCpasokonkyōshitsu,a fictitious computer school,,
+35-33,35,33,母の 味,ははの あじ,hahano aji,a fictitious book,,
+35-34,35,34,,はる,haru,a fictitious hair salon,mùa xuân,Xuân
+35-35,35,35,佐藤歯科,さとうしか,satōshika,a fictitious dental clinic,,
+35-36,35,36,毎日クッキング,まいにちクッキング,mainichikukkingu,a fictitious cooking school,,
+35-37,35,37,,それなら,sorenara,in that case,,
+35-38,35,38,夜行バス,やこうバス,yakōbasu,overnight bus,xe buýt đêm,Dạ - Hành
+35-39,35,39,,さあ,sā,"Well, let me see. (used when unsure of something)",,
+35-40,35,40,旅行社,りょこうしゃ,ryokōsha,travel agency,khách du lịch,Lữ - Hành - Giả
+35-41,35,41,詳しい,くわしい,kuwashii,detailed,"cụ thể, chi tiết",Tường
+35-42,35,42,スキー場,スキーじょう,sukiijou,"ski resort, ski area",khu trượt tuyết,Trường
+35-43,35,43,草津,くさつ,kusatsu,resort in Gunma prefecture,,
+35-44,35,44,志賀高原,しがこうげん,shigakōgen,national park in Nagano prefecture,,
+35-45,35,45,朱,しゅ,shu,vermilion,màu đỏ tươi,"Chu, Châu"
+35-46,35,46,交わります,まじわります,majiwarimasu,keep company with,"chơi với, quen với",Giao
+35-47,35,47,,ことわざ,kotowaza,proverb,,
+35-48,35,48,関係,かんけい,kankei,relationship,quan hệ,Quan - Hệ
+35-49,35,49,仲よく します,なかよく します,nakayoku shimasu,be on good terms with,,
+35-50,35,50,必要［な］,ひつよう［な］,hitsuyō [na],"necessary, essential",,
+35-51,35,51,かかります［電話が～］,かかります［でんわが～］,kakarimasu [denwaga~],get through [on the telephone],,
+35-52,35,52,楽［な］,らく［な］,raku [na],"comfortable, easy",,
+35-53,35,53,珍しい,めずらしい,mezurashii,"rare, uncommon",hiếm,Trân
+35-54,35,54,方,かた,kata,person (respectful equivalent of ひと),"vị, ngài (kính ngữ của hito)",Phương
+35-55,35,55,,ハイキング,haikingu,hiking,,
+35-56,35,56,操作,そうさ,sōsa,operation,,
+35-57,35,57,方法,ほうほう,hōhō,method,phương pháp,Phương - Pháp
+35-58,35,58,,ふた,futa,"lid, cover, cap",nắp,Cái
+35-59,35,59,曲,きょく,kyoku,a piece of music,"ca khúc, bản nhạc",Khúc
+35-60,35,60,楽しみ,たのしみ,tanoshimi,"pleasure, enjoyment, expectation",niềm vui,Lạc
+35-61,35,61,初めに,はじめに,hajimeni,first,"trước hết, đầu tiên",Sơ
+35-62,35,62,これで 終わります。,これで おわります。,korede owarimasu.,We'll finish now.,,
+35-63,35,63,白馬,はくば,hakuba,resort in Nagano Prefecture,,

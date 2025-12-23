@@ -1,0 +1,46 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+36-1,36,1,あいます［事故に～］,あいます［じこに～］,aimasu [jikoni~],encounter [an accident],,
+36-2,36,2,貯金します,ちょきんします,chokinshimasu,save money,tiết kiệm tiền,Trữ - Kim
+36-3,36,3,過ぎます［７時を～］,すぎます［７じを～］,sugimasu [7jiwo~],pass [7 o'clock],,
+36-4,36,4,慣れます［仕事に～］,なれます［しごとに～］,naremasu [shigotoni~],get accustomed to [one's job],,
+36-5,36,5,腐ります［食べ物が～］,くさります［たべものが～］,kusarimasu [tabemonoga~],[food] rot,,
+36-6,36,6,剣道,けんどう,kendō,kendo (Japanese style fencing),kiếm đạo,Kiếm - Đạo
+36-7,36,7,毎週,まいしゅう,maishū,every week,hàng tuần,Mỗi - Chu
+36-8,36,8,毎月,まいつき,maitsuki,every month,hàng tháng,Mỗi - Nguyệt
+36-9,36,9,毎年,まいとし（まいねん）,maitoshi (mainen),every year,,
+36-10,36,10,,このごろ,konogoro,these days,,
+36-11,36,11,,やっと,yatto,finally,,
+36-12,36,12,,かなり,kanari,fairly,,
+36-13,36,13,必ず,かならず,kanarazu,"without fail, by any means",nhất định,Tất
+36-14,36,14,絶対に,ぜったいに,zettaini,absolutely,tuyệt đối,Tuyệt - Đối
+36-15,36,15,上手に,じょうずに,jōzuni,"well, skillfully",giỏi,Thượng - Thủ
+36-16,36,16,,ショパン,shopan,"Chopin, Polish musician (1810-49)",,
+36-17,36,17,お客様,おきゃくさま,okyakusama,"visitor, guest, customer, client (respectful equivalent of おきゃくさん)",quý khách,Khách - Dạng
+36-18,36,18,特別［な］,とくべつ［な］,tokubetsu [na],special,,
+36-19,36,19,,して いらっしゃいます,shite irasshaimasu,be doing (respectful equivalent of して います),,
+36-20,36,20,水泳,すいえい,suiei,swimming,"bơi, bơi lội",Thủy - Vịnh
+36-21,36,21,使って いらっしゃるんですね。,つかって いらっしゃるんですね。,tsukatte irassharundesune.,"You're using, aren't you? (respectful equivalent of つかって いるんですね)",,
+36-22,36,22,,チャレンジします,charenjishimasu,challenge,,
+36-23,36,23,気持ち,きもち,kimochi,"spirit, mood",tâm thế,Khí - Trì
+36-24,36,24,乗り物,のりもの,norimono,"vehicle, means of transportation",phương tiện đi lại,Thừa - Vật
+36-25,36,25,ー世紀,ーせいき,-seiki,-th century,,
+36-26,36,26,遠く,とおく,tōku,"far, remote place",nơi xa,Viễn
+36-27,36,27,汽車,きしゃ,kisha,locomotive,tàu hơi nước,Khí - Xa
+36-28,36,28,汽船,きせん,kisen,steam boat,tàu thủy hơi nước,Khí - Thuyền
+36-29,36,29,大勢の ～,おおぜいの ～,oozeino ~,many (people),,
+36-30,36,30,運びます,はこびます,hakobimasu,"carry, transport",vận chuyển,Vận
+36-31,36,31,届きます［荷物が～］,とどきます［にもつが～］,todokimasu [nimotsuga~],[parcels] be delivered,,
+36-32,36,32,出ます［試合に～］,でます［しあいに～］,demasu [shiaini~],participate [in the game],,
+36-33,36,33,打ちます［ワープロを～］,うちます［ワープロを～］,uchimasu [wāpurowo~],type [on a word processor],,
+36-34,36,34,太ります,ふとります,futorimasu,get fat,béo ra,Thái
+36-35,36,35,,やせます,yasemasu,"get slim, lose weight",,
+36-36,36,36,硬い,かたい,katai,"hard, tough, solid",cứng,Ngạnh
+36-37,36,37,軟らかい,やわらかい,yawarakai,"soft, tender",mềm,Nhuyễn
+36-38,36,38,電子～,でんし～,denshi~,electronic ～,,
+36-39,36,39,携帯～,けいたい～,keitai~,portable ～,,
+36-40,36,40,工場,こうじょう,kōjō,factory,nhà máy,Công - Trường
+36-41,36,41,,～ずつ,~zutsu,～ (some amount) per (some unit),,
+36-42,36,42,,その ほうが ～,sono hōga~,That is more ～,,
+36-43,36,43,,タンゴ,tango,tango,,
+36-44,36,44,安全［な］,あんぜん［な］,anzen [na],safe,,
+36-45,36,45,ライト兄弟,ライトきょうだい,raitokyōdai,"Wright brothers, American pioneers in aviation ; Wilbur Wright (1867-1912) Orville Wright (1871-1948)",,

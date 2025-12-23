@@ -1,0 +1,50 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+39-1,39,1,答えます［質問に～］,こたえます［しつもんに～］,kotaemasu [shitsumonni~],answer [a question],,
+39-2,39,2,倒れます［ビルが～］,たおれます［ビルが～］,taoremasu [biruga~],[a building] fall down,,
+39-3,39,3,通ります［道を～］,とおります［みちを～］,tōrimasu [michiwo~],pass [along a street],,
+39-4,39,4,死にます,しにます,shinimasu,die,chết,Tử
+39-5,39,5,,びっくりします,bikkurishimasu,be surprised,,
+39-6,39,6,,がっかりします,gakkarishimasu,be disappointed,,
+39-7,39,7,安心します,あんしんします,anshinshimasu,be relieved,yên tâm,An - Tâm
+39-8,39,8,離婚します,りこんします,rikonshimasu,divorce,ly hôn,Li - Hôn
+39-9,39,9,太ります,ふとります,futorimasu,"get fat, gain weight",béo ra,Thái
+39-10,39,10,複雑［な］,ふくざつ［な］,fukuzatsu [na],"complicated, complex",,
+39-11,39,11,邪魔［な］,じゃま［な］,jama [na],"obstructive, in the way",,
+39-12,39,12,汚い,きたない,kitanai,dirty,"không sạch sẽ, bẩn",Ô
+39-13,39,13,,うれしい,ureshii,happy,,
+39-14,39,14,恥ずかしい,はずかしい,hazukashii,"embarrassed, ashamed","xấu hổ, ngượng",Sỉ
+39-15,39,15,津波,つなみ,tsunami,"tsunami, tidal wave",sóng thần,Tân - Ba
+39-16,39,16,台風,たいふう,taifū,typhoon,bão,Đài - Phong
+39-17,39,17,雷,かみなり,kaminari,thunder,sấm,Lôi
+39-18,39,18,火事,かじ,kaji,fire,hỏa hoạn,Hỏa - Sự
+39-19,39,19,事後,じご,jigo,accident,,
+39-20,39,20,［お］見合い,［お］みあい,[o] miai,a meeting arranged with a view to marriage,,
+39-21,39,21,操作,そうさ,sōsa,operation (～します : operate),,
+39-22,39,22,会場,かいじょう,kaijō,"venue, event location",hội trường,Hội - Trường
+39-23,39,23,～代,～だい,~dai,"charge, fare, fee","phí ~, tiền ~",Đại
+39-24,39,24,～屋,～や,~ya,"-er (e.g. baker, grocer, etc.)","hiệu ~, cửa hàng ~, người bán ~",Ốc
+39-25,39,25,,フロント,furonto,"front desk, reception desk",,
+39-26,39,26,－号室,－ごうしつ,-gōshitsu,room number －,,
+39-27,39,27,,タオル,taoru,towel,,
+39-28,39,28,,せっけん,sekken,soap,,
+39-29,39,29,大勢,おおぜい,oozei,a great number (of people),nhiều (người),Đại - Thế
+39-30,39,30,お疲れ様でした。,おつかれさまでした。,otsukaresamadeshita.,Thank you for your hard work. (used to express appreciation for a colleague's or subordinate's work),a/c vất vả quá.,Bí - Dạng
+39-31,39,31,伺います。,うかがいます。,ukagaimasu.,I'm coming. (humble equivalent of いきます),tôi sẽ đi đến chỗ a/c ạ. (lịch sự của いきます),Tỷ
+39-32,39,32,途中で,とちゅうで,tochūde,"on the way, in the midst of","trên đường, nửa đường, giữa chừng",Đồ - Trung
+39-33,39,33,,トラック,torakku,"truck, lorry",,
+39-34,39,34,,ぶつかります,butsukarimasu,"bump, collide",,
+39-35,39,35,大人,おとな,otona,adult,người lớn,Đại - Nhân
+39-36,39,36,洋服,ようふく,yōfuku,Western clothes,áo quần,Dương - Phục
+39-37,39,37,西洋化します,せいようかします,seiyōkashimasu,be Westernized,âu mỹ hóa,Tây - Dương - Hóa
+39-38,39,38,合います,あいます,aimasu,"fit, suit","phù hợp (với), vừa (cỡ ~)",Hợp
+39-39,39,39,今では,いまでは,imadewa,now,"bây giờ, hiện nay",Kim
+39-40,39,40,成人式,せいじんしき,seijinshiki,coming-of-age celebration,lễ thành nhân,Thành - Nhân - Thức
+39-41,39,41,伝統的［な］,でんとうてき［な］,dentōteki [na],traditional,,
+39-42,39,42,焼けます［うちが～］,やけます［うちが～］,yakemasu [uchiga~],[a house] burn down,,
+39-43,39,43,焼けます［パンが～］,やけます［パンが～］,yakemasu [panga~],[bread] be baked,,
+39-44,39,44,焼けます［肉が～］,やけます［にくが～］,yakemasu [nikuga~],"[meat] be roasted, be grilled",,
+39-45,39,45,遅刻します,ちこくします,chikokushimasu,"be late, come late",,
+39-46,39,46,早退します,そうたいします,sōtaishimasu,leave (work or school) earlier than usual,,
+39-47,39,47,電話代,でんわだい,denwadai,telephone charge,,
+39-48,39,48,汗,あせ,ase,perspiration (～を かきます : perspire),,
+39-49,39,49,並びます,ならびます,narabimasu,"stand in a queue, line up",xếp hàng,Tịnh

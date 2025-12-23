@@ -1,0 +1,54 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+34-1,34,1,磨きます［歯を～］,みがきます［はを～］,migakimasu [hawo~],"brush [one's teeth], polish",,
+34-2,34,2,組み立てます,くみたてます,kumitatemasu,assemble,lắp ráp,Tổ - Lập
+34-3,34,3,降ります,おります,orimasu,"bend, fold, break, snap","gập, bẻ",Chiết
+34-4,34,4,気が つきます［忘れ物に～］,きが つきます［わすれものに～］,kiga tsukimasu [wasuremononi~],"notice, become aware of [things left behind]",,
+34-5,34,5,,つけます［しゅうゆを～］,tsukemasu [shūyuwo~],put [in soy sauce],,
+34-6,34,6,見つかります［かぎが～］,みつかります［かぎが～］,mitsukarimasu [kagiga~],[a key] be found,,
+34-7,34,7,質問します,しつもんします,shitsumonshimasu,ask a question,hỏi,Chất - Vấn
+34-8,34,8,さします［傘を～］,さします［かさを～］,sashimasu [kasawo~],put up [an umbrella],,
+34-9,34,9,,スポーツクラブ,supōtsukurabu,sports club,,
+34-10,34,10,［お］城,［お］しろ,[o] shiro,castle,,
+34-11,34,11,説明書,せつめいしょ,setsumeisho,"explanatory pamphlet, instruction book",sách hướng dẫn,Thuyết - Minh - Thư
+34-12,34,12,図,ず,zu,"figure, drawing",hình vẽ minh họa,Đồ
+34-13,34,13,線,せん,sen,line,đường kẻ,Tuyến
+34-14,34,14,矢印,やじるし,yajirushi,arrow (sign),mũi tên,Thỉ - Ấn
+34-15,34,15,黒,くろ,kuro,black (noun),màu đen,Hắc
+34-16,34,16,白,しろ,shiro,white (noun),màu trắng,Bạch
+34-17,34,17,赤,あか,aka,red (noun),màu đỏ,Xích
+34-18,34,18,青,あお,ao,blue (noun),màu xanh,Thanh
+34-19,34,19,紺,こん,kon,"navy blue, dark blue (noun)","màu xanh đen, xanh sẫm",Cám
+34-20,34,20,黄色,きいろ,kiiro,yellow (noun),màu vàng,Hoàng - Sắc
+34-21,34,21,茶色,ちゃいろ,chairo,brown (noun),màu nâu,Trà - Sắc
+34-22,34,22,,しょうゆ,shōyu,"soya, soy sauce",,
+34-23,34,23,,ソース,sōsu,"sauce, Worcestershire sauce",,
+34-24,34,24,,～か ～,~ka ~,～ or ～,,
+34-25,34,25,,ゆうべ,yūbe,last night,,
+34-26,34,26,,さっき,sakki,a short while ago,,
+34-27,34,27,茶道,さどう,sadō,tea ceremony,trà đạo,Trà - Đạo
+34-28,34,28,お茶を たてます,おちゃを たてます,ochawo tatemasu,make (green) tea (at a tea ceremony),,
+34-29,34,29,先に,さきに,sakini,"first, ahead",trước,Tiên
+34-30,34,30,載せます,のせます,nosemasu,"place on, load onto","để lên, cho lên",Tải
+34-31,34,31,,これで いいですか。,korede iidesuka.,Is this all right?,,
+34-32,34,32,苦い,にがい,nigai,bitter,đắng,Khổ
+34-33,34,33,親子どんぶり,おやこどんぶり,oyakodonburi,a bowl of cooked rice with chicken and egg,Oyakodonburi (cơm có thịt gà và trứng),Thân - Tử
+34-34,34,34,材料,ざいりょう,zairyō,"material, ingredient",nguyên liệu,Tài - Liệu
+34-35,34,35,～分,～ぶん,~bun,portion for ～ (used for indicating quantity),,
+34-36,34,36,,－グラム,-guramu,－ gramme,,
+34-37,34,37,ー個,ーこ,-ko,(counter for small objects),,
+34-38,34,38,,たまねぎ,tamanegi,onion,,
+34-39,34,39,４分の１（１／４）,よんぶんのいち（１／４）,yonbunnoichi (1/4),one fourth,,
+34-40,34,40,調味料,ちょうみりょう,chōmiryō,"seasoning , flavoring",gia vị,Điều - Vị - Liệu
+34-41,34,41,適当な 大きさに,てきとうな おおきさに,tekitōna ōkisani,in right size,,
+34-42,34,42,,なべ,nabe,"pan, pot",,
+34-43,34,43,火,ひ,hi,"fire, heating",lửa,Hỏa
+34-44,34,44,火に かけます,ひに かけます,hini kakemasu,put on the stove,,
+34-45,34,45,煮ます,にます,nimasu,"cook, boil",nấu,Chử
+34-46,34,46,煮えます,にえます,niemasu,"be cooked, be boiled",chín,Chử
+34-47,34,47,,どんぶり,donburi,bowl,,
+34-48,34,48,,たちます,tachimasu,pass (time),đứng,Lập
+34-49,34,49,,します［ネクタイを～］,shimasu [nekutaiwo~],"put on, wear [a tie]",,
+34-50,34,50,細い,ほそい,hosoi,thin (of small diameter),"thon thả, mảnh mai",Tế
+34-51,34,51,太い,ふとい,futoi,thick (of large diameter),"béo, mập, dày, rậm",Thái
+34-52,34,52,,キー,kii,key,,
+34-53,34,53,,シートベルト,shiitoberuto,seat belt,,

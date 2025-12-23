@@ -1,0 +1,53 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+38-1,38,1,参加します［旅行に～］,さんかします［りょこうに～］,sankashimasu [ryokōni~],"join [a tour], participate, attend",,
+38-2,38,2,育てます,そだてます,sodatemasu,"breed, bring up",chăm sóc,Dục
+38-3,38,3,入院します,にゅういんします,nyūinshimasu,enter hospital,nhập viện,Nhập - Viện
+38-4,38,4,退院します,たいいんします,taiinshimasu,leave hospital,ra viện,Thoái - Viện
+38-5,38,5,入れます［電源を～］,いれます［でんげんを～］,iremasu [dengenwo~],turn on [the power switch],,
+38-6,38,6,切ります［電源を～］,きります［でんげんを～］,kirimasu [dengenwo~],turn off [the power switch],,
+38-7,38,7,掛けます［かぎを～］,かけます［かぎを～］,kakemasu [kagiwo~],lock,,
+38-8,38,8,,つきます［うそを～］,tsukimasu [usowo~],tell [a lie],,
+38-9,38,9,気持ちが いい,きもちが いい,kimochiga ii,"pleasant, agreeable",,
+38-10,38,10,気持ちが 悪い,きもちが わるい,kimochiga warui,"unpleasant, disgusting",,
+38-11,38,11,大きな ～,おおきな ～,ōkina ~,"large ～, big ～",,
+38-12,38,12,小さな ～,ちいさな ～,chiisana ~,"small ～, little ～",,
+38-13,38,13,赤ちゃん,あかちゃん,akachan,baby,em bé,Xích
+38-14,38,14,小学校,しょうがっこう,shōgakkō,elementary school,trường tiểu học,Tiểu - Học - Hiệu
+38-15,38,15,中学校,ちゅうがっこう,chūgakkō,junior high school,trường trung học cơ sở,Trung - Học - Hiệu
+38-16,38,16,海岸,かいがん,kaigan,"seaside, seashore",bờ biển,Hải - Ngạn
+38-17,38,17,,かな,kana,hiragana and katakana script,,
+38-18,38,18,指輪,ゆびわ,yubiwa,ring,nhẫn,Chỉ - Luân
+38-19,38,19,電源,でんげん,dengen,power switch,điện nguồn,Điện - Nguyên
+38-20,38,20,習慣,しゅうかん,shūkan,habit,"thói quen, tập quán",Tập - Quán
+38-21,38,21,～製,～せい,~sei,made in ～,hàng ~,Chế
+38-22,38,22,,おととし,ototoshi,the year before the last,,
+38-23,38,23,,［あ、］いけない。,"[a,] ikenai.","Oops!/Oh, no! (used when one has made a mistake)",,
+38-24,38,24,お先に［失礼します］。,おさきに［しつれいします］。,osakini [shitsureishimasu].,Excuse me (for leaving before you).,,
+38-25,38,25,原爆ドーム,げんばくドーム,genbakudōmu,dome commemorating the atomic bombing of Hiroshima,,
+38-26,38,26,出雲大社,いずもたいしゃ,izumotaisha,a shrine in Izumo city in Shimane prefecture,,
+38-27,38,27,,チェンマイ,chenmai,Chiangmai (in Thailand),,
+38-28,38,28,回覧,かいらん,kairan,circular,tài liệu thông báo,Hối - Lãm
+38-29,38,29,研究室,けんきゅうしつ,kenkyūshitsu,"study room, professor's office, laboratory",phòng nghiên cứu,Nghiên - Cứu - Thất
+38-30,38,30,,きちんと,kichinto,"neatly, tidily",,
+38-31,38,31,整理します,せいりします,seirishimasu,sort (things) out,sắp xếp,Chỉnh - Lí
+38-32,38,32,,～と いう,~to iu,"entitled ～, named ～, called ～",,
+38-33,38,33,－冊,－さつ,-satsu,"(counter for books, etc.)",,
+38-34,38,34,,はんこ,hanko,"seal, stamp",,
+38-35,38,35,押します［はんこを～］,おします［はんこを～］,oshimasu [hankowo~],"affix [a seal], stamp",,
+38-36,38,36,双子,ふたご,futago,twins,sinh đôi,Song - Tử
+38-37,38,37,姉妹,しまい,shimai,sisters,chị em,Tỉ - Muội
+38-38,38,38,５年生,５ねんせい,5nensei,"fifth grade, fifth year",,
+38-39,38,39,似て います,にて います,nite imasu,"resemble, be like",,
+38-40,38,40,性格,せいかく,seikaku,character,tính cách,Tính - Cách
+38-41,38,41,,おとなしい,otonashii,"quiet, gentle",,
+38-42,38,42,優しい,やさしい,yasashii,"kind, gentle, tender-hearted",hiền lành,Ưu
+38-43,38,43,世話を します,せわを します,sewawo shimasu,take care of,,
+38-44,38,44,時間が たちます,じかんが たちます,jikanga tachimasu,time passes by,,
+38-45,38,45,－点,－てん,-ten,－ points,,
+38-46,38,46,気が 強い,きが つよい,kiga tsuyoi,"tough, strong-willed",,
+38-47,38,47,,けんかします,kenkashimasu,"quarrel, fight",,
+38-48,38,48,不思議［な］,ふしぎ［な］,fushigi [na],"mysterious, strange",,
+38-49,38,49,年齢,ねんれい,nenrei,age,tuổi tác,Niên - Linh
+38-50,38,50,,しかた,shikata,way (of doing something),,
+38-51,38,51,亡くなります,なくなります,nakunarimasu,pass away (euphemistic expression for しにます(L.39)),qua đời,Vong
+38-52,38,52,,うそ,uso,"lie, fib",,

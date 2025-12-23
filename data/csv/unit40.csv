@@ -1,0 +1,73 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+40-1,40,1,数えます,かぞえます,kazoemasu,count,đếm,Sổ
+40-2,40,2,測ります、量ります,はかります,hakarimasu,"measure, weigh",cân,Lượng/Lường/Lương
+40-3,40,3,確かめます,たしかめます,tashikamemasu,"confirm, make sure",xác nhận,Xác
+40-4,40,4,合います［サイズが～］,あいます［サイズが～］,aimasu [saizuga~],[the size] fit,,
+40-5,40,5,出発します,しゅっぱつします,shuppatsushimasu,depart,xuất phát,Xuất - Phát
+40-6,40,6,到着します,とうちゃくします,tōchakushimasu,arrive,đến nơi,Đáo - Trước
+40-7,40,7,酔います,よいます,yoimasu,get drunk,,
+40-8,40,8,,うまく いきます,umaku ikimasu,go well,,
+40-9,40,9,出ます［問題が～］,でます［もんだいが～］,demasu [mondaiga~],[problems] be on the test,,
+40-10,40,10,必要［な］,ひつよう［な］,hitsuyō [na],necessary,,
+40-11,40,11,天気予報,てんきよほう,tenkiyohō,weather forecast,dự báo thời tiết,Thiên - Khí - Dự - Báo
+40-12,40,12,忘年会,ぼうねんかい,bōnenkai,year-end party,"tiệc tất niên, tiệc cuối năm",Vong - Niên - Hội
+40-13,40,13,新年会,しんねんかい,shinnenkai,New Year's party,tiệc đầu năm,Tân - Niên - Hội
+40-14,40,14,二次会,にじかい,nijikai,second party,tăng 2,Nhị - Thứ - Hội
+40-15,40,15,発表会,はっぴょうかい,happyōkai,presentation meeting,buổi phát biểu,Phát - Biểu - Hội
+40-16,40,16,大会,たいかい,taikai,"rally, convention","đại hội, cuộc thi, hội thi",Đại - Hội
+40-17,40,17,,マラソン,marason,marathon,,
+40-18,40,18,,コンテスト,kontesuto,contest,,
+40-19,40,19,表,おもて,omote,"face, front","mặt phải, phía ngoài, phía trước",Biểu
+40-20,40,20,裏,うら,ura,back (side),"phía sau, mặt trái",Lý
+40-21,40,21,,まちがい,machigai,mistake,,
+40-22,40,22,傷,きず,kizu,"defect, wound, scratch","vết thương, vết trầy, vết xước",Thương
+40-23,40,23,,ズボン,zubon,trousers,,
+40-24,40,24,［お］年寄り,［お］としより,[o] toshiyori,elderly person,,
+40-25,40,25,長さ,ながさ,nagasa,length,độ dài,Trường
+40-26,40,26,重さ,おもさ,omosa,weight,trọng lượng,Trọng
+40-27,40,27,高さ,たかさ,takasa,height,chiều cao,Cao
+40-28,40,28,大きさ,おおきさ,ōkisa,"size, scale","kích thước, độ lớn",Đại
+40-29,40,29,［－］便,［－］びん,[-] bin,"flight, flight number",,
+40-30,40,30,－個,－こ,-ko,(counter for small objects),,
+40-31,40,31,－本,－ほん（－ぽん、－ぼん）,"-hon (-pon, -bon)",(counter for long objects),,
+40-32,40,32,－杯,－はい（－ぱい、－ばい）,"-hai (-pai, -bai)","－ glass or cup of (counter for full cups, glasses, etc.)",,
+40-33,40,33,,－センチ,-senchi,－ centimetres,,
+40-34,40,34,,－ミリ,-miri,－ millimetres,,
+40-35,40,35,,－グラム,-guramu,－ grams,,
+40-36,40,36,～以上,～いじょう,~ijō,"not less than ～, over ～",trên ~,Dĩ - Thượng
+40-37,40,37,～以下,～いか,~ika,"not more than ～, under ～",dưới ~,Dĩ - Hạ
+40-38,40,38,長崎,ながさき,nagasaki,capital of Nagasaki prefecture,,
+40-39,40,39,仙台,せんだい,sendai,capital of Miyagi prefecture,,
+40-40,40,40,,JL,JL,Japan Airlines,,
+40-41,40,41,七夕祭り,たなばたまつり,tanabatamatsuri,the Star Festival,,
+40-42,40,42,,どうでしょうか。,dōdeshōka.,How is ～? (polite equivalent of どうですか),,
+40-43,40,43,,テスト,tesuto,"test, examination",,
+40-44,40,44,成績,せいせき,seiseki,"performance, score, result",thành tích,Thành - Tích
+40-45,40,45,,ところで,tokorode,by the way,,
+40-46,40,46,,いらっしゃいます,irasshaimasu,come (respectful equivalent of きます),,
+40-47,40,47,様子,ようす,yōsu,"situation, condition, appearance","bộ dạng, tình hình",Dạng - Tử
+40-48,40,48,事件,じけん,jiken,"incident, case",vụ án,Sự - Kiện
+40-49,40,49,,オートバイ,ōtobai,motorcycle,,
+40-50,40,50,爆弾,ばくだん,bakudan,bomb,bom,Bộc - Đạn
+40-51,40,51,積みます,つみます,tsumimasu,"load, pile up",chất lên,Tích
+40-52,40,52,運転手,うんてんしゅ,untenshu,driver,"tài xế, lái xe",Vận - Chuyển - Thủ
+40-53,40,53,離れた,はなれた,hanareta,remote,"xa, cách xa",Li
+40-54,40,54,急に,きゅうに,kyūni,suddenly,đột nhiên,Cấp
+40-55,40,55,動かします,うごかします,ugokashimasu,"start, operate, move",di chuyển,Động
+40-56,40,56,一生懸命,いっしょうけんめい,isshōkenmei,all one's effort,"chăm chỉ, gắng hết sức",Nhất - Sinh - Huyền - Mệnh
+40-57,40,57,犯人,はんにん,hannin,"offender, criminal",tên tội phạm,Phạm - Nhân
+40-58,40,58,男,おとこ,otoko,man,người đàn ông,Nam
+40-59,40,59,手に 入れます,てに いれます,teni iremasu,"obtain, get",,
+40-60,40,60,今でも,いまでも,imademo,even now,bây giờ cũng,Kim
+40-61,40,61,危険［な］,きけん［な］,kiken [na],dangerous,,
+40-62,40,62,返事,へんじ,henji,reply,trả lời,Phản - Sự
+40-63,40,63,申し込み,もうしこみ,mōshikomi,application,,
+40-64,40,64,,ほんとう,hontō,"truth, fact",,
+40-65,40,65,－号,－ごう,-gō,"train number, typhoon number, etc.",,
+40-66,40,66,,－キロ,-kiro,"－ kilograms, kilometers",,
+40-67,40,67,,さあ,sā,"well, let me see (used when unsure of something)",,
+40-68,40,68,,ゴッホ,gohho,"Vincent van Gogh, Dutch painter (1853-90)",,
+40-69,40,69,雪祭り,ゆきまつり,yukimatsuri,Snow Festival in Sapporo,,
+40-70,40,70,,のぞみ,nozomi,name of a Shinkansen train,,
+40-71,40,71,,が,ga,but,,
+40-72,40,72,うわします,うわさします,uwasashimasu,gossip,,

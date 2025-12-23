@@ -1,0 +1,55 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+28-1,28,1,売れます［パンが～］,うれます［パンが～］,uremasu [panga~],"[bread] sell, be sold",,
+28-2,28,2,踊ります,おどります,odorimasu,dance,múa,Dược
+28-3,28,3,,かみます,kamimasu,"chew, bite",,
+28-4,28,4,選びます,えらびます,erabimasu,choose,"lựa, lựa chọn",Tuyển
+28-5,28,5,通います［大学に～］,かよいます［だいがくに～］,kayoimasu [daigakuni~],go to and from [university],,
+28-6,28,6,,メモします,memoshimasu,take a memo,,
+28-7,28,7,,まじめ［な］,majime [na],serious,,
+28-8,28,8,熱心［な］,ねっしん［な］,nesshin [na],earnest,,
+28-9,28,9,偉い,えらい,erai,"great, admirable","siêu, giỏi",Vĩ
+28-10,28,10,,ちょうど いい,chōdo ii,"proper, just right",,
+28-11,28,11,美容院,びよういん,biyōin,hair salon,"hiệu làm đẹp, thẩm mỹ viện",Mĩ - Dung - Viện
+28-12,28,12,経験,けいけん,keiken,"experience (～が あります : be experienced, ～を します : experience)",kinh nghiệm,Kinh - Nghiệm
+28-13,28,13,力,ちから,chikara,power,sức mạnh,Lực
+28-14,28,14,人気,にんき,ninki,popularity (［がくせいに］～が あります : be popular [with students]),được yêu thích,Nhân - Khí
+28-15,28,15,形,かたち,katachi,"form, shape",hình dạng,Hình
+28-16,28,16,色,いろ,iro,colour,màu sắc,Sắc
+28-17,28,17,味,あじ,aji,taste,"mùi vị, hương vị",Vị
+28-18,28,18,,ガム,gamu,chewing gum,,
+28-19,28,19,品物,しなもの,shinamono,goods,hàng hóa,Phẩm - Vật
+28-20,28,20,値段,ねだん,nedan,price,giá cả,Trị - Đoạn
+28-21,28,21,給料,きゅうりょう,kyūryō,salary,lương,Cấp - Liệu
+28-22,28,22,,ボーナス,bōnasu,bonus,,
+28-23,28,23,,ゲーム,gēmu,(computer) game,,
+28-24,28,24,番組,ばんぐみ,bangumi,programme,chương trình,Phiên - Tổ
+28-25,28,25,,ドラマ,dorama,drama,,
+28-26,28,26,歌手,かしゅ,kashu,singer,ca sĩ,Ca - Thủ
+28-27,28,27,小説,しょうせつ,shōsetsu,novel,tiểu thuyết,Tiểu - Thuyết
+28-28,28,28,小説家,しょうせつか,shōsetsuka,novelist,"tiểu thuyết gia, nhà văn",Tiểu - Thuyết - Gia
+28-29,28,29,～家,～か,~ka,"-er, -ist, etc. (e.g. painter, novelist)",nhà ~,Gia
+28-30,28,30,～機,～き,~ki,～ machine,máy ~,Cơ
+28-31,28,31,息子,むすこ,musuko,(my) son,con trai mình,Tức - Tử
+28-32,28,32,息子さん,むすこさん,musukosan,(someone else's) son,con trai người khác,Tức - Tử
+28-33,28,33,娘,むすめ,musume,(my) daughter,con gái mình,Nương
+28-34,28,34,娘さん,むすめさん,musumesan,(someone else's) daughter,con gái người khác,Nương
+28-35,28,35,,しばらく,shibaraku,a little while,,
+28-36,28,36,,たいてい,taitei,"usually, mostly",,
+28-37,28,37,,それに,soreni,in addition,,
+28-38,28,38,,それで,sorede,and so,,
+28-39,28,39,［ちょっと］お願いが あるんですが。,［ちょっと］おねがいが あるんですが。,[chotto] onegaiga arundesuga.,I have a [small] favor to ask.,,
+28-40,28,40,実は,じつは,jitsuwa,as a matter of fact,"thực ra là, sự thật là",Thực
+28-41,28,41,会話,かいわ,kaiwa,conversation,hội thoại,Hội - Thoại
+28-42,28,42,,うーん,uun,"well, let me see, hmm...",,
+28-43,28,43,お知らせ,おしらせ,oshirase,notice,thông báo,Tri
+28-44,28,44,参加します,さんかします,sankashimasu,"participate, join, attend",tham gia,Tham - Gia
+28-45,28,45,日にち,ひにち,hinichi,date,thời gian (ngày),Nhật
+28-46,28,46,土,ど,do,Saturday,thứ bảy,Thổ
+28-47,28,47,体育館,たいいくかん,taiikukan,gymnasium,"nhà thi đấu thể thao, phòng thể dục",Thể - Dục - Quán
+28-48,28,48,無料,むりょう,muryō,free of charge,miễn phí,Vô - Liệu
+28-49,28,49,誘います,さそいます,sasoimasu,"invite, ask someone to join","mời, rủ",Dụ
+28-50,28,50,,イベント,ibento,event,,
+28-51,28,51,優しい,やさしい,yasashii,"gentle, kind",hiền lành,Ưu
+28-52,28,52,習慣,しゅうかん,shūkan,custom,"thói quen, tập quán",Tập - Quán
+28-53,28,53,管理人,かんりにん,kanrinin,janitor,người quản lý,Quản - Lý - Nhân
+28-54,28,54,,おしゃべりします,oshaberishimasu,chat,,

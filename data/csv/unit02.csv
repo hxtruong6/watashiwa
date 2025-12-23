@@ -1,0 +1,53 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+2-1,2,1,,これ,kore,this (thing here),,
+2-2,2,2,,それ,sore,that (thing near the listener),,
+2-3,2,3,,あれ,are,that (thing over there),,
+2-4,2,4,,この ～,kono ~,"this ～, this ～ here",,
+2-5,2,5,,その ～,sono ~,"that ～, that ～ near the listener",,
+2-6,2,6,,あの ～,ano ~,"that ～, that ～ over there",,
+2-7,2,7,本,ほん,hon,book,sách,Bản
+2-8,2,8,辞書,じしょ,jisho,dictionary,từ điển,Từ - Thư
+2-9,2,9,雑誌,ざっし,zasshi,magazine,tạp chí,Tạp - Chí
+2-10,2,10,新聞,しんぶん,shinbun,newspaper,báo,Tân - Văn
+2-11,2,11,,ノート,nōto,notebook,,
+2-12,2,12,手帳,てちょう,techō,personal organiser,sổ tay,Thủ - Thiếp
+2-13,2,13,名刺,めいし,meishi,business card,danh thiếp,Danh - Thích
+2-14,2,14,,カード,kādo,(credit) card,,
+2-15,2,15,鉛筆,えんぴつ,enpitsu,pencil,bút chì,Duyên - Bút
+2-16,2,16,,ボールペン,bōrupen,ballpoint pen,,
+2-17,2,17,,シャープペンシル,shāpupenshiru,"mechanical pencil, propelling pencil",,
+2-18,2,18,,かぎ,kagi,key,,
+2-19,2,19,時計,とけい,tokei,"watch, clock",đồng hồ,Thời - Kế
+2-20,2,20,傘,かさ,kasa,umbrella,dù,Tán
+2-21,2,21,,かばん,kaban,"bag, briefcase",,
+2-22,2,22,,CD,CD,"CD, compact disc",,
+2-23,2,23,,テレビ,terebi,television,,
+2-24,2,24,,ラジオ,rajio,radio,,
+2-25,2,25,,カメラ,kamera,camera,,
+2-26,2,26,,コンピューター,konpyūtā,computer,,
+2-27,2,27,車,くるま,kuruma,"car, vehicle","xe hơi, ô tô",Xa
+2-28,2,28,机,つくえ,tsukue,desk,bàn,Kỷ
+2-29,2,29,,いす,isu,chair,,
+2-30,2,30,,チョコレート,chokorēto,chocolate,,
+2-31,2,31,,コーヒー,kōhii,coffee,,
+2-32,2,32,［お］土産,［お］みやげ,[o] miyage,"souvenir, present",,
+2-33,2,33,英語,えいご,eigo,the English language,tiếng Anh,Anh - Ngữ
+2-34,2,34,日本語,にほんご,nihongo,the Japanese language,tiếng Nhật,Nhật - Bản - Ngữ
+2-35,2,35,～語,～ご,~go,～ language,tiếng~,Ngữ
+2-36,2,36,何,なん,nan,what,"cái gì, gì",Hà
+2-37,2,37,,そう,sō,so,,
+2-38,2,38,,あのう,anou,Er... (used to show hesitation),,
+2-39,2,39,,えっ,e',Oh? What! (used when hearing something unexpected),,
+2-40,2,40,,どうぞ。,dōzo.,Here you are. (used when offering someone something),,
+2-41,2,41,,［どうも］ありがとう［ございます］。,[dōmo] arigatō [gozaimasu].,Thank you [very much].,,
+2-42,2,42,,そうですか。,sōdesuka.,I see.,,
+2-43,2,43,違います。,ちがいます。,chigaimasu.,"No, it isn't./You are wrong.",,
+2-44,2,44,,あ,a,Oh! (used when becoming aware of something),,
+2-45,2,45,これから お世話に なります。,これから おせわに なります。,korekara osewani narimasu.,Thank you in advance for your kindness.,,
+2-46,2,46,こちらこそ［どうぞ］よろしく［お願いします］。,こちらこそ［どうぞ］よろしく［おねがいします］。,kochirakoso [dōzo] yoroshiku [onegaishimasu].,"Pleased to meet you, too. (response to［どうぞ］よろしく［おねがいします］。)",,
+2-47,2,47,,テレホンカード,terehonkādo,telephone card,,
+2-48,2,48,,［カセット］テープ,[kasetto] tēpu,[cassette] tape,,
+2-49,2,49,,テープレコーダー,tēpurekōdā,tape recorder,,
+2-50,2,50,自動車,じどうしゃ,jidōsha,"automobile, car","ô tô, xe hơi",Tự - Động - Xa
+2-51,2,51,ほんの 気持ちです。,ほんの きもちです。,honno kimochidesu.,It's nothing./It's a token of my gratitude.,,
+2-52,2,52,,どうも。,dōmo.,"Well, thanks.",,

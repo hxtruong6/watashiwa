@@ -1,0 +1,37 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+17-1,17,1,覚えます,おぼえます,oboemasu,memorise,nhớ,Giác
+17-2,17,2,忘れます,わすれます,wasuremasu,forget,quên,Vong
+17-3,17,3,,なくします,nakushimasu,lose,,
+17-4,17,4,払います,はらいます,haraimasu,pay,trả tiền,Phất
+17-5,17,5,返します,かえします,kaeshimasu,"give back, return",trả lại,Phản
+17-6,17,6,出かけます,でかけます,dekakemasu,go out,"ra ngoài, đi ra ngoài",Xuất
+17-7,17,7,脱ぎます,ぬぎます,nugimasu,"take off (clothes, shoes, etc.)","cởi (giày, quần áo,...)",Thoát
+17-8,17,8,持って 行きます,もって いきます,motte ikimasu,take (something),,
+17-9,17,9,持って 来ます,もって きます,motte kimasu,bring (something),,
+17-10,17,10,心配します,しんぱいします,shinpaishimasu,worry,lo lắng,Tâm - Phối
+17-11,17,11,残業します,ざんぎょうします,zangyōshimasu,work overtime,làm thêm giờ,Tàn - Nghiệp
+17-12,17,12,出張します,しゅっちょうします,shutchōshimasu,go on a business trip,đi công tác,Xuất - Trương
+17-13,17,13,飲みます［薬を～］,のみます［くすりを～］,nomimasu [kusuriwo~],take [medicine],,
+17-14,17,14,入ります［おふろに～］,はいります［おふろに～］,hairimasu [ofuroni~],take [a bath],,
+17-15,17,15,大切［な］,たいせつ［な］,taisetsu [na],"important, precious",,
+17-16,17,16,大丈夫［な］,だいじょうぶ［な］,daijōbu [na],all right,,
+17-17,17,17,危ない,あぶない,abunai,dangerous,"nguy hiểm, nguy cấp, không chắc, không vững",Nguy
+17-18,17,18,禁煙,きんえん,kin'en,no smoking,"cấm hút thuốc, cấm lửa",Cấm - Yên
+17-19,17,19,［健康］保険証,［けんこう］ほけんしょう,[kenkō] hokenshō,[health] insurance card,,
+17-20,17,20,熱,ねつ,netsu,"temperature, fever",sốt,Nhiệt
+17-21,17,21,病気,びょうき,byōki,"illness, disease","ốm, bệnh",Bệnh - Khí
+17-22,17,22,薬,くすり,kusuri,medicine,thuốc,Dược
+17-23,17,23,,［お］ふろ,[o] furo,bath,,
+17-24,17,24,上着,うわぎ,uwagi,"jacket, outerwear",áo khoác,Thượng - Trước
+17-25,17,25,下着,したぎ,shitagi,underwear,quần áo lót,Hạ - Trước
+17-26,17,26,２、３日,２、３にち,"2, 3 nichi",two or three days,,
+17-27,17,27,,２、３～,"2, 3~",two or three ～ (where ～ is a counter suffix),,
+17-28,17,28,,～までに,~madeni,"before ～, by ～ (indicating time limit)",,
+17-29,17,29,,ですから,desukara,"therefore, so",,
+17-30,17,30,,どう しましたか。,dō shimashitaka.,What's the matter?,,
+17-31,17,31,,のど,nodo,throat,,
+17-32,17,32,［～が］痛いです。,［～が］いたいです。,[~ga] itaidesu.,(I) have a pain [in my ～].,,
+17-33,17,33,,かぜ,kaze,"cold, flu",gió,Phong
+17-34,17,34,お大事に。,おだいじに。,odaijini.,Take care of yourself. (said to people who are ill),,
+17-35,17,35,出します［レポートを～］,だします［レポートを～］,dashimasu [repōtowo~],hand in [a report],,
+17-36,17,36,先生,せんせい,sensei,doctor (used when addressing a medical doctor),thầy/cô,Tiên - Sinh

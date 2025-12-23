@@ -1,0 +1,33 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+18-1,18,1,,できます,dekimasu,"be able to, can",,
+18-2,18,2,洗います,あらいます,araimasu,wash,rửa,Tẩy
+18-3,18,3,弾きます,ひきます,hikimasu,"play (stringed instrument, piano, etc.)",kéo,Dẫn
+18-4,18,4,歌います,うたいます,utaimasu,sing,hát,Ca
+18-5,18,5,集めます,あつめます,atsumemasu,"collect, gather",sưu tập,Tập
+18-6,18,6,捨てます,すてます,sutemasu,throw away,"vứt bỏ, bỏ đi",Xã
+18-7,18,7,換えます,かえます,kaemasu,"exchange, change","thay đổi, biến đổi",Biến
+18-8,18,8,運転します,うんてんします,untenshimasu,drive,lái,Vận - Chuyển
+18-9,18,9,予約します,よやくします,yoyakushimasu,"reserve, book","đặt chỗ, đặt trước",Dự - Ước
+18-10,18,10,,ピアノ,piano,piano,,
+18-11,18,11,,－メートル,-mētoru,－ meter,,
+18-12,18,12,現金,げんきん,genkin,cash,tiền mặt,Hiện - Kim
+18-13,18,13,趣味,しゅみ,shumi,hobby,"sở thích, thú vị",Thu - Vị
+18-14,18,14,日記,にっき,nikki,diary,nhật ký,Nhật - Ký
+18-15,18,15,お祈り,おいのり,oinori,prayer (～を します : pray),việc cầu nguyện,Kỳ
+18-16,18,16,課長,かちょう,kachō,section head,tổ trưởng,Khóa - Trưởng
+18-17,18,17,部長,ぶちょう,buchō,department head,trưởng phòng,Trưởng - Bộ
+18-18,18,18,社長,しゃちょう,shachō,company president,giám đốc,Xã - Trưởng
+18-19,18,19,動物,どうぶつ,dōbutsu,animal,động vật,Động - Vật
+18-20,18,20,馬,うま,uma,horse,,
+18-21,18,21,,インターネット,intānetto,Internet,,
+18-22,18,22,,へえ,hē,What! Really! (used when expressing surprise),,
+18-23,18,23,,それは おもしろいですね。,sorewa omoshiroidesune.,"That's interesting, isn't it?",,
+18-24,18,24,,なかなか,nakanaka,not easily (used with negatives),,
+18-25,18,25,,ほんとうですか。,hontōdesuka.,Really?,,
+18-26,18,26,,ぜひ,zehi,"by all means, really",,
+18-27,18,27,故郷,ふるさと,furusato,Furusato (a song title meaning 'Home Town'),,
+18-28,18,28,,ビートルズ,biitoruzu,the Beatles (a famous British pop group),,
+18-29,18,29,秋葉原,あきはばら,akihabara,a district in Tokyo,,
+18-30,18,30,見学します,けんがくします,kengakushimasu,visit some place for study,"tham quan, kiến tập",Kiến - Học
+18-31,18,31,国際～,こくさい～,kokusai~,international ～,~ quốc tế,Quốc - Tế
+18-32,18,32,牧場,ぼくじょう,bokujō,"ranch, stock farm",,

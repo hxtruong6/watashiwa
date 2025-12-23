@@ -1,0 +1,63 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+41-1,41,1,,いただきます,itadakimasu,receive (humble equivalent of もらいます),,
+41-2,41,2,,くださいます,kudasaimasu,give (respectful equivalent of くれます),,
+41-3,41,3,,やります,yarimasu,"give (to a younger person, subordinate, animals or plants)",,
+41-4,41,4,親切に します,しんせつに します,shinsetsuni shimasu,be kind to,,
+41-5,41,5,,かわいい,kawaii,"lovely, cute",,
+41-6,41,6,お祝い,おいわい,oiwai,"celebration, gift (～を します : celebrate)",,
+41-7,41,7,お年玉,おとしだま,otoshidama,money given as a New Year's gift,tiền mừng tuổi,Niên - Ngọc
+41-8,41,8,［お］見舞い,［お］みまい,[o] mimai,"expression of sympathy, consolatory gift to a sick person",,
+41-9,41,9,興味,きょうみ,kyōmi,interest (［コンピューターに］～が あります : be interested [in computers]),,
+41-10,41,10,情報,じょうほう,jōhō,information,"thông tin, tin tức, tình báo, dữ liệu",Tình - Báo
+41-11,41,11,文法,ぶんぽう,bunpō,grammar,ngữ pháp,Văn - Pháp
+41-12,41,12,発音,はつおん,hatsuon,pronunciation,phát âm,Phát - Âm
+41-13,41,13,猿,さる,saru,"ape, monkey",con khỉ,Viên
+41-14,41,14,,えさ,esa,"feed, bait",đồ ăn cho thú nuôi,Nhị
+41-15,41,15,,おもちゃ,omocha,toy,đồ chơi,Ngoạn - Cụ
+41-16,41,16,絵本,えほん,ehon,picture book,"sách tranh, truyện tranh",Hội - Bản
+41-17,41,17,絵はがき,えはがき,ehagaki,picture postcard,bưu thiếp có ảnh,Hội - Diệp - Thư
+41-18,41,18,,ドライバー,doraibā,screwdriver,,
+41-19,41,19,,ハンカチ,hankachi,handkerchief,,
+41-20,41,20,靴下,くつした,kutsushita,"socks, stockings","tất, vớ",Ngoa - Hạ
+41-21,41,21,手袋,てぶくろ,tebukuro,gloves,găng tay,Thủ - Đại
+41-22,41,22,幼稚園,ようちえん,yōchien,"preschool, kindergarten","nhà trẻ, vườn trẻ",Ấu - Trĩ - Viên
+41-23,41,23,暖房,だんぼう,danbō,heating,lò sưởi,Noãn - Phòng
+41-24,41,24,冷房,れいぼう,reibō,air-conditioning,"máy lạnh, máy điều hòa",Lãnh - Phòng
+41-25,41,25,温度,おんど,ondo,temperature,nhiệt độ,Ôn - Độ
+41-26,41,26,祖父,そふ,sofu,(my) grandfather,ông (của mình),Phụ - Tổ
+41-27,41,27,祖母,そぼ,sobo,(my) grandmother,bà (của mình),Tổ - Mẫu
+41-28,41,28,孫,まご,mago,(my) grandchild,cháu (mình),Tôn
+41-29,41,29,お孫さん,おまごさん,omagosan,(someone else's) grandchild,cháu (người khác),Tôn
+41-30,41,30,,おじ,oji,(my) uncle,,
+41-31,41,31,,おじさん,ojisan,(someone else's) uncle,,
+41-32,41,32,,おば,oba,(my) aunt,,
+41-33,41,33,,おばさん,obasan,(someone else's) aunt,,
+41-34,41,34,管理人,かんりにん,kanrinin,"janitor, caretaker",người quản lý,Quản - Lý - Nhân
+41-35,41,35,,～さん,~san,(suffix added to a person's job title as a polite way of referring to them),,
+41-36,41,36,,ひとこと,hitokoto,a few words,,
+41-37,41,37,,～ずつ,~zutsu,each,,
+41-38,41,38,二人,ふたり,futari,couple,"cặp đôi, 2 người",Nhị - Nhân
+41-39,41,39,お宅,おたく,otaku,home (respectful equivalent of うち or いえ),nhà (kính ngữ của うち・いえ),Trạch
+41-40,41,40,どうぞ お幸せに。,どうぞ おしあわせに。,dōzo oshiawaseni.,I hope you will be very happy.,,
+41-41,41,41,昔話,むかしばなし,mukashibanashi,"old tale, folklore",truyện cổ tích,Tích - Thoại
+41-42,41,42,,ある ～,aru ~,"a certain ～, one ～",,
+41-43,41,43,,いじめます,ijimemasu,"bully, abuse, ill-treat",,
+41-44,41,44,,かめ,kame,"turtle, tortoise",,
+41-45,41,45,助けます,たすけます,tasukemasu,"save, help","giúp, giúp đỡ",Trợ
+41-46,41,46,お姫様,おひめさま,ohimesama,princess,công chúa,Cơ - Dạng
+41-47,41,47,暮らします,くらします,kurashimasu,"live, lead a life","sinh sống, trải qua",Mộ
+41-48,41,48,陸,りく,riku,"land, shore","đất liền, đất, lục địa",Lục
+41-49,41,49,煙,けむり,kemuri,smoke,"khói, khói thuốc",Yên
+41-50,41,50,真っ白［な］,まっしろ［な］,masshiro [na],pure white,,
+41-51,41,51,中身,なかみ,nakami,content,"nội dung, cái ở bên trong",Trung - Thân
+41-52,41,52,浦島太郎,うらしまたろう,urashimatarō,name of the main character in an old folk tale,,
+41-53,41,53,呼びます,よびます,yobimasu,invite,gọi,Hô
+41-54,41,54,取り替えます,とりかえます,torikaemasu,exchange,"thay thế, đổi lại",Thủ - Thế
+41-55,41,55,,バッグ,baggu,bag,,
+41-56,41,56,,おととし,ototoshi,the year before last,,
+41-57,41,57,,はあ,hā,"yes, I see",,
+41-58,41,58,申し訳 ありません。,もうしわけ ありません。,mōshiwake arimasen.,I'm sorry./Excuse me.,,
+41-59,41,59,預かります,あずかります,azukarimasu,"keep, receive (a thing) in trust",,
+41-60,41,60,先日,せんじつ,senjitsu,the other day,,
+41-61,41,61,助かります,たすかります,tasukarimasu,be of help,,
+41-62,41,62,楽しく,たのしく,tanoshiku,"happily, merrily",,

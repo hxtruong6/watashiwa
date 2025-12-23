@@ -1,0 +1,33 @@
+id,unit,word_number,kanji,kana,romaji,meaning_en,meaning_vi,han_viet
+19-1,19,1,登ります、上ります,のぼります,noborimasu,"climb, go up","leo (núi), lên",Đăng
+19-2,19,2,泊まります［ホテルに～］,とまります［ホテルに～］,tomarimasu [hoteruni~],stay [at a hotel],,
+19-3,19,3,掃除します,そうじします,sōjishimasu,clean (a room),"lau chùi, dọn dẹp",Tảo - Trừ
+19-4,19,4,洗濯します,せんたくします,sentakushimasu,wash (clothes),giặt (áo quần),Tẩy - Trạc
+19-5,19,5,,なります,narimasu,become,"reng, kêu",Minh
+19-6,19,6,眠い,ねむい,nemui,sleepy,buồn ngủ,Miên
+19-7,19,7,強い,つよい,tsuyoi,strong,mạnh,Cưỡng
+19-8,19,8,弱い,よわい,yowai,weak,yếu,Nhược
+19-9,19,9,練習,れんしゅう,renshū,practice (～［を］します : practise),"luyện tập, rèn luyện",Luyện - Tập
+19-10,19,10,,ゴルフ,gorufu,golf (～を します : play golf),,
+19-11,19,11,相撲,すもう,sumou,sumo wrestling (～を します : wrestle),sumo,Tướng - Phốc
+19-12,19,12,お茶,おちゃ,ocha,tea ceremony,trà,Trà
+19-13,19,13,日,ひ,hi,"day, date",lửa,Hỏa
+19-14,19,14,調子,ちょうし,chōshi,condition,tình trạng,Điều - Tử
+19-15,19,15,一度,いちど,ichido,once,một lần,Nhất - Độ
+19-16,19,16,一度も,いちども,ichidomo,"not once, never (used with negatives)","chưa lần nào, chưa bao giờ",Nhất - Độ
+19-17,19,17,,だんだん,dandan,gradually,,
+19-18,19,18,,もうすぐ,mōsugu,soon,,
+19-19,19,19,,おかげさまで,okagesamade,Thank you. (used when expressing gratitude for help received),,
+19-20,19,20,乾杯,かんぱい,kanpai,Bottoms up./Cheers!,cạn chén,Can - Bôi
+19-21,19,21,,ダイエット,daietto,diet (～を します : go on a diet),,
+19-22,19,22,無理［な］,むり［な］,muri [na],"excessive, impossible",,
+19-23,19,23,体に いい,からだに いい,karadani ii,good for one's health,,
+19-24,19,24,東京スカイツリー,とうきょうスカイツリー,tōkyōsukaitsurii,Tokyo Sky Tree (broadcasting tower with observation deck in Tokyo),,
+19-25,19,25,葛飾北斎,かつしかほくさい,katsushikahokusai,a famous Edo-period woodblock artist and painter (1760-1849),,
+19-26,19,26,調子が いい,ちょうしが いい,chōshiga ii,be in good condition,,
+19-27,19,27,調子が 悪い,ちょうしが わるい,chōshiga warui,be in bad condition,,
+19-28,19,28,,パチンコ,pachinko,pinball game (～を します : play pachinko),,
+19-29,19,29,実は,じつは,jitsuwa,"actually, to tell the truth","thực ra là, sự thật là",Thực
+19-30,19,30,何回も,なんかいも,nankaimo,many times,nhiều lần,Hà - Hồi
+19-31,19,31,,しかし,shikashi,"but, however",,
+19-32,19,32,,ケーキ,kēki,cake,,
