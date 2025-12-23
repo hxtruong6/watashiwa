@@ -194,7 +194,7 @@ export default function StudyContent() {
 		(dailyStats.reviewsToday / (dailyStats.limitReviews || 1)) * 100,
 	);
 
-	const commentCount = card?.vocab?._count?.cardComments || card?.kanji?._count?.cardComments || 0;
+	const commentCount = card?.vocab?._count?.cardComments || 0;
 
 	return (
 		<Layout style={{ minHeight: '100vh', background: token.colorBgLayout }}>
@@ -216,9 +216,9 @@ export default function StudyContent() {
 			<CommentDrawer
 				open={isCommentDrawerOpen}
 				onClose={() => setIsCommentDrawerOpen(false)}
-				entityId={card?.vocabId || card?.kanjiId || card?.id || ''}
-				entityType={card?.vocabId ? 'vocab' : 'kanji'}
-				entityTitle={card?.vocab?.wordSurface || card?.kanji?.kanji || 'Card'}
+				entityId={card?.vocabId || card?.id || ''}
+				entityType="vocab"
+				entityTitle={card?.vocab?.wordSurface || 'Card'}
 			/>
 
 			{/* Settings Drawer */}
@@ -226,7 +226,7 @@ export default function StudyContent() {
 				open={settingsVisible}
 				onClose={() => setSettingsVisible(false)}
 				title={t('settings') || 'Settings'}
-				width={600}
+				styles={{ wrapper: { width: 600 } }}
 				placement="right"
 			>
 				<VocabSettings
@@ -246,8 +246,7 @@ export default function StudyContent() {
 				open={isReportModalOpen}
 				onClose={() => setIsReportModalOpen(false)}
 				vocabId={card?.vocabId || undefined}
-				kanjiId={card?.kanjiId || undefined}
-				currentText={card?.vocab?.wordSurface || card?.kanji?.kanji || undefined}
+				currentText={card?.vocab?.wordSurface || undefined}
 			/>
 
 			{/* Main Content */}

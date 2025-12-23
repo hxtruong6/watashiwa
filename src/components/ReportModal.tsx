@@ -13,17 +13,10 @@ type ReportModalProps = {
 	open: boolean;
 	onClose: () => void;
 	vocabId?: string;
-	kanjiId?: string;
 	currentText?: string; // Optional context
 };
 
-export default function ReportModal({
-	open,
-	onClose,
-	vocabId,
-	kanjiId,
-	currentText,
-}: ReportModalProps) {
+export default function ReportModal({ open, onClose, vocabId, currentText }: ReportModalProps) {
 	const [confirmLoading, setConfirmLoading] = useState(false);
 	const [type, setType] = useState<ReportType | null>(null);
 	const [suggestedValue, setSuggestedValue] = useState('');
@@ -39,7 +32,6 @@ export default function ReportModal({
 		try {
 			const result = await submitReport({
 				vocabId,
-				kanjiId,
 				type,
 				currentValue: currentText,
 				suggestedValue,

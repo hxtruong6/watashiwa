@@ -6,10 +6,6 @@
 
 'use server';
 
-// =============================================================================
-// CRUD Operations (Migrated from src/services/course-actions.ts)
-// =============================================================================
-
 import { prisma } from '@/lib/db';
 import { getUser } from '@/modules/auth/auth.actions';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/client';

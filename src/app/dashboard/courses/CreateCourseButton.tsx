@@ -48,8 +48,10 @@ export default function CreateCourseButton({
 				title={t('createNew')}
 				open={open}
 				onClose={() => setOpen(false)}
-				width={480}
-				styles={{ body: { paddingBottom: 80 } }}
+				styles={{
+					wrapper: { width: 480 },
+					body: { paddingBottom: 80 },
+				}}
 				footer={
 					<div style={{ textAlign: 'right' }}>
 						<Button onClick={() => setOpen(false)} style={{ marginRight: 8 }}>

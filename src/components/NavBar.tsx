@@ -167,7 +167,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 			label: (
 				<Tooltip title={tCommon('soon')}>
 					<span style={{ color: '#aaa', cursor: 'not-allowed' }}>{t('analytics')}</span>
-					<Tag color="cyan" style={{ marginLeft: 8, fontSize: 10, border: 'none' }}>
+					<Tag color="cyan" style={{ marginLeft: 0, padding: 2, fontSize: 8, border: 'none' }}>
 						Soon
 					</Tag>
 				</Tooltip>

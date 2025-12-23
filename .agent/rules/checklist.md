@@ -1,5 +1,6 @@
 ---
-trigger: always_on
+trigger: model_decision
+description: when need to verify our task finish or complete a coding or design UI task
 ---
 
 # Task Implementation Checklist

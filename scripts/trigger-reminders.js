@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const fetch = require('node-fetch');
 
 // This script is designed to be run by PM2 in cron mode.

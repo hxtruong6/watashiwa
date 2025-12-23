@@ -1,7 +1,7 @@
 'use client';
 
+import { getUserWithRole } from '@/modules/auth/auth.actions';
 import { getComments } from '@/modules/community/community.actions';
-import { getUserWithRole } from '@/services/actions';
 import { ClockCircleOutlined, CloseOutlined, FireOutlined, PlusOutlined } from '@ant-design/icons';
 import { CardComment } from '@prisma/client';
 import { Button, Drawer, Flex, Grid, Segmented, Typography, theme } from 'antd';
@@ -18,7 +18,7 @@ interface CommentDrawerProps {
 	open: boolean;
 	onClose: () => void;
 	entityId?: string;
-	entityType?: 'vocab' | 'kanji';
+	entityType?: 'vocab';
 	entityTitle?: string; // e.g. "学生"
 }
 
@@ -141,11 +141,15 @@ export default function CommentDrawer({
 				</div>
 			}
 			placement={isMobile ? 'bottom' : 'right'}
-			width={isMobile ? '100%' : 500}
-			height={isMobile ? '80vh' : '100%'}
-			onClose={onClose}
-			open={open}
-			styles={{ body: { padding: '16px 12px', overflowY: 'auto', paddingBottom: 40 } }}
+			styles={{
+				wrapper: { width: isMobile ? '100%' : 500 },
+				body: {
+					padding: '16px 12px',
+					overflowY: 'auto',
+					paddingBottom: 40,
+					height: `${isMobile ? '80vh' : '100%'}`,
+				},
+			}}
 			extra={<Button type="text" onClick={onClose} icon={<CloseOutlined />} />}
 			destroyOnHidden
 		>

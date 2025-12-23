@@ -90,7 +90,9 @@ export const BasicFace: React.FC<BasicFaceProps> = ({ card, side, onPlayAudio })
 
 			{/* 2. Primary Meaning */}
 			<div style={{ marginBottom: 'auto' }}>
-				<Text style={{ fontSize: '18px', fontWeight: 500 }}>{back.meanings.join(', ')}</Text>
+				<Text style={{ fontSize: '18px', fontWeight: 500 }}>
+					{(back.details.meanings || []).join(', ')}
+				</Text>
 			</div>
 
 			{/* 3. Etymology Box (The Insight) */}

@@ -193,12 +193,21 @@ export async function recalculateUserStreak(userId: string) {
 	try {
 		if (!IdSchema.safeParse(userId).success) return 0;
 
-		// Fetch all review dates for the user
-		// Optimization: We could limit to last 365 days or something if logs get huge
+		// Fetch user settings for TZ and longest streak
+		const user = await prisma.user.findUnique({
+			where: { id: userId },
+			select: { timezone: true, longestStreak: true },
+		});
+		const timezone = user?.timezone || 'UTC';
+		const longestStreak = user?.longestStreak || 0;
+
+		// Optimization: Fetch unique review dates for the last year
+		// This prevents processing thousands of logs while being sufficient for streak calculation
 		const logs = await prisma.reviewLog.findMany({
 			where: { userId },
-			select: { review: true },
-			orderBy: { review: 'desc' },
+			select: { reviewDate: true },
+			orderBy: { reviewDate: 'desc' },
+			take: 1000,
 		});
 
 		if (logs.length === 0) {
@@ -206,99 +215,31 @@ export async function recalculateUserStreak(userId: string) {
 			return 0;
 		}
 
+		// Helper to format date in user's timezone
+		const formatDate = (date: Date) => {
+			return new Intl.DateTimeFormat('en-CA', {
+				timeZone: timezone,
+				year: 'numeric',
+				month: '2-digit',
+				day: '2-digit',
+			}).format(date); // Returns YYYY-MM-DD
+		};
+
 		const uniqueDates = new Set<string>();
 		logs.forEach((log) => {
-			uniqueDates.add(log.review.toISOString().split('T')[0]); // YYYY-MM-DD
+			uniqueDates.add(formatDate(log.reviewDate));
 		});
 
-		const today = new Date();
-		const todayStr = today.toISOString().split('T')[0];
-
+		const todayStr = formatDate(new Date());
 		const yesterday = new Date();
 		yesterday.setDate(yesterday.getDate() - 1);
-		const yesterdayStr = yesterday.toISOString().split('T')[0];
+		const yesterdayStr = formatDate(yesterday);
 
-		let streak = 0;
-
-		// Check Today
-		if (uniqueDates.has(todayStr)) {
-			streak++;
-		}
-
-		// Walk backwards from Yesterday
-		let currentCheck = new Date(yesterday);
-
-		while (true) {
-			const checkStr = currentCheck.toISOString().split('T')[0];
-			if (uniqueDates.has(checkStr)) {
-				streak++;
-				currentCheck.setDate(currentCheck.getDate() - 1);
-			} else {
-				// Break if checkStr is MISSING.
-				// Exception: If we have NO streak from Today, and we are checking Yesterday.
-				// If Yesterday is present, streak becomes 1 (or 2 if Today was present).
-				// The logic is: consecutive days.
-				// If Today is present (streak=1). We check Yesterday. Present -> streak=2. Miss -> streak=1.
-				// If Today is MISSING (streak=0). We check Yesterday. Present -> streak=1. Miss -> streak=0.
-
-				// Wait, if Today is MISSING, but Yesterday is present, is the streak alive?
-				// Yes, usually you have until end of Today to extend it.
-				// So if Today is missing, but Yesterday is present, Streak IS valid/alive (count starts from Yesterday).
-
-				// Fix loop condition:
-				// We start checking from Yesterday.
-				// If Today was present, Streak=1.
-				// If Today was missing, Streak=0.
-
-				// Loop starts checking Yesterday.
-				// If Yesterday is present -> Streak++.
-
-				// But wait, if Today is missing, and Yesterday is missing, streak is 0.
-				// If Today is missing, and Yesterday is present, streak is 1.
-
-				// Logic:
-				// If uniqueDates.has(todayStr) -> streak = 1.
-				// Else -> streak = 0.
-
-				// But if streak=0, and Yesterday is present, we should set streak=1?
-				// Actually, if Today is missing, the "Current Streak" is effectively what it was Yesterday.
-				// Unless Yesterday was also missing.
-
-				// Let's rely on simple consecutive check including Today OR Yesterday.
-
-				// We handled Today above.
-				// If streak > 0 (Today present), we just need to chain previous days.
-
-				if (streak === 0 && uniqueDates.has(yesterdayStr)) {
-					// Today missing, but Yesterday present. Streak is at least 1.
-					streak = 1;
-					// Continue checking before yesterday
-					currentCheck.setDate(currentCheck.getDate() - 1);
-					continue;
-				}
-
-				// Normal chaining
-				if (streak > 0 && uniqueDates.has(checkStr)) {
-					// CheckStr is already handled if we did the special case above?
-					// Wait, if we entered the special case, we decremented currentCheck.
-					// So we are now checking Day Before Yesterday.
-					// This loop structure is getting messy.
-					break; // Logic logic reimplemented below cleanly.
-				}
-				break;
-			}
-		}
-
-		// Let's rewrite strictly:
-		// 1. Identify "Latest Streak Date". It's either Today (if studied) or Yesterday (if studied).
-		// If neither, Streak is 0.
-		// If Today studied: Start counting backwards from Today.
-		// If Today NOT studied but Yesterday studied: Start counting backwards from Yesterday.
-
-		let pointer = new Date(today);
+		// Determine the start point of our streak count
+		let pointer = new Date();
 		if (!uniqueDates.has(todayStr)) {
 			if (uniqueDates.has(yesterdayStr)) {
-				pointer = new Date(yesterday);
+				pointer = yesterday;
 			} else {
 				// Streak broken
 				await prisma.user.update({ where: { id: userId }, data: { currentStreak: 0 } });
@@ -309,7 +250,7 @@ export async function recalculateUserStreak(userId: string) {
 		// Count backwards from 'pointer' (inclusive)
 		let currentS = 0;
 		while (true) {
-			const dateStr = pointer.toISOString().split('T')[0];
+			const dateStr = formatDate(pointer);
 			if (uniqueDates.has(dateStr)) {
 				currentS++;
 				pointer.setDate(pointer.getDate() - 1);
@@ -318,8 +259,15 @@ export async function recalculateUserStreak(userId: string) {
 			}
 		}
 
-		// Update User
-		await prisma.user.update({ where: { id: userId }, data: { currentStreak: currentS } });
+		// Update User (including longest streak if beaten)
+		await prisma.user.update({
+			where: { id: userId },
+			data: {
+				currentStreak: currentS,
+				longestStreak: Math.max(currentS, longestStreak),
+			},
+		});
+
 		return currentS;
 	} catch (error) {
 		console.error('Error recalculating streak:', error);

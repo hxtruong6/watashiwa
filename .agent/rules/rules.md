@@ -1,5 +1,6 @@
 ---
-trigger: always_on
+trigger: model_decision
+description: when doing a task
 ---
 
 # v5: Coding support rules

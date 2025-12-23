@@ -1,7 +1,15 @@
 'use server';
 
 import { prisma } from '@/lib/db';
+// -----------------------------------------------------------------------------
+// Dashboard Data Aggregation
+// -----------------------------------------------------------------------------
+
+import { getWeeklyStats } from '@/modules/analytics/analytics.actions';
 import { getUser } from '@/modules/auth/auth.actions';
+import { getDecksWithDue } from '@/modules/deck/deck.actions';
+import { getReviewCount } from '@/modules/study/study.actions';
+import { getUserSettings, getUserStats } from '@/modules/user/user.actions';
 import { UserReview, Vocabulary } from '@prisma/client';
 
 export interface WisdomWordData {
@@ -86,6 +94,13 @@ export async function getMatchaWisdomWords(limit: number = 10): Promise<WisdomWo
 	}
 }
 
+/**
+ * Mapper for Wisdom Word
+ */
+function mapReviewToWisdom(review: UserReviewWithContent): WisdomWordData {
+	const vocab = review.vocab;
+	const meanings = (vocab.meanings as any)?.vi || (vocab.meanings as any)?.en || [];
+	const meaning = Array.isArray(meanings) ? meanings[0] : meanings;
 	return {
 		id: vocab.id,
 		kanji: vocab.wordSurface,
@@ -94,15 +109,6 @@ export async function getMatchaWisdomWords(limit: number = 10): Promise<WisdomWo
 		hanViet: vocab.hanViet || '',
 	};
 }
-
-// -----------------------------------------------------------------------------
-// Dashboard Data Aggregation
-// -----------------------------------------------------------------------------
-
-import { getWeeklyStats } from '@/modules/analytics/analytics.actions';
-import { getDecksWithDue } from '@/modules/deck/deck.actions';
-import { getReviewCount } from '@/modules/study/study.actions';
-import { getUserSettings, getUserStats } from '@/modules/user/user.actions';
 
 /**
  * Get dashboard data (combined call for efficiency)
@@ -113,7 +119,7 @@ export async function getDashboardData() {
 		if (!user) return null;
 
 		const [reviewCount, stats, weeklyStats, decksWithDue, userSettings] = await Promise.all([
-			getReviewCount(user.id),
+			getReviewCount(),
 			getUserStats(user.id),
 			getWeeklyStats(user.id),
 			getDecksWithDue(user.id),
@@ -130,7 +136,7 @@ export async function getDashboardData() {
 		}
 
 		return {
-			reviewCount: reviewCount.success ? reviewCount.data : 0,
+			reviewCount: reviewCount.success ? reviewCount.data || 0 : 0,
 			stats,
 			weeklyStats,
 			decksWithDue,

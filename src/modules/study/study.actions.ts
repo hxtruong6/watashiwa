@@ -487,7 +487,13 @@ export async function getReviewForecast(): Promise<{
 		};
 	} catch (error) {
 		console.error('Error getting review forecast:', error);
-
+		return {
+			nextReview: null,
+			urgentCard: null,
+			forecastCount: 0,
+		};
+	}
+}
 /**
  * Get the last study session information for the current user.
  * Used to resume study from where they left off.

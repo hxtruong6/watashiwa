@@ -21,6 +21,7 @@ const eslintConfig = defineConfig([
 		'build/**',
 		'src/generated/**',
 		'next-env.d.ts',
+		'scripts/trigger-reminders.js',
 	]),
 ]);
 
