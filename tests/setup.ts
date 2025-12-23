@@ -1,6 +1,13 @@
 import '@testing-library/jest-dom';
 import { vi } from 'vitest';
 
+// Mock Next.js cache functions that fail in test environment
+vi.mock('next/cache', () => ({
+	revalidatePath: vi.fn(),
+	revalidateTag: vi.fn(),
+	unstable_cache: vi.fn((fn) => fn),
+}));
+
 Object.defineProperty(window, 'matchMedia', {
 	writable: true,
 	value: vi.fn().mockImplementation((query) => ({

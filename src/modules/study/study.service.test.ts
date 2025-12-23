@@ -1,11 +1,9 @@
-import { StudyCard } from '@/lib/db';
-import { describe, it } from 'node:test';
-import { expect } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 import { StudyService } from './study.service';
 
 describe('StudyService', () => {
-	const mockCard: StudyCard = {
+	const mockCard: any = {
 		id: '123',
 		userId: 'user1',
 		vocabId: 'vocab1',
