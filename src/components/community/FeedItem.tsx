@@ -1,6 +1,6 @@
 'use client';
 
-import { voteComment } from '@/services/comments';
+import { voteComment } from '@/modules/community/community.actions';
 import { ArrowRightOutlined, LikeFilled, LikeOutlined, UserOutlined } from '@ant-design/icons';
 import { Avatar, Button, Card, Flex, Space, Tag, Tooltip, Typography, theme } from 'antd';
 import { useTranslations } from 'next-intl';

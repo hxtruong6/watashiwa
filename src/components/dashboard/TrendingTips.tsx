@@ -1,6 +1,6 @@
 'use client';
 
-import { getTrendingComments } from '@/services/comments';
+import { getTrendingComments } from '@/modules/community/community.actions';
 import { LikeOutlined } from '@ant-design/icons';
 import { Card, Flex, Tag, Typography, theme } from 'antd';
 import { Space } from 'antd';

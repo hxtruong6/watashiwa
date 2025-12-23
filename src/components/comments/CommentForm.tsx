@@ -1,6 +1,6 @@
 'use client';
 
-import { createComment } from '@/services/comments';
+import { createComment } from '@/modules/community/community.actions';
 import { SendOutlined } from '@ant-design/icons';
 import { Alert, Button, Form, Input, Select } from 'antd';
 import { useTranslations } from 'next-intl';

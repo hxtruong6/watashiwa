@@ -1,0 +1,821 @@
+[
+    {
+        "word_surface": "たった今",
+        "han_viet": "KIM",
+        "kana": "たったいま",
+        "romaji": "tattaima",
+        "tags": [
+            "n4",
+            "adverb",
+            "time"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L50,20 L75,20 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "今",
+                    "han_viet": "KIM",
+                    "meaning": {
+                        "vi": "bây giờ",
+                        "en": "now"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Tatta (chỉ) + Ima (Bây giờ) -> Chỉ mới lúc nãy (ngay lúc này).",
+                "en": "Just (Tatta) + Now (Ima)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "vừa mới",
+                "ban nãy"
+            ],
+            "en": [
+                "just now"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "たった今、帰りました。",
+                "translation": {
+                    "vi": "Tôi vừa mới về.",
+                    "en": "I returned just now."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Tất tả (tatta) chạy về ngay bây giờ (ima).",
+            "en": "TATTER (tatta) logic: Just Now."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "今 いいですか。",
+        "han_viet": "KIM",
+        "kana": "いま いいですか。",
+        "romaji": "ima ii desu ka.",
+        "tags": [
+            "n4",
+            "phrase"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "今",
+                    "han_viet": "KIM",
+                    "meaning": {
+                        "vi": "hiện tại",
+                        "en": "now"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Bây giờ (KIM) có được (HẢO/LƯƠNG) không? -> Hỏi rảnh không.",
+                "en": "Now (Ima) Good (Ii)?"
+            }
+        },
+        "meanings": {
+            "vi": [
+                "bây giờ có tiện không?"
+            ],
+            "en": [
+                "have you got a moment?",
+                "is now okay?"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "すみません、今いいですか。",
+                "translation": {
+                    "vi": "Xin lỗi, bây giờ anh có rảnh không?",
+                    "en": "Excuse me, have you got a moment?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Hỏi xem 'Bây giờ tốt không?'.",
+            "en": "Is now good for you?"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ガスサービスセンター",
+        "han_viet": "",
+        "kana": "ガスサービスセンター",
+        "romaji": "gasu saabisu sentaa",
+        "tags": [
+            "n4",
+            "noun",
+            "katakana"
+        ],
+        "pitch_pattern": 5,
+        "pitch_svg_path": "M0,5 L25,20 L50,20 L75,20 L100,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh: Gas Service Center.",
+                "en": "Loan word: Gas Service Center."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "trung tâm dịch vụ ga"
+            ],
+            "en": [
+                "gas service center"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ガスサービスセンターに電話します。",
+                "translation": {
+                    "vi": "Tôi gọi điện cho trung tâm dịch vụ ga.",
+                    "en": "I call the gas service center."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Đọc như tiếng Anh.",
+            "en": "Straight from English."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ガスレンジ",
+        "han_viet": "",
+        "kana": "ガスレンジ",
+        "romaji": "gasu renji",
+        "tags": [
+            "n4",
+            "noun",
+            "katakana"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh: Gas Range.",
+                "en": "Loan word: Gas Range."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "bếp ga"
+            ],
+            "en": [
+                "gas range",
+                "gas cooker"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "新しいガスレンジを買いました。",
+                "translation": {
+                    "vi": "Tôi đã mua bếp ga mới.",
+                    "en": "I bought a new gas range."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Bếp (Range) ga.",
+            "en": "Gas Range."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "具合",
+        "han_viet": "CỤ HỢP",
+        "kana": "ぐあい",
+        "romaji": "guai",
+        "tags": [
+            "n4",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "具",
+                    "han_viet": "CỤ",
+                    "meaning": {
+                        "vi": "công cụ, đủ",
+                        "en": "tool"
+                    }
+                },
+                {
+                    "kanji": "合",
+                    "han_viet": "HỢP",
+                    "meaning": {
+                        "vi": "phù hợp, khớp",
+                        "en": "match"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "CÔNG CỤ (CỤ) nó KHỚP (HỢP) với nhau thế nào -> Tình trạng hoạt động/sức khỏe.",
+                "en": "Tools (具) Matching (合) -> Condition/Fit."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "tình trạng (sức khỏe, máy móc)"
+            ],
+            "en": [
+                "condition",
+                "health"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "体の具合が悪いです。",
+                "translation": {
+                    "vi": "Tình trạng cơ thể không tốt (Tôi thấy ko khỏe).",
+                    "en": "I don't feel well (Body condition is bad)."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "CỤ HỢP. Công cụ có hợp (tốt) không? Gu ai (guai) nấy hợp.",
+            "en": "GOO EYE (guai) - My eye condition is gooey (bad)."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "申し訳ありません",
+        "han_viet": "THÂN DỊCH",
+        "kana": "もうしわけありません",
+        "romaji": "moushiwake arimasen",
+        "tags": [
+            "n4",
+            "phrase",
+            "honorific"
+        ],
+        "pitch_pattern": 6,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5 L125,5 L150,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "申",
+                    "han_viet": "THÂN",
+                    "meaning": {
+                        "vi": "nói (khiêm nhường)",
+                        "en": "say (humble)"
+                    }
+                },
+                {
+                    "kanji": "訳",
+                    "han_viet": "DỊCH",
+                    "meaning": {
+                        "vi": "lý do, dịch",
+                        "en": "reason/excuse"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Không có (arimasen) lý do (DỊCH) nào để biện bạch (THÂN) -> Vô cùng xin lỗi.",
+                "en": "No (arimasen) excuse/reason (Wake) to say (Moushi)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "xin lỗi (lịch sự)"
+            ],
+            "en": [
+                "I'm sorry",
+                "my apologies"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "遅れて申し訳ありません。",
+                "translation": {
+                    "vi": "Xin lỗi vì đã đến muộn.",
+                    "en": "I apologize for being late."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THÂN DỊCH ko nổi lý do. Mâu thuẫn (Moushi) quá.",
+            "en": "MORE SHE WALK (moushiwake) - Sorry she walked away."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "どちら様でしょうか",
+        "han_viet": "DẠNG",
+        "kana": "どちらさまでしょうか",
+        "romaji": "dochira sama deshou ka",
+        "tags": [
+            "n4",
+            "phrase",
+            "honorific"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L50,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "様",
+                    "han_viet": "DẠNG",
+                    "meaning": {
+                        "vi": "ngài (kính ngữ)",
+                        "en": "Mr/Ms (polite)"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Vị (Sama) nào (Dochira) thế ạ?",
+                "en": "Which (Dochira) person (Sama)?"
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ai đấy ạ?",
+                "vị nào đấy ạ?"
+            ],
+            "en": [
+                "who is this, please?"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "失礼ですが、どちら様でしょうか。",
+                "translation": {
+                    "vi": "Xin thất lễ, cho hỏi vị nào đấy ạ?",
+                    "en": "Excuse me, but who is this?"
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "DẠNG lịch sự của 'Dare'.",
+            "en": "DOOR CHILLER (dochira) - Who is at the chiller door?"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "お待たせしました",
+        "han_viet": "ĐÃI",
+        "kana": "おまたせしました",
+        "romaji": "omatase shimashita",
+        "tags": [
+            "n4",
+            "phrase",
+            "honorific"
+        ],
+        "pitch_pattern": 6,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5 L125,5 L150,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "待",
+                    "han_viet": "ĐÃI",
+                    "meaning": {
+                        "vi": "đợi",
+                        "en": "wait"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Đã làm (shimashita) quý vị phải đợi (Matase - ĐÃI).",
+                "en": "Caused you to wait (Mataseru)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "xin lỗi vì đã để đợi lâu"
+            ],
+            "en": [
+                "sorry to have kept you waiting"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "皆様、お待たせしました。",
+                "translation": {
+                    "vi": "Thưa quý vị, xin lỗi vì để mọi người đợi lâu.",
+                    "en": "Ladies and gentlemen, sorry to keep you waiting."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "ĐÃI khách thì không được để khách đợi. Ôi, ma ta sẽ (omatase) đợi.",
+            "en": "OH MATTER SAY (omatase) - It matters to say sorry for waiting."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "向かいます",
+        "han_viet": "HƯỚNG",
+        "kana": "むかいます",
+        "romaji": "mukaimasu",
+        "tags": [
+            "n4",
+            "verb",
+            "intransitive"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "向",
+                    "han_viet": "HƯỚNG",
+                    "meaning": {
+                        "vi": "hướng về",
+                        "en": "face/turn"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "HƯỚNG về phía đích đến -> Đi đến, hướng tới.",
+                "en": "Mouth (口) facing a specific direction."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "hướng đến",
+                "đi đến"
+            ],
+            "en": [
+                "head for",
+                "face"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "空港へ向かいます。",
+                "translation": {
+                    "vi": "Tôi đang hướng đến sân bay.",
+                    "en": "I am heading for the airport."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HƯỚNG mặt (Muka) đi đâu.",
+            "en": "MOVE CAR (muka) towards the exit."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ついています",
+        "han_viet": "",
+        "kana": "ついて います",
+        "romaji": "tsuite imasu",
+        "tags": [
+            "n4",
+            "verb",
+            "phrase"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L50,20 L75,20 L100,20 L125,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Gốc từ động từ Tsuku (Dính). Vận may dính vào người -> May mắn.",
+                "en": "Luck Sticks (tsuku) to you."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "may mắn",
+                "hên"
+            ],
+            "en": [
+                "be lucky"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "今日はついています。",
+                "translation": {
+                    "vi": "Hôm nay thật may mắn.",
+                    "en": "I am lucky today."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "May mắn dính (tsuite) vào người. Tươi (tsui) cười may mắn.",
+            "en": "SUIT (tsuite) - That suit is lucky for you."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "床",
+        "han_viet": "SÀNG",
+        "kana": "ゆか",
+        "romaji": "yuka",
+        "tags": [
+            "n4",
+            "noun"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "床",
+                    "han_viet": "SÀNG",
+                    "meaning": {
+                        "vi": "giường, sàn",
+                        "en": "bed/floor"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "SÀNG là cái giường/sàn. Ngày xưa ngủ trên sàn gỗ (Mộc) có mái che (Nghiễm).",
+                "en": "Wood (木) under a Roof (广) implies flooring/bed."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "sàn nhà"
+            ],
+            "en": [
+                "floor"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "床を掃除します。",
+                "translation": {
+                    "vi": "Tôi lau sàn nhà.",
+                    "en": "I clean the floor."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "SÀNG nhà làm bằng gỗ cây DŨ (yu-ka).",
+            "en": "YOU CAN (yuka) sit on the floor."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "転びます",
+        "han_viet": "CHUYỂN",
+        "kana": "ころびます",
+        "romaji": "korobimasu",
+        "tags": [
+            "n4",
+            "verb",
+            "intransitive"
+        ],
+        "pitch_pattern": 3,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "転",
+                    "han_viet": "CHUYỂN",
+                    "meaning": {
+                        "vi": "lăn, chuyển động",
+                        "en": "revolve"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Xe (XA) lăn bánh CHUYỂN động thì dễ ngã (lăn).",
+                "en": "Car (車) Rolling/Turning (転)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "ngã",
+                "té"
+            ],
+            "en": [
+                "fall down",
+                "fall over"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "道で転びました。",
+                "translation": {
+                    "vi": "Tôi bị ngã ở đường.",
+                    "en": "I fell down on the street."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Di CHUYỂN mà không cẩn thận là Cô Rồ Bị (korobi) ngã.",
+            "en": "CORE (koro) muscles weak -> Fall down."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "ベル",
+        "han_viet": "",
+        "kana": "ベル",
+        "romaji": "beru",
+        "tags": [
+            "n4",
+            "noun",
+            "katakana"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L50,20",
+        "etymology": {
+            "parts": [],
+            "note": {
+                "vi": "Từ mượn tiếng Anh: Bell.",
+                "en": "Loan word from English: Bell."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "chuông"
+            ],
+            "en": [
+                "bell",
+                "doorbell"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "ベルが鳴りました。",
+                "translation": {
+                    "vi": "Chuông reo rồi.",
+                    "en": "The bell rang."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "Đọc giống 'Bell' trong tiếng Anh.",
+            "en": "Sounds exactly like 'Bell'."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "鳴ります",
+        "han_viet": "MINH",
+        "kana": "なります",
+        "romaji": "narimasu",
+        "tags": [
+            "n4",
+            "verb",
+            "intransitive"
+        ],
+        "pitch_pattern": 1,
+        "pitch_svg_path": "M0,5 L25,20 L50,20 L75,20",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "鳴",
+                    "han_viet": "MINH",
+                    "meaning": {
+                        "vi": "kêu, hót",
+                        "en": "chirp/ring"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Chim (ĐIỂU) mở mồm (KHẨU) hót vang trời.",
+                "en": "Bird (鳥) Mouth (口) makes noise."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "reo",
+                "kêu",
+                "hót"
+            ],
+            "en": [
+                "ring",
+                "sound"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "電話が鳴りました。",
+                "translation": {
+                    "vi": "Điện thoại reo rồi.",
+                    "en": "The phone rang."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "MINH oan thì phải kêu to lên. Na (nà) ní (ri)?",
+            "en": "NAH (na) it's RINging (ri)."
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "慌てて",
+        "han_viet": "HOẢNG",
+        "kana": "あわてて",
+        "romaji": "awatete",
+        "tags": [
+            "n4",
+            "adverb",
+            "verb-te-form"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "慌",
+                    "han_viet": "HOẢNG",
+                    "meaning": {
+                        "vi": "vội vàng, hoảng hốt",
+                        "en": "panic"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "Tâm (忄) HOẢNG loạn (Hoang) thì vội vàng.",
+                "en": "Heart (忄) in a flurry (荒)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "vội vàng",
+                "hoảng hốt"
+            ],
+            "en": [
+                "in a hurry",
+                "hastily"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "慌てて出かけました。",
+                "translation": {
+                    "vi": "Tôi vội vàng đi ra ngoài.",
+                    "en": "I went out in a hurry."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "HOẢNG hốt thì A qua tê (awate).",
+            "en": "AWAit (awate) - Don't wait, hurry!"
+        },
+        "confusions": []
+    },
+    {
+        "word_surface": "順番に",
+        "han_viet": "THUẬN PHIÊN",
+        "kana": "じゅんばんに",
+        "romaji": "junbanni",
+        "tags": [
+            "n4",
+            "adverb"
+        ],
+        "pitch_pattern": 0,
+        "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5",
+        "etymology": {
+            "parts": [
+                {
+                    "kanji": "順",
+                    "han_viet": "THUẬN",
+                    "meaning": {
+                        "vi": "thuận theo, thứ tự",
+                        "en": "order"
+                    }
+                },
+                {
+                    "kanji": "番",
+                    "han_viet": "PHIÊN",
+                    "meaning": {
+                        "vi": "lượt",
+                        "en": "turn/number"
+                    }
+                }
+            ],
+            "note": {
+                "vi": "THUẬN theo lượt (PHIÊN) -> Theo thứ tự.",
+                "en": "Obey (順) the Turn/Number (番)."
+            }
+        },
+        "meanings": {
+            "vi": [
+                "theo thứ tự",
+                "lần lượt"
+            ],
+            "en": [
+                "in order",
+                "in turn"
+            ]
+        },
+        "examples": [
+            {
+                "sentence": "順番に並んでください。",
+                "translation": {
+                    "vi": "Hãy xếp hàng theo thứ tự.",
+                    "en": "Please line up in order."
+                }
+            }
+        ],
+        "mnemonic": {
+            "vi": "THUẬN PHIÊN là thuận theo lượt.",
+            "en": "JUNE (jun) comes in order after May. BAN (ban) cutting globally."
+        },
+        "confusions": []
+    }
+]

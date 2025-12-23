@@ -137,5 +137,24 @@ export const VocabularyData = {
 		});
 
 		return stats;
+		return stats;
+	},
+
+	/**
+	 * Create Vocabulary
+	 */
+	create: async (data: Prisma.VocabularyCreateInput) => {
+		return prisma.vocabulary.create({
+			data,
+		});
+	},
+
+	/**
+	 * Delete Vocabulary
+	 */
+	delete: async (id: string) => {
+		return prisma.vocabulary.delete({
+			where: { id },
+		});
 	},
 };

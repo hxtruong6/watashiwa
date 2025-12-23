@@ -1,6 +1,6 @@
 'use client';
 
-import { getCommunityFeed } from '@/services/comments';
+import { getCommunityFeed } from '@/modules/community/community.actions';
 import { ReloadOutlined } from '@ant-design/icons';
 import { Tag as AntTag, Button, Empty, Flex, Segmented, Spin, theme } from 'antd';
 import { useTranslations } from 'next-intl';

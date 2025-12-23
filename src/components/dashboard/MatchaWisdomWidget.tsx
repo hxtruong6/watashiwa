@@ -1,6 +1,6 @@
 'use client';
 
-import { WisdomWordData, getMatchaWisdomWords } from '@/services/dashboard-actions';
+import { WisdomWordData, getMatchaWisdomWords } from '@/modules/dashboard/dashboard.actions';
 import { SoundOutlined } from '@ant-design/icons';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import { Card, Typography, theme } from 'antd';

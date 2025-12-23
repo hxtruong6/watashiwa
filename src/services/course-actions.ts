@@ -314,7 +314,7 @@ export async function getCourseById(id: string) {
 							include: {
 								author: { select: { name: true } },
 								_count: {
-									select: { vocab: true, kanji: true },
+									select: { vocabularies: true },
 								},
 							},
 						},
@@ -355,7 +355,7 @@ export async function searchDecks(query: string) {
 			take: 20,
 			include: {
 				author: { select: { name: true } },
-				_count: { select: { vocab: true, kanji: true } },
+				_count: { select: { vocabularies: true } },
 			},
 		});
 		return decks;
@@ -384,7 +384,7 @@ export async function getCourseWithUserProgress(courseId: string) {
 						deck: {
 							include: {
 								author: { select: { name: true } },
-								_count: { select: { vocab: true, kanji: true } },
+								_count: { select: { vocabularies: true } },
 							},
 						},
 					},
@@ -403,24 +403,19 @@ export async function getCourseWithUserProgress(courseId: string) {
 		const decksWithProgress = await Promise.all(
 			course.decks.map(async (cd) => {
 				const deckId = cd.deckId;
-				const totalItems = cd.deck._count.vocab + cd.deck._count.kanji;
+				const totalItems = cd.deck._count.vocabularies;
 
-				// Count Started (Any state >= 0)
-				// Actually strictly > 0 if we consider 0 as "Unseen"?
-				// FSRS: 0=New, 1=Learning, 2=Review, 3=Relearning.
-				// "Started" usually means user has created a card (enrolled).
-				// If we enroll JIT, 'Started' means card exists.
-
-				const userCards = await prisma.studyCard.findMany({
+				// Count Started
+				const userCards = await prisma.userReview.findMany({
 					where: {
 						userId: user.id,
-						OR: [{ vocab: { deckId } }, { kanji: { deckId } }],
+						vocab: { deckId },
 					},
-					select: { state: true },
+					select: { srsStage: true },
 				});
 
 				const startedCount = userCards.length;
-				const masteredCount = userCards.filter((c) => c.state >= 2).length; // Assuming Review phase is "Mastering" or "Learned" enough
+				const masteredCount = userCards.filter((c) => c.srsStage >= 2).length; // Review phase
 
 				return {
 					...cd,

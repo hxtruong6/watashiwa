@@ -1,6 +1,6 @@
 'use client';
 
-import { createDeck, updateDeck } from '@/services/user-content-actions';
+import { createDeck, updateDeck } from '@/modules/deck/deck.actions';
 import { UploadOutlined } from '@ant-design/icons';
 import { Form, Input, Modal, Switch, message } from 'antd';
 /* eslint-disable-next-line @typescript-eslint/no-unused-vars */

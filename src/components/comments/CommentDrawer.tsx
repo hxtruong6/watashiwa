@@ -1,8 +1,8 @@
 'use client';
 
-import { getUserWithRole } from '@/services/actions';
 // import { useSession } from '@/services/auth'; // Assuming we have auth hook, or pass user prop
-import { getComments } from '@/services/comments';
+import { getComments } from '@/modules/community/community.actions';
+import { getUserWithRole } from '@/services/actions';
 import { ClockCircleOutlined, CloseOutlined, FireOutlined, PlusOutlined } from '@ant-design/icons';
 import { CardComment } from '@prisma/client';
 import { Button, Drawer, Flex, Grid, Segmented, Typography, theme } from 'antd';

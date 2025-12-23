@@ -27,38 +27,38 @@
 | **16** | [x]    | 48           | 918-966        | `乗ります`, `神社` (Actual: 30)                       |
 | **17** | [x]    | 28           | 967-994 (+957) | `覚えます`, `保険証` (Actual: 27)                     |
 | **18** | [x]    | 33           | 1018-1050      | `できます`, `趣味` (Actual: 24)                       |
-| **19** | [x] (Verified - Generated Manually) | 36           | 995-1017       | `登ります`, `泊まります` (Source: `All Decks_2.txt`)   |
+| **19** | [x]    | 36           | 995-1017       | `登ります`, `泊まります`   |
 | **20** | [x]    | 13           | 1042-1053+1059 | `要ります`, `ビザ` (Actual: 13)                       |
-| **21** | [x] (Manual) | 38           | 10422-10800    | `思います` (Source: `ref_minna_vocab.yaml`)           |
+| **21** | [x]    | 38           | 10422-10800    | `思います`           |
 | **22** | [x]    | 12           | 1126-1137      | `はきます`, `かぶります` (Actual: 12)                 |
 | **23** | [x]    | 20           | 1138-1157      | `聞きます`, `交差点` (Actual: 20)                     |
 | **24** | [x]    | 17           | 1054-1070      | `くれます`, `おじいさん` (Actual: 17)                 |
 | **25** | [x]    | 23           | 1071-1093      | `考えます`, `着きます` (Actual: 23)                   |
 | **26** | [x]    | 55           | 1158-1212      | `見ます`, `探します` (Actual: 20)                     |
-| **27** | [x]        | 43           | 1213-1255      | `飼います` (Source: `All Decks_2.txt`)                |
-| **28** | [x] (Verified - Generated Manually) | 38           | 1243-1285      | `かみます`, `売れます` (Source: `All Decks_2.txt`)    |
-| **29** | [x] (Verified - Generated Manually) | 37           | 1295-1341      | `開きます` (Source: `All Decks_2.txt`)                |
-| **30** | ⏳ Pending | 41           | 183-223        | `貼ります` (Source: `MinaN4_26_38.txt`)               |
-| **31** | ⏳ Pending | 53           | 224-276        | `生活します` (Source: `MinaN4_26_38.txt`)             |
-| **32** | ⏳ Pending | 40           | 277-316        | `運動します` (Source: `MinaN4_26_38.txt`)             |
-| **33** | ⏳ Pending | 46           | 317-362        | `逃げます` (Source: `MinaN4_26_38.txt`)               |
-| **34** | ⏳ Pending | 39           | 363-401        | `磨きます` (Source: `MinaN4_26_38.txt`)               |
-| **35** | ⏳ Pending | 30           | 402-431        | `咲きます` (Source: `MinaN4_26_38.txt`)               |
-| **36** | [x] (Verified - Generated Manually) | 40           | 432-473        | `貯金します` (Source: `ref_minna_vocab.yaml`)         |
-| **37** | ⏳ Pending | 50           | 474-523        | `褒めます` (Source: `MinaN4_26_38.txt`)               |
-| **38** | ⏳ Pending | 37           | 524-560        | `参加します` (Source: `MinaN4_26_38.txt`)             |
-| **39** | ⏳ Pending | 61           | 3-63           | `びっくりします` (Source: `MinaN4_39_50.txt`)         |
-| **40** | ⏳ Pending | 42           | 64-105         | `数えます` (Source: `MinaN4_39_50.txt`)               |
-| **41** | ⏳ Pending | 63           | 106-168        | `いただきます` (Source: `MinaN4_39_50.txt`)           |
-| **42** | ⏳ Pending | 41           | 169-209        | `包みます` (Source: `MinaN4_39_50.txt`)               |
-| **43** | ⏳ Pending | 30           | 210-223        | `増えます` (Actual: 14 - **Low**)                     |
-| **44** | ⏳ Pending | 32           | 224-255        | `泣きます` (Source: `MinaN4_39_50.txt`)               |
-| **45** | ⏳ Pending | 33           | 256-270        | `信じます` (Actual: 15 - **Low**)                     |
-| **46** | ⏳ Pending | 28           | 271-298        | `渡します` (Source: `MinaN4_39_50.txt`)               |
-| **47** | ⏳ Pending | 32           | 299-330        | `集まります` (Source: `MinaN4_39_50.txt`)             |
-| **48** | ⏳ Pending | 32           | 331-342        | `降ろします` (Actual: 12 - **Low**)                   |
-| **49** | ⏳ Pending | 25           | 343-367        | `利用します` (Source: `MinaN4_39_50.txt`)             |
-| **50** | ⏳ Pending | 28           | 368-395        | `参ります` (Source: `MinaN4_39_50.txt`)               |
+| **27** | [x] | 43           | 1213-1255      | `飼います`                |
+| **28** | [x] | 38           | 1243-1285      | `かみます`, `売れます`    |
+| **29** | [x] | 37           | 1295-1341      | `開きます`                |
+| **30** | [x] | 48           | 1342-1389      | `貼ります`                |
+| **31** | [x] | 33           | 1390-1421      | `続けます`                |
+| **32** | [x] | 50           | 1422-1471      | `運動します` (Source: `All Decks_2.txt`)              |
+| **33** | [x] (Verified - Generated Manually) | 50           | 1482-1531      | `逃げます` (Source: `All Decks_2.txt`)                |
+| **34** | [x] (Verified - Generated Manually) | 39           | 1532-1572      | `磨きます` (Source: `All Decks_2.txt`)                |
+| **35** | [x] (Verified - Generated Manually) | 44           | 1573-1599, 1625-1634 | `咲きます` (Source: `All Decks_2.txt` + Missing Candidates) |
+| **36** | [x] | 40           | 432-473        | `貯金します`         |
+| **37** | [x] | 41           | 474-523        | `褒めます`           |
+| **38** | [x] | 57           | -              | `参加します` (Source: `ref_minna_vocab.yaml`) |
+| **39** | [x] (Verified - Generated Manually) | 51           | -              | `びっくりします`, `伝統的` (Source: `ref_minna_vocab.yaml`) |
+| **40** | [x] | 42           | 64-105         | `数えます` (Actual: 62)                |
+| **41** | [x] | 63           | 106-168        | `いただきます` (Actual: 63)                |
+| **42** | ⏳ Pending | 41           | 169-209        | `包みます`                |
+| **43** | ⏳ Pending | 30           | 210-223        | `増えます`                |
+| **44** | ⏳ Pending | 32           | 224-255        | `泣きます`                |
+| **45** | [x] | 33           | 256-270        | `信じます` (Actual: 39)                |
+| **46** | ⏳ Pending | 28           | 271-298        | `渡します`                |
+| **47** | ⏳ Pending | 32           | 299-330        | `集まります`                |
+| **48** | ⏳ Pending | 32           | 331-342        | `降ろします`                |
+| **49** | [x] (Verified - Generated Manually) | 36           | Missing Candidates | `勤めます` (Source: `missing_candidates.json`) |
+| **50** | ⏳ Pending | 28           | 368-395        | `参ります`               |
 
 ---
 

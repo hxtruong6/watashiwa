@@ -1,8 +1,8 @@
 import DashboardContent from '@/components/DashboardContent';
 import DashboardErrorState from '@/components/dashboard/DashboardErrorState';
 import { syncUser } from '@/modules/auth/auth.actions';
+import { getReviewForecast } from '@/modules/study/study.actions';
 import { getDashboardData, getLeaderboard, getUserWithRole } from '@/services/actions';
-import { getReviewForecast } from '@/services/study-actions';
 import { UserRole } from '@prisma/client';
 import { redirect } from 'next/navigation';
 

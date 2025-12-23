@@ -1,6 +1,10 @@
 'use server';
 
+import { prisma } from '@/lib/db';
+import { getUser } from '@/modules/auth/auth.actions';
 import { executeSafeAction } from '@/modules/core/action-client';
+import { Question } from '@/types/exercises';
+import { z } from 'zod';
 
 import { StudyData } from './study.data';
 import { GetQueueSchema, SubmitReviewSchema } from './study.dto';
@@ -166,6 +170,8 @@ export async function submitReview(input: {
 			)
 		)[0];
 
+		return {
+			reviewLog,
 			nextCard: nextReviewCard ?? null,
 			message: 'Review recorded',
 		};
@@ -185,13 +191,14 @@ export async function getDailyProgress() {
 		// StudyData should be pure data. Logic belongs here.
 		// But we don't have access to User settings easily without importing user module.
 		// Let's import getUserSettings from user module.
-		
+
 		// Wait, user module is separate.
 		// Ideally we fetch settings.
 		// For now, hardcode or fetch via prisma directly?
 		// Let's use hardcoded defaults matching actions.ts: 200, 20.
-		
+
 		const stats = await StudyData.getDailyStats(userId, 200, 20);
+
 		return stats;
 	});
 }
@@ -207,4 +214,279 @@ export async function getReviewCount() {
 		const stats = await StudyData.getDailyStats(userId, 200, 20);
 		return stats.dueCount;
 	});
+}
+
+const ExerciseSchema = z.object({
+	deckIds: z.array(z.string()).default([]),
+	count: z.number().min(1).max(50).default(10),
+});
+
+/**
+ * Fetches random vocabulary questions for a study session.
+ * V2 Schema Compatible: Uses Vocabulary table and JSONB meanings field
+ */
+export async function getExerciseQuestions(
+	deckIds: string[] = [],
+	count: number = 10,
+): Promise<{ success: boolean; data?: Question[]; error?: string }> {
+	const validation = ExerciseSchema.safeParse({ deckIds, count });
+	if (!validation.success) {
+		return { success: false, error: 'Invalid input parameters.' };
+	}
+	const cleanData = validation.data;
+
+	try {
+		const user = await getUser();
+		if (!user) return { success: false, error: 'Unauthorized' };
+
+		const whereClause: any = {
+			deck: {
+				OR: [{ isPublic: true }, { authorId: user.id }],
+			},
+		};
+
+		if (cleanData.deckIds.length > 0) {
+			whereClause.deckId = { in: cleanData.deckIds };
+		}
+
+		// V2: Use vocabulary table (not vocab)
+		const allVocabs = await prisma.vocabulary.findMany({
+			where: whereClause,
+			select: {
+				id: true,
+				wordSurface: true,
+				meanings: true, // JSONB field
+				wordReading: true, // V2 uses wordReading instead of readingKana
+				hanViet: true,
+				audioUrl: true,
+			},
+		});
+
+		if (allVocabs.length < 4) {
+			return {
+				success: false,
+				error: 'NOT_ENOUGH_CARDS',
+			};
+		}
+
+		// Shuffle (Fisher-Yates)
+		const shuffled = [...allVocabs];
+		for (let i = shuffled.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+		}
+
+		const candidates = shuffled.slice(0, cleanData.count);
+
+		const questions: Question[] = candidates.map((target) => {
+			const targetLength = target.wordSurface.length;
+
+			// Extract meaning from JSONB structure
+			const targetMeanings = (target.meanings as any)?.en || (target.meanings as any)?.vi || [];
+			const targetMeaning =
+				Array.isArray(targetMeanings) && targetMeanings.length > 0 ? targetMeanings[0] : '';
+
+			const pool = allVocabs.filter((v) => {
+				const vMeanings = (v.meanings as any)?.en || (v.meanings as any)?.vi || [];
+				const vMeaning = Array.isArray(vMeanings) && vMeanings.length > 0 ? vMeanings[0] : '';
+
+				return (
+					v.id !== target.id && vMeaning.trim().toLowerCase() !== targetMeaning.trim().toLowerCase()
+				);
+			});
+
+			const sameLength = pool.filter((v) => v.wordSurface.length === targetLength);
+
+			let selectedDistractors: typeof allVocabs = [];
+
+			if (sameLength.length >= 3) {
+				const uniqueMeanings = new Set<string>();
+				const candidates: typeof allVocabs = [];
+				const shuffledSameLength = sameLength.sort(() => 0.5 - Math.random());
+
+				for (const item of shuffledSameLength) {
+					const itemMeanings = (item.meanings as any)?.en || (item.meanings as any)?.vi || [];
+					const itemMeaning =
+						Array.isArray(itemMeanings) && itemMeanings.length > 0 ? itemMeanings[0] : '';
+
+					if (!uniqueMeanings.has(itemMeaning.trim().toLowerCase())) {
+						uniqueMeanings.add(itemMeaning.trim().toLowerCase());
+						candidates.push(item);
+						if (candidates.length === 3) break;
+					}
+				}
+				selectedDistractors = candidates;
+			}
+
+			if (selectedDistractors.length < 3) {
+				const currentMeanings = new Set(
+					selectedDistractors.map((d) => {
+						const dMeanings = (d.meanings as any)?.en || (d.meanings as any)?.vi || [];
+						return Array.isArray(dMeanings) && dMeanings.length > 0
+							? dMeanings[0].trim().toLowerCase()
+							: '';
+					}),
+				);
+
+				const others = pool.filter((v) => {
+					const vMeanings = (v.meanings as any)?.en || (v.meanings as any)?.vi || [];
+					const vMeaning =
+						Array.isArray(vMeanings) && vMeanings.length > 0
+							? vMeanings[0].trim().toLowerCase()
+							: '';
+
+					return v.wordSurface.length !== targetLength && !currentMeanings.has(vMeaning);
+				});
+
+				const shuffledOthers = others.sort(() => 0.5 - Math.random());
+
+				for (const item of shuffledOthers) {
+					if (selectedDistractors.length >= 3) break;
+
+					const itemMeanings = (item.meanings as any)?.en || (item.meanings as any)?.vi || [];
+					const itemMeaning =
+						Array.isArray(itemMeanings) && itemMeanings.length > 0
+							? itemMeanings[0].trim().toLowerCase()
+							: '';
+
+					if (!currentMeanings.has(itemMeaning)) {
+						currentMeanings.add(itemMeaning);
+						selectedDistractors.push(item);
+					}
+				}
+			}
+
+			const distractors = selectedDistractors.map((v) => {
+				const vMeanings = (v.meanings as any)?.en || (v.meanings as any)?.vi || [];
+				return Array.isArray(vMeanings) && vMeanings.length > 0 ? vMeanings[0] : '';
+			});
+
+			const options = [...distractors, targetMeaning].sort(() => 0.5 - Math.random());
+
+			return {
+				id: target.id,
+				type: 'multiple_choice',
+				challenge: target.wordSurface,
+				correctAnswer: targetMeaning,
+				options: options,
+				reading: target.wordReading || undefined,
+				meaning: targetMeaning,
+				hanViet: target.hanViet || undefined,
+				audioUrl: target.audioUrl || undefined,
+			};
+		});
+
+		return { success: true, data: questions };
+	} catch (error) {
+		console.error('Error fetching exercise questions:', error);
+		return { success: false, error: 'Failed to generate exercises.' };
+	}
+}
+
+/**
+ * Calculates the 'Smart Review Forecast' for the user.
+ * 1. Finds the optimal 'Golden Time' to return based on upcoming review density.
+ * 2. Finds a 'Hook Card' (forgotten/hard item) to trigger active recall.
+ *
+ * V2 Schema Compatible: Uses UserReview and ReviewLog tables
+ */
+export async function getReviewForecast(): Promise<{
+	nextReview: Date | null;
+	urgentCard: { surface: string; meaning: string } | null;
+	forecastCount: number;
+}> {
+	try {
+		const user = await getUser();
+		if (!user) return { nextReview: null, urgentCard: null, forecastCount: 0 };
+
+		const now = new Date();
+		const tomorrow = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+
+		// V2: Use UserReview table instead of studyCard
+		// State: 0=New, 1=Learning, 2=Review, 3=Relearning
+		const upcomingCards = await prisma.userReview.findMany({
+			where: {
+				userId: user.id,
+				srsStage: { in: [1, 2, 3] }, // Learning, Review, Relearning
+				nextReviewAt: {
+					gte: now,
+					lt: tomorrow,
+				},
+			},
+			select: { nextReviewAt: true },
+		});
+
+		let nextReview: Date | null = null;
+		let maxCount = 0;
+
+		if (upcomingCards.length > 0) {
+			const buckets = new Map<number, number>();
+
+			for (const card of upcomingCards) {
+				const time = card.nextReviewAt.getTime();
+				const bucketTime = Math.floor(time / (30 * 60 * 1000)) * (30 * 60 * 1000);
+				const currentCount = buckets.get(bucketTime) || 0;
+				buckets.set(bucketTime, currentCount + 1);
+			}
+
+			let bestBucketTime = 0;
+			for (const [time, count] of buckets.entries()) {
+				if (count > maxCount) {
+					maxCount = count;
+					bestBucketTime = time;
+				}
+			}
+
+			if (bestBucketTime > 0) {
+				nextReview = new Date(bestBucketTime);
+			}
+		}
+
+		// V2: Find 'Hook Card' using ReviewLog -> reviewItem -> vocab relation
+		const hookLog = await prisma.reviewLog.findFirst({
+			where: {
+				userId: user.id,
+				rating: { in: [1, 2] }, // Again or Hard
+				reviewDate: {
+					gte: new Date(now.getTime() - 48 * 60 * 60 * 1000), // Last 48h
+				},
+			},
+			orderBy: { reviewDate: 'desc' },
+			include: {
+				reviewItem: {
+					include: {
+						vocab: {
+							select: {
+								wordSurface: true,
+								meanings: true, // JSONB field
+							},
+						},
+					},
+				},
+			},
+		});
+
+		let urgentCard: { surface: string; meaning: string } | null = null;
+
+		if (hookLog?.reviewItem?.vocab) {
+			const vocab = hookLog.reviewItem.vocab;
+			// Extract first meaning from JSONB structure
+			const meanings = (vocab.meanings as any)?.en || (vocab.meanings as any)?.vi || [];
+			const meaning = Array.isArray(meanings) && meanings.length > 0 ? meanings[0] : '';
+
+			urgentCard = {
+				surface: vocab.wordSurface,
+				meaning: meaning,
+			};
+		}
+
+		return {
+			nextReview,
+			urgentCard,
+			forecastCount: maxCount,
+		};
+	} catch (error) {
+		console.error('Error getting review forecast:', error);
+		return { nextReview: null, urgentCard: null, forecastCount: 0 };
+	}
 }

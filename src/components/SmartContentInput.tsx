@@ -1,7 +1,7 @@
 import ImageUploader from '@/components/Shared/ImageUploader';
 import KanjiEditor from '@/components/admin/KanjiEditor';
 import VocabEditor from '@/components/admin/VocabEditor';
-import { createKanji, createVocab } from '@/services/user-content-actions';
+import { createVocabulary } from '@/modules/vocabulary/vocabulary.actions';
 import {
 	EditOutlined,
 	PlusOutlined,
@@ -47,15 +47,20 @@ export default function SmartContentInput({ deckId, onSuccess }: SmartContentInp
 	const handleFinishVocab = async (values: any) => {
 		setLoading(true);
 		try {
-			const res = await createVocab(deckId, {
-				wordSurface: values.wordSurface,
-				readingKana: values.readingKana || '',
-				meaning: values.meaning,
-				hanViet: values.hanViet,
-				exampleSentence: values.exampleSentence
-					? { sentence: values.exampleSentence, translation: values.exampleTranslation }
-					: {},
-				imageUrl: values.imageUrl,
+			const res = await createVocabulary({
+				deckId,
+				data: {
+					wordSurface: values.wordSurface,
+					readingKana: values.readingKana || '',
+					meanings: values.meaning, // Passed as string, handled by action
+					hanViet: values.hanViet,
+					exampleSentence: values.exampleSentence, // Special field handled by action Logic
+					// Or better pass as examples array:
+					examples: values.exampleSentence
+						? [{ sentence: values.exampleSentence, translation: values.exampleTranslation }]
+						: [],
+					imageUrl: values.imageUrl,
+				},
 			});
 
 			if (res.success) {
@@ -77,14 +82,18 @@ export default function SmartContentInput({ deckId, onSuccess }: SmartContentInp
 	const handleFinishKanji = async (values: any) => {
 		setLoading(true);
 		try {
-			const res = await createKanji(deckId, {
-				kanji: values.kanji,
-				meaning: values.meaning,
-				onyomi: values.onyomi || [],
-				kunyomi: values.kunyomi || [],
-				strokes: values.strokes || 0,
-				hanViet: values.hanViet,
-				imageUrl: values.imageUrl,
+			const res = await createVocabulary({
+				deckId,
+				data: {
+					kanji: values.kanji,
+					// meaning -> meanings
+					meanings: values.meaning,
+					onyomi: values.onyomi || [],
+					kunyomi: values.kunyomi || [],
+					strokes: values.strokes || 0,
+					hanViet: values.hanViet,
+					imageUrl: values.imageUrl,
+				},
 			});
 
 			if (res.success) {
@@ -109,14 +118,20 @@ export default function SmartContentInput({ deckId, onSuccess }: SmartContentInp
 
 			let res;
 			if (activeTab === 'manual-vocab') {
-				res = await createVocab(deckId, {
-					wordSurface: values.wordSurface,
-					readingKana: values.readingKana,
-					meaning: values.meaning,
-					hanViet: values.hanViet,
-					exampleSentence: values.exampleSentence,
-					kanjiBreakdown: values.kanjiBreakdown,
-					wordParts: values.wordParts,
+				res = await createVocabulary({
+					deckId,
+					data: {
+						wordSurface: values.wordSurface,
+						readingKana: values.readingKana,
+						meanings: values.meaning,
+						hanViet: values.hanViet,
+						examples: values.exampleSentence, // Assuming Advanced Form passes full objects?
+						// Wait, advanced form naming is ambiguous.
+						// Let's pass as is, Action handles mapping of legacy keys
+						exampleSentence: values.exampleSentence,
+						kanjiBreakdown: values.kanjiBreakdown,
+						wordParts: values.wordParts,
+					},
 				});
 				if (res.success) {
 					messageApi.success(t('msgAdvancedVocabAdded'));
@@ -127,15 +142,18 @@ export default function SmartContentInput({ deckId, onSuccess }: SmartContentInp
 					messageApi.error(res.error || 'Failed to add vocabulary');
 				}
 			} else if (activeTab === 'manual-kanji') {
-				res = await createKanji(deckId, {
-					kanji: values.kanji,
-					meaning: values.meaning,
-					onyomi: values.onyomi || [],
-					kunyomi: values.kunyomi || [],
-					strokes: values.strokes || 0,
-					hanViet: values.hanViet,
-					radicals: values.radicals,
-					examples: values.examples,
+				res = await createVocabulary({
+					deckId,
+					data: {
+						kanji: values.kanji,
+						meanings: values.meaning,
+						onyomi: values.onyomi || [],
+						kunyomi: values.kunyomi || [],
+						strokes: values.strokes || 0,
+						hanViet: values.hanViet,
+						radicals: values.radicals,
+						examples: values.examples,
+					},
 				});
 				if (res.success) {
 					messageApi.success(t('msgAdvancedKanjiAdded'));

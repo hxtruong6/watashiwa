@@ -201,4 +201,29 @@ export const StudyData = {
 			return { updatedCard, log };
 		});
 	},
+
+	/**
+	 * Get User Review Stats for Dashboard (lightweight)
+	 * Returns minimal data needed to calculate stats per deck
+	 */
+	getUserReviewStats: async (userId: string, deckIds?: string[]) => {
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		const whereCondition: any = { userId };
+		if (deckIds && deckIds.length > 0) {
+			whereCondition.vocab = { deckId: { in: deckIds } };
+		}
+
+		// Use findMany with select to minimize data transfer
+		return prisma.userReview.findMany({
+			where: whereCondition,
+			select: {
+				vocab: { select: { deckId: true } },
+				srsStage: true,
+				nextReviewAt: true,
+				lastReview: true,
+				state: true,
+				stability: true,
+			},
+		});
+	},
 };

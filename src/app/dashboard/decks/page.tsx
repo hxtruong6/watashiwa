@@ -1,5 +1,5 @@
 import MyDecksList from '@/components/dashboard/MyDecksList';
-import { getUserDecksWithStats } from '@/services/user-content-actions';
+import { getUserDecksWithStats } from '@/modules/deck/deck.actions';
 import React from 'react';
 
 export default async function MyDecksPage() {

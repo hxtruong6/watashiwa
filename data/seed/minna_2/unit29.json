@@ -1,0 +1,1562 @@
+[
+  {
+    "word_surface": "つきます",
+    "han_viet": "ĐIỂM",
+    "kana": "つきます",
+    "romaji": "tsukimasu",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive"
+    ],
+    "pitch_pattern": 1,
+    "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "点",
+          "han_viet": "ĐIỂM",
+          "meaning": {
+            "vi": "điểm, chấm, thắp sáng",
+            "en": "point, light up"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ ĐIỂM (点) nghĩa là thắp sáng. Đèn 'điểm' sáng lên.",
+        "en": "Imagine a light bulb turning on with a 'click' sound."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "sáng (điện)",
+        "được bật"
+      ],
+      "en": [
+        "turn on",
+        "light up"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "電気がつきました。",
+        "translation": {
+          "vi": "Điện đã sáng.",
+          "en": "The light turned on."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Đèn ĐIỂM (つ) sáng.",
+      "en": "It SUITS (tsuki) you when the light turns on."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "まちがえます",
+    "han_viet": "GIAN VI",
+    "kana": "まちがえます",
+    "romaji": "machigaemasu",
+    "tags": [
+      "n5",
+      "verb",
+      "transitive"
+    ],
+    "pitch_pattern": 4,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "間",
+          "han_viet": "GIAN",
+          "meaning": {
+            "vi": "khoảng cách",
+            "en": "interval/space"
+          }
+        },
+        {
+          "kanji": "違",
+          "han_viet": "VI",
+          "meaning": {
+            "vi": "sai khác",
+            "en": "differ"
+          }
+        }
+      ],
+      "note": {
+        "vi": "GIAN (間) sai lệch (VI 違) dẫn đến nhầm lẫn.",
+        "en": "To mistake the space (ma) and difference (chigai)."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "nhầm",
+        "sai"
+      ],
+      "en": [
+        "make a mistake"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "電話番号をまちがえました。",
+        "translation": {
+          "vi": "Tôi nhầm số điện thoại.",
+          "en": "I bet the wrong phone number."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Ở GIAN (間) nhà này làm điều SAI TRÁI (VI).",
+      "en": "MATCHING (machi) the wrong guy is a mistake."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ふきます",
+    "han_viet": "THỨC",
+    "kana": "ふきます",
+    "romaji": "fukimasu",
+    "tags": [
+      "n5",
+      "verb",
+      "transitive"
+    ],
+    "pitch_pattern": 1,
+    "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "拭",
+          "han_viet": "THỨC",
+          "meaning": {
+            "vi": "lau",
+            "en": "wipe"
+          }
+        }
+      ],
+      "note": {
+        "vi": "THỨC (拭) dùng tay lau sạch.",
+        "en": "Hand wiping clean."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "lau chùi"
+      ],
+      "en": [
+        "wipe",
+        "dry"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "窓をふきます。",
+        "translation": {
+          "vi": "Lau cửa sổ.",
+          "en": "Wipe the window."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Lau chùi một cách THỨC thời.",
+      "en": "WHO (fu) keeps the KEY (ki) clean? Wipe it."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "おちゃわん",
+    "han_viet": "TRÀ OẢN",
+    "kana": "おちゃわん",
+    "romaji": "ochawan",
+    "tags": [
+      "n5",
+      "noun"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "茶",
+          "han_viet": "TRÀ",
+          "meaning": {
+            "vi": "trà",
+            "en": "tea"
+          }
+        },
+        {
+          "kanji": "碗",
+          "han_viet": "OẢN",
+          "meaning": {
+            "vi": "bát, chén",
+            "en": "bowl"
+          }
+        }
+      ],
+      "note": {
+        "vi": "OẢN (碗) là cái bát nhỏ, thường dùng ăn cơm hoặc uống trà.",
+        "en": "A bowl for tea (cha)."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "bát",
+        "chén"
+      ],
+      "en": [
+        "rice bowl",
+        "tea cup"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "おちゃわんを洗います。",
+        "translation": {
+          "vi": "Rửa bát.",
+          "en": "Wash the rice bowl."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Cái bát của TRÀ (茶) dùng để ăn cơm (OẢN).",
+      "en": "Oh, CHA (tea) WANT a bowl?"
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "コップ",
+    "han_viet": "",
+    "kana": "こっぷ",
+    "romaji": "koppu",
+    "tags": [
+      "n5",
+      "noun",
+      "katakana"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "Từ mượn tiếng Hà Lan: kop.",
+        "en": "Loan word from Dutch: kop / English: cup."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "cốc",
+        "ly"
+      ],
+      "en": [
+        "glass",
+        "cup"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "コップで水を飲みます。",
+        "translation": {
+          "vi": "Uống nước bằng cốc.",
+          "en": "Drink water with a cup."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Cái CỐC.",
+      "en": "Sounds like Cup. COP (police) with a cup."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "ガラス",
+    "han_viet": "",
+    "kana": "がらす",
+    "romaji": "garasu",
+    "tags": [
+      "n5",
+      "noun",
+      "katakana"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "Từ mượn tiếng Hà Lan: glas.",
+        "en": "Loan word from Dutch: glas / English: glass."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "ly",
+        "kính",
+        "thủy tinh"
+      ],
+      "en": [
+        "glass (material)",
+        "window pane"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "ガラスが割れました。",
+        "translation": {
+          "vi": "Kính bị vỡ.",
+          "en": "The glass broke."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "GA-RA xe lắp kính (GLASS).",
+      "en": "Sounds like Glass."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "スピーチ",
+    "han_viet": "",
+    "kana": "すぴーち",
+    "romaji": "supiichi",
+    "tags": [
+      "n5",
+      "noun",
+      "katakana"
+    ],
+    "pitch_pattern": 2,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20",
+    "etymology": {
+      "parts": [],
+      "note": {
+        "vi": "Từ mượn tiếng Anh: speech.",
+        "en": "Loan word from English: speech."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "diễn văn",
+        "hùng biện"
+      ],
+      "en": [
+        "speech"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "スピーチをします。",
+        "translation": {
+          "vi": "Đọc diễn văn.",
+          "en": "Make a speech."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Sợ (S) BỊ CHÊ (PIICHI) khi phát biểu.",
+      "en": "Sounds like Speech."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "開きます",
+    "han_viet": "KHAI",
+    "kana": "あきます",
+    "romaji": "akimasu",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive"
+    ],
+    "pitch_pattern": 3,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "開",
+          "han_viet": "KHAI",
+          "meaning": {
+            "vi": "mở, bắt đầu",
+            "en": "open"
+          }
+        }
+      ],
+      "note": {
+        "vi": "KHAI (開) giảng là bắt đầu mở ra. Cửa tự mở (KHAI).",
+        "en": "Two hands opening the gate latch."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "mở (cửa)"
+      ],
+      "en": [
+        "open (intransitive)"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "ドアが開きます。",
+        "translation": {
+          "vi": "Cửa mở.",
+          "en": "The door opens."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "KHAI trương mở cửa A (あ) à?",
+      "en": "A KEY (aki) opens the door."
+    },
+    "confusions": [
+      {
+        "word": "開けます",
+        "explanation": {
+          "mnemonic": {
+            "vi": "KHAI tha động (akemasu) là 'Mở ra'. Tự động (akimasu) là 'tự mở'.",
+            "en": "Akemasu (Active) vs Akimasu (Intransitive)."
+          },
+          "item1_nuance": {
+            "vi": "Tự nó mở ra (trạng thái).",
+            "en": "Wait/State opens."
+          },
+          "item2_nuance": {
+            "vi": "Ai đó mở nó ra (hành động).",
+            "en": "Someone opens it."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "word_surface": "閉まります",
+    "han_viet": "BẾ",
+    "kana": "しまります",
+    "romaji": "shimarimasu",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive"
+    ],
+    "pitch_pattern": 4,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "閉",
+          "han_viet": "BẾ",
+          "meaning": {
+            "vi": "đóng, khép",
+            "en": "close"
+          }
+        }
+      ],
+      "note": {
+        "vi": "BẾ (閉) mạc là đóng lại. Bế quan tỏa cảng.",
+        "en": "A gate with a crossbar keeping it closed."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "đóng (cửa)"
+      ],
+      "en": [
+        "close (intransitive)"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "ドアが閉まります。",
+        "translation": {
+          "vi": "Cửa đóng.",
+          "en": "The door closes."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "BẾ (闭) quan không tiếp khách nữa, đóng cửa (xi măng - shima).",
+      "en": "SHE (shi) MARRies (mari) him, so the door to others CLOSES."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "消えます",
+    "han_viet": "TIÊU",
+    "kana": "きえます",
+    "romaji": "kiemasu",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive"
+    ],
+    "pitch_pattern": 3,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "消",
+          "han_viet": "TIÊU",
+          "meaning": {
+            "vi": "mất đi, dập tắt",
+            "en": "extinguish"
+          }
+        }
+      ],
+      "note": {
+        "vi": "TIÊU (消) tan, tiêu biến. Lửa gặp nước thì tiêu tùng.",
+        "en": "Water extinguishing sparkles/fire."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "tắt",
+        "biến mất"
+      ],
+      "en": [
+        "go off",
+        "disappear"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "電気が消えました。",
+        "translation": {
+          "vi": "Điện đã tắt.",
+          "en": "The light went off."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "TIÊU đời rồi, ki (kìa) ế (e) quá (masu).",
+      "en": "KYA! (kie) It vanished! (Scream)."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "壊れます",
+    "han_viet": "HOẠI",
+    "kana": "こわれます",
+    "romaji": "kowaremasu",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive"
+    ],
+    "pitch_pattern": 4,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "壊",
+          "han_viet": "HOẠI",
+          "meaning": {
+            "vi": "phá hủy, hỏng",
+            "en": "break/destroy"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Hủy HOẠI (壊) làm cho nó hỏng.",
+        "en": "Soil and clothing; seeing your clothes get dirty/destroyed."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "hỏng",
+        "hư"
+      ],
+      "en": [
+        "break",
+        "break down"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "いすが壊れました。",
+        "translation": {
+          "vi": "Ghế bị hỏng.",
+          "en": "The chair broke."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "CÔ (ko) ta làm HOẠI (wa) mọi thứ.",
+      "en": "COW? WA (kowa) - The cow broke the fence."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "割れます",
+    "han_viet": "CÁT",
+    "kana": "われます",
+    "romaji": "waremasu",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive"
+    ],
+    "pitch_pattern": 3,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "割",
+          "han_viet": "CÁT",
+          "meaning": {
+            "vi": "chia cắt, vỡ",
+            "en": "divide/split"
+          }
+        }
+      ],
+      "note": {
+        "vi": "CÁT (割) cứ là chia ra. Vỡ ra từng mảnh.",
+        "en": "A knife cutting through a house/harm."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "vỡ (kính, bát)"
+      ],
+      "en": [
+        "break (glass)",
+        "smash"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "コップが割れました。",
+        "translation": {
+          "vi": "Cốc bị vỡ.",
+          "en": "The cup broke."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "CÁT cứ (割) ra thì nó vỡ (ware).",
+      "en": "BEWARE (ware) of breaking glass."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "折れます",
+    "han_viet": "CHIẾT",
+    "kana": "おれます",
+    "romaji": "oremasu",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive"
+    ],
+    "pitch_pattern": 3,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "折",
+          "han_viet": "CHIẾT",
+          "meaning": {
+            "vi": "bẻ gãy, gấp",
+            "en": "fold/break"
+          }
+        }
+      ],
+      "note": {
+        "vi": "CHIẾT (折) cành. Dùng tay bẻ cái rìu.",
+        "en": "Hand and Axe. Breaking or cutting."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "gãy (cành cây)"
+      ],
+      "en": [
+        "break (stick)",
+        "snap"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "枝が折れました。",
+        "translation": {
+          "vi": "Cành cây bị gãy.",
+          "en": "The branch snapped."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "CHIẾT (折) cành nên nó Ố (o) dề (re) luôn.",
+      "en": "OREO (ore) cookies snap easily."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "破れます",
+    "han_viet": "PHÁ",
+    "kana": "やぶれます",
+    "romaji": "yaburemasu",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive"
+    ],
+    "pitch_pattern": 3,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "破",
+          "han_viet": "PHÁ",
+          "meaning": {
+            "vi": "rách, phá vỡ",
+            "en": "tear/rip"
+          }
+        }
+      ],
+      "note": {
+        "vi": "PHÁ (破) hoại lớp vỏ đá. Giấy bị rách.",
+        "en": "Stone and skin. Breaking through."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "rách (giấy)"
+      ],
+      "en": [
+        "tear",
+        "rip"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "袋が破れました。",
+        "translation": {
+          "vi": "Túi bị rách.",
+          "en": "The bag tore."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Áo rách thì vợ la (yabure) là PHÁ của.",
+      "en": "YA BOO (yabu)! You tore my paper!"
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "汚れます",
+    "han_viet": "Ô",
+    "kana": "よごれます",
+    "romaji": "yogoremasu",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive"
+    ],
+    "pitch_pattern": 4,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "汚",
+          "han_viet": "Ô",
+          "meaning": {
+            "vi": "bẩn",
+            "en": "dirty"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Ô (汚) nhiễm là bị bẩn với nước.",
+        "en": "Water and curve/filth."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "bẩn"
+      ],
+      "en": [
+        "get dirty"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "服が汚れました。",
+        "translation": {
+          "vi": "Quần áo bị bẩn.",
+          "en": "My clothes got dirty."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Ô (汚) uế quá. Dô (yo) dơ (go) quá.",
+      "en": "YOGURT (yogore) stains are dirty."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "付きます",
+    "han_viet": "PHÓ",
+    "kana": "つきます",
+    "romaji": "tsukimasu",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive"
+    ],
+    "pitch_pattern": 3,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "付",
+          "han_viet": "PHÓ",
+          "meaning": {
+            "vi": "gắn, dính",
+            "en": "attach"
+          }
+        }
+      ],
+      "note": {
+        "vi": "PHÓ (付) là giao phó, dính kèm theo người.",
+        "en": "Person and inch/adhere."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "kèm theo",
+        "dính"
+      ],
+      "en": [
+        "be attached",
+        "adhere"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "ポケットが付いています。",
+        "translation": {
+          "vi": "Có túi gắn kèm.",
+          "en": "There is a pocket attached."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Dính vào như PHÓ (付) mặc (tsuki).",
+      "en": "SUIT (tsuki) case has a tag attached."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "外れます",
+    "han_viet": "NGOẠI",
+    "kana": "はずれます",
+    "romaji": "hazuremasu",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive"
+    ],
+    "pitch_pattern": 4,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "外",
+          "han_viet": "NGOẠI",
+          "meaning": {
+            "vi": "ngoài, tuột",
+            "en": "outside/disconnect"
+          }
+        }
+      ],
+      "note": {
+        "vi": "NGOẠI (外) là bên ngoài. Bị tuột ra ngoài.",
+        "en": "Written like 'Evening' and 'Magic wand' - outside at night."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "tuột",
+        "bung"
+      ],
+      "en": [
+        "come off"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "ボタンが外れました。",
+        "translation": {
+          "vi": "Cúc áo bị tuột.",
+          "en": "The button came off."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Ở NGOẠI (外) ô nên sóng hay bị rớt (hazure).",
+      "en": "HAZARD (hazure)! The wheel came off!"
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "止まります",
+    "han_viet": "CHỈ",
+    "kana": "とまります",
+    "romaji": "tomarimasu",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive"
+    ],
+    "pitch_pattern": 4,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "止",
+          "han_viet": "CHỈ",
+          "meaning": {
+            "vi": "dừng",
+            "en": "stop"
+          }
+        }
+      ],
+      "note": {
+        "vi": "CHỈ (止) là bàn chân dừng lại.",
+        "en": "Footprint stopping."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "dừng",
+        "đỗ"
+      ],
+      "en": [
+        "stop",
+        "park"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "車が止まりました。",
+        "translation": {
+          "vi": "Xe ô tô đã dừng lại.",
+          "en": "The car stopped."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Đình CHỈ (止) thì tớ (to) mới (ma) dừng.",
+      "en": "TOMATO (tomarru) stops rolling."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "落とします",
+    "han_viet": "LẠC",
+    "kana": "おとします",
+    "romaji": "otoshimasu",
+    "tags": [
+      "n5",
+      "verb",
+      "transitive"
+    ],
+    "pitch_pattern": 3,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "落",
+          "han_viet": "LẠC",
+          "meaning": {
+            "vi": "rơi, rụng",
+            "en": "fall/drop"
+          }
+        }
+      ],
+      "note": {
+        "vi": "LẠC (落) là rơi rụng (lá). Đánh rơi.",
+        "en": "Leaves falling each water drop."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "đánh rơi",
+        "làm mất"
+      ],
+      "en": [
+        "drop",
+        "lose"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "財布を落としました。",
+        "translation": {
+          "vi": "Tôi đánh rơi ví.",
+          "en": "I dropped my wallet."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Thất LẠC (落) đồ vì ô tô (oto) làm rơi.",
+      "en": "AUTO (oto) mobile dropped its cargo."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "掛かります",
+    "han_viet": "QUẢI",
+    "kana": "かかります",
+    "romaji": "kakarimasu",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive"
+    ],
+    "pitch_pattern": 3,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "掛",
+          "han_viet": "QUẢI",
+          "meaning": {
+            "vi": "treo, khóa",
+            "en": "hang/suspend"
+          }
+        }
+      ],
+      "note": {
+        "vi": "QUẢI (掛) là treo lên. Khóa được treo lên cửa.",
+        "en": "Hand and Ke (divination/ivy). Hanging something."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "khóa (cửa)"
+      ],
+      "en": [
+        "be locked"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "かぎが掛かっています。",
+        "translation": {
+          "vi": "Cửa đang khóa.",
+          "en": "It is locked."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Yêu QUÁI (QUẢI) bị khóa (kaka) lại.",
+      "en": "CAR (kaka) is locked."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "皿",
+    "han_viet": "MÃNH",
+    "kana": "さら",
+    "romaji": "sara",
+    "tags": [
+      "n5",
+      "noun"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "皿",
+          "han_viet": "MÃNH",
+          "meaning": {
+            "vi": "đĩa",
+            "en": "dish/plate"
+          }
+        }
+      ],
+      "note": {
+        "vi": "MÃNH (皿) là hình cái đĩa đựng thức ăn.",
+        "en": "Pictograph of a dish."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "đĩa"
+      ],
+      "en": [
+        "plate",
+        "dish"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "お皿を洗います。",
+        "translation": {
+          "vi": "Rửa đĩa.",
+          "en": "Wash the dishes."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Cái đĩa MÃNH (皿) sành (sara).",
+      "en": "SALAD (sara) on a plate."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "袋",
+    "han_viet": "ĐẠI",
+    "kana": "ふくろ",
+    "romaji": "fukuro",
+    "tags": [
+      "n5",
+      "noun"
+    ],
+    "pitch_pattern": 3,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "袋",
+          "han_viet": "ĐẠI",
+          "meaning": {
+            "vi": "túi, bao",
+            "en": "bag/sack"
+          }
+        }
+      ],
+      "note": {
+        "vi": "ĐẠI (袋) là cái túi vải đựng y phục.",
+        "en": "Garment acting as a bag."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "túi",
+        "bao"
+      ],
+      "en": [
+        "bag",
+        "sack"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "ゴミ袋を買います。",
+        "translation": {
+          "vi": "Mua túi rác.",
+          "en": "Buy garbage bags."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "ĐẠI (袋) gia hay dùng túi Phúc lộc (fukuro).",
+      "en": "OWL (fukuro) in a bag."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "枝",
+    "han_viet": "CHI",
+    "kana": "えだ",
+    "romaji": "eda",
+    "tags": [
+      "n5",
+      "noun"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "枝",
+          "han_viet": "CHI",
+          "meaning": {
+            "vi": "cành cây",
+            "en": "branch"
+          }
+        }
+      ],
+      "note": {
+        "vi": "CHI (枝) nhánh, cành. Cây (Mộc) có nhiều Chi nhánh.",
+        "en": "Tree and Branch/Support."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "cành cây"
+      ],
+      "en": [
+        "branch"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "木の枝が折れました。",
+        "translation": {
+          "vi": "Cành cây bị gãy.",
+          "en": "The tree branch broke."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "CHI (枝) nhánh này e đa (eda) số là gãy.",
+      "en": "AID (eda) the broken branch."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "駅員",
+    "han_viet": "DỊCH VIÊN",
+    "kana": "えきいん",
+    "romaji": "ekiin",
+    "tags": [
+      "n5",
+      "noun"
+    ],
+    "pitch_pattern": 2,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "駅",
+          "han_viet": "DỊCH",
+          "meaning": {
+            "vi": "nhà ga",
+            "en": "station"
+          }
+        },
+        {
+          "kanji": "員",
+          "han_viet": "VIÊN",
+          "meaning": {
+            "vi": "nhân viên",
+            "en": "member"
+          }
+        }
+      ],
+      "note": {
+        "vi": "DỊCH VIÊN (駅員) là nhân viên làm việc tại nhà ga.",
+        "en": "Station member."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "nhân viên nhà ga"
+      ],
+      "en": [
+        "station attendant"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "駅員に聞きます。",
+        "translation": {
+          "vi": "Hỏi nhân viên nhà ga.",
+          "en": "Ask the station attendant."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "DỊCH VIÊN (駅員) đứng ở ga.",
+      "en": "EKI (Station) - IN (Member)."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "返事",
+    "han_viet": "PHẢN SỰ",
+    "kana": "へんじ",
+    "romaji": "henji",
+    "tags": [
+      "n5",
+      "noun",
+      "suru-verb"
+    ],
+    "pitch_pattern": 1,
+    "pitch_svg_path": "M0,20 L25,5 L50,20 L75,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "返",
+          "han_viet": "PHẢN",
+          "meaning": {
+            "vi": "trả lại, phản hồi",
+            "en": "return"
+          }
+        },
+        {
+          "kanji": "事",
+          "han_viet": "SỰ",
+          "meaning": {
+            "vi": "việc",
+            "en": "matter"
+          }
+        }
+      ],
+      "note": {
+        "vi": "PHẢN SỰ (返事) là việc phản hồi lại.",
+        "en": "Returning a matter (reply)."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "trả lời",
+        "hồi âm"
+      ],
+      "en": [
+        "reply",
+        "answer"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "すぐに返事をします。",
+        "translation": {
+          "vi": "Tôi sẽ trả lời ngay.",
+          "en": "I will reply immediately."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "PHẢN (返) hồi là chuyện đại SỰ (事).",
+      "en": "HEN (hen) G (ji)? No, reply!"
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "忘れ物",
+    "han_viet": "VONG VẬT",
+    "kana": "わすれもの",
+    "romaji": "wasuremono",
+    "tags": [
+      "n5",
+      "noun"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5 L100,5",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "忘",
+          "han_viet": "VONG",
+          "meaning": {
+            "vi": "quên",
+            "en": "forget"
+          }
+        },
+        {
+          "kanji": "物",
+          "han_viet": "VẬT",
+          "meaning": {
+            "vi": "đồ vật",
+            "en": "thing"
+          }
+        }
+      ],
+      "note": {
+        "vi": "VONG VẬT (忘れ物) là đồ vật bị bỏ quên.",
+        "en": "Forgotten thing."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "đồ bỏ quên"
+      ],
+      "en": [
+        "lost item",
+        "forgotten item"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "電車に忘れ物をしました。",
+        "translation": {
+          "vi": "Tôi để quên đồ trên tàu.",
+          "en": "I left something on the train."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "VONG (忘) niên nên quên cả VẬT (物).",
+      "en": "WASURE (Forget) MONO (Thing)."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "地震",
+    "han_viet": "ĐỊA CHẤN",
+    "kana": "じしん",
+    "romaji": "jishin",
+    "tags": [
+      "n5",
+      "noun"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,5",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "地",
+          "han_viet": "ĐỊA",
+          "meaning": {
+            "vi": "đất",
+            "en": "ground"
+          }
+        },
+        {
+          "kanji": "震",
+          "han_viet": "CHẤN",
+          "meaning": {
+            "vi": "rung động",
+            "en": "shake"
+          }
+        }
+      ],
+      "note": {
+        "vi": "ĐỊA CHẤN (地震) là đất rung chuyển.",
+        "en": "Ground shaking."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "động đất"
+      ],
+      "en": [
+        "earthquake"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "地震がありました。",
+        "translation": {
+          "vi": "Có động đất.",
+          "en": "There was an earthquake."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "ĐỊA CHẤN (地震) làm sư chùa (ji) tím (shin) mặt.",
+      "en": "GEE (ji) my SHIN (shin) hurts from the quake."
+    },
+    "confusions": [
+      {
+        "word": "自信",
+        "explanation": {
+          "mnemonic": {
+            "vi": "ĐỊA CHẤN (地震) và TỰ TIN (自信) đều đọc là Jishin.",
+            "en": "Earthquake and Confidence are both Jishin."
+          },
+          "item1_nuance": {
+            "vi": "Rung lắc (Địa Chấn).",
+            "en": "Shaking ground."
+          },
+          "item2_nuance": {
+            "vi": "Tin vào bản thân (Tự Tin).",
+            "en": "Self-belief."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "word_surface": "壁",
+    "han_viet": "BÍCH",
+    "kana": "かべ",
+    "romaji": "kabe",
+    "tags": [
+      "n5",
+      "noun"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "壁",
+          "han_viet": "BÍCH",
+          "meaning": {
+            "vi": "tường",
+            "en": "wall"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Tuyệt BÍCH (壁) là bức tường dựng đứng.",
+        "en": "Wall."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "tường"
+      ],
+      "en": [
+        "wall"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "壁に時計を掛けます。",
+        "translation": {
+          "vi": "Treo đồng hồ lên tường.",
+          "en": "Hang a clock on the wall."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Ngọc BÍCH (壁) treo trên tường cà phê (kabe).",
+      "en": "CAFE (kabe) wall."
+    },
+    "confusions": []
+  },
+  {
+    "word_surface": "燃えます",
+    "han_viet": "NHIÊN",
+    "kana": "もえます",
+    "romaji": "moemasu",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive"
+    ],
+    "pitch_pattern": 3,
+    "pitch_svg_path": "M0,20 L25,5 L50,5 L75,20 L100,20",
+    "etymology": {
+      "parts": [
+        {
+          "kanji": "燃",
+          "han_viet": "NHIÊN",
+          "meaning": {
+            "vi": "cháy",
+            "en": "burn"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Thiên NHIÊN (燃) dễ cháy.",
+        "en": "Fire causing it to be so (nature/burn)."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "cháy"
+      ],
+      "en": [
+        "burn"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "ごみが燃えます。",
+        "translation": {
+          "vi": "Rác cháy.",
+          "en": "Garbage burns."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "NHIÊN (燃) liệu làm mỡ (moe) cháy.",
+      "en": "MOE (moe) is on fire! (Moe style)."
+    },
+    "confusions": []
+  }
+]

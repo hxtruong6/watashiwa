@@ -1,6 +1,6 @@
 'use client';
 
-import { deleteComment, updateComment, voteComment } from '@/services/comments';
+import { deleteComment, updateComment, voteComment } from '@/modules/community/community.actions';
 import {
 	CloseOutlined,
 	DeleteOutlined,

@@ -48,7 +48,7 @@ interface LearningDeck {
 		masteredCount: number;
 		lastStudied: Date | null;
 		nextReview: Date | null;
-	};
+	} | null;
 }
 
 interface CreatedDeck {
@@ -147,9 +147,12 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 					<Row gutter={[24, 24]} style={{ marginBottom: 48 }}>
 						{learningDecks.map((deck) => {
 							const displayTitle = locale === 'en' ? deck.titleEn || deck.title : deck.title;
-							const masteryPercent = Math.round(
-								(deck.learningStats.masteredCount / deck.learningStats.totalCards) * 100,
-							);
+							const masteryPercent =
+								deck.learningStats && deck.learningStats.totalCards > 0
+									? Math.round(
+											(deck.learningStats.masteredCount / deck.learningStats.totalCards) * 100,
+										)
+									: 0;
 
 							return (
 								<Col xs={24} sm={12} md={8} key={deck.id}>
@@ -160,14 +163,14 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 											borderRadius: 16,
 											height: '100%',
 											cursor: 'pointer',
-											border:
-												deck.learningStats.dueCount > 0
-													? `2px solid ${token.colorWarning}`
+											borderColor:
+												deck.learningStats && deck.learningStats.dueCount > 0
+													? token.colorWarning
 													: undefined,
 										}}
 									>
 										{/* Due Badge (if any) */}
-										{deck.learningStats.dueCount > 0 && (
+										{deck.learningStats && deck.learningStats.dueCount > 0 && (
 											<Tag
 												color="orange"
 												style={{
@@ -205,8 +208,8 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 											<Flex vertical gap="small" style={{ marginTop: 8 }}>
 												<Text type="secondary" style={{ fontSize: 12 }}>
 													{t('mastered', {
-														count: deck.learningStats.masteredCount,
-														total: deck.learningStats.totalCards,
+														count: deck.learningStats?.masteredCount || 0,
+														total: deck.learningStats?.totalCards || 0,
 													})}
 												</Text>
 
@@ -214,13 +217,13 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 													<ClockCircleOutlined style={{ color: token.colorTextSecondary }} />
 													<Text type="secondary" style={{ fontSize: 13 }}>
 														{t('lastStudied', {
-															time: formatRelativeTime(deck.learningStats.lastStudied, t),
+															time: formatRelativeTime(deck.learningStats?.lastStudied || null, t),
 														})}
 													</Text>
 												</Flex>
 
 												{/* Next Review Time (if nothing due now) */}
-												{deck.learningStats.dueCount === 0 && deck.learningStats.nextReview && (
+												{deck.learningStats?.dueCount === 0 && deck.learningStats?.nextReview && (
 													<Flex align="center" gap="small">
 														<CalendarOutlined style={{ color: token.colorTextSecondary }} />
 														<Text type="secondary" style={{ fontSize: 13 }}>
@@ -234,7 +237,7 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 
 											{/* Study Button */}
 											<div style={{ marginTop: 'auto', paddingTop: 16 }}>
-												{deck.learningStats.dueCount > 0 ? (
+												{deck.learningStats && deck.learningStats.dueCount > 0 ? (
 													<Link
 														href={`/study?deck=${deck.id}`}
 														onClick={(e) => e.stopPropagation()}

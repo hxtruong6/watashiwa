@@ -1,6 +1,6 @@
 'use client';
 
-import { createDeck, deleteDeck, updateDeck } from '@/services/admin-actions';
+import { createDeck, deleteDeck, updateDeck } from '@/modules/deck/deck.actions';
 import { DeleteOutlined, EditOutlined, FolderOpenOutlined, PlusOutlined } from '@ant-design/icons';
 import {
 	Button,

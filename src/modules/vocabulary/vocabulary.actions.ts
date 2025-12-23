@@ -270,3 +270,131 @@ export async function getAllVocabulary() {
 		return items;
 	});
 }
+
+/**
+ * Create Vocabulary (Unified Action for Vocab & Kanji)
+ * Supports legacy input fields by mapping them to V2 schema.
+ */
+export async function createVocabulary(input: {
+	deckId: string;
+	data: {
+		// Unified / Vocab fields
+		wordSurface?: string;
+		readingKana?: string; // Legacy
+		meanings?: any; // V2 or Legacy string
+		hanViet?: string;
+		examples?: any;
+		wordParts?: any; // Legacy Vocab
+		kanjiBreakdown?: any; // Legacy
+		exampleSentence?: any; // Legacy
+		imageUrl?: string;
+
+		// Kanji fields
+		kanji?: string; // Legacy
+		onyomi?: string[]; // Legacy
+		kunyomi?: string[]; // Legacy
+		strokes?: number; // Legacy
+		radicals?: any; // Legacy
+	};
+}) {
+	const Schema = z.object({
+		deckId: z.string().uuid(),
+		data: z.any(), // Flexible input validation handled manually for legacy compat
+	});
+
+	return executeSafeAction(Schema, input, async ({ deckId, data }, { userId }) => {
+		if (!userId) throw new Error('Unauthorized');
+
+		// Verify Deck Ownership
+		const deck = await prisma.deck.findUnique({
+			where: { id: deckId },
+		});
+		if (!deck || deck.authorId !== userId) {
+			throw new Error('Unauthorized or Deck not found');
+		}
+
+		// 1. Determine Type and Map Fields
+		let vocabData: any = {};
+		const tags: string[] = [];
+
+		if (data.kanji) {
+			// Kanji Type
+			tags.push('kanji');
+			vocabData = {
+				wordSurface: data.kanji,
+				wordReading: data.kunyomi?.[0] || data.onyomi?.[0] || '', // Default to first reading
+				// Map readings to meanings or etymology?
+				// For V2, we might want to store On/Kun in etymology or specific note fields.
+				// For now, let's put them in meanings to be visible?
+				// Actually, simplified V2 standard uses wordReading for the main reading.
+				// We can store full readings in 'etymology' or 'meanings' extension if needed.
+				// Let's rely on basic mapping for MVP.
+				hanViet: data.hanViet,
+				meanings: typeof data.meanings === 'string' ? { en: [data.meanings] } : data.meanings || {},
+				etymology: {
+					parts: data.radicals || [],
+					strokes: data.strokes,
+				},
+				examples: data.examples || [],
+				imageUrl: data.imageUrl,
+			};
+		} else {
+			// Vocab Type
+			tags.push('vocab');
+			vocabData = {
+				wordSurface: data.wordSurface,
+				wordReading: data.readingKana,
+				hanViet: data.hanViet,
+				meanings: typeof data.meanings === 'string' ? { en: [data.meanings] } : data.meanings || {},
+				etymology: data.kanjiBreakdown || data.wordParts || {}, // approximate mapping
+				examples: data.exampleSentence ? [data.exampleSentence] : data.examples || [],
+				imageUrl: data.imageUrl,
+			};
+		}
+
+		// Ensure defaults
+		if (!vocabData.etymology) vocabData.etymology = {};
+		if (!vocabData.meanings) vocabData.meanings = {};
+		if (!vocabData.examples) vocabData.examples = [];
+
+		const newItem = await VocabularyData.create({
+			deckId,
+			tags,
+			...vocabData,
+			contentStatus: 'DRAFT', // Default to Draft for user created
+		});
+
+		// Revalidate
+		// revalidatePath is not imported here but cleaner to return item.
+		// Frontend can revalidate. Actions usually don't know exact path?
+		// We can try global revalidate or path.
+		// revalidatePath(`/decks/${deckId}`); // We need to import it if we use it.
+		// Since this file is 'use server', we can import revalidatePath.
+
+		return { message: 'Content created', item: newItem };
+	});
+}
+
+/**
+ * Delete Vocabulary
+ */
+export async function deleteVocabulary(input: { id: string }) {
+	const Schema = z.object({ id: z.string().uuid() });
+	return executeSafeAction(Schema, input, async ({ id }, { userId }) => {
+		if (!userId) throw new Error('Unauthorized');
+
+		const item = await VocabularyData.findById(id);
+		if (!item) throw new Error('Not found');
+
+		// Check ownership via Deck
+		const deck = await prisma.deck.findUnique({
+			where: { id: item.deckId },
+		});
+		if (!deck || deck.authorId !== userId) {
+			throw new Error('Unauthorized');
+		}
+
+		await VocabularyData.delete(id);
+		return { message: 'Deleted' };
+	});
+}

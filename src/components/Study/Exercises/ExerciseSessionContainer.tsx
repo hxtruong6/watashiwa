@@ -2,7 +2,7 @@
 
 import { useExerciseSession } from '@/hooks/useExerciseSession';
 import { useSoundEffects } from '@/hooks/useSoundEffects';
-import { getExerciseQuestions } from '@/services/study-actions';
+import { getExerciseQuestions } from '@/modules/study/study.actions';
 import { ArrowLeftOutlined, CheckCircleFilled, RedoOutlined } from '@ant-design/icons';
 import { App, Button, Flex, Result, Spin } from 'antd';
 import confetti from 'canvas-confetti';

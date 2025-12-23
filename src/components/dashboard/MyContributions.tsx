@@ -1,6 +1,6 @@
 'use client';
 
-import { getUserContributions } from '@/services/comments';
+import { getUserContributions } from '@/modules/community/community.actions';
 import { FireOutlined, LikeOutlined } from '@ant-design/icons';
 import { Card, Col, Flex, Row, Tag, Typography } from 'antd';
 import { useTranslations } from 'next-intl';
