@@ -128,6 +128,7 @@ export async function updateContent(input: { id: string; data: any }) {
 		wordSurface: z.string().optional(),
 		wordReading: z.string().optional(),
 		wordRomaji: z.string().optional(),
+		hanViet: z.string().optional(),
 		tags: z.array(z.string()).optional(),
 		pitchPattern: z.number().int().optional(),
 		pitchSvgPath: z.string().optional(),
@@ -179,6 +180,7 @@ export async function updateContent(input: { id: string; data: any }) {
 			wordSurface: data.wordSurface ?? data.kanji,
 			wordReading: data.wordReading ?? data.kana,
 			wordRomaji: data.wordRomaji ?? data.romaji,
+			hanViet: data.hanViet,
 			tags: data.tags,
 			pitchPattern: data.pitchPattern ?? data.pitch_pattern,
 			pitchSvgPath: data.pitchSvgPath ?? data.pitch_svg_path,
@@ -280,6 +282,7 @@ export async function createVocabulary(input: {
 	data: {
 		// Unified / Vocab fields
 		wordSurface?: string;
+		wordReading?: string;
 		readingKana?: string; // Legacy
 		meanings?: any; // V2 or Legacy string
 		hanViet?: string;
@@ -343,7 +346,8 @@ export async function createVocabulary(input: {
 			tags.push('vocab');
 			vocabData = {
 				wordSurface: data.wordSurface,
-				wordReading: data.readingKana,
+				wordReading: data.wordReading || data.readingKana,
+				wordRomaji: data.wordRomaji || data.romaji,
 				hanViet: data.hanViet,
 				meanings: typeof data.meanings === 'string' ? { en: [data.meanings] } : data.meanings || {},
 				etymology: data.kanjiBreakdown || data.wordParts || {}, // approximate mapping

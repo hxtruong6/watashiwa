@@ -1,4 +1,4 @@
-import { getAdminDecks } from '@/services/admin-actions';
+import { getAdminDecksAction } from '@/modules/deck/deck.admin.actions';
 import React from 'react';
 
 import AdminDeckTable from './components/AdminDeckTable';
@@ -6,7 +6,7 @@ import AdminDeckTable from './components/AdminDeckTable';
 export const dynamic = 'force-dynamic';
 
 export default async function AdminDecksPage() {
-	const { success, data } = await getAdminDecks();
+	const { success, data } = await getAdminDecksAction();
 
 	if (!success || !data) {
 		return <div>Error loading decks.</div>;

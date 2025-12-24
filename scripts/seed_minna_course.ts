@@ -9,7 +9,7 @@ import path from 'path';
 // Assuming ../src/lib/db exists and exports prisma
 import { prisma } from '../src/lib/db';
 
-async function seedMinnaCourse() {
+async function seedMinnaCourse(bookLevel: 'I' | 'II', fromUnit = 1, toUnit = 25) {
 	console.log('🚀 Starting Minna no Nihongo N5 Course Seed...');
 
 	// 1. Resolve Author (Admin)
@@ -25,7 +25,7 @@ async function seedMinnaCourse() {
 	console.log(`👤 Using Author: ${author.email || author.id}`);
 
 	// 2. Upsert Course
-	const courseTitle = 'Minna no Nihongo N5';
+	const courseTitle = `Minna no Nihongo ${bookLevel}`;
 	let course = await prisma.course.findFirst({
 		where: { title: courseTitle, authorId: author.id },
 	});
@@ -34,10 +34,10 @@ async function seedMinnaCourse() {
 		console.log(`✨ Creating Course: ${courseTitle}`);
 		course = await prisma.course.create({
 			data: {
-				title: 'Minna no Nihongo N5 (Sơ cấp 1)',
-				titleEn: 'Minna no Nihongo N5 (Beginner 1)',
-				description: 'Trọn bộ từ vựng giáo trình Minna no Nihongo I (Bài 1-25)',
-				descriptionEn: 'Complete vocabulary list for Minna no Nihongo I (Units 1-25)',
+				title: courseTitle,
+				titleEn: courseTitle,
+				description: `Trọn bộ từ vựng giáo trình Minna no Nihongo ${bookLevel} (Bài ${fromUnit}-${toUnit})`,
+				descriptionEn: `Complete vocabulary list for Minna no Nihongo ${bookLevel} (Units ${fromUnit}-${toUnit})`,
 				authorId: author.id,
 				isPublic: true,
 				level: 'N5',
@@ -50,18 +50,21 @@ async function seedMinnaCourse() {
 		await prisma.course.update({
 			where: { id: course.id },
 			data: {
-				title: 'Minna no Nihongo N5 (Sơ cấp 1)',
-				description: 'Trọn bộ từ vựng giáo trình Minna no Nihongo I (Bài 1-25)',
-				descriptionEn: 'Complete vocabulary list for Minna no Nihongo I (Units 1-25)',
+				title: courseTitle,
+				description: `Trọn bộ từ vựng giáo trình Minna no Nihongo ${bookLevel} (Bài ${fromUnit}-${toUnit})`,
+				descriptionEn: `Complete vocabulary list for Minna no Nihongo ${bookLevel} (Units ${fromUnit}-${toUnit})`,
 			},
 		});
 	}
 
 	// 3. Process Units 1-25
-	const DATA_DIR = path.resolve(process.cwd(), 'data/seed/minna_1');
+	const DATA_DIR = path.resolve(
+		process.cwd(),
+		'data/seed/minna' + (bookLevel === 'I' ? '_1' : '_2'),
+	);
 
 	for (let i = 1; i <= 25; i++) {
-		const unitNum = String(i).padStart(2, '0');
+		const unitNum = String(fromUnit + i - 1).padStart(2, '0');
 		// Try both filename patterns just in case, though we verified unitXX.json
 		const filename = `unit${unitNum}.json`;
 		const filePath = path.join(DATA_DIR, filename);
@@ -71,7 +74,7 @@ async function seedMinnaCourse() {
 			continue;
 		}
 
-		console.log(`\n📦 Processing Unit ${i}...`);
+		console.log(`\n📦 Processing Unit ${fromUnit + i - 1}...`);
 		const rawData = fs.readFileSync(filePath, 'utf-8');
 		const items = JSON.parse(rawData);
 
@@ -81,8 +84,8 @@ async function seedMinnaCourse() {
 		}
 
 		// 3a. Upsert Deck
-		const deckTitleVn = `Minna no Nihongo Bài ${i}`;
-		const deckTitleEn = `Minna no Nihongo Unit ${i}`;
+		const deckTitleVn = `Minna no Nihongo Bài ${fromUnit + i - 1}`;
+		const deckTitleEn = `Minna no Nihongo Unit ${fromUnit + i - 1}`;
 
 		let deck = await prisma.deck.findFirst({
 			where: {
@@ -133,7 +136,7 @@ async function seedMinnaCourse() {
 				data: {
 					courseId: course.id,
 					deckId: deck.id,
-					sortOrder: i,
+					sortOrder: fromUnit + i - 1,
 				},
 			});
 			console.log(`   🔗 Linked Deck to Course`);
@@ -242,15 +245,20 @@ async function seedMinnaCourse() {
 
 		console.log(`   Summary: ${createdCount} created, ${updatedCount} updated.`);
 	}
-
-	console.log('\n🎉 Seed Complete!');
 }
 
-seedMinnaCourse()
-	.catch((e) => {
-		console.error(e);
+(async () => {
+	try {
+		await seedMinnaCourse('I', 1, 25);
+		console.log('\n🎉 Seed Minna Course I Complete!');
+		await seedMinnaCourse('II', 26, 50);
+		console.log('\n🎉 Seed Minna Course II Complete!');
+	} catch (error) {
+		console.error(error);
 		process.exit(1);
-	})
-	.finally(async () => {
-		await prisma.$disconnect();
-	});
+	}
+
+	await prisma.$disconnect();
+	console.log('\n🎉 Seed Complete!');
+	process.exit(0);
+})();

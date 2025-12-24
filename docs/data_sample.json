@@ -1,0 +1,196 @@
+[
+  {
+    "word_surface": "行く",
+    "han_viet": "HÀNH",
+    "kana": "いく",
+    "romaji": "iku",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive",
+      "u-verb"
+    ],
+    "pitch_pattern": 0,
+    "pitch_svg_path": "M0,20 L25,5 L50,5",
+    "etymology": {
+      "parts": [
+        {
+          "word_surface": "行",
+          "han_viet": "HÀNH",
+          "meaning": {
+            "vi": "đi, tổ chức",
+            "en": "go, conduct"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ HÀNH (行) mô phỏng hình ảnh ngã tư đường. Trong tiếng Việt, 'Hành trình' là chuyến đi, 'Hành động' là làm.",
+        "en": "The kanji 行 is a pictograph of a crossroad. It represents the act of moving forward or going."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "đi"
+      ],
+      "en": [
+        "to go"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "東京へ行きます。",
+        "translation": {
+          "vi": "Tôi đi Tokyo.",
+          "en": "I go to Tokyo."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Lữ HÀNH là đi. 'I-ku' nghe như 'Đi-cứ' thế mà đi.",
+      "en": "I-KU! (Eek!) I have to GO now before I'm late!"
+    },
+    "confusions": [
+      {
+        "word": "来る",
+        "explanation": {
+          "mnemonic": {
+            "vi": "HÀNH (行く) là đi khỏi đây, LAI (来る) là đến đây.",
+            "en": "Iku is going away, Kuru is coming toward."
+          },
+          "item1_nuance": {
+            "vi": "Đi ra xa vị trí người nói.",
+            "en": "Movement away from the speaker."
+          },
+          "item2_nuance": {
+            "vi": "Đến gần vị trí người nói.",
+            "en": "Movement toward the speaker."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "word_surface": "来る",
+    "han_viet": "LAI",
+    "kana": "くる",
+    "romaji": "kuru",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive",
+      "irregular-verb"
+    ],
+    "pitch_pattern": 1,
+    "pitch_svg_path": "M0,5 L25,20 L50,20",
+    "etymology": {
+      "parts": [
+        {
+          "word_surface": "来",
+          "han_viet": "LAI",
+          "meaning": {
+            "vi": "đến",
+            "en": "come"
+          }
+        }
+      ],
+      "note": {
+        "vi": "Chữ LAI (来) vốn là hình ảnh bông lúa. Lúa từ phương xa 'đến' với con người. Tương LAI là cái đang đến.",
+        "en": "The kanji 来 originally showed a wheat plant. It implies something that 'comes' to you, like a harvest or the future."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "đến"
+      ],
+      "en": [
+        "to come"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "友達がうちに来ます。",
+        "translation": {
+          "vi": "Bạn tôi sẽ đến nhà.",
+          "en": "A friend is coming to my house."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "Tương LAI là cái đang ĐẾN. 'Ku-ru' giống như 'Cứ-rủ' bạn đến chơi.",
+      "en": "Give me a CLUE (KURU) on when you are COMING."
+    },
+    "confusions": [
+      {
+        "word": "帰る",
+        "explanation": {
+          "mnemonic": {
+            "vi": "LAI là đến chỗ lạ/khác, QUY là về chỗ cũ/nhà.",
+            "en": "Kuru is coming here, Kaeru is returning home."
+          },
+          "item1_nuance": {
+            "vi": "Đến một địa điểm (không nhất thiết là nhà).",
+            "en": "Coming to any location."
+          },
+          "item2_nuance": {
+            "vi": "Về nơi mình thuộc về (nhà, quê hương).",
+            "en": "Returning to one's base or home."
+          }
+        }
+      }
+    ]
+  },
+  {
+    "word_surface": "帰る",
+    "han_viet": "QUY",
+    "kana": "かえる",
+    "romaji": "kaeru",
+    "tags": [
+      "n5",
+      "verb",
+      "intransitive",
+      "u-verb"
+    ],
+    "pitch_pattern": 1,
+    "pitch_svg_path": "M0,5 L25,20 L50,20",
+    "etymology": {
+      "parts": [
+        {
+          "word_surface": "帰",
+          "han_viet": "QUY",
+          "meaning": {
+            "vi": "về, quay lại",
+            "en": "return"
+          }
+        }
+      ],
+      "note": {
+        "vi": "QUY (帰) gồm bộ ĐAO và bộ CHỈ (dừng lại). 'QUY cố hương' là quay về quê cũ để dừng chân.",
+        "en": "The kanji suggests returning to a place of stability or home."
+      }
+    },
+    "meanings": {
+      "vi": [
+        "về",
+        "trở về"
+      ],
+      "en": [
+        "to return",
+        "to go home"
+      ]
+    },
+    "examples": [
+      {
+        "sentence": "六時にうちへ帰ります。",
+        "translation": {
+          "vi": "Tôi về nhà lúc 6 giờ.",
+          "en": "I will return home at 6 o'clock."
+        }
+      }
+    ],
+    "mnemonic": {
+      "vi": "QUY là về. 'Ka-e-ru' nghe như 'Kệ-em-về'.",
+      "en": "A frog (KAERU in Japanese) always returns to its pond."
+    },
+    "confusions": []
+  }
+]

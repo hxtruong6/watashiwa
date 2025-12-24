@@ -2,3 +2,6 @@ export const DEFAULT_LIMIT_NEW_CARDS = 10;
 export const DEFAULT_LIMIT_REVIEWS = 100;
 
 export const ADMIN_USER_ID = '00000000-0000-0000-0000-000000000000';
+
+export const DEFAULT_PER_PAGE = 10;
+export const DEFAULT_PAGE = 1;

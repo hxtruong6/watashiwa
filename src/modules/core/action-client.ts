@@ -1,4 +1,10 @@
+/**
+ * Executer for Admin-only actions
+ */
+import { prisma } from '@/lib/db';
+import { getUserWithRole } from '@/modules/auth/auth.actions';
 import { createClient } from '@/utils/supabase/server';
+import { UserRole } from '@prisma/client';
 import { z } from 'zod';
 
 import { ApiResponse } from './dto';
@@ -9,53 +15,8 @@ import { ApiResponse } from './dto';
 export type ActionContext = {
 	userId: string | null;
 	// Add other context items here (e.g., role, permissions, traceId)
+	role?: string;
 };
-
-/**
- * Higher-Order Function to create a "Safe Action"
- * Wraps a handler with:
- * 1. Auth Check (Optional)
- * 2. Zod Validation
- * 3. Error Handling
- */
-export async function createSafeAction<TInput, TOutput>(
-	schema: z.Schema<TInput>,
-	handler: (input: TInput, context: ActionContext) => Promise<TOutput>,
-	options: { requireAuth?: boolean } = { requireAuth: true },
-): Promise<ApiResponse<TOutput>> {
-	// 1. Authentication (Lazy load Supabase)
-	const supabase = await createClient(); // Avoids 'await' at top level if module imported
-	const {
-		data: { user },
-		error: authError,
-	} = await supabase.auth.getUser();
-
-	if (options.requireAuth) {
-		if (authError || !user) {
-			return {
-				success: false,
-				error: 'Unauthorized',
-			};
-		}
-	}
-
-	// 2. Input Validation (Manual)
-	// Note: We expect the caller to pass the RAW input, so we validate it here.
-	// However, in Next.js Server Actions, usually the arguments are passed directly.
-	// Ideally, this function accepts a factory that returns the actual Server Action.
-	// But for simplicity in this V2 refactor, we will use this as a util inside the Action.
-	// Wait... standard pattern is: export const myAction = createSafeAction(schema, async (data, ctx) => { ... })
-	// See implementation below.
-
-	// We can't easily wrap the 'export' directly in a way that Next.js recognizes as a Server Action entry point
-	// unless we use a library like `next-safe-action`.
-	// For manual implementation without libs, we usually do:
-	// export async function myAction(input: InputType): Promise<ApiResponse<OutputType>> {
-	//   return executeSafeAction(schema, input, async (parsed, ctx) => { ... })
-	// }
-
-	return { success: false, error: 'Abstract implementation - use executeSafeAction instead' };
-}
 
 /**
  * The actual executor to be used INSIDE a Server Action.
@@ -112,4 +73,22 @@ export async function executeSafeAction<TInput, TOutput>(
 			error: message,
 		};
 	}
+}
+
+export async function executeAdminAction<TInput, TOutput>(
+	schema: z.Schema<TInput>,
+	rawData: unknown,
+	handler: (input: TInput, context: ActionContext) => Promise<TOutput>,
+): Promise<ApiResponse<TOutput>> {
+	return executeSafeAction(schema, rawData, async (data, ctx) => {
+		if (!ctx.userId) throw new Error('Unauthorized');
+
+		const user = await getUserWithRole();
+
+		if (!user || (user.role !== UserRole.ADMIN && user.role !== UserRole.MODERATOR)) {
+			throw new Error('Unauthorized: Admin or Moderator access required');
+		}
+
+		return handler(data, { ...ctx, role: user.role });
+	});
 }

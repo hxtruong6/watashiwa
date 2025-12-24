@@ -332,6 +332,44 @@
 			"cardShield": "Interference Shield",
 			"cardVs": "vs.",
 			"cardExamples": "Examples"
+		},
+		"DeckDetail": {
+			"backToDecks": "Back to Decks",
+			"vocabTab": "Vocabulary",
+			"kanjiTab": "Kanji",
+			"addVocab": "Add Vocab",
+			"searchPlaceholder": "Search vocab...",
+			"statusFilter": "Status",
+			"columns": {
+				"word": "Word",
+				"reading": "Reading",
+				"meaning": "Meanings",
+				"hanViet": "Han-Viet",
+				"status": "Status",
+				"actions": "Actions"
+			}
+		},
+		"VocabEditor": {
+			"basicInfo": "Basic Info",
+			"wordSurface": "Word Surface (Kanji)",
+			"readingKana": "Reading (Kana)",
+			"romaji": "Romaji",
+			"hanViet": "Han-Viet",
+			"tags": "Tags",
+			"image": "Image",
+			"meanings": "Meanings",
+			"meaningsVi": "Vietnamese (Comma separated)",
+			"meaningsEn": "English (Comma separated)",
+			"mnemonics": "Mnemonics (Memory Aids)",
+			"mnemonicVi": "Mnemonic (VI)",
+			"mnemonicEn": "Mnemonic (EN)",
+			"etymology": "Advanced: Etymology & Structure",
+			"examples": "Examples",
+			"addEtymology": "Add Etymology Keyword",
+			"addExample": "Add Example Sentence",
+			"sentence": "Sentence",
+			"translationVi": "Translation (VI)",
+			"translationEn": "Translation (EN)"
 		}
 	},
 	"Landing": {

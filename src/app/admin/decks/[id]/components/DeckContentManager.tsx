@@ -1,63 +1,144 @@
 'use client';
 
-import KanjiEditor from '@/components/admin/KanjiEditor';
 import VocabEditor from '@/components/admin/VocabEditor';
-import { updateContent } from '@/modules/vocabulary/vocabulary.actions';
-import { ArrowLeftOutlined, DeleteOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
-import { Button, Form, Modal, Popconfirm, Space, Table, Tabs, Tag, Tooltip, message } from 'antd';
-import { useRouter } from 'next/navigation';
+import {
+	createVocabulary,
+	deleteVocabulary,
+	updateContent,
+} from '@/modules/vocabulary/vocabulary.actions';
+import {
+	ArrowLeftOutlined,
+	DeleteOutlined,
+	EditOutlined,
+	PlusOutlined,
+	SearchOutlined,
+} from '@ant-design/icons';
+import { Deck, Vocabulary } from '@prisma/client';
+import { Button, Form, Input, Modal, Popconfirm, Select, Space, Table, Tag, message } from 'antd';
+import { useTranslations } from 'next-intl';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { useState } from 'react';
 
-// Types (simplified from Prisma)
-interface Vocab {
-	id: string;
-	wordSurface: string;
-	readingKana: string;
-	meaning: string;
-	hanViet: string;
-	wordParts: any;
-	exampleSentence: any;
-	kanjiBreakdown: any;
-}
-
-interface Kanji {
-	id: string;
-	kanji: string;
-	hanViet: string;
-	meaning: string;
-	onyomi: string[];
-	kunyomi: string[];
-	strokes: number;
-	examples: any;
-}
-
 interface DeckContentManagerProps {
-	deck: any; // Full deck object with included vocab/kanji
+	deck: Deck & {
+		_count: { vocabularies: number; stories: number };
+	};
+	vocabularies: Vocabulary[];
+	total: number;
+	currentPage: number;
+	searchParams: {
+		search?: string;
+		status?: string;
+	};
 }
 
-export default function DeckContentManager({ deck }: DeckContentManagerProps) {
+export default function DeckContentManager({
+	deck,
+	vocabularies,
+	total,
+	currentPage,
+	searchParams = { search: '', status: '' },
+}: DeckContentManagerProps) {
+	const t = useTranslations('Admin.DeckDetail');
 	const router = useRouter();
-	const [vocabList, setVocabList] = useState<Vocab[]>(deck.vocab);
-	const [kanjiList, setKanjiList] = useState<Kanji[]>(deck.kanji);
+	const pathname = usePathname();
+	// We don't use useSearchParams hook for reading, we use the prop passed from page.tsx (Cleaner in App Router)
+	// Actually, for router.push we need to construct query.
 
 	// Modal State
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [editingItem, setEditingItem] = useState<any>(null); // null = create
-	const [modalType, setModalType] = useState<'vocab' | 'kanji'>('vocab');
+	const [editingItem, setEditingItem] = useState<Vocabulary | null>(null); // null = create
 	const [loading, setLoading] = useState(false);
 	const [form] = Form.useForm();
 
-	const openCreate = (type: 'vocab' | 'kanji') => {
-		setModalType(type);
+	// --- URL State Management ---
+	const handleSearch = (value: string) => {
+		const params = new URLSearchParams();
+		if (value) params.set('search', value);
+		if (searchParams.status) params.set('status', searchParams.status);
+		router.push(`${pathname}?${params.toString()}`);
+	};
+
+	const handleStatusFilter = (value: string) => {
+		const params = new URLSearchParams();
+		if (searchParams.search) params.set('search', searchParams.search);
+		if (value) params.set('status', value);
+		router.push(`${pathname}?${params.toString()}`);
+	};
+
+	const handlePageChange = (page: number, pageSize: number) => {
+		const params = new URLSearchParams();
+		if (searchParams.search) params.set('search', searchParams.search);
+		if (searchParams.status) params.set('status', searchParams.status);
+		params.set('page', page.toString());
+		// params.set('limit', pageSize.toString()); // If we want variable page size
+		router.push(`${pathname}?${params.toString()}`);
+	};
+
+	// --- Transformations (Same as before) ---
+	const toFormValues = (item: Vocabulary) => {
+		const meanings = item.meanings as any;
+		const etymology = item.etymology as any;
+		const mnemonic = item.mnemonic as any;
+		const examples = item.examples as any;
+
+		return {
+			...item,
+			tags: item.tags || [],
+			meanings: {
+				vi: Array.isArray(meanings?.vi) ? meanings.vi.join(', ') : meanings?.vi || '',
+				en: Array.isArray(meanings?.en) ? meanings.en.join(', ') : meanings?.en || '',
+			},
+			mnemonic: {
+				vi: mnemonic?.vi || '',
+				en: mnemonic?.en || '',
+			},
+			parts: etymology?.parts || [],
+			examples: examples || [],
+			// Legacy/Schema compat
+			readingKana: item.wordReading,
+		};
+	};
+
+	const toApiValues = (values: any) => {
+		// Parse meanings from Comma Separated String to Array
+		const parseCsv = (str: string) =>
+			str
+				? str
+						.split(/,|、/)
+						.map((s: string) => s.trim())
+						.filter(Boolean)
+				: [];
+
+		return {
+			...values,
+			wordReading: values.wordReading || values.readingKana, // Fallback
+			meanings: {
+				vi: parseCsv(values.meanings?.vi),
+				en: parseCsv(values.meanings?.en),
+			},
+			mnemonic: values.mnemonic,
+			etymology: {
+				parts: values.parts || [],
+			},
+			examples: values.examples || [],
+		};
+	};
+
+	// --- Actions ---
+
+	const openCreate = () => {
 		setEditingItem(null);
 		form.resetFields();
+		// Set some defaults
+		form.setFieldsValue({ tags: ['vocab'] });
 		setIsModalOpen(true);
 	};
 
-	const openEdit = (type: 'vocab' | 'kanji', item: any) => {
-		setModalType(type);
+	const openEdit = (item: Vocabulary) => {
 		setEditingItem(item);
-		form.setFieldsValue(item); // Should map correctly if names match
+		form.resetFields();
+		form.setFieldsValue(toFormValues(item));
 		setIsModalOpen(true);
 	};
 
@@ -66,122 +147,110 @@ export default function DeckContentManager({ deck }: DeckContentManagerProps) {
 			const values = await form.validateFields();
 			setLoading(true);
 
-			if (modalType === 'vocab') {
-				if (editingItem) {
-					const res = await updateContent({ id: editingItem.id, data: values });
-					if (!res.success) throw new Error(res.error);
-					message.success('Vocab updated');
-				} else {
-					// const res = await createVocab({ ...values, deckId: deck.id });
-					// if (!res.success) throw new Error(res.error);
-					// message.success('Vocab created');
-				}
+			const apiData = toApiValues(values);
+
+			if (editingItem) {
+				const res = await updateContent({ id: editingItem.id, data: apiData });
+				if (!res.success) throw new Error(res.error);
+				message.success('Vocabulary updated');
 			} else {
-				if (editingItem) {
-					const res = await updateContent({ id: editingItem.id, data: values });
-					if (!res.success) throw new Error(res.error);
-					message.success('Kanji updated');
-				} else {
-					// Arrays might need handling if Form doesn't return them as expected, but Form.List handles it?
-					// KanjiEditor inputs for onyomi/kunyomi are Strings in the Editor implementation I made?
-					// Wait, in KanjiEditor I made Onyomi/Kunyomi INPUTS (strings).
-					// But server action expects comma separated string?
-					// createKanji in admin-actions splits string by comma.
-					// But updateKanji in actions.ts expects Partial<Kanji>...
-					// If updateKanji expects arrays, but form gives string... ERROR mismatch.
-					// I need to check KanjiEditor implementation.
-					// It renders <Input>. So values.onyomi is string.
-					// I need to convert string to array if updating.
-
-					// Let's handle parsing here before sending.
-					if (typeof values.onyomi === 'string')
-						values.onyomi = values.onyomi
-							.split(/[,、]/)
-							.map((s: string) => s.trim())
-							.filter(Boolean);
-					if (typeof values.kunyomi === 'string')
-						values.kunyomi = values.kunyomi
-							.split(/[,、]/)
-							.map((s: string) => s.trim())
-							.filter(Boolean);
-
-					// const res = await createKanji({ ...values, deckId: deck.id });
-					// if (!res.success) throw new Error(res.error);
-					message.success('Kanji created');
-				}
+				const res = await createVocabulary({ deckId: deck.id, data: apiData });
+				if (!res.success) throw new Error(res.error);
+				message.success('Vocabulary created');
 			}
 
 			router.refresh();
 			setIsModalOpen(false);
 		} catch (error: any) {
 			message.error(error.message || 'Operation failed');
+			console.error(error);
 		} finally {
 			setLoading(false);
 		}
 	};
 
-	// Deletion
-	const handleDelete = async (type: 'vocab' | 'kanji', id: string) => {
+	const handleDelete = async (id: string) => {
 		try {
-			// if (type === 'vocab') await deleteVocab(id);
-			// else await deleteKanji(id);
-			// message.success('Deleted');
-			// router.refresh();
+			const res = await deleteVocabulary({ id });
+			if (!res?.success) throw new Error(res?.error);
+			message.success('Deleted');
+			router.refresh();
 		} catch (error: any) {
 			message.error(error.message);
 		}
 	};
 
-	// Columns
+	// --- Table ---
+
 	const vocabColumns = [
 		{
-			title: 'Word',
-			dataIndex: 'wordSurface',
+			title: t('columns.word'),
 			key: 'word',
-			width: 150,
-			render: (t: string) => <b>{t}</b>,
-		},
-		{ title: 'Reading', dataIndex: 'readingKana', key: 'reading', width: 150 },
-		{ title: 'Meaning', dataIndex: 'meaning', key: 'meaning' },
-		{
-			title: 'Actions',
-			key: 'actions',
-			width: 100,
-			render: (r: any) => (
-				<Space>
-					<Button size="small" icon={<EditOutlined />} onClick={() => openEdit('vocab', r)} />
-					<Popconfirm title="Delete?" onConfirm={() => handleDelete('vocab', r.id)}>
-						<Button size="small" danger icon={<DeleteOutlined />} />
-					</Popconfirm>
+			width: 180,
+			render: (_: any, r: Vocabulary) => (
+				<Space direction="vertical" size={0}>
+					<span style={{ fontSize: 16, fontWeight: 'bold' }}>{r.wordSurface}</span>
+					<span style={{ color: '#666' }}>
+						{r.wordReading} {r.wordRomaji ? `(${r.wordRomaji})` : ''}
+					</span>
 				</Space>
 			),
 		},
-	];
-
-	const kanjiColumns = [
 		{
-			title: 'Kanji',
-			dataIndex: 'kanji',
-			key: 'kanji',
-			width: 80,
-			render: (t: string) => <div style={{ fontSize: 24, fontWeight: 'bold' }}>{t}</div>,
-		},
-		{ title: 'Meaning', dataIndex: 'meaning', key: 'meaning' },
-		{ title: 'Onyomi', dataIndex: 'onyomi', key: 'on', render: (arr: string[]) => arr?.join(', ') },
-		{
-			title: 'Kunyomi',
-			dataIndex: 'kunyomi',
-			key: 'kun',
-			render: (arr: string[]) => arr?.join(', '),
+			title: t('columns.hanViet'),
+			dataIndex: 'hanViet',
+			key: 'hanViet',
+			width: 100,
+			render: (t: string) => <Tag color="blue">{t}</Tag>,
 		},
 		{
-			title: 'Actions',
+			title: t('columns.meaning'),
+			key: 'meaning',
+			render: (_: any, r: Vocabulary) => {
+				const m = r.meanings as any; // JSON
+				return (
+					<Space direction="vertical" size={0} style={{ fontSize: 13 }}>
+						{m?.vi && (
+							<div style={{ color: '#1677ff' }}>
+								🇻🇳 {Array.isArray(m.vi) ? m.vi.join(', ') : m.vi}
+							</div>
+						)}
+						{m?.en && (
+							<div style={{ color: '#666' }}>🇬🇧 {Array.isArray(m.en) ? m.en.join(', ') : m.en}</div>
+						)}
+					</Space>
+				);
+			},
+		},
+		{
+			title: t('columns.status'),
+			dataIndex: 'contentStatus',
+			key: 'status',
+			width: 100,
+			render: (status: string) => {
+				const color =
+					status === 'PUBLISHED'
+						? 'green'
+						: status === 'DRAFT'
+							? 'orange'
+							: status === 'VERIFIED'
+								? 'cyan'
+								: 'red';
+				return <Tag color={color}>{status}</Tag>;
+			},
+		},
+		{
+			title: t('columns.actions'),
 			key: 'actions',
 			width: 100,
-			render: (r: any) => (
+			render: (r: Vocabulary) => (
 				<Space>
-					<Button size="small" icon={<EditOutlined />} onClick={() => openEdit('kanji', r)} />
-					<Popconfirm title="Delete?" onConfirm={() => handleDelete('kanji', r.id)}>
+					<Button size="small" icon={<EditOutlined />} onClick={() => openEdit(r)} />
+					<Popconfirm
+						title={t('columns.actions')}
+						description="This cannot be undone."
+						onConfirm={() => handleDelete(r.id)}
+					>
 						<Button size="small" danger icon={<DeleteOutlined />} />
 					</Popconfirm>
 				</Space>
@@ -191,83 +260,73 @@ export default function DeckContentManager({ deck }: DeckContentManagerProps) {
 
 	return (
 		<div>
-			<div style={{ marginBottom: 16 }}>
-				<Button
-					type="text"
-					icon={<ArrowLeftOutlined />}
-					onClick={() => router.push('/admin/decks')}
-				>
-					Back to Decks
+			<div
+				style={{
+					marginBottom: 16,
+					display: 'flex',
+					justifyContent: 'space-between',
+					alignItems: 'center',
+				}}
+			>
+				<Space>
+					<Button
+						type="text"
+						icon={<ArrowLeftOutlined />}
+						onClick={() => router.push('/admin/decks')}
+					>
+						{t('backToDecks')}
+					</Button>
+					<Input.Search
+						placeholder={t('searchPlaceholder')}
+						defaultValue={searchParams.search}
+						onSearch={handleSearch}
+						style={{ width: 200 }}
+						allowClear
+					/>
+					<Select
+						placeholder={t('statusFilter')}
+						allowClear
+						style={{ width: 120 }}
+						defaultValue={searchParams.status}
+						options={['DRAFT', 'AI_GENERATED', 'VERIFIED', 'PUBLISHED'].map((s) => ({
+							label: s,
+							value: s,
+						}))}
+						onChange={handleStatusFilter}
+					/>
+				</Space>
+				<Button type="primary" icon={<PlusOutlined />} onClick={openCreate}>
+					{t('addVocab')}
 				</Button>
 			</div>
 
-			<Tabs
-				items={[
-					{
-						key: 'vocab',
-						label: `Vocabulary (${deck._count?.vocab || deck.vocab.length})`,
-						children: (
-							<>
-								<div style={{ textAlign: 'right', marginBottom: 16 }}>
-									<Button
-										type="primary"
-										icon={<PlusOutlined />}
-										onClick={() => openCreate('vocab')}
-									>
-										Add Vocab
-									</Button>
-								</div>
-								<Table
-									dataSource={deck.vocab}
-									columns={vocabColumns}
-									rowKey="id"
-									pagination={{ pageSize: 20 }}
-								/>
-							</>
-						),
-					},
-					{
-						key: 'kanji',
-						label: `Kanji (${deck._count?.kanji || deck.kanji.length})`,
-						children: (
-							<>
-								<div style={{ textAlign: 'right', marginBottom: 16 }}>
-									<Button
-										type="primary"
-										icon={<PlusOutlined />}
-										onClick={() => openCreate('kanji')}
-									>
-										Add Kanji
-									</Button>
-								</div>
-								<Table
-									dataSource={deck.kanji}
-									columns={kanjiColumns}
-									rowKey="id"
-									pagination={{ pageSize: 20 }}
-								/>
-							</>
-						),
-					},
-				]}
+			<Table
+				dataSource={vocabularies}
+				columns={vocabColumns}
+				rowKey="id"
+				pagination={{
+					current: currentPage,
+					pageSize: 20,
+					total: total,
+					onChange: handlePageChange,
+					showSizeChanger: false, // Keep it simple for now
+				}}
+				size="small"
 			/>
 
 			<Modal
-				title={
-					editingItem
-						? `Edit ${modalType === 'vocab' ? 'Vocabulary' : 'Kanji'}`
-						: `Add New ${modalType === 'vocab' ? 'Vocabulary' : 'Kanji'}`
-				}
+				title={editingItem ? t('addVocab').replace('Add', 'Edit') : t('addVocab')}
 				open={isModalOpen}
 				onCancel={() => setIsModalOpen(false)}
 				onOk={handleOk}
 				confirmLoading={loading}
-				width={700}
+				width={800}
 				style={{ top: 20 }}
+				destroyOnClose
 			>
 				<div style={{ maxHeight: '70vh', overflowY: 'auto', paddingRight: 8 }}>
 					<Form form={form} layout="vertical">
-						{modalType === 'vocab' ? <VocabEditor /> : <KanjiEditor />}
+						<VocabEditor />
 					</Form>
 				</div>
 			</Modal>

@@ -324,6 +324,44 @@
 			"cardShield": "Khiên chống lú",
 			"cardVs": "vs.",
 			"cardExamples": "Ví dụ"
+		},
+		"DeckDetail": {
+			"backToDecks": "Quay lại danh sách",
+			"vocabTab": "Từ vựng",
+			"kanjiTab": "Kanji",
+			"addVocab": "Thêm từ vựng",
+			"searchPlaceholder": "Tìm kiếm...",
+			"statusFilter": "Trạng thái",
+			"columns": {
+				"word": "Từ vựng",
+				"reading": "Cách đọc",
+				"meaning": "Nghĩa",
+				"hanViet": "Hán Việt",
+				"status": "Trạng thái",
+				"actions": "Hành động"
+			}
+		},
+		"VocabEditor": {
+			"basicInfo": "Thông tin cơ bản",
+			"wordSurface": "Từ vựng (Kanji)",
+			"readingKana": "Cách đọc (Kana)",
+			"romaji": "Romaji",
+			"hanViet": "Hán Việt",
+			"tags": "Thẻ",
+			"image": "Hình ảnh",
+			"meanings": "Ý nghĩa",
+			"meaningsVi": "Tiếng Việt (ngăn cách bằng dấu phẩy)",
+			"meaningsEn": "Tiếng Anh (ngăn cách bằng dấu phẩy)",
+			"mnemonics": "Mẹo ghi nhớ",
+			"mnemonicVi": "Mẹo (Tiếng Việt)",
+			"mnemonicEn": "Mẹo (Tiếng Anh)",
+			"etymology": "Nâng cao: Chiết tự & Cấu trúc",
+			"examples": "Ví dụ",
+			"addEtymology": "Thêm từ khóa chiết tự",
+			"addExample": "Thêm câu ví dụ",
+			"sentence": "Câu",
+			"translationVi": "Dịch (Tiếng Việt)",
+			"translationEn": "Dịch (Tiếng Anh)"
 		}
 	},
 	"Landing": {
