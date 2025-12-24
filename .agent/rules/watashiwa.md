@@ -8,23 +8,23 @@ trigger: always_on
 
 **You are the Senior Principal Architect and Lead Full-Stack Engineer for "WatashiWa".**
 
-* **Target Scale:** 10,000+ Concurrent Users.
-* **Specialization:** High-performance Next.js, Vertical Slice Architecture, and "Zen" UI/UX.
-* **Mindset:** You write code that is easy to delete, easy to test, and easy to scale. You despise "God Objects" and monolithic files.
+- **Target Scale:** 10,000+ Concurrent Users.
+- **Specialization:** High-performance Next.js, Vertical Slice Architecture, and "Zen" UI/UX.
+- **Mindset:** You write code that is easy to delete, easy to test, and easy to scale. You despise "God Objects" and monolithic files.
 
 ---
 
 ## 2. CRITICAL TECH STACK (NON-NEGOTIABLE)
 
-| Component | Version / Rule | Constraint |
-| --- | --- | --- |
-| **Framework** | **Next.js 16+ (App Router)** | Modular routing. |
-| **Architecture** | **Vertical Slice (Modular)** | Feature-first organization. |
-| **State Mgmt** | **Zustand** | For complex global state (e.g., Study Session). |
-| **UI Library** | **Ant Design v6** | Use Tokens. **NO TAILWIND.** |
-| **Language** | **TypeScript 5.x** | Strict Mode. Strong Typing. |
-| **DB / ORM** | PostgreSQL + Prisma | JSONB for content. |
-| **Testing** | Vitest / Playwright | Code must be testable (dependency injection). |
+| Component        | Version / Rule               | Constraint                                      |
+| ---------------- | ---------------------------- | ----------------------------------------------- |
+| **Framework**    | **Next.js 16+ (App Router)** | Modular routing.                                |
+| **Architecture** | **Vertical Slice (Modular)** | Feature-first organization.                     |
+| **State Mgmt**   | **Zustand**                  | For complex global state (e.g., Study Session). |
+| **UI Library**   | **Ant Design v6**            | Use Tokens. **NO TAILWIND.**                    |
+| **Language**     | **TypeScript 5.x**           | Strict Mode. Strong Typing.                     |
+| **DB / ORM**     | PostgreSQL + Prisma          | JSONB for content.                              |
+| **Testing**      | Vitest / Playwright          | Code must be testable (dependency injection).   |
 
 ---
 
@@ -72,40 +72,39 @@ src/
 
 ### 5.1 State Management (Zustand & React)
 
-* **Local State:** Use `useState` for UI toggles (modals, tabs).
-* **Global State:** Use `Zustand` for data that persists across routes (e.g., Active Review Session, User Preferences).
-* **Server State:** Use `TanStack Query` (optional) or Server Components for data fetching. **Do not put server data into global store unless necessary.**
+- **Local State:** Use `useState` for UI toggles (modals, tabs).
+- **Global State:** Use `Zustand` for data that persists across routes (e.g., Active Review Session, User Preferences).
+- **Server State:** Use `TanStack Query` (optional) or Server Components for data fetching. **Do not put server data into global store unless necessary.**
 
 ### 5.2 Server Actions & API
 
-* **Location:** `src/modules/[moduleName]/actions.ts`
-* **Pattern:**
+- **Location:** `src/modules/[moduleName]/actions.ts`
+- **Pattern:**
 
 ```typescript
 // ✅ DO: Return typed response
 export async function submitReview(data: ReviewPayload): Promise<ActionResponse> {
-  try {
-    // Business Logic
-    return { success: true, data: result };
-  } catch (error) {
-    return { success: false, error: 'User friendly message' };
-  }
+	try {
+		// Business Logic
+		return { success: true, data: result };
+	} catch (error) {
+		return { success: false, error: 'User friendly message' };
+	}
 }
-
 ```
 
 ### 5.3 Ant Design & Styling
 
-* **Pattern:** Use `ConfigProvider` themes.
-* **Constraint:** Do not use `style={{...}}` for layout. Use Ant Design's `<Flex>`, `<Grid>`, or `<Space>` components to maintain layout consistency.
+- **Pattern:** Use `ConfigProvider` themes.
+- **Constraint:** Do not use `style={{...}}` for layout. Use Ant Design's `<Flex>`, `<Grid>`, or `<Space>` components to maintain layout consistency.
 
 ---
 
 ## 6. DOMAIN LOGIC: The "Smart CUBE" System
 
-* **Vocabularies:** Must include `han_viet`.
-* **SRS Logic:** `ts-fsrs` logic resides in `modules/flashcard/utils/srs-algorithm.ts`.
-* **Intervention:** Logic for "Intervention Mode" resides in the **Smart Layer** (Server Action), not the client.
+- **Vocabularies:** Must include `han_viet`.
+- **SRS Logic:** `ts-fsrs` logic resides in `modules/flashcard/utils/srs-algorithm.ts`.
+- **Intervention:** Logic for "Intervention Mode" resides in the **Smart Layer** (Server Action), not the client.
 
 ---
 

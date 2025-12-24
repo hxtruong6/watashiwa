@@ -14,11 +14,11 @@ import {
 	TrendingTips,
 	WeeklyChart,
 } from '@/components/dashboard';
-import StudySettings from '@/modules/flashcard/components/StudySettings';
+import StudySettings from '@/modules/study/components/StudySettings';
 import type { User } from '@prisma/client';
 import { Divider, Drawer, theme } from 'antd';
 import confetti from 'canvas-confetti';
-import { Variants, motion } from 'motion/react';
+import { Variants, motion } from 'framer-motion';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
@@ -75,7 +75,7 @@ export default function DashboardOverview({
 	userId,
 	userSettings,
 	forecast,
-}: DashboardContentProps) {
+}: DashboardOverviewProps) {
 	const { token } = useToken();
 	const [hasShownConfetti] = useState(false);
 	const [isSettingsOpen, setIsSettingsOpen] = useState(false);

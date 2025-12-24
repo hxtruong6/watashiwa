@@ -1,5 +1,3 @@
-import ExerciseSessionContainer from '@/components/Study/Exercises/ExerciseSessionContainer';
-
 export const metadata = {
 	title: 'Active Recall Exercises | WatashiWa',
 	description: 'Practice your vocabulary with active recall exercises.',
@@ -19,9 +17,5 @@ export default async function ExercisesPage({ searchParams }: ExercisesPageProps
 		deckIds = deckIdParam;
 	}
 
-	return (
-		<main>
-			<ExerciseSessionContainer deckIds={deckIds} />
-		</main>
-	);
+	return <main>{/* <ExerciseSessionContainer deckIds={deckIds} /> */}</main>;
 }

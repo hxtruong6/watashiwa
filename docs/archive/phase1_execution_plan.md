@@ -5,7 +5,7 @@
 
 ## SPRINT 1: The Foundation & Data Factory (Weeks 1-2)
 
-**Theme**: *Build the machine that builds the content.*
+**Theme**: _Build the machine that builds the content._
 
 ### 1. Type Hardening & Infrastructure
 
@@ -55,7 +55,7 @@
 
 ## SPRINT 2: The Logic (Smart Layer) (Week 3)
 
-**Theme**: *The Brain.*
+**Theme**: _The Brain._
 
 ### 1. FSRS & Scheduling
 
@@ -66,7 +66,7 @@
 ### 2. CUBE Variant Logic
 
 - [x] **Study Architecture**: Modular "Vertical Slice" (`src/modules/study`).
-- [ ] **Variant Selector**: Logic to determine *which* card face to show.
+- [ ] **Variant Selector**: Logic to determine _which_ card face to show.
   - New Card -> Basic.
   - Review -> Gap Fill.
   - Leech -> Intervention.
@@ -81,7 +81,7 @@
 
 ## SPRINT 3: The Frontend (Week 4)
 
-**Theme**: *The Experience.*
+**Theme**: _The Experience._
 
 ### 1. Core Components
 

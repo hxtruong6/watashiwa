@@ -12,7 +12,6 @@ import { useZenMode } from '@/hooks/study/useZenMode';
 import { useTutorialStore } from '@/hooks/useTutorialStore';
 import { DEFAULT_LIMIT_NEW_CARDS, DEFAULT_LIMIT_REVIEWS } from '@/lib/constants';
 import FlashCard, { FlashCardHandle } from '@/modules/flashcard/components/FlashCard';
-import SessionSummary from '@/modules/flashcard/components/Session/SessionSummary';
 import ReportModal from '@/modules/report/components/ReportModal';
 import { getCompletedTutorials, getUserSettings } from '@/modules/user/user.actions';
 import type { User } from '@prisma/client';
@@ -22,6 +21,7 @@ import { useSearchParams } from 'next/navigation';
 import React, { useCallback, useEffect, useState } from 'react';
 
 import RatingBar from './RatingBar';
+import SessionSummary from './Session/SessionSummary';
 import SessionBriefing from './SessionBriefing';
 import StudyHeader from './StudyHeader';
 import StudySettings from './StudySettings';
@@ -102,14 +102,14 @@ export default function StudySession() {
 	const refreshSettings = useCallback(async () => {
 		const [settings, tutorials] = await Promise.all([getUserSettings(), getCompletedTutorials()]);
 
-		if (settings) {
-			setSpaceKeyRating(settings.spaceKeyRating);
-			setUserSettings(settings);
-		}
+		// if (settings) {
+		// 	setSpaceKeyRating(settings.spaceKeyRating);
+		// 	setUserSettings(settings);
+		// }
 
-		if (tutorials) {
-			useTutorialStore.getState().mergeTutorials(tutorials);
-		}
+		// if (tutorials) {
+		// 	useTutorialStore.getState().mergeTutorials(tutorials);
+		// }
 	}, []);
 
 	useEffect(() => {
@@ -185,9 +185,9 @@ export default function StudySession() {
 		}
 	}, [loading, sessionComplete, studyPhase, card, queue]);
 
-	if (studyPhase === 'summary') {
-		return <SessionSummary stats={dailyStats} />;
-	}
+	// if (studyPhase === 'summary') {
+	// 	return <SessionSummary stats={dailyStats} />;
+	// }
 
 	const progressPercent = Math.min(
 		100,

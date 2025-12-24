@@ -6,12 +6,12 @@ This document outlines the "Expert" testing strategy for WatashiWa. Our goal is 
 
 We avoid the traditional "Testing Pyramid" and focus on the **Testing Trophy** model, prioritizing Integration and E2E tests over Unit tests.
 
-| Layer | Tool | Purpose | What to Test |
-| :--- | :--- | :--- | :--- |
-| **Static** | TypeScript + Zod | Data Integrity | Type mismatches, API input validation. |
-| **Integration** | Vitest + Real DB | Business Logic | Server Actions, Prisma queries, DB constraints. |
-| **E2E** | Playwright | Money Makers | Critical user flows (Login -> Study -> Summary). |
-| **Unit** | Vitest | Pure Logic | Mathematical algorithms (SRS), complex string parsing. |
+| Layer           | Tool             | Purpose        | What to Test                                           |
+| :-------------- | :--------------- | :------------- | :----------------------------------------------------- |
+| **Static**      | TypeScript + Zod | Data Integrity | Type mismatches, API input validation.                 |
+| **Integration** | Vitest + Real DB | Business Logic | Server Actions, Prisma queries, DB constraints.        |
+| **E2E**         | Playwright       | Money Makers   | Critical user flows (Login -> Study -> Summary).       |
+| **Unit**        | Vitest           | Pure Logic     | Mathematical algorithms (SRS), complex string parsing. |
 
 ---
 
@@ -86,43 +86,43 @@ To satisfy our [Retention-First Pivot](file:///Users/xuantruong/Documents/WORK/S
 
 ### 6.1 Core Logic & Smart Layer (Integration)
 
-| Case ID | Input / Precondition | Perspective (Equivalence / Boundary) | Expected Result | Notes |
-| :--- | :--- | :--- | :--- | :--- |
-| **INT-SP-01** | High Review Count (> Threshold) | Equivalence - Overload | `newCardsAvailable` returns 0. | Throttling protects against burnout. |
-| **INT-SP-02** | Reviews = Threshold | Boundary - Exact | `newCardsAvailable` returns 0. | Exact limit check. |
-| **INT-DV-01** | SRS Stage = 0 (New) | Equivalence - Stage 0 | Serves `Standard` variant. | Initial acquisition. |
-| **INT-DV-02** | SRS Stage = 2 (Review) | Equivalence - Review | Serves `Context_Gap` variant. | Recall in context logic. |
-| **INT-DV-03** | SRS State = Leech (Fail > 5) | Equivalence - Failure | Serves `Intervention` variant. | Pattern repair logic. |
-| **INT-IS-01** | Learn Homonym B (A already learned) | Equivalence - Collision | `ComparisonMode` triggered in payload. | Interference shield logic. |
-| **INT-IS-02** | Learn Homonym B (A NOT learned) | Equivalence - No Collision | `Standard` variant (No Comparison). | Avoid cognitive overload. |
-| **INT-AN-01** | duration < 500ms | Boundary - Fast | Logged as "Automatic" fluency. | Fluency tracking. |
-| **INT-AN-02** | duration > 3000ms (Correct) | Equivalence - Hesitation | Logged as "Struggle" (Hesitation). | Detects hidden weakness. |
-| **INT-PE-01** | pitch_pattern = NULL | Boundary - NULL | Defaults to Heiban (0) render. | Robustness against missing data. |
-| **INT-PE-02** | pitch_pattern = 99 (Invalid) | Boundary - Out of range | Validation error logic triggered. | Constraint check. |
-| **INT-SD-01** | deletedAt != NULL | Equivalence - Soft Delete | Card excluded from `getReviewQueue`. | Data safety check. |
-| **INT-ERR-01** | DB Timeout during sync | Abnormal - Dependency Failure | Safe rollback + user friendly error. | Reliability check. |
-| **INT-ERR-02** | Invalid UUID for deckId | Abnormal - Invalid Format | Zod returns "Validation Failed". | Type safety check. |
-| **INT-SEC-01** | Non-Admin calls `approveContent` | Abnormal - Security | returns `Unauthorized` or `403`. | Authorization boundary. |
-| **INT-CON-01** | Double Review Submit (Race Condition) | Abnormal - Concurrency | Only one log recorded; state remains consistent. | Prevents duplicate XP/Stats. |
-| **INT-SYN-01** | `syncUser` fails mid-transaction | Abnormal - Atomic Failure | No partial user record created in Prisma. | Data integrity (Auth). |
-| **INT-QA-01** | Content set to `FLAGGED` | Equivalence - Quarantine | Item removed from ALL active queues instantly. | Content safety/QA. |
+| Case ID        | Input / Precondition                  | Perspective (Equivalence / Boundary) | Expected Result                                  | Notes                                |
+| :------------- | :------------------------------------ | :----------------------------------- | :----------------------------------------------- | :----------------------------------- |
+| **INT-SP-01**  | High Review Count (> Threshold)       | Equivalence - Overload               | `newCardsAvailable` returns 0.                   | Throttling protects against burnout. |
+| **INT-SP-02**  | Reviews = Threshold                   | Boundary - Exact                     | `newCardsAvailable` returns 0.                   | Exact limit check.                   |
+| **INT-DV-01**  | SRS Stage = 0 (New)                   | Equivalence - Stage 0                | Serves `Standard` variant.                       | Initial acquisition.                 |
+| **INT-DV-02**  | SRS Stage = 2 (Review)                | Equivalence - Review                 | Serves `Context_Gap` variant.                    | Recall in context logic.             |
+| **INT-DV-03**  | SRS State = Leech (Fail > 5)          | Equivalence - Failure                | Serves `Intervention` variant.                   | Pattern repair logic.                |
+| **INT-IS-01**  | Learn Homonym B (A already learned)   | Equivalence - Collision              | `ComparisonMode` triggered in payload.           | Interference shield logic.           |
+| **INT-IS-02**  | Learn Homonym B (A NOT learned)       | Equivalence - No Collision           | `Standard` variant (No Comparison).              | Avoid cognitive overload.            |
+| **INT-AN-01**  | duration < 500ms                      | Boundary - Fast                      | Logged as "Automatic" fluency.                   | Fluency tracking.                    |
+| **INT-AN-02**  | duration > 3000ms (Correct)           | Equivalence - Hesitation             | Logged as "Struggle" (Hesitation).               | Detects hidden weakness.             |
+| **INT-PE-01**  | pitch_pattern = NULL                  | Boundary - NULL                      | Defaults to Heiban (0) render.                   | Robustness against missing data.     |
+| **INT-PE-02**  | pitch_pattern = 99 (Invalid)          | Boundary - Out of range              | Validation error logic triggered.                | Constraint check.                    |
+| **INT-SD-01**  | deletedAt != NULL                     | Equivalence - Soft Delete            | Card excluded from `getReviewQueue`.             | Data safety check.                   |
+| **INT-ERR-01** | DB Timeout during sync                | Abnormal - Dependency Failure        | Safe rollback + user friendly error.             | Reliability check.                   |
+| **INT-ERR-02** | Invalid UUID for deckId               | Abnormal - Invalid Format            | Zod returns "Validation Failed".                 | Type safety check.                   |
+| **INT-SEC-01** | Non-Admin calls `approveContent`      | Abnormal - Security                  | returns `Unauthorized` or `403`.                 | Authorization boundary.              |
+| **INT-CON-01** | Double Review Submit (Race Condition) | Abnormal - Concurrency               | Only one log recorded; state remains consistent. | Prevents duplicate XP/Stats.         |
+| **INT-SYN-01** | `syncUser` fails mid-transaction      | Abnormal - Atomic Failure            | No partial user record created in Prisma.        | Data integrity (Auth).               |
+| **INT-QA-01**  | Content set to `FLAGGED`              | Equivalence - Quarantine             | Item removed from ALL active queues instantly.   | Content safety/QA.                   |
 
 ### 6.3 Scale & Performance (The 10k Challenge)
 
-| Case ID | Metric / Scenario | Target | Perspective | Notes |
-| :--- | :--- | :--- | :--- | :--- |
-| **PERF-RT-01** | `getReviewQueue` Latency | < 200ms | 95th Percentile | Ensures "Zen" speed. |
-| **PERF-LD-01** | 1000 Concurrent Writes | No Deadlocks | Stress Test | Verifies DB connection pool. |
-| **PERF-AI-01** | AI Batch Worker | Async / Non-blocking | Background Process | Ensures AI factory doesn't slow UI. |
-| **PERF-CD-01** | Image/Audio CDN Cache | < 100ms | Edge Delivery | Global performance check. |
+| Case ID        | Metric / Scenario        | Target               | Perspective        | Notes                               |
+| :------------- | :----------------------- | :------------------- | :----------------- | :---------------------------------- |
+| **PERF-RT-01** | `getReviewQueue` Latency | < 200ms              | 95th Percentile    | Ensures "Zen" speed.                |
+| **PERF-LD-01** | 1000 Concurrent Writes   | No Deadlocks         | Stress Test        | Verifies DB connection pool.        |
+| **PERF-AI-01** | AI Batch Worker          | Async / Non-blocking | Background Process | Ensures AI factory doesn't slow UI. |
+| **PERF-CD-01** | Image/Audio CDN Cache    | < 100ms              | Edge Delivery      | Global performance check.           |
 
 ### 6.4 Critical User Journeys (E2E)
 
-| Case ID | Scenario | Precondition | Expected Success |
-| :--- | :--- | :--- | :--- |
-| **E2E-AP-01** | Active Priming Block | Start New Unit | Modal blocks flashcards until 3 words clicked. |
-| **E2E-PP-01** | Pitch Perfect Challenge | Swipe Left (Atamadaka) | Haptic success + score increment. |
-| **E2E-DB-01** | Dashboard Heatmap Sync | Finished 10 reviews | Heatmap cell for today turns green instantly. |
+| Case ID       | Scenario                | Precondition           | Expected Success                               |
+| :------------ | :---------------------- | :--------------------- | :--------------------------------------------- |
+| **E2E-AP-01** | Active Priming Block    | Start New Unit         | Modal blocks flashcards until 3 words clicked. |
+| **E2E-PP-01** | Pitch Perfect Challenge | Swipe Left (Atamadaka) | Haptic success + score increment.              |
+| **E2E-DB-01** | Dashboard Heatmap Sync  | Finished 10 reviews    | Heatmap cell for today turns green instantly.  |
 
 ---
 

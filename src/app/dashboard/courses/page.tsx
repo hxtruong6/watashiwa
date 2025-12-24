@@ -7,7 +7,7 @@ export default async function CoursesDashboardPage() {
 	const user = await getUser();
 	if (!user) return <div>Please login</div>;
 
-	const courses = await getCourses({ userId: user.id });
+	const courses = await getCourses();
 
 	return <CourseList courses={courses} userId={user.id} />;
 }

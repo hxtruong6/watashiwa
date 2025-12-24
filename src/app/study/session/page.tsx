@@ -1,10 +1,10 @@
 'use client';
 
 import { CardShell } from '@/modules/flashcard/components/CardShell';
-import { SessionContainer } from '@/modules/flashcard/components/Session/SessionContainer';
-import SessionSummary from '@/modules/flashcard/components/Session/SessionSummary';
 import { fetchSessionAction } from '@/modules/flashcard/flashcard.actions';
-import { useSessionStore } from '@/modules/flashcard/store/useSessionStore';
+import { SessionContainer } from '@/modules/study/components/Session/SessionContainer';
+import SessionSummary from '@/modules/study/components/Session/SessionSummary';
+import { useSessionStore } from '@/modules/study/store/useSessionStore';
 import { useSearchParams } from 'next/navigation';
 import React, { Suspense, useEffect, useState } from 'react';
 

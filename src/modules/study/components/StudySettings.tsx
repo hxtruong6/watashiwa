@@ -73,10 +73,10 @@ export default function StudySettings({
 			form.setFieldsValue({
 				limitNewCards: userSettings.limitNewCards,
 				limitReviews: userSettings.limitReviews,
-				allowSpaceKey: userSettings.allowSpaceKey,
-				spaceKeyRating: userSettings.spaceKeyRating,
-				autoShowAnswer: userSettings.autoShowAnswer,
-				autoShowAnswerDelay: userSettings.autoShowAnswerDelay ?? 10,
+				// allowSpaceKey: userSettings.allowSpaceKey,
+				// spaceKeyRating: userSettings.spaceKeyRating,
+				// autoShowAnswer: userSettings.autoShowAnswer,
+				// autoShowAnswerDelay: userSettings.autoShowAnswerDelay ?? 10,
 				timezone: userSettings.timezone || Intl.DateTimeFormat().resolvedOptions().timeZone,
 			});
 		}

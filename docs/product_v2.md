@@ -129,16 +129,16 @@ _New Way:_ **Context First.**
 **Two Levels of Story:**
 
 1. **Unit Level (The "Active Priming" Story):**
-    - **Goal:** Immersion. Connects all 20 words of a unit into one narrative.
-    - **Model:** `Story` (linked to `Deck`).
-    - **Format:** Mixed-Language Text (e.g., "I went to the **Gakkou** because...").
+   - **Goal:** Immersion. Connects all 20 words of a unit into one narrative.
+   - **Model:** `Story` (linked to `Deck`).
+   - **Format:** Mixed-Language Text (e.g., "I went to the **Gakkou** because...").
 
 2. **Word Level (The "Memory Hook"):**
-    - **Goal:** Retention of a single difficult word.
-    - **Model:** `Vocabulary.mnemonic` (JSON).
-    - **Format:** Language-Specific Pun/Hook (NOT a direct translation).
-        - _EN:_ "I seek **SENSEI**tional wisdom."
-        - _VI:_ "Ông ấy là **TIÊN** sinh ra trước."
+   - **Goal:** Retention of a single difficult word.
+   - **Model:** `Vocabulary.mnemonic` (JSON).
+   - **Format:** Language-Specific Pun/Hook (NOT a direct translation).
+     - _EN:_ "I seek **SENSEI**tional wisdom."
+     - _VI:_ "Ông ấy là **TIÊN** sinh ra trước."
 
 **Scenario (Unit Priming):**
 

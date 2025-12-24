@@ -15,8 +15,7 @@ Please follow the following guidelines when generating code.
 ## Golden Rule: Use the Correct and Current SDK
 
 Always use the **Google Gen AI SDK** (`@google/genai`), which is the unified
-standard library for all Gemini API interactions (AI Studio and Vertex AI) as of
-2025. Do not use legacy libraries and SDKs.
+standard library for all Gemini API interactions (AI Studio and Vertex AI) as of 2025. Do not use legacy libraries and SDKs.
 
 - **Library Name:** Google Gen AI SDK
 - **NPM Package:** `@google/genai`
@@ -31,16 +30,16 @@ standard library for all Gemini API interactions (AI Studio and Vertex AI) as of
 **APIs and Usage:**
 
 - **Incorrect:** `const { GenerativeModel } =
-    require('@google/generative-ai')` -> **Correct:** `import { GoogleGenAI }
-    from '@google/genai'`
+  require('@google/generative-ai')` -> **Correct:** `import { GoogleGenAI }
+  from '@google/genai'`
 - **Incorrect:** `const model = genai.getGenerativeModel(...)` -> **Correct:**
-    `const ai = new GoogleGenAI({apiKey: "..."})`
+  `const ai = new GoogleGenAI({apiKey: "..."})`
 - **Incorrect:** `await model.generateContent(...)` -> **Correct:** `await
-    ai.models.generateContent(...)`
+  ai.models.generateContent(...)`
 - **Incorrect:** `await model.generateContentStream(...)` -> **Correct:**
-    `await ai.models.generateContentStream(...)`
+  `await ai.models.generateContentStream(...)`
 - **Incorrect:** `const generationConfig = { ... }` -> **Correct:** Pass
-    configuration directly: `config: { safetySettings: [...] }`
+  configuration directly: `config: { safetySettings: [...] }`
 - **Incorrect** `GoogleGenerativeAI`
 - **Incorrect** `google.generativeai`
 - **Incorrect** `models.create`
@@ -51,9 +50,9 @@ standard library for all Gemini API interactions (AI Studio and Vertex AI) as of
 - **Incorrect** `generationConfig`
 - **Incorrect** `GoogleGenAIError` -> **Correct** `ApiError`
 - **Incorrect** `GenerateContentResult` -> **Correct**
-    `GenerateContentResponse`.
+  `GenerateContentResponse`.
 - **Incorrect** `GenerateContentRequest` -> **Correct**
-    `GenerateContentParameters`
+  `GenerateContentParameters`
 
 ## Initialization and API Key
 
@@ -62,7 +61,7 @@ API calls.
 
 - Always use `const ai = new GoogleGenAI({})` to create an instance.
 - Set the `GEMINI_API_KEY` environment variable, which will be picked up
-    automatically in Node.js environments.
+  automatically in Node.js environments.
 
 ```javascript
 import { GoogleGenAI } from '@google/genai';
@@ -87,12 +86,12 @@ const ai = new GoogleGenAI({});
   - **Advanced Video Editing Tasks:** `veo-3.1-generate-preview`
 
 - It is also acceptable to use the following model if explicitly requested by
-    the user:
+  the user:
   - **Gemini 2.0 Series**: `gemini-2.0-flash`, `gemini-2.0-flash-lite`
   - **Gemini 2.5 Series**: `gemini-2.5-flash`, `gemini-2.5-pro`
 
 - Do not use the following deprecated models (or their variants like
-    `gemini-1.5-flash-latest`):
+  `gemini-1.5-flash-latest`):
   - **Prohibited:** `gemini-1.5-flash`
   - **Prohibited:** `gemini-1.5-pro`
   - **Prohibited:** `gemini-pro`
@@ -108,12 +107,12 @@ import { GoogleGenAI } from '@google/genai';
 const ai = new GoogleGenAI({});
 
 async function run() {
-  const response = await ai.models.generateContent({
-    model: 'gemini-3-flash-preview',
-    contents: 'Why is the sky blue?',
-  });
+	const response = await ai.models.generateContent({
+		model: 'gemini-3-flash-preview',
+		contents: 'Why is the sky blue?',
+	});
 
-  console.log(response.text); // output is often markdown
+	console.log(response.text); // output is often markdown
 }
 
 run();
@@ -167,28 +166,29 @@ For video files, PDF, or long audio, upload to the File API first.
 
 ```javascript
 import { GoogleGenAI, createPartFromUri, createUserContent } from '@google/genai';
+
 const ai = new GoogleGenAI({});
 
 async function run() {
-    // Upload
-    const myFile = await ai.files.upload({
-        file: 'video.mp4',
-        config: { mimeType: 'video/mp4' },
-    });
+	// Upload
+	const myFile = await ai.files.upload({
+		file: 'video.mp4',
+		config: { mimeType: 'video/mp4' },
+	});
 
-    // Generate
-    const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
-         contents: createUserContent([
-          createPartFromUri(myFile.uri, myFile.mimeType),
-          "What happens in this video?"
-        ])
-    });
+	// Generate
+	const response = await ai.models.generateContent({
+		model: 'gemini-3-flash-preview',
+		contents: createUserContent([
+			createPartFromUri(myFile.uri, myFile.mimeType),
+			'What happens in this video?',
+		]),
+	});
 
-    console.log(response.text);
+	console.log(response.text);
 
-    // You can delete files after use like this:
-    await ai.files.delete({name: myFile.name});
+	// You can delete files after use like this:
+	await ai.files.delete({ name: myFile.name });
 }
 
 run();
@@ -211,30 +211,30 @@ It can be adjusted by using the `thinkingLevel` parameter.
 - **`HIGH`**: (Default) Maximizes reasoning depth. The model may take significantly longer to reach a first token, but the output will be more thoroughly vetted.
 
 ```javascript
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from '@google/genai';
 
 const ai = new GoogleGenAI({});
 
 async function main() {
-  const response = await ai.models.generateContent({
-    model: "gemini-3-pro-preview",
-    contents: "What is AI?",
-    config: {
-      thinkingConfig: {
-        includeThoughts: true, // If you want to see the thoughts
-        // 'HIGH' is default.
-        thinkingLevel: 'LOW', // Use 'LOW' for faster/cheaper reasoning
-      },
-    },
-  });
+	const response = await ai.models.generateContent({
+		model: 'gemini-3-pro-preview',
+		contents: 'What is AI?',
+		config: {
+			thinkingConfig: {
+				includeThoughts: true, // If you want to see the thoughts
+				// 'HIGH' is default.
+				thinkingLevel: 'LOW', // Use 'LOW' for faster/cheaper reasoning
+			},
+		},
+	});
 
-  // Access thoughts if returned and includeThoughts is true
-  const part = response.candidates?.[0]?.content?.parts?.[0];
-  if (part?.thought) {
-    console.log(`Thought: ${part.text}`); // The thought content
-  } else {
-    console.log(`Response: ${response.text}`);
-  }
+	// Access thoughts if returned and includeThoughts is true
+	const part = response.candidates?.[0]?.content?.parts?.[0];
+	if (part?.thought) {
+		console.log(`Thought: ${part.text}`); // The thought content
+	} else {
+		console.log(`Response: ${response.text}`);
+	}
 }
 
 main();
@@ -247,23 +247,23 @@ adjusted by using the `thinkingBudget` setting. Setting it to zero turns
 thinking off, and will reduce latency.
 
 ```javascript
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI } from '@google/genai';
 
 const ai = new GoogleGenAI({});
 
 async function main() {
-  const response = await ai.models.generateContent({
-    model: "gemini-2.5-pro",
-    contents: "What is AI?",
-    config: {
-      thinkingConfig: {
-        thinkingBudget: 0 // Turn thinking OFF
-        // thinkingBudget: 1024 // Turn thinking ON with specific token budget
-      },
-    },
-  });
+	const response = await ai.models.generateContent({
+		model: 'gemini-2.5-pro',
+		contents: 'What is AI?',
+		config: {
+			thinkingConfig: {
+				thinkingBudget: 0, // Turn thinking OFF
+				// thinkingBudget: 1024 // Turn thinking ON with specific token budget
+			},
+		},
+	});
 
-  console.log(response.text);
+	console.log(response.text);
 }
 
 main();
@@ -272,9 +272,9 @@ main();
 IMPORTANT NOTES:
 
 - Minimum thinking budget for `gemini-2.5-pro` is `128` and thinking can not
-    be turned off for that model.
+  be turned off for that model.
 - No models (apart from Gemini 2.5/3 series) support thinking or thinking
-    budgets APIs. Do not try to adjust thinking budgets for other models.
+  budgets APIs. Do not try to adjust thinking budgets for other models.
 
 ### System Instructions
 
@@ -286,14 +286,14 @@ import { GoogleGenAI } from '@google/genai';
 const ai = new GoogleGenAI({});
 
 async function run() {
-    const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
-        contents: "Explain quantum physics.",
-        config: {
-            systemInstruction: "You are a pirate",
-        }
-    });
-    console.log(response.text);
+	const response = await ai.models.generateContent({
+		model: 'gemini-3-flash-preview',
+		contents: 'Explain quantum physics.',
+		config: {
+			systemInstruction: 'You are a pirate',
+		},
+	});
+	console.log(response.text);
 }
 run();
 ```
@@ -349,18 +349,19 @@ Use `generateContentStream` to reduce time-to-first-token.
 
 ```javascript
 import { GoogleGenAI } from '@google/genai';
+
 const ai = new GoogleGenAI({});
 
 async function run() {
-  const responseStream = await ai.models.generateContentStream({
-    model: "gemini-3-flash-preview",
-    contents: ["Write a long story about a space pirate."],
-  });
+	const responseStream = await ai.models.generateContentStream({
+		model: 'gemini-3-flash-preview',
+		contents: ['Write a long story about a space pirate.'],
+	});
 
-  for await (const chunk of responseStream) {
-    process.stdout.write(chunk.text);
-  }
-  console.log(); // for a final newline
+	for await (const chunk of responseStream) {
+		process.stdout.write(chunk.text);
+	}
+	console.log(); // for a final newline
 }
 run();
 ```
@@ -376,19 +377,19 @@ import { GoogleGenAI } from '@google/genai';
 const ai = new GoogleGenAI({});
 
 async function run() {
-    const chat = ai.chats.create({model: "gemini-3-flash-preview"});
+	const chat = ai.chats.create({ model: 'gemini-3-flash-preview' });
 
-    let response = await chat.sendMessage({message: "I have a cat named Whiskers."});
-    console.log(response.text);
+	let response = await chat.sendMessage({ message: 'I have a cat named Whiskers.' });
+	console.log(response.text);
 
-    response = await chat.sendMessage({message: "What is the name of my pet?"});
-    console.log(response.text);
+	response = await chat.sendMessage({ message: 'What is the name of my pet?' });
+	console.log(response.text);
 
-    // To access specific elements in chat history
-    const history = await chat.getHistory();
-    for (const message of history) {
-        console.log(`role - ${message.role}: ${message.parts[0].text}`);
-    }
+	// To access specific elements in chat history
+	const history = await chat.getHistory();
+	for (const message of history) {
+		console.log(`role - ${message.role}: ${message.parts[0].text}`);
+	}
 }
 run();
 ```
@@ -399,3 +400,4 @@ It is also possible to use streaming with Chat:
 import { GoogleGenAI } from '@google/genai';
 
 const ai =
+```
