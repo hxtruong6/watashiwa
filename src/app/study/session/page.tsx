@@ -2,73 +2,55 @@
 
 import { CardShell } from '@/modules/flashcard/components/CardShell';
 import { SessionContainer } from '@/modules/flashcard/components/Session/SessionContainer';
-import { SmartCard, StandardCard } from '@/modules/flashcard/types';
-import { useSessionStore } from '@/modules/study/store/useSessionStore';
+import { fetchSessionAction } from '@/modules/flashcard/flashcard.actions';
+import { useSessionStore } from '@/modules/flashcard/store/useSessionStore';
 import React, { useEffect, useState } from 'react';
-
-// --- MOCK DATA FOR VERTICAL SLICE VERIFICATION ---
-const MOCK_CARD_1: StandardCard = {
-	id: 'mock_1',
-	vocabId: 'v1',
-	nextReview: null,
-	srsStage: 0,
-	variant: 'BASIC',
-	front: {
-		hero: '先生',
-		reading: 'せんせい',
-		audio: '',
-	},
-	back: {
-		details: {
-			id: 'v1',
-			deckId: 'd1',
-			tags: ['n5'],
-			wordSurface: '先生',
-			wordReading: 'せんせい',
-			wordRomaji: 'sensei',
-			hanViet: 'TIÊN SINH',
-			pitchPattern: 1,
-			pitchSvgPath: '',
-			homonymGroupId: null,
-			meanings: { en: ['Teacher', 'Master'], vi: ['Giáo viên'] },
-			etymology: {
-				parts: [
-					{ kanji: '先', han_viet: 'TIÊN', meaning: 'Before' },
-					{ kanji: '生', han_viet: 'SINH', meaning: 'Life' },
-				],
-				note_vi: 'Người sinh ra trước thì hiểu biết hơn.',
-			},
-			mnemonic: { en: 'Senpai born first.', vi: 'Tiên sinh ra trước.' },
-			examples: [],
-			han_viet_extracted: 'TIÊN SINH', // Virtual field mock
-			contentStatus: 'VERIFIED',
-			verifiedAt: null,
-			verifiedBy: null,
-			createdAt: new Date(),
-			updatedAt: new Date(),
-			deletedAt: null,
-			audioUrl: null,
-			imageUrl: null,
-		},
-	},
-};
-
-const MOCK_QUEUE = [MOCK_CARD_1];
 
 export default function SessionPage() {
 	const { startSession, queue, currentIndex, submitRating, isSessionActive } = useSessionStore();
 
 	const [mounted, setMounted] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		setMounted(true);
-		// Force start session with mock data for visual verification
-		if (queue.length === 0) {
-			startSession(MOCK_QUEUE as any);
+	}, []);
+
+	// Initialize Session with Real Data
+	useEffect(() => {
+		async function init() {
+			if (queue.length > 0) {
+				setIsLoading(false);
+				return;
+			}
+
+			try {
+				const cards = await fetchSessionAction('unit1');
+				if (cards && cards.length > 0) {
+					startSession(cards);
+				}
+			} catch (error) {
+				console.error('Failed to load session:', error);
+			} finally {
+				setIsLoading(false);
+			}
 		}
-	}, []); // eslint-disable-line
+
+		if (mounted) {
+			init();
+		}
+	}, [mounted, queue.length, startSession]);
 
 	if (!mounted) return null;
+
+	// Simple Loading State for now
+	if (isLoading) {
+		return (
+			<SessionContainer progress={0} onExit={() => {}}>
+				<div style={{ color: '#aaa', textAlign: 'center', marginTop: '40vh' }}>Loading...</div>
+			</SessionContainer>
+		);
+	}
 
 	const progress = queue.length > 0 ? (currentIndex / queue.length) * 100 : 0;
 
@@ -87,9 +69,10 @@ export default function SessionPage() {
 						return (
 							<CardShell
 								key={card.id}
-								card={card as any} // Temporary Cast until Store is refactored
+								card={card}
 								isActive={isActive}
 								isNext={isNext}
+								showFurigana={true} // Default for now
 								onSwipeRight={() => submitRating(3)}
 								onSwipeLeft={() => submitRating(1)}
 								onSwipeUp={() => submitRating(4)}
@@ -99,13 +82,14 @@ export default function SessionPage() {
 				) : (
 					<div
 						style={{
-							color: '#999',
+							color: '#666',
 							textAlign: 'center',
 							marginTop: '50%',
 							fontFamily: 'sans-serif',
 						}}
 					>
-						Session Complete
+						<h3>Session Complete</h3>
+						<p>Great job!</p>
 					</div>
 				)}
 			</div>

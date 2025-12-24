@@ -1,6 +1,6 @@
 # V1 EXECUTION PLAN: The "Trojan Horse" Sprint (MASTER DOC)
 
-> **Status:** ACTIVE (Single Source of Truth)
+> **Status:** COMPLETED (Sprint 1 Architecture)
 > **Replaces:** `phase1_revised_sprint1.md`, `phase1_execution_plan.md`
 > **Strategy:** "Sprint 1 UI" on top of "Product V2 Schema"
 > **Objective:** Build the *permanent* frontend architecture and data structures now, but feed them with *static/simple* seed data for this milestone.
@@ -128,8 +128,8 @@ src/modules/flashcard/
 
 1. [x] **Create `types.ts`**: Define the strict `Vocabulary` and `SmartCard` union types.
     * *Constraint:* Ensure `mnemonic` matches Prisma.
-2. [x] **Create Seed Data**: strictly typed `data/seed/unit1_v2.json` matching the schema (20 items).
-3. [ ] **Mock Service**: `fetchSession()` server action that reads the JSON and returns `SmartCard[]`.
+2. [x] **Create Seed Data**: strictly typed `data/seed/unit1_v2.json` (using `docs/data_sample.json`).
+3. [x] **Mock Service**: `fetchSession()` server action that reads the JSON and returns `SmartCard[]`.
 
 ### Phase 4.2: The "Zen" UI (The Card)
 
@@ -139,9 +139,9 @@ src/modules/flashcard/
 
 ### Phase 4.3: The State Loop
 
-1. [ ] **Store**: Setup Zustand to hold the array of `SmartCard`.
-2. [ ] **Transition**: Handle the "Next Card" animation (Exit/Enter).
-3. [ ] **Refinement**: Tune the timing variables (0.4s flip, spring stiffness).
+1. [x] **Store**: Setup Zustand to hold the array of `SmartCard`.
+2. [x] **Transition**: Handle the "Next Card" animation (Exit/Enter).
+3. [x] **Refinement**: Tune the timing variables (0.4s flip, spring stiffness).
 
 ---
 

@@ -1,11 +1,10 @@
 import themeConfig from '@/lib/theme/themeConfig';
-import { getReports } from '@/modules/admin/admin.actions';
 import { getUserWithRole } from '@/modules/auth/auth.actions';
+import AdminReportTable from '@/modules/report/components/AdminReportTable';
+import { getReports } from '@/modules/report/report.data';
 import { UserRole } from '@prisma/client';
 import { redirect } from 'next/navigation';
 import React from 'react';
-
-import ClientReportsTable from './components/ClientReportsTable';
 
 export const dynamic = 'force-dynamic';
 
@@ -20,10 +19,6 @@ export default async function AdminReportsPage() {
 	}
 
 	// Fetch pending reports initially
-	// We handle data fetching in the client component for interactive filtering,
-	// but we can pass initial data here if desired.
-	// For simplicity, let's fetch in the client or pass initial data.
-	// Let's pass initial data.
 	const result = await getReports(50);
 	const initialReports = result.success && result.data ? result.data : [];
 
@@ -53,7 +48,7 @@ export default async function AdminReportsPage() {
 					overflow: 'hidden',
 				}}
 			>
-				<ClientReportsTable initialReports={initialReports} />
+				<AdminReportTable initialReports={initialReports} />
 			</div>
 		</div>
 	);

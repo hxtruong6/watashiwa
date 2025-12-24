@@ -3,7 +3,6 @@
 // Components
 import FlashCard, { FlashCardHandle } from '@/components/FlashCard';
 import RatingBar from '@/components/RatingBar';
-import ReportModal from '@/components/ReportModal';
 import AppTutorial from '@/components/Shared/AppTutorial';
 import Loading from '@/components/Shared/Loading';
 import SessionBriefing from '@/components/Study/SessionBriefing';
@@ -18,6 +17,7 @@ import { useStudyTutorialSteps } from '@/hooks/study/useStudyTutorialSteps';
 import { useZenMode } from '@/hooks/study/useZenMode';
 import { useTutorialStore } from '@/hooks/useTutorialStore';
 import { DEFAULT_LIMIT_NEW_CARDS, DEFAULT_LIMIT_REVIEWS } from '@/lib/constants';
+import ReportModal from '@/modules/report/components/ReportModal';
 import { getCompletedTutorials, getUserSettings } from '@/modules/user/user.actions';
 import type { User } from '@prisma/client';
 import { Drawer, Layout, theme } from 'antd';

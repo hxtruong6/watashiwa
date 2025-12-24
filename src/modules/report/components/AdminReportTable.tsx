@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
-import KanjiEditor from '@/components/admin/KanjiEditor';
 import VocabEditor from '@/components/admin/VocabEditor';
-import { resolveReport } from '@/modules/admin/admin.actions';
+import { resolveReport } from '@/modules/report/report.actions';
 import { updateContent } from '@/modules/vocabulary/vocabulary.actions';
 import { CheckOutlined, EyeOutlined } from '@ant-design/icons';
 import { ReportStatus, ReportType } from '@prisma/client';
@@ -12,14 +10,13 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 // Define type based on Prisma result (simplified for now)
-
 type Report = any;
 
-interface ClientReportsTableProps {
+interface AdminReportTableProps {
 	initialReports: Report[];
 }
 
-export default function ClientReportsTable({ initialReports }: ClientReportsTableProps) {
+export default function AdminReportTable({ initialReports }: AdminReportTableProps) {
 	const [reports, setReports] = useState<Report[]>(initialReports);
 	const [loading, setLoading] = useState(false);
 	const router = useRouter();
@@ -27,7 +24,7 @@ export default function ClientReportsTable({ initialReports }: ClientReportsTabl
 	const handleResolve = async (reportId: string, action: 'ACCEPT' | 'REJECT') => {
 		setLoading(true);
 		try {
-			const result = await resolveReport(reportId, action);
+			const result = await resolveReport({ reportId, action });
 			if (result.success) {
 				message.success(`Report ${action === 'ACCEPT' ? 'Accepted' : 'Rejected'}`);
 				// Optimistic update
@@ -99,7 +96,7 @@ export default function ClientReportsTable({ initialReports }: ClientReportsTabl
 			}
 
 			// 2. Resolve Report
-			const resolveRes = await resolveReport(currentReport.id, 'ACCEPT');
+			const resolveRes = await resolveReport({ reportId: currentReport.id, action: 'ACCEPT' });
 			if (!resolveRes.success) throw new Error(resolveRes.error);
 
 			message.success('Content updated & Report accepted');
@@ -252,7 +249,6 @@ export default function ClientReportsTable({ initialReports }: ClientReportsTabl
 							<h4>Edit Content</h4>
 							<Form form={form} layout="vertical">
 								{currentReport.vocab && <VocabEditor />}
-								{currentReport.kanji && <KanjiEditor />}
 							</Form>
 						</div>
 					</div>

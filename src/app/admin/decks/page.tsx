@@ -1,12 +1,27 @@
+import AdminDeckTable from '@/modules/deck/components/admin/AdminDeckTable';
 import { getAdminDecksAction } from '@/modules/deck/deck.admin.actions';
-import React from 'react';
-
-import AdminDeckTable from './components/AdminDeckTable';
+import { deckParamsCache } from '@/modules/deck/deck.params';
 
 export const dynamic = 'force-dynamic';
 
-export default async function AdminDecksPage() {
-	const { success, data } = await getAdminDecksAction();
+interface PageProps {
+	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export default async function AdminDecksPage({ searchParams }: PageProps) {
+	const {
+		page,
+		limit: pageSize,
+		sort: sortField,
+		order: sortOrder,
+	} = await deckParamsCache.parse(searchParams);
+
+	const { success, data } = await getAdminDecksAction({
+		page,
+		perPage: pageSize,
+		sortField,
+		sortOrder: sortOrder as 'asc' | 'desc',
+	});
 
 	if (!success || !data) {
 		return <div>Error loading decks.</div>;
@@ -26,7 +41,7 @@ export default async function AdminDecksPage() {
 					boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
 				}}
 			>
-				<AdminDeckTable initialDecks={data as any} />
+				<AdminDeckTable decks={data.data as any} total={data.total} />
 			</div>
 		</div>
 	);

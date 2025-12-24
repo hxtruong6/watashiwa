@@ -9,6 +9,7 @@ import type { Metadata, Viewport } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 
 import './globals.css';
 
@@ -125,16 +126,18 @@ export default async function RootLayout({
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
 				<DisableZoom />
 				<PostHogPageTracker />
-				<NextIntlClientProvider messages={messages}>
-					<AntdRegistry>
-						<ThemeProvider>
-							<NavBar user={user} />
-							<main className="app-main">{children}</main>
-							<PWAInstallPrompt />
-							<PWALifecycle />
-						</ThemeProvider>
-					</AntdRegistry>
-				</NextIntlClientProvider>
+				<NuqsAdapter>
+					<NextIntlClientProvider messages={messages}>
+						<AntdRegistry>
+							<ThemeProvider>
+								<NavBar user={user} />
+								<main className="app-main">{children}</main>
+								<PWAInstallPrompt />
+								<PWALifecycle />
+							</ThemeProvider>
+						</AntdRegistry>
+					</NextIntlClientProvider>
+				</NuqsAdapter>
 			</body>
 		</html>
 	);

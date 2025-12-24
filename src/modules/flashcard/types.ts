@@ -1,4 +1,6 @@
+import { EtymologySchema, ExamplesSchema, MeaningsSchema } from '@/lib/schemas/jsonb';
 import { Vocabulary as PrismaVocabulary } from '@prisma/client';
+import { z } from 'zod';
 
 // ------------------------------------------------------------------
 // 1. EXTENDED VOCABULARY (THE ANCHOR)
@@ -12,24 +14,16 @@ export interface Vocabulary extends Omit<
 	PrismaVocabulary,
 	'meanings' | 'etymology' | 'mnemonic' | 'examples'
 > {
-	// Parsed JSON Content
-	meanings: {
-		[lang: string]: string[]; // { "vi": ["..."], "en": ["..."] }
-	};
-	etymology: {
-		parts: Array<{ kanji: string; han_viet: string; meaning: string }>;
-		note_vi?: string;
-	};
+	// Parsed JSON Content (Inferred from Zod Source of Truth)
+	meanings: z.infer<typeof MeaningsSchema>;
+	etymology: z.infer<typeof EtymologySchema>;
+	examples: z.infer<typeof ExamplesSchema>;
+
 	mnemonic?: {
 		en: string;
 		vi: string;
 		image_url?: string;
 	} | null;
-	examples: Array<{
-		sentence: string;
-		translation: { [lang: string]: string };
-		audio?: string;
-	}>;
 
 	// Virtual Fields (Pre-processed for UI)
 	han_viet_extracted: string; // "TIÊN SINH" from tags or custom logic
@@ -67,12 +61,12 @@ export interface StandardCard extends CardBase {
 export interface GapFillCard extends CardBase {
 	variant: 'GAP_FILL';
 	front: {
-		sentencePrefix: string; // "Tôi đi "
-		sentenceSuffix: string; // " mua táo"
-		hint?: string; // "School"
+		sentencePrefix: string;
+		sentenceSuffix: string;
+		hint?: string;
 	};
 	back: {
-		answer: string; // "学校"
+		answer: string;
 		details: Vocabulary;
 	};
 }
@@ -94,7 +88,7 @@ export interface InterventionCard extends CardBase {
 		}>;
 	};
 	back: {
-		explanation: string; // "Hashi (Bridge) goes UP."
+		explanation: string;
 		details: Vocabulary;
 	};
 }

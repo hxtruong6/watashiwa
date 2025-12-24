@@ -1,6 +1,7 @@
 'use client';
 
 import { createDeck, deleteDeck, updateDeck } from '@/modules/deck/deck.actions';
+import { deckParsers } from '@/modules/deck/deck.params';
 import { DeleteOutlined, EditOutlined, FolderOpenOutlined, PlusOutlined } from '@ant-design/icons';
 import {
 	Button,
@@ -11,13 +12,13 @@ import {
 	Space,
 	Switch,
 	Table,
+	Tag,
 	Tooltip,
 	message,
 } from 'antd';
-// Helper for Tag (was missing import above? No, I see Space above, Tag missing)
-import { Tag } from 'antd';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useQueryState } from 'nuqs';
 import React, { useState } from 'react';
 
 interface Deck {
@@ -26,17 +27,49 @@ interface Deck {
 	description: string | null;
 	isPublic: boolean;
 	author: { name: string | null; email: string | null };
-	_count: { vocab: number; kanji: number };
+	_count: { vocabularies: number; stories: number };
 	createdAt: Date;
 }
 
-export default function AdminDeckTable({ initialDecks }: { initialDecks: Deck[] }) {
-	const [decks, setDecks] = useState<Deck[]>(initialDecks);
+interface AdminDeckTableProps {
+	decks: Deck[];
+	total: number;
+}
+
+export default function AdminDeckTable({ decks, total }: AdminDeckTableProps) {
+	// Nuqs State
+	const [page, setPage] = useQueryState('page', deckParsers.page.withOptions({ shallow: false }));
+	const [limit, setLimit] = useQueryState(
+		'limit',
+		deckParsers.limit.withOptions({ shallow: false }),
+	);
+	const [sort, setSort] = useQueryState('sort', deckParsers.sort.withOptions({ shallow: false }));
+	const [order, setOrder] = useQueryState(
+		'order',
+		deckParsers.order.withOptions({ shallow: false }),
+	);
+
+	// Local UI State
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	const [editingDeck, setEditingDeck] = useState<Deck | null>(null); // If null, creating new
+	const [editingDeck, setEditingDeck] = useState<Deck | null>(null);
 	const [loading, setLoading] = useState(false);
 	const [form] = Form.useForm();
 	const router = useRouter();
+
+	const handleTableChange = (pagination: any, filters: any, sorter: any) => {
+		// Pagination
+		setPage(pagination.current);
+		setLimit(pagination.pageSize);
+
+		// Sorting
+		if (sorter.field) {
+			setSort(sorter.field as string);
+			setOrder(sorter.order === 'ascend' ? 'asc' : 'desc');
+		} else {
+			setSort(null);
+			setOrder(null);
+		}
+	};
 
 	const openCreate = () => {
 		setEditingDeck(null);
@@ -61,24 +94,16 @@ export default function AdminDeckTable({ initialDecks }: { initialDecks: Deck[] 
 			setLoading(true);
 
 			if (editingDeck) {
-				// Update
 				const res = await updateDeck(editingDeck.id, values);
 				if (!res.success) throw new Error(res.error);
 				message.success('Deck updated');
-				// Optimistic or Refresh? Refresh helps sync everything.
-				router.refresh();
-				// Local update for immediate feedback (optional but nice)
-				setDecks((prev) => prev.map((d) => (d.id === editingDeck.id ? { ...d, ...values } : d)));
 			} else {
-				// Create
 				const res = await createDeck(values);
 				if (!res.success) throw new Error(res.error);
 				message.success('Deck created');
-				router.refresh();
-				// We can't easily add to local state without full author object etc return,
-				// so router.refresh() handles next fetch.
 			}
 			setIsModalOpen(false);
+			router.refresh(); // Data refresh still needed for Create/Update content changes
 		} catch (error: any) {
 			message.error(error.message || 'Operation failed');
 		} finally {
@@ -91,7 +116,6 @@ export default function AdminDeckTable({ initialDecks }: { initialDecks: Deck[] 
 			const res = await deleteDeck(id);
 			if (!res.success) throw new Error(res.error);
 			message.success('Deck deleted');
-			setDecks((prev) => prev.filter((d) => d.id !== id));
 			router.refresh();
 		} catch (error: any) {
 			message.error(error.message || 'Delete failed');
@@ -103,6 +127,8 @@ export default function AdminDeckTable({ initialDecks }: { initialDecks: Deck[] 
 			title: 'Title',
 			dataIndex: 'title',
 			key: 'title',
+			sorter: true,
+			sortOrder: sort === 'title' ? (order === 'asc' ? 'ascend' : 'descend') : null,
 			render: (text: string, record: Deck) => (
 				<div>
 					<div style={{ fontWeight: 600 }}>{text}</div>
@@ -120,8 +146,8 @@ export default function AdminDeckTable({ initialDecks }: { initialDecks: Deck[] 
 			key: 'content',
 			render: (r: Deck) => (
 				<Space>
-					<Tag>{r._count.vocab} Vocab</Tag>
-					<Tag>{r._count.kanji} Kanji</Tag>
+					<Tag>{r._count.vocabularies || 0} Vocab</Tag>
+					<Tag>{r._count.stories || 0} Stories</Tag>
 				</Space>
 			),
 		},
@@ -162,7 +188,18 @@ export default function AdminDeckTable({ initialDecks }: { initialDecks: Deck[] 
 				</Button>
 			</div>
 
-			<Table dataSource={decks} columns={columns} rowKey="id" pagination={{ pageSize: 10 }} />
+			<Table
+				dataSource={decks}
+				columns={columns as any}
+				rowKey="id"
+				pagination={{
+					current: page || 1,
+					pageSize: limit || 10,
+					total: total,
+					showSizeChanger: true,
+				}}
+				onChange={handleTableChange}
+			/>
 
 			<Modal
 				title={editingDeck ? 'Edit Deck' : 'Create New Deck'}

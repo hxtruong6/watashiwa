@@ -66,27 +66,48 @@ export async function getAllDecksForAdmin({
 	page = 1,
 	perPage = 10,
 	search = '',
+	sortField = 'createdAt',
+	sortOrder = 'desc',
 }: {
 	page?: number;
 	perPage?: number;
 	search?: string;
+	sortField?: string;
+	sortOrder?: 'asc' | 'desc';
 }) {
-	const skip = (page - 1) * perPage || DEFAULT_PER_PAGE;
+	const skip = (page - 1) * perPage || 0; // Fix skip calculation (page 1 should be 0)
 	const take = perPage || DEFAULT_PER_PAGE;
 
-	return await prisma.deck.findMany({
-		include: {
-			_count: {
-				select: { vocabularies: true, stories: true },
+	const where: Prisma.DeckWhereInput = search
+		? {
+				OR: [
+					{ title: { contains: search, mode: 'insensitive' } },
+					{ description: { contains: search, mode: 'insensitive' } },
+				],
+			}
+		: {};
+
+	const [data, total] = await Promise.all([
+		prisma.deck.findMany({
+			where,
+			include: {
+				_count: {
+					select: { vocabularies: true, stories: true },
+				},
+				author: {
+					select: { name: true, email: true },
+				},
 			},
-		},
-		orderBy: [
-			{ sortOrder: 'asc' }, // Primary: explicit sort order
-			{ createdAt: 'desc' }, // Fallback: newest first
-		],
-		skip,
-		take,
-	});
+			orderBy: {
+				[sortField]: sortOrder,
+			},
+			skip,
+			take,
+		}),
+		prisma.deck.count({ where }),
+	]);
+
+	return { data, total };
 }
 
 export async function getDeckDetailForAdmin(id: string) {

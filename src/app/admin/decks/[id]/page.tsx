@@ -1,7 +1,6 @@
+import DeckContentManager from '@/modules/deck/components/admin/DeckContentManager';
 import { getAdminDeckDetail, getAdminDeckVocabularies } from '@/modules/deck/deck.admin.actions';
 import React from 'react';
-
-import DeckContentManager from './components/DeckContentManager';
 
 interface PageProps {
 	params: Promise<{ id: string }>;
