@@ -1,5 +1,5 @@
-import DecksContent from '@/components/DecksContent';
 import { getUser, syncUser } from '@/modules/auth/auth.actions';
+import DeckList from '@/modules/deck/components/DeckList';
 import { getDecks } from '@/modules/deck/deck.actions';
 import { redirect } from 'next/navigation';
 
@@ -13,5 +13,5 @@ export default async function DecksPage() {
 	await syncUser();
 	const decks = await getDecks();
 
-	return <DecksContent decks={decks} userId={user.id} />;
+	return <DeckList decks={decks} userId={user.id} />;
 }

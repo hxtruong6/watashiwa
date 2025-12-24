@@ -1,5 +1,7 @@
 'use client';
 
+import LanguageSelector from '@/modules/user/components/LanguageSelector';
+import ThemeToggle from '@/modules/user/components/ThemeToggle';
 import {
 	BugOutlined,
 	LogoutOutlined,
@@ -11,9 +13,6 @@ import { Avatar, Button, Drawer, Flex, Image, Menu, Space, Typography, theme } f
 import type { MenuProps } from 'antd';
 import { useTranslations } from 'next-intl';
 import React from 'react';
-
-import LanguageSelector from '../LanguageSelector';
-import ThemeToggle from '../ThemeToggle';
 
 const { Text } = Typography;
 const { useToken } = theme;

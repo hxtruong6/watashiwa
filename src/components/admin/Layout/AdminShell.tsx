@@ -1,7 +1,7 @@
 'use client';
 
-import LanguageSelector from '@/components/LanguageSelector';
 import { hasRole } from '@/lib/auth/roleGuard';
+import LanguageSelector from '@/modules/user/components/LanguageSelector';
 import {
 	ArrowLeftOutlined,
 	BookOutlined,

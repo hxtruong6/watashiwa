@@ -1,6 +1,6 @@
 'use client';
 
-import DeckFormModal from '@/components/DeckFormModal';
+import DeckFormModal from '@/modules/deck/components/DeckFormModal';
 import { EditOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import { useTranslations } from 'next-intl';

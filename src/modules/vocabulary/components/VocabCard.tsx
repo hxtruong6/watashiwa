@@ -1,16 +1,13 @@
+import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
+import KanjiBreakdown from '@/modules/vocabulary/components/KanjiBreakdown';
 import { PauseCircleOutlined, PlayCircleOutlined } from '@ant-design/icons';
 import { Button, Card, Divider, Flex, Tag, Typography, theme } from 'antd';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 
-import { useAudioPlayer } from './Audio/useAudioPlayer';
-import KanjiBreakdown from './KanjiBreakdown';
-
 const { Title, Text, Paragraph } = Typography;
 const { useToken } = theme;
 
-// Temporary interface until we import full generated types
 interface VocabCardProps {
-	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	card: any; // We will type this properly with Prisma types later
 	showAnswer: boolean;
 	showFurigana?: boolean;

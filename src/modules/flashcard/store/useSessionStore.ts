@@ -2,7 +2,19 @@ import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 
+import { submitReviewAction } from '../flashcard.actions';
 import { SmartCard } from '../types';
+
+interface SessionStats {
+	startTime: number | null;
+	endTime: number | null;
+	reviews: {
+		1: number; // Again
+		2: number; // Hard
+		3: number; // Good
+		4: number; // Easy
+	};
+}
 
 interface SessionState {
 	// 1. Data Slice
@@ -14,6 +26,9 @@ interface SessionState {
 
 	// 3. Computed Helper
 	currentCard: SmartCard | null;
+
+	// 4. Statistics
+	sessionStats: SessionStats;
 }
 
 interface SessionActions {
@@ -37,6 +52,11 @@ export const useSessionStore = create<SessionStore>()(
 			currentIndex: 0,
 			isSessionActive: false,
 			currentCard: null,
+			sessionStats: {
+				startTime: null,
+				endTime: null,
+				reviews: { 1: 0, 2: 0, 3: 0, 4: 0 },
+			},
 
 			// Actions
 			startSession: (cards) => {
@@ -45,6 +65,13 @@ export const useSessionStore = create<SessionStore>()(
 					state.currentIndex = 0;
 					state.isSessionActive = true;
 					state.currentCard = cards[0] || null;
+
+					// Reset Stats
+					state.sessionStats = {
+						startTime: Date.now(),
+						endTime: null,
+						reviews: { 1: 0, 2: 0, 3: 0, 4: 0 },
+					};
 				});
 				console.log('[SessionStore] Session Started', cards.length);
 			},
@@ -53,6 +80,7 @@ export const useSessionStore = create<SessionStore>()(
 				set((state) => {
 					state.isSessionActive = false;
 					state.currentCard = null;
+					state.sessionStats.endTime = Date.now();
 				});
 				console.log('[SessionStore] Session Ended');
 			},
@@ -67,6 +95,7 @@ export const useSessionStore = create<SessionStore>()(
 						// Session Complete
 						state.isSessionActive = false;
 						state.currentCard = null;
+						state.sessionStats.endTime = Date.now();
 					}
 				});
 			},
@@ -81,23 +110,26 @@ export const useSessionStore = create<SessionStore>()(
 			},
 
 			submitRating: async (rating) => {
-				const { currentCard, currentIndex, queue, nextCard } = get();
+				const { currentCard, nextCard } = get();
 
-				console.log(`[SessionStore] Rated: ${rating} for card ${currentCard?.id}`);
+				if (!currentCard) return;
 
-				// SRS LOGIC (Stub)
+				console.log(`[SessionStore] Rated: ${rating} for card ${currentCard.id}`);
+
+				// Update Stats
+				set((state) => {
+					state.sessionStats.reviews[rating] += 1;
+				});
+
+				// 1. Optimistic UI: Handle "Again" logic locally
 				// If Rating is 1 (Again), re-queue the card
-				if (rating === 1 && currentCard) {
+				if (rating === 1) {
 					console.log('[SessionStore] Re-queueing AGAIN card');
 
 					set((state) => {
 						// Insert duplicate of card at currentIndex + 3 (or end)
 						// We need to clone it to avoid reference issues if we mutate later
 						const cardClone = { ...currentCard, id: `${currentCard.id}_retry` };
-
-						// Determine insert position: at most 3 spots ahead, but not beyond bounds
-						// If we are at index 0, length 10. We want to insert at index 3 (4th card).
-						// If we are at index 8, length 10. We insert at 10 (end).
 
 						const offset = 3;
 						const insertIndex = Math.min(state.currentIndex + 1 + offset, state.queue.length);
@@ -106,11 +138,25 @@ export const useSessionStore = create<SessionStore>()(
 					});
 				}
 
-				// Move to next card (Animation delay could be handled in UI or here)
-				// For "Zen" UI, we want immediate response usually, but CardShell handles animation.
-				// We should probably wait for the animation to finish?
-				// For now, immediate state update allows CardShell `onSwipe` to trigger this,
-				// and CardShell local state manages the exit animation visual.
+				// 2. Persist to Server (Fire & Forget)
+				// We don't await this to block UI, but we log errors
+				submitReviewAction({ vocabId: currentCard.vocabId, rating })
+					.then((res) => {
+						if (!res.success) {
+							console.error(
+								'[SessionStore] Failed to persist review for',
+								currentCard.vocabId,
+								res.error,
+							);
+						} else {
+							console.log('[SessionStore] Persisted review. Next Due:', res.data?.nextReview);
+						}
+					})
+					.catch((err) => {
+						console.error('[SessionStore] Error persisting review:', err);
+					});
+
+				// 3. Move to next card immediately
 				nextCard();
 			},
 		})),

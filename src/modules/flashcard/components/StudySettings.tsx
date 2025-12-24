@@ -1,5 +1,7 @@
 'use client';
 
+// TODO: Move VoiceSettings too
+import VoiceSettings from '@/components/Audio/VoiceSettings';
 import { updateUserSettings } from '@/modules/user/user.actions';
 import {
 	FontSizeOutlined,
@@ -27,13 +29,11 @@ import {
 import { useTranslations } from 'next-intl';
 import React, { useEffect, useState } from 'react';
 
-import VoiceSettings from './Audio/VoiceSettings';
-
 const { Text } = Typography;
 
 const { useToken } = theme;
 
-interface VocabSettingsProps {
+interface StudySettingsProps {
 	showFurigana: boolean;
 	setShowFurigana: (show: boolean) => void;
 	showRomaji: boolean;
@@ -45,7 +45,7 @@ interface VocabSettingsProps {
 	onSettingsChange: () => void;
 }
 
-export default function VocabSettings({
+export default function StudySettings({
 	showFurigana,
 	setShowFurigana,
 	showRomaji,
@@ -54,7 +54,7 @@ export default function VocabSettings({
 	setAutoPlayAudio,
 	userSettings,
 	onSettingsChange,
-}: VocabSettingsProps) {
+}: StudySettingsProps) {
 	const t = useTranslations('Settings');
 	const tCommon = useTranslations('Common');
 	const { token } = useToken();

@@ -1,14 +1,8 @@
 'use client';
 
 // Components
-import FlashCard, { FlashCardHandle } from '@/components/FlashCard';
-import RatingBar from '@/components/RatingBar';
 import AppTutorial from '@/components/Shared/AppTutorial';
 import Loading from '@/components/Shared/Loading';
-import SessionBriefing from '@/components/Study/SessionBriefing';
-import SessionSummary from '@/components/Study/SessionSummary';
-import StudyHeader from '@/components/Study/StudyHeader';
-import VocabSettings from '@/components/VocabSettings';
 import CommentDrawer from '@/components/comments/CommentDrawer';
 // Hooks
 import { useStudySession } from '@/hooks/study/useStudySession';
@@ -17,6 +11,8 @@ import { useStudyTutorialSteps } from '@/hooks/study/useStudyTutorialSteps';
 import { useZenMode } from '@/hooks/study/useZenMode';
 import { useTutorialStore } from '@/hooks/useTutorialStore';
 import { DEFAULT_LIMIT_NEW_CARDS, DEFAULT_LIMIT_REVIEWS } from '@/lib/constants';
+import FlashCard, { FlashCardHandle } from '@/modules/flashcard/components/FlashCard';
+import SessionSummary from '@/modules/flashcard/components/Session/SessionSummary';
 import ReportModal from '@/modules/report/components/ReportModal';
 import { getCompletedTutorials, getUserSettings } from '@/modules/user/user.actions';
 import type { User } from '@prisma/client';
@@ -25,10 +21,15 @@ import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import React, { useCallback, useEffect, useState } from 'react';
 
+import RatingBar from './RatingBar';
+import SessionBriefing from './SessionBriefing';
+import StudyHeader from './StudyHeader';
+import StudySettings from './StudySettings';
+
 const { Content } = Layout;
 const { useToken } = theme;
 
-export default function StudyContent() {
+export default function StudySession() {
 	const { token } = useToken();
 	const t = useTranslations('Study');
 	// const tCommon = useTranslations('Common');
@@ -184,7 +185,6 @@ export default function StudyContent() {
 		}
 	}, [loading, sessionComplete, studyPhase, card, queue]);
 
-	// Session Complete (Handled by phase)
 	if (studyPhase === 'summary') {
 		return <SessionSummary stats={dailyStats} />;
 	}
@@ -229,7 +229,7 @@ export default function StudyContent() {
 				styles={{ wrapper: { width: 600 } }}
 				placement="right"
 			>
-				<VocabSettings
+				<StudySettings
 					showFurigana={showFurigana}
 					setShowFurigana={setShowFurigana}
 					showRomaji={showRomaji}
@@ -237,7 +237,10 @@ export default function StudyContent() {
 					autoPlayAudio={autoPlayAudio}
 					setAutoPlayAudio={setAutoPlayAudio}
 					userSettings={userSettings}
-					onSettingsChange={refreshSettings}
+					onSettingsChange={() => {
+						refreshSettings();
+						// Optional: close drawer
+					}}
 				/>
 			</Drawer>
 

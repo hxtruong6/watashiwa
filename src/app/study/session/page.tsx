@@ -2,12 +2,16 @@
 
 import { CardShell } from '@/modules/flashcard/components/CardShell';
 import { SessionContainer } from '@/modules/flashcard/components/Session/SessionContainer';
+import SessionSummary from '@/modules/flashcard/components/Session/SessionSummary';
 import { fetchSessionAction } from '@/modules/flashcard/flashcard.actions';
 import { useSessionStore } from '@/modules/flashcard/store/useSessionStore';
-import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import React, { Suspense, useEffect, useState } from 'react';
 
-export default function SessionPage() {
+function SessionContent() {
 	const { startSession, queue, currentIndex, submitRating, isSessionActive } = useSessionStore();
+	const searchParams = useSearchParams();
+	const deckId = searchParams.get('deckId');
 
 	const [mounted, setMounted] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
@@ -24,10 +28,19 @@ export default function SessionPage() {
 				return;
 			}
 
+			if (!deckId) {
+				console.error('No deckId provided');
+				// Optionally redirect or show error state
+				setIsLoading(false);
+				return;
+			}
+
 			try {
-				const cards = await fetchSessionAction('unit1');
-				if (cards && cards.length > 0) {
-					startSession(cards);
+				const response = await fetchSessionAction({ deckId });
+				if (response.success && response.data && response.data.length > 0) {
+					startSession(response.data);
+				} else if (!response.success) {
+					console.error('Failed to fetch session:', response.error);
 				}
 			} catch (error) {
 				console.error('Failed to load session:', error);
@@ -39,7 +52,7 @@ export default function SessionPage() {
 		if (mounted) {
 			init();
 		}
-	}, [mounted, queue.length, startSession]);
+	}, [mounted, queue.length, startSession, deckId]);
 
 	if (!mounted) return null;
 
@@ -80,19 +93,17 @@ export default function SessionPage() {
 						);
 					})
 				) : (
-					<div
-						style={{
-							color: '#666',
-							textAlign: 'center',
-							marginTop: '50%',
-							fontFamily: 'sans-serif',
-						}}
-					>
-						<h3>Session Complete</h3>
-						<p>Great job!</p>
-					</div>
+					<SessionSummary />
 				)}
 			</div>
 		</SessionContainer>
+	);
+}
+
+export default function SessionPage() {
+	return (
+		<Suspense fallback={<div>Loading session...</div>}>
+			<SessionContent />
+		</Suspense>
 	);
 }

@@ -1,7 +1,7 @@
-import DashboardContent from '@/components/DashboardContent';
 import DashboardErrorState from '@/components/dashboard/DashboardErrorState';
 import { syncUser } from '@/modules/auth/auth.actions';
 import { getUserWithRole } from '@/modules/auth/auth.actions';
+import DashboardOverview from '@/modules/dashboard/components/DashboardOverview';
 import { getDashboardData } from '@/modules/dashboard/dashboard.actions';
 import { getLeaderboard } from '@/modules/leaderboard/leaderboard.actions';
 import { getReviewForecast } from '@/modules/study/study.actions';
@@ -40,7 +40,7 @@ export default async function Dashboard(props: Props) {
 	}
 
 	return (
-		<DashboardContent
+		<DashboardOverview
 			reviewCount={data.reviewCount}
 			stats={data.stats}
 			weeklyStats={data.weeklyStats}

@@ -1,5 +1,8 @@
 'use client';
 
+import ShareModal from '@/modules/deck/components/ShareModal';
+import LanguageSelector from '@/modules/user/components/LanguageSelector';
+import ThemeToggle from '@/modules/user/components/ThemeToggle';
 import { createClient } from '@/utils/supabase/client';
 import {
 	BarChartOutlined,
@@ -37,9 +40,6 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 
-import LanguageSelector from './LanguageSelector';
-import ShareModal from './ShareModal';
-import ThemeToggle from './ThemeToggle';
 import NavDrawer from './navbar/NavDrawer';
 import NotificationPopover from './navbar/NotificationPopover';
 import SettingsModal from './navbar/SettingsModal';

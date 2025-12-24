@@ -24,9 +24,6 @@ export interface Vocabulary extends Omit<
 		vi: string;
 		image_url?: string;
 	} | null;
-
-	// Virtual Fields (Pre-processed for UI)
-	han_viet_extracted: string; // "TIÊN SINH" from tags or custom logic
 }
 
 // ------------------------------------------------------------------

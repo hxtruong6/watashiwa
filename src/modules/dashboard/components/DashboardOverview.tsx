@@ -14,6 +14,7 @@ import {
 	TrendingTips,
 	WeeklyChart,
 } from '@/components/dashboard';
+import StudySettings from '@/modules/flashcard/components/StudySettings';
 import type { User } from '@prisma/client';
 import { Divider, Drawer, theme } from 'antd';
 import confetti from 'canvas-confetti';
@@ -21,8 +22,6 @@ import { Variants, motion } from 'motion/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-
-import VocabSettings from './VocabSettings';
 
 const { useToken } = theme;
 
@@ -39,7 +38,7 @@ interface DeckWithStats {
 	dueCount: number;
 }
 
-interface DashboardContentProps {
+interface DashboardOverviewProps {
 	reviewCount: number;
 	stats: {
 		streak: number;
@@ -64,7 +63,7 @@ interface DashboardContentProps {
 /**
  * Main Dashboard component using modular sub-components
  */
-export default function DashboardContent({
+export default function DashboardOverview({
 	reviewCount,
 	stats,
 	weeklyStats,
@@ -239,7 +238,7 @@ export default function DashboardContent({
 				open={isSettingsOpen}
 				size="default"
 			>
-				<VocabSettings
+				<StudySettings
 					showFurigana={true} // Default or fetched if global state
 					setShowFurigana={() => {}} // Placeholder if not strictly needed here or create local state if user wants preview
 					showRomaji={false}

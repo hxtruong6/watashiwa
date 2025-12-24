@@ -2,9 +2,9 @@
 'use client';
 
 import BackButton from '@/components/BackButton';
-import FlashCard from '@/components/FlashCard';
-import SmartContentInput from '@/components/SmartContentInput';
 import CommentDrawer from '@/components/comments/CommentDrawer';
+import FlashCard from '@/modules/flashcard/components/FlashCard';
+import SmartContentInput from '@/modules/vocabulary/components/SmartContentInput';
 import {
 	AppstoreOutlined,
 	BarsOutlined,
@@ -522,7 +522,6 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 				open={commentDrawerOpen}
 				onClose={() => setCommentDrawerOpen(false)}
 				entityId={selectedEntityId}
-				entityType={selectedEntityType}
 				entityTitle={selectedEntityTitle}
 			/>
 

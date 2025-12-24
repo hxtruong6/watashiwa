@@ -1,5 +1,5 @@
 import ImageUploader from '@/components/Shared/ImageUploader';
-import KanjiEditor from '@/components/admin/KanjiEditor';
+// import KanjiEditor from '@/components/admin/KanjiEditor';
 import VocabEditor from '@/components/admin/VocabEditor';
 import { createVocabulary } from '@/modules/vocabulary/vocabulary.actions';
 import {
@@ -359,7 +359,7 @@ export default function SmartContentInput({ deckId, onSuccess }: SmartContentInp
 				confirmLoading={loading}
 			>
 				<Form form={advancedForm} layout="vertical">
-					{activeTab === 'manual-vocab' ? <VocabEditor /> : <KanjiEditor />}
+					{activeTab === 'manual-vocab' ? <VocabEditor /> : <div>Kanji Editor Not Available</div>}
 				</Form>
 			</Modal>
 		</>

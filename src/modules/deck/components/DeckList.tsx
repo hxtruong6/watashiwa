@@ -23,13 +23,26 @@ import React, { useState } from 'react';
 const { Title, Text, Paragraph } = Typography;
 const { useToken } = theme;
 
-interface DecksContentProps {
+interface Deck {
+	id: string;
+	title: string;
+	description: string;
+	isPublic: boolean;
+	authorId: string;
+	headerImage: string;
+	_count: {
+		vocabularies: number;
+		stories: number;
+	};
+}
+
+interface DeckListProps {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	decks: any[];
+	decks: any[]; // Using any to be compatible with potential backend differences for now
 	userId: string;
 }
 
-export default function DecksContent({ decks, userId }: DecksContentProps) {
+export default function DeckList({ decks, userId }: DeckListProps) {
 	const { token } = useToken();
 	const t = useTranslations('Decks');
 	const locale = useLocale();
@@ -51,19 +64,6 @@ export default function DecksContent({ decks, userId }: DecksContentProps) {
 		hidden: { opacity: 0, y: 20 },
 		visible: { opacity: 1, y: 0 },
 	};
-
-	interface Deck {
-		id: string;
-		title: string;
-		description: string;
-		isPublic: boolean;
-		authorId: string;
-		headerImage: string;
-		_count: {
-			vocab: number;
-			kanji: number;
-		};
-	}
 
 	const filteredDecks = decks.filter((deck: Deck) => {
 		const deckTitle = deck.title || '';
@@ -210,7 +210,7 @@ export default function DecksContent({ decks, userId }: DecksContentProps) {
 
 										<Flex align="center" justify="space-between" style={{ marginTop: 'auto' }}>
 											<Tag color="default" style={{ margin: 0 }}>
-												{t('cardsCount', { count: deck._count?.vocab || 0 })}
+												{t('cardsCount', { count: deck._count?.vocabularies || 0 })}
 											</Tag>
 											<div onClick={(e) => e.stopPropagation()}>
 												<Link href={`/decks/${deck.id}`}>

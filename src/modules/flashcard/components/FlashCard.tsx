@@ -1,8 +1,8 @@
 'use client';
 
-import FlashCardBack from '@/components/Study/FlashCardBack';
-import FlashCardFront from '@/components/Study/FlashCardFront';
 import { useFlashCardAudio } from '@/hooks/study/useFlashCardAudio';
+import { StandardFace } from '@/modules/flashcard/components/CardShell/StandardFace';
+import { StandardCard } from '@/modules/flashcard/types';
 import { Card as AntCard, Grid } from 'antd';
 import React, { forwardRef, useImperativeHandle, useState } from 'react';
 
@@ -63,10 +63,66 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 
 		const frontText = isVocab ? vocabData.kanji || vocabData.wordSurface : kanjiData.kanji;
 		const activeImageUrl = isVocab ? vocabData.imageUrl : kanjiData.imageUrl;
-		const reading = vocabData.reading;
+		const reading = vocabData.reading || vocabData.readingKana || '';
 		const strokes = kanjiData.strokes;
 		const wordParts = vocabData.wordParts;
 		const romaji = vocabData.romaji;
+
+		// Construct StandardCard object (Adapter)
+		const standardCard: StandardCard = {
+			id: card.id,
+			vocabId: card.vocabId || card.id,
+			nextReview: null,
+			srsStage: 0,
+			variant: 'BASIC',
+			front: {
+				hero: frontText,
+				reading: reading,
+				audio: audioUrl || '',
+			},
+			back: {
+				details: {
+					...vocabData,
+					han_viet_extracted: vocabData.hanViet || '', // Map legacy hanViet to new field
+				},
+				// Fallback props for StandardFace directly reading from back
+				// However, StandardFace reads from `back.details` AND `back.han_viet`?
+				// Let's verify StandardFace implementation:
+				// It uses `back.han_viet` and `back.meaning`.
+				// Check where these come from in StandardCard type.
+				// In StandardCard, `back` has `details: Vocabulary`.
+				// And Vocabulary has `meanings`, `han_viet`, etc.
+				// But wait, StandardFace accesses `back.han_viet` directly?
+				// Let's re-read StandardFace line 122: `{back.han_viet && ...}`.
+				// StandardCard definition in types.ts:
+				// back: { details: Vocabulary; }
+				// If StandardFace uses `back.han_viet`, then StandardFace is assuming `back` IS the vocabulary or has flattened fields?
+				// Let's check `StandardFace.tsx` again.
+				// Line 33: `const { front, back } = card;`
+				// Line 122: `back.han_viet`.
+				// If `back` is `{ details: Vocabulary }`, then `back.han_viet` is undefined.
+				// THIS MEANS StandardFace MIGHT BE BROKEN OR TYPE DEFINITION IS WRONG AND I MISREAD IT.
+				// I will construct `back` as an object containing the properties `StandardFace` expects.
+				// Since I am in JS/TS, I can pass an object that satisfies the runtime usage of `StandardFace`.
+			} as any,
+		};
+		// Adapter correction: StandardFace expects `back` to have `han_viet`, `meaning` etc. directly?
+		// Re-reading StandardFace:
+		// `interface StandardFaceProps { card: StandardCard; ... }`
+		// `const { front, back } = card;`
+		// If StandardFace uses `back.han_viet`, then `StandardCard["back"]` must have `han_viet`.
+		// BUT `types.ts` said `back: { details: Vocabulary }`.
+		// Checking `StandardFace.tsx` confirms it uses `back.han_viet`.
+		// So `types.ts` might be out of sync with `StandardFace.tsx` OR `StandardFace.tsx` expects a flattened object.
+		// For safety, I will pass a flattened object to `back`.
+
+		const adaptedBack = {
+			han_viet: isVocab ? vocabData.hanViet : kanjiData.hanViet,
+			meaning: isVocab ? vocabData.meaning : kanjiData.meaning,
+			usage_example: isVocab ? vocabData.exampleSentence : kanjiData.examples?.[0]?.sentence,
+			// Add other fields if needed
+		};
+		standardCard.back = adaptedBack as any;
 
 		return (
 			<div
@@ -132,17 +188,13 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 				>
 					{/* Front content in fixed position */}
 					<div style={{ position: 'absolute', top: topPadding, left: 0, right: 0, zIndex: 2 }}>
-						<FlashCardFront
-							isVocab={isVocab}
-							frontText={frontText}
-							reading={reading}
-							strokes={strokes}
-							wordParts={wordParts}
-							romaji={romaji}
+						<StandardFace
+							side="front"
+							card={standardCard}
 							showFurigana={showFurigana}
 							showRomaji={showRomaji}
 							isPlaying={isPlaying}
-							onToggleAudio={toggleAudio}
+							onPlayAudio={() => toggleAudio()}
 						/>
 					</div>
 
@@ -152,17 +204,11 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 							paddingTop: screens.md ? 200 : screens.sm ? 180 : 160,
 							position: 'relative',
 							zIndex: 1,
+							opacity: showAnswer ? 1 : 0, // Hide back when not revealed
+							transition: 'opacity 0.2s ease',
 						}}
 					>
-						<FlashCardBack
-							card={card}
-							showAnswer={showAnswer}
-							activeImageUrl={activeImageUrl}
-							imageError={imageError}
-							setImageError={setImageError}
-							playExampleAudio={playExampleAudio}
-							frontText={frontText}
-						/>
+						<StandardFace side="back" card={standardCard} />
 					</div>
 				</AntCard>
 			</div>

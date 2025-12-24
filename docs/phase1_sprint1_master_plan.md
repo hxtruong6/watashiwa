@@ -143,6 +143,12 @@ src/modules/flashcard/
 2. [x] **Transition**: Handle the "Next Card" animation (Exit/Enter).
 3. [x] **Refinement**: Tune the timing variables (0.4s flip, spring stiffness).
 
+### Phase 5: The "Live" Brain (Persistence)
+
+1. [x] **FSRS**: Implement `srs-algorithm.ts` wrapper for `ts-fsrs`.
+2. [x] **Secure Action**: `fetchSessionAction` now checks `auth()` and queries `UserReview`.
+3. [x] **Persistence**: `submitReviewAction` saves progress and logs reviews atomically.
+
 ---
 
 ## 5. WHY THIS MODIFICATION?

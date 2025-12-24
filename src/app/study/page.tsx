@@ -1,5 +1,5 @@
-import StudyContent from '@/components/StudyContent';
 import { getUser } from '@/modules/auth/auth.actions';
+import StudySession from '@/modules/study/components/StudySession';
 import { getLastStudySession } from '@/modules/study/study.actions';
 import { redirect } from 'next/navigation';
 import React from 'react';
@@ -27,5 +27,5 @@ export default async function StudyPage({
 		}
 	}
 
-	return <StudyContent />;
+	return <StudySession />;
 }

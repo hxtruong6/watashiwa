@@ -1,7 +1,7 @@
 'use client';
 
-import RoleBadge from '@/components/RoleBadge';
 import { updateUserRole } from '@/modules/admin/admin.actions';
+import RoleBadge from '@/modules/user/components/RoleBadge';
 import { UserRole } from '@prisma/client';
 import { Modal, Select, Table, message } from 'antd';
 import React, { useState } from 'react';
