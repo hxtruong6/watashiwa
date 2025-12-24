@@ -1,6 +1,7 @@
-import { EtymologyData, Vocabulary } from '@/types/schema';
+import { EtymologyData } from '@/lib/schemas/jsonb';
 // Assuming this exists or using any for now if not
 import { SmartCard } from '@/types/smart-cube';
+import { Vocabulary } from '@prisma/client';
 
 // Helper to safely parse JSONB
 function parseJsonSafe<T>(json: any): T | null {
@@ -53,9 +54,9 @@ export function mapVocabularyToSmartCard(vocab: any): SmartCard {
 				meanings: meanings,
 				etymology: etymology
 					? {
-							breakdown: etymology.breakdown || '',
-							han_viet: etymology.han_viet || [],
-							image_url: etymology.image_url,
+							breakdown: etymology.note?.vi || '',
+							han_viet: etymology.parts.map((p) => p.han_viet),
+							image_url: undefined, // Add if image_url exists in EtymologyData
 						}
 					: undefined,
 			},

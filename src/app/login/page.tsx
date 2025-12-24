@@ -44,9 +44,9 @@ export default function AuthPage() {
 				antdMessage.success(t('loginSuccess'));
 				// Check session and sync user to DB
 				try {
-					const result = await syncUser();
-					console.log('Login result:', result);
-					if (result.success && result.role === 'ADMIN') {
+					const { success, data } = await syncUser();
+					const role = data?.role;
+					if (success && role === 'ADMIN') {
 						window.location.href = '/admin';
 						return;
 					}
@@ -91,8 +91,9 @@ export default function AuthPage() {
 				antdMessage.success(t('signupSuccess'));
 				// Logged in immediately
 				try {
-					const result = await syncUser();
-					if (result.success && result.role === 'ADMIN') {
+					const { success, data } = await syncUser();
+					const role = data?.role;
+					if (success && role === 'ADMIN') {
 						window.location.href = '/admin';
 						return;
 					}

@@ -216,7 +216,7 @@ export const VerificationDeck: React.FC = () => {
 			<Title level={2} style={styles.title}>
 				{statusFilter ? `${statusFilter} Content` : 'Pending Review'} ({queue.length})
 			</Title>
-
+			{/* 
 			<VerificationCard
 				data={currentCard}
 				mode="review"
@@ -224,7 +224,7 @@ export const VerificationDeck: React.FC = () => {
 				onReject={handleReject}
 				onEdit={handleEdit}
 				onPlayAudio={handlePlayAudio}
-			/>
+			/> */}
 
 			<div style={styles.controls}>
 				<span style={styles.keyHint}>← Reject</span>

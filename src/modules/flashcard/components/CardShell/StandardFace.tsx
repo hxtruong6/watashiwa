@@ -119,7 +119,7 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 				</div>
 
 				{/* Hán Việt Badge */}
-				{back.han_viet && (
+				{back.details.hanViet && (
 					<div
 						style={{
 							background: token.colorPrimaryBg,
@@ -132,7 +132,7 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 							strong
 							style={{ color: token.colorPrimary, textTransform: 'uppercase', fontSize: '12px' }}
 						>
-							{back.han_viet}
+							{back.details.hanViet}
 						</Text>
 					</div>
 				)}
@@ -141,7 +141,7 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 			{/* 2. Primary Meaning */}
 			<div style={{ marginBottom: 'auto' }}>
 				<Text style={{ fontSize: '20px', fontWeight: 500, color: token.colorText }}>
-					{back.meaning}
+					{back.details.meanings.en?.[0] || back.details.meanings.vi?.[0] || ''}
 				</Text>
 			</div>
 
@@ -164,7 +164,7 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 					</Text>
 				</Flex>
 				<Text style={{ fontSize: '14px', lineHeight: '1.6' }}>
-					{back.usage_example || 'No example available.'}
+					{back.details.examples[0]?.sentence || 'No example available.'}
 				</Text>
 			</div>
 		</Flex>

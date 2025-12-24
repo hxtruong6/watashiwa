@@ -11,7 +11,7 @@ export default function VocabEditor() {
 
 	return (
 		<>
-			<Divider orientation="left">{t('basicInfo')}</Divider>
+			<Divider>{t('basicInfo')}</Divider>
 			<Row gutter={16}>
 				<Col span={6}>
 					<Form.Item name="wordSurface" label={t('wordSurface')} rules={[{ required: true }]}>
@@ -48,7 +48,7 @@ export default function VocabEditor() {
 				</Col>
 			</Row>
 
-			<Divider orientation="left">{t('meanings')}</Divider>
+			<Divider>{t('meanings')}</Divider>
 			<Row gutter={16}>
 				<Col span={12}>
 					<Form.Item
@@ -71,7 +71,7 @@ export default function VocabEditor() {
 				</Col>
 			</Row>
 
-			<Divider orientation="left">{t('mnemonics')}</Divider>
+			<Divider>{t('mnemonics')}</Divider>
 			<Row gutter={16}>
 				<Col span={12}>
 					<Form.Item name={['mnemonic', 'vi']} label={t('mnemonicVi')}>
@@ -85,7 +85,7 @@ export default function VocabEditor() {
 				</Col>
 			</Row>
 
-			<Divider orientation="left">{t('etymology')}</Divider>
+			<Divider>{t('etymology')}</Divider>
 			<Form.List name="parts">
 				{(fields, { add, remove }) => (
 					<>
@@ -143,7 +143,7 @@ export default function VocabEditor() {
 				)}
 			</Form.List>
 
-			<Divider orientation="left">{t('examples')}</Divider>
+			<Divider>{t('examples')}</Divider>
 			<Form.List name="examples">
 				{(fields, { add, remove }) => (
 					<>

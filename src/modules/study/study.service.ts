@@ -1,4 +1,4 @@
-import { StudyCard } from '@prisma/client';
+import { UserReview } from '@prisma/client';
 import { Card, Rating, State, fsrs, generatorParameters } from 'ts-fsrs';
 
 /**
@@ -15,9 +15,9 @@ export const StudyService = {
 	/**
 	 * Convert Prisma Card to FSRS Card
 	 */
-	toFsrsCard: (card: StudyCard): Card => {
+	toFsrsCard: (card: UserReview): Card => {
 		return {
-			due: card.due,
+			due: card.nextReviewAt,
 			stability: card.stability,
 			difficulty: card.difficulty,
 			elapsed_days: card.elapsedDays,
@@ -33,7 +33,7 @@ export const StudyService = {
 	/**
 	 * Calculate Next Interval
 	 */
-	calculateNextState: (currentCard: StudyCard, rating: number) => {
+	calculateNextState: (currentCard: UserReview, rating: number) => {
 		if (![1, 2, 3, 4].includes(rating)) {
 			throw new Error('Invalid rating');
 		}
@@ -43,7 +43,7 @@ export const StudyService = {
 		const schedulingCards = f.repeat(fsrsCard, now);
 
 		const fsrsRating = rating as Rating;
-		const recordLog = schedulingCards[fsrsRating]; // This is RecordLogItem { card, log }
+		const recordLog = (schedulingCards as any)[fsrsRating]; // Cast to any to bypass IPreview strictness if needed
 
 		if (!recordLog) {
 			throw new Error('Failed to calculate schedule');

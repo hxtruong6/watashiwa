@@ -136,7 +136,7 @@ export async function getDashboardData() {
 		}
 
 		return {
-			reviewCount: reviewCount.success ? reviewCount.data || 0 : 0,
+			reviewCount,
 			stats,
 			weeklyStats,
 			decksWithDue,

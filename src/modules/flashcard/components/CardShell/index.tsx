@@ -82,13 +82,13 @@ export const CardShell: React.FC<CardShellProps> = ({
 	// --- VARIANT RENDER LOGIC ---
 	const renderFace = (side: 'front' | 'back') => {
 		switch (
-			card.type // NOTE: Changed from 'variant' (string) to 'type' (discriminator) based on types.ts
+			card.variant // NOTE: Changed from 'type' (discriminator) based on types.ts
 		) {
 			case 'GAP_FILL':
 				return <div>Gap Fill Coming Soon</div>;
 			case 'INTERVENTION':
 				return <div>Intervention Coming Soon</div>;
-			case 'STANDARD':
+			case 'BASIC':
 			default:
 				return (
 					<StandardFace

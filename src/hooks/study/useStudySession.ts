@@ -199,7 +199,11 @@ export function useStudySession({ courseId, deckId, mode, userSettings }: UseStu
 				setSubmittingRating(null);
 
 				// Background sync the final review
-				submitReview(currentCardId, rating, targetDeckIds).catch((err) => console.error(err));
+				submitReview({
+					cardId: currentCardId,
+					rating,
+					deckIdOrIds: targetDeckIds,
+				}).catch((err) => console.error(err));
 				updateStats(); // Update stats one last time
 				return;
 			}
@@ -227,7 +231,11 @@ export function useStudySession({ courseId, deckId, mode, userSettings }: UseStu
 			}));
 
 			// 4. Background Sync
-			submitReview(currentCardId, rating, targetDeckIds)
+			submitReview({
+				cardId: currentCardId,
+				rating,
+				deckIdOrIds: targetDeckIds,
+			})
 				.then((result) => {
 					if (!result.success) {
 						console.error('Background review submission failed', result.error);

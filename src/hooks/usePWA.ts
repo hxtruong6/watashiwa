@@ -26,7 +26,6 @@ export function usePWA() {
 		const isStandaloneMode =
 			window.matchMedia('(display-mode: standalone)').matches || nav.standalone === true;
 
-		// eslint-disable-next-line
 		setIsStandalone(isStandaloneMode);
 
 		// Handle beforeinstallprompt (Android/Desktop)

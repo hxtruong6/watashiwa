@@ -7,7 +7,7 @@ import { useLocale } from 'next-intl';
 export default function LanguageSelector() {
 	const locale = useLocale();
 
-	const handleChange = async (newLocale: string) => {
+	const handleChange = async (newLocale: 'en' | 'vi' | 'ja') => {
 		// 1. Set Cookie for Next-Intl (Client-side immediate)
 		document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
 
@@ -28,7 +28,7 @@ export default function LanguageSelector() {
 
 	return (
 		<Select
-			value={locale}
+			value={locale as any}
 			onChange={handleChange}
 			variant="borderless"
 			title={locale === 'vi' ? 'Tiếng Việt' : 'English'}
