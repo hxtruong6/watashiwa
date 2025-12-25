@@ -2,7 +2,9 @@
 
 import NotificationManager from '@/components/PWA/NotificationManager';
 import ImageUploader from '@/components/Shared/ImageUploader';
-import { updateUserAvatar, updateUserSettings } from '@/modules/user/user.actions';
+import LanguageSelector from '@/modules/user/components/LanguageSelector';
+import { useUserGoals } from '@/modules/user/hooks/useUserGoals';
+import { updateUserAvatar } from '@/modules/user/user.actions';
 import { GlobalOutlined, RocketOutlined, SettingOutlined, UserOutlined } from '@ant-design/icons';
 import {
 	Button,
@@ -45,13 +47,13 @@ export default function SettingsModal({ open, onCancel, user }: SettingsModalPro
 		try {
 			const res = await updateUserAvatar(url);
 			if (res.success) {
-				message.success(tCommon('saveSuccess') || 'Avatar updated successfully');
+				message.success(tCommon('saveSuccess'));
 			} else {
-				message.error(tCommon('saveError') || 'Failed to update avatar');
+				message.error(tCommon('saveError'));
 			}
 		} catch (error) {
 			console.error(error);
-			message.error(tCommon('error') || 'Error updating avatar');
+			message.error(tCommon('error'));
 		} finally {
 			setLoading(false);
 		}
@@ -71,20 +73,27 @@ export default function SettingsModal({ open, onCancel, user }: SettingsModalPro
 					}}
 				>
 					<Typography.Title level={5} style={{ marginTop: 0, marginBottom: 16 }}>
-						{t('appearance') || 'Appearance'}
+						{t('appearance')}
 					</Typography.Title>
 					<Flex justify="space-between" align="center">
-						<Text>{t('theme') || 'Theme'}</Text>
+						<Text>{t('theme')}</Text>
 						<Select
 							value={theme}
 							onChange={(value) => setTheme(value)}
 							options={[
-								{ value: 'light', label: t('light') || 'Light' },
-								{ value: 'dark', label: t('dark') || 'Dark' },
-								{ value: 'system', label: t('system') || 'System' },
+								{ value: 'light', label: t('light') },
+								{ value: 'dark', label: t('dark') },
+								{ value: 'system', label: t('system') },
 							]}
 							style={{ width: 120 }}
 						/>
+					</Flex>
+
+					<Divider style={{ margin: '16px 0' }} />
+
+					<Flex justify="space-between" align="center">
+						<Text>{tCommon('language') || 'Language'}</Text>
+						<LanguageSelector />
 					</Flex>
 				</div>
 
@@ -97,10 +106,10 @@ export default function SettingsModal({ open, onCancel, user }: SettingsModalPro
 					}}
 				>
 					<Typography.Title level={5} style={{ marginTop: 0, marginBottom: 16 }}>
-						{t('notifications') || 'Notifications'}
+						{t('notifications')}
 					</Typography.Title>
 					<Flex justify="space-between" align="center">
-						<Text>Reminders</Text>
+						<Text>{t('reminders')}</Text>
 						<NotificationManager />
 					</Flex>
 				</div>
@@ -110,6 +119,7 @@ export default function SettingsModal({ open, onCancel, user }: SettingsModalPro
 
 	const GoalsTab = () => {
 		const [form] = Form.useForm();
+		const { updateGoals, loading } = useUserGoals();
 
 		// Initialize form when component mounts
 		React.useEffect(() => {
@@ -122,20 +132,8 @@ export default function SettingsModal({ open, onCancel, user }: SettingsModalPro
 		}, [form]);
 
 		const handleSaveSettings = async () => {
-			try {
-				const values = await form.validateFields();
-				setLoading(true);
-				const result = await updateUserSettings(values);
-				if (result.success) {
-					message.success(tCommon('saveSuccess'));
-				} else {
-					message.error(result.error || tCommon('saveError'));
-				}
-			} catch (error) {
-				console.error('Save failed:', error);
-			} finally {
-				setLoading(false);
-			}
+			const values = await form.validateFields();
+			await updateGoals(values);
 		};
 
 		return (
@@ -150,12 +148,12 @@ export default function SettingsModal({ open, onCancel, user }: SettingsModalPro
 						}}
 					>
 						<Typography.Title level={5} style={{ marginTop: 0, marginBottom: 12 }}>
-							{t('studyGoals') || 'Study Goals'}
+							{t('studyGoals')}
 						</Typography.Title>
 						<Flex gap="middle">
 							<Form.Item
 								name="limitNewCards"
-								label={t('limitNewCards') || 'New Cards / Day'}
+								label={t('limitNewCards')}
 								style={{ flex: 1, marginBottom: 0 }}
 								tooltip={t('limitNewCardsTooltip')}
 							>
@@ -163,7 +161,7 @@ export default function SettingsModal({ open, onCancel, user }: SettingsModalPro
 							</Form.Item>
 							<Form.Item
 								name="limitReviews"
-								label={t('limitReviews') || 'Reviews / Day'}
+								label={t('limitReviews')}
 								style={{ flex: 1, marginBottom: 0 }}
 								tooltip={t('limitReviewsTooltip')}
 							>
@@ -172,7 +170,7 @@ export default function SettingsModal({ open, onCancel, user }: SettingsModalPro
 						</Flex>
 					</div>
 					<Button type="primary" htmlType="submit" loading={loading} block>
-						{tCommon('save') || 'Save Changes'}
+						{tCommon('save')}
 					</Button>
 				</Flex>
 			</Form>
@@ -190,16 +188,16 @@ export default function SettingsModal({ open, onCancel, user }: SettingsModalPro
 					height={100}
 					width={100}
 				/>
-				<Text type="secondary">{t('uploadAvatar') || 'Click to upload new avatar'}</Text>
+				<Text type="secondary">{t('uploadAvatar')}</Text>
 			</Flex>
 
 			<Divider style={{ margin: 0 }} />
 
 			<Form layout="vertical" style={{ width: '100%' }}>
-				<Form.Item label={tCommon('email') || 'Email'}>
+				<Form.Item label={tCommon('email')}>
 					<Input value={user?.email} disabled style={{ color: token.colorText }} />
 				</Form.Item>
-				<Form.Item label={tCommon('name') || 'Name'}>
+				<Form.Item label={tCommon('name')}>
 					<Input
 						value={user?.user_metadata?.full_name || user?.name}
 						disabled
@@ -215,7 +213,7 @@ export default function SettingsModal({ open, onCancel, user }: SettingsModalPro
 			key: 'general',
 			label: (
 				<span>
-					<GlobalOutlined /> {t('general') || 'General'}
+					<GlobalOutlined /> {t('general')}
 				</span>
 			),
 			children: <GeneralTab />,
@@ -224,7 +222,7 @@ export default function SettingsModal({ open, onCancel, user }: SettingsModalPro
 			key: 'profile',
 			label: (
 				<span>
-					<UserOutlined /> {t('profile') || 'Profile'}
+					<UserOutlined /> {t('profile')}
 				</span>
 			),
 			children: renderProfileTab(),
@@ -233,7 +231,7 @@ export default function SettingsModal({ open, onCancel, user }: SettingsModalPro
 			key: 'goals',
 			label: (
 				<span>
-					<RocketOutlined /> {t('goals') || 'Goals'}
+					<RocketOutlined /> {t('goals')}
 				</span>
 			),
 			children: <GoalsTab />,
@@ -245,7 +243,7 @@ export default function SettingsModal({ open, onCancel, user }: SettingsModalPro
 			title={
 				<span>
 					<SettingOutlined style={{ marginRight: 8 }} />
-					{t('settings') || 'Settings'}
+					{t('settings')}
 				</span>
 			}
 			open={open}

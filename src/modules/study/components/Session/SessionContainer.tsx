@@ -6,18 +6,22 @@ import { Button, ConfigProvider, Layout, Progress, theme } from 'antd';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 interface SessionContainerProps {
 	children: React.ReactNode;
 	progress?: number; // 0-100
 	onExit?: () => void;
+	actions?: React.ReactNode;
+	headerVisible?: boolean;
 }
 
 export const SessionContainer: React.FC<SessionContainerProps> = ({
 	children,
 	progress = 0,
 	onExit,
+	actions,
+	headerVisible = true,
 }) => {
 	const router = useRouter();
 	const { token } = theme.useToken();
@@ -26,7 +30,7 @@ export const SessionContainer: React.FC<SessionContainerProps> = ({
 		if (onExit) {
 			onExit();
 		} else {
-			router.back(); // Default behavior
+			router.back();
 		}
 	};
 
@@ -36,40 +40,80 @@ export const SessionContainer: React.FC<SessionContainerProps> = ({
 				style={{
 					minHeight: '100vh',
 					background: token.colorBgBase,
-					overflow: 'hidden', // Prevent scroll in session
+					overflow: 'hidden',
+					position: 'relative',
 				}}
 			>
-				{/* Minimal Header */}
-				<Header
+				{/* Zen Progress Bar (Top, 2px) */}
+				<div
 					style={{
-						background: 'transparent',
-						padding: '0 16px',
-						height: '64px',
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'space-between',
-						zIndex: 100, // Stay above cards
+						position: 'fixed',
+						top: 0,
+						left: 0,
+						width: '100%',
+						zIndex: 1000,
+						pointerEvents: 'none',
+						opacity: headerVisible ? 1 : 0,
+						transition: 'opacity 0.3s ease',
 					}}
 				>
-					{/* Progress Bar (Zen Style - Minimal) */}
-					<div style={{ flex: 1, marginRight: '24px', maxWidth: '300px' }}>
-						<Progress
-							percent={progress}
-							showInfo={false}
-							size="small"
-							strokeColor={token.colorSuccess}
-							railColor="rgba(0,0,0,0.05)"
+					<Progress
+						percent={progress}
+						showInfo={false}
+						size="small"
+						strokeColor={token.colorPrimary}
+						trailColor="transparent"
+						strokeWidth={2}
+						style={{ lineHeight: 0, margin: 0, borderRadius: 0 }}
+					/>
+				</div>
+
+				{/* Minimal Controls Layer */}
+				<div
+					style={{
+						position: 'absolute',
+						top: 0,
+						left: 0,
+						width: '100%',
+						padding: '16px',
+						display: 'flex',
+						justifyContent: 'space-between',
+						alignItems: 'flex-start',
+						zIndex: 100,
+						pointerEvents: 'none',
+						opacity: headerVisible ? 1 : 0,
+						transition: 'opacity 0.3s ease',
+					}}
+				>
+					{/* Back / Exit Button */}
+					<div style={{ pointerEvents: 'auto' }}>
+						<Button
+							type="text"
+							shape="circle"
+							icon={<CloseOutlined style={{ fontSize: '20px', color: token.colorTextSecondary }} />}
+							onClick={handleExit}
+							aria-label="Exit Session"
+							size="large"
+							style={{
+								backdropFilter: 'blur(4px)',
+								backgroundColor: 'rgba(255, 255, 255, 0.05)',
+							}}
 						/>
 					</div>
 
-					{/* Exit Button */}
-					<Button
-						type="text"
-						icon={<CloseOutlined style={{ fontSize: '20px', color: token.colorTextSecondary }} />}
-						onClick={handleExit}
-						aria-label="Exit Session"
-					/>
-				</Header>
+					{/* Custom Actions (Settings, etc) */}
+					{actions && (
+						<div
+							style={{
+								pointerEvents: 'auto',
+								display: 'flex',
+								gap: 8,
+							}}
+						>
+							{actions}
+						</div>
+					)}
+				</div>
 
 				{/* Main Content (The "Stage") */}
 				<Content
@@ -79,6 +123,9 @@ export const SessionContainer: React.FC<SessionContainerProps> = ({
 						alignItems: 'center',
 						position: 'relative',
 						padding: '16px',
+						paddingTop: '64px',
+						height: '100vh',
+						overflowY: 'auto',
 					}}
 				>
 					{children}

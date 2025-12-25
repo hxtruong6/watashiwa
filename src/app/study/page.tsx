@@ -1,10 +1,8 @@
 import { getUser } from '@/modules/auth/auth.actions';
-import StudySession from '@/modules/study/components/StudySession';
-import { getLastStudySession } from '@/modules/study/study.actions';
+import SessionController from '@/modules/study/components/Session/SessionController';
+import StudyDashboard from '@/modules/study/components/StudyDashboard';
 import { redirect } from 'next/navigation';
-import React from 'react';
 
-// Mark as Server Component (default in App Router, but good to be explicit by NOT having 'use client')
 export default async function StudyPage({
 	searchParams,
 }: {
@@ -17,15 +15,18 @@ export default async function StudyPage({
 	}
 
 	const resolvedParams = await searchParams;
-	const hasDeckOrCourse = resolvedParams.deckId || resolvedParams.courseId;
+	const { deckId, courseId } = resolvedParams;
 
-	// If no specific study target is provided, try to resume the last session
-	if (!hasDeckOrCourse) {
-		const lastSession = await getLastStudySession();
-		if (lastSession?.deckId) {
-			redirect(`/study?deckId=${lastSession.deckId}`);
-		}
+	// If deckId or courseId is present, start the session
+	if (deckId || courseId) {
+		return (
+			<SessionController
+				deckId={deckId as string | undefined}
+				courseId={courseId as string | undefined}
+			/>
+		);
 	}
 
-	return <StudySession />;
+	// Otherwise show the dashboard
+	return <StudyDashboard />;
 }

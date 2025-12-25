@@ -2,6 +2,8 @@
 
 // TODO: Move VoiceSettings too
 import VoiceSettings from '@/components/Audio/VoiceSettings';
+import { useStudyPreferences } from '@/modules/study/store/useStudyPreferences';
+import { useUserGoals } from '@/modules/user/hooks/useUserGoals';
 import { updateUserSettings } from '@/modules/user/user.actions';
 import {
 	FontSizeOutlined,
@@ -34,32 +36,27 @@ const { Text } = Typography;
 const { useToken } = theme;
 
 interface StudySettingsProps {
-	showFurigana: boolean;
-	setShowFurigana: (show: boolean) => void;
-	showRomaji: boolean;
-	setShowRomaji: (show: boolean) => void;
-	autoPlayAudio: 'off' | 'question' | 'answer';
-	setAutoPlayAudio: (val: 'off' | 'question' | 'answer') => void;
 	// New props for persistence
 	userSettings: Partial<User> | null;
 	onSettingsChange: () => void;
 }
 
-export default function StudySettings({
-	showFurigana,
-	setShowFurigana,
-	showRomaji,
-	setShowRomaji,
-	autoPlayAudio,
-	setAutoPlayAudio,
-	userSettings,
-	onSettingsChange,
-}: StudySettingsProps) {
+export default function StudySettings({ userSettings, onSettingsChange }: StudySettingsProps) {
 	const t = useTranslations('Settings');
 	const tCommon = useTranslations('Common');
 	const { token } = useToken();
 	const [form] = Form.useForm();
-	const [loading, setLoading] = useState(false);
+	const { updateGoals, loading } = useUserGoals();
+
+	// Store
+	const {
+		showFurigana,
+		setShowFurigana,
+		showRomaji,
+		setShowRomaji,
+		autoPlayAudio,
+		setAutoPlayAudio,
+	} = useStudyPreferences();
 
 	const [localTimeZone, setLocalTimeZone] = useState('UTC');
 
@@ -83,21 +80,9 @@ export default function StudySettings({
 	}, [userSettings, form]);
 
 	const handleSaveSettings = async () => {
-		try {
-			const values = await form.validateFields();
-			setLoading(true);
-			const result = await updateUserSettings(values);
-			if (result.success) {
-				message.success(tCommon('saveSuccess'));
-				if (onSettingsChange) onSettingsChange();
-			} else {
-				message.error(result.error || tCommon('saveError'));
-			}
-		} catch (error) {
-			console.error('Save failed:', error);
-		} finally {
-			setLoading(false);
-		}
+		const values = await form.validateFields();
+		const success = await updateGoals(values);
+		if (success && onSettingsChange) onSettingsChange();
 	};
 
 	const guideItems = [

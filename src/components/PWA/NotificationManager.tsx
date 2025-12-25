@@ -9,11 +9,11 @@ export default function NotificationManager() {
 	const { permission, isSubscribed, subscribe, loading } = usePushNotifications();
 	const { token } = theme.useToken();
 	// We can use translations here if we had them, defaulting to English for now
-	// const t = useTranslations('Notifications');
+	const t = useTranslations('Notifications');
 
 	if (permission === 'denied') {
 		return (
-			<Tooltip title="Notifications blocked. Enable in browser settings.">
+			<Tooltip title={t('blockedTooltip')}>
 				<Button
 					type="text"
 					icon={<BellOutlined style={{ color: token.colorTextDisabled }} />}
@@ -25,14 +25,14 @@ export default function NotificationManager() {
 
 	if (isSubscribed) {
 		return (
-			<Tooltip title="Notifications Active">
+			<Tooltip title={t('activeTooltip')}>
 				<Button type="text" icon={<BellFilled style={{ color: token.colorWarning }} />} />
 			</Tooltip>
 		);
 	}
 
 	return (
-		<Tooltip title="Enable Reminders">
+		<Tooltip title={t('enableTooltip')}>
 			<Button type="text" loading={loading} icon={<BellOutlined />} onClick={subscribe} />
 		</Tooltip>
 	);

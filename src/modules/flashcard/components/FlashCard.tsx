@@ -32,7 +32,7 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 		const [imageError, setImageError] = useState(false);
 
 		// Responsive padding: smaller on mobile, larger on desktop
-		const topPadding = screens.md ? 40 : screens.sm ? 24 : 16;
+		const topPadding = screens.md ? 40 : screens.sm ? 24 : 20; // Slightly increased for mobile breathability
 
 		// Audio Hook
 		const {
@@ -63,10 +63,37 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 
 		const frontText = isVocab ? vocabData.kanji || vocabData.wordSurface : kanjiData.kanji;
 		const activeImageUrl = isVocab ? vocabData.imageUrl : kanjiData.imageUrl;
-		const reading = vocabData.reading || vocabData.readingKana || '';
+
 		const strokes = kanjiData.strokes;
 		const wordParts = vocabData.wordParts;
 		const romaji = vocabData.romaji;
+
+		// Adapter correction:
+		// StandardFace expects `back.details` to be a Vocabulary object.
+		// We need to map the flat properties from `vocabData` or `kanjiData` into this structure.
+
+		const rawMeaning = isVocab ? vocabData.meanings || vocabData.meaning : kanjiData.meaning;
+		let meaningsAdapter: { en: string[]; vi: string[] } = { en: [], vi: [] };
+
+		// Robust Meaning Extraction
+		if (typeof rawMeaning === 'string') {
+			// If string, try to parse JSON if it looks like it, otherwise default to EN
+			try {
+				const parsed = JSON.parse(rawMeaning);
+				meaningsAdapter = parsed;
+			} catch {
+				meaningsAdapter = { en: [rawMeaning], vi: [] };
+			}
+		} else if (rawMeaning && typeof rawMeaning === 'object') {
+			if (!Array.isArray(rawMeaning)) {
+				meaningsAdapter = rawMeaning;
+			}
+		}
+
+		// Robust Reading Extraction (Prisma V2 uses wordReading)
+		const reading = vocabData.wordReading || vocabData.reading || vocabData.readingKana || '';
+
+		const examplesAdapter = (isVocab ? vocabData.examples : kanjiData.examples) || [];
 
 		// Construct StandardCard object (Adapter)
 		const standardCard: StandardCard = {
@@ -78,51 +105,21 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 			front: {
 				hero: frontText,
 				reading: reading,
-				audio: audioUrl || '',
+				// If no file URL, but we have text, we signal 'tts' so the button appears.
+				// The hook knows to use speak() when audioUrl is empty.
+				audio: audioUrl || (frontText ? 'tts' : ''),
 			},
 			back: {
 				details: {
 					...vocabData,
-					han_viet_extracted: vocabData.hanViet || '', // Map legacy hanViet to new field
-				},
-				// Fallback props for StandardFace directly reading from back
-				// However, StandardFace reads from `back.details` AND `back.han_viet`?
-				// Let's verify StandardFace implementation:
-				// It uses `back.han_viet` and `back.meaning`.
-				// Check where these come from in StandardCard type.
-				// In StandardCard, `back` has `details: Vocabulary`.
-				// And Vocabulary has `meanings`, `han_viet`, etc.
-				// But wait, StandardFace accesses `back.han_viet` directly?
-				// Let's re-read StandardFace line 122: `{back.han_viet && ...}`.
-				// StandardCard definition in types.ts:
-				// back: { details: Vocabulary; }
-				// If StandardFace uses `back.han_viet`, then StandardFace is assuming `back` IS the vocabulary or has flattened fields?
-				// Let's check `StandardFace.tsx` again.
-				// Line 33: `const { front, back } = card;`
-				// Line 122: `back.han_viet`.
-				// If `back` is `{ details: Vocabulary }`, then `back.han_viet` is undefined.
-				// THIS MEANS StandardFace MIGHT BE BROKEN OR TYPE DEFINITION IS WRONG AND I MISREAD IT.
-				// I will construct `back` as an object containing the properties `StandardFace` expects.
-				// Since I am in JS/TS, I can pass an object that satisfies the runtime usage of `StandardFace`.
-			} as any,
+					hanViet: isVocab ? vocabData.hanViet : kanjiData.hanViet,
+					meanings: meaningsAdapter,
+					// Fallback for missing fields in partial data
+					etymology: vocabData.etymology || {},
+					examples: examplesAdapter,
+				} as any,
+			},
 		};
-		// Adapter correction: StandardFace expects `back` to have `han_viet`, `meaning` etc. directly?
-		// Re-reading StandardFace:
-		// `interface StandardFaceProps { card: StandardCard; ... }`
-		// `const { front, back } = card;`
-		// If StandardFace uses `back.han_viet`, then `StandardCard["back"]` must have `han_viet`.
-		// BUT `types.ts` said `back: { details: Vocabulary }`.
-		// Checking `StandardFace.tsx` confirms it uses `back.han_viet`.
-		// So `types.ts` might be out of sync with `StandardFace.tsx` OR `StandardFace.tsx` expects a flattened object.
-		// For safety, I will pass a flattened object to `back`.
-
-		const adaptedBack = {
-			han_viet: isVocab ? vocabData.hanViet : kanjiData.hanViet,
-			meaning: isVocab ? vocabData.meaning : kanjiData.meaning,
-			usage_example: isVocab ? vocabData.exampleSentence : kanjiData.examples?.[0]?.sentence,
-			// Add other fields if needed
-		};
-		standardCard.back = adaptedBack as any;
 
 		return (
 			<div
@@ -157,9 +154,11 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 				<AntCard
 					style={{
 						width: '100%',
-						minHeight: 400,
-						boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
-						borderRadius: 16,
+						height: '65vh', // Viewport-relative height (Zen Mode)
+						maxHeight: 600,
+						minHeight: 320,
+						boxShadow: '0 8px 32px -4px rgba(0,0,0,0.08)', // Soft, deep shadow
+						borderRadius: 24, // Rounder corners (Storyteller)
 						overflow: 'hidden',
 						border: 'none',
 						display: 'flex',
@@ -186,8 +185,19 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 						},
 					}}
 				>
-					{/* Front content in fixed position */}
-					<div style={{ position: 'absolute', top: topPadding, left: 0, right: 0, zIndex: 2 }}>
+					{/* Front content: Absolute positioning to overlay back content location, but centered vertically */}
+					<div
+						style={{
+							position: 'absolute',
+							top: topPadding, // Start after padding
+							left: 0,
+							right: 0,
+							bottom: 0, // Stretch to bottom
+							zIndex: 2,
+							display: 'flex', // Ensure flex context for child
+							flexDirection: 'column',
+						}}
+					>
 						<StandardFace
 							side="front"
 							card={standardCard}

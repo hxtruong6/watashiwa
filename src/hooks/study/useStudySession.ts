@@ -200,9 +200,8 @@ export function useStudySession({ courseId, deckId, mode, userSettings }: UseStu
 
 				// Background sync the final review
 				submitReview({
-					cardId: currentCardId,
-					rating,
-					deckIdOrIds: targetDeckIds,
+					vocabId: currentCardId,
+					rating: rating as any,
 				}).catch((err) => console.error(err));
 				updateStats(); // Update stats one last time
 				return;
@@ -232,9 +231,8 @@ export function useStudySession({ courseId, deckId, mode, userSettings }: UseStu
 
 			// 4. Background Sync
 			submitReview({
-				cardId: currentCardId,
-				rating,
-				deckIdOrIds: targetDeckIds,
+				vocabId: currentCardId,
+				rating: rating as any,
 			})
 				.then((result) => {
 					if (!result.success) {

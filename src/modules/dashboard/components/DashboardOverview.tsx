@@ -14,7 +14,7 @@ import {
 	TrendingTips,
 	WeeklyChart,
 } from '@/components/dashboard';
-import StudySettings from '@/modules/study/components/StudySettings';
+import StudySettings from '@/modules/study/components/Session/StudySettings';
 import type { User } from '@prisma/client';
 import { Divider, Drawer, theme } from 'antd';
 import confetti from 'canvas-confetti';
@@ -239,16 +239,9 @@ export default function DashboardOverview({
 				size="default"
 			>
 				<StudySettings
-					showFurigana={true} // Default or fetched if global state
-					setShowFurigana={() => {}} // Placeholder if not strictly needed here or create local state if user wants preview
-					showRomaji={false}
-					setShowRomaji={() => {}}
-					autoPlayAudio="answer"
-					setAutoPlayAudio={() => {}}
 					userSettings={userSettings || null}
 					onSettingsChange={() => {
 						router.refresh();
-						// Optional: keep open or close
 					}}
 				/>
 			</Drawer>

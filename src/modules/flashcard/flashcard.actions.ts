@@ -11,6 +11,7 @@ import { fsrs, getSRSStage, mapRatingToFSRS } from './utils/srs-algorithm';
 // Input Validation Schemas
 const FetchSessionSchema = z.object({
 	deckId: z.string().optional(),
+	courseId: z.string().optional(),
 });
 
 /**
@@ -18,20 +19,38 @@ const FetchSessionSchema = z.object({
  * 1. Get Due Cards (Review)
  * 2. Get New Cards (Learn)
  */
-export async function fetchSessionAction(input: { deckId?: string } = {}) {
+export async function fetchSessionAction(input: { deckId?: string; courseId?: string } = {}) {
 	return executeSafeAction(
 		FetchSessionSchema,
 		input,
-		async ({ deckId }, { userId }) => {
-			if (!userId) return []; // Should be caught by requireAuth but safe check
+		async ({ deckId, courseId }, { userId }) => {
+			if (!userId) return [];
 
-			const limit = 10; // Fixed session limit for now
+			const limit = 10;
+
+			// Resolve Deck IDs
+			let targetDeckIds: string[] | undefined = undefined;
+
+			if (deckId) {
+				targetDeckIds = [deckId];
+			} else if (courseId) {
+				const courseDecks = await prisma.courseDeck.findMany({
+					where: { courseId },
+					select: { deckId: true },
+				});
+				targetDeckIds = courseDecks.map((cd) => cd.deckId);
+			}
 
 			// 1. Fetch Due Reviews
 			const dueReviews = await prisma.userReview.findMany({
 				where: {
 					userId,
 					nextReviewAt: { lte: new Date() },
+					vocab: targetDeckIds
+						? {
+								deckId: { in: targetDeckIds },
+							}
+						: undefined,
 				},
 				include: { vocab: true },
 				take: limit,
@@ -44,7 +63,7 @@ export async function fetchSessionAction(input: { deckId?: string } = {}) {
 				const needed = limit - dueReviews.length;
 				newCards = await prisma.vocabulary.findMany({
 					where: {
-						deckId: deckId,
+						deckId: targetDeckIds ? { in: targetDeckIds } : undefined,
 						userReviews: {
 							none: { userId },
 						},

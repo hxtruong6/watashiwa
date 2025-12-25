@@ -1,55 +1,39 @@
 'use client';
 
 import ShareModal from '@/modules/deck/components/ShareModal';
+import { useUIStore } from '@/modules/ui/store/useUIStore';
 import LanguageSelector from '@/modules/user/components/LanguageSelector';
 import ThemeToggle from '@/modules/user/components/ThemeToggle';
 import { createClient } from '@/utils/supabase/client';
 import {
-	BarChartOutlined,
-	BookOutlined,
 	BugOutlined,
-	FolderOpenOutlined,
-	HomeOutlined,
+	FireFilled,
 	LogoutOutlined,
-	MenuOutlined,
-	ReadOutlined,
 	SettingOutlined,
 	ShareAltOutlined,
 	UserOutlined,
 } from '@ant-design/icons';
 import * as Sentry from '@sentry/nextjs';
-import {
-	Avatar,
-	Button,
-	Dropdown,
-	Flex,
-	Grid,
-	Layout,
-	Menu,
-	Space,
-	Tag,
-	Tooltip,
-	Typography,
-	theme,
-} from 'antd';
+import { Avatar, Button, Dropdown, Flex, Grid, Space, Tooltip, Typography, theme } from 'antd';
 import type { MenuProps } from 'antd';
+import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import NavDrawer from './navbar/NavDrawer';
+import { NAV_ITEMS } from './navbar/NavConfig';
 import NotificationPopover from './navbar/NotificationPopover';
 import SettingsModal from './navbar/SettingsModal';
 
-const { Header } = Layout;
 const { Text } = Typography;
 const { useToken } = theme;
 const { useBreakpoint } = Grid;
 
-// Define types locally or import
+// Motion Components
+const MotionDiv = motion.div;
+
 interface User {
 	id: string;
 	email?: string;
@@ -66,24 +50,24 @@ export default function NavBar({ user }: { user?: User | null }) {
 	const screens = useBreakpoint();
 	const { token } = useToken();
 	const supabase = createClient();
-	const [drawerOpen, setDrawerOpen] = useState(false);
 	const [shareModalOpen, setShareModalOpen] = useState(false);
 	const [settingsModalOpen, setSettingsModalOpen] = useState(false);
 	const [mounted, setMounted] = useState(false);
 
-	const isXs = mounted ? screens.xs : false; // Default to desktop (false) to match server or mobile? Server usually renders desktop first for SEO or mobile first. Standard is usually "false" for breakpoints on server.
+	// Global UI Store Control
+	const isNavBarVisible = useUIStore((state) => state.isNavBarVisible);
+
+	const isXs = mounted ? screens.xs : false;
 
 	useEffect(() => {
 		const timer = setTimeout(() => setMounted(true), 0);
 		return () => clearTimeout(timer);
 	}, []);
+
 	// Check URL for settings trigger
 	useEffect(() => {
 		if (searchParams.get('settings') === 'true') {
-			// Wrap in setTimeout to avoid synchronous setState warning during effect
 			setTimeout(() => setSettingsModalOpen(true), 0);
-
-			// Optional: Remove param from URL
 			const params = new URLSearchParams(searchParams.toString());
 			params.delete('settings');
 			router.replace(`${pathname}?${params.toString()}`, { scroll: false });
@@ -100,98 +84,40 @@ export default function NavBar({ user }: { user?: User | null }) {
 			form.appendToDom();
 			form.open();
 		}
-		// Close menus if needed
-		setDrawerOpen(false);
 	};
 
 	const handleLogout = async () => {
 		await supabase.auth.signOut();
 		router.push('/login');
 		router.refresh();
-		setDrawerOpen(false);
 	};
 
-	const showDrawer = () => setDrawerOpen(true);
-	const closeDrawer = () => setDrawerOpen(false);
+	// // Smart Scroll Logic
+	// useMotionValueEvent(scrollY, 'change', (latest) => {
+	// 	const previous = lastScrollY;
+	// 	if (latest > previous && latest > 150) {
+	// 		setIsHidden(true); // Scroll Down -> Hide
+	// 	} else {
+	// 		setIsHidden(false); // Scroll Up -> Show
+	// 	}
+	// 	setLastScrollY(latest);
+	// });
 
-	// Don't show NavBar on login or study pages (immersive mode), or Admin Panel
+	// 1. Route-based hiding (Hard Rules)
 	if (
 		pathname === '/login' ||
-		pathname === '/study' ||
+		pathname?.startsWith('/study') ||
 		pathname === '/exercises' ||
 		pathname?.startsWith('/admin')
 	) {
 		return null;
 	}
 
-	const menuItems: MenuProps['items'] = [
-		{
-			key: '/?app=true',
-			icon: <HomeOutlined />,
-			label: (
-				<Link href="/" onClick={closeDrawer}>
-					{t('dashboard')}
-				</Link>
-			),
-		},
-		{
-			key: '/decks',
-			icon: <BookOutlined />,
-			label: (
-				<Link href="/decks" onClick={closeDrawer}>
-					{t('library')}
-				</Link>
-			),
-		},
-		{
-			key: '/dashboard/decks',
-			icon: <FolderOpenOutlined />,
-			label: (
-				<Link href="/dashboard/decks" onClick={closeDrawer}>
-					{t('myDecks')}
-				</Link>
-			),
-		},
-		{
-			key: '/dashboard/courses',
-			icon: <ReadOutlined />,
-			label: (
-				<Link href="/dashboard/courses" onClick={closeDrawer}>
-					{t('courses')}
-				</Link>
-			),
-		},
-		{
-			key: 'analytics',
-			icon: <BarChartOutlined style={{ color: '#aaa' }} />,
-			label: (
-				<Tooltip title={tCommon('soon')}>
-					<span style={{ color: '#aaa', cursor: 'not-allowed' }}>{t('analytics')}</span>
-					<Tag color="cyan" style={{ marginLeft: 0, padding: 2, fontSize: 8, border: 'none' }}>
-						Soon
-					</Tag>
-				</Tooltip>
-			),
-			disabled: true,
-		},
-		// {
-		// 	key: 'community',
-		// 	icon: <CommentOutlined style={{ color: '#aaa' }} />,
-		// 	label: (
-		// 		<Tooltip title={tCommon('soon')}>
-		// 			<span style={{ color: '#aaa', cursor: 'not-allowed' }}>{t('community')}</span>
-		// 			<Tag color="cyan" style={{ marginLeft: 8, fontSize: 10, border: 'none' }}>
-		// 				Soon
-		// 			</Tag>
-		// 		</Tooltip>
-		// 		// <Link href="/community" onClick={closeDrawer}>
-		// 		// 	{t('community')}
-		// 		// </Link>
-		// 	),
-		// },
-	];
+	// 2. Variable hiding (Store Control) - e.g. Focus Mode
+	if (!isNavBarVisible) {
+		return null;
+	}
 
-	// User Dropdown Menu
 	const userMenuProps: MenuProps = {
 		items: [
 			{
@@ -199,7 +125,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 				label: (
 					<Flex vertical gap={2} style={{ padding: '4px 0' }}>
 						<Text strong style={{ fontSize: 13 }}>
-							{user?.user_metadata?.full_name || 'User'}
+							{t('greeting', { name: user?.user_metadata?.full_name || t('guest') })}
 						</Text>
 						<Text type="secondary" style={{ fontSize: 11 }}>
 							{user?.email}
@@ -209,21 +135,18 @@ export default function NavBar({ user }: { user?: User | null }) {
 				disabled: true,
 				style: { cursor: 'default', opacity: 1 },
 			},
+			{ type: 'divider' },
 			{
 				key: 'settings',
 				icon: <SettingOutlined />,
 				label: t('settings'),
 				onClick: () => setSettingsModalOpen(true),
 			},
-
 			{
 				key: 'share',
 				icon: <ShareAltOutlined />,
 				label: t('share'),
-				onClick: () => {
-					setShareModalOpen(true);
-					// setDrawerOpen(false); // Optional: keep drawer open?
-				},
+				onClick: () => setShareModalOpen(true),
 			},
 			{
 				key: 'report_bug',
@@ -243,212 +166,323 @@ export default function NavBar({ user }: { user?: User | null }) {
 
 	const isPublic = !user;
 
-	return (
-		<Header
+	// --- RENDER HELPERS ---
+
+	const GlassDock = ({
+		children,
+		style,
+	}: {
+		children: React.ReactNode;
+		style?: React.CSSProperties;
+	}) => (
+		<div
 			style={{
+				background: `color-mix(in srgb, ${token.colorBgContainer} 80%, transparent)`,
+				backdropFilter: 'blur(16px)',
+				borderRadius: '24px',
+				border: `1px solid ${token.colorBorderSecondary}`,
+				boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
+				padding: '8px 16px',
 				display: 'flex',
-				justifyContent: 'center', // Center content
-				background: `color-mix(in srgb, ${token.colorBgContainer} 55%, transparent)`, // Semi-transparent for blur
-				backdropFilter: 'blur(8px)',
-				padding: 0, // Reset padding, will use container
-				boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.03)',
-				position: 'sticky',
-				top: 0,
-				zIndex: 1000,
-				height: 64,
-				borderBottom: `1px solid ${token.colorBorderSecondary}`,
+				alignItems: 'center',
+				gap: '16px',
+				transition: 'transform 0.3s ease',
+				...style,
 			}}
 		>
-			<div
-				style={{
-					width: '100%',
-					maxWidth: 1280,
-					display: 'flex',
-					alignItems: 'center',
-					justifyContent: 'space-between',
-					padding: `${screens.xs ? '0 16px' : '0 24px'}`,
-				}}
-			>
-				{/* Logo Area */}
-				<Flex
-					align="center"
-					gap="small"
-					style={{ cursor: 'pointer' }}
-					onClick={() => router.push('/')}
+			{children}
+		</div>
+	);
+
+	const NavDockItem = ({ item, isActive }: { item: any; isActive: boolean }) => {
+		const [isHovered, setIsHovered] = useState(false);
+
+		return (
+			<Link href={item.path}>
+				<MotionDiv
+					onHoverStart={() => setIsHovered(true)}
+					onHoverEnd={() => setIsHovered(false)}
+					animate={{ scale: isHovered ? 1.1 : 1 }}
+					transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+					style={{
+						position: 'relative',
+						padding: '8px 16px',
+						cursor: 'pointer',
+						display: 'flex',
+						flexDirection: 'column',
+						alignItems: 'center',
+						gap: 4,
+					}}
 				>
-					<Image
-						src="/assets/w_logo.png"
-						alt="WatashiWa Logo"
-						width={isXs ? 40 : 50}
-						height={isXs ? 40 : 50}
-						priority
-					/>
-					<Text
-						strong
+					<div
 						style={{
-							margin: 0,
-							color: token.colorTextHeading,
 							fontSize: 20,
-							letterSpacing: '-0.5px',
-							fontFamily: 'var(--font-geist-sans, sans-serif)', // Assuming setup
+							color: isActive ? token.colorPrimary : token.colorTextSecondary,
+							transition: 'color 0.3s',
 						}}
 					>
-						WatashiWa
-					</Text>
-				</Flex>
-
-				{/* Desktop Menu */}
-				<div
-					className="desktop-nav"
-					style={{ flex: 1, justifyContent: 'flex-end', alignItems: 'center', gap: 24 }}
-				>
-					{!isPublic ? (
-						<>
-							<Menu
-								mode="horizontal"
-								selectedKeys={[pathname]}
-								items={menuItems}
-								style={{
-									borderBottom: 'none',
-									background: 'transparent',
-									flex: 1,
-									justifyContent: 'flex-end',
-									fontSize: 15,
-								}}
-								disabledOverflow
-							/>
-
-							<Space
-								size={16}
-								align="center"
-								separator={<div style={{ width: 1, height: 16, background: '#eee' }} />}
-							>
-								<LanguageSelector />
-
-								<NotificationPopover />
-
-								{!screens.xs && <ThemeToggle />}
-
-								{/* Share Button (Desktop) - Enhanced Visibility */}
-								<Tooltip title={t('share')}>
-									<Button
-										type="text"
-										icon={<ShareAltOutlined style={{ fontSize: 18 }} />}
-										onClick={() => setShareModalOpen(true)}
-									>
-										{t('share')}
-									</Button>
-								</Tooltip>
-
-								<Dropdown menu={userMenuProps} trigger={['click']} placement="bottomRight">
-									<Space
-										style={{
-											cursor: 'pointer',
-											padding: '4px 8px',
-											borderRadius: 6,
-											transition: 'background 0.2s',
-										}}
-										className="user-dropdown-trigger"
-									>
-										<Avatar
-											size="small"
-											icon={<UserOutlined />}
-											src={user?.user_metadata?.avatar_url}
-											style={{ backgroundColor: token.colorPrimary }}
-										>
-											{user?.email?.[0]?.toUpperCase()}
-										</Avatar>
-										{/* <DownOutlined style={{ fontSize: 10, color: '#999' }} /> */}
-									</Space>
-								</Dropdown>
-							</Space>
-						</>
-					) : (
-						<Flex gap="middle" align="center">
-							<LanguageSelector />
-							{!screens.xs && <ThemeToggle />}
-
-							<Link href="/login">
-								<Button
-									type="primary"
-									shape="round"
-									style={{
-										background: token.colorPrimary,
-										padding: '0 24px',
-										fontWeight: 600,
-										boxShadow: `0 4px 14px 0 ${token.colorPrimary}40`,
-										border: 'none',
-									}}
-									onMouseEnter={(e) => {
-										e.currentTarget.style.transform = 'translateY(-1px)';
-										e.currentTarget.style.boxShadow = `0 6px 20px 0 ${token.colorPrimary}60`;
-									}}
-									onMouseLeave={(e) => {
-										e.currentTarget.style.transform = 'translateY(0)';
-										e.currentTarget.style.boxShadow = `0 4px 14px 0 ${token.colorPrimary}40`;
-									}}
-								>
-									{t('login')}
-								</Button>
-							</Link>
-						</Flex>
-					)}
-				</div>
-
-				{/* Mobile Trigger */}
-				{!isPublic && (
-					<div className="mobile-trigger">
-						<Flex align="center" gap="small">
-							<NotificationPopover />
-							<Button type="text" icon={<MenuOutlined />} onClick={showDrawer} size="large" />
-						</Flex>
+						{item.icon}
 					</div>
-				)}
-				{/* For public mobile */}
-				{isPublic && (
-					<div className="mobile-trigger">
-						<Flex gap="small" align="center">
-							{/* Hide Theme/Lang on mobile - use Drawer instead */}
-							{!screens.xs && (
+					{!isXs && (
+						<Text
+							style={{
+								fontSize: 12,
+								fontWeight: isActive ? 600 : 400,
+								color: isActive ? token.colorPrimary : token.colorTextSecondary,
+							}}
+						>
+							{t(item.key as any)}
+						</Text>
+					)}
+					{isActive && (
+						<MotionDiv
+							layoutId="activeTab"
+							style={{
+								position: 'absolute',
+								bottom: -4,
+								width: '12px',
+								height: '4px',
+								borderRadius: '2px',
+								backgroundColor: token.colorPrimary,
+							}}
+						/>
+					)}
+				</MotionDiv>
+			</Link>
+		);
+	};
+
+	return (
+		<>
+			{/* 1. SPACER to prevent overlap content */}
+			{!isXs && <div style={{ height: 100, width: '100%' }} />}
+			{isXs && <div style={{ height: 60, width: '100%' }} />}
+
+			{/* DESKTOP TOP DOCK */}
+			{!isXs && (
+				<motion.div
+					initial={{ y: -100, opacity: 0 }}
+					animate={{ y: 0, opacity: 1 }}
+					transition={{ duration: 0.5, ease: 'easeOut' }}
+					style={{
+						position: 'fixed',
+						top: 24,
+						left: 0,
+						right: 0,
+						display: 'flex',
+						justifyContent: 'center',
+						zIndex: 1000,
+						pointerEvents: 'none', // Let clicks pass through outside the dock
+					}}
+				>
+					<div style={{ pointerEvents: 'auto', display: 'flex', gap: 16 }}>
+						{/* LOGO & BRAND */}
+						<GlassDock style={{ padding: '8px 24px' }}>
+							<Link href="/">
+								<Flex align="center" gap="small" style={{ cursor: 'pointer' }}>
+									<Image src="/assets/w_logo.png" alt="Logo" width={32} height={32} />
+									<Text strong style={{ fontSize: 16, letterSpacing: '-0.5px' }}>
+										WatashiWa
+									</Text>
+								</Flex>
+							</Link>
+						</GlassDock>
+
+						{/* MAIN NAV PILL (The "Dock") */}
+						{!isPublic && (
+							<GlassDock style={{ gap: 8 }}>
+								{NAV_ITEMS.map((item) => (
+									<NavDockItem
+										key={item.key}
+										item={item}
+										isActive={
+											item.path === '/'
+												? pathname === '/'
+												: pathname.startsWith(item.path) && item.path !== '/'
+										}
+									/>
+								))}
+							</GlassDock>
+						)}
+
+						{/* ACTIONS PILL */}
+						<GlassDock>
+							{!isPublic ? (
 								<>
-									<ThemeToggle />
-									<LanguageSelector />
+									<Flex align="center" gap={4}>
+										<FireFilled style={{ color: token.colorWarning, fontSize: 16 }} />
+										<Text strong>12</Text>
+									</Flex>
+									{/* Vertical Divider */}
+									<div style={{ width: 1, height: 24, background: token.colorBorderSecondary }} />
+
+									<Space size={8}>
+										{/* Restored Settings Controls */}
+										<LanguageSelector />
+										<ThemeToggle />
+
+										<Tooltip title={t('share')}>
+											<Button
+												type="text"
+												icon={<ShareAltOutlined />}
+												onClick={() => setShareModalOpen(true)}
+											/>
+										</Tooltip>
+
+										<NotificationPopover />
+										<Dropdown menu={userMenuProps} trigger={['click']} placement="bottomRight">
+											<Avatar
+												src={user?.user_metadata?.avatar_url}
+												style={{
+													backgroundColor: token.colorPrimary,
+													cursor: 'pointer',
+													border: `2px solid ${token.colorBgContainer}`,
+												}}
+												icon={<UserOutlined />}
+											/>
+										</Dropdown>
+									</Space>
 								</>
+							) : (
+								<Flex gap="small">
+									<LanguageSelector />
+									<ThemeToggle />
+									<Link href="/login">
+										<Button type="primary" shape="round">
+											{t('loginStart')}
+										</Button>
+									</Link>
+								</Flex>
+							)}
+						</GlassDock>
+					</div>
+				</motion.div>
+			)}
+
+			{/* MOBILE BOTTOM BAR (Instagram Style Glass) */}
+			{isXs && (
+				<>
+					{/* Top Logo Bar */}
+					<motion.div
+						initial={{ y: -100 }}
+						animate={{ y: 0 }}
+						transition={{ duration: 0.3 }}
+						style={{
+							position: 'fixed',
+							top: 0,
+							left: 0,
+							right: 0,
+							padding: '12px 16px',
+							background: `color-mix(in srgb, ${token.colorBgContainer} 80%, transparent)`,
+							backdropFilter: 'blur(16px)',
+							zIndex: 1000,
+							display: 'flex',
+							justifyContent: 'space-between',
+							alignItems: 'center',
+							borderBottom: `1px solid ${token.colorBorderSecondary}`,
+						}}
+					>
+						<div style={{ position: 'relative', height: 28, width: 28 }}>
+							<Link href="/">
+								<Image src="/assets/w_logo.png" alt="Logo" width={28} height={28} />
+							</Link>
+						</div>
+
+						{/* Center: The HOOK (Streak) */}
+						{!isPublic && (
+							<Flex
+								align="center"
+								gap={4}
+								style={{
+									position: 'absolute',
+									left: '50%',
+									transform: 'translateX(-50%)',
+								}}
+							>
+								<FireFilled style={{ color: token.colorWarning, fontSize: 18 }} />
+								<Text strong style={{ fontSize: 16 }}>
+									12
+								</Text>
+							</Flex>
+						)}
+
+						<Space size="small">
+							{/* Right: Actions */}
+							{!isPublic && <NotificationPopover />}
+							{!isPublic && (
+								<Avatar
+									size="small"
+									src={user?.user_metadata?.avatar_url}
+									style={{ backgroundColor: token.colorPrimary, cursor: 'pointer' }}
+									onClick={() => setSettingsModalOpen(true)}
+								/>
 							)}
 
-							<Link href="/login">
-								<Button type="primary" size="small" style={{ background: token.colorPrimary }}>
-									{t('login')}
-								</Button>
-							</Link>
+							{isPublic && (
+								<Link href="/login">
+									<Button type="primary" size="small">
+										{t('login')}
+									</Button>
+								</Link>
+							)}
+						</Space>
+					</motion.div>
 
-							{/* Hamburger for mobile settings/menu */}
-							{screens.xs && <Button type="text" icon={<MenuOutlined />} onClick={showDrawer} />}
-						</Flex>
-					</div>
-				)}
+					{/* Bottom Navigation Dock */}
+					{!isPublic && (
+						<motion.div
+							initial={{ y: 100 }}
+							animate={{ y: 0 }}
+							transition={{ duration: 0.3 }}
+							style={{
+								position: 'fixed',
+								bottom: 0,
+								left: 0,
+								right: 0,
+								padding: '12px 24px 24px 24px', // Extra bottom padding for iOS Home Indicator
+								background: `color-mix(in srgb, ${token.colorBgContainer} 90%, transparent)`,
+								backdropFilter: 'blur(16px)',
+								zIndex: 1000,
+								display: 'flex',
+								justifyContent: 'space-between',
+								borderTop: `1px solid ${token.colorBorderSecondary}`,
+								boxShadow: '0 -4px 20px rgba(0,0,0,0.05)',
+							}}
+						>
+							{NAV_ITEMS.map((item) => {
+								const isActive =
+									item.path === '/'
+										? pathname === '/'
+										: pathname.startsWith(item.path) && item.path !== '/';
 
-				{/* Mobile Drawer */}
-				<NavDrawer
-					open={drawerOpen}
-					onClose={closeDrawer}
-					user={user}
-					pathname={pathname}
-					// Only show app menu items if user is logged in. Public users just see settings/login.
-					menuItems={user ? menuItems : []}
-					onShare={() => setShareModalOpen(true)}
-					onBugReport={handleBugReport}
-					onLogout={handleLogout}
-					onOpenSettings={() => setSettingsModalOpen(true)}
-				/>
+								return (
+									<Link key={item.key} href={item.path} style={{ flex: 1 }}>
+										<Flex vertical align="center" gap={4}>
+											<div
+												style={{
+													fontSize: 22,
+													color: isActive ? token.colorPrimary : token.colorTextTertiary,
+													transition: 'all 0.3s',
+													transform: isActive ? 'scale(1.1)' : 'scale(1)',
+												}}
+											>
+												{item.icon}
+											</div>
+										</Flex>
+									</Link>
+								);
+							})}
+						</motion.div>
+					)}
+				</>
+			)}
 
-				<ShareModal open={shareModalOpen} onCancel={() => setShareModalOpen(false)} />
-				<SettingsModal
-					open={settingsModalOpen}
-					onCancel={() => setSettingsModalOpen(false)}
-					user={user}
-				/>
-			</div>
-		</Header>
+			<ShareModal open={shareModalOpen} onCancel={() => setShareModalOpen(false)} />
+			<SettingsModal
+				open={settingsModalOpen}
+				onCancel={() => setSettingsModalOpen(false)}
+				user={user}
+			/>
+		</>
 	);
 }

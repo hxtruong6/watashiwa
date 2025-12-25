@@ -102,11 +102,7 @@ export default function NotificationPopover() {
 		>
 			<div style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
 				<Badge dot={!isSubscribed && permission !== 'denied'} color="blue" offset={[-4, 4]}>
-					<Button
-						type="text"
-						icon={isSubscribed ? <BellFilled /> : <BellOutlined />}
-						style={{ fontSize: 18 }}
-					/>
+					<Button type="text" icon={<BellOutlined />} style={{ fontSize: 18 }} />
 				</Badge>
 			</div>
 		</Popover>
