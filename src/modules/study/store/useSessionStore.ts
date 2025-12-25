@@ -1,5 +1,5 @@
-import { submitReviewAction } from '@/modules/flashcard/flashcard.actions';
 import { SmartCard } from '@/modules/flashcard/types';
+import { submitReview as submitReviewAction } from '@/modules/study/study.actions';
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
@@ -137,25 +137,29 @@ export const useSessionStore = create<SessionStore>()(
 					});
 				}
 
-				// 2. Persist to Server (Fire & Forget)
-				// We don't await this to block UI, but we log errors
-				submitReviewAction({ vocabId: currentCard.vocabId, rating })
-					.then((res) => {
-						if (!res.success) {
-							console.error(
-								'[SessionStore] Failed to persist review for',
-								currentCard.vocabId,
-								res.error,
-							);
-						} else {
-							console.log('[SessionStore] Persisted review. Next Due:', res.data?.nextReview);
-						}
-					})
-					.catch((err) => {
-						console.error('[SessionStore] Error persisting review:', err);
-					});
+				// 2. Persist to Server (Async but awaited for critical updates)
+				try {
+					const res = await submitReviewAction({ vocabId: currentCard.vocabId, rating });
 
-				// 3. Move to next card immediately
+					if (!res.success) {
+						console.error('[SessionStore] Failed to persist review', res.error);
+					} else {
+						console.log('[SessionStore] Persisted. Next Due:', res.data?.nextReview);
+
+						// 3. INTERVENTION INJECTION (The "Smart Loop")
+						if (res.data?.intervention) {
+							console.log('[SessionStore] 🛡️ Intervention Triggered!', res.data.intervention.id);
+							set((state) => {
+								// Inject immediately after current card (next in line)
+								state.queue.splice(state.currentIndex + 1, 0, res.data!.intervention!);
+							});
+						}
+					}
+				} catch (err) {
+					console.error('[SessionStore] Error persisting review:', err);
+				}
+
+				// 4. Move to next card
 				nextCard();
 			},
 		})),

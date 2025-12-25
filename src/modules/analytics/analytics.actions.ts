@@ -83,3 +83,12 @@ export const getWeeklyStats = cache(async (userId?: string) => {
 		return null;
 	}
 });
+
+/**
+ * Simple Server-Side Logger for Client Events (Low Cost Analytics)
+ */
+export async function logAnalyticsEvent(eventName: string, payload: any) {
+	// In production, send this to PostHog / Mixpanel / Datadog
+	console.log(`[Analytics] ${eventName}`, JSON.stringify(payload));
+	return { success: true };
+}

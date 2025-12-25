@@ -13,11 +13,6 @@ const FetchSessionSchema = z.object({
 	deckId: z.string().optional(),
 });
 
-const SubmitReviewSchema = z.object({
-	vocabId: z.string(),
-	rating: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)]),
-});
-
 /**
  * Fetch Session with Real Data
  * 1. Get Due Cards (Review)
@@ -97,104 +92,6 @@ export async function fetchSessionAction(input: { deckId?: string } = {}) {
 			});
 
 			return sessionCards;
-		},
-		{ requireAuth: true },
-	);
-}
-
-/**
- * Submit Review Action (FSRS)
- */
-export async function submitReviewAction(input: { vocabId: string; rating: 1 | 2 | 3 | 4 }) {
-	return executeSafeAction(
-		SubmitReviewSchema,
-		input,
-		async ({ vocabId, rating }, { userId }) => {
-			if (!userId) throw new Error('Unauthorized'); // Double check
-
-			// 1. Get current state (if any)
-			const existingReview = await prisma.userReview.findUnique({
-				where: {
-					userId_vocabId: { userId, vocabId },
-				},
-			});
-
-			// 2. Prepare FSRS Card
-			const now = new Date();
-			let fCard: Card;
-
-			if (existingReview) {
-				fCard = {
-					due: existingReview.nextReviewAt,
-					stability: existingReview.stability,
-					difficulty: existingReview.difficulty,
-					elapsed_days: existingReview.elapsedDays,
-					scheduled_days: existingReview.scheduledDays,
-					reps: existingReview.reps,
-					lapses: existingReview.lapses,
-					state: existingReview.state,
-					last_review: existingReview.lastReview || undefined,
-					learning_steps: 0, // TODO: Implement learning steps
-				};
-			} else {
-				fCard = createEmptyCard(now);
-			}
-
-			// 3. Calculate new state
-			const fRating = mapRatingToFSRS(rating);
-			const fLog = fsrs.repeat(fCard, now)[fRating];
-
-			// 4. Update DB via Nested Write (Atomic)
-			const newState = fLog.card;
-			const srsStage = getSRSStage(newState);
-
-			const logEntry = {
-				userId,
-				rating: rating,
-				reviewDate: now,
-				duration: 0,
-				scheduledDays: newState.scheduled_days,
-				elapsedDays: newState.elapsed_days,
-				state: existingReview?.state || 0,
-			};
-
-			await prisma.userReview.upsert({
-				where: { userId_vocabId: { userId, vocabId } },
-				update: {
-					nextReviewAt: newState.due,
-					srsStage: srsStage,
-					stability: newState.stability,
-					difficulty: newState.difficulty,
-					elapsedDays: newState.elapsed_days,
-					scheduledDays: newState.scheduled_days,
-					reps: newState.reps,
-					lapses: newState.lapses,
-					state: newState.state,
-					lastReview: now,
-					reviewLogs: {
-						create: logEntry,
-					},
-				},
-				create: {
-					userId,
-					vocabId,
-					nextReviewAt: newState.due,
-					srsStage: srsStage,
-					stability: newState.stability,
-					difficulty: newState.difficulty,
-					elapsedDays: newState.elapsed_days,
-					scheduledDays: newState.scheduled_days,
-					reps: newState.reps,
-					lapses: newState.lapses,
-					state: newState.state,
-					lastReview: now,
-					reviewLogs: {
-						create: logEntry,
-					},
-				},
-			});
-
-			return { success: true, nextReview: newState.due };
 		},
 		{ requireAuth: true },
 	);

@@ -3,11 +3,17 @@
 import { prisma } from '@/lib/db';
 import { getUser } from '@/modules/auth/auth.actions';
 import { executeSafeAction } from '@/modules/core/action-client';
+import { InterventionCard } from '@/modules/flashcard/types';
+import { fsrs, getSRSStage, mapRatingToFSRS } from '@/modules/flashcard/utils/srs-algorithm';
 import { Question } from '@/types/exercises';
+// [NEW]
+import { Card, State, createEmptyCard } from 'ts-fsrs';
 import { z } from 'zod';
 
+import { InterventionService } from './intervention.service';
 import { StudyData } from './study.data';
-import { GetQueueSchema, SubmitReviewSchema } from './study.dto';
+import { GetQueueSchema } from './study.dto';
+// Removed SubmitReviewSchema as we define it locally now
 import { StudyService } from './study.service';
 
 /**
@@ -109,68 +115,119 @@ export async function getReviewQueue(deckIdOrIds?: string | string[], limit: num
 /**
  * Submit Review
  */
-export async function submitReview(input: {
-	cardId: string;
-	rating: number;
-	deckIdOrIds?: string | string[];
-}) {
-	return executeSafeAction(SubmitReviewSchema, input, async (data, { userId }) => {
-		if (!userId) throw new Error('Unauthorized');
+/**
+ * Submit Review (FSRS + Smart Intervention)
+ */
+export async function submitReview(input: { vocabId: string; rating: 1 | 2 | 3 | 4 }) {
+	return executeSafeAction(
+		z.object({
+			vocabId: z.string(),
+			rating: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)]),
+		}),
+		input,
+		async ({ vocabId, rating }, { userId }) => {
+			if (!userId) throw new Error('Unauthorized');
 
-		// 1. Get Card
-		const card = await StudyData.getCardById(data.cardId, userId);
-		if (!card) throw new Error('Card not found');
+			// 1. Get current state (if any)
+			const existingReview = await prisma.userReview.findUnique({
+				where: {
+					userId_vocabId: { userId, vocabId },
+				},
+			});
 
-		// 2. Calculate FSRS
-		const { nextCard, reviewLog } = StudyService.calculateNextState(card, data.rating);
+			// 2. Prepare FSRS Card
+			const now = new Date();
+			let fCard: Card;
 
-		// 3. Update DB
-		await StudyData.updateCardProgress(
-			card.id,
-			userId,
-			{
-				...nextCard,
-				last_review: nextCard.last_review || undefined,
-			},
-			{
-				rating: reviewLog.rating,
-				review: reviewLog.review,
-				duration: 0, // TODO: Add duration tracking to frontend
-			},
-		);
+			if (existingReview) {
+				fCard = {
+					due: existingReview.nextReviewAt,
+					stability: existingReview.stability,
+					difficulty: existingReview.difficulty,
+					elapsed_days: existingReview.elapsedDays,
+					scheduled_days: existingReview.scheduledDays,
+					reps: existingReview.reps,
+					lapses: existingReview.lapses,
+					state: existingReview.state as State,
+					last_review: existingReview.lastReview || undefined,
+					learning_steps: 0,
+				};
+			} else {
+				fCard = createEmptyCard(now);
+			}
 
-		// 4. Return next card (Optimistic/Sequential)
-		// Note: We need to define how to handle "getNext" inside this action or if client calls it separately.
-		// Current V1 pattern returns `nextCard`.
-		// Let's call getNextReviewCard directly (internal call, not via action wrapper to save overhead?)
-		// Actually, reused logic is better.
+			// 3. Calculate new state
+			const fRating = mapRatingToFSRS(rating);
+			const fLog = fsrs.repeat(fCard, now)[fRating];
 
-		// Helper to re-fetch queue or next card
-		const deckIds = data.deckIdOrIds;
-		// We can't await exported action easily without double-wrapping.
-		// Let's just return success: true and let client fetch next.
-		// BUT, requirement says "optimistic UI" or fast response.
-		// Let's duplicate the "Get Next" call logic here or extract it to a shared internal function.
+			// 4. Update DB via Nested Write (Atomic)
+			const newState = fLog.card;
+			const srsStage = getSRSStage(newState);
 
-		// For modularity, let's extract "findNextCard" logic to Service or Data layer?
-		// No, Data layer is CRUD. Service is Logic.
-		// Action allows composing.
-
-		// Let's implement a quick "get next" here reusing Data layer.
-		const nextReviewCard = (
-			await StudyData.findDueCards(
+			const logEntry = {
 				userId,
-				1,
-				Array.isArray(deckIds) ? deckIds : deckIds ? [deckIds] : undefined,
-			)
-		)[0];
+				rating: rating,
+				reviewDate: now,
+				duration: 0, // TODO: Track duration from client
+				scheduledDays: newState.scheduled_days,
+				elapsedDays: newState.elapsed_days,
+				state: existingReview?.state || 0,
+			};
 
-		return {
-			reviewLog,
-			nextCard: nextReviewCard ?? null,
-			message: 'Review recorded',
-		};
-	});
+			await prisma.userReview.upsert({
+				where: { userId_vocabId: { userId, vocabId } },
+				update: {
+					nextReviewAt: newState.due,
+					srsStage: srsStage,
+					stability: newState.stability,
+					difficulty: newState.difficulty,
+					elapsedDays: newState.elapsed_days,
+					scheduledDays: newState.scheduled_days,
+					reps: newState.reps,
+					lapses: newState.lapses,
+					state: newState.state,
+					lastReview: now,
+					reviewLogs: {
+						create: logEntry,
+					},
+				},
+				create: {
+					userId,
+					vocabId,
+					nextReviewAt: newState.due,
+					srsStage: srsStage,
+					stability: newState.stability,
+					difficulty: newState.difficulty,
+					elapsedDays: newState.elapsed_days,
+					scheduledDays: newState.scheduled_days,
+					reps: newState.reps,
+					lapses: newState.lapses,
+					state: newState.state,
+					lastReview: now,
+					reviewLogs: {
+						create: logEntry,
+					},
+				},
+			});
+
+			// 5. SMART LAYER -> INTEFERENCE SHIELD
+			let intervention: InterventionCard | null = null;
+			try {
+				intervention = await InterventionService.checkInterference(userId, vocabId, rating);
+			} catch (err) {
+				console.error('[Action] Intervention check failed', err);
+				// Do not fail the review if intervention check fails
+			}
+
+			return {
+				success: true,
+				nextReview: newState.due,
+				intervention, // Return to client for injection
+				message: 'Review recorded',
+			};
+		},
+		{ requireAuth: true },
+	);
 }
 
 /**

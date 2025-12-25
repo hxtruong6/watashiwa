@@ -71,21 +71,18 @@ export interface GapFillCard extends CardBase {
 // VARIANT C: INTERVENTION (Confusion Shield)
 export interface InterventionCard extends CardBase {
 	variant: 'INTERVENTION';
-	front: {
-		question: string; // "Which matches the audio?"
-		audio: string;
+	// Hydrated Comparison Data
+	comparison: {
+		type: 'HOMONYM' | 'LOOKALIKE';
+		itemA: Vocabulary; // The current card
+		itemB: Vocabulary; // The confusing partner
+		audioUrl?: string; // Audio to play (could be A or B)
+		targetId: string; // The correct answer ID
 	};
-	content: {
-		options: Array<{
-			id: string;
-			image?: string;
-			label: string;
-			isCorrect: boolean;
-			pitchPattern?: number;
-		}>;
+	front: {
+		question: string;
 	};
 	back: {
-		explanation: string;
-		details: Vocabulary;
+		details: Vocabulary; // usually itemA
 	};
 }

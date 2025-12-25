@@ -59,8 +59,9 @@ async function seedMinnaCourse(bookLevel: 'I' | 'II', fromUnit = 1, toUnit = 25)
 
 	// 3. Process Units 1-25
 	const DATA_DIR = path.resolve(
-		process.cwd(),
-		'data/seed/minna' + (bookLevel === 'I' ? '_1' : '_2'),
+		// process.cwd(),
+		'/Users/xuantruong/Documents/WORK/SIDE_PROJECTS/watashiwa_data/data/seed/minna' +
+			(bookLevel === 'I' ? '_1' : '_2'),
 	);
 
 	for (let i = 1; i <= 25; i++) {
@@ -103,7 +104,7 @@ async function seedMinnaCourse(bookLevel: 'I' | 'II', fromUnit = 1, toUnit = 25)
 					descriptionEn: `Vocabulary list for ${deckTitleEn}`,
 					authorId: author.id,
 					isPublic: true,
-					sortOrder: i,
+					sortOrder: fromUnit + i - 1,
 				},
 			});
 			console.log(`   + Created Deck: ${deckTitleVn}`);
@@ -116,7 +117,7 @@ async function seedMinnaCourse(bookLevel: 'I' | 'II', fromUnit = 1, toUnit = 25)
 					titleEn: deckTitleEn,
 					description: `Danh sách từ vựng ${deckTitleVn}`,
 					descriptionEn: `Vocabulary list for ${deckTitleEn}`,
-					sortOrder: i,
+					sortOrder: fromUnit + i - 1,
 				},
 			});
 		}
@@ -149,7 +150,7 @@ async function seedMinnaCourse(bookLevel: 'I' | 'II', fromUnit = 1, toUnit = 25)
 		let updatedCount = 0;
 
 		await Promise.all(
-			items.map(async (item: any) => {
+			items.map(async (item: any, index: number) => {
 				// --- NORMALIZATION LOGIC ---
 
 				const wordSurface = item.word_surface || item.wordSurface || item.word;
@@ -227,6 +228,7 @@ async function seedMinnaCourse(bookLevel: 'I' | 'II', fromUnit = 1, toUnit = 25)
 						data: {
 							...vocabData,
 							contentStatus: existingVocab.contentStatus === 'DRAFT' ? 'VERIFIED' : undefined,
+							wordOrder: i,
 						},
 					});
 					updatedCount++;
@@ -236,6 +238,7 @@ async function seedMinnaCourse(bookLevel: 'I' | 'II', fromUnit = 1, toUnit = 25)
 							deckId: deck.id,
 							...vocabData,
 							contentStatus: 'VERIFIED',
+							wordOrder: i,
 						},
 					});
 					createdCount++;

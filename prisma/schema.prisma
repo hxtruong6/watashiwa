@@ -229,6 +229,8 @@ model Vocabulary {
   updatedAt DateTime  @updatedAt @map("updated_at")
   deletedAt DateTime? @map("deleted_at")
 
+  wordOrder Int @default(0) @map("word_order")
+
   // Relations
   variants      CardVariant[]
   confusionsAs1 ConfusionPair[] @relation("ConfusionA")
@@ -299,9 +301,11 @@ model ConfusionPair {
 }
 
 enum ConfusionType {
-  HOMONYM
-  LOOKALIKE
-  SYNONYM
+  HOMONYM // Same reading, different meaning (e.g., Hashi/Hashi)
+  LOOKALIKE // Visually or phonetically similar (e.g., Matsu/Motsu)
+  SYNONYM // Similar meaning, different nuance (e.g., Wakaru/Shiru)
+  ANTONYM // Opposites often confused (e.g., Kasu/Kariru)
+  GRAMMAR // Grammatical usage or politeness (e.g., Aru/Iru)
 }
 
 // Active Priming (The Context)

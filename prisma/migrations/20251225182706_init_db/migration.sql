@@ -8,7 +8,7 @@ CREATE TYPE "ContentStatus" AS ENUM ('DRAFT', 'AI_GENERATED', 'FLAGGED', 'VERIFI
 CREATE TYPE "VariantType" AS ENUM ('BASIC', 'CONTEXT_GAP_FILL', 'AUDIO_MATCH', 'INTERVENTION');
 
 -- CreateEnum
-CREATE TYPE "ConfusionType" AS ENUM ('HOMONYM', 'LOOKALIKE', 'SYNONYM');
+CREATE TYPE "ConfusionType" AS ENUM ('HOMONYM', 'LOOKALIKE', 'SYNONYM', 'ANTONYM', 'GRAMMAR');
 
 -- CreateEnum
 CREATE TYPE "SessionStatus" AS ENUM ('ACTIVE', 'COMPLETED', 'ABANDONED');
@@ -33,11 +33,19 @@ CREATE TABLE "User" (
     "deleted_at" TIMESTAMP(3),
     "avatar_url" TEXT,
     "role" "UserRole" NOT NULL DEFAULT 'USER',
-    "limit_new_cards" INTEGER NOT NULL DEFAULT 20,
-    "limit_reviews" INTEGER NOT NULL DEFAULT 200,
+    "limit_new_cards" INTEGER NOT NULL DEFAULT 10,
+    "limit_reviews" INTEGER NOT NULL DEFAULT 50,
+    "daily_goal" INTEGER NOT NULL DEFAULT 20,
+    "enable_smart_pacing" BOOLEAN NOT NULL DEFAULT true,
     "timezone" TEXT NOT NULL DEFAULT 'UTC',
     "language" TEXT NOT NULL DEFAULT 'en',
-    "tutorials" JSONB NOT NULL DEFAULT '{}',
+    "auto_play_audio" BOOLEAN NOT NULL DEFAULT true,
+    "show_pitch_accent" BOOLEAN NOT NULL DEFAULT true,
+    "show_etymology" BOOLEAN NOT NULL DEFAULT true,
+    "enable_priming" BOOLEAN NOT NULL DEFAULT true,
+    "enable_notifications" BOOLEAN NOT NULL DEFAULT true,
+    "reminder_time" TEXT,
+    "preferences" JSONB NOT NULL DEFAULT '{}',
     "current_streak" INTEGER NOT NULL DEFAULT 0,
     "longest_streak" INTEGER NOT NULL DEFAULT 0,
     "last_study_date" DATE,
@@ -116,11 +124,13 @@ CREATE TABLE "Vocabulary" (
     "word_surface" TEXT NOT NULL,
     "word_reading" TEXT NOT NULL,
     "word_romaji" TEXT,
+    "han_viet" TEXT,
     "pitch_pattern" INTEGER,
     "pitch_svg_path" TEXT,
     "homonym_group_id" TEXT,
     "etymology" JSONB NOT NULL,
     "meanings" JSONB NOT NULL,
+    "mnemonic" JSONB,
     "examples" JSONB NOT NULL,
     "audio_url" TEXT,
     "image_url" TEXT,
@@ -130,6 +140,7 @@ CREATE TABLE "Vocabulary" (
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
     "deleted_at" TIMESTAMP(3),
+    "word_order" INTEGER NOT NULL DEFAULT 0,
 
     CONSTRAINT "Vocabulary_pkey" PRIMARY KEY ("id")
 );

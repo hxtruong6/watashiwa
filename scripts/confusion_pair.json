@@ -1,0 +1,515 @@
+[
+    {
+        "vocabId1": "貸す",
+        "vocabId2": "借りる",
+        "type": "ANTONYM",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Kasu (Cho mượn) vs Kariru (Mượn).",
+                "en": "Kasu (Lend) vs Kariru (Borrow)."
+            },
+            "item1_nuance": {
+                "vi": "Chủ ngữ là người sở hữu vật (Cho đi).",
+                "en": "Lend (Give)."
+            },
+            "item2_nuance": {
+                "vi": "Chủ ngữ là người cần vật (Nhận về).",
+                "en": "Borrow (Receive)."
+            }
+        }
+    },
+    {
+        "vocabId1": "買う",
+        "vocabId2": "売る",
+        "type": "ANTONYM",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Mãi (Mua) vs Mại (Bán).",
+                "en": "Kau (Buy) vs Uru (Sell)."
+            },
+            "item1_nuance": {
+                "vi": "Mua vào (Mãi).",
+                "en": "Buy."
+            },
+            "item2_nuance": {
+                "vi": "Bán ra (Mại).",
+                "en": "Sell."
+            }
+        }
+    },
+    {
+        "vocabId1": "持つ",
+        "vocabId2": "待つ",
+        "type": "LOOKALIKE",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Matsu (Chờ) vs Motsu (Cầm). Dễ nhầm lẫn âm thanh.",
+                "en": "Matsu (Wait) vs Motsu (Hold)."
+            },
+            "item1_nuance": {
+                "vi": "Cầm nắm, sở hữu.",
+                "en": "Hold/Possess."
+            },
+            "item2_nuance": {
+                "vi": "Chờ đợi.",
+                "en": "Wait."
+            }
+        }
+    },
+    {
+        "vocabId1": "わかる",
+        "vocabId2": "知る",
+        "type": "SYNONYM",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Wakaru (Hiểu logic) vs Shiru (Biết tin).",
+                "en": "Wakaru (Understand) vs Shiru (Know)."
+            },
+            "item1_nuance": {
+                "vi": "Hiểu ra vấn đề (Process).",
+                "en": "Understand."
+            },
+            "item2_nuance": {
+                "vi": "Biết thông tin (State).",
+                "en": "Know."
+            }
+        }
+    },
+    {
+        "vocabId1": "ある",
+        "vocabId2": "いる",
+        "type": "GRAMMAR",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Aru (Vật) vs Iru (Người). Logic gate cơ bản.",
+                "en": "Aru (Items) vs Iru (Living)."
+            },
+            "item1_nuance": {
+                "vi": "Dùng cho đồ vật vô tri.",
+                "en": "Inanimate."
+            },
+            "item2_nuance": {
+                "vi": "Dùng cho người và động vật.",
+                "en": "Animate."
+            }
+        }
+    },
+    {
+        "vocabId1": "開ける",
+        "vocabId2": "閉める",
+        "type": "ANTONYM",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Khai (Mở) vs Bế (Đóng).",
+                "en": "Open (Akeru) vs Close (Shimeru)."
+            },
+            "item1_nuance": {
+                "vi": "Mở cửa/vật.",
+                "en": "Open."
+            },
+            "item2_nuance": {
+                "vi": "Đóng cửa/vật.",
+                "en": "Close."
+            }
+        }
+    },
+    {
+        "vocabId1": "つける",
+        "vocabId2": "消す",
+        "type": "ANTONYM",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Điểm (Bật) vs Tiêu (Tắt).",
+                "en": "Turn on (Tsukeru) vs Turn off (Kesu)."
+            },
+            "item1_nuance": {
+                "vi": "Bật (thiết bị).",
+                "en": "Turn on."
+            },
+            "item2_nuance": {
+                "vi": "Tắt (thiết bị).",
+                "en": "Turn off."
+            }
+        }
+    },
+    {
+        "vocabId1": "病院",
+        "vocabId2": "学院",
+        "type": "LOOKALIKE",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Byouin (Bệnh viện) vs Gakuin (Học viện). Âm 'Byo' và 'Gaku' dễ nhầm.",
+                "en": "Byouin (Hospital) vs Gakuin (Academy/Institute)."
+            },
+            "item1_nuance": {
+                "vi": "Bệnh viện (Nơi chữa bệnh).",
+                "en": "Hospital."
+            },
+            "item2_nuance": {
+                "vi": "Học viện (Nơi đào tạo).",
+                "en": "Academy."
+            }
+        }
+    },
+    {
+        "vocabId1": "父",
+        "vocabId2": "お父さん",
+        "type": "GRAMMAR",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Chichi (Bố tôi) vs Otousan (Bố bạn). Humble vs Polite.",
+                "en": "Chichi (My dad) vs Otousan (Your dad/Father)."
+            },
+            "item1_nuance": {
+                "vi": "Dùng khi nói về bố MÌNH với người ngoài (Khiêm nhường).",
+                "en": "My father (Humble)."
+            },
+            "item2_nuance": {
+                "vi": "Dùng khi gọi bố hoặc nói về bố NGƯỜI KHÁC (Lịch sự).",
+                "en": "Father (Polite)."
+            }
+        }
+    },
+    {
+        "vocabId1": "母",
+        "vocabId2": "お母さん",
+        "type": "GRAMMAR",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Haha (Mẹ tôi) vs Okaasan (Mẹ bạn).",
+                "en": "Haha (My mom) vs Okaasan (Your mom/Mother)."
+            },
+            "item1_nuance": {
+                "vi": "Dùng khi nói về mẹ MÌNH với người ngoài (Khiêm nhường).",
+                "en": "My mother (Humble)."
+            },
+            "item2_nuance": {
+                "vi": "Dùng khi gọi mẹ hoặc nói về mẹ NGƯỜI KHÁC (Lịch sự).",
+                "en": "Mother (Polite)."
+            }
+        }
+    },
+    {
+        "vocabId1": "四つ",
+        "vocabId2": "十四",
+        "type": "LOOKALIKE",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Yoni (4 người) vs Yottsu (4 cái). Âm đầu 'Yo' giống nhưng đuôi khác.",
+                "en": "Yonin (4 people) vs Yottsu (4 items)."
+            },
+            "item1_nuance": {
+                "vi": "4 cái (đồ vật nói chung).",
+                "en": "Four things."
+            },
+            "item2_nuance": {
+                "vi": "4 người.",
+                "en": "Four people."
+            }
+        }
+    },
+    {
+        "vocabId1": "一つ",
+        "vocabId2": "一人",
+        "type": "LOOKALIKE",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Hitotsu (1 cái) vs Hitori (1 người).",
+                "en": "Hitotsu (One thing) vs Hitori (One person)."
+            },
+            "item1_nuance": {
+                "vi": "1 cái (đồ vật).",
+                "en": "One thing."
+            },
+            "item2_nuance": {
+                "vi": "1 người (đếm người).",
+                "en": "One person."
+            }
+        }
+    },
+    {
+        "vocabId1": "二つ",
+        "vocabId2": "二人",
+        "type": "LOOKALIKE",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Futatsu (2 cái) vs Futari (2 người).",
+                "en": "Futatsu (Two things) vs Futari (Two people)."
+            },
+            "item1_nuance": {
+                "vi": "2 cái (đồ vật).",
+                "en": "Two things."
+            },
+            "item2_nuance": {
+                "vi": "2 người (đếm người).",
+                "en": "Two people."
+            }
+        }
+    },
+    {
+        "vocabId1": "八つ",
+        "vocabId2": "八",
+        "type": "GRAMMAR",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Yattsu (8 cái) vs Hachi (Số 8).",
+                "en": "Yattsu (Items) vs Hachi (Number)."
+            },
+            "item1_nuance": {
+                "vi": "Đếm đồ vật (hệ thuần Nhật).",
+                "en": "Wa-go counter (Items)."
+            },
+            "item2_nuance": {
+                "vi": "Số đếm toán học (hệ Hán Nhật).",
+                "en": "Kan-go number (Math/Phone #)."
+            }
+        }
+    },
+    {
+        "vocabId1": "九つ",
+        "vocabId2": "九",
+        "type": "GRAMMAR",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Kokonotsu (9 cái) vs Kyuu/Ku (Số 9).",
+                "en": "Kokonotsu (Items) vs Kyuu (Number)."
+            },
+            "item1_nuance": {
+                "vi": "Đếm đồ vật.",
+                "en": "Wa-go counter."
+            },
+            "item2_nuance": {
+                "vi": "Số đếm toán học.",
+                "en": "Kan-go number."
+            }
+        }
+    },
+    {
+        "vocabId1": "高い",
+        "vocabId2": "安い",
+        "type": "ANTONYM",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Takai (Cao/Đắt) vs Yasui (Rẻ).",
+                "en": "Takai (High/Exp) vs Yasui (Cheap)."
+            },
+            "item1_nuance": {
+                "vi": "Giá tiền cao.",
+                "en": "Expensive."
+            },
+            "item2_nuance": {
+                "vi": "Giá tiền thấp.",
+                "en": "Cheap."
+            }
+        }
+    },
+    {
+        "vocabId1": "暑い",
+        "vocabId2": "熱い",
+        "type": "HOMONYM",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Thử (Trời) vs Nhiệt (Vật). Cùng đọc Atsui.",
+                "en": "Atsui (Weather) vs Atsui (Touch)."
+            },
+            "item1_nuance": {
+                "vi": "Nóng (thời tiết).",
+                "en": "Hot weather."
+            },
+            "item2_nuance": {
+                "vi": "Nóng (vật).",
+                "en": "Hot object."
+            }
+        }
+    },
+    {
+        "vocabId1": "寒い",
+        "vocabId2": "冷たい",
+        "type": "SYNONYM",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Hàn (Trời lạnh) vs Lãnh (Vật lạnh).",
+                "en": "Samui (Weather) vs Tsumetai (Touch)."
+            },
+            "item1_nuance": {
+                "vi": "Lạnh (thời tiết).",
+                "en": "Cold weather."
+            },
+            "item2_nuance": {
+                "vi": "Lạnh (cảm giác).",
+                "en": "Cold touch."
+            }
+        }
+    },
+    {
+        "vocabId1": "綺麗",
+        "vocabId2": "嫌い",
+        "type": "LOOKALIKE",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Kirei (Đẹp - Na) vs Kirai (Ghét - Na). Dễ nhầm nghe/đọc.",
+                "en": "Kirei (Beautiful) vs Kirai (Hate)."
+            },
+            "item1_nuance": {
+                "vi": "Đẹp/Sạch.",
+                "en": "Beautiful/Clean."
+            },
+            "item2_nuance": {
+                "vi": "Ghét/Không thích.",
+                "en": "Hate."
+            }
+        }
+    },
+    {
+        "vocabId1": "あげる",
+        "vocabId2": "もらう",
+        "type": "ANTONYM",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Ageru (Cho đi) vs Morau (Nhận về).",
+                "en": "Ageru (Give) vs Morau (Receive)."
+            },
+            "item1_nuance": {
+                "vi": "Tặng/Cho (Hướng ra xa).",
+                "en": "Give (Outward)."
+            },
+            "item2_nuance": {
+                "vi": "Nhận (Hướng về mình).",
+                "en": "Receive (Inward)."
+            }
+        }
+    },
+    {
+        "vocabId1": "あげる",
+        "vocabId2": "くれる",
+        "type": "SYNONYM",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Ageru (Tôi tặng) vs Kureru (Họ tặng tôi).",
+                "en": "Ageru (I give) vs Kureru (They give me)."
+            },
+            "item1_nuance": {
+                "vi": "Người nói là người cho.",
+                "en": "I give to others."
+            },
+            "item2_nuance": {
+                "vi": "Người khác cho người nói.",
+                "en": "Others give to me."
+            }
+        }
+    },
+    {
+        "vocabId1": "覚える",
+        "vocabId2": "忘れる",
+        "type": "ANTONYM",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Giác (Nhớ) vs Vong (Quên).",
+                "en": "Remember vs Forget."
+            },
+            "item1_nuance": {
+                "vi": "Ghi nhớ.",
+                "en": "Remember."
+            },
+            "item2_nuance": {
+                "vi": "Quên mất.",
+                "en": "Forget."
+            }
+        }
+    },
+    {
+        "vocabId1": "始まる",
+        "vocabId2": "終わる",
+        "type": "ANTONYM",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Thủy (Đầu) vs Chung (Cuối).",
+                "en": "Start vs End."
+            },
+            "item1_nuance": {
+                "vi": "Bắt đầu.",
+                "en": "Start."
+            },
+            "item2_nuance": {
+                "vi": "Kết thúc.",
+                "en": "Finish."
+            }
+        }
+    },
+    {
+        "vocabId1": "良い",
+        "vocabId2": "悪い",
+        "type": "ANTONYM",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Lương (Tốt) vs Ác (Xấu).",
+                "en": "Good vs Bad."
+            },
+            "item1_nuance": {
+                "vi": "Tốt.",
+                "en": "Good."
+            },
+            "item2_nuance": {
+                "vi": "Xấu/Tệ.",
+                "en": "Bad."
+            }
+        }
+    },
+    {
+        "vocabId1": "易しい",
+        "vocabId2": "難しい",
+        "type": "ANTONYM",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Dị (Dễ) vs Nan (Khó).",
+                "en": "Easy vs Difficult."
+            },
+            "item1_nuance": {
+                "vi": "Dễ dàng.",
+                "en": "Easy."
+            },
+            "item2_nuance": {
+                "vi": "Khó khăn.",
+                "en": "Difficult."
+            }
+        }
+    },
+    {
+        "vocabId1": "好き",
+        "vocabId2": "嫌い",
+        "type": "ANTONYM",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Hảo (Thích) vs Hiềm (Ghét).",
+                "en": "Like vs Hate."
+            },
+            "item1_nuance": {
+                "vi": "Yêu thích.",
+                "en": "Like."
+            },
+            "item2_nuance": {
+                "vi": "Ghét bỏ.",
+                "en": "Hate."
+            }
+        }
+    },
+    {
+        "vocabId1": "上手",
+        "vocabId2": "下手",
+        "type": "ANTONYM",
+        "explanation": {
+            "mnemonic": {
+                "vi": "Thượng thủ (Giỏi) vs Hạ thủ (Kém).",
+                "en": "Skillful vs Unskillful."
+            },
+            "item1_nuance": {
+                "vi": "Giỏi giang.",
+                "en": "Good at."
+            },
+            "item2_nuance": {
+                "vi": "Kém cỏi.",
+                "en": "Bad at."
+            }
+        }
+    }
+]

@@ -243,7 +243,7 @@ export default function AuthPage() {
 							name="password"
 							rules={[
 								{ required: true, message: t('passwordRequired') },
-								mode === 'signup' ? { min: 6, message: t('passwordMin') } : {},
+								mode === 'signup' ? { min: 6, message: t('passwordMin', { min: 6 }) } : {},
 							]}
 						>
 							<Input.Password

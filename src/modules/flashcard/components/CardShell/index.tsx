@@ -5,11 +5,10 @@ import { PanInfo, motion, useAnimation, useMotionValue, useTransform } from 'fra
 import React, { useState } from 'react';
 
 import { SmartCard } from '../../types';
-import { StandardFace } from './StandardFace';
-
 // We will add other faces later as we migrate them
 // import { GapFillFace } from './Faces/GapFillFace';
-// import { InterventionFace } from './Faces/InterventionFace';
+import { InterventionFace } from './Faces/InterventionFace';
+import { StandardFace } from './StandardFace';
 
 interface CardShellProps {
 	card: SmartCard;
@@ -81,22 +80,42 @@ export const CardShell: React.FC<CardShellProps> = ({
 
 	// --- VARIANT RENDER LOGIC ---
 	const renderFace = (side: 'front' | 'back') => {
-		switch (
-			card.variant // NOTE: Changed from 'type' (discriminator) based on types.ts
-		) {
+		switch (card.variant) {
 			case 'GAP_FILL':
 				return <div>Gap Fill Coming Soon</div>;
 			case 'INTERVENTION':
-				return <div>Intervention Coming Soon</div>;
+				return (
+					<InterventionFace
+						key={card.id}
+						card={card}
+						onResolve={(isCorrect) => {
+							// FAIL OPEN STRATEGY:
+							// Whether correct or incorrect, we reveal the answer (Back of Card).
+							// If incorrect, the user sees the correct item details immediately.
+							// We do NOT trap them in a loop.
+							if (!isFlipped) setIsFlipped(true);
+
+							if (!isCorrect) {
+								// Optional: You might want to trigger a visual "Wrong" feedback here before flipping,
+								// but for instant flow, just flipping is acceptable.
+								// Or we could start the Shake animation for 0.5s then Flip?
+								controls.start({
+									x: [0, -10, 10, -10, 10, 0],
+									transition: { duration: 0.3 },
+								});
+								// Wait for shake? No, instant is better for "Fail Open".
+							}
+						}}
+					/>
+				);
 			case 'BASIC':
 			default:
 				return (
 					<StandardFace
-						card={card as any} // Assertion for now until types fully aligned
+						card={card as any}
 						side={side}
 						showFurigana={showFurigana}
 						showRomaji={showRomaji}
-						// TODO: Hook up audio state logic
 					/>
 				);
 		}
