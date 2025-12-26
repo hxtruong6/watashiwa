@@ -14,7 +14,18 @@ import {
 	UserOutlined,
 } from '@ant-design/icons';
 import * as Sentry from '@sentry/nextjs';
-import { Avatar, Button, Dropdown, Flex, Grid, Space, Tooltip, Typography, theme } from 'antd';
+import {
+	Avatar,
+	Button,
+	Drawer,
+	Dropdown,
+	Flex,
+	Grid,
+	Space,
+	Tooltip,
+	Typography,
+	theme,
+} from 'antd';
 import type { MenuProps } from 'antd';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
@@ -52,6 +63,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 	const supabase = createClient();
 	const [shareModalOpen, setShareModalOpen] = useState(false);
 	const [settingsModalOpen, setSettingsModalOpen] = useState(false);
+	const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
 	const [mounted, setMounted] = useState(false);
 
 	// Global UI Store Control
@@ -321,13 +333,13 @@ export default function NavBar({ user }: { user?: User | null }) {
 										<LanguageSelector />
 										<ThemeToggle />
 
-										<Tooltip title={t('share')}>
+										{/* <Tooltip title={t('share')}>
 											<Button
 												type="text"
 												icon={<ShareAltOutlined />}
 												onClick={() => setShareModalOpen(true)}
 											/>
-										</Tooltip>
+										</Tooltip> */}
 
 										<NotificationPopover />
 										<Dropdown menu={userMenuProps} trigger={['click']} placement="bottomRight">
@@ -414,7 +426,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 									size="small"
 									src={user?.user_metadata?.avatar_url}
 									style={{ backgroundColor: token.colorPrimary, cursor: 'pointer' }}
-									onClick={() => setSettingsModalOpen(true)}
+									onClick={() => setMobileDrawerOpen(true)}
 								/>
 							)}
 
@@ -483,6 +495,98 @@ export default function NavBar({ user }: { user?: User | null }) {
 				onCancel={() => setSettingsModalOpen(false)}
 				user={user}
 			/>
+
+			{/* MOBILE MENU DRAWER (Option 1: The Clarity Protocol) */}
+			<Drawer
+				placement="bottom"
+				closable={false}
+				onClose={() => setMobileDrawerOpen(false)}
+				open={mobileDrawerOpen}
+				size="default"
+				styles={{
+					body: { padding: '8px 16px', height: '100%', overflowY: 'auto' },
+					mask: { backdropFilter: 'blur(4px)' },
+				}}
+				style={{
+					background: token.colorBgContainer,
+					borderTopLeftRadius: 24,
+					borderTopRightRadius: 24,
+				}}
+			>
+				<Flex vertical gap={'middle'}>
+					{/* 1. Header: Identity */}
+					<Flex vertical align="center" gap="small">
+						<Avatar
+							size={64}
+							src={user?.user_metadata?.avatar_url}
+							icon={<UserOutlined />}
+							style={{ border: `4px solid ${token.colorBgLayout}` }}
+						/>
+						<div style={{ textAlign: 'center' }}>
+							<Text strong style={{ fontSize: 18, display: 'block' }}>
+								{user?.user_metadata?.full_name || t('guest')}
+							</Text>
+							<Text type="secondary" style={{ fontSize: 14 }}>
+								{user?.email}
+							</Text>
+						</div>
+					</Flex>
+
+					<div style={{ borderBottom: `1px solid ${token.colorBorderSecondary}` }} />
+
+					{/* 2. Actions: Utility */}
+					<Flex vertical gap="small">
+						<Button
+							block
+							size="large"
+							icon={<SettingOutlined />}
+							style={{ justifyContent: 'flex-start', paddingLeft: 24, fontSize: 16 }}
+							onClick={() => {
+								setMobileDrawerOpen(false);
+								setSettingsModalOpen(true);
+							}}
+						>
+							{t('settings')}
+						</Button>
+						<Button
+							block
+							size="large"
+							icon={<ShareAltOutlined />}
+							style={{ justifyContent: 'flex-start', paddingLeft: 24, fontSize: 16 }}
+							onClick={() => {
+								setMobileDrawerOpen(false);
+								setShareModalOpen(true);
+							}}
+						>
+							{t('share')}
+						</Button>
+						<Button
+							block
+							size="large"
+							icon={<BugOutlined />}
+							style={{ justifyContent: 'flex-start', paddingLeft: 24, fontSize: 16 }}
+							onClick={() => {
+								setMobileDrawerOpen(false);
+								handleBugReport();
+							}}
+						>
+							{tCommon('reportIssue')}
+						</Button>
+					</Flex>
+
+					{/* Toolbar button, with logout is just an icon on the right */}
+					{/* 3. Exit: Logout */}
+					<Flex
+						style={{
+							justifyContent: 'flex-end',
+							boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+							padding: 8,
+						}}
+					>
+						<Button danger icon={<LogoutOutlined />} onClick={handleLogout} />
+					</Flex>
+				</Flex>
+			</Drawer>
 		</>
 	);
 }

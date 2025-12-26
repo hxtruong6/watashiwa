@@ -1,4 +1,5 @@
 import PostHogPageTracker from '@/components/Analytics/PostHogPageTracker';
+import UserReturnTracker from '@/components/Analytics/UserReturnTracker';
 import DisableZoom from '@/components/DisableZoom';
 import NavBar from '@/components/NavBar';
 import PWAInstallPrompt from '@/components/PWA/PWAInstallPrompt';
@@ -126,6 +127,7 @@ export default async function RootLayout({
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
 				<DisableZoom />
 				<PostHogPageTracker />
+				<UserReturnTracker />
 				<NuqsAdapter>
 					<NextIntlClientProvider messages={messages}>
 						<AntdRegistry>

@@ -1,5 +1,6 @@
 'use client';
 
+import { getDeckUrl } from '@/lib/utils/urls';
 import { BookOutlined, RightOutlined, SearchOutlined, TeamOutlined } from '@ant-design/icons';
 import {
 	Button,
@@ -149,7 +150,7 @@ export default function DeckList({ decks, userId }: DeckListProps) {
 								>
 									<Card
 										hoverable
-										onClick={() => router.push(`/decks/${deck.id}`)}
+										onClick={() => router.push(getDeckUrl({ id: deck.id, slug: deck.slug }))}
 										style={{
 											borderRadius: 16,
 											height: '100%',
@@ -213,7 +214,7 @@ export default function DeckList({ decks, userId }: DeckListProps) {
 												{t('cardsCount', { count: deck._count?.vocabularies || 0 })}
 											</Tag>
 											<div onClick={(e) => e.stopPropagation()}>
-												<Link href={`/decks/${deck.id}`}>
+												<Link href={getDeckUrl({ id: deck.id, slug: deck.slug })}>
 													<Button type="text" icon={<RightOutlined />} iconPlacement="end">
 														{t('detailsButton')}
 													</Button>

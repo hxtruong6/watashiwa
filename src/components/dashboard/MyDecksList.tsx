@@ -1,6 +1,7 @@
 'use client';
 
 import DeckListActions from '@/app/dashboard/decks/DeckListActions';
+import { getDeckUrl } from '@/lib/utils/urls';
 import {
 	BookOutlined,
 	CalendarOutlined,
@@ -32,6 +33,7 @@ const { useToken } = theme;
 
 interface LearningDeck {
 	id: string;
+	slug?: string | null;
 	title: string;
 	titleEn: string | null;
 	description: string | null;
@@ -53,6 +55,7 @@ interface LearningDeck {
 
 interface CreatedDeck {
 	id: string;
+	slug?: string | null;
 	title: string;
 	titleEn: string | null;
 	description: string | null;
@@ -158,7 +161,7 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 								<Col xs={24} sm={12} md={8} key={deck.id}>
 									<Card
 										hoverable
-										onClick={() => router.push(`/decks/${deck.id}`)}
+										onClick={() => router.push(getDeckUrl({ id: deck.id, slug: deck.slug }))}
 										style={{
 											borderRadius: 16,
 											height: '100%',
@@ -239,7 +242,7 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 											<div style={{ marginTop: 'auto', paddingTop: 16 }}>
 												{deck.learningStats && deck.learningStats.dueCount > 0 ? (
 													<Link
-														href={`/study?deck=${deck.id}`}
+														href={`/study?deckId=${deck.id}`}
 														onClick={(e) => e.stopPropagation()}
 													>
 														<Button type="primary" block size="large" icon={<RocketOutlined />}>
@@ -249,7 +252,7 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 												) : (
 													// Disabled / secondary button if nothing due
 													<Link
-														href={`/study?deck=${deck.id}`}
+														href={`/study?deckId=${deck.id}`}
 														onClick={(e) => e.stopPropagation()}
 													>
 														<Button block icon={<BookOutlined />}>
@@ -290,7 +293,7 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 								<Col xs={24} sm={12} md={8} lg={6} key={deck.id}>
 									<Card
 										hoverable
-										onClick={() => router.push(`/decks/${deck.id}`)}
+										onClick={() => router.push(getDeckUrl({ id: deck.id, slug: deck.slug }))}
 										style={{
 											borderRadius: 16,
 											height: '100%',
@@ -350,7 +353,7 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 											gap="small"
 											onClick={(e) => e.stopPropagation()}
 										>
-											<Link href={`/decks/${deck.id}`}>
+											<Link href={getDeckUrl({ id: deck.id, slug: deck.slug })}>
 												<Button size="small">{t('view')}</Button>
 											</Link>
 											<DeckListActions mode="edit" deck={deck} />

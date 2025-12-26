@@ -1,6 +1,7 @@
 'use client';
 
 import BackButton from '@/components/BackButton';
+import { getDeckUrl } from '@/lib/utils/urls';
 import { removeDeckFromCourse, reorderDecks } from '@/modules/course/course.actions';
 import {
 	ArrowDownOutlined,
@@ -318,7 +319,10 @@ export default function CourseDetailClient({ course, isOwner }: CourseDetailClie
 																	{t('privateDeck')}
 																</Tag>
 															)}
-															<Link href={`/decks/${cd.deckId}`} target="_blank">
+															<Link
+																href={getDeckUrl({ id: cd.deckId, slug: cd.deck.slug })}
+																target="_blank"
+															>
 																<LinkOutlined style={{ color: token.colorPrimary }} />
 															</Link>
 														</div>
@@ -374,7 +378,7 @@ export default function CourseDetailClient({ course, isOwner }: CourseDetailClie
 																	status="active"
 																/>
 																<div style={{ marginTop: 12 }}>
-																	<Link href={`/decks/${cd.deckId}`}>
+																	<Link href={getDeckUrl({ id: cd.deckId, slug: cd.deck.slug })}>
 																		<Button
 																			type="primary"
 																			shape="round"

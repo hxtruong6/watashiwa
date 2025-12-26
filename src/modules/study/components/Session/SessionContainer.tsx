@@ -62,8 +62,7 @@ export const SessionContainer: React.FC<SessionContainerProps> = ({
 						showInfo={false}
 						size="small"
 						strokeColor={token.colorPrimary}
-						trailColor="transparent"
-						strokeWidth={2}
+						railColor="transparent"
 						style={{ lineHeight: 0, margin: 0, borderRadius: 0 }}
 					/>
 				</div>
@@ -79,7 +78,7 @@ export const SessionContainer: React.FC<SessionContainerProps> = ({
 						display: 'flex',
 						justifyContent: 'space-between',
 						alignItems: 'flex-start',
-						zIndex: 100,
+						zIndex: 2000, // Higher than Tour component (which uses ~1000)
 						pointerEvents: 'none',
 						opacity: headerVisible ? 1 : 0,
 						transition: 'opacity 0.3s ease',

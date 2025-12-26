@@ -1,5 +1,7 @@
 'use client';
 
+import { useFeatureDiscovery } from '@/hooks/useFeatureDiscovery';
+import { getCourseUrl } from '@/lib/utils/urls';
 import {
 	BookOutlined,
 	CheckCircleOutlined,
@@ -24,6 +26,7 @@ interface CourseListProps {
 export default function CourseList({ courses, userId }: CourseListProps) {
 	const t = useTranslations('Courses');
 	const locale = useLocale();
+	useFeatureDiscovery('courses', 'navigation');
 
 	// Separate suggested (public admin) courses from user's custom paths
 	const suggestedCourses = courses.filter((c) => c.isPublic && c.author.id !== userId);
@@ -166,7 +169,7 @@ export default function CourseList({ courses, userId }: CourseListProps) {
 
 									return (
 										<Col xs={24} sm={12} lg={8} key={course.id}>
-											<Link href={`/courses/${course.id}`}>
+											<Link href={getCourseUrl({ id: course.id, slug: course.slug })}>
 												<Card
 													hoverable
 													cover={

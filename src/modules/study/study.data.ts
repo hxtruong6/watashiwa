@@ -46,6 +46,31 @@ export const StudyData = {
 			},
 		});
 
+		// [NEW] Calculate Focus Points & Accuracy dynamically
+		// We need to fetch the actual logs to calculate these, not just count.
+		const todaysLogs = await prisma.reviewLog.findMany({
+			where: {
+				userId,
+				reviewDate: { gte: startOfDay },
+			},
+			select: {
+				rating: true,
+			},
+		});
+
+		// Accuracy: (Passed [>=2] / Total) * 100
+		const passedCount = todaysLogs.filter((l) => l.rating >= 2).length;
+		const totalReviewsWithLogs = todaysLogs.length;
+		const accuracy =
+			totalReviewsWithLogs > 0 ? Math.round((passedCount / totalReviewsWithLogs) * 100) : 0;
+
+		// Focus Points (FP):
+		// - 10 FP per Review
+		// - 20 FP per New Card (Learned)
+		const reviewsFP = todaysLogs.length * 10;
+		const newCardsFP = newCardsToday * 20;
+		const focusPoints = reviewsFP + newCardsFP;
+
 		return {
 			reviewsToday,
 			newCardsToday,
@@ -55,6 +80,8 @@ export const StudyData = {
 			hasReachedNewCardLimit: newCardsToday >= limitNewCards,
 			dueCount,
 			reviewsAvailable,
+			focusPoints,
+			accuracy,
 		};
 	},
 

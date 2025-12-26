@@ -22,9 +22,11 @@ We convened the expert panel to critique the original Phase 3 requirements.
 
 ### The Consensus Verdict
 
-1. **PRIORITY 1:** **Active Priming (Story Mode)**. This is the killer feature.
-2. **PRIORITY 2:** **The Content Factory**. We will write scripts to generate stories using LLMs + JSON validation.
-3. **DEFERRED:** **Redis & Analytics Dashboard**. Moved to Phase 4. We focus on content quality first.
+1. **STRATEGY MONITOR:** We adopt a **"Hybrid" Approach**.
+    - **Phase 2:** We ship ONE manual story (Unit 1) to test the "Hook".
+    - **Phase 3:** We turn on the **AI Factory** to scale to 50 Units.
+2. **PRIORITY 1:** **The AI Content Factory**. We will write scripts to generate stories using LLMs + JSON validation.
+3. **UX CORRECTION:** **Soft Gates**. We will NOT block users from studying. We will use "Soft Nudges" (Toasts/Warnings) to encourage reading, preserving the "Zen" feel.
 
 ---
 
@@ -80,13 +82,14 @@ model StoryLog {
 
 ### 2.2 The "Priming" Logic (System Flow)
 
-**Objective:** User cannot start Flashcards until they "unlock" the context.
+**Objective:** Encourage users to "unlock" the context without frustration.
 
 1. **Check:** User clicks "Unit 5".
 2. **Logic:** `StudyService.hasReadStory(userId, unitId)`?
 3. **UI:**
-    - If `false`: Redirect to `/study/priming/{unitId}`.
-    - If `true`: Proceed to `/study/session/{unitId}`.
+    - If `false`: Show **Optional Modal** / **Toast**: "Recommended: Read the Story first to boost retention +50%."
+        - Options: "Read Story" (Primary) vs "Skip to Cards" (Secondary/Ghost).
+    - If `true`: Proceed directly to `/study/session/{unitId}`.
 
 ---
 

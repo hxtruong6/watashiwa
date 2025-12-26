@@ -53,26 +53,55 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 
 		if (!card) return null;
 
+		// Check if card is already a SmartCard (has front/back structure)
+		const isSmartCard = !!(card as any)?.front && !!(card as any)?.back;
+
+		// Debug logging
+		if (isSmartCard) {
+			console.log('[FlashCard] Detected SmartCard structure:', {
+				hasFront: !!(card as any)?.front,
+				hasBack: !!(card as any)?.back,
+				frontHero: (card as any)?.front?.hero,
+				hasDetails: !!(card as any)?.back?.details,
+			});
+		}
+
 		// Data Extraction (for props)
 		const isVocab = !!card?.vocab;
 		const isKanji = !!card?.kanji;
-		if (!isVocab && !isKanji) return null;
 
-		const vocabData = card?.vocab || {};
-		const kanjiData = card?.kanji || {};
+		// If it's a SmartCard, use it directly; otherwise check for vocab/kanji
+		if (!isSmartCard && !isVocab && !isKanji) return null;
 
-		const frontText = isVocab ? vocabData.kanji || vocabData.wordSurface : kanjiData.kanji;
-		const activeImageUrl = isVocab ? vocabData.imageUrl : kanjiData.imageUrl;
+		// If SmartCard, extract from front/back structure
+		let vocabData: any = {};
+		let kanjiData: any = {};
+		let frontText = '';
 
-		const strokes = kanjiData.strokes;
-		const wordParts = vocabData.wordParts;
-		const romaji = vocabData.romaji;
+		if (isSmartCard) {
+			// SmartCard structure: card.front.hero, card.back.details
+			const smartCard = card as any;
+			const backDetails = smartCard.back?.details || {};
+			// Create new object instead of mutating
+			vocabData = {
+				...backDetails,
+				wordSurface: smartCard.front?.hero || backDetails.wordSurface || backDetails.kanji || '',
+				wordReading: smartCard.front?.reading || backDetails.wordReading,
+				audioUrl: smartCard.front?.audio || backDetails.audioUrl,
+			};
+			frontText = vocabData.wordSurface;
+		} else {
+			vocabData = card?.vocab || {};
+			kanjiData = card?.kanji || {};
+			frontText = isVocab ? vocabData.kanji || vocabData.wordSurface : kanjiData.kanji;
+		}
 
 		// Adapter correction:
 		// StandardFace expects `back.details` to be a Vocabulary object.
 		// We need to map the flat properties from `vocabData` or `kanjiData` into this structure.
 
-		const rawMeaning = isVocab ? vocabData.meanings || vocabData.meaning : kanjiData.meaning;
+		const rawMeaning =
+			isVocab || isSmartCard ? vocabData.meanings || vocabData.meaning : kanjiData.meaning;
 		let meaningsAdapter: { en: string[]; vi: string[] } = { en: [], vi: [] };
 
 		// Robust Meaning Extraction
@@ -93,33 +122,56 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 		// Robust Reading Extraction (Prisma V2 uses wordReading)
 		const reading = vocabData.wordReading || vocabData.reading || vocabData.readingKana || '';
 
-		const examplesAdapter = (isVocab ? vocabData.examples : kanjiData.examples) || [];
+		const examplesAdapter =
+			(isVocab || isSmartCard ? vocabData.examples : kanjiData.examples) || [];
 
 		// Construct StandardCard object (Adapter)
-		const standardCard: StandardCard = {
-			id: card.id,
-			vocabId: card.vocabId || card.id,
-			nextReview: null,
-			srsStage: 0,
-			variant: 'BASIC',
-			front: {
-				hero: frontText,
-				reading: reading,
-				// If no file URL, but we have text, we signal 'tts' so the button appears.
-				// The hook knows to use speak() when audioUrl is empty.
-				audio: audioUrl || (frontText ? 'tts' : ''),
-			},
-			back: {
-				details: {
-					...vocabData,
-					hanViet: isVocab ? vocabData.hanViet : kanjiData.hanViet,
-					meanings: meaningsAdapter,
-					// Fallback for missing fields in partial data
-					etymology: vocabData.etymology || {},
-					examples: examplesAdapter,
-				} as any,
-			},
-		};
+		// If already a SmartCard, use it directly (with minor adaptations)
+		let standardCard: StandardCard;
+
+		if (isSmartCard) {
+			const smartCard = card as any;
+			standardCard = {
+				id: smartCard.id,
+				vocabId: smartCard.vocabId || smartCard.id,
+				nextReview: smartCard.nextReview || null,
+				srsStage: smartCard.srsStage ?? 0,
+				variant: smartCard.variant || 'BASIC',
+				front: {
+					hero: smartCard.front?.hero || frontText,
+					reading: smartCard.front?.reading || reading,
+					audio: smartCard.front?.audio || audioUrl || (frontText ? 'tts' : ''),
+				},
+				back: {
+					details: smartCard.back?.details || vocabData,
+				},
+			};
+		} else {
+			standardCard = {
+				id: card.id,
+				vocabId: card.vocabId || card.id,
+				nextReview: null,
+				srsStage: 0,
+				variant: 'BASIC',
+				front: {
+					hero: frontText,
+					reading: reading,
+					// If no file URL, but we have text, we signal 'tts' so the button appears.
+					// The hook knows to use speak() when audioUrl is empty.
+					audio: audioUrl || (frontText ? 'tts' : ''),
+				},
+				back: {
+					details: {
+						...vocabData,
+						hanViet: isVocab || isSmartCard ? vocabData.hanViet : kanjiData.hanViet,
+						meanings: meaningsAdapter,
+						// Fallback for missing fields in partial data
+						etymology: vocabData.etymology || {},
+						examples: examplesAdapter,
+					} as any,
+				},
+			};
+		}
 
 		return (
 			<div

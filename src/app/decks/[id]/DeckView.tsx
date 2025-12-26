@@ -418,7 +418,7 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 							</Paragraph>
 						</div>
 						<div style={{ display: 'flex', flexDirection: 'column', gap: 8, minWidth: 200 }}>
-							<Link href={`/study/session?deckId=${deck.id}`} style={{ width: '100%' }}>
+							<Link href={`/study?deckId=${deck.id}`} style={{ width: '100%' }}>
 								<Button
 									type="primary"
 									icon={<PlaySquareOutlined />}

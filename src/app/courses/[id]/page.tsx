@@ -8,6 +8,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
 	const user = await getUser();
 	const { id } = await params;
 
+	// Support both UUID and slug - getCourseWithUserProgress handles both
 	const course = await getCourseWithUserProgress(id);
 
 	if (!course) {

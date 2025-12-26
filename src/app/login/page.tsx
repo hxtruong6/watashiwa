@@ -91,8 +91,23 @@ export default function AuthPage() {
 				antdMessage.success(t('signupSuccess'));
 				// Logged in immediately
 				try {
-					const { success, data } = await syncUser();
-					const role = data?.role;
+					const { success, data: syncData } = await syncUser();
+					const role = syncData?.role;
+
+					// Track signup event
+					if (success && syncData?.isNewUser && data.user) {
+						const { trackEvent, identifyUser } = await import('@/lib/analytics');
+						identifyUser(data.user.id, {
+							email: email,
+							name: name,
+						});
+						trackEvent('user_signed_up', {
+							method: 'email',
+							source: 'landing_page', // Could be enhanced to detect actual source
+							timestamp: new Date().toISOString(),
+						});
+					}
+
 					if (success && role === 'ADMIN') {
 						window.location.href = '/admin';
 						return;

@@ -1,3 +1,7 @@
+'use client';
+
+import { useFeatureDiscovery } from '@/hooks/useFeatureDiscovery';
+
 export const metadata = {
 	title: 'Active Recall Exercises | WatashiWa',
 	description: 'Practice your vocabulary with active recall exercises.',
@@ -7,7 +11,8 @@ interface ExercisesPageProps {
 	searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default async function ExercisesPage({ searchParams }: ExercisesPageProps) {
+export default function ExercisesPage({ searchParams }: ExercisesPageProps) {
+	useFeatureDiscovery('exercises', 'navigation');
 	const deckIdParam = searchParams?.deckId;
 	let deckIds: string[] = [];
 

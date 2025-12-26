@@ -139,6 +139,17 @@
 		},
 		"nextReview": "Next review",
 		"nextReviewIn": "Next review: in {time}",
+		"readyToFocus": "Ready to Focus?",
+		"allClean": "All Clean!",
+		"reviewIntro": "You have <bold>{count} items</bold> for review today.",
+		"reviewComplete": "You have cleared your review queue. Great job!",
+		"dailyReview": "Daily Review",
+		"brainPrimed": "Your brain is primed to retain these {count} words.",
+		"startSession": "Start Session",
+		"focusGained": "Focus Gained",
+		"accuracy": "Accuracy",
+		"recentDecks": "Recent Decks",
+		"noRecentActivity": "No recent activity.",
 		"learners": "{count} learners",
 		"hours": "hours",
 		"yourTopTips": "Your Top Tips",
@@ -191,12 +202,14 @@
 			"browseLibrary": "Browse Library"
 		},
 		"briefing": {
-			"title": "Mission Today",
+			"title": "Session Briefing",
+			"readyToReview": "Ready to review {count} cards?",
 			"missionNew": "{count} New Words",
 			"missionReview": "{count} Reviews",
 			"sectionNew": "New Arrivals",
 			"sectionReview": "Refresh Memory",
-			"startSession": "Start Session"
+			"startSession": "Start Session",
+			"skipBriefing": "Skip & Start Review"
 		},
 		"Tutorial": {
 			"welcomeTitle": "Welcome to Study Mode",

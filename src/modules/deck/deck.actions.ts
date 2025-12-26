@@ -8,6 +8,7 @@
 
 import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from '@/lib';
 import { prisma } from '@/lib/db';
+import { generateSlug } from '@/lib/utils/slug';
 import { getUser } from '@/modules/auth/auth.actions';
 import { executeAdminAction, executeSafeAction } from '@/modules/core/action-client';
 /**
@@ -25,21 +26,21 @@ import { z } from 'zod';
 import * as deckData from './deck.data';
 
 /**
- * Get deck by ID with details and user stats
+ * Get deck by ID or slug with details and user stats
  */
-export async function getDeck(id: string) {
+export async function getDeck(idOrSlug: string) {
 	try {
 		const user = await getUser();
 		if (!user) return null;
 
-		const deck = await deckData.getDeckById(id, user.id);
+		const deck = await deckData.getDeckByIdOrSlug(idOrSlug, user.id);
 		if (!deck) return null;
 
 		// Calculate User Stats for this deck
 		const userReviews = await prisma.userReview.findMany({
 			where: {
 				userId: user.id,
-				vocab: { deckId: id },
+				vocab: { deckId: deck.id },
 			},
 			select: { srsStage: true },
 		});
@@ -215,6 +216,17 @@ export async function createDeck(data: {
 		const user = await getUser();
 		if (!user) return { success: false, error: 'Unauthorized' };
 
+		// Generate slug if title is provided
+		let slug: string | undefined;
+		if (data.title) {
+			// Get all existing slugs to ensure uniqueness
+			const existingDecks = await prisma.deck.findMany({
+				select: { slug: true },
+			});
+			const existingSlugs = existingDecks.map((d) => d.slug).filter(Boolean) as string[];
+			slug = generateSlug(data.title, existingSlugs);
+		}
+
 		const deck = await prisma.deck.create({
 			data: {
 				title: data.title,
@@ -222,6 +234,7 @@ export async function createDeck(data: {
 				isPublic: data.isPublic ?? false,
 				headerImage: data.headerImage,
 				authorId: user.id,
+				slug,
 			},
 		});
 
@@ -246,14 +259,32 @@ export async function updateDeck(
 		const user = await getUser();
 		if (!user) return { success: false, error: 'Unauthorized' };
 
-		const existing = await prisma.deck.findUnique({ where: { id } });
+		// Verify ownership and get current slug
+		const existing = await prisma.deck.findUnique({
+			where: { id },
+			select: { authorId: true, slug: true },
+		});
 		if (!existing || existing.authorId !== user.id) {
 			return { success: false, error: 'Unauthorized' };
 		}
 
+		// Generate slug only if title changed and slug is null (immutability: don't update existing slug)
+		let slug: string | undefined;
+		if (data.title && !existing.slug) {
+			// Get all existing slugs to ensure uniqueness
+			const existingDecks = await prisma.deck.findMany({
+				select: { slug: true },
+			});
+			const existingSlugs = existingDecks.map((d) => d.slug).filter(Boolean) as string[];
+			slug = generateSlug(data.title, existingSlugs);
+		}
+
 		const deck = await prisma.deck.update({
 			where: { id },
-			data: { ...data },
+			data: {
+				...data,
+				...(slug ? { slug } : {}),
+			} as any,
 		});
 		revalidatePath('/dashboard/decks');
 		return { success: true, deck };

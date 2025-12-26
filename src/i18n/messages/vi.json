@@ -124,7 +124,18 @@
 		"totalCards": "Tổng tài sản",
 		"mastered": "Đã 'Master'",
 		"nextReview": "Kèo tiếp theo",
-		"nextReviewIn": "Ôn tiếp: sau {time}",
+		"nextReviewIn": "Ôn tập tiếp theo: trong {time}",
+		"readyToFocus": "Sẵn sàng tập trung?",
+		"allClean": "Sạch sẽ!",
+		"reviewIntro": "Bạn có <bold>{count} thẻ</bold> cần ôn tập hôm nay.",
+		"reviewComplete": "Bạn đã hoàn thành hàng chờ ôn tập. Làm tốt lắm!",
+		"dailyReview": "Ôn tập hàng ngày",
+		"brainPrimed": "Não bộ đã sẵn sàng để ghi nhớ {count} từ này.",
+		"startSession": "Bắt đầu",
+		"focusGained": "Điểm Tập Trung",
+		"accuracy": "Độ chính xác",
+		"recentDecks": "Bộ thẻ gần đây",
+		"noRecentActivity": "Chưa có hoạt động gần đây.",
 		"learners": "{count} người học",
 		"hours": "tiếng",
 		"yourTopTips": "Bí kíp của bạn",
@@ -184,12 +195,14 @@
 			"browseLibrary": "Duyệt thư viện"
 		},
 		"briefing": {
-			"title": "Nhiệm vụ hôm nay",
+			"title": "Tóm tắt buổi học",
+			"readyToReview": "Sẵn sàng ôn tập {count} thẻ?",
 			"missionNew": "{count} Từ mới",
 			"missionReview": "{count} Thẻ ôn tập",
 			"sectionNew": "Hàng mới về",
 			"sectionReview": "Cần ôn lại",
-			"startSession": "Vô chiến"
+			"startSession": "Bắt đầu",
+			"skipBriefing": "Bỏ qua & Bắt đầu"
 		},
 		"Tutorial": {
 			"welcomeTitle": "Chào mừng bạn đến với chế độ học",

@@ -3,10 +3,12 @@
 // Components
 import AppTutorial from '@/components/Shared/AppTutorial';
 import CommentDrawer from '@/components/comments/CommentDrawer';
-// Hooks
 import { useStudyShortcuts } from '@/hooks/study/useStudyShortcuts';
 import { useStudyTutorialSteps } from '@/hooks/study/useStudyTutorialSteps';
 import { useZenMode } from '@/hooks/study/useZenMode';
+// Hooks
+import { useTutorialStore } from '@/hooks/useTutorialStore';
+import { trackEvent } from '@/lib/analytics';
 import FlashCard, { FlashCardHandle } from '@/modules/flashcard/components/FlashCard';
 import { fetchSessionAction } from '@/modules/flashcard/flashcard.actions';
 import ReportModal from '@/modules/report/components/ReportModal';
@@ -32,25 +34,39 @@ const { useBreakpoint } = Grid;
 interface SessionControllerProps {
 	deckId?: string;
 	courseId?: string;
+	mode?: string;
+	isFirstSession?: boolean;
+	dueCount?: number;
 }
 
-export default function SessionController({ deckId, courseId }: SessionControllerProps) {
+export default function SessionController({
+	deckId,
+	courseId,
+	mode,
+	isFirstSession = false,
+	dueCount = 0,
+}: SessionControllerProps) {
 	const t = useTranslations('Study');
 	const screens = useBreakpoint();
 
 	// Store
 	const { startSession, queue, currentIndex, submitRating, isSessionActive, currentCard } =
 		useSessionStore();
+	const { mergeTutorials } = useTutorialStore();
 
 	// Local State
 	const [isLoading, setIsLoading] = useState(true);
 	const [studyPhase, setStudyPhase] = useState<'loading' | 'briefing' | 'quiz' | 'summary'>(
 		'loading',
 	);
+	const [hasSkippedBriefing, setHasSkippedBriefing] = useState(false);
 	const [dailyStats, setDailyStats] = useState({
 		reviewsToday: 0,
 		limitReviews: 200,
 	});
+	const [sessionStartTime, setSessionStartTime] = useState<number | null>(null);
+	const [firstCardShown, setFirstCardShown] = useState(false);
+	const [hasTrackedSessionStart, setHasTrackedSessionStart] = useState(false);
 
 	// UI Visibility
 	const [settingsVisible, setSettingsVisible] = useState(false);
@@ -85,7 +101,7 @@ export default function SessionController({ deckId, courseId }: SessionControlle
 	useEffect(() => {
 		async function init() {
 			try {
-				const [stats, settings, tutorials] = await Promise.all([
+				const [stats, settings, tutorialsResponse] = await Promise.all([
 					getDailyProgress(),
 					getUserSettings(),
 					getCompletedTutorials(),
@@ -97,16 +113,67 @@ export default function SessionController({ deckId, courseId }: SessionControlle
 					// setSpaceKeyRating(settings.spaceKeyRating); // Uncomment if exists
 				}
 
+				// Merge server tutorials into the store
+				if (tutorialsResponse?.success && tutorialsResponse.data) {
+					mergeTutorials(tutorialsResponse.data);
+				}
+
 				// Fetch Cards if queue is empty
 				if (queue.length === 0) {
+					console.log(
+						'[SessionController] Fetching cards for deckId:',
+						deckId,
+						'courseId:',
+						courseId,
+					);
 					const response = await fetchSessionAction({ deckId, courseId });
-					if (response.success && response.data && response.data.length > 0) {
-						startSession(response.data);
+					console.log('[SessionController] Fetch response:', {
+						success: response.success,
+						dataLength: response.data?.length || 0,
+						error: response.error,
+					});
+
+					if (response.success && response.data) {
+						if (response.data.length > 0) {
+							console.log(
+								'[SessionController] Starting session with',
+								response.data.length,
+								'cards',
+							);
+							startSession(response.data);
+							setSessionStartTime(Date.now());
+
+							// Immediately check phase transition after starting session
+							// This ensures phase transitions even if useEffect doesn't trigger
+							// BUT: Only if user hasn't skipped briefing before
+							if (!hasSkippedBriefing) {
+								const hasNew = response.data.some((c) => c.srsStage === 0);
+								if (hasNew) {
+									console.log('[SessionController] Direct transition to briefing');
+									setStudyPhase('briefing');
+								} else {
+									console.log('[SessionController] Direct transition to quiz');
+									setStudyPhase('quiz');
+								}
+							} else {
+								// User has skipped before, go directly to quiz
+								console.log('[SessionController] User skipped briefing, going to quiz');
+								setStudyPhase('quiz');
+							}
+						} else {
+							// No cards available - show empty state
+							console.warn('[SessionController] No cards found for deckId:', deckId);
+							setStudyPhase('summary');
+						}
 					} else {
-						// Handle empty or error
-						console.warn('No cards found');
-						setStudyPhase('summary'); // Or empty state
+						// Error fetching cards
+						console.error('[SessionController] Failed to fetch cards:', response.error);
+						setStudyPhase('summary');
 					}
+				} else if (queue.length > 0 && !hasTrackedSessionStart) {
+					// Session already started (e.g., from resume)
+					console.log('[SessionController] Resuming session with', queue.length, 'cards');
+					setSessionStartTime(Date.now());
 				}
 			} catch (error) {
 				console.error('Failed to init session:', error);
@@ -116,14 +183,85 @@ export default function SessionController({ deckId, courseId }: SessionControlle
 		}
 
 		init();
-	}, [deckId, courseId, startSession, queue.length]);
+	}, [
+		deckId,
+		courseId,
+		startSession,
+		queue.length,
+		hasTrackedSessionStart,
+		mergeTutorials,
+		hasSkippedBriefing,
+	]);
+
+	// Track session start when queue is populated
+	useEffect(() => {
+		if (queue.length > 0 && !hasTrackedSessionStart && !isLoading) {
+			const entryType = deckId ? 'explicit_deck' : courseId ? 'explicit_course' : 'auto_start';
+
+			// Track first session start
+			if (isFirstSession) {
+				trackEvent('user_first_study_session_started', {
+					entry_method: entryType,
+					deck_id: deckId || null,
+					queue_size: queue.length,
+					due_count: dueCount,
+				});
+			}
+
+			// Track regular session start
+			trackEvent('study_session_started', {
+				entry_type: entryType,
+				deck_id: deckId || null,
+				course_id: courseId || null,
+				mode: mode || null,
+				queue_size: queue.length,
+				due_count: dueCount,
+			});
+
+			setHasTrackedSessionStart(true);
+		}
+	}, [
+		queue.length,
+		hasTrackedSessionStart,
+		isLoading,
+		isFirstSession,
+		deckId,
+		courseId,
+		mode,
+		dueCount,
+	]);
 
 	// 2. Phase Transition Logic
 	useEffect(() => {
+		console.log('[SessionController] Phase transition effect:', {
+			isLoading,
+			studyPhase,
+			queueLength: queue.length,
+			hasSkippedBriefing,
+		});
+
+		// Don't transition if user has explicitly skipped briefing or already in quiz
+		if (hasSkippedBriefing || studyPhase === 'quiz') {
+			return;
+		}
+
 		if (!isLoading && studyPhase === 'loading') {
+			console.log('[SessionController] Phase transition check:', {
+				queueLength: queue.length,
+				currentCard: !!useSessionStore.getState().currentCard,
+			});
+
 			if (queue.length === 0) {
+				console.warn('[SessionController] Queue is empty, going to summary');
 				setStudyPhase('summary');
 				return;
+			}
+
+			// Ensure currentCard is set before transitioning
+			const { currentCard: storeCurrentCard } = useSessionStore.getState();
+			if (!storeCurrentCard && queue.length > 0) {
+				console.log('[SessionController] Setting currentCard from queue[0]');
+				useSessionStore.setState({ currentCard: queue[0], currentIndex: 0 });
 			}
 
 			// Check for Briefing Candidates
@@ -132,12 +270,94 @@ export default function SessionController({ deckId, courseId }: SessionControlle
 			const hasLeech = false; // TODO: Add lapses to SmartCard type
 
 			if (hasNew || hasLeech) {
+				console.log('[SessionController] Transitioning to briefing (hasNew:', hasNew, ')');
 				setStudyPhase('briefing');
 			} else {
+				console.log('[SessionController] Transitioning to quiz');
 				setStudyPhase('quiz');
 			}
 		}
-	}, [isLoading, queue, studyPhase]);
+	}, [isLoading, queue.length, studyPhase, hasSkippedBriefing]);
+
+	// Ensure currentCard is set when entering quiz phase from briefing
+	useEffect(() => {
+		if (studyPhase === 'quiz' && queue.length > 0 && !currentCard) {
+			// Force set currentCard from queue
+			useSessionStore.setState({ currentCard: queue[0], currentIndex: 0 });
+		}
+	}, [studyPhase, queue, currentCard]);
+
+	// Track first card shown
+	useEffect(() => {
+		if (studyPhase === 'quiz' && currentCard && !firstCardShown && sessionStartTime) {
+			const timeToFirstCard = Date.now() - sessionStartTime;
+			const entryType = deckId ? 'explicit_deck' : courseId ? 'explicit_course' : 'auto_start';
+
+			trackEvent('study_session_first_card_shown', {
+				time_to_first_card_ms: timeToFirstCard,
+				entry_type: entryType,
+			});
+
+			setFirstCardShown(true);
+		}
+	}, [studyPhase, currentCard, firstCardShown, sessionStartTime, deckId, courseId]);
+
+	// Track session completion
+	useEffect(() => {
+		if (studyPhase === 'summary' && hasTrackedSessionStart && sessionStartTime) {
+			// Use a small delay to ensure sessionStats are updated
+			setTimeout(() => {
+				const { sessionStats } = useSessionStore.getState();
+				const totalCards =
+					sessionStats.reviews[1] +
+					sessionStats.reviews[2] +
+					sessionStats.reviews[3] +
+					sessionStats.reviews[4];
+				const sessionDuration = (sessionStats.endTime || Date.now()) - sessionStartTime;
+				const averageRating =
+					totalCards > 0
+						? (sessionStats.reviews[1] * 1 +
+								sessionStats.reviews[2] * 2 +
+								sessionStats.reviews[3] * 3 +
+								sessionStats.reviews[4] * 4) /
+							totalCards
+						: 0;
+
+				const entryType = deckId ? 'explicit_deck' : courseId ? 'explicit_course' : 'auto_start';
+
+				const newCards = queue.filter((c) => c.srsStage === 0).length;
+				const reviewCards = totalCards - newCards;
+
+				// Track first session completion
+				if (isFirstSession) {
+					trackEvent('user_first_study_session_completed', {
+						cards_reviewed: totalCards,
+						session_duration_ms: sessionDuration,
+						completion_rate: 1.0, // Assuming completed if we reached summary
+					});
+				}
+
+				// Track regular session completion
+				trackEvent('study_session_completed', {
+					cards_reviewed: totalCards,
+					cards_new: newCards,
+					cards_review: reviewCards,
+					session_duration_ms: sessionDuration,
+					average_rating: averageRating,
+					entry_type: entryType,
+					abandoned: false,
+				});
+			}, 100);
+		}
+	}, [
+		studyPhase,
+		hasTrackedSessionStart,
+		sessionStartTime,
+		isFirstSession,
+		deckId,
+		courseId,
+		queue,
+	]);
 
 	// 3. Shortcuts
 	const handleRate = useCallback(
@@ -182,10 +402,13 @@ export default function SessionController({ deckId, courseId }: SessionControlle
 		return <SessionSummary />;
 	}
 
+	// Compute card to show - use currentCard or fallback to queue[0]
+	const cardToShow = studyPhase === 'quiz' ? currentCard || queue[0] : null;
+
 	return (
 		<SessionContainer
 			progress={progressPercent}
-			headerVisible={headerVisible}
+			headerVisible={studyPhase === 'briefing' ? true : headerVisible} // Always show header during briefing for UX
 			actions={
 				<>
 					<Button
@@ -204,7 +427,10 @@ export default function SessionController({ deckId, courseId }: SessionControlle
 				</>
 			}
 		>
-			<AppTutorial tutorialId="study_page_v1" steps={tutorialSteps} />
+			{/* Only show tutorial during quiz phase when card is visible */}
+			{studyPhase === 'quiz' && (
+				<AppTutorial tutorialId="study_page_v1" steps={tutorialSteps} showAnswer={showAnswer} />
+			)}
 
 			{/* Drawers */}
 			<CommentDrawer
@@ -234,11 +460,54 @@ export default function SessionController({ deckId, courseId }: SessionControlle
 			{/* Content Zones */}
 			{studyPhase === 'loading' && <div>Loading...</div>}
 
-			{studyPhase === 'briefing' && (
-				<SessionBriefing queue={queue} stats={dailyStats} onStart={() => setStudyPhase('quiz')} />
+			{/* Ensure currentCard is set when entering quiz phase */}
+			{studyPhase === 'quiz' && queue.length > 0 && !currentCard && (
+				<div style={{ padding: 24, textAlign: 'center' }}>
+					<p>Preparing card...</p>
+				</div>
 			)}
 
-			{studyPhase === 'quiz' && currentCard && (
+			{studyPhase === 'briefing' && (
+				<SessionBriefing
+					queue={queue}
+					stats={dailyStats}
+					onStart={() => {
+						// Transition to quiz phase
+						if (queue.length > 0 && queue[0]) {
+							// CRITICAL: Always set currentCard BEFORE transitioning
+							useSessionStore.setState({
+								currentCard: queue[0],
+								currentIndex: 0,
+								isSessionActive: true,
+							});
+							// Transition immediately - state update is synchronous
+							setStudyPhase('quiz');
+							setShowAnswer(false);
+							resetTimer();
+						}
+					}}
+					onSkip={() => {
+						// Skip briefing and go directly to quiz
+						if (queue.length > 0 && queue[0]) {
+							// Mark that user has skipped briefing
+							setHasSkippedBriefing(true);
+							// CRITICAL: Always set currentCard BEFORE transitioning
+							useSessionStore.setState({
+								currentCard: queue[0],
+								currentIndex: 0,
+								isSessionActive: true,
+							});
+							// Transition immediately - state update is synchronous
+							console.log('[SessionController] User clicked skip, transitioning to quiz');
+							setStudyPhase('quiz');
+							setShowAnswer(false);
+							resetTimer();
+						}
+					}}
+				/>
+			)}
+
+			{studyPhase === 'quiz' && queue.length > 0 && cardToShow && (
 				<>
 					{/* Invisible Top Tap Zone */}
 					{!headerVisible && (
@@ -278,8 +547,8 @@ export default function SessionController({ deckId, courseId }: SessionControlle
 						>
 							<FlashCard
 								ref={flashCardRef}
-								key={currentCard.id}
-								card={currentCard}
+								key={cardToShow.id}
+								card={cardToShow}
 								showAnswer={showAnswer}
 								showFurigana={showFurigana}
 								showRomaji={showRomaji}

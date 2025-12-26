@@ -49,7 +49,11 @@ export default function TrendingTips() {
 					>
 						<Flex vertical style={{ width: '100%' }} gap="4px">
 							<Flex justify="space-between" align="center">
-								<Link href={item.vocabId ? `/study?deckId=${item.vocab?.deckId || ''}` : '#'}>
+								<Link
+									href={
+										item.vocabId && item.vocab?.deckId ? `/study?deckId=${item.vocab.deckId}` : '#'
+									}
+								>
 									<Text strong style={{ fontSize: 16, color: token.colorPrimary }}>
 										{item.vocab?.wordSurface || item.kanji?.kanji}
 									</Text>

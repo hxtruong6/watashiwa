@@ -5,6 +5,7 @@
  */
 import { DEFAULT_PER_PAGE } from '@/lib';
 import { prisma } from '@/lib/db';
+import { isUUID } from '@/lib/utils/uuid';
 import { Prisma } from '@prisma/client';
 
 /**
@@ -39,6 +40,46 @@ export async function getDeckById(id: string, userId: string) {
 			},
 		},
 	});
+}
+
+/**
+ * Fetch a single deck by slug with vocabularies
+ */
+export async function getDeckBySlug(slug: string, userId: string) {
+	return await prisma.deck.findFirst({
+		where: {
+			slug,
+			OR: [{ isPublic: true }, { authorId: userId }],
+		},
+		include: {
+			author: {
+				select: { name: true, id: true },
+			},
+			vocabularies: {
+				where: {
+					contentStatus: 'VERIFIED', // Only show verified content
+				},
+				orderBy: { createdAt: 'desc' },
+			},
+			stories: {
+				orderBy: { createdAt: 'desc' },
+			},
+			_count: {
+				select: { vocabularies: true, stories: true },
+			},
+		},
+	});
+}
+
+/**
+ * Fetch a deck by ID or slug (unified lookup)
+ * Detects whether the parameter is a UUID or slug and calls the appropriate function
+ */
+export async function getDeckByIdOrSlug(idOrSlug: string, userId: string) {
+	if (isUUID(idOrSlug)) {
+		return await getDeckById(idOrSlug, userId);
+	}
+	return await getDeckBySlug(idOrSlug, userId);
 }
 
 /**

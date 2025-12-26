@@ -85,10 +85,25 @@ export const getWeeklyStats = cache(async (userId?: string) => {
 });
 
 /**
- * Simple Server-Side Logger for Client Events (Low Cost Analytics)
+ * Server-Side Analytics Event Logger
+ * For server-side events, we log them and they can be sent to PostHog API later
+ * Client-side events should use trackEvent from @/lib/analytics
  */
 export async function logAnalyticsEvent(eventName: string, payload: any) {
-	// In production, send this to PostHog / Mixpanel / Datadog
-	console.log(`[Analytics] ${eventName}`, JSON.stringify(payload));
-	return { success: true };
+	try {
+		// In development, log to console
+		if (process.env.NODE_ENV === 'development') {
+			console.log(`[Analytics] ${eventName}`, JSON.stringify(payload));
+		}
+
+		// In production, you can send to PostHog API or store in queue
+		// For now, we'll rely on client-side tracking for most events
+		// Server-side events can be sent via PostHog's REST API if needed
+
+		return { success: true };
+	} catch (error) {
+		// Fail silently - don't break the app
+		console.error(`[Analytics] Failed to log ${eventName}:`, error);
+		return { success: false, error: String(error) };
+	}
 }

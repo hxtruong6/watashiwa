@@ -7,12 +7,23 @@
 'use server';
 
 import { prisma } from '@/lib/db';
+import { generateSlug } from '@/lib/utils/slug';
 import { getUser } from '@/modules/auth/auth.actions';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/client';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 
 import * as courseData from './course.data';
+
+/**
+ * Revalidate both ID and slug paths for a course
+ */
+function revalidateCoursePaths(id: string, slug?: string | null) {
+	revalidatePath(`/courses/${id}`);
+	if (slug) {
+		revalidatePath(`/courses/${slug}`);
+	}
+}
 
 /**
  * Get course by ID with deck details
@@ -28,13 +39,14 @@ export async function getCourseById(id: string) {
 
 /**
  * Get course with user progress on each deck
+ * Supports both ID and slug
  */
-export async function getCourseWithUserProgress(courseId: string) {
+export async function getCourseWithUserProgress(courseIdOrSlug: string) {
 	try {
 		const user = await getUser();
 		if (!user) return null;
 
-		return await courseData.getCourseWithProgress(courseId, user.id);
+		return await courseData.getCourseWithProgress(courseIdOrSlug, user.id);
 	} catch (error) {
 		console.error('Failed to fetch course with progress:', error);
 		return null;
@@ -87,6 +99,7 @@ const UpdateCourseSchema = CreateCourseSchema.partial();
 
 export type CreateCourseInput = {
 	title: string;
+	titleEn?: string;
 	description?: string;
 	isPublic?: boolean;
 	headerImage?: string;
@@ -108,11 +121,23 @@ export async function createCourse(data: CreateCourseInput) {
 			return { success: false, error: 'Unauthorized' };
 		}
 
+		// Generate slug if title is provided
+		let slug: string | undefined;
+		if (data.title) {
+			// Get all existing slugs to ensure uniqueness
+			const existingCourses = await prisma.course.findMany({
+				select: { slug: true },
+			});
+			const existingSlugs = existingCourses.map((c) => c.slug).filter(Boolean) as string[];
+			slug = generateSlug(data.titleEn || data.title, existingSlugs);
+		}
+
 		const course = await prisma.course.create({
 			data: {
 				...data,
 				authorId: user.id,
-			},
+				slug,
+			} as any,
 		});
 
 		revalidatePath('/dashboard/courses');
@@ -137,23 +162,38 @@ export async function updateCourse(id: string, data: UpdateCourseInput) {
 			return { success: false, error: 'Unauthorized' };
 		}
 
-		// Verify ownership
+		// Verify ownership and get current slug
 		const existing = await prisma.course.findUnique({
 			where: { id },
-			select: { authorId: true },
+			select: { authorId: true, slug: true },
 		});
 
 		if (!existing || existing.authorId !== user.id) {
 			return { success: false, error: 'Unauthorized or not found' };
 		}
 
+		// Generate slug only if title changed and slug is null (immutability: don't update existing slug)
+		let slug: string | undefined;
+		if ((data.title || data.titleEn) && !existing.slug) {
+			// Get all existing slugs to ensure uniqueness
+			const existingCourses = await prisma.course.findMany({
+				select: { slug: true },
+			});
+			const existingSlugs = existingCourses.map((c) => c.slug).filter(Boolean) as string[];
+			const titleToUse = data.titleEn || data.title || '';
+			slug = generateSlug(titleToUse, existingSlugs);
+		}
+
 		const course = await prisma.course.update({
 			where: { id },
-			data,
+			data: {
+				...data,
+				...(slug ? { slug } : {}),
+			},
 		});
 
 		revalidatePath('/dashboard/courses');
-		revalidatePath(`/courses/${id}`);
+		revalidateCoursePaths(id, course.slug);
 		return { success: true, data: course };
 	} catch (error) {
 		console.error('Failed to update course:', error);
@@ -232,7 +272,12 @@ export async function addDeckToCourse(courseId: string, deckId: string) {
 			},
 		});
 
-		revalidatePath(`/courses/${courseId}`);
+		// Fetch course to get slug for revalidation
+		const courseForRevalidation = await prisma.course.findUnique({
+			where: { id: courseId },
+			select: { slug: true },
+		});
+		revalidateCoursePaths(courseId, (courseForRevalidation as { slug?: string | null })?.slug);
 		return { success: true, data: courseDeck };
 	} catch (error) {
 		console.error('Failed to add deck to course:', error);
@@ -276,7 +321,12 @@ export async function removeDeckFromCourse(courseId: string, deckId: string) {
 			},
 		});
 
-		revalidatePath(`/courses/${courseId}`);
+		// Fetch course to get slug for revalidation
+		const courseForRevalidation = await prisma.course.findUnique({
+			where: { id: courseId },
+			select: { slug: true },
+		});
+		revalidateCoursePaths(courseId, (courseForRevalidation as { slug?: string | null })?.slug);
 		return { success: true };
 	} catch (error) {
 		console.error('Failed to remove deck from course', error);
@@ -322,7 +372,12 @@ export async function reorderDecks(courseId: string, deckIds: string[]) {
 			),
 		);
 
-		revalidatePath(`/courses/${courseId}`);
+		// Fetch course to get slug for revalidation
+		const courseForRevalidation = await prisma.course.findUnique({
+			where: { id: courseId },
+			select: { slug: true },
+		});
+		revalidateCoursePaths(courseId, (courseForRevalidation as { slug?: string | null })?.slug);
 		return { success: true };
 	} catch (error) {
 		console.error('Failed to reorder decks', error);

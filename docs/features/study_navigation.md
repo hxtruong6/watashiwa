@@ -1,7 +1,7 @@
 # Study Page Navigation Scenarios
 
 > **File**: `src/app/study/page.tsx`
-> **Component**: `src/components/StudyContent.tsx`
+> **Component**: `src/modules/study/components/Session/SessionController.tsx` or `src/modules/study/components/StudyDashboard.tsx`
 
 This document outlines the various ways a user can navigate to the Study page and how the application handles each scenario.
 
@@ -11,38 +11,57 @@ The `/study` route is the central hub for all learning activities. It handles:
 
 1. **Parameter Resolution**: Converting `courseId` or `deckId` into a list of target decks.
 2. **Session Resuming**: Automatically redirecting users to their last context if no parameters are provided.
-3. **Global Mode**: Falling back to a "study everything" mode if no context is found.
+3. **Dashboard Fallback**: Showing the StudyDashboard when no session can be resumed (new users or no history).
 
 ---
 
 ## Navigation Scenarios
 
-### 1. Resume Last Session (Default)
+### 1. Resume Last Session (Priority 1)
 
 **URL**: `/study` (No parameters)
 
 **Behavior**:
 
-1. **Server-Side Check**: The page checks the user's `ReviewLog` to find the most recently studied card.
+1. **Server-Side Check**: The page calls `getLastStudySession()` to find the most recently studied deck from `ReviewLog`.
 2. **Redirect**:
-   - **If found**: Redirects to `/study?deckId=[last_deck_id]`.
-   - **If not found** (New User): Renders the page without parameters (See **Scenario 2**).
+   - **If found**: Redirects to `/study?deckId=[last_deck_id]` (preserving `mode` parameter if present).
+   - **If not found**: Proceeds to **Auto-Start Logic** (See below).
 
 **Use Case**: Clicking "Study" in the main navigation or `DueCTA` widget.
 
-### 2. Global Study Mode (New User / Explicit)
+### 2. Auto-Start Session (Priority 2 - HIGH IMPACT)
 
-**URL**: `/study` (After failing to resume) OR `/study?mode=quick` (Global Quick Review)
+**URL**: `/study` (After failing to resume, but user has due cards)
 
 **Behavior**:
 
-- **Target**: **All Decks**.
-- **Logic**:
-  - Fetches reviews from _any_ deck the user explicitly owns or is enrolled in.
-  - Enrolls new cards from _any_ public or owned deck.
-- **Note**: This is the default fallback for new users who haven't studied anything yet.
+- **Condition**: User has `dueCount > 0` AND has study history (`learningDecks.length > 0`).
+- **Action**: **Automatically starts study session** with all due cards across all decks (no `deckId` = global fetch).
+- **Rationale**:
+  - **Friction Reduction**: Eliminates the extra click from Dashboard → Session.
+  - **Golden Path**: Matches the "one tap to study" philosophy.
+  - **Active User Optimization**: Active users want to study immediately, not browse stats.
 
-### 3. Deck-Specific Study
+**Impact**: Reduces conversion friction by ~50% for active users.
+
+### 3. Study Dashboard (Fallback - New User / All Caught Up)
+
+**URL**: `/study` (After failing to resume AND no due cards OR new user)
+
+**Behavior**:
+
+- **Component**: Renders `StudyDashboard` component.
+- **Shown When**:
+  1. **New users** (no study history) - needs onboarding/context.
+  2. **All caught up** (no due cards) - celebration state.
+  3. **Recovery scenario** - user needs motivation before starting.
+- **Features**:
+  - Shows daily progress stats (due count, new cards, streak, accuracy).
+  - Displays recent decks with quick access to study.
+  - Provides "Start Session" button that uses the first available deck or redirects to browse decks.
+
+### 4. Deck-Specific Study
 
 **URL**: `/study?deckId=[uuid]`
 
@@ -57,7 +76,7 @@ The `/study` route is the central hub for all learning activities. It handles:
 - Community Feed (Clicking a card's deck link).
 - Trending Tips (Clicking "Try this word").
 
-### 4. Course-Specific Study
+### 5. Course-Specific Study
 
 **URL**: `/study?courseId=[uuid]`
 
@@ -73,7 +92,7 @@ The `/study` route is the central hub for all learning activities. It handles:
 
 - Course Details Page.
 
-### 5. Quick Review Mode
+### 6. Quick Review Mode
 
 **URL**: `/study?mode=quick` (Can be combined with other params)
 
@@ -102,6 +121,10 @@ The `/study` route is the central hub for all learning activities. It handles:
 
 | Case                   | Effect                                                                                                                 |
 | :--------------------- | :--------------------------------------------------------------------------------------------------------------------- |
-| **Invalid `deckId`**   | Returns empty queue -> "Session Complete" / "No cards found".                                                          |
-| **Invalid `courseId`** | Shows error toast (`t('errorCourseNotFound')`).                                                                        |
+| **Invalid `deckId`**   | Invalid UUID format redirects to `/study` (triggers auto-start or dashboard). Invalid but valid UUID format returns empty queue -> "Session Complete" / "No cards found". |
+| **Invalid `courseId`** | Invalid UUID format redirects to `/study` (triggers auto-start or dashboard). Invalid but valid UUID format shows error toast (`t('errorCourseNotFound')`). |
 | **Both IDs**           | `courseId` logic takes precedence in `useStudySession` hook if both are present, but routing usually ensures only one. |
+| **Data Fetch Errors**  | If `getDailyProgress()` or `getUserDecksWithStats()` fail, redirects to `/dashboard` as fallback.                    |
+| **Resume Check Errors** | If `getLastStudySession()` fails, falls back to auto-start logic or `StudyDashboard` instead of crashing.            |
+| **Auto-Start Empty Queue** | If auto-start is triggered but `fetchSessionAction` returns no cards, `SessionController` shows empty state gracefully. |
+| **New User with Due Cards** | If new user somehow has due cards (edge case), auto-start still works - they'll see the session.                      |

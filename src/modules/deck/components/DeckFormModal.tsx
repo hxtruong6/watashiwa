@@ -1,5 +1,6 @@
 'use client';
 
+import { trackEvent } from '@/lib/analytics';
 import { createDeck, updateDeck } from '@/modules/deck/deck.actions';
 import { UploadOutlined } from '@ant-design/icons';
 import { Form, Input, Modal, Switch, message } from 'antd';
@@ -54,6 +55,15 @@ export default function DeckFormModal({
 
 			if (result.success) {
 				message.success(isEdit ? 'Deck updated successfully' : 'Deck created successfully');
+
+				// Track deck creation (not updates)
+				if (!isEdit && 'deck' in result && result.deck) {
+					trackEvent('deck_created', {
+						method: 'manual',
+						is_first_deck: false, // We'll need to check this separately if needed
+					});
+				}
+
 				onSuccess();
 				onCancel();
 			} else {

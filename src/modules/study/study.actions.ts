@@ -248,6 +248,25 @@ export async function getDailyProgress() {
 }
 
 /**
+ * Check if user has completed any study sessions before
+ * Used for analytics to detect first-time study sessions
+ */
+export async function hasUserStudiedBefore(): Promise<boolean> {
+	try {
+		const user = await getUser();
+		if (!user) return false;
+
+		const reviewCount = await prisma.reviewLog.count({
+			where: { userId: user.id },
+		});
+		return reviewCount > 0;
+	} catch (error) {
+		console.error('Error checking user study history:', error);
+		return false;
+	}
+}
+
+/**
  * Get Review Count (Badge)
  */
 export async function getReviewCount() {

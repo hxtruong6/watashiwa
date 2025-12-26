@@ -121,21 +121,24 @@ We do not just track "Correct/Incorrect". We track **Hesitation & Habit**.
 
 ## 6. FUNCTIONAL SPECIFICATION
 
-### 6.1 Feature: Active Priming (Replacing "Overview")
+### 6.1 Feature: Active Priming (Comprehensible Input)
 
 _Old Way:_ List of words -> User reads -> Enters Flashcards. (Passive)  
-_New Way:_ **Context First.**
+_New Way:_ **Context First (i+1).**
+
+**The Science:** We target **Comprehensible Input** (90%+ known words).  
+**Constraint:** Do NOT dump 20 new words into a short text.
 
 **Two Levels of Story:**
 
 1. **Unit Level (The "Active Priming" Story):**
-   - **Goal:** Immersion. Connects all 20 words of a unit into one narrative.
-   - **Model:** `Story` (linked to `Deck`).
-   - **Format:** Mixed-Language Text (e.g., "I went to the **Gakkou** because...").
+    - **Goal:** Immersion. Connects the unit's words into a narrative.
+    - **Density Rule:** Max **5-10% New Words**. If a Unit has 20 words, we generate a longer story or split it, filling the rest with _known_ words from previous units.
+    - **Format:** Mixed-Language Text (e.g., "I went to the **Gakkou** because...").
 
 2. **Word Level (The "Memory Hook"):**
-   - **Goal:** Retention of a single difficult word.
-   - **Model:** `Vocabulary.mnemonic` (JSON).
+    - **Goal:** Retention of a single difficult word.
+    - **Model:** `Vocabulary.mnemonic` (JSON).
    - **Format:** Language-Specific Pun/Hook (NOT a direct translation).
      - _EN:_ "I seek **SENSEI**tional wisdom."
      - _VI:_ "Ông ấy là **TIÊN** sinh ra trước."
@@ -143,9 +146,9 @@ _New Way:_ **Context First.**
 **Scenario (Unit Priming):**
 
 1. User starts "Unit 5 (Travel)".
-2. **Smart Layer** generates a "Mini-Story" payload using Unit 5 words + familiar words from Unit 1-4.
+2. **Smart Layer** generates a story using Unit 5 words + familiar words from Unit 1-4.
 3. **UI** displays the text. Key words are highlighted.
-4. **Requirement:** User cannot start Flashcards until they interact with at least 3 highlighted words or answer a comprehension check.
+4. **Soft Gate:** "Recommended: Read to prime your brain." (User can skip).
 
 ### 6.2 Feature: Dynamic Card Variants (The "CUBE")
 

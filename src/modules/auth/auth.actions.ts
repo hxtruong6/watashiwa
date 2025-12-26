@@ -38,6 +38,13 @@ export async function syncUser() {
 
 		if (!user) throw new Error('No authenticated user');
 
+		// Check if user already exists
+		const existingUser = await prisma.user.findUnique({
+			where: { id: user.id },
+		});
+
+		const isNewUser = !existingUser;
+
 		// Upsert user to ensure they exist
 		const dbUser = await prisma.user.upsert({
 			where: { id: user.id },
@@ -56,8 +63,24 @@ export async function syncUser() {
 			},
 		});
 
-		return { role: dbUser.role };
+		return { role: dbUser.role, isNewUser };
 	});
+}
+
+/**
+ * Check if user has completed any study sessions
+ * Used for analytics to detect first-time users
+ */
+export async function hasUserStudiedBefore(userId: string): Promise<boolean> {
+	try {
+		const reviewCount = await prisma.reviewLog.count({
+			where: { userId },
+		});
+		return reviewCount > 0;
+	} catch (error) {
+		console.error('Error checking user study history:', error);
+		return false;
+	}
 }
 
 /**

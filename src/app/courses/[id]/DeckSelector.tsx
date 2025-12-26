@@ -1,3 +1,4 @@
+import { getDeckUrl } from '@/lib/utils/urls';
 import { addDeckToCourse, searchDecks } from '@/modules/course/course.actions';
 import {
 	CheckCircleFilled,
@@ -67,7 +68,7 @@ const DeckListItem = ({
 							<Tag color="orange">{t('private')}</Tag>
 						)}
 						{/* External Link */}
-						<Link href={`/decks/${deck.id}`} target="_blank">
+						<Link href={getDeckUrl({ id: deck.id, slug: deck.slug })} target="_blank">
 							<Tooltip title="View Deck">
 								<Button
 									type="text"

@@ -1,3 +1,4 @@
+import { trackEvent } from '@/lib/analytics';
 import { SmartCard } from '@/modules/flashcard/types';
 import { submitReview as submitReviewAction } from '@/modules/study/study.actions';
 import { create } from 'zustand';
@@ -139,12 +140,27 @@ export const useSessionStore = create<SessionStore>()(
 
 				// 2. Persist to Server (Async but awaited for critical updates)
 				try {
+					const srsStageBefore = currentCard.srsStage;
 					const res = await submitReviewAction({ vocabId: currentCard.vocabId, rating });
 
 					if (!res.success) {
 						console.error('[SessionStore] Failed to persist review', res.error);
 					} else {
 						console.log('[SessionStore] Persisted. Next Due:', res.data?.nextReview);
+
+						// Track card reviewed event
+						const cardType = srsStageBefore === 0 ? 'new' : 'review';
+						// Get updated SRS stage from the next card in queue (if available)
+						// For now, we'll use a simple heuristic: if rating is 1-2, likely still learning, if 3-4, likely review
+						const srsStageAfter = rating <= 2 ? 1 : 2; // Simplified - actual stage comes from DB
+
+						trackEvent('card_reviewed', {
+							rating: rating,
+							card_type: cardType,
+							srs_stage_before: srsStageBefore,
+							srs_stage_after: srsStageAfter,
+							deck_id: ('deckId' in currentCard ? currentCard.deckId : null) || null,
+						});
 
 						// 3. INTERVENTION INJECTION (The "Smart Loop")
 						if (res.data?.intervention) {

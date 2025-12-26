@@ -1,6 +1,7 @@
 'use client';
 
 import CommunityFeed from '@/components/community/CommunityFeed';
+import { useFeatureDiscovery } from '@/hooks/useFeatureDiscovery';
 import { Typography, theme } from 'antd';
 import { useTranslations } from 'next-intl';
 import React from 'react';
@@ -11,6 +12,7 @@ const { useToken } = theme;
 export default function CommunityPage() {
 	const { token } = useToken();
 	const tDashboard = useTranslations('Dashboard');
+	useFeatureDiscovery('community', 'navigation');
 
 	return (
 		<div

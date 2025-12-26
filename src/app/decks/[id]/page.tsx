@@ -12,6 +12,7 @@ export default async function DeckDetailPage({ params }: { params: Promise<{ id:
 	// Sync User
 	await syncUser();
 	const user = await getUser();
+	// Support both UUID and slug - getDeck handles both
 	const deck = await getDeck(id);
 
 	if (!deck) {

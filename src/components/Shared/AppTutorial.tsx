@@ -45,9 +45,11 @@ export default function AppTutorial({
 		setOpen(false);
 		setCurrent(0);
 		markComplete(tutorialId);
-		completeTutorial(tutorialId).then(() => {
-			if (onComplete) onComplete();
+		// Fire and forget - don't block UI
+		completeTutorial(tutorialId).catch((err) => {
+			console.error('Failed to save tutorial completion:', err);
 		});
+		if (onComplete) onComplete();
 	};
 
 	const handleChange = (newCurrent: number) => {
@@ -64,6 +66,11 @@ export default function AppTutorial({
 			onClose={handleClose}
 			onFinish={handleClose}
 			steps={steps}
+			mask={true}
+			closable={true} // Allow closing by clicking outside
+			closeIcon={true}
+			type="default"
+			zIndex={1000} // Lower than close button
 			indicatorsRender={(current, total) => (
 				<span>
 					{current + 1} / {total}

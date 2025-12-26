@@ -4,6 +4,7 @@
  * Handles all Prisma queries for Course operations
  */
 import { prisma } from '@/lib/db';
+import { isUUID } from '@/lib/utils/uuid';
 
 /**
  * Fetch a course with its decks and counts
@@ -33,12 +34,52 @@ export async function getCourseById(id: string) {
 }
 
 /**
- * Fetch a course with user progress on each deck
+ * Fetch a course by slug with its decks and counts
  */
-export async function getCourseWithProgress(courseId: string, userId: string) {
+export async function getCourseBySlug(slug: string) {
+	return await prisma.course.findUnique({
+		where: { slug },
+		include: {
+			author: {
+				select: { name: true, id: true },
+			},
+			decks: {
+				include: {
+					deck: {
+						include: {
+							author: { select: { name: true } },
+							_count: {
+								select: { vocabularies: true, stories: true },
+							},
+						},
+					},
+				},
+				orderBy: { sortOrder: 'asc' },
+			},
+		},
+	});
+}
+
+/**
+ * Fetch a course by ID or slug (unified lookup)
+ * Detects whether the parameter is a UUID or slug and calls the appropriate function
+ */
+export async function getCourseByIdOrSlug(idOrSlug: string) {
+	if (isUUID(idOrSlug)) {
+		return await getCourseById(idOrSlug);
+	}
+	return await getCourseBySlug(idOrSlug);
+}
+
+/**
+ * Fetch a course with user progress on each deck
+ * Supports both ID and slug
+ */
+export async function getCourseWithProgress(courseIdOrSlug: string, userId: string) {
 	// 1. Fetch course with decks
+	const whereClause = isUUID(courseIdOrSlug) ? { id: courseIdOrSlug } : { slug: courseIdOrSlug };
 	const course = await prisma.course.findUnique({
-		where: { id: courseId },
+		where: whereClause as { id: string } | { slug: string },
 		include: {
 			author: { select: { name: true, id: true } },
 			decks: {
@@ -61,7 +102,7 @@ export async function getCourseWithProgress(courseId: string, userId: string) {
 
 	// 2. Fetch user progress for each deck
 	const decksWithProgress = await Promise.all(
-		course.decks.map(async (cd) => {
+		(course.decks as any[]).map(async (cd: any) => {
 			const deckId = cd.deckId;
 			const totalItems = cd.deck._count.vocabularies + cd.deck._count.stories;
 
