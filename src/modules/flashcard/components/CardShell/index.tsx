@@ -15,7 +15,7 @@ interface CardShellProps {
 	isActive: boolean;
 	isNext: boolean; // Used for stack visuals
 	showAnswer?: boolean; // Controlled reveal state
-	onReveal?: () => void; // Callback for reveal
+	onReveal?: () => void; // Callback for reveal/toggle (toggles when answer is already shown)
 	children?: React.ReactNode; // Optional overlay
 
 	// Global Settings passed down
@@ -27,6 +27,9 @@ interface CardShellProps {
 	// Audio Props
 	isPlaying?: boolean;
 	onPlayAudio?: (e: React.MouseEvent) => void;
+
+	// Design Variant
+	designVariant?: 'safe' | 'aggressive' | 'minimalist';
 }
 
 export const CardShell: React.FC<CardShellProps> = ({
@@ -42,6 +45,7 @@ export const CardShell: React.FC<CardShellProps> = ({
 	exitColor,
 	isPlaying = false,
 	onPlayAudio,
+	designVariant = 'safe',
 }) => {
 	const { token } = theme.useToken();
 	const controls = useAnimation();
@@ -62,11 +66,14 @@ export const CardShell: React.FC<CardShellProps> = ({
 		}
 	}, [isExiting, controls]);
 
-	const handleTap = () => {
+	const handleTap = (e: React.MouseEvent | React.TouchEvent) => {
+		e.stopPropagation(); // Prevent event bubbling to RatingBar buttons
 		if (showAnswer === undefined) {
 			// Only allow internal flip if not controlled
 			setInternalFlipped(!internalFlipped);
-		} else if (!showAnswer && onReveal) {
+		} else if (onReveal) {
+			// Allow toggle: if answer is shown, flip back to front; if not, reveal answer
+			// This gives users agency to review the question again
 			onReveal();
 		}
 	};
@@ -117,6 +124,7 @@ export const CardShell: React.FC<CardShellProps> = ({
 						showRomaji={showRomaji}
 						isPlaying={isPlaying}
 						onPlayAudio={onPlayAudio}
+						designVariant={designVariant}
 					/>
 				);
 		}
@@ -157,7 +165,7 @@ export const CardShell: React.FC<CardShellProps> = ({
 				maxWidth: '340px',
 				aspectRatio: '3/4',
 				perspective: 1000,
-				cursor: !showAnswer && isActive ? 'pointer' : 'default',
+				cursor: isActive ? 'pointer' : 'default', // Always clickable when active (allows toggle)
 			}}
 			variants={variants}
 			initial="hidden"
@@ -177,6 +185,7 @@ export const CardShell: React.FC<CardShellProps> = ({
 				animate={{ rotateY: isFlipped ? 180 : 0 }}
 				transition={{ duration: 0.4, ease: 'easeOut' }}
 				onClick={handleTap}
+				onTouchStart={handleTap}
 			>
 				{/* FRONT FACE */}
 				<div
@@ -191,6 +200,9 @@ export const CardShell: React.FC<CardShellProps> = ({
 						display: 'flex',
 						justifyContent: 'center',
 						alignItems: 'center',
+						userSelect: 'none',
+						WebkitUserSelect: 'none',
+						WebkitTouchCallout: 'none',
 					}}
 				>
 					{/* Exit Color Trail Overlay */}
@@ -229,6 +241,9 @@ export const CardShell: React.FC<CardShellProps> = ({
 						justifyContent: 'center',
 						alignItems: 'center',
 						overflow: 'hidden',
+						userSelect: 'none',
+						WebkitUserSelect: 'none',
+						WebkitTouchCallout: 'none',
 					}}
 				>
 					<div style={{ width: '100%', height: '100%' }}>{renderFace('back')}</div>

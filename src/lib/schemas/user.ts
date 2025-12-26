@@ -19,6 +19,8 @@ export const UserPreferencesSchema = z.object({
 		.optional(),
 	hapticFeedback: z.boolean().optional(),
 	reduceMotion: z.boolean().optional(),
+	autoShowAnswer: z.boolean().optional(),
+	autoShowAnswerDelay: z.number().int().min(1).max(300).optional(),
 	fsrsParams: z
 		.object({
 			requestRetention: z.number().min(0.5).max(1).optional(),

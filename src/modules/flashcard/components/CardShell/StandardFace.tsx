@@ -1,12 +1,20 @@
 'use client';
 
-import { BulbFilled, PauseCircleOutlined, SoundOutlined } from '@ant-design/icons';
+import {
+	BookOutlined,
+	BulbFilled,
+	CheckCircleOutlined,
+	PauseCircleOutlined,
+	SoundOutlined,
+} from '@ant-design/icons';
 import { Button, Flex, Typography, theme } from 'antd';
 import React from 'react';
 
 import { StandardCard } from '../../types';
 
 const { Title, Text } = Typography;
+
+type DesignVariant = 'safe' | 'aggressive' | 'minimalist';
 
 interface StandardFaceProps {
 	card: StandardCard;
@@ -19,6 +27,9 @@ interface StandardFaceProps {
 	// Audio State
 	isPlaying?: boolean;
 	onPlayAudio?: (e: React.MouseEvent) => void;
+
+	// Design Variant
+	designVariant?: DesignVariant;
 }
 
 export const StandardFace: React.FC<StandardFaceProps> = ({
@@ -28,6 +39,7 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 	showRomaji = false,
 	isPlaying = false,
 	onPlayAudio,
+	designVariant = 'safe',
 }) => {
 	const { token } = theme.useToken();
 	const { front, back } = card;
@@ -105,6 +117,15 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 
 	// BACK DESIGN
 	const hasReading = !!front.reading;
+	const primaryMeaning = back.details.meanings.vi?.[0] || back.details.meanings.en?.[0] || '';
+	const hasExample = back.details.examples && back.details.examples.length > 0;
+	const example = hasExample ? back.details.examples[0] : null;
+	const hasMnemonic = !!back.details.mnemonic;
+	const mnemonic =
+		hasMnemonic && back.details.mnemonic
+			? back.details.mnemonic.vi || back.details.mnemonic.en
+			: null;
+
 	const hanVietBadge = back.details.hanViet ? (
 		<div
 			style={{
@@ -130,24 +151,334 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 		</div>
 	) : null;
 
+	// Render based on design variant
+	if (designVariant === 'safe') {
+		return (
+			<Flex
+				vertical
+				style={{
+					height: '100%',
+					padding: '40px 32px 32px 32px',
+					textAlign: 'left',
+					width: '100%',
+				}}
+			>
+				{/* 1. Meta Row: Reading + Badge + Audio */}
+				<Flex justify="space-between" align="center" style={{ marginBottom: '24px' }}>
+					<Flex gap="12px" align="center">
+						{hasReading && (
+							<Text type="secondary" style={{ fontSize: '18px', fontWeight: 400 }}>
+								{front.reading}
+							</Text>
+						)}
+						{hanVietBadge}
+					</Flex>
+
+					{front.audio && (
+						<Button
+							type="text"
+							shape="circle"
+							size="small"
+							icon={
+								isPlaying ? (
+									<PauseCircleOutlined style={{ fontSize: 18, color: token.colorTextSecondary }} />
+								) : (
+									<SoundOutlined style={{ fontSize: 18, color: token.colorTextSecondary }} />
+								)
+							}
+							onClick={(e) => {
+								e.stopPropagation();
+								onPlayAudio?.(e);
+							}}
+						/>
+					)}
+				</Flex>
+
+				{/* 2. Primary Meaning (Hero - Centered) */}
+				<Flex
+					vertical
+					align="center"
+					style={{
+						marginBottom: '32px',
+						padding: '24px',
+						background: `${token.colorPrimary}0A`, // 10% opacity
+						borderRadius: token.borderRadiusLG,
+					}}
+				>
+					<Text
+						style={{
+							fontSize: 'clamp(28px, 8vw, 36px)',
+							fontWeight: 600,
+							color: token.colorTextHeading,
+							lineHeight: 1.3,
+							letterSpacing: '-0.02em',
+							textAlign: 'center',
+						}}
+					>
+						{primaryMeaning}
+					</Text>
+				</Flex>
+
+				{/* 3. Example (Card-style) */}
+				{hasExample && (
+					<div
+						style={{
+							marginBottom: hasMnemonic ? '24px' : '0',
+							padding: '16px',
+							background: token.colorFillAlter,
+							borderRadius: token.borderRadius,
+						}}
+					>
+						<Flex gap={8} align="center" style={{ marginBottom: '12px' }}>
+							<BookOutlined style={{ fontSize: 16, color: token.colorTextSecondary }} />
+							<Text type="secondary" style={{ fontSize: '12px', fontWeight: 500 }}>
+								Example
+							</Text>
+						</Flex>
+						<Text
+							style={{
+								fontSize: '15px',
+								color: token.colorText,
+								lineHeight: '1.6',
+								display: 'block',
+								marginBottom: '8px',
+							}}
+						>
+							{example?.sentence}
+						</Text>
+						<div
+							style={{
+								height: '1px',
+								background: token.colorBorder,
+								margin: '8px 0',
+							}}
+						/>
+						<Text
+							style={{
+								fontSize: '13px',
+								color: token.colorTextDescription,
+								lineHeight: '1.5',
+							}}
+						>
+							{example?.translation?.vi || example?.translation?.en || ''}
+						</Text>
+					</div>
+				)}
+
+				{/* 4. Mnemonic (Distinct style) */}
+				{hasMnemonic && (
+					<div
+						style={{
+							padding: '16px',
+							background: token.colorPrimaryBg,
+							borderRadius: token.borderRadius,
+							border: `1px solid ${token.colorPrimaryBorder}`,
+							marginTop: !hasExample ? 'auto' : '0',
+						}}
+					>
+						<Flex gap={8} align="center" style={{ marginBottom: '8px' }}>
+							<BulbFilled style={{ fontSize: 16, color: token.colorPrimary }} />
+							<Text type="secondary" style={{ fontSize: '12px', fontWeight: 500 }}>
+								Memory Tip
+							</Text>
+						</Flex>
+						<Text
+							style={{
+								fontSize: '14px',
+								color: token.colorText,
+								lineHeight: '1.5',
+							}}
+						>
+							{mnemonic}
+						</Text>
+					</div>
+				)}
+			</Flex>
+		);
+	}
+
+	if (designVariant === 'aggressive') {
+		return (
+			<Flex
+				vertical
+				style={{
+					height: '100%',
+					padding: '32px 32px 32px 32px',
+					textAlign: 'left',
+					width: '100%',
+				}}
+			>
+				{/* 1. Meta Row: Reading + Badge + Audio (Minimal) */}
+				<Flex justify="space-between" align="center" style={{ marginBottom: '20px' }}>
+					<Flex gap="12px" align="center">
+						{hasReading && (
+							<Text type="secondary" style={{ fontSize: '16px', fontWeight: 400 }}>
+								{front.reading}
+							</Text>
+						)}
+						{hanVietBadge}
+					</Flex>
+
+					{front.audio && (
+						<Button
+							type="text"
+							shape="circle"
+							size="small"
+							icon={
+								isPlaying ? (
+									<PauseCircleOutlined style={{ fontSize: 18, color: token.colorTextSecondary }} />
+								) : (
+									<SoundOutlined style={{ fontSize: 18, color: token.colorTextSecondary }} />
+								)
+							}
+							onClick={(e) => {
+								e.stopPropagation();
+								onPlayAudio?.(e);
+							}}
+						/>
+					)}
+				</Flex>
+
+				{/* 2. Primary Meaning (Celebrated Hero) */}
+				<Flex
+					vertical
+					align="center"
+					style={{
+						marginBottom: '24px',
+						padding: '28px 20px',
+						background: `linear-gradient(135deg, ${token.colorPrimary}08 0%, transparent 100%)`,
+						borderRadius: token.borderRadiusLG,
+						position: 'relative',
+					}}
+				>
+					<CheckCircleOutlined
+						style={{
+							fontSize: 24,
+							color: token.colorSuccess,
+							marginBottom: '12px',
+							opacity: 0.8,
+						}}
+					/>
+					<Text
+						style={{
+							fontSize: 'clamp(32px, 9vw, 40px)',
+							fontWeight: 700,
+							color: token.colorTextHeading,
+							lineHeight: 1.2,
+							letterSpacing: '-0.03em',
+							textAlign: 'center',
+							textShadow: `0 2px 8px ${token.colorPrimary}15`,
+						}}
+					>
+						{primaryMeaning}
+					</Text>
+				</Flex>
+
+				{/* Divider */}
+				<div
+					style={{
+						height: '1px',
+						background: `linear-gradient(90deg, transparent, ${token.colorBorder}, transparent)`,
+						marginBottom: '24px',
+					}}
+				/>
+
+				{/* 3. Example (Speech bubble style) */}
+				{hasExample && (
+					<div
+						style={{
+							marginBottom: hasMnemonic ? '20px' : '0',
+							padding: '16px 20px',
+							background: token.colorFillAlter,
+							borderRadius: '16px 16px 16px 4px',
+							position: 'relative',
+						}}
+					>
+						<Flex gap={8} align="center" style={{ marginBottom: '10px' }}>
+							<Text style={{ fontSize: 18 }}>💬</Text>
+							<Text type="secondary" style={{ fontSize: '12px', fontWeight: 500 }}>
+								Real Usage
+							</Text>
+						</Flex>
+						<Text
+							style={{
+								fontSize: '18px',
+								color: token.colorText,
+								lineHeight: '1.6',
+								display: 'block',
+								marginBottom: '10px',
+								fontWeight: 500,
+							}}
+						>
+							{example?.sentence}
+						</Text>
+						<Text
+							style={{
+								fontSize: '14px',
+								color: token.colorTextDescription,
+								lineHeight: '1.5',
+							}}
+						>
+							{example?.translation?.vi || example?.translation?.en || ''}
+						</Text>
+					</div>
+				)}
+
+				{/* 4. Mnemonic (Brain icon, highlighted) */}
+				{hasMnemonic && (
+					<div
+						style={{
+							padding: '16px 20px',
+							background: `${token.colorPrimary}18`, // 15% opacity
+							borderRadius: token.borderRadius,
+							border: `1px solid ${token.colorPrimaryBorder}`,
+							marginTop: !hasExample ? 'auto' : '0',
+						}}
+					>
+						<Flex gap={8} align="center" style={{ marginBottom: '10px' }}>
+							<Text style={{ fontSize: 18 }}>🧠</Text>
+							<Text type="secondary" style={{ fontSize: '12px', fontWeight: 600 }}>
+								Memory Hook
+							</Text>
+						</Flex>
+						<Text
+							style={{
+								fontSize: '14px',
+								color: token.colorText,
+								lineHeight: '1.5',
+								fontWeight: 500,
+							}}
+						>
+							{mnemonic}
+						</Text>
+					</div>
+				)}
+			</Flex>
+		);
+	}
+
+	// Minimalist variant
 	return (
 		<Flex
 			vertical
-			style={{ height: '100%', padding: '0 32px 32px 32px', textAlign: 'left', width: '100%' }}
+			style={{
+				height: '100%',
+				padding: '60px 40px 40px 40px',
+				textAlign: 'left',
+				width: '100%',
+			}}
 		>
-			{/* 1. Meta Row: Reading + Badge + Audio */}
-			<Flex justify="space-between" align="center" style={{ marginBottom: '16px' }}>
+			{/* 1. Meta Row: Reading + Badge + Audio (Ultra-minimal) */}
+			<Flex justify="space-between" align="center" style={{ marginBottom: '32px' }}>
 				<Flex gap="12px" align="center">
-					{/* Always show Reading on Back (Zen: Context for the answer) */}
 					{hasReading && (
-						<Text type="secondary" style={{ fontSize: '18px', fontWeight: 400 }}>
+						<Text type="secondary" style={{ fontSize: '16px', fontWeight: 300 }}>
 							{front.reading}
 						</Text>
 					)}
 					{hanVietBadge}
 				</Flex>
 
-				{/* Audio Button (Subtle) */}
 				{front.audio && (
 					<Button
 						type="text"
@@ -155,9 +486,9 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 						size="small"
 						icon={
 							isPlaying ? (
-								<PauseCircleOutlined style={{ fontSize: 18, color: token.colorTextSecondary }} />
+								<PauseCircleOutlined style={{ fontSize: 16, color: token.colorTextTertiary }} />
 							) : (
-								<SoundOutlined style={{ fontSize: 18, color: token.colorTextSecondary }} />
+								<SoundOutlined style={{ fontSize: 16, color: token.colorTextTertiary }} />
 							)
 						}
 						onClick={(e) => {
@@ -168,67 +499,71 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 				)}
 			</Flex>
 
-			{/* 2. Primary Meaning (The Core Answer) */}
-			<div style={{ marginBottom: '24px' }}>
-				<Text
-					style={{
-						fontSize: '28px',
-						fontWeight: 600,
-						color: token.colorTextHeading,
-						lineHeight: 1.3,
-						letterSpacing: '-0.02em',
-					}}
-				>
-					{/* Prioritize Vietnamese, fallback to English */}
-					{back.details.meanings.vi?.[0] || back.details.meanings.en?.[0] || ''}
-				</Text>
-			</div>
+			{/* 2. Primary Meaning (Clean, spacious) */}
+			<Text
+				style={{
+					fontSize: 'clamp(28px, 7vw, 32px)',
+					fontWeight: 500,
+					color: token.colorTextHeading,
+					lineHeight: 1.4,
+					letterSpacing: '-0.01em',
+					marginBottom: '48px',
+				}}
+			>
+				{primaryMeaning}
+			</Text>
 
-			{/* 3. Example (Context) */}
-			{back.details.examples && back.details.examples.length > 0 && (
-				<div
-					style={{
-						borderLeft: `3px solid ${token.colorFillSecondary}`,
-						paddingLeft: '16px',
-						marginTop: 'auto',
-						marginBottom: back.details.mnemonic ? '16px' : '0',
-					}}
-				>
-					<Text style={{ fontSize: '15px', color: token.colorTextSecondary, lineHeight: '1.6' }}>
-						{back.details.examples[0]?.sentence}
-					</Text>
-					{/* Translation */}
+			{/* Subtle divider */}
+			<div
+				style={{
+					height: '1px',
+					background: token.colorBorder,
+					marginBottom: '32px',
+					opacity: 0.3,
+				}}
+			/>
+
+			{/* 3. Example (Minimal styling) */}
+			{hasExample && (
+				<div style={{ marginBottom: hasMnemonic ? '32px' : '0' }}>
 					<Text
 						style={{
-							fontSize: '13px',
-							color: token.colorTextDescription,
+							fontSize: '16px',
+							color: token.colorText,
+							lineHeight: '1.7',
 							display: 'block',
-							marginTop: '4px',
+							marginBottom: '8px',
+							fontWeight: 400,
 						}}
 					>
-						{back.details.examples[0]?.translation?.vi ||
-							back.details.examples[0]?.translation?.en ||
-							''}
+						{example?.sentence}
+					</Text>
+					<Text
+						style={{
+							fontSize: '14px',
+							color: token.colorTextDescription,
+							lineHeight: '1.6',
+						}}
+					>
+						{example?.translation?.vi || example?.translation?.en || ''}
 					</Text>
 				</div>
 			)}
 
-			{/* 4. Mnemonic (Memory Hook) */}
-			{back.details.mnemonic && (
-				<div
+			{/* 4. Mnemonic (Italic, subtle) */}
+			{hasMnemonic && (
+				<Text
+					italic
 					style={{
-						borderLeft: `3px solid ${token.colorPrimary}`, // Distinct color for Mnemonic
-						paddingLeft: '16px',
-						marginTop: !back.details.examples?.length ? 'auto' : '0',
+						fontSize: '13px',
+						color: token.colorTextDescription,
+						lineHeight: '1.6',
+						marginTop: !hasExample ? 'auto' : '0',
+						opacity: 0.8,
 					}}
 				>
-					<Text
-						italic
-						style={{ fontSize: '14px', color: token.colorTextDescription, lineHeight: '1.5' }}
-					>
-						{back.details.mnemonic.vi || back.details.mnemonic.en}
-					</Text>
-				</div>
+					{mnemonic}
+				</Text>
 			)}
 		</Flex>
 	);

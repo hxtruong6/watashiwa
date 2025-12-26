@@ -68,6 +68,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 
 	// Global UI Store Control
 	const isNavBarVisible = useUIStore((state) => state.isNavBarVisible);
+	const setNavBarVisible = useUIStore((state) => state.setNavBarVisible);
 
 	const isXs = mounted ? screens.xs : false;
 
@@ -85,6 +86,18 @@ export default function NavBar({ user }: { user?: User | null }) {
 			router.replace(`${pathname}?${params.toString()}`, { scroll: false });
 		}
 	}, [searchParams, pathname, router]);
+
+	// Sync navbar with URL changes (handles browser back/forward)
+	useEffect(() => {
+		const hasDeckId = searchParams.get('deckId');
+		const hasCourseId = searchParams.get('courseId');
+		const isDashboardState = pathname?.startsWith('/study') && !hasDeckId && !hasCourseId;
+
+		// If URL indicates dashboard but store says hidden, show navbar
+		if (isDashboardState && !isNavBarVisible) {
+			setNavBarVisible(true);
+		}
+	}, [pathname, searchParams, isNavBarVisible, setNavBarVisible]);
 
 	const t = useTranslations('NavBar');
 	const tCommon = useTranslations('Common');
@@ -116,9 +129,14 @@ export default function NavBar({ user }: { user?: User | null }) {
 	// });
 
 	// 1. Route-based hiding (Hard Rules)
+	// Check if we're in an active study session (has deckId/courseId)
+	const hasDeckId = searchParams.get('deckId');
+	const hasCourseId = searchParams.get('courseId');
+	const isActiveStudySession = pathname?.startsWith('/study') && (hasDeckId || hasCourseId);
+
 	if (
 		pathname === '/login' ||
-		pathname?.startsWith('/study') ||
+		isActiveStudySession || // Only hide during active session, not dashboard
 		pathname === '/exercises' ||
 		pathname?.startsWith('/admin')
 	) {

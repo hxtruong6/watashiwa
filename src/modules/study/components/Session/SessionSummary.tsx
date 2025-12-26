@@ -1,21 +1,27 @@
 'use client';
 
+import { StandardCard } from '@/modules/flashcard/types';
 import { CheckCircleOutlined, DashboardOutlined } from '@ant-design/icons';
-import { Button, Flex, Typography, theme } from 'antd';
+import { Button, Flex, Grid, Typography, theme } from 'antd';
 import confetti from 'canvas-confetti';
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react';
 
 import { useSessionStore } from '../../store/useSessionStore';
 
 const { Title, Text } = Typography;
+const { useBreakpoint } = Grid;
 
 export default function SessionSummary() {
 	const { sessionStats } = useSessionStore();
 	const { token } = theme.useToken();
 	const router = useRouter();
+	const t = useTranslations('Study');
+	const screens = useBreakpoint();
+	const isMobile = screens.xs || screens.sm;
 
-	const { reviews, startTime, endTime } = sessionStats;
+	const { reviews, startTime, endTime, forgottenCards } = sessionStats;
 
 	// Calculate Duration
 	// eslint-disable-next-line react-hooks/purity
@@ -26,6 +32,7 @@ export default function SessionSummary() {
 
 	// Calculate total reviews
 	const totalReviews = reviews[1] + reviews[2] + reviews[3] + reviews[4];
+	const forgottenCount = forgottenCards.length;
 
 	// Trigger Confetti on Mount
 	useEffect(() => {
@@ -61,39 +68,49 @@ export default function SessionSummary() {
 				display: 'flex',
 				alignItems: 'center',
 				justifyContent: 'center',
-				padding: '40px 16px',
+				padding: isMobile ? '24px 16px' : '40px 24px',
 				background: token.colorBgLayout,
 			}}
 		>
 			<Flex
 				vertical
 				align="center"
-				gap={32}
+				gap={isMobile ? 24 : 32}
 				style={{
-					maxWidth: 500,
+					maxWidth: isMobile ? '100%' : 'min(500px, 90vw)',
 					width: '100%',
 				}}
 			>
 				{/* Success Icon */}
 				<CheckCircleOutlined
 					style={{
-						fontSize: 120,
-						color: '#6B8E23', // Olive green matching the reference
+						fontSize: isMobile ? 80 : 120,
+						color: token.colorSuccess, // Uses theme token for dark mode support
 					}}
 				/>
 
 				{/* Title */}
-				<Flex vertical align="center" gap={8}>
-					<Title level={2} style={{ margin: 0, textAlign: 'center', fontSize: 32 }}>
+				<Flex vertical align="center" gap={isMobile ? 6 : 8}>
+					<Title
+						level={isMobile ? 3 : 2}
+						style={{ margin: 0, textAlign: 'center', fontSize: isMobile ? 24 : 32 }}
+					>
 						Session Complete!
 					</Title>
-					<Text type="secondary" style={{ fontSize: 16, textAlign: 'center' }}>
+					<Text
+						type="secondary"
+						style={{ fontSize: isMobile ? 14 : 16, textAlign: 'center', padding: '0 16px' }}
+					>
 						Great job! You&apos;ve finished your reviews for now.
 					</Text>
 				</Flex>
 
 				{/* Action Buttons */}
-				<Flex vertical gap={12} style={{ width: '100%', maxWidth: 300 }}>
+				<Flex
+					vertical
+					gap={isMobile ? 10 : 12}
+					style={{ width: '100%', maxWidth: isMobile ? '100%' : 300 }}
+				>
 					<Button
 						type="primary"
 						size="large"
@@ -101,8 +118,8 @@ export default function SessionSummary() {
 						onClick={() => router.push('/dashboard')}
 						block
 						style={{
-							height: 56,
-							fontSize: 18,
+							height: isMobile ? 52 : 56, // Better touch target on mobile (min 44px recommended)
+							fontSize: isMobile ? 16 : 18,
 							fontWeight: 600,
 							borderRadius: 12,
 						}}
@@ -114,8 +131,8 @@ export default function SessionSummary() {
 						onClick={() => router.push('/decks')}
 						block
 						style={{
-							height: 56,
-							fontSize: 18,
+							height: isMobile ? 52 : 56, // Better touch target on mobile
+							fontSize: isMobile ? 16 : 18,
 							fontWeight: 600,
 							borderRadius: 12,
 						}}
@@ -125,40 +142,190 @@ export default function SessionSummary() {
 				</Flex>
 
 				{/* Statistics */}
-				<Flex gap={24} style={{ marginTop: 24 }}>
-					<Flex vertical align="center" gap={4}>
-						<Text type="secondary" style={{ fontSize: 12 }}>
+				<Flex
+					gap={isMobile ? 16 : 24}
+					wrap="wrap"
+					justify="center"
+					style={{
+						marginTop: isMobile ? 20 : 24,
+						width: '100%',
+					}}
+				>
+					<Flex
+						vertical
+						align="center"
+						gap={isMobile ? 3 : 4}
+						style={{ minWidth: isMobile ? '45%' : 'auto' }}
+					>
+						<Text type="secondary" style={{ fontSize: isMobile ? 11 : 12 }}>
 							Total Reviews
 						</Text>
-						<Text strong style={{ fontSize: 32, lineHeight: 1 }}>
+						<Text strong style={{ fontSize: isMobile ? 28 : 32, lineHeight: 1 }}>
 							{totalReviews}
 						</Text>
 					</Flex>
-					<Flex vertical align="center" gap={4}>
-						<Text type="secondary" style={{ fontSize: 12 }}>
+					<Flex
+						vertical
+						align="center"
+						gap={isMobile ? 3 : 4}
+						style={{ minWidth: isMobile ? '45%' : 'auto' }}
+					>
+						<Text type="secondary" style={{ fontSize: isMobile ? 11 : 12 }}>
 							Time
 						</Text>
-						<Text strong style={{ fontSize: 32, lineHeight: 1 }}>
+						<Text strong style={{ fontSize: isMobile ? 28 : 32, lineHeight: 1 }}>
 							{durationSec > 60 ? `${durationMin}m` : `${durationSec}s`}
 						</Text>
 					</Flex>
-					<Flex vertical align="center" gap={4}>
-						<Text type="secondary" style={{ fontSize: 12 }}>
+					<Flex
+						vertical
+						align="center"
+						gap={isMobile ? 3 : 4}
+						style={{ minWidth: isMobile ? '45%' : 'auto' }}
+					>
+						<Text type="secondary" style={{ fontSize: isMobile ? 11 : 12 }}>
 							New L1
 						</Text>
-						<Text strong style={{ fontSize: 32, lineHeight: 1, color: token.colorError }}>
+						<Text
+							strong
+							style={{ fontSize: isMobile ? 28 : 32, lineHeight: 1, color: token.colorError }}
+						>
 							{reviews[1]}
 						</Text>
 					</Flex>
-					<Flex vertical align="center" gap={4}>
-						<Text type="secondary" style={{ fontSize: 12 }}>
+					<Flex
+						vertical
+						align="center"
+						gap={isMobile ? 3 : 4}
+						style={{ minWidth: isMobile ? '45%' : 'auto' }}
+					>
+						<Text type="secondary" style={{ fontSize: isMobile ? 11 : 12 }}>
 							Perfect L4
 						</Text>
-						<Text strong style={{ fontSize: 32, lineHeight: 1, color: token.colorSuccess }}>
+						<Text
+							strong
+							style={{
+								fontSize: isMobile ? 28 : 32,
+								lineHeight: 1,
+								color: token.colorSuccess,
+							}}
+						>
 							{reviews[4]}
 						</Text>
 					</Flex>
 				</Flex>
+
+				{/* Forgotten Words Section */}
+				{forgottenCount > 0 && (
+					<Flex
+						vertical
+						gap={isMobile ? 10 : 12}
+						style={{
+							width: '100%',
+							maxWidth: isMobile ? '100%' : 400,
+							marginTop: isMobile ? 12 : 16,
+							padding: isMobile ? '16px' : '20px',
+							background: token.colorFillAlter,
+							borderRadius: token.borderRadiusLG,
+							border: `1px solid ${token.colorBorderSecondary}`,
+						}}
+					>
+						<Text strong style={{ fontSize: isMobile ? 14 : 16, color: token.colorError }}>
+							{t('summary.forgottenWordsTitle', { count: forgottenCount })}
+						</Text>
+						<Text
+							type="secondary"
+							style={{ fontSize: isMobile ? 12 : 13, marginBottom: isMobile ? 6 : 8 }}
+						>
+							{t('summary.forgottenWordsDescription')}
+						</Text>
+						<Flex
+							vertical
+							gap={isMobile ? 6 : 8}
+							style={{
+								maxHeight: isMobile ? 180 : 200,
+								overflowY: 'auto',
+								paddingRight: isMobile ? 4 : 8,
+								// Better scrollbar on mobile
+								WebkitOverflowScrolling: 'touch',
+							}}
+						>
+							{forgottenCards.map((card, index) => {
+								// Type guard: Check if card is StandardCard (BASIC variant)
+								if (card.variant !== 'BASIC') {
+									// For non-BASIC variants, use card ID as fallback
+									return (
+										<Flex
+											key={card.id || index}
+											justify="space-between"
+											align="center"
+											style={{
+												padding: 'clamp(6px, 1.5vw, 8px) clamp(10px, 2.5vw, 12px)',
+												background: token.colorBgContainer,
+												borderRadius: token.borderRadius,
+												border: `1px solid ${token.colorBorder}`,
+											}}
+										>
+											<Flex vertical gap={isMobile ? 1 : 2}>
+												<Text strong style={{ fontSize: isMobile ? 13 : 14 }}>
+													Card {index + 1}
+												</Text>
+											</Flex>
+										</Flex>
+									);
+								}
+
+								// Type-safe extraction for StandardCard
+								const standardCard = card as StandardCard;
+								const vocab = standardCard.back.details;
+
+								// Extract word surface: prefer front.hero (the kanji shown), fallback to vocab.wordSurface
+								const wordSurface = standardCard.front.hero || vocab.wordSurface || 'Unknown';
+
+								// Extract reading: use vocab.wordReading (Vocabulary type has wordReading, not kana)
+								const reading = vocab.wordReading || '';
+
+								// Extract meaning: meanings is Record<string, string[]> (e.g., {vi: ["đi"], en: ["to go"]})
+								const meaning =
+									vocab.meanings &&
+									typeof vocab.meanings === 'object' &&
+									!Array.isArray(vocab.meanings)
+										? vocab.meanings.vi?.[0] || vocab.meanings.en?.[0] || ''
+										: '';
+
+								return (
+									<Flex
+										key={card.id || index}
+										justify="space-between"
+										align="center"
+										style={{
+											padding: isMobile ? '10px 12px' : '8px 12px',
+											background: token.colorBgContainer,
+											borderRadius: token.borderRadius,
+											border: `1px solid ${token.colorBorder}`,
+										}}
+									>
+										<Flex vertical gap={isMobile ? 1 : 2}>
+											<Text strong style={{ fontSize: isMobile ? 13 : 14 }}>
+												{wordSurface}
+											</Text>
+											{reading && (
+												<Text type="secondary" style={{ fontSize: isMobile ? 11 : 12 }}>
+													{reading}
+												</Text>
+											)}
+											{meaning && (
+												<Text type="secondary" style={{ fontSize: isMobile ? 11 : 12 }}>
+													{meaning}
+												</Text>
+											)}
+										</Flex>
+									</Flex>
+								);
+							})}
+						</Flex>
+					</Flex>
+				)}
 			</Flex>
 		</div>
 	);

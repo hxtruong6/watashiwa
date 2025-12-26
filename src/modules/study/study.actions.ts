@@ -118,14 +118,19 @@ export async function getReviewQueue(deckIdOrIds?: string | string[], limit: num
 /**
  * Submit Review (FSRS + Smart Intervention)
  */
-export async function submitReview(input: { vocabId: string; rating: 1 | 2 | 3 | 4 }) {
+export async function submitReview(input: {
+	vocabId: string;
+	rating: 1 | 2 | 3 | 4;
+	duration?: number;
+}) {
 	return executeSafeAction(
 		z.object({
 			vocabId: z.string(),
 			rating: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)]),
+			duration: z.number().optional(),
 		}),
 		input,
-		async ({ vocabId, rating }, { userId }) => {
+		async ({ vocabId, rating, duration }, { userId }) => {
 			if (!userId) throw new Error('Unauthorized');
 
 			// 1. Get current state (if any)
@@ -168,7 +173,7 @@ export async function submitReview(input: { vocabId: string; rating: 1 | 2 | 3 |
 				userId,
 				rating: rating,
 				reviewDate: now,
-				duration: 0, // TODO: Track duration from client
+				duration: duration ?? 0, // Use actual duration from client
 				scheduledDays: newState.scheduled_days,
 				elapsedDays: newState.elapsed_days,
 				state: existingReview?.state || 0,

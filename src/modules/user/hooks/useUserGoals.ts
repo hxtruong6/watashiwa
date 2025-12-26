@@ -1,3 +1,4 @@
+import { UpdateUserSettingsInput } from '@/lib/schemas/user';
 import { updateUserSettings } from '@/modules/user/user.actions';
 import { message } from 'antd';
 import { useTranslations } from 'next-intl';
@@ -7,7 +8,7 @@ export function useUserGoals() {
 	const [loading, setLoading] = useState(false);
 	const tCommon = useTranslations('Common');
 
-	const updateGoals = async (values: { limitNewCards?: number; limitReviews?: number }) => {
+	const updateGoals = async (values: UpdateUserSettingsInput) => {
 		setLoading(true);
 		try {
 			const result = await updateUserSettings(values);

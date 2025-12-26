@@ -6,6 +6,7 @@ import { getUser } from '@/modules/auth/auth.actions';
 import { executeSafeAction } from '@/modules/core/action-client';
 import { UserPreferences } from '@/types/user';
 import { createClient } from '@/utils/supabase/server';
+import { type Prisma } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 import { cache } from 'react';
 import { z } from 'zod';
@@ -56,15 +57,29 @@ export async function updateUserSettings(input: UpdateUserSettingsInput) {
 	return executeSafeAction(UpdateUserSettingsSchema, input, async (data, { userId }) => {
 		if (!userId) throw new Error('Unauthorized');
 
+		// Get existing user to merge preferences
+		const existingUser = await prisma.user.findUnique({
+			where: { id: userId },
+			select: { preferences: true },
+		});
+
+		// Merge preferences if provided
+		const existingPreferences = (existingUser?.preferences as UserPreferences) || {};
+		const mergedPreferences = data.preferences
+			? { ...existingPreferences, ...data.preferences }
+			: existingPreferences;
+
 		// update
 		await prisma.user.update({
 			where: { id: userId },
 			data: {
-				limitNewCards: data.limitNewCards,
-				limitReviews: data.limitReviews,
-				timezone: data.timezone,
-				language: data.language,
-				preferences: data.preferences as any, // JSONB
+				...(data.limitNewCards !== undefined && { limitNewCards: data.limitNewCards }),
+				...(data.limitReviews !== undefined && { limitReviews: data.limitReviews }),
+				...(data.timezone !== undefined && { timezone: data.timezone }),
+				...(data.language !== undefined && { language: data.language }),
+				...(data.preferences !== undefined && {
+					preferences: mergedPreferences as Prisma.InputJsonValue,
+				}),
 				updatedAt: new Date(),
 			},
 		});

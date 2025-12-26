@@ -136,6 +136,8 @@
 		"accuracy": "Độ chính xác",
 		"recentDecks": "Bộ thẻ gần đây",
 		"noRecentActivity": "Chưa có hoạt động gần đây.",
+		"dueForReview": "{count} thẻ cần ôn",
+		"allCaughtUpDeck": "Xong việc rồi!",
 		"learners": "{count} người học",
 		"hours": "tiếng",
 		"yourTopTips": "Bí kíp của bạn",
@@ -178,6 +180,9 @@
 		"rateHard": "Khó",
 		"rateGood": "Ok",
 		"rateEasy": "Dễ",
+		"rateRemember": "Nhớ rồi",
+		"rateMaster": "Thành thạo",
+		"longPressHint": "Giữ lâu để đánh dấu Thành thạo",
 		"shortcutTooltip": "Phím tắt: {key}",
 		"exercises": {
 			"title": "Gợi nhớ Chủ động (Active Recall)",
@@ -232,6 +237,10 @@
 			"again": "Đã lên lịch ôn lại",
 			"good": "Đã ghi nhận thành thạo",
 			"easy": "Đã đạt độ lưu loát"
+		},
+		"summary": {
+			"forgottenWordsTitle": "Từ cần ôn lại ({count})",
+			"forgottenWordsDescription": "Những từ này cần luyện tập thêm. Hãy xem xét ôn lại chúng sớm."
 		}
 	},
 	"Decks": {
@@ -288,6 +297,16 @@
 		"romajiTooltip": "Hiển thị phiên âm Romaji",
 		"autoPlay": "Tự động phát âm thanh",
 		"autoPlayTooltip": "Tự động phát âm thanh khi lật thẻ",
+		"ratingText": "Hiển thị chữ",
+		"ratingTextTooltip": "Hiển thị nhãn chữ trên nút đánh giá (Quên/Nhớ)",
+		"showReadings": "Hiển thị cách đọc",
+		"showReadingsTooltip": "Xem gợi ý phát âm phía trên kanji",
+		"showRomaji": "Hiển thị Romaji",
+		"showRomajiTooltip": "Xem phiên âm Latin",
+		"playAudio": "Phát âm thanh",
+		"playAudioTooltip": "Tự động nghe phát âm",
+		"showLabels": "Hiển thị nhãn",
+		"showLabelsTooltip": "Xem nhãn chữ trên nút đánh giá",
 		"guideTitle": "Phím tắt",
 		"guideSpace": "Lật / Đánh giá thẻ",
 		"guideNumbers": "Đánh giá kết quả (1-4)",

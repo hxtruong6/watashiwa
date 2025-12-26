@@ -4,6 +4,7 @@
 import AppTutorial from '@/components/Shared/AppTutorial';
 import CommentDrawer from '@/components/comments/CommentDrawer';
 import { useFlashCardAudio } from '@/hooks/study/useFlashCardAudio';
+import { useReactionTime } from '@/hooks/study/useReactionTime';
 import { useStudyShortcuts } from '@/hooks/study/useStudyShortcuts';
 import { useStudyTutorialSteps } from '@/hooks/study/useStudyTutorialSteps';
 import { useZenMode } from '@/hooks/study/useZenMode';
@@ -20,6 +21,8 @@ import ReportModal from '@/modules/report/components/ReportModal';
 import { useSessionStore } from '@/modules/study/store/useSessionStore';
 import { useStudyPreferences } from '@/modules/study/store/useStudyPreferences';
 import { getDailyProgress } from '@/modules/study/study.actions';
+import { mapRememberToRating } from '@/modules/study/utils/timeToRating';
+import { useUIStore } from '@/modules/ui/store/useUIStore';
 import { getCompletedTutorials, getUserSettings } from '@/modules/user/user.actions';
 import { CommentOutlined, SettingOutlined } from '@ant-design/icons';
 import type { User } from '@prisma/client';
@@ -58,6 +61,7 @@ export default function SessionController({
 	const { startSession, queue, currentIndex, submitRating, isSessionActive, currentCard } =
 		useSessionStore();
 	const { mergeTutorials } = useTutorialStore();
+	const { setNavBarVisible } = useUIStore();
 
 	// Local State
 	const [isLoading, setIsLoading] = useState(true);
@@ -100,6 +104,29 @@ export default function SessionController({
 
 	// Zen Mode
 	const { headerVisible, forceShow, resetTimer } = useZenMode(10, scrollRef, 3000);
+
+	// Reaction Time Tracking
+	const {
+		startTimer,
+		stopTimer,
+		resetTimer: resetReactionTimer,
+		duration: reactionDuration,
+	} = useReactionTime();
+
+	// Navbar Control: Hide navbar during active session, show on summary
+	useEffect(() => {
+		// Show navbar on summary phase, hide during active session
+		if (studyPhase === 'summary') {
+			setNavBarVisible(true);
+		} else {
+			setNavBarVisible(false);
+		}
+
+		// Restore navbar when component unmounts
+		return () => {
+			setNavBarVisible(true);
+		};
+	}, [studyPhase, setNavBarVisible]);
 
 	// Tutorial
 	const tutorialSteps = useStudyTutorialSteps({
@@ -403,16 +430,14 @@ export default function SessionController({
 		queue,
 	]);
 
-	// Toast notification for rating
+	// Toast notification for rating (only show for meaningful achievements)
 	const showRatingToast = useCallback(
-		(rating: number) => {
-			const messages = {
-				1: t('ratingToast.again'), // "Review scheduled"
-				3: t('ratingToast.good'), // "Mastery recorded"
-				4: t('ratingToast.easy'), // "Fluency achieved"
-			};
-			const toastMessage = messages[rating as keyof typeof messages];
-			if (toastMessage) {
+		(rating: number, isExplicitEasy: boolean = false) => {
+			// Only show toast for EXPLICIT Easy button press (rating 4 from "easy" action)
+			// NOT for time-based mappings (fast "remember" clicks that map to 4)
+			// This prevents false positives when users click "remember" quickly
+			if (rating === 4 && isExplicitEasy) {
+				const toastMessage = t('ratingToast.easy'); // "Fluency achieved" / "Mastered!"
 				message.success(toastMessage, 0.8);
 			}
 		},
@@ -470,23 +495,21 @@ export default function SessionController({
 		autoPlayAudio: autoPlayAudio || 'off',
 	});
 
-	// 3. Shortcuts
-	const handleRate = useCallback(
-		async (rating: number) => {
-			// Guard: Prevent multiple submissions (Race Condition Fix)
-			if (isSubmittingRating) {
-				console.warn('[SessionController] Rating already in progress, ignoring duplicate click');
-				return;
-			}
+	// Start/stop reaction timer based on showAnswer state
+	useEffect(() => {
+		if (showAnswer && currentCard) {
+			startTimer();
+		} else {
+			resetReactionTimer();
+		}
+	}, [showAnswer, currentCard, startTimer, resetReactionTimer]);
 
-			// Validate rating input (Defensive Coding)
-			if (![1, 2, 3, 4].includes(rating)) {
-				console.error('[SessionController] Invalid rating value:', rating);
-				return;
-			}
+	// Ref-based guard to prevent rapid double-clicks (more reliable than state)
+	const isSubmittingRef = useRef(false);
 
-			setIsSubmittingRating(true);
-
+	// Shared submission logic with animation (declared first to be used by handlers)
+	const submitRatingWithAnimation = useCallback(
+		async (rating: 1 | 2 | 3 | 4, timeToAnswer: number, isExplicitEasy: boolean = false) => {
 			// Clear any existing timeout (Memory Leak Fix)
 			if (timeoutRef.current) {
 				clearTimeout(timeoutRef.current);
@@ -498,33 +521,40 @@ export default function SessionController({
 			setExitColor(color);
 			setIsCardExiting(true);
 
+			// Show toast immediately (optimistic feedback) - non-blocking
+			// Only show for explicit "easy" button, not time-based mappings
+			showRatingToast(rating, isExplicitEasy);
+
 			// Wait for animation to complete (with proper cleanup)
 			timeoutRef.current = setTimeout(async () => {
 				if (!isMountedRef.current) {
 					setIsSubmittingRating(false);
+					isSubmittingRef.current = false;
 					return;
 				}
 
 				try {
-					await submitRating(rating as 1 | 2 | 3 | 4);
+					await submitRating(rating, timeToAnswer);
 
 					if (!isMountedRef.current) {
 						setIsSubmittingRating(false);
+						isSubmittingRef.current = false;
 						return;
 					}
 
 					// Success path: Reset exit state BEFORE other updates (State Sync Fix)
 					setIsCardExiting(false);
 					setExitColor(undefined);
-					showRatingToast(rating);
 					setShowAnswer(false);
 					resetTimer();
+					resetReactionTimer();
 				} catch (error) {
 					// Error Handling Fix
 					console.error('[SessionController] Rating submission failed:', error);
 
 					if (!isMountedRef.current) {
 						setIsSubmittingRating(false);
+						isSubmittingRef.current = false;
 						return;
 					}
 
@@ -539,12 +569,83 @@ export default function SessionController({
 				} finally {
 					if (isMountedRef.current) {
 						setIsSubmittingRating(false);
+						isSubmittingRef.current = false;
 					}
 					timeoutRef.current = null;
 				}
 			}, 400); // Match animation duration
 		},
-		[isSubmittingRating, submitRating, showRatingToast, resetTimer, getExitColor, t],
+		[submitRating, showRatingToast, resetTimer, resetReactionTimer, getExitColor, t],
+	);
+
+	// 3. Shortcuts
+	// Handle action-based rating (from UI buttons)
+	const handleRate = useCallback(
+		async (action: 'forgot' | 'remember' | 'easy', duration?: number) => {
+			// Guard: Prevent multiple submissions (Race Condition Fix)
+			if (isSubmittingRating || isSubmittingRef.current) {
+				console.warn('[SessionController] Rating already in progress, ignoring duplicate click');
+				return;
+			}
+
+			isSubmittingRef.current = true;
+			setIsSubmittingRating(true);
+
+			// Get duration from timer if not provided
+			const timeToAnswer = duration ?? stopTimer();
+
+			// Edge case: Timer not started (race condition) - default to GOOD for "remember"
+			if (timeToAnswer === 0 && action === 'remember') {
+				console.warn('[SessionController] Timer not started, defaulting to GOOD');
+			}
+
+			// Map action to rating
+			let rating: 1 | 2 | 3 | 4;
+			let isExplicitEasy = false;
+
+			if (action === 'forgot') {
+				rating = 1; // Always AGAIN
+			} else if (action === 'easy') {
+				rating = 4; // Explicit Easy (long-press override)
+				isExplicitEasy = true; // Mark as explicit Easy button press
+			} else {
+				// action === 'remember': Use time-based mapping
+				rating = mapRememberToRating(timeToAnswer);
+				// Even if time-based mapping returns 4, it's NOT explicit Easy
+				isExplicitEasy = false;
+			}
+
+			await submitRatingWithAnimation(rating, timeToAnswer, isExplicitEasy);
+		},
+		[isSubmittingRating, stopTimer, submitRatingWithAnimation],
+	);
+
+	// Handle numeric rating (from keyboard shortcuts)
+	const handleNumericRate = useCallback(
+		async (rating: number) => {
+			// Guard: Prevent multiple submissions
+			if (isSubmittingRating || isSubmittingRef.current) {
+				return;
+			}
+
+			// Validate rating
+			if (![1, 2, 3, 4].includes(rating)) {
+				console.error('[SessionController] Invalid rating value:', rating);
+				return;
+			}
+
+			isSubmittingRef.current = true;
+			setIsSubmittingRating(true);
+
+			// Get duration from timer
+			const timeToAnswer = stopTimer();
+
+			// Numeric ratings from keyboard are explicit (user pressed 4 for Easy)
+			const isExplicitEasy = rating === 4;
+
+			await submitRatingWithAnimation(rating as 1 | 2 | 3 | 4, timeToAnswer, isExplicitEasy);
+		},
+		[isSubmittingRating, stopTimer, submitRatingWithAnimation],
 	);
 
 	const handleSpaceKey = useCallback(() => {
@@ -552,13 +653,14 @@ export default function SessionController({
 			setShowAnswer(true);
 			resetTimer();
 		} else {
-			handleRate(spaceKeyRating);
+			// Space key defaults to "remember" action (time-based mapping)
+			handleRate('remember');
 		}
-	}, [showAnswer, handleRate, spaceKeyRating, resetTimer]);
+	}, [showAnswer, handleRate, resetTimer]);
 
 	useStudyShortcuts({
 		onSpace: handleSpaceKey,
-		onRate: handleRate,
+		onRate: handleNumericRate, // Use numeric handler for keyboard shortcuts
 		showAnswer,
 		disabled: isReportModalOpen || isCommentDrawerOpen || settingsVisible || studyPhase !== 'quiz',
 		onAudio: audioHook.toggleAudio,
@@ -776,7 +878,8 @@ export default function SessionController({
 
 					<div
 						ref={scrollRef}
-						onClick={() => !showAnswer && setShowAnswer(true)}
+						// Note: Card click is handled by CardShell's onClick (handleTap)
+						// This container only provides layout, not click handling
 						style={{
 							flex: 1,
 							display: 'flex',
@@ -784,11 +887,12 @@ export default function SessionController({
 							alignItems: 'center',
 							paddingBottom: 160,
 							width: '100%',
-							cursor: !showAnswer ? 'pointer' : 'default',
 						}}
 					>
 						<div
 							ref={cardWrapperRef}
+							onClick={(e) => e.stopPropagation()}
+							onTouchStart={(e) => e.stopPropagation()}
 							style={{
 								width: '100%',
 								display: 'flex',
@@ -796,6 +900,7 @@ export default function SessionController({
 								alignItems: 'center',
 								position: 'relative',
 								minHeight: '65vh',
+								zIndex: 10, // Ensure card is above RatingBar during reveal
 							}}
 						>
 							<CardShell
@@ -804,7 +909,7 @@ export default function SessionController({
 								isActive={true}
 								isNext={false}
 								showAnswer={showAnswer}
-								onReveal={() => setShowAnswer(true)}
+								onReveal={() => setShowAnswer(!showAnswer)} // Toggle: allows flipping back to front
 								showFurigana={showFurigana}
 								showRomaji={showRomaji}
 								isExiting={isCardExiting}
@@ -831,7 +936,9 @@ export default function SessionController({
 					>
 						<div
 							style={{
-								pointerEvents: 'auto',
+								// Only enable pointer events when fully visible and stable
+								// Prevents intercepting clicks during animation
+								pointerEvents: showAnswer && !isSubmittingRating ? 'auto' : 'none',
 								width: '100%',
 								maxWidth: 500,
 								transform: showAnswer ? 'translateY(0)' : 'translateY(100px)',
@@ -839,7 +946,14 @@ export default function SessionController({
 								transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
 							}}
 						>
-							{showAnswer && <RatingBar onRate={handleRate} disabled={false} />}
+							{showAnswer && (
+								<RatingBar
+									onRate={handleRate}
+									disabled={isSubmittingRating}
+									selectedRating={isSubmittingRating ? (currentCard ? 3 : null) : null}
+									reactionTime={reactionDuration}
+								/>
+							)}
 						</div>
 					</div>
 				</>

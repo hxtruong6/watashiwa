@@ -1,90 +1,43 @@
+import { useStudyPreferences } from '@/modules/study/store/useStudyPreferences';
 import { CheckCircleOutlined, RotateLeftOutlined, ThunderboltOutlined } from '@ant-design/icons';
 import { Button, Grid, theme } from 'antd';
 import { useTranslations } from 'next-intl';
-import React from 'react';
+import React, { useRef, useState } from 'react';
 
 const { useToken } = theme;
 const { useBreakpoint } = Grid;
 
 interface RatingBarProps {
-	onRate: (rating: number) => void;
+	onRate: (action: 'forgot' | 'remember' | 'easy', duration?: number) => void;
 	disabled?: boolean;
 	selectedRating?: number | null;
+	reactionTime?: number; // Current reaction time for time mapping
 }
 
-export default function RatingBar({ onRate, disabled, selectedRating }: RatingBarProps) {
+export default function RatingBar({
+	onRate,
+	disabled,
+	selectedRating,
+	reactionTime = 0,
+}: RatingBarProps) {
 	const t = useTranslations('Study');
 	const { token } = useToken();
 	const screens = useBreakpoint();
+	const { showRatingText } = useStudyPreferences();
 
-	// Map ratings to Theme Tokens
-	// Design System:
-	// Again (1): Bordered Red
-	// Good (3): Filled Green (Dominant)
-	// Easy (4): Bordered Indigo
-	// Note: We skip 2 (Hard) to simplify decision making ("Zen Mode")
-	const colors = {
-		1: { primary: token.colorError, bg: '#FFF1F0' },
-		3: { primary: token.colorSuccess, bg: '#F6FFED' },
-		4: { primary: token.colorPrimary, bg: '#F0F5FF' },
-	};
+	// Long-press state
+	const [longPressTimer, setLongPressTimer] = useState<NodeJS.Timeout | null>(null);
+	const [isLongPressing, setIsLongPressing] = useState(false);
+	const [longPressProgress, setLongPressProgress] = useState(0);
+	const longPressStartTimeRef = useRef<number | null>(null);
+	const progressIntervalRef = useRef<NodeJS.Timeout | null>(null);
+	// Refs for cleanup (avoid dependency issues)
+	const longPressTimerRef = useRef<NodeJS.Timeout | null>(null);
+	const progressIntervalRefForCleanup = useRef<NodeJS.Timeout | null>(null);
 
-	const getButtonStyle = (rating: number, colorTheme: { primary: string; bg: string }) => {
-		const isSelected = selectedRating === rating;
-		const isGood = rating === 3; // The "Golden Path" action
-
-		const isActive = isSelected;
-
-		let background = token.colorBgContainer;
-		let color = colorTheme.primary;
-		let border = `1px solid ${colorTheme.primary}`;
-		let boxShadow = 'none';
-		let width = '1fr'; // Default equal width
-
-		if (isGood) {
-			// Good is "Filled Green" per design system, 60% width
-			width = '2fr'; // 60% of total (2 out of 3.33)
-			background = colorTheme.primary;
-			color = '#fff';
-			border = 'none';
-			if (isActive) {
-				boxShadow = `0 0 0 4px ${colorTheme.primary}40`; // Focus ring
-			}
-		} else {
-			// Others are Bordered, 20% width each
-			width = '1fr'; // 20% of total (1 out of 3.33)
-			if (isActive) {
-				background = colorTheme.primary;
-				color = '#fff';
-				boxShadow = `0 0 0 4px ${colorTheme.primary}40`;
-			} else {
-				background = token.colorBgContainer; // or transparent
-				color = colorTheme.primary;
-				border = `1px solid ${colorTheme.primary}`;
-			}
-		}
-
-		return {
-			height: screens.xs ? 48 : 56, // Increased mobile height slightly for better hit area
-			fontSize: screens.xs ? 20 : 24, // Icon size
-			fontWeight: 600,
-			transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-			transform: isActive ? 'scale(1.02)' : 'scale(1)',
-			width: '100%',
-			display: 'flex',
-			alignItems: 'center',
-			justifyContent: 'center',
-
-			backgroundColor: background,
-			color: color,
-			border: border,
-			boxShadow: boxShadow,
-			opacity: disabled && !isActive ? 0.5 : 1,
-			userSelect: 'none' as const,
-			WebkitUserSelect: 'none' as const,
-			WebkitTouchCallout: 'none' as const,
-		};
-	};
+	// Colors for buttons
+	const forgotColor = { primary: token.colorError, bg: '#FFF1F0' };
+	const rememberColor = { primary: token.colorSuccess, bg: '#F6FFED' };
 
 	// Haptic feedback function
 	const triggerHaptic = () => {
@@ -97,6 +50,180 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 		e.stopPropagation();
 	};
 
+	// Long-press handlers for Remember button
+	const handleRememberPress = (e: React.MouseEvent | React.TouchEvent) => {
+		e.stopPropagation();
+		if (disabled) return;
+
+		longPressStartTimeRef.current = performance.now();
+		setLongPressProgress(0);
+
+		// Visual feedback: Update progress every 50ms
+		progressIntervalRef.current = setInterval(() => {
+			if (longPressStartTimeRef.current) {
+				const elapsed = performance.now() - longPressStartTimeRef.current;
+				const progress = Math.min((elapsed / 500) * 100, 100); // 500ms = 100%
+				setLongPressProgress(progress);
+			}
+		}, 50);
+
+		const timer = setTimeout(() => {
+			setIsLongPressing(true);
+			triggerHaptic();
+			// Explicit Easy override - bypass time mapping
+			onRate('easy', reactionTime);
+			// Cleanup
+			if (progressIntervalRef.current) {
+				clearInterval(progressIntervalRef.current);
+				progressIntervalRef.current = null;
+			}
+			setLongPressProgress(0);
+		}, 500);
+
+		setLongPressTimer(timer);
+	};
+
+	const handleRememberRelease = (e: React.MouseEvent | React.TouchEvent) => {
+		e.stopPropagation();
+
+		if (longPressTimer) {
+			clearTimeout(longPressTimer);
+			setLongPressTimer(null);
+		}
+
+		if (progressIntervalRef.current) {
+			clearInterval(progressIntervalRef.current);
+			progressIntervalRef.current = null;
+		}
+
+		// Only trigger rating on actual mouseUp/touchEnd, not on mouseLeave
+		// Check if this is a mouseUp/touchEnd event (not mouseLeave)
+		const isActualRelease = e.type === 'mouseup' || e.type === 'touchend';
+
+		if (isActualRelease && !isLongPressing) {
+			// Normal tap - use time-based mapping
+			triggerHaptic();
+			onRate('remember', reactionTime);
+		}
+
+		setIsLongPressing(false);
+		setLongPressProgress(0);
+		longPressStartTimeRef.current = null;
+	};
+
+	// Separate handler for mouseLeave - only cancels long-press, doesn't trigger rating
+	const handleRememberLeave = (e: React.MouseEvent) => {
+		e.stopPropagation();
+
+		// Cancel long-press timer if active
+		if (longPressTimer) {
+			clearTimeout(longPressTimer);
+			setLongPressTimer(null);
+		}
+
+		if (progressIntervalRef.current) {
+			clearInterval(progressIntervalRef.current);
+			progressIntervalRef.current = null;
+		}
+
+		// Reset state but DON'T trigger rating
+		setIsLongPressing(false);
+		setLongPressProgress(0);
+		longPressStartTimeRef.current = null;
+	};
+
+	// Cancel long-press if user drags away
+	const handleRememberMove = () => {
+		if (longPressTimer && !isLongPressing) {
+			// Cancel long-press if user moves while pressing
+			clearTimeout(longPressTimer);
+			setLongPressTimer(null);
+			if (progressIntervalRef.current) {
+				clearInterval(progressIntervalRef.current);
+				progressIntervalRef.current = null;
+			}
+			setLongPressProgress(0);
+		}
+	};
+
+	// Sync refs with state for cleanup
+	React.useEffect(() => {
+		longPressTimerRef.current = longPressTimer;
+		progressIntervalRefForCleanup.current = progressIntervalRef.current;
+	}, [longPressTimer]);
+
+	// Cleanup on unmount
+	React.useEffect(() => {
+		return () => {
+			if (longPressTimerRef.current) {
+				clearTimeout(longPressTimerRef.current);
+			}
+			if (progressIntervalRefForCleanup.current) {
+				clearInterval(progressIntervalRefForCleanup.current);
+			}
+		};
+	}, []); // Empty deps - cleanup only on unmount
+
+	const getButtonStyle = (
+		type: 'forgot' | 'remember',
+		colorTheme: { primary: string; bg: string },
+	) => {
+		const isRemember = type === 'remember';
+		const isActive = selectedRating !== null;
+
+		let background = token.colorBgContainer;
+		let color = colorTheme.primary;
+		let border = `1px solid ${colorTheme.primary}`;
+		let boxShadow = 'none';
+		let transform = 'scale(1)';
+
+		if (isRemember) {
+			// Remember button: Filled Green (60% width)
+			background = colorTheme.primary;
+			color = '#fff';
+			border = 'none';
+			if (isLongPressing) {
+				transform = 'scale(0.95)';
+			} else if (isActive) {
+				boxShadow = `0 0 0 4px ${colorTheme.primary}40`;
+				transform = 'scale(1.02)';
+			}
+		} else {
+			// Forgot button: Bordered Red (40% width)
+			if (isActive) {
+				background = colorTheme.primary;
+				color = '#fff';
+				boxShadow = `0 0 0 4px ${colorTheme.primary}40`;
+				transform = 'scale(1.02)';
+			} else {
+				background = token.colorBgContainer;
+				color = colorTheme.primary;
+				border = `1px solid ${colorTheme.primary}`;
+			}
+		}
+
+		return {
+			height: screens.xs ? 48 : 56,
+			fontSize: screens.xs ? 20 : 24,
+			fontWeight: 600,
+			transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+			transform,
+			width: '100%',
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'center',
+			position: 'relative' as const,
+			backgroundColor: background,
+			color: color,
+			border: border,
+			boxShadow: boxShadow,
+			opacity: disabled && !isActive ? 0.5 : 1,
+			userSelect: 'none' as const,
+			WebkitUserSelect: 'none' as const,
+			WebkitTouchCallout: 'none' as const,
+		};
+	};
+
 	return (
 		<div
 			style={{
@@ -107,7 +234,7 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 				boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
 				backdropFilter: 'blur(12px)',
 				width: '100%',
-				maxWidth: 600, // Allow wider on desktop
+				maxWidth: 600,
 			}}
 			onClick={handleInteraction}
 			onTouchStart={handleInteraction}
@@ -115,51 +242,70 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 			<div
 				style={{
 					display: 'grid',
-					// 3 columns with Good button taking 60% width (2fr) and others 20% each (1fr)
-					gridTemplateColumns: '1fr 2fr 1fr',
-					gap: 12, // Increased gap slightly since we have more space
+					// 2 columns: Forgot (40%) and Remember (60%)
+					gridTemplateColumns: '1fr 2fr',
+					gap: 12,
 				}}
 			>
+				{/* Forgot Button */}
 				<Button
 					size="large"
 					loading={selectedRating === 1}
 					onClick={() => {
 						triggerHaptic();
-						onRate(1);
+						onRate('forgot', reactionTime);
 					}}
 					disabled={disabled && selectedRating !== 1}
-					style={getButtonStyle(1, colors[1])}
+					style={getButtonStyle('forgot', forgotColor)}
 					icon={<RotateLeftOutlined />}
 					aria-label={t('rateAgain')}
-				/>
+				>
+					{showRatingText && t('rateAgain')}
+				</Button>
 
-				{/* Rating 2 (Hard) is intentionally omitted for simplicity */}
-
+				{/* Remember Button with Long-Press Support */}
 				<Button
 					size="large"
-					loading={selectedRating === 3}
-					onClick={() => {
-						triggerHaptic();
-						onRate(3);
-					}}
-					disabled={disabled && selectedRating !== 3}
-					style={getButtonStyle(3, colors[3])}
+					loading={selectedRating === 3 || selectedRating === 4}
+					onMouseDown={handleRememberPress}
+					onMouseUp={handleRememberRelease}
+					onMouseLeave={handleRememberLeave}
+					onMouseMove={handleRememberMove}
+					onTouchStart={handleRememberPress}
+					onTouchEnd={handleRememberRelease}
+					onTouchMove={handleRememberMove}
+					disabled={disabled && selectedRating !== 3 && selectedRating !== 4}
+					style={getButtonStyle('remember', rememberColor)}
 					icon={<CheckCircleOutlined />}
-					aria-label={t('rateGood')}
-				/>
-
-				<Button
-					size="large"
-					loading={selectedRating === 4}
-					onClick={() => {
-						triggerHaptic();
-						onRate(4);
-					}}
-					disabled={disabled && selectedRating !== 4}
-					style={getButtonStyle(4, colors[4])}
-					icon={<ThunderboltOutlined />}
-					aria-label={t('rateEasy')}
-				/>
+					aria-label={t('rateRemember')}
+				>
+					{showRatingText && t('rateRemember')}
+					{/* Long-press progress indicator */}
+					{longPressProgress > 0 && longPressProgress < 100 && (
+						<div
+							style={{
+								position: 'absolute',
+								top: 0,
+								left: 0,
+								right: 0,
+								bottom: 0,
+								background: `linear-gradient(90deg, rgba(255,255,255,0.3) ${longPressProgress}%, transparent ${longPressProgress}%)`,
+								borderRadius: 'inherit',
+								pointerEvents: 'none',
+							}}
+						/>
+					)}
+					{isLongPressing && (
+						<ThunderboltOutlined
+							style={{
+								position: 'absolute',
+								right: 8,
+								fontSize: 16,
+								opacity: 0.8,
+							}}
+						/>
+					)}
+				</Button>
 			</div>
 		</div>
 	);

@@ -20,6 +20,10 @@ export interface UserPreferences {
 	hapticFeedback?: boolean; // Vibration on errors
 	reduceMotion?: boolean; // Disable animations
 
+	/** Study Behavior */
+	autoShowAnswer?: boolean; // Auto-reveal answer after delay
+	autoShowAnswerDelay?: number; // Delay in seconds (1-300)
+
 	/** Advanced Users (Power Users) */
 	fsrsParams?: {
 		requestRetention?: number; // Target retention rate (0.9 default)

@@ -150,6 +150,8 @@
 		"accuracy": "Accuracy",
 		"recentDecks": "Recent Decks",
 		"noRecentActivity": "No recent activity.",
+		"dueForReview": "{count} due for review",
+		"allCaughtUpDeck": "All caught up!",
 		"learners": "{count} learners",
 		"hours": "hours",
 		"yourTopTips": "Your Top Tips",
@@ -179,6 +181,9 @@
 		"rateHard": "Hard",
 		"rateGood": "Got it",
 		"rateEasy": "Easy",
+		"rateRemember": "Remember",
+		"rateMaster": "Master",
+		"longPressHint": "Long press for Master",
 		"shortcutTooltip": "Shortcut: {key}",
 		"errorCourseNotFound": "Course not found or has no decks linked.",
 		"errorLoadCourse": "Failed to load course details.",
@@ -239,6 +244,10 @@
 			"again": "Review scheduled",
 			"good": "Mastery recorded",
 			"easy": "Fluency achieved"
+		},
+		"summary": {
+			"forgottenWordsTitle": "Words to Review ({count})",
+			"forgottenWordsDescription": "These words need more practice. Consider reviewing them again soon."
 		}
 	},
 	"Decks": {
@@ -295,6 +304,16 @@
 		"romajiTooltip": "Show Romaji (Latin alphabet pronunciation)",
 		"autoPlay": "Audio Auto-play",
 		"autoPlayTooltip": "Automatically play audio on card flip",
+		"ratingText": "Rating Text",
+		"ratingTextTooltip": "Show text labels on rating buttons (Forgot/Remember)",
+		"showReadings": "Show Readings",
+		"showReadingsTooltip": "See pronunciation hints above kanji",
+		"showRomaji": "Show Romaji",
+		"showRomajiTooltip": "See romanized pronunciation",
+		"playAudio": "Play Audio",
+		"playAudioTooltip": "Automatically hear pronunciation",
+		"showLabels": "Show Labels",
+		"showLabelsTooltip": "See text labels on rating buttons",
 		"guideTitle": "Keyboard Shortcuts",
 		"guideSpace": "Flip / Rate Card",
 		"guideNumbers": "Rate Answer (1-4)",

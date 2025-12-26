@@ -2,11 +2,6 @@
 
 import { useFeatureDiscovery } from '@/hooks/useFeatureDiscovery';
 
-export const metadata = {
-	title: 'Active Recall Exercises | WatashiWa',
-	description: 'Practice your vocabulary with active recall exercises.',
-};
-
 interface ExercisesPageProps {
 	searchParams: { [key: string]: string | string[] | undefined };
 }

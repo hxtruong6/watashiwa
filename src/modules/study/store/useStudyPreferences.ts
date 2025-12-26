@@ -7,11 +7,13 @@ interface StudyPreferences {
 	showFurigana: boolean;
 	showRomaji: boolean;
 	autoPlayAudio: AutoPlayOption;
+	showRatingText: boolean; // Show text labels on rating buttons
 
 	// Actions
 	setShowFurigana: (show: boolean) => void;
 	setShowRomaji: (show: boolean) => void;
 	setAutoPlayAudio: (option: AutoPlayOption) => void;
+	setShowRatingText: (show: boolean) => void;
 }
 
 export const useStudyPreferences = create<StudyPreferences>()(
@@ -20,10 +22,12 @@ export const useStudyPreferences = create<StudyPreferences>()(
 			showFurigana: true,
 			showRomaji: false,
 			autoPlayAudio: 'answer',
+			showRatingText: true, // Default: show text
 
 			setShowFurigana: (show) => set({ showFurigana: show }),
 			setShowRomaji: (show) => set({ showRomaji: show }),
 			setAutoPlayAudio: (option) => set({ autoPlayAudio: option }),
+			setShowRatingText: (show) => set({ showRatingText: show }),
 		}),
 		{
 			name: 'watashi-study-prefs', // localStorage key

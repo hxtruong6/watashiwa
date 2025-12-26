@@ -1,5 +1,6 @@
 'use client';
 
+import { useUIStore } from '@/modules/ui/store/useUIStore';
 import {
 	CheckCircleFilled,
 	FireFilled,
@@ -12,7 +13,7 @@ import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const { Title, Text } = Typography;
 const { useToken } = theme;
@@ -88,11 +89,13 @@ const DeckItem = ({
 	color,
 	token,
 	router,
+	t,
 }: {
 	deck: Deck;
 	color: string;
 	token: GlobalToken;
 	router: AppRouterInstance;
+	t: ReturnType<typeof useTranslations<'Dashboard'>>;
 }) => {
 	const due = deck.learningStats?.dueCount || 0;
 
@@ -100,7 +103,7 @@ const DeckItem = ({
 		<MotionCard
 			whileHover={{ y: -4 }}
 			style={{
-				background: 'rgba(255,255,255,0.02)', // Glassy feel
+				background: token.colorFillTertiary, // Theme-aware glassy feel
 				border: `1px solid ${token.colorBorderSecondary}`,
 				borderRadius: 16,
 				cursor: 'pointer',
@@ -132,9 +135,11 @@ const DeckItem = ({
 						<Text strong>{deck.title}</Text>
 						<Text type="secondary" style={{ fontSize: 12 }}>
 							{due > 0 ? (
-								<span style={{ color: token.colorWarning }}>{due} due for review</span>
+								<span style={{ color: token.colorWarning }}>
+									{t('dueForReview', { count: due })}
+								</span>
 							) : (
-								<span style={{ color: token.colorSuccess }}>All caught up!</span>
+								<span style={{ color: token.colorSuccess }}>{t('allCaughtUpDeck')}</span>
 							)}
 						</Text>
 					</Flex>
@@ -151,6 +156,12 @@ export default function StudyDashboard({ user, stats, recentDecks }: StudyDashbo
 	const { token } = useToken();
 	const screens = useBreakpoint();
 	const isMobile = screens.xs;
+	const { setNavBarVisible } = useUIStore();
+
+	// Ensure navbar is visible on dashboard
+	useEffect(() => {
+		setNavBarVisible(true);
+	}, [setNavBarVisible]);
 
 	// --- COLORS FOR DECKS ---
 	const deckColors = ['#FF6B6B', '#4ECDC4', '#FFE66D'];
@@ -180,15 +191,30 @@ export default function StudyDashboard({ user, stats, recentDecks }: StudyDashbo
 							})}
 						</Text>
 						<Title level={isMobile ? 2 : 1} style={{ margin: 0, marginTop: 4 }}>
-							{stats.due > 0 ? 'Ready to Focus?' : 'All Clean!'}
+							{stats.due > 0 ? t('readyToFocus') : t('allClean')}
 						</Title>
 						<Text type="secondary">
 							{stats.due > 0 ? (
 								<>
-									You have <Text strong>{stats.due} items</Text> for review today.
+									{t('reviewIntro', {
+										count: stats.due,
+									})
+										.split('<bold>')
+										.map((part, i) => {
+											if (part.includes('</bold>')) {
+												const [boldText, rest] = part.split('</bold>');
+												return (
+													<React.Fragment key={i}>
+														<Text strong>{boldText}</Text>
+														{rest}
+													</React.Fragment>
+												);
+											}
+											return <React.Fragment key={i}>{part}</React.Fragment>;
+										})}
 								</>
 							) : (
-								'You have cleared your review queue. Great job!'
+								t('reviewComplete')
 							)}
 						</Text>
 					</div>
@@ -200,7 +226,7 @@ export default function StudyDashboard({ user, stats, recentDecks }: StudyDashbo
 									{stats.streak}
 								</Title>
 							</Flex>
-							<Text type="secondary">Day Streak</Text>
+							<Text type="secondary">{t('dayStreak')}</Text>
 						</div>
 					)}
 				</Flex>
@@ -232,7 +258,7 @@ export default function StudyDashboard({ user, stats, recentDecks }: StudyDashbo
 								right: -20,
 								fontSize: 200,
 								opacity: 0.15,
-								color: '#fff',
+								color: token.colorWhite,
 								rotate: '15deg',
 								pointerEvents: 'none',
 							}}
@@ -242,17 +268,18 @@ export default function StudyDashboard({ user, stats, recentDecks }: StudyDashbo
 
 						<Flex justify="space-between" align="center" wrap="wrap" gap="large">
 							<div style={{ position: 'relative', zIndex: 1 }}>
-								<Title level={3} style={{ color: '#fff', margin: 0, marginBottom: 8 }}>
-									Daily Review
+								<Title level={3} style={{ color: token.colorWhite, margin: 0, marginBottom: 8 }}>
+									{t('dailyReview')}
 								</Title>
 								<Text
 									style={{
-										color: 'rgba(255,255,255,0.9)',
+										color: token.colorWhite,
+										opacity: 0.9,
 										display: 'block',
 										marginBottom: 24,
 									}}
 								>
-									Your brain is primed to retain these {stats.due} words.
+									{t('brainPrimed', { count: stats.due })}
 								</Text>
 								<Button
 									size="large"
@@ -264,7 +291,7 @@ export default function StudyDashboard({ user, stats, recentDecks }: StudyDashbo
 										fontWeight: 600,
 										fontSize: 16,
 										color: token.colorPrimary,
-										boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
+										boxShadow: `0 4px 12px ${token.colorText}33`,
 									}}
 									onClick={() => {
 										if (recentDecks.length > 0 && recentDecks[0]?.id) {
@@ -274,7 +301,7 @@ export default function StudyDashboard({ user, stats, recentDecks }: StudyDashbo
 										}
 									}}
 								>
-									Start Session
+									{t('startSession')}
 								</Button>
 							</div>
 
@@ -286,7 +313,8 @@ export default function StudyDashboard({ user, stats, recentDecks }: StudyDashbo
 											width: 80,
 											height: 80,
 											borderRadius: '50%',
-											border: '6px solid rgba(255,255,255,0.3)',
+											border: `6px solid ${token.colorWhite}`,
+											opacity: 0.3,
 											display: 'flex',
 											alignItems: 'center',
 											justifyContent: 'center',
@@ -298,17 +326,17 @@ export default function StudyDashboard({ user, stats, recentDecks }: StudyDashbo
 												position: 'absolute',
 												inset: -6,
 												borderRadius: '50%',
-												border: '6px solid #fff',
+												border: `6px solid ${token.colorWhite}`,
 												borderRightColor: 'transparent',
 												borderBottomColor: 'transparent',
 												transform: 'rotate(45deg)',
 											}}
 										/>
-										<span style={{ fontSize: 24, fontWeight: 'bold', color: '#fff' }}>
+										<span style={{ fontSize: 24, fontWeight: 'bold', color: token.colorWhite }}>
 											{stats.accuracy}%
 										</span>
 									</div>
-									<Text style={{ color: 'rgba(255,255,255,0.9)' }}>Accuracy</Text>
+									<Text style={{ color: token.colorWhite, opacity: 0.9 }}>{t('accuracy')}</Text>
 								</Flex>
 							</div>
 						</Flex>
@@ -351,7 +379,8 @@ export default function StudyDashboard({ user, stats, recentDecks }: StudyDashbo
 								</Title>
 								<Text
 									style={{
-										color: 'rgba(255,255,255,0.9)',
+										color: token.colorWhite,
+										opacity: 0.9,
 										display: 'block',
 										marginBottom: 24,
 									}}
@@ -367,9 +396,9 @@ export default function StudyDashboard({ user, stats, recentDecks }: StudyDashbo
 										borderRadius: 24,
 										fontWeight: 600,
 										fontSize: 16,
-										color: '#fff',
-										borderColor: '#fff',
-										boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+										color: token.colorWhite,
+										borderColor: token.colorWhite,
+										boxShadow: `0 4px 12px ${token.colorText}1A`,
 									}}
 									onClick={() => router.push('/dashboard/decks')}
 								>
@@ -378,7 +407,7 @@ export default function StudyDashboard({ user, stats, recentDecks }: StudyDashbo
 							</div>
 
 							<div style={{ position: 'relative', zIndex: 1, minWidth: 120 }}>
-								<TrophyOutlined style={{ fontSize: 80, color: 'rgba(255,255,255,0.8)' }} />
+								<TrophyOutlined style={{ fontSize: 80, color: token.colorWhite, opacity: 0.8 }} />
 							</div>
 						</Flex>
 					</Card>
@@ -428,6 +457,7 @@ export default function StudyDashboard({ user, stats, recentDecks }: StudyDashbo
 							color={deckColors[index % deckColors.length]}
 							token={token}
 							router={router}
+							t={t}
 						/>
 					))
 				) : (
