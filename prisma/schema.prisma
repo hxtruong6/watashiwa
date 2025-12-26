@@ -63,6 +63,7 @@ model User {
   cardComments      CardComment[]
   createdCourses    Course[]
   pushSubscriptions PushSubscription[]
+  storyLogs         StoryLog[]
 
   // Reports
   reportsSent     CardReport[]     @relation("ReportedBy")
@@ -320,12 +321,30 @@ model Story {
 
   // Contract: StoryContent (zod: StoryContentSchema)
   // { "title": { "vi": "..." }, "body_text": "...", "highlights": [...] }
-  content  Json
-  audioUrl String? @map("audio_url")
+  content       Json
+  audioUrl      String?       @map("audio_url")
+  contentStatus ContentStatus @default(AI_GENERATED) @map("content_status")
+
+  storyLogs StoryLog[]
 
   createdAt DateTime @default(now()) @map("created_at")
 
   @@index([unitId])
+  @@index([contentStatus])
+}
+
+// Story Progress Tracker (Active Priming)
+model StoryLog {
+  id          String   @id @default(uuid())
+  userId      String   @map("user_id")
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  storyId     String   @map("story_id")
+  story       Story    @relation(fields: [storyId], references: [id], onDelete: Cascade)
+  completedAt DateTime @default(now()) @map("completed_at")
+
+  @@unique([userId, storyId])
+  @@index([userId, completedAt])
+  @@index([storyId])
 }
 
 // NOTE: Legacy separate Kanji model removed in favor of `Vocabulary` with tags=["kanji"].

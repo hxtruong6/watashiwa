@@ -3,14 +3,19 @@
 // Components
 import AppTutorial from '@/components/Shared/AppTutorial';
 import CommentDrawer from '@/components/comments/CommentDrawer';
+import { useFlashCardAudio } from '@/hooks/study/useFlashCardAudio';
 import { useStudyShortcuts } from '@/hooks/study/useStudyShortcuts';
 import { useStudyTutorialSteps } from '@/hooks/study/useStudyTutorialSteps';
 import { useZenMode } from '@/hooks/study/useZenMode';
 // Hooks
 import { useTutorialStore } from '@/hooks/useTutorialStore';
 import { trackEvent } from '@/lib/analytics';
-import FlashCard, { FlashCardHandle } from '@/modules/flashcard/components/FlashCard';
+import { CardShell } from '@/modules/flashcard/components/CardShell';
 import { fetchSessionAction } from '@/modules/flashcard/flashcard.actions';
+import { getSessionDataWithPriming } from '@/modules/priming/actions';
+import { PrimingModal, hasSeenPrimingModal } from '@/modules/priming/components/PrimingModal';
+import { StoryReader } from '@/modules/priming/components/StoryReader';
+import { StoryWithContent } from '@/modules/priming/types';
 import ReportModal from '@/modules/report/components/ReportModal';
 import { useSessionStore } from '@/modules/study/store/useSessionStore';
 import { useStudyPreferences } from '@/modules/study/store/useStudyPreferences';
@@ -18,9 +23,9 @@ import { getDailyProgress } from '@/modules/study/study.actions';
 import { getCompletedTutorials, getUserSettings } from '@/modules/user/user.actions';
 import { CommentOutlined, SettingOutlined } from '@ant-design/icons';
 import type { User } from '@prisma/client';
-import { Button, Drawer, Grid } from 'antd';
+import { Button, Drawer, Grid, message, theme } from 'antd';
 import { useTranslations } from 'next-intl';
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 // Local Components
 import RatingBar from './RatingBar';
@@ -56,10 +61,13 @@ export default function SessionController({
 
 	// Local State
 	const [isLoading, setIsLoading] = useState(true);
-	const [studyPhase, setStudyPhase] = useState<'loading' | 'briefing' | 'quiz' | 'summary'>(
-		'loading',
-	);
+	const [studyPhase, setStudyPhase] = useState<
+		'loading' | 'priming-modal' | 'priming' | 'briefing' | 'quiz' | 'summary'
+	>('loading');
 	const [hasSkippedBriefing, setHasSkippedBriefing] = useState(false);
+	const [primingStory, setPrimingStory] = useState<StoryWithContent | null>(null);
+	const [hasSkippedPriming, setHasSkippedPriming] = useState(false);
+	const [showPrimingModal, setShowPrimingModal] = useState(false);
 	const [dailyStats, setDailyStats] = useState({
 		reviewsToday: 0,
 		limitReviews: 200,
@@ -78,13 +86,17 @@ export default function SessionController({
 	const [userSettings, setUserSettings] = useState<Partial<User> | null>(null);
 	const [spaceKeyRating, setSpaceKeyRating] = useState(3);
 	const [showAnswer, setShowAnswer] = useState(false);
+	const [isCardExiting, setIsCardExiting] = useState(false);
+	const [exitColor, setExitColor] = useState<string | undefined>(undefined);
+	const [isSubmittingRating, setIsSubmittingRating] = useState(false);
 
 	// Refs
-	const flashCardRef = useRef<FlashCardHandle>(null);
 	const scrollRef = useRef<HTMLDivElement>(null);
 	const settingsRef = useRef<HTMLButtonElement>(null);
 	const cardWrapperRef = useRef<HTMLDivElement>(null);
 	const ratingBarRef = useRef<HTMLDivElement>(null);
+	const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+	const isMountedRef = useRef(true);
 
 	// Zen Mode
 	const { headerVisible, forceShow, resetTimer } = useZenMode(10, scrollRef, 3000);
@@ -116,6 +128,37 @@ export default function SessionController({
 				// Merge server tutorials into the store
 				if (tutorialsResponse?.success && tutorialsResponse.data) {
 					mergeTutorials(tutorialsResponse.data);
+				}
+
+				// Check priming requirement (Soft Gate) - only for specific deckId
+				if (deckId && !hasSkippedPriming) {
+					try {
+						const primingData = await getSessionDataWithPriming({ deckId });
+						if (primingData.success && primingData.data) {
+							const { story, requiresPriming } = primingData.data;
+							if (requiresPriming && story) {
+								console.log('[SessionController] Priming required');
+								setPrimingStory(story);
+
+								// Smart Modal: Show modal only if user hasn't seen it before
+								const hasSeenModal = hasSeenPrimingModal();
+								if (!hasSeenModal) {
+									console.log('[SessionController] Showing priming modal (first time)');
+									setShowPrimingModal(true);
+									setStudyPhase('priming-modal');
+								} else {
+									console.log('[SessionController] User has seen modal, showing story directly');
+									setStudyPhase('priming');
+								}
+
+								setIsLoading(false);
+								return; // Don't fetch cards yet
+							}
+						}
+					} catch (error) {
+						console.error('[SessionController] Failed to check priming:', error);
+						// Continue to normal flow on error (graceful degradation)
+					}
 				}
 
 				// Fetch Cards if queue is empty
@@ -191,6 +234,7 @@ export default function SessionController({
 		hasTrackedSessionStart,
 		mergeTutorials,
 		hasSkippedBriefing,
+		hasSkippedPriming,
 	]);
 
 	// Track session start when queue is populated
@@ -277,7 +321,7 @@ export default function SessionController({
 				setStudyPhase('quiz');
 			}
 		}
-	}, [isLoading, queue.length, studyPhase, hasSkippedBriefing]);
+	}, [isLoading, queue, studyPhase, hasSkippedBriefing]);
 
 	// Ensure currentCard is set when entering quiz phase from briefing
 	useEffect(() => {
@@ -359,14 +403,148 @@ export default function SessionController({
 		queue,
 	]);
 
+	// Toast notification for rating
+	const showRatingToast = useCallback(
+		(rating: number) => {
+			const messages = {
+				1: t('ratingToast.again'), // "Review scheduled"
+				3: t('ratingToast.good'), // "Mastery recorded"
+				4: t('ratingToast.easy'), // "Fluency achieved"
+			};
+			const toastMessage = messages[rating as keyof typeof messages];
+			if (toastMessage) {
+				message.success(toastMessage, 0.8);
+			}
+		},
+		[t],
+	);
+
+	// Get exit color based on rating
+	const { token } = theme.useToken();
+	const getExitColor = useCallback(
+		(rating: number) => {
+			const colors = {
+				1: token.colorError, // Red for "Again"
+				3: token.colorSuccess, // Green for "Good"
+				4: token.colorPrimary, // Indigo for "Easy"
+			};
+			return colors[rating as keyof typeof colors];
+		},
+		[token],
+	);
+
+	// Compute card to show - use currentCard or fallback to queue[0]
+	const cardToShow = studyPhase === 'quiz' ? currentCard || queue[0] : null;
+
+	// Audio Integration: Adapt SmartCard to format expected by useFlashCardAudio
+	// The hook expects card.vocab structure (we only have vocabulary cards, no separate kanji cards)
+	const adaptedCardForAudio = useMemo(() => {
+		if (!cardToShow) return null;
+
+		// SmartCard structure: card.front.hero, card.back.details
+		// Type guard: Only BASIC variant has hero in front
+		const front = cardToShow.front;
+		const isBasicVariant = cardToShow.variant === 'BASIC' && 'hero' in front;
+		// Access kana directly from SmartCard structure
+		const kana = (cardToShow.back?.details as { kana?: string })?.kana || '';
+		const hero = isBasicVariant ? front.hero : '';
+
+		return {
+			vocab: {
+				wordSurface: hero,
+				wordReading: kana,
+				audioUrl: isBasicVariant && 'audio' in front ? front.audio : undefined,
+				// kanji field is same as wordSurface since all cards are vocabulary
+				// (vocabulary words contain kanji, but we don't have separate kanji-only cards)
+				kanji: hero,
+				reading: kana,
+				exampleSentence: null, // Can be extracted from examples if needed
+			},
+		};
+	}, [cardToShow]);
+
+	// Audio Hook Integration
+	const audioHook = useFlashCardAudio({
+		card: adaptedCardForAudio,
+		showAnswer,
+		autoPlayAudio: autoPlayAudio || 'off',
+	});
+
 	// 3. Shortcuts
 	const handleRate = useCallback(
 		async (rating: number) => {
-			await submitRating(rating as 1 | 2 | 3 | 4);
-			setShowAnswer(false);
-			resetTimer();
+			// Guard: Prevent multiple submissions (Race Condition Fix)
+			if (isSubmittingRating) {
+				console.warn('[SessionController] Rating already in progress, ignoring duplicate click');
+				return;
+			}
+
+			// Validate rating input (Defensive Coding)
+			if (![1, 2, 3, 4].includes(rating)) {
+				console.error('[SessionController] Invalid rating value:', rating);
+				return;
+			}
+
+			setIsSubmittingRating(true);
+
+			// Clear any existing timeout (Memory Leak Fix)
+			if (timeoutRef.current) {
+				clearTimeout(timeoutRef.current);
+				timeoutRef.current = null;
+			}
+
+			// Set exit animation
+			const color = getExitColor(rating);
+			setExitColor(color);
+			setIsCardExiting(true);
+
+			// Wait for animation to complete (with proper cleanup)
+			timeoutRef.current = setTimeout(async () => {
+				if (!isMountedRef.current) {
+					setIsSubmittingRating(false);
+					return;
+				}
+
+				try {
+					await submitRating(rating as 1 | 2 | 3 | 4);
+
+					if (!isMountedRef.current) {
+						setIsSubmittingRating(false);
+						return;
+					}
+
+					// Success path: Reset exit state BEFORE other updates (State Sync Fix)
+					setIsCardExiting(false);
+					setExitColor(undefined);
+					showRatingToast(rating);
+					setShowAnswer(false);
+					resetTimer();
+				} catch (error) {
+					// Error Handling Fix
+					console.error('[SessionController] Rating submission failed:', error);
+
+					if (!isMountedRef.current) {
+						setIsSubmittingRating(false);
+						return;
+					}
+
+					// Revert exit animation on error
+					setIsCardExiting(false);
+					setExitColor(undefined);
+
+					// Show error toast
+					message.error(t('failedSubmitReview') || 'Failed to submit review. Please try again.', 3);
+
+					// Keep card visible for retry - don't reset showAnswer
+				} finally {
+					if (isMountedRef.current) {
+						setIsSubmittingRating(false);
+					}
+					timeoutRef.current = null;
+				}
+			}, 400); // Match animation duration
 		},
-		[submitRating, resetTimer],
+		[isSubmittingRating, submitRating, showRatingToast, resetTimer, getExitColor, t],
 	);
 
 	const handleSpaceKey = useCallback(() => {
@@ -383,7 +561,8 @@ export default function SessionController({
 		onRate: handleRate,
 		showAnswer,
 		disabled: isReportModalOpen || isCommentDrawerOpen || settingsVisible || studyPhase !== 'quiz',
-		onAudio: () => flashCardRef.current?.playAudio(),
+		onAudio: audioHook.toggleAudio,
+		onExampleAudio: audioHook.playExampleAudio,
 		onToggleHeader: () => (headerVisible ? {} : forceShow()),
 		onEscape: () => {
 			setSettingsVisible(false);
@@ -402,8 +581,75 @@ export default function SessionController({
 		return <SessionSummary />;
 	}
 
-	// Compute card to show - use currentCard or fallback to queue[0]
-	const cardToShow = studyPhase === 'quiz' ? currentCard || queue[0] : null;
+	// Priming modal phase - show value proposition modal (first time only)
+	if (studyPhase === 'priming-modal' && primingStory) {
+		return (
+			<>
+				<PrimingModal
+					open={showPrimingModal}
+					onRead={() => {
+						setShowPrimingModal(false);
+						setStudyPhase('priming');
+					}}
+					onSkip={() => {
+						// Track skip from modal
+						trackEvent('PRIMING_SKIPPED', {
+							unit_id: deckId,
+							source: 'modal',
+						});
+						setHasSkippedPriming(true);
+						setShowPrimingModal(false);
+						setIsLoading(true);
+						setStudyPhase('loading');
+					}}
+					unitId={deckId}
+				/>
+				{/* Render empty container while modal is open */}
+				<div style={{ display: 'none' }} />
+			</>
+		);
+	}
+
+	// Priming phase - show story reader
+	if (studyPhase === 'priming' && primingStory) {
+		return (
+			<SessionContainer
+				progress={0}
+				headerVisible={true}
+				actions={
+					<>
+						<Button
+							type="text"
+							shape="circle"
+							icon={<SettingOutlined />}
+							onClick={() => setSettingsVisible(true)}
+						/>
+					</>
+				}
+			>
+				<StoryReader
+					story={primingStory}
+					onComplete={() => {
+						// After story is read, proceed to fetch cards
+						setHasSkippedPriming(false);
+						setIsLoading(true);
+						// Trigger card fetch by resetting queue
+						// This will cause the init effect to run again
+						setStudyPhase('loading');
+					}}
+					onSkip={() => {
+						// Soft Gate: Allow skipping
+						trackEvent('PRIMING_SKIPPED', {
+							unit_id: deckId,
+						});
+						setHasSkippedPriming(true);
+						setIsLoading(true);
+						setStudyPhase('loading');
+					}}
+				/>
+			</SessionContainer>
+		);
+	}
 
 	return (
 		<SessionContainer
@@ -543,17 +789,28 @@ export default function SessionController({
 					>
 						<div
 							ref={cardWrapperRef}
-							style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
+							style={{
+								width: '100%',
+								display: 'flex',
+								justifyContent: 'center',
+								alignItems: 'center',
+								position: 'relative',
+								minHeight: '65vh',
+							}}
 						>
-							<FlashCard
-								ref={flashCardRef}
+							<CardShell
 								key={cardToShow.id}
 								card={cardToShow}
+								isActive={true}
+								isNext={false}
 								showAnswer={showAnswer}
+								onReveal={() => setShowAnswer(true)}
 								showFurigana={showFurigana}
 								showRomaji={showRomaji}
-								autoPlayAudio={autoPlayAudio}
-								onReveal={() => setShowAnswer(true)}
+								isExiting={isCardExiting}
+								exitColor={exitColor}
+								isPlaying={audioHook.isPlaying}
+								onPlayAudio={audioHook.toggleAudio}
 							/>
 						</div>
 					</div>

@@ -84,12 +84,99 @@ model StoryLog {
 
 **Objective:** Encourage users to "unlock" the context without frustration.
 
-1. **Check:** User clicks "Unit 5".
-2. **Logic:** `StudyService.hasReadStory(userId, unitId)`?
+**Trigger Condition:** Priming is checked when a user starts a study session with a **specific `deckId`** (not for course-based or auto-start sessions).
+
+**Implementation:** The check happens in `SessionController` during initialization:
+
+```typescript
+if (deckId && !hasSkippedPriming) {
+  const primingData = await getSessionDataWithPriming({ deckId });
+  if (requiresPriming && story) {
+    // Show StoryReader component
+  }
+}
+```
+
+**Decision Tree:**
+
+1. **Check:** User starts session with `deckId` parameter.
+2. **Logic:** `getSessionDataWithPriming()` checks:
+   - Does story exist for this deck?
+   - Has user read this story? (`StoryLog` entry exists)
+   - Is user authorized to access this deck?
 3. **UI:**
-    - If `false`: Show **Optional Modal** / **Toast**: "Recommended: Read the Story first to boost retention +50%."
-        - Options: "Read Story" (Primary) vs "Skip to Cards" (Secondary/Ghost).
-    - If `true`: Proceed directly to `/study/session/{unitId}`.
+   - If `requiresPriming === true`: Show `StoryReader` component (Soft Gate).
+   - If `requiresPriming === false`: Proceed directly to flashcard session.
+   - If story doesn't exist: Skip priming, proceed to session.
+
+### 2.3 Story Priming Trigger Scenarios
+
+**When Story Priming is Triggered:**
+
+| Scenario | URL Pattern | `deckId` Present? | Priming Check? | Notes |
+|----------|-------------|-------------------|----------------|-------|
+| **1. Direct Deck Navigation** | `/study?deckId={uuid}` | ✅ Yes | ✅ **YES** | User clicks "Start Study" on deck detail page |
+| **2. Resume Last Session** | `/study` → redirects to `/study?deckId={lastDeck}` | ✅ Yes | ✅ **YES** | User clicks "Study" in nav, system resumes last deck |
+| **3. Study Dashboard → Start Session** | `/study` → Dashboard → `/study?deckId={firstDeck}` | ✅ Yes | ✅ **YES** | Dashboard shows "Start Session" button, routes to first recent deck |
+| **4. Course Study** | `/study?courseId={uuid}` | ❌ No | ❌ **NO** | Course study spans multiple decks, no single story |
+| **5. Auto-Start Session** | `/study` (no params, auto-starts) | ❌ No | ❌ **NO** | Global session with all due cards, no specific deck context |
+| **6. Direct URL Entry** | User types `/study?deckId={uuid}` | ✅ Yes | ✅ **YES** | Manual URL entry, same as scenario 1 |
+| **7. Community Feed → Deck Link** | Click deck link → `/study?deckId={uuid}` | ✅ Yes | ✅ **YES** | User clicks deck link from community/card comments |
+
+**When Story Priming is NOT Triggered:**
+
+- **Course-based sessions** (`courseId` parameter): Stories are deck-specific, courses contain multiple decks
+- **Auto-start sessions** (no `deckId`): Global review session across all decks
+- **User has already read story**: `StoryLog` entry exists → `requiresPriming === false`
+- **No story exists for deck**: Story not generated yet → Skip priming gracefully
+- **User skipped priming**: `hasSkippedPriming === true` → Skip check for this session
+- **Authorization failure**: User doesn't have access to private deck → Returns null, no priming shown
+
+**Flow Diagram:**
+
+```
+User Action
+    ↓
+[Has deckId?]
+    ├─ NO → Skip Priming → Fetch Cards (Global/Course Session)
+    └─ YES → Check Priming Requirement
+            ↓
+        [Story exists?]
+            ├─ NO → Skip Priming → Fetch Cards
+            └─ YES → [User has read?]
+                    ├─ YES → Skip Priming → Fetch Cards
+                    └─ NO → [User skipped before?]
+                            ├─ YES → Skip Priming → Fetch Cards
+                            └─ NO → Show StoryReader (Priming Phase)
+                                    ↓
+                                User reads story
+                                    ↓
+                                [User clicks "Begin Training"]
+                                    ↓
+                                Mark as read → Fetch Cards → Start Session
+```
+
+**Edge Cases & Graceful Degradation:**
+
+1. **Network Error During Priming Check:**
+   - Error caught in try-catch → Continue to normal flow (fetch cards)
+   - User can still study even if priming check fails
+
+2. **Story Content Validation Fails:**
+   - Invalid JSONB content → Returns `null` for story
+   - System skips priming, proceeds to session
+   - Logs error for admin review
+
+3. **User Skips Story:**
+   - Click "Skip to Cards" → Sets `hasSkippedPriming = true`
+   - Tracks `PRIMING_SKIPPED` analytics event
+   - Proceeds directly to card session
+   - Next time user starts same deck, priming check is skipped for that session
+
+4. **Story Marked as Read Fails:**
+   - API call fails → Still allows proceeding (optimistic UI)
+   - User can study, but story may show again next time
+   - Background retry could be added in Phase 4
 
 ---
 
@@ -97,7 +184,59 @@ model StoryLog {
 
 As a Product Owner, I demand a "Frictionless but Meaningful" flow.
 
-### 3.1 The Priming Journey (Step-by-Step)
+### 3.1 User Flow Examples (Concrete Scenarios)
+
+**Example 1: New User Starting First Unit (With Modal)**
+
+1. User signs up and browses decks
+2. User clicks "Start Study" on "Minna no Nihongo Unit 1" deck
+3. URL: `/study?deckId=unit-1-uuid`
+4. **System:** Checks priming → Story exists, user hasn't read → Shows `PrimingModal` (first time)
+5. **Modal shows:** "Boost Your Retention +50%" with benefits list
+6. User clicks "Read Story" → Modal closes, `StoryReader` appears
+7. User reads story, taps highlighted words, clicks "Begin Training"
+8. **System:** Creates `StoryLog` entry, fetches cards, prioritizes keyword cards
+9. First card shown is one of the story keywords (Recency Effect)
+
+**Example 1b: Returning User (No Modal)**
+
+1. Same user starts another deck with a story
+2. **System:** Checks priming → Story exists, user hasn't read this story
+3. **System:** User has seen modal before → Skips modal, shows `StoryReader` directly
+4. User reads story and proceeds to cards
+
+**Example 2: Returning User Resuming Session**
+
+1. User clicks "Study" in main navigation
+2. **System:** Finds last studied deck → Redirects to `/study?deckId=last-deck-uuid`
+3. **System:** Checks priming → User already read story → Skips priming
+4. Directly shows flashcard session
+
+**Example 3: Power User Skipping Story**
+
+1. User starts deck they've never studied before
+2. Story appears
+3. User immediately clicks "Skip to Cards"
+4. **System:** Tracks `PRIMING_SKIPPED` event, sets `hasSkippedPriming = true`
+5. Proceeds to cards immediately
+6. Next time user starts same deck in same session, priming is skipped
+
+**Example 4: Course Study (No Priming)**
+
+1. User starts "JLPT N5 Complete Course"
+2. URL: `/study?courseId=course-uuid`
+3. **System:** No `deckId` parameter → Skips priming check
+4. Fetches cards from all decks in course
+5. No story shown (stories are deck-specific)
+
+**Example 5: Auto-Start Session (No Priming)**
+
+1. Active user with 50 due cards clicks "Study"
+2. URL: `/study` (no parameters)
+3. **System:** Auto-starts global session → No `deckId` → Skips priming
+4. Shows cards from all decks with due reviews
+
+### 3.2 The Priming Journey (Step-by-Step)
 
 | Step | User Action | System Response | "Zen" Design Note |
 | :--- | :--- | :--- | :--- |

@@ -227,6 +227,11 @@
 			"NotQuite": "Chưa đúng. Nghe lại nhé!",
 			"TapToSeeDetails": "Chạm vào thẻ để xem chi tiết →",
 			"Origin": "NGUỒN GỐC"
+		},
+		"ratingToast": {
+			"again": "Đã lên lịch ôn lại",
+			"good": "Đã ghi nhận thành thạo",
+			"easy": "Đã đạt độ lưu loát"
 		}
 	},
 	"Decks": {

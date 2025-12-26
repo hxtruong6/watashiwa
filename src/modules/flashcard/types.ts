@@ -16,7 +16,8 @@ export interface Vocabulary extends Omit<
 > {
 	// Parsed JSON Content (Inferred from Zod Source of Truth)
 	meanings: z.infer<typeof MeaningsSchema>;
-	etymology: z.infer<typeof EtymologySchema>;
+	// Etymology can be null in database (Json field), but when present must match EtymologySchema
+	etymology: z.infer<typeof EtymologySchema> | null;
 	examples: z.infer<typeof ExamplesSchema>;
 
 	mnemonic?: {

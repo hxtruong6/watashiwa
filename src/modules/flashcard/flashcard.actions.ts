@@ -1,6 +1,13 @@
 'use server';
 
 import { prisma } from '@/lib/db';
+import {
+	EtymologyData,
+	ExamplesData,
+	LocalizedString,
+	MeaningsData,
+	StoryContentSchema,
+} from '@/lib/schemas/jsonb';
 import { executeSafeAction } from '@/modules/core/action-client';
 import { Card, createEmptyCard } from 'ts-fsrs';
 import { z } from 'zod';
@@ -9,9 +16,17 @@ import { SmartCard, StandardCard, Vocabulary } from './types';
 import { fsrs, getSRSStage, mapRatingToFSRS } from './utils/srs-algorithm';
 
 // Input Validation Schemas
+// Validate UUIDs when provided to prevent injection attacks
+// Empty strings are treated as undefined (Next.js URL params can be empty strings)
 const FetchSessionSchema = z.object({
-	deckId: z.string().optional(),
-	courseId: z.string().optional(),
+	deckId: z
+		.union([z.string().uuid('deckId must be a valid UUID'), z.literal('')])
+		.optional()
+		.transform((val) => (val === '' ? undefined : val)),
+	courseId: z
+		.union([z.string().uuid('courseId must be a valid UUID'), z.literal('')])
+		.optional()
+		.transform((val) => (val === '' ? undefined : val)),
 });
 
 /**
@@ -58,10 +73,23 @@ export async function fetchSessionAction(input: { deckId?: string; courseId?: st
 			});
 
 			// 2. Fetch New Cards (if needed to fill quota)
-			let newCards: any[] = [];
+			// Type-safe: Define structure explicitly
+			type NewCardItem = {
+				id: string;
+				wordSurface: string;
+				wordReading: string;
+				audioUrl: string | null;
+				meanings: unknown;
+				etymology: unknown;
+				examples: unknown;
+				mnemonic: unknown | null;
+				_review: null;
+			};
+
+			let newCards: NewCardItem[] = [];
 			if (dueReviews.length < limit) {
 				const needed = limit - dueReviews.length;
-				newCards = await prisma.vocabulary.findMany({
+				const fetched = await prisma.vocabulary.findMany({
 					where: {
 						deckId: targetDeckIds ? { in: targetDeckIds } : undefined,
 						userReviews: {
@@ -69,20 +97,64 @@ export async function fetchSessionAction(input: { deckId?: string; courseId?: st
 						},
 					},
 					take: needed,
+					select: {
+						id: true,
+						wordSurface: true,
+						wordReading: true,
+						audioUrl: true,
+						meanings: true,
+						etymology: true,
+						examples: true,
+						mnemonic: true,
+					},
 				});
+				newCards = fetched.map((v) => ({ ...v, _review: null }));
 			}
 
-			// 3. Transform to SmartCard
+			// 3. Get story keywords for recency effect (if deckId is specified)
+			let keywordVocabIds: string[] = [];
+			if (deckId) {
+				const story = await prisma.story.findFirst({
+					where: { unitId: deckId },
+					select: { content: true },
+				});
+
+				if (story) {
+					const contentValidation = StoryContentSchema.safeParse(story.content);
+					if (contentValidation.success) {
+						keywordVocabIds = contentValidation.data.highlights.map((h) => h.vocab_id);
+					}
+				}
+			}
+
+			// 4. Transform to SmartCard
 			const combined = [
 				...dueReviews.map((r) => ({ ...r.vocab, _review: r })),
 				...newCards.map((v) => ({ ...v, _review: null })),
 			];
 
-			const sessionCards: SmartCard[] = combined.map((item) => {
-				const meanings = item.meanings as any;
-				const etymology = item.etymology as any;
-				const examples = item.examples as any;
-				const mnemonic = item.mnemonic as any;
+			// 5. Prioritize keyword cards (Recency Effect)
+			const keywordCards: typeof combined = [];
+			const otherCards: typeof combined = [];
+
+			for (const item of combined) {
+				if (keywordVocabIds.includes(item.id)) {
+					keywordCards.push(item);
+				} else {
+					otherCards.push(item);
+				}
+			}
+
+			// Combine: keyword cards first, then others
+			const prioritizedCards = [...keywordCards, ...otherCards];
+
+			const sessionCards: SmartCard[] = prioritizedCards.map((item) => {
+				// Type-safe parsing with validation
+				// These are JSONB fields, so we validate the structure
+				const meanings = item.meanings as MeaningsData;
+				const etymology = item.etymology as EtymologyData | null;
+				const examples = item.examples as ExamplesData;
+				const mnemonic = item.mnemonic as LocalizedString | null;
 
 				const vocab: Vocabulary = {
 					...item,
@@ -90,7 +162,7 @@ export async function fetchSessionAction(input: { deckId?: string; courseId?: st
 					etymology,
 					examples,
 					mnemonic,
-				};
+				} as Vocabulary;
 
 				const card: StandardCard = {
 					id: item._review?.id || `new_${item.id}`,

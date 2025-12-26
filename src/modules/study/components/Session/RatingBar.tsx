@@ -1,3 +1,4 @@
+import { CheckCircleOutlined, RotateLeftOutlined, ThunderboltOutlined } from '@ant-design/icons';
 import { Button, Grid, theme } from 'antd';
 import { useTranslations } from 'next-intl';
 import React from 'react';
@@ -38,9 +39,11 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 		let color = colorTheme.primary;
 		let border = `1px solid ${colorTheme.primary}`;
 		let boxShadow = 'none';
+		let width = '1fr'; // Default equal width
 
 		if (isGood) {
-			// Good is "Filled Green" per design system
+			// Good is "Filled Green" per design system, 60% width
+			width = '2fr'; // 60% of total (2 out of 3.33)
 			background = colorTheme.primary;
 			color = '#fff';
 			border = 'none';
@@ -48,7 +51,8 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 				boxShadow = `0 0 0 4px ${colorTheme.primary}40`; // Focus ring
 			}
 		} else {
-			// Others are Bordered
+			// Others are Bordered, 20% width each
+			width = '1fr'; // 20% of total (1 out of 3.33)
 			if (isActive) {
 				background = colorTheme.primary;
 				color = '#fff';
@@ -62,10 +66,14 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 
 		return {
 			height: screens.xs ? 48 : 56, // Increased mobile height slightly for better hit area
-			fontSize: screens.xs ? 15 : 16,
+			fontSize: screens.xs ? 20 : 24, // Icon size
 			fontWeight: 600,
 			transition: 'all 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 			transform: isActive ? 'scale(1.02)' : 'scale(1)',
+			width: '100%',
+			display: 'flex',
+			alignItems: 'center',
+			justifyContent: 'center',
 
 			backgroundColor: background,
 			color: color,
@@ -76,6 +84,13 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 			WebkitUserSelect: 'none' as const,
 			WebkitTouchCallout: 'none' as const,
 		};
+	};
+
+	// Haptic feedback function
+	const triggerHaptic = () => {
+		if ('vibrate' in navigator) {
+			navigator.vibrate(10); // Subtle 10ms vibration
+		}
 	};
 
 	const handleInteraction = (e: React.MouseEvent | React.TouchEvent) => {
@@ -100,42 +115,51 @@ export default function RatingBar({ onRate, disabled, selectedRating }: RatingBa
 			<div
 				style={{
 					display: 'grid',
-					// 3 columns for Zen simplicity
-					gridTemplateColumns: 'repeat(3, 1fr)',
+					// 3 columns with Good button taking 60% width (2fr) and others 20% each (1fr)
+					gridTemplateColumns: '1fr 2fr 1fr',
 					gap: 12, // Increased gap slightly since we have more space
 				}}
 			>
 				<Button
 					size="large"
 					loading={selectedRating === 1}
-					onClick={() => onRate(1)}
+					onClick={() => {
+						triggerHaptic();
+						onRate(1);
+					}}
 					disabled={disabled && selectedRating !== 1}
 					style={getButtonStyle(1, colors[1])}
-				>
-					{t('rateAgain')}
-				</Button>
+					icon={<RotateLeftOutlined />}
+					aria-label={t('rateAgain')}
+				/>
 
 				{/* Rating 2 (Hard) is intentionally omitted for simplicity */}
 
 				<Button
 					size="large"
 					loading={selectedRating === 3}
-					onClick={() => onRate(3)}
+					onClick={() => {
+						triggerHaptic();
+						onRate(3);
+					}}
 					disabled={disabled && selectedRating !== 3}
 					style={getButtonStyle(3, colors[3])}
-				>
-					{t('rateGood')}
-				</Button>
+					icon={<CheckCircleOutlined />}
+					aria-label={t('rateGood')}
+				/>
 
 				<Button
 					size="large"
 					loading={selectedRating === 4}
-					onClick={() => onRate(4)}
+					onClick={() => {
+						triggerHaptic();
+						onRate(4);
+					}}
 					disabled={disabled && selectedRating !== 4}
 					style={getButtonStyle(4, colors[4])}
-				>
-					{t('rateEasy')}
-				</Button>
+					icon={<ThunderboltOutlined />}
+					aria-label={t('rateEasy')}
+				/>
 			</div>
 		</div>
 	);

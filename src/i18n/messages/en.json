@@ -234,6 +234,11 @@
 			"NotQuite": "Not quite. Listen again!",
 			"TapToSeeDetails": "Tap card to see details →",
 			"Origin": "ORIGIN"
+		},
+		"ratingToast": {
+			"again": "Review scheduled",
+			"good": "Mastery recorded",
+			"easy": "Fluency achieved"
 		}
 	},
 	"Decks": {
