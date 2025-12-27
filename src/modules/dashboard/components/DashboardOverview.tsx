@@ -1,28 +1,23 @@
 'use client';
 
-import {
-	DonationButton,
-	DueCTA,
-	GlobalLeaderboard,
-	HeroSection,
-	MatchaWisdomWidget,
-	MyContributions,
-	MyDecks,
-	NextReviewWidget,
-	QuickActions,
-	StatsGrid,
-	TrendingTips,
-	WeeklyChart,
-} from '@/components/dashboard';
 import { OAuthCacheUpdater } from '@/modules/auth/components/OAuthCacheUpdater';
 import StudySettings from '@/modules/study/components/Session/StudySettings';
 import type { User } from '@prisma/client';
-import { Divider, Drawer, theme } from 'antd';
+import { Drawer, theme } from 'antd';
 import confetti from 'canvas-confetti';
 import { Variants, motion } from 'framer-motion';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
+import DashboardDailyRitual from './home/DashboardDailyRitual';
+import DeckPickerDrawer from './home/DeckPickerDrawer';
+import MatchaWisdomWidget from './home/MatchaWisdomWidget';
+import MyDecks from './home/MyDecks';
+import NextReviewWidget from './home/NextReviewWidget';
+import StudyIntentChooser from './home/StudyIntentChooser';
+import WeeklyChart from './home/WeeklyChart';
 
 const { useToken } = theme;
 
@@ -63,7 +58,8 @@ interface DashboardOverviewProps {
 }
 
 /**
- * Main Dashboard component using modular sub-components
+ * Main Dashboard component - Zen-first, study-start optimized
+ * Layout: Daily Ritual → Study Intent → NextReviewWidget → MatchaWisdom → Weekly → Decks
  */
 export default function DashboardOverview({
 	reviewCount,
@@ -73,15 +69,42 @@ export default function DashboardOverview({
 	userName,
 	dailyGoal,
 	userRole,
-	leaderboard = [],
-	userId,
 	userSettings,
 	forecast,
 }: DashboardOverviewProps) {
 	const { token } = useToken();
-	const [hasShownConfetti] = useState(false);
-	const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+	const t = useTranslations('Dashboard');
 	const router = useRouter();
+	const searchParams = useSearchParams();
+	const [hasShownConfetti] = useState(false);
+	// Initialize settings open state from URL param
+	const [isSettingsOpen, setIsSettingsOpen] = useState(() => {
+		if (typeof window === 'undefined') return false;
+		return searchParams?.get('settings') === 'true';
+	});
+	const [isDeckPickerOpen, setIsDeckPickerOpen] = useState(false);
+	const isInitialMount = useRef(true);
+
+	// Sync settings state with URL param changes (after initial mount)
+	useEffect(() => {
+		if (isInitialMount.current) {
+			isInitialMount.current = false;
+			return;
+		}
+		const settingsParam = searchParams?.get('settings');
+		const shouldBeOpen = settingsParam === 'true';
+		// Use setTimeout to defer state update and avoid synchronous setState warning
+		const timeoutId = setTimeout(() => {
+			setIsSettingsOpen(shouldBeOpen);
+		}, 0);
+		return () => clearTimeout(timeoutId);
+	}, [searchParams]);
+
+	// Close settings and clear URL param
+	const handleSettingsClose = () => {
+		setIsSettingsOpen(false);
+		router.replace('/dashboard');
+	};
 
 	// Trigger confetti when daily goal is reached
 	const isGoalComplete = stats.totalReviewed >= dailyGoal;
@@ -94,7 +117,6 @@ export default function DashboardOverview({
 				origin: { y: 0.3 },
 				colors: [token.colorSuccess, token.colorPrimary, token.colorWarning],
 			});
-			// setHasShownConfetti(true);
 		}
 	}, [
 		isGoalComplete,
@@ -141,21 +163,27 @@ export default function DashboardOverview({
 					margin: '0 auto',
 					padding: '20px 16px 80px',
 					position: 'relative',
-				}} // Reduced top padding, added bottom for nav
+				}}
 			>
-				{/* Hero: Greeting + Streak + Daily Goal */}
-				<HeroSection
-					userName={userName}
-					streak={stats.streak}
-					dailyProgress={stats.totalReviewed}
-					dailyGoal={dailyGoal}
-				/>
-				{/* Primary CTA: Start Review */}
+				{/* Section A: Daily Ritual (Above the fold) */}
 				<motion.div variants={itemVariants}>
-					<DueCTA dueCount={reviewCount} />
+					<DashboardDailyRitual
+						userName={userName}
+						streak={stats.streak}
+						dailyProgress={stats.totalReviewed}
+						dailyGoal={dailyGoal}
+					/>
 				</motion.div>
 
-				{/* Forecast Widget */}
+				{/* Section B: Study Intent Chooser (Primary CTA) */}
+				<motion.div variants={itemVariants}>
+					<StudyIntentChooser
+						dueCount={reviewCount}
+						onDeckPickerOpen={() => setIsDeckPickerOpen(true)}
+					/>
+				</motion.div>
+
+				{/* Section C: NextReviewWidget (Smart Coach) */}
 				{forecast && (
 					<motion.div variants={itemVariants}>
 						<NextReviewWidget
@@ -168,10 +196,12 @@ export default function DashboardOverview({
 					</motion.div>
 				)}
 
-				{/* Ambient: Matcha Wisdom */}
-				<MatchaWisdomWidget />
+				{/* Section D: MatchaWisdomWidget (Zen micro-dose) */}
+				<motion.div variants={itemVariants}>
+					<MatchaWisdomWidget />
+				</motion.div>
 
-				{/* Weekly Progress Chart */}
+				{/* Section E: Weekly Progress (if data exists) */}
 				{weeklyStats && (
 					<motion.div variants={itemVariants}>
 						<WeeklyChart
@@ -182,41 +212,17 @@ export default function DashboardOverview({
 					</motion.div>
 				)}
 
-				{/* Stats Grid */}
-				<motion.div variants={itemVariants}>
-					<StatsGrid streak={stats.streak} reviewedToday={stats.totalReviewed} />
-				</motion.div>
-
-				{/* Global Leaderboard */}
-				<motion.div variants={itemVariants} style={{ marginTop: 24 }}>
-					<GlobalLeaderboard users={leaderboard} currentUserId={userId} />
-				</motion.div>
-
-				{/* Your Top Tips (Small section under progress) */}
-				<motion.div variants={itemVariants}>
-					<MyContributions />
-				</motion.div>
-
-				{/* Quick Actions */}
-				<motion.div variants={itemVariants}>
-					<QuickActions />
-				</motion.div>
-
-				{/* My Decks */}
-				<motion.div variants={itemVariants}>
-					<MyDecks decks={decks} />
-				</motion.div>
-
-				{/* Community Highlights (Trending) - Bottom of page */}
-				<motion.div variants={itemVariants}>
-					<Divider />
-					<TrendingTips />
-				</motion.div>
+				{/* Section F: My Decks (Actionable, top due first) */}
+				{decks.length > 0 && (
+					<motion.div variants={itemVariants}>
+						<MyDecks decks={decks} />
+					</motion.div>
+				)}
 
 				{/* Admin Button */}
 				{(userRole === 'ADMIN' || userRole === 'MODERATOR') && (
 					<motion.div variants={itemVariants} style={{ marginTop: 24, textAlign: 'center' }}>
-						<Link
+						<a
 							href="/admin"
 							style={{
 								display: 'inline-block',
@@ -229,21 +235,23 @@ export default function DashboardOverview({
 								boxShadow: '0 4px 12px rgba(30, 58, 95, 0.2)',
 							}}
 						>
-							Go to Admin Panel
-						</Link>
+							{t('goToAdminPanel')}
+						</a>
 					</motion.div>
 				)}
 
-				{/* Donation Button */}
-				<motion.div variants={itemVariants}>
-					<DonationButton />
-				</motion.div>
+				{/* Deck Picker Drawer */}
+				<DeckPickerDrawer
+					open={isDeckPickerOpen}
+					onClose={() => setIsDeckPickerOpen(false)}
+					decks={decks}
+				/>
 
 				{/* Settings Drawer */}
 				<Drawer
 					title="Settings"
 					placement="right"
-					onClose={() => setIsSettingsOpen(false)}
+					onClose={handleSettingsClose}
 					open={isSettingsOpen}
 					size="default"
 				>

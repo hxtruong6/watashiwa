@@ -169,10 +169,15 @@ export default function NextReviewWidget({
 					</motion.div>
 
 					{/* Content Section */}
-					<div style={{ flex: '1 1 200px' }}>
+					<div style={{ flex: '1 1 200px', minWidth: 0 }}>
 						<Title
 							level={4}
-							style={{ margin: 0, fontSize: 16, fontWeight: 600, color: token.colorText }}
+							style={{
+								margin: 0,
+								fontSize: 'clamp(14px, 4vw, 16px)',
+								fontWeight: 600,
+								color: token.colorText,
+							}}
 						>
 							{status === 'streak-rescue'
 								? t.rich('forecastStreakRescue', {
@@ -235,10 +240,18 @@ export default function NextReviewWidget({
 										fontWeight: 600,
 										width: 'fit-content',
 										minWidth: 150,
+										minHeight: 44,
 										height: 48,
 										boxShadow: `0 4px 12px ${token.colorText}1A`,
 									}}
 									aria-label={t('actionReview')}
+									onFocus={(e) => {
+										e.currentTarget.style.outline = `2px solid ${token.colorPrimary}`;
+										e.currentTarget.style.outlineOffset = '2px';
+									}}
+									onBlur={(e) => {
+										e.currentTarget.style.outline = 'none';
+									}}
 								>
 									{t('actionReview')}
 								</Button>
@@ -256,6 +269,7 @@ export default function NextReviewWidget({
 								style={{
 									fontWeight: 600,
 									width: '100%',
+									minHeight: 44,
 									border: status === 'chill' ? `1px solid ${token.colorPrimary}` : 'none',
 									background: 'transparent',
 									color: status === 'chill' ? token.colorPrimary : token.colorTextSecondary,
@@ -263,6 +277,14 @@ export default function NextReviewWidget({
 									marginTop: status === 'chill' ? 0 : 4,
 								}}
 								icon={status === 'chill' ? <RocketOutlined /> : undefined}
+								aria-label={status === 'chill' ? t('actionStudyAhead') : t('actionQuick')}
+								onFocus={(e) => {
+									e.currentTarget.style.outline = `2px solid ${token.colorPrimary}`;
+									e.currentTarget.style.outlineOffset = '2px';
+								}}
+								onBlur={(e) => {
+									e.currentTarget.style.outline = 'none';
+								}}
 							>
 								{status === 'chill' ? t('actionStudyAhead') : t('actionQuick')}
 							</Button>

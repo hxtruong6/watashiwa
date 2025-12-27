@@ -1,4 +1,4 @@
-import MyDecksList from '@/components/dashboard/MyDecksList';
+import MyDecksList from '@/modules/dashboard/components/home/MyDecksList';
 import { getUserDecksWithStats } from '@/modules/deck/deck.actions';
 import React from 'react';
 

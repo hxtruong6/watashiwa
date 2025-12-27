@@ -48,6 +48,24 @@ export default function MatchaWisdomWidget() {
 	const t = useTranslations('Dashboard');
 	const [selectedWord, setSelectedWord] = useState<string | null>(null);
 	const [words, setWords] = useState<AnimatedWordData[]>([]);
+	const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
+		if (typeof window !== 'undefined') {
+			return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		}
+		return false;
+	});
+
+	// Check for reduced motion preference
+	useEffect(() => {
+		const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+		const handleChange = (e: MediaQueryListEvent) => {
+			setPrefersReducedMotion(e.matches);
+		};
+
+		mediaQuery.addEventListener('change', handleChange);
+		return () => mediaQuery.removeEventListener('change', handleChange);
+	}, []);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -156,7 +174,7 @@ export default function MatchaWisdomWidget() {
 
 				{/* Floating Words Layer - Inside Card for proper containment */}
 				<div style={{ position: 'absolute', inset: 0, zIndex: 10, pointerEvents: 'none' }}>
-					{words.map((word) => {
+					{words.map((word, index) => {
 						const isSelected = selectedWord === word.id;
 						const isOtherSelected = selectedWord !== null && !isSelected;
 
@@ -168,56 +186,70 @@ export default function MatchaWisdomWidget() {
 								aria-label={`View details for ${word.kanji}`}
 								onKeyDown={(e) => handleKeyDown(e, word)}
 								animate={
-									isSelected
+									prefersReducedMotion
 										? {
-												scale: 1.15,
-												opacity: 1,
+												// Static/low-motion fallback: just show words in a grid
+												x: 0,
+												y: 0,
+												opacity: isOtherSelected ? 0.3 : 1,
+												scale: isSelected ? 1.15 : 1,
 											}
-										: {
-												// Use viewport width (vw) for reliable cross-screen animation
-												// From slightly off left (-5vw) to full screen width (100vw)
-												x: ['-5vw', '100vw'],
-												y: [0, -10, 0, 10, 0],
-												opacity: isOtherSelected ? 0.3 : [0, 1, 1, 0],
-											}
+										: isSelected
+											? {
+													scale: 1.15,
+													opacity: 1,
+												}
+											: {
+													// Use viewport width (vw) for reliable cross-screen animation
+													// From slightly off left (-5vw) to full screen width (100vw)
+													x: ['-5vw', '100vw'],
+													y: [0, -10, 0, 10, 0],
+													opacity: isOtherSelected ? 0.3 : [0, 1, 1, 0],
+												}
 								}
 								transition={
-									isSelected
+									prefersReducedMotion
 										? {
-												type: 'spring',
-												stiffness: 100,
-												damping: 30,
-												scale: { duration: 0.3 },
+												duration: 0.2,
 											}
-										: {
-												x: {
-													duration: word.duration,
-													repeat: Infinity,
-													ease: 'linear',
-													delay: word.delay,
-													repeatType: 'loop',
-												},
-												y: {
-													duration: 5,
-													repeat: Infinity,
-													ease: 'easeInOut',
-													repeatType: 'loop',
-												},
-												opacity: isOtherSelected
-													? { duration: 0.3 }
-													: {
-															duration: word.duration,
-															times: [0, 0.15, 0.85, 1],
-															repeat: Infinity,
-															delay: word.delay,
-															repeatType: 'loop',
-														},
-											}
+										: isSelected
+											? {
+													type: 'spring',
+													stiffness: 100,
+													damping: 30,
+													scale: { duration: 0.3 },
+												}
+											: {
+													x: {
+														duration: word.duration,
+														repeat: Infinity,
+														ease: 'linear',
+														delay: word.delay,
+														repeatType: 'loop',
+													},
+													y: {
+														duration: 5,
+														repeat: Infinity,
+														ease: 'easeInOut',
+														repeatType: 'loop',
+													},
+													opacity: isOtherSelected
+														? { duration: 0.3 }
+														: {
+																duration: word.duration,
+																times: [0, 0.15, 0.85, 1],
+																repeat: Infinity,
+																delay: word.delay,
+																repeatType: 'loop',
+															},
+												}
 								}
 								style={{
 									position: 'absolute',
-									top: `${word.yVal}%`,
-									left: 0,
+									top: prefersReducedMotion
+										? `${10 + (index % words.length) * 15}%`
+										: `${word.yVal}%`,
+									left: prefersReducedMotion ? `${10 + (index % 3) * 30}%` : 0,
 									zIndex: isSelected ? 20 : 10,
 									pointerEvents: 'auto',
 									cursor: 'pointer',

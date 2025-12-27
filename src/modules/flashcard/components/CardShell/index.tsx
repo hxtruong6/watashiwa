@@ -1,15 +1,15 @@
 'use client';
 
+import { useCardFlip } from '@/modules/flashcard/hooks/useCardFlip';
+import { TRANSFORM_CONSTANTS } from '@/modules/flashcard/utils/transformUtils';
 import type { CardBackSettings } from '@/modules/study/store/useStudyPreferences';
-import { theme } from 'antd';
 import { motion, useAnimation } from 'framer-motion';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
-import { SmartCard, StandardCard } from '../../types';
-// We will add other faces later as we migrate them
-// import { GapFillFace } from './Faces/GapFillFace';
-import { InterventionFace } from './Faces/InterventionFace';
-import { StandardFace } from './StandardFace';
+import { SmartCard } from '../../types';
+import { CardFace } from './CardFace';
+import { CardFlipContainer } from './CardFlipContainer';
+import { getVariantRenderer } from './cardVariantRegistry';
 
 interface CardShellProps {
 	card: SmartCard;
@@ -52,12 +52,13 @@ export const CardShell: React.FC<CardShellProps> = ({
 	designVariant = 'safe',
 	cardBackSettings,
 }) => {
-	const { token } = theme.useToken();
 	const controls = useAnimation();
 
-	// Use showAnswer directly if provided, otherwise use internal state
-	const [internalFlipped, setInternalFlipped] = useState(false);
-	const isFlipped = showAnswer !== undefined ? showAnswer : internalFlipped;
+	// Use flip hook for state management
+	const { isFlipped, handleFlip } = useCardFlip({
+		showAnswer,
+		onReveal,
+	});
 
 	// Handle exit animation
 	useEffect(() => {
@@ -71,69 +72,22 @@ export const CardShell: React.FC<CardShellProps> = ({
 		}
 	}, [isExiting, controls]);
 
-	const handleTap = (e: React.MouseEvent | React.TouchEvent) => {
-		e.stopPropagation(); // Prevent event bubbling to RatingBar buttons
-		if (showAnswer === undefined) {
-			// Only allow internal flip if not controlled
-			setInternalFlipped(!internalFlipped);
-		} else if (onReveal) {
-			// Allow toggle: if answer is shown, flip back to front; if not, reveal answer
-			// This gives users agency to review the question again
-			onReveal();
-		}
-	};
+	// Get variant renderer
+	const renderFace = getVariantRenderer(card.variant);
 
-	// --- VARIANT RENDER LOGIC ---
-	const renderFace = (side: 'front' | 'back') => {
-		switch (card.variant) {
-			case 'GAP_FILL':
-				return <div>Gap Fill Coming Soon</div>;
-			case 'INTERVENTION':
-				return (
-					<InterventionFace
-						key={card.id}
-						card={card}
-						onResolve={(isCorrect) => {
-							// FAIL OPEN STRATEGY:
-							// Whether correct or incorrect, we reveal the answer (Back of Card).
-							// If incorrect, the user sees the correct item details immediately.
-							// We do NOT trap them in a loop.
-							if (!isFlipped) {
-								if (onReveal) {
-									onReveal();
-								} else if (showAnswer === undefined) {
-									setInternalFlipped(true);
-								}
-							}
-
-							if (!isCorrect) {
-								// Optional: You might want to trigger a visual "Wrong" feedback here before flipping,
-								// but for instant flow, just flipping is acceptable.
-								// Or we could start the Shake animation for 0.5s then Flip?
-								controls.start({
-									x: [0, -10, 10, -10, 10, 0],
-									transition: { duration: 0.3 },
-								});
-								// Wait for shake? No, instant is better for "Fail Open".
-							}
-						}}
-					/>
-				);
-			case 'BASIC':
-			default:
-				return (
-					<StandardFace
-						card={card as StandardCard}
-						side={side}
-						showFurigana={showFurigana}
-						showRomaji={showRomaji}
-						isPlaying={isPlaying}
-						onPlayAudio={onPlayAudio}
-						designVariant={designVariant}
-						cardBackSettings={cardBackSettings}
-					/>
-				);
-		}
+	// Prepare props for variant renderer
+	const variantProps = {
+		card,
+		side: 'front' as const,
+		showFurigana,
+		showRomaji,
+		isPlaying,
+		onPlayAudio,
+		designVariant,
+		cardBackSettings,
+		isFlipped,
+		onReveal,
+		controls,
 	};
 
 	// Shell Styles based on Active/Next state
@@ -170,7 +124,7 @@ export const CardShell: React.FC<CardShellProps> = ({
 				width: '100%',
 				maxWidth: '340px',
 				aspectRatio: '3/4',
-				perspective: 1000,
+				perspective: TRANSFORM_CONSTANTS.PERSPECTIVE,
 				cursor: isActive ? 'pointer' : 'default', // Always clickable when active (allows toggle)
 			}}
 			variants={variants}
@@ -178,105 +132,18 @@ export const CardShell: React.FC<CardShellProps> = ({
 			animate={isExiting ? 'exit' : isActive ? 'active' : isNext ? 'next' : 'hidden'}
 			transition={{ type: 'spring', stiffness: 300, damping: 30 }}
 		>
-			{/* 3D Flip Container */}
-			<motion.div
-				style={{
-					width: '100%',
-					height: '100%',
-					position: 'relative',
-					transformStyle: 'preserve-3d',
-					borderRadius: token.borderRadiusLG,
-					boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
-					overflow: 'hidden', // Critical: Clips backface on mobile
-					willChange: 'transform', // Performance hint for mobile browsers
-				}}
-				animate={{ rotateY: isFlipped ? 180 : 0 }}
-				transition={{ duration: 0.4, ease: 'easeOut' }}
-				onClick={handleTap}
-				onTouchStart={handleTap}
-			>
-				{/* FRONT FACE */}
-				<div
-					style={{
-						position: 'absolute',
-						width: '100%',
-						height: '100%',
-						backfaceVisibility: 'hidden',
-						WebkitBackfaceVisibility: 'hidden', // Critical for iOS Safari
-						// Use translate3d for better mobile hardware acceleration
-						// No Z-offset needed - backface visibility handles hiding
-						transform: 'translate3d(0, 0, 0)',
-						WebkitTransform: 'translate3d(0, 0, 0)', // iOS Safari vendor prefix
-						background: token.colorBgContainer,
-						borderRadius: token.borderRadiusLG,
-						overflow: 'hidden',
-						display: 'flex',
-						justifyContent: 'center',
-						alignItems: 'center',
-						userSelect: 'none',
-						WebkitUserSelect: 'none',
-						WebkitTouchCallout: 'none',
-					}}
-				>
-					{/* Exit Color Trail Overlay */}
-					{isExiting && exitColor && (
-						<motion.div
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 0.3 }}
-							exit={{ opacity: 0 }}
-							style={{
-								position: 'absolute',
-								inset: 0,
-								background: exitColor,
-								zIndex: 3,
-								pointerEvents: 'none',
-							}}
-						/>
-					)}
+			<CardFlipContainer isFlipped={isFlipped} onFlip={handleFlip}>
+				{/* Front Face */}
+				<CardFace side="front" exitColor={exitColor} isExiting={isExiting}>
+					{renderFace({ ...variantProps, side: 'front' })}
+					{children}
+				</CardFace>
 
-					<div style={{ zIndex: 2, width: '100%', height: '100%' }}>
-						{renderFace('front')}
-						{children}
-					</div>
-				</div>
-
-				{/* BACK FACE */}
-				<div
-					style={{
-						position: 'absolute',
-						width: '100%',
-						height: '100%',
-						backfaceVisibility: 'hidden',
-						WebkitBackfaceVisibility: 'hidden', // Critical for iOS Safari
-						// Rotate 180deg to position back face correctly for 3D flip
-						// When container rotates 180deg, this face becomes visible (360deg = 0deg from viewer)
-						transform: 'rotateY(180deg) translate3d(0, 0, 0)',
-						WebkitTransform: 'rotateY(180deg) translate3d(0, 0, 0)', // iOS Safari vendor prefix
-						background: token.colorBgContainer,
-						borderRadius: token.borderRadiusLG,
-						overflow: 'hidden',
-						display: 'flex',
-						justifyContent: 'center',
-						alignItems: 'center',
-						userSelect: 'none',
-						WebkitUserSelect: 'none',
-						WebkitTouchCallout: 'none',
-					}}
-				>
-					{/* Inner wrapper: Counter-rotate content to un-mirror text after parent's 180deg Y-rotation */}
-					{/* Parent: rotateY(180deg) mirrors text, Child: rotateY(-180deg) cancels it = net 0deg */}
-					<div
-						style={{
-							width: '100%',
-							height: '100%',
-							transform: 'rotateY(-180deg)',
-							WebkitTransform: 'rotateY(-180deg)',
-						}}
-					>
-						{renderFace('back')}
-					</div>
-				</div>
-			</motion.div>
+				{/* Back Face */}
+				<CardFace side="back" exitColor={exitColor} isExiting={isExiting}>
+					{renderFace({ ...variantProps, side: 'back' })}
+				</CardFace>
+			</CardFlipContainer>
 		</motion.div>
 	);
 };

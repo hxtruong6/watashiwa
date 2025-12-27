@@ -27,7 +27,9 @@ export default function WeeklyChart({ data, thisWeekTotal, bestDay }: WeeklyChar
 	const { token } = useToken();
 	const t = useTranslations('Dashboard');
 
-	const maxCount = Math.max(...data.map((d) => d.count), 1);
+	// Guard against empty data and negative values
+	const safeData = data.map((d) => ({ ...d, count: Math.max(0, d.count) }));
+	const maxCount = safeData.length > 0 ? Math.max(...safeData.map((d) => d.count), 1) : 1;
 
 	return (
 		<motion.div
@@ -58,7 +60,7 @@ export default function WeeklyChart({ data, thisWeekTotal, bestDay }: WeeklyChar
 					gap={8}
 					style={{ height: 100, marginBottom: 8 }}
 				>
-					{data.map((day, index) => {
+					{safeData.map((day, index) => {
 						const height = day.count > 0 ? Math.max((day.count / maxCount) * 80, 8) : 4;
 						const isBest = bestDay && day.day === bestDay.day && day.count === bestDay.count;
 

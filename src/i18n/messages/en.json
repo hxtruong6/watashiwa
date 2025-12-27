@@ -124,6 +124,13 @@
 		"viewDecks": "View Decks",
 		"noDue": "No due",
 		"goalComplete": "Daily goal complete!",
+		"decksWithDue": "{count} decks with due cards",
+		"deckWithDue": "{count} deck with due cards",
+		"availableDecks": "available",
+		"actionableNow": "Actionable Now",
+		"availableForLearning": "Available for Learning",
+		"viewAllDecks": "View All Decks",
+		"startReview": "Start Review",
 		"totalCards": "Total Cards",
 		"mastered": "Mastered",
 		"SmartForecast": {
@@ -162,7 +169,11 @@
 		"srsDistributionTooltip": "Distribution of your cards by SRS state (New / Learning / Review)",
 		"matchaWisdom": "ZEN WISDOM",
 		"viewAnalytics": "View Details",
-		"viewAnalyticsTooltip": "View advanced analytics"
+		"viewAnalyticsTooltip": "View advanced analytics",
+		"noDecksYet": "You haven't created any decks yet.",
+		"createFirstDeck": "Create Your First Deck",
+		"goToAdminPanel": "Go to Admin Panel",
+		"recommended": "Recommended"
 	},
 	"Study": {
 		"settings": "Settings",
