@@ -138,9 +138,27 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 	}
 
 	// BACK DESIGN
+	// Defensive: Handle missing or malformed data gracefully
+	if (!back?.details) {
+		console.error('[StandardFace] Missing back.details:', { card, back });
+		return (
+			<Flex vertical align="center" justify="center" style={{ height: '100%', padding: '24px' }}>
+				<Text type="danger">Error: Card data missing</Text>
+			</Flex>
+		);
+	}
+
 	const hasReading = !!front.reading;
-	const primaryMeaning = back.details.meanings.vi?.[0] || back.details.meanings.en?.[0] || '';
-	const hasExample = back.details.examples && back.details.examples.length > 0;
+	// Safe access to meanings with fallback
+	const meanings = back.details.meanings || {};
+	const primaryMeaning =
+		(meanings.vi && Array.isArray(meanings.vi) && meanings.vi[0]) ||
+		(meanings.en && Array.isArray(meanings.en) && meanings.en[0]) ||
+		'';
+	const hasExample =
+		back.details.examples &&
+		Array.isArray(back.details.examples) &&
+		back.details.examples.length > 0;
 	const example = hasExample ? back.details.examples[0] : null;
 	const hasMnemonic = !!back.details.mnemonic;
 	const mnemonic =

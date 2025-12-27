@@ -29,9 +29,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		where: {
 			isPublic: true,
 			deletedAt: null,
-			slug: {
-				not: null,
-			},
 		},
 		select: {
 			slug: true,
@@ -57,9 +54,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		where: {
 			isPublic: true,
 			deletedAt: null,
-			slug: {
-				not: null,
-			},
 		},
 		select: {
 			slug: true,

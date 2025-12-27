@@ -34,6 +34,7 @@ interface WeeklyStatsData {
 
 interface DeckWithStats {
 	id: string;
+	slug: string;
 	title: string;
 	cardCount: number;
 	dueCount: number;

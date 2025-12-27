@@ -114,7 +114,7 @@ model PushSubscription {
 
 model Course {
   id            String       @id @default(uuid())
-  slug          String?      @unique
+  slug          String       @unique
   title         String
   titleEn       String?      @map("title_en")
   description   String?
@@ -136,7 +136,7 @@ model Course {
 
 model Deck {
   id            String  @id @default(uuid())
-  slug          String? @unique
+  slug          String  @unique
   title         String
   titleEn       String? @map("title_en")
   description   String?

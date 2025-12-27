@@ -225,6 +225,9 @@
 			"finish": "Đã hoàn toàn hiểu 😉"
 		},
 		"loadingNextCards": "Đang tải thẻ tiếp theo...",
+		"preparingSession": "Đang chuẩn bị phiên học",
+		"preparingSessionHint": "「焦らず丁寧に」 — Đừng vội. Chính xác hơn tốc độ.",
+		"preparingCard": "Đang chuẩn bị thẻ...",
 		"SmartCube": {
 			"Hint": "Gợi ý",
 			"ConfusingPair": "Cặp từ dễ nhầm",

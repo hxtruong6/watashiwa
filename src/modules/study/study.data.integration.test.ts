@@ -46,13 +46,13 @@ describe('StudyData.getDailyStats (Integration)', () => {
 	});
 
 	it('should calculate stats correctly with real data', async () => {
-		// Create a test deck and vocabulary
 		const deck = await prisma.deck.create({
 			data: {
 				id: 'test-deck-1',
 				title: 'Test Deck',
 				authorId: testUserId,
 				isPublic: false,
+				slug: 'test-deck-1',
 			},
 		});
 
@@ -171,6 +171,7 @@ describe('StudyData.getDailyStats (Integration)', () => {
 				title: 'Test Deck 2',
 				authorId: testUserId,
 				isPublic: false,
+				slug: 'test-deck-2',
 			},
 		});
 

@@ -72,6 +72,18 @@ export async function getCourseByIdOrSlug(idOrSlug: string) {
 }
 
 /**
+ * Get course ID by slug (for query parameter conversion)
+ * Returns null if slug doesn't exist
+ */
+export async function getCourseIdBySlug(slug: string): Promise<string | null> {
+	const course = await prisma.course.findUnique({
+		where: { slug },
+		select: { id: true },
+	});
+	return course?.id || null;
+}
+
+/**
  * Fetch a course with user progress on each deck
  * Supports both ID and slug
  */

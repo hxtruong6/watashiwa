@@ -3,6 +3,7 @@
 
 import BackButton from '@/components/BackButton';
 import CommentDrawer from '@/components/comments/CommentDrawer';
+import { getDeckUrl } from '@/lib/utils/urls';
 import FlashCard from '@/modules/flashcard/components/FlashCard';
 import SmartContentInput from '@/modules/vocabulary/components/SmartContentInput';
 import {
@@ -345,7 +346,9 @@ export default function DeckView({ deck, isOwner }: { deck: any; isOwner?: boole
 							),
 						},
 						{ title: <Link href="/decks">{t('libraryTitle')}</Link> },
-						{ title: deck.title },
+						{
+							title: <Link href={getDeckUrl({ slug: deck.slug })}>{deck.title}</Link>,
+						},
 					]}
 				/>
 			</Flex>

@@ -12,8 +12,10 @@ export function StructuredData() {
 	const organizationSchema = generateOrganizationSchema();
 	const webAppSchema = generateWebApplicationSchema();
 
+	// Wrap in a container with suppressHydrationWarning to prevent
+	// hydration mismatches from PostHog or other client-side script injections
 	return (
-		<>
+		<span suppressHydrationWarning style={{ display: 'none' }}>
 			<script
 				type="application/ld+json"
 				dangerouslySetInnerHTML={{
@@ -26,6 +28,6 @@ export function StructuredData() {
 					__html: schemaToJsonLd(webAppSchema),
 				}}
 			/>
-		</>
+		</span>
 	);
 }

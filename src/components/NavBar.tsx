@@ -80,8 +80,10 @@ export default function NavBar({ user }: { user?: User | null }) {
 	// Sync navbar with URL changes (handles browser back/forward)
 	useEffect(() => {
 		const hasDeckId = searchParams.get('deckId');
+		const hasDeckSlug = searchParams.get('deckSlug');
 		const hasCourseId = searchParams.get('courseId');
-		const isDashboardState = pathname?.startsWith('/study') && !hasDeckId && !hasCourseId;
+		const isDashboardState =
+			pathname?.startsWith('/study') && !hasDeckId && !hasDeckSlug && !hasCourseId;
 
 		// If URL indicates dashboard but store says hidden, show navbar
 		if (isDashboardState && !isNavBarVisible) {
@@ -163,8 +165,10 @@ export default function NavBar({ user }: { user?: User | null }) {
 	// 1. Route-based hiding (Hard Rules)
 	// Check if we're in an active study session (has deckId/courseId)
 	const hasDeckId = searchParams.get('deckId');
+	const hasDeckSlug = searchParams.get('deckSlug');
 	const hasCourseId = searchParams.get('courseId');
-	const isActiveStudySession = pathname?.startsWith('/study') && (hasDeckId || hasCourseId);
+	const isActiveStudySession =
+		pathname?.startsWith('/study') && (hasDeckId || hasDeckSlug || hasCourseId);
 
 	// Hide navbar on auth pages (login, forgot-password, reset-password)
 	// These are focused flows that should not have navigation distractions

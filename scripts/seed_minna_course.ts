@@ -5,9 +5,8 @@
 import fs from 'fs';
 import path from 'path';
 
-// Initialize Prisma directly or import from lib if available
-// Assuming ../src/lib/db exists and exports prisma
 import { prisma } from '../src/lib/db';
+import { generateSlug } from '../src/lib/utils/slug';
 
 async function seedMinnaCourse(bookLevel: 'I' | 'II', fromUnit = 1, toUnit = 25) {
 	console.log('🚀 Starting Minna no Nihongo N5 Course Seed...');
@@ -32,6 +31,13 @@ async function seedMinnaCourse(bookLevel: 'I' | 'II', fromUnit = 1, toUnit = 25)
 
 	if (!course) {
 		console.log(`✨ Creating Course: ${courseTitle}`);
+		const existingCourses = await prisma.course.findMany({
+			select: { slug: true },
+		});
+		const existingSlugs = existingCourses
+			.map((c) => c.slug)
+			.filter((slug): slug is string => Boolean(slug));
+		const slug = generateSlug(courseTitle, existingSlugs);
 		course = await prisma.course.create({
 			data: {
 				title: courseTitle,
@@ -42,6 +48,7 @@ async function seedMinnaCourse(bookLevel: 'I' | 'II', fromUnit = 1, toUnit = 25)
 				isPublic: true,
 				level: 'N5',
 				tags: ['minna', 'n5', 'textbook'],
+				slug,
 			},
 		});
 	} else {
@@ -96,6 +103,13 @@ async function seedMinnaCourse(bookLevel: 'I' | 'II', fromUnit = 1, toUnit = 25)
 		});
 
 		if (!deck) {
+			const existingDecks = await prisma.deck.findMany({
+				select: { slug: true },
+			});
+			const existingSlugs = existingDecks
+				.map((d) => d.slug)
+				.filter((slug): slug is string => Boolean(slug));
+			const slug = generateSlug(deckTitleEn || deckTitleVn, existingSlugs);
 			deck = await prisma.deck.create({
 				data: {
 					title: deckTitleVn,
@@ -105,6 +119,7 @@ async function seedMinnaCourse(bookLevel: 'I' | 'II', fromUnit = 1, toUnit = 25)
 					authorId: author.id,
 					isPublic: true,
 					sortOrder: fromUnit + i - 1,
+					slug,
 				},
 			});
 			console.log(`   + Created Deck: ${deckTitleVn}`);

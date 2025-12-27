@@ -83,7 +83,7 @@ export default function CourseList({ courses, userId }: CourseListProps) {
 
 									return (
 										<Col xs={24} sm={12} lg={8} key={course.id}>
-											<Link href={`/courses/${course.id}`}>
+											<Link href={getCourseUrl({ slug: course.slug })}>
 												<Card
 													hoverable
 													cover={
@@ -169,7 +169,7 @@ export default function CourseList({ courses, userId }: CourseListProps) {
 
 									return (
 										<Col xs={24} sm={12} lg={8} key={course.id}>
-											<Link href={getCourseUrl({ id: course.id, slug: course.slug })}>
+											<Link href={getCourseUrl({ slug: course.slug })}>
 												<Card
 													hoverable
 													cover={

@@ -157,7 +157,7 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 
 							return (
 								<Col xs={24} sm={12} md={8} key={deck.id}>
-									<Link href={getDeckUrl({ id: deck.id, slug: deck.slug })} prefetch={true}>
+									<Link href={getDeckUrl({ slug: deck.slug! })} prefetch={true}>
 										<Card
 											hoverable
 											style={{
@@ -246,7 +246,11 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 												<div style={{ marginTop: 'auto', paddingTop: 16 }}>
 													{deck.learningStats && deck.learningStats.dueCount > 0 ? (
 														<Link
-															href={`/study?deckId=${deck.id}`}
+															href={
+																deck.slug
+																	? `/study?deckSlug=${deck.slug}`
+																	: `/study?deckId=${deck.id}`
+															}
 															prefetch={true}
 															onClick={(e) => e.stopPropagation()}
 														>
@@ -257,7 +261,11 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 													) : (
 														// Disabled / secondary button if nothing due
 														<Link
-															href={`/study?deckId=${deck.id}`}
+															href={
+																deck.slug
+																	? `/study?deckSlug=${deck.slug}`
+																	: `/study?deckId=${deck.id}`
+															}
 															prefetch={true}
 															onClick={(e) => e.stopPropagation()}
 														>
@@ -298,7 +306,7 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 
 							return (
 								<Col xs={24} sm={12} md={8} lg={6} key={deck.id}>
-									<Link href={getDeckUrl({ id: deck.id, slug: deck.slug })} prefetch={true}>
+									<Link href={getDeckUrl({ slug: deck.slug! })} prefetch={true}>
 										<Card
 											hoverable
 											style={{
@@ -360,7 +368,7 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 												gap="small"
 												onClick={(e) => e.stopPropagation()}
 											>
-												<Link href={getDeckUrl({ id: deck.id, slug: deck.slug })} prefetch={true}>
+												<Link href={getDeckUrl({ slug: deck.slug! })} prefetch={true}>
 													<Button size="small">{t('view')}</Button>
 												</Link>
 												<DeckListActions mode="edit" deck={deck} />

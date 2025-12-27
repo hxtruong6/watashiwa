@@ -68,7 +68,7 @@ const DeckListItem = ({
 							<Tag color="orange">{t('private')}</Tag>
 						)}
 						{/* External Link */}
-						<Link href={getDeckUrl({ id: deck.id, slug: deck.slug })} target="_blank">
+						<Link href={getDeckUrl({ slug: deck.slug })} target="_blank">
 							<Tooltip title="View Deck">
 								<Button
 									type="text"

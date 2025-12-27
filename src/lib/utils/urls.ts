@@ -1,28 +1,34 @@
 /**
  * URL Generation Utilities
  *
- * Provides functions to generate URLs for courses and decks,
- * preferring slugs when available, falling back to IDs.
+ * Provides functions to generate URLs for courses and decks.
+ * Slugs are required - all URLs use slugs exclusively.
  */
 
 /**
  * Generate a URL for a course
- * Prefers slug if available, otherwise uses ID
  *
- * @param course - Course object with id and optional slug
+ * @param course - Course object with required slug
  * @returns URL path for the course
+ * @throws Error if slug is missing
  */
-export function getCourseUrl(course: { id: string; slug?: string | null }): string {
-	return course.slug ? `/courses/${course.slug}` : `/courses/${course.id}`;
+export function getCourseUrl(course: { slug: string }): string {
+	if (!course.slug) {
+		throw new Error('Course must have a slug');
+	}
+	return `/courses/${course.slug}`;
 }
 
 /**
  * Generate a URL for a deck
- * Prefers slug if available, otherwise uses ID
  *
- * @param deck - Deck object with id and optional slug
+ * @param deck - Deck object with required slug
  * @returns URL path for the deck
+ * @throws Error if slug is missing
  */
-export function getDeckUrl(deck: { id: string; slug?: string | null }): string {
-	return deck.slug ? `/decks/${deck.slug}` : `/decks/${deck.id}`;
+export function getDeckUrl(deck: { slug: string }): string {
+	if (!deck.slug) {
+		throw new Error('Deck must have a slug');
+	}
+	return `/decks/${deck.slug}`;
 }

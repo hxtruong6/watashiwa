@@ -320,7 +320,7 @@ export default function CourseDetailClient({ course, isOwner }: CourseDetailClie
 																</Tag>
 															)}
 															<Link
-																href={getDeckUrl({ id: cd.deckId, slug: cd.deck.slug })}
+																href={getDeckUrl({ slug: cd.deck.slug })}
 																target="_blank"
 															>
 																<LinkOutlined style={{ color: token.colorPrimary }} />
@@ -378,7 +378,7 @@ export default function CourseDetailClient({ course, isOwner }: CourseDetailClie
 																	status="active"
 																/>
 																<div style={{ marginTop: 12 }}>
-																	<Link href={getDeckUrl({ id: cd.deckId, slug: cd.deck.slug })}>
+																	<Link href={getDeckUrl({ slug: cd.deck.slug })}>
 																		<Button
 																			type="primary"
 																			shape="round"

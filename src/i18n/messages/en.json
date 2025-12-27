@@ -232,6 +232,9 @@
 			"finish": "Finish"
 		},
 		"loadingNextCards": "Loading next cards...",
+		"preparingSession": "Preparing your session",
+		"preparingSessionHint": "「焦らず丁寧に」 — No rush. Precision over speed.",
+		"preparingCard": "Preparing card...",
 		"SmartCube": {
 			"Hint": "Hint",
 			"ConfusingPair": "Confusing Pair",

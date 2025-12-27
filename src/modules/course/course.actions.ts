@@ -18,11 +18,11 @@ import * as courseData from './course.data';
 /**
  * Revalidate both ID and slug paths for a course
  */
-function revalidateCoursePaths(id: string, slug?: string | null) {
-	revalidatePath(`/courses/${id}`);
-	if (slug) {
-		revalidatePath(`/courses/${slug}`);
+function revalidateCoursePaths(slug: string) {
+	if (!slug) {
+		throw new Error('Course slug is required for revalidation');
 	}
+	revalidatePath(`/courses/${slug}`);
 }
 
 /**
@@ -121,16 +121,17 @@ export async function createCourse(data: CreateCourseInput) {
 			return { success: false, error: 'Unauthorized' };
 		}
 
-		// Generate slug if title is provided
-		let slug: string | undefined;
-		if (data.title) {
-			// Get all existing slugs to ensure uniqueness
-			const existingCourses = await prisma.course.findMany({
-				select: { slug: true },
-			});
-			const existingSlugs = existingCourses.map((c) => c.slug).filter(Boolean) as string[];
-			slug = generateSlug(data.titleEn || data.title, existingSlugs);
+		if (!data.title) {
+			return { success: false, error: 'Title is required' };
 		}
+		// Get all existing slugs to ensure uniqueness
+		const existingCourses = await prisma.course.findMany({
+			select: { slug: true },
+		});
+		const existingSlugs = existingCourses
+			.map((c) => c.slug)
+			.filter((slug): slug is string => Boolean(slug));
+		const slug = generateSlug(data.titleEn || data.title, existingSlugs);
 
 		const course = await prisma.course.create({
 			data: {
@@ -141,6 +142,7 @@ export async function createCourse(data: CreateCourseInput) {
 		});
 
 		revalidatePath('/dashboard/courses');
+		revalidateCoursePaths(course.slug);
 		return { success: true, data: course };
 	} catch (error) {
 		console.error('Failed to create course:', error);
@@ -172,28 +174,35 @@ export async function updateCourse(id: string, data: UpdateCourseInput) {
 			return { success: false, error: 'Unauthorized or not found' };
 		}
 
-		// Generate slug only if title changed and slug is null (immutability: don't update existing slug)
-		let slug: string | undefined;
-		if ((data.title || data.titleEn) && !existing.slug) {
+		// Slug is immutable - don't update it
+		// If slug is missing (shouldn't happen), generate it
+		let slug = existing.slug;
+		if (!slug && (data.title || data.titleEn)) {
 			// Get all existing slugs to ensure uniqueness
 			const existingCourses = await prisma.course.findMany({
 				select: { slug: true },
 			});
-			const existingSlugs = existingCourses.map((c) => c.slug).filter(Boolean) as string[];
+			const existingSlugs = existingCourses
+				.map((c) => c.slug)
+				.filter((slug): slug is string => Boolean(slug));
 			const titleToUse = data.titleEn || data.title || '';
 			slug = generateSlug(titleToUse, existingSlugs);
+		}
+
+		if (!slug) {
+			return { success: false, error: 'Course must have a slug' };
 		}
 
 		const course = await prisma.course.update({
 			where: { id },
 			data: {
 				...data,
-				...(slug ? { slug } : {}),
+				slug, // Ensure slug is set
 			},
 		});
 
 		revalidatePath('/dashboard/courses');
-		revalidateCoursePaths(id, course.slug);
+		revalidateCoursePaths(course.slug);
 		return { success: true, data: course };
 	} catch (error) {
 		console.error('Failed to update course:', error);
@@ -277,7 +286,9 @@ export async function addDeckToCourse(courseId: string, deckId: string) {
 			where: { id: courseId },
 			select: { slug: true },
 		});
-		revalidateCoursePaths(courseId, (courseForRevalidation as { slug?: string | null })?.slug);
+		if (courseForRevalidation?.slug) {
+			revalidateCoursePaths(courseForRevalidation.slug);
+		}
 		return { success: true, data: courseDeck };
 	} catch (error) {
 		console.error('Failed to add deck to course:', error);
@@ -326,7 +337,9 @@ export async function removeDeckFromCourse(courseId: string, deckId: string) {
 			where: { id: courseId },
 			select: { slug: true },
 		});
-		revalidateCoursePaths(courseId, (courseForRevalidation as { slug?: string | null })?.slug);
+		if (courseForRevalidation?.slug) {
+			revalidateCoursePaths(courseForRevalidation.slug);
+		}
 		return { success: true };
 	} catch (error) {
 		console.error('Failed to remove deck from course', error);
@@ -377,7 +390,9 @@ export async function reorderDecks(courseId: string, deckIds: string[]) {
 			where: { id: courseId },
 			select: { slug: true },
 		});
-		revalidateCoursePaths(courseId, (courseForRevalidation as { slug?: string | null })?.slug);
+		if (courseForRevalidation?.slug) {
+			revalidateCoursePaths(courseForRevalidation.slug);
+		}
 		return { success: true };
 	} catch (error) {
 		console.error('Failed to reorder decks', error);

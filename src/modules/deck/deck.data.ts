@@ -82,6 +82,17 @@ export async function getDeckByIdOrSlug(idOrSlug: string, userId: string) {
 	return await getDeckBySlug(idOrSlug, userId);
 }
 
+export async function getDeckIdBySlug(slug: string, userId: string): Promise<string | null> {
+	const deck = await prisma.deck.findFirst({
+		where: {
+			slug,
+			OR: [{ isPublic: true }, { authorId: userId }],
+		},
+		select: { id: true },
+	});
+	return deck?.id || null;
+}
+
 /**
  * Fetch all decks visible to user
  */

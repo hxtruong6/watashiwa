@@ -107,7 +107,7 @@ export function generateCourseMetadata(
 		titleEn?: string | null;
 		description?: string | null;
 		descriptionEn?: string | null;
-		slug?: string | null;
+		slug: string;
 		headerImage?: string | null;
 	},
 	locale: Locale = 'vi',
@@ -118,7 +118,10 @@ export function generateCourseMetadata(
 			? course.description || SEO_DEFAULTS.description.vi
 			: course.descriptionEn || course.description || SEO_DEFAULTS.description.en;
 
-	const url = course.slug ? `/courses/${course.slug}` : undefined;
+	if (!course.slug) {
+		throw new Error('Course must have a slug for metadata generation');
+	}
+	const url = `/courses/${course.slug}`;
 	const image = course.headerImage || '/assets/w_logo.png';
 
 	return generatePageMetadata({
@@ -142,7 +145,7 @@ export function generateDeckMetadata(
 		titleEn?: string | null;
 		description?: string | null;
 		descriptionEn?: string | null;
-		slug?: string | null;
+		slug: string;
 		headerImage?: string | null;
 	},
 	locale: Locale = 'vi',
@@ -153,7 +156,10 @@ export function generateDeckMetadata(
 			? deck.description || SEO_DEFAULTS.description.vi
 			: deck.descriptionEn || deck.description || SEO_DEFAULTS.description.en;
 
-	const url = deck.slug ? `/decks/${deck.slug}` : undefined;
+	if (!deck.slug) {
+		throw new Error('Deck must have a slug for metadata generation');
+	}
+	const url = `/decks/${deck.slug}`;
 	const image = deck.headerImage || '/assets/w_logo.png';
 
 	return generatePageMetadata({

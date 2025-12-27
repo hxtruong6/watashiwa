@@ -98,7 +98,7 @@ export function generateCourseSchema(
 		titleEn?: string | null;
 		description?: string | null;
 		descriptionEn?: string | null;
-		slug?: string | null;
+		slug: string;
 		headerImage?: string | null;
 		level?: string | null;
 	},
@@ -109,7 +109,10 @@ export function generateCourseSchema(
 		locale === 'vi'
 			? course.description || undefined
 			: course.descriptionEn || course.description || undefined;
-	const url = course.slug ? `${SEO_CONFIG.siteUrl}/courses/${course.slug}` : undefined;
+	if (!course.slug) {
+		throw new Error('Course must have a slug for structured data');
+	}
+	const url = `${SEO_CONFIG.siteUrl}/courses/${course.slug}`;
 	const image = course.headerImage
 		? course.headerImage.startsWith('http')
 			? course.headerImage

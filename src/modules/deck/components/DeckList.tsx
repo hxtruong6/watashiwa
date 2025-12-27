@@ -141,7 +141,7 @@ export default function DeckList({ decks, userId }: DeckListProps) {
 
 						return (
 							<Col xs={24} sm={12} md={8} lg={6} key={deck.id}>
-								<Link href={getDeckUrl({ id: deck.id, slug: deck.slug })} prefetch={true}>
+								<Link href={getDeckUrl({ slug: deck.slug })} prefetch={true}>
 									<motion.div
 										variants={itemVariants}
 										whileHover={{ y: -5 }}
@@ -212,7 +212,7 @@ export default function DeckList({ decks, userId }: DeckListProps) {
 													{t('cardsCount', { count: deck._count?.vocabularies || 0 })}
 												</Tag>
 												<div onClick={(e) => e.stopPropagation()}>
-													<Link href={getDeckUrl({ id: deck.id, slug: deck.slug })} prefetch={true}>
+													<Link href={getDeckUrl({ slug: deck.slug })} prefetch={true}>
 														<Button type="text" icon={<RightOutlined />} iconPlacement="end">
 															{t('detailsButton')}
 														</Button>

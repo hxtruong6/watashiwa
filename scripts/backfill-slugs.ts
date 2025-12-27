@@ -14,11 +14,12 @@ import { generateSlug } from '../src/lib/utils/slug';
 async function backfillCourseSlugs() {
 	console.log('Starting course slug backfill...');
 
-	// Get all courses without slugs
-	const courses = await prisma.course.findMany({
-		where: { slug: null },
-		select: { id: true, title: true, titleEn: true },
+	// Get all courses without slugs (shouldn't happen after migration, but handle edge cases)
+	// Note: After migration, slug is required, so this query may return empty
+	const allCourses = await prisma.course.findMany({
+		select: { id: true, title: true, titleEn: true, slug: true },
 	});
+	const courses = allCourses.filter((c) => !c.slug || c.slug === '');
 
 	console.log(`Found ${courses.length} courses without slugs`);
 
@@ -63,11 +64,12 @@ async function backfillCourseSlugs() {
 async function backfillDeckSlugs() {
 	console.log('\nStarting deck slug backfill...');
 
-	// Get all decks without slugs
-	const decks = await prisma.deck.findMany({
-		where: { slug: null },
-		select: { id: true, title: true, titleEn: true },
+	// Get all decks without slugs (shouldn't happen after migration, but handle edge cases)
+	// Note: After migration, slug is required, so this query may return empty
+	const allDecks = await prisma.deck.findMany({
+		select: { id: true, title: true, titleEn: true, slug: true },
 	});
+	const decks = allDecks.filter((d) => !d.slug || d.slug === '');
 
 	console.log(`Found ${decks.length} decks without slugs`);
 

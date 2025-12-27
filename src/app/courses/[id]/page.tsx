@@ -1,11 +1,12 @@
 import { generateCourseMetadata } from '@/lib/seo/metadata';
 import { generateCourseSchema, schemaToJsonLd } from '@/lib/seo/structured-data';
+import { isUUID } from '@/lib/utils/uuid';
 import { getUser } from '@/modules/auth/auth.actions';
 import { getCourseWithUserProgress } from '@/modules/course/course.actions';
-import { getCourseByIdOrSlug } from '@/modules/course/course.data';
+import { getCourseById, getCourseByIdOrSlug } from '@/modules/course/course.data';
 import type { Metadata } from 'next';
 import { getLocale } from 'next-intl/server';
-import { notFound } from 'next/navigation';
+import { type RedirectType, notFound, redirect } from 'next/navigation';
 
 import CourseDetailClient from './CourseDetailClient';
 
@@ -26,6 +27,7 @@ export async function generateMetadata({
 			{
 				title: 'Gợi ý Lộ trình',
 				titleEn: 'Suggested Path',
+				slug: 'suggested-path',
 			},
 			locale,
 		);
@@ -38,7 +40,15 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
 	const user = await getUser();
 	const { id } = await params;
 
-	// Support both UUID and slug - getCourseWithUserProgress handles both
+	if (isUUID(id)) {
+		const course = await getCourseById(id);
+		if (course?.slug) {
+			redirect(`/courses/${course.slug}`, 'permanent' as RedirectType);
+		}
+		notFound();
+	}
+
+	// Normal slug lookup
 	const course = await getCourseWithUserProgress(id);
 
 	if (!course) {

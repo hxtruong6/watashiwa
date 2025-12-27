@@ -13,7 +13,7 @@ const { useToken } = theme;
 
 interface DeckWithStats {
 	id: string;
-	slug?: string | null;
+	slug: string;
 	title: string;
 	cardCount: number;
 	dueCount: number;
@@ -64,7 +64,7 @@ export default function MyDecks({ decks }: MyDecksProps) {
 				<Row gutter={[16, 16]}>
 					{decks.slice(0, 6).map((deck, index) => (
 						<Col xs={12} sm={8} md={6} key={deck.id}>
-							<Link href={getDeckUrl({ id: deck.id, slug: deck.slug })}>
+							<Link href={getDeckUrl({ slug: deck.slug })}>
 								<motion.div
 									initial={{ opacity: 0, y: 20 }}
 									animate={{ opacity: 1, y: 0 }}

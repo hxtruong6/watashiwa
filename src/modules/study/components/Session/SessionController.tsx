@@ -26,7 +26,7 @@ import { useUIStore } from '@/modules/ui/store/useUIStore';
 import { getCompletedTutorials, getUserSettings } from '@/modules/user/user.actions';
 import { CommentOutlined, SettingOutlined } from '@ant-design/icons';
 import type { User } from '@prisma/client';
-import { Button, Drawer, Grid, message, theme } from 'antd';
+import { Button, Drawer, Flex, Grid, Spin, Typography, message, theme } from 'antd';
 import { useTranslations } from 'next-intl';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
@@ -128,13 +128,13 @@ export default function SessionController({
 		};
 	}, [studyPhase, setNavBarVisible]);
 
-	// Tutorial
-	const tutorialSteps = useStudyTutorialSteps({
-		showAnswer,
-		cardWrapperRef,
-		ratingBarRef,
-		settingsRef,
-	});
+	// Tutorial -  TODO: later
+	// const tutorialSteps = useStudyTutorialSteps({
+	// 	showAnswer,
+	// 	cardWrapperRef,
+	// 	ratingBarRef,
+	// 	settingsRef,
+	// });
 
 	// 1. Initial Data Fetch
 	useEffect(() => {
@@ -244,9 +244,20 @@ export default function SessionController({
 					// Session already started (e.g., from resume)
 					console.log('[SessionController] Resuming session with', queue.length, 'cards');
 					setSessionStartTime(Date.now());
+					// Ensure phase transitions if we have cards
+					if (studyPhase === 'loading') {
+						const hasNew = queue.some((c) => c.srsStage === 0);
+						if (hasNew && !hasSkippedBriefing) {
+							setStudyPhase('briefing');
+						} else {
+							setStudyPhase('quiz');
+						}
+					}
 				}
 			} catch (error) {
 				console.error('Failed to init session:', error);
+				// On error, transition to summary to show error state
+				setStudyPhase('summary');
 			} finally {
 				setIsLoading(false);
 			}
@@ -780,9 +791,9 @@ export default function SessionController({
 			}
 		>
 			{/* Only show tutorial during quiz phase when card is visible */}
-			{studyPhase === 'quiz' && (
+			{/* {studyPhase === 'quiz' && (
 				<AppTutorial tutorialId="study_page_v1" steps={tutorialSteps} showAnswer={showAnswer} />
-			)}
+			)} */}
 
 			{/* Drawers */}
 			<CommentDrawer
@@ -810,13 +821,61 @@ export default function SessionController({
 			/>
 
 			{/* Content Zones */}
-			{studyPhase === 'loading' && <div>Loading...</div>}
+			{studyPhase === 'loading' && (
+				<Flex
+					vertical
+					align="center"
+					justify="center"
+					gap="large"
+					style={{
+						minHeight: '60vh',
+						padding: 24,
+						textAlign: 'center',
+					}}
+				>
+					<Spin size="large" />
+					<Flex vertical gap="small" align="center">
+						<Typography.Text
+							type="secondary"
+							style={{
+								fontSize: 16,
+								fontWeight: 500,
+							}}
+						>
+							{t('preparingSession')}
+						</Typography.Text>
+						<Typography.Text
+							type="secondary"
+							style={{
+								fontSize: 13,
+								fontStyle: 'italic',
+								maxWidth: 400,
+								opacity: 0.7,
+							}}
+						>
+							{t('preparingSessionHint')}
+						</Typography.Text>
+					</Flex>
+				</Flex>
+			)}
 
 			{/* Ensure currentCard is set when entering quiz phase */}
 			{studyPhase === 'quiz' && queue.length > 0 && !currentCard && (
-				<div style={{ padding: 24, textAlign: 'center' }}>
-					<p>Preparing card...</p>
-				</div>
+				<Flex
+					vertical
+					align="center"
+					justify="center"
+					gap="middle"
+					style={{
+						padding: 24,
+						textAlign: 'center',
+					}}
+				>
+					<Spin size="default" />
+					<Typography.Text type="secondary" style={{ fontSize: 14 }}>
+						{t('preparingCard')}
+					</Typography.Text>
+				</Flex>
 			)}
 
 			{studyPhase === 'briefing' && (

@@ -216,16 +216,17 @@ export async function createDeck(data: {
 		const user = await getUser();
 		if (!user) return { success: false, error: 'Unauthorized' };
 
-		// Generate slug if title is provided
-		let slug: string | undefined;
-		if (data.title) {
-			// Get all existing slugs to ensure uniqueness
-			const existingDecks = await prisma.deck.findMany({
-				select: { slug: true },
-			});
-			const existingSlugs = existingDecks.map((d) => d.slug).filter(Boolean) as string[];
-			slug = generateSlug(data.title, existingSlugs);
+		if (!data.title) {
+			return { success: false, error: 'Title is required' };
 		}
+		// Get all existing slugs to ensure uniqueness
+		const existingDecks = await prisma.deck.findMany({
+			select: { slug: true },
+		});
+		const existingSlugs = existingDecks
+			.map((d) => d.slug)
+			.filter((slug): slug is string => Boolean(slug));
+		const slug = generateSlug(data.title, existingSlugs);
 
 		const deck = await prisma.deck.create({
 			data: {
@@ -239,6 +240,7 @@ export async function createDeck(data: {
 		});
 
 		revalidatePath('/dashboard/decks');
+		revalidatePath(`/decks/${deck.slug}`);
 		return { success: true, deck };
 	} catch (error) {
 		console.error('Error creating deck:', error);
@@ -268,25 +270,33 @@ export async function updateDeck(
 			return { success: false, error: 'Unauthorized' };
 		}
 
-		// Generate slug only if title changed and slug is null (immutability: don't update existing slug)
-		let slug: string | undefined;
-		if (data.title && !existing.slug) {
+		// Slug is immutable - don't update it
+		// If slug is missing (shouldn't happen), generate it
+		let slug = existing.slug;
+		if (!slug && data.title) {
 			// Get all existing slugs to ensure uniqueness
 			const existingDecks = await prisma.deck.findMany({
 				select: { slug: true },
 			});
-			const existingSlugs = existingDecks.map((d) => d.slug).filter(Boolean) as string[];
+			const existingSlugs = existingDecks
+				.map((d) => d.slug)
+				.filter((slug): slug is string => Boolean(slug));
 			slug = generateSlug(data.title, existingSlugs);
+		}
+
+		if (!slug) {
+			return { success: false, error: 'Deck must have a slug' };
 		}
 
 		const deck = await prisma.deck.update({
 			where: { id },
 			data: {
 				...data,
-				...(slug ? { slug } : {}),
+				slug, // Ensure slug is set
 			} as any,
 		});
 		revalidatePath('/dashboard/decks');
+		revalidatePath(`/decks/${deck.slug}`);
 		return { success: true, deck };
 	} catch (error) {
 		console.error('Error updating deck:', error);
@@ -367,6 +377,7 @@ export const getDecksWithDue = cache(async (userId?: string) => {
 
 				return {
 					id: deck.id,
+					slug: deck.slug,
 					title: deck.title,
 					cardCount: deck._count.vocabularies,
 					dueCount,

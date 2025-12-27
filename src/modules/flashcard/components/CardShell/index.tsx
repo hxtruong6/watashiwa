@@ -5,7 +5,7 @@ import { theme } from 'antd';
 import { motion, useAnimation } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 
-import { SmartCard } from '../../types';
+import { SmartCard, StandardCard } from '../../types';
 // We will add other faces later as we migrate them
 // import { GapFillFace } from './Faces/GapFillFace';
 import { InterventionFace } from './Faces/InterventionFace';
@@ -123,7 +123,7 @@ export const CardShell: React.FC<CardShellProps> = ({
 			default:
 				return (
 					<StandardFace
-						card={card as any}
+						card={card as StandardCard}
 						side={side}
 						showFurigana={showFurigana}
 						showRomaji={showRomaji}
@@ -248,7 +248,8 @@ export const CardShell: React.FC<CardShellProps> = ({
 						height: '100%',
 						backfaceVisibility: 'hidden',
 						WebkitBackfaceVisibility: 'hidden', // Critical for iOS Safari
-						// Rotate first, then translate - ensures proper backface culling on mobile
+						// Rotate 180deg to position back face correctly for 3D flip
+						// When container rotates 180deg, this face becomes visible (360deg = 0deg from viewer)
 						transform: 'rotateY(180deg) translate3d(0, 0, 0)',
 						WebkitTransform: 'rotateY(180deg) translate3d(0, 0, 0)', // iOS Safari vendor prefix
 						background: token.colorBgContainer,
@@ -262,7 +263,18 @@ export const CardShell: React.FC<CardShellProps> = ({
 						WebkitTouchCallout: 'none',
 					}}
 				>
-					<div style={{ width: '100%', height: '100%' }}>{renderFace('back')}</div>
+					{/* Inner wrapper: Counter-rotate content to un-mirror text after parent's 180deg Y-rotation */}
+					{/* Parent: rotateY(180deg) mirrors text, Child: rotateY(-180deg) cancels it = net 0deg */}
+					<div
+						style={{
+							width: '100%',
+							height: '100%',
+							transform: 'rotateY(-180deg)',
+							WebkitTransform: 'rotateY(-180deg)',
+						}}
+					>
+						{renderFace('back')}
+					</div>
 				</div>
 			</motion.div>
 		</motion.div>
