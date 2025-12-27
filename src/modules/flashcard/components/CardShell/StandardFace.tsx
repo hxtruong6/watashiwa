@@ -1,5 +1,6 @@
 'use client';
 
+import type { CardBackSettings } from '@/modules/study/store/useStudyPreferences';
 import {
 	BookOutlined,
 	BulbFilled,
@@ -8,9 +9,13 @@ import {
 	SoundOutlined,
 } from '@ant-design/icons';
 import { Button, Flex, Typography, theme } from 'antd';
+import { useLocale } from 'next-intl';
 import React from 'react';
 
 import { StandardCard } from '../../types';
+import { ConfusionsSection } from './Sections/ConfusionsSection';
+import { EtymologySection } from './Sections/EtymologySection';
+import { MoreExamplesSection } from './Sections/MoreExamplesSection';
 
 const { Title, Text } = Typography;
 
@@ -30,6 +35,9 @@ interface StandardFaceProps {
 
 	// Design Variant
 	designVariant?: DesignVariant;
+
+	// Card Back Settings
+	cardBackSettings?: CardBackSettings;
 }
 
 export const StandardFace: React.FC<StandardFaceProps> = ({
@@ -40,9 +48,23 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 	isPlaying = false,
 	onPlayAudio,
 	designVariant = 'safe',
+	cardBackSettings,
 }) => {
 	const { token } = theme.useToken();
+	const locale = (useLocale() as 'vi' | 'en') || 'vi';
 	const { front, back } = card;
+
+	// Get settings with defaults
+	const settings = cardBackSettings || {
+		showEtymology: false,
+		showConfusions: true,
+		showMoreExamples: false,
+		defaultCollapseState: {
+			etymology: 'collapsed' as const,
+			confusions: 'expanded' as const,
+			moreExamples: 'collapsed' as const,
+		},
+	};
 
 	// FRONT DESIGN
 	if (side === 'front') {
@@ -274,6 +296,7 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 							borderRadius: token.borderRadius,
 							border: `1px solid ${token.colorPrimaryBorder}`,
 							marginTop: !hasExample ? 'auto' : '0',
+							marginBottom: '16px',
 						}}
 					>
 						<Flex gap={8} align="center" style={{ marginBottom: '8px' }}>
@@ -292,6 +315,36 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 							{mnemonic}
 						</Text>
 					</div>
+				)}
+
+				{/* 5. Collapsible Sections */}
+				{settings.showConfusions && (
+					<ConfusionsSection
+						vocabId={card.vocabId}
+						confusions={(back.details as any)?.confusions}
+						designVariant={designVariant}
+						defaultExpanded={settings.defaultCollapseState.confusions === 'expanded'}
+						locale={locale}
+					/>
+				)}
+
+				{settings.showEtymology && back.details.etymology && (
+					<EtymologySection
+						etymology={back.details.etymology}
+						designVariant={designVariant}
+						defaultExpanded={settings.defaultCollapseState.etymology === 'expanded'}
+						locale={locale}
+					/>
+				)}
+
+				{settings.showMoreExamples && back.details.examples && back.details.examples.length > 1 && (
+					<MoreExamplesSection
+						examples={back.details.examples}
+						firstExampleIndex={0}
+						designVariant={designVariant}
+						defaultExpanded={settings.defaultCollapseState.moreExamples === 'expanded'}
+						locale={locale}
+					/>
 				)}
 			</Flex>
 		);
@@ -433,6 +486,7 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 							borderRadius: token.borderRadius,
 							border: `1px solid ${token.colorPrimaryBorder}`,
 							marginTop: !hasExample ? 'auto' : '0',
+							marginBottom: '20px',
 						}}
 					>
 						<Flex gap={8} align="center" style={{ marginBottom: '10px' }}>
@@ -452,6 +506,36 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 							{mnemonic}
 						</Text>
 					</div>
+				)}
+
+				{/* 5. Collapsible Sections */}
+				{settings.showConfusions && (
+					<ConfusionsSection
+						vocabId={card.vocabId}
+						confusions={(back.details as any)?.confusions}
+						designVariant={designVariant}
+						defaultExpanded={settings.defaultCollapseState.confusions === 'expanded'}
+						locale={locale}
+					/>
+				)}
+
+				{settings.showEtymology && back.details.etymology && (
+					<EtymologySection
+						etymology={back.details.etymology}
+						designVariant={designVariant}
+						defaultExpanded={settings.defaultCollapseState.etymology === 'expanded'}
+						locale={locale}
+					/>
+				)}
+
+				{settings.showMoreExamples && back.details.examples && back.details.examples.length > 1 && (
+					<MoreExamplesSection
+						examples={back.details.examples}
+						firstExampleIndex={0}
+						designVariant={designVariant}
+						defaultExpanded={settings.defaultCollapseState.moreExamples === 'expanded'}
+						locale={locale}
+					/>
 				)}
 			</Flex>
 		);
@@ -559,11 +643,42 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 						color: token.colorTextDescription,
 						lineHeight: '1.6',
 						marginTop: !hasExample ? 'auto' : '0',
+						marginBottom: '24px',
 						opacity: 0.8,
 					}}
 				>
 					{mnemonic}
 				</Text>
+			)}
+
+			{/* 5. Collapsible Sections */}
+			{settings.showConfusions && (
+				<ConfusionsSection
+					vocabId={card.vocabId}
+					confusions={(back.details as any)?.confusions}
+					designVariant={designVariant}
+					defaultExpanded={settings.defaultCollapseState.confusions === 'expanded'}
+					locale={locale}
+				/>
+			)}
+
+			{settings.showEtymology && back.details.etymology && (
+				<EtymologySection
+					etymology={back.details.etymology}
+					designVariant={designVariant}
+					defaultExpanded={settings.defaultCollapseState.etymology === 'expanded'}
+					locale={locale}
+				/>
+			)}
+
+			{settings.showMoreExamples && back.details.examples && back.details.examples.length > 1 && (
+				<MoreExamplesSection
+					examples={back.details.examples}
+					firstExampleIndex={0}
+					designVariant={designVariant}
+					defaultExpanded={settings.defaultCollapseState.moreExamples === 'expanded'}
+					locale={locale}
+				/>
 			)}
 		</Flex>
 	);

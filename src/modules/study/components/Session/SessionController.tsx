@@ -86,7 +86,7 @@ export default function SessionController({
 	const [isCommentDrawerOpen, setIsCommentDrawerOpen] = useState(false);
 
 	// Settings STORE
-	const { showFurigana, showRomaji, autoPlayAudio } = useStudyPreferences();
+	const { showFurigana, showRomaji, autoPlayAudio, cardBackSettings } = useStudyPreferences();
 	const [userSettings, setUserSettings] = useState<Partial<User> | null>(null);
 	const [spaceKeyRating, setSpaceKeyRating] = useState(3);
 	const [showAnswer, setShowAnswer] = useState(false);
@@ -920,6 +920,7 @@ export default function SessionController({
 								exitColor={exitColor}
 								isPlaying={audioHook.isPlaying}
 								onPlayAudio={audioHook.toggleAudio}
+								cardBackSettings={cardBackSettings}
 							/>
 						</div>
 					</div>

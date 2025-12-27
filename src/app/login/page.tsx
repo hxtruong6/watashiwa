@@ -1,5 +1,6 @@
 'use client';
 
+import { isValidReturnUrl } from '@/components/navbar/NavConfig';
 import { ambientGradients, customShadows } from '@/lib/theme/themeConfig';
 import { loginSchema, signupSchema } from '@/modules/auth/auth.dto';
 import { useAuth } from '@/modules/auth/hooks/useAuth';
@@ -9,7 +10,7 @@ import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useState } from 'react';
 
 const { Title, Text } = Typography;
@@ -20,10 +21,31 @@ export default function AuthPage() {
 	const t = useTranslations('Login');
 	const { message: antdMessage } = App.useApp();
 	const router = useRouter();
+	const searchParams = useSearchParams();
 	const [mode, setMode] = useState<'login' | 'signup'>('login');
+
+	const returnUrl = searchParams.get('returnUrl');
 
 	// Use custom auth hook - all business logic is extracted
 	const { loading, error, message, login, signup, resetState, setMessage } = useAuth({
+		onSuccess: (role) => {
+			// If returnUrl is provided and valid, redirect there after successful auth
+			if (returnUrl && isValidReturnUrl(returnUrl)) {
+				// Use window.location.href for full page reload to ensure middleware sees new session
+				console.log('[Login] Redirecting to returnUrl:', returnUrl);
+				window.location.href = returnUrl;
+				return;
+			}
+			// Default redirect: handle role-based or default redirect
+			if (role === 'ADMIN') {
+				console.log('[Login] Redirecting admin to /admin');
+				window.location.href = '/admin';
+				return;
+			}
+			// Force full reload ensures middleware sees the new cookie
+			console.log('[Login] Redirecting to home');
+			window.location.href = '/';
+		},
 		onError: (errorMsg) => {
 			antdMessage.error(errorMsg);
 		},
@@ -51,8 +73,10 @@ export default function AuthPage() {
 			}
 
 			const result = await login(validationResult.data.email, validationResult.data.password);
+			// Note: Redirect is handled in onSuccess callback
+			// Success message is shown briefly before redirect happens
 			if (result.success) {
-				antdMessage.success(t('loginSuccess'));
+				// Don't show success message - redirect happens immediately via onSuccess callback
 			}
 		} else {
 			// Validate with Zod schema
@@ -142,7 +166,8 @@ export default function AuthPage() {
 							alt="Logo"
 							width={64}
 							height={64}
-							objectFit="contain"
+							loading="eager"
+							priority
 							suppressHydrationWarning
 							onClick={() => router.push('/')}
 						/>

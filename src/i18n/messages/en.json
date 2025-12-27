@@ -55,7 +55,9 @@
 		"journey": "Paths",
 		"loginStart": "Join Now",
 		"guest": "Traveler",
-		"greeting": "Hi, {name} ~"
+		"greeting": "Hi, {name} ~",
+		"signUpToAccess": "Sign up to access features",
+		"signUpToAccessDesc": "Create an account to start your Japanese learning journey"
 	},
 	"Dashboard": {
 		"heroTitle": "Ready to learn?",
@@ -248,6 +250,18 @@
 		"summary": {
 			"forgottenWordsTitle": "Words to Review ({count})",
 			"forgottenWordsDescription": "These words need more practice. Consider reviewing them again soon."
+		},
+		"cardBack": {
+			"etymology": "Etymology",
+			"similarWords": "Similar Words",
+			"moreExamples": "More Examples",
+			"deepDive": "Deep Dive",
+			"dontConfuseWith": "Don't confuse with...",
+			"seeMoreUsage": "See More Usage",
+			"note": "Note",
+			"insight": "Insight",
+			"thisWord": "This word:",
+			"similar": "Similar"
 		}
 	},
 	"Decks": {

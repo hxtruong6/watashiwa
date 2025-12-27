@@ -1,5 +1,6 @@
 'use client';
 
+import type { CardBackSettings } from '@/modules/study/store/useStudyPreferences';
 import { theme } from 'antd';
 import { motion, useAnimation } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
@@ -30,6 +31,9 @@ interface CardShellProps {
 
 	// Design Variant
 	designVariant?: 'safe' | 'aggressive' | 'minimalist';
+
+	// Card Back Settings
+	cardBackSettings?: CardBackSettings;
 }
 
 export const CardShell: React.FC<CardShellProps> = ({
@@ -46,6 +50,7 @@ export const CardShell: React.FC<CardShellProps> = ({
 	isPlaying = false,
 	onPlayAudio,
 	designVariant = 'safe',
+	cardBackSettings,
 }) => {
 	const { token } = theme.useToken();
 	const controls = useAnimation();
@@ -125,6 +130,7 @@ export const CardShell: React.FC<CardShellProps> = ({
 						isPlaying={isPlaying}
 						onPlayAudio={onPlayAudio}
 						designVariant={designVariant}
+						cardBackSettings={cardBackSettings}
 					/>
 				);
 		}

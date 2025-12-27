@@ -402,3 +402,54 @@ export async function deleteVocabulary(input: { id: string }) {
 		return { message: 'Deleted' };
 	});
 }
+
+/**
+ * Get Confusions for a Vocabulary Item
+ * Returns confusion pairs where this vocab is either vocab1 or vocab2
+ */
+export async function getConfusionsForVocab(input: { vocabId: string }) {
+	const Schema = z.object({ vocabId: z.uuid() });
+
+	return executeSafeAction(Schema, input, async ({ vocabId }, { userId }) => {
+		if (!userId) throw new Error('Unauthorized');
+
+		const confusions = await prisma.confusionPair.findMany({
+			where: {
+				OR: [{ vocabId1: vocabId }, { vocabId2: vocabId }],
+			},
+			include: {
+				vocab1: {
+					select: {
+						id: true,
+						wordSurface: true,
+					},
+				},
+				vocab2: {
+					select: {
+						id: true,
+						wordSurface: true,
+					},
+				},
+			},
+		});
+
+		// Transform to match expected structure
+		const formatted = confusions.map((confusion) => {
+			// Determine which vocab is the "other" one (not the current vocab)
+			const isVocab1 = confusion.vocabId1 === vocabId;
+			const otherVocab = isVocab1 ? confusion.vocab2 : confusion.vocab1;
+
+			return {
+				word: otherVocab.wordSurface,
+				explanation: confusion.explanation as {
+					mnemonic: { vi: string; en: string };
+					item1_nuance: { vi: string; en: string };
+					item2_nuance: { vi: string; en: string };
+				},
+				type: confusion.type,
+			};
+		});
+
+		return formatted;
+	});
+}

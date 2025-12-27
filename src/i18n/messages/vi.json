@@ -56,7 +56,9 @@
 		"journey": "Lộ trình",
 		"loginStart": "Chiến ngay",
 		"guest": "Khách",
-		"greeting": "Hế lô {name} ~"
+		"greeting": "Hế lô {name} ~",
+		"signUpToAccess": "Đăng ký để truy cập tính năng",
+		"signUpToAccessDesc": "Tạo tài khoản để bắt đầu hành trình học tiếng Nhật của bạn"
 	},
 	"Dashboard": {
 		"heroTitle": "Học Tiếng Nhật À? Để Tui Lo!",
@@ -241,6 +243,18 @@
 		"summary": {
 			"forgottenWordsTitle": "Từ cần ôn lại ({count})",
 			"forgottenWordsDescription": "Những từ này cần luyện tập thêm. Hãy xem xét ôn lại chúng sớm."
+		},
+		"cardBack": {
+			"etymology": "Từ nguyên",
+			"similarWords": "Từ tương tự",
+			"moreExamples": "Thêm ví dụ",
+			"deepDive": "Tìm hiểu sâu",
+			"dontConfuseWith": "Đừng nhầm với...",
+			"seeMoreUsage": "Xem thêm cách dùng",
+			"note": "Ghi chú",
+			"insight": "Góc nhìn",
+			"thisWord": "Từ này:",
+			"similar": "Tương tự"
 		}
 	},
 	"Decks": {

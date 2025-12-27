@@ -53,6 +53,15 @@ export async function updateSession(request: NextRequest) {
 		}
 		const url = request.nextUrl.clone();
 		url.pathname = '/login';
+		// Preserve returnUrl: redirect to login with original path as returnUrl
+		// Only set returnUrl if it doesn't already exist (preserve existing returnUrl)
+		if (!url.searchParams.has('returnUrl')) {
+			const originalPath = request.nextUrl.pathname + request.nextUrl.search;
+			// Validate the path before setting it (basic check - full validation happens in login page)
+			if (originalPath && originalPath.startsWith('/') && !originalPath.startsWith('//')) {
+				url.searchParams.set('returnUrl', originalPath);
+			}
+		}
 		return NextResponse.redirect(url);
 	}
 

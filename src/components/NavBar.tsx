@@ -14,27 +14,16 @@ import {
 	UserOutlined,
 } from '@ant-design/icons';
 import * as Sentry from '@sentry/nextjs';
-import {
-	Avatar,
-	Button,
-	Drawer,
-	Dropdown,
-	Flex,
-	Grid,
-	Space,
-	Tooltip,
-	Typography,
-	theme,
-} from 'antd';
+import { Avatar, Button, Drawer, Dropdown, Flex, Grid, Space, Typography, theme } from 'antd';
 import type { MenuProps } from 'antd';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
-import { NAV_ITEMS } from './navbar/NavConfig';
+import { NAV_ITEMS, type NavItem, isProtectedRoute } from './navbar/NavConfig';
 import NotificationPopover from './navbar/NotificationPopover';
 import SettingsModal from './navbar/SettingsModal';
 
@@ -116,6 +105,40 @@ export default function NavBar({ user }: { user?: User | null }) {
 		router.push('/login');
 		router.refresh();
 	};
+
+	// Determine if user is public (not authenticated)
+	const isPublic = !user;
+
+	// Dark theme detection for conditional styling
+	const isDark = token.colorBgBase === '#151F32';
+
+	/**
+	 * Handle navigation clicks with smart redirect for public users
+	 * If route is protected and user is public, redirect to login with returnUrl
+	 */
+	const handleNavClick = useCallback(
+		(path: string, e?: React.MouseEvent) => {
+			if (e) {
+				e.preventDefault();
+			}
+
+			// Validate path before processing
+			if (!path || typeof path !== 'string' || path.trim() === '') {
+				console.warn('[NavBar] Invalid path provided to handleNavClick:', path);
+				return;
+			}
+
+			// If public user clicks protected route, redirect to login with returnUrl
+			if (isPublic && isProtectedRoute(path)) {
+				// Encode the path to safely pass as query parameter
+				const returnUrl = encodeURIComponent(path);
+				router.push(`/login?returnUrl=${returnUrl}`);
+			} else {
+				router.push(path);
+			}
+		},
+		[isPublic, router],
+	);
 
 	// // Smart Scroll Logic
 	// useMotionValueEvent(scrollY, 'change', (latest) => {
@@ -199,8 +222,6 @@ export default function NavBar({ user }: { user?: User | null }) {
 		],
 	};
 
-	const isPublic = !user;
-
 	// --- RENDER HELPERS ---
 
 	const GlassDock = ({
@@ -209,31 +230,36 @@ export default function NavBar({ user }: { user?: User | null }) {
 	}: {
 		children: React.ReactNode;
 		style?: React.CSSProperties;
-	}) => (
-		<div
-			style={{
-				background: `color-mix(in srgb, ${token.colorBgContainer} 80%, transparent)`,
-				backdropFilter: 'blur(16px)',
-				borderRadius: '24px',
-				border: `1px solid ${token.colorBorderSecondary}`,
-				boxShadow: '0 8px 32px rgba(0, 0, 0, 0.08)',
-				padding: '8px 16px',
-				display: 'flex',
-				alignItems: 'center',
-				gap: '16px',
-				transition: 'transform 0.3s ease',
-				...style,
-			}}
-		>
-			{children}
-		</div>
-	);
+	}) => {
+		// Dark theme aware shadow
+		const shadowColor = isDark ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0.08)';
 
-	const NavDockItem = ({ item, isActive }: { item: any; isActive: boolean }) => {
+		return (
+			<div
+				style={{
+					background: `color-mix(in srgb, ${token.colorBgContainer} 80%, transparent)`,
+					backdropFilter: 'blur(16px)',
+					borderRadius: '24px',
+					border: `1px solid ${token.colorBorderSecondary}`,
+					boxShadow: `0 8px 32px ${shadowColor}`,
+					padding: '8px 16px',
+					display: 'flex',
+					alignItems: 'center',
+					gap: '16px',
+					transition: 'transform 0.3s ease',
+					...style,
+				}}
+			>
+				{children}
+			</div>
+		);
+	};
+
+	const NavDockItem = ({ item, isActive }: { item: NavItem; isActive: boolean }) => {
 		const [isHovered, setIsHovered] = useState(false);
 
 		return (
-			<Link href={item.path}>
+			<div onClick={(e) => handleNavClick(item.path, e)} style={{ cursor: 'pointer' }}>
 				<MotionDiv
 					onHoverStart={() => setIsHovered(true)}
 					onHoverEnd={() => setIsHovered(false)}
@@ -266,7 +292,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 								color: isActive ? token.colorPrimary : token.colorTextSecondary,
 							}}
 						>
-							{t(item.key as any)}
+							{t(item.key as keyof typeof t)}
 						</Text>
 					)}
 					{isActive && (
@@ -283,7 +309,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 						/>
 					)}
 				</MotionDiv>
-			</Link>
+			</div>
 		);
 	};
 
@@ -323,22 +349,20 @@ export default function NavBar({ user }: { user?: User | null }) {
 							</Link>
 						</GlassDock>
 
-						{/* MAIN NAV PILL (The "Dock") */}
-						{!isPublic && (
-							<GlassDock style={{ gap: 8 }}>
-								{NAV_ITEMS.map((item) => (
-									<NavDockItem
-										key={item.key}
-										item={item}
-										isActive={
-											item.path === '/'
-												? pathname === '/'
-												: pathname.startsWith(item.path) && item.path !== '/'
-										}
-									/>
-								))}
-							</GlassDock>
-						)}
+						{/* MAIN NAV PILL (The "Dock") - Now visible to all users */}
+						<GlassDock style={{ gap: 8 }}>
+							{NAV_ITEMS.map((item) => (
+								<NavDockItem
+									key={item.key}
+									item={item}
+									isActive={
+										item.path === '/'
+											? pathname === '/'
+											: pathname.startsWith(item.path) && item.path !== '/'
+									}
+								/>
+							))}
+						</GlassDock>
 
 						{/* ACTIONS PILL */}
 						<GlassDock>
@@ -444,71 +468,71 @@ export default function NavBar({ user }: { user?: User | null }) {
 						<Space size="small">
 							{/* Right: Actions */}
 							{!isPublic && <NotificationPopover />}
-							{!isPublic && (
-								<Avatar
-									size="small"
-									src={user?.user_metadata?.avatar_url}
-									style={{ backgroundColor: token.colorPrimary, cursor: 'pointer' }}
-									onClick={() => setMobileDrawerOpen(true)}
-								/>
-							)}
-
-							{isPublic && (
-								<Link href="/login">
-									<Button type="primary" size="small">
-										{t('login')}
-									</Button>
-								</Link>
-							)}
+							<Avatar
+								size="small"
+								src={user?.user_metadata?.avatar_url}
+								style={{
+									backgroundColor: token.colorPrimary,
+									cursor: 'pointer',
+									opacity: isPublic ? 0.6 : 1,
+								}}
+								icon={<UserOutlined />}
+								onClick={() => setMobileDrawerOpen(true)}
+							/>
 						</Space>
 					</motion.div>
 
-					{/* Bottom Navigation Dock */}
-					{!isPublic && (
-						<motion.div
-							initial={{ y: 100 }}
-							animate={{ y: 0 }}
-							transition={{ duration: 0.3 }}
-							style={{
-								position: 'fixed',
-								bottom: 0,
-								left: 0,
-								right: 0,
-								padding: '12px 24px 24px 24px', // Extra bottom padding for iOS Home Indicator
-								background: `color-mix(in srgb, ${token.colorBgContainer} 90%, transparent)`,
-								backdropFilter: 'blur(16px)',
-								zIndex: 1000,
-								display: 'flex',
-								justifyContent: 'space-between',
-								borderTop: `1px solid ${token.colorBorderSecondary}`,
-								boxShadow: '0 -4px 20px rgba(0,0,0,0.05)',
-							}}
-						>
-							{NAV_ITEMS.map((item) => {
-								const isActive =
-									item.path === '/'
-										? pathname === '/'
-										: pathname.startsWith(item.path) && item.path !== '/';
+					{/* Bottom Navigation Dock - Now visible to all users */}
+					<motion.div
+						initial={{ y: 100 }}
+						animate={{ y: 0 }}
+						transition={{ duration: 0.3 }}
+						style={{
+							position: 'fixed',
+							bottom: 0,
+							left: 0,
+							right: 0,
+							padding: '12px clamp(16px, 4vw, 24px) clamp(20px, 5vw, 24px) clamp(20px, 5vw, 24px)', // Responsive padding with extra bottom for iOS Home Indicator
+							background: `color-mix(in srgb, ${token.colorBgContainer} 90%, transparent)`,
+							backdropFilter: 'blur(16px)',
+							zIndex: 1000,
+							display: 'flex',
+							justifyContent: 'space-between',
+							borderTop: `1px solid ${token.colorBorderSecondary}`,
+							boxShadow:
+								token.colorBgBase === '#151F32'
+									? '0 -4px 20px rgba(0,0,0,0.3)'
+									: '0 -4px 20px rgba(0,0,0,0.05)',
+						}}
+					>
+						{NAV_ITEMS.map((item) => {
+							const isActive =
+								item.path === '/'
+									? pathname === '/'
+									: pathname.startsWith(item.path) && item.path !== '/';
 
-								return (
-									<Link key={item.key} href={item.path} style={{ flex: 1 }}>
-										<Flex vertical align="center" gap={4}>
-											<div
-												style={{
-													fontSize: 22,
-													color: isActive ? token.colorPrimary : token.colorTextTertiary,
-													transition: 'all 0.3s',
-													transform: isActive ? 'scale(1.1)' : 'scale(1)',
-												}}
-											>
-												{item.icon}
-											</div>
-										</Flex>
-									</Link>
-								);
-							})}
-						</motion.div>
-					)}
+							return (
+								<div
+									key={item.key}
+									onClick={(e) => handleNavClick(item.path, e)}
+									style={{ flex: 1, cursor: 'pointer' }}
+								>
+									<Flex vertical align="center" gap={4}>
+										<div
+											style={{
+												fontSize: 'clamp(20px, 5vw, 22px)', // Responsive icon size
+												color: isActive ? token.colorPrimary : token.colorTextTertiary,
+												transition: 'all 0.3s',
+												transform: isActive ? 'scale(1.1)' : 'scale(1)',
+											}}
+										>
+											{item.icon}
+										</div>
+									</Flex>
+								</div>
+							);
+						})}
+					</motion.div>
 				</>
 			)}
 
@@ -519,7 +543,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 				user={user}
 			/>
 
-			{/* MOBILE MENU DRAWER (Option 1: The Clarity Protocol) */}
+			{/* MOBILE MENU DRAWER */}
 			<Drawer
 				placement="bottom"
 				closable={false}
@@ -527,7 +551,11 @@ export default function NavBar({ user }: { user?: User | null }) {
 				open={mobileDrawerOpen}
 				size="default"
 				styles={{
-					body: { padding: '8px 16px', height: '100%', overflowY: 'auto' },
+					body: {
+						padding: 'clamp(8px, 2vw, 16px) clamp(12px, 3vw, 16px)',
+						height: '100%',
+						overflowY: 'auto',
+					},
 					mask: { backdropFilter: 'blur(4px)' },
 				}}
 				style={{
@@ -536,79 +564,171 @@ export default function NavBar({ user }: { user?: User | null }) {
 					borderTopRightRadius: 24,
 				}}
 			>
-				<Flex vertical gap={'middle'}>
-					{/* 1. Header: Identity */}
-					<Flex vertical align="center" gap="small">
+				{isPublic ? (
+					/* Public User Drawer */
+					<Flex
+						vertical
+						gap={'middle'}
+						align="center"
+						style={{ padding: 'clamp(20px, 5vw, 24px) 0' }}
+					>
 						<Avatar
 							size={64}
-							src={user?.user_metadata?.avatar_url}
 							icon={<UserOutlined />}
-							style={{ border: `4px solid ${token.colorBgLayout}` }}
+							style={{
+								backgroundColor: token.colorPrimary,
+								border: `4px solid ${token.colorBgLayout}`,
+							}}
 						/>
-						<div style={{ textAlign: 'center' }}>
-							<Text strong style={{ fontSize: 18, display: 'block' }}>
-								{user?.user_metadata?.full_name || t('guest')}
+						<div style={{ textAlign: 'center', marginBottom: 'clamp(20px, 5vw, 24px)' }}>
+							<Text
+								strong
+								style={{
+									fontSize: 'clamp(18px, 4vw, 20px)',
+									display: 'block',
+									marginBottom: 8,
+									color: token.colorText,
+								}}
+							>
+								{t('signUpToAccess')}
 							</Text>
-							<Text type="secondary" style={{ fontSize: 14 }}>
-								{user?.email}
+							<Text
+								type="secondary"
+								style={{
+									fontSize: 'clamp(12px, 3vw, 14px)',
+									color: token.colorTextSecondary,
+								}}
+							>
+								{t('signUpToAccessDesc')}
 							</Text>
 						</div>
-					</Flex>
-
-					<div style={{ borderBottom: `1px solid ${token.colorBorderSecondary}` }} />
-
-					{/* 2. Actions: Utility */}
-					<Flex vertical gap="small">
 						<Button
-							block
+							type="primary"
 							size="large"
-							icon={<SettingOutlined />}
-							style={{ justifyContent: 'flex-start', paddingLeft: 24, fontSize: 16 }}
+							block
 							onClick={() => {
 								setMobileDrawerOpen(false);
-								setSettingsModalOpen(true);
+								router.push('/login');
+							}}
+							style={{
+								marginBottom: 12,
+								height: 'clamp(44px, 10vw, 48px)',
+								fontSize: 'clamp(14px, 3.5vw, 16px)',
 							}}
 						>
-							{t('settings')}
+							{t('loginStart')}
 						</Button>
 						<Button
-							block
-							size="large"
-							icon={<ShareAltOutlined />}
-							style={{ justifyContent: 'flex-start', paddingLeft: 24, fontSize: 16 }}
-							onClick={() => {
-								setMobileDrawerOpen(false);
-								setShareModalOpen(true);
-							}}
-						>
-							{t('share')}
-						</Button>
-						<Button
-							block
+							type="text"
 							size="large"
 							icon={<BugOutlined />}
-							style={{ justifyContent: 'flex-start', paddingLeft: 24, fontSize: 16 }}
+							block
 							onClick={() => {
 								setMobileDrawerOpen(false);
 								handleBugReport();
+							}}
+							style={{
+								height: 'clamp(44px, 10vw, 48px)',
+								fontSize: 'clamp(14px, 3.5vw, 16px)',
+								color: token.colorText,
 							}}
 						>
 							{tCommon('reportIssue')}
 						</Button>
 					</Flex>
+				) : (
+					/* Authenticated User Drawer */
+					<Flex vertical gap={'middle'}>
+						{/* 1. Header: Identity */}
+						<Flex vertical align="center" gap="small">
+							<Avatar
+								size={64}
+								src={user?.user_metadata?.avatar_url}
+								icon={<UserOutlined />}
+								style={{ border: `4px solid ${token.colorBgLayout}` }}
+							/>
+							<div style={{ textAlign: 'center' }}>
+								<Text strong style={{ fontSize: 18, display: 'block' }}>
+									{user?.user_metadata?.full_name || t('guest')}
+								</Text>
+								<Text type="secondary" style={{ fontSize: 14 }}>
+									{user?.email}
+								</Text>
+							</div>
+						</Flex>
 
-					{/* Toolbar button, with logout is just an icon on the right */}
-					{/* 3. Exit: Logout */}
-					<Flex
-						style={{
-							justifyContent: 'flex-end',
-							boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-							padding: 8,
-						}}
-					>
-						<Button danger icon={<LogoutOutlined />} onClick={handleLogout} />
+						<div style={{ borderBottom: `1px solid ${token.colorBorderSecondary}` }} />
+
+						{/* 2. Actions: Utility */}
+						<Flex vertical gap="small">
+							<Button
+								block
+								size="large"
+								icon={<SettingOutlined />}
+								style={{
+									justifyContent: 'flex-start',
+									paddingLeft: 'clamp(20px, 5vw, 24px)',
+									fontSize: 'clamp(14px, 3.5vw, 16px)',
+									height: 'clamp(44px, 10vw, 48px)',
+									color: token.colorText,
+								}}
+								onClick={() => {
+									setMobileDrawerOpen(false);
+									setSettingsModalOpen(true);
+								}}
+							>
+								{t('settings')}
+							</Button>
+							<Button
+								block
+								size="large"
+								icon={<ShareAltOutlined />}
+								style={{
+									justifyContent: 'flex-start',
+									paddingLeft: 'clamp(20px, 5vw, 24px)',
+									fontSize: 'clamp(14px, 3.5vw, 16px)',
+									height: 'clamp(44px, 10vw, 48px)',
+									color: token.colorText,
+								}}
+								onClick={() => {
+									setMobileDrawerOpen(false);
+									setShareModalOpen(true);
+								}}
+							>
+								{t('share')}
+							</Button>
+							<Button
+								block
+								size="large"
+								icon={<BugOutlined />}
+								style={{
+									justifyContent: 'flex-start',
+									paddingLeft: 'clamp(20px, 5vw, 24px)',
+									fontSize: 'clamp(14px, 3.5vw, 16px)',
+									height: 'clamp(44px, 10vw, 48px)',
+									color: token.colorText,
+								}}
+								onClick={() => {
+									setMobileDrawerOpen(false);
+									handleBugReport();
+								}}
+							>
+								{tCommon('reportIssue')}
+							</Button>
+						</Flex>
+
+						{/* 3. Exit: Logout */}
+						<Flex
+							style={{
+								justifyContent: 'flex-end',
+								boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+								padding: 8,
+							}}
+						>
+							<Button danger icon={<LogoutOutlined />} onClick={handleLogout} />
+						</Flex>
 					</Flex>
-				</Flex>
+				)}
 			</Drawer>
 		</>
 	);

@@ -82,10 +82,11 @@ export function useAuth(options: UseAuthOptions = {}) {
 	 */
 	const processAuthSuccess = useCallback(
 		async (mode: AuthMode, user: { id: string; email?: string | null }) => {
+			let role: string | undefined;
 			try {
 				// Sync user to database (non-blocking if fails)
 				const syncResult = await syncUser();
-				const role = syncResult.data?.role;
+				role = syncResult.data?.role;
 				const isNewUser = syncResult.data?.isNewUser;
 
 				// Get full user data for analytics
@@ -93,29 +94,40 @@ export function useAuth(options: UseAuthOptions = {}) {
 
 				// Analytics: Identify user (non-blocking)
 				if (syncResult.success && userData?.user) {
-					await identifyUserForAuth(userData.user);
+					try {
+						await identifyUserForAuth(userData.user);
+					} catch (analyticsError) {
+						console.error('[Auth] Analytics identification failed:', analyticsError);
+					}
 				}
 
 				// Analytics: Track signup event (non-blocking)
 				if (mode === 'signup' && isNewUser && userData?.user) {
-					trackSignupEvent(user.id, 'email', 'landing_page');
-				}
-
-				// Call success callback if provided
-				if (onSuccess) {
-					onSuccess(role);
-				} else {
-					// Default: redirect based on role
-					handlePostAuthRedirect(role);
+					try {
+						trackSignupEvent(user.id, 'email', 'landing_page');
+					} catch (trackError) {
+						console.error('[Auth] Signup tracking failed:', trackError);
+					}
 				}
 			} catch (error) {
 				// Log but don't block - user is already authenticated
 				console.error('[Auth] Post-auth processing failed:', error);
-				// Still redirect even if analytics/sync fails
+			} finally {
+				// Always redirect, even if sync/analytics failed
+				// User is authenticated, so redirect should happen regardless
+				console.log(
+					'[Auth] processAuthSuccess completed, role:',
+					role,
+					'hasOnSuccess:',
+					!!onSuccess,
+				);
 				if (onSuccess) {
-					onSuccess();
+					console.log('[Auth] Calling onSuccess callback');
+					onSuccess(role);
 				} else {
-					handlePostAuthRedirect();
+					console.log('[Auth] Using default redirect');
+					// Default: redirect based on role
+					handlePostAuthRedirect(role);
 				}
 			}
 		},
@@ -211,11 +223,24 @@ export function useAuth(options: UseAuthOptions = {}) {
 					throw new Error(t?.('errorOriginMissing') || 'Unable to determine application origin');
 				}
 
+				// Get returnUrl from current page if available (for email confirmation flow)
+				const returnUrl =
+					typeof window !== 'undefined'
+						? new URLSearchParams(window.location.search).get('returnUrl')
+						: null;
+
+				// Build email redirect URL with returnUrl preserved
+				let emailRedirectTo = `${origin}/auth/callback`;
+				if (returnUrl) {
+					// Preserve returnUrl in email confirmation link
+					emailRedirectTo += `?next=${encodeURIComponent(returnUrl)}`;
+				}
+
 				const { data, error } = await supabase.auth.signUp({
 					email: email.trim().toLowerCase(),
 					password,
 					options: {
-						emailRedirectTo: `${origin}/auth/callback`,
+						emailRedirectTo,
 						data: {
 							full_name: name.trim(),
 						},
