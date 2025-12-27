@@ -5,6 +5,9 @@ import { VocabStatsWidget } from '@/components/admin/Dashboard/VocabStatsWidget'
 import { Skeleton } from 'antd';
 import React, { Suspense } from 'react';
 
+// Force dynamic rendering - this page uses cookies for authentication
+export const dynamic = 'force-dynamic';
+
 export default function AdminDashboard() {
 	return (
 		<div>

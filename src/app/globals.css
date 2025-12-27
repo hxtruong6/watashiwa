@@ -105,3 +105,69 @@ body {
 		transform: rotate(360deg);
 	}
 }
+
+/* Landing Page Animations - Approach 1: Safe/Clear */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes slideUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes gentlePulse {
+	0%,
+	100% {
+		transform: scale(1);
+	}
+	50% {
+		transform: scale(1.02);
+	}
+}
+
+@keyframes gradientDrift {
+	0% {
+		transform: translate(0, 0);
+	}
+	50% {
+		transform: translate(5%, -5%);
+	}
+	100% {
+		transform: translate(0, 0);
+	}
+}
+
+@keyframes breathingGlow {
+	0%,
+	100% {
+		opacity: 1;
+		filter: drop-shadow(0 0 0px rgba(104, 211, 145, 0.4));
+	}
+	50% {
+		opacity: 1;
+		filter: drop-shadow(0 0 20px rgba(104, 211, 145, 0.6));
+	}
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}

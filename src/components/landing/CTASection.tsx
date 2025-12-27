@@ -19,7 +19,6 @@ export default function CTASection() {
 		setMounted(true);
 	}, []);
 
-	// Default to mobile (false) during SSR to avoid hydration mismatch
 	const isDesktop = mounted && md;
 
 	return (
@@ -28,12 +27,11 @@ export default function CTASection() {
 				padding: isDesktop ? '72px 0' : '100px 0',
 				background: token.colorPrimary,
 				textAlign: 'center',
-				color: '#fff',
+				color: token.colorBgContainer,
 				position: 'relative',
 				overflow: 'hidden',
 			}}
 		>
-			{/* Decorative Circles */}
 			<div
 				style={{
 					position: 'absolute',
@@ -41,7 +39,7 @@ export default function CTASection() {
 					left: isDesktop ? -50 : -20,
 					width: 'clamp(150px, 30vw, 400px)',
 					height: 'clamp(150px, 30vw, 400px)',
-					background: 'rgba(255,255,255,0.03)',
+					background: `rgba(255,255,255,${token.colorBgBase === '#151F32' ? '0.05' : '0.03'})`,
 					borderRadius: '50%',
 					pointerEvents: 'none',
 				}}
@@ -53,7 +51,7 @@ export default function CTASection() {
 					right: isDesktop ? -25 : -15,
 					width: 'clamp(120px, 20vw, 300px)',
 					height: 'clamp(120px, 20vw, 300px)',
-					background: 'rgba(255,255,255,0.03)',
+					background: `rgba(255,255,255,${token.colorBgBase === '#151F32' ? '0.05' : '0.03'})`,
 					borderRadius: '50%',
 					pointerEvents: 'none',
 				}}
@@ -80,13 +78,17 @@ export default function CTASection() {
 				>
 					<Title
 						level={2}
-						style={{ color: '#fff', marginBottom: 24, fontSize: 'clamp(28px, 5vw, 48px)' }}
+						style={{
+							color: token.colorBgContainer,
+							marginBottom: 24,
+							fontSize: 'clamp(28px, 5vw, 48px)',
+						}}
 					>
 						{t('ctaTitle')}
 					</Title>
 					<Paragraph
 						style={{
-							color: 'rgba(255,255,255,0.8)',
+							color: token.colorTextSecondary,
 							fontSize: isDesktop ? 20 : 16,
 							marginBottom: isDesktop ? 48 : 32,
 							maxWidth: 600,
@@ -100,6 +102,7 @@ export default function CTASection() {
 							<Button
 								type="primary"
 								size="large"
+								className="cta-pulse-button"
 								style={{
 									height: isDesktop ? 64 : 56,
 									padding: isDesktop ? '0 48px' : '0 32px',
@@ -108,6 +111,8 @@ export default function CTASection() {
 									background: token.colorSuccess, // Zen Green
 									border: 'none',
 									boxShadow: '0 10px 20px rgba(0,0,0,0.2)',
+									animation: 'gentlePulse 2s ease-in-out infinite',
+									willChange: 'transform',
 								}}
 							>
 								{t('ctaButton')}

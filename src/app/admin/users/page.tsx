@@ -5,6 +5,9 @@ import React from 'react';
 // Updated import
 import ClientUserTable from './components/ClientUserTable';
 
+// Force dynamic rendering - this page uses cookies for authentication
+export const dynamic = 'force-dynamic';
+
 export default async function AdminUsersPage() {
 	const users = await getAllUsers();
 	const currentUser = await getUserWithRole(); // Fetch current user

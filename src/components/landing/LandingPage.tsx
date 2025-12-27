@@ -1,9 +1,12 @@
 'use client';
 
+import { createClient } from '@/utils/supabase/client';
 import { Flex, Space, Typography } from 'antd';
 import { theme } from 'antd';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 import CTASection from './CTASection';
 import FeatureSection from './FeatureSection';
@@ -14,7 +17,43 @@ const { Text } = Typography;
 
 export default function LandingPage() {
 	const { token } = theme.useToken();
-	const t = useTranslations('Common');
+	const router = useRouter();
+	const t = useTranslations('Landing');
+
+	useEffect(() => {
+		// Hide the entire server-rendered HeroLCP section when client component loads
+		const serverHeroSection = document.querySelector('.hero-lcp-section') as HTMLElement;
+		if (serverHeroSection) {
+			serverHeroSection.style.display = 'none';
+		}
+	}, []);
+
+	// Non-blocking auth check - don't delay initial render
+	useEffect(() => {
+		// Defer auth check to avoid blocking LCP
+		const timer = setTimeout(() => {
+			const checkAuth = async () => {
+				try {
+					const supabase = createClient();
+					const {
+						data: { user },
+					} = await supabase.auth.getUser();
+
+					if (user) {
+						// User is authenticated, redirect to dashboard
+						router.push('/dashboard?app=true');
+					}
+				} catch (error) {
+					// Fail silently - show landing page if check fails
+					console.error('[LandingPage] Auth check failed:', error);
+				}
+			};
+
+			checkAuth();
+		}, 100); // Small delay to not block initial render
+
+		return () => clearTimeout(timer);
+	}, [router]);
 
 	return (
 		<div className="landing-page" style={{ background: token.colorBgLayout }}>
@@ -36,38 +75,38 @@ export default function LandingPage() {
 							href="/privacy-policy"
 							style={{ color: token.colorTextSecondary, textDecoration: 'none' }}
 						>
-							Privacy Policy
+							{t('footerPrivacy')}
 						</Link>
 						<Link
 							href="/terms-of-service"
 							style={{ color: token.colorTextSecondary, textDecoration: 'none' }}
 						>
-							Terms of Service
+							{t('footerTerms')}
 						</Link>
 						<Link
 							href="/cookie-policy"
 							style={{ color: token.colorTextSecondary, textDecoration: 'none' }}
 						>
-							Cookie Policy
+							{t('footerCookies')}
 						</Link>
 						<Link
 							href="/data-rights"
 							style={{ color: token.colorTextSecondary, textDecoration: 'none' }}
 						>
-							Data Rights
+							{t('footerDataRights')}
 						</Link>
 						<Link
 							href="/contact"
 							style={{ color: token.colorTextSecondary, textDecoration: 'none' }}
 						>
-							Contact
+							{t('footerContact')}
 						</Link>
 						<Link href="/about" style={{ color: token.colorTextSecondary, textDecoration: 'none' }}>
-							About
+							{t('footerAbout')}
 						</Link>
 					</Space>
 					<Text type="secondary" style={{ fontSize: 14 }}>
-						© {new Date().getFullYear()} WatashiWa. All rights reserved.
+						© {new Date().getFullYear()} WatashiWa. {t('footerRights')}
 					</Text>
 				</Flex>
 			</footer>

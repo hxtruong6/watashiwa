@@ -10,7 +10,7 @@ const { useToken } = theme;
 
 interface FlipCardProps {
 	frontKanji: string;
-	frontSRSState?: string;
+	frontTag?: string;
 	backAnimationSrc: string;
 	backKanji: string; // 美味しい
 	backFurigana: string; // おいしい
@@ -26,7 +26,7 @@ interface FlipCardProps {
 
 export default function InteractiveFlipCard({
 	frontKanji,
-	frontSRSState,
+	frontTag,
 	backAnimationSrc,
 	backKanji,
 	backFurigana,
@@ -242,7 +242,7 @@ export default function InteractiveFlipCard({
 								/>
 							</Flex>
 
-							{frontSRSState && (
+							{frontTag && (
 								<Flex justify="flex-end">
 									<div
 										style={{
@@ -255,7 +255,7 @@ export default function InteractiveFlipCard({
 											boxShadow: '0 4px 10px rgba(0,0,0,0.05)',
 										}}
 									>
-										{frontSRSState}
+										{frontTag}
 									</div>
 								</Flex>
 							)}

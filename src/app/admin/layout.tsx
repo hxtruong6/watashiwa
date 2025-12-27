@@ -5,6 +5,9 @@ import { UserRole } from '@prisma/client';
 import { redirect } from 'next/navigation';
 import React from 'react';
 
+// Force dynamic rendering - this layout uses cookies for authentication
+export const dynamic = 'force-dynamic';
+
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
 	const user = await getUserWithRole();
 

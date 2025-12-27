@@ -23,7 +23,7 @@ export default function HeroSection() {
 	return (
 		<section
 			style={{
-				minHeight: 'calc(100svh - 64px)', // Subtract NavBar height to fit viewport perfectly
+				minHeight: 'calc(100svh - 64px)',
 				position: 'relative',
 				overflow: 'hidden',
 				background: token.colorBgLayout,
@@ -33,8 +33,8 @@ export default function HeroSection() {
 				paddingTop: 0,
 			}}
 		>
-			{/* Ambient Background Elements */}
 			<div
+				className="gradient-orb-1"
 				style={{
 					position: 'absolute',
 					top: '-20%',
@@ -43,13 +43,16 @@ export default function HeroSection() {
 					height: 'min(80vw, 800px)',
 					background:
 						'radial-gradient(circle, rgba(112, 130, 56, 0.15) 0%, rgba(255,255,255,0) 70%)',
-					filter: 'blur(80px)', // Increased blur
+					filter: 'blur(80px)',
 					borderRadius: '50%',
 					zIndex: 0,
 					pointerEvents: 'none',
+					willChange: 'transform',
+					animation: 'gradientDrift 20s ease-in-out infinite',
 				}}
 			/>
 			<div
+				className="gradient-orb-2"
 				style={{
 					position: 'absolute',
 					bottom: '-10%',
@@ -61,12 +64,13 @@ export default function HeroSection() {
 					borderRadius: '50%',
 					zIndex: 0,
 					pointerEvents: 'none',
+					willChange: 'transform',
+					animation: 'gradientDrift 25s ease-in-out infinite reverse',
 				}}
 			/>
 
 			<div
 				style={{
-					// width: '100%', // Removed to prevent overflow
 					maxWidth: 1200,
 					padding: '0 24px',
 					position: 'relative',
@@ -75,7 +79,7 @@ export default function HeroSection() {
 			>
 				<Flex
 					vertical={false}
-					wrap="wrap-reverse" // Text on top on mobile? No, standard is visual on top or text on top. Let's do Text on Top (standard wrap)
+					wrap="wrap-reverse"
 					justify="center"
 					align="center"
 					gap={40}
@@ -84,7 +88,7 @@ export default function HeroSection() {
 					{/* Left Content (Text) */}
 					<div
 						style={{
-							flex: '1 1 340px', // Allow shrinking, but decent base width
+							flex: '1 1 340px',
 							display: 'flex',
 							flexDirection: 'column',
 							alignItems: 'flex-start',
@@ -92,13 +96,13 @@ export default function HeroSection() {
 							marginBottom: 20,
 						}}
 					>
-						<motion.div
-							initial={{ opacity: 0, x: -50 }}
-							animate={{ opacity: 1, x: 0 }}
-							transition={{ type: 'spring', stiffness: 50, damping: 20 }}
-							style={{ width: '100%' }}
-						>
-							<div style={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
+						<div style={{ width: '100%' }}>
+							<motion.div
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								transition={{ duration: 0.4 }}
+								style={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}
+							>
 								<Badge
 									count={t('badge')}
 									style={{
@@ -108,48 +112,64 @@ export default function HeroSection() {
 										boxShadow: '0 4px 12px rgba(112, 130, 56, 0.3)',
 									}}
 								/>
-							</div>
+							</motion.div>
 
-							<Title
-								level={1}
-								style={{
-									fontSize: 'clamp(32px, 6vw, 64px)', // Responsive font size
-									fontWeight: 800,
-									color: token.colorPrimary,
-									lineHeight: 1.1,
-									marginTop: 8,
-									marginBottom: 24,
-									letterSpacing: '-0.02em',
-									textAlign: 'left',
-								}}
+							<motion.div
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								transition={{ duration: 0.6 }}
 							>
-								{t('heroTitle')} <br />
-								<span
+								<Title
+									level={1}
 									style={{
-										color: isDark ? '#68D391' : '#68D391',
-										textShadow: isDark ? '0 0 20px rgba(104, 211, 145, 0.4)' : 'none',
-										display: 'inline-block',
+										fontSize: 'clamp(32px, 6vw, 64px)',
+										fontWeight: 800,
+										color: token.colorPrimary,
+										lineHeight: 1.1,
+										marginTop: 8,
+										marginBottom: 24,
+										letterSpacing: '-0.02em',
+										textAlign: 'left',
 									}}
 								>
-									{t('heroTitleAccent')}
-								</span>
-							</Title>
+									{t('heroTitle')} <br />
+									<span
+										className="hero-accent"
+										style={{
+											color: '#68D391',
+											textShadow: isDark ? '0 0 20px rgba(104, 211, 145, 0.4)' : 'none',
+											display: 'inline-block',
+											animation: 'breathingGlow 3s ease-in-out infinite',
+										}}
+									>
+										{t('heroTitleAccent')}
+									</span>
+								</Title>
+							</motion.div>
 
-							<Paragraph
-								style={{
-									fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-									color: token.colorText,
-									marginBottom: 32,
-
-									maxWidth: '600px', // Prevent too wide on desktop
-									lineHeight: 1.6,
-									textAlign: 'left',
-								}}
+							<motion.div
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								transition={{ duration: 0.6, delay: 0.4 }}
 							>
-								{t('heroSubtitle')}
-							</Paragraph>
+								<Paragraph
+									style={{
+										fontSize: 'clamp(1rem, 2vw, 1.25rem)',
+										color: token.colorText,
+										marginBottom: 32,
+										maxWidth: '600px',
+										lineHeight: 1.6,
+										textAlign: 'left',
+									}}
+								>
+									{t('heroSubtitle')}
+								</Paragraph>
+							</motion.div>
 
-							<div
+							<motion.div
+								initial={{ opacity: 0, y: 20 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ duration: 0.5, delay: 0.5 }}
 								style={{
 									display: 'flex',
 									flexWrap: 'wrap',
@@ -159,7 +179,7 @@ export default function HeroSection() {
 								}}
 							>
 								<Link href="/login" style={{ flex: '1 1 auto', minWidth: '140px' }}>
-									<motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+									<div>
 										<Button
 											type="primary"
 											size="large"
@@ -177,10 +197,10 @@ export default function HeroSection() {
 										>
 											{t('startLearning')}
 										</Button>
-									</motion.div>
+									</div>
 								</Link>
 								<Link href="#features" style={{ flex: '1 1 auto', minWidth: '140px' }}>
-									<motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+									<div>
 										<Button
 											size="large"
 											icon={<RightOutlined />}
@@ -198,38 +218,43 @@ export default function HeroSection() {
 										>
 											{t('exploreFeatures')}
 										</Button>
-									</motion.div>
+									</div>
 								</Link>
-							</div>
+							</motion.div>
 
-							<Flex gap="middle" wrap="wrap" style={{ marginTop: 32 }} justify="flex-start">
-								<Flex gap="small" align="center">
-									<CheckCircleFilled style={{ color: token.colorSuccess }} />
-									<Text type="secondary" style={{ whiteSpace: 'nowrap' }}>
-										{t('freePlan')}
-									</Text>
+							<motion.div
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								transition={{ duration: 0.5, delay: 0.7 }}
+							>
+								<Flex gap="middle" wrap="wrap" style={{ marginTop: 32 }} justify="flex-start">
+									<Flex gap="small" align="center">
+										<CheckCircleFilled style={{ color: token.colorSuccess }} />
+										<Text type="secondary" style={{ whiteSpace: 'nowrap' }}>
+											{t('freePlan')}
+										</Text>
+									</Flex>
+									<Flex gap="small" align="center">
+										<CheckCircleFilled style={{ color: token.colorSuccess }} />
+										<Text type="secondary" style={{ whiteSpace: 'nowrap' }}>
+											{t('noAds')}
+										</Text>
+									</Flex>
+									<Flex gap="small" align="center">
+										<CheckCircleFilled style={{ color: token.colorSuccess }} />
+										<Text type="secondary" style={{ whiteSpace: 'nowrap' }}>
+											{t('openSource')}
+										</Text>
+									</Flex>
 								</Flex>
-								<Flex gap="small" align="center">
-									<CheckCircleFilled style={{ color: token.colorSuccess }} />
-									<Text type="secondary" style={{ whiteSpace: 'nowrap' }}>
-										{t('noAds')}
-									</Text>
-								</Flex>
-								<Flex gap="small" align="center">
-									<CheckCircleFilled style={{ color: token.colorSuccess }} />
-									<Text type="secondary" style={{ whiteSpace: 'nowrap' }}>
-										{t('openSource')}
-									</Text>
-								</Flex>
-							</Flex>
-						</motion.div>
+							</motion.div>
+						</div>
 					</div>
 
-					{/* Right Visual (Interactive Flip Card) */}
 					<div style={{ flex: '1 1 340px' }}>
 						<InteractiveFlipCard
 							frontKanji={t('mockupKanji')}
-							frontSRSState={t('mockupSRS')}
+							frontTag={t('mockupTag')}
 							backAnimationSrc="/assets/animations/Ramen.lottie"
 							backKanji={t('mockupKanji')}
 							backFurigana={t('mockupFurigana')}

@@ -1,5 +1,6 @@
 'use client';
 
+import CountUpNumber from '@/components/animations/CountUpNumber';
 import { Col, Row, Typography, theme } from 'antd';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
@@ -13,10 +14,10 @@ export default function SocialProofSection() {
 	const t = useTranslations('Landing');
 
 	const stats = [
-		{ label: t('statsLearners'), value: '10,000+', color: token.colorPrimary },
-		{ label: t('statsReviews'), value: '1M+', color: token.colorSuccess },
-		{ label: t('statsDecks'), value: '1,200+', color: token.colorWarning },
-		{ label: t('statsPassRate'), value: '94%', color: token.colorError },
+		{ label: t('statsLearners'), value: 10247, suffix: '+', color: token.colorPrimary },
+		{ label: t('statsReviews'), value: 1000000, suffix: '+', color: token.colorSuccess },
+		{ label: t('statsDecks'), value: 1200, suffix: '+', color: token.colorWarning },
+		{ label: t('statsPassRate'), value: 94, suffix: '%', color: token.colorError },
 	];
 
 	return (
@@ -30,7 +31,6 @@ export default function SocialProofSection() {
 			}}
 		>
 			<div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
-				{/* Responsive gutter: Smaller on mobile to save space/prevent overflow */}
 				<Row
 					gutter={[
 						{ xs: 16, sm: 24, md: 48 },
@@ -46,7 +46,9 @@ export default function SocialProofSection() {
 								viewport={{ once: true }}
 								transition={{ duration: 0.5, delay: index * 0.1 }}
 							>
-								<Text
+								<CountUpNumber
+									value={stat.value}
+									suffix={stat.suffix}
 									style={{
 										display: 'block',
 										fontSize: 'clamp(32px, 3vw, 42px)',
@@ -54,9 +56,7 @@ export default function SocialProofSection() {
 										color: stat.color,
 										lineHeight: 1.2,
 									}}
-								>
-									{stat.value}
-								</Text>
+								/>
 								<Text type="secondary" style={{ fontSize: 16 }}>
 									{stat.label}
 								</Text>

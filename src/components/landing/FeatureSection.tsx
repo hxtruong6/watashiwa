@@ -28,16 +28,14 @@ export default function FeatureSection() {
 		return () => clearTimeout(timer);
 	}, []);
 
-	// During SSR/initial render, assume mobile (false) to match server
-	// Once mounted, usage real screens breakpoint
 	const isMd = mounted ? screens.md : false;
 
 	const features = [
 		{
-			title: t('featureSRS'),
-			description: t('featureSRSDesc'),
-			icon: <ThunderboltOutlined style={{ fontSize: 40, color: '#fff' }} />,
-			color: `linear-gradient(135deg, ${token.colorPrimary} 0%, #112239 100%)`,
+			title: t('featureShield'),
+			description: t('featureShieldDesc'),
+			icon: <ThunderboltOutlined style={{ fontSize: 40, color: token.colorBgContainer }} />,
+			color: `linear-gradient(135deg, ${token.colorPrimary} 0%, ${token.colorPrimaryActive} 100%)`,
 			size: 'large',
 			delay: 0,
 		},
@@ -60,8 +58,6 @@ export default function FeatureSection() {
 		{
 			title: t('featureOffline'),
 			description: t('featureOfflineDesc'),
-			// icon: <SafetyCertificateOutlined style={{ fontSize: 32, color: token.colorTextSecondary }} />,
-			// Replaced with LoaderCat animation
 			element: (
 				<div
 					style={{
@@ -95,8 +91,8 @@ export default function FeatureSection() {
 		{
 			title: t('featureCommunity'),
 			description: t('featureCommunityDesc'),
-			icon: <GlobalOutlined style={{ fontSize: 32, color: '#fff' }} />,
-			color: `linear-gradient(135deg, ${token.colorSuccess} 0%, #506126 100%)`,
+			icon: <GlobalOutlined style={{ fontSize: 32, color: token.colorBgContainer }} />,
+			color: `linear-gradient(135deg, ${token.colorSuccess} 0%, ${token.colorSuccessActive} 100%)`,
 			size: 'large',
 			delay: 0.5,
 		},
@@ -118,7 +114,6 @@ export default function FeatureSection() {
 					maxWidth: 1200,
 					margin: '0 auto',
 					padding: isMd ? '0 24px' : '0 16px',
-					// backgroundColor: 'red',
 				}}
 			>
 				<motion.div
@@ -168,7 +163,11 @@ export default function FeatureSection() {
 								style={{ width: '100%', height: '100%' }}
 							>
 								<motion.div
-									whileHover={{ y: -5, boxShadow: '0 20px 40px rgba(0,0,0,0.08)' }}
+									whileHover={{
+										y: -5,
+										boxShadow: '0 20px 40px rgba(0,0,0,0.08)',
+										transition: { duration: 0.2 },
+									}}
 									style={{
 										height: '100%',
 										background: feature.color,
@@ -179,10 +178,16 @@ export default function FeatureSection() {
 										justifyContent: 'space-between',
 										border: feature.size === 'medium' ? `1px solid ${token.colorBorder}` : 'none',
 										color: feature.size === 'large' ? 'white' : token.colorText,
+										cursor: 'pointer',
 									}}
 								>
 									<div style={{ marginBottom: 24 }}>
-										<div
+										<motion.div
+											whileHover={{
+												scale: 1.1,
+												rotate: feature.icon ? 5 : 0,
+												transition: { duration: 0.3 },
+											}}
 											style={{
 												width: isMd ? 64 : 56,
 												height: isMd ? 64 : 56,
@@ -195,11 +200,11 @@ export default function FeatureSection() {
 												alignItems: 'center',
 												justifyContent: 'center',
 												marginBottom: 24,
-												overflow: 'hidden', // Contain animation if needed
+												overflow: 'hidden',
 											}}
 										>
 											{feature.element || feature.icon}
-										</div>
+										</motion.div>
 										<Title
 											level={3}
 											style={{

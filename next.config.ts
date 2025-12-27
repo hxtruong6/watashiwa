@@ -5,7 +5,6 @@ import createNextIntlPlugin from 'next-intl/plugin';
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig: NextConfig = {
-	/* config options here */
 	async rewrites() {
 		return [
 			{
@@ -22,11 +21,34 @@ const nextConfig: NextConfig = {
 			},
 		];
 	},
-	// This is required to support PostHog trailing slash API requests
 	skipTrailingSlashRedirect: true,
-	// Optimize package imports to reduce bundle size
 	experimental: {
-		optimizePackageImports: ['antd', '@ant-design/icons'],
+		optimizePackageImports: [
+			'antd',
+			'@ant-design/icons',
+			'framer-motion',
+			'@lottiefiles/dotlottie-react',
+			'date-fns',
+			'zod',
+			'zustand',
+		],
+	},
+	compiler: {
+		removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,
+	},
+	images: {
+		formats: ['image/avif', 'image/webp'],
+		deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+		imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+		minimumCacheTTL: 60,
+	},
+	outputFileTracingExcludes: {
+		'*': [
+			'node_modules/@swc/core-linux-x64-gnu',
+			'node_modules/@swc/core-linux-x64-musl',
+			'node_modules/@esbuild/linux-x64',
+			'node_modules/webpack',
+		],
 	},
 };
 
