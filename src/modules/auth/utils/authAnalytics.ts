@@ -34,10 +34,11 @@ export async function identifyUserForAuth(user: User): Promise<void> {
 
 /**
  * Track signup event with proper error handling
+ * Supports email and OAuth providers (google, etc.)
  */
 export function trackSignupEvent(
 	userId: string,
-	method: 'email' | 'oauth' = 'email',
+	method: 'email' | 'oauth' | 'google' = 'email',
 	source: string = 'unknown',
 ): void {
 	try {

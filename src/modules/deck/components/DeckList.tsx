@@ -18,7 +18,6 @@ import {
 import { motion } from 'motion/react';
 import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 const { Title, Text, Paragraph } = Typography;
@@ -47,7 +46,6 @@ export default function DeckList({ decks, userId }: DeckListProps) {
 	const { token } = useToken();
 	const t = useTranslations('Decks');
 	const locale = useLocale();
-	const router = useRouter();
 	const [searchTerm, setSearchTerm] = useState('');
 	const [filter, setFilter] = useState<'all' | 'mine' | 'public'>('all');
 
@@ -103,7 +101,7 @@ export default function DeckList({ decks, userId }: DeckListProps) {
 					</Text>
 				</motion.div>
 				<motion.div variants={itemVariants}>
-					<Link href="/dashboard/decks">
+					<Link href="/dashboard/decks" prefetch={true}>
 						<Button type="primary" size="middle">
 							{t('newDeck')}
 						</Button>
@@ -143,86 +141,87 @@ export default function DeckList({ decks, userId }: DeckListProps) {
 
 						return (
 							<Col xs={24} sm={12} md={8} lg={6} key={deck.id}>
-								<motion.div
-									variants={itemVariants}
-									whileHover={{ y: -5 }}
-									style={{ height: '100%' }}
-								>
-									<Card
-										hoverable
-										onClick={() => router.push(getDeckUrl({ id: deck.id, slug: deck.slug }))}
-										style={{
-											borderRadius: 16,
-											height: '100%',
-											display: 'flex',
-											flexDirection: 'column',
-											boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
-											cursor: 'pointer',
-										}}
-										styles={{ body: { flex: 1, display: 'flex', flexDirection: 'column' } }}
+								<Link href={getDeckUrl({ id: deck.id, slug: deck.slug })} prefetch={true}>
+									<motion.div
+										variants={itemVariants}
+										whileHover={{ y: -5 }}
+										style={{ height: '100%' }}
 									>
-										<Flex justify="space-between" align="start" style={{ marginBottom: 16 }}>
-											<div
-												style={{
-													width: 48,
-													height: 48,
-													borderRadius: 12,
-													background: '#F0F2F5',
-													display: 'flex',
-													alignItems: 'center',
-													justifyContent: 'center',
-													overflow: 'hidden',
-												}}
-											>
-												{deck.headerImage ? (
-													/* eslint-disable-next-line @next/next/no-img-element */
-													<img
-														src={deck.headerImage}
-														alt={displayTitle}
-														style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-													/>
-												) : (
-													<BookOutlined style={{ fontSize: 24, color: token.colorPrimary }} />
-												)}
-											</div>
-											{deck.isPublic ? (
-												// <Tag icon={<GlobalOutlined />} color="green">
-												// 	{t('publicTag')}
-												// </Tag>
-												<></>
-											) : (
-												<Tag icon={<TeamOutlined />} color="blue">
-													{t('privateTag')}
-												</Tag>
-											)}
-										</Flex>
-
-										<Title level={4} style={{ margin: '0 0 8px', color: token.colorPrimary }}>
-											{displayTitle}
-										</Title>
-
-										<Paragraph
-											type="secondary"
-											ellipsis={{ rows: 2 }}
-											style={{ flex: 1, marginBottom: 24 }}
+										<Card
+											hoverable
+											style={{
+												borderRadius: 16,
+												height: '100%',
+												display: 'flex',
+												flexDirection: 'column',
+												boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+												cursor: 'pointer',
+											}}
+											styles={{ body: { flex: 1, display: 'flex', flexDirection: 'column' } }}
 										>
-											{displayDescription || t('noDescription')}
-										</Paragraph>
+											<Flex justify="space-between" align="start" style={{ marginBottom: 16 }}>
+												<div
+													style={{
+														width: 48,
+														height: 48,
+														borderRadius: 12,
+														background: '#F0F2F5',
+														display: 'flex',
+														alignItems: 'center',
+														justifyContent: 'center',
+														overflow: 'hidden',
+													}}
+												>
+													{deck.headerImage ? (
+														/* eslint-disable-next-line @next/next/no-img-element */
+														<img
+															src={deck.headerImage}
+															alt={displayTitle}
+															style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+														/>
+													) : (
+														<BookOutlined style={{ fontSize: 24, color: token.colorPrimary }} />
+													)}
+												</div>
+												{deck.isPublic ? (
+													// <Tag icon={<GlobalOutlined />} color="green">
+													// 	{t('publicTag')}
+													// </Tag>
+													<></>
+												) : (
+													<Tag icon={<TeamOutlined />} color="blue">
+														{t('privateTag')}
+													</Tag>
+												)}
+											</Flex>
 
-										<Flex align="center" justify="space-between" style={{ marginTop: 'auto' }}>
-											<Tag color="default" style={{ margin: 0 }}>
-												{t('cardsCount', { count: deck._count?.vocabularies || 0 })}
-											</Tag>
-											<div onClick={(e) => e.stopPropagation()}>
-												<Link href={getDeckUrl({ id: deck.id, slug: deck.slug })}>
-													<Button type="text" icon={<RightOutlined />} iconPlacement="end">
-														{t('detailsButton')}
-													</Button>
-												</Link>
-											</div>
-										</Flex>
-									</Card>
-								</motion.div>
+											<Title level={4} style={{ margin: '0 0 8px', color: token.colorPrimary }}>
+												{displayTitle}
+											</Title>
+
+											<Paragraph
+												type="secondary"
+												ellipsis={{ rows: 2 }}
+												style={{ flex: 1, marginBottom: 24 }}
+											>
+												{displayDescription || t('noDescription')}
+											</Paragraph>
+
+											<Flex align="center" justify="space-between" style={{ marginTop: 'auto' }}>
+												<Tag color="default" style={{ margin: 0 }}>
+													{t('cardsCount', { count: deck._count?.vocabularies || 0 })}
+												</Tag>
+												<div onClick={(e) => e.stopPropagation()}>
+													<Link href={getDeckUrl({ id: deck.id, slug: deck.slug })} prefetch={true}>
+														<Button type="text" icon={<RightOutlined />} iconPlacement="end">
+															{t('detailsButton')}
+														</Button>
+													</Link>
+												</div>
+											</Flex>
+										</Card>
+									</motion.div>
+								</Link>
 							</Col>
 						);
 					})}
@@ -233,7 +232,7 @@ export default function DeckList({ decks, userId }: DeckListProps) {
 						image={Empty.PRESENTED_IMAGE_SIMPLE}
 						description={<Text type="secondary">{t('noDecksDescription')}</Text>}
 					>
-						<Link href="/dashboard/decks">
+						<Link href="/dashboard/decks" prefetch={true}>
 							<Button type="primary">{t('createDeckButton')}</Button>
 						</Link>
 					</Empty>

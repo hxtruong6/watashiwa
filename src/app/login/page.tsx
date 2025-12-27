@@ -3,9 +3,24 @@
 import { isValidReturnUrl } from '@/components/navbar/NavConfig';
 import { ambientGradients, customShadows } from '@/lib/theme/themeConfig';
 import { loginSchema, signupSchema } from '@/modules/auth/auth.dto';
+import { GoogleSignInButton } from '@/modules/auth/components/GoogleSignInButton';
+import { LoginMethodSelector } from '@/modules/auth/components/LoginMethodSelector';
 import { useAuth } from '@/modules/auth/hooks/useAuth';
+import { useLoginMethodCache } from '@/modules/auth/hooks/useLoginMethodCache';
 import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
-import { Alert, App, Button, Card, Flex, Form, Input, Typography, theme } from 'antd';
+import {
+	Alert,
+	App,
+	Button,
+	Card,
+	Divider,
+	Flex,
+	Form,
+	Input,
+	Spin,
+	Typography,
+	theme,
+} from 'antd';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
@@ -25,32 +40,40 @@ export default function AuthPage() {
 	const [mode, setMode] = useState<'login' | 'signup'>('login');
 
 	const returnUrl = searchParams.get('returnUrl');
+	const [isRedirecting, setIsRedirecting] = useState(false);
+
+	// Login method cache hook
+	const { updateCache } = useLoginMethodCache();
 
 	// Use custom auth hook - all business logic is extracted
-	const { loading, error, message, login, signup, resetState, setMessage } = useAuth({
-		onSuccess: (role) => {
-			// If returnUrl is provided and valid, redirect there after successful auth
-			if (returnUrl && isValidReturnUrl(returnUrl)) {
-				// Use window.location.href for full page reload to ensure middleware sees new session
-				console.log('[Login] Redirecting to returnUrl:', returnUrl);
-				window.location.href = returnUrl;
-				return;
-			}
-			// Default redirect: handle role-based or default redirect
-			if (role === 'ADMIN') {
-				console.log('[Login] Redirecting admin to /admin');
-				window.location.href = '/admin';
-				return;
-			}
-			// Force full reload ensures middleware sees the new cookie
-			console.log('[Login] Redirecting to home');
-			window.location.href = '/';
-		},
-		onError: (errorMsg) => {
-			antdMessage.error(errorMsg);
-		},
-		t, // Pass translation function for error messages
-	});
+	const { loading, error, message, login, signup, signInWithGoogle, resetState, setMessage } =
+		useAuth({
+			onSuccess: (role) => {
+				// Show loading indicator during redirect
+				setIsRedirecting(true);
+
+				// If returnUrl is provided and valid, redirect there after successful auth
+				if (returnUrl && isValidReturnUrl(returnUrl)) {
+					// Use window.location.href for full page reload to ensure middleware sees new session
+					console.log('[Login] Redirecting to returnUrl:', returnUrl);
+					window.location.href = returnUrl;
+					return;
+				}
+				// Default redirect: handle role-based or default redirect
+				if (role === 'ADMIN') {
+					console.log('[Login] Redirecting admin to /admin');
+					window.location.href = '/admin';
+					return;
+				}
+				// Force full reload ensures middleware sees the new cookie
+				console.log('[Login] Redirecting to home');
+				window.location.href = '/';
+			},
+			onError: (errorMsg) => {
+				antdMessage.error(errorMsg);
+			},
+			t, // Pass translation function for error messages
+		});
 
 	const isDark = token.colorBgBase === '#151F32';
 
@@ -76,6 +99,7 @@ export default function AuthPage() {
 			// Note: Redirect is handled in onSuccess callback
 			// Success message is shown briefly before redirect happens
 			if (result.success) {
+				updateCache(validationResult.data.email, 'email');
 				// Don't show success message - redirect happens immediately via onSuccess callback
 			}
 		} else {
@@ -115,6 +139,29 @@ export default function AuthPage() {
 				overflow: 'hidden',
 			}}
 		>
+			{/* Loading overlay during redirect */}
+			{isRedirecting && (
+				<div
+					style={{
+						position: 'fixed',
+						top: 0,
+						left: 0,
+						right: 0,
+						bottom: 0,
+						background: 'rgba(0, 0, 0, 0.5)',
+						backdropFilter: 'blur(4px)',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+						zIndex: 9999,
+					}}
+				>
+					<Flex vertical align="center" gap="middle">
+						<Spin size="large" />
+						<Text style={{ color: 'white', fontSize: 16 }}>Redirecting...</Text>
+					</Flex>
+				</div>
+			)}
 			{/* Ambient Background - Reused from Hero */}
 			<div
 				style={{
@@ -180,6 +227,11 @@ export default function AuthPage() {
 						<Text type="secondary" style={{ fontSize: 16 }}>
 							{mode === 'login' ? t('signInText') : t('createAccountText')}
 						</Text>
+						{mode === 'signup' && (
+							<Text type="secondary" style={{ fontSize: 12, marginTop: 8, display: 'block' }}>
+								{t('oauthWorksForBoth') || 'Or continue with Google to sign up instantly'}
+							</Text>
+						)}
 					</div>
 
 					{error && (
@@ -199,6 +251,23 @@ export default function AuthPage() {
 						/>
 					)}
 
+					{/* Quick login selector - only show in login mode */}
+					{mode === 'login' && (
+						<Form.Item noStyle shouldUpdate>
+							{({ setFieldsValue }) => (
+								<LoginMethodSelector
+									onEmailClick={(email) => {
+										// Pre-fill email in form
+										setFieldsValue({ email });
+									}}
+									onGoogleClick={() => {
+										signInWithGoogle();
+									}}
+								/>
+							)}
+						</Form.Item>
+					)}
+
 					<Form
 						name="auth-form"
 						initialValues={{ remember: true }}
@@ -208,6 +277,23 @@ export default function AuthPage() {
 						size="large"
 						validateTrigger="onBlur" // Only validate when field loses focus (prevents errors while typing)
 					>
+						{/* OAuth button - shown for both login and signup */}
+						<Form.Item style={{ marginBottom: 16 }}>
+							<GoogleSignInButton block />
+						</Form.Item>
+
+						{mode === 'login' && (
+							<Divider
+								style={{
+									margin: '0 0 24px 0',
+									borderColor: token.colorBorder,
+								}}
+							>
+								<Text type="secondary" style={{ fontSize: 12 }}>
+									{t('or') || 'OR'}
+								</Text>
+							</Divider>
+						)}
 						{mode === 'signup' && (
 							<Form.Item name="name" rules={[{ required: true, message: t('nameRequired') }]}>
 								<Input

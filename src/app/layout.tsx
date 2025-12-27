@@ -4,7 +4,10 @@ import DisableZoom from '@/components/DisableZoom';
 import NavBar from '@/components/NavBar';
 import PWAInstallPrompt from '@/components/PWA/PWAInstallPrompt';
 import PWALifecycle from '@/components/PWA/PWALifecycle';
+import { StructuredData } from '@/components/SEO/StructuredData';
 import ThemeProvider from '@/components/theme/ThemeProvider';
+import { SEO_CONFIG } from '@/lib/seo/constants';
+import { generatePageMetadata } from '@/lib/seo/metadata';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import type { Metadata, Viewport } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
@@ -25,47 +28,24 @@ const geistMono = Geist_Mono({
 });
 
 export async function generateMetadata(): Promise<Metadata> {
-	const locale = await getLocale();
+	const locale = (await getLocale()) as 'vi' | 'en';
 
-	// Vietnamese Metadata (Default)
-	const metaVi = {
-		title: 'WatashiWa: Học hết khoai, nhớ cực dai',
-		description:
-			'Người bạn đồng hành học tiếng Nhật với SRS. Không áp lực, nhớ lâu, học theo cách của bạn. Hai hệ máy, miễn phí & mã nguồn mở.',
-		keywords: [
-			'học tiếng nhật',
-			'srs',
-			'hán việt',
-			'kanji',
-			'jlpt',
-			'minna no nihongo',
-			'từ vựng tiếng nhật',
-		],
-	};
+	const metadata = generatePageMetadata({
+		locale,
+		url: '/',
+	});
 
-	// English Metadata
-	const metaEn = {
-		title: 'WatashiWa: Learn Smart, Not Hard',
-		description:
-			'Your Japanese learning buddy. Master vocab with SRS, zero pressure. Open source & free forever.',
-		keywords: [
-			'learn japanese',
-			'srs',
-			'kanji',
-			'spaced repetition',
-			'jlpt',
-			'han viet',
-			'vocabulary',
-		],
-	};
+	// Add Google Search Console verification if available
+	const verification = process.env.GOOGLE_SEARCH_CONSOLE_VERIFICATION;
+	if (verification) {
+		metadata.verification = {
+			google: verification,
+		};
+	}
 
-	const meta = locale === 'vi' ? metaVi : metaEn;
-
+	// Add icons and PWA metadata
 	return {
-		metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
-		title: meta.title,
-		description: meta.description,
-		keywords: meta.keywords,
+		...metadata,
 		icons: {
 			icon: '/assets/w_logo.png',
 			shortcut: '/assets/w_logo.png',
@@ -77,28 +57,6 @@ export async function generateMetadata(): Promise<Metadata> {
 			statusBarStyle: 'black-translucent',
 		},
 		manifest: '/manifest.json',
-		openGraph: {
-			title: meta.title,
-			description: meta.description,
-			url: 'https://watashiwa.app',
-			siteName: 'WatashiWa',
-			images: [
-				{
-					url: '/assets/w_logo.png',
-					width: 512,
-					height: 512,
-					alt: 'WatashiWa Logo',
-				},
-			],
-			locale: locale === 'vi' ? 'vi_VN' : 'en_US',
-			type: 'website',
-		},
-		twitter: {
-			card: 'summary',
-			title: meta.title,
-			description: meta.description,
-			images: ['/assets/w_logo.png'],
-		},
 	};
 }
 
@@ -125,6 +83,7 @@ export default async function RootLayout({
 	return (
 		<html lang={locale} suppressHydrationWarning>
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
+				<StructuredData />
 				<DisableZoom />
 				<PostHogPageTracker />
 				<UserReturnTracker />

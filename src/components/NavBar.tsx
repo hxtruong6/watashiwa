@@ -1,5 +1,6 @@
 'use client';
 
+import ProtectedLink from '@/components/Shared/ProtectedLink';
 import ShareModal from '@/modules/deck/components/ShareModal';
 import { useUIStore } from '@/modules/ui/store/useUIStore';
 import LanguageSelector from '@/modules/user/components/LanguageSelector';
@@ -101,6 +102,14 @@ export default function NavBar({ user }: { user?: User | null }) {
 	};
 
 	const handleLogout = async () => {
+		// Clear login method cache on logout
+		if (typeof window !== 'undefined') {
+			try {
+				localStorage.removeItem('watashi_login_methods');
+			} catch (error) {
+				console.error('[NavBar] Failed to clear login cache:', error);
+			}
+		}
 		await supabase.auth.signOut();
 		router.push('/login');
 		router.refresh();
@@ -259,7 +268,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 		const [isHovered, setIsHovered] = useState(false);
 
 		return (
-			<div onClick={(e) => handleNavClick(item.path, e)} style={{ cursor: 'pointer' }}>
+			<ProtectedLink href={item.path} isPublic={isPublic} prefetch={true}>
 				<MotionDiv
 					onHoverStart={() => setIsHovered(true)}
 					onHoverEnd={() => setIsHovered(false)}
@@ -309,7 +318,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 						/>
 					)}
 				</MotionDiv>
-			</div>
+			</ProtectedLink>
 		);
 	};
 
@@ -512,9 +521,11 @@ export default function NavBar({ user }: { user?: User | null }) {
 									: pathname.startsWith(item.path) && item.path !== '/';
 
 							return (
-								<div
+								<ProtectedLink
 									key={item.key}
-									onClick={(e) => handleNavClick(item.path, e)}
+									href={item.path}
+									isPublic={isPublic}
+									prefetch={true}
 									style={{ flex: 1, cursor: 'pointer' }}
 								>
 									<Flex vertical align="center" gap={4}>
@@ -529,7 +540,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 											{item.icon}
 										</div>
 									</Flex>
-								</div>
+								</ProtectedLink>
 							);
 						})}
 					</motion.div>
@@ -602,22 +613,20 @@ export default function NavBar({ user }: { user?: User | null }) {
 								{t('signUpToAccessDesc')}
 							</Text>
 						</div>
-						<Button
-							type="primary"
-							size="large"
-							block
-							onClick={() => {
-								setMobileDrawerOpen(false);
-								router.push('/login');
-							}}
-							style={{
-								marginBottom: 12,
-								height: 'clamp(44px, 10vw, 48px)',
-								fontSize: 'clamp(14px, 3.5vw, 16px)',
-							}}
-						>
-							{t('loginStart')}
-						</Button>
+						<Link href="/login" prefetch={true} onClick={() => setMobileDrawerOpen(false)}>
+							<Button
+								type="primary"
+								size="large"
+								block
+								style={{
+									marginBottom: 12,
+									height: 'clamp(44px, 10vw, 48px)',
+									fontSize: 'clamp(14px, 3.5vw, 16px)',
+								}}
+							>
+								{t('loginStart')}
+							</Button>
+						</Link>
 						<Button
 							type="text"
 							size="large"

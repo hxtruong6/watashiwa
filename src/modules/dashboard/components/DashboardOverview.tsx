@@ -14,6 +14,7 @@ import {
 	TrendingTips,
 	WeeklyChart,
 } from '@/components/dashboard';
+import { OAuthCacheUpdater } from '@/modules/auth/components/OAuthCacheUpdater';
 import StudySettings from '@/modules/study/components/Session/StudySettings';
 import type { User } from '@prisma/client';
 import { Divider, Drawer, theme } from 'antd';
@@ -128,123 +129,131 @@ export default function DashboardOverview({
 	};
 
 	return (
-		<motion.div
-			variants={containerVariants}
-			initial="hidden"
-			animate="visible"
-			style={{ maxWidth: 1000, margin: '0 auto', padding: '20px 16px 80px', position: 'relative' }} // Reduced top padding, added bottom for nav
-		>
-			{/* Hero: Greeting + Streak + Daily Goal */}
-			<HeroSection
-				userName={userName}
-				streak={stats.streak}
-				dailyProgress={stats.totalReviewed}
-				dailyGoal={dailyGoal}
-			/>
-			{/* Primary CTA: Start Review */}
-			<motion.div variants={itemVariants}>
-				<DueCTA dueCount={reviewCount} />
-			</motion.div>
-
-			{/* Forecast Widget */}
-			{forecast && (
-				<motion.div variants={itemVariants}>
-					<NextReviewWidget
-						nextReview={forecast.nextReview}
-						urgentCard={forecast.urgentCard}
-						forecastCount={forecast.forecastCount}
-						streak={stats.streak}
-						reviewedToday={stats.totalReviewed}
-					/>
-				</motion.div>
-			)}
-
-			{/* Ambient: Matcha Wisdom */}
-			<MatchaWisdomWidget />
-
-			{/* Weekly Progress Chart */}
-			{weeklyStats && (
-				<motion.div variants={itemVariants}>
-					<WeeklyChart
-						data={weeklyStats.days}
-						thisWeekTotal={weeklyStats.thisWeekTotal}
-						bestDay={weeklyStats.bestDay}
-					/>
-				</motion.div>
-			)}
-
-			{/* Stats Grid */}
-			<motion.div variants={itemVariants}>
-				<StatsGrid streak={stats.streak} reviewedToday={stats.totalReviewed} />
-			</motion.div>
-
-			{/* Global Leaderboard */}
-			<motion.div variants={itemVariants} style={{ marginTop: 24 }}>
-				<GlobalLeaderboard users={leaderboard} currentUserId={userId} />
-			</motion.div>
-
-			{/* Your Top Tips (Small section under progress) */}
-			<motion.div variants={itemVariants}>
-				<MyContributions />
-			</motion.div>
-
-			{/* Quick Actions */}
-			<motion.div variants={itemVariants}>
-				<QuickActions />
-			</motion.div>
-
-			{/* My Decks */}
-			<motion.div variants={itemVariants}>
-				<MyDecks decks={decks} />
-			</motion.div>
-
-			{/* Community Highlights (Trending) - Bottom of page */}
-			<motion.div variants={itemVariants}>
-				<Divider />
-				<TrendingTips />
-			</motion.div>
-
-			{/* Admin Button */}
-			{(userRole === 'ADMIN' || userRole === 'MODERATOR') && (
-				<motion.div variants={itemVariants} style={{ marginTop: 24, textAlign: 'center' }}>
-					<Link
-						href="/admin"
-						style={{
-							display: 'inline-block',
-							padding: '12px 24px',
-							background: token.colorPrimary,
-							color: 'white',
-							borderRadius: 12,
-							fontWeight: 600,
-							textDecoration: 'none',
-							boxShadow: '0 4px 12px rgba(30, 58, 95, 0.2)',
-						}}
-					>
-						Go to Admin Panel
-					</Link>
-				</motion.div>
-			)}
-
-			{/* Donation Button */}
-			<motion.div variants={itemVariants}>
-				<DonationButton />
-			</motion.div>
-
-			{/* Settings Drawer */}
-			<Drawer
-				title="Settings"
-				placement="right"
-				onClose={() => setIsSettingsOpen(false)}
-				open={isSettingsOpen}
-				size="default"
+		<>
+			<OAuthCacheUpdater />
+			<motion.div
+				variants={containerVariants}
+				initial="hidden"
+				animate="visible"
+				style={{
+					maxWidth: 1000,
+					margin: '0 auto',
+					padding: '20px 16px 80px',
+					position: 'relative',
+				}} // Reduced top padding, added bottom for nav
 			>
-				<StudySettings
-					userSettings={userSettings || null}
-					onSettingsChange={() => {
-						router.refresh();
-					}}
+				{/* Hero: Greeting + Streak + Daily Goal */}
+				<HeroSection
+					userName={userName}
+					streak={stats.streak}
+					dailyProgress={stats.totalReviewed}
+					dailyGoal={dailyGoal}
 				/>
-			</Drawer>
-		</motion.div>
+				{/* Primary CTA: Start Review */}
+				<motion.div variants={itemVariants}>
+					<DueCTA dueCount={reviewCount} />
+				</motion.div>
+
+				{/* Forecast Widget */}
+				{forecast && (
+					<motion.div variants={itemVariants}>
+						<NextReviewWidget
+							nextReview={forecast.nextReview}
+							urgentCard={forecast.urgentCard}
+							forecastCount={forecast.forecastCount}
+							streak={stats.streak}
+							reviewedToday={stats.totalReviewed}
+						/>
+					</motion.div>
+				)}
+
+				{/* Ambient: Matcha Wisdom */}
+				<MatchaWisdomWidget />
+
+				{/* Weekly Progress Chart */}
+				{weeklyStats && (
+					<motion.div variants={itemVariants}>
+						<WeeklyChart
+							data={weeklyStats.days}
+							thisWeekTotal={weeklyStats.thisWeekTotal}
+							bestDay={weeklyStats.bestDay}
+						/>
+					</motion.div>
+				)}
+
+				{/* Stats Grid */}
+				<motion.div variants={itemVariants}>
+					<StatsGrid streak={stats.streak} reviewedToday={stats.totalReviewed} />
+				</motion.div>
+
+				{/* Global Leaderboard */}
+				<motion.div variants={itemVariants} style={{ marginTop: 24 }}>
+					<GlobalLeaderboard users={leaderboard} currentUserId={userId} />
+				</motion.div>
+
+				{/* Your Top Tips (Small section under progress) */}
+				<motion.div variants={itemVariants}>
+					<MyContributions />
+				</motion.div>
+
+				{/* Quick Actions */}
+				<motion.div variants={itemVariants}>
+					<QuickActions />
+				</motion.div>
+
+				{/* My Decks */}
+				<motion.div variants={itemVariants}>
+					<MyDecks decks={decks} />
+				</motion.div>
+
+				{/* Community Highlights (Trending) - Bottom of page */}
+				<motion.div variants={itemVariants}>
+					<Divider />
+					<TrendingTips />
+				</motion.div>
+
+				{/* Admin Button */}
+				{(userRole === 'ADMIN' || userRole === 'MODERATOR') && (
+					<motion.div variants={itemVariants} style={{ marginTop: 24, textAlign: 'center' }}>
+						<Link
+							href="/admin"
+							style={{
+								display: 'inline-block',
+								padding: '12px 24px',
+								background: token.colorPrimary,
+								color: 'white',
+								borderRadius: 12,
+								fontWeight: 600,
+								textDecoration: 'none',
+								boxShadow: '0 4px 12px rgba(30, 58, 95, 0.2)',
+							}}
+						>
+							Go to Admin Panel
+						</Link>
+					</motion.div>
+				)}
+
+				{/* Donation Button */}
+				<motion.div variants={itemVariants}>
+					<DonationButton />
+				</motion.div>
+
+				{/* Settings Drawer */}
+				<Drawer
+					title="Settings"
+					placement="right"
+					onClose={() => setIsSettingsOpen(false)}
+					open={isSettingsOpen}
+					size="default"
+				>
+					<StudySettings
+						userSettings={userSettings || null}
+						onSettingsChange={() => {
+							router.refresh();
+						}}
+					/>
+				</Drawer>
+			</motion.div>
+		</>
 	);
 }

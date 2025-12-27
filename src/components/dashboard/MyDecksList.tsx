@@ -25,7 +25,6 @@ import {
 } from 'antd';
 import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import React from 'react';
 
 const { Title, Text, Paragraph } = Typography;
@@ -111,7 +110,6 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 	const { token } = useToken();
 	const t = useTranslations('MyDecks');
 	const locale = useLocale();
-	const router = useRouter();
 
 	return (
 		<div style={{ maxWidth: 1200, margin: '0 auto', padding: '24px 16px' }}>
@@ -159,110 +157,119 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 
 							return (
 								<Col xs={24} sm={12} md={8} key={deck.id}>
-									<Card
-										hoverable
-										onClick={() => router.push(getDeckUrl({ id: deck.id, slug: deck.slug }))}
-										style={{
-											borderRadius: 16,
-											height: '100%',
-											cursor: 'pointer',
-											borderColor:
-												deck.learningStats && deck.learningStats.dueCount > 0
-													? token.colorWarning
-													: undefined,
-										}}
-									>
-										{/* Due Badge (if any) */}
-										{deck.learningStats && deck.learningStats.dueCount > 0 && (
-											<Tag
-												color="orange"
-												style={{
-													position: 'absolute',
-													top: 12,
-													right: 12,
-													zIndex: 1,
-													fontWeight: 600,
-												}}
-											>
-												{t('dueCount', { count: deck.learningStats.dueCount })}
-											</Tag>
-										)}
+									<Link href={getDeckUrl({ id: deck.id, slug: deck.slug })} prefetch={true}>
+										<Card
+											hoverable
+											style={{
+												borderRadius: 16,
+												height: '100%',
+												cursor: 'pointer',
+												borderColor:
+													deck.learningStats && deck.learningStats.dueCount > 0
+														? token.colorWarning
+														: undefined,
+											}}
+										>
+											{/* Due Badge (if any) */}
+											{deck.learningStats && deck.learningStats.dueCount > 0 && (
+												<Tag
+													color="orange"
+													style={{
+														position: 'absolute',
+														top: 12,
+														right: 12,
+														zIndex: 1,
+														fontWeight: 600,
+													}}
+												>
+													{t('dueCount', { count: deck.learningStats.dueCount })}
+												</Tag>
+											)}
 
-										<Flex gap="middle" vertical>
-											<Flex justify="space-between" align="start">
-												<Title level={4} style={{ margin: 0, color: token.colorPrimary, flex: 1 }}>
-													{displayTitle}
-												</Title>
-												{/* Progress Ring */}
-												<Progress
-													type="circle"
-													percent={masteryPercent}
-													size={50}
-													strokeColor={token.colorSuccess}
-													format={(percent) => (
-														<span style={{ fontSize: 10, color: token.colorTextSecondary }}>
-															{percent}%
-														</span>
-													)}
-												/>
-											</Flex>
-
-											{/* Stats Grid */}
-											<Flex vertical gap="small" style={{ marginTop: 8 }}>
-												<Text type="secondary" style={{ fontSize: 12 }}>
-													{t('mastered', {
-														count: deck.learningStats?.masteredCount || 0,
-														total: deck.learningStats?.totalCards || 0,
-													})}
-												</Text>
-
-												<Flex align="center" gap="small">
-													<ClockCircleOutlined style={{ color: token.colorTextSecondary }} />
-													<Text type="secondary" style={{ fontSize: 13 }}>
-														{t('lastStudied', {
-															time: formatRelativeTime(deck.learningStats?.lastStudied || null, t),
-														})}
-													</Text>
+											<Flex gap="middle" vertical>
+												<Flex justify="space-between" align="start">
+													<Title
+														level={4}
+														style={{ margin: 0, color: token.colorPrimary, flex: 1 }}
+													>
+														{displayTitle}
+													</Title>
+													{/* Progress Ring */}
+													<Progress
+														type="circle"
+														percent={masteryPercent}
+														size={50}
+														strokeColor={token.colorSuccess}
+														format={(percent) => (
+															<span style={{ fontSize: 10, color: token.colorTextSecondary }}>
+																{percent}%
+															</span>
+														)}
+													/>
 												</Flex>
 
-												{/* Next Review Time (if nothing due now) */}
-												{deck.learningStats?.dueCount === 0 && deck.learningStats?.nextReview && (
+												{/* Stats Grid */}
+												<Flex vertical gap="small" style={{ marginTop: 8 }}>
+													<Text type="secondary" style={{ fontSize: 12 }}>
+														{t('mastered', {
+															count: deck.learningStats?.masteredCount || 0,
+															total: deck.learningStats?.totalCards || 0,
+														})}
+													</Text>
+
 													<Flex align="center" gap="small">
-														<CalendarOutlined style={{ color: token.colorTextSecondary }} />
+														<ClockCircleOutlined style={{ color: token.colorTextSecondary }} />
 														<Text type="secondary" style={{ fontSize: 13 }}>
-															{t('nextReviewIn', {
-																time: formatNextReview(deck.learningStats.nextReview, t),
+															{t('lastStudied', {
+																time: formatRelativeTime(
+																	deck.learningStats?.lastStudied || null,
+																	t,
+																),
 															})}
 														</Text>
 													</Flex>
-												)}
-											</Flex>
 
-											{/* Study Button */}
-											<div style={{ marginTop: 'auto', paddingTop: 16 }}>
-												{deck.learningStats && deck.learningStats.dueCount > 0 ? (
-													<Link
-														href={`/study?deckId=${deck.id}`}
-														onClick={(e) => e.stopPropagation()}
-													>
-														<Button type="primary" block size="large" icon={<RocketOutlined />}>
-															{t('studyNow')}
-														</Button>
-													</Link>
-												) : (
-													// Disabled / secondary button if nothing due
-													<Link
-														href={`/study?deckId=${deck.id}`}
-														onClick={(e) => e.stopPropagation()}
-													>
-														<Button block icon={<BookOutlined />}>
-															{t('view')}
-														</Button>
-													</Link>
-												)}
-											</div>
-										</Flex>
-									</Card>
+													{/* Next Review Time (if nothing due now) */}
+													{deck.learningStats?.dueCount === 0 && deck.learningStats?.nextReview && (
+														<Flex align="center" gap="small">
+															<CalendarOutlined style={{ color: token.colorTextSecondary }} />
+															<Text type="secondary" style={{ fontSize: 13 }}>
+																{t('nextReviewIn', {
+																	time: formatNextReview(deck.learningStats.nextReview, t),
+																})}
+															</Text>
+														</Flex>
+													)}
+												</Flex>
+
+												{/* Study Button */}
+												<div style={{ marginTop: 'auto', paddingTop: 16 }}>
+													{deck.learningStats && deck.learningStats.dueCount > 0 ? (
+														<Link
+															href={`/study?deckId=${deck.id}`}
+															prefetch={true}
+															onClick={(e) => e.stopPropagation()}
+														>
+															<Button type="primary" block size="large" icon={<RocketOutlined />}>
+																{t('studyNow')}
+															</Button>
+														</Link>
+													) : (
+														// Disabled / secondary button if nothing due
+														<Link
+															href={`/study?deckId=${deck.id}`}
+															prefetch={true}
+															onClick={(e) => e.stopPropagation()}
+														>
+															<Button block icon={<BookOutlined />}>
+																{t('view')}
+															</Button>
+														</Link>
+													)}
+												</div>
+											</Flex>
+										</Card>
+									</Link>
 								</Col>
 							);
 						})}
@@ -291,74 +298,75 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 
 							return (
 								<Col xs={24} sm={12} md={8} lg={6} key={deck.id}>
-									<Card
-										hoverable
-										onClick={() => router.push(getDeckUrl({ id: deck.id, slug: deck.slug }))}
-										style={{
-											borderRadius: 16,
-											height: '100%',
-											cursor: 'pointer',
-										}}
-									>
-										<Flex justify="space-between" align="start" style={{ marginBottom: 12 }}>
-											<div
-												style={{
-													width: 48,
-													height: 48,
-													borderRadius: 12,
-													background: token.colorBgContainer,
-													display: 'flex',
-													alignItems: 'center',
-													justifyContent: 'center',
-												}}
+									<Link href={getDeckUrl({ id: deck.id, slug: deck.slug })} prefetch={true}>
+										<Card
+											hoverable
+											style={{
+												borderRadius: 16,
+												height: '100%',
+												cursor: 'pointer',
+											}}
+										>
+											<Flex justify="space-between" align="start" style={{ marginBottom: 12 }}>
+												<div
+													style={{
+														width: 48,
+														height: 48,
+														borderRadius: 12,
+														background: token.colorBgContainer,
+														display: 'flex',
+														alignItems: 'center',
+														justifyContent: 'center',
+													}}
+												>
+													<BookOutlined style={{ fontSize: 24, color: token.colorPrimary }} />
+												</div>
+												<Flex gap="small">
+													{deck.isPublic ? (
+														<Tag color="blue">{t('public')}</Tag>
+													) : (
+														<Tag color="orange">{t('private')}</Tag>
+													)}
+												</Flex>
+											</Flex>
+
+											<Title level={4} style={{ margin: '0 0 8px', color: token.colorPrimary }}>
+												{displayTitle}
+											</Title>
+
+											<Paragraph
+												type="secondary"
+												ellipsis={{ rows: 2 }}
+												style={{ marginBottom: 16, minHeight: 44 }}
 											>
-												<BookOutlined style={{ fontSize: 24, color: token.colorPrimary }} />
-											</div>
-											<Flex gap="small">
-												{deck.isPublic ? (
-													<Tag color="blue">{t('public')}</Tag>
-												) : (
-													<Tag color="orange">{t('private')}</Tag>
+												{displayDescription || t('noDescription')}
+											</Paragraph>
+
+											{/* Learners Count & Items */}
+											<Flex gap="small" style={{ marginBottom: 16 }}>
+												<Tag icon={<RocketOutlined />} color="default">
+													{t('cardsCount', { count: deck._count.vocabularies })}
+												</Tag>
+												{deck.learnersCount > 0 && (
+													<Tag icon={<UserOutlined />} color="gold">
+														{t('learners', { count: deck.learnersCount })}
+													</Tag>
 												)}
 											</Flex>
-										</Flex>
 
-										<Title level={4} style={{ margin: '0 0 8px', color: token.colorPrimary }}>
-											{displayTitle}
-										</Title>
-
-										<Paragraph
-											type="secondary"
-											ellipsis={{ rows: 2 }}
-											style={{ marginBottom: 16, minHeight: 44 }}
-										>
-											{displayDescription || t('noDescription')}
-										</Paragraph>
-
-										{/* Learners Count & Items */}
-										<Flex gap="small" style={{ marginBottom: 16 }}>
-											<Tag icon={<RocketOutlined />} color="default">
-												{t('cardsCount', { count: deck._count.vocabularies })}
-											</Tag>
-											{deck.learnersCount > 0 && (
-												<Tag icon={<UserOutlined />} color="gold">
-													{t('learners', { count: deck.learnersCount })}
-												</Tag>
-											)}
-										</Flex>
-
-										<Flex
-											align="center"
-											justify="end"
-											gap="small"
-											onClick={(e) => e.stopPropagation()}
-										>
-											<Link href={getDeckUrl({ id: deck.id, slug: deck.slug })}>
-												<Button size="small">{t('view')}</Button>
-											</Link>
-											<DeckListActions mode="edit" deck={deck} />
-										</Flex>
-									</Card>
+											<Flex
+												align="center"
+												justify="end"
+												gap="small"
+												onClick={(e) => e.stopPropagation()}
+											>
+												<Link href={getDeckUrl({ id: deck.id, slug: deck.slug })} prefetch={true}>
+													<Button size="small">{t('view')}</Button>
+												</Link>
+												<DeckListActions mode="edit" deck={deck} />
+											</Flex>
+										</Card>
+									</Link>
 								</Col>
 							);
 						})}

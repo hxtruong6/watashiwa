@@ -8,7 +8,7 @@
 
 import { BookOutlined, CheckCircleOutlined, RocketOutlined } from '@ant-design/icons';
 import { Button, Flex, Typography, theme } from 'antd';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import React from 'react';
 
 const { Title, Text, Paragraph } = Typography;
@@ -21,7 +21,6 @@ interface SessionEmptyStateProps {
 
 export const SessionEmptyState: React.FC<SessionEmptyStateProps> = ({ scenario, deckId }) => {
 	const { token } = useToken();
-	const router = useRouter();
 
 	const configs = {
 		NO_DECK: {
@@ -33,12 +32,12 @@ export const SessionEmptyState: React.FC<SessionEmptyStateProps> = ({ scenario, 
 				{
 					label: 'Browse Library',
 					icon: <BookOutlined />,
-					onClick: () => router.push('/decks'),
+					href: '/decks',
 					type: 'primary' as const,
 				},
 				{
 					label: 'Go Home',
-					onClick: () => router.push('/'),
+					href: '/',
 					type: 'default' as const,
 				},
 			],
@@ -52,13 +51,13 @@ export const SessionEmptyState: React.FC<SessionEmptyStateProps> = ({ scenario, 
 				{
 					label: 'Study Ahead',
 					icon: <RocketOutlined />,
-					onClick: () => router.push(`/exercises?deckId=${deckId}`),
+					href: `/exercises?deckId=${deckId}`,
 					type: 'primary' as const,
 				},
 				{
 					label: 'Browse Other Decks',
 					icon: <BookOutlined />,
-					onClick: () => router.push('/decks'),
+					href: '/decks',
 					type: 'default' as const,
 				},
 			],
@@ -71,13 +70,13 @@ export const SessionEmptyState: React.FC<SessionEmptyStateProps> = ({ scenario, 
 			actions: [
 				{
 					label: 'View Deck Details',
-					onClick: () => router.push(`/decks/${deckId}`),
+					href: `/decks/${deckId}`,
 					type: 'primary' as const,
 				},
 				{
 					label: 'Browse Library',
 					icon: <BookOutlined />,
-					onClick: () => router.push('/decks'),
+					href: '/decks',
 					type: 'default' as const,
 				},
 			],
@@ -149,19 +148,19 @@ export const SessionEmptyState: React.FC<SessionEmptyStateProps> = ({ scenario, 
 			{/* Action Buttons */}
 			<Flex gap="middle" wrap="wrap" justify="center">
 				{config.actions.map((action, index) => (
-					<Button
-						key={index}
-						type={action.type}
-						size="large"
-						icon={action.icon}
-						onClick={action.onClick}
-						style={{
-							minWidth: 160,
-							height: 48,
-						}}
-					>
-						{action.label}
-					</Button>
+					<Link key={index} href={action.href} prefetch={true}>
+						<Button
+							type={action.type}
+							size="large"
+							icon={action.icon}
+							style={{
+								minWidth: 160,
+								height: 48,
+							}}
+						>
+							{action.label}
+						</Button>
+					</Link>
 				))}
 			</Flex>
 		</Flex>

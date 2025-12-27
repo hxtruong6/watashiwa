@@ -241,6 +241,15 @@
 			"easy": "Đã đạt độ lưu loát"
 		},
 		"summary": {
+			"title": "Hoàn thành phiên học!",
+			"subtitle": "Làm tốt lắm! Bạn đã hoàn thành bài ôn tập rồi.",
+			"dashboard": "Trang chủ",
+			"browseDecks": "Duyệt bộ thẻ",
+			"totalReviews": "Tổng số ôn",
+			"time": "Thời gian",
+			"newL1": "Mới L1",
+			"perfectL4": "Hoàn hảo L4",
+			"cardNumber": "Thẻ {number}",
 			"forgottenWordsTitle": "Từ cần ôn lại ({count})",
 			"forgottenWordsDescription": "Những từ này cần luyện tập thêm. Hãy xem xét ôn lại chúng sớm."
 		},
@@ -655,7 +664,22 @@
 		"errorUserExists": "Đã có tài khoản với email này rồi",
 		"errorAuthFailed": "Có lỗi xảy ra khi xác thực",
 		"errorAllFieldsRequired": "Vui lòng điền đầy đủ thông tin",
-		"errorOriginMissing": "Không thể xác định nguồn ứng dụng"
+		"errorOriginMissing": "Không thể xác định nguồn ứng dụng",
+		"signInWithGoogle": "Tiếp tục với Google",
+		"signInWithGoogleAlt": "Đăng nhập bằng Google",
+		"quickLogin": "Đăng nhập nhanh",
+		"lastLoginToday": "Hôm nay",
+		"lastLoginWeek": "Tuần này",
+		"lastLoginMonth": "Tháng này",
+		"lastLoginRecent": "Gần đây",
+		"lastLoginOld": "Lâu rồi",
+		"or": "HOẶC",
+		"errorOfflineGoogle": "Cần kết nối internet để đăng nhập bằng Google",
+		"errorOAuthNetwork": "Không thể kết nối với Google. Vui lòng kiểm tra kết nối internet.",
+		"errorOAuthCancelled": "Đã hủy đăng nhập. Vui lòng thử lại.",
+		"errorCacheUnavailable": "Bộ nhớ đăng nhập không khả dụng",
+		"oauthWorksForBoth": "Hoặc tiếp tục với Google để đăng ký ngay",
+		"providerGoogle": "Google"
 	},
 	"ForgotPassword": {
 		"title": "Quên Mật Khẩu",
@@ -724,5 +748,296 @@
 		"streakRescueBody": "Bạn sắp mất chuỗi {streak} ngày. Học ngay 1 bài để cứu chuỗi!",
 		"reviewAlertTitle": "{count} thẻ đang chờ...",
 		"reviewAlertBody": "Ôn tập ngay để trí nhớ luôn sắc bén."
+	},
+	"Legal": {
+		"privacyPolicy": {
+			"metaTitle": "Chính Sách Bảo Mật | WatashiWa",
+			"metaDescription": "Tìm hiểu cách WatashiWa thu thập, sử dụng và bảo vệ dữ liệu cá nhân và thông tin học tập của bạn.",
+			"title": "Chính Sách Bảo Mật",
+			"lastUpdated": "Cập nhật lần cuối",
+			"lastUpdatedDate": "Tháng 1 năm 2025",
+			"section1": {
+				"title": "Giới thiệu",
+				"content": "WatashiWa (\"chúng tôi\" hoặc \"của chúng tôi\") cam kết bảo vệ quyền riêng tư của bạn. Chính sách Bảo mật này giải thích cách chúng tôi thu thập, sử dụng, tiết lộ và bảo vệ thông tin của bạn khi bạn sử dụng ứng dụng học tiếng Nhật của chúng tôi."
+			},
+			"section2": {
+				"title": "Thông tin chúng tôi thu thập",
+				"content": "Chúng tôi thu thập thông tin mà bạn cung cấp trực tiếp và thông tin được thu thập tự động khi bạn sử dụng dịch vụ:",
+				"item1": "Thông tin tài khoản: Địa chỉ email, tên và ảnh đại diện (nếu được cung cấp qua OAuth)",
+				"item2": "Dữ liệu học tập: Thẻ ghi nhớ, bộ thẻ, lịch sử ôn tập, dữ liệu lên lịch SRS và tiến độ học tập của bạn",
+				"item3": "Nội dung người dùng: Bộ thẻ bạn tạo, mẹo cộng đồng, bình luận và bất kỳ nội dung nào bạn đóng góp",
+				"item4": "Dữ liệu sử dụng: Dữ liệu phân tích được thu thập qua PostHog để hiểu cách bạn tương tác với ứng dụng",
+				"item5": "Dữ liệu kỹ thuật: Thông tin thiết bị, loại trình duyệt, địa chỉ IP và mẫu sử dụng"
+			},
+			"section3": {
+				"title": "Cách chúng tôi sử dụng thông tin",
+				"content": "Chúng tôi sử dụng thông tin đã thu thập cho các mục đích sau:",
+				"item1": "Để cung cấp và duy trì dịch vụ, bao gồm tính toán thuật toán SRS và trải nghiệm học tập cá nhân hóa",
+				"item2": "Để cải thiện dịch vụ bằng cách phân tích mẫu sử dụng và phản hồi từ người dùng",
+				"item3": "Để giao tiếp với bạn về tài khoản, cập nhật và các thay đổi dịch vụ quan trọng",
+				"item4": "Để đảm bảo bảo mật và ngăn chặn gian lận hoặc lạm dụng"
+			},
+			"section4": {
+				"title": "Lưu trữ và Bảo mật Dữ liệu",
+				"content": "Dữ liệu của bạn được lưu trữ an toàn bằng các phương pháp tiêu chuẩn ngành:",
+				"subtitle1": "Lưu trữ Cơ sở dữ liệu",
+				"item1": "Tài khoản người dùng và dữ liệu học tập được lưu trữ trong cơ sở dữ liệu PostgreSQL được quản lý qua Prisma ORM",
+				"item2": "Xác thực được xử lý an toàn thông qua Supabase Auth",
+				"item3": "Tất cả dữ liệu được mã hóa trong quá trình truyền và khi lưu trữ",
+				"subtitle2": "Dịch vụ Bên thứ ba",
+				"item4": "Chúng tôi sử dụng Supabase cho xác thực và lưu trữ cơ sở dữ liệu",
+				"item5": "Chúng tôi sử dụng PostHog để phân tích nhằm cải thiện trải nghiệm người dùng"
+			},
+			"section5": {
+				"title": "Dịch vụ Bên thứ ba",
+				"content": "Chúng tôi sử dụng các dịch vụ bên thứ ba sau có thể thu thập thông tin:",
+				"item1Title": "Google OAuth",
+				"item1Desc": "Để xác thực. Chính sách bảo mật của Google áp dụng cho dữ liệu được thu thập qua OAuth.",
+				"item2Title": "PostHog Analytics",
+				"item2Desc": "Để hiểu hành vi người dùng và cải thiện ứng dụng. PostHog xử lý dữ liệu phân tích tuân thủ GDPR.",
+				"item3Title": "Supabase",
+				"item3Desc": "Để xác thực và lưu trữ cơ sở dữ liệu. Supabase tuân thủ GDPR và được chứng nhận SOC 2."
+			},
+			"section6": {
+				"title": "Quyền của bạn",
+				"content": "Bạn có các quyền sau đối với dữ liệu cá nhân của mình:",
+				"item1": "Truy cập: Yêu cầu một bản sao dữ liệu cá nhân của bạn",
+				"item2": "Sửa đổi: Sửa dữ liệu không chính xác hoặc không đầy đủ",
+				"item3": "Xóa: Yêu cầu xóa tài khoản và dữ liệu liên quan",
+				"item4": "Tính di động: Xuất dữ liệu của bạn ở định dạng máy có thể đọc được"
+			},
+			"section7": {
+				"title": "Quyền riêng tư của Trẻ em",
+				"content": "Dịch vụ của chúng tôi không dành cho trẻ em dưới 13 tuổi. Chúng tôi không cố ý thu thập thông tin cá nhân từ trẻ em dưới 13 tuổi."
+			},
+			"section8": {
+				"title": "Liên hệ với chúng tôi",
+				"content": "Nếu bạn có câu hỏi về Chính sách Bảo mật này, vui lòng liên hệ với chúng tôi:",
+				"contact": "Email"
+			}
+		},
+		"termsOfService": {
+			"metaTitle": "Điều Khoản Dịch Vụ | WatashiWa",
+			"metaDescription": "Đọc các điều khoản và điều kiện sử dụng WatashiWa, bao gồm trách nhiệm người dùng, chính sách nội dung và giới hạn dịch vụ.",
+			"title": "Điều Khoản Dịch Vụ",
+			"lastUpdated": "Cập nhật lần cuối",
+			"lastUpdatedDate": "Tháng 1 năm 2025",
+			"section1": {
+				"title": "Chấp nhận Điều khoản",
+				"content": "Bằng cách truy cập hoặc sử dụng WatashiWa, bạn đồng ý bị ràng buộc bởi các Điều khoản Dịch vụ này. Nếu bạn không đồng ý với bất kỳ phần nào của các điều khoản này, bạn có thể không truy cập dịch vụ."
+			},
+			"section2": {
+				"title": "Trách nhiệm Tài khoản",
+				"content": "Bạn chịu trách nhiệm về:",
+				"item1": "Duy trì tính bảo mật của thông tin đăng nhập tài khoản của bạn",
+				"item2": "Tất cả các hoạt động xảy ra dưới tài khoản của bạn",
+				"item3": "Cung cấp thông tin chính xác và đầy đủ khi tạo tài khoản",
+				"item4": "Thông báo cho chúng tôi ngay lập tức về bất kỳ việc sử dụng trái phép tài khoản của bạn"
+			},
+			"section3": {
+				"title": "Nội dung Người dùng",
+				"content": "Bạn giữ quyền sở hữu đối với bất kỳ nội dung nào bạn tạo, bao gồm thẻ ghi nhớ, bộ thẻ và mẹo cộng đồng. Bằng cách đăng nội dung, bạn cấp cho chúng tôi giấy phép sử dụng, hiển thị và phân phối nội dung của bạn trong dịch vụ.",
+				"content2": "Bạn chịu trách nhiệm đảm bảo nội dung của bạn không vi phạm bất kỳ luật nào hoặc xâm phạm quyền của người khác."
+			},
+			"section4": {
+				"title": "Sở hữu Trí tuệ",
+				"content": "WatashiWa và nội dung, tính năng và chức năng gốc của nó thuộc sở hữu của WatashiWa và được bảo vệ bởi luật bản quyền, nhãn hiệu và sở hữu trí tuệ quốc tế khác.",
+				"content2": "Dịch vụ sử dụng các thành phần mã nguồn mở và mã nguồn của chúng tôi có sẵn theo giấy phép mã nguồn mở. Xem kho lưu trữ GitHub của chúng tôi để biết chi tiết."
+			},
+			"section5": {
+				"title": "Sử dụng Bị Cấm",
+				"content": "Bạn không được sử dụng WatashiWa để:",
+				"item1": "Bất kỳ mục đích bất hợp pháp nào hoặc để xúi giục người khác thực hiện các hành vi bất hợp pháp",
+				"item2": "Vi phạm bất kỳ quy định, quy tắc hoặc luật quốc tế, liên bang, tỉnh hoặc tiểu bang nào",
+				"item3": "Xâm phạm hoặc vi phạm quyền sở hữu trí tuệ của chúng tôi hoặc quyền sở hữu trí tuệ của người khác",
+				"item4": "Quấy rối, lạm dụng, xúc phạm, gây hại, phỉ báng, nói xấu, hạ thấp, đe dọa hoặc phân biệt đối xử",
+				"item5": "Gửi thông tin sai lệch hoặc gây hiểu lầm"
+			},
+			"section6": {
+				"title": "Tính khả dụng của Dịch vụ",
+				"content": "Chúng tôi cố gắng cung cấp dịch vụ đáng tin cậy nhưng không đảm bảo quyền truy cập không bị gián đoạn. Dịch vụ có thể không khả dụng do bảo trì, cập nhật hoặc các tình huống ngoài tầm kiểm soát của chúng tôi."
+			},
+			"section7": {
+				"title": "Giới hạn Trách nhiệm",
+				"content": "WatashiWa được cung cấp \"như hiện tại\" mà không có bất kỳ bảo đảm nào. Chúng tôi sẽ không chịu trách nhiệm về bất kỳ thiệt hại gián tiếp, ngẫu nhiên, đặc biệt hoặc hậu quả nào phát sinh từ việc bạn sử dụng dịch vụ."
+			},
+			"section8": {
+				"title": "Chấm dứt",
+				"content": "Chúng tôi có quyền chấm dứt hoặc đình chỉ tài khoản và quyền truy cập dịch vụ của bạn ngay lập tức, không cần thông báo trước, đối với hành vi mà chúng tôi tin là vi phạm các Điều khoản Dịch vụ này."
+			},
+			"section9": {
+				"title": "Thay đổi Điều khoản",
+				"content": "Chúng tôi có quyền sửa đổi các điều khoản này bất cứ lúc nào. Chúng tôi sẽ thông báo cho người dùng về bất kỳ thay đổi quan trọng nào qua email hoặc thông qua dịch vụ."
+			},
+			"section10": {
+				"title": "Thông tin Liên hệ",
+				"contact": "Đối với câu hỏi về các Điều khoản này, vui lòng liên hệ với chúng tôi tại"
+			}
+		},
+		"cookiePolicy": {
+			"metaTitle": "Chính Sách Cookie | WatashiWa",
+			"metaDescription": "Tìm hiểu về cách WatashiWa sử dụng cookie và các công nghệ tương tự để nâng cao trải nghiệm học tập của bạn.",
+			"title": "Chính Sách Cookie",
+			"lastUpdated": "Cập nhật lần cuối",
+			"lastUpdatedDate": "Tháng 1 năm 2025",
+			"section1": {
+				"title": "Cookie là gì",
+				"content": "Cookie là các tệp văn bản nhỏ được đặt trên thiết bị của bạn khi bạn truy cập một trang web. Chúng giúp các trang web ghi nhớ tùy chọn của bạn và cải thiện trải nghiệm duyệt web của bạn."
+			},
+			"section2": {
+				"title": "Các loại Cookie chúng tôi sử dụng",
+				"content": "WatashiWa sử dụng các loại cookie sau:",
+				"subtitle1": "Cookie Cần thiết",
+				"desc1": "Những cookie này là cần thiết để trang web hoạt động đúng cách. Chúng cho phép chức năng cốt lõi như xác thực, bảo mật và quản lý phiên.",
+				"subtitle2": "Cookie Phân tích",
+				"desc2": "Chúng tôi sử dụng cookie phân tích PostHog để hiểu cách người dùng tương tác với ứng dụng của chúng tôi. Điều này giúp chúng tôi cải thiện trải nghiệm người dùng và sửa lỗi. Các cookie này thu thập dữ liệu sử dụng ẩn danh.",
+				"subtitle3": "Cookie Tùy chọn",
+				"desc3": "Những cookie này ghi nhớ tùy chọn của bạn, chẳng hạn như cài đặt ngôn ngữ và tùy chọn giao diện, để cung cấp trải nghiệm cá nhân hóa."
+			},
+			"section3": {
+				"title": "Quản lý Cookie",
+				"content": "Bạn có thể kiểm soát cookie thông qua cài đặt trình duyệt của mình:",
+				"item1": "Hầu hết các trình duyệt cho phép bạn từ chối hoặc chấp nhận cookie",
+				"item2": "Bạn có thể xóa cookie đã được đặt trên thiết bị của mình",
+				"item3": "Lưu ý rằng việc vô hiệu hóa cookie có thể ảnh hưởng đến chức năng của dịch vụ của chúng tôi"
+			},
+			"section4": {
+				"title": "Cookie Bên thứ ba",
+				"content": "Chúng tôi sử dụng PostHog để phân tích, có thể đặt cookie trên thiết bị của bạn. Việc sử dụng cookie của PostHog được điều chỉnh bởi chính sách bảo mật của họ. Bạn có thể chọn không tham gia phân tích PostHog bằng cách vô hiệu hóa cookie trong cài đặt trình duyệt của mình."
+			},
+			"section5": {
+				"title": "Cài đặt Trình duyệt",
+				"content": "Để quản lý cookie trong trình duyệt của bạn:",
+				"item1": "Chrome: Cài đặt > Quyền riêng tư và Bảo mật > Cookie và dữ liệu trang web khác",
+				"item2": "Firefox: Tùy chọn > Quyền riêng tư & Bảo mật > Cookie và Dữ liệu Trang web",
+				"item3": "Safari: Tùy chọn > Quyền riêng tư > Cookie và dữ liệu trang web",
+				"item4": "Edge: Cài đặt > Quyền riêng tư, tìm kiếm và dịch vụ > Cookie và quyền trang web"
+			}
+		},
+		"dataRights": {
+			"metaTitle": "Quyền Dữ liệu của Bạn | WatashiWa",
+			"metaDescription": "Tìm hiểu về quyền của bạn đối với dữ liệu cá nhân, bao gồm cách truy cập, xuất hoặc xóa thông tin của bạn.",
+			"title": "Quyền Dữ liệu của Bạn",
+			"lastUpdated": "Cập nhật lần cuối",
+			"lastUpdatedDate": "Tháng 1 năm 2025",
+			"section1": {
+				"title": "Quyền của bạn",
+				"content": "Theo GDPR và các luật bảo vệ dữ liệu khác, bạn có các quyền sau:",
+				"item1Title": "Quyền Truy cập",
+				"item1Desc": "Bạn có thể yêu cầu một bản sao của tất cả dữ liệu cá nhân mà chúng tôi lưu giữ về bạn.",
+				"item2Title": "Quyền Sửa đổi",
+				"item2Desc": "Bạn có thể yêu cầu sửa dữ liệu không chính xác hoặc không đầy đủ.",
+				"item3Title": "Quyền Xóa",
+				"item3Desc": "Bạn có thể yêu cầu xóa tài khoản và tất cả dữ liệu liên quan.",
+				"item4Title": "Quyền Tính di động Dữ liệu",
+				"item4Desc": "Bạn có thể yêu cầu dữ liệu của bạn ở định dạng máy có thể đọc được (JSON).",
+				"item5Title": "Quyền Hạn chế Xử lý",
+				"item5Desc": "Bạn có thể yêu cầu chúng tôi giới hạn cách chúng tôi xử lý dữ liệu của bạn.",
+				"item6Title": "Quyền Phản đối",
+				"item6Desc": "Bạn có thể phản đối một số loại xử lý dữ liệu, chẳng hạn như phân tích."
+			},
+			"section2": {
+				"title": "Cách Thực hiện Quyền của bạn",
+				"content": "Để thực hiện bất kỳ quyền nào trong số này, vui lòng liên hệ với chúng tôi với yêu cầu của bạn. Chúng tôi sẽ phản hồi trong vòng 30 ngày.",
+				"email": "Gửi email cho chúng tôi tại"
+			},
+			"section3": {
+				"title": "Xuất Dữ liệu",
+				"content": "Bạn có thể xuất dữ liệu của mình trực tiếp từ cài đặt tài khoản. Dữ liệu đã xuất của bạn sẽ bao gồm:",
+				"content2": "Tất cả thẻ ghi nhớ, bộ thẻ, tiến độ học tập, lịch sử ôn tập và thông tin tài khoản của bạn ở định dạng JSON.",
+				"button": "Đi đến Cài đặt"
+			},
+			"section4": {
+				"title": "Xóa Tài khoản",
+				"content": "Để xóa tài khoản và tất cả dữ liệu liên quan:",
+				"step1": "Đi đến cài đặt tài khoản của bạn",
+				"step2": "Nhấp vào 'Xóa Tài khoản' hoặc liên hệ với chúng tôi tại support@watashiwa.app",
+				"step3": "Xác nhận việc xóa. Hành động này không thể hoàn tác.",
+				"warning": "Cảnh báo: Xóa tài khoản của bạn sẽ vĩnh viễn xóa tất cả dữ liệu học tập, bộ thẻ và tiến độ của bạn. Hành động này không thể hoàn tác."
+			},
+			"section5": {
+				"title": "Liên hệ cho Yêu cầu Dữ liệu",
+				"content": "Đối với bất kỳ yêu cầu hoặc câu hỏi liên quan đến dữ liệu, vui lòng liên hệ với chúng tôi:",
+				"contact": "Email"
+			}
+		}
+	},
+	"Contact": {
+		"metaTitle": "Liên hệ | WatashiWa",
+		"metaDescription": "Liên hệ với đội ngũ WatashiWa để được hỗ trợ, yêu cầu tính năng, báo cáo lỗi hoặc câu hỏi chung.",
+		"title": "Liên hệ với chúng tôi",
+		"subtitle": "Chúng tôi ở đây để giúp đỡ! Hãy liên hệ với chúng tôi qua bất kỳ kênh nào bên dưới.",
+		"section1": {
+			"title": "Liên hệ",
+			"emailLabel": "Hỗ trợ Email",
+			"githubLabel": "Kho lưu trữ GitHub",
+			"githubLink": "github.com/watashiwa/watashiwa"
+		},
+		"section2": {
+			"title": "Danh mục Hỗ trợ",
+			"content": "Chúng tôi ở đây để giúp với:",
+			"item1Title": "Vấn đề Kỹ thuật",
+			"item1Desc": "Lỗi, sự cố hoặc vấn đề kỹ thuật với ứng dụng",
+			"item2Title": "Hỗ trợ Tài khoản",
+			"item2Desc": "Đặt lại mật khẩu, cài đặt tài khoản hoặc vấn đề xác thực",
+			"item3Title": "Yêu cầu Tính năng",
+			"item3Desc": "Đề xuất tính năng mới hoặc cải tiến",
+			"item4Title": "Câu hỏi Chung",
+			"item4Desc": "Câu hỏi về cách sử dụng WatashiWa hoặc các tính năng của nó"
+		},
+		"section3": {
+			"title": "Thời gian Phản hồi",
+			"content": "Chúng tôi đặt mục tiêu phản hồi tất cả các yêu cầu trong vòng 48 giờ. Đối với các vấn đề kỹ thuật khẩn cấp, vui lòng tạo một vấn đề GitHub với nhãn 'urgent'."
+		},
+		"section4": {
+			"title": "Tài nguyên Cộng đồng",
+			"content": "Bạn cũng có thể tìm trợ giúp và kết nối với những người học khác:",
+			"item1": "GitHub Issues - Báo cáo lỗi và yêu cầu tính năng",
+			"item2": "GitHub Discussions - Đặt câu hỏi và chia sẻ ý tưởng"
+		}
+	},
+	"About": {
+		"metaTitle": "Về WatashiWa | Học tiếng Nhật với SRS",
+		"metaDescription": "Tìm hiểu về sứ mệnh, tính năng, công nghệ và cam kết mã nguồn mở của WatashiWa trong việc học tiếng Nhật.",
+		"title": "Về WatashiWa",
+		"subtitle": "Người bạn đồng hành cá nhân của bạn để thành thạo từ vựng tiếng Nhật với lặp lại cách quãng thông minh.",
+		"section1": {
+			"title": "Sứ mệnh của chúng tôi",
+			"content": "WatashiWa được tạo ra để làm cho việc học từ vựng tiếng Nhật hiệu quả, không căng thẳng và dễ tiếp cận với mọi người. Chúng tôi tin vào việc học thông minh, không khó—sử dụng các thuật toán SRS đã được chứng minh để giúp bạn ghi nhớ từ khi bạn sắp quên chúng."
+		},
+		"section2": {
+			"title": "Tính năng Chính",
+			"content": "WatashiWa cung cấp trải nghiệm học tập toàn diện:",
+			"item1Title": "Lặp lại Cách quãng Thông minh (SRS)",
+			"item1Desc": "Được hỗ trợ bởi thuật toán FSRS tiên tiến (ts-fsrs) lên lịch ôn tập ở các khoảng thời gian tối ưu để tối đa hóa khả năng ghi nhớ",
+			"item2Title": "Hiểu biết Hán Việt",
+			"item2Desc": "Hiểu logic đằng sau Kanji thông qua từ nguyên Hán Việt, làm cho việc ghi nhớ có ý nghĩa hơn",
+			"item3Title": "Bộ thẻ Cộng đồng",
+			"item3Desc": "Chia sẻ và khám phá các bộ thẻ do cộng đồng tạo, bao gồm tài liệu chuẩn bị JLPT",
+			"item4Title": "Thiết kế Ưu tiên Di động",
+			"item4Desc": "Tối ưu hóa cho sử dụng một tay, hoàn hảo cho việc học khi di chuyển",
+			"item5Title": "Hoạt động Offline",
+			"item5Desc": "Học ngay cả khi kết nối không ổn định, với đồng bộ hóa liền mạch khi bạn trực tuyến trở lại"
+		},
+		"section3": {
+			"title": "Công nghệ",
+			"content": "Được xây dựng với các công nghệ mã nguồn mở hiện đại:"
+		},
+		"section4": {
+			"title": "Mã Nguồn Mở",
+			"content": "WatashiWa là mã nguồn mở và miễn phí mãi mãi. Mã nguồn của chúng tôi có sẵn trên GitHub và chúng tôi hoan nghênh đóng góp từ cộng đồng.",
+			"button": "Xem trên GitHub"
+		},
+		"section5": {
+			"title": "Đội ngũ",
+			"content": "WatashiWa là một dự án đam mê được xây dựng bởi một nhà phát triển solo yêu thích việc học tiếng Nhật và muốn chia sẻ các công cụ học tập hiệu quả với cộng đồng."
+		},
+		"section6": {
+			"title": "Cam kết của chúng tôi",
+			"content": "Chúng tôi cam kết:",
+			"item1": "Giữ WatashiWa miễn phí và mã nguồn mở",
+			"item2": "Bảo vệ quyền riêng tư và dữ liệu người dùng",
+			"item3": "Liên tục cải thiện trải nghiệm học tập dựa trên phản hồi người dùng"
+		}
 	}
 }

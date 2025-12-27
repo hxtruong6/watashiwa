@@ -5,7 +5,7 @@ import { CheckCircleOutlined, DashboardOutlined } from '@ant-design/icons';
 import { Button, Flex, Grid, Typography, theme } from 'antd';
 import confetti from 'canvas-confetti';
 import { useTranslations } from 'next-intl';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import React, { useEffect } from 'react';
 
 import { useSessionStore } from '../../store/useSessionStore';
@@ -16,7 +16,6 @@ const { useBreakpoint } = Grid;
 export default function SessionSummary() {
 	const { sessionStats } = useSessionStore();
 	const { token } = theme.useToken();
-	const router = useRouter();
 	const t = useTranslations('Study');
 	const screens = useBreakpoint();
 	const isMobile = screens.xs || screens.sm;
@@ -95,13 +94,13 @@ export default function SessionSummary() {
 						level={isMobile ? 3 : 2}
 						style={{ margin: 0, textAlign: 'center', fontSize: isMobile ? 24 : 32 }}
 					>
-						Session Complete!
+						{t('summary.title')}
 					</Title>
 					<Text
 						type="secondary"
 						style={{ fontSize: isMobile ? 14 : 16, textAlign: 'center', padding: '0 16px' }}
 					>
-						Great job! You&apos;ve finished your reviews for now.
+						{t('summary.subtitle')}
 					</Text>
 				</Flex>
 
@@ -111,34 +110,36 @@ export default function SessionSummary() {
 					gap={isMobile ? 10 : 12}
 					style={{ width: '100%', maxWidth: isMobile ? '100%' : 300 }}
 				>
-					<Button
-						type="primary"
-						size="large"
-						icon={<DashboardOutlined />}
-						onClick={() => router.push('/dashboard')}
-						block
-						style={{
-							height: isMobile ? 52 : 56, // Better touch target on mobile (min 44px recommended)
-							fontSize: isMobile ? 16 : 18,
-							fontWeight: 600,
-							borderRadius: 12,
-						}}
-					>
-						Dashboard
-					</Button>
-					<Button
-						size="large"
-						onClick={() => router.push('/decks')}
-						block
-						style={{
-							height: isMobile ? 52 : 56, // Better touch target on mobile
-							fontSize: isMobile ? 16 : 18,
-							fontWeight: 600,
-							borderRadius: 12,
-						}}
-					>
-						Browse Decks
-					</Button>
+					<Link href="/dashboard" prefetch={true}>
+						<Button
+							type="primary"
+							size="large"
+							icon={<DashboardOutlined />}
+							block
+							style={{
+								height: isMobile ? 52 : 56, // Better touch target on mobile (min 44px recommended)
+								fontSize: isMobile ? 16 : 18,
+								fontWeight: 600,
+								borderRadius: 12,
+							}}
+						>
+							{t('summary.dashboard')}
+						</Button>
+					</Link>
+					<Link href="/decks" prefetch={true}>
+						<Button
+							size="large"
+							block
+							style={{
+								height: isMobile ? 52 : 56, // Better touch target on mobile
+								fontSize: isMobile ? 16 : 18,
+								fontWeight: 600,
+								borderRadius: 12,
+							}}
+						>
+							{t('summary.browseDecks')}
+						</Button>
+					</Link>
 				</Flex>
 
 				{/* Statistics */}
@@ -158,7 +159,7 @@ export default function SessionSummary() {
 						style={{ minWidth: isMobile ? '45%' : 'auto' }}
 					>
 						<Text type="secondary" style={{ fontSize: isMobile ? 11 : 12 }}>
-							Total Reviews
+							{t('summary.totalReviews')}
 						</Text>
 						<Text strong style={{ fontSize: isMobile ? 28 : 32, lineHeight: 1 }}>
 							{totalReviews}
@@ -171,7 +172,7 @@ export default function SessionSummary() {
 						style={{ minWidth: isMobile ? '45%' : 'auto' }}
 					>
 						<Text type="secondary" style={{ fontSize: isMobile ? 11 : 12 }}>
-							Time
+							{t('summary.time')}
 						</Text>
 						<Text strong style={{ fontSize: isMobile ? 28 : 32, lineHeight: 1 }}>
 							{durationSec > 60 ? `${durationMin}m` : `${durationSec}s`}
@@ -184,7 +185,7 @@ export default function SessionSummary() {
 						style={{ minWidth: isMobile ? '45%' : 'auto' }}
 					>
 						<Text type="secondary" style={{ fontSize: isMobile ? 11 : 12 }}>
-							New L1
+							{t('summary.newL1')}
 						</Text>
 						<Text
 							strong
@@ -200,7 +201,7 @@ export default function SessionSummary() {
 						style={{ minWidth: isMobile ? '45%' : 'auto' }}
 					>
 						<Text type="secondary" style={{ fontSize: isMobile ? 11 : 12 }}>
-							Perfect L4
+							{t('summary.perfectL4')}
 						</Text>
 						<Text
 							strong
@@ -268,7 +269,7 @@ export default function SessionSummary() {
 										>
 											<Flex vertical gap={isMobile ? 1 : 2}>
 												<Text strong style={{ fontSize: isMobile ? 13 : 14 }}>
-													Card {index + 1}
+													{t('summary.cardNumber', { number: index + 1 })}
 												</Text>
 											</Flex>
 										</Flex>

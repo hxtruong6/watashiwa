@@ -30,7 +30,7 @@ export const getUser = cache(async () => {
  * Called from auth callbacks or ensures consistency
  */
 export async function syncUser() {
-	return executeSafeAction(z.void(), undefined, async (_, { userId }) => {
+	return executeSafeAction(z.void(), undefined, async () => {
 		const supabase = await createClient();
 		const {
 			data: { user },
@@ -38,12 +38,39 @@ export async function syncUser() {
 
 		if (!user) throw new Error('No authenticated user');
 
-		// Check if user already exists
+		// Extract provider info from Supabase metadata
+		const provider = user.app_metadata?.provider || 'email';
+		const providerId = user.app_metadata?.provider_id || user.id;
+
+		// Get existing user to merge providers
 		const existingUser = await prisma.user.findUnique({
 			where: { id: user.id },
+			select: { authProviders: true, primaryAuthProvider: true },
 		});
 
 		const isNewUser = !existingUser;
+
+		// Merge providers (avoid duplicates)
+		const existingProviders =
+			(existingUser?.authProviders as Array<{
+				provider: string;
+				providerId: string;
+				lastUsed: string;
+			}>) || [];
+		const providerEntry = {
+			provider,
+			providerId,
+			lastUsed: new Date().toISOString(),
+		};
+
+		const updatedProviders = [
+			...existingProviders.filter((p) => p.provider !== provider),
+			providerEntry,
+		];
+
+		// Determine primary provider (prefer OAuth if exists)
+		const primaryProvider =
+			provider !== 'email' ? provider : existingUser?.primaryAuthProvider || 'email';
 
 		// Upsert user to ensure they exist
 		const dbUser = await prisma.user.upsert({
@@ -51,15 +78,23 @@ export async function syncUser() {
 			update: {
 				email: user.email!,
 				updatedAt: new Date(),
-				avatarUrl: user.user_metadata?.avatar_url,
+				avatarUrl: user.user_metadata?.avatar_url || user.user_metadata?.picture,
 				lastLogin: new Date(),
+				authProviders: updatedProviders,
+				primaryAuthProvider: primaryProvider,
 			},
 			create: {
 				id: user.id,
 				email: user.email!,
-				name: user.user_metadata?.full_name || user.email?.split('@')[0] || 'User',
-				avatarUrl: user.user_metadata?.avatar_url,
+				name:
+					user.user_metadata?.full_name ||
+					user.user_metadata?.name ||
+					user.email?.split('@')[0] ||
+					'User',
+				avatarUrl: user.user_metadata?.avatar_url || user.user_metadata?.picture,
 				lastLogin: new Date(),
+				authProviders: [providerEntry],
+				primaryAuthProvider: provider,
 			},
 		});
 

@@ -11,8 +11,7 @@ import {
 import { Button, Card, Flex, GlobalToken, Grid, Typography, theme } from 'antd';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import React, { useEffect } from 'react';
 
 const { Title, Text } = Typography;
@@ -88,70 +87,68 @@ const DeckItem = ({
 	deck,
 	color,
 	token,
-	router,
 	t,
 }: {
 	deck: Deck;
 	color: string;
 	token: GlobalToken;
-	router: AppRouterInstance;
 	t: ReturnType<typeof useTranslations<'Dashboard'>>;
 }) => {
 	const due = deck.learningStats?.dueCount || 0;
 
 	return (
-		<MotionCard
-			whileHover={{ y: -4 }}
-			style={{
-				background: token.colorFillTertiary, // Theme-aware glassy feel
-				border: `1px solid ${token.colorBorderSecondary}`,
-				borderRadius: 16,
-				cursor: 'pointer',
-				marginTop: 8,
-			}}
-			styles={{ body: { padding: '16px' } }}
-			onClick={() => router.push(`/study?deckId=${deck.id}`)}
-		>
-			<Flex justify="space-between" align="center">
-				<Flex gap="middle" align="center">
-					<div
-						style={{
-							width: 44,
-							height: 44,
-							borderRadius: 12,
-							background: `color-mix(in srgb, ${color} 15%, transparent)`, // Subtle bg
-							border: `1px solid ${color}`, // Mastery Ring hint
-							display: 'flex',
-							alignItems: 'center',
-							justifyContent: 'center',
-							color: color,
-							fontWeight: 'bold',
-							fontSize: 18,
-						}}
-					>
-						{deck.title.charAt(0)}
-					</div>
-					<Flex vertical gap={2}>
-						<Text strong>{deck.title}</Text>
-						<Text type="secondary" style={{ fontSize: 12 }}>
-							{due > 0 ? (
-								<span style={{ color: token.colorWarning }}>
-									{t('dueForReview', { count: due })}
-								</span>
-							) : (
-								<span style={{ color: token.colorSuccess }}>{t('allCaughtUpDeck')}</span>
-							)}
-						</Text>
+		<Link href={`/study?deckId=${deck.id}`} prefetch={true}>
+			<MotionCard
+				whileHover={{ y: -4 }}
+				style={{
+					background: token.colorFillTertiary,
+					border: `1px solid ${token.colorBorderSecondary}`,
+					borderRadius: 16,
+					cursor: 'pointer',
+					marginTop: 8,
+				}}
+				styles={{ body: { padding: '16px' } }}
+			>
+				<Flex justify="space-between" align="center">
+					<Flex gap="middle" align="center">
+						<div
+							style={{
+								width: 44,
+								height: 44,
+								borderRadius: 12,
+								background: `color-mix(in srgb, ${color} 15%, transparent)`,
+								border: `1px solid ${color}`, // Mastery Ring hint
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'center',
+								color: color,
+								fontWeight: 'bold',
+								fontSize: 18,
+							}}
+						>
+							{deck.title.charAt(0)}
+						</div>
+						<Flex vertical gap={2}>
+							<Text strong>{deck.title}</Text>
+							<Text type="secondary" style={{ fontSize: 12 }}>
+								{due > 0 ? (
+									<span style={{ color: token.colorWarning }}>
+										{t('dueForReview', { count: due })}
+									</span>
+								) : (
+									<span style={{ color: token.colorSuccess }}>{t('allCaughtUpDeck')}</span>
+								)}
+							</Text>
+						</Flex>
 					</Flex>
+					<Button shape="circle" icon={<RightOutlined />} type="text" />
 				</Flex>
-				<Button shape="circle" icon={<RightOutlined />} type="text" />
-			</Flex>
-		</MotionCard>
+			</MotionCard>
+		</Link>
 	);
 };
 
 export default function StudyDashboard({ user, stats, recentDecks }: StudyDashboardProps) {
-	const router = useRouter();
 	const t = useTranslations('Dashboard');
 	const { token } = useToken();
 	const screens = useBreakpoint();
@@ -281,28 +278,43 @@ export default function StudyDashboard({ user, stats, recentDecks }: StudyDashbo
 								>
 									{t('brainPrimed', { count: stats.due })}
 								</Text>
-								<Button
-									size="large"
-									style={{
-										height: 48,
-										padding: '0 32px',
-										borderRadius: 24,
-										border: 'none',
-										fontWeight: 600,
-										fontSize: 16,
-										color: token.colorPrimary,
-										boxShadow: `0 4px 12px ${token.colorText}33`,
-									}}
-									onClick={() => {
-										if (recentDecks.length > 0 && recentDecks[0]?.id) {
-											router.push(`/study?deckId=${recentDecks[0].id}`);
-										} else {
-											router.push('/dashboard/decks');
-										}
-									}}
-								>
-									{t('startSession')}
-								</Button>
+								{recentDecks.length > 0 && recentDecks[0]?.id ? (
+									<Link href={`/study?deckId=${recentDecks[0].id}`} prefetch={true}>
+										<Button
+											size="large"
+											style={{
+												height: 48,
+												padding: '0 32px',
+												borderRadius: 24,
+												border: 'none',
+												fontWeight: 600,
+												fontSize: 16,
+												color: token.colorPrimary,
+												boxShadow: `0 4px 12px ${token.colorText}33`,
+											}}
+										>
+											{t('startSession')}
+										</Button>
+									</Link>
+								) : (
+									<Link href="/dashboard/decks" prefetch={true}>
+										<Button
+											size="large"
+											style={{
+												height: 48,
+												padding: '0 32px',
+												borderRadius: 24,
+												border: 'none',
+												fontWeight: 600,
+												fontSize: 16,
+												color: token.colorPrimary,
+												boxShadow: `0 4px 12px ${token.colorText}33`,
+											}}
+										>
+											{t('startSession')}
+										</Button>
+									</Link>
+								)}
 							</div>
 
 							{/* Simple Progress Visualization */}
@@ -387,23 +399,24 @@ export default function StudyDashboard({ user, stats, recentDecks }: StudyDashbo
 								>
 									{t('allCaughtUpSubtitle')}
 								</Text>
-								<Button
-									size="large"
-									ghost
-									style={{
-										height: 48,
-										padding: '0 32px',
-										borderRadius: 24,
-										fontWeight: 600,
-										fontSize: 16,
-										color: token.colorWhite,
-										borderColor: token.colorWhite,
-										boxShadow: `0 4px 12px ${token.colorText}1A`,
-									}}
-									onClick={() => router.push('/dashboard/decks')}
-								>
-									{t('browseDecks')}
-								</Button>
+								<Link href="/dashboard/decks" prefetch={true}>
+									<Button
+										size="large"
+										ghost
+										style={{
+											height: 48,
+											padding: '0 32px',
+											borderRadius: 24,
+											fontWeight: 600,
+											fontSize: 16,
+											color: token.colorWhite,
+											borderColor: token.colorWhite,
+											boxShadow: `0 4px 12px ${token.colorText}1A`,
+										}}
+									>
+										{t('browseDecks')}
+									</Button>
+								</Link>
 							</div>
 
 							<div style={{ position: 'relative', zIndex: 1, minWidth: 120 }}>
@@ -444,9 +457,11 @@ export default function StudyDashboard({ user, stats, recentDecks }: StudyDashbo
 					<Title level={4} style={{ margin: 0 }}>
 						{t('recentDecks')}
 					</Title>
-					<Button type="link" size="small" onClick={() => router.push('/dashboard/decks')}>
-						{t('viewAll')}
-					</Button>
+					<Link href="/dashboard/decks" prefetch={true}>
+						<Button type="link" size="small">
+							{t('viewAll')}
+						</Button>
+					</Link>
 				</Flex>
 
 				{recentDecks.length > 0 ? (
@@ -456,7 +471,6 @@ export default function StudyDashboard({ user, stats, recentDecks }: StudyDashbo
 							deck={deck}
 							color={deckColors[index % deckColors.length]}
 							token={token}
-							router={router}
 							t={t}
 						/>
 					))

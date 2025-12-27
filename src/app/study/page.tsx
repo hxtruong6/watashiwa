@@ -1,3 +1,4 @@
+import { generatePageMetadata } from '@/lib/seo/metadata';
 import { getUser } from '@/modules/auth/auth.actions';
 import { getUserDecksWithStats } from '@/modules/deck/deck.actions';
 import SessionController from '@/modules/study/components/Session/SessionController';
@@ -7,7 +8,23 @@ import {
 	getLastStudySession,
 	hasUserStudiedBefore,
 } from '@/modules/study/study.actions';
+import type { Metadata } from 'next';
+import { getLocale } from 'next-intl/server';
 import { redirect } from 'next/navigation';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const locale = (await getLocale()) as 'vi' | 'en';
+	return generatePageMetadata({
+		title: locale === 'vi' ? 'Học tập' : 'Study',
+		description:
+			locale === 'vi'
+				? 'Phiên học từ vựng tiếng Nhật với hệ thống SRS'
+				: 'Japanese vocabulary study session with SRS system',
+		locale,
+		url: '/study',
+		noindex: true, // Private page - requires authentication
+	});
+}
 
 // UUID validation regex
 const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;

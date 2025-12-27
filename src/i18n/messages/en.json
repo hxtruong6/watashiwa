@@ -248,6 +248,15 @@
 			"easy": "Fluency achieved"
 		},
 		"summary": {
+			"title": "Session Complete!",
+			"subtitle": "Great job! You've finished your reviews for now.",
+			"dashboard": "Dashboard",
+			"browseDecks": "Browse Decks",
+			"totalReviews": "Total Reviews",
+			"time": "Time",
+			"newL1": "New L1",
+			"perfectL4": "Perfect L4",
+			"cardNumber": "Card {number}",
 			"forgottenWordsTitle": "Words to Review ({count})",
 			"forgottenWordsDescription": "These words need more practice. Consider reviewing them again soon."
 		},
@@ -662,7 +671,22 @@
 		"errorUserExists": "An account with this email already exists",
 		"errorAuthFailed": "An error occurred during authentication",
 		"errorAllFieldsRequired": "All fields are required",
-		"errorOriginMissing": "Unable to determine application origin"
+		"errorOriginMissing": "Unable to determine application origin",
+		"signInWithGoogle": "Continue with Google",
+		"signInWithGoogleAlt": "Sign in with Google",
+		"quickLogin": "Quick login",
+		"lastLoginToday": "Today",
+		"lastLoginWeek": "This week",
+		"lastLoginMonth": "This month",
+		"lastLoginRecent": "Recent",
+		"lastLoginOld": "Long ago",
+		"or": "OR",
+		"errorOfflineGoogle": "Internet connection required for Google sign-in",
+		"errorOAuthNetwork": "Unable to connect to Google. Please check your internet connection.",
+		"errorOAuthCancelled": "Sign-in cancelled. Please try again.",
+		"errorCacheUnavailable": "Login method cache unavailable",
+		"oauthWorksForBoth": "Or continue with Google to sign up instantly",
+		"providerGoogle": "Google"
 	},
 	"ForgotPassword": {
 		"title": "Forgot Password",
@@ -732,5 +756,296 @@
 		"streakRescueBodyVi": "",
 		"reviewAlertTitle": "{count} cards are waiting...",
 		"reviewAlertBody": "Clear your review queue now to keep your memory sharp."
+	},
+	"Legal": {
+		"privacyPolicy": {
+			"metaTitle": "Privacy Policy | WatashiWa",
+			"metaDescription": "How WatashiWa handles your data. Transparent, secure, and yours to control.",
+			"title": "Privacy Policy",
+			"lastUpdated": "Last Updated",
+			"lastUpdatedDate": "January 2025",
+			"section1": {
+				"title": "Our Commitment",
+				"content": "Your data belongs to you. We collect only what's necessary to deliver personalized learning. This policy explains what we gather, why, and how you control it."
+			},
+			"section2": {
+				"title": "What We Collect",
+				"content": "We gather only what's needed to personalize your learning:",
+				"item1": "Account: Email, name, profile picture (via OAuth if provided)",
+				"item2": "Study Data: Your cards, decks, review history, SRS states, and progress",
+				"item3": "Your Content: Decks you create, community tips, and contributions",
+				"item4": "Usage: Anonymous analytics via PostHog to improve the experience",
+				"item5": "Technical: Device type, browser, IP (for security and performance)"
+			},
+			"section3": {
+				"title": "How We Use It",
+				"content": "Your data powers your learning:",
+				"item1": "Personalization: SRS calculations, intervention triggers, and adaptive card variants",
+				"item2": "Improvement: Analyzing patterns to fix issues and enhance features",
+				"item3": "Communication: Account updates, service changes, and important notices",
+				"item4": "Security: Preventing abuse and protecting your account"
+			},
+			"section4": {
+				"title": "Security",
+				"content": "Your data is protected:",
+				"subtitle1": "Storage",
+				"item1": "PostgreSQL databases (encrypted at rest) managed via Prisma",
+				"item2": "Supabase Auth handles authentication securely",
+				"item3": "All connections encrypted in transit (HTTPS/TLS)",
+				"subtitle2": "Third Parties",
+				"item4": "Supabase: Authentication and database (GDPR compliant, SOC 2 certified)",
+				"item5": "PostHog: Anonymous analytics (GDPR compliant)"
+			},
+			"section5": {
+				"title": "Third-Party Services",
+				"content": "We use trusted partners:",
+				"item1Title": "Google OAuth",
+				"item1Desc": "Authentication only. Google's privacy policy applies.",
+				"item2Title": "PostHog",
+				"item2Desc": "Anonymous analytics to improve the app. GDPR compliant.",
+				"item3Title": "Supabase",
+				"item3Desc": "Authentication and database. GDPR compliant, SOC 2 certified."
+			},
+			"section6": {
+				"title": "Your Rights",
+				"content": "You control your data:",
+				"item1": "Access: Request a copy of all your data",
+				"item2": "Correction: Fix inaccurate information",
+				"item3": "Deletion: Remove your account and all associated data",
+				"item4": "Export: Download your data in JSON format anytime"
+			},
+			"section7": {
+				"title": "Children's Privacy",
+				"content": "Our service is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13."
+			},
+			"section8": {
+				"title": "Questions",
+				"content": "Contact us about privacy:",
+				"contact": "Email"
+			}
+		},
+		"termsOfService": {
+			"metaTitle": "Terms of Service | WatashiWa",
+			"metaDescription": "Terms and conditions for using WatashiWa. Simple, clear, fair.",
+			"title": "Terms of Service",
+			"lastUpdated": "Last Updated",
+			"lastUpdatedDate": "January 2025",
+			"section1": {
+				"title": "Agreement",
+				"content": "By using WatashiWa, you agree to these terms. If you don't agree, don't use the service."
+			},
+			"section2": {
+				"title": "Your Responsibilities",
+				"content": "You are responsible for:",
+				"item1": "Keeping your account credentials secure",
+				"item2": "All activity under your account",
+				"item3": "Providing accurate information when signing up",
+				"item4": "Notifying us immediately of unauthorized access"
+			},
+			"section3": {
+				"title": "Your Content",
+				"content": "You own what you create—decks, tips, comments. By sharing, you grant us a license to display and distribute it within WatashiWa.",
+				"content2": "You must ensure your content is legal and doesn't infringe others' rights."
+			},
+			"section4": {
+				"title": "Intellectual Property",
+				"content": "WatashiWa's code, design, and features are protected by copyright. However, we're open source—our codebase is available on GitHub under an open-source license.",
+				"content2": "See our GitHub repository for licensing details."
+			},
+			"section5": {
+				"title": "Prohibited Uses",
+				"content": "Don't use WatashiWa to:",
+				"item1": "Break laws or encourage illegal activity",
+				"item2": "Violate regulations or rules",
+				"item3": "Infringe intellectual property rights",
+				"item4": "Harass, abuse, defame, or discriminate",
+				"item5": "Submit false or misleading information"
+			},
+			"section6": {
+				"title": "Service Availability",
+				"content": "We aim for reliability but can't guarantee 100% uptime. Service may be unavailable during maintenance or due to circumstances beyond our control."
+			},
+			"section7": {
+				"title": "Limitation of Liability",
+				"content": "WatashiWa is provided \"as is\" without warranties. We're not liable for indirect, incidental, or consequential damages from your use of the service."
+			},
+			"section8": {
+				"title": "Termination",
+				"content": "We may terminate or suspend your account immediately, without notice, for violations of these terms."
+			},
+			"section9": {
+				"title": "Changes",
+				"content": "We may modify these terms at any time. We'll notify you of material changes via email or in-app."
+			},
+			"section10": {
+				"title": "Questions",
+				"contact": "Contact us about these terms:"
+			}
+		},
+		"cookiePolicy": {
+			"metaTitle": "Cookie Policy | WatashiWa",
+			"metaDescription": "How WatashiWa uses cookies. Simple, transparent, under your control.",
+			"title": "Cookie Policy",
+			"lastUpdated": "Last Updated",
+			"lastUpdatedDate": "January 2025",
+			"section1": {
+				"title": "What Are Cookies",
+				"content": "Cookies are small text files stored on your device. They help websites remember your preferences and improve your experience."
+			},
+			"section2": {
+				"title": "What We Use",
+				"content": "Three types:",
+				"subtitle1": "Essential",
+				"desc1": "Required for the app to work. Handle authentication, security, and sessions.",
+				"subtitle2": "Analytics",
+				"desc2": "PostHog cookies collect anonymous usage data to help us improve the app and fix issues.",
+				"subtitle3": "Preferences",
+				"desc3": "Remember your language, theme, and other settings for a personalized experience."
+			},
+			"section3": {
+				"title": "Control",
+				"content": "You control cookies:",
+				"item1": "Most browsers let you accept or refuse cookies",
+				"item2": "You can delete cookies already set on your device",
+				"item3": "Disabling cookies may affect app functionality"
+			},
+			"section4": {
+				"title": "Third-Party Cookies",
+				"content": "PostHog (analytics) may set cookies. Their privacy policy applies. Disable cookies in your browser to opt out."
+			},
+			"section5": {
+				"title": "Browser Settings",
+				"content": "To manage cookies in your browser:",
+				"item1": "Chrome: Settings > Privacy and Security > Cookies and other site data",
+				"item2": "Firefox: Options > Privacy & Security > Cookies and Site Data",
+				"item3": "Safari: Preferences > Privacy > Cookies and website data",
+				"item4": "Edge: Settings > Privacy, search, and services > Cookies and site permissions"
+			}
+		},
+		"dataRights": {
+			"metaTitle": "Your Data Rights | WatashiWa",
+			"metaDescription": "Your data, your control. Access, export, or delete anytime. GDPR compliant.",
+			"title": "Your Data Rights",
+			"lastUpdated": "Last Updated",
+			"lastUpdatedDate": "January 2025",
+			"section1": {
+				"title": "Your Rights",
+				"content": "Under GDPR and data protection laws, you have:",
+				"item1Title": "Access",
+				"item1Desc": "Request a copy of all your personal data.",
+				"item2Title": "Correction",
+				"item2Desc": "Request fixes to inaccurate or incomplete data.",
+				"item3Title": "Deletion",
+				"item3Desc": "Request removal of your account and all associated data.",
+				"item4Title": "Portability",
+				"item4Desc": "Export your data in JSON format anytime from settings.",
+				"item5Title": "Restriction",
+				"item5Desc": "Request limits on how we process your data.",
+				"item6Title": "Objection",
+				"item6Desc": "Object to certain processing, such as analytics."
+			},
+			"section2": {
+				"title": "How to Exercise",
+				"content": "Contact us with your request. We respond within 30 days.",
+				"email": "Email"
+			},
+			"section3": {
+				"title": "Export Your Data",
+				"content": "Export directly from settings. Your download includes:",
+				"content2": "All flashcards, decks, study progress, review history, and account info in JSON format.",
+				"button": "Go to Settings"
+			},
+			"section4": {
+				"title": "Delete Account",
+				"content": "To permanently delete your account:",
+				"step1": "Go to account settings",
+				"step2": "Click 'Delete Account' or email support@watashiwa.app",
+				"step3": "Confirm deletion. This cannot be undone.",
+				"warning": "Warning: This permanently removes all study data, decks, and progress. Irreversible."
+			},
+			"section5": {
+				"title": "Questions",
+				"content": "Contact us about data requests:",
+				"contact": "Email"
+			}
+		}
+	},
+	"Contact": {
+		"metaTitle": "Contact | WatashiWa",
+		"metaDescription": "Reach out for support, feature requests, or to report issues. We respond within 48 hours.",
+		"title": "Contact",
+		"subtitle": "Questions? Issues? Ideas? We're here.",
+		"section1": {
+			"title": "Reach Out",
+			"emailLabel": "Email",
+			"githubLabel": "GitHub",
+			"githubLink": "github.com/watashiwa/watashiwa"
+		},
+		"section2": {
+			"title": "What We Handle",
+			"content": "We respond to:",
+			"item1Title": "Technical Issues",
+			"item1Desc": "Bugs, errors, or app malfunctions",
+			"item2Title": "Account Support",
+			"item2Desc": "Authentication, password resets, data export",
+			"item3Title": "Feature Requests",
+			"item3Desc": "Suggestions for improvements or new capabilities",
+			"item4Title": "Questions",
+			"item4Desc": "How to use features, best practices, or methodology"
+		},
+		"section3": {
+			"title": "Response Time",
+			"content": "We aim to respond within 48 hours. For urgent issues, create a GitHub issue labeled 'urgent'."
+		},
+		"section4": {
+			"title": "Community",
+			"content": "Connect with other learners:",
+			"item1": "GitHub Issues - Report bugs, request features",
+			"item2": "GitHub Discussions - Share ideas, ask questions"
+		}
+	},
+	"About": {
+		"metaTitle": "About WatashiWa | The Cure for Burnout",
+		"metaDescription": "WatashiWa: 3D learning for serious Japanese learners. Master vocabulary through the CUBE method—Context, Understanding, Blocking, Encoding. Free forever, open source.",
+		"title": "About WatashiWa",
+		"subtitle": "You are not dumb. Your method was flat (2D). Try 3D Learning.",
+		"section1": {
+			"title": "The Problem We Solve",
+			"content": "Most apps lose you at the 'Wall of Shame'—too many reviews due, too much rote memorization. WatashiWa intervenes in the forgetting process. We don't just show cards. We prime your brain, shield you from confusion, and encode memories that stick."
+		},
+		"section2": {
+			"title": "The CUBE Method",
+			"content": "Four pillars of retention:",
+			"item1Title": "Context (C)",
+			"item1Desc": "Never learn in isolation. Active priming stories connect new words to familiar concepts, targeting comprehensible input (90%+ known words).",
+			"item2Title": "Understanding (U)",
+			"item2Desc": "Etymology as the hook. Hán Việt roots reveal the logic behind Kanji—why 学 means 'study' connects to 学生 (student) and 学校 (school).",
+			"item3Title": "Blocking (B)",
+			"item3Desc": "Proactive interference shielding. When you confuse 箸 (chopsticks) with 橋 (bridge), the system triggers instant pitch-accent training to recalibrate your ear.",
+			"item4Title": "Encoding (E)",
+			"item4Desc": "Dynamic card variants adapt to your SRS stage. New cards show Kanji + audio. Learning cards test listening. Review cards demand context recall.",
+			"item5Title": "The Smart Layer",
+			"item5Desc": "Our intervention engine throttles new cards if reviews pile up. Less is more. Mastery achieved, not 'good job buddy.'"
+		},
+		"section3": {
+			"title": "Built for Scale",
+			"content": "Modern stack, zero vendor lock-in:"
+		},
+		"section4": {
+			"title": "Open Source, Free Forever",
+			"content": "WatashiWa is open source. The codebase lives on GitHub. We believe learning tools should be accessible, transparent, and community-driven.",
+			"button": "View on GitHub"
+		},
+		"section5": {
+			"title": "Built by a Learner, for Learners",
+			"content": "WatashiWa is a solo developer's response to the frustration of rote memorization. Born from the need to learn smarter, not harder."
+		},
+		"section6": {
+			"title": "Our Promise",
+			"content": "We commit to:",
+			"item1": "Free forever. No paywalls on core vocabulary.",
+			"item2": "Privacy first. Your data belongs to you. Export anytime.",
+			"item3": "Zen design. Calm, authoritative, no fluff. Mastery over gamification."
+		}
 	}
 }

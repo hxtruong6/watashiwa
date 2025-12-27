@@ -283,10 +283,91 @@ export function useAuth(options: UseAuthOptions = {}) {
 		[supabase, handleAuthError, processAuthSuccess, onError, t],
 	);
 
+	/**
+	 * Google OAuth sign-in handler
+	 * Redirects user to Google OAuth consent screen
+	 * Note: OAuth flow redirects away from the page, so success is handled in callback route
+	 */
+	const signInWithGoogle = useCallback(async (): Promise<AuthResult> => {
+		setState({ loading: true, error: null, message: null });
+
+		try {
+			// Validate origin exists (defensive)
+			const origin = typeof window !== 'undefined' ? window.location.origin : '';
+			if (!origin) {
+				throw new Error(t?.('errorOriginMissing') || 'Unable to determine application origin');
+			}
+
+			// Get returnUrl from current page if available
+			const returnUrl =
+				typeof window !== 'undefined'
+					? new URLSearchParams(window.location.search).get('returnUrl')
+					: null;
+
+			// Build redirect URL with returnUrl preserved
+			let redirectTo = `${origin}/auth/callback`;
+			if (returnUrl) {
+				redirectTo += `?next=${encodeURIComponent(returnUrl)}`;
+			}
+
+			// Check if offline before attempting OAuth
+			if (typeof window !== 'undefined' && !navigator.onLine) {
+				const errorMessage =
+					t?.('errorOfflineGoogle') ||
+					'Unable to connect to Google. Please check your internet connection.';
+				setState({ loading: false, error: errorMessage, message: null });
+				onError?.(errorMessage);
+				return { success: false, error: errorMessage };
+			}
+
+			const { data, error } = await supabase.auth.signInWithOAuth({
+				provider: 'google',
+				options: {
+					redirectTo,
+					queryParams: {
+						access_type: 'offline',
+						prompt: 'consent',
+					},
+				},
+			});
+			console.log('[Auth] Google OAuth sign-in result:', data, error);
+
+			if (error) {
+				// Handle specific OAuth errors
+				let errorMessage: string;
+				if (
+					error.message.includes('popup_closed_by_user') ||
+					error.message.includes('User cancelled')
+				) {
+					errorMessage = t?.('errorOAuthCancelled') || 'Sign-in cancelled. Please try again.';
+				} else if (error.message.includes('network') || error.message.includes('fetch')) {
+					errorMessage =
+						t?.('errorOAuthNetwork') ||
+						'Unable to connect to Google. Please check your internet connection.';
+				} else {
+					errorMessage = handleAuthError(error);
+				}
+				setState({ loading: false, error: errorMessage, message: null });
+				onError?.(errorMessage);
+				return { success: false, error: errorMessage };
+			}
+
+			// OAuth redirects away, so we don't process success here
+			// The callback route will handle the rest
+			return { success: true };
+		} catch (error) {
+			const errorMessage = handleAuthError(error);
+			setState({ loading: false, error: errorMessage, message: null });
+			onError?.(errorMessage);
+			return { success: false, error: errorMessage };
+		}
+	}, [supabase, handleAuthError, onError, t]);
+
 	return {
 		...state,
 		login,
 		signup,
+		signInWithGoogle,
 		resetState,
 		setMessage: (msg: string | null) => setState((prev) => ({ ...prev, message: msg })),
 	};

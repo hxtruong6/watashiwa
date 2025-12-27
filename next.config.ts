@@ -24,6 +24,10 @@ const nextConfig: NextConfig = {
 	},
 	// This is required to support PostHog trailing slash API requests
 	skipTrailingSlashRedirect: true,
+	// Optimize package imports to reduce bundle size
+	experimental: {
+		optimizePackageImports: ['antd', '@ant-design/icons'],
+	},
 };
 
 export default withSentryConfig(withNextIntl(nextConfig), {
@@ -33,7 +37,7 @@ export default withSentryConfig(withNextIntl(nextConfig), {
 	// Suppresses source map uploading logs during build
 	silent: true,
 	org: 'watashiwa', // FIXME: Update with your org
-	project: 'watashiwa-nextjs', // FIXME: Update with your project
+	project: 'watashiwa-app', // FIXME: Update with your project
 
 	// For all available options, see:
 	// https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/

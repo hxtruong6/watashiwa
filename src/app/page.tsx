@@ -1,7 +1,18 @@
 import LandingPage from '@/components/landing/LandingPage';
+import { generatePageMetadata } from '@/lib/seo/metadata';
 import { getUser } from '@/modules/auth/auth.actions';
+import type { Metadata } from 'next';
+import { getLocale } from 'next-intl/server';
 import { redirect } from 'next/navigation';
 import React from 'react';
+
+export async function generateMetadata(): Promise<Metadata> {
+	const locale = (await getLocale()) as 'vi' | 'en';
+	return generatePageMetadata({
+		locale,
+		url: '/',
+	});
+}
 
 export default async function Page() {
 	// Check for authenticated user
