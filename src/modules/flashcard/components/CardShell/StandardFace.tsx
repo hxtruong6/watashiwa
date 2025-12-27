@@ -8,7 +8,7 @@ import {
 	PauseCircleOutlined,
 	SoundOutlined,
 } from '@ant-design/icons';
-import { Button, Flex, Typography, theme } from 'antd';
+import { Button, Flex, Tag, Typography, theme } from 'antd';
 import { useLocale } from 'next-intl';
 import React from 'react';
 
@@ -155,6 +155,14 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 		(meanings.vi && Array.isArray(meanings.vi) && meanings.vi[0]) ||
 		(meanings.en && Array.isArray(meanings.en) && meanings.en[0]) ||
 		'';
+	// UX Improvement: Show all meanings, not just the first one
+	const allMeanings =
+		meanings.vi && Array.isArray(meanings.vi)
+			? meanings.vi
+			: meanings.en && Array.isArray(meanings.en)
+				? meanings.en
+				: [];
+	const hasMultipleMeanings = allMeanings.length > 1;
 	const hasExample =
 		back.details.examples &&
 		Array.isArray(back.details.examples) &&
@@ -165,6 +173,11 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 		hasMnemonic && back.details.mnemonic
 			? back.details.mnemonic.vi || back.details.mnemonic.en
 			: null;
+
+	const detailsAny = back.details as unknown as Record<string, unknown>;
+	const tags = Array.isArray(detailsAny?.tags) ? (detailsAny.tags as string[]) : [];
+	const romaji = (detailsAny?.wordRomaji as string) || '';
+	const pitchSvgPath = (detailsAny?.pitchSvgPath as string) || '';
 
 	const hanVietBadge = back.details.hanViet ? (
 		<div
@@ -197,21 +210,75 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 			<Flex
 				vertical
 				style={{
-					height: '100%',
+					minHeight: '100%', // Allow content to expand beyond card height
 					padding: '40px 32px 32px 32px',
 					textAlign: 'left',
 					width: '100%',
 				}}
 			>
-				{/* 1. Meta Row: Reading + Badge + Audio */}
-				<Flex justify="space-between" align="center" style={{ marginBottom: '24px' }}>
-					<Flex gap="12px" align="center">
-						{hasReading && (
-							<Text type="secondary" style={{ fontSize: '18px', fontWeight: 400 }}>
-								{front.reading}
-							</Text>
+				{/* 1. Meta Row: Reading + Romaji + Badge + Audio */}
+				<Flex justify="space-between" align="flex-start" style={{ marginBottom: '24px' }}>
+					<Flex vertical gap={4} style={{ flex: 1 }}>
+						<Flex gap="12px" align="center" wrap="wrap">
+							{hasReading && (
+								<Text type="secondary" style={{ fontSize: '18px', fontWeight: 400 }}>
+									{front.reading}
+								</Text>
+							)}
+							{romaji && (
+								<Text
+									type="secondary"
+									style={{
+										fontSize: '14px',
+										fontWeight: 300,
+										opacity: 0.7,
+										fontStyle: 'italic',
+									}}
+								>
+									{romaji}
+								</Text>
+							)}
+							{hanVietBadge}
+						</Flex>
+						{/* Pitch Pattern Visualization */}
+						{pitchSvgPath && (
+							<div style={{ marginTop: '4px' }}>
+								<svg
+									viewBox="0 0 100 25"
+									style={{
+										width: '100px',
+										height: '25px',
+										overflow: 'visible',
+									}}
+								>
+									<path
+										d={pitchSvgPath}
+										stroke={token.colorPrimary}
+										strokeWidth="2"
+										fill="none"
+										strokeLinecap="round"
+									/>
+								</svg>
+							</div>
 						)}
-						{hanVietBadge}
+						{/* Tags */}
+						{tags.length > 0 && (
+							<Flex gap={4} wrap="wrap" style={{ marginTop: '4px' }}>
+								{tags.map((tag: string) => (
+									<Tag
+										key={tag}
+										style={{
+											fontSize: '10px',
+											padding: '0 6px',
+											margin: 0,
+											opacity: 0.8,
+										}}
+									>
+										{tag}
+									</Tag>
+								))}
+							</Flex>
+						)}
 					</Flex>
 
 					{front.audio && (
@@ -253,10 +320,30 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 							lineHeight: 1.3,
 							letterSpacing: '-0.02em',
 							textAlign: 'center',
+							marginBottom: hasMultipleMeanings ? '12px' : 0,
 						}}
 					>
 						{primaryMeaning}
 					</Text>
+					{/* UX Improvement: Show all meanings if multiple exist */}
+					{hasMultipleMeanings && (
+						<Flex vertical gap={4} style={{ width: '100%', marginTop: '8px' }}>
+							{allMeanings.slice(1).map((meaning, idx) => (
+								<Text
+									key={idx}
+									type="secondary"
+									style={{
+										fontSize: 'clamp(16px, 4vw, 18px)',
+										fontWeight: 400,
+										textAlign: 'center',
+										lineHeight: 1.4,
+									}}
+								>
+									{meaning}
+								</Text>
+							))}
+						</Flex>
+					)}
 				</Flex>
 
 				{/* 3. Example (Card-style) */}
@@ -373,21 +460,75 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 			<Flex
 				vertical
 				style={{
-					height: '100%',
+					minHeight: '100%', // Allow content to expand beyond card height
 					padding: '32px 32px 32px 32px',
 					textAlign: 'left',
 					width: '100%',
 				}}
 			>
-				{/* 1. Meta Row: Reading + Badge + Audio (Minimal) */}
-				<Flex justify="space-between" align="center" style={{ marginBottom: '20px' }}>
-					<Flex gap="12px" align="center">
-						{hasReading && (
-							<Text type="secondary" style={{ fontSize: '16px', fontWeight: 400 }}>
-								{front.reading}
-							</Text>
+				{/* 1. Meta Row: Reading + Romaji + Badge + Audio (Minimal) */}
+				<Flex justify="space-between" align="flex-start" style={{ marginBottom: '20px' }}>
+					<Flex vertical gap={4} style={{ flex: 1 }}>
+						<Flex gap="12px" align="center" wrap="wrap">
+							{hasReading && (
+								<Text type="secondary" style={{ fontSize: '16px', fontWeight: 400 }}>
+									{front.reading}
+								</Text>
+							)}
+							{romaji && (
+								<Text
+									type="secondary"
+									style={{
+										fontSize: '13px',
+										fontWeight: 300,
+										opacity: 0.7,
+										fontStyle: 'italic',
+									}}
+								>
+									{romaji}
+								</Text>
+							)}
+							{hanVietBadge}
+						</Flex>
+						{/* Pitch Pattern Visualization */}
+						{pitchSvgPath && (
+							<div style={{ marginTop: '4px' }}>
+								<svg
+									viewBox="0 0 100 25"
+									style={{
+										width: '100px',
+										height: '25px',
+										overflow: 'visible',
+									}}
+								>
+									<path
+										d={pitchSvgPath}
+										stroke={token.colorPrimary}
+										strokeWidth="2"
+										fill="none"
+										strokeLinecap="round"
+									/>
+								</svg>
+							</div>
 						)}
-						{hanVietBadge}
+						{/* Tags */}
+						{tags.length > 0 && (
+							<Flex gap={4} wrap="wrap" style={{ marginTop: '4px' }}>
+								{tags.map((tag: string) => (
+									<Tag
+										key={tag}
+										style={{
+											fontSize: '10px',
+											padding: '0 6px',
+											margin: 0,
+											opacity: 0.8,
+										}}
+									>
+										{tag}
+									</Tag>
+								))}
+							</Flex>
+						)}
 					</Flex>
 
 					{front.audio && (
@@ -564,21 +705,76 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 		<Flex
 			vertical
 			style={{
-				height: '100%',
+				minHeight: '100%', // Allow content to expand beyond card height
 				padding: '60px 40px 40px 40px',
 				textAlign: 'left',
 				width: '100%',
 			}}
 		>
-			{/* 1. Meta Row: Reading + Badge + Audio (Ultra-minimal) */}
-			<Flex justify="space-between" align="center" style={{ marginBottom: '32px' }}>
-				<Flex gap="12px" align="center">
-					{hasReading && (
-						<Text type="secondary" style={{ fontSize: '16px', fontWeight: 300 }}>
-							{front.reading}
-						</Text>
+			{/* 1. Meta Row: Reading + Romaji + Badge + Audio (Ultra-minimal) */}
+			<Flex justify="space-between" align="flex-start" style={{ marginBottom: '32px' }}>
+				<Flex vertical gap={4} style={{ flex: 1 }}>
+					<Flex gap="12px" align="center" wrap="wrap">
+						{hasReading && (
+							<Text type="secondary" style={{ fontSize: '16px', fontWeight: 300 }}>
+								{front.reading}
+							</Text>
+						)}
+						{romaji && (
+							<Text
+								type="secondary"
+								style={{
+									fontSize: '12px',
+									fontWeight: 300,
+									opacity: 0.6,
+									fontStyle: 'italic',
+								}}
+							>
+								{romaji}
+							</Text>
+						)}
+						{hanVietBadge}
+					</Flex>
+					{/* Pitch Pattern Visualization */}
+					{pitchSvgPath && (
+						<div style={{ marginTop: '4px' }}>
+							<svg
+								viewBox="0 0 100 25"
+								style={{
+									width: '100px',
+									height: '25px',
+									overflow: 'visible',
+								}}
+							>
+								<path
+									d={pitchSvgPath}
+									stroke={token.colorPrimary}
+									strokeWidth="1.5"
+									fill="none"
+									strokeLinecap="round"
+									opacity={0.6}
+								/>
+							</svg>
+						</div>
 					)}
-					{hanVietBadge}
+					{/* Tags */}
+					{tags.length > 0 && (
+						<Flex gap={4} wrap="wrap" style={{ marginTop: '4px' }}>
+							{tags.map((tag: string) => (
+								<Tag
+									key={tag}
+									style={{
+										fontSize: '9px',
+										padding: '0 5px',
+										margin: 0,
+										opacity: 0.6,
+									}}
+								>
+									{tag}
+								</Tag>
+							))}
+						</Flex>
+					)}
 				</Flex>
 
 				{front.audio && (

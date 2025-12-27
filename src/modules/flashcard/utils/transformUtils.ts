@@ -65,10 +65,10 @@ export function getCardFaceBaseStyles(
 		...getBackfaceVisibility(),
 		background: backgroundColor,
 		borderRadius,
-		overflow: 'hidden',
+		overflow: 'hidden', // Default: hidden for front face
 		display: 'flex',
 		justifyContent: 'center',
-		alignItems: 'center',
+		alignItems: 'flex-start', // Changed from 'center' to allow top-aligned scrolling content
 		...getUserSelectStyles(),
 	};
 }

@@ -36,11 +36,39 @@ export interface CardFaceProps {
  * - Exit animation overlay
  * - User selection prevention
  */
-export const CardFace: React.FC<CardFaceProps> = ({ children, exitColor, isExiting = false }) => {
+export const CardFace: React.FC<CardFaceProps> = ({
+	side,
+	children,
+	exitColor,
+	isExiting = false,
+}) => {
 	const { token } = theme.useToken();
 
 	// Get base styles with consistent styling
 	const baseStyles = getCardFaceBaseStyles(token.colorBgContainer, token.borderRadiusLG);
+
+	// Front face stays centered without scrolling (simple content)
+	const isBackFace = side === 'back';
+	const contentStyles: React.CSSProperties = {
+		zIndex: 2,
+		width: '100%',
+		height: '100%',
+		...(isBackFace
+			? {
+					overflowY: 'auto' as const,
+					overflowX: 'hidden' as const,
+					WebkitOverflowScrolling: 'touch' as const, // Smooth scrolling on iOS
+					// Ensure scrollbar styling is subtle
+					scrollbarWidth: 'thin' as const,
+					scrollbarColor: `${token.colorBorder} transparent`,
+				}
+			: {
+					overflow: 'hidden' as const, // Front face: no scrolling needed
+					display: 'flex',
+					alignItems: 'center',
+					justifyContent: 'center',
+				}),
+	};
 
 	return (
 		<div style={baseStyles}>
@@ -60,15 +88,7 @@ export const CardFace: React.FC<CardFaceProps> = ({ children, exitColor, isExiti
 				/>
 			)}
 
-			<div
-				style={{
-					zIndex: 2,
-					width: '100%',
-					height: '100%',
-				}}
-			>
-				{children}
-			</div>
+			<div style={contentStyles}>{children}</div>
 		</div>
 	);
 };

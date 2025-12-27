@@ -32,13 +32,14 @@ interface StudyPreferences {
 }
 
 const defaultCardBackSettings: CardBackSettings = {
-	showEtymology: false,
-	showConfusions: true,
-	showMoreExamples: false,
+	// UX Improvement: Show more information by default for better learning experience
+	showEtymology: true, // Show etymology by default (helps with kanji understanding)
+	showConfusions: true, // Show confusions (critical for avoiding mistakes)
+	showMoreExamples: true, // Show multiple examples (better context understanding)
 	defaultCollapseState: {
-		etymology: 'collapsed',
-		confusions: 'expanded',
-		moreExamples: 'collapsed',
+		etymology: 'expanded', // Expanded by default (valuable learning content)
+		confusions: 'expanded', // Expanded by default (important for differentiation)
+		moreExamples: 'expanded', // Expanded by default (more context = better learning)
 	},
 };
 

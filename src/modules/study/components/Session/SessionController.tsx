@@ -373,6 +373,36 @@ export default function SessionController({
 		}
 	}, [studyPhase, queue, currentCard]);
 
+	// Detect session completion and transition to summary
+	useEffect(() => {
+		// Only check during quiz phase (active study session)
+		if (studyPhase !== 'quiz') {
+			return;
+		}
+
+		// Session is complete when:
+		// 1. isSessionActive is false (set by nextCard() when queue exhausted)
+		//    OR
+		// 2. currentIndex >= queue.length (all cards reviewed, including re-queued "Again" cards)
+		//    Note: queue.length can grow if "Again" cards are re-queued, so we check index vs length
+		const isComplete = !isSessionActive || (currentIndex >= queue.length && queue.length > 0);
+
+		if (isComplete) {
+			console.log('[SessionController] Session complete detected, transitioning to summary', {
+				isSessionActive,
+				currentCard: !!currentCard,
+				queueLength: queue.length,
+				currentIndex,
+			});
+
+			// End session in store (ensures stats are finalized)
+			useSessionStore.getState().endSession();
+
+			// Transition to summary phase
+			setStudyPhase('summary');
+		}
+	}, [studyPhase, isSessionActive, currentCard, queue.length, currentIndex]);
+
 	// Track first card shown
 	useEffect(() => {
 		if (studyPhase === 'quiz' && currentCard && !firstCardShown && sessionStartTime) {
@@ -689,10 +719,23 @@ export default function SessionController({
 	});
 
 	// Calculated Progress
-	const progressPercent = Math.min(
+	// Session progress: how many cards have been reviewed in this session
+	// During briefing: Shows 0% (session not started yet, but queue is loaded)
+	// During quiz: Shows actual progress (e.g., "3/10 cards" = 30%)
+	const sessionProgressPercent =
+		queue.length > 0 ? Math.min(100, Math.round(((currentIndex + 1) / queue.length) * 100)) : 0;
+
+	// Daily progress (for loading/priming/other phases where session queue isn't ready)
+	// Shows overall daily goal progress (e.g., "50/200 reviews today" = 25%)
+	const dailyProgressPercent = Math.min(
 		100,
 		(dailyStats.reviewsToday / (dailyStats.limitReviews || 1)) * 100,
 	);
+
+	// UX Improvement: Show session progress during briefing and quiz phases
+	// This gives users context about what they're about to study (briefing) or current progress (quiz)
+	const shouldShowSessionProgress = studyPhase === 'quiz' || studyPhase === 'briefing';
+	const displayProgress = shouldShowSessionProgress ? sessionProgressPercent : dailyProgressPercent;
 
 	if (studyPhase === 'summary') {
 		return <SessionSummary />;
@@ -770,8 +813,9 @@ export default function SessionController({
 
 	return (
 		<SessionContainer
-			progress={progressPercent}
+			progress={displayProgress}
 			headerVisible={studyPhase === 'briefing' ? true : headerVisible} // Always show header during briefing for UX
+			showProgressBar={studyPhase === 'quiz' || studyPhase === 'briefing'} // Always show progress bar during quiz/briefing
 			actions={
 				<>
 					<Button

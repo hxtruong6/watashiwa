@@ -14,6 +14,12 @@ interface SessionContainerProps {
 	onExit?: () => void;
 	actions?: React.ReactNode;
 	headerVisible?: boolean;
+	/**
+	 * Whether to show the progress bar independently of header visibility.
+	 * When true, progress bar is always visible (useful during study sessions).
+	 * When false/undefined, progress bar follows headerVisible state.
+	 */
+	showProgressBar?: boolean;
 }
 
 export const SessionContainer: React.FC<SessionContainerProps> = ({
@@ -22,6 +28,7 @@ export const SessionContainer: React.FC<SessionContainerProps> = ({
 	onExit,
 	actions,
 	headerVisible = true,
+	showProgressBar,
 }) => {
 	const router = useRouter();
 	const { token } = theme.useToken();
@@ -45,15 +52,17 @@ export const SessionContainer: React.FC<SessionContainerProps> = ({
 				}}
 			>
 				{/* Zen Progress Bar (Top, 2px) */}
+				{/* Progress bar visibility: if showProgressBar is explicitly set, use it; otherwise follow headerVisible */}
 				<div
 					style={{
 						position: 'fixed',
-						top: 0,
+						top: -12,
 						left: 0,
 						width: '100%',
 						zIndex: 1000,
 						pointerEvents: 'none',
-						opacity: headerVisible ? 1 : 0,
+						opacity:
+							showProgressBar !== undefined ? (showProgressBar ? 1 : 0) : headerVisible ? 1 : 0,
 						transition: 'opacity 0.3s ease',
 					}}
 				>
