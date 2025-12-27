@@ -18,6 +18,8 @@ import MyDecks from './home/MyDecks';
 import NextReviewWidget from './home/NextReviewWidget';
 import StudyIntentChooser from './home/StudyIntentChooser';
 import WeeklyChart from './home/WeeklyChart';
+import { MemoryGardenHero } from './memory-garden';
+import type { MemoryGardenData } from './memory-garden';
 
 const { useToken } = theme;
 
@@ -55,6 +57,7 @@ interface DashboardOverviewProps {
 		urgentCard: { surface: string; meaning: string } | null;
 		forecastCount: number;
 	};
+	memoryGarden?: MemoryGardenData | null;
 }
 
 /**
@@ -71,6 +74,7 @@ export default function DashboardOverview({
 	userRole,
 	userSettings,
 	forecast,
+	memoryGarden,
 }: DashboardOverviewProps) {
 	const { token } = useToken();
 	const t = useTranslations('Dashboard');
@@ -174,6 +178,13 @@ export default function DashboardOverview({
 						dailyGoal={dailyGoal}
 					/>
 				</motion.div>
+
+				{/* Section A.5: Memory Garden Hero (Morning Reflection) */}
+				{memoryGarden && (
+					<motion.div variants={itemVariants}>
+						<MemoryGardenHero data={memoryGarden} />
+					</motion.div>
+				)}
 
 				{/* Section B: Study Intent Chooser (Primary CTA) */}
 				<motion.div variants={itemVariants}>

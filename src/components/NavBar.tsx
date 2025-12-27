@@ -93,6 +93,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 
 	const t = useTranslations('NavBar');
 	const tCommon = useTranslations('Common');
+	const tSettings = useTranslations('Settings');
 
 	const handleBugReport = async () => {
 		const feedback = Sentry.getFeedback();
@@ -617,6 +618,47 @@ export default function NavBar({ user }: { user?: User | null }) {
 								{t('signUpToAccessDesc')}
 							</Text>
 						</div>
+
+						{/* Language & Theme Controls for Public Users */}
+						<Flex
+							vertical
+							gap="small"
+							style={{
+								width: '100%',
+								padding: '0 clamp(20px, 5vw, 24px)',
+								marginBottom: 16,
+							}}
+						>
+							<Flex
+								justify="space-between"
+								align="center"
+								style={{
+									padding: '12px 16px',
+									background: token.colorFillQuaternary,
+									borderRadius: 12,
+									border: `1px solid ${token.colorBorderSecondary}`,
+								}}
+							>
+								<Text style={{ fontSize: 'clamp(14px, 3.5vw, 16px)' }}>
+									{tCommon('language') || 'Language'}
+								</Text>
+								<LanguageSelector />
+							</Flex>
+							<Flex
+								justify="space-between"
+								align="center"
+								style={{
+									padding: '12px 16px',
+									background: token.colorFillQuaternary,
+									borderRadius: 12,
+									border: `1px solid ${token.colorBorderSecondary}`,
+								}}
+							>
+								<Text style={{ fontSize: 'clamp(14px, 3.5vw, 16px)' }}>{tSettings('theme')}</Text>
+								<ThemeToggle />
+							</Flex>
+						</Flex>
+
 						<Link href="/login" prefetch={true} onClick={() => setMobileDrawerOpen(false)}>
 							<Button
 								type="primary"

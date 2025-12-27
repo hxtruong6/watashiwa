@@ -12,6 +12,8 @@ import { getReviewCount } from '@/modules/study/study.actions';
 import { getUserSettings, getUserStats } from '@/modules/user/user.actions';
 import { UserReview, Vocabulary } from '@prisma/client';
 
+import { getMemoryGardenData } from './components/memory-garden/memory-garden.actions';
+
 export interface WisdomWordData {
 	id: string; // Review ID or Vocab ID? Usually use Vocab ID for display? Or Review ID/Vocab ID tuple.
 	kanji: string;
@@ -118,13 +120,15 @@ export async function getDashboardData() {
 		const user = await getUser();
 		if (!user) return null;
 
-		const [reviewCount, stats, weeklyStats, decksWithDue, userSettings] = await Promise.all([
-			getReviewCount(),
-			getUserStats(user.id),
-			getWeeklyStats(user.id),
-			getDecksWithDue(user.id),
-			getUserSettings(),
-		]);
+		const [reviewCount, stats, weeklyStats, decksWithDue, userSettings, memoryGarden] =
+			await Promise.all([
+				getReviewCount(),
+				getUserStats(user.id),
+				getWeeklyStats(user.id),
+				getDecksWithDue(user.id),
+				getUserSettings(),
+				getMemoryGardenData(500), // Limit to 500 for dashboard performance
+			]);
 
 		let userName: string | null = null;
 		if (user) {
@@ -142,6 +146,7 @@ export async function getDashboardData() {
 			decksWithDue,
 			userSettings,
 			userName,
+			memoryGarden,
 		};
 	} catch (error) {
 		console.error('Error fetching dashboard data:', error);

@@ -1,12 +1,14 @@
 import { Typography } from 'antd';
 import { Flex, Space } from 'antd';
 import type { Metadata } from 'next';
-import { getLocale, getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
+
+export const dynamic = 'force-static';
+export const revalidate = 3600;
 
 const { Title, Paragraph, Text } = Typography;
 
 export async function generateMetadata(): Promise<Metadata> {
-	const locale = await getLocale();
 	const t = await getTranslations('Legal.cookiePolicy');
 
 	return {
@@ -30,7 +32,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function CookiePolicyPage() {
 	const t = await getTranslations('Legal.cookiePolicy');
-	const locale = await getLocale();
 
 	return (
 		<Flex
