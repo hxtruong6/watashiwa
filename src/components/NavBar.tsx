@@ -134,8 +134,13 @@ export default function NavBar({ user }: { user?: User | null }) {
 	const hasCourseId = searchParams.get('courseId');
 	const isActiveStudySession = pathname?.startsWith('/study') && (hasDeckId || hasCourseId);
 
+	// Hide navbar on auth pages (login, forgot-password, reset-password)
+	// These are focused flows that should not have navigation distractions
+	const isAuthPage =
+		pathname === '/login' || pathname === '/forgot-password' || pathname === '/reset-password';
+
 	if (
-		pathname === '/login' ||
+		isAuthPage ||
 		isActiveStudySession || // Only hide during active session, not dashboard
 		pathname === '/exercises' ||
 		pathname?.startsWith('/admin')

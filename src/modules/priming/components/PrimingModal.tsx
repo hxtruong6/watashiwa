@@ -45,7 +45,7 @@ export function PrimingModal({ open, onRead, onSkip, unitId }: PrimingModalProps
 		markPrimingModalSeen();
 
 		// Track analytics
-		trackEvent('PRIMING_MODAL_READ_CLICKED', {
+		trackEvent('priming_modal_read_clicked', {
 			unit_id: unitId,
 		});
 
@@ -57,7 +57,7 @@ export function PrimingModal({ open, onRead, onSkip, unitId }: PrimingModalProps
 		markPrimingModalSeen();
 
 		// Track analytics
-		trackEvent('PRIMING_MODAL_SKIP_CLICKED', {
+		trackEvent('priming_modal_skip_clicked', {
 			unit_id: unitId,
 		});
 

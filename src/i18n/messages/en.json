@@ -642,7 +642,39 @@
 		"signupSuccess": "Signup successful! Redirecting...",
 		"registrationSuccess": "Registration successful! Check your email.",
 		"unexpectedError": "An unexpected error occurred.",
-		"checkEmail": "Registration successful! Please check your email for the confirmation link."
+		"checkEmail": "Registration successful! Please check your email for the confirmation link.",
+		"errorInvalidCredentials": "Invalid email or password",
+		"errorEmailNotConfirmed": "Please check your email to confirm your account",
+		"errorUserExists": "An account with this email already exists",
+		"errorAuthFailed": "An error occurred during authentication",
+		"errorAllFieldsRequired": "All fields are required",
+		"errorOriginMissing": "Unable to determine application origin"
+	},
+	"ForgotPassword": {
+		"title": "Forgot Password",
+		"subtitle": "Enter your email to receive a reset link",
+		"emailLabel": "Email Address",
+		"emailRequired": "Please input your Email!",
+		"emailInvalid": "Please enter a valid email!",
+		"sendButton": "Send Reset Link",
+		"backToLogin": "Back to Login",
+		"successMessage": "Password reset link has been sent to your email.",
+		"errorMessage": "Failed to send reset link. Please try again."
+	},
+	"ResetPassword": {
+		"title": "Set New Password",
+		"subtitle": "Enter your new secure password",
+		"newPasswordLabel": "New Password",
+		"newPasswordRequired": "Please input your new Password!",
+		"newPasswordMin": "Password must be at least 6 characters.",
+		"confirmPasswordLabel": "Confirm Password",
+		"confirmPasswordRequired": "Please confirm your password!",
+		"passwordMismatch": "The two passwords that you entered do not match!",
+		"updateButton": "Update Password",
+		"successMessage": "Password updated successfully! Redirecting...",
+		"errorMessage": "Failed to update password. Please try again.",
+		"invalidToken": "Invalid or expired reset token. Please request a new reset link.",
+		"noSession": "No valid session found. Please use the reset link from your email."
 	},
 	"Auth": {
 		"failedTitle": "Authentication Failed",

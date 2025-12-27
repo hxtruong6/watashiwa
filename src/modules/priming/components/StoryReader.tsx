@@ -30,7 +30,7 @@ export function StoryReader({ story, onComplete, onSkip }: StoryReaderProps) {
 
 	// Track story opened
 	useEffect(() => {
-		trackEvent('STORY_OPENED', {
+		trackEvent('story_opened', {
 			unit_id: story.unitId,
 			source: 'dashboard',
 		});
@@ -118,7 +118,7 @@ export function StoryReader({ story, onComplete, onSkip }: StoryReaderProps) {
 				const duration = Date.now() - startTime.current;
 
 				// Track completion
-				trackEvent('STORY_COMPLETED', {
+				trackEvent('story_completed', {
 					duration_ms: duration,
 					scroll_depth_percent: scrollDepth,
 					unit_id: story.unitId,

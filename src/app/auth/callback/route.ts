@@ -15,7 +15,33 @@ export async function GET(request: Request) {
 			// We dynamic import to avoid bundling server actions in route if not needed,
 			// but standard import is fine here as this IS a server route.
 			const { syncUser } = await import('@/modules/auth/auth.actions');
-			await syncUser();
+			const syncResult = await syncUser();
+
+			// Track OAuth/email confirmation signup if this is a new user
+			if (syncResult.success && syncResult.data?.isNewUser) {
+				const {
+					data: { user },
+				} = await supabase.auth.getUser();
+
+				if (user) {
+					// Determine signup method from provider
+					const provider = user.app_metadata?.provider || 'email';
+					const isOAuth = provider !== 'email';
+
+					// Track signup event via backend analytics
+					const { logAnalyticsEvent } = await import('@/modules/analytics/analytics.actions');
+					await logAnalyticsEvent('user_signed_up', {
+						distinct_id: user.id,
+						method: isOAuth ? provider : 'email',
+						source: 'email_confirmation',
+						timestamp: new Date().toISOString(),
+						user_properties: {
+							email: user.email,
+							name: user.user_metadata?.full_name || user.email?.split('@')[0],
+						},
+					});
+				}
+			}
 
 			const forwardedHost = request.headers.get('x-forwarded-host'); // original origin before load balancer
 			const isLocalEnv = process.env.NODE_ENV === 'development';

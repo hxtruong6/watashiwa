@@ -68,8 +68,12 @@ export default async function StudyPage({
 	// If deckId or courseId is present, start the session
 	if (deckId || courseId) {
 		// Check if this is user's first study session for analytics
-		const isFirstSession = !(await hasUserStudiedBefore());
-		const dailyProgress = await getDailyProgress();
+		// Parallelize independent operations for better performance
+		const [hasStudied, dailyProgress] = await Promise.all([
+			hasUserStudiedBefore(),
+			getDailyProgress(),
+		]);
+		const isFirstSession = !hasStudied;
 
 		return (
 			<SessionController
@@ -89,19 +93,27 @@ export default async function StudyPage({
 			redirect(`/study?deckId=${lastSession.deckId}${mode ? `&mode=${mode}` : ''}`);
 		}
 	} catch (error) {
+		// NEXT_REDIRECT is expected when redirect() is called - not a real error
+		if (error instanceof Error && error.message === 'NEXT_REDIRECT') {
+			// Re-throw redirect errors - they're intentional
+			throw error;
+		}
+		// Only log actual errors
 		console.error('Failed to get last study session:', error);
 		// Continue to auto-start or show dashboard on error
 	}
 
-	// HIGH-IMPACT OPTIMIZATION: Auto-start session for active users
-	// Only show dashboard for new users or when truly nothing to study
 	try {
-		const dailyProgress = await getDailyProgress();
-		const { learningDecks } = await getUserDecksWithStats();
+		const [dailyProgress, deckData, hasStudied] = await Promise.all([
+			getDailyProgress(),
+			getUserDecksWithStats(),
+			hasUserStudiedBefore(),
+		]);
+		const { learningDecks } = deckData;
 
 		const dueCount = dailyProgress?.dueCount || 0;
 		const hasStudyHistory = learningDecks.length > 0;
-		const isFirstSession = !(await hasUserStudiedBefore());
+		const isFirstSession = !hasStudied;
 
 		// Auto-start session if user has due cards (active user with work to do)
 		if (dueCount > 0 && hasStudyHistory) {

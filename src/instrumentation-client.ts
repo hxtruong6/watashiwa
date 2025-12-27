@@ -48,7 +48,8 @@ if (isEnabled) {
 		replaysOnErrorSampleRate: 1.0,
 
 		// Setting this option to true will print useful information to the console while you're setting up Sentry.
-		debug: true,
+		// Disable to reduce console noise - set to true only when debugging Sentry issues
+		debug: false,
 
 		// Tunnel traffic through Next.js rewrite to bypass AdBlockers
 		tunnel: '/monitoring',
@@ -59,7 +60,17 @@ if (isEnabled) {
 			api_host: '/ingest',
 			ui_host: 'https://us.posthog.com',
 			// person_profiles: 'identified_only',
-			capture_pageview: false, // We handle this manually in PostHogPageTracker
+			capture_pageview: true, // We handle this manually in PostHogPageTracker
+			// Use latest defaults for SPA support and improved autocapture
+			defaults: '2025-11-30',
+			// Autocapture configuration
+			autocapture: true,
+			// Verify PostHog is loaded
+			loaded: (posthog) => {
+				if (process.env.NODE_ENV === 'development') {
+					console.log('[Analytics] PostHog initialized successfully', posthog);
+				}
+			},
 		});
 	}
 }

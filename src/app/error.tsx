@@ -29,7 +29,7 @@ export default function ErrorBoundary({
 			justify="center"
 			align="center"
 			style={{
-				height: 'calc(100vh - 110px)',
+				height: 'calc(100vh - 210px)',
 				overflow: 'hidden',
 				background: token.colorBgLayout,
 				padding: 24, // Ensure padding on small screens
@@ -44,7 +44,7 @@ export default function ErrorBoundary({
 							maxWidth: 400,
 							aspectRatio: '1',
 							margin: '0 auto',
-							maxHeight: '40vh',
+							maxHeight: '60vh',
 						}}
 					>
 						<DotLottieReact
@@ -68,17 +68,29 @@ export default function ErrorBoundary({
 					</Typography.Title>
 				}
 				subTitle={
-					<Typography.Text
-						type="secondary"
-						style={{
-							fontSize: 'clamp(1rem, 3vw, 1.25rem)',
-							maxWidth: 600,
-							margin: '0 auto',
-							display: isDev ? 'block' : 'none',
-						}}
-					>
-						{error.message || t('unexpectedError')}
-					</Typography.Text>
+					isDev ? (
+						<Typography.Text
+							type="secondary"
+							style={{
+								fontSize: 'clamp(1rem, 3vw, 1.25rem)',
+								maxWidth: 600,
+								margin: '0 auto',
+							}}
+						>
+							{error.message || t('unexpectedError')}
+						</Typography.Text>
+					) : (
+						<Typography.Text
+							type="secondary"
+							style={{
+								fontSize: 'clamp(1rem, 3vw, 1.25rem)',
+								maxWidth: 600,
+								margin: '0 auto',
+							}}
+						>
+							{t('unexpectedError')}
+						</Typography.Text>
+					)
 				}
 				extra={
 					<Flex gap="middle" justify="center" style={{ marginTop: 24 }}>

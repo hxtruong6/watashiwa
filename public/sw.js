@@ -1,11 +1,38 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/7.3.0/workbox-sw.js');
 
 if (workbox) {
+    // ============================================
+    // WORKBOX LOGGING CONFIGURATION
+    // ============================================
+    // Configure Workbox log level to reduce console noise
+    // Options: 'debug' (most verbose), 'log' (default), 'warn', 'error', 'silent' (no logs)
+    //
+    // To change: Modify the WORKBOX_LOG_LEVEL constant below
+    // Recommended: 'warn' or 'silent' for development, 'log' for production debugging
+    // const WORKBOX_LOG_LEVEL = 'warn'; // Change this to 'silent' to disable all Workbox logs
+    const WORKBOX_LOG_LEVEL = 'silent'; // Change this to 'silent' to disable all Workbox logs
+
+    // Auto-detect development environment (optional - you can remove this and just use WORKBOX_LOG_LEVEL)
+    const isDevelopment = self.location.origin.includes('localhost') ||
+        self.location.origin.includes('127.0.0.1') ||
+        self.location.origin.includes(':3000');
+
+    // Use WORKBOX_LOG_LEVEL directly, or uncomment below to auto-set based on environment:
+    // const logLevel = isDevelopment ? 'warn' : 'log';
+    const logLevel = WORKBOX_LOG_LEVEL;
+
+    // workbox.core.setLogLevel(logLevel); // error here unsupport
+    // Disable all Workbox logs
+    workbox.setConfig({ debug: false });
+
+
     // 0. Force Immediate Control (Important for offline to work right away)
     workbox.core.skipWaiting();
     workbox.core.clientsClaim();
 
-    console.log(`Yay! Workbox is loaded 🎉`);
+    if (logLevel !== 'silent') {
+        console.log(`Yay! Workbox is loaded 🎉`);
+    }
 
     // 1. Precache Cleanup (optional for manual mode, but good practice)
     workbox.precaching.cleanupOutdatedCaches();

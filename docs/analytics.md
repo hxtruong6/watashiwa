@@ -15,15 +15,17 @@ This document describes the analytics tracking implementation for WatashiWa MVP.
 ### Server-Side Logging
 
 - **Location**: `src/modules/analytics/analytics.actions.ts`
-- **Method**: Server actions (can be extended to PostHog API)
-- **Events**: Server-side events, data validation
+- **Method**: PostHog Node.js SDK (`posthog-node`)
+- **Events**: Server-side events, OAuth signups, email confirmations, data validation
 
 ### Key Principles
 
 1. **Fail Silently**: Analytics errors don't break the app
-2. **Privacy First**: No PII, uses user IDs only
+2. **Privacy First**: No PII, uses user IDs only. Sensitive fields (passwords) excluded from autocapture
 3. **Performance**: Async, non-blocking tracking
 4. **Development Mode**: Logs to console in dev, tracks in production
+5. **Internal User Filtering**: Automatically filters internal/test users from production analytics
+6. **Event Naming**: Follows `[object]_[verb]` snake_case convention (e.g., `priming_skipped`, `keyword_tapped`)
 
 ## Implemented Events
 
@@ -40,7 +42,7 @@ This document describes the analytics tracking implementation for WatashiWa MVP.
 - `source`: 'landing_page'
 - `timestamp`: Date
 
-**Note**: Missing OAuth/email confirmation signup tracking (see TODO list)
+**Note**: ✅ OAuth/email confirmation signup tracking implemented in `src/app/auth/callback/route.ts`
 
 #### ✅ `user_first_study_session_started`
 
@@ -160,11 +162,11 @@ This document describes the analytics tracking implementation for WatashiWa MVP.
 
 ### Critical Priority
 
-- [ ] **OAuth/Email Confirmation Signup Tracking**
-  - **Issue**: `user_signed_up` not tracked when users sign up via OAuth or email confirmation
+- [x] **OAuth/Email Confirmation Signup Tracking** ✅
+  - **Status**: Implemented
   - **Location**: `src/app/auth/callback/route.ts`
-  - **Fix**: Track signup when `syncUser()` returns `isNewUser: true` in callback route
-  - **Impact**: Missing signup data for OAuth users
+  - **Implementation**: Tracks signup when `syncUser()` returns `isNewUser: true` via backend analytics
+  - **Method**: Detects OAuth provider from `user.app_metadata.provider`
 
 - [ ] **Session Abandonment Tracking**
   - **Issue**: Users can exit session via close button, but we don't track abandonment
@@ -190,11 +192,10 @@ This document describes the analytics tracking implementation for WatashiWa MVP.
   - **Fix**: Add `is_resumed: boolean` property to `study_session_started` event
   - **Impact**: Can't measure resume feature usage
 
-- [ ] **User Identification on Login**
-  - **Issue**: We identify users on signup, but not on login
+- [x] **User Identification on Login** ✅
+  - **Status**: Implemented
   - **Location**: `src/app/login/page.tsx`
-  - **Fix**: Call `identifyUser()` after successful login
-  - **Impact**: PostHog may not properly identify returning users
+  - **Implementation**: Calls `identifyUser()` after successful login and user sync
 
 ### Medium Priority
 
@@ -252,21 +253,69 @@ This document describes the analytics tracking implementation for WatashiWa MVP.
 
 ## Implementation Notes
 
+### Autocapture Configuration
+
+PostHog autocapture is enabled by default and configured in `src/instrumentation-client.ts`:
+
+- **Autocapture**: Enabled for clicks, form submissions, and input changes
+- **Pageviews**: Manually tracked via `PostHogPageTracker` component (SPA-compatible)
+- **Sensitive Data**: Password fields use `ph-no-capture` class to exclude from autocapture
+- **Defaults**: Uses `'2025-11-30'` for latest PostHog features and SPA support
+
+### Internal User Filtering
+
+Internal users are automatically filtered from production analytics:
+
+- **Development/Staging**: All users considered internal
+- **Email Domains**: Filters `@watashiwa.app`, `@yourcompany.com` (configurable)
+- **Test Patterns**: Filters emails containing `test@`, `+test@`, or `@test.`
+- **Test IDs**: Filters user IDs containing `test` or `demo`
+- **Property**: All events include `is_internal_user: boolean` property
+
+To configure internal domains, update `isInternalUser()` in `src/lib/analytics.ts`.
+
+### Event Naming Conventions
+
+All events follow the `[object]_[verb]` snake_case format:
+
+- ✅ `priming_skipped`
+- ✅ `keyword_tapped`
+- ✅ `story_opened`
+- ✅ `story_completed`
+- ✅ `priming_modal_read_clicked`
+- ✅ `priming_modal_skip_clicked`
+
 ### Environment Variables
 
 - `NEXT_PUBLIC_ENABLE_ANALYTICS`: Set to `'true'` to enable analytics (default: enabled in production)
-- `NEXT_PUBLIC_POSTHOG_KEY`: PostHog project API key
+- `NEXT_PUBLIC_POSTHOG_KEY`: PostHog project API key (required for client-side tracking)
+- `POSTHOG_KEY`: PostHog project API key for server-side tracking (recommended, falls back to `NEXT_PUBLIC_POSTHOG_KEY` if not set)
+  - **Note**: PostHog project keys are public by design (they're in client-side code), but using `POSTHOG_KEY` (without `NEXT_PUBLIC_`) for server-side is better practice as it's not exposed in the client bundle
+- `NODE_ENV`: Used for environment detection (`development` vs `production`)
 
 ### Development Mode
 
 - In development, events are logged to console instead of sent to PostHog
 - Set `NEXT_PUBLIC_ENABLE_ANALYTICS=true` to test PostHog integration locally
+- Internal users are always filtered in development (all users considered internal)
 
-### Privacy
+### Privacy & Security
 
-- No PII (Personally Identifiable Information) is tracked
-- User IDs are used for identification
-- Email addresses are only used for PostHog identification (not in event properties)
+- **No PII**: No PII (Personally Identifiable Information) is tracked in event properties
+- **User IDs**: User IDs are used for identification
+- **Email**: Email addresses are only used for PostHog identification (not in event properties)
+- **Sensitive Fields**: Password fields excluded from autocapture via `ph-no-capture` class
+- **Reverse Proxy**: Events sent via `/ingest` reverse proxy to bypass ad blockers
+
+### Backend Event Tracking
+
+Server-side events are tracked via PostHog Node.js SDK:
+
+- **Location**: `src/modules/analytics/analytics.actions.ts`
+- **Method**: `logAnalyticsEvent(eventName, payload)`
+- **Usage**: Call from server actions, API routes, or server components
+- **Properties**: Include `distinct_id` and `user_properties` in payload
+- **Internal Filtering**: Automatically filters internal users in production
 
 ## Success Criteria
 
@@ -280,8 +329,11 @@ After 100 users:
 
 ## Related Files
 
-- `src/lib/analytics.ts` - Client-side tracking utility
-- `src/modules/analytics/analytics.actions.ts` - Server-side logging
+- `src/lib/analytics.ts` - Client-side tracking utility (with internal user filtering)
+- `src/modules/analytics/analytics.actions.ts` - Server-side PostHog tracking
 - `src/components/Analytics/UserReturnTracker.tsx` - Return visit tracking
+- `src/components/Analytics/PostHogPageTracker.tsx` - Manual pageview tracking (SPA)
 - `src/hooks/useFeatureDiscovery.ts` - Feature discovery hook
-- `src/instrumentation-client.ts` - PostHog initialization
+- `src/instrumentation-client.ts` - PostHog initialization and autocapture config
+- `src/app/auth/callback/route.ts` - OAuth/email confirmation signup tracking
+- `next.config.ts` - Reverse proxy configuration (`/ingest` → PostHog)

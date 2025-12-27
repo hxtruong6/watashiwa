@@ -200,11 +200,13 @@ export default function GlobalError({
 						</button>
 					</div>
 
-					<details>
-						<summary>Show Technical Details</summary>
-						<code>{error.message || 'Unknown Error'}</code>
-						<div style={{ marginTop: 8, fontSize: '11px' }}>Digest: {error.digest || 'N/A'}</div>
-					</details>
+					{process.env.NODE_ENV === 'development' && (
+						<details>
+							<summary>Show Technical Details (Dev Only)</summary>
+							<code>{error.message || 'Unknown Error'}</code>
+							<div style={{ marginTop: 8, fontSize: '11px' }}>Digest: {error.digest || 'N/A'}</div>
+						</details>
+					)}
 				</div>
 			</body>
 		</html>

@@ -14,60 +14,65 @@ export const StudyData = {
 	 */
 	getDailyStats: async (userId: string, limitReviews: number, limitNewCards: number) => {
 		const startOfDay = getStartOfDayInTimezone(); // Use util or new Date().setHours(0,0,0,0)
+		const now = new Date();
 
-		const reviewsToday = await prisma.reviewLog.count({
-			where: {
-				userId,
-				reviewDate: { gte: startOfDay }, // Check schema for exact field name (reviewDate or review?)
-			},
-		});
+		// Single aggregated query using PostgreSQL subqueries
+		// This consolidates 5 separate queries into 1 database round-trip
+		const [stats] = await prisma.$queryRaw<
+			Array<{
+				reviews_today: bigint;
+				new_cards_today: bigint;
+				due_count: bigint;
+				reviews_available: bigint;
+				passed_reviews: bigint;
+				total_reviews: bigint;
+			}>
+		>`
+			SELECT
+				(SELECT COUNT(*)::bigint FROM "ReviewLog" 
+				 WHERE "user_id" = ${userId}
+				 AND "review_date" >= ${startOfDay}) as reviews_today,
+				
+				(SELECT COUNT(*)::bigint FROM "UserReview" 
+				 WHERE "user_id" = ${userId}
+				 AND "created_at" >= ${startOfDay} 
+				 AND "srs_stage" = 0) as new_cards_today,
+				
+				(SELECT COUNT(*)::bigint FROM "UserReview" 
+				 WHERE "user_id" = ${userId}
+				 AND "next_review_at" <= ${now}) as due_count,
+				
+				(SELECT COUNT(*)::bigint FROM "UserReview" 
+				 WHERE "user_id" = ${userId}
+				 AND "state" != 0 
+				 AND "next_review_at" <= ${now}) as reviews_available,
+				
+				(SELECT COUNT(*)::bigint FROM "ReviewLog" 
+				 WHERE "user_id" = ${userId}
+				 AND "review_date" >= ${startOfDay} 
+				 AND "rating" >= 2) as passed_reviews,
+				
+				(SELECT COUNT(*)::bigint FROM "ReviewLog" 
+				 WHERE "user_id" = ${userId}
+				 AND "review_date" >= ${startOfDay}) as total_reviews
+		`;
 
-		const newCardsToday = await prisma.userReview.count({
-			where: {
-				userId,
-				createdAt: { gte: startOfDay },
-				srsStage: 0, // 0 = New
-			},
-		});
-
-		// Additional Stats for Dashboard
-		const dueCount = await prisma.userReview.count({
-			where: {
-				userId,
-				nextReviewAt: { lte: new Date() },
-			},
-		});
-
-		const reviewsAvailable = await prisma.userReview.count({
-			where: {
-				userId,
-				state: { not: 0 },
-				nextReviewAt: { lte: new Date() },
-			},
-		});
-
-		// [NEW] Calculate Focus Points & Accuracy dynamically
-		// We need to fetch the actual logs to calculate these, not just count.
-		const todaysLogs = await prisma.reviewLog.findMany({
-			where: {
-				userId,
-				reviewDate: { gte: startOfDay },
-			},
-			select: {
-				rating: true,
-			},
-		});
+		// Convert BigInt to Number (PostgreSQL COUNT returns bigint)
+		const reviewsToday = Number(stats.reviews_today);
+		const newCardsToday = Number(stats.new_cards_today);
+		const dueCount = Number(stats.due_count);
+		const reviewsAvailable = Number(stats.reviews_available);
+		const passedCount = Number(stats.passed_reviews);
+		const totalReviewsWithLogs = Number(stats.total_reviews);
 
 		// Accuracy: (Passed [>=2] / Total) * 100
-		const passedCount = todaysLogs.filter((l) => l.rating >= 2).length;
-		const totalReviewsWithLogs = todaysLogs.length;
 		const accuracy =
 			totalReviewsWithLogs > 0 ? Math.round((passedCount / totalReviewsWithLogs) * 100) : 0;
 
 		// Focus Points (FP):
 		// - 10 FP per Review
 		// - 20 FP per New Card (Learned)
-		const reviewsFP = todaysLogs.length * 10;
+		const reviewsFP = reviewsToday * 10;
 		const newCardsFP = newCardsToday * 20;
 		const focusPoints = reviewsFP + newCardsFP;
 

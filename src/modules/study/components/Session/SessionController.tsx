@@ -287,6 +287,10 @@ export default function SessionController({
 				mode: mode || null,
 				queue_size: queue.length,
 				due_count: dueCount,
+				device_memory: (navigator as any)?.deviceMemory, // RAM in GB
+				hardware_concurrency: navigator?.hardwareConcurrency, // CPU cores
+				connection_type: (navigator as any)?.connection?.effectiveType, // 4G, 3G, etc.
+				is_pwa: window?.matchMedia('(display-mode: standalone)').matches,
 			});
 
 			setHasTrackedSessionStart(true);
@@ -695,7 +699,7 @@ export default function SessionController({
 					}}
 					onSkip={() => {
 						// Track skip from modal
-						trackEvent('PRIMING_SKIPPED', {
+						trackEvent('priming_skipped', {
 							unit_id: deckId,
 							source: 'modal',
 						});
@@ -741,7 +745,7 @@ export default function SessionController({
 					}}
 					onSkip={() => {
 						// Soft Gate: Allow skipping
-						trackEvent('PRIMING_SKIPPED', {
+						trackEvent('priming_skipped', {
 							unit_id: deckId,
 						});
 						setHasSkippedPriming(true);

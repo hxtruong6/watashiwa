@@ -1,13 +1,15 @@
 'use client';
 
 import { ambientGradients, customShadows } from '@/lib/theme/themeConfig';
-import { syncUser } from '@/modules/auth/auth.actions';
-import { createClient } from '@/utils/supabase/client';
+import { loginSchema, signupSchema } from '@/modules/auth/auth.dto';
+import { useAuth } from '@/modules/auth/hooks/useAuth';
 import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
 import { Alert, App, Button, Card, Flex, Form, Input, Typography, theme } from 'antd';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 const { Title, Text } = Typography;
@@ -17,122 +19,65 @@ export default function AuthPage() {
 	const { token } = useToken();
 	const t = useTranslations('Login');
 	const { message: antdMessage } = App.useApp();
+	const router = useRouter();
 	const [mode, setMode] = useState<'login' | 'signup'>('login');
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState<string | null>(null);
-	const [message, setMessage] = useState<string | null>(null);
-	const supabase = createClient();
+
+	// Use custom auth hook - all business logic is extracted
+	const { loading, error, message, login, signup, resetState, setMessage } = useAuth({
+		onError: (errorMsg) => {
+			antdMessage.error(errorMsg);
+		},
+		t, // Pass translation function for error messages
+	});
+
 	const isDark = token.colorBgBase === '#151F32';
 
-	const handleLogin = async (values: unknown) => {
-		setLoading(true);
-		setError(null);
-		setMessage(null);
-
-		try {
-			const { email, password } = values as { email: string; password: string };
-
-			const { error } = await supabase.auth.signInWithPassword({
-				email,
-				password,
-			});
-
-			if (error) {
-				setError(error.message);
-				antdMessage.error(error.message);
-			} else {
-				antdMessage.success(t('loginSuccess'));
-				// Check session and sync user to DB
-				try {
-					const { success, data } = await syncUser();
-					const role = data?.role;
-					if (success && role === 'ADMIN') {
-						window.location.href = '/admin';
-						return;
-					}
-				} catch (syncErr) {
-					console.error('User sync failed (non-blocking):', syncErr);
-				}
-				// Force full reload ensures middleware sees the new cookie
-				window.location.href = '/';
-			}
-		} catch {
-			setError(t('unexpectedError'));
-			antdMessage.error(t('unexpectedError'));
-		} finally {
-			setLoading(false);
-		}
-	};
-
-	const handleSignUp = async (values: unknown) => {
-		setLoading(true);
-		setError(null);
-		setMessage(null);
-
-		try {
-			const { email, password, name } = values as { email: string; password: string; name: string };
-
-			// Standard SignUp
-			const { data, error } = await supabase.auth.signUp({
-				email,
-				password,
-				options: {
-					emailRedirectTo: `${window.location.origin}/auth/callback`,
-					data: {
-						full_name: name,
-					},
-				},
-			});
-
-			if (error) {
-				setError(error.message);
-				antdMessage.error(error.message);
-			} else if (data.session) {
-				antdMessage.success(t('signupSuccess'));
-				// Logged in immediately
-				try {
-					const { success, data: syncData } = await syncUser();
-					const role = syncData?.role;
-
-					// Track signup event
-					if (success && syncData?.isNewUser && data.user) {
-						const { trackEvent, identifyUser } = await import('@/lib/analytics');
-						identifyUser(data.user.id, {
-							email: email,
-							name: name,
-						});
-						trackEvent('user_signed_up', {
-							method: 'email',
-							source: 'landing_page', // Could be enhanced to detect actual source
-							timestamp: new Date().toISOString(),
-						});
-					}
-
-					if (success && role === 'ADMIN') {
-						window.location.href = '/admin';
-						return;
-					}
-				} catch (syncErr) {
-					console.error('User sync failed (non-blocking):', syncErr);
-				}
-				// Force full reload to ensure middleware catches the new session
-				window.location.href = '/';
-			} else {
-				setMessage(t('checkEmail'));
-				antdMessage.success(t('registrationSuccess'));
-			}
-		} catch {
-			setError(t('unexpectedError'));
-			antdMessage.error(t('unexpectedError'));
-		} finally {
-			setLoading(false);
-		}
-	};
-
+	// Reset state when switching modes
 	const toggleMode = () => {
-		setMode(mode === 'login' ? 'signup' : 'login');
-		setError(null);
-		setMessage(null);
+		const newMode = mode === 'login' ? 'signup' : 'login';
+		setMode(newMode);
+		resetState();
+	};
+
+	// Handle form submission with Zod validation
+	const handleSubmit = async (values: unknown) => {
+		if (mode === 'login') {
+			// Validate with Zod schema
+			const validationResult = loginSchema.safeParse(values);
+			if (!validationResult.success) {
+				const firstError = validationResult.error.issues[0];
+				antdMessage.error(firstError?.message || t('unexpectedError'));
+				return;
+			}
+
+			const result = await login(validationResult.data.email, validationResult.data.password);
+			if (result.success) {
+				antdMessage.success(t('loginSuccess'));
+			}
+		} else {
+			// Validate with Zod schema
+			const validationResult = signupSchema.safeParse(values);
+			if (!validationResult.success) {
+				const firstError = validationResult.error.issues[0];
+				antdMessage.error(firstError?.message || t('unexpectedError'));
+				return;
+			}
+
+			const result = await signup(
+				validationResult.data.email,
+				validationResult.data.password,
+				validationResult.data.name,
+			);
+
+			if (result.success) {
+				if (result.requiresConfirmation) {
+					setMessage(t('checkEmail'));
+					antdMessage.success(t('registrationSuccess'));
+				} else {
+					antdMessage.success(t('signupSuccess'));
+				}
+			}
+		}
 	};
 
 	return (
@@ -192,6 +137,15 @@ export default function AuthPage() {
 					variant="borderless"
 				>
 					<div style={{ textAlign: 'center', marginBottom: 32 }}>
+						<Image
+							src="/assets/w_logo.png"
+							alt="Logo"
+							width={64}
+							height={64}
+							objectFit="contain"
+							suppressHydrationWarning
+							onClick={() => router.push('/')}
+						/>
 						<Title
 							level={2}
 							style={{ color: token.colorPrimary, marginBottom: 8, fontWeight: 800 }}
@@ -205,7 +159,7 @@ export default function AuthPage() {
 
 					{error && (
 						<Alert
-							message={error}
+							title={error}
 							type="error"
 							showIcon
 							style={{ marginBottom: 24, borderRadius: 12 }}
@@ -213,7 +167,7 @@ export default function AuthPage() {
 					)}
 					{message && (
 						<Alert
-							message={message}
+							title={message}
 							type="success"
 							showIcon
 							style={{ marginBottom: 24, borderRadius: 12 }}
@@ -223,10 +177,11 @@ export default function AuthPage() {
 					<Form
 						name="auth-form"
 						initialValues={{ remember: true }}
-						onFinish={mode === 'login' ? handleLogin : handleSignUp}
+						onFinish={handleSubmit}
 						layout="vertical"
 						key={mode} // Forced re-render on mode switch to clear fields
 						size="large"
+						validateTrigger="onBlur" // Only validate when field loses focus (prevents errors while typing)
 					>
 						{mode === 'signup' && (
 							<Form.Item name="name" rules={[{ required: true, message: t('nameRequired') }]}>
@@ -245,6 +200,7 @@ export default function AuthPage() {
 								{ required: true, message: t('emailRequired') },
 								{ type: 'email', message: t('emailInvalid') },
 							]}
+							validateTrigger="onBlur"
 						>
 							<Input
 								prefix={<MailOutlined style={{ color: token.colorTextTertiary }} />}
@@ -258,13 +214,15 @@ export default function AuthPage() {
 							name="password"
 							rules={[
 								{ required: true, message: t('passwordRequired') },
-								mode === 'signup' ? { min: 6, message: t('passwordMin', { min: 6 }) } : {},
+								...(mode === 'signup' ? [{ min: 6, message: t('passwordMin', { min: 6 }) }] : []),
 							]}
+							validateTrigger="onBlur"
 						>
 							<Input.Password
 								prefix={<LockOutlined style={{ color: token.colorTextTertiary }} />}
 								placeholder={t('passwordPlaceholder')}
 								style={{ borderRadius: 12 }}
+								className="ph-no-capture"
 								suppressHydrationWarning
 							/>
 						</Form.Item>

@@ -56,7 +56,7 @@ export function KeywordHighlight({
 			}
 
 			// Track keyword tap
-			trackEvent('KEYWORD_TAPPED', {
+			trackEvent('keyword_tapped', {
 				word_id: vocabId,
 				word_text: wordSurface,
 			});

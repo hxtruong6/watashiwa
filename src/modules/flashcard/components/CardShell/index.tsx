@@ -181,6 +181,8 @@ export const CardShell: React.FC<CardShellProps> = ({
 					transformStyle: 'preserve-3d',
 					borderRadius: token.borderRadiusLG,
 					boxShadow: '0 8px 32px rgba(0,0,0,0.1)',
+					overflow: 'hidden', // Critical: Clips backface on mobile
+					willChange: 'transform', // Performance hint for mobile browsers
 				}}
 				animate={{ rotateY: isFlipped ? 180 : 0 }}
 				transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -194,6 +196,11 @@ export const CardShell: React.FC<CardShellProps> = ({
 						width: '100%',
 						height: '100%',
 						backfaceVisibility: 'hidden',
+						WebkitBackfaceVisibility: 'hidden', // Critical for iOS Safari
+						// Use translate3d for better mobile hardware acceleration
+						// No Z-offset needed - backface visibility handles hiding
+						transform: 'translate3d(0, 0, 0)',
+						WebkitTransform: 'translate3d(0, 0, 0)', // iOS Safari vendor prefix
 						background: token.colorBgContainer,
 						borderRadius: token.borderRadiusLG,
 						overflow: 'hidden',
@@ -234,13 +241,16 @@ export const CardShell: React.FC<CardShellProps> = ({
 						width: '100%',
 						height: '100%',
 						backfaceVisibility: 'hidden',
+						WebkitBackfaceVisibility: 'hidden', // Critical for iOS Safari
+						// Rotate first, then translate - ensures proper backface culling on mobile
+						transform: 'rotateY(180deg) translate3d(0, 0, 0)',
+						WebkitTransform: 'rotateY(180deg) translate3d(0, 0, 0)', // iOS Safari vendor prefix
 						background: token.colorBgContainer,
 						borderRadius: token.borderRadiusLG,
-						transform: 'rotateY(180deg)',
+						overflow: 'hidden',
 						display: 'flex',
 						justifyContent: 'center',
 						alignItems: 'center',
-						overflow: 'hidden',
 						userSelect: 'none',
 						WebkitUserSelect: 'none',
 						WebkitTouchCallout: 'none',

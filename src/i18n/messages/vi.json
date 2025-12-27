@@ -635,7 +635,39 @@
 		"fullNamePlaceholder": "Tên của bạn nè",
 		"emailPlaceholder": "Email của bạn",
 		"passwordPlaceholder": "Mật khẩu của bạn",
-		"unexpectedError": "Lỗi gì rồi, thử lại coi."
+		"unexpectedError": "Lỗi gì rồi, thử lại coi.",
+		"errorInvalidCredentials": "Email hoặc mật khẩu không đúng",
+		"errorEmailNotConfirmed": "Vui lòng kiểm tra email để xác nhận tài khoản",
+		"errorUserExists": "Đã có tài khoản với email này rồi",
+		"errorAuthFailed": "Có lỗi xảy ra khi xác thực",
+		"errorAllFieldsRequired": "Vui lòng điền đầy đủ thông tin",
+		"errorOriginMissing": "Không thể xác định nguồn ứng dụng"
+	},
+	"ForgotPassword": {
+		"title": "Quên Mật Khẩu",
+		"subtitle": "Nhập email để nhận link đặt lại mật khẩu",
+		"emailLabel": "Địa chỉ Email",
+		"emailRequired": "Vui lòng nhập Email!",
+		"emailInvalid": "Vui lòng nhập email hợp lệ!",
+		"sendButton": "Gửi Link Đặt Lại",
+		"backToLogin": "Về Trang Đăng Nhập",
+		"successMessage": "Link đặt lại mật khẩu đã được gửi đến email của bạn.",
+		"errorMessage": "Gửi link thất bại. Vui lòng thử lại."
+	},
+	"ResetPassword": {
+		"title": "Đặt Mật Khẩu Mới",
+		"subtitle": "Nhập mật khẩu mới của bạn",
+		"newPasswordLabel": "Mật Khẩu Mới",
+		"newPasswordRequired": "Vui lòng nhập mật khẩu mới!",
+		"newPasswordMin": "Mật khẩu phải có ít nhất 6 ký tự.",
+		"confirmPasswordLabel": "Xác Nhận Mật Khẩu",
+		"confirmPasswordRequired": "Vui lòng xác nhận mật khẩu!",
+		"passwordMismatch": "Hai mật khẩu bạn nhập không khớp!",
+		"updateButton": "Cập Nhật Mật Khẩu",
+		"successMessage": "Cập nhật mật khẩu thành công! Đang chuyển hướng...",
+		"errorMessage": "Cập nhật mật khẩu thất bại. Vui lòng thử lại.",
+		"invalidToken": "Link đặt lại không hợp lệ hoặc đã hết hạn. Vui lòng yêu cầu link mới.",
+		"noSession": "Không tìm thấy phiên hợp lệ. Vui lòng sử dụng link từ email của bạn."
 	},
 	"Auth": {
 		"failedTitle": "Xác thực thất bại",
