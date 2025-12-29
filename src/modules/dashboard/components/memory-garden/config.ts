@@ -77,6 +77,15 @@ export const GARDEN_CONFIG = {
 		repairTransition: 0.8, // Color interpolation for repair (0-1)
 		frameRate: 60, // Target FPS for animations
 	},
+
+	// Feature Flags
+	features: {
+		enableGradients: false, // Temporarily disabled - enable after shader is fixed
+		enableLabels: true,
+		labelDisplayMode: 'hover' as 'hover' | 'click' | 'always', // Progressive disclosure
+		enablePulse: true,
+		enableColumnGrouping: false, // Feature flag
+	},
 } as const;
 
 // Type-safe config access

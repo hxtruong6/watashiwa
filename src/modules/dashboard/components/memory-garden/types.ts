@@ -17,6 +17,10 @@ export interface MemoryTile {
 	// Computed Properties
 	isLeech: boolean; // lapses >= 3 OR srsStage === 3
 	stabilityNormalized: number; // 0.0 to 1.0 (for visualization)
+
+	// Deck/Category Grouping (optional, for column layout)
+	deckId?: string;
+	deckName?: string;
 }
 
 export interface MemoryGardenData {

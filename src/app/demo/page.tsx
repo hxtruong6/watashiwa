@@ -9,6 +9,12 @@
  * - Scenario C: Post-Session Animation (Dopamine Hit)
  */
 import {
+	EtymologyGraph,
+	type EtymologyGraphData,
+	generateEtymologyDemoData,
+} from '@/modules/dashboard/components/etymology-graph';
+import { LearningMapDemo } from '@/modules/dashboard/components/learning-map';
+import {
 	InterventionBlocker,
 	MemoryGarden,
 	MemoryGardenHero,
@@ -483,6 +489,7 @@ export default function DemoPage() {
 	const [showPostSession, setShowPostSession] = useState(false);
 	const [beforeData, setBeforeData] = useState<MemoryGardenData | null>(null);
 	const [afterData, setAfterData] = useState<MemoryGardenData | null>(null);
+	const [etymologyGraphData, setEtymologyGraphData] = useState<EtymologyGraphData | null>(null);
 
 	// Generate demo data (always use demo data for demo page)
 	useEffect(() => {
@@ -520,6 +527,11 @@ export default function DemoPage() {
 
 			setBeforeData(beforeDataDemo);
 			setAfterData(demoData);
+
+			// Generate etymology graph demo data
+			const etymologyDemo = generateEtymologyDemoData();
+			setEtymologyGraphData(etymologyDemo);
+
 			setLoading(false);
 		}, 500);
 
@@ -639,6 +651,73 @@ export default function DemoPage() {
 							/>
 						)}
 					</Card>
+				</div>
+			),
+		},
+		{
+			key: 'etymology',
+			label: 'Etymology Constellation',
+			children: (
+				<div style={{ padding: '24px 0' }}>
+					<Card title="Etymology Constellation Graph">
+						<Text type="secondary" style={{ display: 'block', marginBottom: 16 }}>
+							This interactive graph shows how learned words connect via shared kanji roots (Hán
+							Việt etymology). This makes the &ldquo;Understanding&rdquo; (U) pillar of CUBE
+							visible, helping you see semantic connections between words.
+						</Text>
+						<Flex vertical gap={8} style={{ marginBottom: 16 }}>
+							<Text strong>How it works:</Text>
+							<Text type="secondary" style={{ fontSize: 13 }}>
+								• Nodes represent words you&apos;ve learned
+								<br />• Edges connect words sharing the same kanji root (e.g., 学 in 学生, 学校,
+								大学)
+								<br />• Colors indicate memory strength: Green = Mastered, Blue = Learning, Red =
+								Leech
+								<br />• Hover over nodes to see details, click to navigate
+							</Text>
+						</Flex>
+						{etymologyGraphData && (
+							<>
+								<Flex gap={24} wrap="wrap" style={{ marginBottom: 16 }}>
+									<Flex vertical>
+										<Text type="secondary" style={{ fontSize: 12 }}>
+											Nodes
+										</Text>
+										<Text strong style={{ fontSize: 20 }}>
+											{etymologyGraphData.totalNodes}
+										</Text>
+									</Flex>
+									<Flex vertical>
+										<Text type="secondary" style={{ fontSize: 12 }}>
+											Connections
+										</Text>
+										<Text strong style={{ fontSize: 20 }}>
+											{etymologyGraphData.totalEdges}
+										</Text>
+									</Flex>
+								</Flex>
+								<EtymologyGraph
+									data={etymologyGraphData}
+									height={400}
+									width={400}
+									showControls={true}
+									onNodeClick={(node) => {
+										console.log('Node clicked:', node);
+										// In production, this would navigate to word detail page
+									}}
+								/>
+							</>
+						)}
+					</Card>
+				</div>
+			),
+		},
+		{
+			key: 'learning-map',
+			label: '2D Learning Map',
+			children: (
+				<div style={{ padding: '24px 0' }}>
+					<LearningMapDemo />
 				</div>
 			),
 		},

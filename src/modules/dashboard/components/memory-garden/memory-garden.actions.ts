@@ -55,6 +55,13 @@ export async function getMemoryGardenData(
 						id: true,
 						wordSurface: true,
 						meanings: true,
+						deckId: true,
+						deck: {
+							select: {
+								id: true,
+								name: true,
+							},
+						},
 					},
 				},
 			},
@@ -92,6 +99,8 @@ export async function getMemoryGardenData(
 					srsStage,
 					isLeech,
 					stabilityNormalized,
+					deckId: vocab.deckId,
+					deckName: vocab.deck?.name || 'Unknown',
 				};
 			});
 

@@ -1,14 +1,13 @@
 /**
- * useMemoryGardenMesh Hook
+ * useMemoryGardenMesh Hook (REFACTORED)
  *
- * Manages the InstancedMesh state and updates.
- * Separates rendering logic from data processing.
- *
- * Performance:
- * - Uses useLayoutEffect for synchronous GPU updates
- * - Batches all updates in single effect
- * - Defensive checks prevent crashes
+ * Improvements:
+ * 1. Removed unnecessary dependencies (dummy, colors arrays)
+ * 2. Extracted attribute setup to helper function (DRY)
+ * 3. Added validation for array length consistency
+ * 4. Better performance with optimized dependency array
  */
+
 import { useLayoutEffect, useMemo, useRef } from 'react';
 import * as THREE from 'three';
 
@@ -34,29 +33,47 @@ export interface UseMemoryGardenMeshReturn {
 }
 
 /**
- * Hook for managing Memory Garden mesh state
- *
- * Responsibilities:
- * 1. Sample tiles intelligently
- * 2. Calculate grid layout
- * 3. Update InstancedMesh matrices and colors
- * 4. Handle GPU buffer updates
- *
- * Edge Cases Handled:
- * - Null/empty data → returns empty state
- * - Malformed tiles → filtered out
- * - Mesh not ready → skips update
- * - Geometry not ready → skips update
+ * Helper: Setup or update instanced buffer attribute
+ * DRY: Avoids duplication between baseColor and topColor setup
  */
+function setupInstancedAttribute(
+	geometry: THREE.BufferGeometry,
+	attributeName: string,
+	data: Float32Array,
+	itemSize: number = 3,
+): void {
+	let attr = geometry.getAttribute(attributeName) as THREE.InstancedBufferAttribute;
+
+	if (!attr) {
+		// Create new attribute
+		attr = new THREE.InstancedBufferAttribute(data, itemSize, false);
+		geometry.setAttribute(attributeName, attr);
+	} else {
+		// Update existing attribute
+		const attrArray = attr.array as Float32Array;
+		if (attrArray.length === data.length) {
+			// Same size: update in place (performance optimization)
+			attrArray.set(data);
+			attr.needsUpdate = true;
+		} else {
+			// Size changed: recreate attribute
+			geometry.deleteAttribute(attributeName);
+			attr = new THREE.InstancedBufferAttribute(data, itemSize, false);
+			geometry.setAttribute(attributeName, attr);
+		}
+	}
+}
+
 export function useMemoryGardenMesh({
 	data,
 	animationMode = 'static',
 	repairedTileIds = [],
 }: UseMemoryGardenMeshOptions): UseMemoryGardenMeshReturn {
 	const meshRef = useRef<THREE.InstancedMesh>(null);
-	const dummy = useMemo(() => new THREE.Object3D(), []);
+	// Dummy object is stable - no need to recreate or include in deps
+	const dummy = useRef(new THREE.Object3D()).current;
 
-	// Sample tiles (smart filtering)
+	// Sample tiles
 	const tiles = useMemo(() => {
 		if (!data?.tiles) return [];
 		return sampleTiles(data.tiles);
@@ -65,37 +82,42 @@ export function useMemoryGardenMesh({
 	const tileCount = tiles.length;
 	const gridSize = useMemo(() => calculateGridSize(tileCount), [tileCount]);
 
-	// Pre-allocate color arrays (performance optimization)
+	// Pre-allocate color arrays (stable references, mutated in effect)
+	// These are NOT in dependency array because they're just containers
 	const colors = useMemo(() => new Float32Array(tileCount * 3), [tileCount]);
 	const baseColors = useMemo(() => new Float32Array(tileCount * 3), [tileCount]);
 	const topColors = useMemo(() => new Float32Array(tileCount * 3), [tileCount]);
 
-	// Track gradient bounds (stored in ref, calculated in effect)
+	// Track gradient bounds
 	const gradientBoundsRef = useRef<{ minY: number; maxY: number } | undefined>(undefined);
 
-	// Update mesh (runs when data/state changes)
+	// Update mesh
 	useLayoutEffect(() => {
-		// Defensive: Early returns for invalid states
-		if (tileCount === 0 || !meshRef.current || !meshRef.current.geometry) {
+		// Defensive: Early returns
+		if (tileCount === 0 || !meshRef.current?.geometry) {
 			return;
 		}
 
 		const mesh = meshRef.current;
+		const geometry = mesh.geometry;
 
-		// Setup instanceColor attribute (required for vertexColors)
-		let instanceColor = mesh.geometry.getAttribute('color') as THREE.InstancedBufferAttribute;
-		if (!instanceColor) {
-			instanceColor = new THREE.InstancedBufferAttribute(colors, 3, false);
-			mesh.geometry.setAttribute('color', instanceColor);
-		} else {
-			// Update existing attribute
-			const colorArray = instanceColor.array as Float32Array;
-			if (colorArray.length === colors.length) {
-				colorArray.set(colors);
-			}
+		// Validate array lengths match tile count
+		const expectedLength = tileCount * 3;
+		if (
+			colors.length !== expectedLength ||
+			baseColors.length !== expectedLength ||
+			topColors.length !== expectedLength
+		) {
+			console.error(
+				`[MemoryGarden] Array length mismatch: tiles=${tileCount}, colors=${colors.length / 3}, baseColors=${baseColors.length / 3}, topColors=${topColors.length / 3}`,
+			);
+			return;
 		}
 
-		// Track min/max Y for gradient normalization
+		// Setup instanceColor attribute
+		setupInstancedAttribute(geometry, 'color', colors, 3);
+
+		// Track Y bounds for gradient normalization
 		let minY = Infinity;
 		let maxY = -Infinity;
 
@@ -114,7 +136,7 @@ export function useMemoryGardenMesh({
 				repairedTileIds,
 			});
 
-			// Update matrix (position + scale)
+			// Update matrix
 			dummy.position.set(visualState.position.x, visualState.position.y, visualState.position.z);
 			dummy.scale.set(visualState.scale.x, visualState.scale.y, visualState.scale.z);
 			dummy.updateMatrix();
@@ -133,7 +155,7 @@ export function useMemoryGardenMesh({
 				topColor.toArray(topColors, i * 3);
 			}
 
-			// Track Y bounds for gradient normalization
+			// Track Y bounds
 			const tileMinY = visualState.position.y - visualState.scale.y / 2;
 			const tileMaxY = visualState.position.y + visualState.scale.y / 2;
 			minY = Math.min(minY, tileMinY);
@@ -142,44 +164,10 @@ export function useMemoryGardenMesh({
 
 		// Setup gradient attributes if enabled
 		if (GARDEN_CONFIG.features.enableGradients && tileCount > 0) {
-			// Add base color attribute
-			let baseColorAttr = mesh.geometry.getAttribute('baseColor') as THREE.InstancedBufferAttribute;
-			if (!baseColorAttr) {
-				baseColorAttr = new THREE.InstancedBufferAttribute(baseColors, 3, false);
-				mesh.geometry.setAttribute('baseColor', baseColorAttr);
-			} else {
-				const baseArray = baseColorAttr.array as Float32Array;
-				if (baseArray.length === baseColors.length) {
-					baseArray.set(baseColors);
-					baseColorAttr.needsUpdate = true;
-				} else {
-					// Recreate if size changed
-					mesh.geometry.deleteAttribute('baseColor');
-					baseColorAttr = new THREE.InstancedBufferAttribute(baseColors, 3, false);
-					mesh.geometry.setAttribute('baseColor', baseColorAttr);
-				}
-			}
+			setupInstancedAttribute(geometry, 'baseColor', baseColors, 3);
+			setupInstancedAttribute(geometry, 'topColor', topColors, 3);
 
-			// Add top color attribute
-			let topColorAttr = mesh.geometry.getAttribute('topColor') as THREE.InstancedBufferAttribute;
-			if (!topColorAttr) {
-				topColorAttr = new THREE.InstancedBufferAttribute(topColors, 3, false);
-				mesh.geometry.setAttribute('topColor', topColorAttr);
-			} else {
-				const topArray = topColorAttr.array as Float32Array;
-				if (topArray.length === topColors.length) {
-					topArray.set(topColors);
-					topColorAttr.needsUpdate = true;
-				} else {
-					// Recreate if size changed
-					mesh.geometry.deleteAttribute('topColor');
-					topColorAttr = new THREE.InstancedBufferAttribute(topColors, 3, false);
-					mesh.geometry.setAttribute('topColor', topColorAttr);
-				}
-			}
-
-			// Store Y bounds for shader uniforms (in ref for access outside render)
-			// Only store if we have valid finite values
+			// Store Y bounds (only if valid)
 			if (
 				Number.isFinite(minY) &&
 				Number.isFinite(maxY) &&
@@ -192,26 +180,23 @@ export function useMemoryGardenMesh({
 			}
 		}
 
-		// Update GPU buffers (defensive checks)
+		// Update GPU buffers
 		if (mesh.instanceMatrix) {
 			mesh.instanceMatrix.needsUpdate = true;
 		}
-		if (mesh.geometry) {
-			const colorAttr = mesh.geometry.getAttribute('color') as THREE.InstancedBufferAttribute;
-			if (colorAttr) {
-				colorAttr.needsUpdate = true;
-			}
+		const colorAttr = geometry.getAttribute('color') as THREE.InstancedBufferAttribute;
+		if (colorAttr) {
+			colorAttr.needsUpdate = true;
 		}
 	}, [
+		// Optimized dependencies: only include what actually triggers recalculation
 		tiles,
 		gridSize,
 		tileCount,
-		dummy,
-		colors,
-		baseColors,
-		topColors,
 		animationMode,
 		repairedTileIds,
+		// Note: colors, baseColors, topColors are NOT in deps - they're just containers
+		// Note: dummy is NOT in deps - it's stable
 	]);
 
 	return {
@@ -224,3 +209,4 @@ export function useMemoryGardenMesh({
 		getGradientBounds: () => gradientBoundsRef.current,
 	};
 }
+

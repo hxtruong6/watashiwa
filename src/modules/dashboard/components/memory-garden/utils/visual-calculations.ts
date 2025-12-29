@@ -109,17 +109,101 @@ export function calculateTileColor(
 			GARDEN_CONFIG.animation.repairTransition,
 		);
 	} else if (stability > 21) {
-		// Mastered: Vibrant Emerald Green
-		color.set(GARDEN_CONFIG.colors.mastered);
+		// Mastered: Smooth transition from learning blue to mastered green
+		// Interpolate based on how far above 21 days (0-50 days range)
+		const progress = Math.min((stability - 21) / 50, 1.0);
+		color.lerpColors(
+			new THREE.Color(GARDEN_CONFIG.colors.learning),
+			new THREE.Color(GARDEN_CONFIG.colors.mastered),
+			progress,
+		);
+		// Add stability-based intensity for mastered tiles (more stable = brighter green)
+		const intensityFactor = 0.7 + progress * 0.3; // 0.7 to 1.0
+		color.multiplyScalar(intensityFactor);
 	} else if (stability > 7) {
-		// Learning: Bright Blue
-		color.set(GARDEN_CONFIG.colors.learning);
+		// Learning: Smooth transition from new gray to learning blue
+		const progress = (stability - 7) / 14; // 7 to 21 days = 0 to 1
+		color.lerpColors(
+			new THREE.Color(GARDEN_CONFIG.colors.new),
+			new THREE.Color(GARDEN_CONFIG.colors.learning),
+			progress,
+		);
 	} else {
-		// New: Light Gray
-		color.set(GARDEN_CONFIG.colors.new);
+		// New (0-7 days): Smooth transition from gray to light blue
+		const progress = stability / 7; // 0 to 7 days = 0 to 1
+		const lightBlue = new THREE.Color('#E0F2FE'); // Very light blue
+		color.lerpColors(new THREE.Color(GARDEN_CONFIG.colors.new), lightBlue, progress);
 	}
 
 	return color;
+}
+
+/**
+ * Calculate gradient colors (base and top) for a tile
+ *
+ * Gradient Strategy:
+ * - Base color: Darker version of tile color
+ * - Top color: Brighter version of tile color
+ * - Creates depth and visual interest
+ *
+ * Returns: { baseColor, topColor } as THREE.Color objects
+ */
+export function calculateGradientColors(
+	tile: MemoryTile,
+	options: {
+		animationMode?: 'static' | 'repair' | 'pulse';
+		pulseIntensity?: number;
+		isRepaired?: boolean;
+	} = {},
+): { baseColor: THREE.Color; topColor: THREE.Color } {
+	const baseColor = calculateTileColor(tile, options);
+	const topColor = baseColor.clone();
+
+	// Make top color brighter (multiply by factor > 1)
+	// For leeches: Keep red but make top brighter
+	// For others: Increase brightness by 20-30%
+	if (tile.isLeech) {
+		topColor.multiplyScalar(1.2); // 20% brighter red
+	} else {
+		// Increase brightness and saturation for mastered/learning
+		const stability = Math.max(0, tile.stability);
+		if (stability > 21) {
+			// Mastered: More vibrant green at top
+			topColor.multiplyScalar(1.3);
+		} else if (stability > 7) {
+			// Learning: Brighter blue at top
+			topColor.multiplyScalar(1.25);
+		} else {
+			// New: Subtle brightness increase
+			topColor.multiplyScalar(1.1);
+		}
+	}
+
+	// Clamp to prevent oversaturation and invalid values
+	topColor.r = Math.max(0, Math.min(1.0, topColor.r));
+	topColor.g = Math.max(0, Math.min(1.0, topColor.g));
+	topColor.b = Math.max(0, Math.min(1.0, topColor.b));
+
+	// Ensure base color is also valid
+	baseColor.r = Math.max(0, Math.min(1.0, baseColor.r));
+	baseColor.g = Math.max(0, Math.min(1.0, baseColor.g));
+	baseColor.b = Math.max(0, Math.min(1.0, baseColor.b));
+
+	// Defensive: Check for NaN or Infinity
+	if (
+		!Number.isFinite(baseColor.r) ||
+		!Number.isFinite(baseColor.g) ||
+		!Number.isFinite(baseColor.b) ||
+		!Number.isFinite(topColor.r) ||
+		!Number.isFinite(topColor.g) ||
+		!Number.isFinite(topColor.b)
+	) {
+		// Fallback to safe colors
+		baseColor.set(GARDEN_CONFIG.colors.new);
+		topColor.set(GARDEN_CONFIG.colors.new);
+	}
+
+	return { baseColor, topColor };
 }
 
 /**
@@ -149,6 +233,32 @@ export function calculateTilePosition(
 	const posZ = (y - safeGridSize / 2) * safeSpacing;
 
 	return { x: posX, y: 0, z: posZ }; // y will be set by height
+}
+
+/**
+ * Calculate tile position in column layout
+ *
+ * Column Layout: Tiles stacked vertically in columns, one deck per column
+ *
+ * @param columnIndex - Which column (0-based)
+ * @param rowIndex - Position within column (0-based)
+ * @param totalColumns - Total number of columns
+ * @param spacing - Spacing between columns
+ * @param verticalSpacing - Spacing between tiles in column
+ */
+export function calculateColumnPosition(
+	columnIndex: number,
+	rowIndex: number,
+	totalColumns: number,
+	spacing: number = GARDEN_CONFIG.tileSpacing * 1.5,
+	verticalSpacing: number = GARDEN_CONFIG.tileSpacing * 0.8,
+): { x: number; y: number; z: number } {
+	// Center columns at origin
+	const posX = (columnIndex - totalColumns / 2) * spacing;
+	const posZ = 0; // All tiles in same column have same Z
+	const posY = rowIndex * verticalSpacing; // Stack vertically
+
+	return { x: posX, y: posY, z: posZ };
 }
 
 /**

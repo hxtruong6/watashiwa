@@ -123,3 +123,30 @@ export function calculateGridSize(tileCount: number): number {
 	if (tileCount <= 0) return 1;
 	return Math.ceil(Math.sqrt(tileCount));
 }
+
+/**
+ * Group tiles by deck/category for column layout
+ *
+ * Returns: Map of deckId -> tiles array
+ */
+export function groupTilesByDeck(tiles: MemoryTile[]): Map<string, MemoryTile[]> {
+	const groups = new Map<string, MemoryTile[]>();
+
+	tiles.forEach((tile) => {
+		const deckId = tile.deckId || 'unknown';
+		if (!groups.has(deckId)) {
+			groups.set(deckId, []);
+		}
+		groups.get(deckId)!.push(tile);
+	});
+
+	return groups;
+}
+
+/**
+ * Get deck name for a deck ID
+ */
+export function getDeckName(tiles: MemoryTile[], deckId: string): string {
+	const tile = tiles.find((t) => t.deckId === deckId);
+	return tile?.deckName || 'Unknown Deck';
+}
