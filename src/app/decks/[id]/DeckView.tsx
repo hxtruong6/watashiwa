@@ -2,8 +2,8 @@
 'use client';
 
 import BackButton from '@/components/BackButton';
-import CommentDrawer from '@/components/comments/CommentDrawer';
 import { getDeckUrl } from '@/lib/utils/urls';
+import CommentDrawer from '@/modules/community/components/comments/CommentDrawer';
 import FlashCard from '@/modules/flashcard/components/FlashCard';
 import SmartContentInput from '@/modules/vocabulary/components/SmartContentInput';
 import {

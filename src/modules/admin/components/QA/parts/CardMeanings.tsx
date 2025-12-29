@@ -1,4 +1,4 @@
-import { InlineInput } from '@/components/admin/QA/InlineInput';
+import { InlineInput } from '@/modules/admin/components/QA/InlineInput';
 import { useWorkbenchStore } from '@/modules/admin/store/useWorkbenchStore';
 import { Flex, theme } from 'antd';
 import React from 'react';

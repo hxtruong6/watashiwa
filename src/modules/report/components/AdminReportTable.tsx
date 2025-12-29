@@ -1,6 +1,6 @@
 'use client';
 
-import VocabEditor from '@/components/admin/VocabEditor';
+import VocabEditor from '@/modules/admin/components/VocabEditor';
 import { resolveReport } from '@/modules/report/report.actions';
 import { updateContent } from '@/modules/vocabulary/vocabulary.actions';
 import { CheckOutlined, EyeOutlined } from '@ant-design/icons';

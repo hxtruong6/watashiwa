@@ -292,8 +292,15 @@ export function useAuth(options: UseAuthOptions = {}) {
 		setState({ loading: true, error: null, message: null });
 
 		try {
-			// Validate origin exists (defensive)
-			const origin = typeof window !== 'undefined' ? window.location.origin : '';
+			// Determine the correct origin for redirect URL
+			// In production, use NEXT_PUBLIC_APP_URL to avoid issues with proxies/load balancers
+			// In development, fall back to window.location.origin
+			const isProduction = process.env.NODE_ENV === 'production';
+			const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+			const windowOrigin = typeof window !== 'undefined' ? window.location.origin : '';
+
+			const origin = isProduction && appUrl ? appUrl : windowOrigin;
+
 			if (!origin) {
 				throw new Error(t?.('errorOriginMissing') || 'Unable to determine application origin');
 			}

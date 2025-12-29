@@ -1,6 +1,6 @@
 'use client';
 
-import { isProtectedRoute } from '@/components/navbar/NavConfig';
+import { isProtectedRoute } from '@/modules/ui/components/navbar/NavConfig';
 import Link from 'next/link';
 import React from 'react';
 

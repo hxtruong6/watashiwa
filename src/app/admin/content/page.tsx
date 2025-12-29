@@ -1,4 +1,4 @@
-import { ContentWorkbench } from '@/components/admin/QA/ContentWorkbench';
+import { ContentWorkbench } from '@/modules/admin/components/QA/ContentWorkbench';
 import React from 'react';
 
 export default function AdminContentPage() {

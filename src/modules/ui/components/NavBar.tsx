@@ -1,7 +1,14 @@
 'use client';
 
-import ProtectedLink from '@/components/Shared/ProtectedLink';
 import ShareModal from '@/modules/deck/components/ShareModal';
+import ProtectedLink from '@/modules/ui/components/ProtectedLink';
+import {
+	NAV_ITEMS,
+	type NavItem,
+	isProtectedRoute,
+} from '@/modules/ui/components/navbar/NavConfig';
+import NotificationPopover from '@/modules/ui/components/navbar/NotificationPopover';
+import SettingsModal from '@/modules/ui/components/navbar/SettingsModal';
 import { useUIStore } from '@/modules/ui/store/useUIStore';
 import LanguageSelector from '@/modules/user/components/LanguageSelector';
 import ThemeToggle from '@/modules/user/components/ThemeToggle';
@@ -23,10 +30,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { useCallback, useEffect, useState } from 'react';
-
-import { NAV_ITEMS, type NavItem, isProtectedRoute } from './navbar/NavConfig';
-import NotificationPopover from './navbar/NotificationPopover';
-import SettingsModal from './navbar/SettingsModal';
 
 const { Text } = Typography;
 const { useToken } = theme;

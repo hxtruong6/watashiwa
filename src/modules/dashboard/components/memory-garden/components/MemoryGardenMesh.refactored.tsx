@@ -9,7 +9,6 @@
  * 5. Optimized attribute checks (no duplicates)
  * 6. Better validation (all colors, not just first 3 tiles)
  */
-
 import React, { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 
@@ -33,9 +32,7 @@ export interface MemoryGardenMeshProps {
 /**
  * Type guard for click events with instanceId
  */
-function isInstancedClickEvent(
-	event: THREE.Event,
-): event is THREE.Event & { instanceId: number } {
+function isInstancedClickEvent(event: THREE.Event): event is THREE.Event & { instanceId: number } {
 	return (
 		typeof event === 'object' &&
 		event !== null &&
@@ -51,7 +48,9 @@ function isInstancedClickEvent(
 function validateColorArray(colors: Float32Array, name: string): boolean {
 	if (colors.length === 0) return false;
 	if (colors.length % 3 !== 0) {
-		console.warn(`[MemoryGarden] Invalid ${name} array length: ${colors.length} (must be multiple of 3)`);
+		console.warn(
+			`[MemoryGarden] Invalid ${name} array length: ${colors.length} (must be multiple of 3)`,
+		);
 		return false;
 	}
 
@@ -195,7 +194,10 @@ export function MemoryGardenMesh({
 		}
 
 		// Validate all colors (not just first 3 tiles)
-		if (!validateColorArray(baseColors, 'baseColors') || !validateColorArray(topColors, 'topColors')) {
+		if (
+			!validateColorArray(baseColors, 'baseColors') ||
+			!validateColorArray(topColors, 'topColors')
+		) {
 			cleanupGradientMaterial();
 			setGradientError('Invalid color data detected');
 			return;
@@ -328,11 +330,7 @@ export function MemoryGardenMesh({
 			</instancedMesh>
 
 			{/* Error indicator (optional - can be styled as toast/notification) */}
-			{gradientError && (
-				<mesh position={[0, 2, 0]}>
-					{/* Could render error indicator here */}
-				</mesh>
-			)}
+			{gradientError && <mesh position={[0, 2, 0]}>{/* Could render error indicator here */}</mesh>}
 
 			{/* Tooltip */}
 			{showTooltip && hoveredTile && hoveredPosition && (
@@ -351,10 +349,7 @@ export function MemoryGardenMesh({
 			)}
 
 			{/* Column Labels */}
-			{GARDEN_CONFIG.features.enableColumnGrouping && (
-				<ColumnLabels tiles={tiles} enabled={true} />
-			)}
+			{GARDEN_CONFIG.features.enableColumnGrouping && <ColumnLabels tiles={tiles} enabled={true} />}
 		</>
 	);
 }
-

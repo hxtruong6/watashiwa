@@ -1,6 +1,6 @@
 'use client';
 
-import VocabEditor from '@/components/admin/VocabEditor';
+import VocabEditor from '@/modules/admin/components/VocabEditor';
 import {
 	createVocabulary,
 	deleteVocabulary,

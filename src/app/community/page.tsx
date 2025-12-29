@@ -1,6 +1,6 @@
 'use client';
 
-import CommunityFeed from '@/components/community/CommunityFeed';
+import CommunityFeed from '@/modules/community/components/feed/CommunityFeed';
 import { useFeatureDiscovery } from '@/hooks/useFeatureDiscovery';
 import { Typography, theme } from 'antd';
 import { useTranslations } from 'next-intl';

@@ -1,7 +1,7 @@
-import { AdminStatsWidget } from '@/components/admin/Dashboard/AdminStatsWidget';
-import { DashboardErrorBoundary } from '@/components/admin/Dashboard/DashboardErrorBoundary';
-import { DashboardTitle } from '@/components/admin/Dashboard/DashboardTitle';
-import { VocabStatsWidget } from '@/components/admin/Dashboard/VocabStatsWidget';
+import { AdminStatsWidget } from '@/modules/admin/components/Dashboard/AdminStatsWidget';
+import { DashboardErrorBoundary } from '@/modules/admin/components/Dashboard/DashboardErrorBoundary';
+import { DashboardTitle } from '@/modules/admin/components/Dashboard/DashboardTitle';
+import { VocabStatsWidget } from '@/modules/admin/components/Dashboard/VocabStatsWidget';
 import { Skeleton } from 'antd';
 import React, { Suspense } from 'react';
 

@@ -1,6 +1,6 @@
-import LandingPageClient from '@/components/landing/LandingPageClient';
 import { routing } from '@/i18n/routing';
 import { generatePageMetadata } from '@/lib/seo/metadata';
+import LandingPageClient from '@/modules/marketing/components/landing/LandingPageClient';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import React from 'react';

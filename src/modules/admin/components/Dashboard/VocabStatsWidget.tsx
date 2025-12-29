@@ -1,4 +1,4 @@
-import { QAStats } from '@/components/admin/QA/QAStats';
+import { QAStats } from '@/modules/admin/components/QA/QAStats';
 import { getVocabularyStats } from '@/modules/vocabulary/vocabulary.actions';
 import React from 'react';
 

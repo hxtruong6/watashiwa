@@ -1,4 +1,4 @@
-import { InlineInput } from '@/components/admin/QA/InlineInput';
+import { InlineInput } from '@/modules/admin/components/QA/InlineInput';
 import { useWorkbenchStore } from '@/modules/admin/store/useWorkbenchStore';
 import { DeleteOutlined, PlusOutlined, ThunderboltOutlined } from '@ant-design/icons';
 import { Button, Divider, Flex, Typography, theme } from 'antd';

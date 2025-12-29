@@ -1,6 +1,5 @@
 import ImageUploader from '@/components/Shared/ImageUploader';
-// import KanjiEditor from '@/components/admin/KanjiEditor';
-import VocabEditor from '@/components/admin/VocabEditor';
+import VocabEditor from '@/modules/admin/components/VocabEditor';
 import { createVocabulary } from '@/modules/vocabulary/vocabulary.actions';
 import {
 	EditOutlined,

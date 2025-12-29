@@ -1,6 +1,6 @@
 'use client';
 
-import CountUpNumber from '@/components/animations/CountUpNumber';
+import CountUpNumber from '@/modules/marketing/components/animations/CountUpNumber';
 import { Col, Row, Typography, theme } from 'antd';
 import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';

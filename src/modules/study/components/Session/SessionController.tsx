@@ -1,8 +1,6 @@
 'use client';
 
 // Components
-import AppTutorial from '@/components/Shared/AppTutorial';
-import CommentDrawer from '@/components/comments/CommentDrawer';
 import { useFlashCardAudio } from '@/hooks/study/useFlashCardAudio';
 import { useReactionTime } from '@/hooks/study/useReactionTime';
 import { useStudyShortcuts } from '@/hooks/study/useStudyShortcuts';
@@ -11,6 +9,7 @@ import { useZenMode } from '@/hooks/study/useZenMode';
 // Hooks
 import { useTutorialStore } from '@/hooks/useTutorialStore';
 import { trackEvent } from '@/lib/analytics';
+import CommentDrawer from '@/modules/community/components/comments/CommentDrawer';
 import { CardShell } from '@/modules/flashcard/components/CardShell';
 import { fetchSessionAction } from '@/modules/flashcard/flashcard.actions';
 import { getSessionDataWithPriming } from '@/modules/priming/actions';
@@ -18,6 +17,7 @@ import { PrimingModal, hasSeenPrimingModal } from '@/modules/priming/components/
 import { StoryReader } from '@/modules/priming/components/StoryReader';
 import { StoryWithContent } from '@/modules/priming/types';
 import ReportModal from '@/modules/report/components/ReportModal';
+import AppTutorial from '@/modules/study/components/AppTutorial';
 import { useSessionStore } from '@/modules/study/store/useSessionStore';
 import { useStudyPreferences } from '@/modules/study/store/useStudyPreferences';
 import { getDailyProgress } from '@/modules/study/study.actions';

@@ -1,6 +1,6 @@
 'use client';
 
-import { isValidReturnUrl } from '@/components/navbar/NavConfig';
+import { isValidReturnUrl } from '@/modules/ui/components/navbar/NavConfig';
 import { ambientGradients, customShadows } from '@/lib/theme/themeConfig';
 import { loginSchema, signupSchema } from '@/modules/auth/auth.dto';
 import { GoogleSignInButton } from '@/modules/auth/components/GoogleSignInButton';

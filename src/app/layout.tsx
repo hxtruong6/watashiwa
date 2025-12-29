@@ -1,7 +1,7 @@
 import PostHogPageTracker from '@/components/Analytics/PostHogPageTracker';
 import UserReturnTracker from '@/components/Analytics/UserReturnTracker';
 import DisableZoom from '@/components/DisableZoom';
-import NavBar from '@/components/NavBar';
+import NavBar from '@/modules/ui/components/NavBar';
 import PWAInstallPrompt from '@/components/PWA/PWAInstallPrompt';
 import PWALifecycle from '@/components/PWA/PWALifecycle';
 import { StructuredData } from '@/components/SEO/StructuredData';
