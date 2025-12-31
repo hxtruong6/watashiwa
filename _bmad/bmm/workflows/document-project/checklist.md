@@ -57,7 +57,7 @@
 - [ ] State management patterns identified (if requires_state_management = true)
 - [ ] UI components inventoried (if requires_ui_components = true)
 - [ ] Configuration files located and documented
-- [ ] Authentication/security patterns identified
+- [ ] Authentication/security patterns identified (auth, RBAC, input validation with Zod, rate limiting, secure logging, CSP/HSTS headers)
 - [ ] Entry points correctly identified
 - [ ] Integration points mapped (for multi-part projects)
 - [ ] Test files and patterns documented
