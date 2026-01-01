@@ -103,8 +103,7 @@
 		"jsdom": "^27.4.0",
 		"postcss": "^8.5.6",
 		"prettier": "^3.7.4",
-		"vitest": "^4.0.16",
-		"@inngest/cli": "^3.48.1"
+		"vitest": "^4.0.16"
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
