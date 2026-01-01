@@ -425,11 +425,6 @@ export default function NavBar({ user }: { user?: User | null }) {
 											placement="bottomRight"
 											open={userMenuOpen}
 											onOpenChange={setUserMenuOpen}
-											getPopupContainer={() => {
-												// Render dropdown in document body to avoid z-index and overflow issues
-												// This ensures the dropdown appears above all other elements
-												return document.body;
-											}}
 										>
 											<Button
 												type="text"

@@ -1,12 +1,9 @@
-import { Typography } from 'antd';
-import { Flex, Space } from 'antd';
+import { Flex, Space, Typography } from 'antd';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
-export const dynamic = 'force-static';
-export const revalidate = 3600;
-
-const { Title, Paragraph, Text } = Typography;
+// export const dynamic = 'force-static';
+// export const revalidate = 3600;
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations('Legal.privacyPolicy');
@@ -22,10 +19,6 @@ export async function generateMetadata(): Promise<Metadata> {
 		},
 		alternates: {
 			canonical: 'https://watashiwa.app/privacy-policy',
-			languages: {
-				en: 'https://watashiwa.app/en/privacy-policy',
-				vi: 'https://watashiwa.app/vi/privacy-policy',
-			},
 		},
 	};
 }
@@ -43,20 +36,20 @@ export default async function PrivacyPolicyPage() {
 				minHeight: 'calc(100vh - 200px)',
 			}}
 		>
-			<Title level={1}>{t('title')}</Title>
-			<Text type="secondary" style={{ display: 'block', marginBottom: 32 }}>
+			<Typography.Title level={1}>{t('title')}</Typography.Title>
+			<Typography.Text type="secondary" style={{ display: 'block', marginBottom: 32 }}>
 				{t('lastUpdated')}: {t('lastUpdatedDate')}
-			</Text>
+			</Typography.Text>
 
 			<Space orientation="vertical" size="large" style={{ width: '100%' }}>
 				<section>
-					<Title level={2}>{t('section1.title')}</Title>
-					<Paragraph>{t('section1.content')}</Paragraph>
+					<Typography.Title level={2}>{t('section1.title')}</Typography.Title>
+					<Typography.Paragraph>{t('section1.content')}</Typography.Paragraph>
 				</section>
 
 				<section>
-					<Title level={2}>{t('section2.title')}</Title>
-					<Paragraph>{t('section2.content')}</Paragraph>
+					<Typography.Title level={2}>{t('section2.title')}</Typography.Title>
+					<Typography.Paragraph>{t('section2.content')}</Typography.Paragraph>
 					<ul>
 						<li>{t('section2.item1')}</li>
 						<li>{t('section2.item2')}</li>
@@ -67,8 +60,8 @@ export default async function PrivacyPolicyPage() {
 				</section>
 
 				<section>
-					<Title level={2}>{t('section3.title')}</Title>
-					<Paragraph>{t('section3.content')}</Paragraph>
+					<Typography.Title level={2}>{t('section3.title')}</Typography.Title>
+					<Typography.Paragraph>{t('section3.content')}</Typography.Paragraph>
 					<ul>
 						<li>{t('section3.item1')}</li>
 						<li>{t('section3.item2')}</li>
@@ -78,19 +71,19 @@ export default async function PrivacyPolicyPage() {
 				</section>
 
 				<section>
-					<Title level={2}>{t('section4.title')}</Title>
-					<Paragraph>{t('section4.content')}</Paragraph>
-					<Paragraph>
+					<Typography.Title level={2}>{t('section4.title')}</Typography.Title>
+					<Typography.Paragraph>{t('section4.content')}</Typography.Paragraph>
+					<Typography.Paragraph>
 						<strong>{t('section4.subtitle1')}</strong>
-					</Paragraph>
+					</Typography.Paragraph>
 					<ul>
 						<li>{t('section4.item1')}</li>
 						<li>{t('section4.item2')}</li>
 						<li>{t('section4.item3')}</li>
 					</ul>
-					<Paragraph>
+					<Typography.Paragraph>
 						<strong>{t('section4.subtitle2')}</strong>
-					</Paragraph>
+					</Typography.Paragraph>
 					<ul>
 						<li>{t('section4.item4')}</li>
 						<li>{t('section4.item5')}</li>
@@ -98,8 +91,8 @@ export default async function PrivacyPolicyPage() {
 				</section>
 
 				<section>
-					<Title level={2}>{t('section5.title')}</Title>
-					<Paragraph>{t('section5.content')}</Paragraph>
+					<Typography.Title level={2}>{t('section5.title')}</Typography.Title>
+					<Typography.Paragraph>{t('section5.content')}</Typography.Paragraph>
 					<ul>
 						<li>
 							<strong>{t('section5.item1Title')}</strong>: {t('section5.item1Desc')}
@@ -114,8 +107,8 @@ export default async function PrivacyPolicyPage() {
 				</section>
 
 				<section>
-					<Title level={2}>{t('section6.title')}</Title>
-					<Paragraph>{t('section6.content')}</Paragraph>
+					<Typography.Title level={2}>{t('section6.title')}</Typography.Title>
+					<Typography.Paragraph>{t('section6.content')}</Typography.Paragraph>
 					<ul>
 						<li>{t('section6.item1')}</li>
 						<li>{t('section6.item2')}</li>
@@ -125,17 +118,17 @@ export default async function PrivacyPolicyPage() {
 				</section>
 
 				<section>
-					<Title level={2}>{t('section7.title')}</Title>
-					<Paragraph>{t('section7.content')}</Paragraph>
+					<Typography.Title level={2}>{t('section7.title')}</Typography.Title>
+					<Typography.Paragraph>{t('section7.content')}</Typography.Paragraph>
 				</section>
 
 				<section>
-					<Title level={2}>{t('section8.title')}</Title>
-					<Paragraph>{t('section8.content')}</Paragraph>
-					<Paragraph>
+					<Typography.Title level={2}>{t('section8.title')}</Typography.Title>
+					<Typography.Paragraph>{t('section8.content')}</Typography.Paragraph>
+					<Typography.Paragraph>
 						{t('section8.contact')}:{' '}
 						<a href="mailto:support@watashiwa.app">support@watashiwa.app</a>
-					</Paragraph>
+					</Typography.Paragraph>
 				</section>
 			</Space>
 		</Flex>

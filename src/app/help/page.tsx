@@ -1,13 +1,13 @@
+import { generateHreflangMetadata } from '@/lib/seo/hreflang';
 import { QuestionCircleOutlined } from '@ant-design/icons';
-import { Flex } from 'antd';
-import Paragraph from 'antd/es/typography/Paragraph';
-import Text from 'antd/es/typography/Text';
-import Title from 'antd/es/typography/Title';
+import { Flex, Typography } from 'antd';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
-export const dynamic = 'force-static';
-export const revalidate = 3600;
+const { Title, Paragraph, Text } = Typography;
+
+// export const dynamic = 'force-static';
+// export const revalidate = 3600;
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations('Help');
@@ -23,11 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
 		},
 		alternates: {
 			canonical: 'https://watashiwa.app/help',
-			languages: {
-				en: 'https://watashiwa.app/en/help',
-				vi: 'https://watashiwa.app/vi/help',
-				ja: 'https://watashiwa.app/ja/help',
-			},
+			...generateHreflangMetadata('/help').alternates,
 		},
 	};
 }

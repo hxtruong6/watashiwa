@@ -3,8 +3,8 @@ import { Flex, Space } from 'antd';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 
-export const dynamic = 'force-static';
-export const revalidate = 3600;
+// export const dynamic = 'force-static';
+// export const revalidate = 3600;
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -22,10 +22,6 @@ export async function generateMetadata(): Promise<Metadata> {
 		},
 		alternates: {
 			canonical: 'https://watashiwa.app/cookie-policy',
-			languages: {
-				en: 'https://watashiwa.app/en/cookie-policy',
-				vi: 'https://watashiwa.app/vi/cookie-policy',
-			},
 		},
 	};
 }

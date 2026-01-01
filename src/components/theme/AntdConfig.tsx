@@ -21,10 +21,12 @@ export default function AntdConfig({ children }: { children: React.ReactNode }) 
 	return (
 		<ConfigProvider
 			theme={currentTheme}
-			getPopupContainer={() => {
-				// Render popups in document.body to ensure proper coordinate system alignment
-				// This works correctly now that body no longer has position: relative
-				// Since this is a client component, document.body is always available
+			getPopupContainer={(node) => {
+				// Safely handle getPopupContainer - fixes Modal errors when node is undefined
+				// Note: This doesn't fix the React 19 positioning bug, but helps with popup rendering
+				if (node) {
+					return node.parentElement || document.body;
+				}
 				return document.body;
 			}}
 		>

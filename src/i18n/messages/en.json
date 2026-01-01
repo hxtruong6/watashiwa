@@ -26,7 +26,8 @@
 		"uploadAvatar": "Click to upload new avatar",
 		"errorImageOnly": "You can only upload image files!",
 		"errorImageSize": "Image must be smaller than 5MB!",
-		"language": "Language"
+		"language": "Language",
+		"unexpectedError": "An unexpected error occurred."
 	},
 	"Offline": {
 		"title": "Lost in the clouds...",

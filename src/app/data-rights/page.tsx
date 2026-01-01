@@ -4,8 +4,8 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import Link from 'next/link';
 
-export const dynamic = 'force-static';
-export const revalidate = 3600;
+// export const dynamic = 'force-static';
+// export const revalidate = 3600;
 
 const { Title, Paragraph, Text } = Typography;
 
@@ -23,10 +23,6 @@ export async function generateMetadata(): Promise<Metadata> {
 		},
 		alternates: {
 			canonical: 'https://watashiwa.app/data-rights',
-			languages: {
-				en: 'https://watashiwa.app/en/data-rights',
-				vi: 'https://watashiwa.app/vi/data-rights',
-			},
 		},
 	};
 }

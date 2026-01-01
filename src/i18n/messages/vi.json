@@ -26,7 +26,8 @@
 		"uploadAvatar": "Nhấn để tải lên ảnh đại diện mới",
 		"errorImageOnly": "Chỉ được tải lên tệp hình ảnh!",
 		"errorImageSize": "Kích thước ảnh phải nhỏ hơn 5MB!",
-		"language": "Ngôn ngữ"
+		"language": "Ngôn ngữ",
+		"unexpectedError": "Đã xảy ra lỗi bất ngờ."
 	},
 	"Offline": {
 		"title": "Lạc trôi...",

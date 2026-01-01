@@ -21,10 +21,6 @@ export async function generateMetadata(): Promise<Metadata> {
 		},
 		alternates: {
 			canonical: 'https://watashiwa.app/about',
-			languages: {
-				en: 'https://watashiwa.app/en/about',
-				vi: 'https://watashiwa.app/vi/about',
-			},
 		},
 	};
 }
