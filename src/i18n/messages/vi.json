@@ -681,6 +681,9 @@
 		"fullNamePlaceholder": "Tên của bạn nè",
 		"emailPlaceholder": "Email của bạn",
 		"passwordPlaceholder": "Mật khẩu của bạn",
+		"confirmPasswordRequired": "Vui lòng xác nhận mật khẩu!",
+		"confirmPasswordPlaceholder": "Xác nhận mật khẩu",
+		"passwordMismatch": "Hai mật khẩu không khớp!",
 		"unexpectedError": "Lỗi gì rồi, thử lại coi.",
 		"errorInvalidCredentials": "Email hoặc mật khẩu không đúng",
 		"errorEmailNotConfirmed": "Vui lòng kiểm tra email để xác nhận tài khoản",
@@ -688,6 +691,9 @@
 		"errorAuthFailed": "Có lỗi xảy ra khi xác thực",
 		"errorAllFieldsRequired": "Vui lòng điền đầy đủ thông tin",
 		"errorOriginMissing": "Không thể xác định nguồn ứng dụng",
+		"errorNetworkOffline": "Không có kết nối internet. Dữ liệu đã được lưu. Vui lòng thử lại khi có kết nối.",
+		"dataRestored": "Dữ liệu đăng ký trước đó đã được khôi phục. Vui lòng thử lại.",
+		"networkRestored": "Kết nối đã được khôi phục. Bạn có thể thử đăng ký lại ngay bây giờ.",
 		"signInWithGoogle": "Tiếp tục với Google",
 		"signInWithGoogleAlt": "Đăng nhập bằng Google",
 		"quickLogin": "Đăng nhập nhanh",
@@ -1062,5 +1068,14 @@
 			"item2": "Bảo vệ quyền riêng tư và dữ liệu người dùng",
 			"item3": "Liên tục cải thiện trải nghiệm học tập dựa trên phản hồi người dùng"
 		}
+	},
+	"Profile": {
+		"setupTitle": "Hoàn Thiện Hồ Sơ",
+		"setupSubtitle": "Thiết lập tùy chọn để bắt đầu",
+		"languageLabel": "Ngôn Ngữ Giao Diện",
+		"languageRequired": "Vui lòng chọn ngôn ngữ",
+		"completeSetup": "Hoàn Tất",
+		"setupSuccess": "Thiết lập hồ sơ thành công!",
+		"setupError": "Không thể lưu hồ sơ"
 	}
 }

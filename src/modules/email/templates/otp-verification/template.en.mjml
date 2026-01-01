@@ -1,0 +1,83 @@
+<mjml>
+  <mj-head>
+    <mj-title>Verify Your Email - WatashiWa</mj-title>
+  </mj-head>
+  <mj-body background-color="{{colors.bgBase}}">
+    <!-- Header -->
+    <mj-section background-color="{{colors.primary}}" padding="{{spacing.paddingLG}} {{spacing.paddingSM}}">
+      <mj-column>
+        <mj-text align="center" color="{{colors.white}}" font-size="{{typography.fontSizeHero}}" font-weight="{{typography.fontWeightBold}}">
+          Verify Your Email
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    
+    <!-- Body -->
+    <mj-section background-color="{{colors.bgContainer}}" padding="{{spacing.paddingLG}} {{spacing.paddingMD}}">
+      <mj-column>
+        <mj-text font-size="{{typography.fontSizeTitle}}" color="{{colors.text}}" line-height="1.6" align="center">
+          Hi {{userName}},
+        </mj-text>
+        <mj-text font-size="{{typography.fontSizeBody}}" color="{{colors.textSecondary}}" line-height="1.6" align="center">
+          Use this code to verify your email address:
+        </mj-text>
+        
+        <!-- OTP Display -->
+        <mj-text 
+          align="center" 
+          background-color="{{colors.primary}}" 
+          color="{{colors.white}}" 
+          font-size="36px" 
+          font-weight="700" 
+          letter-spacing="8px"
+          padding="{{spacing.paddingSM}} {{spacing.paddingLG}}"
+          border-radius="{{shape.borderRadiusLarge}}"
+          font-family="monospace">
+          {{otp}}
+        </mj-text>
+        
+        <mj-divider 
+          border-color="{{colors.border}}" 
+          border-width="1px" 
+          padding="{{spacing.paddingSM}} 0" 
+        />
+        
+        <!-- Security Note -->
+        <mj-text 
+          font-size="{{typography.fontSizeCaption}}" 
+          color="{{colors.textSecondary}}" 
+          padding="{{spacing.paddingSM}}" 
+          background-color="{{colors.bgBase}}" 
+          border-left="4px solid {{colors.primary}}">
+          <strong>Security note:</strong><br/>
+          • This code expires in 15 minutes<br/>
+          • Keep this code private and don't share it<br/>
+          • If you didn't request this code, you can safely ignore this email
+        </mj-text>
+        
+        <mj-text font-size="{{typography.fontSizeCaption}}" color="{{colors.textTertiary}}" line-height="1.6" align="center">
+          Enter this code in the verification form on your profile page.
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    
+    <!-- Footer -->
+    <mj-section background-color="{{colors.bgBase}}" padding="{{spacing.paddingMD}}">
+      <mj-column>
+        <mj-text align="center" font-size="{{typography.fontSizeCaption}}" color="{{colors.textTertiary}}">
+          Happy Learning! 🚀<br/>
+          The WatashiWa Team<br/><br/>
+          <a href="{{appUrl}}/profile" style="color: {{colors.link}}; text-decoration: none;">Manage Account</a> | 
+          <a href="{{appUrl}}/help" style="color: {{colors.link}}; text-decoration: none;">Help Center</a>
+          <br/><br/>
+          <small style="color: {{colors.textTertiary}};">
+            {{companyAddress}}<br/>
+            <a href="{{appUrl}}/unsubscribe" style="color: {{colors.link}}; text-decoration: underline;">Unsubscribe</a> | 
+            <a href="{{appUrl}}/privacy" style="color: {{colors.link}}; text-decoration: underline;">Privacy Policy</a>
+          </small>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
+

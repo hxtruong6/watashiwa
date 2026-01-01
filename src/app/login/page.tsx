@@ -1,12 +1,12 @@
 'use client';
 
-import { isValidReturnUrl } from '@/modules/ui/components/navbar/NavConfig';
 import { ambientGradients, customShadows } from '@/lib/theme/themeConfig';
 import { loginSchema, signupSchema } from '@/modules/auth/auth.dto';
 import { GoogleSignInButton } from '@/modules/auth/components/GoogleSignInButton';
 import { LoginMethodSelector } from '@/modules/auth/components/LoginMethodSelector';
 import { useAuth } from '@/modules/auth/hooks/useAuth';
 import { useLoginMethodCache } from '@/modules/auth/hooks/useLoginMethodCache';
+import { isValidReturnUrl } from '@/modules/ui/components/navbar/NavConfig';
 import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons';
 import {
 	Alert,
@@ -38,9 +38,42 @@ export default function AuthPage() {
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const [mode, setMode] = useState<'login' | 'signup'>('login');
+	const [form] = Form.useForm();
 
 	const returnUrl = searchParams.get('returnUrl');
 	const [isRedirecting, setIsRedirecting] = useState(false);
+
+	// Restore pending signup data from localStorage on mount and auto-retry when online
+	React.useEffect(() => {
+		if (mode === 'signup') {
+			const pendingSignup = localStorage.getItem('pendingSignup');
+			if (pendingSignup) {
+				try {
+					const data = JSON.parse(pendingSignup);
+					form.setFieldsValue(data);
+					// Show message that data was restored
+					antdMessage.info(
+						t('dataRestored') || 'Your previous registration data has been restored. Please retry.',
+					);
+				} catch (error) {
+					console.error('Failed to restore signup data:', error);
+					localStorage.removeItem('pendingSignup');
+				}
+			}
+
+			// Auto-retry when connectivity is restored
+			const handleOnline = () => {
+				if (pendingSignup && navigator.onLine) {
+					antdMessage.info(
+						t('networkRestored') || 'Connection restored. You can retry registration now.',
+					);
+				}
+			};
+
+			window.addEventListener('online', handleOnline);
+			return () => window.removeEventListener('online', handleOnline);
+		}
+	}, [mode, form, t, antdMessage]);
 
 	// Login method cache hook
 	const { updateCache } = useLoginMethodCache();
@@ -48,7 +81,7 @@ export default function AuthPage() {
 	// Use custom auth hook - all business logic is extracted
 	const { loading, error, message, login, signup, signInWithGoogle, resetState, setMessage } =
 		useAuth({
-			onSuccess: (role) => {
+			onSuccess: (role, isNewUser) => {
 				// Show loading indicator during redirect
 				setIsRedirecting(true);
 
@@ -57,6 +90,12 @@ export default function AuthPage() {
 					// Use window.location.href for full page reload to ensure middleware sees new session
 					console.log('[Login] Redirecting to returnUrl:', returnUrl);
 					window.location.href = returnUrl;
+					return;
+				}
+				// Redirect new users to profile setup
+				if (isNewUser) {
+					console.log('[Login] Redirecting new user to profile setup');
+					window.location.href = '/profile/setup';
 					return;
 				}
 				// Default redirect: handle role-based or default redirect
@@ -103,8 +142,17 @@ export default function AuthPage() {
 				// Don't show success message - redirect happens immediately via onSuccess callback
 			}
 		} else {
-			// Validate with Zod schema
-			const validationResult = signupSchema.safeParse(values);
+			// Extract only fields needed for Zod validation (exclude confirmPassword)
+			// eslint-disable-next-line @typescript-eslint/no-unused-vars
+			const { confirmPassword, ...signupData } = values as {
+				email: string;
+				password: string;
+				name: string;
+				confirmPassword?: string;
+			};
+
+			// Validate with Zod schema (confirmPassword already validated by Form rules)
+			const validationResult = signupSchema.safeParse(signupData);
 			if (!validationResult.success) {
 				const firstError = validationResult.error.issues[0];
 				antdMessage.error(firstError?.message || t('unexpectedError'));
@@ -269,6 +317,7 @@ export default function AuthPage() {
 					)}
 
 					<Form
+						form={form}
 						name="auth-form"
 						initialValues={{ remember: true }}
 						onFinish={handleSubmit}
@@ -337,6 +386,33 @@ export default function AuthPage() {
 								suppressHydrationWarning
 							/>
 						</Form.Item>
+
+						{mode === 'signup' && (
+							<Form.Item
+								name="confirmPassword"
+								dependencies={['password']}
+								rules={[
+									{ required: true, message: t('confirmPasswordRequired') },
+									({ getFieldValue }) => ({
+										validator(_, value) {
+											if (!value || getFieldValue('password') === value) {
+												return Promise.resolve();
+											}
+											return Promise.reject(new Error(t('passwordMismatch')));
+										},
+									}),
+								]}
+								validateTrigger="onBlur"
+							>
+								<Input.Password
+									prefix={<LockOutlined style={{ color: token.colorTextTertiary }} />}
+									placeholder={t('confirmPasswordPlaceholder')}
+									style={{ borderRadius: 12 }}
+									className="ph-no-capture"
+									suppressHydrationWarning
+								/>
+							</Form.Item>
+						)}
 
 						{mode === 'login' && (
 							<Form.Item style={{ marginBottom: 24 }}>

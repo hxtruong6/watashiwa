@@ -1,0 +1,83 @@
+<mjml>
+  <mj-head>
+    <mj-title>メール確認 - WatashiWa</mj-title>
+  </mj-head>
+  <mj-body background-color="{{colors.bgBase}}">
+    <!-- Header -->
+    <mj-section background-color="{{colors.primary}}" padding="{{spacing.paddingLG}} {{spacing.paddingSM}}">
+      <mj-column>
+        <mj-text align="center" color="{{colors.white}}" font-size="{{typography.fontSizeHero}}" font-weight="{{typography.fontWeightBold}}">
+          メール確認
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    
+    <!-- Body -->
+    <mj-section background-color="{{colors.bgContainer}}" padding="{{spacing.paddingLG}} {{spacing.paddingMD}}">
+      <mj-column>
+        <mj-text font-size="{{typography.fontSizeTitle}}" color="{{colors.text}}" line-height="1.6" align="center">
+          {{userName}}さん、こんにちは
+        </mj-text>
+        <mj-text font-size="{{typography.fontSizeBody}}" color="{{colors.textSecondary}}" line-height="1.6" align="center">
+          このコードを使用してメールアドレスを確認してください：
+        </mj-text>
+        
+        <!-- OTP Display -->
+        <mj-text 
+          align="center" 
+          background-color="{{colors.primary}}" 
+          color="{{colors.white}}" 
+          font-size="36px" 
+          font-weight="700" 
+          letter-spacing="8px"
+          padding="{{spacing.paddingSM}} {{spacing.paddingLG}}"
+          border-radius="{{shape.borderRadiusLarge}}"
+          font-family="monospace">
+          {{otp}}
+        </mj-text>
+        
+        <mj-divider 
+          border-color="{{colors.border}}" 
+          border-width="1px" 
+          padding="{{spacing.paddingSM}} 0" 
+        />
+        
+        <!-- Security Note -->
+        <mj-text 
+          font-size="{{typography.fontSizeCaption}}" 
+          color="{{colors.textSecondary}}" 
+          padding="{{spacing.paddingSM}}" 
+          background-color="{{colors.bgBase}}" 
+          border-left="4px solid {{colors.primary}}">
+          <strong>セキュリティに関する注意:</strong><br/>
+          • このコードは15分で期限切れになります<br/>
+          • このコードは秘密にし、共有しないでください<br/>
+          • このコードをリクエストしていない場合は、このメールを安全に無視できます
+        </mj-text>
+        
+        <mj-text font-size="{{typography.fontSizeCaption}}" color="{{colors.textTertiary}}" line-height="1.6" align="center">
+          プロフィールページの確認フォームにこのコードを入力してください。
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    
+    <!-- Footer -->
+    <mj-section background-color="{{colors.bgBase}}" padding="{{spacing.paddingMD}}">
+      <mj-column>
+        <mj-text align="center" font-size="{{typography.fontSizeCaption}}" color="{{colors.textTertiary}}">
+          楽しい学習を！ 🚀<br/>
+          WatashiWaチーム<br/><br/>
+          <a href="{{appUrl}}/profile" style="color: {{colors.link}}; text-decoration: none;">アカウント管理</a> | 
+          <a href="{{appUrl}}/help" style="color: {{colors.link}}; text-decoration: none;">ヘルプセンター</a>
+          <br/><br/>
+          <small style="color: {{colors.textTertiary}};">
+            {{companyAddress}}<br/>
+            <a href="{{appUrl}}/unsubscribe" style="color: {{colors.link}}; text-decoration: underline;">配信停止</a> | 
+            <a href="{{appUrl}}/privacy" style="color: {{colors.link}}; text-decoration: underline;">プライバシーポリシー</a>
+          </small>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
+

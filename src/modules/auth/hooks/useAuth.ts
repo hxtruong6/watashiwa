@@ -15,7 +15,7 @@ interface AuthState {
 }
 
 interface UseAuthOptions {
-	onSuccess?: (role?: string) => void;
+	onSuccess?: (role?: string, isNewUser?: boolean) => void;
 	onError?: (error: string) => void;
 	/**
 	 * Translation function for error messages
@@ -83,11 +83,12 @@ export function useAuth(options: UseAuthOptions = {}) {
 	const processAuthSuccess = useCallback(
 		async (mode: AuthMode, user: { id: string; email?: string | null }) => {
 			let role: string | undefined;
+			let isNewUser: boolean | undefined;
 			try {
 				// Sync user to database (non-blocking if fails)
 				const syncResult = await syncUser();
 				role = syncResult.data?.role;
-				const isNewUser = syncResult.data?.isNewUser;
+				isNewUser = syncResult.data?.isNewUser;
 
 				// Get full user data for analytics
 				const { data: userData } = await supabase.auth.getUser();
@@ -123,7 +124,7 @@ export function useAuth(options: UseAuthOptions = {}) {
 				);
 				if (onSuccess) {
 					console.log('[Auth] Calling onSuccess callback');
-					onSuccess(role);
+					onSuccess(role, isNewUser);
 				} else {
 					console.log('[Auth] Using default redirect');
 					// Default: redirect based on role
@@ -217,6 +218,19 @@ export function useAuth(options: UseAuthOptions = {}) {
 					throw new Error(t?.('errorAllFieldsRequired') || 'All fields are required');
 				}
 
+				// Check network connectivity
+				if (typeof window !== 'undefined' && !navigator.onLine) {
+					// Store form data in localStorage for retry (SECURITY: Don't store password)
+					const signupData = { email: email.trim(), name: name.trim() };
+					localStorage.setItem('pendingSignup', JSON.stringify(signupData));
+					const errorMessage =
+						t?.('errorNetworkOffline') ||
+						'No internet connection. Your data has been saved. Please retry when connected.';
+					setState({ loading: false, error: errorMessage, message: null });
+					onError?.(errorMessage);
+					return { success: false, error: errorMessage };
+				}
+
 				// Validate origin exists (defensive)
 				const origin = typeof window !== 'undefined' ? window.location.origin : '';
 				if (!origin) {
@@ -248,10 +262,33 @@ export function useAuth(options: UseAuthOptions = {}) {
 				});
 
 				if (error) {
+					// Check if it's a network error
+					const isNetworkError =
+						error.message.includes('fetch') ||
+						error.message.includes('network') ||
+						error.message.includes('Failed to fetch');
+
+					if (isNetworkError && typeof window !== 'undefined') {
+						// Store form data in localStorage for retry (SECURITY: Don't store password)
+						const signupData = { email: email.trim(), name: name.trim() };
+						localStorage.setItem('pendingSignup', JSON.stringify(signupData));
+						const errorMessage =
+							t?.('errorNetworkOffline') ||
+							'Network error. Your data has been saved. Please retry when connected.';
+						setState({ loading: false, error: errorMessage, message: null });
+						onError?.(errorMessage);
+						return { success: false, error: errorMessage };
+					}
+
 					const errorMessage = handleAuthError(error);
 					setState({ loading: false, error: errorMessage, message: null });
 					onError?.(errorMessage);
 					return { success: false, error: errorMessage };
+				}
+
+				// Clear pending signup data on success
+				if (typeof window !== 'undefined') {
+					localStorage.removeItem('pendingSignup');
 				}
 
 				// Check if email confirmation is required
@@ -274,6 +311,25 @@ export function useAuth(options: UseAuthOptions = {}) {
 
 				return { success: true };
 			} catch (error) {
+				// Check if it's a network error
+				const isNetworkError =
+					error instanceof TypeError &&
+					(error.message.includes('fetch') ||
+						error.message.includes('network') ||
+						error.message.includes('Failed to fetch'));
+
+				if (isNetworkError && typeof window !== 'undefined') {
+					// Store form data in localStorage for retry
+					const signupData = { email: email.trim(), password, name: name.trim() };
+					localStorage.setItem('pendingSignup', JSON.stringify(signupData));
+					const errorMessage =
+						t?.('errorNetworkOffline') ||
+						'Network error. Your data has been saved. Please retry when connected.';
+					setState({ loading: false, error: errorMessage, message: null });
+					onError?.(errorMessage);
+					return { success: false, error: errorMessage };
+				}
+
 				const errorMessage = handleAuthError(error);
 				setState({ loading: false, error: errorMessage, message: null });
 				onError?.(errorMessage);

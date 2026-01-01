@@ -1,6 +1,7 @@
 'use server';
 
 import { prisma } from '@/lib/db';
+import { UserPreferencesSchema } from '@/lib/schemas/user';
 import { executeSafeAction } from '@/modules/core/action-client';
 import { createClient } from '@/utils/supabase/server';
 import { cache } from 'react';
@@ -72,6 +73,14 @@ export async function syncUser() {
 		const primaryProvider =
 			provider !== 'email' ? provider : existingUser?.primaryAuthProvider || 'email';
 
+		// Vietnamese-first preferences for new users
+		// Note: language/interfaceLanguage/culturalContext are stored in User model fields, not preferences JSONB
+		// Preferences JSONB is for tutorials, haptic feedback, fsrsParams, etc.
+		// Validate with Zod schema per architecture requirements
+		const vietnamesePreferences = isNewUser
+			? UserPreferencesSchema.parse({}) // Empty preferences object, validated
+			: undefined;
+
 		// Upsert user to ensure they exist
 		const dbUser = await prisma.user.upsert({
 			where: { id: user.id },
@@ -95,8 +104,32 @@ export async function syncUser() {
 				lastLogin: new Date(),
 				authProviders: [providerEntry],
 				primaryAuthProvider: provider,
+				language: 'vi', // Default to Vietnamese for new users
+				preferences: vietnamesePreferences || {},
 			},
 		});
+
+		// Send welcome email for new users (non-blocking)
+		if (isNewUser) {
+			// Dynamic import to avoid bundling Inngest in client components
+			const { inngest } = await import('@/inngest/client');
+
+			// Trigger welcome email event (non-blocking, fire and forget)
+			inngest
+				.send({
+					name: 'user/registered',
+					data: {
+						userEmail: dbUser.email,
+						userName: dbUser.name || dbUser.email.split('@')[0],
+						userId: dbUser.id,
+						language: dbUser.language || 'en',
+					},
+				})
+				.catch((error: unknown) => {
+					// Log error but don't block user registration
+					console.error('Failed to trigger welcome email:', error);
+				});
+		}
 
 		return { role: dbUser.role, isNewUser };
 	});

@@ -2,6 +2,7 @@
 
 import NotificationManager from '@/components/PWA/NotificationManager';
 import ImageUploader from '@/components/Shared/ImageUploader';
+import EmailVerificationButton from '@/modules/email/components/EmailVerificationButton';
 import LanguageSelector from '@/modules/user/components/LanguageSelector';
 import { useUserGoals } from '@/modules/user/hooks/useUserGoals';
 import { updateUserAvatar } from '@/modules/user/user.actions';
@@ -205,6 +206,12 @@ export default function SettingsModal({ open, onCancel, user }: SettingsModalPro
 					/>
 				</Form.Item>
 			</Form>
+
+			<Divider style={{ margin: '16px 0' }} />
+
+			<div style={{ width: '100%' }}>
+				<EmailVerificationButton userEmail={user?.email || ''} />
+			</div>
 		</Flex>
 	);
 

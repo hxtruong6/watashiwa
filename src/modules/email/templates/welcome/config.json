@@ -1,0 +1,18 @@
+{
+  "id": "welcome",
+  "name": "Welcome Email",
+  "subject": {
+    "en": "Welcome to WatashiWa",
+    "vi": "Chào mừng bạn đến với WatashiWa",
+    "ja": "WatashiWaへようこそ"
+  },
+  "variables": {
+    "required": ["userName", "userEmail"],
+    "optional": ["appUrl"]
+  },
+  "metadata": {
+    "category": "transactional",
+    "version": "1.0.0"
+  }
+}
+

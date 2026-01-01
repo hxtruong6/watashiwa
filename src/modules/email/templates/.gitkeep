@@ -1,0 +1,28 @@
+# Email Templates Directory
+
+**Current Implementation:** File-based templates for scalability and designer independence.
+
+Templates are stored here following this structure:
+
+```
+templates/
+├── template-name/
+│   ├── template.en.mjml    # English MJML template
+│   ├── template.vi.mjml    # Vietnamese MJML template (optional)
+│   ├── template.ja.mjml    # Japanese MJML template (optional)
+│   └── config.json         # Template configuration (variables, subject lines, metadata)
+```
+
+**Current Templates:**
+
+- `welcome/` - Welcome email for new users
+- `otp-verification/` - OTP verification email
+
+**Adding New Templates:**
+
+1. Create directory: `mkdir -p templates/your-template-name`
+2. Add `template.en.mjml` (required) and optionally `template.vi.mjml`, `template.ja.mjml`
+3. Add `config.json` with variables and subject lines for all languages
+4. Use `renderTemplateFromFile(templateId, data, language)` in your code
+
+See `docs/guides/EMAIL_DESIGNER_WORKFLOW.md` for full details.

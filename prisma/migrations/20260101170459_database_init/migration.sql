@@ -49,6 +49,11 @@ CREATE TABLE "User" (
     "current_streak" INTEGER NOT NULL DEFAULT 0,
     "longest_streak" INTEGER NOT NULL DEFAULT 0,
     "last_study_date" DATE,
+    "auth_providers" JSONB NOT NULL DEFAULT '[]',
+    "primary_auth_provider" TEXT,
+    "email_verified_at" TIMESTAMP(3),
+    "email_verification_otp" TEXT,
+    "email_verification_otp_expires" TIMESTAMP(3),
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -71,6 +76,7 @@ CREATE TABLE "PushSubscription" (
 -- CreateTable
 CREATE TABLE "Course" (
     "id" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "title_en" TEXT,
     "description" TEXT,
@@ -90,6 +96,7 @@ CREATE TABLE "Course" (
 -- CreateTable
 CREATE TABLE "Deck" (
     "id" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "title_en" TEXT,
     "description" TEXT,
@@ -177,9 +184,20 @@ CREATE TABLE "Story" (
     "unit_id" TEXT NOT NULL,
     "content" JSONB NOT NULL,
     "audio_url" TEXT,
+    "content_status" "ContentStatus" NOT NULL DEFAULT 'AI_GENERATED',
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "Story_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "StoryLog" (
+    "id" TEXT NOT NULL,
+    "user_id" TEXT NOT NULL,
+    "story_id" TEXT NOT NULL,
+    "completed_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "StoryLog_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -309,10 +327,22 @@ CREATE UNIQUE INDEX "PushSubscription_endpoint_key" ON "PushSubscription"("endpo
 CREATE INDEX "PushSubscription_user_id_idx" ON "PushSubscription"("user_id");
 
 -- CreateIndex
+CREATE UNIQUE INDEX "Course_slug_key" ON "Course"("slug");
+
+-- CreateIndex
 CREATE INDEX "Course_author_id_idx" ON "Course"("author_id");
 
 -- CreateIndex
+CREATE INDEX "Course_slug_idx" ON "Course"("slug");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Deck_slug_key" ON "Deck"("slug");
+
+-- CreateIndex
 CREATE INDEX "Deck_author_id_idx" ON "Deck"("author_id");
+
+-- CreateIndex
+CREATE INDEX "Deck_slug_idx" ON "Deck"("slug");
 
 -- CreateIndex
 CREATE INDEX "CourseDeck_course_id_idx" ON "CourseDeck"("course_id");
@@ -346,6 +376,18 @@ CREATE INDEX "ConfusionPair_vocab_id_2_idx" ON "ConfusionPair"("vocab_id_2");
 
 -- CreateIndex
 CREATE INDEX "Story_unit_id_idx" ON "Story"("unit_id");
+
+-- CreateIndex
+CREATE INDEX "Story_content_status_idx" ON "Story"("content_status");
+
+-- CreateIndex
+CREATE INDEX "StoryLog_user_id_completed_at_idx" ON "StoryLog"("user_id", "completed_at");
+
+-- CreateIndex
+CREATE INDEX "StoryLog_story_id_idx" ON "StoryLog"("story_id");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "StoryLog_user_id_story_id_key" ON "StoryLog"("user_id", "story_id");
 
 -- CreateIndex
 CREATE INDEX "DailyStudyStat_user_id_idx" ON "DailyStudyStat"("user_id");
@@ -412,6 +454,12 @@ ALTER TABLE "ConfusionPair" ADD CONSTRAINT "ConfusionPair_vocab_id_2_fkey" FOREI
 
 -- AddForeignKey
 ALTER TABLE "Story" ADD CONSTRAINT "Story_unit_id_fkey" FOREIGN KEY ("unit_id") REFERENCES "Deck"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "StoryLog" ADD CONSTRAINT "StoryLog_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "StoryLog" ADD CONSTRAINT "StoryLog_story_id_fkey" FOREIGN KEY ("story_id") REFERENCES "Story"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "DailyStudyStat" ADD CONSTRAINT "DailyStudyStat_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;

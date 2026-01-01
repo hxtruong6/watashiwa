@@ -680,6 +680,9 @@
 		"passwordRequired": "Please input your Password!",
 		"passwordMin": "Must be at least 4 characters",
 		"passwordPlaceholder": "Password",
+		"confirmPasswordRequired": "Please confirm your password!",
+		"confirmPasswordPlaceholder": "Confirm Password",
+		"passwordMismatch": "The two passwords do not match!",
 		"forgotPassword": "Forgot password?",
 		"loginButton": "Log in",
 		"signupButton": "Sign up",
@@ -696,6 +699,9 @@
 		"errorAuthFailed": "An error occurred during authentication",
 		"errorAllFieldsRequired": "All fields are required",
 		"errorOriginMissing": "Unable to determine application origin",
+		"errorNetworkOffline": "No internet connection. Your data has been saved. Please retry when connected.",
+		"dataRestored": "Your previous registration data has been restored. Please retry.",
+		"networkRestored": "Connection restored. You can retry registration now.",
 		"signInWithGoogle": "Continue with Google",
 		"signInWithGoogleAlt": "Sign in with Google",
 		"quickLogin": "Quick login",
@@ -1071,5 +1077,14 @@
 			"item2": "Privacy first. Your data belongs to you. Export anytime.",
 			"item3": "Zen design. Calm, authoritative, no fluff. Mastery over gamification."
 		}
+	},
+	"Profile": {
+		"setupTitle": "Complete Your Profile",
+		"setupSubtitle": "Set up your preferences to get started",
+		"languageLabel": "Interface Language",
+		"languageRequired": "Please select a language",
+		"completeSetup": "Complete Setup",
+		"setupSuccess": "Profile setup complete!",
+		"setupError": "Failed to save profile"
 	}
 }

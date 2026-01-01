@@ -1,0 +1,63 @@
+<mjml>
+  <mj-head>
+    <mj-title>Chào mừng đến với WatashiWa</mj-title>
+  </mj-head>
+  <mj-body background-color="{{colors.bgBase}}">
+    <!-- Header -->
+    <mj-section background-color="{{colors.primary}}" padding="{{spacing.paddingLG}} {{spacing.paddingSM}}">
+      <mj-column>
+        <mj-text align="center" color="{{colors.white}}" font-size="{{typography.fontSizeHero}}" font-weight="{{typography.fontWeightBold}}">
+          Chào mừng đến với WatashiWa
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Body -->
+    <mj-section background-color="{{colors.bgContainer}}" padding="{{spacing.paddingLG}} {{spacing.paddingMD}}">
+      <mj-column>
+        <mj-text font-size="{{typography.fontSizeTitle}}" color="{{colors.text}}" line-height="1.6" align="left">
+          Chào {{userName}},
+        </mj-text>
+        <mj-text font-size="{{typography.fontSizeBody}}" color="{{colors.textSecondary}}" line-height="1.6" align="left">
+          Cảm ơn bạn đã tham gia WatashiWa. Chúng tôi ở đây để giúp bạn xây dựng những kết nối bền vững với từ vựng tiếng Nhật thông qua việc học tập thông minh.
+        </mj-text>
+        <mj-text font-size="{{typography.fontSizeBody}}" color="{{colors.textSecondary}}" line-height="1.6" align="left">
+          <strong>Điều làm nên sự khác biệt của WatashiWa:</strong><br />
+          • Lặp lại ngắt quãng thông minh thích ứng với mô hình trí nhớ của bạn<br />
+          • Kết nối ngữ nghĩa giúp từ vựng ghi nhớ tự nhiên<br />
+          • Hỗ trợ Hán Việt cho người học Việt Nam<br />
+          • Giao diện sạch sẽ, tập trung được thiết kế cho việc học sâu
+        </mj-text>
+        <mj-button background-color="{{colors.primary}}" color="{{colors.white}}" href="{{appUrl}}" border-radius="{{shape.borderRadius}}" padding="14px 32px" font-size="{{typography.fontSizeBody}}" font-weight="{{typography.fontWeightBold}}">
+          Bắt đầu hành trình
+        </mj-button>
+        <mj-text font-size="{{typography.fontSizeCaption}}" color="{{colors.textTertiary}}" line-height="1.6" align="left">
+          <strong>Bắt đầu:</strong><br />
+          1. Hoàn thành hồ sơ của bạn để cá nhân hóa trải nghiệm<br />
+          2. Chọn bộ thẻ đầu tiên hoặc tạo bộ thẻ của riêng bạn<br />
+          3. Đặt mục tiêu hàng ngày phù hợp với lịch trình của bạn<br />
+          4. Bắt đầu học theo tốc độ của riêng bạn
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Footer -->
+    <mj-section background-color="{{colors.bgBase}}" padding="{{spacing.paddingMD}}">
+      <mj-column>
+        <mj-text align="center" font-size="{{typography.fontSizeCaption}}" color="{{colors.textTertiary}}">
+          Chúc bạn học tốt! 🚀<br />
+          Đội ngũ WatashiWa<br /><br />
+          <a href="{{appUrl}}/profile" style="color: {{colors.link}}; text-decoration: none;">Quản lý tài khoản</a> |
+          <a href="{{appUrl}}/help" style="color: {{colors.link}}; text-decoration: none;">Trung tâm trợ giúp</a>
+          <br /><br />
+          <small style="color: {{colors.textTertiary}};">
+            {{companyAddress}}<br />
+            <a href="{{appUrl}}/unsubscribe" style="color: {{colors.link}}; text-decoration: underline;">Hủy đăng ký</a> |
+            <a href="{{appUrl}}/privacy" style="color: {{colors.link}}; text-decoration: underline;">Chính sách bảo mật</a>
+          </small>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
+

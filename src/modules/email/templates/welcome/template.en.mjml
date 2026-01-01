@@ -1,0 +1,63 @@
+<mjml>
+  <mj-head>
+    <mj-title>Welcome to WatashiWa</mj-title>
+  </mj-head>
+  <mj-body background-color="{{colors.bgBase}}">
+    <!-- Header -->
+    <mj-section background-color="{{colors.primary}}" padding="{{spacing.paddingLG}} {{spacing.paddingSM}}">
+      <mj-column>
+        <mj-text align="center" color="{{colors.white}}" font-size="{{typography.fontSizeHero}}" font-weight="{{typography.fontWeightBold}}">
+          Welcome to WatashiWa
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Body -->
+    <mj-section background-color="{{colors.bgContainer}}" padding="{{spacing.paddingLG}} {{spacing.paddingMD}}">
+      <mj-column>
+        <mj-text font-size="{{typography.fontSizeTitle}}" color="{{colors.text}}" line-height="1.6" align="left">
+          Hi {{userName}},
+        </mj-text>
+        <mj-text font-size="{{typography.fontSizeBody}}" color="{{colors.textSecondary}}" line-height="1.6" align="left">
+          Thanks for joining WatashiWa. We're here to help you build lasting connections with Japanese vocabulary through intelligent learning.
+        </mj-text>
+        <mj-text font-size="{{typography.fontSizeBody}}" color="{{colors.textSecondary}}" line-height="1.6" align="left">
+          <strong>What makes WatashiWa different:</strong><br />
+          • Smart spaced repetition that adapts to your memory patterns<br />
+          • Semantic connections that help words stick naturally<br />
+          • Hán Việt support for Vietnamese learners<br />
+          • Clean, focused interface designed for deep learning
+        </mj-text>
+        <mj-button background-color="{{colors.primary}}" color="{{colors.white}}" href="{{appUrl}}" border-radius="{{shape.borderRadius}}" padding="14px 32px" font-size="{{typography.fontSizeBody}}" font-weight="{{typography.fontWeightBold}}">
+          Begin Your Journey
+        </mj-button>
+        <mj-text font-size="{{typography.fontSizeCaption}}" color="{{colors.textTertiary}}" line-height="1.6" align="left">
+          <strong>Getting started:</strong><br />
+          1. Complete your profile to personalize your experience<br />
+          2. Choose your first deck or create your own<br />
+          3. Set daily goals that fit your schedule<br />
+          4. Start learning at your own pace
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <!-- Footer -->
+    <mj-section background-color="{{colors.bgBase}}" padding="{{spacing.paddingMD}}">
+      <mj-column>
+        <mj-text align="center" font-size="{{typography.fontSizeCaption}}" color="{{colors.textTertiary}}">
+          Happy Learning! 🚀<br />
+          The WatashiWa Team<br /><br />
+          <a href="{{appUrl}}/profile" style="color: {{colors.link}}; text-decoration: none;">Manage Account</a> |
+          <a href="{{appUrl}}/help" style="color: {{colors.link}}; text-decoration: none;">Help Center</a>
+          <br /><br />
+          <small style="color: {{colors.textTertiary}};">
+            {{companyAddress}}<br />
+            <a href="{{appUrl}}/unsubscribe" style="color: {{colors.link}}; text-decoration: underline;">Unsubscribe</a> |
+            <a href="{{appUrl}}/privacy" style="color: {{colors.link}}; text-decoration: underline;">Privacy Policy</a>
+          </small>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>
+
