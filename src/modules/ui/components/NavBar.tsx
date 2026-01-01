@@ -57,6 +57,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 	const [shareModalOpen, setShareModalOpen] = useState(false);
 	const [settingsModalOpen, setSettingsModalOpen] = useState(false);
 	const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
+	const [userMenuOpen, setUserMenuOpen] = useState(false);
 	const [mounted, setMounted] = useState(false);
 
 	// Global UI Store Control
@@ -215,25 +216,37 @@ export default function NavBar({ user }: { user?: User | null }) {
 				key: 'settings',
 				icon: <SettingOutlined />,
 				label: t('settings'),
-				onClick: () => setSettingsModalOpen(true),
+				onClick: () => {
+					setUserMenuOpen(false);
+					setSettingsModalOpen(true);
+				},
 			},
 			{
 				key: 'share',
 				icon: <ShareAltOutlined />,
 				label: t('share'),
-				onClick: () => setShareModalOpen(true),
+				onClick: () => {
+					setUserMenuOpen(false);
+					setShareModalOpen(true);
+				},
 			},
 			{
 				key: 'report_bug',
 				icon: <BugOutlined />,
 				label: tCommon('reportIssue'),
-				onClick: handleBugReport,
+				onClick: () => {
+					setUserMenuOpen(false);
+					handleBugReport();
+				},
 			},
 			{
 				key: 'logout',
 				icon: <LogoutOutlined />,
 				label: tCommon('logout'),
-				onClick: handleLogout,
+				onClick: () => {
+					setUserMenuOpen(false);
+					handleLogout();
+				},
 				danger: true,
 			},
 		],
@@ -406,16 +419,37 @@ export default function NavBar({ user }: { user?: User | null }) {
 										</Tooltip> */}
 
 										<NotificationPopover />
-										<Dropdown menu={userMenuProps} trigger={['click']} placement="bottomRight">
-											<Avatar
-												src={user?.user_metadata?.avatar_url}
+										<Dropdown
+											menu={userMenuProps}
+											trigger={['click']}
+											placement="bottomRight"
+											open={userMenuOpen}
+											onOpenChange={setUserMenuOpen}
+											getPopupContainer={() => {
+												// Render dropdown in document body to avoid z-index and overflow issues
+												// This ensures the dropdown appears above all other elements
+												return document.body;
+											}}
+										>
+											<Button
+												type="text"
 												style={{
-													backgroundColor: token.colorPrimary,
-													cursor: 'pointer',
-													border: `2px solid ${token.colorBgContainer}`,
+													padding: 0,
+													height: 'auto',
+													display: 'inline-flex',
+													alignItems: 'center',
 												}}
-												icon={<UserOutlined />}
-											/>
+											>
+												<Avatar
+													src={user?.user_metadata?.avatar_url}
+													style={{
+														backgroundColor: token.colorPrimary,
+														cursor: 'pointer',
+														border: `2px solid ${token.colorBgContainer}`,
+													}}
+													icon={<UserOutlined />}
+												/>
+											</Button>
 										</Dropdown>
 									</Space>
 								</>

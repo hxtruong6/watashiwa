@@ -1025,6 +1025,86 @@
 			"item2": "GitHub Discussions - Đặt câu hỏi và chia sẻ ý tưởng"
 		}
 	},
+	"Help": {
+		"metaTitle": "Trung tâm Trợ giúp | WatashiWa",
+		"metaDescription": "Nhận trợ giúp với WatashiWa. Tìm câu trả lời cho các câu hỏi thường gặp về bắt đầu, thẻ ghi nhớ, quản lý tài khoản và khắc phục sự cố.",
+		"title": "Trung tâm Trợ giúp",
+		"subtitle": "Tìm câu trả lời cho các câu hỏi thường gặp và tìm hiểu cách tận dụng tối đa WatashiWa.",
+		"gettingStarted": {
+			"title": "Bắt đầu",
+			"q1": {
+				"question": "Làm thế nào để bắt đầu học?",
+				"answer": "Sau khi tạo tài khoản, hoàn thành thiết lập hồ sơ của bạn để cá nhân hóa trải nghiệm. Sau đó, duyệt thư viện bộ thẻ để tìm các bộ thẻ mà bạn quan tâm, hoặc tạo bộ thẻ tùy chỉnh của riêng bạn. Đặt mục tiêu học tập hàng ngày và bắt đầu xem lại thẻ theo tốc độ của riêng bạn."
+			},
+			"q2": {
+				"question": "Phương pháp CUBE là gì?",
+				"answer": "Phương pháp CUBE (Context, Understanding, Blocking, Encoding) là cách tiếp cận của WatashiWa để học từ vựng. Nó sử dụng kết nối ngữ nghĩa, lặp lại cách quãng và lá chắn can thiệp để giúp từ vựng ghi nhớ tự nhiên trong trí nhớ của bạn."
+			},
+			"q3": {
+				"question": "Làm thế nào để thiết lập hồ sơ của tôi?",
+				"answer": "Đi đến cài đặt hồ sơ của bạn (nhấp vào biểu tượng cài đặt trong thanh điều hướng) để đặt tùy chọn ngôn ngữ, múi giờ, mục tiêu hàng ngày và các tùy chọn học tập khác. Thiết lập hồ sơ của bạn giúp cá nhân hóa trải nghiệm học tập."
+			}
+		},
+		"flashcards": {
+			"title": "Sử dụng Thẻ ghi nhớ",
+			"q1": {
+				"question": "Lặp lại cách quãng hoạt động như thế nào?",
+				"answer": "WatashiWa sử dụng hệ thống lặp lại cách quãng thông minh (SRS) thích ứng với mô hình trí nhớ của bạn. Các thẻ bạn thấy khó xuất hiện thường xuyên hơn, trong khi các thẻ đã thành thạo xuất hiện ít thường xuyên hơn. Điều này giúp tối ưu hóa hiệu quả học tập của bạn."
+			},
+			"q2": {
+				"question": "Các tùy chọn đánh giá là gì?",
+				"answer": "Khi xem lại thẻ, bạn có thể đánh giá khả năng nhớ lại của mình: 'Lại' (quên), 'Khó' (gặp khó khăn), 'Tốt' (nhớ), hoặc 'Dễ' (biết ngay lập tức). Những đánh giá này giúp hệ thống lên lịch đánh giá tiếp theo vào thời điểm tối ưu."
+			},
+			"q3": {
+				"question": "Tôi có thể tạo bộ thẻ của riêng mình không?",
+				"answer": "Có! Bạn có thể tạo bộ thẻ tùy chỉnh với từ vựng và kanji của riêng bạn. Đi đến 'Bộ thẻ của tôi' trong menu điều hướng, nhấp vào 'Bộ thẻ mới' và bắt đầu thêm nội dung. Bạn cũng có thể làm cho bộ thẻ của mình công khai để chia sẻ với cộng đồng."
+			}
+		},
+		"account": {
+			"title": "Quản lý Tài khoản",
+			"q1": {
+				"question": "Làm thế nào để thay đổi email hoặc mật khẩu của tôi?",
+				"answer": "Đi đến cài đặt hồ sơ của bạn và sử dụng các tùy chọn quản lý tài khoản. Để thay đổi mật khẩu, sử dụng liên kết 'Quên mật khẩu' trên trang đăng nhập. Thay đổi email có thể yêu cầu xác minh."
+			},
+			"q2": {
+				"question": "Làm thế nào để xuất dữ liệu của tôi?",
+				"answer": "Bạn có thể xuất tất cả dữ liệu của mình (bộ thẻ, tiến trình, lịch sử xem lại) từ cài đặt tài khoản của bạn. Bản xuất bao gồm mọi thứ ở định dạng JSON cho hồ sơ của bạn."
+			},
+			"q3": {
+				"question": "Tôi có thể xóa tài khoản của mình không?",
+				"answer": "Có, bạn có thể xóa tài khoản của mình bất cứ lúc nào từ cài đặt tài khoản. Điều này sẽ vĩnh viễn xóa tất cả dữ liệu của bạn, bao gồm bộ thẻ, tiến trình và lịch sử học tập. Hành động này không thể hoàn tác."
+			}
+		},
+		"troubleshooting": {
+			"title": "Khắc phục Sự cố",
+			"q1": {
+				"question": "Tôi gặp khó khăn khi đăng nhập.",
+				"answer": "Đảm bảo bạn đang sử dụng email và mật khẩu đúng. Nếu bạn đã quên mật khẩu, sử dụng liên kết 'Quên mật khẩu'. Đối với các vấn đề đăng nhập OAuth, thử xóa cookie trình duyệt của bạn hoặc sử dụng trình duyệt khác."
+			},
+			"q2": {
+				"question": "Ứng dụng không hoạt động đúng cách.",
+				"answer": "Thử làm mới trang hoặc xóa bộ nhớ cache trình duyệt của bạn. Nếu vấn đề vẫn tiếp tục, kiểm tra xem bạn có đang sử dụng trình duyệt được hỗ trợ (Chrome, Firefox, Safari hoặc Edge) không. Đối với các vấn đề dai dẳng, liên hệ hỗ trợ tại support@watashiwa.app."
+			}
+		},
+		"needMoreHelp": {
+			"title": "Cần Thêm Trợ giúp?",
+			"content": "Nếu bạn không thể tìm thấy những gì bạn đang tìm kiếm, vui lòng",
+			"contactLink": "liên hệ với chúng tôi"
+		}
+	},
+	"Unsubscribe": {
+		"loading": "Đang xử lý yêu cầu của bạn...",
+		"success": {
+			"title": "Hủy đăng ký Thành công",
+			"message": "Bạn đã được hủy đăng ký khỏi thông báo email. Bạn có thể bật lại thông báo bất cứ lúc nào từ cài đặt tài khoản của bạn."
+		},
+		"error": {
+			"title": "Hủy đăng ký Thất bại",
+			"missingEmail": "Địa chỉ email là bắt buộc.",
+			"generic": "Đã xảy ra lỗi khi xử lý yêu cầu của bạn. Vui lòng thử lại hoặc liên hệ hỗ trợ."
+		},
+		"backToHome": "Về Trang chủ"
+	},
 	"About": {
 		"metaTitle": "Về WatashiWa | Học tiếng Nhật với SRS",
 		"metaDescription": "Tìm hiểu về sứ mệnh, tính năng, công nghệ và cam kết mã nguồn mở của WatashiWa trong việc học tiếng Nhật.",
@@ -1076,6 +1156,7 @@
 		"languageRequired": "Vui lòng chọn ngôn ngữ",
 		"completeSetup": "Hoàn Tất",
 		"setupSuccess": "Thiết lập hồ sơ thành công!",
-		"setupError": "Không thể lưu hồ sơ"
+		"setupError": "Không thể lưu hồ sơ",
+		"checkingSetupStatus": "Đang kiểm tra trạng thái thiết lập..."
 	}
 }

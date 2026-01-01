@@ -12,7 +12,7 @@ import { getReviewCount } from '@/modules/study/study.actions';
 import { getUserSettings, getUserStats } from '@/modules/user/user.actions';
 import { UserReview, Vocabulary } from '@prisma/client';
 
-import { getMemoryGardenData } from './components/memory-garden/memory-garden.actions';
+// import { getMemoryGardenData } from './components/memory-garden/memory-garden.actions';
 
 export interface WisdomWordData {
 	id: string; // Review ID or Vocab ID? Usually use Vocab ID for display? Or Review ID/Vocab ID tuple.
@@ -127,7 +127,8 @@ export async function getDashboardData() {
 				getWeeklyStats(user.id),
 				getDecksWithDue(user.id),
 				getUserSettings(),
-				getMemoryGardenData(500), // Limit to 500 for dashboard performance
+				// getMemoryGardenData(500), // Limit to 500 for dashboard performance
+				null,
 			]);
 
 		let userName: string | null = null;

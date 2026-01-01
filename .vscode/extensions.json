@@ -1,0 +1,9 @@
+{
+  "recommendations": [],
+  "unwantedRecommendations": [
+    // If you have an MJML extension that's causing validation errors,
+    // you can add it here to suggest disabling it
+    // Example: "mjmlio.vscode-mjml"
+  ]
+}
+

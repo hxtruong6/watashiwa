@@ -67,11 +67,10 @@
         <mj-text align="center" font-size="{{typography.fontSizeCaption}}" color="{{colors.textTertiary}}">
           楽しい学習を！ 🚀<br/>
           WatashiWaチーム<br/><br/>
-          <a href="{{appUrl}}/profile" style="color: {{colors.link}}; text-decoration: none;">アカウント管理</a> | 
-          <a href="{{appUrl}}/help" style="color: {{colors.link}}; text-decoration: none;">ヘルプセンター</a>
+          <a href="{{appUrl}}/profile" style="color: {{colors.link}}; text-decoration: underline;">アカウント管理</a> | 
+          <a href="{{appUrl}}/help" style="color: {{colors.link}}; text-decoration: underline;">ヘルプセンター</a>
           <br/><br/>
           <small style="color: {{colors.textTertiary}};">
-            {{companyAddress}}<br/>
             <a href="{{appUrl}}/unsubscribe" style="color: {{colors.link}}; text-decoration: underline;">配信停止</a> | 
             <a href="{{appUrl}}/privacy" style="color: {{colors.link}}; text-decoration: underline;">プライバシーポリシー</a>
           </small>

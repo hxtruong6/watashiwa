@@ -11,14 +11,9 @@ export default function DisableZoom() {
 			}
 		};
 
-		// Prevent double-tap to zoom
-		let lastTouchEnd = 0;
-		const handleTouchEnd = (e: TouchEvent) => {
-			const now = new Date().getTime();
-			if (now - lastTouchEnd <= 300) {
-				e.preventDefault();
-			}
-			lastTouchEnd = now;
+		// Prevent iOS Safari pinch-zoom gesture (safer than blocking touchend, which can break taps/clicks)
+		const handleGestureStart = (e: Event) => {
+			e.preventDefault();
 		};
 
 		// Prevent Ctrl + Wheel zoom (Desktop/Trackpad)
@@ -29,12 +24,12 @@ export default function DisableZoom() {
 		};
 
 		document.addEventListener('touchmove', handleTouchMove, { passive: false });
-		document.addEventListener('touchend', handleTouchEnd, { passive: false });
+		document.addEventListener('gesturestart', handleGestureStart, { passive: false });
 		document.addEventListener('wheel', handleWheel, { passive: false });
 
 		return () => {
 			document.removeEventListener('touchmove', handleTouchMove);
-			document.removeEventListener('touchend', handleTouchEnd);
+			document.removeEventListener('gesturestart', handleGestureStart);
 			document.removeEventListener('wheel', handleWheel);
 		};
 	}, []);

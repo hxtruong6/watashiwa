@@ -19,7 +19,7 @@
           {{userName}}さん、こんにちは
         </mj-text>
         <mj-text font-size="{{typography.fontSizeBody}}" color="{{colors.textSecondary}}" line-height="1.6" align="left">
-          WatashiWaにご参加いただきありがとうございます。インテリジェントな学習を通じて、日本語の語彙との永続的なつながりを築くお手伝いをします。
+          WatashiWaにご参加いただきありがとうございます。インテリジェントでパーソナライズされた学習を通じて、日本語の語彙との永続的なつながりを築くお手伝いをします。
         </mj-text>
         <mj-text font-size="{{typography.fontSizeBody}}" color="{{colors.textSecondary}}" line-height="1.6" align="left">
           <strong>WatashiWaの特徴:</strong><br />
@@ -29,10 +29,10 @@
           • 深い学習のために設計されたクリーンで集中できるインターフェース
         </mj-text>
         <mj-button background-color="{{colors.primary}}" color="{{colors.white}}" href="{{appUrl}}" border-radius="{{shape.borderRadius}}" padding="14px 32px" font-size="{{typography.fontSizeBody}}" font-weight="{{typography.fontWeightBold}}">
-          旅を始める
+          学習を始める
         </mj-button>
         <mj-text font-size="{{typography.fontSizeCaption}}" color="{{colors.textTertiary}}" line-height="1.6" align="left">
-          <strong>始め方:</strong><br />
+          <strong>クイックスタートガイド:</strong><br />
           1. プロフィールを完成させて体験をパーソナライズ<br />
           2. 最初のデッキを選択するか、独自のデッキを作成<br />
           3. スケジュールに合った毎日の目標を設定<br />
@@ -47,12 +47,11 @@
         <mj-text align="center" font-size="{{typography.fontSizeCaption}}" color="{{colors.textTertiary}}">
           楽しい学習を！ 🚀<br />
           WatashiWaチーム<br /><br />
-          <a href="{{appUrl}}/profile" style="color: {{colors.link}}; text-decoration: none;">アカウント管理</a> |
-          <a href="{{appUrl}}/help" style="color: {{colors.link}}; text-decoration: none;">ヘルプセンター</a>
+          <a href="{{appUrl}}/profile" style="color: {{colors.link}}; text-decoration: underline;">アカウント管理</a> | 
+          <a href="{{appUrl}}/help" style="color: {{colors.link}}; text-decoration: underline;">ヘルプセンター</a>
           <br /><br />
           <small style="color: {{colors.textTertiary}};">
-            {{companyAddress}}<br />
-            <a href="{{appUrl}}/unsubscribe" style="color: {{colors.link}}; text-decoration: underline;">配信停止</a> |
+            <a href="{{appUrl}}/unsubscribe" style="color: {{colors.link}}; text-decoration: underline;">配信停止</a> | 
             <a href="{{appUrl}}/privacy" style="color: {{colors.link}}; text-decoration: underline;">プライバシーポリシー</a>
           </small>
         </mj-text>

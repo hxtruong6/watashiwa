@@ -8,6 +8,9 @@
  * Stored in User.preferences field
  */
 export interface UserPreferences {
+	/** Profile Setup Completion */
+	setupCompleted?: boolean; // Indicates user has completed initial profile setup
+
 	/** Feature Discovery & Onboarding */
 	tutorials?: {
 		completedOnboarding?: boolean;

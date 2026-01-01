@@ -104,7 +104,8 @@ export async function syncUser() {
 				lastLogin: new Date(),
 				authProviders: [providerEntry],
 				primaryAuthProvider: provider,
-				language: 'vi', // Default to Vietnamese for new users
+				// Don't set language here - let it default to "en" from schema
+				// Language will be set when user completes profile setup
 				preferences: vietnamesePreferences || {},
 			},
 		});

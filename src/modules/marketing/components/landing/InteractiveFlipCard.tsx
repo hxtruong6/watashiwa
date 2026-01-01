@@ -273,12 +273,23 @@ export default function InteractiveFlipCard({
 						}}
 					>
 						{/* Top: Animation (Context) */}
-						<DotLottieReact
-							src={backAnimationSrc}
-							loop
-							autoplay
-							style={{ width: 'auto', height: '120px', marginBottom: 16 }}
-						/>
+						<div
+							style={{
+								width: '100%',
+								height: '120px',
+								marginBottom: 16,
+								display: 'flex',
+								alignItems: 'center',
+								justifyContent: 'center',
+							}}
+						>
+							<DotLottieReact
+								src={backAnimationSrc}
+								loop
+								autoplay
+								style={{ width: '100%', height: '100%' }}
+							/>
+						</div>
 
 						{/* Detail Block */}
 						<Flex vertical align="center" gap={4} style={{ width: '100%' }}>

@@ -1,3 +1,4 @@
+// ❯ npx tsx prisma/seed.ts
 import { ADMIN_USER_ID } from '@/lib/constants';
 
 import { prisma } from '../src/lib/db';

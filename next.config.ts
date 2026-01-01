@@ -50,6 +50,7 @@ const nextConfig: NextConfig = {
 			'node_modules/webpack',
 		],
 	},
+	serverExternalPackages: ['mjml', 'uglify-js'], // This tells Next.js to use standard 'require' at runtime instead of dynamic import
 };
 
 export default withSentryConfig(withNextIntl(nextConfig), {

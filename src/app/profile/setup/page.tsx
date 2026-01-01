@@ -26,23 +26,27 @@ export default function ProfileSetupPage() {
 				// First check if user is authenticated
 				const user = await getUser();
 				if (!user) {
-					// Not authenticated - redirect to login
-					router.push('/login');
+					// Not authenticated - redirect to login (use replace to prevent back button issues)
+					router.replace('/login');
 					return;
 				}
 
 				// Check if user has already completed setup
 				const settings = await getUserSettings();
-				// If user has language settings, they've completed setup
-				if (settings?.language) {
-					// Redirect existing users to dashboard
-					router.push('/');
+				// Check if user has completed setup (indicated by setupCompleted flag in preferences)
+				const preferences = (settings?.preferences as { setupCompleted?: boolean }) || {};
+				const hasCompletedSetup = preferences.setupCompleted === true;
+
+				// If user has completed setup, redirect to dashboard
+				if (hasCompletedSetup) {
+					// Redirect existing users to dashboard (use replace to prevent back button issues)
+					router.replace('/');
 					return;
 				}
 			} catch (error) {
 				console.error('Failed to check auth/setup status:', error);
-				// On error, redirect to login for safety
-				router.push('/login');
+				// On error, redirect to login for safety (use replace to prevent back button issues)
+				router.replace('/login');
 			} finally {
 				setChecking(false);
 			}
@@ -56,12 +60,15 @@ export default function ProfileSetupPage() {
 		try {
 			const result = await updateUserSettings({
 				language: values.language || 'vi', // Default to Vietnamese
+				preferences: {
+					setupCompleted: true, // Mark setup as completed
+				},
 			});
 
 			if (result.success) {
 				message.success(t('setupSuccess') || 'Profile setup complete!');
-				// Redirect to dashboard after setup
-				router.push('/');
+				// Redirect to dashboard after setup (use replace to prevent back button issues)
+				router.replace('/');
 			} else {
 				message.error(result.error || t('setupError') || 'Failed to save profile');
 			}
@@ -95,7 +102,7 @@ export default function ProfileSetupPage() {
 				>
 					<Flex vertical justify="center" align="center" style={{ padding: '40px 0' }} gap="middle">
 						<Spin size="large" />
-						<Text type="secondary">Checking setup status...</Text>
+						<Text type="secondary">{t('checkingSetupStatus') || 'Checking setup status...'}</Text>
 					</Flex>
 				</Card>
 			</Flex>

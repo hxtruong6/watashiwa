@@ -67,11 +67,10 @@
         <mj-text align="center" font-size="{{typography.fontSizeCaption}}" color="{{colors.textTertiary}}">
           Chúc bạn học tốt! 🚀<br/>
           Đội ngũ WatashiWa<br/><br/>
-          <a href="{{appUrl}}/profile" style="color: {{colors.link}}; text-decoration: none;">Quản lý tài khoản</a> | 
-          <a href="{{appUrl}}/help" style="color: {{colors.link}}; text-decoration: none;">Trung tâm trợ giúp</a>
+          <a href="{{appUrl}}/profile" style="color: {{colors.link}}; text-decoration: underline;">Quản lý tài khoản</a> | 
+          <a href="{{appUrl}}/help" style="color: {{colors.link}}; text-decoration: underline;">Trung tâm trợ giúp</a>
           <br/><br/>
           <small style="color: {{colors.textTertiary}};">
-            {{companyAddress}}<br/>
             <a href="{{appUrl}}/unsubscribe" style="color: {{colors.link}}; text-decoration: underline;">Hủy đăng ký</a> | 
             <a href="{{appUrl}}/privacy" style="color: {{colors.link}}; text-decoration: underline;">Chính sách bảo mật</a>
           </small>

@@ -67,11 +67,10 @@
         <mj-text align="center" font-size="{{typography.fontSizeCaption}}" color="{{colors.textTertiary}}">
           Happy Learning! 🚀<br/>
           The WatashiWa Team<br/><br/>
-          <a href="{{appUrl}}/profile" style="color: {{colors.link}}; text-decoration: none;">Manage Account</a> | 
-          <a href="{{appUrl}}/help" style="color: {{colors.link}}; text-decoration: none;">Help Center</a>
+          <a href="{{appUrl}}/profile" style="color: {{colors.link}}; text-decoration: underline;">Manage Account</a> | 
+          <a href="{{appUrl}}/help" style="color: {{colors.link}}; text-decoration: underline;">Help Center</a>
           <br/><br/>
           <small style="color: {{colors.textTertiary}};">
-            {{companyAddress}}<br/>
             <a href="{{appUrl}}/unsubscribe" style="color: {{colors.link}}; text-decoration: underline;">Unsubscribe</a> | 
             <a href="{{appUrl}}/privacy" style="color: {{colors.link}}; text-decoration: underline;">Privacy Policy</a>
           </small>

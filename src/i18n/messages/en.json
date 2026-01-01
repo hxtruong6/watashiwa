@@ -1034,6 +1034,86 @@
 			"item2": "GitHub Discussions - Share ideas, ask questions"
 		}
 	},
+	"Help": {
+		"metaTitle": "Help Center | WatashiWa",
+		"metaDescription": "Get help with WatashiWa. Find answers to common questions about getting started, flashcards, account management, and troubleshooting.",
+		"title": "Help Center",
+		"subtitle": "Find answers to common questions and learn how to get the most out of WatashiWa.",
+		"gettingStarted": {
+			"title": "Getting Started",
+			"q1": {
+				"question": "How do I start learning?",
+				"answer": "After creating your account, complete your profile setup to personalize your experience. Then, browse the deck library to find decks that interest you, or create your own custom deck. Set your daily learning goals and start reviewing cards at your own pace."
+			},
+			"q2": {
+				"question": "What is the CUBE method?",
+				"answer": "The CUBE method (Context, Understanding, Blocking, Encoding) is WatashiWa's approach to vocabulary learning. It uses semantic connections, spaced repetition, and interference shielding to help words stick naturally in your memory."
+			},
+			"q3": {
+				"question": "How do I set up my profile?",
+				"answer": "Go to your profile settings (click the settings icon in the navigation bar) to set your language preference, timezone, daily goals, and other learning preferences. Your profile setup helps personalize your learning experience."
+			}
+		},
+		"flashcards": {
+			"title": "Using Flashcards",
+			"q1": {
+				"question": "How does spaced repetition work?",
+				"answer": "WatashiWa uses an intelligent spaced repetition system (SRS) that adapts to your memory patterns. Cards you find difficult appear more frequently, while mastered cards appear less often. This helps optimize your learning efficiency."
+			},
+			"q2": {
+				"question": "What are the rating options?",
+				"answer": "When reviewing cards, you can rate your recall: 'Again' (forgot), 'Hard' (struggled), 'Good' (remembered), or 'Easy' (knew instantly). These ratings help the system schedule the next review at the optimal time."
+			},
+			"q3": {
+				"question": "Can I create my own decks?",
+				"answer": "Yes! You can create custom decks with your own vocabulary and kanji. Go to 'My Decks' in the navigation menu, click 'New Deck', and start adding content. You can also make your decks public to share with the community."
+			}
+		},
+		"account": {
+			"title": "Account Management",
+			"q1": {
+				"question": "How do I change my email or password?",
+				"answer": "Go to your profile settings and use the account management options. For password changes, use the 'Forgot Password' link on the login page. Email changes may require verification."
+			},
+			"q2": {
+				"question": "How do I export my data?",
+				"answer": "You can export all your data (decks, progress, review history) from your account settings. The export includes everything in JSON format for your records."
+			},
+			"q3": {
+				"question": "Can I delete my account?",
+				"answer": "Yes, you can delete your account at any time from your account settings. This will permanently remove all your data, including decks, progress, and study history. This action cannot be undone."
+			}
+		},
+		"troubleshooting": {
+			"title": "Troubleshooting",
+			"q1": {
+				"question": "I'm having trouble logging in.",
+				"answer": "Make sure you're using the correct email and password. If you've forgotten your password, use the 'Forgot Password' link. For OAuth login issues, try clearing your browser cookies or using a different browser."
+			},
+			"q2": {
+				"question": "The app is not working properly.",
+				"answer": "Try refreshing the page or clearing your browser cache. If the issue persists, check if you're using a supported browser (Chrome, Firefox, Safari, or Edge). For persistent issues, contact support at support@watashiwa.app."
+			}
+		},
+		"needMoreHelp": {
+			"title": "Need More Help?",
+			"content": "If you couldn't find what you're looking for, feel free to",
+			"contactLink": "contact us"
+		}
+	},
+	"Unsubscribe": {
+		"loading": "Processing your request...",
+		"success": {
+			"title": "Unsubscribed Successfully",
+			"message": "You have been unsubscribed from email notifications. You can re-enable notifications anytime from your account settings."
+		},
+		"error": {
+			"title": "Unsubscribe Failed",
+			"missingEmail": "Email address is required.",
+			"generic": "An error occurred while processing your request. Please try again or contact support."
+		},
+		"backToHome": "Back to Home"
+	},
 	"About": {
 		"metaTitle": "About WatashiWa | The Cure for Burnout",
 		"metaDescription": "WatashiWa: 3D learning for serious Japanese learners. Master vocabulary through the CUBE method—Context, Understanding, Blocking, Encoding. Free forever, open source.",
@@ -1085,6 +1165,7 @@
 		"languageRequired": "Please select a language",
 		"completeSetup": "Complete Setup",
 		"setupSuccess": "Profile setup complete!",
-		"setupError": "Failed to save profile"
+		"setupError": "Failed to save profile",
+		"checkingSetupStatus": "Checking setup status..."
 	}
 }

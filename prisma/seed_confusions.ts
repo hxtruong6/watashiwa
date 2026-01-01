@@ -1,3 +1,4 @@
+// ❯ npx tsx prisma/seed_confusions.ts
 import { ConfusionType } from '@prisma/client';
 import fs from 'fs';
 import path from 'path';

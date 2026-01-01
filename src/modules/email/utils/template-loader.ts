@@ -4,7 +4,6 @@
  * Enables designers to create templates without code changes
  */
 import { existsSync, readFileSync, readdirSync } from 'fs';
-import mjml2html from 'mjml';
 import { join } from 'path';
 
 import { emailTokens } from './email-tokens';
@@ -80,6 +79,20 @@ function replaceVariables(template: string, data: TemplateData, appUrl: string):
 	// Replace appUrl
 	result = result.replace(/\{\{appUrl\}\}/g, appUrl);
 
+	// Replace unsubscribeUrl with email parameter if userEmail is available
+	if (data.userEmail) {
+		const unsubscribeUrl = `${appUrl}/unsubscribe?email=${encodeURIComponent(data.userEmail)}`;
+		result = result.replace(/\{\{unsubscribeUrl\}\}/g, unsubscribeUrl);
+		// Also replace {{appUrl}}/unsubscribe with the full URL including email
+		result = result.replace(
+			/\{\{appUrl\}\}\/unsubscribe/g,
+			`${appUrl}/unsubscribe?email=${encodeURIComponent(data.userEmail)}`,
+		);
+	} else {
+		// Fallback if no email provided
+		result = result.replace(/\{\{unsubscribeUrl\}\}/g, `${appUrl}/unsubscribe`);
+	}
+
 	// Replace companyAddress (CAN-SPAM compliance)
 	const companyAddress = process.env.COMPANY_PHYSICAL_ADDRESS || 'WatashiWa, [Your Address Here]';
 	result = result.replace(/\{\{companyAddress\}\}/g, companyAddress);
@@ -130,11 +143,11 @@ function loadTemplateFromFile(
  * Render template from file
  * Main function to load, process, and render email templates
  */
-export function renderTemplateFromFile(
+export async function renderTemplateFromFile(
 	templateId: string,
 	data: TemplateData,
 	language: string = 'en',
-): { html: string; text: string; subject: string; config: TemplateConfig } {
+): Promise<{ html: string; text: string; subject: string; config: TemplateConfig }> {
 	const { mjml, config } = loadTemplateFromFile(templateId, language);
 
 	// Validate required variables
@@ -149,6 +162,8 @@ export function renderTemplateFromFile(
 	const processedMjml = replaceVariables(mjml, data, appUrl);
 
 	// Compile MJML to HTML
+	// Use dynamic import to avoid Turbopack bundling issues with mjml dependencies
+	const mjml2html = (await import('mjml')).default;
 	const { html, errors } = mjml2html(processedMjml, {
 		validationLevel: 'soft',
 		minify: true,

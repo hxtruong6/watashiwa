@@ -9,6 +9,7 @@ import { z } from 'zod';
  * User Preferences Schema (JSONB Contract)
  */
 export const UserPreferencesSchema = z.object({
+	setupCompleted: z.boolean().optional(), // Indicates user has completed initial profile setup
 	tutorials: z
 		.object({
 			completedOnboarding: z.boolean().optional(),

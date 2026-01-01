@@ -1,0 +1,49 @@
+{
+	// Disable MJML validation for template files with variables
+	// These files contain template variables like {{colors.bgBase}} that are
+	// replaced at runtime before MJML compilation, so validation errors are expected
+
+	// Disable all MJML validation settings (try multiple extension formats)
+	"mjml.validation.enable": false,
+	"mjml.lint.enable": false,
+	"mjml.validationLevel": "skip",
+	"mjml.validate": false,
+	"mjml.enableValidation": false,
+
+	// Disable XML validation (MJML is XML-based, some editors use XML validator)
+	"xml.validation.enabled": false,
+	"xml.schema.enabled": false,
+	"xml.validation.schema.enabled": false,
+
+	// Disable diagnostics for MJML files in email templates directory
+	"files.exclude": {},
+	"search.exclude": {},
+
+	// Language-specific settings for MJML
+	"[mjml]": {
+		"editor.formatOnSave": false,
+		"editor.codeActionsOnSave": {},
+		"editor.defaultFormatter": null,
+		"editor.quickSuggestions": {
+			"other": false,
+			"comments": false,
+			"strings": false
+		}
+	},
+
+	// Disable problems/diagnostics panel for MJML files
+	"problems.decorations.enabled": true,
+
+	// PRIMARY SOLUTION: Change file association for template files
+	// This disables MJML validation while keeping basic XML/HTML highlighting
+	"files.associations": {
+		"**/src/modules/email/templates/**/*.mjml": "xml"
+	},
+
+	// Disable XML validation for these files
+	"[xml]": {
+		"editor.formatOnSave": false,
+		"xml.validation.enabled": false,
+		"xml.schema.enabled": false
+	}
+}
