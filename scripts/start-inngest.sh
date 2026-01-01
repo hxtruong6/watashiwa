@@ -23,27 +23,37 @@ fi
 # Change to project root
 cd "$PROJECT_ROOT" || exit 1
 
-# Determine which inngest command to use
-# With pnpm, use pnpm exec or npx to find the binary
+# Determine the Inngest serve URL (default to production port)
+# This should point to your Next.js app's Inngest API endpoint | Production Port is 3051 which is setup in ecosystem.config.cjs
+INNGEST_SERVE_URL="${INNGEST_SERVE_URL:-http://localhost:3051/api/inngest}"
+
+# Determine which inngest CLI command to use
+# For self-hosting, we need @inngest/cli (not just inngest SDK)
 INNGEST_CMD=""
 
 # Check for pnpm first (preferred for pnpm projects)
 if command -v pnpm >/dev/null 2>&1; then
-  INNGEST_CMD="pnpm exec inngest"
-  echo "Using pnpm exec inngest"
+  # Use @inngest/cli package
+  INNGEST_CMD="pnpm exec @inngest/cli"
+  echo "Using pnpm exec @inngest/cli"
 # Check for npx (works with npm/pnpm/yarn)
 elif command -v npx >/dev/null 2>&1; then
-  INNGEST_CMD="npx inngest"
-  echo "Using npx inngest"
-# Check for global installation
-elif command -v inngest >/dev/null 2>&1; then
-  INNGEST_CMD="inngest"
-  echo "Using global inngest installation"
+  INNGEST_CMD="npx @inngest/cli"
+  echo "Using npx @inngest/cli"
+# Check for direct binary in node_modules (fallback)
+elif [ -f "$PROJECT_ROOT/node_modules/.bin/inngest" ]; then
+  INNGEST_CMD="$PROJECT_ROOT/node_modules/.bin/inngest"
+  echo "Using local inngest binary"
 else
-  echo "Error: inngest not found. Please install it locally (pnpm install) or globally."
+  echo "Error: @inngest/cli not found. Please install it: pnpm add -D @inngest/cli"
   exit 1
 fi
 
-# Start Inngest with the keys
-exec $INNGEST_CMD start --event-key "$INNGEST_EVENT_KEY" --signing-key "$INNGEST_SIGNING_KEY"
+# Start Inngest Dev Server (self-hosted mode)
+# The serve URL points to your Next.js app's Inngest endpoint
+# For self-hosting, use 'dev' command with --serve flag
+exec $INNGEST_CMD dev \
+  --event-key "$INNGEST_EVENT_KEY" \
+  --signing-key "$INNGEST_SIGNING_KEY" \
+  --serve "$INNGEST_SERVE_URL"
 

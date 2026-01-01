@@ -91,7 +91,7 @@ module.exports = {
 			// 4. Build app
 			// 5. Restart PM2
 			'post-deploy':
-				'rm -rf .next node_modules/.cache && pnpm install --prod=false && pnpm db:generate && pnpm db:migrate && pnpm build && pm2 startOrRestart ecosystem.config.cjs --env production && pm2 save',
+				'pnpm install --prod=false && pnpm db:generate && pnpm db:migrate && pnpm build && pm2 startOrRestart ecosystem.config.cjs --env production && pm2 save',
 			env: {
 				NODE_ENV: 'production',
 			},
