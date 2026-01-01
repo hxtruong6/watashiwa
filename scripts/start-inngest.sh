@@ -24,13 +24,18 @@ fi
 cd "$PROJECT_ROOT" || exit 1
 
 # Determine which inngest command to use
-# Prefer local installation (from node_modules/.bin), fallback to global
+# With pnpm, use pnpm exec or npx to find the binary
 INNGEST_CMD=""
 
-# Check for local installation first
-if [ -f "$PROJECT_ROOT/node_modules/.bin/inngest" ]; then
-  INNGEST_CMD="$PROJECT_ROOT/node_modules/.bin/inngest"
-  echo "Using local inngest installation"
+# Check for pnpm first (preferred for pnpm projects)
+if command -v pnpm >/dev/null 2>&1; then
+  INNGEST_CMD="pnpm exec inngest"
+  echo "Using pnpm exec inngest"
+# Check for npx (works with npm/pnpm/yarn)
+elif command -v npx >/dev/null 2>&1; then
+  INNGEST_CMD="npx inngest"
+  echo "Using npx inngest"
+# Check for global installation
 elif command -v inngest >/dev/null 2>&1; then
   INNGEST_CMD="inngest"
   echo "Using global inngest installation"
@@ -40,5 +45,5 @@ else
 fi
 
 # Start Inngest with the keys
-exec "$INNGEST_CMD" start --event-key "$INNGEST_EVENT_KEY" --signing-key "$INNGEST_SIGNING_KEY"
+exec $INNGEST_CMD start --event-key "$INNGEST_EVENT_KEY" --signing-key "$INNGEST_SIGNING_KEY"
 
