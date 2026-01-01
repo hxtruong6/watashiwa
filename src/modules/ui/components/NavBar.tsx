@@ -425,26 +425,22 @@ export default function NavBar({ user }: { user?: User | null }) {
 											placement="bottomRight"
 											open={userMenuOpen}
 											onOpenChange={setUserMenuOpen}
+											getPopupContainer={() => {
+												// React 19 compatibility: render popup in body to avoid positioning issues
+												return document.body;
+											}}
+											// React 19 workaround: ensure popup renders correctly
+											destroyOnHidden={true}
 										>
-											<Button
-												type="text"
+											<Avatar
+												src={user?.user_metadata?.avatar_url}
 												style={{
-													padding: 0,
-													height: 'auto',
-													display: 'inline-flex',
-													alignItems: 'center',
+													backgroundColor: token.colorPrimary,
+													cursor: 'pointer',
+													border: `2px solid ${token.colorBgContainer}`,
 												}}
-											>
-												<Avatar
-													src={user?.user_metadata?.avatar_url}
-													style={{
-														backgroundColor: token.colorPrimary,
-														cursor: 'pointer',
-														border: `2px solid ${token.colorBgContainer}`,
-													}}
-													icon={<UserOutlined />}
-												/>
-											</Button>
+												icon={<UserOutlined />}
+											/>
 										</Dropdown>
 									</Space>
 								</>

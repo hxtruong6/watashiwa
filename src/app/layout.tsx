@@ -4,7 +4,6 @@ import DisableZoom from '@/components/DisableZoom';
 import PWAInstallPrompt from '@/components/PWA/PWAInstallPrompt';
 import PWALifecycle from '@/components/PWA/PWALifecycle';
 import { StructuredData } from '@/components/SEO/StructuredData';
-import AntdPopupFix from '@/components/theme/AntdPopupFix';
 import ThemeProvider from '@/components/theme/ThemeProvider';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import NavBar from '@/modules/ui/components/NavBar';
@@ -91,7 +90,6 @@ export default async function RootLayout({
 					<NextIntlClientProvider messages={messages}>
 						<AntdRegistry>
 							<ThemeProvider>
-								<AntdPopupFix />
 								<NavBar user={user} />
 								<main className="app-main">{children}</main>
 								<PWAInstallPrompt />
