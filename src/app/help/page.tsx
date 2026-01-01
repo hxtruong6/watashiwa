@@ -1,14 +1,13 @@
 import { QuestionCircleOutlined } from '@ant-design/icons';
-import { Typography } from 'antd';
-import { Flex, Space } from 'antd';
+import { Flex } from 'antd';
+import Paragraph from 'antd/es/typography/Paragraph';
+import Text from 'antd/es/typography/Text';
+import Title from 'antd/es/typography/Title';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import Link from 'next/link';
 
 export const dynamic = 'force-static';
 export const revalidate = 3600;
-
-const { Title, Paragraph, Text } = Typography;
 
 export async function generateMetadata(): Promise<Metadata> {
 	const t = await getTranslations('Help');
@@ -54,10 +53,10 @@ export default async function HelpPage() {
 			</Flex>
 			<Paragraph style={{ fontSize: 18 }}>{t('subtitle')}</Paragraph>
 
-			<Space orientation="vertical" size="large" style={{ width: '100%' }}>
+			<Flex vertical gap="large" style={{ width: '100%' }}>
 				<section>
 					<Title level={2}>{t('gettingStarted.title')}</Title>
-					<Space orientation="vertical" size="middle" style={{ width: '100%' }}>
+					<Flex vertical gap="middle" style={{ width: '100%' }}>
 						<div>
 							<Text strong>{t('gettingStarted.q1.question')}</Text>
 							<Paragraph>{t('gettingStarted.q1.answer')}</Paragraph>
@@ -70,12 +69,12 @@ export default async function HelpPage() {
 							<Text strong>{t('gettingStarted.q3.question')}</Text>
 							<Paragraph>{t('gettingStarted.q3.answer')}</Paragraph>
 						</div>
-					</Space>
+					</Flex>
 				</section>
 
 				<section>
 					<Title level={2}>{t('flashcards.title')}</Title>
-					<Space orientation="vertical" size="middle" style={{ width: '100%' }}>
+					<Flex vertical gap="middle" style={{ width: '100%' }}>
 						<div>
 							<Text strong>{t('flashcards.q1.question')}</Text>
 							<Paragraph>{t('flashcards.q1.answer')}</Paragraph>
@@ -88,12 +87,12 @@ export default async function HelpPage() {
 							<Text strong>{t('flashcards.q3.question')}</Text>
 							<Paragraph>{t('flashcards.q3.answer')}</Paragraph>
 						</div>
-					</Space>
+					</Flex>
 				</section>
 
 				<section>
 					<Title level={2}>{t('account.title')}</Title>
-					<Space orientation="vertical" size="middle" style={{ width: '100%' }}>
+					<Flex vertical gap="middle" style={{ width: '100%' }}>
 						<div>
 							<Text strong>{t('account.q1.question')}</Text>
 							<Paragraph>{t('account.q1.answer')}</Paragraph>
@@ -106,12 +105,12 @@ export default async function HelpPage() {
 							<Text strong>{t('account.q3.question')}</Text>
 							<Paragraph>{t('account.q3.answer')}</Paragraph>
 						</div>
-					</Space>
+					</Flex>
 				</section>
 
 				<section>
 					<Title level={2}>{t('troubleshooting.title')}</Title>
-					<Space orientation="vertical" size="middle" style={{ width: '100%' }}>
+					<Flex vertical gap="middle" style={{ width: '100%' }}>
 						<div>
 							<Text strong>{t('troubleshooting.q1.question')}</Text>
 							<Paragraph>{t('troubleshooting.q1.answer')}</Paragraph>
@@ -120,17 +119,20 @@ export default async function HelpPage() {
 							<Text strong>{t('troubleshooting.q2.question')}</Text>
 							<Paragraph>{t('troubleshooting.q2.answer')}</Paragraph>
 						</div>
-					</Space>
+					</Flex>
 				</section>
 
 				<section>
 					<Title level={2}>{t('needMoreHelp.title')}</Title>
 					<Paragraph>
-						{t('needMoreHelp.content')} <Link href="/contact">{t('needMoreHelp.contactLink')}</Link>
+						{t('needMoreHelp.content')}{' '}
+						<a href="/contact" style={{ color: 'inherit', textDecoration: 'underline' }}>
+							{t('needMoreHelp.contactLink')}
+						</a>
 						.
 					</Paragraph>
 				</section>
-			</Space>
+			</Flex>
 		</Flex>
 	);
 }

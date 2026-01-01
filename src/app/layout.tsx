@@ -1,13 +1,13 @@
 import PostHogPageTracker from '@/components/Analytics/PostHogPageTracker';
 import UserReturnTracker from '@/components/Analytics/UserReturnTracker';
 import DisableZoom from '@/components/DisableZoom';
-import NavBar from '@/modules/ui/components/NavBar';
 import PWAInstallPrompt from '@/components/PWA/PWAInstallPrompt';
 import PWALifecycle from '@/components/PWA/PWALifecycle';
 import { StructuredData } from '@/components/SEO/StructuredData';
+import AntdPopupFix from '@/components/theme/AntdPopupFix';
 import ThemeProvider from '@/components/theme/ThemeProvider';
-import { SEO_CONFIG } from '@/lib/seo/constants';
 import { generatePageMetadata } from '@/lib/seo/metadata';
+import NavBar from '@/modules/ui/components/NavBar';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import type { Metadata, Viewport } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
@@ -91,6 +91,7 @@ export default async function RootLayout({
 					<NextIntlClientProvider messages={messages}>
 						<AntdRegistry>
 							<ThemeProvider>
+								<AntdPopupFix />
 								<NavBar user={user} />
 								<main className="app-main">{children}</main>
 								<PWAInstallPrompt />

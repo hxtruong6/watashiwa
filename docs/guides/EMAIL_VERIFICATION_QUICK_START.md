@@ -41,10 +41,27 @@ npx inngest-cli@latest dev
 **Self-hosted (Recommended):**
 
 ```bash
+# 1. Generate both keys (both are required!)
+openssl rand -hex 32  # Event key
+openssl rand -hex 32  # Signing key
+
+# 2. Export both keys in your shell
+export INNGEST_EVENT_KEY=<paste-event-key-here>
+export INNGEST_SIGNING_KEY=<paste-signing-key-here>
+# Also add to .env for your Next.js app:
+# INNGEST_EVENT_KEY=<same-event-key>
+# INNGEST_SIGNING_KEY=<same-signing-key>
+# INNGEST_BASE_URL=http://your-server:8288
+# INNGEST_APP_ID=watashiwa-app
+
+# 3. Start Inngest server
 npm install -g inngest-cli
-pm2 start inngest -- start
-# Set INNGEST_BASE_URL=http://your-server:8288
+inngest start --event-key $INNGEST_EVENT_KEY --signing-key $INNGEST_SIGNING_KEY
+# Or with PM2:
+pm2 start inngest -- start --event-key $INNGEST_EVENT_KEY --signing-key $INNGEST_SIGNING_KEY
 ```
+
+**Important:** Both event-key and signing-key are required for self-hosting. Use the same keys in both your Inngest server and Next.js app.
 
 **Or use Inngest Cloud:**
 

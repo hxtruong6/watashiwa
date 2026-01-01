@@ -824,16 +824,72 @@ Edit `src/modules/email/utils/otp-generator.ts` and `email.actions.ts`
 
 **Option A: Self-Host Inngest (Recommended)**
 
+Even when self-hosting, Inngest requires a signing key for security. This ensures authenticated communication between your app and the Inngest server.
+
+**Step 1: Generate Event Key and Signing Key**
+
+Both keys are required for self-hosting. They must be valid hexadecimal strings with an even number of characters.
+
+```bash
+# Generate event key (32 bytes = 64 hex characters)
+openssl rand -hex 32
+# Copy the output (e.g., "a1b2c3d4e5f6...")
+
+# Generate signing key (32 bytes = 64 hex characters)
+openssl rand -hex 32
+# Copy the output (e.g., "3b6b96374b14...")
+```
+
+**Step 2: Configure Environment Variables**
+
+```bash
+# In your .env file for Next.js app
+INNGEST_EVENT_KEY=<generated-event-key>
+INNGEST_SIGNING_KEY=<generated-signing-key>
+INNGEST_BASE_URL=http://localhost:8288
+INNGEST_APP_ID=watashiwa-app
+# Do NOT set INNGEST_DEV=1 in production
+```
+
+**Step 3: Start Inngest Server**
+
 ```bash
 # On your production server
 npm install -g inngest-cli
-pm2 start inngest -- start
 
-# Environment variables
-INNGEST_DEV=1
-INNGEST_BASE_URL=http://your-server:8288
-INNGEST_APP_ID=watashi-jp
+# Option A: Export variables first (recommended)
+export INNGEST_EVENT_KEY=<your-event-key>
+export INNGEST_SIGNING_KEY=<your-signing-key>
+inngest start --event-key $INNGEST_EVENT_KEY --signing-key $INNGEST_SIGNING_KEY
+
+# Option B: Pass keys directly
+inngest start --event-key <your-event-key> --signing-key <your-signing-key>
+
+# Option C: Start with PM2 using ecosystem.config.cjs (Recommended for production)
+# The wrapper script (scripts/start-inngest.sh) automatically loads keys from .env
+# 1. Make sure your keys are in .env file:
+#    INNGEST_EVENT_KEY=<your-event-key>
+#    INNGEST_SIGNING_KEY=<your-signing-key>
+# 2. Then start/restart:
+pm2 startOrRestart ecosystem.config.cjs --env production
+pm2 save
+
+# Option D: Start with PM2 (temporary, requires exported variables)
+export INNGEST_EVENT_KEY=<your-event-key>
+export INNGEST_SIGNING_KEY=<your-signing-key>
+pm2 start inngest -- start --event-key $INNGEST_EVENT_KEY --signing-key $INNGEST_SIGNING_KEY
 ```
+
+**Note:**
+
+- **For PM2 (Option C):** The `scripts/start-inngest.sh` wrapper script automatically loads environment variables from your `.env` file. This means you only need to keep the keys in `.env` - no need to duplicate them in `ecosystem.config.cjs`.
+- **For Next.js app:** The `.env` file is automatically read by Next.js via dotenv.
+- **Single source of truth:** Keep your keys in `.env` only - both Next.js and Inngest (via the wrapper script) will read from it.
+
+**Important:** Both keys must be the same values in both:
+
+- Your Inngest server environment (`INNGEST_EVENT_KEY` and `INNGEST_SIGNING_KEY`)
+- Your Next.js app environment (`INNGEST_EVENT_KEY` and `INNGEST_SIGNING_KEY`)
 
 **Option B: Inngest Cloud (Optional)**
 

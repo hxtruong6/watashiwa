@@ -117,7 +117,8 @@ export default function DeckPickerDrawer({ open, onClose, decks }: DeckPickerDra
 				</Flex>
 			}
 			placement="bottom"
-			height="clamp(400px, 80vh, 90vh)"
+			// size="clamp(400px, 80vh, 90vh)"
+			size="large"
 			onClose={onClose}
 			open={open}
 			styles={{

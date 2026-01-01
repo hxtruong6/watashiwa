@@ -19,7 +19,15 @@ export default function AntdConfig({ children }: { children: React.ReactNode }) 
 	const currentTheme = mounted ? (resolvedTheme === 'dark' ? darkTheme : lightTheme) : lightTheme;
 
 	return (
-		<ConfigProvider theme={currentTheme}>
+		<ConfigProvider
+			theme={currentTheme}
+			getPopupContainer={() => {
+				// Render popups in document.body to ensure proper coordinate system alignment
+				// This works correctly now that body no longer has position: relative
+				// Since this is a client component, document.body is always available
+				return document.body;
+			}}
+		>
 			<App>{children}</App>
 		</ConfigProvider>
 	);

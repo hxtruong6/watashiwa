@@ -52,7 +52,6 @@ export default async function Dashboard(props: Props) {
 			userId={user?.id}
 			userSettings={data.userSettings}
 			forecast={forecast}
-			memoryGarden={data.memoryGarden}
 		/>
 	);
 }

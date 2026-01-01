@@ -55,6 +55,25 @@ module.exports = {
 				// CRON_SECRET should be loaded from .env or injected
 			},
 		},
+		{
+			name: 'inngest',
+			script: 'scripts/start-inngest.sh',
+			instances: 1,
+			exec_mode: 'fork',
+			autorestart: true,
+			watch: false,
+			env: {
+				NODE_ENV: 'production',
+			},
+			env_production: {
+				NODE_ENV: 'production',
+			},
+			// Logging
+			log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
+			error_file: './logs/inngest-error.log',
+			out_file: './logs/inngest-out.log',
+			merge_logs: true,
+		},
 	],
 
 	// Deployment Configuration
@@ -72,7 +91,7 @@ module.exports = {
 			// 4. Build app
 			// 5. Restart PM2
 			'post-deploy':
-				'pnpm install --prod=false && pnpm db:generate && pnpm db:migrate && pnpm build && pm2 startOrRestart ecosystem.config.cjs --env production && pm2 save',
+				'rm -rf .next node_modules/.cache && pnpm install --prod=false && pnpm db:generate && pnpm db:migrate && pnpm build && pm2 startOrRestart ecosystem.config.cjs --env production && pm2 save',
 			env: {
 				NODE_ENV: 'production',
 			},
