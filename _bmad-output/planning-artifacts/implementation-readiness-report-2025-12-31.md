@@ -5,13 +5,14 @@
 **Assessor:** iDev
 
 ---
+
 stepsCompleted: [1, 2, 3, 4, 5, 6]
 documents_included:
 
-- _bmad-output/planning-artifacts/prd.md
-- _bmad-output/planning-artifacts/architecture.md
-- _bmad-output/planning-artifacts/epics.md
-- _bmad-output/planning-artifacts/ux-design-specification.md
+- \_bmad-output/planning-artifacts/prd.md
+- \_bmad-output/planning-artifacts/architecture.md
+- \_bmad-output/planning-artifacts/epics.md
+- \_bmad-output/planning-artifacts/ux-design-specification.md
 
 ---
 
@@ -324,66 +325,66 @@ All 58 FRs from PRD are mapped to epics in the epics document:
 
 ### FR Coverage Analysis
 
-| FR Number | PRD Requirement | Epic Coverage | Status |
-| --------- | --------------- | ------------- | ------ |
-| FR1 | Users can experience semantic word sequencing based on contextual relationships rather than time-based intervals | Epic 2 | ✓ Covered |
-| FR2 | Users can switch between semantic algorithm mode and traditional SRS mode based on preference | Epic 2 | ✓ Covered |
-| FR3 | System can detect and present semantically related words (e.g., "university" suggests "student" and "teacher") | Epic 2 | ✓ Covered |
-| FR4 | System can generate authentic contextual examples linking new vocabulary to previously learned words | Epic 2 | ✓ Covered |
-| FR5 | Users can receive algorithm performance feedback and switch modes if semantic approach isn't effective | Epic 2 | ✓ Covered |
-| FR6 | System can analyze user learning patterns to optimize semantic relationship suggestions | Epic 2 | ✓ Covered |
-| FR7 | Users can provide feedback on algorithm suggestions to improve future recommendations | Epic 2 | ✓ Covered |
-| FR8 | System can adapt semantic sequencing based on individual user confusion patterns | Epic 2 | ✓ Covered |
-| FR9 | Users can access algorithm transparency showing why specific words were selected for learning | Epic 2 | ✓ Covered |
-| FR10 | Users can visualize learned vocabulary as interactive semantic networks | Epic 3 | ✓ Covered |
-| FR11 | Users can explore relationships between words through interactive graph navigation | Epic 3 | ✓ Covered |
-| FR12 | System can progressively build and display knowledge graph growth over time | Epic 3 | ✓ Covered |
-| FR13 | Users can search and filter within their personal knowledge graph | Epic 3 | ✓ Covered |
-| FR14 | System can highlight semantic connections when users encounter related vocabulary | Epic 3 | ✓ Covered |
-| FR15 | Users can click on graph nodes to access detailed word information and examples | Epic 3 | ✓ Covered |
-| FR16 | Users can expand or collapse graph sections to focus on specific relationship clusters | Epic 3 | ✓ Covered |
-| FR17 | System can suggest graph exploration paths based on learning goals | Epic 3 | ✓ Covered |
-| FR18 | Users can share specific graph sections or insights with others | Epic 3 | ✓ Covered |
-| FR19 | System can automatically detect user confusion patterns (homonyms, readings, pitch variations) | Epic 4 | ✓ Covered |
-| FR20 | Users can receive targeted interventions when system identifies learning difficulties | Epic 4 | ✓ Covered |
-| FR21 | System can provide multi-modal feedback (visual, audio, textual) for different learning styles | Epic 4 | ✓ Covered |
-| FR22 | Users can access detailed explanations of why interventions were triggered | Epic 4 | ✓ Covered |
-| FR23 | Users can participate in focused practice sets for specific confusion types | Epic 4 | ✓ Covered |
-| FR24 | System can adapt intervention intensity based on user progress and preferences | Epic 4 | ✓ Covered |
-| FR25 | Users can review intervention history and effectiveness tracking | Epic 4 | ✓ Covered |
-| FR26 | System can suggest alternative learning approaches when standard interventions fail | Epic 4 | ✓ Covered |
-| FR27 | Users can access native Vietnamese interface and navigation throughout the application | Epic 5 | ✓ Covered |
-| FR28 | System can leverage Hán Việt knowledge as semantic bridges for kanji recognition | Epic 5 | ✓ Covered |
-| FR29 | Users can receive culturally relevant examples and contextual usage | Epic 5 | ✓ Covered |
-| FR30 | System can provide Vietnamese phonetic guidance alongside Japanese pronunciation | Epic 5 | ✓ Covered |
-| FR31 | Users can toggle between Vietnamese and English interface languages | Epic 5 | ✓ Covered |
-| FR32 | System can generate Vietnamese explanations for complex Japanese grammar concepts | Epic 5 | ✓ Covered |
-| FR33 | Users can access Hán Việt etymology and meaning connections for kanji learning | Epic 5 | ✓ Covered |
-| FR34 | System can adapt content difficulty based on Vietnamese language proficiency | Epic 5 | ✓ Covered |
-| FR35 | Users can participate in seamless study sessions with semantic word presentation | Epic 2 | ✓ Covered |
-| FR36 | System can maintain session continuity across device interruptions and app closures | Epic 2 | ✓ Covered |
-| FR37 | Users can customize session length and focus areas within semantic constraints | Epic 2 | ✓ Covered |
-| FR38 | System can provide session summaries showing semantic connections discovered | Epic 2 | ✓ Covered |
-| FR39 | Users can view real-time progress within semantic learning frameworks | Epic 2 | ✓ Covered |
-| FR40 | System can track intervention effectiveness and adjust future session recommendations | Epic 2 | ✓ Covered |
-| FR41 | Users can review session history with semantic insights and relationship discoveries | Epic 2 | ✓ Covered |
-| FR42 | System can suggest optimal session timing based on semantic learning patterns | Epic 2 | ✓ Covered |
-| FR43 | Users can create and manage personalized learning profiles with Vietnamese preferences | Epic 1 | ✓ Covered |
-| FR44 | System can synchronize learning progress across multiple devices and platforms | Epic 1 | ✓ Covered |
-| FR45 | Users can export learning data and knowledge graph for external analysis | Epic 1 | ✓ Covered |
-| FR46 | System can maintain learning history for long-term progress tracking | Epic 1 | ✓ Covered |
-| FR47 | System can adapt semantic suggestions based on individual learning patterns and preferences | Epic 1 | ✓ Covered |
-| FR48 | Users can set learning goals and receive personalized semantic pathways | Epic 1 | ✓ Covered |
-| FR49 | System can remember user preferences for interface language and presentation modes | Epic 1 | ✓ Covered |
-| FR50 | Users can access personalized insights about their semantic learning journey | Epic 1 | ✓ Covered |
-| FR51 | System can conduct A/B testing between semantic and traditional SRS approaches | Epic 6 | ✓ Covered |
-| FR52 | Users can participate in algorithm validation studies with optional data contribution | Epic 6 | ✓ Covered |
-| FR53 | System can provide algorithm performance metrics and learning outcome comparisons | Epic 6 | ✓ Covered |
-| FR54 | Users can access research insights from their learning data (privacy-protected) | Epic 6 | ✓ Covered |
-| FR55 | System can validate AI-generated examples for cultural and linguistic accuracy | Epic 6 | ✓ Covered |
-| FR56 | Users can report content issues and suggest improvements | Epic 6 | ✓ Covered |
-| FR57 | System can maintain content quality standards for Vietnamese localization | Epic 6 | ✓ Covered |
-| FR58 | Users can access content source attribution and learning methodology explanations | Epic 6 | ✓ Covered |
+| FR Number | PRD Requirement                                                                                                  | Epic Coverage | Status    |
+| --------- | ---------------------------------------------------------------------------------------------------------------- | ------------- | --------- |
+| FR1       | Users can experience semantic word sequencing based on contextual relationships rather than time-based intervals | Epic 2        | ✓ Covered |
+| FR2       | Users can switch between semantic algorithm mode and traditional SRS mode based on preference                    | Epic 2        | ✓ Covered |
+| FR3       | System can detect and present semantically related words (e.g., "university" suggests "student" and "teacher")   | Epic 2        | ✓ Covered |
+| FR4       | System can generate authentic contextual examples linking new vocabulary to previously learned words             | Epic 2        | ✓ Covered |
+| FR5       | Users can receive algorithm performance feedback and switch modes if semantic approach isn't effective           | Epic 2        | ✓ Covered |
+| FR6       | System can analyze user learning patterns to optimize semantic relationship suggestions                          | Epic 2        | ✓ Covered |
+| FR7       | Users can provide feedback on algorithm suggestions to improve future recommendations                            | Epic 2        | ✓ Covered |
+| FR8       | System can adapt semantic sequencing based on individual user confusion patterns                                 | Epic 2        | ✓ Covered |
+| FR9       | Users can access algorithm transparency showing why specific words were selected for learning                    | Epic 2        | ✓ Covered |
+| FR10      | Users can visualize learned vocabulary as interactive semantic networks                                          | Epic 3        | ✓ Covered |
+| FR11      | Users can explore relationships between words through interactive graph navigation                               | Epic 3        | ✓ Covered |
+| FR12      | System can progressively build and display knowledge graph growth over time                                      | Epic 3        | ✓ Covered |
+| FR13      | Users can search and filter within their personal knowledge graph                                                | Epic 3        | ✓ Covered |
+| FR14      | System can highlight semantic connections when users encounter related vocabulary                                | Epic 3        | ✓ Covered |
+| FR15      | Users can click on graph nodes to access detailed word information and examples                                  | Epic 3        | ✓ Covered |
+| FR16      | Users can expand or collapse graph sections to focus on specific relationship clusters                           | Epic 3        | ✓ Covered |
+| FR17      | System can suggest graph exploration paths based on learning goals                                               | Epic 3        | ✓ Covered |
+| FR18      | Users can share specific graph sections or insights with others                                                  | Epic 3        | ✓ Covered |
+| FR19      | System can automatically detect user confusion patterns (homonyms, readings, pitch variations)                   | Epic 4        | ✓ Covered |
+| FR20      | Users can receive targeted interventions when system identifies learning difficulties                            | Epic 4        | ✓ Covered |
+| FR21      | System can provide multi-modal feedback (visual, audio, textual) for different learning styles                   | Epic 4        | ✓ Covered |
+| FR22      | Users can access detailed explanations of why interventions were triggered                                       | Epic 4        | ✓ Covered |
+| FR23      | Users can participate in focused practice sets for specific confusion types                                      | Epic 4        | ✓ Covered |
+| FR24      | System can adapt intervention intensity based on user progress and preferences                                   | Epic 4        | ✓ Covered |
+| FR25      | Users can review intervention history and effectiveness tracking                                                 | Epic 4        | ✓ Covered |
+| FR26      | System can suggest alternative learning approaches when standard interventions fail                              | Epic 4        | ✓ Covered |
+| FR27      | Users can access native Vietnamese interface and navigation throughout the application                           | Epic 5        | ✓ Covered |
+| FR28      | System can leverage Hán Việt knowledge as semantic bridges for kanji recognition                                 | Epic 5        | ✓ Covered |
+| FR29      | Users can receive culturally relevant examples and contextual usage                                              | Epic 5        | ✓ Covered |
+| FR30      | System can provide Vietnamese phonetic guidance alongside Japanese pronunciation                                 | Epic 5        | ✓ Covered |
+| FR31      | Users can toggle between Vietnamese and English interface languages                                              | Epic 5        | ✓ Covered |
+| FR32      | System can generate Vietnamese explanations for complex Japanese grammar concepts                                | Epic 5        | ✓ Covered |
+| FR33      | Users can access Hán Việt etymology and meaning connections for kanji learning                                   | Epic 5        | ✓ Covered |
+| FR34      | System can adapt content difficulty based on Vietnamese language proficiency                                     | Epic 5        | ✓ Covered |
+| FR35      | Users can participate in seamless study sessions with semantic word presentation                                 | Epic 2        | ✓ Covered |
+| FR36      | System can maintain session continuity across device interruptions and app closures                              | Epic 2        | ✓ Covered |
+| FR37      | Users can customize session length and focus areas within semantic constraints                                   | Epic 2        | ✓ Covered |
+| FR38      | System can provide session summaries showing semantic connections discovered                                     | Epic 2        | ✓ Covered |
+| FR39      | Users can view real-time progress within semantic learning frameworks                                            | Epic 2        | ✓ Covered |
+| FR40      | System can track intervention effectiveness and adjust future session recommendations                            | Epic 2        | ✓ Covered |
+| FR41      | Users can review session history with semantic insights and relationship discoveries                             | Epic 2        | ✓ Covered |
+| FR42      | System can suggest optimal session timing based on semantic learning patterns                                    | Epic 2        | ✓ Covered |
+| FR43      | Users can create and manage personalized learning profiles with Vietnamese preferences                           | Epic 1        | ✓ Covered |
+| FR44      | System can synchronize learning progress across multiple devices and platforms                                   | Epic 1        | ✓ Covered |
+| FR45      | Users can export learning data and knowledge graph for external analysis                                         | Epic 1        | ✓ Covered |
+| FR46      | System can maintain learning history for long-term progress tracking                                             | Epic 1        | ✓ Covered |
+| FR47      | System can adapt semantic suggestions based on individual learning patterns and preferences                      | Epic 1        | ✓ Covered |
+| FR48      | Users can set learning goals and receive personalized semantic pathways                                          | Epic 1        | ✓ Covered |
+| FR49      | System can remember user preferences for interface language and presentation modes                               | Epic 1        | ✓ Covered |
+| FR50      | Users can access personalized insights about their semantic learning journey                                     | Epic 1        | ✓ Covered |
+| FR51      | System can conduct A/B testing between semantic and traditional SRS approaches                                   | Epic 6        | ✓ Covered |
+| FR52      | Users can participate in algorithm validation studies with optional data contribution                            | Epic 6        | ✓ Covered |
+| FR53      | System can provide algorithm performance metrics and learning outcome comparisons                                | Epic 6        | ✓ Covered |
+| FR54      | Users can access research insights from their learning data (privacy-protected)                                  | Epic 6        | ✓ Covered |
+| FR55      | System can validate AI-generated examples for cultural and linguistic accuracy                                   | Epic 6        | ✓ Covered |
+| FR56      | Users can report content issues and suggest improvements                                                         | Epic 6        | ✓ Covered |
+| FR57      | System can maintain content quality standards for Vietnamese localization                                        | Epic 6        | ✓ Covered |
+| FR58      | Users can access content source attribution and learning methodology explanations                                | Epic 6        | ✓ Covered |
 
 ### Missing Requirements
 

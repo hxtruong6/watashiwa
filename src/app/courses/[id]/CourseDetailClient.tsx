@@ -319,10 +319,7 @@ export default function CourseDetailClient({ course, isOwner }: CourseDetailClie
 																	{t('privateDeck')}
 																</Tag>
 															)}
-															<Link
-																href={getDeckUrl({ slug: cd.deck.slug })}
-																target="_blank"
-															>
+															<Link href={getDeckUrl({ slug: cd.deck.slug })} target="_blank">
 																<LinkOutlined style={{ color: token.colorPrimary }} />
 															</Link>
 														</div>

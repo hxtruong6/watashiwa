@@ -191,29 +191,29 @@ So that my learning experience is personalized to my language and cultural conte
 **Server Actions Pattern:**
 
 ```typescript
-'use server'
-import { executeSafeAction } from '@/modules/core/action-client';
+'use server';
 import { UpdateUserSettingsSchema } from '@/lib/schemas/user';
+import { executeSafeAction } from '@/modules/core/action-client';
 import { z } from 'zod';
 
 export async function updateUserProfile(input: unknown) {
-  return executeSafeAction(
-    UpdateUserSettingsSchema,
-    input,
-    async (validatedInput, { userId }) => {
-      if (!userId) throw new Error('Unauthorized');
-      
-      // Business logic - update user profile
-      await prisma.user.update({
-        where: { id: userId },
-        data: { ...validatedInput }
-      });
-      
-      revalidatePath('/profile');
-      return { success: true };
-    },
-    { userId: true } // Require authentication
-  );
+	return executeSafeAction(
+		UpdateUserSettingsSchema,
+		input,
+		async (validatedInput, { userId }) => {
+			if (!userId) throw new Error('Unauthorized');
+
+			// Business logic - update user profile
+			await prisma.user.update({
+				where: { id: userId },
+				data: { ...validatedInput },
+			});
+
+			revalidatePath('/profile');
+			return { success: true };
+		},
+		{ userId: true }, // Require authentication
+	);
 }
 ```
 
@@ -228,14 +228,14 @@ import { updateUserSettings } from '@/modules/user/user.actions';
 export default function ProfilePage() {
   const t = useTranslations('Profile');
   const [form] = Form.useForm();
-  
+
   const handleSubmit = async (values: unknown) => {
     const result = await updateUserSettings(values);
     if (result.success) {
       // Handle success
     }
   };
-  
+
   return (
     <Form form={form} onFinish={handleSubmit}>
       {/* Form fields */}

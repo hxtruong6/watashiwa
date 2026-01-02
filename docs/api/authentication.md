@@ -5,7 +5,6 @@
 
 ---
 
-
 ### Server Actions
 
 All Server Actions use `executeSafeAction` which:
@@ -20,7 +19,6 @@ All Server Actions use `executeSafeAction` which:
 API routes manually check authentication using `getUser()` from `@/modules/auth/auth.actions`.
 
 ---
-
 
 ---
 

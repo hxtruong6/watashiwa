@@ -7,14 +7,21 @@ import { StructuredData } from '@/components/SEO/StructuredData';
 import ThemeProvider from '@/components/theme/ThemeProvider';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import NavBar from '@/modules/ui/components/NavBar';
+import '@/styles/_accessibility.css';
+import '@/styles/_animations.css';
+import '@/styles/_reset.css';
+import '@/styles/_third-party.css';
+import '@/styles/_utilities.css';
+// Import style partials in order (ITCSS: Settings → Tools → Generic → Elements → Objects → Components)
+// Order matters for CSS cascade - do not auto-sort these imports
+// prettier-ignore
+import '@/styles/_variables.css';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import type { Metadata, Viewport } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 import { Geist, Geist_Mono } from 'next/font/google';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
-
-import './globals.css';
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',

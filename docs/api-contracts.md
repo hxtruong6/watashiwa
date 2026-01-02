@@ -12,4 +12,3 @@ WatashiWa primarily uses **Next.js Server Actions** (feature-local `*.actions.ts
 
 - **Server Actions:** `src/modules/**/**.actions.ts`, `src/modules/**/actions.ts`
 - **Route Handlers:** `src/app/api/**/route.ts`
-

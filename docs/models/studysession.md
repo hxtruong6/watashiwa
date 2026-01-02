@@ -6,7 +6,6 @@
 
 ---
 
-
 **Purpose:** Session persistence (Smart Queue Resume)
 
 **Key Fields:**
@@ -27,7 +26,6 @@
 - `userId`
 
 ---
-
 
 ---
 

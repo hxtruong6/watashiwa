@@ -49,4 +49,3 @@ See [Overview](./overview.md) for detailed architecture explanation.
 - [Architecture](../architecture.md) - System architecture
 - [API Contracts](../api/index.md) - Server actions using these models
 - [Development Guide](../development-guide.md) - Database setup
-

@@ -216,20 +216,20 @@ So that I can access personalized learning features and track my progress.
 **Server Actions Pattern:**
 
 ```typescript
-'use server'
+'use server';
 import { executeSafeAction } from '@/modules/core/action-client';
 import { z } from 'zod';
 
 export async function someAction(input: unknown) {
-  return executeSafeAction(
-    InputSchema,
-    input,
-    async (validatedInput) => {
-      // Business logic
-      return { success: true, data: result };
-    },
-    { userId: true } // Require authentication
-  );
+	return executeSafeAction(
+		InputSchema,
+		input,
+		async (validatedInput) => {
+			// Business logic
+			return { success: true, data: result };
+		},
+		{ userId: true }, // Require authentication
+	);
 }
 ```
 
@@ -237,12 +237,12 @@ export async function someAction(input: unknown) {
 
 ```typescript
 'use client';
+import { Button, Form, Input } from 'antd';
 import { useTranslations } from 'next-intl';
-import { Form, Input, Button } from 'antd';
 
 export default function SomeComponent() {
-  const t = useTranslations('Namespace');
-  // Component logic
+	const t = useTranslations('Namespace');
+	// Component logic
 }
 ```
 

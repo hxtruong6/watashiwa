@@ -5,7 +5,6 @@
 
 ---
 
-
 **File:** `src/modules/user/user.actions.ts`
 
 ### `updateUserSettings`
@@ -34,7 +33,7 @@ Update user avatar.
 **Input:**
 
 ```typescript
-avatarUrl: string
+avatarUrl: string;
 ```
 
 **Returns:** `{ success: boolean, error?: string }`
@@ -46,7 +45,7 @@ Mark tutorial as completed.
 **Input:**
 
 ```typescript
-tutorialId: string
+tutorialId: string;
 ```
 
 **Returns:** `{ success: boolean, error?: string }`
@@ -55,7 +54,7 @@ tutorialId: string
 
 Get completed tutorials.
 
-**Returns:** `string[]`  // Tutorial IDs
+**Returns:** `string[]` // Tutorial IDs
 
 ### `recalculateUserStreak`
 
@@ -64,13 +63,12 @@ Recalculate user streak (admin).
 **Input:**
 
 ```typescript
-userId: string
+userId: string;
 ```
 
 **Returns:** `{ success: boolean, error?: string }`
 
 ---
-
 
 ---
 

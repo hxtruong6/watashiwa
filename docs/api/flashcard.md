@@ -5,7 +5,6 @@
 
 ---
 
-
 **File:** `src/modules/flashcard/flashcard.actions.ts`
 
 ### `fetchSessionAction`
@@ -27,7 +26,6 @@ Fetch session data with cards.
 - Returns up to 10 cards
 
 ---
-
 
 ---
 

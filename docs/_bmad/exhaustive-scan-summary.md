@@ -8,7 +8,6 @@
 
 **Binary/assets detected:** 91
 
-
 ## Top File Extensions (by count)
 
 - **.md**: 343

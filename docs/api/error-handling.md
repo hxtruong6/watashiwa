@@ -5,15 +5,14 @@
 
 ---
 
-
 ### Server Actions
 
 Errors are caught by `executeSafeAction` and returned as:
 
 ```typescript
 {
-  success: false;
-  error: string;  // User-friendly message
+	success: false;
+	error: string; // User-friendly message
 }
 ```
 
@@ -27,7 +26,6 @@ API routes return HTTP status codes:
 - `500` - Internal Server Error
 
 ---
-
 
 ---
 

@@ -19,17 +19,7 @@ export default function AntdConfig({ children }: { children: React.ReactNode }) 
 	const currentTheme = mounted ? (resolvedTheme === 'dark' ? darkTheme : lightTheme) : lightTheme;
 
 	return (
-		<ConfigProvider
-			theme={currentTheme}
-			getPopupContainer={(node) => {
-				// Safely handle getPopupContainer - fixes Modal errors when node is undefined
-				// Note: This doesn't fix the React 19 positioning bug, but helps with popup rendering
-				if (node) {
-					return node.parentElement || document.body;
-				}
-				return document.body;
-			}}
-		>
+		<ConfigProvider theme={currentTheme}>
 			<App>{children}</App>
 		</ConfigProvider>
 	);

@@ -1,6 +1,6 @@
 # Directory Index
 
-**Directory:** 'docs/'  **Last Updated:** 2025-12-30
+**Directory:** 'docs/' **Last Updated:** 2025-12-30
 
 ## Files
 
@@ -41,7 +41,7 @@
 
 ## Subdirectories
 
-### _bmad/
+### \_bmad/
 
 - **[exhaustive-scan-inventory.json](./_bmad/exhaustive-scan-inventory.json)** - Exhaustive scan inventory and file counts
 - **[exhaustive-scan-summary.md](./_bmad/exhaustive-scan-summary.md)** - Exhaustive scan summary: LOC and hotspots

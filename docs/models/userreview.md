@@ -6,7 +6,6 @@
 
 ---
 
-
 **Purpose:** SRS algorithm state (The Memory)
 
 **Key Fields:**
@@ -45,7 +44,6 @@
 - `userId, srsStage` (Composite) - For "Get my learning breakdown"
 
 ---
-
 
 ---
 

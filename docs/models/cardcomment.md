@@ -6,7 +6,6 @@
 
 ---
 
-
 **Purpose:** Community comments on vocabulary
 
 **Key Fields:**
@@ -37,7 +36,6 @@
 - `vocabId`
 
 ---
-
 
 ---
 

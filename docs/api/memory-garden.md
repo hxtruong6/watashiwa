@@ -5,7 +5,6 @@
 
 ---
 
-
 **File:** `src/modules/dashboard/components/memory-garden/memory-garden.actions.ts`
 
 ### `getMemoryGardenData`
@@ -31,13 +30,12 @@ Get memory garden data for specific deck.
 **Input:**
 
 ```typescript
-deckId: string
+deckId: string;
 ```
 
 **Returns:** `MemoryGardenData`
 
 ---
-
 
 ---
 

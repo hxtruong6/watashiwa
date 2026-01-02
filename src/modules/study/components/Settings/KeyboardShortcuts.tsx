@@ -43,4 +43,3 @@ export function KeyboardShortcuts() {
 
 	return <Collapse ghost size="small" items={guideItems} />;
 }
-

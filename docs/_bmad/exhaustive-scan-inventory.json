@@ -1,1 +1,377 @@
-{"timestamp":"2025-12-29T19:49:11Z","project_root":"/Users/xuantruong/Documents/WORK/SIDE_PROJECTS/watashi-jp","excluded_dirs":[".git",".next","build","coverage","dist","node_modules"],"text_file_count":800,"asset_file_count":91,"file_counts_by_ext":{".md":343,".tsx":180,".ts":161,".yaml":50,".csv":14,".json":13,".xml":9,"dotfile":9,".svg":7,".sql":5,".css":2,".js":2,".cjs":1,".mjs":1,".prisma":1,".toml":1,".yml":1},"loc_by_ext":{".md":82375,".tsx":30753,".ts":16159,".yaml":13445,".json":3409,".xml":1634,".csv":572,".prisma":565,".sql":539,".css":316,".js":231,"dotfile":109,".cjs":82,".mjs":29,".yml":15,".svg":10,".toml":4},"largest_text_files":[{"path":"pnpm-lock.yaml","bytes":373575,"loc":10894,"ext":".yaml"},{"path":"_bmad/bmm/docs/images/workflow-method-greenfield.svg","bytes":88631,"loc":4,"ext":".svg"},{"path":"_bmad/bmm/workflows/4-implementation/retrospective/instructions.md","bytes":60603,"loc":1444,"ext":".md"},{"path":"src/i18n/messages/vi.json","bytes":54221,"loc":1067,"ext":".json"},{"path":"_bmad/_config/files-manifest.csv","bytes":44741,"loc":289,"ext":".csv"},{"path":"_bmad/bmm/workflows/testarch/automate/instructions.md","bytes":44221,"loc":1325,"ext":".md"},{"path":"_bmad/bmm/workflows/document-project/workflows/full-scan-instructions.md","bytes":42971,"loc":1107,"ext":".md"},{"path":"src/i18n/messages/en.json","bytes":42619,"loc":1076,"ext":".json"},{"path":"_bmad/bmm/workflows/testarch/trace/instructions.md","bytes":35974,"loc":1048,"ext":".md"},{"path":"src/modules/study/components/Session/SessionController.tsx","bytes":33586,"loc":1072,"ext":".tsx"},{"path":"_bmad/bmm/docs/test-architecture.md","bytes":33565,"loc":456,"ext":".md"},{"path":"_bmad/bmm/testarch/knowledge/contract-testing.md","bytes":28185,"loc":958,"ext":".md"},{"path":"_bmad/bmm/testarch/knowledge/nfr-criteria.md","bytes":26670,"loc":671,"ext":".md"},{"path":"_bmad/bmm/workflows/testarch/atdd/instructions.md","bytes":25005,"loc":807,"ext":".md"},{"path":"_bmad/bmm/testarch/knowledge/test-quality.md","bytes":24580,"loc":665,"ext":".md"},{"path":"_bmad/bmm/testarch/knowledge/email-auth.md","bytes":24553,"loc":722,"ext":".md"},{"path":"_bmad/bmm/workflows/testarch/test-design/instructions.md","bytes":23992,"loc":789,"ext":".md"},{"path":"_bmad/bmm/docs/brownfield-guide.md","bytes":23268,"loc":749,"ext":".md"},{"path":"_bmad/bmm/testarch/knowledge/feature-flags.md","bytes":23208,"loc":751,"ext":".md"},{"path":"_bmad/bmm/workflows/testarch/automate/checklist.md","bytes":23085,"loc":583,"ext":".md"},{"path":"_bmad/bmm/testarch/knowledge/error-handling.md","bytes":22953,"loc":726,"ext":".md"},{"path":"_bmad/bmm/workflows/testarch/test-review/instructions.md","bytes":22914,"loc":629,"ext":".md"},{"path":"src/modules/flashcard/components/CardShell/StandardFace.tsx","bytes":22307,"loc":900,"ext":".tsx"},{"path":"_bmad/bmm/workflows/testarch/nfr-assess/instructions.md","bytes":21948,"loc":723,"ext":".md"},{"path":"src/modules/ui/components/NavBar.tsx","bytes":21886,"loc":794,"ext":".tsx"},{"path":"_bmad/bmm/testarch/knowledge/selective-testing.md","bytes":21840,"loc":733,"ext":".md"},{"path":"_bmad/bmm/workflows/4-implementation/dev-story/instructions.xml","bytes":21691,"loc":409,"ext":".xml"},{"path":"_bmad/bmm/testarch/knowledge/test-healing-patterns.md","bytes":21388,"loc":645,"ext":".md"},{"path":"_bmad/bmm/workflows/testarch/trace/checklist.md","bytes":21337,"loc":656,"ext":".md"},{"path":"_bmad/bmm/testarch/knowledge/playwright-config.md","bytes":21226,"loc":731,"ext":".md"},{"path":"_bmad/bmm/testarch/knowledge/risk-governance.md","bytes":20959,"loc":616,"ext":".md"},{"path":"_bmad/bmm/workflows/testarch/trace/trace-template.md","bytes":20572,"loc":676,"ext":".md"},{"path":"_bmad/bmm/workflows/1-analysis/research/technical-steps/step-06-research-synthesis.md","bytes":20460,"loc":486,"ext":".md"},{"path":"_bmad/bmm/testarch/knowledge/ci-burn-in.md","bytes":20325,"loc":676,"ext":".md"},{"path":"_bmad/bmm/docs/enterprise-agentic-development.md","bytes":20087,"loc":687,"ext":".md"},{"path":"_bmad/bmm/docs/faq.md","bytes":20034,"loc":543,"ext":".md"},{"path":"_bmad/bmm/testarch/knowledge/selector-resilience.md","bytes":19784,"loc":528,"ext":".md"},{"path":"_bmad/bmm/testarch/knowledge/probability-impact.md","bytes":19200,"loc":602,"ext":".md"},{"path":"_bmad/bmm/workflows/4-implementation/create-story/instructions.xml","bytes":18734,"loc":344,"ext":".xml"},{"path":"src/modules/dashboard/components/etymology-graph/EtymologyGraph.tsx","bytes":18700,"loc":596,"ext":".tsx"},{"path":"_bmad/bmm/docs/troubleshooting.md","bytes":18600,"loc":662,"ext":".md"},{"path":"prisma/schema.prisma","bytes":18570,"loc":565,"ext":".prisma"},{"path":"_bmad/bmm/workflows/1-analysis/research/market-steps/step-06-research-completion.md","bytes":18500,"loc":475,"ext":".md"},{"path":"_bmad/bmm/docs/workflows-solutioning.md","bytes":18197,"loc":510,"ext":".md"},{"path":"src/modules/admin/components/QA/ContentWorkbench.tsx","bytes":18029,"loc":642,"ext":".tsx"},{"path":"_bmad/bmm/docs/quick-spec-flow.md","bytes":17723,"loc":639,"ext":".md"},{"path":"src/app/demo/page.tsx","bytes":17279,"loc":814,"ext":".tsx"},{"path":"src/modules/dashboard/components/learning-map/components/LearningMapHeatmap.tsx","bytes":17149,"loc":584,"ext":".tsx"},{"path":"_bmad/bmm/testarch/knowledge/visual-debugging.md","bytes":16895,"loc":525,"ext":".md"},{"path":"docs/phase3_plan.md","bytes":16887,"loc":390,"ext":".md"}],"largest_assets":[{"path":"tsconfig.tsbuildinfo","bytes":1244387,"ext":".tsbuildinfo"},{"path":"public/assets/logo_transparent.png","bytes":686210,"ext":".png"},{"path":"playwright-report/index.html","bytes":521839,"ext":".html"},{"path":"public/assets/logo.ico","bytes":434924,"ext":".ico"},{"path":"public/assets/logo1.png","bytes":434924,"ext":".png"},{"path":"public/assets/logo.png","bytes":434924,"ext":".png"},{"path":"public/favicon.ico","bytes":372502,"ext":".ico"},{"path":"public/assets/w_logo.png","bytes":295122,"ext":".png"},{"path":"public/assets/qr_code/viet_qr.jpg","bytes":247289,"ext":".jpg"},{"path":"public/assets/qr_code/momo_qr.jpg","bytes":177459,"ext":".jpg"},{"path":"_bmad/bmm/docs/images/workflow-method-greenfield.excalidraw","bytes":118814,"ext":".excalidraw"},{"path":"public/assets/animations/Ramen.lottie","bytes":26000,"ext":".lottie"},{"path":"public/assets/animations/404.lottie","bytes":10772,"ext":".lottie"},{"path":".cursor/rules/tasks.mdc","bytes":9942,"ext":".mdc"},{"path":".cursor/rules/checklist-task.mdc","bytes":9255,"ext":".mdc"},{"path":".cursor/rules/bmad/core/tasks/advanced-elicitation.mdc","bytes":6739,"ext":".mdc"},{"path":".cursor/rules/bmad/core/tools/shard-doc.mdc","bytes":5859,"ext":".mdc"},{"path":".cursor/rules/watashiwa-app.mdc","bytes":5342,"ext":".mdc"},{"path":"public/assets/animations/LoaderCat.lottie","bytes":4034,"ext":".lottie"},{"path":".cursor/rules/bmad/index.mdc","bytes":4024,"ext":".mdc"},{"path":"public/assets/animations/MatchaTea.lottie","bytes":3482,"ext":".lottie"},{"path":"config/watashiwa.conf","bytes":3262,"ext":".conf"},{"path":"public/assets/animations/Japanese Noodles.lottie","bytes":2737,"ext":".lottie"},{"path":".cursor/rules/bmad/core/tasks/index-docs.mdc","bytes":2426,"ext":".mdc"},{"path":"docs/api/study.md.tmp","bytes":1839,"ext":".tmp"},{"path":".env.example","bytes":1348,"ext":".example"},{"path":".env.v1","bytes":1215,"ext":".v1"},{"path":".cursor/rules/bmad/bmm/workflows/create-excalidraw-wireframe.mdc","bytes":832,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/create-excalidraw-flowchart.mdc","bytes":832,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/create-excalidraw-dataflow.mdc","bytes":829,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/create-excalidraw-diagram.mdc","bytes":826,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/create-tech-spec.mdc","bytes":813,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/sprint-planning.mdc","bytes":812,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/correct-course.mdc","bytes":809,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/sprint-status.mdc","bytes":806,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/retrospective.mdc","bytes":806,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/create-story.mdc","bytes":803,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/code-review.mdc","bytes":800,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/dev-story.mdc","bytes":794,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/testarch-test-review.mdc","bytes":793,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/testarch-test-design.mdc","bytes":793,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/testarch-framework.mdc","bytes":787,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/workflow-init.mdc","bytes":786,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/testarch-automate.mdc","bytes":784,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/testarch-nfr.mdc","bytes":783,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/document-project.mdc","bytes":781,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/workflow-status.mdc","bytes":778,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/testarch-trace.mdc","bytes":775,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/testarch-atdd.mdc","bytes":772,"ext":".mdc"},{"path":".cursor/rules/bmad/bmm/workflows/testarch-ci.mdc","bytes":766,"ext":".mdc"}]}
+{
+	"timestamp": "2025-12-29T19:49:11Z",
+	"project_root": "/Users/xuantruong/Documents/WORK/SIDE_PROJECTS/watashi-jp",
+	"excluded_dirs": [".git", ".next", "build", "coverage", "dist", "node_modules"],
+	"text_file_count": 800,
+	"asset_file_count": 91,
+	"file_counts_by_ext": {
+		".md": 343,
+		".tsx": 180,
+		".ts": 161,
+		".yaml": 50,
+		".csv": 14,
+		".json": 13,
+		".xml": 9,
+		"dotfile": 9,
+		".svg": 7,
+		".sql": 5,
+		".css": 2,
+		".js": 2,
+		".cjs": 1,
+		".mjs": 1,
+		".prisma": 1,
+		".toml": 1,
+		".yml": 1
+	},
+	"loc_by_ext": {
+		".md": 82375,
+		".tsx": 30753,
+		".ts": 16159,
+		".yaml": 13445,
+		".json": 3409,
+		".xml": 1634,
+		".csv": 572,
+		".prisma": 565,
+		".sql": 539,
+		".css": 316,
+		".js": 231,
+		"dotfile": 109,
+		".cjs": 82,
+		".mjs": 29,
+		".yml": 15,
+		".svg": 10,
+		".toml": 4
+	},
+	"largest_text_files": [
+		{ "path": "pnpm-lock.yaml", "bytes": 373575, "loc": 10894, "ext": ".yaml" },
+		{
+			"path": "_bmad/bmm/docs/images/workflow-method-greenfield.svg",
+			"bytes": 88631,
+			"loc": 4,
+			"ext": ".svg"
+		},
+		{
+			"path": "_bmad/bmm/workflows/4-implementation/retrospective/instructions.md",
+			"bytes": 60603,
+			"loc": 1444,
+			"ext": ".md"
+		},
+		{ "path": "src/i18n/messages/vi.json", "bytes": 54221, "loc": 1067, "ext": ".json" },
+		{ "path": "_bmad/_config/files-manifest.csv", "bytes": 44741, "loc": 289, "ext": ".csv" },
+		{
+			"path": "_bmad/bmm/workflows/testarch/automate/instructions.md",
+			"bytes": 44221,
+			"loc": 1325,
+			"ext": ".md"
+		},
+		{
+			"path": "_bmad/bmm/workflows/document-project/workflows/full-scan-instructions.md",
+			"bytes": 42971,
+			"loc": 1107,
+			"ext": ".md"
+		},
+		{ "path": "src/i18n/messages/en.json", "bytes": 42619, "loc": 1076, "ext": ".json" },
+		{
+			"path": "_bmad/bmm/workflows/testarch/trace/instructions.md",
+			"bytes": 35974,
+			"loc": 1048,
+			"ext": ".md"
+		},
+		{
+			"path": "src/modules/study/components/Session/SessionController.tsx",
+			"bytes": 33586,
+			"loc": 1072,
+			"ext": ".tsx"
+		},
+		{ "path": "_bmad/bmm/docs/test-architecture.md", "bytes": 33565, "loc": 456, "ext": ".md" },
+		{
+			"path": "_bmad/bmm/testarch/knowledge/contract-testing.md",
+			"bytes": 28185,
+			"loc": 958,
+			"ext": ".md"
+		},
+		{
+			"path": "_bmad/bmm/testarch/knowledge/nfr-criteria.md",
+			"bytes": 26670,
+			"loc": 671,
+			"ext": ".md"
+		},
+		{
+			"path": "_bmad/bmm/workflows/testarch/atdd/instructions.md",
+			"bytes": 25005,
+			"loc": 807,
+			"ext": ".md"
+		},
+		{
+			"path": "_bmad/bmm/testarch/knowledge/test-quality.md",
+			"bytes": 24580,
+			"loc": 665,
+			"ext": ".md"
+		},
+		{
+			"path": "_bmad/bmm/testarch/knowledge/email-auth.md",
+			"bytes": 24553,
+			"loc": 722,
+			"ext": ".md"
+		},
+		{
+			"path": "_bmad/bmm/workflows/testarch/test-design/instructions.md",
+			"bytes": 23992,
+			"loc": 789,
+			"ext": ".md"
+		},
+		{ "path": "_bmad/bmm/docs/brownfield-guide.md", "bytes": 23268, "loc": 749, "ext": ".md" },
+		{
+			"path": "_bmad/bmm/testarch/knowledge/feature-flags.md",
+			"bytes": 23208,
+			"loc": 751,
+			"ext": ".md"
+		},
+		{
+			"path": "_bmad/bmm/workflows/testarch/automate/checklist.md",
+			"bytes": 23085,
+			"loc": 583,
+			"ext": ".md"
+		},
+		{
+			"path": "_bmad/bmm/testarch/knowledge/error-handling.md",
+			"bytes": 22953,
+			"loc": 726,
+			"ext": ".md"
+		},
+		{
+			"path": "_bmad/bmm/workflows/testarch/test-review/instructions.md",
+			"bytes": 22914,
+			"loc": 629,
+			"ext": ".md"
+		},
+		{
+			"path": "src/modules/flashcard/components/CardShell/StandardFace.tsx",
+			"bytes": 22307,
+			"loc": 900,
+			"ext": ".tsx"
+		},
+		{
+			"path": "_bmad/bmm/workflows/testarch/nfr-assess/instructions.md",
+			"bytes": 21948,
+			"loc": 723,
+			"ext": ".md"
+		},
+		{ "path": "src/modules/ui/components/NavBar.tsx", "bytes": 21886, "loc": 794, "ext": ".tsx" },
+		{
+			"path": "_bmad/bmm/testarch/knowledge/selective-testing.md",
+			"bytes": 21840,
+			"loc": 733,
+			"ext": ".md"
+		},
+		{
+			"path": "_bmad/bmm/workflows/4-implementation/dev-story/instructions.xml",
+			"bytes": 21691,
+			"loc": 409,
+			"ext": ".xml"
+		},
+		{
+			"path": "_bmad/bmm/testarch/knowledge/test-healing-patterns.md",
+			"bytes": 21388,
+			"loc": 645,
+			"ext": ".md"
+		},
+		{
+			"path": "_bmad/bmm/workflows/testarch/trace/checklist.md",
+			"bytes": 21337,
+			"loc": 656,
+			"ext": ".md"
+		},
+		{
+			"path": "_bmad/bmm/testarch/knowledge/playwright-config.md",
+			"bytes": 21226,
+			"loc": 731,
+			"ext": ".md"
+		},
+		{
+			"path": "_bmad/bmm/testarch/knowledge/risk-governance.md",
+			"bytes": 20959,
+			"loc": 616,
+			"ext": ".md"
+		},
+		{
+			"path": "_bmad/bmm/workflows/testarch/trace/trace-template.md",
+			"bytes": 20572,
+			"loc": 676,
+			"ext": ".md"
+		},
+		{
+			"path": "_bmad/bmm/workflows/1-analysis/research/technical-steps/step-06-research-synthesis.md",
+			"bytes": 20460,
+			"loc": 486,
+			"ext": ".md"
+		},
+		{
+			"path": "_bmad/bmm/testarch/knowledge/ci-burn-in.md",
+			"bytes": 20325,
+			"loc": 676,
+			"ext": ".md"
+		},
+		{
+			"path": "_bmad/bmm/docs/enterprise-agentic-development.md",
+			"bytes": 20087,
+			"loc": 687,
+			"ext": ".md"
+		},
+		{ "path": "_bmad/bmm/docs/faq.md", "bytes": 20034, "loc": 543, "ext": ".md" },
+		{
+			"path": "_bmad/bmm/testarch/knowledge/selector-resilience.md",
+			"bytes": 19784,
+			"loc": 528,
+			"ext": ".md"
+		},
+		{
+			"path": "_bmad/bmm/testarch/knowledge/probability-impact.md",
+			"bytes": 19200,
+			"loc": 602,
+			"ext": ".md"
+		},
+		{
+			"path": "_bmad/bmm/workflows/4-implementation/create-story/instructions.xml",
+			"bytes": 18734,
+			"loc": 344,
+			"ext": ".xml"
+		},
+		{
+			"path": "src/modules/dashboard/components/etymology-graph/EtymologyGraph.tsx",
+			"bytes": 18700,
+			"loc": 596,
+			"ext": ".tsx"
+		},
+		{ "path": "_bmad/bmm/docs/troubleshooting.md", "bytes": 18600, "loc": 662, "ext": ".md" },
+		{ "path": "prisma/schema.prisma", "bytes": 18570, "loc": 565, "ext": ".prisma" },
+		{
+			"path": "_bmad/bmm/workflows/1-analysis/research/market-steps/step-06-research-completion.md",
+			"bytes": 18500,
+			"loc": 475,
+			"ext": ".md"
+		},
+		{ "path": "_bmad/bmm/docs/workflows-solutioning.md", "bytes": 18197, "loc": 510, "ext": ".md" },
+		{
+			"path": "src/modules/admin/components/QA/ContentWorkbench.tsx",
+			"bytes": 18029,
+			"loc": 642,
+			"ext": ".tsx"
+		},
+		{ "path": "_bmad/bmm/docs/quick-spec-flow.md", "bytes": 17723, "loc": 639, "ext": ".md" },
+		{ "path": "src/app/demo/page.tsx", "bytes": 17279, "loc": 814, "ext": ".tsx" },
+		{
+			"path": "src/modules/dashboard/components/learning-map/components/LearningMapHeatmap.tsx",
+			"bytes": 17149,
+			"loc": 584,
+			"ext": ".tsx"
+		},
+		{
+			"path": "_bmad/bmm/testarch/knowledge/visual-debugging.md",
+			"bytes": 16895,
+			"loc": 525,
+			"ext": ".md"
+		},
+		{ "path": "docs/phase3_plan.md", "bytes": 16887, "loc": 390, "ext": ".md" }
+	],
+	"largest_assets": [
+		{ "path": "tsconfig.tsbuildinfo", "bytes": 1244387, "ext": ".tsbuildinfo" },
+		{ "path": "public/assets/logo_transparent.png", "bytes": 686210, "ext": ".png" },
+		{ "path": "playwright-report/index.html", "bytes": 521839, "ext": ".html" },
+		{ "path": "public/assets/logo.ico", "bytes": 434924, "ext": ".ico" },
+		{ "path": "public/assets/logo1.png", "bytes": 434924, "ext": ".png" },
+		{ "path": "public/assets/logo.png", "bytes": 434924, "ext": ".png" },
+		{ "path": "public/favicon.ico", "bytes": 372502, "ext": ".ico" },
+		{ "path": "public/assets/w_logo.png", "bytes": 295122, "ext": ".png" },
+		{ "path": "public/assets/qr_code/viet_qr.jpg", "bytes": 247289, "ext": ".jpg" },
+		{ "path": "public/assets/qr_code/momo_qr.jpg", "bytes": 177459, "ext": ".jpg" },
+		{
+			"path": "_bmad/bmm/docs/images/workflow-method-greenfield.excalidraw",
+			"bytes": 118814,
+			"ext": ".excalidraw"
+		},
+		{ "path": "public/assets/animations/Ramen.lottie", "bytes": 26000, "ext": ".lottie" },
+		{ "path": "public/assets/animations/404.lottie", "bytes": 10772, "ext": ".lottie" },
+		{ "path": ".cursor/rules/tasks.mdc", "bytes": 9942, "ext": ".mdc" },
+		{ "path": ".cursor/rules/checklist-task.mdc", "bytes": 9255, "ext": ".mdc" },
+		{
+			"path": ".cursor/rules/bmad/core/tasks/advanced-elicitation.mdc",
+			"bytes": 6739,
+			"ext": ".mdc"
+		},
+		{ "path": ".cursor/rules/bmad/core/tools/shard-doc.mdc", "bytes": 5859, "ext": ".mdc" },
+		{ "path": ".cursor/rules/watashiwa-app.mdc", "bytes": 5342, "ext": ".mdc" },
+		{ "path": "public/assets/animations/LoaderCat.lottie", "bytes": 4034, "ext": ".lottie" },
+		{ "path": ".cursor/rules/bmad/index.mdc", "bytes": 4024, "ext": ".mdc" },
+		{ "path": "public/assets/animations/MatchaTea.lottie", "bytes": 3482, "ext": ".lottie" },
+		{ "path": "config/watashiwa.conf", "bytes": 3262, "ext": ".conf" },
+		{ "path": "public/assets/animations/Japanese Noodles.lottie", "bytes": 2737, "ext": ".lottie" },
+		{ "path": ".cursor/rules/bmad/core/tasks/index-docs.mdc", "bytes": 2426, "ext": ".mdc" },
+		{ "path": "docs/api/study.md.tmp", "bytes": 1839, "ext": ".tmp" },
+		{ "path": ".env.example", "bytes": 1348, "ext": ".example" },
+		{ "path": ".env.v1", "bytes": 1215, "ext": ".v1" },
+		{
+			"path": ".cursor/rules/bmad/bmm/workflows/create-excalidraw-wireframe.mdc",
+			"bytes": 832,
+			"ext": ".mdc"
+		},
+		{
+			"path": ".cursor/rules/bmad/bmm/workflows/create-excalidraw-flowchart.mdc",
+			"bytes": 832,
+			"ext": ".mdc"
+		},
+		{
+			"path": ".cursor/rules/bmad/bmm/workflows/create-excalidraw-dataflow.mdc",
+			"bytes": 829,
+			"ext": ".mdc"
+		},
+		{
+			"path": ".cursor/rules/bmad/bmm/workflows/create-excalidraw-diagram.mdc",
+			"bytes": 826,
+			"ext": ".mdc"
+		},
+		{
+			"path": ".cursor/rules/bmad/bmm/workflows/create-tech-spec.mdc",
+			"bytes": 813,
+			"ext": ".mdc"
+		},
+		{ "path": ".cursor/rules/bmad/bmm/workflows/sprint-planning.mdc", "bytes": 812, "ext": ".mdc" },
+		{ "path": ".cursor/rules/bmad/bmm/workflows/correct-course.mdc", "bytes": 809, "ext": ".mdc" },
+		{ "path": ".cursor/rules/bmad/bmm/workflows/sprint-status.mdc", "bytes": 806, "ext": ".mdc" },
+		{ "path": ".cursor/rules/bmad/bmm/workflows/retrospective.mdc", "bytes": 806, "ext": ".mdc" },
+		{ "path": ".cursor/rules/bmad/bmm/workflows/create-story.mdc", "bytes": 803, "ext": ".mdc" },
+		{ "path": ".cursor/rules/bmad/bmm/workflows/code-review.mdc", "bytes": 800, "ext": ".mdc" },
+		{ "path": ".cursor/rules/bmad/bmm/workflows/dev-story.mdc", "bytes": 794, "ext": ".mdc" },
+		{
+			"path": ".cursor/rules/bmad/bmm/workflows/testarch-test-review.mdc",
+			"bytes": 793,
+			"ext": ".mdc"
+		},
+		{
+			"path": ".cursor/rules/bmad/bmm/workflows/testarch-test-design.mdc",
+			"bytes": 793,
+			"ext": ".mdc"
+		},
+		{
+			"path": ".cursor/rules/bmad/bmm/workflows/testarch-framework.mdc",
+			"bytes": 787,
+			"ext": ".mdc"
+		},
+		{ "path": ".cursor/rules/bmad/bmm/workflows/workflow-init.mdc", "bytes": 786, "ext": ".mdc" },
+		{
+			"path": ".cursor/rules/bmad/bmm/workflows/testarch-automate.mdc",
+			"bytes": 784,
+			"ext": ".mdc"
+		},
+		{ "path": ".cursor/rules/bmad/bmm/workflows/testarch-nfr.mdc", "bytes": 783, "ext": ".mdc" },
+		{
+			"path": ".cursor/rules/bmad/bmm/workflows/document-project.mdc",
+			"bytes": 781,
+			"ext": ".mdc"
+		},
+		{ "path": ".cursor/rules/bmad/bmm/workflows/workflow-status.mdc", "bytes": 778, "ext": ".mdc" },
+		{ "path": ".cursor/rules/bmad/bmm/workflows/testarch-trace.mdc", "bytes": 775, "ext": ".mdc" },
+		{ "path": ".cursor/rules/bmad/bmm/workflows/testarch-atdd.mdc", "bytes": 772, "ext": ".mdc" },
+		{ "path": ".cursor/rules/bmad/bmm/workflows/testarch-ci.mdc", "bytes": 766, "ext": ".mdc" }
+	]
+}

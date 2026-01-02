@@ -6,7 +6,6 @@
 
 ---
 
-
 **Purpose:** Interference shield (The Block)
 
 **Key Fields:**
@@ -36,7 +35,6 @@
 - `vocabId2`
 
 ---
-
 
 ---
 

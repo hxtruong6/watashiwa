@@ -12,4 +12,3 @@ The source of truth for data models is Prisma schema: `prisma/schema.prisma`.
 
 - **Prisma schema:** `prisma/schema.prisma`
 - **Migrations:** `prisma/migrations/`
-

@@ -6,7 +6,6 @@
 
 ---
 
-
 **Location:** `src/lib/schemas/jsonb.ts`
 
 All JSONB fields have Zod schemas for type safety:
@@ -18,7 +17,6 @@ All JSONB fields have Zod schemas for type safety:
 - `ConfusionExplanationSchema` - For ConfusionPair.explanation
 
 ---
-
 
 ---
 

@@ -421,12 +421,14 @@ Since the foundation is already established and aligns with all architectural re
 - **Schema Structure**:
 
   ```typescript
-  export const StoryContentSchema = z.object({
-    title: LocalizedStringSchema,
-    body_text: z.string(),
-    translation: LocalizedStringSchema.optional(),
-    highlights: z.array(StoryHighlightSchema),
-  }).strict();
+  export const StoryContentSchema = z
+  	.object({
+  		title: LocalizedStringSchema,
+  		body_text: z.string(),
+  		translation: LocalizedStringSchema.optional(),
+  		highlights: z.array(StoryHighlightSchema),
+  	})
+  	.strict();
   ```
 
 **Validation Strategy:**
@@ -533,38 +535,38 @@ User Action → Study Page
 
 ```typescript
 export async function getSessionDataWithPriming(input: { deckId: string }) {
-  // 1. Check if story exists for deck
-  const story = await prisma.story.findFirst({
-    where: { unitId: input.deckId, contentStatus: 'PUBLISHED' }
-  });
-  
-  if (!story) {
-    return { requiresPriming: false, story: null };
-  }
-  
-  // 2. Check if user has read story (StoryLog entry)
-  const userId = await getCurrentUserId();
-  const storyLog = await prisma.storyLog.findUnique({
-    where: { userId_storyId: { userId, storyId: story.id } }
-  });
-  
-  if (storyLog) {
-    return { requiresPriming: false, story: null };
-  }
-  
-  // 3. Validate story content (defensive validation)
-  const validatedContent = StoryContentSchema.safeParse(story.content);
-  if (!validatedContent.success) {
-    // Log error, return null story
-    console.error('Invalid story content:', validatedContent.error);
-    return { requiresPriming: false, story: null };
-  }
-  
-  // 4. Return story for priming
-  return { 
-    requiresPriming: true, 
-    story: { ...story, content: validatedContent.data }
-  };
+	// 1. Check if story exists for deck
+	const story = await prisma.story.findFirst({
+		where: { unitId: input.deckId, contentStatus: 'PUBLISHED' },
+	});
+
+	if (!story) {
+		return { requiresPriming: false, story: null };
+	}
+
+	// 2. Check if user has read story (StoryLog entry)
+	const userId = await getCurrentUserId();
+	const storyLog = await prisma.storyLog.findUnique({
+		where: { userId_storyId: { userId, storyId: story.id } },
+	});
+
+	if (storyLog) {
+		return { requiresPriming: false, story: null };
+	}
+
+	// 3. Validate story content (defensive validation)
+	const validatedContent = StoryContentSchema.safeParse(story.content);
+	if (!validatedContent.success) {
+		// Log error, return null story
+		console.error('Invalid story content:', validatedContent.error);
+		return { requiresPriming: false, story: null };
+	}
+
+	// 4. Return story for priming
+	return {
+		requiresPriming: true,
+		story: { ...story, content: validatedContent.data },
+	};
 }
 ```
 
@@ -712,7 +714,7 @@ export async function getSessionDataWithPriming(input: { deckId: string }) {
 const prompt = `You are a Japanese novelist writing educational stories for Vietnamese learners.
 
 Task: Write a 100-word story using these ${vocabWords.length} vocabulary words:
-${vocabWords.map(v => `- ${v.surface} (${v.reading}) - ${v.meanings.vi}`).join('\n')}
+${vocabWords.map((v) => `- ${v.surface} (${v.reading}) - ${v.meanings.vi}`).join('\n')}
 
 Requirements:
 1. Use "Mixed Language" format: English grammar structure with Japanese nouns/verbs
@@ -783,9 +785,9 @@ Return JSON:
 ```typescript
 // src/modules/story/actions.ts
 export async function generateStoryForUnit(input: { unitId: string }) {
-  // Admin-only action
-  // Calls same generation logic as script
-  // Returns generated story for review
+	// Admin-only action
+	// Calls same generation logic as script
+	// Returns generated story for review
 }
 ```
 
@@ -927,19 +929,19 @@ export async function generateStoryForUnit(input: { unitId: string }) {
 
 ```typescript
 interface EtymologyGraphNode {
-  id: string;              // vocabId
-  wordSurface: string;     // "学生"
-  meaning: string;          // Primary meaning
-  stability: number;        // FSRS stability
-  srsStage: number;        // 0=New, 1=Learning, 2=Review, 3=Relearning
-  kanjiRoots: string[];    // ["学", "生"]
-  isLeech: boolean;        // lapses >= 3
+	id: string; // vocabId
+	wordSurface: string; // "学生"
+	meaning: string; // Primary meaning
+	stability: number; // FSRS stability
+	srsStage: number; // 0=New, 1=Learning, 2=Review, 3=Relearning
+	kanjiRoots: string[]; // ["学", "生"]
+	isLeech: boolean; // lapses >= 3
 }
 
 interface EtymologyGraphEdge {
-  source: string;          // vocabId
-  target: string;          // vocabId
-  sharedRoot: string;      // "生" (the kanji connecting them)
+	source: string; // vocabId
+	target: string; // vocabId
+	sharedRoot: string; // "生" (the kanji connecting them)
 }
 ```
 
@@ -947,12 +949,12 @@ interface EtymologyGraphEdge {
 
 ```typescript
 interface SemanticGraphNode extends EtymologyGraphNode {
-  semanticTags: string[];  // ["education", "people", "profession"]
-  relationships: {
-    type: 'etymology' | 'semantic' | 'contextual';
-    strength: number;      // 0-1 relationship strength
-    targetId: string;
-  }[];
+	semanticTags: string[]; // ["education", "people", "profession"]
+	relationships: {
+		type: 'etymology' | 'semantic' | 'contextual';
+		strength: number; // 0-1 relationship strength
+		targetId: string;
+	}[];
 }
 ```
 
@@ -963,10 +965,10 @@ interface SemanticGraphNode extends EtymologyGraphNode {
 ```typescript
 // Single query with include
 const reviews = await prisma.userReview.findMany({
-  where: { userId, stability: { gt: 0 } },
-  take: 100, // Fetch 2x limit to filter
-  include: { vocab: { select: { id, wordSurface, meanings, etymology } } },
-  orderBy: { stability: 'desc' }
+	where: { userId, stability: { gt: 0 } },
+	take: 100, // Fetch 2x limit to filter
+	include: { vocab: { select: { id, wordSurface, meanings, etymology } } },
+	orderBy: { stability: 'desc' },
 });
 // In-memory graph building: O(n²) for edge creation, but n ≤ 50
 ```
@@ -1131,23 +1133,23 @@ const reviews = await prisma.userReview.findMany({
 
 ```typescript
 async function getSemanticallySequencedQueue(fsrsQueue: SmartCard[]): Promise<SmartCard[]> {
-  try {
-    // Attempt semantic sequencing
-    const relationships = await getWordRelationships(fsrsQueue);
-    const sequenced = reorderByRelationships(fsrsQueue, relationships);
-    
-    // Performance check: If sequencing took too long, use FSRS queue
-    if (sequencingTime > 500) {
-      console.warn('Semantic sequencing too slow, using FSRS queue');
-      return fsrsQueue;
-    }
-    
-    return sequenced;
-  } catch (error) {
-    // Graceful degradation: Return FSRS queue on any error
-    console.error('Semantic sequencing failed:', error);
-    return fsrsQueue;
-  }
+	try {
+		// Attempt semantic sequencing
+		const relationships = await getWordRelationships(fsrsQueue);
+		const sequenced = reorderByRelationships(fsrsQueue, relationships);
+
+		// Performance check: If sequencing took too long, use FSRS queue
+		if (sequencingTime > 500) {
+			console.warn('Semantic sequencing too slow, using FSRS queue');
+			return fsrsQueue;
+		}
+
+		return sequenced;
+	} catch (error) {
+		// Graceful degradation: Return FSRS queue on any error
+		console.error('Semantic sequencing failed:', error);
+		return fsrsQueue;
+	}
 }
 ```
 
@@ -1243,20 +1245,20 @@ async function getSemanticallySequencedQueue(fsrsQueue: SmartCard[]): Promise<Sm
 // - Cached story content
 
 interface OfflineSession {
-  id: string;
-  deckId: string;
-  cards: SmartCard[];
-  currentIndex: number;
-  startTime: number;
-  lastSync: number;
+	id: string;
+	deckId: string;
+	cards: SmartCard[];
+	currentIndex: number;
+	startTime: number;
+	lastSync: number;
 }
 
 interface PendingReview {
-  id: string;
-  cardId: string;
-  rating: number;
-  timestamp: number;
-  retryCount: number;
+	id: string;
+	cardId: string;
+	rating: number;
+	timestamp: number;
+	retryCount: number;
 }
 ```
 
@@ -1303,22 +1305,22 @@ interface PendingReview {
 ```typescript
 // In sw.js
 self.addEventListener('sync', (event) => {
-  if (event.tag === 'sync-reviews') {
-    event.waitUntil(syncPendingReviews());
-  }
+	if (event.tag === 'sync-reviews') {
+		event.waitUntil(syncPendingReviews());
+	}
 });
 
 async function syncPendingReviews() {
-  const pending = await getPendingReviewsFromIndexedDB();
-  for (const review of pending) {
-    try {
-      await submitReview(review);
-      await removePendingReview(review.id);
-    } catch (error) {
-      // Retry on next sync
-      incrementRetryCount(review.id);
-    }
-  }
+	const pending = await getPendingReviewsFromIndexedDB();
+	for (const review of pending) {
+		try {
+			await submitReview(review);
+			await removePendingReview(review.id);
+		} catch (error) {
+			// Retry on next sync
+			incrementRetryCount(review.id);
+		}
+	}
 }
 ```
 
@@ -1486,23 +1488,23 @@ async function syncPendingReviews() {
 ```typescript
 // src/lib/cache/memory-cache.ts
 class MemoryCache<T> {
-  private cache = new Map<string, { data: T; expires: number }>();
-  
-  get(key: string): T | null {
-    const entry = this.cache.get(key);
-    if (!entry || entry.expires < Date.now()) {
-      this.cache.delete(key);
-      return null;
-    }
-    return entry.data;
-  }
-  
-  set(key: string, data: T, ttl: number): void {
-    this.cache.set(key, {
-      data,
-      expires: Date.now() + ttl * 1000
-    });
-  }
+	private cache = new Map<string, { data: T; expires: number }>();
+
+	get(key: string): T | null {
+		const entry = this.cache.get(key);
+		if (!entry || entry.expires < Date.now()) {
+			this.cache.delete(key);
+			return null;
+		}
+		return entry.data;
+	}
+
+	set(key: string, data: T, ttl: number): void {
+		this.cache.set(key, {
+			data,
+			expires: Date.now() + ttl * 1000,
+		});
+	}
 }
 ```
 
@@ -1675,20 +1677,20 @@ import { executeSafeAction } from '@/modules/core/action-client';
 import { z } from 'zod';
 
 const InputSchema = z.object({
-  deckId: z.string().uuid().optional(),
+	deckId: z.string().uuid().optional(),
 });
 
 export async function getReviewQueue(input: unknown) {
-  return executeSafeAction(
-    InputSchema,
-    input,
-    async (data, { userId }) => {
-      // Business logic here
-      // userId is guaranteed if requireAuth: true (default)
-      return result;
-    },
-    { requireAuth: true } // Optional, defaults to true
-  );
+	return executeSafeAction(
+		InputSchema,
+		input,
+		async (data, { userId }) => {
+			// Business logic here
+			// userId is guaranteed if requireAuth: true (default)
+			return result;
+		},
+		{ requireAuth: true }, // Optional, defaults to true
+	);
 }
 ```
 
@@ -1715,17 +1717,17 @@ export async function getReviewQueue(input: unknown) {
 import { create } from 'zustand';
 
 interface SessionState {
-  cards: SmartCard[];
-  currentIndex: number;
-  startSession: (cards: SmartCard[]) => void;
-  nextCard: () => void;
+	cards: SmartCard[];
+	currentIndex: number;
+	startSession: (cards: SmartCard[]) => void;
+	nextCard: () => void;
 }
 
 export const useSessionStore = create<SessionState>((set) => ({
-  cards: [],
-  currentIndex: 0,
-  startSession: (cards) => set({ cards, currentIndex: 0 }),
-  nextCard: () => set((state) => ({ currentIndex: state.currentIndex + 1 })),
+	cards: [],
+	currentIndex: 0,
+	startSession: (cards) => set({ cards, currentIndex: 0 }),
+	nextCard: () => set((state) => ({ currentIndex: state.currentIndex + 1 })),
 }));
 ```
 
@@ -1783,26 +1785,26 @@ export const useSessionStore = create<SessionState>((set) => ({
 ```typescript
 // ✅ Server Action with executeSafeAction
 export async function getReviewQueue(input: unknown) {
-  return executeSafeAction(InputSchema, input, async (data, { userId }) => {
-    const queue = await prisma.userReview.findMany({ where: { userId } });
-    return { queue, source: 'DUE_REVIEWS' };
-  });
+	return executeSafeAction(InputSchema, input, async (data, { userId }) => {
+		const queue = await prisma.userReview.findMany({ where: { userId } });
+		return { queue, source: 'DUE_REVIEWS' };
+	});
 }
 
 // ✅ Component with PascalCase
 export default function SessionController({ deckId }: { deckId?: string }) {
-  const { cards, isLoading } = useSessionStore();
-  // ...
+	const { cards, isLoading } = useSessionStore();
+	// ...
 }
 
 // ✅ Zustand store with use prefix
 export const useSessionStore = create<SessionState>((set) => ({
-  // ...
+	// ...
 }));
 
 // ✅ Hook with use prefix
 export function useStudySession() {
-  // ...
+	// ...
 }
 ```
 
@@ -2178,21 +2180,21 @@ Component → Zustand Store → Local State → Server Action (if needed)
 **Study Session Flow:**
 
 ```
-User clicks "Start Study" → study/page.tsx → getReviewQueue.ts → 
+User clicks "Start Study" → study/page.tsx → getReviewQueue.ts →
 FSRS Algorithm → Semantic Sequencer [Phase 3] → useSessionStore → SessionController
 ```
 
 **Priming Flow (Phase 3):**
 
 ```
-Study Session Starts → getSessionDataWithPriming → Check Story Requirement → 
+Study Session Starts → getSessionDataWithPriming → Check Story Requirement →
 Show PrimingModal → StoryReader → Continue to study
 ```
 
 **Knowledge Graph Flow:**
 
 ```
-Dashboard → etymology-graph.actions.ts → Query User Reviews + Vocabulary → 
+Dashboard → etymology-graph.actions.ts → Query User Reviews + Vocabulary →
 Build Graph (shared kanji roots) → EtymologyGraph.tsx → react-force-graph-2d
 ```
 

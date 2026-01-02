@@ -6,7 +6,6 @@
 
 ---
 
-
 **Purpose:** Dynamic card views (The Face)
 
 **Key Fields:**
@@ -29,7 +28,6 @@
 - `contentStatus`
 
 ---
-
 
 ---
 

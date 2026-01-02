@@ -21,4 +21,3 @@ WatashiWa uses **Zustand** for cross-route/cross-component state (especially stu
 - **URL state:** `nuqs` via `NuqsAdapter` in `src/app/layout.tsx`
 - **i18n state:** `next-intl` request-based locale + message loading
 - **Theme state:** `next-themes` + Ant Design theme tokens
-

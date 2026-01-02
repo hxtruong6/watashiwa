@@ -30,12 +30,12 @@ standard library for all Gemini API interactions (AI Studio and Vertex AI) as of
 **APIs and Usage:**
 
 - **Incorrect:** `const { GenerativeModel } =
-  require('@google/generative-ai')` -> **Correct:** `import { GoogleGenAI }
-  from '@google/genai'`
+require('@google/generative-ai')` -> **Correct:** `import { GoogleGenAI }
+from '@google/genai'`
 - **Incorrect:** `const model = genai.getGenerativeModel(...)` -> **Correct:**
   `const ai = new GoogleGenAI({apiKey: "..."})`
 - **Incorrect:** `await model.generateContent(...)` -> **Correct:** `await
-  ai.models.generateContent(...)`
+ai.models.generateContent(...)`
 - **Incorrect:** `await model.generateContentStream(...)` -> **Correct:**
   `await ai.models.generateContentStream(...)`
 - **Incorrect:** `const generationConfig = { ... }` -> **Correct:** Pass

@@ -256,28 +256,28 @@ prisma/
 ```typescript
 // src/modules/study/study.actions.ts
 export async function submitAlgorithmFeedbackAction(input: {
-  vocabId: string;
-  relatedVocabId: string;
-  feedbackType: 'HELPFUL' | 'NOT_HELPFUL' | 'INCORRECT';
-  feedbackReason?: string;
+	vocabId: string;
+	relatedVocabId: string;
+	feedbackType: 'HELPFUL' | 'NOT_HELPFUL' | 'INCORRECT';
+	feedbackReason?: string;
 }) {
-  const Schema = z.object({
-    vocabId: z.uuid(),
-    relatedVocabId: z.uuid(),
-    feedbackType: z.enum(['HELPFUL', 'NOT_HELPFUL', 'INCORRECT']),
-    feedbackReason: z.string().max(500).optional(),
-  });
+	const Schema = z.object({
+		vocabId: z.uuid(),
+		relatedVocabId: z.uuid(),
+		feedbackType: z.enum(['HELPFUL', 'NOT_HELPFUL', 'INCORRECT']),
+		feedbackReason: z.string().max(500).optional(),
+	});
 
-  return executeSafeAction(Schema, input, async (data, { userId }) => {
-    if (!userId) throw new Error('Unauthorized');
+	return executeSafeAction(Schema, input, async (data, { userId }) => {
+		if (!userId) throw new Error('Unauthorized');
 
-    const feedback = await AlgorithmFeedbackService.submitFeedback({
-      ...data,
-      userId,
-    });
+		const feedback = await AlgorithmFeedbackService.submitFeedback({
+			...data,
+			userId,
+		});
 
-    return { success: true, data: { id: feedback.id } };
-  });
+		return { success: true, data: { id: feedback.id } };
+	});
 }
 ```
 
@@ -286,38 +286,38 @@ export async function submitAlgorithmFeedbackAction(input: {
 ```typescript
 // src/modules/study/services/algorithm-feedback.service.ts
 export const AlgorithmFeedbackService = {
-  async submitFeedback(input: FeedbackInput): Promise<AlgorithmFeedback> {
-    // Upsert feedback (update if exists, create if new)
-    const feedback = await prisma.algorithmFeedback.upsert({
-      where: {
-        userId_vocabId_relatedVocabId: {
-          userId: input.userId,
-          vocabId: input.vocabId,
-          relatedVocabId: input.relatedVocabId,
-        },
-      },
-      update: {
-        feedbackType: input.feedbackType,
-        feedbackReason: input.feedbackReason,
-        isFlaggedForReview: input.feedbackType === 'INCORRECT',
-      },
-      create: {
-        userId: input.userId,
-        vocabId: input.vocabId,
-        relatedVocabId: input.relatedVocabId,
-        relationshipType: input.relationshipType,
-        feedbackType: input.feedbackType,
-        feedbackReason: input.feedbackReason,
-        isFlaggedForReview: input.feedbackType === 'INCORRECT',
-      },
-    });
+	async submitFeedback(input: FeedbackInput): Promise<AlgorithmFeedback> {
+		// Upsert feedback (update if exists, create if new)
+		const feedback = await prisma.algorithmFeedback.upsert({
+			where: {
+				userId_vocabId_relatedVocabId: {
+					userId: input.userId,
+					vocabId: input.vocabId,
+					relatedVocabId: input.relatedVocabId,
+				},
+			},
+			update: {
+				feedbackType: input.feedbackType,
+				feedbackReason: input.feedbackReason,
+				isFlaggedForReview: input.feedbackType === 'INCORRECT',
+			},
+			create: {
+				userId: input.userId,
+				vocabId: input.vocabId,
+				relatedVocabId: input.relatedVocabId,
+				relationshipType: input.relationshipType,
+				feedbackType: input.feedbackType,
+				feedbackReason: input.feedbackReason,
+				isFlaggedForReview: input.feedbackType === 'INCORRECT',
+			},
+		});
 
-    return feedback;
-  },
+		return feedback;
+	},
 
-  async getUserFeedbackHistory(userId: string) {
-    // Query and aggregate feedback
-  },
+	async getUserFeedbackHistory(userId: string) {
+		// Query and aggregate feedback
+	},
 };
 ```
 
@@ -406,24 +406,24 @@ model AlgorithmFeedback {
   id              String   @id @default(uuid())
   userId          String   @map("user_id")
   user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
+
   vocabId         String   @map("vocab_id")
   vocab           Vocabulary @relation("FeedbackVocab", fields: [vocabId], references: [id], onDelete: Cascade)
-  
+
   relatedVocabId  String   @map("related_vocab_id")
   relatedVocab    Vocabulary @relation("FeedbackRelatedVocab", fields: [relatedVocabId], references: [id], onDelete: Cascade)
-  
+
   relationshipType String  @map("relationship_type") // "etymology", "confusion_pair", "contextual"
   feedbackType     FeedbackType @map("feedback_type")
   feedbackReason   String? @map("feedback_reason") @db.Text
-  
+
   isFlaggedForReview Boolean @default(false) @map("is_flagged_for_review")
   reviewedBy         String?  @map("reviewed_by")
   reviewedAt         DateTime? @map("reviewed_at")
-  
+
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
-  
+
   @@unique([userId, vocabId, relatedVocabId])
   @@index([userId])
   @@index([vocabId])
@@ -445,7 +445,7 @@ Add relations to Vocabulary model:
 ```prisma
 model Vocabulary {
   // ... existing fields ...
-  
+
   feedbackAsVocab      AlgorithmFeedback[] @relation("FeedbackVocab")
   feedbackAsRelated   AlgorithmFeedback[] @relation("FeedbackRelatedVocab")
 }
@@ -458,7 +458,7 @@ Add relation to User model:
 ```prisma
 model User {
   // ... existing fields ...
-  
+
   algorithmFeedback    AlgorithmFeedback[]
 }
 ```

@@ -1,10 +1,10 @@
 # PRODUCT MASTERPLAN v5: WATASHIWA - THE MEMORY-FIRST JAPANESE LEARNING APP
 
-*Confidential for Internal Strategy*  
-*Status:* APPROVED for Execution  
-*Authors:* Senior Product Team & Engineering Leads  
-*Design Compliance:* [Zen Mastery System](./design_system.md)  
-*Revision Notes (Expert Review):* As a product expert with 15+ years in edtech, this update incorporates deep research from user forums (Reddit, Quora, X) and app reviews, highlighting pain points like pitch accent inconsistencies, rote memorization fatigue, and lack of contextual retention. Combined with my suggestions, new USPs focus on AI-driven personalization, emotional mnemonics, and interactive visualization to differentiate from Anki (overwhelming SRS) and Duolingo (shallow engagement). Enhanced Functional Specs with 5 new features; updated Data Architecture for AI support. This positions WatashiWa as a "thinking coach" for serious learners, targeting 20%+ D30 retention.
+_Confidential for Internal Strategy_  
+_Status:_ APPROVED for Execution  
+_Authors:_ Senior Product Team & Engineering Leads  
+_Design Compliance:_ [Zen Mastery System](./design_system.md)  
+_Revision Notes (Expert Review):_ As a product expert with 15+ years in edtech, this update incorporates deep research from user forums (Reddit, Quora, X) and app reviews, highlighting pain points like pitch accent inconsistencies, rote memorization fatigue, and lack of contextual retention. Combined with my suggestions, new USPs focus on AI-driven personalization, emotional mnemonics, and interactive visualization to differentiate from Anki (overwhelming SRS) and Duolingo (shallow engagement). Enhanced Functional Specs with 5 new features; updated Data Architecture for AI support. This positions WatashiWa as a "thinking coach" for serious learners, targeting 20%+ D30 retention.
 
 ---
 
@@ -39,12 +39,12 @@
 
 **Success Metrics (North Star):**
 
-| Metric | Definition | Target (V2 Launch) |
-|--------|------------|--------------------|
-| **D30 Retention** | % users active on Day 30 | >20% (vs. industry 5-8%) |
-| **Intervention Success** | % correct post-AI hint/drill | >90% |
-| **Session Completion** | % started sessions finished | >95% |
-| **Mnemonic Engagement** | Avg. custom/shared per user | >2 per session |
+| Metric                   | Definition                   | Target (V2 Launch)       |
+| ------------------------ | ---------------------------- | ------------------------ |
+| **D30 Retention**        | % users active on Day 30     | >20% (vs. industry 5-8%) |
+| **Intervention Success** | % correct post-AI hint/drill | >90%                     |
+| **Session Completion**   | % started sessions finished  | >95%                     |
+| **Mnemonic Engagement**  | Avg. custom/shared per user  | >2 per session           |
 
 ---
 
@@ -60,9 +60,9 @@ For serious Japanese learners tired of forgetting Kanji and sounding unnatural, 
 - **Safety Net:** Forgetting curve reminders; throttle overload.
 - **Monetization Model (Dojo Tiers):**
 
-  | Tier | Price | Features | Rationale |
-  |------|-------|----------|-----------|
-  | **Ronin (Free)** | $0 | Basic SRS, core vocab | Entry funnel; hooks with teasers. |
+  | Tier               | Price    | Features                                      | Rationale                                        |
+  | ------------------ | -------- | --------------------------------------------- | ------------------------------------------------ |
+  | **Ronin (Free)**   | $0       | Basic SRS, core vocab                         | Entry funnel; hooks with teasers.                |
   | **Samurai (Paid)** | $7.99/mo | AI mnemonics, pitch sim, graphs; 14-day trial | Value in personalization; target 20% conversion. |
 
 **Acquisition Tactics:** Content marketing (YouTube retention hacks, Reddit AMAs); partnerships (iTalki for speaking integration); viral shares of user mnemonics.
@@ -81,16 +81,16 @@ For serious Japanese learners tired of forgetting Kanji and sounding unnatural, 
 - **Layout:** Minimalist; interactive graphs (e.g., tap to explode Kanji).
 - **Micro-Copy Guidelines:**
 
-  | Scenario | Copy Example | Rationale |
-  |----------|--------------|-----------|
-  | Hint Reveal | "Build the link: Person + Tree = ?" | Encourages recall. |
-  | Story Unlock | "Today's absurdity: Cat's adventure." | Fun retention hook. |
-  | Pitch Feedback | "Nail the rise – Try again?" | Gentle correction. |
+  | Scenario       | Copy Example                          | Rationale           |
+  | -------------- | ------------------------------------- | ------------------- |
+  | Hint Reveal    | "Build the link: Person + Tree = ?"   | Encourages recall.  |
+  | Story Unlock   | "Today's absurdity: Cat's adventure." | Fun retention hook. |
+  | Pitch Feedback | "Nail the rise – Try again?"          | Gentle correction.  |
 
-**Onboarding Flow:**  
+**Onboarding Flow:**
 
-1. Baseline quiz (pitch/Kanji).  
-2. AI mnemonic demo.  
+1. Baseline quiz (pitch/Kanji).
+2. AI mnemonic demo.
 3. First graph build.
 
 **Just-in-Time UX:** Faded "Hint" buttons; post-session story rewards; hover for links.
@@ -103,11 +103,11 @@ For serious Japanese learners tired of forgetting Kanji and sounding unnatural, 
 
 **Layers:**
 
-| Layer | Role | Tech | Responsibilities | UX Integration |
-|-------|------|------|------------------|----------------|
-| **Persistence** | Vault | Postgres + JSONB/pgvector | Store graphs, mnemonics, user data. | N/A |
-| **Smart Layer** | AI Orchestrator | Node.js + GPT API | Generate mnemonics/stories, analyze pitch. | Real-time feedback. |
-| **Presentation** | Stage | Next.js | Render visuals, interactions. | Smooth graphs/audios. |
+| Layer            | Role            | Tech                      | Responsibilities                           | UX Integration        |
+| ---------------- | --------------- | ------------------------- | ------------------------------------------ | --------------------- |
+| **Persistence**  | Vault           | Postgres + JSONB/pgvector | Store graphs, mnemonics, user data.        | N/A                   |
+| **Smart Layer**  | AI Orchestrator | Node.js + GPT API         | Generate mnemonics/stories, analyze pitch. | Real-time feedback.   |
+| **Presentation** | Stage           | Next.js                   | Render visuals, interactions.              | Smooth graphs/audios. |
 
 **Data Flow:** User input → AI process → Render/update graph.
 
@@ -119,14 +119,14 @@ For serious Japanese learners tired of forgetting Kanji and sounding unnatural, 
 
 **Key Models:**
 
-| Model | Purpose | Key Fields |
-|-------|---------|------------|
-| **Vocabulary** | Word data | id, tags, han_viet_info (JSONB: radicals, etymology), pitch_pattern, homonym_group_id, mnemonic_payload (JSONB: AI gens). |
-| **CardVariant** | Views | variant_type, content_payload (JSONB: hints, stories). |
-| **UserReview** | State | srs_stage, stability, personal_mnemonic, forgetting_curve (JSONB: remind times). |
-| **KnowledgeGraph** | Links | user_id, nodes (JSONB: words/relations), embeddings (Vector: for similarity). |
-| **ReviewLog** | Analytics | duration, correct, ai_interaction (Bool). |
-| **DailyStudyStat** | Aggregates | daily_story (JSONB), graph_updates (Int). |
+| Model              | Purpose    | Key Fields                                                                                                                |
+| ------------------ | ---------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **Vocabulary**     | Word data  | id, tags, han_viet_info (JSONB: radicals, etymology), pitch_pattern, homonym_group_id, mnemonic_payload (JSONB: AI gens). |
+| **CardVariant**    | Views      | variant_type, content_payload (JSONB: hints, stories).                                                                    |
+| **UserReview**     | State      | srs_stage, stability, personal_mnemonic, forgetting_curve (JSONB: remind times).                                          |
+| **KnowledgeGraph** | Links      | user_id, nodes (JSONB: words/relations), embeddings (Vector: for similarity).                                             |
+| **ReviewLog**      | Analytics  | duration, correct, ai_interaction (Bool).                                                                                 |
+| **DailyStudyStat** | Aggregates | daily_story (JSONB), graph_updates (Int).                                                                                 |
 
 **Optimizations:** GIN on JSONB; vector indexes for graph queries. Forgetting curve algo in Smart Layer.
 
@@ -147,12 +147,12 @@ For serious Japanese learners tired of forgetting Kanji and sounding unnatural, 
 
 - **Matrix:**
 
-  | SRS Stage | Variant | Front | Back | Goal |
-  |-----------|---------|-------|------|------|
-  | New (0) | Standard | Kanji + Audio | Meaning + Etymology | Acquisition |
-  | Learning (1) | Audio_Match | Audio | Choices (Images/Meanings) | Listening |
-  | Review (2-3) | Context_Gap | Sentence with blank | Word (Kanji) | Recall |
-  | Leech (Fail) | Intervention | Confusion pair | Explanation | Repair |
+  | SRS Stage    | Variant      | Front               | Back                      | Goal        |
+  | ------------ | ------------ | ------------------- | ------------------------- | ----------- |
+  | New (0)      | Standard     | Kanji + Audio       | Meaning + Etymology       | Acquisition |
+  | Learning (1) | Audio_Match  | Audio               | Choices (Images/Meanings) | Listening   |
+  | Review (2-3) | Context_Gap  | Sentence with blank | Word (Kanji)              | Recall      |
+  | Leech (Fail) | Intervention | Confusion pair      | Explanation               | Repair      |
 
 ### 6.3 Interference Shield (B: Blocking)
 
@@ -226,6 +226,7 @@ For serious Japanese learners tired of forgetting Kanji and sounding unnatural, 
 - **Interference Breaker:** Binary sort game on errors (split-screen, swipe).
 
 ---
+
 **New/Enhanced USPs:**
 
 ### 6.11 AI Mnemonic Factory (Emotional Encoding)

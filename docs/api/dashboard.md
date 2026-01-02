@@ -5,7 +5,6 @@
 
 ---
 
-
 **File:** `src/modules/dashboard/dashboard.actions.ts`
 
 ### `getDashboardData`
@@ -36,7 +35,6 @@ limit?: number  // Default: 10
 **Returns:** `WisdomWordData[]`
 
 ---
-
 
 ---
 

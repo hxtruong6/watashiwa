@@ -8,4 +8,3 @@ export { default as LandingPageClient } from './landing/LandingPageClient';
 export { default as SocialProofSection } from './landing/SocialProofSection';
 export { default as CountUpNumber } from './animations/CountUpNumber';
 export { default as FadeInOnScroll } from './animations/FadeInOnScroll';
-

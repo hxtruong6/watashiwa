@@ -300,19 +300,15 @@ pnpm pm2:deploy:prod
 
    ```typescript
    'use server';
-   
+
    import { executeSafeAction } from '@/modules/core/action-client';
    import { z } from 'zod';
-   
+
    export async function myAction(input: unknown) {
-     return executeSafeAction(
-       MySchema,
-       input,
-       async (data, { userId }) => {
-         // Implementation
-         return result;
-       }
-     );
+   	return executeSafeAction(MySchema, input, async (data, { userId }) => {
+   		// Implementation
+   		return result;
+   	});
    }
    ```
 

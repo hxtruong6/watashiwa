@@ -6,7 +6,6 @@
 
 ---
 
-
 **Purpose:** Comment voting
 
 **Key Fields:**
@@ -21,7 +20,6 @@
 - `commentId, userId` (Unique)
 
 ---
-
 
 ---
 

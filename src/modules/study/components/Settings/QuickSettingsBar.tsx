@@ -1,11 +1,7 @@
 'use client';
 
 import { useStudyPreferences } from '@/modules/study/store/useStudyPreferences';
-import {
-	FontSizeOutlined,
-	SoundOutlined,
-	TranslationOutlined,
-} from '@ant-design/icons';
+import { FontSizeOutlined, SoundOutlined, TranslationOutlined } from '@ant-design/icons';
 import { Flex, Radio, Switch, Tooltip, Typography, theme } from 'antd';
 import { useTranslations } from 'next-intl';
 
@@ -78,4 +74,3 @@ export function QuickSettingsBar() {
 		</Flex>
 	);
 }
-

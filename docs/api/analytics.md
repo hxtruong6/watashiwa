@@ -5,7 +5,6 @@
 
 ---
 
-
 **File:** `src/modules/analytics/analytics.actions.ts`
 
 ### `logAnalyticsEvent`
@@ -24,7 +23,6 @@ Log analytics event.
 **Returns:** `{ success: boolean, error?: string }`
 
 ---
-
 
 ---
 

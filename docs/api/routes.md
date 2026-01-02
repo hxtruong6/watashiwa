@@ -5,7 +5,6 @@
 
 ---
 
-
 ### `/api/notifications/subscribe`
 
 **Method:** `POST`
@@ -26,7 +25,9 @@
 **Response:**
 
 ```typescript
-{ success: boolean }
+{
+	success: boolean;
+}
 ```
 
 **Behavior:**
@@ -46,16 +47,15 @@
 
 ```typescript
 {
-  success: boolean;
-  processed: number;
-  sent: number;
+	success: boolean;
+	processed: number;
+	sent: number;
 }
 ```
 
 **Note:** Currently commented out, ready for implementation
 
 ---
-
 
 ---
 

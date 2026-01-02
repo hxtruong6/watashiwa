@@ -19,11 +19,13 @@ The security audit identified **6 critical and high-priority security improvemen
 ### 1. Content Security Policy (CSP) - **CRITICAL** ❌ NOT COVERED
 
 **Recommendation:**
+
 - Tighten CSP in Nginx configuration
 - Remove overly permissive `http: https:` wildcards
 - Add specific directives for script-src, style-src, img-src, etc.
 
 **Current Coverage:**
+
 - ❌ No explicit story for CSP implementation
 - ❌ NFRs mention TLS 1.3 (NFR14) but not CSP headers
 - ✅ Architecture mentions security but not CSP specifics
@@ -31,6 +33,7 @@ The security audit identified **6 critical and high-priority security improvemen
 **Gap:** Infrastructure security story needed
 
 **Suggested Story:**
+
 - **Epic 1 or New Security Epic**: "Implement Content Security Policy (CSP) Headers"
 - **Acceptance Criteria**: CSP configured with specific allowed domains, no wildcard protocols, proper directives for Next.js requirements
 
@@ -39,15 +42,18 @@ The security audit identified **6 critical and high-priority security improvemen
 ### 2. HSTS (HTTP Strict Transport Security) - **CRITICAL** ❌ NOT COVERED
 
 **Recommendation:**
+
 - Add HSTS header: `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload`
 
 **Current Coverage:**
+
 - ❌ No explicit story for HSTS implementation
 - ✅ NFR14 mentions TLS 1.3 but not HSTS headers
 
 **Gap:** Infrastructure security header story needed
 
 **Suggested Story:**
+
 - **Epic 1 or New Security Epic**: "Implement HSTS and Security Headers"
 - **Acceptance Criteria**: HSTS header configured, Permissions Policy header added, security headers tested
 
@@ -56,9 +62,11 @@ The security audit identified **6 critical and high-priority security improvemen
 ### 3. Permissions Policy - **MEDIUM** ❌ NOT COVERED
 
 **Recommendation:**
+
 - Add Permissions Policy header to disable unused browser features
 
 **Current Coverage:**
+
 - ❌ Not mentioned in epics or NFRs
 
 **Gap:** Can be combined with HSTS story above
@@ -68,10 +76,12 @@ The security audit identified **6 critical and high-priority security improvemen
 ### 4. Input Validation with Zod - **HIGH PRIORITY** ⚠️ PARTIALLY COVERED
 
 **Recommendation:**
+
 - Install Zod and implement schema validation in all Server Actions
 - Validate UUIDs, strings, complex objects
 
 **Current Coverage:**
+
 - ⚠️ Architecture mentions "Zod schemas" for AI Content Factory (line 161)
 - ⚠️ Architecture mentions "JSON validation (Zod schemas)" for Story Engine
 - ❌ No explicit story for implementing Zod validation in Server Actions
@@ -80,6 +90,7 @@ The security audit identified **6 critical and high-priority security improvemen
 **Gap:** Application-level input validation story needed
 
 **Suggested Story:**
+
 - **Epic 1 or Epic 2**: "Implement Zod Schema Validation for Server Actions"
 - **Acceptance Criteria**: Zod installed, all Server Actions validate inputs with schemas, invalid inputs return clear errors
 
@@ -88,10 +99,12 @@ The security audit identified **6 critical and high-priority security improvemen
 ### 5. Rate Limiting - **MEDIUM** ❌ NOT COVERED
 
 **Recommendation:**
+
 - Implement rate limiting for critical actions (reviews, deck creation)
 - Use `@upstash/ratelimit` or Redis implementation
 
 **Current Coverage:**
+
 - ❌ No explicit story for rate limiting
 - ❌ NFRs mention API capacity (NFR11: 100+ req/sec) but not rate limiting per user
 - ✅ Architecture mentions scalability but not abuse prevention
@@ -99,6 +112,7 @@ The security audit identified **6 critical and high-priority security improvemen
 **Gap:** Rate limiting story needed
 
 **Suggested Story:**
+
 - **Epic 2 or New Security Epic**: "Implement Rate Limiting for Critical Actions"
 - **Acceptance Criteria**: Rate limiting middleware implemented, limits configured for reviews/deck creation, proper error responses
 
@@ -107,11 +121,13 @@ The security audit identified **6 critical and high-priority security improvemen
 ### 6. Sensitive Data Logging - **MEDIUM** ❌ NOT COVERED
 
 **Recommendation:**
+
 - Replace `console.log` with proper logging library (Sentry/Pino)
 - Sanitize logs to prevent sensitive data leakage
 - Disable verbose logs in production
 
 **Current Coverage:**
+
 - ⚠️ Architecture mentions Sentry 10.32.1 for error monitoring
 - ❌ No explicit story for secure logging practices
 - ❌ No story for log sanitization
@@ -119,6 +135,7 @@ The security audit identified **6 critical and high-priority security improvemen
 **Gap:** Secure logging story needed
 
 **Suggested Story:**
+
 - **Epic 6 or New Security Epic**: "Implement Secure Logging Practices"
 - **Acceptance Criteria**: Logging library integrated, sensitive data sanitized, production logs configured, verbose logs disabled in production
 
@@ -127,10 +144,12 @@ The security audit identified **6 critical and high-priority security improvemen
 ### 7. Middleware Security - ⚠️ PARTIALLY COVERED
 
 **Recommendation:**
+
 - Ensure `supabase.auth.getUser()` validates JWT with Auth server
 - Implement strict session validation
 
 **Current Coverage:**
+
 - ✅ Story 1.2 covers authentication and JWT tokens (NFR17)
 - ⚠️ Story mentions JWT but doesn't explicitly validate middleware security
 - ✅ Architecture mentions Supabase Auth integration
@@ -142,9 +161,11 @@ The security audit identified **6 critical and high-priority security improvemen
 ### 8. Role-Based Access Control (RBAC) - ⚠️ PARTIALLY COVERED
 
 **Recommendation:**
+
 - Ensure all sensitive Server Actions wrapped with `requireRole`/`hasRole` checks
 
 **Current Coverage:**
+
 - ⚠️ Architecture mentions `requireRole` and `hasRole` exist
 - ❌ No explicit story for RBAC enforcement across all Server Actions
 - ❌ Stories don't mention RBAC checks in acceptance criteria
@@ -152,6 +173,7 @@ The security audit identified **6 critical and high-priority security improvemen
 **Gap:** RBAC enforcement story needed
 
 **Suggested Story:**
+
 - **Epic 1 or New Security Epic**: "Enforce Role-Based Access Control in Server Actions"
 - **Acceptance Criteria**: All sensitive actions (deleteDeck, updateUser, etc.) wrapped with RBAC checks, unauthorized access returns proper errors
 
@@ -162,14 +184,17 @@ The security audit identified **6 critical and high-priority security improvemen
 ### Option 1: Add Security Stories to Existing Epics
 
 **Epic 1 (User Account & Profile Setup):**
+
 - Add Story 1.8: "Implement Security Headers (CSP, HSTS, Permissions Policy)"
 - Add Story 1.9: "Enforce Role-Based Access Control in Server Actions"
 
 **Epic 2 (Core Semantic Learning Sessions):**
+
 - Add Story 2.14: "Implement Zod Schema Validation for Server Actions"
 - Add Story 2.15: "Implement Rate Limiting for Study Actions"
 
 **Epic 6 (Algorithm Validation & Quality Assurance):**
+
 - Add Story 6.9: "Implement Secure Logging Practices"
 
 ### Option 2: Create New Security Epic
@@ -177,6 +202,7 @@ The security audit identified **6 critical and high-priority security improvemen
 **Epic 7: Security Hardening & Best Practices**
 
 **Stories:**
+
 - Story 7.1: Implement Content Security Policy (CSP) Headers
 - Story 7.2: Implement HSTS and Security Headers
 - Story 7.3: Implement Zod Schema Validation for Server Actions
@@ -186,6 +212,7 @@ The security audit identified **6 critical and high-priority security improvemen
 
 **FRs Covered:** NFR13-NFR24 (Security Requirements)
 **User Outcomes:**
+
 - System protected against XSS, injection, and abuse attacks
 - User data secured with proper input validation
 - Infrastructure hardened with security headers
@@ -195,16 +222,13 @@ The security audit identified **6 critical and high-priority security improvemen
 ## Priority Classification
 
 **🔴 Critical (Immediate):**
+
 1. CSP Implementation (XSS protection)
 2. HSTS Implementation (MITM protection)
 
-**🟠 High Priority:**
-3. Input Validation with Zod (Injection protection)
-4. RBAC Enforcement (Authorization protection)
+**🟠 High Priority:** 3. Input Validation with Zod (Injection protection) 4. RBAC Enforcement (Authorization protection)
 
-**🟡 Medium Priority:**
-5. Rate Limiting (Abuse prevention)
-6. Secure Logging (Data leakage prevention)
+**🟡 Medium Priority:** 5. Rate Limiting (Abuse prevention) 6. Secure Logging (Data leakage prevention)
 
 ---
 
@@ -234,4 +258,3 @@ The security recommendations align with existing NFRs:
 ---
 
 **Assessment:** Security recommendations are valid and should be incorporated into the epics and stories to ensure comprehensive security coverage beyond general NFR statements.
-

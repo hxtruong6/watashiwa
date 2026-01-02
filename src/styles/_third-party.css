@@ -1,0 +1,14 @@
+/* Third-Party Overrides
+ * Isolated styles for third-party integrations
+ * Keep these separate to avoid conflicts with our design system
+ */
+
+/* Sentry Feedback Widget Customization */
+#sentry-feedback {
+	--font-family: 'Inter', sans-serif !important;
+	--accent-background: #1e3a5f !important;
+	--submit-background: #1e3a5f !important;
+	--submit-outline: #1e3a5f !important;
+	--input-outline-focus: #1e3a5f !important;
+	z-index: var(--z-sentry) !important;
+}

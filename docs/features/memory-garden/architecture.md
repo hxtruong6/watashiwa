@@ -7,18 +7,21 @@ The Memory Garden component has been refactored into a **modular, extensible arc
 ## Architecture Principles
 
 ### 1. **Separation of Concerns**
+
 - **Config**: All constants in one place (`config.ts`)
 - **Utils**: Pure functions for calculations (`utils/`)
 - **Hooks**: State management and side effects (`hooks/`)
 - **Components**: Rendering logic only (`components/`)
 
 ### 2. **Defensive Coding**
+
 - All functions validate inputs
 - Handle null/undefined/empty data
 - Filter malformed tiles
 - Graceful WebGL error handling
 
 ### 3. **Performance**
+
 - InstancedMesh for 100+ tiles in single draw call
 - Pre-allocated arrays (no GC pressure)
 - useLayoutEffect for synchronous GPU updates
@@ -74,10 +77,10 @@ export function WordLabel({ tile, position }: { tile: MemoryTile; position: [num
 ```typescript
 // In MemoryGardenMesh.tsx
 {tiles.map((tile, i) => (
-  <WordLabel 
-    key={tile.vocabId} 
-    tile={tile} 
-    position={[visualState.position.x, visualState.position.y + 0.5, visualState.position.z]} 
+  <WordLabel
+    key={tile.vocabId}
+    tile={tile}
+    position={[visualState.position.x, visualState.position.y + 0.5, visualState.position.z]}
   />
 ))}
 ```
@@ -93,11 +96,11 @@ export function WordLabel({ tile, position }: { tile: MemoryTile; position: [num
 ```typescript
 // utils/gradient-colors.ts
 export function calculateGradientColor(
-  tile: MemoryTile,
-  gradientStops: { position: number; color: string }[]
+	tile: MemoryTile,
+	gradientStops: { position: number; color: string }[],
 ): THREE.Color {
-  // Interpolate between gradient stops based on stability
-  // Implementation...
+	// Interpolate between gradient stops based on stability
+	// Implementation...
 }
 ```
 
@@ -106,10 +109,10 @@ export function calculateGradientColor(
 ```typescript
 // In visual-calculations.ts
 export function calculateTileColor(tile: MemoryTile, options: { useGradient?: boolean } = {}) {
-  if (options.useGradient) {
-    return calculateGradientColor(tile, GRADIENT_STOPS);
-  }
-  // ... existing logic
+	if (options.useGradient) {
+		return calculateGradientColor(tile, GRADIENT_STOPS);
+	}
+	// ... existing logic
 }
 ```
 
@@ -122,16 +125,16 @@ export function calculateTileColor(tile: MemoryTile, options: { useGradient?: bo
 ```typescript
 // hooks/animations/growth-animation.ts
 export const growthAnimationPlugin: AnimationPlugin = {
-  name: 'growth',
-  update: (delta, mesh, tileStates) => {
-    // Animate tiles rising from ground
-    for (const state of tileStates) {
-      if (state.animationType === 'growth') {
-        state.animationPhase = Math.min(1, state.animationPhase + delta);
-        // Update height/scale based on phase
-      }
-    }
-  },
+	name: 'growth',
+	update: (delta, mesh, tileStates) => {
+		// Animate tiles rising from ground
+		for (const state of tileStates) {
+			if (state.animationType === 'growth') {
+				state.animationPhase = Math.min(1, state.animationPhase + delta);
+				// Update height/scale based on phase
+			}
+		}
+	},
 };
 ```
 
@@ -140,7 +143,7 @@ export const growthAnimationPlugin: AnimationPlugin = {
 ```typescript
 // In useMemoryGardenAnimation.ts
 if (animationMode === 'growth') {
-  pluginsRef.current = [growthAnimationPlugin];
+	pluginsRef.current = [growthAnimationPlugin];
 }
 ```
 
@@ -153,14 +156,14 @@ if (animationMode === 'growth') {
 ```typescript
 // hooks/useTileHover.ts
 export function useTileHover(meshRef: RefObject<THREE.InstancedMesh>) {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  
-  useFrame(({ raycaster, pointer, camera }) => {
-    // Raycast to find hovered instance
-    // Update hoveredIndex
-  });
-  
-  return hoveredIndex;
+	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+	useFrame(({ raycaster, pointer, camera }) => {
+		// Raycast to find hovered instance
+		// Update hoveredIndex
+	});
+
+	return hoveredIndex;
 }
 ```
 
@@ -189,16 +192,19 @@ All visual parameters are in `config.ts`. To change:
 ## Performance Considerations
 
 ### Memory
+
 - **Pre-allocated arrays**: `Float32Array` for colors (no GC)
 - **Reused objects**: `dummy` Object3D, `colorScale` Color
 - **Limit tiles**: 100 max (prevents memory bloat)
 
 ### CPU
+
 - **Single effect**: All updates batched in one `useLayoutEffect`
 - **Memoization**: Expensive calculations cached
 - **Early returns**: Skip work when data invalid
 
 ### GPU
+
 - **InstancedMesh**: 100 tiles = 1 draw call (not 100)
 - **Vertex colors**: No texture lookups needed
 - **Buffer updates**: Only when data changes
@@ -208,6 +214,7 @@ All visual parameters are in `config.ts`. To change:
 ## Testing Strategy
 
 ### Unit Tests (Utils)
+
 ```typescript
 // utils/visual-calculations.test.ts
 describe('calculateTileHeight', () => {
@@ -219,13 +226,14 @@ describe('calculateTileHeight', () => {
 ```
 
 ### Integration Tests (Hooks)
+
 ```typescript
 // hooks/useMemoryGardenMesh.test.tsx
 describe('useMemoryGardenMesh', () => {
-  it('samples tiles correctly', () => {
-    const { result } = renderHook(() => useMemoryGardenMesh({ data: mockData }));
-    expect(result.current.tileCount).toBeLessThanOrEqual(100);
-  });
+	it('samples tiles correctly', () => {
+		const { result } = renderHook(() => useMemoryGardenMesh({ data: mockData }));
+		expect(result.current.tileCount).toBeLessThanOrEqual(100);
+	});
 });
 ```
 
@@ -234,23 +242,26 @@ describe('useMemoryGardenMesh', () => {
 ## Migration Guide
 
 ### Before (Monolithic)
+
 ```typescript
 // Everything in one 300-line file
 function MemoryGardenMesh() {
-  // 200 lines of logic mixed together
+	// 200 lines of logic mixed together
 }
 ```
 
 ### After (Modular)
+
 ```typescript
 // Thin component
 function MemoryGardenMesh() {
-  const { meshRef, tileCount } = useMemoryGardenMesh({ data });
-  // 20 lines of rendering
+	const { meshRef, tileCount } = useMemoryGardenMesh({ data });
+	// 20 lines of rendering
 }
 ```
 
 **Benefits**:
+
 - ✅ Easy to test (utils are pure functions)
 - ✅ Easy to extend (add new hooks/components)
 - ✅ Easy to maintain (single responsibility)
@@ -261,24 +272,28 @@ function MemoryGardenMesh() {
 ## Future Features Roadmap
 
 ### Phase 1: Core (✅ Done)
+
 - [x] Modular architecture
 - [x] Smart sampling
 - [x] Enhanced contrast
 - [x] Dramatic heights
 
 ### Phase 2: Animations (Ready)
+
 - [ ] Per-tile growth animation
 - [ ] Hover effects
 - [ ] Repair transitions
 - [ ] Pulse for leeches
 
 ### Phase 3: Labels (Ready)
+
 - [ ] Text3D word labels
 - [ ] Tooltips on hover
 - [ ] Column grouping
 - [ ] Stats overlay
 
 ### Phase 4: Advanced (Ready)
+
 - [ ] Gradient materials
 - [ ] Custom shaders
 - [ ] Particle effects
@@ -327,15 +342,16 @@ export const GARDEN_CONFIG = {
 ## Performance Benchmarks
 
 **Current Performance** (100 tiles):
+
 - **FPS**: ~60 FPS on modern hardware
 - **Memory**: ~2MB (geometry + colors)
 - **Draw Calls**: 1 (InstancedMesh)
 - **Update Time**: <16ms (60fps target)
 
 **Scalability**:
+
 - 200 tiles: ~45 FPS
 - 500 tiles: ~30 FPS
 - 1000 tiles: ~20 FPS (not recommended)
 
 **Recommendation**: Keep at 100 tiles for optimal UX.
-

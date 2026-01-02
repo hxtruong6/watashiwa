@@ -37,15 +37,15 @@ const [cameraTarget, setCameraTarget] = useState<[number, number, number] | null
 
 // Smooth camera interpolation
 useFrame(() => {
-  if (cameraTarget) {
-    camera.position.lerp(cameraTarget, 0.05);
-  }
+	if (cameraTarget) {
+		camera.position.lerp(cameraTarget, 0.05);
+	}
 });
 
 // Click handler with raycasting
 const handleTileClick = (tile: MemoryTile) => {
-  const position = getTileWorldPosition(tile);
-  setCameraTarget([position.x + 5, position.y + 5, position.z + 5]);
+	const position = getTileWorldPosition(tile);
+	setCameraTarget([position.x + 5, position.y + 5, position.z + 5]);
 };
 ```
 
@@ -140,29 +140,29 @@ const filteredTiles = useMemo(() => {
 ```typescript
 // Animation system (already in useMemoryGardenAnimation)
 const repairAnimationPlugin: AnimationPlugin = {
-  update: (delta, mesh, states) => {
-    // Smooth color transition: Red → Yellow → Green
-    const progress = Math.min(1, elapsed / REPAIR_DURATION);
-    const color = lerpColor(RED, GREEN, easeInOutCubic(progress));
-    
-    // Height animation: -0.5 → 0.15 → 0.8
-    const height = lerp(-0.5, 0.8, progress);
-    
-    // Particle effect on completion
-    if (progress >= 1) {
-      spawnParticles(tilePosition, 'success');
-    }
-  },
+	update: (delta, mesh, states) => {
+		// Smooth color transition: Red → Yellow → Green
+		const progress = Math.min(1, elapsed / REPAIR_DURATION);
+		const color = lerpColor(RED, GREEN, easeInOutCubic(progress));
+
+		// Height animation: -0.5 → 0.15 → 0.8
+		const height = lerp(-0.5, 0.8, progress);
+
+		// Particle effect on completion
+		if (progress >= 1) {
+			spawnParticles(tilePosition, 'success');
+		}
+	},
 };
 
 // Achievement system
 const checkAchievements = (data: MemoryGardenData) => {
-  if (data.leechCount === 0) {
-    showBadge('no-leeches', 'Perfect Garden!');
-  }
-  if (data.masteredCount >= 100) {
-    showBadge('century', '100 Mastered!');
-  }
+	if (data.leechCount === 0) {
+		showBadge('no-leeches', 'Perfect Garden!');
+	}
+	if (data.masteredCount >= 100) {
+		showBadge('century', '100 Mastered!');
+	}
 };
 ```
 
@@ -202,33 +202,33 @@ const checkAchievements = (data: MemoryGardenData) => {
 ```typescript
 // Add action handlers
 const handleTileClick = async (tile: MemoryTile) => {
-  if (tile.isLeech) {
-    // Show intervention modal
-    setInterventionModal({
-      tile,
-      action: 'review',
-      dueCount: getDueCountForTile(tile),
-    });
-  } else {
-    // Navigate to word detail
-    router.push(`/vocabulary/${tile.vocabId}`);
-  }
+	if (tile.isLeech) {
+		// Show intervention modal
+		setInterventionModal({
+			tile,
+			action: 'review',
+			dueCount: getDueCountForTile(tile),
+		});
+	} else {
+		// Navigate to word detail
+		router.push(`/vocabulary/${tile.vocabId}`);
+	}
 };
 
 // Bulk selection
 const [selectedTiles, setSelectedTiles] = useState<Set<string>>(new Set());
 
 const handleBulkReview = async () => {
-  const tileIds = Array.from(selectedTiles);
-  await startReviewSession({ vocabIds: tileIds, mode: 'intervention' });
+	const tileIds = Array.from(selectedTiles);
+	await startReviewSession({ vocabIds: tileIds, mode: 'intervention' });
 };
 
 // Smart suggestions
 const suggestions = useMemo(() => {
-  return tiles
-    .filter(t => t.dueInHours <= 24 && !t.isLeech)
-    .sort((a, b) => a.dueInHours - b.dueInHours)
-    .slice(0, 5);
+	return tiles
+		.filter((t) => t.dueInHours <= 24 && !t.isLeech)
+		.sort((a, b) => a.dueInHours - b.dueInHours)
+		.slice(0, 5);
 }, [tiles]);
 ```
 
@@ -268,43 +268,43 @@ const suggestions = useMemo(() => {
 ```typescript
 // User preferences store (Zustand)
 interface GardenPreferences {
-  visualPreset: 'minimalist' | 'detailed' | 'colorblind';
-  tileDensity: number; // 50-200
-  colorScheme: 'matcha' | 'ocean' | 'sunset' | 'custom';
-  accessibility: {
-    highContrast: boolean;
-    reducedMotion: boolean;
-  };
+	visualPreset: 'minimalist' | 'detailed' | 'colorblind';
+	tileDensity: number; // 50-200
+	colorScheme: 'matcha' | 'ocean' | 'sunset' | 'custom';
+	accessibility: {
+		highContrast: boolean;
+		reducedMotion: boolean;
+	};
 }
 
 // Apply preferences
 const applyPreferences = (prefs: GardenPreferences) => {
-  const config = { ...GARDEN_CONFIG };
-  
-  if (prefs.visualPreset === 'minimalist') {
-    config.maxTilesDisplay = 50;
-    config.tileSpacing = 2.0;
-  }
-  
-  if (prefs.colorScheme === 'ocean') {
-    config.colors.mastered = '#2E86AB';
-    config.colors.leech = '#A23B72';
-  }
-  
-  if (prefs.accessibility.highContrast) {
-    config.colors.leech = '#000000';
-    config.colors.mastered = '#FFFFFF';
-  }
-  
-  return config;
+	const config = { ...GARDEN_CONFIG };
+
+	if (prefs.visualPreset === 'minimalist') {
+		config.maxTilesDisplay = 50;
+		config.tileSpacing = 2.0;
+	}
+
+	if (prefs.colorScheme === 'ocean') {
+		config.colors.mastered = '#2E86AB';
+		config.colors.leech = '#A23B72';
+	}
+
+	if (prefs.accessibility.highContrast) {
+		config.colors.leech = '#000000';
+		config.colors.mastered = '#FFFFFF';
+	}
+
+	return config;
 };
 
 // Reduced motion
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (prefersReducedMotion || prefs.accessibility.reducedMotion) {
-  // Disable auto-rotate, animations
-  autoRotate = false;
-  animationMode = 'static';
+	// Disable auto-rotate, animations
+	autoRotate = false;
+	animationMode = 'static';
 }
 ```
 

@@ -5,7 +5,6 @@
 
 ---
 
-
 **File:** `src/modules/vocabulary/vocabulary.actions.ts`
 
 ### `getPendingContent`
@@ -21,7 +20,9 @@ Approve vocabulary content.
 **Input:**
 
 ```typescript
-{ vocabId: string }
+{
+	vocabId: string;
+}
 ```
 
 **Returns:** `{ success: boolean, error?: string }`
@@ -33,7 +34,9 @@ Verify vocabulary content (admin).
 **Input:**
 
 ```typescript
-{ vocabId: string }
+{
+	vocabId: string;
+}
 ```
 
 **Returns:** `{ success: boolean, error?: string }`
@@ -45,7 +48,9 @@ Reject vocabulary content.
 **Input:**
 
 ```typescript
-{ vocabId: string }
+{
+	vocabId: string;
+}
 ```
 
 **Returns:** `{ success: boolean, error?: string }`
@@ -70,11 +75,11 @@ Create new vocabulary.
 
 ```typescript
 {
-  deckId: string;
-  wordSurface: string;
-  wordReading: string;
-  meanings: Record<string, string[]>;
-  // ... other fields
+	deckId: string;
+	wordSurface: string;
+	wordReading: string;
+	meanings: Record<string, string[]>;
+	// ... other fields
 }
 ```
 
@@ -87,7 +92,10 @@ Update vocabulary content.
 **Input:**
 
 ```typescript
-{ id: string; data: Partial<Vocabulary> }
+{
+	id: string;
+	data: Partial<Vocabulary>;
+}
 ```
 
 **Returns:** `{ success: boolean, data?: Vocabulary, error?: string }`
@@ -99,7 +107,9 @@ Delete vocabulary (soft delete).
 **Input:**
 
 ```typescript
-{ id: string }
+{
+	id: string;
+}
 ```
 
 **Returns:** `{ success: boolean, error?: string }`
@@ -111,13 +121,14 @@ Get confusion pairs for vocabulary.
 **Input:**
 
 ```typescript
-{ vocabId: string }
+{
+	vocabId: string;
+}
 ```
 
 **Returns:** `ConfusionPair[]`
 
 ---
-
 
 ---
 

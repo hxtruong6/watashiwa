@@ -155,16 +155,16 @@ modules/{feature}/
 
 ### Key Models
 
-| Model | Purpose | Key Features |
-|-------|---------|--------------|
-| `User` | User accounts | Preferences, streaks, auth providers |
-| `Vocabulary` | Core content | Kanji, readings, meanings, pitch patterns |
-| `CardVariant` | Dynamic card views | Variant types, content payloads (JSONB) |
-| `UserReview` | SRS state | FSRS algorithm state, next review dates |
-| `ConfusionPair` | Interference shield | Links confusing word pairs |
-| `Story` | Active priming | Context stories for vocabulary units |
-| `Deck` | Content organization | Groups vocabulary by topic/level |
-| `Course` | Learning paths | Collections of decks |
+| Model           | Purpose              | Key Features                              |
+| --------------- | -------------------- | ----------------------------------------- |
+| `User`          | User accounts        | Preferences, streaks, auth providers      |
+| `Vocabulary`    | Core content         | Kanji, readings, meanings, pitch patterns |
+| `CardVariant`   | Dynamic card views   | Variant types, content payloads (JSONB)   |
+| `UserReview`    | SRS state            | FSRS algorithm state, next review dates   |
+| `ConfusionPair` | Interference shield  | Links confusing word pairs                |
+| `Story`         | Active priming       | Context stories for vocabulary units      |
+| `Deck`          | Content organization | Groups vocabulary by topic/level          |
+| `Course`        | Learning paths       | Collections of decks                      |
 
 ### Database Schema Location
 
@@ -193,14 +193,10 @@ import { executeSafeAction } from '@/modules/core/action-client';
 import { z } from 'zod';
 
 export async function submitReview(input: { cardId: string; rating: number }) {
-  return executeSafeAction(
-    ReviewSchema,
-    input,
-    async (data, { userId }) => {
-      // Business logic here
-      return result;
-    }
-  );
+	return executeSafeAction(ReviewSchema, input, async (data, { userId }) => {
+		// Business logic here
+		return result;
+	});
 }
 ```
 

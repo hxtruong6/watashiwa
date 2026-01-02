@@ -6,7 +6,6 @@
 
 ---
 
-
 **Purpose:** Core vocabulary content (The Anchor)
 
 **Key Fields:**
@@ -57,11 +56,13 @@
 - `examples` (JSONB) - Array of example objects
 
   ```typescript
-  [{
-    sentence: "...",
-    translation: { vi: "...", en: "..." },
-    audio: "..."
-  }]
+  [
+  	{
+  		sentence: '...',
+  		translation: { vi: '...', en: '...' },
+  		audio: '...',
+  	},
+  ];
   ```
 
 **Media:**
@@ -92,7 +93,6 @@
 - `homonymGroupId`
 
 ---
-
 
 ---
 

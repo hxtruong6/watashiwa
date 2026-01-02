@@ -6,7 +6,6 @@
 
 ---
 
-
 **Purpose:** Active priming (The Context)
 
 **Key Fields:**
@@ -36,7 +35,6 @@
 - `contentStatus`
 
 ---
-
 
 ---
 

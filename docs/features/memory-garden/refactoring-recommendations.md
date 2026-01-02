@@ -9,14 +9,17 @@ This document outlines critical improvements needed for the Memory Garden 3D vis
 ## 🔴 Critical Issues (High Priority)
 
 ### 1. **setTimeout Anti-Pattern** ⚠️
+
 **Location:** `MemoryGardenMesh.tsx` (7 occurrences)
 
 **Problem:**
+
 ```typescript
 setTimeout(() => setGradientMaterial(null), 0);
 ```
 
 **Issues:**
+
 - Memory leaks: Timers not cleaned up
 - Race conditions: Timers can fire after unmount
 - Masks React warnings instead of fixing root cause
@@ -29,9 +32,11 @@ setTimeout(() => setGradientMaterial(null), 0);
 ---
 
 ### 2. **Inefficient Dependency Arrays** ⚠️
+
 **Location:** `useMemoryGardenMesh.ts:205-215`
 
 **Problem:**
+
 ```typescript
 }, [
   tiles,
@@ -47,6 +52,7 @@ setTimeout(() => setGradientMaterial(null), 0);
 ```
 
 **Issues:**
+
 - Causes unnecessary re-renders
 - Arrays recreated on every render but contain same references
 - `dummy` Object3D is stable but included in deps
@@ -58,14 +64,17 @@ setTimeout(() => setGradientMaterial(null), 0);
 ---
 
 ### 3. **Unsafe Type Assertions** ⚠️
+
 **Location:** `MemoryGardenMesh.tsx:253`
 
 **Problem:**
+
 ```typescript
 const intersect = event as unknown as { instanceId?: number };
 ```
 
 **Issues:**
+
 - No runtime validation
 - Could access undefined properties
 - No bounds checking on `instanceId`
@@ -79,13 +88,15 @@ const intersect = event as unknown as { instanceId?: number };
 ## 🟡 Code Quality Issues (Medium Priority)
 
 ### 4. **DRY Violation: Duplicate Cleanup Logic**
+
 **Location:** `MemoryGardenMesh.tsx` (7 duplicate blocks)
 
 **Problem:** Same cleanup pattern repeated 7 times:
+
 ```typescript
 if (gradientMaterialRef.current) {
-  gradientMaterialRef.current.dispose();
-  gradientMaterialRef.current = null;
+	gradientMaterialRef.current.dispose();
+	gradientMaterialRef.current = null;
 }
 setTimeout(() => setGradientMaterial(null), 0);
 ```
@@ -97,15 +108,18 @@ setTimeout(() => setGradientMaterial(null), 0);
 ---
 
 ### 5. **Incomplete Validation**
+
 **Location:** `MemoryGardenMesh.tsx:135`
 
 **Problem:**
+
 ```typescript
 // Only validates first 9 elements (3 tiles)
 for (let i = 0; i < Math.min(baseColors.length, 9); i += 3) {
 ```
 
 **Issues:**
+
 - Only checks 3 tiles out of potentially thousands
 - Invalid colors in other tiles go undetected
 - Could cause shader compilation errors
@@ -117,6 +131,7 @@ for (let i = 0; i < Math.min(baseColors.length, 9); i += 3) {
 ---
 
 ### 6. **Redundant Attribute Checks**
+
 **Location:** `MemoryGardenMesh.tsx:111-112` and `169-170`
 
 **Problem:** Attributes checked twice in same effect
@@ -128,6 +143,7 @@ for (let i = 0; i < Math.min(baseColors.length, 9); i += 3) {
 ---
 
 ### 7. **Unused Exported Function**
+
 **Location:** `gradient-shader.ts:84`
 
 **Problem:** `setupGradientAttributes` is exported but never used
@@ -141,14 +157,17 @@ for (let i = 0; i < Math.min(baseColors.length, 9); i += 3) {
 ## 🟢 Performance Optimizations (Low Priority)
 
 ### 8. **Data Hash Too Simple**
+
 **Location:** `MemoryGardenMesh.tsx:88`
 
 **Problem:**
+
 ```typescript
 const dataHash = `${baseColors.length}-${topColors.length}-${tileCount}-${GARDEN_CONFIG.features.enableGradients}`;
 ```
 
 **Issues:**
+
 - Only checks lengths, not content
 - Could miss actual data changes
 - Or trigger unnecessary updates when data unchanged
@@ -158,6 +177,7 @@ const dataHash = `${baseColors.length}-${topColors.length}-${tileCount}-${GARDEN
 ---
 
 ### 9. **No Memoization of Expensive Calculations**
+
 **Location:** Various calculation functions
 
 **Problem:** Color calculations run on every render
@@ -170,15 +190,15 @@ const dataHash = `${baseColors.length}-${topColors.length}-${tileCount}-${GARDEN
 
 ## 📊 Impact Assessment
 
-| Issue | Priority | Impact | Effort | Risk |
-|-------|----------|--------|--------|------|
-| setTimeout anti-pattern | High | Medium | Low | Low |
-| Dependency arrays | High | High | Low | Low |
-| Type safety | Medium | Medium | Low | Low |
-| DRY violation | Medium | Low | Low | None |
-| Validation | Medium | Medium | Medium | Low |
-| Redundant checks | Low | Low | Low | None |
-| Unused code | Low | None | Low | None |
+| Issue                   | Priority | Impact | Effort | Risk |
+| ----------------------- | -------- | ------ | ------ | ---- |
+| setTimeout anti-pattern | High     | Medium | Low    | Low  |
+| Dependency arrays       | High     | High   | Low    | Low  |
+| Type safety             | Medium   | Medium | Low    | Low  |
+| DRY violation           | Medium   | Low    | Low    | None |
+| Validation              | Medium   | Medium | Medium | Low  |
+| Redundant checks        | Low      | Low    | Low    | None |
+| Unused code             | Low      | None   | Low    | None |
 
 ---
 
@@ -214,6 +234,7 @@ const dataHash = `${baseColors.length}-${topColors.length}-${tileCount}-${GARDEN
 ## 🔍 Testing Recommendations
 
 After refactoring, test:
+
 1. Memory leak detection (Chrome DevTools)
 2. Performance with 1000+ tiles
 3. Error scenarios (invalid data, missing attributes)
@@ -224,4 +245,3 @@ After refactoring, test:
 
 **Last Updated:** 2024
 **Reviewed By:** Senior Staff Engineer
-

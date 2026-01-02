@@ -546,15 +546,15 @@ await loginPage.login(testUser.email, testUser.password);
 ```typescript
 // ✅ Good (recommended)
 const test = base.extend({
-  authenticatedPage: async ({ page }, use) => {
-    const user = createTestUser();
-    await loginPage.login(user.email, user.password);
-    await use(page);
-  },
+	authenticatedPage: async ({ page }, use) => {
+		const user = createTestUser();
+		await loginPage.login(user.email, user.password);
+		await use(page);
+	},
 });
 
 test('user can access dashboard', async ({ authenticatedPage }) => {
-  // Test starts already logged in
+	// Test starts already logged in
 });
 ```
 

@@ -25,7 +25,7 @@ We will **ACCELERATE** "Interference Shield" (Intervention) -> Phase 2.
 
 ## 2. PHASE 2 OBJECTIVE: "The Guardian"
 
-**The Theory:** The system must *know* when you are confused and *intervene* proactively.
+**The Theory:** The system must _know_ when you are confused and _intervene_ proactively.
 **The Deliverable:** A functional "Intervention Mode" that triggers using **Real DB Data**.
 
 ---
@@ -51,12 +51,12 @@ We update `study.service.ts` (currently pure FSRS) and `study.actions.ts` (the D
 1. **Fetch:** `await prisma.userReview.findMany(...)`.
 2. **Review Check:** Logic detects if a result is `Outcome.INCORRECT`.
 3. **Smart Lookahead:**
-    - Query `prisma.confusionPair.findFirst({ where: { vocabId1: currentVocabId } })`.
-    - OR check `vocabulary.homonymGroupId`.
+   - Query `prisma.confusionPair.findFirst({ where: { vocabId1: currentVocabId } })`.
+   - OR check `vocabulary.homonymGroupId`.
 4. **Intervention Trigger:**
-    - If a partner exists (e.g., Vocab B) AND Vocab B is in `UserReview` (User has seen it),
-    - Then **Inject** `InterventionCard` (Type: `INTERVENTION`) into the session queue.
-    - **CRITICAL DATA CHECK:** Ensure Partner Vocab is `PUBLISHED` and `deletedAt` is NULL. Use `findFirst` with strict status filters. If invalid, abort intervention.
+   - If a partner exists (e.g., Vocab B) AND Vocab B is in `UserReview` (User has seen it),
+   - Then **Inject** `InterventionCard` (Type: `INTERVENTION`) into the session queue.
+   - **CRITICAL DATA CHECK:** Ensure Partner Vocab is `PUBLISHED` and `deletedAt` is NULL. Use `findFirst` with strict status filters. If invalid, abort intervention.
 
 ### 3.3 UI Layer: The "Comparison Face"
 
@@ -77,7 +77,7 @@ We implement the `InterventionCard` variant in the `CardShell`.
 ### Milestone 2.1: Data Verification & Access
 
 - [ ] **Verify Data:** Check if `ConfusionPair` or `homonymGroupId` is populated for "Hashi/Hashi" or "Iku/Kuru" in the 50-unit DB.
-  - *Fallback:* If empty, write a script `scripts/seed_confusions.ts` to link them based on `data_sample.json`.
+  - _Fallback:_ If empty, write a script `scripts/seed_confusions.ts` to link them based on `data_sample.json`.
 - [ ] **Study Action:** Update `fetchSession` to return **Real Data** from `prisma`.
   - usage of `study.mapper.ts` to convert Prisma -> `SmartCard`.
 
@@ -102,24 +102,27 @@ You are right. A "Smart" features needs a "Smart" definition of success.
 
 ### 5.1 User Journey (Entry Points)
 
-"User Journey" is the correct term. Critically, **The Intervention is NOT a destination.** It is a *trap* that activates during normal study.
+"User Journey" is the correct term. Critically, **The Intervention is NOT a destination.** It is a _trap_ that activates during normal study.
 
 **Entry Point A: Global Review (Dashboard)**
+
 > User clicks "Review Due (20)" on Dashboard.
-> *Context:* User expects mixed topics. Intervention triggers naturally.
+> _Context:_ User expects mixed topics. Intervention triggers naturally.
 
 **Entry Point B: Deck Study (Deck Page)**
+
 > User clicks "Study Unit 5".
-> *Context:* User is focused on specific topics. Intervention triggers ONLY if the confusing pair is relevant to Unit 5 words (or past knowledge).
+> _Context:_ User is focused on specific topics. Intervention triggers ONLY if the confusing pair is relevant to Unit 5 words (or past knowledge).
 
 **Entry Point C: Profile (Stats)**
-> *Passive Access:* User views "Confusion Matrix" (Future V3) to see what words they mixed up. *Not active in Phase 2.*
+
+> _Passive Access:_ User views "Confusion Matrix" (Future V3) to see what words they mixed up. _Not active in Phase 2._
 
 **The Journey Map:**
 
 1. **Normalcy:** User is in the "Flow State" (Reviewing standard cards).
 2. **Disruption:** User makes a specific error (Confuses Hashi A for Hashi B).
-3. **Intervention:** The System *pauses* the flow and inserts the Split Screen.
+3. **Intervention:** The System _pauses_ the flow and inserts the Split Screen.
 4. **Resolution:** User resolves the conflict ("Aha!").
 5. **Return:** User returns to "Flow State".
 
@@ -133,19 +136,20 @@ graph TD
     C -- Yes --> E{Check 2: Has User seen Partner 'Kuru'?}
     E -- No --> D
     E -- Yes --> F[TRIGGER INTERVENTION]
-    
+
     F --> G[Next Card is INTERVENTION_FACE]
     G --> H[Display Split Screen: Iku vs Kuru]
     H --> I[User taps correct image for 'Iku']
     I -->|Correct| J[Show 'Aha!' Explanation]
     I -->|Incorrect| K[FAIL OPEN: Show Feedback Modal immediately (No Retry Loop)]
-    
+
     J --> L[Resume Standard Session]
 ```
 
 ### 5.3 Scenarios (Gherkin Style)
 
 **Scenario 1: The "Hashi" Trap (Triggering the Shield)**
+
 > **Given** I have learned both "Hashi" (Bridge) and "Hashi" (Chopsticks),
 > **And** I am currently reviewing "Hashi" (Bridge),
 > **When** I answer INCORRECTLY,
@@ -153,15 +157,16 @@ graph TD
 > **And** I should hear the audio for "Bridge" clearly played.
 
 **Scenario 2: The "Safety" Check (No Ambush)**
+
 > **Given** I have learned "Hashi" (Bridge) but NOT "Hashi" (Chopsticks),
 > **When** I answer INCORRECTLY on Bridge,
 > **Then** I should see the standard "Back Face" (Correction),
 > **And** I should NOT see the Comparison Mode.
-> *(Reasoning: Comparing against an unknown word causes confusion, not clarity.)*
+> _(Reasoning: Comparing against an unknown word causes confusion, not clarity.)_
 
 ### 5.4 Acceptance Criteria (The "Definition of Done")
 
-1. **UX - Transition:** The transition to the Intervention Card must happen *instantaneously* (< 200ms). It should feel like the app is saying "Wait a second..."
+1. **UX - Transition:** The transition to the Intervention Card must happen _instantaneously_ (< 200ms). It should feel like the app is saying "Wait a second..."
 2. **UX - Audio:** The Intervention Face must have a "Replay Audio" button that is easy to tap.
 3. **Data - Accuracy:** The Pitch Accent SVG line must correctly visualize the difference (e.g., High-Low vs Low-High) for at least the seeded homonyms.
 4. **System - Rate Limit:** If I fail the same word twice in a session, show Intervention ONLY the first time.
@@ -189,7 +194,7 @@ Since we are running with a large dataset (50 Units ~3000+ words), we must add t
 
 - **Problem:** 50 units = Lots of audio files.
 - **Default**: Using TTS for audio.
-- **Fix:** The frontend `StandardFace` must lazy-load audio, or use a pre-fetch link for the *next* 5 cards in the queue.
+- **Fix:** The frontend `StandardFace` must lazy-load audio, or use a pre-fetch link for the _next_ 5 cards in the queue.
 
 ---
 
@@ -199,11 +204,11 @@ Since we are running with a large dataset (50 Units ~3000+ words), we must add t
 
 We must measure if this feature actually helps.
 
-| Event Name | Trigger | Properties |
-| :--- | :--- | :--- |
-| `INTERVENTION_TRIGGERED` | Smart Layer inserts card | `vocab_id`, `homonym_group_id` |
-| `INTERVENTION_RESOLVED` | User completes the pair split | `outcome` (Correct/Wrong), `duration_ms` |
-| `INTERVENTION_IGNORED` | Rate limit prevented trigger | `vocab_id` |
+| Event Name               | Trigger                       | Properties                               |
+| :----------------------- | :---------------------------- | :--------------------------------------- |
+| `INTERVENTION_TRIGGERED` | Smart Layer inserts card      | `vocab_id`, `homonym_group_id`           |
+| `INTERVENTION_RESOLVED`  | User completes the pair split | `outcome` (Correct/Wrong), `duration_ms` |
+| `INTERVENTION_IGNORED`   | Rate limit prevented trigger  | `vocab_id`                               |
 
 **KPI:** If `INTERVENTION_RESOLVED.outcome == Wrong` > 50%, our UI is confusing and needs redesign.
 
@@ -212,11 +217,11 @@ We must measure if this feature actually helps.
 We are modifying the live session queue. This is high risk.
 
 1. **Feature Flag:** `NEXT_PUBLIC_ENABLE_INTERVENTION=true`.
-    - If `false`, `detectInterference()` returns `null`.
+   - If `false`, `detectInterference()` returns `null`.
 2. **Circuit Breaker:**
-    - If the API fails to fetch comparison data (e.g., timeout), **fail open** (just show the normal card). Do not crash the session.
+   - If the API fails to fetch comparison data (e.g., timeout), **fail open** (just show the normal card). Do not crash the session.
 3. **Queue Integrity:**
-    - The "Progress Bar" (e.g., 10/20) must dynamically update to 10/21 when an intervention is injected.
+   - The "Progress Bar" (e.g., 10/20) must dynamically update to 10/21 when an intervention is injected.
 
 ### 7.3 Visual Fallbacks (Edge Cases)
 
@@ -224,9 +229,9 @@ The 50-Unit DB is imperfect.
 
 - **Scenario:** Item A has an image, Item B does not.
 - **Handling:**
-  - *Ideal:* Show images for both.
-  - *Fallback:* If one is missing, show **LARGE TEXT** (Kanji/Kana) for both.
-  - *Rule:* Never show a "Broken Image" icon. Symmetric UX is critical for fair comparison.
+  - _Ideal:_ Show images for both.
+  - _Fallback:_ If one is missing, show **LARGE TEXT** (Kanji/Kana) for both.
+  - _Rule:_ Never show a "Broken Image" icon. Symmetric UX is critical for fair comparison.
 
 ---
 

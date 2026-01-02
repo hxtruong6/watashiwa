@@ -6,7 +6,6 @@
 
 ---
 
-
 **Purpose:** Learning paths (collections of decks)
 
 **Key Fields:**
@@ -34,7 +33,6 @@
 - `slug`
 
 ---
-
 
 ---
 

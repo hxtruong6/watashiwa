@@ -6,7 +6,6 @@
 
 ---
 
-
 **Purpose:** Content reporting system
 
 **Key Fields:**
@@ -41,7 +40,6 @@
 - `status`
 
 ---
-
 
 ---
 

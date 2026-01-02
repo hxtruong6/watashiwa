@@ -6,7 +6,6 @@
 
 ---
 
-
 **Purpose:** Junction table for Course ↔ Deck relationship
 
 **Key Fields:**
@@ -23,7 +22,6 @@
 - `deckId`
 
 ---
-
 
 ---
 

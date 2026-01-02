@@ -14,24 +14,24 @@ For a Next.js app, you need libraries that play well with React's hydration and 
 
 #### A. The 3D Engine: `React Three Fiber` (R3F)
 
-* **Why:** You cannot sell a "Cube" architecture without a literal 3D cube. R3F is the standard for WebGL in React.
-* **Use Case:** The Hero section. A beautiful, glass-like or washi-paper-textured cube that floats.
-* **Helpers:** `Reflect` and `softShadows` from `@react-three/drei` (a helper library) to make it look premium, not like a video game.
+- **Why:** You cannot sell a "Cube" architecture without a literal 3D cube. R3F is the standard for WebGL in React.
+- **Use Case:** The Hero section. A beautiful, glass-like or washi-paper-textured cube that floats.
+- **Helpers:** `Reflect` and `softShadows` from `@react-three/drei` (a helper library) to make it look premium, not like a video game.
 
 #### B. The Motion Engine: `Framer Motion`
 
-* **Why:** It is arguably the best animation library for React. It handles layout transitions and "scroll-linked" animations perfectly.
-* **Use Case:** "Scrollytelling." As the user scrolls down, text doesn't just fade in; it *slides and locks* into place, reinforcing the "Architecture" feel.
+- **Why:** It is arguably the best animation library for React. It handles layout transitions and "scroll-linked" animations perfectly.
+- **Use Case:** "Scrollytelling." As the user scrolls down, text doesn't just fade in; it _slides and locks_ into place, reinforcing the "Architecture" feel.
 
 #### C. The Texture/Feel: `glsl-noise` (Custom Shaders)
 
-* **Why:** Your design system mentions "Washi Paper." Static images are boring.
-* **Use Case:** Use a fragment shader to create a subtle, moving grain background that looks like living paper. It breathes slowly.
+- **Why:** Your design system mentions "Washi Paper." Static images are boring.
+- **Use Case:** Use a fragment shader to create a subtle, moving grain background that looks like living paper. It breathes slowly.
 
 #### D. The Mouse Interaction: `react-use-gesture`
 
-* **Why:** We want physics-based interaction.
-* **Use Case:** When the user hovers over the Cube, it shouldn't just spin. It should tilt with "spring physics" (mass and friction), making it feel heavy and valuable.
+- **Why:** We want physics-based interaction.
+- **Use Case:** When the user hovers over the Cube, it shouldn't just spin. It should tilt with "spring physics" (mass and friction), making it feel heavy and valuable.
 
 ---
 
@@ -43,29 +43,29 @@ Don't just throw effects at the screen. Build these three specific interactive m
 
 **The Concept:** Show, don't tell, the "2D vs 3D" conflict.
 
-* **Initial State:** When the page loads, show a flat, boring 2D flashcard (representing Anki/Duolingo) in the center.
-* **The Effect:** As the page loads, the card *extrudes* upwards, unfolding into your "Smart Cube."
-* **Library:** **React Three Fiber**.
-* **Interaction:** The mouse position controls the light source. As you move your mouse, the shadows shift across the 3D Cube, revealing the engraved words "Context," "Etymology," and "Pitch."
-* **Why it works:** It instantly communicates: "This is deeper than what you are used to."
+- **Initial State:** When the page loads, show a flat, boring 2D flashcard (representing Anki/Duolingo) in the center.
+- **The Effect:** As the page loads, the card _extrudes_ upwards, unfolding into your "Smart Cube."
+- **Library:** **React Three Fiber**.
+- **Interaction:** The mouse position controls the light source. As you move your mouse, the shadows shift across the 3D Cube, revealing the engraved words "Context," "Etymology," and "Pitch."
+- **Why it works:** It instantly communicates: "This is deeper than what you are used to."
 
 #### Moment 2: The "Fog of Forgetfulness" (Mouse Tracking)
 
 **The Concept:** Visualizing your "Intervention" layer.
 
-* **Visual:** A section of Japanese text that is slightly blurred or covered in a "fog" (Gaussian Blur).
-* **The Effect:** The mouse cursor acts as a **torch**. Wherever the user hovers, the fog clears, and the Kanji becomes sharp and crisp.
-* **Library:** **Framer Motion** (using `useScroll` or `useMouseMove` to drive a clip-path or mask).
-* **Why it works:** It metaphorically proves your promise: "We clarify the confusion."
+- **Visual:** A section of Japanese text that is slightly blurred or covered in a "fog" (Gaussian Blur).
+- **The Effect:** The mouse cursor acts as a **torch**. Wherever the user hovers, the fog clears, and the Kanji becomes sharp and crisp.
+- **Library:** **Framer Motion** (using `useScroll` or `useMouseMove` to drive a clip-path or mask).
+- **Why it works:** It metaphorically proves your promise: "We clarify the confusion."
 
 #### Moment 3: The "Etymology Connection" (Scroll Trigger)
 
 **The Concept:** Visualizing how you connect concepts.
 
-* **Visual:** Floating particles or "nodes" scattered on the screen.
-* **The Effect:** As the user scrolls to the "Smart Layer" section, the scattered nodes magnetically snap together to form a structured network or a kanji stroke order.
-* **Library:** **React Three Fiber (Instances)** or **tsparticles** (lighter weight).
-* **Why it works:** It feels like "Order from Chaos," which is exactly what a student wants to feel.
+- **Visual:** Floating particles or "nodes" scattered on the screen.
+- **The Effect:** As the user scrolls to the "Smart Layer" section, the scattered nodes magnetically snap together to form a structured network or a kanji stroke order.
+- **Library:** **React Three Fiber (Instances)** or **tsparticles** (lighter weight).
+- **Why it works:** It feels like "Order from Chaos," which is exactly what a student wants to feel.
 
 ---
 
@@ -73,11 +73,11 @@ Don't just throw effects at the screen. Build these three specific interactive m
 
 I reviewed your current site (`watashiwa.app`). It is clean, but it feels "static." However, be careful with the upgrade:
 
-1. **Avoid "Scroll-Jacking":** Do not force the user's scroll bar to behave differently (e.g., stopping them from scrolling until an animation finishes). This frustrates users. Use **Scroll-Linked** animations (where the animation plays *while* they scroll naturally) instead.
+1. **Avoid "Scroll-Jacking":** Do not force the user's scroll bar to behave differently (e.g., stopping them from scrolling until an animation finishes). This frustrates users. Use **Scroll-Linked** animations (where the animation plays _while_ they scroll naturally) instead.
 2. **Performance is a UX Feature:** 3D in the browser can kill mobile batteries.
 
-* **Senior Tip:** Use `drei/View` to only render the 3D canvas when it is in the viewport.
-* **Senior Tip:** If the device is low-power (detectable via JS), fallback to a high-quality video or static image instead of live WebGL.
+- **Senior Tip:** Use `drei/View` to only render the 3D canvas when it is in the viewport.
+- **Senior Tip:** If the device is low-power (detectable via JS), fallback to a high-quality video or static image instead of live WebGL.
 
 ### 4. Implementation Snippet (The "Smart Cube" Hero)
 
@@ -85,59 +85,58 @@ Here is a conceptual starting point for your Hero component using R3F. This crea
 
 ```jsx
 // components/HeroCube.jsx
-"use client";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { useRef, useState } from "react";
-import { RoundedBox, MeshDistortMaterial } from "@react-three/drei";
+'use client';
+import { MeshDistortMaterial, RoundedBox } from '@react-three/drei';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { useRef, useState } from 'react';
 
 function ZenCube() {
-  const mesh = useRef();
-  const [hovered, setHover] = useState(false);
+	const mesh = useRef();
+	const [hovered, setHover] = useState(false);
 
-  useFrame((state) => {
-    // Gentle rotation
-    mesh.current.rotation.x += 0.002;
-    mesh.current.rotation.y += 0.005;
-    
-    // Slight "breathing" scale effect
-    const t = state.clock.getElapsedTime();
-    mesh.current.position.y = Math.sin(t / 2) * 0.1;
-  });
+	useFrame((state) => {
+		// Gentle rotation
+		mesh.current.rotation.x += 0.002;
+		mesh.current.rotation.y += 0.005;
 
-  return (
-    <RoundedBox 
-      ref={mesh} 
-      args={[2.5, 2.5, 2.5]} // Size
-      radius={0.1} // Smooth edges for "Zen" feel
-      onPointerOver={() => setHover(true)}
-      onPointerOut={() => setHover(false)}
-    >
-      {/* DistortMaterial gives a "liquid" or "organic" feel. 
+		// Slight "breathing" scale effect
+		const t = state.clock.getElapsedTime();
+		mesh.current.position.y = Math.sin(t / 2) * 0.1;
+	});
+
+	return (
+		<RoundedBox
+			ref={mesh}
+			args={[2.5, 2.5, 2.5]} // Size
+			radius={0.1} // Smooth edges for "Zen" feel
+			onPointerOver={() => setHover(true)}
+			onPointerOut={() => setHover(false)}
+		>
+			{/* DistortMaterial gives a "liquid" or "organic" feel. 
          Speed speeds up the distortion. 
       */}
-      <MeshDistortMaterial 
-        color={hovered ? "#708238" : "#1E3A5F"} // Matcha Green on hover, Indigo default
-        speed={2} 
-        distort={0.3} // 0 = rigid, 1 = very liquid
-        roughness={0.4}
-      />
-    </RoundedBox>
-  );
+			<MeshDistortMaterial
+				color={hovered ? '#708238' : '#1E3A5F'} // Matcha Green on hover, Indigo default
+				speed={2}
+				distort={0.3} // 0 = rigid, 1 = very liquid
+				roughness={0.4}
+			/>
+		</RoundedBox>
+	);
 }
 
 export default function HeroSection() {
-  return (
-    <div className="h-[60vh] w-full bg-[#F9F7F2]">
-      <Canvas>
-        <ambientLight intensity={0.5} />
-        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-        <pointLight position={[-10, -10, -10]} />
-        <ZenCube />
-      </Canvas>
-    </div>
-  );
+	return (
+		<div className="h-[60vh] w-full bg-[#F9F7F2]">
+			<Canvas>
+				<ambientLight intensity={0.5} />
+				<spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+				<pointLight position={[-10, -10, -10]} />
+				<ZenCube />
+			</Canvas>
+		</div>
+	);
 }
-
 ```
 
 ### Next Step

@@ -1,0 +1,47 @@
+/* Global Utility Classes
+ * Only truly global utilities that are used across multiple components
+ * For component-specific styles, use CSS Modules instead
+ */
+
+/* Main App Container */
+.app-main {
+	min-height: calc(100vh - 64px);
+	background: var(--color-background);
+	transition: background-color var(--transition-base);
+}
+
+/* Hover Visibility Utilities
+ * Used in: src/app/decks/[id]/DeckView.tsx
+ * TODO: Consider moving to DeckView.module.css for better scoping
+ */
+.hover-target {
+	opacity: 0;
+	transition: opacity var(--transition-fast);
+}
+
+.hover-trigger:hover .hover-target,
+.hover-target.visible {
+	opacity: 1;
+}
+
+/* Navigation Responsive Utilities
+ * Used for desktop/mobile navigation switching
+ * TODO: Audit usage - may be legacy code
+ */
+@media (max-width: 1000px) {
+	.desktop-nav {
+		display: none !important;
+	}
+	.mobile-trigger {
+		display: inline-flex !important;
+	}
+}
+
+@media (min-width: 1001px) {
+	.desktop-nav {
+		display: flex !important;
+	}
+	.mobile-trigger {
+		display: none !important;
+	}
+}

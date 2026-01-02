@@ -117,9 +117,9 @@ Examples are stored in the Vocabulary model as JSONB with the following schema:
 ```typescript
 // src/lib/schemas/jsonb.ts
 export const ExampleSentenceSchema = z.object({
-  sentence: z.string(),
-  translation: LocalizedStringSchema, // { vi: string, en: string }
-  audio: z.string().optional(),
+	sentence: z.string(),
+	translation: LocalizedStringSchema, // { vi: string, en: string }
+	audio: z.string().optional(),
 });
 export const ExamplesSchema = z.array(ExampleSentenceSchema);
 ```
@@ -240,9 +240,9 @@ src/modules/flashcard/components/CardShell/Sections/
 
   ```typescript
   await prisma.userReview.findMany({
-    where: { userId, srsStage: { gt: 0 } },
-    select: { vocabId: true }
-  })
+  	where: { userId, srsStage: { gt: 0 } },
+  	select: { vocabId: true },
+  });
   ```
 
 - **Reference**: Existing UserReview queries in `study.data.ts`

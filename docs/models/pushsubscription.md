@@ -6,7 +6,6 @@
 
 ---
 
-
 **Purpose:** Web push notification subscriptions
 
 **Key Fields:**
@@ -24,7 +23,6 @@
 - `userId`
 
 ---
-
 
 ---
 

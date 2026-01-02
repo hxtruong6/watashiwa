@@ -22,20 +22,20 @@ WatashiWa is a Japanese vocabulary learning application that uses a Spaced Repet
 
 ## Technology Stack Summary
 
-| Category | Technology | Version | Justification |
-|----------|-----------|---------|---------------|
-| **Framework** | Next.js | 16.1.1 | App Router for modern React patterns, SSR/SSG support |
-| **Language** | TypeScript | 5.x | Type safety, strict mode enabled |
-| **UI Library** | Ant Design | 6.1.2 | Comprehensive component library with theme support |
-| **Database** | PostgreSQL | - | Relational database with JSONB support for flexible content |
-| **ORM** | Prisma | 7.2.0 | Type-safe database access, migrations |
-| **State Management** | Zustand | 5.0.9 | Lightweight global state for session management |
-| **SRS Algorithm** | ts-fsrs | 5.2.3 | FSRS (Free Spaced Repetition Scheduler) implementation |
-| **Authentication** | Supabase Auth | - | OAuth and email/password authentication |
-| **Analytics** | PostHog | 1.310.1 | User behavior tracking and analytics |
-| **Error Monitoring** | Sentry | 10.32.1 | Error tracking and performance monitoring |
-| **3D Graphics** | Three.js | 0.182.0 | Memory Garden 3D visualization |
-| **Internationalization** | next-intl | 4.6.1 | Multi-language support (en, vi, ja) |
+| Category                 | Technology    | Version | Justification                                               |
+| ------------------------ | ------------- | ------- | ----------------------------------------------------------- |
+| **Framework**            | Next.js       | 16.1.1  | App Router for modern React patterns, SSR/SSG support       |
+| **Language**             | TypeScript    | 5.x     | Type safety, strict mode enabled                            |
+| **UI Library**           | Ant Design    | 6.1.2   | Comprehensive component library with theme support          |
+| **Database**             | PostgreSQL    | -       | Relational database with JSONB support for flexible content |
+| **ORM**                  | Prisma        | 7.2.0   | Type-safe database access, migrations                       |
+| **State Management**     | Zustand       | 5.0.9   | Lightweight global state for session management             |
+| **SRS Algorithm**        | ts-fsrs       | 5.2.3   | FSRS (Free Spaced Repetition Scheduler) implementation      |
+| **Authentication**       | Supabase Auth | -       | OAuth and email/password authentication                     |
+| **Analytics**            | PostHog       | 1.310.1 | User behavior tracking and analytics                        |
+| **Error Monitoring**     | Sentry        | 10.32.1 | Error tracking and performance monitoring                   |
+| **3D Graphics**          | Three.js      | 0.182.0 | Memory Garden 3D visualization                              |
+| **Internationalization** | next-intl     | 4.6.1   | Multi-language support (en, vi, ja)                         |
 
 ---
 

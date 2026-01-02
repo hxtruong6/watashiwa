@@ -46,18 +46,18 @@ As a creative designer, here are innovative ways to make the Memory Garden more 
 ```typescript
 // Custom shader material with gradient
 const gradientMaterial = new THREE.ShaderMaterial({
-  uniforms: {
-    baseColor: { value: new THREE.Color('#EF4444') },
-    topColor: { value: new THREE.Color('#FF6B6B') },
-  },
-  vertexShader: `
+	uniforms: {
+		baseColor: { value: new THREE.Color('#EF4444') },
+		topColor: { value: new THREE.Color('#FF6B6B') },
+	},
+	vertexShader: `
     varying vec3 vWorldPosition;
     void main() {
       vWorldPosition = (modelMatrix * vec4(position, 1.0)).xyz;
       gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
     }
   `,
-  fragmentShader: `
+	fragmentShader: `
     uniform vec3 baseColor;
     uniform vec3 topColor;
     varying vec3 vWorldPosition;
@@ -109,10 +109,10 @@ import { Points, PointMaterial } from '@react-three/drei';
 
 ```typescript
 useFrame(({ clock }) => {
-  const time = clock.getElapsedTime();
-  // Breathing effect
-  const scale = 1 + Math.sin(time * 0.5) * 0.02;
-  // Apply to each tile based on state
+	const time = clock.getElapsedTime();
+	// Breathing effect
+	const scale = 1 + Math.sin(time * 0.5) * 0.02;
+	// Apply to each tile based on state
 });
 ```
 
@@ -186,8 +186,8 @@ const lerpColor(base, target, stability / maxStability);
 ```typescript
 // In useTileHover hook
 if (hoveredIndex === i) {
-  scale.set(1.1, 1.1, 1.1); // Scale up
-  emissiveIntensity = 0.5; // Brighter glow
+	scale.set(1.1, 1.1, 1.1); // Scale up
+	emissiveIntensity = 0.5; // Brighter glow
 }
 ```
 

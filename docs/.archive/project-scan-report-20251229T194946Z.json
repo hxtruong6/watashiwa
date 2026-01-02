@@ -56,17 +56,17 @@
 			}
 		]
 	},
-  "outputs_generated": [
-    "project-scan-report.json",
-    "project-overview.md",
-    "architecture.md",
-    "index.md",
-    "api/index.md (sharded into 17 files)",
-    "models/index.md (sharded into 18 files)",
-    "source-tree-analysis.md",
-    "development-guide.md",
-    "SHARDING_SUMMARY.md"
-  ],
+	"outputs_generated": [
+		"project-scan-report.json",
+		"project-overview.md",
+		"architecture.md",
+		"index.md",
+		"api/index.md (sharded into 17 files)",
+		"models/index.md (sharded into 18 files)",
+		"source-tree-analysis.md",
+		"development-guide.md",
+		"SHARDING_SUMMARY.md"
+	],
 	"resume_instructions": "Continuing from step 2: Discover existing documentation",
 	"project_types": [
 		{

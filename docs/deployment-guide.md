@@ -22,4 +22,3 @@ See `.env.example` for the canonical list; key groups: DB (`DATABASE_URL`), Supa
 - **PM2 deploy:** `pnpm pm2:deploy:prod` (configured in `ecosystem.config.cjs`)
 - **Cron/Jobs:** route handlers under `src/app/api/cron/*`
 - **Error monitoring:** Sentry via `withSentryConfig()` in `next.config.ts` + `tunnelRoute: /monitoring`
-

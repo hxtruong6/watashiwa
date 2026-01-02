@@ -1,0 +1,34 @@
+/* Accessibility Rules
+ * Respects user preferences and ensures accessible interactions
+ * 
+ * Reference: https://www.a11yproject.com/posts/understanding-vestibular-disorders/
+ */
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+
+	/* Exclude Ant Design popups from reduced motion
+	 * CRITICAL: Without this, dropdowns, tooltips, and popovers won't render correctly
+	 * Ant Design relies on transitions for positioning and visibility
+	 */
+	.ant-dropdown,
+	.ant-dropdown *,
+	.ant-select-dropdown,
+	.ant-select-dropdown *,
+	.ant-popover,
+	.ant-popover *,
+	.ant-tooltip,
+	.ant-tooltip *,
+	.ant-picker-dropdown,
+	.ant-picker-dropdown * {
+		animation-duration: initial !important;
+		transition-duration: initial !important;
+	}
+}

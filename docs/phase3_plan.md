@@ -14,8 +14,9 @@ We convened the expert panel to critique the original Phase 3 requirements.
 
 - **The Strategist:** "Users are bored. Flashcards are 'taking medicine'. We need the 'Sugar'—the Stories. If we don't ship **Active Priming** now, we are just a harder Anki.
   > **The 3 Strategic Pillars:**
+  >
   > 1. **Retention is Revenue:** Flashcards cause burnout; Stories create 'Aha!' moments that keep users actively paying.
-  > 2. **Differentiation (The Moat):** Anyone can clone a flashcard app. No one has *contextual narratives* generated for specific vocab units.
+  > 2. **Differentiation (The Moat):** Anyone can clone a flashcard app. No one has _contextual narratives_ generated for specific vocab units.
   > 3. **The 'Cold Open':** The first 5 minutes determine the session length. Stories are the hook that prevents early drop-off."
 - **The Engineer:** "I agree on Stories, but we have 0 content. Manually writing stories for 50 units is impossible. We need an **Automated Pipeline** (The Factory). Also, Redis is Premature Optimization. Postgres can handle 10k users if we index correctly. **Kill Redis for now.**"
 - **The UX Researcher:** "Don't just dump text on the screen. The Story must be interactive. Highlighting key words is mandatory. If it's just a wall of text, users will skip it."
@@ -23,8 +24,8 @@ We convened the expert panel to critique the original Phase 3 requirements.
 ### The Consensus Verdict
 
 1. **STRATEGY MONITOR:** We adopt a **"Hybrid" Approach**.
-    - **Phase 2:** We ship ONE manual story (Unit 1) to test the "Hook".
-    - **Phase 3:** We turn on the **AI Factory** to scale to 50 Units.
+   - **Phase 2:** We ship ONE manual story (Unit 1) to test the "Hook".
+   - **Phase 3:** We turn on the **AI Factory** to scale to 50 Units.
 2. **PRIORITY 1:** **The AI Content Factory**. We will write scripts to generate stories using LLMs + JSON validation.
 3. **UX CORRECTION:** **Soft Gates**. We will NOT block users from studying. We will use "Soft Nudges" (Toasts/Warnings) to encourage reading, preserving the "Zen" feel.
 
@@ -46,10 +47,10 @@ model Story {
   unit   Deck   @relation(fields: [unitId], references: [id], onDelete: Cascade)
 
   // Contract: StoryContent (zod: StoryContentSchema)
-  // { 
-  //   "title": { "en": "The Lost Umbrella", "vi": "Cái Ô Bị Mất" }, 
-  //   "body_text": "I went to the {1}...", 
-  //   "highlights": [{ "id": "1", "vocab_id": "...", "word": "Suupa", "index": 14 }] 
+  // {
+  //   "title": { "en": "The Lost Umbrella", "vi": "Cái Ô Bị Mất" },
+  //   "body_text": "I went to the {1}...",
+  //   "highlights": [{ "id": "1", "vocab_id": "...", "word": "Suupa", "index": 14 }]
   // }
   content  Json
   audioUrl String? @map("audio_url")
@@ -62,7 +63,7 @@ model Story {
 
 #### B. The Progress Tracker (NEW Migration)
 
-We need to track *who* has read *what*.
+We need to track _who_ has read _what_.
 
 ```prisma
 // [NEW] To be added to schema.prisma
@@ -70,7 +71,7 @@ model StoryLog {
   id        String   @id @default(uuid())
   userId    String   @map("user_id")
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
+
   storyId   String   @map("story_id")
   story     Story    @relation(fields: [storyId], references: [id], onDelete: Cascade)
 
@@ -90,10 +91,10 @@ model StoryLog {
 
 ```typescript
 if (deckId && !hasSkippedPriming) {
-  const primingData = await getSessionDataWithPriming({ deckId });
-  if (requiresPriming && story) {
-    // Show StoryReader component
-  }
+	const primingData = await getSessionDataWithPriming({ deckId });
+	if (requiresPriming && story) {
+		// Show StoryReader component
+	}
 }
 ```
 
@@ -113,15 +114,15 @@ if (deckId && !hasSkippedPriming) {
 
 **When Story Priming is Triggered:**
 
-| Scenario | URL Pattern | `deckId` Present? | Priming Check? | Notes |
-|----------|-------------|-------------------|----------------|-------|
-| **1. Direct Deck Navigation** | `/study?deckId={uuid}` | ✅ Yes | ✅ **YES** | User clicks "Start Study" on deck detail page |
-| **2. Resume Last Session** | `/study` → redirects to `/study?deckId={lastDeck}` | ✅ Yes | ✅ **YES** | User clicks "Study" in nav, system resumes last deck |
-| **3. Study Dashboard → Start Session** | `/study` → Dashboard → `/study?deckId={firstDeck}` | ✅ Yes | ✅ **YES** | Dashboard shows "Start Session" button, routes to first recent deck |
-| **4. Course Study** | `/study?courseId={uuid}` | ❌ No | ❌ **NO** | Course study spans multiple decks, no single story |
-| **5. Auto-Start Session** | `/study` (no params, auto-starts) | ❌ No | ❌ **NO** | Global session with all due cards, no specific deck context |
-| **6. Direct URL Entry** | User types `/study?deckId={uuid}` | ✅ Yes | ✅ **YES** | Manual URL entry, same as scenario 1 |
-| **7. Community Feed → Deck Link** | Click deck link → `/study?deckId={uuid}` | ✅ Yes | ✅ **YES** | User clicks deck link from community/card comments |
+| Scenario                               | URL Pattern                                        | `deckId` Present? | Priming Check? | Notes                                                               |
+| -------------------------------------- | -------------------------------------------------- | ----------------- | -------------- | ------------------------------------------------------------------- |
+| **1. Direct Deck Navigation**          | `/study?deckId={uuid}`                             | ✅ Yes            | ✅ **YES**     | User clicks "Start Study" on deck detail page                       |
+| **2. Resume Last Session**             | `/study` → redirects to `/study?deckId={lastDeck}` | ✅ Yes            | ✅ **YES**     | User clicks "Study" in nav, system resumes last deck                |
+| **3. Study Dashboard → Start Session** | `/study` → Dashboard → `/study?deckId={firstDeck}` | ✅ Yes            | ✅ **YES**     | Dashboard shows "Start Session" button, routes to first recent deck |
+| **4. Course Study**                    | `/study?courseId={uuid}`                           | ❌ No             | ❌ **NO**      | Course study spans multiple decks, no single story                  |
+| **5. Auto-Start Session**              | `/study` (no params, auto-starts)                  | ❌ No             | ❌ **NO**      | Global session with all due cards, no specific deck context         |
+| **6. Direct URL Entry**                | User types `/study?deckId={uuid}`                  | ✅ Yes            | ✅ **YES**     | Manual URL entry, same as scenario 1                                |
+| **7. Community Feed → Deck Link**      | Click deck link → `/study?deckId={uuid}`           | ✅ Yes            | ✅ **YES**     | User clicks deck link from community/card comments                  |
 
 **When Story Priming is NOT Triggered:**
 
@@ -238,14 +239,14 @@ As a Product Owner, I demand a "Frictionless but Meaningful" flow.
 
 ### 3.2 The Priming Journey (Step-by-Step)
 
-| Step | User Action | System Response | "Zen" Design Note |
-| :--- | :--- | :--- | :--- |
-| **1. Entry** | User taps "Start Unit 5" on Dashboard. | Checks `UserLog`. If Story not read, route to `StoryReader`. | No loading spinners. Instant transition. |
-| **2. Immersion** | User sees "The Lost Umbrella" title + Beautiful Cover Image. | Plays subtle ambient background noise (Rain hints). | Set the mood before text appears. |
-| **3. Interaction** | User reads text: "I went to the **Suupa**..." | Highlights **Suupa** in Gold. | Visual cue: "This is important." |
-| **4. Discovery** | User taps **Suupa**. | System plays pronunciation audio + shows mini-tooltip "Grocery Store". | Instant gratification. |
-| **5. Completion** | User reaches bottom of story. | "Begin Training" button pulses gently. | Soft guidance, not aggressive flashing. |
-| **6. Handoff** | User taps "Begin Training". | Transitions to Flashcard Session. | **Seamless:** The first card is "Suupa" (Recency Effect). |
+| Step               | User Action                                                  | System Response                                                        | "Zen" Design Note                                         |
+| :----------------- | :----------------------------------------------------------- | :--------------------------------------------------------------------- | :-------------------------------------------------------- |
+| **1. Entry**       | User taps "Start Unit 5" on Dashboard.                       | Checks `UserLog`. If Story not read, route to `StoryReader`.           | No loading spinners. Instant transition.                  |
+| **2. Immersion**   | User sees "The Lost Umbrella" title + Beautiful Cover Image. | Plays subtle ambient background noise (Rain hints).                    | Set the mood before text appears.                         |
+| **3. Interaction** | User reads text: "I went to the **Suupa**..."                | Highlights **Suupa** in Gold.                                          | Visual cue: "This is important."                          |
+| **4. Discovery**   | User taps **Suupa**.                                         | System plays pronunciation audio + shows mini-tooltip "Grocery Store". | Instant gratification.                                    |
+| **5. Completion**  | User reaches bottom of story.                                | "Begin Training" button pulses gently.                                 | Soft guidance, not aggressive flashing.                   |
+| **6. Handoff**     | User taps "Begin Training".                                  | Transitions to Flashcard Session.                                      | **Seamless:** The first card is "Suupa" (Recency Effect). |
 
 ### 3.2 Scenarios & Edge Cases (The "Dark Corners")
 
@@ -253,8 +254,8 @@ As a Product Owner, I demand a "Frictionless but Meaningful" flow.
 
 - **User:** Scrolls immediately to bottom to click "Next".
 - **System:**
-  - *Phase 3 (Soft Gate):* Button is active, but a Toast appears: "Pro Tip: Tap highlighted words to prime your brain."
-  - *Rationale:* Never block power users, but nudge them towards value.
+  - _Phase 3 (Soft Gate):_ Button is active, but a Toast appears: "Pro Tip: Tap highlighted words to prime your brain."
+  - _Rationale:_ Never block power users, but nudge them towards value.
 
 **Scenario B: The "Broken Audio" (Network Fail)**
 
@@ -276,14 +277,14 @@ As a Product Owner, I demand a "Frictionless but Meaningful" flow.
 
 ### 2.3 The AI Factory (The "Teacher" Agent)
 
-We don't write content. We write *prompts*.
+We don't write content. We write _prompts_.
 
 **The Pipeline Script (`scripts/generate_stories.ts`):**
 
 1. **Input:** `prisma.vocabulary.findMany({ where: { unit: 5 } })`.
 2. **Agent (GPT-4o):**
-    - Role: "Japanese Novelist".
-    - Task: "Write a 100-word story using THESE 15 words. Use 'Mixed Language' format (English grammar, Japanese nouns/verbs)."
+   - Role: "Japanese Novelist".
+   - Task: "Write a 100-word story using THESE 15 words. Use 'Mixed Language' format (English grammar, Japanese nouns/verbs)."
 3. **Validation:** Zod schema checks if ALL 15 words are present in the output.
 4. **Output:** `data/stories/unit_5.json`.
 
@@ -363,11 +364,11 @@ We don't write content. We write *prompts*.
 
 We are moving from Static Data to Generative AI. We must track the burn rate.
 
-| Resource | Unit Cost | Scale (50 Units) | Est. Total |
-| :--- | :--- | :--- | :--- |
-| **GPT-4o (Generation)** | ~$0.05 / Story | 50 Units * 3 Stories = 150 | ~$7.50 (One-time) |
-| **TTS (Audio)** | ~$0.015 / 1k chars | 150 Stories * 500 chars | ~$1.25 (One-time) |
-| **Storage (Postgres)** | Negligible | Text data | $0.00 |
+| Resource                | Unit Cost          | Scale (50 Units)            | Est. Total        |
+| :---------------------- | :----------------- | :-------------------------- | :---------------- |
+| **GPT-4o (Generation)** | ~$0.05 / Story     | 50 Units \* 3 Stories = 150 | ~$7.50 (One-time) |
+| **TTS (Audio)**         | ~$0.015 / 1k chars | 150 Stories \* 500 chars    | ~$1.25 (One-time) |
+| **Storage (Postgres)**  | Negligible         | Text data                   | $0.00             |
 
 **Verdict:** The cost is negligible (< $10) for the initial batch. We do NOT need to downgrade to GPT-3.5 yet. Quality > Cost right now.
 
@@ -379,7 +380,7 @@ We don't guess; we measure. Implement these PostHog/Analytics events:
 
 - `STORY_OPENED`: { unit_id, source: 'dashboard' }
 - `KEYWORD_TAPPED`: { word_id, word_text }
-- `STORY_COMPLETED`: { duration_ms, scroll_depth_% }
+- `STORY_COMPLETED`: { duration*ms, scroll_depth*% }
 - `PRIMING_CONVERSION`: { unit_id, did_start_flashcards: boolean }
 
 ---

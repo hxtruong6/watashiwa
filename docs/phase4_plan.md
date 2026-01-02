@@ -44,7 +44,7 @@ We move beyond "Debug Console".
 **Key Metrics to Track:**
 
 1. **Retention Loop:** `App Open` -> `Story Read` -> `Session Complete`. (Funnel Analysis)
-2. **Intervention Efficacy:** Does showing an Intervention Card reduce the failure rate of that word in the *next* session?
+2. **Intervention Efficacy:** Does showing an Intervention Card reduce the failure rate of that word in the _next_ session?
 3. **Content Health:** "Skip Rate" on Stories. If > 50%, the content is boring.
 
 ---
@@ -98,5 +98,5 @@ For our internal team (and trusted community mods).
 
 1. **Latency:** Dashboard loads in < 100ms (P95).
 2. **Scale:** System creates 0 DB errors under 500 concurrent Reviewers.
-3. **Insight:** We can answer: *"Which specific story caused the highest retention spike?"*
+3. **Insight:** We can answer: _"Which specific story caused the highest retention spike?"_
 4. **Stability:** 99.9% Uptime during deployment of new AI content batches.

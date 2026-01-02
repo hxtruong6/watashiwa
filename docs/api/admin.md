@@ -5,7 +5,6 @@
 
 ---
 
-
 **File:** `src/modules/admin/admin.actions.ts`
 
 ### `getAdminStats`
@@ -27,14 +26,13 @@ Update user role (admin).
 **Input:**
 
 ```typescript
-targetUserId: string
-newRole: UserRole
+targetUserId: string;
+newRole: UserRole;
 ```
 
 **Returns:** `{ success: boolean, error?: string }`
 
 ---
-
 
 ---
 

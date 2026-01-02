@@ -1,1 +1,14 @@
-{"repository_type":"monolith","parts":[{"part_id":"main","part_name":"WatashiWa (Next.js App)","root_path":"/Users/xuantruong/Documents/WORK/SIDE_PROJECTS/watashi-jp","project_type_id":"web","primary_language":"TypeScript","entry_point":"src/app/layout.tsx"}],"integration_points":[]}
+{
+	"repository_type": "monolith",
+	"parts": [
+		{
+			"part_id": "main",
+			"part_name": "WatashiWa (Next.js App)",
+			"root_path": "/Users/xuantruong/Documents/WORK/SIDE_PROJECTS/watashi-jp",
+			"project_type_id": "web",
+			"primary_language": "TypeScript",
+			"entry_point": "src/app/layout.tsx"
+		}
+	],
+	"integration_points": []
+}

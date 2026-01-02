@@ -6,7 +6,6 @@
 
 ---
 
-
 ### Soft Deletes
 
 Most models use `deletedAt` (DateTime, Optional) instead of hard deletes:
@@ -41,7 +40,6 @@ Vocabulary and CardVariant use `ContentStatus` enum:
 - Unique constraints where needed (email, slug, etc.)
 
 ---
-
 
 ---
 

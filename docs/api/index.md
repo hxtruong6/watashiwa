@@ -26,14 +26,10 @@ import { executeSafeAction } from '@/modules/core/action-client';
 import { z } from 'zod';
 
 export async function actionName(input: unknown) {
-  return executeSafeAction(
-    InputSchema,
-    input,
-    async (data, { userId }) => {
-      // Business logic
-      return result;
-    }
-  );
+	return executeSafeAction(InputSchema, input, async (data, { userId }) => {
+		// Business logic
+		return result;
+	});
 }
 ```
 

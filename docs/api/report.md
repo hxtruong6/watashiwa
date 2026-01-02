@@ -5,7 +5,6 @@
 
 ---
 
-
 **File:** `src/modules/report/report.actions.ts`
 
 ### `submitReport`
@@ -44,7 +43,6 @@ ResolveReportPayload {
 **Returns:** `{ success: boolean, error?: string }`
 
 ---
-
 
 ---
 

@@ -6,7 +6,6 @@
 
 ---
 
-
 **Purpose:** Daily aggregation for heatmaps & reports
 
 **Key Fields:**
@@ -25,7 +24,6 @@
 - `userId`
 
 ---
-
 
 ---
 

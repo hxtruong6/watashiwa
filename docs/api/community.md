@@ -5,7 +5,6 @@
 
 ---
 
-
 **File:** `src/modules/community/community.actions.ts`
 
 ### `getComments`
@@ -15,8 +14,8 @@ Get comments for entity.
 **Input:**
 
 ```typescript
-entityId: string
-type: 'vocab' | 'kanji'
+entityId: string;
+type: 'vocab' | 'kanji';
 ```
 
 **Returns:** `Comment[]`
@@ -29,10 +28,10 @@ Create a comment.
 
 ```typescript
 {
-  entityId: string;
-  type: 'vocab' | 'kanji';
-  content: string;
-  commentType: CommentType;
+	entityId: string;
+	type: 'vocab' | 'kanji';
+	content: string;
+	commentType: CommentType;
 }
 ```
 
@@ -45,8 +44,8 @@ Vote on comment.
 **Input:**
 
 ```typescript
-commentId: string
-value: number  // 1 (upvote) or -1 (downvote)
+commentId: string;
+value: number; // 1 (upvote) or -1 (downvote)
 ```
 
 **Returns:** `{ success: boolean, error?: string }`
@@ -58,7 +57,7 @@ Delete comment.
 **Input:**
 
 ```typescript
-commentId: string
+commentId: string;
 ```
 
 **Returns:** `{ success: boolean, error?: string }`
@@ -70,9 +69,9 @@ Update comment.
 **Input:**
 
 ```typescript
-commentId: string
-content: string
-type: CommentType
+commentId: string;
+content: string;
+type: CommentType;
 ```
 
 **Returns:** `{ success: boolean, data?: Comment, error?: string }`
@@ -111,7 +110,6 @@ Get community feed.
 **Returns:** `FeedItem[]`
 
 ---
-
 
 ---
 

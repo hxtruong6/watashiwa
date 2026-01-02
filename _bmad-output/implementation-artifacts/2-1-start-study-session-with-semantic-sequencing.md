@@ -178,27 +178,27 @@ So that I learn vocabulary in meaningful contextual connections rather than rand
 **Server Actions Pattern:**
 
 ```typescript
-'use server'
+'use server';
 import { executeSafeAction } from '@/modules/core/action-client';
 import { z } from 'zod';
 
 export async function getSemanticallySequencedQueue(input: unknown) {
-  return executeSafeAction(
-    InputSchema,
-    input,
-    async (validatedInput, { userId }) => {
-      if (!userId) throw new Error('Unauthorized');
-      
-      // Get FSRS queue first
-      const fsrsQueue = await getFSRSQueue(validatedInput);
-      
-      // Apply semantic sequencing with fallback
-      const sequencedQueue = await getSemanticallySequencedQueue(fsrsQueue);
-      
-      return { success: true, data: sequencedQueue };
-    },
-    { userId: true }
-  );
+	return executeSafeAction(
+		InputSchema,
+		input,
+		async (validatedInput, { userId }) => {
+			if (!userId) throw new Error('Unauthorized');
+
+			// Get FSRS queue first
+			const fsrsQueue = await getFSRSQueue(validatedInput);
+
+			// Apply semantic sequencing with fallback
+			const sequencedQueue = await getSemanticallySequencedQueue(fsrsQueue);
+
+			return { success: true, data: sequencedQueue };
+		},
+		{ userId: true },
+	);
 }
 ```
 
@@ -207,37 +207,37 @@ export async function getSemanticallySequencedQueue(input: unknown) {
 ```typescript
 // src/modules/study/services/semantic-sequencer.service.ts
 export async function getSemanticallySequencedQueue(
-  fsrsQueue: SmartCard[],
-  userId: string
+	fsrsQueue: SmartCard[],
+	userId: string,
 ): Promise<SmartCard[]> {
-  const startTime = Date.now();
-  
-  try {
-    // Check cache first
-    const cached = await getCachedSequence(userId, fsrsQueue);
-    if (cached) return cached;
-    
-    // Get relationships
-    const relationships = await getWordRelationships(fsrsQueue, userId);
-    
-    // Reorder queue
-    const sequenced = reorderByRelationships(fsrsQueue, relationships);
-    
-    // Performance check
-    const elapsed = Date.now() - startTime;
-    if (elapsed > 500) {
-      console.warn('Semantic sequencing too slow, using FSRS queue');
-      return fsrsQueue; // Fallback
-    }
-    
-    // Cache result
-    await cacheSequence(userId, sequenced);
-    
-    return sequenced;
-  } catch (error) {
-    console.error('Semantic sequencing failed:', error);
-    return fsrsQueue; // Fallback to FSRS
-  }
+	const startTime = Date.now();
+
+	try {
+		// Check cache first
+		const cached = await getCachedSequence(userId, fsrsQueue);
+		if (cached) return cached;
+
+		// Get relationships
+		const relationships = await getWordRelationships(fsrsQueue, userId);
+
+		// Reorder queue
+		const sequenced = reorderByRelationships(fsrsQueue, relationships);
+
+		// Performance check
+		const elapsed = Date.now() - startTime;
+		if (elapsed > 500) {
+			console.warn('Semantic sequencing too slow, using FSRS queue');
+			return fsrsQueue; // Fallback
+		}
+
+		// Cache result
+		await cacheSequence(userId, sequenced);
+
+		return sequenced;
+	} catch (error) {
+		console.error('Semantic sequencing failed:', error);
+		return fsrsQueue; // Fallback to FSRS
+	}
 }
 ```
 

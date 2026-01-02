@@ -1,18 +1,17 @@
 {
-  "id": "otp-verification",
-  "name": "OTP Verification Email",
-  "subject": {
-    "en": "Verify your email address",
-    "vi": "Mã xác minh email của bạn",
-    "ja": "メール確認コード"
-  },
-  "variables": {
-    "required": ["userName", "userEmail", "otp"],
-    "optional": ["appUrl"]
-  },
-  "metadata": {
-    "category": "transactional",
-    "version": "1.0.0"
-  }
+	"id": "otp-verification",
+	"name": "OTP Verification Email",
+	"subject": {
+		"en": "Verify your email address",
+		"vi": "Mã xác minh email của bạn",
+		"ja": "メール確認コード"
+	},
+	"variables": {
+		"required": ["userName", "userEmail", "otp"],
+		"optional": ["appUrl"]
+	},
+	"metadata": {
+		"category": "transactional",
+		"version": "1.0.0"
+	}
 }
-

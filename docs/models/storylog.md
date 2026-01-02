@@ -6,7 +6,6 @@
 
 ---
 
-
 **Purpose:** Track story reading progress
 
 **Key Fields:**
@@ -23,7 +22,6 @@
 - `storyId`
 
 ---
-
 
 ---
 

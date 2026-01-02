@@ -264,59 +264,95 @@ Create `template.en.mjml`, `template.vi.mjml`, `template.ja.mjml`:
 
 ```mjml
 <mjml>
-  <mj-head>
-    <mj-title>Your Email Title</mj-title>
-  </mj-head>
-  <mj-body background-color="{{colors.bgBase}}">
-    <!-- Header -->
-    <mj-section background-color="{{colors.primary}}" padding="{{spacing.paddingLG}} {{spacing.paddingSM}}">
-      <mj-column>
-        <mj-text align="center" color="{{colors.white}}" font-size="{{typography.fontSizeHero}}" font-weight="{{typography.fontWeightBold}}">
-          Your Title
-        </mj-text>
-      </mj-column>
-    </mj-section>
-    
-    <!-- Body -->
-    <mj-section background-color="{{colors.bgContainer}}" padding="{{spacing.paddingLG}} {{spacing.paddingMD}}">
-      <mj-column>
-        <mj-text font-size="{{typography.fontSizeBody}}" color="{{colors.textSecondary}}" line-height="1.6">
-          Hi {{userName}},
-        </mj-text>
-        <mj-text font-size="{{typography.fontSizeBody}}" color="{{colors.textSecondary}}" line-height="1.6">
-          Your email content here.
-        </mj-text>
-        <mj-button 
-          background-color="{{colors.primary}}" 
-          color="{{colors.white}}" 
-          href="{{appUrl}}"
-          border-radius="{{shape.borderRadius}}"
-          padding="14px 32px"
-          font-size="{{typography.fontSizeBody}}"
-          font-weight="{{typography.fontWeightBold}}">
-          Call to Action
-        </mj-button>
-      </mj-column>
-    </mj-section>
-    
-    <!-- Footer (required for CAN-SPAM compliance) -->
-    <mj-section background-color="{{colors.bgBase}}" padding="{{spacing.paddingMD}}">
-      <mj-column>
-        <mj-text align="center" font-size="{{typography.fontSizeCaption}}" color="{{colors.textTertiary}}">
-          Happy Learning! 🚀<br/>
-          The WatashiWa Team<br/><br/>
-          <a href="{{appUrl}}/profile" style="color: {{colors.link}}; text-decoration: none;">Manage Account</a> | 
-          <a href="{{appUrl}}/help" style="color: {{colors.link}}; text-decoration: none;">Help Center</a>
-          <br/><br/>
-          <small style="color: {{colors.textTertiary}};">
-            {{companyAddress}}<br/>
-            <a href="{{appUrl}}/unsubscribe" style="color: {{colors.link}}; text-decoration: underline;">Unsubscribe</a> | 
-            <a href="{{appUrl}}/privacy" style="color: {{colors.link}}; text-decoration: underline;">Privacy Policy</a>
-          </small>
-        </mj-text>
-      </mj-column>
-    </mj-section>
-  </mj-body>
+	<mj-head>
+		<mj-title>Your Email Title</mj-title>
+	</mj-head>
+	<mj-body background-color="{{colors.bgBase}}">
+		<!-- Header -->
+		<mj-section
+			background-color="{{colors.primary}}"
+			padding="{{spacing.paddingLG}} {{spacing.paddingSM}}"
+		>
+			<mj-column>
+				<mj-text
+					align="center"
+					color="{{colors.white}}"
+					font-size="{{typography.fontSizeHero}}"
+					font-weight="{{typography.fontWeightBold}}"
+				>
+					Your Title
+				</mj-text>
+			</mj-column>
+		</mj-section>
+
+		<!-- Body -->
+		<mj-section
+			background-color="{{colors.bgContainer}}"
+			padding="{{spacing.paddingLG}} {{spacing.paddingMD}}"
+		>
+			<mj-column>
+				<mj-text
+					font-size="{{typography.fontSizeBody}}"
+					color="{{colors.textSecondary}}"
+					line-height="1.6"
+				>
+					Hi {{ userName }},
+				</mj-text>
+				<mj-text
+					font-size="{{typography.fontSizeBody}}"
+					color="{{colors.textSecondary}}"
+					line-height="1.6"
+				>
+					Your email content here.
+				</mj-text>
+				<mj-button
+					background-color="{{colors.primary}}"
+					color="{{colors.white}}"
+					href="{{appUrl}}"
+					border-radius="{{shape.borderRadius}}"
+					padding="14px 32px"
+					font-size="{{typography.fontSizeBody}}"
+					font-weight="{{typography.fontWeightBold}}"
+				>
+					Call to Action
+				</mj-button>
+			</mj-column>
+		</mj-section>
+
+		<!-- Footer (required for CAN-SPAM compliance) -->
+		<mj-section background-color="{{colors.bgBase}}" padding="{{spacing.paddingMD}}">
+			<mj-column>
+				<mj-text
+					align="center"
+					font-size="{{typography.fontSizeCaption}}"
+					color="{{colors.textTertiary}}"
+				>
+					Happy Learning! 🚀<br />
+					The WatashiWa Team<br /><br />
+					<a href="{{appUrl}}/profile" style="color: {{colors.link}}; text-decoration: none;"
+						>Manage Account</a
+					>
+					|
+					<a href="{{appUrl}}/help" style="color: {{colors.link}}; text-decoration: none;"
+						>Help Center</a
+					>
+					<br /><br />
+					<small style="color: {{colors.textTertiary}};">
+						{{ companyAddress }}<br />
+						<a
+							href="{{appUrl}}/unsubscribe"
+							style="color: {{colors.link}}; text-decoration: underline;"
+							>Unsubscribe</a
+						>
+						|
+						<a href="{{appUrl}}/privacy" style="color: {{colors.link}}; text-decoration: underline;"
+							>Privacy Policy</a
+						>
+					</small>
+				</mj-text>
+			</mj-column>
+		</mj-section>
+	</mj-body>
 </mjml>
 ```
 
@@ -326,21 +362,21 @@ Create `config.json`:
 
 ```json
 {
-  "id": "your-template-name",
-  "name": "Your Template Name",
-  "subject": {
-    "en": "Your Subject Line",
-    "vi": "Dòng chủ đề của bạn",
-    "ja": "あなたの件名"
-  },
-  "variables": {
-    "required": ["userName", "userEmail"],
-    "optional": ["appUrl", "customField"]
-  },
-  "metadata": {
-    "category": "transactional",
-    "version": "1.0.0"
-  }
+	"id": "your-template-name",
+	"name": "Your Template Name",
+	"subject": {
+		"en": "Your Subject Line",
+		"vi": "Dòng chủ đề của bạn",
+		"ja": "あなたの件名"
+	},
+	"variables": {
+		"required": ["userName", "userEmail"],
+		"optional": ["appUrl", "customField"]
+	},
+	"metadata": {
+		"category": "transactional",
+		"version": "1.0.0"
+	}
 }
 ```
 
@@ -350,13 +386,13 @@ Create `config.json`:
 import { renderTemplateFromFile } from '@/modules/email/utils/template-loader';
 
 const templates = renderTemplateFromFile(
-  'your-template-name',
-  {
-    userName: 'John Doe',
-    userEmail: 'john@example.com',
-    customField: 'value',
-  },
-  'en' // or 'vi', 'ja' - based on user's language preference
+	'your-template-name',
+	{
+		userName: 'John Doe',
+		userEmail: 'john@example.com',
+		customField: 'value',
+	},
+	'en', // or 'vi', 'ja' - based on user's language preference
 );
 
 // templates.html - HTML version
@@ -528,12 +564,12 @@ const templates = renderTemplateFromFile(
 
 ```typescript
 const templates = renderTemplateFromFile(
-  'welcome',
-  {
-    userName: 'John Doe',
-    userEmail: 'john@example.com',
-  },
-  'en'
+	'welcome',
+	{
+		userName: 'John Doe',
+		userEmail: 'john@example.com',
+	},
+	'en',
 );
 ```
 
@@ -550,13 +586,13 @@ const templates = renderTemplateFromFile(
 
 ```typescript
 const templates = renderTemplateFromFile(
-  'otp-verification',
-  {
-    userName: 'John Doe',
-    userEmail: 'john@example.com',
-    otp: '123456',
-  },
-  'en'
+	'otp-verification',
+	{
+		userName: 'John Doe',
+		userEmail: 'john@example.com',
+		otp: '123456',
+	},
+	'en',
 );
 ```
 
@@ -606,12 +642,12 @@ Email Sent:
 
    ```json
    {
-     "subject": {
-       "en": "Welcome to WatashiWa",
-       "vi": "Chào mừng bạn đến với WatashiWa",
-       "ja": "WatashiWaへようこそ",
-       "new-lang": "Translation here"
-     }
+   	"subject": {
+   		"en": "Welcome to WatashiWa",
+   		"vi": "Chào mừng bạn đến với WatashiWa",
+   		"ja": "WatashiWaへようこそ",
+   		"new-lang": "Translation here"
+   	}
    }
    ```
 
@@ -696,15 +732,15 @@ Email Sent:
 
 ### Environment Variables
 
-| Variable | Required | Description | Default |
-|----------|----------|-------------|---------|
-| `INNGEST_DEV` | Yes (local) | Enable Inngest dev mode | - |
-| `INNGEST_APP_ID` | Yes | Inngest app identifier | `watashi-jp` |
-| `MAILTRAP_API_TOKEN` | Yes | Mailtrap API token | - |
-| `MAILTRAP_FROM_EMAIL` | Yes | Sender email address | `noreply@watashi-jp.com` |
-| `MAILTRAP_FROM_NAME` | Yes | Sender name | `WatashiWa` |
-| `NEXT_PUBLIC_APP_URL` | Yes | Application base URL | `http://localhost:3000` |
-| `COMPANY_PHYSICAL_ADDRESS` | No | Physical address (CAN-SPAM) | Placeholder |
+| Variable                   | Required    | Description                 | Default                  |
+| -------------------------- | ----------- | --------------------------- | ------------------------ |
+| `INNGEST_DEV`              | Yes (local) | Enable Inngest dev mode     | -                        |
+| `INNGEST_APP_ID`           | Yes         | Inngest app identifier      | `watashi-jp`             |
+| `MAILTRAP_API_TOKEN`       | Yes         | Mailtrap API token          | -                        |
+| `MAILTRAP_FROM_EMAIL`      | Yes         | Sender email address        | `noreply@watashi-jp.com` |
+| `MAILTRAP_FROM_NAME`       | Yes         | Sender name                 | `WatashiWa`              |
+| `NEXT_PUBLIC_APP_URL`      | Yes         | Application base URL        | `http://localhost:3000`  |
+| `COMPANY_PHYSICAL_ADDRESS` | No          | Physical address (CAN-SPAM) | Placeholder              |
 
 ### API Functions
 
@@ -765,8 +801,8 @@ import { validateTemplate } from '@/modules/email/utils/template-loader';
 
 const result = validateTemplate('welcome');
 if (!result.valid) {
-  console.error('Template errors:', result.errors);
-  // ['Template file not found: ...', 'Config file not found: ...']
+	console.error('Template errors:', result.errors);
+	// ['Template file not found: ...', 'Config file not found: ...']
 }
 ```
 
@@ -794,7 +830,7 @@ pnpm validate:email-templates
 ```typescript
 // GET /api/admin/email-templates
 const templates = discoverTemplates();
-const status = templates.map(id => validateTemplate(id));
+const status = templates.map((id) => validateTemplate(id));
 ```
 
 1. **Pre-Send Validation:**
@@ -803,7 +839,7 @@ const status = templates.map(id => validateTemplate(id));
 // Before sending email, validate template
 const validation = validateTemplate('welcome');
 if (!validation.valid) {
-  throw new Error(`Template invalid: ${validation.errors.join(', ')}`);
+	throw new Error(`Template invalid: ${validation.errors.join(', ')}`);
 }
 ```
 

@@ -20,7 +20,7 @@ brainstormingCount: 0
 workflowType: 'prd'
 lastStep: 10
 skippedSteps: [5]
-skipReason: "Medium complexity edtech domain - no high regulatory requirements requiring exploration"
+skipReason: 'Medium complexity edtech domain - no high regulatory requirements requiring exploration'
 ---
 
 # Product Requirements Document - watashi-jp

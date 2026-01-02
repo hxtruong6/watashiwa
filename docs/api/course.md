@@ -5,7 +5,6 @@
 
 ---
 
-
 **File:** `src/modules/course/course.actions.ts`
 
 ### `getCourseById`
@@ -15,7 +14,7 @@ Get course by ID.
 **Input:**
 
 ```typescript
-id: string
+id: string;
 ```
 
 **Returns:** `Course | null`
@@ -27,7 +26,7 @@ Get course with user progress.
 **Input:**
 
 ```typescript
-courseIdOrSlug: string
+courseIdOrSlug: string;
 ```
 
 **Returns:** `CourseWithProgress | null`
@@ -68,8 +67,8 @@ Update course.
 **Input:**
 
 ```typescript
-id: string
-data: UpdateCourseInput
+id: string;
+data: UpdateCourseInput;
 ```
 
 **Returns:** `{ success: boolean, data?: Course, error?: string }`
@@ -81,7 +80,7 @@ Delete course.
 **Input:**
 
 ```typescript
-id: string
+id: string;
 ```
 
 **Returns:** `{ success: boolean, error?: string }`
@@ -93,8 +92,8 @@ Add deck to course.
 **Input:**
 
 ```typescript
-courseId: string
-deckId: string
+courseId: string;
+deckId: string;
 ```
 
 **Returns:** `{ success: boolean, error?: string }`
@@ -106,8 +105,8 @@ Remove deck from course.
 **Input:**
 
 ```typescript
-courseId: string
-deckId: string
+courseId: string;
+deckId: string;
 ```
 
 **Returns:** `{ success: boolean, error?: string }`
@@ -132,13 +131,12 @@ Search decks by query.
 **Input:**
 
 ```typescript
-query: string
+query: string;
 ```
 
 **Returns:** `Deck[]`
 
 ---
-
 
 ---
 

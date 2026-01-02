@@ -6,7 +6,6 @@
 
 ---
 
-
 **Purpose:** Content organization
 
 **Key Fields:**
@@ -35,7 +34,6 @@
 - `slug`
 
 ---
-
 
 ---
 

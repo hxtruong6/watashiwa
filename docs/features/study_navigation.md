@@ -119,12 +119,12 @@ The `/study` route is the central hub for all learning activities. It handles:
 
 ## Edge Cases
 
-| Case                   | Effect                                                                                                                 |
-| :--------------------- | :--------------------------------------------------------------------------------------------------------------------- |
-| **Invalid `deckId`**   | Invalid UUID format redirects to `/study` (triggers auto-start or dashboard). Invalid but valid UUID format returns empty queue -> "Session Complete" / "No cards found". |
-| **Invalid `courseId`** | Invalid UUID format redirects to `/study` (triggers auto-start or dashboard). Invalid but valid UUID format shows error toast (`t('errorCourseNotFound')`). |
-| **Both IDs**           | `courseId` logic takes precedence in `useStudySession` hook if both are present, but routing usually ensures only one. |
-| **Data Fetch Errors**  | If `getDailyProgress()` or `getUserDecksWithStats()` fail, redirects to `/dashboard` as fallback.                    |
-| **Resume Check Errors** | If `getLastStudySession()` fails, falls back to auto-start logic or `StudyDashboard` instead of crashing.            |
-| **Auto-Start Empty Queue** | If auto-start is triggered but `fetchSessionAction` returns no cards, `SessionController` shows empty state gracefully. |
-| **New User with Due Cards** | If new user somehow has due cards (edge case), auto-start still works - they'll see the session.                      |
+| Case                        | Effect                                                                                                                                                                    |
+| :-------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Invalid `deckId`**        | Invalid UUID format redirects to `/study` (triggers auto-start or dashboard). Invalid but valid UUID format returns empty queue -> "Session Complete" / "No cards found". |
+| **Invalid `courseId`**      | Invalid UUID format redirects to `/study` (triggers auto-start or dashboard). Invalid but valid UUID format shows error toast (`t('errorCourseNotFound')`).               |
+| **Both IDs**                | `courseId` logic takes precedence in `useStudySession` hook if both are present, but routing usually ensures only one.                                                    |
+| **Data Fetch Errors**       | If `getDailyProgress()` or `getUserDecksWithStats()` fail, redirects to `/dashboard` as fallback.                                                                         |
+| **Resume Check Errors**     | If `getLastStudySession()` fails, falls back to auto-start logic or `StudyDashboard` instead of crashing.                                                                 |
+| **Auto-Start Empty Queue**  | If auto-start is triggered but `fetchSessionAction` returns no cards, `SessionController` shows empty state gracefully.                                                   |
+| **New User with Due Cards** | If new user somehow has due cards (edge case), auto-start still works - they'll see the session.                                                                          |

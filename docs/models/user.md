@@ -6,7 +6,6 @@
 
 ---
 
-
 **Purpose:** User accounts and preferences
 
 **Key Fields:**
@@ -53,7 +52,6 @@
 - `dailyStudyStats` → DailyStudyStat[]
 
 ---
-
 
 ---
 

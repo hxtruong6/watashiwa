@@ -5,7 +5,6 @@
 
 ---
 
-
 **File:** `src/modules/auth/auth.actions.ts`
 
 ### `getUser`
@@ -35,13 +34,12 @@ Check if user has any study history.
 **Input:**
 
 ```typescript
-userId: string
+userId: string;
 ```
 
 **Returns:** `boolean`
 
 ---
-
 
 ---
 

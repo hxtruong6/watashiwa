@@ -1,1 +1,194 @@
-{"workflow_version":"1.2.0","timestamps":{"started":"2025-12-29T19:49:46Z","last_updated":"2025-12-29T19:54:35Z","completed":"2025-12-29T19:54:35Z"},"mode":"full_rescan","scan_level":"exhaustive","project_root":"/Users/xuantruong/Documents/WORK/SIDE_PROJECTS/watashi-jp","output_folder":"/Users/xuantruong/Documents/WORK/SIDE_PROJECTS/watashi-jp/docs","completed_steps":[{"step":"step_1","status":"completed","timestamp":"2025-12-29T19:53:19Z","summary":"Classified as monolith web application (Next.js + TypeScript) with single part: main","outputs":["project-parts.json"]},{"step":"step_2","status":"completed","timestamp":"2025-12-29T19:53:19Z","summary":"Inventoried existing documentation surfaces in docs/ and root-level guides","outputs":["_bmad/existing-documentation-inventory.md"]},{"step":"step_3","status":"completed","timestamp":"2025-12-29T19:53:19Z","summary":"Captured technology stack from manifests and key config files","outputs":["project-overview.md"]},{"step":"step_4","status":"completed","timestamp":"2025-12-29T19:53:19Z","summary":"Performed conditional analysis (API, data models, UI components, state management) and wrote summary docs","outputs":["component-inventory.md","state-management.md","api-contracts.md","data-models.md"]},{"step":"step_5","status":"completed","timestamp":"2025-12-29T19:53:19Z","summary":"Generated exhaustive scan inventory (text files: 800, assets: 91) and linked from source tree","outputs":["source-tree-analysis.md","_bmad/exhaustive-scan-summary.md","_bmad/exhaustive-scan-inventory.json"]},{"step":"step_6","status":"completed","timestamp":"2025-12-29T19:53:19Z","summary":"Updated development/deployment/contribution guidance based on repo scripts and configs","outputs":["development-guide.md","deployment-guide.md","contribution-guide.md"]},{"step":"step_8","status":"completed","timestamp":"2025-12-29T19:53:19Z","summary":"Updated architecture documentation with links to exhaustive scan artifacts","outputs":["architecture.md"]},{"step":"step_9","status":"completed","timestamp":"2025-12-29T19:53:19Z","summary":"Generated/updated supporting documentation files for AI retrieval","outputs":["project-overview.md","component-inventory.md","state-management.md","deployment-guide.md","contribution-guide.md","api-contracts.md","data-models.md","project-parts.json"]},{"step":"step_10","status":"completed","timestamp":"2025-12-29T19:54:35Z","summary":"Updated master index.md with exhaustive scan status and fixed invalid glob/comma links","outputs":["index.md"]},{"step":"step_11","status":"completed","timestamp":"2025-12-29T19:53:19Z","summary":"Validated generated docs and ensured key links exist in docs/index.md","outputs":[]},{"step":"step_12","status":"completed","timestamp":"2025-12-29T19:54:35Z","summary":"Finalized workflow state file for resumability","outputs":["project-scan-report.json"]}],"current_step":"completed","findings":{"project_classification":{"repository_type":"monolith","parts_count":1,"primary_language":"TypeScript","architecture_type":"Vertical Slice (Feature-First)"},"technology_stack":[{"part_id":"main","tech_summary":"Next.js 16.1.1, React 19.2.3, TypeScript 5.x, Ant Design 6.1.2, PostgreSQL + Prisma 7.2.0, Zustand 5.0.9"}],"batches_completed":[{"path":"_bmad","files_scanned":308,"summary":"Scanned 308 text-like files under _bmad"},{"path":"src/modules","files_scanned":209,"summary":"Scanned 209 text-like files under src/modules"},{"path":"docs","files_scanned":109,"summary":"Scanned 109 text-like files under docs"},{"path":"other","files_scanned":56,"summary":"Scanned 56 text-like files under other"},{"path":"src/app","files_scanned":54,"summary":"Scanned 54 text-like files under src/app"},{"path":"src/lib","files_scanned":22,"summary":"Scanned 22 text-like files under src/lib"},{"path":"src/hooks","files_scanned":16,"summary":"Scanned 16 text-like files under src/hooks"},{"path":"src/components","files_scanned":14,"summary":"Scanned 14 text-like files under src/components"},{"path":"prisma","files_scanned":10,"summary":"Scanned 10 text-like files under prisma"},{"path":"scripts","files_scanned":6,"summary":"Scanned 6 text-like files under scripts"},{"path":"config","files_scanned":4,"summary":"Scanned 4 text-like files under config"},{"path":"e2e","files_scanned":2,"summary":"Scanned 2 text-like files under e2e"},{"path":"tests","files_scanned":1,"summary":"Scanned 1 text-like files under tests"}]},"outputs_generated":["project-scan-report.json","index.md","project-overview.md","architecture.md","source-tree-analysis.md","development-guide.md","component-inventory.md","state-management.md","deployment-guide.md","contribution-guide.md","api-contracts.md","data-models.md","project-parts.json","_bmad/exhaustive-scan-summary.md","_bmad/exhaustive-scan-inventory.json","_bmad/existing-documentation-inventory.md"],"resume_instructions":"Workflow complete","project_types":[{"part_id":"main","project_type_id":"web","display_name":"Next.js Web Application"}],"validation_status":{"last_validated":"2025-12-29T19:53:19Z","validation_errors":[]}}
+{
+	"workflow_version": "1.2.0",
+	"timestamps": {
+		"started": "2025-12-29T19:49:46Z",
+		"last_updated": "2025-12-29T19:54:35Z",
+		"completed": "2025-12-29T19:54:35Z"
+	},
+	"mode": "full_rescan",
+	"scan_level": "exhaustive",
+	"project_root": "/Users/xuantruong/Documents/WORK/SIDE_PROJECTS/watashi-jp",
+	"output_folder": "/Users/xuantruong/Documents/WORK/SIDE_PROJECTS/watashi-jp/docs",
+	"completed_steps": [
+		{
+			"step": "step_1",
+			"status": "completed",
+			"timestamp": "2025-12-29T19:53:19Z",
+			"summary": "Classified as monolith web application (Next.js + TypeScript) with single part: main",
+			"outputs": ["project-parts.json"]
+		},
+		{
+			"step": "step_2",
+			"status": "completed",
+			"timestamp": "2025-12-29T19:53:19Z",
+			"summary": "Inventoried existing documentation surfaces in docs/ and root-level guides",
+			"outputs": ["_bmad/existing-documentation-inventory.md"]
+		},
+		{
+			"step": "step_3",
+			"status": "completed",
+			"timestamp": "2025-12-29T19:53:19Z",
+			"summary": "Captured technology stack from manifests and key config files",
+			"outputs": ["project-overview.md"]
+		},
+		{
+			"step": "step_4",
+			"status": "completed",
+			"timestamp": "2025-12-29T19:53:19Z",
+			"summary": "Performed conditional analysis (API, data models, UI components, state management) and wrote summary docs",
+			"outputs": [
+				"component-inventory.md",
+				"state-management.md",
+				"api-contracts.md",
+				"data-models.md"
+			]
+		},
+		{
+			"step": "step_5",
+			"status": "completed",
+			"timestamp": "2025-12-29T19:53:19Z",
+			"summary": "Generated exhaustive scan inventory (text files: 800, assets: 91) and linked from source tree",
+			"outputs": [
+				"source-tree-analysis.md",
+				"_bmad/exhaustive-scan-summary.md",
+				"_bmad/exhaustive-scan-inventory.json"
+			]
+		},
+		{
+			"step": "step_6",
+			"status": "completed",
+			"timestamp": "2025-12-29T19:53:19Z",
+			"summary": "Updated development/deployment/contribution guidance based on repo scripts and configs",
+			"outputs": ["development-guide.md", "deployment-guide.md", "contribution-guide.md"]
+		},
+		{
+			"step": "step_8",
+			"status": "completed",
+			"timestamp": "2025-12-29T19:53:19Z",
+			"summary": "Updated architecture documentation with links to exhaustive scan artifacts",
+			"outputs": ["architecture.md"]
+		},
+		{
+			"step": "step_9",
+			"status": "completed",
+			"timestamp": "2025-12-29T19:53:19Z",
+			"summary": "Generated/updated supporting documentation files for AI retrieval",
+			"outputs": [
+				"project-overview.md",
+				"component-inventory.md",
+				"state-management.md",
+				"deployment-guide.md",
+				"contribution-guide.md",
+				"api-contracts.md",
+				"data-models.md",
+				"project-parts.json"
+			]
+		},
+		{
+			"step": "step_10",
+			"status": "completed",
+			"timestamp": "2025-12-29T19:54:35Z",
+			"summary": "Updated master index.md with exhaustive scan status and fixed invalid glob/comma links",
+			"outputs": ["index.md"]
+		},
+		{
+			"step": "step_11",
+			"status": "completed",
+			"timestamp": "2025-12-29T19:53:19Z",
+			"summary": "Validated generated docs and ensured key links exist in docs/index.md",
+			"outputs": []
+		},
+		{
+			"step": "step_12",
+			"status": "completed",
+			"timestamp": "2025-12-29T19:54:35Z",
+			"summary": "Finalized workflow state file for resumability",
+			"outputs": ["project-scan-report.json"]
+		}
+	],
+	"current_step": "completed",
+	"findings": {
+		"project_classification": {
+			"repository_type": "monolith",
+			"parts_count": 1,
+			"primary_language": "TypeScript",
+			"architecture_type": "Vertical Slice (Feature-First)"
+		},
+		"technology_stack": [
+			{
+				"part_id": "main",
+				"tech_summary": "Next.js 16.1.1, React 19.2.3, TypeScript 5.x, Ant Design 6.1.2, PostgreSQL + Prisma 7.2.0, Zustand 5.0.9"
+			}
+		],
+		"batches_completed": [
+			{
+				"path": "_bmad",
+				"files_scanned": 308,
+				"summary": "Scanned 308 text-like files under _bmad"
+			},
+			{
+				"path": "src/modules",
+				"files_scanned": 209,
+				"summary": "Scanned 209 text-like files under src/modules"
+			},
+			{ "path": "docs", "files_scanned": 109, "summary": "Scanned 109 text-like files under docs" },
+			{ "path": "other", "files_scanned": 56, "summary": "Scanned 56 text-like files under other" },
+			{
+				"path": "src/app",
+				"files_scanned": 54,
+				"summary": "Scanned 54 text-like files under src/app"
+			},
+			{
+				"path": "src/lib",
+				"files_scanned": 22,
+				"summary": "Scanned 22 text-like files under src/lib"
+			},
+			{
+				"path": "src/hooks",
+				"files_scanned": 16,
+				"summary": "Scanned 16 text-like files under src/hooks"
+			},
+			{
+				"path": "src/components",
+				"files_scanned": 14,
+				"summary": "Scanned 14 text-like files under src/components"
+			},
+			{
+				"path": "prisma",
+				"files_scanned": 10,
+				"summary": "Scanned 10 text-like files under prisma"
+			},
+			{
+				"path": "scripts",
+				"files_scanned": 6,
+				"summary": "Scanned 6 text-like files under scripts"
+			},
+			{ "path": "config", "files_scanned": 4, "summary": "Scanned 4 text-like files under config" },
+			{ "path": "e2e", "files_scanned": 2, "summary": "Scanned 2 text-like files under e2e" },
+			{ "path": "tests", "files_scanned": 1, "summary": "Scanned 1 text-like files under tests" }
+		]
+	},
+	"outputs_generated": [
+		"project-scan-report.json",
+		"index.md",
+		"project-overview.md",
+		"architecture.md",
+		"source-tree-analysis.md",
+		"development-guide.md",
+		"component-inventory.md",
+		"state-management.md",
+		"deployment-guide.md",
+		"contribution-guide.md",
+		"api-contracts.md",
+		"data-models.md",
+		"project-parts.json",
+		"_bmad/exhaustive-scan-summary.md",
+		"_bmad/exhaustive-scan-inventory.json",
+		"_bmad/existing-documentation-inventory.md"
+	],
+	"resume_instructions": "Workflow complete",
+	"project_types": [
+		{ "part_id": "main", "project_type_id": "web", "display_name": "Next.js Web Application" }
+	],
+	"validation_status": { "last_validated": "2025-12-29T19:53:19Z", "validation_errors": [] }
+}

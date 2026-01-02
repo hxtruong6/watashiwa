@@ -2,7 +2,16 @@
 project_name: 'watashi-jp'
 user_name: 'iDev'
 date: '2025-12-31'
-sections_completed: ['technology_stack', 'language_rules', 'framework_rules', 'testing_rules', 'code_quality', 'workflow', 'critical_rules']
+sections_completed:
+  [
+    'technology_stack',
+    'language_rules',
+    'framework_rules',
+    'testing_rules',
+    'code_quality',
+    'workflow',
+    'critical_rules',
+  ]
 status: 'complete'
 rule_count: 50+
 optimized_for_llm: true

@@ -6,11 +6,9 @@
 
 ---
 
-
 WatashiWa uses a **Hybrid SQL Architecture** combining relational tables for integrity with JSONB fields for flexible content storage. The schema supports the "Smart CUBE" method with dynamic card variants, interference shielding, and active priming.
 
 ---
-
 
 ---
 

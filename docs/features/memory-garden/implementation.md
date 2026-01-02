@@ -44,6 +44,7 @@ pnpm add @react-three/fiber @react-three/drei three @types/three
 ```
 
 If you encounter pnpm store issues:
+
 ```bash
 pnpm install
 ```
@@ -70,7 +71,7 @@ pnpm install
 - **Height Mapping**:
   - Leech: -0.3 (depression/hole)
   - New/Learning: 0.1 (flat ground)
-  - Mastered: 0.1 + (stability/100 * 0.4) (rising hills)
+  - Mastered: 0.1 + (stability/100 \* 0.4) (rising hills)
 
 ## Integration Points
 
@@ -79,12 +80,14 @@ pnpm install
 **Location**: `src/modules/dashboard/components/DashboardOverview.tsx`
 
 The Memory Garden Hero appears after the Daily Ritual section, showing:
+
 - Total word count, mastered count, health score
 - Health message (healthy/warning/error based on leech count)
 - 3D garden visualization
 - "Fix Cracks" button for intervention sessions
 
 **Data Flow**:
+
 1. `getDashboardData()` fetches `memoryGarden` data (500 tile limit)
 2. Data passed to `DashboardOverview` component
 3. `MemoryGardenHero` renders the visualization
@@ -105,15 +108,14 @@ The Memory Garden Hero appears after the Daily Ritual section, showing:
    - Client-side component shows visualization
 
 **Example Integration**:
+
 ```tsx
 // In StudyIntentChooser.tsx
-{leechCount >= 5 && (
-  <InterventionBlocker
-    data={memoryGarden}
-    dueCount={dueCount}
-    leechCount={leechCount}
-  />
-)}
+{
+	leechCount >= 5 && (
+		<InterventionBlocker data={memoryGarden} dueCount={dueCount} leechCount={leechCount} />
+	);
+}
 ```
 
 ### ⚠️ Scenario C: Post-Session Animation (PENDING)
@@ -130,6 +132,7 @@ The Memory Garden Hero appears after the Daily Ritual section, showing:
 4. Auto-dismiss after animation completes
 
 **Example Integration**:
+
 ```tsx
 // In SessionSummary.tsx
 const [showAnimation, setShowAnimation] = useState(true);
@@ -137,17 +140,19 @@ const [beforeData, setBeforeData] = useState<MemoryGardenData | null>(null);
 const [afterData, setAfterData] = useState<MemoryGardenData | null>(null);
 
 useEffect(() => {
-  // Fetch before/after data
-  // Show animation
+	// Fetch before/after data
+	// Show animation
 }, []);
 
-{showAnimation && beforeData && afterData && (
-  <PostSessionAnimation
-    beforeData={beforeData}
-    afterData={afterData}
-    onComplete={() => setShowAnimation(false)}
-  />
-)}
+{
+	showAnimation && beforeData && afterData && (
+		<PostSessionAnimation
+			beforeData={beforeData}
+			afterData={afterData}
+			onComplete={() => setShowAnimation(false)}
+		/>
+	);
+}
 ```
 
 ## Testing Checklist
@@ -165,11 +170,13 @@ useEffect(() => {
 ## Performance Benchmarks
 
 **Expected Performance**:
+
 - 500 tiles: ~60 FPS on modern hardware
 - 1000 tiles: ~45 FPS on modern hardware
 - 2000 tiles: ~30 FPS on modern hardware
 
 **Memory Usage**:
+
 - ~2MB per 1000 tiles (geometry + colors)
 - InstancedMesh reduces draw calls from 1000+ to 1
 
@@ -203,4 +210,3 @@ src/modules/dashboard/components/memory-garden/
 - Performance is optimized for 1000-2000 tiles using InstancedMesh
 - Visual language aligns with Zen/Nature aesthetic (Matcha colors, organic shapes)
 - Integration is modular - scenarios B and C can be added incrementally
-

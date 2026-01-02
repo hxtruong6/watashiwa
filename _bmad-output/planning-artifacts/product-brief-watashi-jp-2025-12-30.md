@@ -41,7 +41,7 @@ Serious Japanese learners can make progress with existing apps, but they struggl
 
 - **Anki-like SRS**: powerful scheduling, but weak at meaning-making—little built-in context, no guided “why,” and high manual effort leads to overload.
 - **Duolingo-like paths**: engaging, but often too shallow for serious learners; limited depth on pitch/homonyms and weak “memory architecture.”
-- **Single-focus tools** (Kanji-first, grammar-first, or list-first): strong in their lane but don’t unify *retention + context + interference handling + personalization* into one coherent “memory system.”
+- **Single-focus tools** (Kanji-first, grammar-first, or list-first): strong in their lane but don’t unify _retention + context + interference handling + personalization_ into one coherent “memory system.”
 
 ### Proposed Solution
 

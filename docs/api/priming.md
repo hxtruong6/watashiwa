@@ -5,7 +5,6 @@
 
 ---
 
-
 **File:** `src/modules/priming/actions.ts`
 
 ### `getStoryByUnit`
@@ -15,7 +14,9 @@ Get story for a unit (deck).
 **Input:**
 
 ```typescript
-{ unitId: string }
+{
+	unitId: string;
+}
 ```
 
 **Returns:** `Story | null`
@@ -27,7 +28,9 @@ Check if user has read story.
 **Input:**
 
 ```typescript
-{ unitId: string }
+{
+	unitId: string;
+}
 ```
 
 **Returns:** `boolean`
@@ -39,7 +42,9 @@ Mark story as read.
 **Input:**
 
 ```typescript
-{ storyId: string }
+{
+	storyId: string;
+}
 ```
 
 **Returns:** `{ success: boolean, error?: string }`
@@ -51,13 +56,14 @@ Get session data with priming story.
 **Input:**
 
 ```typescript
-{ deckId: string }
+{
+	deckId: string;
+}
 ```
 
 **Returns:** `{ cards: Card[], story?: Story }`
 
 ---
-
 
 ---
 

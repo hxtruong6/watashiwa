@@ -209,18 +209,15 @@ src/modules/study/
 ```typescript
 // src/modules/study/study.actions.ts
 export async function getRelatedWordsAction(input: { vocabId: string }) {
-  const Schema = z.object({ vocabId: z.uuid() });
-  
-  return executeSafeAction(Schema, input, async ({ vocabId }, { userId }) => {
-    if (!userId) throw new Error('Unauthorized');
-    
-    const relatedWords = await SemanticRelationshipService.getRelatedWords(
-      vocabId,
-      userId
-    );
-    
-    return { success: true, data: relatedWords };
-  });
+	const Schema = z.object({ vocabId: z.uuid() });
+
+	return executeSafeAction(Schema, input, async ({ vocabId }, { userId }) => {
+		if (!userId) throw new Error('Unauthorized');
+
+		const relatedWords = await SemanticRelationshipService.getRelatedWords(vocabId, userId);
+
+		return { success: true, data: relatedWords };
+	});
 }
 ```
 
@@ -229,12 +226,12 @@ export async function getRelatedWordsAction(input: { vocabId: string }) {
 ```typescript
 // src/modules/study/services/semantic-relationship.service.ts
 export const SemanticRelationshipService = {
-  async getRelatedWords(vocabId: string, userId: string): Promise<RelatedWord[]> {
-    // 1. Get vocabulary with etymology, tags, etc.
-    // 2. Query relationships (etymology, confusion pairs, etc.)
-    // 3. Calculate relationship strength
-    // 4. Return top 3-5 related words
-  }
+	async getRelatedWords(vocabId: string, userId: string): Promise<RelatedWord[]> {
+		// 1. Get vocabulary with etymology, tags, etc.
+		// 2. Query relationships (etymology, confusion pairs, etc.)
+		// 3. Calculate relationship strength
+		// 4. Return top 3-5 related words
+	},
 };
 ```
 
@@ -244,17 +241,17 @@ export const SemanticRelationshipService = {
 // src/modules/study/components/RelatedWords/RelatedWords.tsx
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
 import { getRelatedWordsAction } from '@/modules/study/study.actions';
+import { useQuery } from '@tanstack/react-query';
 
 export function RelatedWords({ vocabId }: { vocabId: string }) {
-  const { data, isLoading } = useQuery({
-    queryKey: ['relatedWords', vocabId],
-    queryFn: () => getRelatedWordsAction({ vocabId }),
-    staleTime: 3600000, // 1 hour
-  });
-  
-  // Render related words...
+	const { data, isLoading } = useQuery({
+		queryKey: ['relatedWords', vocabId],
+		queryFn: () => getRelatedWordsAction({ vocabId }),
+		staleTime: 3600000, // 1 hour
+	});
+
+	// Render related words...
 }
 ```
 

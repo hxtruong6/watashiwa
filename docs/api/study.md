@@ -5,7 +5,6 @@
 
 ---
 
-
 **File:** `src/modules/study/study.actions.ts`
 
 ### `getNextReviewCard`
@@ -105,7 +104,6 @@ Get the last study session data.
 **Returns:** `SessionData | null`
 
 ---
-
 
 ---
 

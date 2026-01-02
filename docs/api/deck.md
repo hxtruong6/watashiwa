@@ -5,7 +5,6 @@
 
 ---
 
-
 **File:** `src/modules/deck/deck.actions.ts`
 
 ### `getDeck`
@@ -15,7 +14,7 @@ Get deck by ID or slug.
 **Input:**
 
 ```typescript
-idOrSlug: string
+idOrSlug: string;
 ```
 
 **Returns:** `Deck | null`
@@ -62,7 +61,7 @@ Delete deck (soft delete).
 **Input:**
 
 ```typescript
-id: string
+id: string;
 ```
 
 **Returns:** `{ success: boolean, error?: string }`
@@ -74,7 +73,6 @@ Get all decks (public or user's).
 **Returns:** `Deck[]`
 
 ---
-
 
 ---
 
