@@ -164,11 +164,11 @@
 
 ```typescript
 export async function middleware(request: NextRequest) {
-  // Handle authentication
-  const response = await updateSession(request);
-  
-  // That's it! Setup check happens at page level
-  return response;
+	// Handle authentication
+	const response = await updateSession(request);
+
+	// That's it! Setup check happens at page level
+	return response;
 }
 ```
 
@@ -242,7 +242,7 @@ export const config = {
 export async function updateUserSettings(input: UpdateUserSettingsInput) {
   return executeSafeAction(UpdateUserSettingsSchema, input, async (data, { userId }) => {
     // ... existing code ...
-    
+
     // Update database
     await prisma.user.update({
       // ... existing update logic ...
@@ -263,10 +263,10 @@ export async function updateUserSettings(input: UpdateUserSettingsInput) {
 export async function syncUser() {
   return executeSafeAction(z.void(), undefined, async () => {
     // ... existing user sync logic ...
-    
+
     // Remove setup status sync (lines 113-129)
     // Page-level checks will query DB directly
-    
+
     // ... rest of function ...
   });
 }
@@ -277,10 +277,10 @@ export async function syncUser() {
 ```typescript:src/utils/setup-check.ts
 /**
  * Check if a user has completed the initial profile setup
- * 
+ *
  * This function checks the database (source of truth) for setup status.
  * Used by server components for page-level protection.
- * 
+ *
  * @param userId - Optional user ID. If not provided, will fetch current user
  * @returns Promise<boolean> - true if setup is completed, false otherwise
  */

@@ -7,9 +7,8 @@ describe('StudyService', () => {
 		id: '123',
 		userId: 'user1',
 		vocabId: 'vocab1',
-		kanjiId: null,
-		deckId: 'deck1',
-		due: new Date(),
+		nextReviewAt: new Date(),
+		srsStage: 0,
 		stability: 0,
 		difficulty: 0,
 		elapsedDays: 0,
@@ -26,7 +25,7 @@ describe('StudyService', () => {
 		const fsrsCard = StudyService.toFsrsCard(mockCard);
 		expect(fsrsCard.state).toBe(0);
 		expect(fsrsCard.reps).toBe(0);
-		expect(fsrsCard.due).toEqual(mockCard.due);
+		expect(fsrsCard.due).toEqual(mockCard.nextReviewAt);
 	});
 
 	it('should calculate next state for "Good" rating', () => {

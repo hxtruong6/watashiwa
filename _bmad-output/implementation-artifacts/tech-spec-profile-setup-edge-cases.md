@@ -32,6 +32,7 @@ Implement comprehensive protection at multiple layers:
 ### Scope (In/Out)
 
 **In Scope:**
+
 - Middleware protection for setup status
 - Page-level setup checks in dashboard and study pages
 - Navbar navigation protection
@@ -40,6 +41,7 @@ Implement comprehensive protection at multiple layers:
 - Browser history management
 
 **Out of Scope:**
+
 - Skip setup option (intentional requirement)
 - Multi-step setup wizard (single step only)
 - Setup progress tracking
@@ -50,6 +52,7 @@ Implement comprehensive protection at multiple layers:
 ### Codebase Patterns
 
 **Architecture:**
+
 - Next.js 16+ App Router
 - Vertical Slice Architecture (feature-first organization)
 - Server Actions for mutations (`src/modules/*/actions.ts`)
@@ -57,6 +60,7 @@ Implement comprehensive protection at multiple layers:
 - Client Components for interactive UI
 
 **Existing Patterns:**
+
 - Authentication check: `getUser()` from `@/modules/auth/auth.actions`
 - Settings fetch: `getUserSettings()` from `@/modules/user/user.actions`
 - Settings update: `updateUserSettings()` from `@/modules/user/user.actions`
@@ -65,6 +69,7 @@ Implement comprehensive protection at multiple layers:
 - Cache revalidation: `revalidatePath()` from `next/cache`
 
 **File Structure:**
+
 ```
 src/
 ├── app/
@@ -84,6 +89,7 @@ src/
 ### Files to Reference
 
 **Primary Files to Modify:**
+
 1. `src/middleware.ts` - Add setup status check
 2. `src/app/profile/setup/page.tsx` - Improve error handling, cache revalidation
 3. `src/app/dashboard/page.tsx` - Add setup check
@@ -91,6 +97,7 @@ src/
 5. `src/modules/ui/components/NavBar.tsx` - Add setup check before navigation
 
 **Files to Reference (Read Only):**
+
 - `src/modules/user/user.actions.ts` - Understand settings structure
 - `src/utils/supabase/middleware.ts` - Understand current middleware pattern
 - `src/lib/schemas/user.ts` - Understand UserPreferences type
@@ -109,6 +116,7 @@ src/
 ### Tasks
 
 #### Task 1: Add Setup Status Check to Middleware
+
 - [ ] Create helper function `hasCompletedSetup(userId: string): Promise<boolean>` in `src/utils/setup-check.ts`
 - [ ] Modify `src/middleware.ts` to check setup status for authenticated users
 - [ ] Redirect authenticated users without setup to `/profile/setup`
@@ -116,6 +124,7 @@ src/
 - [ ] Preserve `returnUrl` when redirecting to setup
 
 #### Task 2: Improve Setup Page Error Handling
+
 - [ ] Replace redirect-to-login on error with user-friendly error message
 - [ ] Add retry button for transient errors
 - [ ] Add loading state during save operation
@@ -123,22 +132,26 @@ src/
 - [ ] Add `router.refresh()` after save to ensure fresh data
 
 #### Task 3: Add Setup Check to Dashboard Page
+
 - [ ] Add server-side check for `setupCompleted` in `src/app/dashboard/page.tsx`
 - [ ] Redirect to `/profile/setup` if not completed
 - [ ] Use `redirect()` from `next/navigation` for server-side redirect
 
 #### Task 4: Add Setup Check to Study Page
+
 - [ ] Add server-side check for `setupCompleted` in `src/app/study/page.tsx`
 - [ ] Redirect to `/profile/setup` if not completed
 - [ ] Preserve query parameters in redirect URL for return after setup
 
 #### Task 5: Add Setup Check to Navbar
+
 - [ ] Create client-side hook `useSetupStatus()` to check setup completion
 - [ ] Modify `handleNavClick` in `NavBar.tsx` to check setup status
 - [ ] Show warning message or redirect to setup if user tries to access protected route
 - [ ] Disable protected route links if setup not completed (optional UX enhancement)
 
 #### Task 6: Create Setup Check Utility
+
 - [ ] Create `src/utils/setup-check.ts` with reusable functions:
   - `hasCompletedSetup(userId?: string): Promise<boolean>`
   - `requireSetupCompleted(userId?: string): Promise<void>` (throws if not completed)
@@ -148,42 +161,50 @@ src/
 ### Acceptance Criteria
 
 #### AC 1: Middleware Protection
+
 - **Given** an authenticated user who hasn't completed setup
 - **When** they try to access `/dashboard` or `/study`
 - **Then** they are redirected to `/profile/setup` with `returnUrl` preserved
 
 #### AC 2: Setup Page Error Handling
+
 - **Given** a user on the setup page
 - **When** `getUserSettings()` fails with a network error
 - **Then** an error message is shown with a retry button (not redirect to login)
 
 #### AC 3: Setup Page Cache Revalidation
+
 - **Given** a user completes setup
 - **When** settings are saved successfully
 - **Then** `/dashboard` and `/profile/setup` paths are revalidated
 - **And** `router.refresh()` is called to ensure fresh data
 
 #### AC 4: Dashboard Protection
+
 - **Given** an authenticated user who hasn't completed setup
 - **When** they access `/dashboard` directly
 - **Then** they are redirected to `/profile/setup`
 
 #### AC 5: Study Page Protection
+
 - **Given** an authenticated user who hasn't completed setup
 - **When** they access `/study` directly
 - **Then** they are redirected to `/profile/setup` with query params preserved
 
 #### AC 6: Navbar Protection
+
 - **Given** an authenticated user who hasn't completed setup
 - **When** they click a protected route link in the navbar
 - **Then** they are redirected to `/profile/setup` or shown a warning message
 
 #### AC 7: Browser Back Button
+
 - **Given** a user who has completed setup
 - **When** they use the browser back button
 - **Then** they are redirected to dashboard (setup page checks status on mount)
 
 #### AC 8: Race Condition Prevention
+
 - **Given** a user is saving setup
 - **When** they close the browser tab during save
 - **Then** the save operation completes in the background (server action)
@@ -194,28 +215,33 @@ src/
 ### Dependencies
 
 **Existing Dependencies (No New Packages):**
+
 - `next/cache` - `revalidatePath()`
 - `next/navigation` - `redirect()`, `useRouter()`
 - `@/modules/user/user.actions` - `getUserSettings()`
 - `@/modules/auth/auth.actions` - `getUser()`
 
 **Database Schema:**
+
 - `User.preferences` (JSONB) contains `{ setupCompleted: boolean }`
 - Already exists in schema, no migration needed
 
 ### Testing Strategy
 
 **Unit Tests:**
+
 - Test `hasCompletedSetup()` with various user states
 - Test middleware redirect logic
 - Test setup page error handling
 
 **Integration Tests:**
+
 - Test full flow: new user → setup → dashboard access
 - Test middleware redirects
 - Test navbar navigation protection
 
 **E2E Tests (Playwright):**
+
 - Test user can't access dashboard without setup
 - Test user can complete setup and access dashboard
 - Test browser back button behavior
@@ -224,21 +250,25 @@ src/
 ### Notes
 
 **Performance Considerations:**
+
 - Middleware check adds one DB query per protected route request
 - Consider caching setup status in session/JWT if performance becomes an issue
 - Current implementation is acceptable for MVP
 
 **Security Considerations:**
+
 - Setup check must be server-side to prevent client-side bypass
 - Middleware is the primary protection layer
 - Page-level checks are defense in depth
 
 **UX Considerations:**
+
 - Show loading state during setup check
 - Provide clear error messages with retry options
 - Preserve user's intended destination (`returnUrl`)
 
 **Migration Notes:**
+
 - Existing users without `setupCompleted` flag will be redirected to setup
 - This is intentional - ensures all users complete setup
 - Can add migration script to backfill `setupCompleted: true` for existing users if needed
@@ -246,8 +276,8 @@ src/
 ---
 
 **Next Steps:**
+
 1. Review this spec with team
 2. Implement tasks in order (Task 1 → Task 6)
 3. Test each task before moving to next
 4. Run E2E tests before merging
-

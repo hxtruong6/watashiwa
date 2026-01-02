@@ -18,6 +18,7 @@ import {
 import { motion } from 'motion/react';
 import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 const { Title, Text, Paragraph } = Typography;
@@ -46,6 +47,7 @@ export default function DeckList({ decks, userId }: DeckListProps) {
 	const { token } = useToken();
 	const t = useTranslations('Decks');
 	const locale = useLocale();
+	const router = useRouter();
 	const [searchTerm, setSearchTerm] = useState('');
 	const [filter, setFilter] = useState<'all' | 'mine' | 'public'>('all');
 
@@ -139,9 +141,15 @@ export default function DeckList({ decks, userId }: DeckListProps) {
 						const displayDescription =
 							locale === 'en' ? deck.descriptionEn || deck.description : deck.description;
 
+						const deckUrl = getDeckUrl({ slug: deck.slug });
+
 						return (
 							<Col xs={24} sm={12} md={8} lg={6} key={deck.id}>
-								<Link href={getDeckUrl({ slug: deck.slug })} prefetch={true}>
+								<Link
+									href={deckUrl}
+									prefetch={true}
+									style={{ textDecoration: 'none', height: '100%', display: 'block' }}
+								>
 									<motion.div
 										variants={itemVariants}
 										whileHover={{ y: -5 }}
@@ -211,13 +219,18 @@ export default function DeckList({ decks, userId }: DeckListProps) {
 												<Tag color="default" style={{ margin: 0 }}>
 													{t('cardsCount', { count: deck._count?.vocabularies || 0 })}
 												</Tag>
-												<div onClick={(e) => e.stopPropagation()}>
-													<Link href={getDeckUrl({ slug: deck.slug })} prefetch={true}>
-														<Button type="text" icon={<RightOutlined />} iconPlacement="end">
-															{t('detailsButton')}
-														</Button>
-													</Link>
-												</div>
+												<Button
+													type="text"
+													icon={<RightOutlined />}
+													iconPlacement="end"
+													onClick={(e) => {
+														e.preventDefault();
+														e.stopPropagation();
+														router.push(deckUrl);
+													}}
+												>
+													{t('detailsButton')}
+												</Button>
 											</Flex>
 										</Card>
 									</motion.div>

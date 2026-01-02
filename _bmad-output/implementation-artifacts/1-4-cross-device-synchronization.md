@@ -234,20 +234,20 @@ import { executeSafeAction } from '@/modules/core/action-client';
 import { z } from 'zod';
 
 export async function syncLearningProgress(input: unknown) {
- return executeSafeAction(
-  SyncProgressSchema,
-  input,
-  async (validatedInput, { userId }) => {
-   if (!userId) throw new Error('Unauthorized');
+	return executeSafeAction(
+		SyncProgressSchema,
+		input,
+		async (validatedInput, { userId }) => {
+			if (!userId) throw new Error('Unauthorized');
 
-   // Business logic - sync learning progress
-   const syncResult = await performSync(validatedInput, userId);
+			// Business logic - sync learning progress
+			const syncResult = await performSync(validatedInput, userId);
 
-   revalidatePath('/dashboard');
-   return { success: true, data: syncResult };
-  },
-  { userId: true }, // Require authentication
- );
+			revalidatePath('/dashboard');
+			return { success: true, data: syncResult };
+		},
+		{ userId: true }, // Require authentication
+	);
 }
 ```
 

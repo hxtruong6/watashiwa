@@ -182,15 +182,15 @@ import { executeSafeAction } from '@/modules/core/action-client';
 import { z } from 'zod';
 
 export async function someAction(input: unknown) {
- return executeSafeAction(
-  InputSchema,
-  input,
-  async (validatedInput) => {
-   // Business logic
-   return { success: true, data: result };
-  },
-  { userId: true }, // Require authentication
- );
+	return executeSafeAction(
+		InputSchema,
+		input,
+		async (validatedInput) => {
+			// Business logic
+			return { success: true, data: result };
+		},
+		{ userId: true }, // Require authentication
+	);
 }
 ```
 
@@ -203,13 +203,13 @@ import { Alert, Button, Form, Input } from 'antd';
 import { useTranslations } from 'next-intl';
 
 export default function LoginComponent() {
- const t = useTranslations('Login');
- const { login, loading, error } = useAuth({
-  onSuccess: (role) => {
-   window.location.href = '/';
-  },
- });
- // Component logic
+	const t = useTranslations('Login');
+	const { login, loading, error } = useAuth({
+		onSuccess: (role) => {
+			window.location.href = '/';
+		},
+	});
+	// Component logic
 }
 ```
 

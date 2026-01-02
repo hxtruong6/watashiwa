@@ -52,6 +52,7 @@
 		"immer": "^11.1.0",
 		"import-in-the-middle": "^2.0.1",
 		"inngest": "^3.48.1",
+		"ioredis": "^5.8.2",
 		"lucide-react": "^0.562.0",
 		"mailtrap": "^4.4.0",
 		"mime-types": "^3.0.2",

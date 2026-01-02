@@ -9,6 +9,7 @@ import {
 	StoryContentSchema,
 } from '@/lib/schemas/jsonb';
 import { executeSafeAction } from '@/modules/core/action-client';
+import { getSemanticallySequencedQueue } from '@/modules/study/services/semantic-sequencer.service';
 import { Card, createEmptyCard } from 'ts-fsrs';
 import { z } from 'zod';
 
@@ -182,7 +183,37 @@ export async function fetchSessionAction(input: { deckId?: string; courseId?: st
 				return card;
 			});
 
-			return sessionCards;
+			// 6. Apply semantic sequencing (with graceful fallback to FSRS queue)
+			try {
+				const semanticResult = await getSemanticallySequencedQueue(sessionCards, {
+					userId,
+					enableCaching: true,
+					timeoutMs: 2000,
+					performanceThresholdMs: 500,
+				});
+
+				// Log metrics for monitoring
+				if (semanticResult.fallbackReason) {
+					console.log(
+						`[fetchSessionAction] Semantic sequencing fallback: ${semanticResult.fallbackReason}`,
+						{
+							...semanticResult.metrics,
+							cacheType: semanticResult.metrics.cacheType || 'none',
+						},
+					);
+				} else {
+					console.log(`[fetchSessionAction] Semantic sequencing successful`, {
+						...semanticResult.metrics,
+						cacheType: semanticResult.metrics.cacheType || 'none',
+					});
+				}
+
+				return semanticResult.queue;
+			} catch (error) {
+				// Graceful fallback: return FSRS queue on any error
+				console.error('[fetchSessionAction] Semantic sequencing error, using FSRS queue:', error);
+				return sessionCards;
+			}
 		},
 		{ requireAuth: true },
 	);

@@ -11,6 +11,7 @@ import { Card, State, createEmptyCard } from 'ts-fsrs';
 import { z } from 'zod';
 
 import { InterventionService } from './intervention.service';
+import { invalidateSemanticCache } from './services/semantic-sequencer.service';
 import { StudyData } from './study.data';
 import { GetQueueSchema } from './study.dto';
 // Removed SubmitReviewSchema as we define it locally now
@@ -223,6 +224,13 @@ export async function submitReview(input: {
 				console.error('[Action] Intervention check failed', err);
 				// Do not fail the review if intervention check fails
 			}
+
+			// 6. Invalidate semantic cache (non-blocking)
+			// User's vocabulary state changed, so semantic sequencing cache should be refreshed
+			invalidateSemanticCache(userId).catch((err) => {
+				console.warn('[submitReview] Cache invalidation failed (non-critical):', err);
+				// Don't fail the review if cache invalidation fails
+			});
 
 			return {
 				success: true,

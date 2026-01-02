@@ -7,6 +7,7 @@ This guide outlines the steps to deploy the **WatashiWa** application to a Linux
 - **Ubuntu Server** (20.04 LTS or newer recommended)
 - **Node.js** (v18 or newer) & **npm** / **pnpm**
 - **PostgreSQL** database
+- **Redis** (optional, for distributed caching - falls back to in-memory if not available)
 - **Nginx**
 - **Domain Name** pointed to your server's IP
 
@@ -68,13 +69,24 @@ Ensure you have a PostgreSQL database connection string.
    nano .env
    ```
 
-3. **Configure your Database URL**:
+3. **Configure your Database URL** (with connection pool parameters):
 
    ```env
-   DATABASE_URL="postgresql://user:password@localhost:5432/watashi_jp?schema=public"
+   DATABASE_URL="postgresql://user:password@localhost:5432/watashi_jp?schema=public&connection_limit=20&pool_timeout=10&connect_timeout=5"
    ```
 
-4. **Run Migrations**:
+   **Note:** Connection pool parameters are automatically added if not present, but it's recommended to include them explicitly for production.
+
+4. **Configure Redis (Optional, but recommended for 10K+ users)**:
+
+   ```env
+   # Redis URL (optional - falls back to in-memory cache if not set)
+   REDIS_URL="redis://localhost:6379"
+   ```
+
+   If Redis is not configured, the application will automatically use in-memory caching (per-instance).
+
+5. **Run Migrations**:
 
    ```bash
    npx prisma migrate deploy
@@ -82,7 +94,7 @@ Ensure you have a PostgreSQL database connection string.
 
    _This applies pending migrations to your production database._
 
-5. **Generate Prisma Client**:
+6. **Generate Prisma Client**:
 
    ```bash
    npx prisma generate
@@ -90,7 +102,57 @@ Ensure you have a PostgreSQL database connection string.
 
 ---
 
-## 3. Application Setup
+## 3. Redis Setup (Optional, Recommended for Production)
+
+Redis provides distributed caching across all Next.js instances, significantly improving cache hit rates for 10K+ concurrent users.
+
+### Install Redis
+
+```bash
+sudo apt update
+sudo apt install redis-server -y
+```
+
+### Configure Redis
+
+Edit the Redis configuration:
+
+```bash
+sudo nano /etc/redis/redis.conf
+```
+
+Recommended settings for production:
+
+```
+maxmemory 256mb
+maxmemory-policy allkeys-lru
+```
+
+### Start Redis
+
+```bash
+sudo systemctl start redis-server
+sudo systemctl enable redis-server
+```
+
+### Verify Redis is Running
+
+```bash
+redis-cli ping
+# Should return: PONG
+```
+
+### Configure Redis in `.env`
+
+Add to your `.env` file:
+
+```env
+REDIS_URL="redis://localhost:6379"
+```
+
+**Note:** If `REDIS_URL` is not set, the application will automatically fall back to in-memory caching. This is fine for development but not recommended for production with high concurrency.
+
+## 4. Application Setup
 
 ### Install Dependencies
 
@@ -106,7 +168,7 @@ pnpm build
 
 ---
 
-## 4. Process Management with PM2
+## 5. Process Management with PM2
 
 We use the `ecosystem.config.js` file included in the project.
 
@@ -136,7 +198,7 @@ _(Run the command output by `sudo pm2 startup`)_
 
 ---
 
-## Option 2: Automated Remote Deployment
+## 6. Option 2: Automated Remote Deployment
 
 PM2 allows you to deploy from your local machine to the remote server with a single command.
 
@@ -183,7 +245,7 @@ This command will:
 
 ---
 
-## Reverse Proxy Setup (Nginx)
+## 7. Reverse Proxy Setup (Nginx)
 
 ### Install Nginx
 
@@ -227,7 +289,7 @@ sudo systemctl restart nginx
 
 ---
 
-## 6. SSL Setup (HTTPS)
+## 8. SSL Setup (HTTPS)
 
 Secure your site with a free Let's Encrypt certificate.
 
@@ -252,3 +314,9 @@ Follow the prompts to configure HTTPS redirection.
 - **Check App Logs**: `pm2 logs watashiwa`
 - **Check Nginx Logs**: `sudo tail -f /var/log/nginx/error.log`
 - **Database Issues**: Verify `DATABASE_URL` in `.env` is correct and accessible.
+- **Redis Issues**: 
+  - Check Redis status: `sudo systemctl status redis-server`
+  - Test connection: `redis-cli ping`
+  - Check Redis logs: `sudo tail -f /var/log/redis/redis-server.log`
+  - If Redis is unavailable, the app will automatically fall back to in-memory caching
+- **Connection Pool Issues**: Verify `DATABASE_URL` includes connection pool parameters or let the app add them automatically

@@ -2,7 +2,39 @@ import { PrismaPg } from '@prisma/adapter-pg';
 import { PrismaClient } from '@prisma/client';
 import 'dotenv/config';
 
-const connectionString = `${process.env.DATABASE_URL}`;
+/**
+ * Get database connection string with connection pool parameters
+ * Appends pool configuration if not already present in DATABASE_URL
+ */
+function getConnectionString(): string {
+	const url = process.env.DATABASE_URL;
+	if (!url) {
+		throw new Error('DATABASE_URL environment variable is not set');
+	}
+
+	try {
+		const urlObj = new URL(url);
+
+		// Append connection pool parameters if not present
+		if (!urlObj.searchParams.has('connection_limit')) {
+			urlObj.searchParams.set('connection_limit', '20');
+		}
+		if (!urlObj.searchParams.has('pool_timeout')) {
+			urlObj.searchParams.set('pool_timeout', '10');
+		}
+		if (!urlObj.searchParams.has('connect_timeout')) {
+			urlObj.searchParams.set('connect_timeout', '5');
+		}
+
+		return urlObj.toString();
+	} catch (error) {
+		// If URL parsing fails, return original string (might be a connection string format)
+		console.warn('[db] Failed to parse DATABASE_URL, using as-is:', error);
+		return url;
+	}
+}
+
+const connectionString = getConnectionString();
 
 /**
  * Prisma Client Singleton Pattern for Next.js

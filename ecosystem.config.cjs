@@ -3,8 +3,13 @@ module.exports = {
 		{
 			name: 'watashiwa',
 
-			script: 'node_modules/next/dist/bin/next',
+			script: 'node_modules/next/dist/bin/next', // Staging/Testing Build
 			args: 'start',
+			// script: '.next/standalone/server.js', // For Production Build
+			// args: '',
+			// Working directory for standalone build
+			// Standalone build expects to run from project root
+			// cwd: process.cwd(),
 
 			// Cluster mode
 			instances: 1, // 'max' is Use all available cores
@@ -14,8 +19,9 @@ module.exports = {
 			watch: false,
 
 			// Memory management
-			max_memory_restart: '2G',
-			node_args: '--max-old-space-size=2048',
+			// GC tuning: Start aggressive GC at 1.5GB, leaving 500MB for OS and Redis
+			max_memory_restart: '1.8G', // Restart if memory exceeds 1.8GB (safety margin)
+			node_args: '--max-old-space-size=1536',
 
 			// Environment variables
 			env: {
@@ -41,20 +47,20 @@ module.exports = {
 			wait_ready: true,
 			listen_timeout: 10000,
 		},
-		{
-			name: 'cron-reminders',
-			script: 'scripts/trigger-reminders.js',
-			instances: 1,
-			exec_mode: 'fork',
-			autorestart: false,
-			cron_restart: '0 20 * * *', // Runs at 20:00 every day
-			watch: false,
-			env: {
-				NODE_ENV: 'production',
-				API_URL: 'http://localhost:3051', // Production port
-				// CRON_SECRET should be loaded from .env or injected
-			},
-		},
+		// {
+		// 	name: 'cron-reminders',
+		// 	script: 'scripts/trigger-reminders.js',
+		// 	instances: 1,
+		// 	exec_mode: 'fork',
+		// 	autorestart: false,
+		// 	cron_restart: '0 20 * * *', // Runs at 20:00 every day
+		// 	watch: false,
+		// 	env: {
+		// 		NODE_ENV: 'production',
+		// 		API_URL: 'http://localhost:3051', // Production port
+		// 		// CRON_SECRET should be loaded from .env or injected
+		// 	},
+		// },
 		{
 			name: 'inngest',
 			script: 'scripts/start-inngest.sh',
