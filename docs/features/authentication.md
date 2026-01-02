@@ -66,6 +66,7 @@ Authentication is the gateway to the application, ensuring that users can secure
 
 - **Persistence**: Sessions last for **30 days** (2,592,000 seconds).
 - **Refresh**: Middleware automatically refreshes tokens if they are close to expiry.
+- **Multi-Device Support**: Supabase Auth supports multiple concurrent sessions per user. Each device maintains its own session independently. Logging out from one device does not affect sessions on other devices.
 
 ### Data Security
 

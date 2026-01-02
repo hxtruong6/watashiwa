@@ -164,6 +164,7 @@ export function useAuth(options: UseAuthOptions = {}) {
 
 	/**
 	 * Login handler with validation and error handling
+	 * Includes network error detection and retry mechanism
 	 */
 	const login = useCallback(
 		async (email: string, password: string): Promise<AuthResult> => {
@@ -175,12 +176,37 @@ export function useAuth(options: UseAuthOptions = {}) {
 					throw new Error(t?.('errorAllFieldsRequired') || 'Email and password are required');
 				}
 
+				// Check network connectivity before attempting login
+				if (typeof window !== 'undefined' && !navigator.onLine) {
+					const errorMessage =
+						t?.('errorNetworkLogin') ||
+						'No internet connection. Please check your connection and try again.';
+					setState({ loading: false, error: errorMessage, message: null });
+					onError?.(errorMessage);
+					return { success: false, error: errorMessage };
+				}
+
 				const { data, error } = await supabase.auth.signInWithPassword({
 					email: email.trim().toLowerCase(),
 					password,
 				});
 
 				if (error) {
+					// Check if it's a network error
+					const isNetworkError =
+						error.message.includes('fetch') ||
+						error.message.includes('network') ||
+						error.message.includes('Failed to fetch');
+
+					if (isNetworkError) {
+						const errorMessage =
+							t?.('errorNetworkLogin') ||
+							'Network error. Please check your connection and try again.';
+						setState({ loading: false, error: errorMessage, message: null });
+						onError?.(errorMessage);
+						return { success: false, error: errorMessage };
+					}
+
 					const errorMessage = handleAuthError(error);
 					setState({ loading: false, error: errorMessage, message: null });
 					onError?.(errorMessage);
@@ -196,6 +222,22 @@ export function useAuth(options: UseAuthOptions = {}) {
 
 				return { success: true };
 			} catch (error) {
+				// Check if it's a network error
+				const isNetworkError =
+					error instanceof TypeError &&
+					(error.message.includes('fetch') ||
+						error.message.includes('network') ||
+						error.message.includes('Failed to fetch'));
+
+				if (isNetworkError) {
+					const errorMessage =
+						t?.('errorNetworkLogin') ||
+						'Network error. Please check your connection and try again.';
+					setState({ loading: false, error: errorMessage, message: null });
+					onError?.(errorMessage);
+					return { success: false, error: errorMessage };
+				}
+
 				const errorMessage = handleAuthError(error);
 				setState({ loading: false, error: errorMessage, message: null });
 				onError?.(errorMessage);
@@ -319,8 +361,8 @@ export function useAuth(options: UseAuthOptions = {}) {
 						error.message.includes('Failed to fetch'));
 
 				if (isNetworkError && typeof window !== 'undefined') {
-					// Store form data in localStorage for retry
-					const signupData = { email: email.trim(), password, name: name.trim() };
+					// Store form data in localStorage for retry (SECURITY: Don't store password)
+					const signupData = { email: email.trim(), name: name.trim() };
 					localStorage.setItem('pendingSignup', JSON.stringify(signupData));
 					const errorMessage =
 						t?.('errorNetworkOffline') ||
@@ -338,6 +380,45 @@ export function useAuth(options: UseAuthOptions = {}) {
 		},
 		[supabase, handleAuthError, processAuthSuccess, onError, t],
 	);
+
+	/**
+	 * Logout handler
+	 * Clears session, removes cookies, and redirects to login
+	 */
+	const logout = useCallback(async (): Promise<void> => {
+		setState({ loading: true, error: null, message: null });
+
+		try {
+			// Clear login method cache on logout
+			if (typeof window !== 'undefined') {
+				try {
+					localStorage.removeItem('watashi_login_methods');
+				} catch (error) {
+					console.error('[Auth] Failed to clear login cache:', error);
+				}
+			}
+
+			// Sign out from Supabase (clears session and cookies)
+			const { error } = await supabase.auth.signOut();
+
+			if (error) {
+				const errorMessage = t?.('errorAuthFailed') || 'Failed to log out';
+				setState({ loading: false, error: errorMessage, message: null });
+				onError?.(errorMessage);
+				return;
+			}
+
+			// Clear state
+			setState({ loading: false, error: null, message: null });
+
+			// Redirect to login page with full page reload to ensure middleware sees cleared session
+			window.location.href = '/login';
+		} catch (error) {
+			const errorMessage = handleAuthError(error);
+			setState({ loading: false, error: errorMessage, message: null });
+			onError?.(errorMessage);
+		}
+	}, [supabase, handleAuthError, onError, t]);
 
 	/**
 	 * Google OAuth sign-in handler
@@ -430,6 +511,7 @@ export function useAuth(options: UseAuthOptions = {}) {
 		...state,
 		login,
 		signup,
+		logout,
 		signInWithGoogle,
 		resetState,
 		setMessage: (msg: string | null) => setState((prev) => ({ ...prev, message: msg })),

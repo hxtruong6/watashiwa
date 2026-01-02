@@ -30,7 +30,7 @@ export class DashboardErrorBoundary extends Component<Props, State> {
 		if (this.state.hasError) {
 			return (
 				<Alert
-					message="Dashboard Error"
+					title="Dashboard Error"
 					description={this.state.error?.message || 'Something went wrong loading this section.'}
 					type="error"
 					showIcon

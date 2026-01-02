@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { signupSchema } from './auth.dto';
+import { loginSchema, signupSchema } from './auth.dto';
 
 describe('signupSchema', () => {
 	describe('email validation', () => {
@@ -125,6 +125,82 @@ describe('signupSchema', () => {
 			if (result.success) {
 				expect(result.data.name).toBe('Test User');
 			}
+		});
+	});
+});
+
+describe('loginSchema', () => {
+	describe('email validation', () => {
+		it('should accept valid email', () => {
+			const result = loginSchema.safeParse({
+				email: 'test@example.com',
+				password: 'password123',
+			});
+			expect(result.success).toBe(true);
+		});
+
+		it('should reject invalid email format', () => {
+			const result = loginSchema.safeParse({
+				email: 'notanemail',
+				password: 'password123',
+			});
+			expect(result.success).toBe(false);
+			if (!result.success) {
+				expect(result.error.issues[0].message).toContain('Invalid email');
+			}
+		});
+
+		it('should sanitize email (lowercase, trim)', () => {
+			const result = loginSchema.safeParse({
+				email: '  TEST@EXAMPLE.COM  ',
+				password: 'password123',
+			});
+			expect(result.success).toBe(true);
+			if (result.success) {
+				expect(result.data.email).toBe('test@example.com');
+			}
+		});
+
+		it('should reject dangerous email patterns', () => {
+			const dangerousEmails = [
+				'<script>alert("xss")</script>@example.com',
+				'javascript:alert("xss")@example.com',
+				'onclick=alert("xss")@example.com',
+			];
+
+			dangerousEmails.forEach((email) => {
+				const result = loginSchema.safeParse({
+					email,
+					password: 'password123',
+				});
+				expect(result.success).toBe(false);
+			});
+		});
+	});
+
+	describe('password validation', () => {
+		it('should accept any non-empty password (no minimum length for login)', () => {
+			const result = loginSchema.safeParse({
+				email: 'test@example.com',
+				password: 'pass',
+			});
+			expect(result.success).toBe(true);
+		});
+
+		it('should reject empty password', () => {
+			const result = loginSchema.safeParse({
+				email: 'test@example.com',
+				password: '',
+			});
+			expect(result.success).toBe(false);
+		});
+
+		it('should reject password with control characters', () => {
+			const result = loginSchema.safeParse({
+				email: 'test@example.com',
+				password: 'pass\x00123',
+			});
+			expect(result.success).toBe(false);
 		});
 	});
 });

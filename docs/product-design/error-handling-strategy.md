@@ -513,7 +513,7 @@ function ErrorCard({ title, message, severity, retryable, onRetry, fallback }: E
     <Card>
       <Alert
         type={severity === 'critical' ? 'error' : 'warning'}
-        message={title}
+        title={title}
         description={message}
         action={
           retryable && onRetry ? (

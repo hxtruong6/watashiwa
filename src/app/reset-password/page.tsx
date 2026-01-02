@@ -201,7 +201,7 @@ export default function ResetPasswordPage() {
 
 					{error && (
 						<Alert
-							message={error}
+							title={error}
 							type="error"
 							showIcon
 							style={{ marginBottom: 24, borderRadius: 12 }}
@@ -209,7 +209,7 @@ export default function ResetPasswordPage() {
 					)}
 					{message && (
 						<Alert
-							message={message}
+							title={message}
 							type="success"
 							showIcon
 							style={{ marginBottom: 24, borderRadius: 12 }}

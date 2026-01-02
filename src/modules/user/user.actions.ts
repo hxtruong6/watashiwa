@@ -84,8 +84,10 @@ export async function updateUserSettings(input: UpdateUserSettingsInput) {
 			},
 		});
 
+		// No sync needed - page-level checks query DB directly
 		revalidatePath('/dashboard');
 		revalidatePath('/settings');
+		revalidatePath('/profile/setup');
 		return { success: true };
 	});
 }

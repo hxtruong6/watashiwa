@@ -110,6 +110,8 @@ export async function syncUser() {
 			},
 		});
 
+		// No sync needed - page-level checks query DB directly
+
 		// Send welcome email for new users (non-blocking)
 		if (isNewUser) {
 			// Dynamic import to avoid bundling Inngest in client components

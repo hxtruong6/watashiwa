@@ -17,7 +17,7 @@ export const NAV_ITEMS: NavItem[] = [
 	{
 		key: 'mission',
 		label: 'Mission',
-		path: '/?app=true', // Keeping original 'dashboard' logic
+		path: '/dashboard?app=true', // Keeping original 'dashboard' logic
 		icon: <CompassOutlined />,
 	},
 	{

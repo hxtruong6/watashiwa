@@ -709,7 +709,10 @@
 		"errorOAuthCancelled": "Đã hủy đăng nhập. Vui lòng thử lại.",
 		"errorCacheUnavailable": "Bộ nhớ đăng nhập không khả dụng",
 		"oauthWorksForBoth": "Hoặc tiếp tục với Google để đăng ký ngay",
-		"providerGoogle": "Google"
+		"providerGoogle": "Google",
+		"sessionExpired": "Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại để tiếp tục.",
+		"errorNetworkLogin": "Lỗi kết nối mạng. Vui lòng kiểm tra kết nối và thử lại.",
+		"logoutSuccess": "Đăng xuất thành công"
 	},
 	"ForgotPassword": {
 		"title": "Quên Mật Khẩu",

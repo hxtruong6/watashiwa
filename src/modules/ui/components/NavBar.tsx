@@ -1,18 +1,14 @@
 'use client';
 
+import { useAuth } from '@/modules/auth/hooks/useAuth';
 import ShareModal from '@/modules/deck/components/ShareModal';
 import ProtectedLink from '@/modules/ui/components/ProtectedLink';
-import {
-	NAV_ITEMS,
-	type NavItem,
-	isProtectedRoute,
-} from '@/modules/ui/components/navbar/NavConfig';
+import { NAV_ITEMS, type NavItem } from '@/modules/ui/components/navbar/NavConfig';
 import NotificationPopover from '@/modules/ui/components/navbar/NotificationPopover';
 import SettingsModal from '@/modules/ui/components/navbar/SettingsModal';
 import { useUIStore } from '@/modules/ui/store/useUIStore';
 import LanguageSelector from '@/modules/user/components/LanguageSelector';
 import ThemeToggle from '@/modules/user/components/ThemeToggle';
-import { createClient } from '@/utils/supabase/client';
 import {
 	BugOutlined,
 	FireFilled,
@@ -29,7 +25,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const { Text } = Typography;
 const { useToken } = theme;
@@ -53,7 +49,11 @@ export default function NavBar({ user }: { user?: User | null }) {
 	const searchParams = useSearchParams();
 	const screens = useBreakpoint();
 	const { token } = useToken();
-	const supabase = createClient();
+	const { logout } = useAuth({
+		onError: (errorMsg) => {
+			console.error('[NavBar] Logout error:', errorMsg);
+		},
+	});
 	const [shareModalOpen, setShareModalOpen] = useState(false);
 	const [settingsModalOpen, setSettingsModalOpen] = useState(false);
 	const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
@@ -109,17 +109,8 @@ export default function NavBar({ user }: { user?: User | null }) {
 	};
 
 	const handleLogout = async () => {
-		// Clear login method cache on logout
-		if (typeof window !== 'undefined') {
-			try {
-				localStorage.removeItem('watashi_login_methods');
-			} catch (error) {
-				console.error('[NavBar] Failed to clear login cache:', error);
-			}
-		}
-		await supabase.auth.signOut();
-		router.push('/login');
-		router.refresh();
+		// Use useAuth hook's logout function for consistent behavior
+		await logout();
 	};
 
 	// Determine if user is public (not authenticated)
@@ -127,34 +118,6 @@ export default function NavBar({ user }: { user?: User | null }) {
 
 	// Dark theme detection for conditional styling
 	const isDark = token.colorBgBase === '#151F32';
-
-	/**
-	 * Handle navigation clicks with smart redirect for public users
-	 * If route is protected and user is public, redirect to login with returnUrl
-	 */
-	const handleNavClick = useCallback(
-		(path: string, e?: React.MouseEvent) => {
-			if (e) {
-				e.preventDefault();
-			}
-
-			// Validate path before processing
-			if (!path || typeof path !== 'string' || path.trim() === '') {
-				console.warn('[NavBar] Invalid path provided to handleNavClick:', path);
-				return;
-			}
-
-			// If public user clicks protected route, redirect to login with returnUrl
-			if (isPublic && isProtectedRoute(path)) {
-				// Encode the path to safely pass as query parameter
-				const returnUrl = encodeURIComponent(path);
-				router.push(`/login?returnUrl=${returnUrl}`);
-			} else {
-				router.push(path);
-			}
-		},
-		[isPublic, router],
-	);
 
 	// // Smart Scroll Logic
 	// useMotionValueEvent(scrollY, 'change', (latest) => {

@@ -718,7 +718,10 @@
 		"errorOAuthCancelled": "Sign-in cancelled. Please try again.",
 		"errorCacheUnavailable": "Login method cache unavailable",
 		"oauthWorksForBoth": "Or continue with Google to sign up instantly",
-		"providerGoogle": "Google"
+		"providerGoogle": "Google",
+		"sessionExpired": "Your session has expired. Please sign in again to continue.",
+		"errorNetworkLogin": "Network error. Please check your connection and try again.",
+		"logoutSuccess": "Logged out successfully"
 	},
 	"ForgotPassword": {
 		"title": "Forgot Password",

@@ -176,7 +176,7 @@ export function SectionErrorCard({
     <Card>
       <Alert
         type={severity}
-        message={title}
+        title={title}
         description={message}
         action={
           retryable && onRetry ? (

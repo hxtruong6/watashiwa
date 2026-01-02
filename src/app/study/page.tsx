@@ -11,6 +11,7 @@ import {
 	getLastStudySession,
 	hasUserStudiedBefore,
 } from '@/modules/study/study.actions';
+import { hasCompletedSetup } from '@/utils/setup-check';
 import type { Metadata } from 'next';
 import { getLocale } from 'next-intl/server';
 import { redirect } from 'next/navigation';
@@ -57,6 +58,25 @@ export default async function StudyPage({
 
 	if (!user) {
 		redirect('/login');
+	}
+
+	// Check if user has completed setup (server-side protection)
+	const setupCompleted = await hasCompletedSetup(user.id);
+	if (!setupCompleted) {
+		// Preserve query parameters in redirect URL for return after setup
+		const resolvedParams = await searchParams;
+		const queryString = new URLSearchParams();
+		Object.entries(resolvedParams).forEach(([key, value]) => {
+			if (value) {
+				if (Array.isArray(value)) {
+					value.forEach((v) => queryString.append(key, v));
+				} else {
+					queryString.set(key, value);
+				}
+			}
+		});
+		const returnUrl = `/study${queryString.toString() ? `?${queryString.toString()}` : ''}`;
+		redirect(`/profile/setup?returnUrl=${encodeURIComponent(returnUrl)}`);
 	}
 
 	const resolvedParams = await searchParams;

@@ -41,7 +41,7 @@ export default function CommentForm({ entityId, entityType, onSuccess }: Comment
 
 	return (
 		<div style={{ padding: 16, background: '#f9f9f9', borderRadius: 8, marginBottom: 16 }}>
-			{error && <Alert message={error} type="error" showIcon style={{ marginBottom: 16 }} />}
+			{error && <Alert title={error} type="error" showIcon style={{ marginBottom: 16 }} />}
 			<Form form={form} layout="vertical" onFinish={onFinish} initialValues={{ type: 'GENERAL' }}>
 				<Form.Item
 					name="type"

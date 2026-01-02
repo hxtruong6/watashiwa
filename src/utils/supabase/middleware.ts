@@ -62,6 +62,9 @@ export async function updateSession(request: NextRequest) {
 				url.searchParams.set('returnUrl', originalPath);
 			}
 		}
+		// Add sessionExpired flag to show user-friendly message
+		// This indicates the user was redirected due to expired/invalid session
+		url.searchParams.set('sessionExpired', 'true');
 		return NextResponse.redirect(url);
 	}
 

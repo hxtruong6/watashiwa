@@ -25,7 +25,7 @@ import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { useState } from 'react';
 
 const { Title, Text } = Typography;
@@ -36,12 +36,29 @@ export default function AuthPage() {
 	const t = useTranslations('Login');
 	const { message: antdMessage } = App.useApp();
 	const router = useRouter();
+	const pathname = usePathname();
 	const searchParams = useSearchParams();
 	const [mode, setMode] = useState<'login' | 'signup'>('login');
 	const [form] = Form.useForm();
 
 	const returnUrl = searchParams.get('returnUrl');
+	const sessionExpired = searchParams.get('sessionExpired') === 'true';
 	const [isRedirecting, setIsRedirecting] = useState(false);
+	const [hasShownSessionExpired, setHasShownSessionExpired] = useState(false);
+
+	// Show session expired message if redirected due to expired session
+	// Check on mount and whenever sessionExpired param changes
+	React.useEffect(() => {
+		if (sessionExpired && !hasShownSessionExpired) {
+			antdMessage.warning(t('sessionExpired'));
+			setHasShownSessionExpired(true);
+			// Remove sessionExpired param from URL to prevent showing message again on refresh
+			const params = new URLSearchParams(searchParams.toString());
+			params.delete('sessionExpired');
+			const newUrl = params.toString() ? `${pathname}?${params.toString()}` : pathname;
+			router.replace(newUrl, { scroll: false });
+		}
+	}, [sessionExpired, hasShownSessionExpired, antdMessage, t, searchParams, pathname, router]);
 
 	// Restore pending signup data from localStorage on mount and auto-retry when online
 	React.useEffect(() => {
