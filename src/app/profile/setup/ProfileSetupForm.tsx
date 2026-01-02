@@ -1,8 +1,22 @@
 'use client';
 
 import { updateUserSettings } from '@/modules/user/user.actions';
-import { Alert, Button, Card, Flex, Form, Select, Typography, message, theme } from 'antd';
+import { InfoCircleOutlined } from '@ant-design/icons';
+import {
+	Alert,
+	Button,
+	Card,
+	Flex,
+	Form,
+	Segmented,
+	Select,
+	Tooltip,
+	Typography,
+	message,
+	theme,
+} from 'antd';
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 const { Title, Text } = Typography;
@@ -15,11 +29,16 @@ interface ProfileSetupFormProps {
 export default function ProfileSetupForm({ returnUrl }: ProfileSetupFormProps) {
 	const { token } = useToken();
 	const t = useTranslations('Profile');
+	const tStudy = useTranslations('Study');
+	const router = useRouter();
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const [form] = Form.useForm();
 
-	const handleFinish = async (values: { language?: 'en' | 'vi' | 'ja' }) => {
+	const handleFinish = async (values: {
+		language?: 'en' | 'vi';
+		algorithmMode?: 'semantic' | 'srs';
+	}) => {
 		// Prevent multiple simultaneous submissions
 		if (loading) {
 			return;
@@ -33,6 +52,7 @@ export default function ProfileSetupForm({ returnUrl }: ProfileSetupFormProps) {
 				language: values.language || 'vi',
 				preferences: {
 					setupCompleted: true,
+					algorithmMode: values.algorithmMode || 'srs', // Default to SRS
 				},
 			});
 
@@ -98,7 +118,7 @@ export default function ProfileSetupForm({ returnUrl }: ProfileSetupFormProps) {
 					form={form}
 					layout="vertical"
 					onFinish={handleFinish}
-					initialValues={{ language: 'vi' }}
+					initialValues={{ language: 'vi', algorithmMode: 'srs' }}
 				>
 					<Form.Item
 						name="language"
@@ -114,6 +134,53 @@ export default function ProfileSetupForm({ returnUrl }: ProfileSetupFormProps) {
 							]}
 							style={{ width: '100%' }}
 						/>
+					</Form.Item>
+
+					<Form.Item
+						name="algorithmMode"
+						label={
+							<div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+								<Text>{t('learningMethod') || 'Learning Method'}</Text>
+								<Tooltip
+									title={
+										<div style={{ maxWidth: 300 }}>
+											<Text strong>{tStudy('algorithmModeSemantic')} (CUBE):</Text>{' '}
+											{t('cubeMethodTooltip') ||
+												'Our innovative method that groups related words together based on semantic connections, etymology, and context for deeper understanding.'}
+											<br />
+											<br />
+											<Text strong>{tStudy('algorithmModeSRS')}:</Text>{' '}
+											{t('srsMethodTooltip') ||
+												'Traditional spaced repetition system that prioritizes due reviews and new cards based on optimal timing.'}
+										</div>
+									}
+								>
+									<InfoCircleOutlined style={{ color: token.colorTextSecondary, cursor: 'help' }} />
+								</Tooltip>
+							</div>
+						}
+					>
+						<div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+							<Segmented
+								options={[
+									{
+										label: `${tStudy('algorithmModeSemantic')} (CUBE)`,
+										value: 'semantic',
+									},
+									{ label: tStudy('algorithmModeSRS'), value: 'srs' },
+								]}
+								size="large"
+								block
+							/>
+							<Button
+								type="link"
+								size="small"
+								onClick={() => router.push('/profile/setup/cube')}
+								style={{ padding: 0, height: 'auto', fontSize: 12, textAlign: 'left' }}
+							>
+								{t('learnMoreAboutCube') || 'Learn more about CUBE method →'}
+							</Button>
+						</div>
 					</Form.Item>
 
 					{error && (

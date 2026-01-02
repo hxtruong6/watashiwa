@@ -3,10 +3,8 @@ import { generatePageMetadata } from '@/lib/seo/metadata';
 import LandingPageClient from '@/modules/marketing/components/landing/LandingPageClient';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import React from 'react';
-
-// export const dynamic = 'force-static';
-// export const revalidate = 3600;
+import { connection } from 'next/server';
+import React, { Suspense } from 'react';
 
 export async function generateMetadata(): Promise<Metadata> {
 	return generatePageMetadata({
@@ -16,6 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 async function HeroLCP() {
+	await connection();
 	const t = await getTranslations('Landing');
 
 	return (
@@ -218,7 +217,9 @@ async function HeroLCP() {
 export default async function Page() {
 	return (
 		<>
-			<HeroLCP />
+			<Suspense fallback={<div style={{ minHeight: 'calc(100svh - 68px)' }} />}>
+				<HeroLCP />
+			</Suspense>
 			<LandingPageClient />
 		</>
 	);

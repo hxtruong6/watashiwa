@@ -1,31 +1,29 @@
 import { syncUser } from '@/modules/auth/auth.actions';
 import { getUserWithRole } from '@/modules/auth/auth.actions';
-import DashboardOverview from '@/modules/dashboard/components/DashboardOverview';
-import DashboardErrorState from '@/modules/dashboard/components/home/DashboardErrorState';
-import { getDashboardData } from '@/modules/dashboard/dashboard.actions';
-import { getLeaderboard } from '@/modules/leaderboard/leaderboard.actions';
-import { getReviewForecast } from '@/modules/study/study.actions';
+import DashboardDataLoader from '@/modules/dashboard/components/DashboardDataLoader';
 import { hasCompletedSetup } from '@/utils/setup-check';
 import { UserRole } from '@prisma/client';
+import { Skeleton } from 'antd';
 import { redirect } from 'next/navigation';
+import { connection } from 'next/server';
+import { Suspense } from 'react';
 
 interface Props {
 	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export default async function Dashboard(props: Props) {
-	const searchParams = await props.searchParams;
-
+// Component that handles auth checks and redirects - wrapped in Suspense for cacheComponents
+async function DashboardAuthGuard({
+	searchParams,
+}: {
+	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+	await connection();
 	// Sync user on load
 	await syncUser();
 
-	// Parallelize fetching
-	const [user, data, leaderboard, forecast] = await Promise.all([
-		getUserWithRole(),
-		getDashboardData(),
-		getLeaderboard(),
-		getReviewForecast(),
-	]);
+	// Get user for auth checks
+	const user = await getUserWithRole();
 
 	// Check if user has completed setup (server-side protection)
 	if (user) {
@@ -36,31 +34,24 @@ export default async function Dashboard(props: Props) {
 	}
 
 	// Check for role-based redirect
+	const resolvedSearchParams = await searchParams;
 	if (
 		user &&
 		(user.role === UserRole.ADMIN || user.role === UserRole.MODERATOR) &&
-		!searchParams?.app
+		!resolvedSearchParams?.app
 	) {
 		redirect('/admin');
 	}
 
-	if (!data) {
-		return <DashboardErrorState />;
-	}
+	// Return the dashboard content
+	return <DashboardDataLoader user={user} />;
+}
 
+export default async function Dashboard(props: Props) {
+	// Wrap auth checks and data fetching in Suspense for Partial Prerendering compatibility
 	return (
-		<DashboardOverview
-			reviewCount={data.reviewCount}
-			stats={data.stats}
-			weeklyStats={data.weeklyStats}
-			decks={data.decksWithDue}
-			userName={data.userName}
-			dailyGoal={data.userSettings?.limitReviews ?? 50}
-			userRole={user?.role}
-			leaderboard={leaderboard}
-			userId={user?.id}
-			userSettings={data.userSettings}
-			forecast={forecast}
-		/>
+		<Suspense fallback={<Skeleton active paragraph={{ rows: 8 }} />}>
+			<DashboardAuthGuard searchParams={props.searchParams} />
+		</Suspense>
 	);
 }

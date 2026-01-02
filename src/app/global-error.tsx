@@ -33,7 +33,7 @@ export default function GlobalError({
 						--border-radius: 12px;
 						--font-stack: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 					}
-					
+
 					@media (prefers-color-scheme: dark) {
 						:root {
 							/* Zen Dark Mode */

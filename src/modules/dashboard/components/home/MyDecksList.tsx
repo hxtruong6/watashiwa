@@ -1,6 +1,6 @@
 'use client';
 
-import DeckListActions from '@/app/dashboard/decks/DeckListActions';
+// import DeckListActions from '@/app/dashboard/decks/DeckListActions';
 import { getDeckUrl } from '@/lib/utils/urls';
 import {
 	BookOutlined,
@@ -128,7 +128,7 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 						<Link href="/decks">
 							<Button>{t('browseLibrary')}</Button>
 						</Link>
-						<DeckListActions mode="create" />
+						{/* <DeckListActions mode="create" /> */}
 					</Flex>
 				</Col>
 			</Row>
@@ -371,7 +371,7 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 												<Link href={getDeckUrl({ slug: deck.slug! })} prefetch={true}>
 													<Button size="small">{t('view')}</Button>
 												</Link>
-												<DeckListActions mode="edit" deck={deck} />
+												{/* <DeckListActions mode="edit" deck={deck} /> */}
 											</Flex>
 										</Card>
 									</Link>
@@ -392,7 +392,7 @@ export default function MyDecksList({ learningDecks, createdDecks }: MyDecksList
 						<Link href="/decks">
 							<Button>{t('browseLibrary')}</Button>
 						</Link>
-						<DeckListActions mode="create" />
+						{/* <DeckListActions mode="create" /> */}
 					</Flex>
 				</Empty>
 			)}

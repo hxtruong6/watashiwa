@@ -1,13 +1,14 @@
 import DeckContentManager from '@/modules/deck/components/admin/DeckContentManager';
 import { getAdminDeckDetail, getAdminDeckVocabularies } from '@/modules/deck/deck.admin.actions';
-import React from 'react';
+import { Skeleton } from 'antd';
+import React, { Suspense } from 'react';
 
 interface PageProps {
 	params: Promise<{ id: string }>;
 	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export default async function DeckDetailPage({ params, searchParams }: PageProps) {
+async function DeckDetailContent({ params, searchParams }: PageProps) {
 	const { id } = await params;
 	const { page = '1', search = '', status = '' } = await searchParams;
 
@@ -60,5 +61,13 @@ export default async function DeckDetailPage({ params, searchParams }: PageProps
 				/>
 			</div>
 		</div>
+	);
+}
+
+export default async function DeckDetailPage(props: PageProps) {
+	return (
+		<Suspense fallback={<Skeleton active paragraph={{ rows: 8 }} />}>
+			<DeckDetailContent {...props} />
+		</Suspense>
 	);
 }

@@ -1,3 +1,4 @@
+import { routing } from '@/i18n/routing';
 import { generateCourseMetadata } from '@/lib/seo/metadata';
 import { generateCourseSchema, schemaToJsonLd } from '@/lib/seo/structured-data';
 import { isUUID } from '@/lib/utils/uuid';
@@ -5,8 +6,8 @@ import { getUser } from '@/modules/auth/auth.actions';
 import { getCourseWithUserProgress } from '@/modules/course/course.actions';
 import { getCourseById, getCourseByIdOrSlug } from '@/modules/course/course.data';
 import type { Metadata } from 'next';
-import { getLocale } from 'next-intl/server';
 import { type RedirectType, notFound, redirect } from 'next/navigation';
+import { Suspense } from 'react';
 
 import CourseDetailClient from './CourseDetailClient';
 
@@ -16,7 +17,8 @@ export async function generateMetadata({
 	params: Promise<{ id: string }>;
 }): Promise<Metadata> {
 	const { id } = await params;
-	const locale = (await getLocale()) as 'vi' | 'en';
+	// Use default locale statically - no dynamic data access during prerendering
+	const locale = routing.defaultLocale as 'vi' | 'en';
 
 	// Fetch course for metadata (public data only)
 	const course = await getCourseByIdOrSlug(id);
@@ -36,7 +38,7 @@ export async function generateMetadata({
 	return generateCourseMetadata(course, locale);
 }
 
-export default async function CourseDetailPage({ params }: { params: Promise<{ id: string }> }) {
+async function CourseDetailContent({ params }: { params: Promise<{ id: string }> }) {
 	const user = await getUser();
 	const { id } = await params;
 
@@ -56,7 +58,8 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
 	}
 
 	const isOwner = user?.id === course.authorId;
-	const locale = (await getLocale()) as 'vi' | 'en';
+	// Use default locale statically - no dynamic data access during prerendering
+	const locale = routing.defaultLocale as 'vi' | 'en';
 
 	// Generate structured data for this course
 	const courseSchema = generateCourseSchema(course, locale);
@@ -67,5 +70,26 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
 			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
 			<CourseDetailClient course={course} isOwner={isOwner} />
 		</>
+	);
+}
+
+export default async function CourseDetailPage({ params }: { params: Promise<{ id: string }> }) {
+	return (
+		<Suspense
+			fallback={
+				<div
+					style={{
+						minHeight: '100vh',
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}
+				>
+					Loading...
+				</div>
+			}
+		>
+			<CourseDetailContent params={params} />
+		</Suspense>
 	);
 }

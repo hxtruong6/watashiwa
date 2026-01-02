@@ -1,39 +1,46 @@
-import { generateHreflangMetadata } from '@/lib/seo/hreflang';
-import { QuestionCircleOutlined } from '@ant-design/icons';
-import { Flex, Typography } from 'antd';
+import enMessages from '@/i18n/messages/en.json';
+import viMessages from '@/i18n/messages/vi.json';
+import { routing } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+import { Suspense } from 'react';
 
-const { Title, Paragraph, Text } = Typography;
-
-// export const dynamic = 'force-static';
-// export const revalidate = 3600;
+import ClientHelpContent from './ClientHelpContent';
 
 export async function generateMetadata(): Promise<Metadata> {
-	const t = await getTranslations('Help');
+	// Use default locale statically - no dynamic data access during prerendering
+	const locale = routing.defaultLocale as 'vi' | 'en';
+	const messages = locale === 'vi' ? viMessages : enMessages;
+	const t = messages.Help;
 
 	return {
-		title: t('metaTitle'),
-		description: t('metaDescription'),
+		title: t.metaTitle,
+		description: t.metaDescription,
 		openGraph: {
-			title: t('metaTitle'),
-			description: t('metaDescription'),
+			title: t.metaTitle,
+			description: t.metaDescription,
 			url: `https://watashiwa.app/help`,
 			type: 'website',
 		},
 		alternates: {
 			canonical: 'https://watashiwa.app/help',
-			...generateHreflangMetadata('/help').alternates,
 		},
 	};
 }
 
-export default async function HelpPage() {
+async function HelpHeader() {
 	const t = await getTranslations('Help');
-
 	return (
-		<Flex
-			vertical
+		<header style={{ marginBottom: 24 }}>
+			<h1 style={{ fontSize: 32, margin: 0, marginBottom: 8 }}>{t('title')}</h1>
+			<p style={{ fontSize: 18, margin: 0 }}>{t('subtitle')}</p>
+		</header>
+	);
+}
+
+export default async function HelpPage() {
+	return (
+		<article
 			style={{
 				maxWidth: 900,
 				margin: '0 auto',
@@ -41,94 +48,19 @@ export default async function HelpPage() {
 				minHeight: 'calc(100vh - 200px)',
 			}}
 		>
-			<Flex gap={16} align="center" style={{ marginBottom: 8 }}>
-				<QuestionCircleOutlined style={{ fontSize: 32 }} />
-				<Title level={1} style={{ margin: 0 }}>
-					{t('title')}
-				</Title>
-			</Flex>
-			<Paragraph style={{ fontSize: 18 }}>{t('subtitle')}</Paragraph>
+			{/* Static SEO-friendly shell - renders server-side for crawlers */}
+			<Suspense
+				fallback={
+					<header style={{ marginBottom: 24 }}>
+						<h1 style={{ fontSize: 32, margin: 0, marginBottom: 8 }}>Loading...</h1>
+					</header>
+				}
+			>
+				<HelpHeader />
+			</Suspense>
 
-			<Flex vertical gap="large" style={{ width: '100%' }}>
-				<section>
-					<Title level={2}>{t('gettingStarted.title')}</Title>
-					<Flex vertical gap="middle" style={{ width: '100%' }}>
-						<div>
-							<Text strong>{t('gettingStarted.q1.question')}</Text>
-							<Paragraph>{t('gettingStarted.q1.answer')}</Paragraph>
-						</div>
-						<div>
-							<Text strong>{t('gettingStarted.q2.question')}</Text>
-							<Paragraph>{t('gettingStarted.q2.answer')}</Paragraph>
-						</div>
-						<div>
-							<Text strong>{t('gettingStarted.q3.question')}</Text>
-							<Paragraph>{t('gettingStarted.q3.answer')}</Paragraph>
-						</div>
-					</Flex>
-				</section>
-
-				<section>
-					<Title level={2}>{t('flashcards.title')}</Title>
-					<Flex vertical gap="middle" style={{ width: '100%' }}>
-						<div>
-							<Text strong>{t('flashcards.q1.question')}</Text>
-							<Paragraph>{t('flashcards.q1.answer')}</Paragraph>
-						</div>
-						<div>
-							<Text strong>{t('flashcards.q2.question')}</Text>
-							<Paragraph>{t('flashcards.q2.answer')}</Paragraph>
-						</div>
-						<div>
-							<Text strong>{t('flashcards.q3.question')}</Text>
-							<Paragraph>{t('flashcards.q3.answer')}</Paragraph>
-						</div>
-					</Flex>
-				</section>
-
-				<section>
-					<Title level={2}>{t('account.title')}</Title>
-					<Flex vertical gap="middle" style={{ width: '100%' }}>
-						<div>
-							<Text strong>{t('account.q1.question')}</Text>
-							<Paragraph>{t('account.q1.answer')}</Paragraph>
-						</div>
-						<div>
-							<Text strong>{t('account.q2.question')}</Text>
-							<Paragraph>{t('account.q2.answer')}</Paragraph>
-						</div>
-						<div>
-							<Text strong>{t('account.q3.question')}</Text>
-							<Paragraph>{t('account.q3.answer')}</Paragraph>
-						</div>
-					</Flex>
-				</section>
-
-				<section>
-					<Title level={2}>{t('troubleshooting.title')}</Title>
-					<Flex vertical gap="middle" style={{ width: '100%' }}>
-						<div>
-							<Text strong>{t('troubleshooting.q1.question')}</Text>
-							<Paragraph>{t('troubleshooting.q1.answer')}</Paragraph>
-						</div>
-						<div>
-							<Text strong>{t('troubleshooting.q2.question')}</Text>
-							<Paragraph>{t('troubleshooting.q2.answer')}</Paragraph>
-						</div>
-					</Flex>
-				</section>
-
-				<section>
-					<Title level={2}>{t('needMoreHelp.title')}</Title>
-					<Paragraph>
-						{t('needMoreHelp.content')}{' '}
-						<a href="/contact" style={{ color: 'inherit', textDecoration: 'underline' }}>
-							{t('needMoreHelp.contactLink')}
-						</a>
-						.
-					</Paragraph>
-				</section>
-			</Flex>
-		</Flex>
+			{/* Dynamic hole - streams in client-side with Ant Design */}
+			<ClientHelpContent />
+		</article>
 	);
 }

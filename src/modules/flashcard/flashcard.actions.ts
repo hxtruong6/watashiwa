@@ -10,6 +10,7 @@ import {
 } from '@/lib/schemas/jsonb';
 import { executeSafeAction } from '@/modules/core/action-client';
 import { getSemanticallySequencedQueue } from '@/modules/study/services/semantic-sequencer.service';
+import { UserPreferences } from '@/types/user';
 import { Card, createEmptyCard } from 'ts-fsrs';
 import { z } from 'zod';
 
@@ -183,37 +184,37 @@ export async function fetchSessionAction(input: { deckId?: string; courseId?: st
 				return card;
 			});
 
-			// 6. Apply semantic sequencing (with graceful fallback to FSRS queue)
-			try {
-				const semanticResult = await getSemanticallySequencedQueue(sessionCards, {
-					userId,
-					enableCaching: true,
-					timeoutMs: 2000,
-					performanceThresholdMs: 500,
-				});
+			// 6. Get user's algorithm mode preference
+			const user = await prisma.user.findUnique({
+				where: { id: userId },
+				select: { preferences: true },
+			});
 
-				// Log metrics for monitoring
-				if (semanticResult.fallbackReason) {
-					console.log(
-						`[fetchSessionAction] Semantic sequencing fallback: ${semanticResult.fallbackReason}`,
-						{
-							...semanticResult.metrics,
-							cacheType: semanticResult.metrics.cacheType || 'none',
-						},
-					);
-				} else {
-					console.log(`[fetchSessionAction] Semantic sequencing successful`, {
-						...semanticResult.metrics,
-						cacheType: semanticResult.metrics.cacheType || 'none',
+			const userPreferences = (user?.preferences as UserPreferences) || {};
+			const algorithmMode = userPreferences.algorithmMode || 'srs'; // Default to SRS (safe fallback)
+
+			// 7. Apply semantic sequencing only if mode is 'semantic'
+			if (algorithmMode === 'semantic') {
+				try {
+					const semanticResult = await getSemanticallySequencedQueue(sessionCards, {
+						userId,
+						enableCaching: true,
+						timeoutMs: 2000,
+						performanceThresholdMs: 500,
 					});
-				}
 
-				return semanticResult.queue;
-			} catch (error) {
-				// Graceful fallback: return FSRS queue on any error
-				console.error('[fetchSessionAction] Semantic sequencing error, using FSRS queue:', error);
-				return sessionCards;
+					// Metrics are tracked via analytics service if needed
+
+					return semanticResult.queue;
+				} catch (error) {
+					// Graceful fallback: return FSRS queue on any error
+					// Error is handled gracefully, no user-facing error needed
+					return sessionCards;
+				}
 			}
+
+			// SRS mode: return FSRS queue as-is
+			return sessionCards;
 		},
 		{ requireAuth: true },
 	);

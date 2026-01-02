@@ -1,14 +1,12 @@
 import { getAllUsers } from '@/modules/admin/admin.actions';
 import { getUserWithRole } from '@/modules/auth/auth.actions';
-import React from 'react';
+import { Skeleton } from 'antd';
+import React, { Suspense } from 'react';
 
 // Updated import
 import ClientUserTable from './components/ClientUserTable';
 
-// Force dynamic rendering - this page uses cookies for authentication
-export const dynamic = 'force-dynamic';
-
-export default async function AdminUsersPage() {
+async function AdminUsersContent() {
 	const users = await getAllUsers();
 	const currentUser = await getUserWithRole(); // Fetch current user
 
@@ -29,5 +27,13 @@ export default async function AdminUsersPage() {
 				<ClientUserTable initialUsers={users} currentUserId={currentUser?.id} />
 			</div>
 		</div>
+	);
+}
+
+export default async function AdminUsersPage() {
+	return (
+		<Suspense fallback={<Skeleton active paragraph={{ rows: 8 }} />}>
+			<AdminUsersContent />
+		</Suspense>
 	);
 }

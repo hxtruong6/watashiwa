@@ -1,23 +1,24 @@
-import { GithubOutlined, MailOutlined } from '@ant-design/icons';
-import { Typography } from 'antd';
-import { Flex, Space } from 'antd';
+import enMessages from '@/i18n/messages/en.json';
+import viMessages from '@/i18n/messages/vi.json';
+import { routing } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+import { Suspense } from 'react';
 
-// export const dynamic = 'force-static';
-// export const revalidate = 3600;
-
-const { Title, Paragraph, Text } = Typography;
+import ClientContactContent from './ClientContactContent';
 
 export async function generateMetadata(): Promise<Metadata> {
-	const t = await getTranslations('Contact');
+	// Use default locale statically - no dynamic data access during prerendering
+	const locale = routing.defaultLocale as 'vi' | 'en';
+	const messages = locale === 'vi' ? viMessages : enMessages;
+	const t = messages.Contact;
 
 	return {
-		title: t('metaTitle'),
-		description: t('metaDescription'),
+		title: t.metaTitle,
+		description: t.metaDescription,
 		openGraph: {
-			title: t('metaTitle'),
-			description: t('metaDescription'),
+			title: t.metaTitle,
+			description: t.metaDescription,
 			url: `https://watashiwa.app/contact`,
 			type: 'website',
 		},
@@ -27,12 +28,19 @@ export async function generateMetadata(): Promise<Metadata> {
 	};
 }
 
-export default async function ContactPage() {
+async function ContactHeader() {
 	const t = await getTranslations('Contact');
-
 	return (
-		<Flex
-			vertical
+		<header style={{ marginBottom: 24 }}>
+			<h1 style={{ fontSize: 32, margin: 0, marginBottom: 8 }}>{t('title')}</h1>
+			<p style={{ fontSize: 18, margin: 0 }}>{t('subtitle')}</p>
+		</header>
+	);
+}
+
+export default async function ContactPage() {
+	return (
+		<article
 			style={{
 				maxWidth: 900,
 				margin: '0 auto',
@@ -40,87 +48,19 @@ export default async function ContactPage() {
 				minHeight: 'calc(100vh - 200px)',
 			}}
 		>
-			<Title level={1}>{t('title')}</Title>
-			<Paragraph style={{ fontSize: 18 }}>{t('subtitle')}</Paragraph>
+			{/* Static SEO-friendly shell - renders server-side for crawlers */}
+			<Suspense
+				fallback={
+					<header style={{ marginBottom: 24 }}>
+						<h1 style={{ fontSize: 32, margin: 0, marginBottom: 8 }}>Loading...</h1>
+					</header>
+				}
+			>
+				<ContactHeader />
+			</Suspense>
 
-			<Space orientation="vertical" size="large" style={{ width: '100%' }}>
-				<section>
-					<Title level={2}>{t('section1.title')}</Title>
-					<Space orientation="vertical" size="middle">
-						<Flex gap={16} align="center">
-							<MailOutlined style={{ fontSize: 24 }} />
-							<div>
-								<Text strong>{t('section1.emailLabel')}</Text>
-								<br />
-								<a href="mailto:support@watashiwa.app">support@watashiwa.app</a>
-							</div>
-						</Flex>
-						<Flex gap={16} align="center">
-							<GithubOutlined style={{ fontSize: 24 }} />
-							<div>
-								<Text strong>{t('section1.githubLabel')}</Text>
-								<br />
-								<a
-									href="https://github.com/watashiwa/watashiwa"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									{t('section1.githubLink')}
-								</a>
-							</div>
-						</Flex>
-					</Space>
-				</section>
-
-				<section>
-					<Title level={2}>{t('section2.title')}</Title>
-					<Paragraph>{t('section2.content')}</Paragraph>
-					<ul>
-						<li>
-							<strong>{t('section2.item1Title')}</strong>: {t('section2.item1Desc')}
-						</li>
-						<li>
-							<strong>{t('section2.item2Title')}</strong>: {t('section2.item2Desc')}
-						</li>
-						<li>
-							<strong>{t('section2.item3Title')}</strong>: {t('section2.item3Desc')}
-						</li>
-						<li>
-							<strong>{t('section2.item4Title')}</strong>: {t('section2.item4Desc')}
-						</li>
-					</ul>
-				</section>
-
-				<section>
-					<Title level={2}>{t('section3.title')}</Title>
-					<Paragraph>{t('section3.content')}</Paragraph>
-				</section>
-
-				<section>
-					<Title level={2}>{t('section4.title')}</Title>
-					<Paragraph>{t('section4.content')}</Paragraph>
-					<ul>
-						<li>
-							<a
-								href="https://github.com/watashiwa/watashiwa/issues"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								{t('section4.item1')}
-							</a>
-						</li>
-						<li>
-							<a
-								href="https://github.com/watashiwa/watashiwa/discussions"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								{t('section4.item2')}
-							</a>
-						</li>
-					</ul>
-				</section>
-			</Space>
-		</Flex>
+			{/* Dynamic hole - streams in client-side with Ant Design */}
+			<ClientContactContent />
+		</article>
 	);
 }

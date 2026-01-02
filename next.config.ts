@@ -23,6 +23,7 @@ const nextConfig: NextConfig = {
 		];
 	},
 	skipTrailingSlashRedirect: true,
+	cacheComponents: true, // Partial Prerendering for SEO-friendly static shells
 	experimental: {
 		optimizePackageImports: [
 			'antd',
@@ -34,6 +35,7 @@ const nextConfig: NextConfig = {
 			'zustand',
 		],
 	},
+	transpilePackages: ['antd', '@ant-design/icons', 'next-intl'],
 	compiler: {
 		removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,
 	},

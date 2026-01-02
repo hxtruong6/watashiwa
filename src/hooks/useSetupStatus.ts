@@ -32,4 +32,3 @@ export function useSetupStatus() {
 
 	return { setupCompleted, loading };
 }
-

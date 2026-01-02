@@ -1,6 +1,7 @@
 import { getUser } from '@/modules/auth/auth.actions';
 import { hasCompletedSetup } from '@/utils/setup-check';
 import { redirect } from 'next/navigation';
+import { Suspense } from 'react';
 
 import ProfileSetupForm from './ProfileSetupForm';
 
@@ -8,7 +9,7 @@ interface Props {
 	searchParams: Promise<{ returnUrl?: string }>;
 }
 
-export default async function ProfileSetupPage(props: Props) {
+async function ProfileSetupContent(props: Props) {
 	const searchParams = await props.searchParams;
 	const returnUrl = searchParams.returnUrl;
 
@@ -26,4 +27,25 @@ export default async function ProfileSetupPage(props: Props) {
 	}
 
 	return <ProfileSetupForm returnUrl={returnUrl} />;
+}
+
+export default async function ProfileSetupPage(props: Props) {
+	return (
+		<Suspense
+			fallback={
+				<div
+					style={{
+						minHeight: '100vh',
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}
+				>
+					Loading...
+				</div>
+			}
+		>
+			<ProfileSetupContent {...props} />
+		</Suspense>
+	);
 }

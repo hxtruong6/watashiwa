@@ -11,6 +11,7 @@ import { z } from 'zod';
  * Helper to get current authenticated user
  * Wrapped in React `cache` to ensure we only hit Supabase Auth once per request
  * even if this is called multiple times by Layout, Page, and Components.
+ * Note: The cookies() call in createClient() will handle dynamic rendering.
  */
 export const getUser = cache(async () => {
 	const supabase = await createClient();
@@ -29,6 +30,7 @@ export const getUser = cache(async () => {
 /**
  * Ensure Supabase user exists in Prisma DB
  * Called from auth callbacks or ensures consistency
+ * Note: The cookies() call in createClient() will handle dynamic rendering.
  */
 export async function syncUser() {
 	return executeSafeAction(z.void(), undefined, async () => {
@@ -157,6 +159,7 @@ export async function hasUserStudiedBefore(userId: string): Promise<boolean> {
 /**
  * Get authenticated user with their role from DB
  * Useful for role-based access control checks
+ * Note: The cookies() call via getUser() will handle dynamic rendering.
  */
 export const getUserWithRole = cache(async () => {
 	const user = await getUser();

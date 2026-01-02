@@ -3,14 +3,14 @@ import { isUUID } from '@/lib/utils/uuid';
 import { getUser, syncUser } from '@/modules/auth/auth.actions';
 import { getDeck } from '@/modules/deck/deck.actions';
 import { getDeckById } from '@/modules/deck/deck.data';
+import { Skeleton } from 'antd';
 import { type RedirectType, notFound, redirect } from 'next/navigation';
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import DeckView from './DeckView';
 
-export default async function DeckDetailPage({ params }: { params: Promise<{ id: string }> }) {
-	const { id } = await params;
-
+// Component that fetches deck data - wrapped in Suspense for cacheComponents
+async function DeckContent({ id }: { id: string }) {
 	// Sync User
 	await syncUser();
 	const user = await getUser();
@@ -33,4 +33,15 @@ export default async function DeckDetailPage({ params }: { params: Promise<{ id:
 	const isOwner = user?.id === deck.authorId;
 
 	return <DeckView deck={deck} isOwner={isOwner} />;
+}
+
+export default async function DeckDetailPage({ params }: { params: Promise<{ id: string }> }) {
+	const { id } = await params;
+
+	// Wrap data fetching in Suspense for Partial Prerendering compatibility
+	return (
+		<Suspense fallback={<Skeleton active paragraph={{ rows: 8 }} />}>
+			<DeckContent id={id} />
+		</Suspense>
+	);
 }

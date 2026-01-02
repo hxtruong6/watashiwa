@@ -1,13 +1,17 @@
+import { routing } from '@/i18n/routing';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import { getUser, syncUser } from '@/modules/auth/auth.actions';
 import DeckList from '@/modules/deck/components/DeckList';
 import { getDecks } from '@/modules/deck/deck.actions';
+import { Skeleton } from 'antd';
 import type { Metadata } from 'next';
-import { getLocale } from 'next-intl/server';
 import { redirect } from 'next/navigation';
+import { connection } from 'next/server';
+import { Suspense } from 'react';
 
 export async function generateMetadata(): Promise<Metadata> {
-	const locale = (await getLocale()) as 'vi' | 'en';
+	// Use default locale statically - no dynamic data access during prerendering
+	const locale = routing.defaultLocale as 'vi' | 'en';
 	return generatePageMetadata({
 		title: locale === 'vi' ? 'Bộ thẻ từ vựng' : 'Vocabulary Decks',
 		description:
@@ -20,15 +24,26 @@ export async function generateMetadata(): Promise<Metadata> {
 	});
 }
 
-export default async function DecksPage() {
+// Component that handles auth and fetches decks data - wrapped in Suspense for cacheComponents
+async function DecksContent() {
+	await connection();
+	// Sync user on load
+	await syncUser();
 	const user = await getUser();
 	if (!user) {
 		redirect('/login');
 	}
 
-	// Sync user on load
-	await syncUser();
 	const decks = await getDecks();
 
 	return <DeckList decks={decks} userId={user.id} />;
+}
+
+export default async function DecksPage() {
+	// Wrap auth checks and data fetching in Suspense for Partial Prerendering compatibility
+	return (
+		<Suspense fallback={<Skeleton active paragraph={{ rows: 8 }} />}>
+			<DecksContent />
+		</Suspense>
+	);
 }

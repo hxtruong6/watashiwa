@@ -1,7 +1,6 @@
 /**
  * Executer for Admin-only actions
  */
-import { prisma } from '@/lib/db';
 import { getUserWithRole } from '@/modules/auth/auth.actions';
 import { createClient } from '@/utils/supabase/server';
 import { UserRole } from '@prisma/client';
@@ -36,6 +35,7 @@ export async function executeSafeAction<TInput, TOutput>(
 	handler: (input: TInput, context: ActionContext) => Promise<TOutput>,
 	options: { requireAuth?: boolean } = { requireAuth: true },
 ): Promise<ApiResponse<TOutput>> {
+	// Note: The cookies() call in createClient() will handle dynamic rendering.
 	try {
 		// 1. Auth Check
 		const supabase = await createClient();

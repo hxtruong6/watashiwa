@@ -342,7 +342,7 @@ lib/db.ts (Database access)
 ### Authentication
 
 - **Supabase Auth** → `src/modules/auth/auth.actions.ts`
-- **Middleware** → `src/middleware.ts` (route protection)
+- **Proxy** → `src/proxy.ts` (route protection)
 
 ### Database
 

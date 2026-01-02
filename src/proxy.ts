@@ -2,11 +2,11 @@ import { updateSession } from '@/utils/supabase/middleware';
 import { type NextRequest } from 'next/server';
 
 /**
- * Next.js Middleware
+ * Next.js Proxy
  * Handles authentication only.
  * Setup completion is checked at page level (server-side).
  */
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
 	// Handle authentication via Supabase
 	return await updateSession(request);
 }

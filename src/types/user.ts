@@ -32,6 +32,9 @@ export interface UserPreferences {
 		requestRetention?: number; // Target retention rate (0.9 default)
 		maximumInterval?: number; // Max days between reviews
 	};
+
+	/** Study Algorithm Mode */
+	algorithmMode?: 'semantic' | 'srs'; // Algorithm mode preference
 }
 
 /**

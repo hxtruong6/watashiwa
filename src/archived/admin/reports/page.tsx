@@ -3,12 +3,11 @@ import { getUserWithRole } from '@/modules/auth/auth.actions';
 import AdminReportTable from '@/modules/report/components/AdminReportTable';
 import { getReports } from '@/modules/report/report.data';
 import { UserRole } from '@prisma/client';
+import { Skeleton } from 'antd';
 import { redirect } from 'next/navigation';
-import React from 'react';
+import React, { Suspense } from 'react';
 
-export const dynamic = 'force-dynamic';
-
-export default async function AdminReportsPage() {
+async function AdminReportsContent() {
 	const currentUser = await getUserWithRole();
 
 	if (
@@ -51,5 +50,13 @@ export default async function AdminReportsPage() {
 				<AdminReportTable initialReports={initialReports} />
 			</div>
 		</div>
+	);
+}
+
+export default async function AdminReportsPage() {
+	return (
+		<Suspense fallback={<Skeleton active paragraph={{ rows: 8 }} />}>
+			<AdminReportsContent />
+		</Suspense>
 	);
 }

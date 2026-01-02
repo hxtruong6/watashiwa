@@ -1,23 +1,26 @@
-import { Button, Typography } from 'antd';
-import { Flex, Space } from 'antd';
+import enMessages from '@/i18n/messages/en.json';
+import viMessages from '@/i18n/messages/vi.json';
+import { routing } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import Link from 'next/link';
+import { connection } from 'next/server';
+import { Suspense } from 'react';
 
-// export const dynamic = 'force-static';
-// export const revalidate = 3600;
+import ClientDataRightsContent from './ClientDataRightsContent';
 
-const { Title, Paragraph, Text } = Typography;
-
+// Metadata generation can use default locale for static pages
 export async function generateMetadata(): Promise<Metadata> {
-	const t = await getTranslations('Legal.dataRights');
+	// Use default locale statically - no dynamic data access during prerendering
+	const locale = routing.defaultLocale as 'vi' | 'en';
+	const messages = locale === 'vi' ? viMessages : enMessages;
+	const t = messages.Legal.dataRights;
 
 	return {
-		title: t('metaTitle'),
-		description: t('metaDescription'),
+		title: t.metaTitle,
+		description: t.metaDescription,
 		openGraph: {
-			title: t('metaTitle'),
-			description: t('metaDescription'),
+			title: t.metaTitle,
+			description: t.metaDescription,
 			url: `https://watashiwa.app/data-rights`,
 			type: 'website',
 		},
@@ -27,12 +30,24 @@ export async function generateMetadata(): Promise<Metadata> {
 	};
 }
 
-export default async function DataRightsPage() {
+// Component that fetches translations - wrapped in Suspense for cacheComponents
+async function DataRightsHeader() {
+	await connection(); // Wait for user request - getTranslations() may access cookies()
 	const t = await getTranslations('Legal.dataRights');
 
 	return (
-		<Flex
-			vertical
+		<header style={{ marginBottom: 24 }}>
+			<h1 style={{ fontSize: 32, margin: 0, marginBottom: 8 }}>{t('title')}</h1>
+			<p style={{ fontSize: 14, margin: 0, color: '#8c8c8c' }}>
+				{t('lastUpdated')}: {t('lastUpdatedDate')}
+			</p>
+		</header>
+	);
+}
+
+export default async function DataRightsPage() {
+	return (
+		<article
 			style={{
 				maxWidth: 900,
 				margin: '0 auto',
@@ -40,78 +55,13 @@ export default async function DataRightsPage() {
 				minHeight: 'calc(100vh - 200px)',
 			}}
 		>
-			<Title level={1}>{t('title')}</Title>
-			<Text type="secondary" style={{ display: 'block', marginBottom: 32 }}>
-				{t('lastUpdated')}: {t('lastUpdatedDate')}
-			</Text>
+			{/* Wrap translation fetching in Suspense for Partial Prerendering */}
+			<Suspense fallback={<div style={{ height: 80 }} />}>
+				<DataRightsHeader />
+			</Suspense>
 
-			<Space orientation="vertical" size="large" style={{ width: '100%' }}>
-				<section>
-					<Title level={2}>{t('section1.title')}</Title>
-					<Paragraph>{t('section1.content')}</Paragraph>
-					<ul>
-						<li>
-							<strong>{t('section1.item1Title')}</strong>: {t('section1.item1Desc')}
-						</li>
-						<li>
-							<strong>{t('section1.item2Title')}</strong>: {t('section1.item2Desc')}
-						</li>
-						<li>
-							<strong>{t('section1.item3Title')}</strong>: {t('section1.item3Desc')}
-						</li>
-						<li>
-							<strong>{t('section1.item4Title')}</strong>: {t('section1.item4Desc')}
-						</li>
-						<li>
-							<strong>{t('section1.item5Title')}</strong>: {t('section1.item5Desc')}
-						</li>
-						<li>
-							<strong>{t('section1.item6Title')}</strong>: {t('section1.item6Desc')}
-						</li>
-					</ul>
-				</section>
-
-				<section>
-					<Title level={2}>{t('section2.title')}</Title>
-					<Paragraph>{t('section2.content')}</Paragraph>
-					<Paragraph>
-						{t('section2.email')}: <a href="mailto:support@watashiwa.app">support@watashiwa.app</a>
-					</Paragraph>
-				</section>
-
-				<section>
-					<Title level={2}>{t('section3.title')}</Title>
-					<Paragraph>{t('section3.content')}</Paragraph>
-					<Paragraph>{t('section3.content2')}</Paragraph>
-					<Link href="/dashboard?tab=settings">
-						<Button type="primary" style={{ marginTop: 16 }}>
-							{t('section3.button')}
-						</Button>
-					</Link>
-				</section>
-
-				<section>
-					<Title level={2}>{t('section4.title')}</Title>
-					<Paragraph>{t('section4.content')}</Paragraph>
-					<ol>
-						<li>{t('section4.step1')}</li>
-						<li>{t('section4.step2')}</li>
-						<li>{t('section4.step3')}</li>
-					</ol>
-					<Paragraph>
-						<Text type="warning">{t('section4.warning')}</Text>
-					</Paragraph>
-				</section>
-
-				<section>
-					<Title level={2}>{t('section5.title')}</Title>
-					<Paragraph>{t('section5.content')}</Paragraph>
-					<Paragraph>
-						{t('section5.contact')}:{' '}
-						<a href="mailto:support@watashiwa.app">support@watashiwa.app</a>
-					</Paragraph>
-				</section>
-			</Space>
-		</Flex>
+			{/* Dynamic hole - streams in client-side with Ant Design */}
+			<ClientDataRightsContent />
+		</article>
 	);
 }

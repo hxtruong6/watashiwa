@@ -1,4 +1,5 @@
-import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+
 import { RedisCache } from './redis-cache';
 
 // Mock ioredis
@@ -42,7 +43,7 @@ describe('RedisCache', () => {
 		connect: vi.fn().mockResolvedValue(undefined),
 	};
 
-	beforeEach(() => {
+	beforeEach(async () => {
 		vi.clearAllMocks();
 		// Mock Redis constructor to return our mock
 		const Redis = (await import('ioredis')).default;
@@ -154,4 +155,3 @@ describe('RedisCache', () => {
 		});
 	});
 });
-

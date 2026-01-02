@@ -28,6 +28,7 @@ export const UserPreferencesSchema = z.object({
 			maximumInterval: z.number().min(1).max(730).optional(),
 		})
 		.optional(),
+	algorithmMode: z.enum(['semantic', 'srs']).optional(),
 });
 
 /**

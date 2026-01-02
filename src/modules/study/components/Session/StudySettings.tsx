@@ -1,6 +1,7 @@
 'use client';
 
 import DonationSection from '@/modules/dashboard/components/home/DonationSection';
+import { AlgorithmModeSelector } from '@/modules/study/components/Session/AlgorithmModeSelector';
 import { AdvancedSettings } from '@/modules/study/components/Settings/AdvancedSettings';
 import { KeyboardShortcuts } from '@/modules/study/components/Settings/KeyboardShortcuts';
 import { QuickSettingsBar } from '@/modules/study/components/Settings/QuickSettingsBar';
@@ -31,6 +32,10 @@ export default function StudySettings({ userSettings, onSettingsChange }: StudyS
 			>
 				<Flex vertical gap="middle">
 					<QuickSettingsBar />
+
+					<Divider style={{ margin: '8px 0' }} />
+
+					<AlgorithmModeSelector />
 
 					<div style={{ marginTop: 12, marginBottom: 16 }}>
 						<KeyboardShortcuts />

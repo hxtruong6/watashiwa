@@ -413,7 +413,7 @@ Required variables:
 
 - Role-based access control (User, Moderator, Admin)
 - Admin actions use `executeAdminAction` wrapper
-- Route protection via middleware
+- Route protection via proxy
 
 ### Data Validation
 

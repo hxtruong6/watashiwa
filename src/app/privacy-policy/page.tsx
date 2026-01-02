@@ -1,19 +1,24 @@
-import { Flex, Space, Typography } from 'antd';
+import enMessages from '@/i18n/messages/en.json';
+import viMessages from '@/i18n/messages/vi.json';
+import { routing } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+import { Suspense } from 'react';
 
-// export const dynamic = 'force-static';
-// export const revalidate = 3600;
+import ClientPrivacyPolicyContent from './ClientPrivacyPolicyContent';
 
 export async function generateMetadata(): Promise<Metadata> {
-	const t = await getTranslations('Legal.privacyPolicy');
+	// Use default locale statically - no dynamic data access during prerendering
+	const locale = routing.defaultLocale as 'vi' | 'en';
+	const messages = locale === 'vi' ? viMessages : enMessages;
+	const t = messages.Legal.privacyPolicy;
 
 	return {
-		title: t('metaTitle'),
-		description: t('metaDescription'),
+		title: t.metaTitle,
+		description: t.metaDescription,
 		openGraph: {
-			title: t('metaTitle'),
-			description: t('metaDescription'),
+			title: t.metaTitle,
+			description: t.metaDescription,
 			url: `https://watashiwa.app/privacy-policy`,
 			type: 'website',
 		},
@@ -23,12 +28,21 @@ export async function generateMetadata(): Promise<Metadata> {
 	};
 }
 
-export default async function PrivacyPolicyPage() {
+async function PrivacyPolicyHeader() {
 	const t = await getTranslations('Legal.privacyPolicy');
-
 	return (
-		<Flex
-			vertical
+		<header style={{ marginBottom: 24 }}>
+			<h1 style={{ fontSize: 32, margin: 0, marginBottom: 8 }}>{t('title')}</h1>
+			<p style={{ fontSize: 14, margin: 0, color: '#8c8c8c' }}>
+				{t('lastUpdated')}: {t('lastUpdatedDate')}
+			</p>
+		</header>
+	);
+}
+
+export default async function PrivacyPolicyPage() {
+	return (
+		<article
 			style={{
 				maxWidth: 900,
 				margin: '0 auto',
@@ -36,101 +50,19 @@ export default async function PrivacyPolicyPage() {
 				minHeight: 'calc(100vh - 200px)',
 			}}
 		>
-			<Typography.Title level={1}>{t('title')}</Typography.Title>
-			<Typography.Text type="secondary" style={{ display: 'block', marginBottom: 32 }}>
-				{t('lastUpdated')}: {t('lastUpdatedDate')}
-			</Typography.Text>
+			{/* Static SEO-friendly shell - renders server-side for crawlers */}
+			<Suspense
+				fallback={
+					<header style={{ marginBottom: 24 }}>
+						<h1 style={{ fontSize: 32, margin: 0, marginBottom: 8 }}>Loading...</h1>
+					</header>
+				}
+			>
+				<PrivacyPolicyHeader />
+			</Suspense>
 
-			<Space orientation="vertical" size="large" style={{ width: '100%' }}>
-				<section>
-					<Typography.Title level={2}>{t('section1.title')}</Typography.Title>
-					<Typography.Paragraph>{t('section1.content')}</Typography.Paragraph>
-				</section>
-
-				<section>
-					<Typography.Title level={2}>{t('section2.title')}</Typography.Title>
-					<Typography.Paragraph>{t('section2.content')}</Typography.Paragraph>
-					<ul>
-						<li>{t('section2.item1')}</li>
-						<li>{t('section2.item2')}</li>
-						<li>{t('section2.item3')}</li>
-						<li>{t('section2.item4')}</li>
-						<li>{t('section2.item5')}</li>
-					</ul>
-				</section>
-
-				<section>
-					<Typography.Title level={2}>{t('section3.title')}</Typography.Title>
-					<Typography.Paragraph>{t('section3.content')}</Typography.Paragraph>
-					<ul>
-						<li>{t('section3.item1')}</li>
-						<li>{t('section3.item2')}</li>
-						<li>{t('section3.item3')}</li>
-						<li>{t('section3.item4')}</li>
-					</ul>
-				</section>
-
-				<section>
-					<Typography.Title level={2}>{t('section4.title')}</Typography.Title>
-					<Typography.Paragraph>{t('section4.content')}</Typography.Paragraph>
-					<Typography.Paragraph>
-						<strong>{t('section4.subtitle1')}</strong>
-					</Typography.Paragraph>
-					<ul>
-						<li>{t('section4.item1')}</li>
-						<li>{t('section4.item2')}</li>
-						<li>{t('section4.item3')}</li>
-					</ul>
-					<Typography.Paragraph>
-						<strong>{t('section4.subtitle2')}</strong>
-					</Typography.Paragraph>
-					<ul>
-						<li>{t('section4.item4')}</li>
-						<li>{t('section4.item5')}</li>
-					</ul>
-				</section>
-
-				<section>
-					<Typography.Title level={2}>{t('section5.title')}</Typography.Title>
-					<Typography.Paragraph>{t('section5.content')}</Typography.Paragraph>
-					<ul>
-						<li>
-							<strong>{t('section5.item1Title')}</strong>: {t('section5.item1Desc')}
-						</li>
-						<li>
-							<strong>{t('section5.item2Title')}</strong>: {t('section5.item2Desc')}
-						</li>
-						<li>
-							<strong>{t('section5.item3Title')}</strong>: {t('section5.item3Desc')}
-						</li>
-					</ul>
-				</section>
-
-				<section>
-					<Typography.Title level={2}>{t('section6.title')}</Typography.Title>
-					<Typography.Paragraph>{t('section6.content')}</Typography.Paragraph>
-					<ul>
-						<li>{t('section6.item1')}</li>
-						<li>{t('section6.item2')}</li>
-						<li>{t('section6.item3')}</li>
-						<li>{t('section6.item4')}</li>
-					</ul>
-				</section>
-
-				<section>
-					<Typography.Title level={2}>{t('section7.title')}</Typography.Title>
-					<Typography.Paragraph>{t('section7.content')}</Typography.Paragraph>
-				</section>
-
-				<section>
-					<Typography.Title level={2}>{t('section8.title')}</Typography.Title>
-					<Typography.Paragraph>{t('section8.content')}</Typography.Paragraph>
-					<Typography.Paragraph>
-						{t('section8.contact')}:{' '}
-						<a href="mailto:support@watashiwa.app">support@watashiwa.app</a>
-					</Typography.Paragraph>
-				</section>
-			</Space>
-		</Flex>
+			{/* Dynamic hole - streams in client-side with Ant Design */}
+			<ClientPrivacyPolicyContent />
+		</article>
 	);
 }

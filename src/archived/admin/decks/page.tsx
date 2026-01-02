@@ -1,14 +1,14 @@
 import AdminDeckTable from '@/modules/deck/components/admin/AdminDeckTable';
 import { getAdminDecksAction } from '@/modules/deck/deck.admin.actions';
 import { deckParamsCache } from '@/modules/deck/deck.params';
-
-export const dynamic = 'force-dynamic';
+import { Skeleton } from 'antd';
+import { Suspense } from 'react';
 
 interface PageProps {
 	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-export default async function AdminDecksPage({ searchParams }: PageProps) {
+async function AdminDecksContent({ searchParams }: PageProps) {
 	const {
 		page,
 		limit: pageSize,
@@ -44,5 +44,13 @@ export default async function AdminDecksPage({ searchParams }: PageProps) {
 				<AdminDeckTable decks={data.data as any} total={data.total} />
 			</div>
 		</div>
+	);
+}
+
+export default async function AdminDecksPage(props: PageProps) {
+	return (
+		<Suspense fallback={<Skeleton active paragraph={{ rows: 8 }} />}>
+			<AdminDecksContent {...props} />
+		</Suspense>
 	);
 }

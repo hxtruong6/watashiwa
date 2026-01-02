@@ -1,22 +1,24 @@
-import { Typography } from 'antd';
-import { Flex, Space } from 'antd';
+import enMessages from '@/i18n/messages/en.json';
+import viMessages from '@/i18n/messages/vi.json';
+import { routing } from '@/i18n/routing';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
+import { Suspense } from 'react';
 
-// export const dynamic = 'force-static';
-// export const revalidate = 3600;
-
-const { Title, Paragraph, Text } = Typography;
+import ClientCookiePolicyContent from './ClientCookiePolicyContent';
 
 export async function generateMetadata(): Promise<Metadata> {
-	const t = await getTranslations('Legal.cookiePolicy');
+	// Use default locale statically - no dynamic data access during prerendering
+	const locale = routing.defaultLocale as 'vi' | 'en';
+	const messages = locale === 'vi' ? viMessages : enMessages;
+	const t = messages.Legal.cookiePolicy;
 
 	return {
-		title: t('metaTitle'),
-		description: t('metaDescription'),
+		title: t.metaTitle,
+		description: t.metaDescription,
 		openGraph: {
-			title: t('metaTitle'),
-			description: t('metaDescription'),
+			title: t.metaTitle,
+			description: t.metaDescription,
 			url: `https://watashiwa.app/cookie-policy`,
 			type: 'website',
 		},
@@ -26,12 +28,21 @@ export async function generateMetadata(): Promise<Metadata> {
 	};
 }
 
-export default async function CookiePolicyPage() {
+async function CookiePolicyHeader() {
 	const t = await getTranslations('Legal.cookiePolicy');
-
 	return (
-		<Flex
-			vertical
+		<header style={{ marginBottom: 24 }}>
+			<h1 style={{ fontSize: 32, margin: 0, marginBottom: 8 }}>{t('title')}</h1>
+			<p style={{ fontSize: 14, margin: 0, color: '#8c8c8c' }}>
+				{t('lastUpdated')}: {t('lastUpdatedDate')}
+			</p>
+		</header>
+	);
+}
+
+export default async function CookiePolicyPage() {
+	return (
+		<article
 			style={{
 				maxWidth: 900,
 				margin: '0 auto',
@@ -39,60 +50,19 @@ export default async function CookiePolicyPage() {
 				minHeight: 'calc(100vh - 200px)',
 			}}
 		>
-			<Title level={1}>{t('title')}</Title>
-			<Text type="secondary" style={{ display: 'block', marginBottom: 32 }}>
-				{t('lastUpdated')}: {t('lastUpdatedDate')}
-			</Text>
+			{/* Static SEO-friendly shell - renders server-side for crawlers */}
+			<Suspense
+				fallback={
+					<header style={{ marginBottom: 24 }}>
+						<h1 style={{ fontSize: 32, margin: 0, marginBottom: 8 }}>Loading...</h1>
+					</header>
+				}
+			>
+				<CookiePolicyHeader />
+			</Suspense>
 
-			<Space orientation="vertical" size="large" style={{ width: '100%' }}>
-				<section>
-					<Title level={2}>{t('section1.title')}</Title>
-					<Paragraph>{t('section1.content')}</Paragraph>
-				</section>
-
-				<section>
-					<Title level={2}>{t('section2.title')}</Title>
-					<Paragraph>{t('section2.content')}</Paragraph>
-					<Paragraph>
-						<strong>{t('section2.subtitle1')}</strong>
-					</Paragraph>
-					<Paragraph>{t('section2.desc1')}</Paragraph>
-					<Paragraph>
-						<strong>{t('section2.subtitle2')}</strong>
-					</Paragraph>
-					<Paragraph>{t('section2.desc2')}</Paragraph>
-					<Paragraph>
-						<strong>{t('section2.subtitle3')}</strong>
-					</Paragraph>
-					<Paragraph>{t('section2.desc3')}</Paragraph>
-				</section>
-
-				<section>
-					<Title level={2}>{t('section3.title')}</Title>
-					<Paragraph>{t('section3.content')}</Paragraph>
-					<ul>
-						<li>{t('section3.item1')}</li>
-						<li>{t('section3.item2')}</li>
-						<li>{t('section3.item3')}</li>
-					</ul>
-				</section>
-
-				<section>
-					<Title level={2}>{t('section4.title')}</Title>
-					<Paragraph>{t('section4.content')}</Paragraph>
-				</section>
-
-				<section>
-					<Title level={2}>{t('section5.title')}</Title>
-					<Paragraph>{t('section5.content')}</Paragraph>
-					<ul>
-						<li>{t('section5.item1')}</li>
-						<li>{t('section5.item2')}</li>
-						<li>{t('section5.item3')}</li>
-						<li>{t('section5.item4')}</li>
-					</ul>
-				</section>
-			</Space>
-		</Flex>
+			{/* Dynamic hole - streams in client-side with Ant Design */}
+			<ClientCookiePolicyContent />
+		</article>
 	);
 }

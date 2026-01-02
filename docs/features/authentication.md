@@ -46,7 +46,7 @@ Authentication is the gateway to the application, ensuring that users can secure
 
 ### 4. Route Protection
 
-- **Mechanism**: Next.js Middleware (`src/middleware.ts`)
+- **Mechanism**: Next.js Proxy (`src/proxy.ts`)
 - **Protected Routes**:
   - `/` (Dashboard)
   - `/study`
@@ -65,7 +65,7 @@ Authentication is the gateway to the application, ensuring that users can secure
 ### Session Management
 
 - **Persistence**: Sessions last for **30 days** (2,592,000 seconds).
-- **Refresh**: Middleware automatically refreshes tokens if they are close to expiry.
+- **Refresh**: Proxy automatically refreshes tokens if they are close to expiry.
 - **Multi-Device Support**: Supabase Auth supports multiple concurrent sessions per user. Each device maintains its own session independently. Logging out from one device does not affect sessions on other devices.
 
 ### Data Security

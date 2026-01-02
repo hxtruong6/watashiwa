@@ -5,8 +5,8 @@ import { VocabStatsWidget } from '@/modules/admin/components/Dashboard/VocabStat
 import { Skeleton } from 'antd';
 import React, { Suspense } from 'react';
 
-// Force dynamic rendering - this page uses cookies for authentication
-export const dynamic = 'force-dynamic';
+// Admin routes require role-based authentication checks via cookies()
+// With cacheComponents enabled, these calls are wrapped in Suspense for proper handling
 
 export default function AdminDashboard() {
 	return (

@@ -1,3 +1,4 @@
+import { routing } from '@/i18n/routing';
 import { prisma } from '@/lib/db';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import { getUser } from '@/modules/auth/auth.actions';
@@ -13,11 +14,13 @@ import {
 } from '@/modules/study/study.actions';
 import { hasCompletedSetup } from '@/utils/setup-check';
 import type { Metadata } from 'next';
-import { getLocale } from 'next-intl/server';
 import { redirect } from 'next/navigation';
+import { connection } from 'next/server';
+import { Suspense } from 'react';
 
 export async function generateMetadata(): Promise<Metadata> {
-	const locale = (await getLocale()) as 'vi' | 'en';
+	// Use default locale statically - no dynamic data access during prerendering
+	const locale = routing.defaultLocale as 'vi' | 'en';
 	return generatePageMetadata({
 		title: locale === 'vi' ? 'Học tập' : 'Study',
 		description:
@@ -49,11 +52,13 @@ function isValidSlug(value: string | string[] | undefined): value is string {
 	return SLUG_REGEX.test(value);
 }
 
-export default async function StudyPage({
+// Component that handles auth and data fetching - wrapped in Suspense for cacheComponents
+async function StudyPageContent({
 	searchParams,
 }: {
 	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
+	await connection();
 	const user = await getUser();
 
 	if (!user) {
@@ -286,4 +291,29 @@ export default async function StudyPage({
 		// Show error state - redirect to dashboard as fallback
 		redirect('/dashboard');
 	}
+}
+
+export default async function StudyPage({
+	searchParams,
+}: {
+	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+	return (
+		<Suspense
+			fallback={
+				<div
+					style={{
+						minHeight: '100vh',
+						display: 'flex',
+						alignItems: 'center',
+						justifyContent: 'center',
+					}}
+				>
+					Loading...
+				</div>
+			}
+		>
+			<StudyPageContent searchParams={searchParams} />
+		</Suspense>
+	);
 }

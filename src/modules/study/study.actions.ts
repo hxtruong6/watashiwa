@@ -6,6 +6,9 @@ import { executeSafeAction } from '@/modules/core/action-client';
 import { InterventionCard } from '@/modules/flashcard/types';
 import { fsrs, getSRSStage, mapRatingToFSRS } from '@/modules/flashcard/utils/srs-algorithm';
 import { Question } from '@/types/exercises';
+import { UserPreferences } from '@/types/user';
+import { type Prisma } from '@prisma/client';
+import { revalidatePath } from 'next/cache';
 // [NEW]
 import { Card, State, createEmptyCard } from 'ts-fsrs';
 import { z } from 'zod';
@@ -258,6 +261,53 @@ export async function getDailyProgress() {
 		console.error('Error getting daily progress:', error);
 		return null;
 	}
+}
+
+/**
+ * Update Algorithm Mode Preference
+ * Stores preference in User.preferences JSONB field
+ */
+const UpdateAlgorithmModeSchema = z.object({
+	algorithmMode: z.enum(['semantic', 'srs']),
+});
+
+export async function updateAlgorithmModePreference(input: { algorithmMode: 'semantic' | 'srs' }) {
+	return executeSafeAction(
+		UpdateAlgorithmModeSchema,
+		input,
+		async (data, { userId }) => {
+			if (!userId) throw new Error('Unauthorized');
+
+			// Get existing user to merge preferences
+			const existingUser = await prisma.user.findUnique({
+				where: { id: userId },
+				select: { preferences: true },
+			});
+
+			// Merge preferences
+			const existingPreferences = (existingUser?.preferences as UserPreferences) || {};
+			const mergedPreferences: UserPreferences = {
+				...existingPreferences,
+				algorithmMode: data.algorithmMode,
+			};
+
+			// Update database
+			await prisma.user.update({
+				where: { id: userId },
+				data: {
+					preferences: mergedPreferences as Prisma.InputJsonValue,
+					updatedAt: new Date(),
+				},
+			});
+
+			// Revalidate paths
+			revalidatePath('/study');
+			revalidatePath('/dashboard');
+
+			return { success: true };
+		},
+		{ requireAuth: true },
+	);
 }
 
 /**
