@@ -117,9 +117,9 @@ export default function InteractiveFlipCard({
 			>
 				{/* Floating Emojis Background */}
 				<motion.div
-					animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+					animate={{ y: [0, 10, 0], rotate: [0, 10, 0] }}
 					transition={{ duration: 5, repeat: Infinity }}
-					style={{ position: 'absolute', top: -40, right: 0, fontSize: 40, zIndex: 0 }}
+					style={{ position: 'absolute', top: -10, right: 0, fontSize: 40, zIndex: 30 }}
 				>
 					🚀
 				</motion.div>
@@ -371,7 +371,7 @@ export default function InteractiveFlipCard({
 							padding: '12px 20px',
 							borderRadius: 16,
 							boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-							zIndex: 30, // Above card
+							zIndex: 20, // Above card
 							border: `1px solid ${token.colorBorder}`,
 						}}
 					>

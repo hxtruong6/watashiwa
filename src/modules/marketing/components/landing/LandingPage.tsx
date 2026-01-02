@@ -1,11 +1,9 @@
 'use client';
 
-import { createClient } from '@/utils/supabase/client';
 import { Flex, Space, Typography } from 'antd';
 import { theme } from 'antd';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
 import CTASection from './CTASection';
@@ -17,7 +15,6 @@ const { Text } = Typography;
 
 export default function LandingPage() {
 	const { token } = theme.useToken();
-	const router = useRouter();
 	const t = useTranslations('Landing');
 
 	useEffect(() => {
@@ -28,35 +25,8 @@ export default function LandingPage() {
 		}
 	}, []);
 
-	// Non-blocking auth check - don't delay initial render
-	useEffect(() => {
-		// Defer auth check to avoid blocking LCP
-		const timer = setTimeout(() => {
-			const checkAuth = async () => {
-				try {
-					const supabase = createClient();
-					const {
-						data: { user },
-					} = await supabase.auth.getUser();
-
-					if (user) {
-						// User is authenticated, redirect to dashboard
-						router.push('/dashboard?app=true');
-					}
-				} catch (error) {
-					// Fail silently - show landing page if check fails
-					console.error('[LandingPage] Auth check failed:', error);
-				}
-			};
-
-			checkAuth();
-		}, 100); // Small delay to not block initial render
-
-		return () => clearTimeout(timer);
-	}, [router]);
-
 	return (
-		<div className="landing-page" style={{ background: token.colorBgLayout }}>
+		<div className="landing-page" style={{ background: token.colorBgLayout, padding: 8 }}>
 			<HeroSection />
 			<FeatureSection />
 			<SocialProofSection />

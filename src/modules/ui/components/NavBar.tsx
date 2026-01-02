@@ -347,7 +347,7 @@ export default function NavBar({ user }: { user?: User | null }) {
 		<>
 			{/* 1. SPACER to prevent overlap content */}
 			{!isXs && <div style={{ height: 110, width: '100%', background: token.colorBgLayout }} />}
-			{isXs && <div style={{ height: 70, width: '100%', background: token.colorBgLayout }} />}
+			{isXs && <div style={{ height: 60, width: '100%', background: token.colorBgLayout }} />}
 
 			{/* DESKTOP TOP DOCK */}
 			{!isXs && (

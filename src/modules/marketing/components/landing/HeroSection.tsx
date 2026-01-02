@@ -23,7 +23,7 @@ export default function HeroSection() {
 	return (
 		<section
 			style={{
-				minHeight: 'calc(100svh - 64px)',
+				minHeight: 'calc(100svh - 68px)',
 				position: 'relative',
 				overflow: 'hidden',
 				background: token.colorBgLayout,

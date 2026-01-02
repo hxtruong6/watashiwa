@@ -105,6 +105,7 @@ export default function FeatureSection() {
 				padding: isMd ? '100px 4px' : '60px 4px',
 				background: token.colorBgLayout,
 				overflowX: 'hidden',
+				overflowY: 'visible', // Allow natural vertical flow on mobile
 				maxWidth: '100%',
 				margin: '0 auto',
 			}}
@@ -160,7 +161,7 @@ export default function FeatureSection() {
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true }}
 								transition={{ duration: 0.5, delay: feature.delay }}
-								style={{ width: '100%', height: '100%' }}
+								style={{ width: '100%', height: isMd ? '100%' : 'auto' }}
 							>
 								<motion.div
 									whileHover={{
@@ -169,7 +170,7 @@ export default function FeatureSection() {
 										transition: { duration: 0.2 },
 									}}
 									style={{
-										height: '100%',
+										height: isMd ? '100%' : 'auto', // Allow natural height on mobile
 										background: feature.color,
 										borderRadius: 24,
 										padding: isMd ? 32 : 20,
