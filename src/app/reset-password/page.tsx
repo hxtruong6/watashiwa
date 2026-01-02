@@ -87,7 +87,8 @@ export default function ResetPasswordPage() {
 				setMessage(t('successMessage'));
 				setTimeout(() => {
 					// Force full reload to ensure middleware sees the new session
-					window.location.href = '/';
+					// Redirect to dashboard after successful password reset
+					window.location.href = '/dashboard';
 				}, 2000);
 			}
 		} catch {

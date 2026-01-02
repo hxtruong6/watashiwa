@@ -20,7 +20,8 @@ export default async function ProfileSetupPage(props: Props) {
 
 	const setupCompleted = await hasCompletedSetup(user.id);
 	if (setupCompleted) {
-		const redirectPath = returnUrl && returnUrl.startsWith('/') ? returnUrl : '/';
+		// Default to /dashboard for authenticated users (main board)
+		const redirectPath = returnUrl && returnUrl.startsWith('/') ? returnUrl : '/dashboard';
 		redirect(redirectPath);
 	}
 

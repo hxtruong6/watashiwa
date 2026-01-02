@@ -122,8 +122,8 @@ export default function AuthPage() {
 					return;
 				}
 				// Force full reload ensures middleware sees the new cookie
-				console.log('[Login] Redirecting to home');
-				window.location.href = '/';
+				console.log('[Login] Redirecting to dashboard');
+				window.location.href = '/dashboard';
 			},
 			onError: (errorMsg) => {
 				antdMessage.error(errorMsg);

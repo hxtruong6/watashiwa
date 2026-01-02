@@ -72,7 +72,7 @@ export function useAuth(options: UseAuthOptions = {}) {
 			return;
 		}
 		// Force full reload ensures middleware sees the new cookie
-		window.location.href = '/';
+		window.location.href = '/dashboard';
 	}, []);
 
 	/**

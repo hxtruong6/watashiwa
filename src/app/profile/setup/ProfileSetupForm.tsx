@@ -40,7 +40,8 @@ export default function ProfileSetupForm({ returnUrl }: ProfileSetupFormProps) {
 				message.success(t('setupSuccess') || 'Profile setup complete!');
 
 				// Determine redirect path
-				const redirectPath = returnUrl && returnUrl.startsWith('/') ? returnUrl : '/';
+				// Default to /dashboard for authenticated users (main board)
+				const redirectPath = returnUrl && returnUrl.startsWith('/') ? returnUrl : '/dashboard';
 
 				// Use window.location.href for full page reload to ensure:
 				// 1. Server components see updated setup status (cache invalidation)
