@@ -44,7 +44,7 @@ development_status:
   1-1-user-registration-with-email-password: review
   1-2-user-login-and-session-management: ready-for-dev
   1-3-user-profile-management: ready-for-dev
-  1-4-cross-device-synchronization: backlog
+  1-4-cross-device-synchronization: ready-for-dev
   1-5-learning-goals-and-personalized-pathways: backlog
   1-6-learning-data-export: backlog
   1-7-learning-history-and-personalized-insights: backlog
