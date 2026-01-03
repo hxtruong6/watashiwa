@@ -99,6 +99,118 @@ fi
 # Set default port if not specified
 INNGEST_PORT="${INNGEST_PORT:-8288}"
 
+# Health check function
+# This checks if Inngest is already running and healthy before starting a new instance.
+# If the service is healthy, we exit with code 0, which tells PM2 the script completed successfully.
+# Note: PM2 with autorestart=true will restart processes that exit, but since we're checking
+# before starting, this prevents duplicate instances when the script is run manually or during
+# PM2's initial startup. PM2's process management will handle the actual process lifecycle.
+check_inngest_health() {
+    local port=$1
+    local health_endpoint="${INNGEST_HEALTH_ENDPOINT:-/api/v1/status}"
+    local health_url="http://localhost:${port}${health_endpoint}"
+    local check_timeout="${INNGEST_HEALTH_TIMEOUT:-3}"
+    
+    # First, check if port is listening
+    local port_in_use=false
+    if command -v lsof &> /dev/null; then
+        if lsof -i ":${port}" &> /dev/null; then
+            port_in_use=true
+        fi
+    elif command -v ss &> /dev/null; then
+        if ss -lnt 2>/dev/null | grep -q ":${port} "; then
+            port_in_use=true
+        fi
+    elif command -v netstat &> /dev/null; then
+        if netstat -lnt 2>/dev/null | grep -q ":${port} "; then
+            port_in_use=true
+        fi
+    else
+        # If we can't check port, assume it's not running
+        log_warn "Cannot check port status (lsof/ss/netstat not available), proceeding to start"
+        return 1
+    fi
+    
+    if [ "$port_in_use" = false ]; then
+        log_info "Port ${port} is not in use"
+        return 1
+    fi
+    
+    log_info "Port ${port} is in use, checking health endpoint..."
+    
+    # Try to check health endpoint (with timeout)
+    # Try multiple common endpoints if the configured one fails
+    local health_endpoints=("${health_url}")
+    
+    # Add fallback endpoints if the primary one is not the default
+    if [ "$health_endpoint" != "/api/v1/status" ]; then
+        health_endpoints+=("http://localhost:${port}/api/v1/status")
+    fi
+    health_endpoints+=("http://localhost:${port}/health")
+    health_endpoints+=("http://localhost:${port}/api/health")
+    
+    local health_check_passed=false
+    if command -v curl &> /dev/null; then
+        for endpoint in "${health_endpoints[@]}"; do
+            if curl -sf --max-time "${check_timeout}" "${endpoint}" &> /dev/null; then
+                log_info "Inngest health check passed at ${endpoint} - service is healthy"
+                health_check_passed=true
+                break
+            fi
+        done
+    elif command -v wget &> /dev/null; then
+        for endpoint in "${health_endpoints[@]}"; do
+            if wget -q --spider --timeout="${check_timeout}" "${endpoint}" &> /dev/null; then
+                log_info "Inngest health check passed at ${endpoint} - service is healthy"
+                health_check_passed=true
+                break
+            fi
+        done
+    else
+        # If curl/wget not available, just check if port is listening
+        log_info "Health check tools not available, but port is listening - assuming healthy"
+        health_check_passed=true
+    fi
+    
+    if [ "$health_check_passed" = true ]; then
+        return 0
+    fi
+    
+    log_warn "Port ${port} is in use but health check failed - will restart"
+    return 1
+}
+
+# Check if Inngest is already running and healthy
+# Flow:
+# 1. If healthy: Enter monitoring loop (never reaches exec in this run)
+# 2. If unhealthy: Skip this block, proceed to exec command below
+# 3. If monitoring detects failure: Exit with error → PM2 restarts → health check fails → exec runs
+if check_inngest_health "$INNGEST_PORT"; then
+    log_info "Inngest is already running and healthy on port ${INNGEST_PORT}"
+    log_info "Keeping process alive for PM2 - no restart needed"
+    # Keep the process alive so PM2 doesn't restart it
+    # This is a lightweight way to satisfy PM2's process management
+    # Memory footprint: ~2-8 MB (bash process + sleep + occasional health check commands)
+    # Health check commands (lsof/ss/curl) run briefly and exit, so no memory accumulation
+    # If health fails during monitoring, we exit to allow PM2 to restart the script,
+    # which will then execute the exec command below (since health check will fail)
+    while true; do
+        sleep 60
+        # Re-check health every minute
+        # Note: To monitor memory usage: pm2 monit or ps aux | grep start-inngest.sh
+        if ! check_inngest_health "$INNGEST_PORT" &> /dev/null; then
+            log_warn "Inngest health check failed - exiting to allow PM2 to restart"
+            log_warn "On restart, health check will fail and exec command will run to start Inngest"
+            exit 1
+        fi
+    done
+    # Note: The above while loop runs indefinitely, so code below never executes
+    # If health fails, we exit 1 above, causing PM2 to restart the script
+fi
+
+# This code executes when:
+# 1. Initial startup: Service is not running/healthy → Start it
+# 2. After monitoring failure: PM2 restarted script → Health check failed → Start it
 # Log startup information (without exposing keys)
 log_info "Starting Inngest server..."
 log_info "  Port: ${INNGEST_PORT}"
