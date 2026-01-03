@@ -1,5 +1,6 @@
 'use client';
 
+import { trackEvent } from '@/lib/analytics';
 import { StandardCard } from '@/modules/flashcard/types';
 import { getDailyProgress } from '@/modules/study/study.actions';
 import {
@@ -12,7 +13,7 @@ import { Button, Card, Flex, Grid, Spin, Typography, theme } from 'antd';
 import confetti from 'canvas-confetti';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import { useSessionStore } from '../../store/useSessionStore';
 
@@ -30,6 +31,8 @@ export default function SessionSummary() {
 	const { reviews, startTime, endTime, forgottenCards } = sessionStats;
 	const [hasMoreCards, setHasMoreCards] = useState<boolean | null>(null);
 	const [isCheckingCards, setIsCheckingCards] = useState(true);
+	const [isNavigating, setIsNavigating] = useState(false);
+	const isNavigatingRef = useRef(false);
 
 	// Check if there are more cards available
 	useEffect(() => {
@@ -336,9 +339,55 @@ export default function SessionSummary() {
 						<Button
 							type="primary"
 							size="large"
-							icon={<PlayCircleOutlined />}
+							icon={isNavigating ? <Spin size="small" /> : <PlayCircleOutlined />}
 							block
-							onClick={() => router.push('/study')}
+							loading={isNavigating}
+							onClick={async () => {
+								// Prevent multiple rapid clicks
+								if (isNavigatingRef.current) {
+									return;
+								}
+								isNavigatingRef.current = true;
+								setIsNavigating(true);
+
+								const startTime = performance.now();
+								const navigationPath = 'auto_start';
+
+								// Track analytics
+								trackEvent('study_summary_continue_clicked', {
+									has_more_cards: true,
+									navigation_path: navigationPath,
+								});
+
+								// Reset session store before navigation
+								useSessionStore.getState().resetSession();
+								trackEvent('study_session_reset', {
+									reason: 'summary_navigation',
+									navigation_path: navigationPath,
+								});
+
+								try {
+									await router.push('/study');
+									const duration = performance.now() - startTime;
+
+									// Track navigation timing (FR5 requirement)
+									trackEvent('study_navigation_timing', {
+										duration_ms: Math.round(duration),
+										navigation_path: navigationPath,
+										source: 'summary_continue',
+									});
+								} catch (error) {
+									console.error('[SessionSummary] Navigation failed:', error);
+									// Fallback: reload page
+									window.location.href = '/study';
+								} finally {
+									// Reset after navigation completes
+									setTimeout(() => {
+										isNavigatingRef.current = false;
+										setIsNavigating(false);
+									}, 1000);
+								}
+							}}
 							style={{
 								height: isMobile ? 48 : 40,
 								fontSize: isMobile ? 15 : 15,
@@ -346,15 +395,61 @@ export default function SessionSummary() {
 								borderRadius: 12,
 							}}
 						>
-							{t('summary.continueStudying')}
+							{isNavigating ? t('summary.loading') : t('summary.continueStudying')}
 						</Button>
 					) : (
 						<Button
 							type="primary"
 							size="large"
-							icon={<DashboardOutlined />}
+							icon={isNavigating ? <Spin size="small" /> : <DashboardOutlined />}
 							block
-							onClick={() => router.push('/study')}
+							loading={isNavigating}
+							onClick={async () => {
+								// Prevent multiple rapid clicks
+								if (isNavigatingRef.current) {
+									return;
+								}
+								isNavigatingRef.current = true;
+								setIsNavigating(true);
+
+								const startTime = performance.now();
+								const navigationPath = 'dashboard';
+
+								// Track analytics
+								trackEvent('study_summary_continue_clicked', {
+									has_more_cards: false,
+									navigation_path: navigationPath,
+								});
+
+								// Reset session store before navigation
+								useSessionStore.getState().resetSession();
+								trackEvent('study_session_reset', {
+									reason: 'summary_navigation',
+									navigation_path: navigationPath,
+								});
+
+								try {
+									await router.push('/study');
+									const duration = performance.now() - startTime;
+
+									// Track navigation timing (FR5 requirement)
+									trackEvent('study_navigation_timing', {
+										duration_ms: Math.round(duration),
+										navigation_path: navigationPath,
+										source: 'summary_dashboard',
+									});
+								} catch (error) {
+									console.error('[SessionSummary] Navigation failed:', error);
+									// Fallback: reload page
+									window.location.href = '/study';
+								} finally {
+									// Reset after navigation completes
+									setTimeout(() => {
+										isNavigatingRef.current = false;
+										setIsNavigating(false);
+									}, 1000);
+								}
+							}}
 							style={{
 								height: isMobile ? 48 : 40,
 								fontSize: isMobile ? 15 : 15,
@@ -362,7 +457,7 @@ export default function SessionSummary() {
 								borderRadius: 12,
 							}}
 						>
-							{t('summary.studyDashboard')}
+							{isNavigating ? t('summary.loading') : t('summary.studyDashboard')}
 						</Button>
 					)}
 

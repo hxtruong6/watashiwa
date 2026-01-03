@@ -196,6 +196,23 @@
 		"rateRemember": "Nhớ rồi",
 		"rateMaster": "Thành thạo",
 		"longPressHint": "Giữ lâu để đánh dấu Thành thạo",
+		"RelatedWords": {
+			"title": "Từ liên quan",
+			"confusionPrefix": "Dễ nhầm",
+			"confusionHomonym": "Đồng âm",
+			"confusionLookalike": "Giống nhau",
+			"confusionSynonym": "Đồng nghĩa",
+			"confusionAntonym": "Trái nghĩa",
+			"confusionGrammar": "Ngữ pháp",
+			"sharedKanji": "Chung Kanji",
+			"sameDeck": "Cùng bộ",
+			"sharedHanViet": "Chung Hán Việt",
+			"addToSession": "Thêm vào phiên học",
+			"added": "Đã thêm vào phiên học",
+			"detailsTitle": "Chi tiết từ",
+			"connection": "Liên kết",
+			"viewDetails": "Xem chi tiết"
+		},
 		"shortcutTooltip": "Phím tắt: {key}",
 		"exercises": {
 			"title": "Gợi nhớ Chủ động (Active Recall)",
@@ -239,6 +256,7 @@
 		"preparingSession": "Đang chuẩn bị phiên học",
 		"preparingSessionHint": "「焦らず丁寧に」 — Đừng vội. Chính xác hơn tốc độ.",
 		"preparingCard": "Đang chuẩn bị thẻ...",
+		"checkingForCards": "Đang kiểm tra thẻ có sẵn...",
 		"SmartCube": {
 			"Hint": "Gợi ý",
 			"ConfusingPair": "Cặp từ dễ nhầm",

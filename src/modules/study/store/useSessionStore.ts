@@ -39,6 +39,8 @@ interface SessionActions {
 	startSession: (cards: SmartCard[]) => void;
 	submitRating: (rating: 1 | 2 | 3 | 4, duration?: number) => Promise<void>;
 	endSession: () => void;
+	resetSession: () => void;
+	insertCardAfterCurrent: (card: SmartCard) => void;
 }
 
 type SessionStore = SessionState & SessionActions;
@@ -88,6 +90,22 @@ export const useSessionStore = create<SessionStore>()(
 				console.log('[SessionStore] Session Ended');
 			},
 
+			resetSession: () => {
+				set((state) => {
+					state.queue = [];
+					state.currentIndex = 0;
+					state.isSessionActive = false;
+					state.currentCard = null;
+					state.sessionStats = {
+						startTime: null,
+						endTime: null,
+						reviews: { 1: 0, 2: 0, 3: 0, 4: 0 },
+						forgottenCards: [],
+					};
+				});
+				console.log('[SessionStore] Session Reset');
+			},
+
 			nextCard: () => {
 				set((state) => {
 					const nextIndex = state.currentIndex + 1;
@@ -109,6 +127,22 @@ export const useSessionStore = create<SessionStore>()(
 						state.currentIndex -= 1;
 						state.currentCard = state.queue[state.currentIndex];
 					}
+				});
+			},
+
+			insertCardAfterCurrent: (card) => {
+				set((state) => {
+					// Avoid duplicates by checking vocabId
+					const existingIndex = state.queue.findIndex((c) => c.vocabId === card.vocabId);
+					if (existingIndex !== -1) {
+						console.log('[SessionStore] Card already in queue, skipping insert');
+						return;
+					}
+
+					// Insert at currentIndex + 1 (or end if at last position)
+					const insertIndex = Math.min(state.currentIndex + 1, state.queue.length);
+					state.queue.splice(insertIndex, 0, card);
+					console.log(`[SessionStore] Inserted card at index ${insertIndex}`);
 				});
 			},
 

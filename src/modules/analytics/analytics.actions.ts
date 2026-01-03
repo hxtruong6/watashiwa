@@ -1,5 +1,6 @@
 'use server';
 
+import type { AnalyticsEventName, EventProperties } from '@/lib/analytics/events';
 import { prisma } from '@/lib/db';
 import { getUser } from '@/modules/auth/auth.actions';
 import { PostHog } from 'posthog-node';
@@ -148,14 +149,45 @@ function isInternalUserServer(userId?: string, email?: string): boolean {
 }
 
 /**
- * Server-Side Analytics Event Logger
+ * Server-Side Analytics Event Logger (type-safe version)
  * Sends events to PostHog API for reliable server-side tracking
  * Client-side events should use trackEvent from @/lib/analytics
+ *
+ * @param eventName - Event name from AnalyticsEvents (type-safe)
+ * @param payload - Event payload with distinct_id and properties
+ *
+ * @example
+ * ```ts
+ * await logAnalyticsEvent(AnalyticsEvents.Auth.UserSignedUp, {
+ *   distinct_id: userId,
+ *   method: 'email',
+ *   source: 'landing_page',
+ * });
+ * ```
+ */
+export async function logAnalyticsEvent<T extends AnalyticsEventName>(
+	eventName: T,
+	payload: {
+		distinct_id?: string;
+		user_properties?: Record<string, unknown>;
+	} & EventProperties<T>,
+): Promise<{ success: boolean; error?: string }>;
+/**
+ * Server-Side Analytics Event Logger (legacy string version)
+ * @deprecated Use the type-safe version with AnalyticsEvents instead
  */
 export async function logAnalyticsEvent(
 	eventName: string,
 	payload: {
 		distinct_id?: string;
+		[key: string]: unknown;
+	},
+): Promise<{ success: boolean; error?: string }>;
+export async function logAnalyticsEvent<T extends AnalyticsEventName>(
+	eventName: T | string,
+	payload: {
+		distinct_id?: string;
+		user_properties?: Record<string, unknown>;
 		[key: string]: unknown;
 	},
 ): Promise<{ success: boolean; error?: string }> {

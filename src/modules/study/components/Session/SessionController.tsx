@@ -4,7 +4,6 @@
 import { useFlashCardAudio } from '@/hooks/study/useFlashCardAudio';
 import { useReactionTime } from '@/hooks/study/useReactionTime';
 import { useStudyShortcuts } from '@/hooks/study/useStudyShortcuts';
-import { useStudyTutorialSteps } from '@/hooks/study/useStudyTutorialSteps';
 import { useZenMode } from '@/hooks/study/useZenMode';
 // Hooks
 import { useTutorialStore } from '@/hooks/useTutorialStore';
@@ -17,17 +16,21 @@ import { PrimingModal, hasSeenPrimingModal } from '@/modules/priming/components/
 import { StoryReader } from '@/modules/priming/components/StoryReader';
 import { StoryWithContent } from '@/modules/priming/types';
 import ReportModal from '@/modules/report/components/ReportModal';
-import AppTutorial from '@/modules/study/components/AppTutorial';
+import { RelatedWordDetailsDrawer } from '@/modules/study/components/RelatedWords/RelatedWordDetailsDrawer';
+import { RelatedWords } from '@/modules/study/components/RelatedWords/RelatedWords';
+import { useRelatedWords } from '@/modules/study/hooks/useRelatedWords';
 import { useSessionStore } from '@/modules/study/store/useSessionStore';
 import { useStudyPreferences } from '@/modules/study/store/useStudyPreferences';
 import { getDailyProgress } from '@/modules/study/study.actions';
+import type { RelatedWord } from '@/modules/study/types/related-words';
 import { mapRememberToRating } from '@/modules/study/utils/timeToRating';
 import { useUIStore } from '@/modules/ui/store/useUIStore';
 import { getCompletedTutorials, getUserSettings } from '@/modules/user/user.actions';
 import { CommentOutlined, SettingOutlined } from '@ant-design/icons';
 import type { User } from '@prisma/client';
-import { Button, Drawer, Flex, Grid, Spin, Typography, message, theme } from 'antd';
+import { Button, Drawer, Flex, Spin, Typography, message, theme } from 'antd';
 import { useTranslations } from 'next-intl';
+import { useRouter } from 'next/navigation';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 // Local Components
@@ -36,8 +39,6 @@ import SessionBriefing from './SessionBriefing';
 import { SessionContainer } from './SessionContainer';
 import SessionSummary from './SessionSummary';
 import StudySettings from './StudySettings';
-
-const { useBreakpoint } = Grid;
 
 interface SessionControllerProps {
 	deckId?: string;
@@ -55,7 +56,7 @@ export default function SessionController({
 	dueCount = 0,
 }: SessionControllerProps) {
 	const t = useTranslations('Study');
-	const screens = useBreakpoint();
+	const router = useRouter();
 
 	// Store
 	const { startSession, queue, currentIndex, submitRating, isSessionActive, currentCard } =
@@ -84,11 +85,12 @@ export default function SessionController({
 	const [settingsVisible, setSettingsVisible] = useState(false);
 	const [isReportModalOpen, setIsReportModalOpen] = useState(false);
 	const [isCommentDrawerOpen, setIsCommentDrawerOpen] = useState(false);
+	const [selectedRelatedWord, setSelectedRelatedWord] = useState<RelatedWord | null>(null);
+	const [isRelatedWordDrawerOpen, setIsRelatedWordDrawerOpen] = useState(false);
 
 	// Settings STORE
 	const { showFurigana, showRomaji, autoPlayAudio, cardBackSettings } = useStudyPreferences();
 	const [userSettings, setUserSettings] = useState<Partial<User> | null>(null);
-	const [spaceKeyRating, setSpaceKeyRating] = useState(3);
 	const [showAnswer, setShowAnswer] = useState(false);
 	const [isCardExiting, setIsCardExiting] = useState(false);
 	const [exitColor, setExitColor] = useState<string | undefined>(undefined);
@@ -101,6 +103,32 @@ export default function SessionController({
 	const ratingBarRef = useRef<HTMLDivElement>(null);
 	const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 	const isMountedRef = useRef(true);
+	const hasRedirectedRef = useRef(false);
+
+	// Helper function to redirect to dashboard (prevents infinite loops)
+	const redirectToDashboard = useCallback(() => {
+		if (hasRedirectedRef.current) {
+			console.warn('[SessionController] Already redirected, preventing loop');
+			return;
+		}
+		hasRedirectedRef.current = true;
+		useSessionStore.getState().resetSession();
+
+		// Track analytics
+		trackEvent('study_session_reset', {
+			reason: 'empty_queue',
+			deck_id: deckId || null,
+			course_id: courseId || null,
+		});
+
+		try {
+			router.push('/study');
+		} catch (error) {
+			console.error('[SessionController] Navigation failed:', error);
+			// Fallback: reload page
+			window.location.href = '/study';
+		}
+	}, [router, deckId, courseId]);
 
 	// Zen Mode
 	const { headerVisible, forceShow, resetTimer } = useZenMode(10, scrollRef, 3000);
@@ -231,14 +259,21 @@ export default function SessionController({
 								setStudyPhase('quiz');
 							}
 						} else {
-							// No cards available - show empty state
+							// No cards available - redirect to dashboard
 							console.warn('[SessionController] No cards found for deckId:', deckId);
-							setStudyPhase('summary');
+							trackEvent('study_empty_state_shown', {
+								deck_id: deckId || null,
+								course_id: courseId || null,
+								total_due_count: 0,
+							});
+							redirectToDashboard();
+							return;
 						}
 					} else {
-						// Error fetching cards
+						// Error fetching cards - redirect to dashboard
 						console.error('[SessionController] Failed to fetch cards:', response.error);
-						setStudyPhase('summary');
+						redirectToDashboard();
+						return;
 					}
 				} else if (queue.length > 0 && !hasTrackedSessionStart) {
 					// Session already started (e.g., from resume)
@@ -256,14 +291,15 @@ export default function SessionController({
 				}
 			} catch (error) {
 				console.error('Failed to init session:', error);
-				// On error, transition to summary to show error state
-				setStudyPhase('summary');
+				// On error, redirect to dashboard
+				redirectToDashboard();
 			} finally {
 				setIsLoading(false);
 			}
 		}
 
 		init();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [
 		deckId,
 		courseId,
@@ -273,6 +309,9 @@ export default function SessionController({
 		mergeTutorials,
 		hasSkippedBriefing,
 		hasSkippedPriming,
+		redirectToDashboard,
+		// Note: queue and studyPhase are intentionally omitted to prevent unnecessary re-runs
+		// We use queue.length and check studyPhase conditionally
 	]);
 
 	// Track session start when queue is populated
@@ -291,6 +330,8 @@ export default function SessionController({
 			}
 
 			// Track regular session start
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			const nav = navigator as any;
 			trackEvent('study_session_started', {
 				entry_type: entryType,
 				deck_id: deckId || null,
@@ -298,9 +339,9 @@ export default function SessionController({
 				mode: mode || null,
 				queue_size: queue.length,
 				due_count: dueCount,
-				device_memory: (navigator as any)?.deviceMemory, // RAM in GB
+				device_memory: nav?.deviceMemory, // RAM in GB
 				hardware_concurrency: navigator?.hardwareConcurrency, // CPU cores
-				connection_type: (navigator as any)?.connection?.effectiveType, // 4G, 3G, etc.
+				connection_type: nav?.connection?.effectiveType, // 4G, 3G, etc.
 				is_pwa: window?.matchMedia('(display-mode: standalone)').matches,
 			});
 
@@ -310,6 +351,7 @@ export default function SessionController({
 		queue.length,
 		hasTrackedSessionStart,
 		isLoading,
+		studyPhase,
 		isFirstSession,
 		deckId,
 		courseId,
@@ -338,8 +380,8 @@ export default function SessionController({
 			});
 
 			if (queue.length === 0) {
-				console.warn('[SessionController] Queue is empty, going to summary');
-				setStudyPhase('summary');
+				console.warn('[SessionController] Queue is empty, redirecting to dashboard');
+				redirectToDashboard();
 				return;
 			}
 
@@ -363,7 +405,7 @@ export default function SessionController({
 				setStudyPhase('quiz');
 			}
 		}
-	}, [isLoading, queue, studyPhase, hasSkippedBriefing]);
+	}, [isLoading, queue, studyPhase, hasSkippedBriefing, redirectToDashboard]);
 
 	// Ensure currentCard is set when entering quiz phase from briefing
 	useEffect(() => {
@@ -505,6 +547,9 @@ export default function SessionController({
 
 	// Compute card to show - use currentCard or fallback to queue[0]
 	const cardToShow = studyPhase === 'quiz' ? currentCard || queue[0] : null;
+
+	// Fetch related words for current card (non-blocking)
+	const { relatedWords, loading: relatedWordsLoading } = useRelatedWords(cardToShow?.vocabId);
 
 	// Audio Integration: Adapt SmartCard to format expected by useFlashCardAudio
 	// The hook expects card.vocab structure (we only have vocabulary cards, no separate kanji cards)
@@ -848,6 +893,16 @@ export default function SessionController({
 				entityTitle={currentCard?.back?.details?.wordSurface || 'Card'}
 			/>
 
+			{/* Related Word Details Drawer */}
+			<RelatedWordDetailsDrawer
+				open={isRelatedWordDrawerOpen}
+				onClose={() => {
+					setIsRelatedWordDrawerOpen(false);
+					setSelectedRelatedWord(null);
+				}}
+				relatedWord={selectedRelatedWord}
+			/>
+
 			<Drawer
 				open={settingsVisible}
 				onClose={() => setSettingsVisible(false)}
@@ -898,6 +953,16 @@ export default function SessionController({
 							}}
 						>
 							{t('preparingSessionHint')}
+						</Typography.Text>
+						<Typography.Text
+							type="secondary"
+							style={{
+								fontSize: 12,
+								marginTop: 8,
+								opacity: 0.6,
+							}}
+						>
+							{t('checkingForCards')}
 						</Typography.Text>
 					</Flex>
 				</Flex>
@@ -1026,6 +1091,18 @@ export default function SessionController({
 								cardBackSettings={cardBackSettings}
 							/>
 						</div>
+
+						{/* Related Words Section (non-blocking) */}
+						{showAnswer && (
+							<RelatedWords
+								relatedWords={relatedWords}
+								loading={relatedWordsLoading}
+								onSelect={(relatedWord) => {
+									setSelectedRelatedWord(relatedWord);
+									setIsRelatedWordDrawerOpen(true);
+								}}
+							/>
+						)}
 					</div>
 
 					<div

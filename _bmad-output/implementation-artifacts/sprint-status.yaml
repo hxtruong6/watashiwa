@@ -54,7 +54,7 @@ development_status:
   epic-2: in-progress
   2-1-start-study-session-with-semantic-sequencing: ready-for-dev
   2-2-switch-between-semantic-and-srs-algorithm-modes: ready-for-dev
-  2-3-view-semantically-related-words-during-study: ready-for-dev
+  2-3-view-semantically-related-words-during-study: review
   2-4-receive-contextual-examples-linking-vocabulary: ready-for-dev
   2-5-provide-feedback-on-algorithm-suggestions: ready-for-dev
   2-6-view-algorithm-transparency-and-reasoning: backlog
