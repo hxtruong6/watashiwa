@@ -168,15 +168,15 @@ Result: Run 14 targeted tests instead of 147 with --only-changed!
 import type { BurnInConfig } from '@seontechnologies/playwright-utils/burn-in';
 
 const config: BurnInConfig = {
-	skipBurnInPatterns: ['**/config/**', '**/*types*', '**/*.md'],
+  skipBurnInPatterns: ['**/config/**', '**/*types*', '**/*.md'],
 
-	// CI runs fewer iterations, local runs more
-	burnInTestPercentage: process.env.CI ? 0.2 : 0.3,
+  // CI runs fewer iterations, local runs more
+  burnInTestPercentage: process.env.CI ? 0.2 : 0.3,
 
-	burnIn: {
-		repeatEach: process.env.CI ? 2 : 3,
-		retries: process.env.CI ? 0 : 1, // No retries in CI
-	},
+  burnIn: {
+    repeatEach: process.env.CI ? 2 : 3,
+    retries: process.env.CI ? 0 : 1, // No retries in CI
+  },
 };
 
 export default config;
@@ -200,15 +200,15 @@ export default config;
 import { runBurnIn } from '@seontechnologies/playwright-utils/burn-in';
 
 async function main() {
-	const shardArg = process.argv.find((arg) => arg.startsWith('--shard='));
+  const shardArg = process.argv.find((arg) => arg.startsWith('--shard='));
 
-	if (shardArg) {
-		process.env.PW_SHARD = shardArg.split('=')[1];
-	}
+  if (shardArg) {
+    process.env.PW_SHARD = shardArg.split('=')[1];
+  }
 
-	await runBurnIn({
-		configPath: 'playwright/config/.burn-in.config.ts',
-	});
+  await runBurnIn({
+    configPath: 'playwright/config/.burn-in.config.ts',
+  });
 }
 ```
 
@@ -250,7 +250,7 @@ When setting up CI with `*ci` workflow, recommend burn-in for:
 
 ```typescript
 skipBurnInPatterns: [
-	'**/*', // Skips everything!
+  '**/*', // Skips everything!
 ];
 ```
 

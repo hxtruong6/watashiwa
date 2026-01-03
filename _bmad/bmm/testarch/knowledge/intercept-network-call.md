@@ -33,19 +33,19 @@ The `interceptNetworkCall` utility provides:
 import { test } from '@seontechnologies/playwright-utils/intercept-network-call/fixtures';
 
 test('should spy on users API', async ({ page, interceptNetworkCall }) => {
-	// Setup interception BEFORE navigation
-	const usersCall = interceptNetworkCall({
-		url: '**/api/users', // Glob pattern
-	});
+  // Setup interception BEFORE navigation
+  const usersCall = interceptNetworkCall({
+    url: '**/api/users', // Glob pattern
+  });
 
-	await page.goto('/dashboard');
+  await page.goto('/dashboard');
 
-	// Wait for response and access parsed data
-	const { responseJson, status } = await usersCall;
+  // Wait for response and access parsed data
+  const { responseJson, status } = await usersCall;
 
-	expect(status).toBe(200);
-	expect(responseJson).toHaveLength(10);
-	expect(responseJson[0]).toHaveProperty('name');
+  expect(status).toBe(200);
+  expect(responseJson).toHaveLength(10);
+  expect(responseJson[0]).toHaveProperty('name');
 });
 ```
 
@@ -64,25 +64,25 @@ test('should spy on users API', async ({ page, interceptNetworkCall }) => {
 
 ```typescript
 test('should stub users API', async ({ page, interceptNetworkCall }) => {
-	const mockUsers = [
-		{ id: 1, name: 'Test User 1' },
-		{ id: 2, name: 'Test User 2' },
-	];
+  const mockUsers = [
+    { id: 1, name: 'Test User 1' },
+    { id: 2, name: 'Test User 2' },
+  ];
 
-	const usersCall = interceptNetworkCall({
-		url: '**/api/users',
-		fulfillResponse: {
-			status: 200,
-			body: mockUsers,
-		},
-	});
+  const usersCall = interceptNetworkCall({
+    url: '**/api/users',
+    fulfillResponse: {
+      status: 200,
+      body: mockUsers,
+    },
+  });
 
-	await page.goto('/dashboard');
-	await usersCall;
+  await page.goto('/dashboard');
+  await usersCall;
 
-	// UI shows mocked data
-	await expect(page.getByText('Test User 1')).toBeVisible();
-	await expect(page.getByText('Test User 2')).toBeVisible();
+  // UI shows mocked data
+  await expect(page.getByText('Test User 1')).toBeVisible();
+  await expect(page.getByText('Test User 2')).toBeVisible();
 });
 ```
 
@@ -101,29 +101,29 @@ test('should stub users API', async ({ page, interceptNetworkCall }) => {
 
 ```typescript
 test('conditional mocking', async ({ page, interceptNetworkCall }) => {
-	await interceptNetworkCall({
-		url: '**/api/data',
-		handler: async (route, request) => {
-			if (request.method() === 'POST') {
-				// Mock POST success
-				await route.fulfill({
-					status: 201,
-					body: JSON.stringify({ id: 'new-id', success: true }),
-				});
-			} else if (request.method() === 'GET') {
-				// Mock GET with data
-				await route.fulfill({
-					status: 200,
-					body: JSON.stringify([{ id: 1, name: 'Item' }]),
-				});
-			} else {
-				// Let other methods through
-				await route.continue();
-			}
-		},
-	});
+  await interceptNetworkCall({
+    url: '**/api/data',
+    handler: async (route, request) => {
+      if (request.method() === 'POST') {
+        // Mock POST success
+        await route.fulfill({
+          status: 201,
+          body: JSON.stringify({ id: 'new-id', success: true }),
+        });
+      } else if (request.method() === 'GET') {
+        // Mock GET with data
+        await route.fulfill({
+          status: 200,
+          body: JSON.stringify([{ id: 1, name: 'Item' }]),
+        });
+      } else {
+        // Let other methods through
+        await route.continue();
+      }
+    },
+  });
 
-	await page.goto('/data-page');
+  await page.goto('/data-page');
 });
 ```
 
@@ -142,37 +142,37 @@ test('conditional mocking', async ({ page, interceptNetworkCall }) => {
 
 ```typescript
 test('should handle API errors gracefully', async ({ page, interceptNetworkCall }) => {
-	// Simulate 500 error
-	const errorCall = interceptNetworkCall({
-		url: '**/api/users',
-		fulfillResponse: {
-			status: 500,
-			body: { error: 'Internal Server Error' },
-		},
-	});
+  // Simulate 500 error
+  const errorCall = interceptNetworkCall({
+    url: '**/api/users',
+    fulfillResponse: {
+      status: 500,
+      body: { error: 'Internal Server Error' },
+    },
+  });
 
-	await page.goto('/dashboard');
-	await errorCall;
+  await page.goto('/dashboard');
+  await errorCall;
 
-	// Verify UI shows error state
-	await expect(page.getByText('Failed to load users')).toBeVisible();
-	await expect(page.getByTestId('retry-button')).toBeVisible();
+  // Verify UI shows error state
+  await expect(page.getByText('Failed to load users')).toBeVisible();
+  await expect(page.getByTestId('retry-button')).toBeVisible();
 });
 
 // Simulate network timeout
 test('should handle timeout', async ({ page, interceptNetworkCall }) => {
-	await interceptNetworkCall({
-		url: '**/api/slow',
-		handler: async (route) => {
-			// Never respond - simulates timeout
-			await new Promise(() => {});
-		},
-	});
+  await interceptNetworkCall({
+    url: '**/api/slow',
+    handler: async (route) => {
+      // Never respond - simulates timeout
+      await new Promise(() => {});
+    },
+  });
 
-	await page.goto('/slow-page');
+  await page.goto('/slow-page');
 
-	// UI should show timeout error
-	await expect(page.getByText('Request timed out')).toBeVisible({ timeout: 10000 });
+  // UI should show timeout error
+  await expect(page.getByText('Request timed out')).toBeVisible({ timeout: 10000 });
 });
 ```
 
@@ -191,19 +191,19 @@ test('should handle timeout', async ({ page, interceptNetworkCall }) => {
 
 ```typescript
 test('multiple intercepts', async ({ page, interceptNetworkCall }) => {
-	// ✅ CORRECT: Setup all intercepts BEFORE navigation
-	const usersCall = interceptNetworkCall({ url: '**/api/users' });
-	const productsCall = interceptNetworkCall({ url: '**/api/products' });
-	const ordersCall = interceptNetworkCall({ url: '**/api/orders' });
+  // ✅ CORRECT: Setup all intercepts BEFORE navigation
+  const usersCall = interceptNetworkCall({ url: '**/api/users' });
+  const productsCall = interceptNetworkCall({ url: '**/api/products' });
+  const ordersCall = interceptNetworkCall({ url: '**/api/orders' });
 
-	// THEN navigate
-	await page.goto('/dashboard');
+  // THEN navigate
+  await page.goto('/dashboard');
 
-	// Wait for all (or specific ones)
-	const [users, products] = await Promise.all([usersCall, productsCall]);
+  // Wait for all (or specific ones)
+  const [users, products] = await Promise.all([usersCall, productsCall]);
 
-	expect(users.responseJson).toHaveLength(10);
-	expect(products.responseJson).toHaveLength(50);
+  expect(users.responseJson).toHaveLength(10);
+  expect(products.responseJson).toHaveLength(50);
 });
 ```
 

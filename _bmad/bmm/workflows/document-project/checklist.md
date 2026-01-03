@@ -1,6 +1,6 @@
 # Document Project Workflow - Validation Checklist
 
-## Scan Level and Resumability (v1.2.0)
+## Scan Level and Resumability
 
 - [ ] Scan level selection offered (quick/deep/exhaustive) for initial_scan and full_rescan modes
 - [ ] Deep-dive mode automatically uses exhaustive scan (no choice given)
@@ -57,7 +57,7 @@
 - [ ] State management patterns identified (if requires_state_management = true)
 - [ ] UI components inventoried (if requires_ui_components = true)
 - [ ] Configuration files located and documented
-- [ ] Authentication/security patterns identified (auth, RBAC, input validation with Zod, rate limiting, secure logging, CSP/HSTS headers)
+- [ ] Authentication/security patterns identified
 - [ ] Entry points correctly identified
 - [ ] Integration points mapped (for multi-part projects)
 - [ ] Test files and patterns documented
@@ -223,7 +223,7 @@
 
 All items in the following sections must be checked:
 
-- ✓ Scan Level and Resumability (v1.2.0)
+- ✓ Scan Level and Resumability
 - ✓ Write-as-you-go Architecture
 - ✓ Batching Strategy (if deep/exhaustive scan)
 - ✓ Project Detection and Classification

@@ -36,18 +36,18 @@ import { test } from '@seontechnologies/playwright-utils/network-recorder/fixtur
 process.env.PW_NET_MODE = 'playback'; // or 'record'
 
 test('CRUD operations work offline', async ({ page, context, networkRecorder }) => {
-	// Setup recorder (records or plays back based on PW_NET_MODE)
-	await networkRecorder.setup(context);
+  // Setup recorder (records or plays back based on PW_NET_MODE)
+  await networkRecorder.setup(context);
 
-	await page.goto('/');
+  await page.goto('/');
 
-	// First time (record mode): Records all network traffic to HAR
-	// Subsequent runs (playback mode): Plays back from HAR (no backend!)
-	await page.fill('#movie-name', 'Inception');
-	await page.click('#add-movie');
+  // First time (record mode): Records all network traffic to HAR
+  // Subsequent runs (playback mode): Plays back from HAR (no backend!)
+  await page.fill('#movie-name', 'Inception');
+  await page.click('#add-movie');
 
-	// Intelligent CRUD detection makes this work offline!
-	await expect(page.getByText('Inception')).toBeVisible();
+  // Intelligent CRUD detection makes this work offline!
+  await expect(page.getByText('Inception')).toBeVisible();
 });
 ```
 
@@ -69,42 +69,42 @@ test('CRUD operations work offline', async ({ page, context, networkRecorder }) 
 process.env.PW_NET_MODE = 'playback';
 
 test.describe('Movie CRUD - offline with network recorder', () => {
-	test.beforeEach(async ({ page, networkRecorder, context }) => {
-		await networkRecorder.setup(context);
-		await page.goto('/');
-	});
+  test.beforeEach(async ({ page, networkRecorder, context }) => {
+    await networkRecorder.setup(context);
+    await page.goto('/');
+  });
 
-	test('should add, edit, delete movie browser-only', async ({ page, interceptNetworkCall }) => {
-		// Create
-		await page.fill('#movie-name', 'Inception');
-		await page.fill('#year', '2010');
-		await page.click('#add-movie');
+  test('should add, edit, delete movie browser-only', async ({ page, interceptNetworkCall }) => {
+    // Create
+    await page.fill('#movie-name', 'Inception');
+    await page.fill('#year', '2010');
+    await page.click('#add-movie');
 
-		// Verify create (reads from stateful HAR)
-		await expect(page.getByText('Inception')).toBeVisible();
+    // Verify create (reads from stateful HAR)
+    await expect(page.getByText('Inception')).toBeVisible();
 
-		// Update
-		await page.getByText('Inception').click();
-		await page.fill('#movie-name', "Inception Director's Cut");
+    // Update
+    await page.getByText('Inception').click();
+    await page.fill('#movie-name', "Inception Director's Cut");
 
-		const updateCall = interceptNetworkCall({
-			method: 'PUT',
-			url: '/movies/*',
-		});
+    const updateCall = interceptNetworkCall({
+      method: 'PUT',
+      url: '/movies/*',
+    });
 
-		await page.click('#save');
-		await updateCall; // Wait for update
+    await page.click('#save');
+    await updateCall; // Wait for update
 
-		// Verify update (HAR reflects state change!)
-		await page.click('#back');
-		await expect(page.getByText("Inception Director's Cut")).toBeVisible();
+    // Verify update (HAR reflects state change!)
+    await page.click('#back');
+    await expect(page.getByText("Inception Director's Cut")).toBeVisible();
 
-		// Delete
-		await page.click(`[data-testid="delete-Inception Director's Cut"]`);
+    // Delete
+    await page.click(`[data-testid="delete-Inception Director's Cut"]`);
 
-		// Verify delete (HAR reflects removal!)
-		await expect(page.getByText("Inception Director's Cut")).not.toBeVisible();
-	});
+    // Verify delete (HAR reflects removal!)
+    await expect(page.getByText("Inception Director's Cut")).not.toBeVisible();
+  });
 });
 ```
 
@@ -124,21 +124,21 @@ test.describe('Movie CRUD - offline with network recorder', () => {
 ```typescript
 // playwright.config.ts - Map URLs for different environments
 export default defineConfig({
-	use: {
-		baseURL: process.env.CI ? 'https://app.ci.example.com' : 'http://localhost:3000',
-	},
+  use: {
+    baseURL: process.env.CI ? 'https://app.ci.example.com' : 'http://localhost:3000',
+  },
 });
 
 // Test works in both environments
 test('cross-environment playback', async ({ page, context, networkRecorder }) => {
-	await networkRecorder.setup(context);
+  await networkRecorder.setup(context);
 
-	// In dev: hits http://localhost:3000/api/movies
-	// In CI: HAR replays with https://app.ci.example.com/api/movies
-	await page.goto('/movies');
+  // In dev: hits http://localhost:3000/api/movies
+  // In CI: HAR replays with https://app.ci.example.com/api/movies
+  await page.goto('/movies');
 
-	// Network recorder auto-maps URLs
-	await expect(page.getByTestId('movie-list')).toBeVisible();
+  // Network recorder auto-maps URLs
+  await expect(page.getByTestId('movie-list')).toBeVisible();
 });
 ```
 
@@ -205,17 +205,17 @@ Native Playwright HAR playback is stateless - a POST create followed by GET list
 
 ```typescript
 test('use both utilities', async ({ page, context, networkRecorder, interceptNetworkCall }) => {
-	await networkRecorder.setup(context);
+  await networkRecorder.setup(context);
 
-	const createCall = interceptNetworkCall({
-		method: 'POST',
-		url: '/api/movies',
-	});
+  const createCall = interceptNetworkCall({
+    method: 'POST',
+    url: '/api/movies',
+  });
 
-	await page.click('#add-movie');
-	await createCall; // Wait for create (works with HAR!)
+  await page.click('#add-movie');
+  await createCall; // Wait for create (works with HAR!)
 
-	// Network recorder provides playback, intercept provides determinism
+  // Network recorder provides playback, intercept provides determinism
 });
 ```
 
@@ -242,8 +242,8 @@ process.env.PW_NET_MODE = 'playback'; // Don't switch mid-test
 process.env.PW_NET_MODE = 'playback'; // Set once at top
 
 test('my test', async ({ page, context, networkRecorder }) => {
-	await networkRecorder.setup(context);
-	// Entire test uses playback mode
+  await networkRecorder.setup(context);
+  // Entire test uses playback mode
 });
 ```
 
@@ -251,7 +251,7 @@ test('my test', async ({ page, context, networkRecorder }) => {
 
 ```typescript
 test('broken', async ({ page, networkRecorder }) => {
-	await page.goto('/'); // HAR not active!
+  await page.goto('/'); // HAR not active!
 });
 ```
 
@@ -259,7 +259,7 @@ test('broken', async ({ page, networkRecorder }) => {
 
 ```typescript
 test('correct', async ({ page, context, networkRecorder }) => {
-	await networkRecorder.setup(context); // Must setup first
-	await page.goto('/'); // Now HAR is active
+  await networkRecorder.setup(context); // Must setup first
+  await page.goto('/'); // Now HAR is active
 });
 ```

@@ -44,24 +44,24 @@ export { expect } from '@playwright/test';
 
 ```typescript
 // In your tests - import from merged fixtures
-import { expect, test } from '../support/merged-fixtures';
+import { test, expect } from '../support/merged-fixtures';
 
 test('all utilities available', async ({
-	apiRequest, // From api-request fixture
-	authToken, // From auth fixture
-	recurse, // From recurse fixture
+  apiRequest, // From api-request fixture
+  authToken, // From auth fixture
+  recurse, // From recurse fixture
 }) => {
-	// All fixtures available in single test signature
-	const { body } = await apiRequest({
-		method: 'GET',
-		path: '/api/protected',
-		headers: { Authorization: `Bearer ${authToken}` },
-	});
+  // All fixtures available in single test signature
+  const { body } = await apiRequest({
+    method: 'GET',
+    path: '/api/protected',
+    headers: { Authorization: `Bearer ${authToken}` },
+  });
 
-	await recurse(
-		() => apiRequest({ method: 'GET', path: `/status/${body.id}` }),
-		(res) => res.body.ready === true,
-	);
+  await recurse(
+    () => apiRequest({ method: 'GET', path: `/status/${body.id}` }),
+    (res) => res.body.ready === true,
+  );
 });
 ```
 
@@ -119,23 +119,23 @@ export { expect } from '@playwright/test';
 
 ```typescript
 // In tests - all fixtures available
-import { expect, test } from '../support/merged-fixtures';
+import { test, expect } from '../support/merged-fixtures';
 
 test('using mixed fixtures', async ({
-	apiRequest, // playwright-utils
-	authToken, // playwright-utils
-	testUser, // custom
-	db, // custom
+  apiRequest, // playwright-utils
+  authToken, // playwright-utils
+  testUser, // custom
+  db, // custom
 }) => {
-	// Use playwright-utils
-	const { body } = await apiRequest({
-		method: 'GET',
-		path: `/api/users/${testUser.id}`,
-		headers: { Authorization: `Bearer ${authToken}` },
-	});
+  // Use playwright-utils
+  const { body } = await apiRequest({
+    method: 'GET',
+    path: `/api/users/${testUser.id}`,
+    headers: { Authorization: `Bearer ${authToken}` },
+  });
 
-	// Use custom fixture
-	await db.clear();
+  // Use custom fixture
+  await db.clear();
 });
 ```
 
@@ -155,52 +155,46 @@ test('using mixed fixtures', async ({
 ```typescript
 // playwright/support/merged-fixtures.ts
 import { mergeTests } from '@playwright/test';
+
 // Playwright utils fixtures
 import { test as apiRequestFixture } from '@seontechnologies/playwright-utils/api-request/fixtures';
 import { test as authFixture } from '@seontechnologies/playwright-utils/auth-session/fixtures';
 import { test as interceptFixture } from '@seontechnologies/playwright-utils/intercept-network-call/fixtures';
-import { test as networkRecorderFixture } from '@seontechnologies/playwright-utils/network-recorder/fixtures';
 import { test as recurseFixture } from '@seontechnologies/playwright-utils/recurse/fixtures';
+import { test as networkRecorderFixture } from '@seontechnologies/playwright-utils/network-recorder/fixtures';
 
 // Custom project fixtures
 import { test as customFixtures } from './custom-fixtures';
 
 // Merge everything
-export const test = mergeTests(
-	apiRequestFixture,
-	authFixture,
-	interceptFixture,
-	recurseFixture,
-	networkRecorderFixture,
-	customFixtures,
-);
+export const test = mergeTests(apiRequestFixture, authFixture, interceptFixture, recurseFixture, networkRecorderFixture, customFixtures);
 
 export { expect } from '@playwright/test';
 ```
 
 ```typescript
 // In tests
-import { expect, test } from '../support/merged-fixtures';
+import { test, expect } from '../support/merged-fixtures';
 
 test('full integration', async ({
-	page,
-	context,
-	apiRequest,
-	authToken,
-	interceptNetworkCall,
-	recurse,
-	networkRecorder,
-	testUser, // custom
+  page,
+  context,
+  apiRequest,
+  authToken,
+  interceptNetworkCall,
+  recurse,
+  networkRecorder,
+  testUser, // custom
 }) => {
-	// All utilities + custom fixtures available
-	await networkRecorder.setup(context);
+  // All utilities + custom fixtures available
+  await networkRecorder.setup(context);
 
-	const usersCall = interceptNetworkCall({ url: '**/api/users' });
+  const usersCall = interceptNetworkCall({ url: '**/api/users' });
 
-	await page.goto('/users');
-	const { responseJson } = await usersCall;
+  await page.goto('/users');
+  const { responseJson } = await usersCall;
 
-	expect(responseJson).toContainEqual(expect.objectContaining({ id: testUser.id }));
+  expect(responseJson).toContainEqual(expect.objectContaining({ id: testUser.id }));
 });
 ```
 
@@ -218,32 +212,32 @@ test('full integration', async ({
 **Implementation**:
 
 ```typescript
-import { expect, test } from '../support/merged-fixtures';
+import { test, expect } from '../support/merged-fixtures';
 
 // Override auth options for entire file
 test.use({
-	authOptions: {
-		userIdentifier: 'admin',
-		environment: 'staging',
-	},
+  authOptions: {
+    userIdentifier: 'admin',
+    environment: 'staging',
+  },
 });
 
 test('uses admin on staging', async ({ authToken }) => {
-	// Token is for admin user on staging environment
+  // Token is for admin user on staging environment
 });
 
 // Override for specific describe block
 test.describe('manager tests', () => {
-	test.use({
-		authOptions: {
-			userIdentifier: 'manager',
-		},
-	});
+  test.use({
+    authOptions: {
+      userIdentifier: 'manager',
+    },
+  });
 
-	test('manager can access reports', async ({ page }) => {
-		// Uses manager token
-		await page.goto('/reports');
-	});
+  test('manager can access reports', async ({ page }) => {
+    // Uses manager token
+    await page.goto('/reports');
+  });
 });
 ```
 
@@ -324,22 +318,22 @@ playwright/
 // ❌ Without mergeTests (verbose)
 import { test as base } from '@playwright/test';
 import { apiRequest } from '@seontechnologies/playwright-utils/api-request';
-
-// ✅ With mergeTests (clean)
-import { test } from '../support/merged-fixtures';
 import { getAuthToken } from './auth';
 import { createUser } from './factories';
 
 test('verbose', async ({ request }) => {
-	const token = await getAuthToken();
-	const user = await createUser();
-	const response = await apiRequest({ request, method: 'GET', path: '/api/users' });
-	// Manual wiring everywhere
+  const token = await getAuthToken();
+  const user = await createUser();
+  const response = await apiRequest({ request, method: 'GET', path: '/api/users' });
+  // Manual wiring everywhere
 });
 
+// ✅ With mergeTests (clean)
+import { test } from '../support/merged-fixtures';
+
 test('clean', async ({ apiRequest, authToken, testUser }) => {
-	const { body } = await apiRequest({ method: 'GET', path: '/api/users' });
-	// All fixtures auto-wired
+  const { body } = await apiRequest({ method: 'GET', path: '/api/users' });
+  // All fixtures auto-wired
 });
 ```
 
@@ -359,7 +353,6 @@ test('clean', async ({ apiRequest, authToken, testUser }) => {
 import { test } from '@seontechnologies/playwright-utils/api-request/fixtures';
 // Also need auth...
 import { test as authTest } from '@seontechnologies/playwright-utils/auth-session/fixtures';
-
 // Name conflict! Which test to use?
 ```
 
@@ -367,7 +360,6 @@ import { test as authTest } from '@seontechnologies/playwright-utils/auth-sessio
 
 ```typescript
 import { test } from '../support/merged-fixtures';
-
 // All utilities available, no conflicts
 ```
 

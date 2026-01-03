@@ -20,7 +20,7 @@ module.exports = {
 
 			// Memory management
 			// GC tuning: Start aggressive GC at 1.5GB, leaving 500MB for OS and Redis
-			max_memory_restart: '1.8G', // Restart if memory exceeds 1.8GB (safety margin)
+			max_memory_restart: '1800M', // Restart if memory exceeds 1.8GB (safety margin)
 			node_args: '--max-old-space-size=1536',
 
 			// Environment variables

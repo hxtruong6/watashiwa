@@ -391,8 +391,8 @@ If yes, please provide paths or links. [Provide paths or type 'none']
 
 <action>Scan for additional patterns based on doc requirements:
 
-- config_patterns → Configuration management (including nginx configs for CSP/HSTS)
-- auth_security_patterns → Authentication/authorization approach, RBAC, input validation (Zod), rate limiting, secure logging, security headers (CSP/HSTS)
+- config_patterns → Configuration management
+- auth_security_patterns → Authentication/authorization approach
 - entry_point_patterns → Application entry points and bootstrap
 - shared_code_patterns → Shared libraries and utilities
 - async_event_patterns → Event-driven architecture

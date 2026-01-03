@@ -35,15 +35,15 @@ import { test } from '@seontechnologies/playwright-utils/network-error-monitor/f
 
 // Monitoring automatically enabled
 test('should load dashboard', async ({ page }) => {
-	await page.goto('/dashboard');
-	await expect(page.locator('h1')).toContainText('Dashboard');
+  await page.goto('/dashboard');
+  await expect(page.locator('h1')).toContainText('Dashboard');
 
-	// ✅ Passes if no HTTP errors
-	// ❌ Fails if any 4xx/5xx errors detected with clear message:
-	//    "Network errors detected: 2 request(s) failed"
-	//    Failed requests:
-	//      GET 500 https://api.example.com/users
-	//      POST 503 https://api.example.com/metrics
+  // ✅ Passes if no HTTP errors
+  // ❌ Fails if any 4xx/5xx errors detected with clear message:
+  //    "Network errors detected: 2 request(s) failed"
+  //    Failed requests:
+  //      GET 500 https://api.example.com/users
+  //      POST 503 https://api.example.com/metrics
 });
 ```
 
@@ -64,27 +64,23 @@ test('should load dashboard', async ({ page }) => {
 import { test } from '@seontechnologies/playwright-utils/network-error-monitor/fixtures';
 
 // Opt-out with annotation
-test(
-	'should show error on invalid input',
-	{ annotation: [{ type: 'skipNetworkMonitoring' }] },
-	async ({ page }) => {
-		await page.goto('/form');
-		await page.click('#submit'); // Triggers 400 error
+test('should show error on invalid input', { annotation: [{ type: 'skipNetworkMonitoring' }] }, async ({ page }) => {
+  await page.goto('/form');
+  await page.click('#submit'); // Triggers 400 error
 
-		// Monitoring disabled - test won't fail on 400
-		await expect(page.getByText('Invalid input')).toBeVisible();
-	},
-);
+  // Monitoring disabled - test won't fail on 400
+  await expect(page.getByText('Invalid input')).toBeVisible();
+});
 
 // Or opt-out entire describe block
 test.describe('error handling', { annotation: [{ type: 'skipNetworkMonitoring' }] }, () => {
-	test('handles 404', async ({ page }) => {
-		// All tests in this block skip monitoring
-	});
+  test('handles 404', async ({ page }) => {
+    // All tests in this block skip monitoring
+  });
 
-	test('handles 500', async ({ page }) => {
-		// Monitoring disabled
-	});
+  test('handles 500', async ({ page }) => {
+    // Monitoring disabled
+  });
 });
 ```
 
@@ -140,7 +136,7 @@ test('authenticated with monitoring', async ({ page, authToken }) => {
 ```typescript
 // Configuration (internal to utility)
 const config = {
-	maxTestsPerError: 3, // Max 3 tests fail per unique error pattern
+  maxTestsPerError: 3, // Max 3 tests fail per unique error pattern
 };
 
 // Scenario:
@@ -169,26 +165,26 @@ When test fails due to network errors, artifact attached:
 ```json
 // test-results/my-test/network-errors.json
 {
-	"errors": [
-		{
-			"url": "https://api.example.com/users",
-			"method": "GET",
-			"status": 500,
-			"statusText": "Internal Server Error",
-			"timestamp": "2024-08-13T10:30:45.123Z"
-		},
-		{
-			"url": "https://api.example.com/metrics",
-			"method": "POST",
-			"status": 503,
-			"statusText": "Service Unavailable",
-			"timestamp": "2024-08-13T10:30:46.456Z"
-		}
-	],
-	"summary": {
-		"totalErrors": 2,
-		"uniquePatterns": 2
-	}
+  "errors": [
+    {
+      "url": "https://api.example.com/users",
+      "method": "GET",
+      "status": 500,
+      "statusText": "Internal Server Error",
+      "timestamp": "2024-08-13T10:30:45.123Z"
+    },
+    {
+      "url": "https://api.example.com/metrics",
+      "method": "POST",
+      "status": 503,
+      "statusText": "Service Unavailable",
+      "timestamp": "2024-08-13T10:30:46.456Z"
+    }
+  ],
+  "summary": {
+    "totalErrors": 2,
+    "uniquePatterns": 2
+  }
 }
 ```
 
@@ -232,8 +228,8 @@ In `*framework` workflow, mention network-error-monitor:
 import { test as networkErrorMonitorFixture } from '@seontechnologies/playwright-utils/network-error-monitor/fixtures';
 
 export const test = mergeTests(
-	// ... other fixtures
-	networkErrorMonitorFixture,
+  // ... other fixtures
+  networkErrorMonitorFixture,
 );
 ```
 
@@ -256,7 +252,7 @@ test.use({ annotation: [{ type: 'skipNetworkMonitoring' }] });
 
 ```typescript
 test.describe('error scenarios', { annotation: [{ type: 'skipNetworkMonitoring' }] }, () => {
-	// Only these tests skip monitoring
+  // Only these tests skip monitoring
 });
 ```
 
