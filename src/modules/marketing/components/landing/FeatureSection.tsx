@@ -19,16 +19,18 @@ const { useBreakpoint } = Grid;
 
 export default function FeatureSection() {
 	const { token } = useToken();
-	const screens = useBreakpoint();
 	const t = useTranslations('Landing');
 	const [mounted, setMounted] = React.useState(false);
 
+	// Call useBreakpoint unconditionally to maintain hook order
+	const screens = useBreakpoint();
+
 	React.useEffect(() => {
-		const timer = setTimeout(() => setMounted(true), 0);
-		return () => clearTimeout(timer);
+		setMounted(true);
 	}, []);
 
-	const isMd = mounted ? screens.md : false;
+	// Only use breakpoint value after component has mounted to avoid hydration mismatch
+	const isMd = mounted && screens.md;
 
 	const features = [
 		{

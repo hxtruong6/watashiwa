@@ -78,28 +78,21 @@ export const viewport: Viewport = {
 	viewportFit: 'cover',
 };
 
-// Component that fetches user - wrapped in Suspense for cacheComponents
-async function NavBarWithUser() {
-	let user = null;
-	try {
-		const { getUser } = await import('@/modules/auth/auth.actions');
-		user = await getUser();
-	} catch {
-		// During prerendering, cookies() rejects. NavBar handles null users gracefully.
-	}
-	return <NavBar user={user} />;
-}
+/**
+ * Providers wrapper that fetches dynamic data (messages, user)
+ * This component is wrapped in Suspense to enable Partial Prerendering (PPR)
+ * Static shell renders immediately, dynamic parts stream in
+ */
+async function AppProviders({ children }: { children: React.ReactNode }) {
+	await connection(); // Wait for request context before accessing cookies/headers
 
-// Component that fetches locale and messages - wrapped in Suspense for cacheComponents
-async function IntlProviderWithData({ children }: { children: React.ReactNode }) {
-	await connection(); // Wait for user request - getMessages() may access cookies()
-	// getMessages() may access cookies() during prerendering, so we handle errors gracefully
+	// Fetch messages with fallback to default locale
 	let messages;
 	try {
 		messages = await getMessages();
 	} catch {
 		// During prerendering, getMessages() may fail if it accesses cookies()
-		// Fall back to default messages which are already loaded in the root layout
+		// Fall back to default messages
 		const defaultLocale = routing.defaultLocale;
 		messages = (await import(`@/i18n/messages/${defaultLocale}.json`)).default;
 	}
@@ -108,8 +101,8 @@ async function IntlProviderWithData({ children }: { children: React.ReactNode })
 		<NextIntlClientProvider messages={messages}>
 			<AntdRegistry>
 				<ThemeProvider>
-					<Suspense fallback={<NavBar user={null} />}>
-						<NavBarWithUser />
+					<Suspense fallback={<div>Loading...</div>}>
+						<NavBar />
 					</Suspense>
 					<main className="app-main">{children}</main>
 					<PWAInstallPrompt />
@@ -120,6 +113,19 @@ async function IntlProviderWithData({ children }: { children: React.ReactNode })
 	);
 }
 
+/**
+ * Root Layout - Optimized for Next.js 16 cacheComponents (PPR)
+ *
+ * Structure:
+ * - Static parts (HTML, fonts, analytics) render immediately for PPR
+ * - Dynamic providers (Intl, Auth) wrapped in Suspense to stream in
+ * - Proper provider nesting: NuqsAdapter > NextIntlClientProvider > AntdRegistry > ThemeProvider
+ *
+ * Benefits:
+ * - Fast initial page load (static shell)
+ * - SEO-friendly (static HTML sent immediately)
+ * - Progressive enhancement (dynamic parts stream in)
+ */
 export default async function RootLayout({
 	children,
 }: Readonly<{
@@ -127,39 +133,30 @@ export default async function RootLayout({
 }>) {
 	// Use default locale for html lang attribute during prerendering
 	const defaultLocale = routing.defaultLocale;
-	// Load default messages for fallback
-	const defaultMessages = (await import(`@/i18n/messages/${defaultLocale}.json`)).default;
-	console.log('defaultMessages', defaultMessages);
 
 	return (
 		<html lang={defaultLocale} suppressHydrationWarning>
 			<body className={`${geistSans.variable} ${geistMono.variable}`}>
+				{/* Static components - render immediately for PPR */}
 				<StructuredData />
 				<DisableZoom />
 				<PostHogPageTracker />
 				<UserReturnTracker />
+
 				<NuqsAdapter>
-					{/* <NextIntlClientProvider messages={defaultMessages}> */}
-					{/* <AntdRegistry> */}
-					{/* <ThemeProvider> */}
-					{/* <Suspense fallback={<NavBar user={null} />}>
-					<NavBarWithUser />
-				</Suspense> */}
+					{/* Dynamic providers - stream in via Suspense for PPR */}
 					<Suspense
 						fallback={
-							<main className="app-main">
-								{/* Loading state - children will render once IntlProviderWithData resolves */}
-								Hello World
-							</main>
+							<>
+								<div>Loading...</div>
+								<main className="app-main">
+									{/* Loading state - children will render once AppProviders resolves */}
+								</main>
+							</>
 						}
 					>
-						<IntlProviderWithData>{children}</IntlProviderWithData>
+						<AppProviders>{children}</AppProviders>
 					</Suspense>
-					{/* <PWAInstallPrompt /> */}
-					<PWALifecycle />
-					{/* </ThemeProvider> */}
-					{/* </AntdRegistry> */}
-					{/* </NextIntlClientProvider> */}
 				</NuqsAdapter>
 			</body>
 		</html>

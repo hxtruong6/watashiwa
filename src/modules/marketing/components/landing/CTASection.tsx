@@ -12,13 +12,16 @@ const { useToken } = theme;
 export default function CTASection() {
 	const { token } = useToken();
 	const t = useTranslations('Landing');
-	const { md } = Grid.useBreakpoint();
 	const [mounted, setMounted] = React.useState(false);
+
+	// Call useBreakpoint unconditionally to maintain hook order
+	const { md } = Grid.useBreakpoint();
 
 	React.useEffect(() => {
 		setMounted(true);
 	}, []);
 
+	// Only use breakpoint value after component has mounted to avoid hydration mismatch
 	const isDesktop = mounted && md;
 
 	return (

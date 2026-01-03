@@ -1,6 +1,5 @@
-import enMessages from '@/i18n/messages/en.json';
-import viMessages from '@/i18n/messages/vi.json';
-import { routing } from '@/i18n/routing';
+import { getLocaleForMetadata } from '@/lib/seo/locale';
+import { generatePageMetadata } from '@/lib/seo/metadata';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
@@ -8,24 +7,17 @@ import { Suspense } from 'react';
 import ClientContactContent from './ClientContactContent';
 
 export async function generateMetadata(): Promise<Metadata> {
-	// Use default locale statically - no dynamic data access during prerendering
-	const locale = routing.defaultLocale as 'vi' | 'en';
-	const messages = locale === 'vi' ? viMessages : enMessages;
-	const t = messages.Contact;
+	// Get locale from request context (cookies) with fallback to default
+	const locale = await getLocaleForMetadata();
+	const t = await getTranslations({ locale, namespace: 'Contact' });
 
-	return {
-		title: t.metaTitle,
-		description: t.metaDescription,
-		openGraph: {
-			title: t.metaTitle,
-			description: t.metaDescription,
-			url: `https://watashiwa.app/contact`,
-			type: 'website',
-		},
-		alternates: {
-			canonical: 'https://watashiwa.app/contact',
-		},
-	};
+	return generatePageMetadata({
+		title: t('metaTitle'),
+		description: t('metaDescription'),
+		url: '/contact',
+		locale,
+		canonical: '/contact',
+	});
 }
 
 async function ContactHeader() {

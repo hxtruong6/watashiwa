@@ -1,4 +1,4 @@
-import { routing } from '@/i18n/routing';
+import { getLocaleForMetadata } from '@/lib/seo/locale';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import LandingPageClient from '@/modules/marketing/components/landing/LandingPageClient';
 import type { Metadata } from 'next';
@@ -7,9 +7,12 @@ import { connection } from 'next/server';
 import React, { Suspense } from 'react';
 
 export async function generateMetadata(): Promise<Metadata> {
+	// Get locale from request context (cookies) with fallback to default
+	const locale = await getLocaleForMetadata();
 	return generatePageMetadata({
-		locale: routing.defaultLocale as 'vi' | 'en',
+		locale,
 		url: '/',
+		canonical: '/',
 	});
 }
 

@@ -1,27 +1,23 @@
+import { getLocaleForMetadata } from '@/lib/seo/locale';
+import { generatePageMetadata } from '@/lib/seo/metadata';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { connection } from 'next/server';
 import { Suspense } from 'react';
 
 import ClientAboutContent from './ClientAboutContent';
 
 export async function generateMetadata(): Promise<Metadata> {
-	await connection();
-	const t = await getTranslations('About');
+	// Get locale from request context (cookies) with fallback to default
+	const locale = await getLocaleForMetadata();
+	const t = await getTranslations({ locale, namespace: 'About' });
 
-	return {
+	return generatePageMetadata({
 		title: t('metaTitle'),
 		description: t('metaDescription'),
-		openGraph: {
-			title: t('metaTitle'),
-			description: t('metaDescription'),
-			url: `https://watashiwa.app/about`,
-			type: 'website',
-		},
-		alternates: {
-			canonical: 'https://watashiwa.app/about',
-		},
-	};
+		url: '/about',
+		locale,
+		canonical: '/about',
+	});
 }
 
 async function AboutHeader() {
