@@ -30,6 +30,17 @@ if (workbox) {
     workbox.core.skipWaiting();
     workbox.core.clientsClaim();
 
+    // CRITICAL: Global exclusion for POST requests (Next.js Server Actions)
+    // Server actions must bypass service worker to maintain proper cookie/session handling
+    // This is especially important in PWA standalone mode where cookie handling differs
+    workbox.routing.registerRoute(
+        ({ request }) => request.method === 'POST',
+        async ({ request }) => {
+            // Bypass service worker entirely - fetch directly from network
+            return fetch(request);
+        }
+    );
+
     if (logLevel !== 'silent') {
         console.log(`Yay! Workbox is loaded 🎉`);
     }
@@ -89,10 +100,20 @@ if (workbox) {
 
     // 5. Next.js Data/Page Routes (Network First)
     // Ensure users get fresh content, but fallback to cache if offline
+    // CRITICAL: Exclude server actions (POST requests) from service worker interception
+    // Server actions use special Next.js internal routes and must bypass SW for proper cookie/session handling
     workbox.routing.registerRoute(
-        ({ url }) =>
-            url.pathname.startsWith('/_next/data/') ||
-            url.pathname.includes('/api/'),
+        ({ url, request }) => {
+            // Skip POST requests (server actions) - they must bypass service worker
+            if (request.method === 'POST') {
+                return false;
+            }
+            // Only intercept GET requests for data routes
+            return (
+                url.pathname.startsWith('/_next/data/') ||
+                url.pathname.includes('/api/')
+            );
+        },
         new workbox.strategies.NetworkFirst({
             cacheName: 'api-data',
             plugins: [
@@ -105,9 +126,13 @@ if (workbox) {
     );
 
     // 6. Navigation Routes (Network First for reliability)
-    // Workbox handles this well.
+    // CRITICAL: Exclude POST requests (server actions) from navigation interception
+    // Server actions must bypass service worker to maintain proper cookie/session handling
     workbox.routing.registerRoute(
-        ({ request }) => request.mode === 'navigate',
+        ({ request }) => {
+            // Only intercept GET navigation requests, not POST (server actions)
+            return request.mode === 'navigate' && request.method === 'GET';
+        },
         new workbox.strategies.NetworkFirst({
             cacheName: 'pages',
             plugins: [

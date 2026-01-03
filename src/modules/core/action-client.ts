@@ -65,12 +65,30 @@ export async function executeSafeAction<TInput, TOutput>(
 			data,
 		};
 	} catch (error) {
-		console.error('SafeAction Error:', error);
+		// Enhanced error logging with context
+		console.error('SafeAction Error:', {
+			error,
+			message: error instanceof Error ? error.message : String(error),
+			stack: error instanceof Error ? error.stack : undefined,
+			schema: schema.description || 'unknown',
+			rawDataType: typeof rawData,
+		});
+
 		// Distinguish expected errors vs system crashes if needed
 		const message = error instanceof Error ? error.message : 'Internal Server Error';
+
+		// Provide more specific error messages for common issues
+		let userFriendlyMessage = message;
+		if (message.includes('connection') || message.includes('timeout')) {
+			userFriendlyMessage =
+				'Connection error. Please check your internet connection and try again.';
+		} else if (message.includes('cookie') || message.includes('session')) {
+			userFriendlyMessage = 'Session expired. Please refresh the page and try again.';
+		}
+
 		return {
 			success: false,
-			error: message,
+			error: userFriendlyMessage,
 		};
 	}
 }

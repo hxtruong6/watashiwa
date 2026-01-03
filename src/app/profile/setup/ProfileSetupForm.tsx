@@ -118,7 +118,7 @@ function LearningMethodGuide({ t, tStudy, tokenObj }: LearningMethodGuideProps) 
 	return (
 		<Popover
 			content={content}
-			trigger="hover"
+			trigger={['click', 'hover']}
 			open={open}
 			onOpenChange={setOpen}
 			placement="topRight"
@@ -145,6 +145,10 @@ function LearningMethodGuide({ t, tStudy, tokenObj }: LearningMethodGuideProps) 
 					width: 'auto',
 					height: 'auto',
 					minWidth: 'auto',
+					touchAction: 'manipulation',
+					userSelect: 'none',
+					WebkitUserSelect: 'none',
+					WebkitTouchCallout: 'none',
 				}}
 				aria-label={t('learningMethod') || 'Learning Method Information'}
 			/>
@@ -203,16 +207,41 @@ export default function ProfileSetupForm({ returnUrl }: ProfileSetupFormProps) {
 				// The slight performance trade-off is acceptable for correctness.
 				window.location.href = redirectPath;
 			} else {
-				// Show only toast notification, no Alert component
-				const errorMessage =
-					result.error === 'Validation Failed'
-						? t('setupError') || 'Failed to save profile. Please check your input and try again.'
-						: result.error || t('setupError') || 'Failed to save profile';
+				// Enhanced error handling with detailed logging
+				console.error('Profile setup failed:', {
+					error: result.error,
+					validationErrors: result.validationErrors,
+					userAgent: navigator.userAgent,
+					isMobile: /Mobile|Android|iPhone|iPad/.test(navigator.userAgent),
+				});
+
+				// Show user-friendly error message
+				let errorMessage = t('setupError') || 'Failed to save profile. Please try again.';
+
+				if (result.error === 'Unauthorized') {
+					errorMessage =
+						t('setupErrorAuth') ||
+						'Your session has expired. Please refresh the page and try again.';
+				} else if (result.error === 'Validation Failed') {
+					errorMessage = t('setupErrorValidation') || 'Please check your input and try again.';
+				} else if (result.error) {
+					// Show the actual error message if available
+					errorMessage = result.error;
+				}
+
 				message.error(errorMessage);
 				setLoading(false);
 			}
 		} catch (error) {
-			console.error('Profile setup error:', error);
+			// Enhanced error logging for debugging
+			console.error('Profile setup error:', {
+				error,
+				message: error instanceof Error ? error.message : String(error),
+				stack: error instanceof Error ? error.stack : undefined,
+				userAgent: navigator.userAgent,
+				isMobile: /Mobile|Android|iPhone|iPad/.test(navigator.userAgent),
+			});
+
 			const errorMessage = t('setupError') || 'Failed to save profile. Please try again.';
 			message.error(errorMessage);
 			setLoading(false);
@@ -317,6 +346,10 @@ export default function ProfileSetupForm({ returnUrl }: ProfileSetupFormProps) {
 								height: 48,
 								fontWeight: 'bold',
 								fontSize: 16,
+								touchAction: 'manipulation',
+								userSelect: 'none',
+								WebkitUserSelect: 'none',
+								WebkitTouchCallout: 'none',
 							}}
 						>
 							{t('completeSetup') || 'Complete Setup'}
