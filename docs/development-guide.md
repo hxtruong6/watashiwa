@@ -305,10 +305,10 @@ pnpm pm2:deploy:prod
    import { z } from 'zod';
 
    export async function myAction(input: unknown) {
-   	return executeSafeAction(MySchema, input, async (data, { userId }) => {
-   		// Implementation
-   		return result;
-   	});
+    return executeSafeAction(MySchema, input, async (data, { userId }) => {
+     // Implementation
+     return result;
+    });
    }
    ```
 
@@ -413,10 +413,12 @@ pnpm db:generate
 
 ### Components
 
+- **See [Next.js 16 App Router Guide](./development-guide-nextjs16.md) for detailed patterns**
 - Prefer Server Components (default)
 - Use Client Components only for interactivity
 - Keep pages thin (data fetching only)
 - Extract logic to hooks or services
+- Always use `connection()` before accessing cookies/headers (React 19)
 
 ### Database
 
@@ -436,6 +438,7 @@ pnpm db:generate
 
 ## Related Documentation
 
+- **[Next.js 16 App Router Guide](./development-guide-nextjs16.md)** - **⭐ REQUIRED READING** - Component patterns, server/client separation, React 19 patterns
 - [Architecture](./architecture.md) - System architecture
 - [API Contracts](./api/index.md) - Server actions reference
 - [Data Models](./models/index.md) - Database schema

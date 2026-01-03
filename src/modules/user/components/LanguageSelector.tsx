@@ -1,36 +1,28 @@
 'use client';
 
-import { updateUserSettings } from '@/modules/user/user.actions';
+import { useLanguagePreference } from '@/modules/user/hooks/useLanguagePreference';
+import type { Locale } from '@/modules/user/utils/locale';
 import { Select } from 'antd';
 import { useLocale } from 'next-intl';
 
 export default function LanguageSelector() {
 	const locale = useLocale();
-
-	const handleChange = async (newLocale: 'en' | 'vi' | 'ja') => {
-		// 1. Set Cookie for Next-Intl (Client-side immediate)
-		document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
-
-		// 2. Persist to DB (Server-side) - Only if user is authenticated
-		// For public users, we only update the cookie
-		try {
-			await updateUserSettings({ language: newLocale });
-		} catch (err) {
-			// Silently fail for public users - cookie update is sufficient
-			if (err instanceof Error && err.message.includes('Unauthorized')) {
-				// Public user - this is expected, cookie update is enough
-			} else {
-				console.error('Failed to sync language preference:', err);
+	const { updateLanguage } = useLanguagePreference({
+		onError: (error) => {
+			// Only log non-unauthorized errors (unauthorized is expected for public users)
+			if (error instanceof Error && !error.message.includes('Unauthorized')) {
+				console.error('Failed to sync language preference:', error);
 			}
-		}
+		},
+	});
 
-		// 3. Reload to apply changes
-		window.location.reload();
+	const handleChange = async (newLocale: Locale) => {
+		await updateLanguage(newLocale);
 	};
 
 	return (
 		<Select
-			value={locale as any}
+			value={locale as Locale}
 			onChange={handleChange}
 			variant="borderless"
 			title={locale === 'vi' ? 'Tiếng Việt' : 'English'}

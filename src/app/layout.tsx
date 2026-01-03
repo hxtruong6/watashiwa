@@ -4,10 +4,12 @@ import DisableZoom from '@/components/DisableZoom';
 import PWAInstallPrompt from '@/components/PWA/PWAInstallPrompt';
 import PWALifecycle from '@/components/PWA/PWALifecycle';
 import { StructuredData } from '@/components/SEO/StructuredData';
+import LayoutSkeleton from '@/components/Shared/LayoutSkeleton';
 import ThemeProvider from '@/components/theme/ThemeProvider';
 import { routing } from '@/i18n/routing';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import NavBar from '@/modules/ui/components/NavBar';
+import NavBarSkeleton from '@/modules/ui/components/navbar/NavBarSkeleton';
 import '@/styles/_accessibility.css';
 import '@/styles/_animations.css';
 import '@/styles/_reset.css';
@@ -101,7 +103,7 @@ async function AppProviders({ children }: { children: React.ReactNode }) {
 		<NextIntlClientProvider messages={messages}>
 			<AntdRegistry>
 				<ThemeProvider>
-					<Suspense fallback={<div>Loading...</div>}>
+					<Suspense fallback={<NavBarSkeleton />}>
 						<NavBar />
 					</Suspense>
 					<main className="app-main">{children}</main>
@@ -145,16 +147,7 @@ export default async function RootLayout({
 
 				<NuqsAdapter>
 					{/* Dynamic providers - stream in via Suspense for PPR */}
-					<Suspense
-						fallback={
-							<>
-								<div>Loading...</div>
-								<main className="app-main">
-									{/* Loading state - children will render once AppProviders resolves */}
-								</main>
-							</>
-						}
-					>
+					<Suspense fallback={<LayoutSkeleton />}>
 						<AppProviders>{children}</AppProviders>
 					</Suspense>
 				</NuqsAdapter>

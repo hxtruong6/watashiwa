@@ -1196,6 +1196,7 @@
 		"cubeBenefit3": "Giảm nhầm lẫn giữa các từ tương tự và từ đồng âm",
 		"cubeBenefit4": "Luồng học tập tự nhiên hơn phản ánh cách ngôn ngữ thực sự được sử dụng",
 		"selectCubeMethod": "Chọn Phương Pháp CUBE",
-		"cubeMethodSelected": "Đã chọn phương pháp CUBE!"
+		"cubeMethodSelected": "Đã chọn phương pháp CUBE!",
+		"signUpToUseCube": "Đăng Ký Để Sử Dụng CUBE"
 	}
 }

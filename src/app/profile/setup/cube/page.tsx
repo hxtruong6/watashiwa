@@ -1,36 +1,9 @@
-import { getUser } from '@/modules/auth/auth.actions';
 import { redirect } from 'next/navigation';
-import { Suspense } from 'react';
 
-import CubeIntroduction from './CubeIntroduction';
-
-async function CubeIntroductionContent() {
-	// Server-side authentication check
-	const user = await getUser();
-	if (!user) {
-		redirect('/login');
-	}
-
-	return <CubeIntroduction />;
-}
-
+/**
+ * Redirect old /profile/setup/cube route to new public /info/cube route
+ * This preserves any existing bookmarks or links
+ */
 export default async function CubeIntroductionPage() {
-	return (
-		<Suspense
-			fallback={
-				<div
-					style={{
-						minHeight: '100vh',
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}
-				>
-					Loading...
-				</div>
-			}
-		>
-			<CubeIntroductionContent />
-		</Suspense>
-	);
+	redirect('/info/cube');
 }

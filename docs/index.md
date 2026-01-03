@@ -17,6 +17,7 @@
 - **[deployment-guide.md](./deployment-guide.md)** - Deployment setup: Nginx, PM2, Sentry
 - **[design_system.md](./design_system.md)** - Design tokens and UI/UX guidelines
 - **[development-guide.md](./development-guide.md)** - Local setup, scripts, and dev workflow
+- **[development-guide-nextjs16.md](./development-guide-nextjs16.md)** - **⭐ REQUIRED** - Next.js 16 App Router patterns, server/client components, React 19
 - **[index.md](./index.md)** - Directory index (this file)
 - **[marketing_plan.md](./marketing_plan.md)** - Marketing plan and build-in-public strategy
 - **[mobile_native_strategy.md](./mobile_native_strategy.md)** - Native mobile strategy and tradeoffs

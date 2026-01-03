@@ -1206,6 +1206,7 @@
 		"cubeBenefit3": "Reduced confusion between similar words and homonyms",
 		"cubeBenefit4": "More natural learning flow that mirrors how language is actually used",
 		"selectCubeMethod": "Select CUBE Method",
-		"cubeMethodSelected": "CUBE method selected!"
+		"cubeMethodSelected": "CUBE method selected!",
+		"signUpToUseCube": "Sign Up to Use CUBE"
 	}
 }

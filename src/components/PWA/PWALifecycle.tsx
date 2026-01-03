@@ -12,7 +12,7 @@ export default function PWALifecycle() {
 			navigator.serviceWorker
 				.register('/sw.js')
 				.then((registration) => {
-					console.log('SW Registered: ', registration);
+					// console.log('SW Registered: ', registration);
 				})
 				.catch((error) => {
 					console.log('SW Registration Failed: ', error);
