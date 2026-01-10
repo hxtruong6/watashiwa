@@ -880,6 +880,7 @@ export default function SessionController({
 			</SessionContainer>
 		);
 	}
+	console.log('xxx001 studyPhase', studyPhase);
 
 	return (
 		<SessionContainer

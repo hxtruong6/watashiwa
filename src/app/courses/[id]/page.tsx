@@ -5,6 +5,7 @@ import { isUUID } from '@/lib/utils/uuid';
 import { getUser } from '@/modules/auth/auth.actions';
 import { getCourseWithUserProgress } from '@/modules/course/course.actions';
 import { getCourseById, getCourseByIdOrSlug } from '@/modules/course/course.data';
+import { PageSkeleton } from '@/modules/ui/components/skeletons';
 import type { Metadata } from 'next';
 import { type RedirectType, notFound, redirect } from 'next/navigation';
 import { Suspense } from 'react';
@@ -75,20 +76,7 @@ async function CourseDetailContent({ params }: { params: Promise<{ id: string }>
 
 export default async function CourseDetailPage({ params }: { params: Promise<{ id: string }> }) {
 	return (
-		<Suspense
-			fallback={
-				<div
-					style={{
-						minHeight: '100vh',
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}
-				>
-					Loading...
-				</div>
-			}
-		>
+		<Suspense fallback={<PageSkeleton />}>
 			<CourseDetailContent params={params} />
 		</Suspense>
 	);

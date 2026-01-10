@@ -22,7 +22,7 @@ const { useToken } = theme;
  * - Mobile-first responsive design
  *
  * @example
- * // In Next.js loading.tsx file
+ *
  * import FlipCardSkeleton from '@/modules/ui/components/skeletons/FlipCardSkeleton';
  *
  * export default function Loading() {

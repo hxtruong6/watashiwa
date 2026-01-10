@@ -1,5 +1,6 @@
 import { getUser } from '@/modules/auth/auth.actions';
 import { getCourses } from '@/modules/course/course.actions';
+import { PageSkeleton } from '@/modules/ui/components/skeletons';
 import { Suspense } from 'react';
 
 import CourseList from './CourseList';
@@ -15,20 +16,7 @@ async function CoursesDashboardContent() {
 
 export default async function CoursesDashboardPage() {
 	return (
-		<Suspense
-			fallback={
-				<div
-					style={{
-						minHeight: '100vh',
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}
-				>
-					Loading...
-				</div>
-			}
-		>
+		<Suspense fallback={<PageSkeleton />}>
 			<CoursesDashboardContent />
 		</Suspense>
 	);

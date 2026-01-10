@@ -1,6 +1,7 @@
 import { hasRole } from '@/lib/auth/roleGuard';
 import { AdminShell } from '@/modules/admin/components/Layout/AdminShell';
 import { getUserWithRole } from '@/modules/auth/auth.actions';
+import { PageSkeleton } from '@/modules/ui/components/skeletons';
 import { UserRole } from '@prisma/client';
 import { redirect } from 'next/navigation';
 import React, { Suspense } from 'react';
@@ -20,20 +21,7 @@ async function AdminLayoutContent({ children }: { children: React.ReactNode }) {
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
 	return (
-		<Suspense
-			fallback={
-				<div
-					style={{
-						minHeight: '100vh',
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}
-				>
-					Loading...
-				</div>
-			}
-		>
+		<Suspense fallback={<PageSkeleton />}>
 			<AdminLayoutContent>{children}</AdminLayoutContent>
 		</Suspense>
 	);

@@ -1,5 +1,6 @@
 import { getLocaleForMetadata } from '@/lib/seo/locale';
 import { generatePageMetadata } from '@/lib/seo/metadata';
+import { CompactSkeleton } from '@/modules/ui/components/skeletons';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
@@ -46,7 +47,7 @@ export default async function CookiePolicyPage() {
 			<Suspense
 				fallback={
 					<header style={{ marginBottom: 24 }}>
-						<h1 style={{ fontSize: 32, margin: 0, marginBottom: 8 }}>Loading...</h1>
+						<CompactSkeleton title rows={1} />
 					</header>
 				}
 			>

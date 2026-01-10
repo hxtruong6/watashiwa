@@ -1,4 +1,5 @@
 import { getUser } from '@/modules/auth/auth.actions';
+import { PageSkeleton } from '@/modules/ui/components/skeletons';
 import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
 
@@ -22,20 +23,7 @@ async function ProfilePageContent(): Promise<React.ReactNode> {
 
 export default async function ProfilePage() {
 	return (
-		<Suspense
-			fallback={
-				<div
-					style={{
-						minHeight: '100vh',
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}
-				>
-					Loading...
-				</div>
-			}
-		>
+		<Suspense fallback={<PageSkeleton />}>
 			<ProfilePageContent />
 		</Suspense>
 	);

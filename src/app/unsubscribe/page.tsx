@@ -1,5 +1,6 @@
 'use client';
 
+import { PageSkeleton } from '@/modules/ui/components/skeletons';
 import { unsubscribeFromEmails } from '@/modules/user/user.actions';
 import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
 import { Button, Flex, Result, Typography } from 'antd';
@@ -100,7 +101,7 @@ export default function UnsubscribePage() {
 						padding: '48px 24px',
 					}}
 				>
-					<Title level={2}>Loading...</Title>
+					<PageSkeleton />
 				</Flex>
 			}
 		>

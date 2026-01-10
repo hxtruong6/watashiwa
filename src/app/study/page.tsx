@@ -12,6 +12,7 @@ import {
 	getLastStudySession,
 	hasUserStudiedBefore,
 } from '@/modules/study/study.actions';
+import { PageSkeleton } from '@/modules/ui/components/skeletons';
 import { hasCompletedSetup } from '@/utils/setup-check';
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
@@ -299,20 +300,7 @@ export default async function StudyPage({
 	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
 	return (
-		<Suspense
-			fallback={
-				<div
-					style={{
-						minHeight: '100vh',
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}
-				>
-					Loading...
-				</div>
-			}
-		>
+		<Suspense fallback={<PageSkeleton />}>
 			<StudyPageContent searchParams={searchParams} />
 		</Suspense>
 	);

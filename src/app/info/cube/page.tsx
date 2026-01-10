@@ -1,5 +1,6 @@
 import { getLocaleForMetadata } from '@/lib/seo/locale';
 import { generatePageMetadata } from '@/lib/seo/metadata';
+import { PageSkeleton } from '@/modules/ui/components/skeletons';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
@@ -32,20 +33,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function CubeInfoPage() {
 	return (
-		<Suspense
-			fallback={
-				<div
-					style={{
-						minHeight: '100vh',
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}
-				>
-					Loading...
-				</div>
-			}
-		>
+		<Suspense fallback={<PageSkeleton />}>
 			<CubeIntroduction />
 		</Suspense>
 	);

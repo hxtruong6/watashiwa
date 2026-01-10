@@ -1,4 +1,5 @@
 import { getUser } from '@/modules/auth/auth.actions';
+import { PageSkeleton } from '@/modules/ui/components/skeletons';
 import { hasCompletedSetup } from '@/utils/setup-check';
 import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
@@ -31,20 +32,7 @@ async function ProfileSetupContent(props: Props) {
 
 export default async function ProfileSetupPage(props: Props) {
 	return (
-		<Suspense
-			fallback={
-				<div
-					style={{
-						minHeight: '100vh',
-						display: 'flex',
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}
-				>
-					Loading...
-				</div>
-			}
-		>
+		<Suspense fallback={<PageSkeleton />}>
 			<ProfileSetupContent {...props} />
 		</Suspense>
 	);
