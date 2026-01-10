@@ -1,6 +1,6 @@
 import MyDecksList from '@/modules/dashboard/components/home/MyDecksList';
 import { getUserDecksWithStats } from '@/modules/deck/deck.actions';
-import { Skeleton } from 'antd';
+import { ListSkeleton } from '@/modules/ui/components/skeletons';
 import { connection } from 'next/server';
 import { Suspense } from 'react';
 
@@ -13,7 +13,7 @@ async function MyDecksContent() {
 
 export default async function MyDecksPage() {
 	return (
-		<Suspense fallback={<Skeleton active paragraph={{ rows: 8 }} />}>
+		<Suspense fallback={<ListSkeleton count={8} />}>
 			<MyDecksContent />
 		</Suspense>
 	);

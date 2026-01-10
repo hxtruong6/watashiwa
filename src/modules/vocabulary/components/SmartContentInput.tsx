@@ -1,5 +1,5 @@
-import ImageUploader from '@/components/Shared/ImageUploader';
 import VocabEditor from '@/modules/admin/components/VocabEditor';
+import ImageUploader from '@/modules/shared/components/ImageUploader';
 import { createVocabulary } from '@/modules/vocabulary/vocabulary.actions';
 import {
 	EditOutlined,

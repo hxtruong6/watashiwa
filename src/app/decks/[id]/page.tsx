@@ -3,7 +3,7 @@ import { isUUID } from '@/lib/utils/uuid';
 import { getUser, syncUser } from '@/modules/auth/auth.actions';
 import { getDeck } from '@/modules/deck/deck.actions';
 import { getDeckById } from '@/modules/deck/deck.data';
-import { Skeleton } from 'antd';
+import { PageSkeleton } from '@/modules/ui/components/skeletons';
 import { type RedirectType, notFound, redirect } from 'next/navigation';
 import React, { Suspense } from 'react';
 
@@ -40,7 +40,7 @@ export default async function DeckDetailPage({ params }: { params: Promise<{ id:
 
 	// Wrap data fetching in Suspense for Partial Prerendering compatibility
 	return (
-		<Suspense fallback={<Skeleton active paragraph={{ rows: 8 }} />}>
+		<Suspense fallback={<PageSkeleton />}>
 			<DeckContent id={id} />
 		</Suspense>
 	);

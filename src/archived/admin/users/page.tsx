@@ -1,6 +1,6 @@
 import { getAllUsers } from '@/modules/admin/admin.actions';
 import { getUserWithRole } from '@/modules/auth/auth.actions';
-import { Skeleton } from 'antd';
+import { PageSkeleton } from '@/modules/ui/components/skeletons';
 import React, { Suspense } from 'react';
 
 // Updated import
@@ -32,7 +32,7 @@ async function AdminUsersContent() {
 
 export default async function AdminUsersPage() {
 	return (
-		<Suspense fallback={<Skeleton active paragraph={{ rows: 8 }} />}>
+		<Suspense fallback={<PageSkeleton />}>
 			<AdminUsersContent />
 		</Suspense>
 	);

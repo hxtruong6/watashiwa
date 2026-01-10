@@ -3,9 +3,8 @@
 import { UploadPurpose, getPresignedUrl } from '@/lib/upload/upload.actions';
 import { DeleteOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Modal, Upload, message, theme } from 'antd';
-import type { UploadFile, UploadProps } from 'antd';
+import type { UploadProps } from 'antd';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import React, { useState } from 'react';
 
 interface ImageUploaderProps {
@@ -36,12 +35,6 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
 	const t = useTranslations('Common');
 	const [loading, setLoading] = useState(false);
 	const [previewOpen, setPreviewOpen] = useState(false);
-
-	const handlePreview = async () => {
-		if (value) {
-			setPreviewOpen(true);
-		}
-	};
 
 	const handleRemove = (e: React.MouseEvent) => {
 		e.stopPropagation();
@@ -141,6 +134,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
 					>
 						{/* Use standard img tag for simplicity with external URLs without configuring next.config.js domains everywhere, 
                  or generic Next Image with unoptimized if uncertain. Given user prompt constraints, let's use img for MVP safety. */}
+						{/* eslint-disable-next-line @next/next/no-img-element */}
 						<img
 							src={value}
 							alt="Uploaded"
@@ -185,6 +179,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
 				)}
 			</Upload>
 			<Modal open={previewOpen} footer={null} onCancel={() => setPreviewOpen(false)}>
+				{/* eslint-disable-next-line @next/next/no-img-element */}
 				<img alt="preview" style={{ width: '100%' }} src={value} />
 			</Modal>
 			<style jsx global>{`

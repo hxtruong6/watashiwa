@@ -2,7 +2,7 @@ import { AdminStatsWidget } from '@/modules/admin/components/Dashboard/AdminStat
 import { DashboardErrorBoundary } from '@/modules/admin/components/Dashboard/DashboardErrorBoundary';
 import { DashboardTitle } from '@/modules/admin/components/Dashboard/DashboardTitle';
 import { VocabStatsWidget } from '@/modules/admin/components/Dashboard/VocabStatsWidget';
-import { Skeleton } from 'antd';
+import { CardSkeleton } from '@/modules/ui/components/skeletons';
 import React, { Suspense } from 'react';
 
 // Admin routes require role-based authentication checks via cookies()
@@ -16,7 +16,7 @@ export default function AdminDashboard() {
 			</DashboardTitle>
 
 			<DashboardErrorBoundary>
-				<Suspense fallback={<Skeleton active paragraph={{ rows: 4 }} />}>
+				<Suspense fallback={<CardSkeleton />}>
 					<AdminStatsWidget />
 				</Suspense>
 			</DashboardErrorBoundary>
@@ -27,7 +27,7 @@ export default function AdminDashboard() {
 					Content Quality
 				</DashboardTitle>
 				<DashboardErrorBoundary>
-					<Suspense fallback={<Skeleton active />}>
+					<Suspense fallback={<CardSkeleton />}>
 						<VocabStatsWidget />
 					</Suspense>
 				</DashboardErrorBoundary>

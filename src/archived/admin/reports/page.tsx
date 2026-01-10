@@ -2,8 +2,8 @@ import themeConfig from '@/lib/theme/themeConfig';
 import { getUserWithRole } from '@/modules/auth/auth.actions';
 import AdminReportTable from '@/modules/report/components/AdminReportTable';
 import { getReports } from '@/modules/report/report.data';
+import { PageSkeleton } from '@/modules/ui/components/skeletons';
 import { UserRole } from '@prisma/client';
-import { Skeleton } from 'antd';
 import { redirect } from 'next/navigation';
 import React, { Suspense } from 'react';
 
@@ -55,7 +55,7 @@ async function AdminReportsContent() {
 
 export default async function AdminReportsPage() {
 	return (
-		<Suspense fallback={<Skeleton active paragraph={{ rows: 8 }} />}>
+		<Suspense fallback={<PageSkeleton />}>
 			<AdminReportsContent />
 		</Suspense>
 	);

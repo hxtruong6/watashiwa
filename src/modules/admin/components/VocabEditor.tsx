@@ -1,4 +1,4 @@
-import ImageUploader from '@/components/Shared/ImageUploader';
+import ImageUploader from '@/modules/shared/components/ImageUploader';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { Button, Card, Col, Divider, Form, Input, Row, Select, Space } from 'antd';
 import { useTranslations } from 'next-intl';

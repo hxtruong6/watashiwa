@@ -3,6 +3,7 @@ import { generatePageMetadata } from '@/lib/seo/metadata';
 import { getUser, syncUser } from '@/modules/auth/auth.actions';
 import DeckList from '@/modules/deck/components/DeckList';
 import { getDecks } from '@/modules/deck/deck.actions';
+import { ListSkeleton, PageSkeleton } from '@/modules/ui/components/skeletons';
 import { Skeleton } from 'antd';
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
@@ -42,7 +43,7 @@ async function DecksContent() {
 export default async function DecksPage() {
 	// Wrap auth checks and data fetching in Suspense for Partial Prerendering compatibility
 	return (
-		<Suspense fallback={<Skeleton active paragraph={{ rows: 8 }} />}>
+		<Suspense fallback={<ListSkeleton count={8} />}>
 			<DecksContent />
 		</Suspense>
 	);

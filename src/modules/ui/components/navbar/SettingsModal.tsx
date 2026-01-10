@@ -1,8 +1,8 @@
 'use client';
 
 import NotificationManager from '@/components/PWA/NotificationManager';
-import ImageUploader from '@/components/Shared/ImageUploader';
 import EmailVerificationButton from '@/modules/email/components/EmailVerificationButton';
+import ImageUploader from '@/modules/shared/components/ImageUploader';
 import LanguageSelector from '@/modules/user/components/LanguageSelector';
 import { useUserGoals } from '@/modules/user/hooks/useUserGoals';
 import { updateUserAvatar } from '@/modules/user/user.actions';

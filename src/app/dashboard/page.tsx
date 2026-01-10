@@ -1,9 +1,9 @@
 import { syncUser } from '@/modules/auth/auth.actions';
 import { getUserWithRole } from '@/modules/auth/auth.actions';
 import DashboardDataLoader from '@/modules/dashboard/components/DashboardDataLoader';
+import { PageSkeleton } from '@/modules/ui/components/skeletons';
 import { hasCompletedSetup } from '@/utils/setup-check';
 import { UserRole } from '@prisma/client';
-import { Skeleton } from 'antd';
 import { redirect } from 'next/navigation';
 import { connection } from 'next/server';
 import { Suspense } from 'react';
@@ -52,7 +52,7 @@ async function DashboardAuthGuard({
 export default async function Dashboard(props: Props) {
 	// Wrap auth checks and data fetching in Suspense for Partial Prerendering compatibility
 	return (
-		<Suspense fallback={<Skeleton active paragraph={{ rows: 8 }} />}>
+		<Suspense fallback={<PageSkeleton />}>
 			<DashboardAuthGuard searchParams={props.searchParams} />
 		</Suspense>
 	);

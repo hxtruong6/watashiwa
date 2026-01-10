@@ -1,6 +1,6 @@
 import DeckContentManager from '@/modules/deck/components/admin/DeckContentManager';
 import { getAdminDeckDetail, getAdminDeckVocabularies } from '@/modules/deck/deck.admin.actions';
-import { Skeleton } from 'antd';
+import { PageSkeleton } from '@/modules/ui/components/skeletons';
 import React, { Suspense } from 'react';
 
 interface PageProps {
@@ -66,7 +66,7 @@ async function DeckDetailContent({ params, searchParams }: PageProps) {
 
 export default async function DeckDetailPage(props: PageProps) {
 	return (
-		<Suspense fallback={<Skeleton active paragraph={{ rows: 8 }} />}>
+		<Suspense fallback={<PageSkeleton />}>
 			<DeckDetailContent {...props} />
 		</Suspense>
 	);

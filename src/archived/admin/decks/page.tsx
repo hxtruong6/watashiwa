@@ -1,7 +1,7 @@
 import AdminDeckTable from '@/modules/deck/components/admin/AdminDeckTable';
 import { getAdminDecksAction } from '@/modules/deck/deck.admin.actions';
 import { deckParamsCache } from '@/modules/deck/deck.params';
-import { Skeleton } from 'antd';
+import { PageSkeleton } from '@/modules/ui/components/skeletons';
 import { Suspense } from 'react';
 
 interface PageProps {
@@ -49,7 +49,7 @@ async function AdminDecksContent({ searchParams }: PageProps) {
 
 export default async function AdminDecksPage(props: PageProps) {
 	return (
-		<Suspense fallback={<Skeleton active paragraph={{ rows: 8 }} />}>
+		<Suspense fallback={<PageSkeleton />}>
 			<AdminDecksContent {...props} />
 		</Suspense>
 	);

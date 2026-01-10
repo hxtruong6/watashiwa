@@ -9,7 +9,7 @@ import { Variants, motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { startTransition, useEffect, useRef, useState } from 'react';
 
 import DashboardDailyRitual from './home/DashboardDailyRitual';
 import DeckPickerDrawer from './home/DeckPickerDrawer';
@@ -77,27 +77,23 @@ export default function DashboardOverview({
 	const router = useRouter();
 	const searchParams = useSearchParams();
 	const [hasShownConfetti] = useState(false);
-	// Initialize settings open state from URL param
-	const [isSettingsOpen, setIsSettingsOpen] = useState(() => {
-		if (typeof window === 'undefined') return false;
-		return searchParams?.get('settings') === 'true';
-	});
+	// Initialize settings open state - will be synced from URL param in useEffect
+	const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 	const [isDeckPickerOpen, setIsDeckPickerOpen] = useState(false);
-	const isInitialMount = useRef(true);
+	const prevSettingsParam = useRef<string | null>(null);
 
-	// Sync settings state with URL param changes (after initial mount)
+	// Sync settings state with URL param (including initial mount)
+	// This is a valid use case: syncing URL params to component state for Drawer control
 	useEffect(() => {
-		if (isInitialMount.current) {
-			isInitialMount.current = false;
-			return;
-		}
 		const settingsParam = searchParams?.get('settings');
-		const shouldBeOpen = settingsParam === 'true';
-		// Use setTimeout to defer state update and avoid synchronous setState warning
-		const timeoutId = setTimeout(() => {
-			setIsSettingsOpen(shouldBeOpen);
-		}, 0);
-		return () => clearTimeout(timeoutId);
+		// Only update if the param value actually changed
+		if (prevSettingsParam.current !== settingsParam) {
+			prevSettingsParam.current = settingsParam;
+			// Use startTransition to mark this as a non-urgent update
+			startTransition(() => {
+				setIsSettingsOpen(settingsParam === 'true');
+			});
+		}
 	}, [searchParams]);
 
 	// Close settings and clear URL param

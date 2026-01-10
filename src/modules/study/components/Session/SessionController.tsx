@@ -7,7 +7,7 @@ import { useStudyShortcuts } from '@/hooks/study/useStudyShortcuts';
 import { useZenMode } from '@/hooks/study/useZenMode';
 // Hooks
 import { useTutorialStore } from '@/hooks/useTutorialStore';
-import { trackEvent } from '@/lib/analytics';
+import { AnalyticsEvents, trackEvent } from '@/lib/analytics';
 import CommentDrawer from '@/modules/community/components/comments/CommentDrawer';
 import { CardShell } from '@/modules/flashcard/components/CardShell';
 import { fetchSessionAction } from '@/modules/flashcard/flashcard.actions';
@@ -121,7 +121,7 @@ export default function SessionController({
 		useSessionStore.getState().resetSession();
 
 		// Track analytics
-		trackEvent('study_session_reset', {
+		trackEvent(AnalyticsEvents.Study.SessionReset, {
 			reason: 'empty_queue',
 			deck_id: deckId || null,
 			course_id: courseId || null,
@@ -327,7 +327,7 @@ export default function SessionController({
 
 			// Track first session start
 			if (isFirstSession) {
-				trackEvent('user_first_study_session_started', {
+				trackEvent(AnalyticsEvents.Study.FirstSessionStarted, {
 					entry_method: entryType,
 					deck_id: deckId || null,
 					queue_size: queue.length,
@@ -338,7 +338,7 @@ export default function SessionController({
 			// Track regular session start
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			const nav = navigator as any;
-			trackEvent('study_session_started', {
+			trackEvent(AnalyticsEvents.Study.SessionStarted, {
 				entry_type: entryType,
 				deck_id: deckId || null,
 				course_id: courseId || null,
@@ -457,7 +457,7 @@ export default function SessionController({
 			const timeToFirstCard = Date.now() - sessionStartTime;
 			const entryType = deckId ? 'explicit_deck' : courseId ? 'explicit_course' : 'auto_start';
 
-			trackEvent('study_session_first_card_shown', {
+			trackEvent(AnalyticsEvents.Study.FirstCardShown, {
 				time_to_first_card_ms: timeToFirstCard,
 				entry_type: entryType,
 			});
@@ -494,7 +494,7 @@ export default function SessionController({
 
 				// Track first session completion
 				if (isFirstSession) {
-					trackEvent('user_first_study_session_completed', {
+					trackEvent(AnalyticsEvents.Study.FirstSessionCompleted, {
 						cards_reviewed: totalCards,
 						session_duration_ms: sessionDuration,
 						completion_rate: 1.0, // Assuming completed if we reached summary
@@ -502,7 +502,7 @@ export default function SessionController({
 				}
 
 				// Track regular session completion
-				trackEvent('study_session_completed', {
+				trackEvent(AnalyticsEvents.Study.SessionCompleted, {
 					cards_reviewed: totalCards,
 					cards_new: newCards,
 					cards_review: reviewCards,

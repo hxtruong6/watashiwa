@@ -45,3 +45,18 @@
 		display: none !important;
 	}
 }
+
+/* LayoutSkeleton SSR bars - Theme-aware skeleton bars for SSR rendering */
+.layout-skeleton-ssr-bar {
+	background: rgba(0, 0, 0, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+	.layout-skeleton-ssr-bar {
+		background: rgba(255, 255, 255, 0.08);
+	}
+}
+
+.dark .layout-skeleton-ssr-bar {
+	background: rgba(255, 255, 255, 0.08);
+}
