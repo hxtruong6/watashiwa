@@ -24,10 +24,12 @@ async function DashboardAuthGuard({
 
 	// Get user for auth checks
 	const user = await getUserWithRole();
+	console.log('user', user);
 
 	// Check if user has completed setup (server-side protection)
 	if (user) {
 		const setupCompleted = await hasCompletedSetup(user.id);
+		console.log('setupCompleted', setupCompleted);
 		if (!setupCompleted) {
 			redirect('/profile/setup');
 		}

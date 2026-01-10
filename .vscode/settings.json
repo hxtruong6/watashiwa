@@ -45,5 +45,6 @@
 		"editor.formatOnSave": false,
 		"xml.validation.enabled": false,
 		"xml.schema.enabled": false
-	}
+	},
+	"markdown.validate.enabled": true
 }

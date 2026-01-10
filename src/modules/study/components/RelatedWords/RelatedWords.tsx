@@ -1,3 +1,21 @@
+/**
+ * LEGACY COMPONENT - DEPRECATED
+ *
+ * This component was replaced by the new StudySidebar (desktop) and RelatedWordsSheet (mobile)
+ * implementations as part of Story 7.2: Desktop Related Words Sidebar.
+ *
+ * The new architecture uses:
+ * - StudySidebar: Desktop sidebar with slide-in animation
+ * - RelatedWordsSheet: Mobile bottom sheet
+ * - RelatedWordsList: Reusable list component with variant support
+ *
+ * This file is kept for reference but should not be imported or used.
+ *
+ * @deprecated Use StudySidebar (desktop) or RelatedWordsSheet (mobile) instead
+ * @see src/modules/study/components/Session/StudySidebar.tsx
+ * @see src/modules/study/components/RelatedWords/RelatedWordsSheet.tsx
+ */
+
 'use client';
 
 import { Card, Skeleton, Space, Tag, Typography } from 'antd';

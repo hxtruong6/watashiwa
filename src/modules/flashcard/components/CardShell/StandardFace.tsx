@@ -1,5 +1,6 @@
 'use client';
 
+import { CollapsibleSection } from '@/modules/shared/components/CollapsibleSection';
 import type { CardBackSettings } from '@/modules/study/store/useStudyPreferences';
 import {
 	BookOutlined,
@@ -8,7 +9,7 @@ import {
 	PauseCircleOutlined,
 	SoundOutlined,
 } from '@ant-design/icons';
-import { Button, Flex, Tag, Typography, theme } from 'antd';
+import { Button, Flex, Grid, Tag, Typography, theme } from 'antd';
 import { useLocale } from 'next-intl';
 import React from 'react';
 
@@ -53,6 +54,9 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 	const { token } = theme.useToken();
 	const locale = (useLocale() as 'vi' | 'en') || 'vi';
 	const { front, back } = card;
+	const { useBreakpoint } = Grid;
+	const screens = useBreakpoint();
+	const isDesktop = screens.md; // ≥768px
 
 	// Get settings with defaults
 	const settings = cardBackSettings || {
@@ -346,50 +350,47 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 					)}
 				</Flex>
 
-				{/* 3. Example (Card-style) */}
+				{/* 3. Example (Card-style) - Collapsible */}
 				{hasExample && (
-					<div
-						style={{
-							marginBottom: hasMnemonic ? '24px' : '0',
-							padding: '16px',
-							background: token.colorFillAlter,
-							borderRadius: token.borderRadius,
-						}}
+					<CollapsibleSection
+						title="Example"
+						icon={<BookOutlined style={{ fontSize: 16, color: token.colorTextSecondary }} />}
+						defaultExpanded={isDesktop}
 					>
-						<Flex gap={8} align="center" style={{ marginBottom: '12px' }}>
-							<BookOutlined style={{ fontSize: 16, color: token.colorTextSecondary }} />
-							<Text type="secondary" style={{ fontSize: '12px', fontWeight: 500 }}>
-								Example
-							</Text>
-						</Flex>
-						<Text
-							style={{
-								fontSize: '15px',
-								color: token.colorText,
-								lineHeight: '1.6',
-								display: 'block',
-								marginBottom: '8px',
-							}}
-						>
-							{example?.sentence}
-						</Text>
 						<div
 							style={{
-								height: '1px',
-								background: token.colorBorder,
-								margin: '8px 0',
-							}}
-						/>
-						<Text
-							style={{
-								fontSize: '13px',
-								color: token.colorTextDescription,
-								lineHeight: '1.5',
+								padding: '0',
 							}}
 						>
-							{example?.translation?.vi || example?.translation?.en || ''}
-						</Text>
-					</div>
+							<Text
+								style={{
+									fontSize: '15px',
+									color: token.colorText,
+									lineHeight: '1.6',
+									display: 'block',
+									marginBottom: '8px',
+								}}
+							>
+								{example?.sentence}
+							</Text>
+							<div
+								style={{
+									height: '1px',
+									background: token.colorBorder,
+									margin: '8px 0',
+								}}
+							/>
+							<Text
+								style={{
+									fontSize: '13px',
+									color: token.colorTextDescription,
+									lineHeight: '1.5',
+								}}
+							>
+								{example?.translation?.vi || example?.translation?.en || ''}
+							</Text>
+						</div>
+					</CollapsibleSection>
 				)}
 
 				{/* 4. Mnemonic (Distinct style) */}
@@ -595,45 +596,41 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 					}}
 				/>
 
-				{/* 3. Example (Speech bubble style) */}
+				{/* 3. Example (Speech bubble style) - Collapsible */}
 				{hasExample && (
-					<div
-						style={{
-							marginBottom: hasMnemonic ? '20px' : '0',
-							padding: '16px 20px',
-							background: token.colorFillAlter,
-							borderRadius: '16px 16px 16px 4px',
-							position: 'relative',
-						}}
+					<CollapsibleSection
+						title="Real Usage"
+						icon={<Text style={{ fontSize: 18 }}>💬</Text>}
+						defaultExpanded={isDesktop}
 					>
-						<Flex gap={8} align="center" style={{ marginBottom: '10px' }}>
-							<Text style={{ fontSize: 18 }}>💬</Text>
-							<Text type="secondary" style={{ fontSize: '12px', fontWeight: 500 }}>
-								Real Usage
+						<div
+							style={{
+								padding: '0',
+							}}
+						>
+							<Text
+								style={{
+									fontSize: '18px',
+									color: token.colorText,
+									lineHeight: '1.6',
+									display: 'block',
+									marginBottom: '10px',
+									fontWeight: 500,
+								}}
+							>
+								{example?.sentence}
 							</Text>
-						</Flex>
-						<Text
-							style={{
-								fontSize: '18px',
-								color: token.colorText,
-								lineHeight: '1.6',
-								display: 'block',
-								marginBottom: '10px',
-								fontWeight: 500,
-							}}
-						>
-							{example?.sentence}
-						</Text>
-						<Text
-							style={{
-								fontSize: '14px',
-								color: token.colorTextDescription,
-								lineHeight: '1.5',
-							}}
-						>
-							{example?.translation?.vi || example?.translation?.en || ''}
-						</Text>
-					</div>
+							<Text
+								style={{
+									fontSize: '14px',
+									color: token.colorTextDescription,
+									lineHeight: '1.5',
+								}}
+							>
+								{example?.translation?.vi || example?.translation?.en || ''}
+							</Text>
+						</div>
+					</CollapsibleSection>
 				)}
 
 				{/* 4. Mnemonic (Brain icon, highlighted) */}
@@ -821,31 +818,37 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 				}}
 			/>
 
-			{/* 3. Example (Minimal styling) */}
+			{/* 3. Example (Minimal styling) - Collapsible */}
 			{hasExample && (
-				<div style={{ marginBottom: hasMnemonic ? '32px' : '0' }}>
-					<Text
-						style={{
-							fontSize: '16px',
-							color: token.colorText,
-							lineHeight: '1.7',
-							display: 'block',
-							marginBottom: '8px',
-							fontWeight: 400,
-						}}
-					>
-						{example?.sentence}
-					</Text>
-					<Text
-						style={{
-							fontSize: '14px',
-							color: token.colorTextDescription,
-							lineHeight: '1.6',
-						}}
-					>
-						{example?.translation?.vi || example?.translation?.en || ''}
-					</Text>
-				</div>
+				<CollapsibleSection
+					title="Example"
+					icon={<BookOutlined style={{ fontSize: 16, color: token.colorTextSecondary }} />}
+					defaultExpanded={isDesktop}
+				>
+					<div style={{ padding: '0' }}>
+						<Text
+							style={{
+								fontSize: '16px',
+								color: token.colorText,
+								lineHeight: '1.7',
+								display: 'block',
+								marginBottom: '8px',
+								fontWeight: 400,
+							}}
+						>
+							{example?.sentence}
+						</Text>
+						<Text
+							style={{
+								fontSize: '14px',
+								color: token.colorTextDescription,
+								lineHeight: '1.6',
+							}}
+						>
+							{example?.translation?.vi || example?.translation?.en || ''}
+						</Text>
+					</div>
+				</CollapsibleSection>
 			)}
 
 			{/* 4. Mnemonic (Italic, subtle) */}

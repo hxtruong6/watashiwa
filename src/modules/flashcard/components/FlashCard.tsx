@@ -183,7 +183,7 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 				style={{
 					perspective: 1000,
 					width: '100%',
-					maxWidth: 600,
+					maxWidth: screens.md ? 800 : 600,
 					margin: '0 auto',
 					cursor: !showAnswer ? 'pointer' : 'default',
 					userSelect: 'none',
@@ -206,8 +206,9 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 				<AntCard
 					style={{
 						width: '100%',
-						height: '65vh', // Viewport-relative height (Zen Mode)
-						maxHeight: 600,
+						maxWidth: screens.md ? 800 : 600,
+						height: screens.md ? 'auto' : '65vh',
+						maxHeight: screens.md ? '80vh' : 600,
 						minHeight: 320,
 						boxShadow: '0 8px 32px -4px rgba(0,0,0,0.08)', // Soft, deep shadow
 						borderRadius: 24, // Rounder corners (Storyteller)

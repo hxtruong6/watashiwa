@@ -1,4 +1,4 @@
-# generated: 2026-01-01
+# generated: 2026-01-05
 # project: watashi-jp
 # project_key: watashi-jp
 # tracking_system: file-system
@@ -33,12 +33,11 @@
 # - SM typically creates next story after previous one is 'done' to incorporate learnings
 # - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
 
-generated: 2026-01-01
+generated: '2026-01-05'
 project: watashi-jp
 project_key: watashi-jp
 tracking_system: file-system
 story_location: _bmad-output/implementation-artifacts
-
 development_status:
   epic-1: in-progress
   1-1-user-registration-with-email-password: review
@@ -109,3 +108,8 @@ development_status:
   6-8-access-content-source-attribution-and-learning-methodology-explanations: backlog
   6-9-implement-secure-logging-practices: backlog
   epic-6-retrospective: optional
+  epic-7: in-progress
+  7-1-responsive-study-layout-structure: ready-for-dev
+  7-2-desktop-related-words-sidebar: backlog
+  7-3-mobile-related-words-bottom-sheet: backlog
+  epic-7-retrospective: optional

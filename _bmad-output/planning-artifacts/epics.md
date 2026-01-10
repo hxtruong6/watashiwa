@@ -1,5 +1,5 @@
 ---
-stepsCompleted: [1, 2, 3, 4]
+stepsCompleted: [1, 2, 3, 4, 5]
 inputDocuments:
   - _bmad-output/planning-artifacts/prd.md
   - _bmad-output/planning-artifacts/architecture.md
@@ -74,6 +74,15 @@ FR55: System can validate AI-generated examples for cultural and linguistic accu
 FR56: Users can report content issues and suggest improvements
 FR57: System can maintain content quality standards for Vietnamese localization
 FR58: Users can access content source attribution and learning methodology explanations
+FR59: Related Words Sidebar (Desktop): Display related words in a sticky sidebar (320px) on desktop (≥768px)
+FR60: Related Words Bottom Sheet (Mobile): Display related words in a draggable bottom sheet on mobile (<768px)
+FR61: Subtle Action Bar (Mobile): Display "ghost" icons for secondary actions (Related Words, Confusions) below the card
+FR62: Collapsible Example Section: Allow toggling visibility of example sentences (default open on Desktop, closed on Mobile)
+FR63: Settings Persistence: Persist UI state preferences (e.g., auto-expand examples) across sessions
+FR64: FlashCard Responsive Sizing: Implement specific sizing constraints for Mobile (65vh fixed) vs Desktop (auto height)
+FR65: Polished Rating Bar: Implement 2-button system with gradient styling and interaction states
+FR66: Keyboard Shortcuts: Bind keys for study actions (Space/Reveal, 1/Forgot, 3/Remember, R/Related, E/Example)
+FR67: Haptic Feedback: Trigger haptic feedback for mobile interactions (rating, reveal)
 
 ### NonFunctional Requirements
 
@@ -267,6 +276,15 @@ FR55: Epic 6 - Validate AI-generated examples for cultural and linguistic accura
 FR56: Epic 6 - Report content issues and suggest improvements
 FR57: Epic 6 - Maintain content quality standards for Vietnamese localization
 FR58: Epic 6 - Access content source attribution and learning methodology explanations
+FR59: Epic 7 - Related Words Sidebar (Desktop)
+FR60: Epic 7 - Related Words Bottom Sheet (Mobile)
+FR61: Epic 7 - Subtle Action Bar (Mobile)
+FR62: Epic 7 - Collapsible Example Section
+FR63: Epic 7 - Settings Persistence
+FR64: Epic 7 - FlashCard Responsive Sizing
+FR65: Epic 7 - Polished Rating Bar
+FR66: Epic 7 - Keyboard Shortcuts
+FR67: Epic 7 - Haptic Feedback
 
 ## Epic List
 
@@ -2290,3 +2308,94 @@ So that sensitive user data is not exposed in logs and production logging follow
 **And** logging practices are documented
 
 ---
+
+### Epic 7: Study Session UX Redesign
+
+Users can experience a distraction-free "Zen" study environment with progressive semantic disclosure, optimized for both mobile (bottom sheet) and desktop (sidebar) layouts. This epic addresses layout stability, responsive design issues, and introduces the "Zen" aesthetic to the core study session.
+
+**FRs covered:** FR59, FR60, FR61, FR62, FR63, FR64, FR65, FR66, FR67
+
+**User Outcomes:**
+
+- Users can study without layout shifts affecting their focus
+- Users can access semantic context (related words) seamlessly on any device
+- Users can customize their view density (collapsible sections)
+- Users experience a polished, native-feeling app (haptics, smooth animations)
+
+**Implementation Notes:**
+
+- Requires careful handling of responsive layouts (CSS Grid/Flexbox)
+- Needs `react-use-gesture` or similar for bottom sheet implementation on mobile
+- Haptic feedback requires Web Vibration API for mobile browsers
+
+### Story 7.1: Responsive Study Layout Structure
+
+As a learner,
+I want a responsive study layout that adapts to my device,
+So that I can study comfortably on both mobile and desktop without layout shifts or text being too small.
+
+**Acceptance Criteria:**
+
+**Given** I am on a Desktop device (viewport ≥ 768px)
+**When** I load the study session
+**Then** the layout uses a two-column CSS Grid (Main Content + Sidebar)
+**And** the Flashcard has a maximum width of 800px and auto height (FR64)
+**And** the Sidebar column is reserved (even if empty initially) to prevent layout shift
+
+**Given** I am on a Mobile device (viewport < 768px)
+**When** I load the study session
+**Then** the layout uses a single-column flex container
+**And** the Flashcard has a fixed height of 65vh and max-width 600px (FR64)
+**And** no sidebar is visible
+
+**Given** I resize my browser window
+**When** the width crosses the 768px breakpoint (NFR5)
+**Then** the layout switches automatically between Desktop and Mobile modes
+**And** the transition is immediate and glitch-free
+
+### Story 7.2: Desktop Related Words Sidebar
+
+As a desktop user,
+I want to see related words in a sidebar alongside the main card,
+So that I can see context without losing focus on the current word.
+
+**Acceptance Criteria:**
+
+**Given** I am on Desktop and have revealed the answer
+**When** the current word has related vocabulary (semantic connections)
+**Then** the Sidebar slides in or fades in with the content (FR59)
+**And** the sidebar width is fixed at 320px
+**And** the sidebar is sticky (stays in view while scrolling long card content)
+
+**Given** I am moving to the next card
+**When** the new card loads
+**Then** the sidebar content clears or updates immediately
+**And** I do not see "stale" data from the previous word
+
+**Given** the answer is not yet revealed
+**When** I am in "Front Face" mode
+**Then** the sidebar is hidden or shows a "Focus" state
+**And** I cannot see related words (to prevent spoilers)
+
+### Story 7.3: Mobile Related Words Bottom Sheet
+
+As a mobile user,
+I want to view related words in a pull-up sheet,
+So that I can access extra context only when I need it, keeping the screen clean.
+
+**Acceptance Criteria:**
+
+**Given** I am on Mobile and have revealed the answer
+**Then** a handle or indicator for the Bottom Sheet appears (FR60)
+**And** the sheet is initially collapsed (peeking or hidden based on preference)
+
+**Given** I want to see related words
+**When** I swipe up on the bottom sheet handle or tap the "Related" icon
+**Then** the Bottom Sheet slides up to 50vh (default) or 90vh (max)
+**And** the background content is dimmed (backdrop)
+**And** the animation is smooth (<300ms, NFR1)
+
+**Given** I am done with related words
+**When** I swipe down or tap the backdrop
+**Then** the sheet closes completely
+**And** I return to the study card view

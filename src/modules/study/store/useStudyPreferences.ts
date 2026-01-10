@@ -25,6 +25,8 @@ interface StudyPreferences {
 	showRatingText: boolean; // Show text labels on rating buttons
 	cardBackSettings: CardBackSettings;
 	algorithmMode: AlgorithmMode; // Algorithm mode: 'semantic' or 'srs'
+	/** @deprecated Use responsive breakpoint detection in components instead. Kept for backward compatibility. */
+	exampleDefaultExpanded: boolean; // Default expand state for examples
 
 	// Actions
 	setShowFurigana: (show: boolean) => void;
@@ -33,6 +35,8 @@ interface StudyPreferences {
 	setShowRatingText: (show: boolean) => void;
 	setCardBackSettings: (settings: Partial<CardBackSettings>) => void;
 	setAlgorithmMode: (mode: AlgorithmMode) => void;
+	/** @deprecated Use responsive breakpoint detection in components instead. Kept for backward compatibility. */
+	setExampleDefaultExpanded: (expanded: boolean) => void;
 }
 
 const defaultCardBackSettings: CardBackSettings = {
@@ -78,6 +82,8 @@ export const useStudyPreferences = create<StudyPreferences>()(
 			showRatingText: true, // Default: show text
 			cardBackSettings: defaultCardBackSettings,
 			algorithmMode: 'srs', // Default to SRS (safe fallback)
+			/** @deprecated Use responsive breakpoint detection in components instead. Kept for backward compatibility. */
+			exampleDefaultExpanded: true, // Default to expanded (Desktop first, will be overridden by component logic if needed)
 
 			setShowFurigana: (show) => set({ showFurigana: show }),
 			setShowRomaji: (show) => set({ showRomaji: show }),
@@ -88,6 +94,8 @@ export const useStudyPreferences = create<StudyPreferences>()(
 					cardBackSettings: { ...state.cardBackSettings, ...settings },
 				})),
 			setAlgorithmMode: (mode) => set({ algorithmMode: mode }),
+			/** @deprecated Use responsive breakpoint detection in components instead. Kept for backward compatibility. */
+			setExampleDefaultExpanded: (expanded) => set({ exampleDefaultExpanded: expanded }),
 		}),
 		{
 			name: 'watashi-study-prefs', // localStorage key

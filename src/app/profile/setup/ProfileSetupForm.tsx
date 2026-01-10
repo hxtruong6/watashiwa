@@ -174,6 +174,7 @@ export default function ProfileSetupForm({ returnUrl }: ProfileSetupFormProps) {
 		}
 
 		setLoading(true);
+		console.log('values', values);
 
 		try {
 			const result = await updateUserSettings({

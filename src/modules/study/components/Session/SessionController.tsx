@@ -17,7 +17,7 @@ import { StoryReader } from '@/modules/priming/components/StoryReader';
 import { StoryWithContent } from '@/modules/priming/types';
 import ReportModal from '@/modules/report/components/ReportModal';
 import { RelatedWordDetailsDrawer } from '@/modules/study/components/RelatedWords/RelatedWordDetailsDrawer';
-import { RelatedWords } from '@/modules/study/components/RelatedWords/RelatedWords';
+import { RelatedWordsSheet } from '@/modules/study/components/RelatedWords/RelatedWordsSheet';
 import { useRelatedWords } from '@/modules/study/hooks/useRelatedWords';
 import { useSessionStore } from '@/modules/study/store/useSessionStore';
 import { useStudyPreferences } from '@/modules/study/store/useStudyPreferences';
@@ -28,7 +28,7 @@ import { useUIStore } from '@/modules/ui/store/useUIStore';
 import { getCompletedTutorials, getUserSettings } from '@/modules/user/user.actions';
 import { CommentOutlined, SettingOutlined } from '@ant-design/icons';
 import type { User } from '@prisma/client';
-import { Button, Drawer, Flex, Spin, Typography, message, theme } from 'antd';
+import { Button, Drawer, Flex, Grid, Spin, Typography, message, theme } from 'antd';
 import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -39,6 +39,10 @@ import SessionBriefing from './SessionBriefing';
 import { SessionContainer } from './SessionContainer';
 import SessionSummary from './SessionSummary';
 import StudySettings from './StudySettings';
+import { StudySidebar } from './StudySidebar';
+import { SubtleActionBar } from './SubtleActionBar';
+
+const { useBreakpoint } = Grid;
 
 interface SessionControllerProps {
 	deckId?: string;
@@ -57,6 +61,8 @@ export default function SessionController({
 }: SessionControllerProps) {
 	const t = useTranslations('Study');
 	const router = useRouter();
+	const screens = useBreakpoint();
+	const isDesktop = screens.md; // Vertical Slice Logic: ≥768px is desktop-like
 
 	// Store
 	const { startSession, queue, currentIndex, submitRating, isSessionActive, currentCard } =
@@ -594,6 +600,25 @@ export default function SessionController({
 		}
 	}, [showAnswer, currentCard, startTimer, resetReactionTimer]);
 
+	// Close Related Words Sheet on card navigation (AC5: State Management)
+	// Track previous vocab ID to detect card changes
+	const prevVocabIdRef = useRef<string | null>(null);
+	useEffect(() => {
+		const currentVocabId = currentCard?.vocabId;
+		if (
+			currentVocabId &&
+			prevVocabIdRef.current !== null &&
+			prevVocabIdRef.current !== currentVocabId
+		) {
+			// Card changed - close sheet if open
+			if (isRelatedWordDrawerOpen) {
+				setIsRelatedWordDrawerOpen(false);
+				setSelectedRelatedWord(null);
+			}
+		}
+		prevVocabIdRef.current = currentVocabId || null;
+	}, [currentCard?.vocabId, isRelatedWordDrawerOpen]);
+
 	// Ref-based guard to prevent rapid double-clicks (more reliable than state)
 	const isSubmittingRef = useRef(false);
 
@@ -903,6 +928,20 @@ export default function SessionController({
 				relatedWord={selectedRelatedWord}
 			/>
 
+			{/* Responsive Related Words Sheet (Mobile) - replaces separate RelatedWordDetailsDrawer usage for the list */}
+			<RelatedWordsSheet
+				open={isRelatedWordDrawerOpen && !selectedRelatedWord && !isDesktop} // Only show sheet on mobile when looking at list
+				onClose={() => setIsRelatedWordDrawerOpen(false)}
+				relatedWords={relatedWords}
+				onSelectWord={(word) => {
+					// When selecting from sheet, open details
+					setSelectedRelatedWord(word);
+					// Keep sheet open or close it? UX decision: Close sheet, open details drawer
+					// But details drawer replaces sheet usually.
+					// Let's rely on RelatedWordDetailsDrawer to handle the details view
+				}}
+			/>
+
 			<Drawer
 				open={settingsVisible}
 				onClose={() => setSettingsVisible(false)}
@@ -1048,62 +1087,96 @@ export default function SessionController({
 						/>
 					)}
 
-					<div
+					<Flex
 						ref={scrollRef}
-						// Note: Card click is handled by CardShell's onClick (handleTap)
-						// This container only provides layout, not click handling
+						vertical={!isDesktop}
+						align={isDesktop ? 'start' : 'center'}
+						justify="center"
+						gap={isDesktop ? 32 : 0}
 						style={{
 							flex: 1,
-							display: 'flex',
-							flexDirection: 'column',
-							alignItems: 'center',
 							paddingBottom: 160,
 							width: '100%',
+							maxWidth: 1200, // Max width for desktop comfort
 						}}
 					>
-						<div
-							ref={cardWrapperRef}
-							onClick={(e) => e.stopPropagation()}
-							onTouchStart={(e) => e.stopPropagation()}
+						{/* Card Column */}
+						<Flex
+							vertical
+							align="center"
 							style={{
+								flex: 1,
 								width: '100%',
-								display: 'flex',
-								justifyContent: 'center',
-								alignItems: 'center',
-								position: 'relative',
-								minHeight: '65vh',
-								zIndex: 10, // Ensure card is above RatingBar during reveal
+								maxWidth: isDesktop ? 800 : '100%',
 							}}
 						>
-							<CardShell
-								key={cardToShow.id}
-								card={cardToShow}
-								isActive={true}
-								isNext={false}
-								showAnswer={showAnswer}
-								onReveal={() => setShowAnswer(!showAnswer)} // Toggle: allows flipping back to front
-								showFurigana={showFurigana}
-								showRomaji={showRomaji}
-								isExiting={isCardExiting}
-								exitColor={exitColor}
-								isPlaying={audioHook.isPlaying}
-								onPlayAudio={audioHook.toggleAudio}
-								cardBackSettings={cardBackSettings}
-							/>
-						</div>
+							<div
+								ref={cardWrapperRef}
+								onClick={(e) => e.stopPropagation()}
+								onTouchStart={(e) => e.stopPropagation()}
+								style={{
+									width: '100%',
+									display: 'flex',
+									justifyContent: 'center',
+									alignItems: 'center',
+									position: 'relative',
+									minHeight: isDesktop ? 'auto' : '65vh',
+									zIndex: 10, // Ensure card is above RatingBar during reveal
+								}}
+							>
+								<CardShell
+									key={cardToShow.id}
+									card={cardToShow}
+									isActive={true}
+									isNext={false}
+									showAnswer={showAnswer}
+									onReveal={() => setShowAnswer(!showAnswer)} // Toggle: allows flipping back to front
+									showFurigana={showFurigana}
+									showRomaji={showRomaji}
+									isExiting={isCardExiting}
+									exitColor={exitColor}
+									isPlaying={audioHook.isPlaying}
+									onPlayAudio={audioHook.toggleAudio}
+									cardBackSettings={cardBackSettings}
+								/>
+							</div>
 
-						{/* Related Words Section (non-blocking) */}
-						{showAnswer && (
-							<RelatedWords
+							{/* Mobile Action Bar */}
+							{!isDesktop && showAnswer && (
+								<SubtleActionBar
+									visibility={{
+										relatedWords: relatedWords.length > 0,
+										confusions:
+											!!cardBackSettings.showConfusions &&
+											!!(cardToShow.back?.details as any)?.confusions?.length,
+										etymology:
+											!!cardBackSettings.showEtymology &&
+											!!(cardToShow.back?.details as any)?.etymology,
+										moreExamples:
+											!!cardBackSettings.showMoreExamples &&
+											((cardToShow.back?.details as any)?.examples?.length || 0) > 1,
+									}}
+									onRelatedWords={() => setIsRelatedWordDrawerOpen(true)}
+									onConfusions={() => {}} // Placeholder: Could scroll to section
+									onEtymology={() => {}} // Placeholder
+									onMoreExamples={() => {}} // Placeholder
+								/>
+							)}
+						</Flex>
+
+						{/* Desktop Sidebar (Slide-in) */}
+						{isDesktop && showAnswer && (
+							<StudySidebar
+								visible={showAnswer}
 								relatedWords={relatedWords}
-								loading={relatedWordsLoading}
-								onSelect={(relatedWord) => {
-									setSelectedRelatedWord(relatedWord);
+								vocabId={cardToShow.vocabId}
+								onSelectRelatedWord={(word) => {
+									setSelectedRelatedWord(word);
 									setIsRelatedWordDrawerOpen(true);
 								}}
 							/>
 						)}
-					</div>
+					</Flex>
 
 					<div
 						ref={ratingBarRef}
