@@ -1,13 +1,12 @@
 // Added explicit React import if needed, or keeping existing
 import { isUUID } from '@/lib/utils/uuid';
 import { getUser, syncUser } from '@/modules/auth/auth.actions';
+import DeckView from '@/modules/deck/components/DeckView';
 import { getDeck } from '@/modules/deck/deck.actions';
 import { getDeckById } from '@/modules/deck/deck.data';
 import { PageSkeleton } from '@/modules/ui/components/skeletons';
 import { type RedirectType, notFound, redirect } from 'next/navigation';
 import React, { Suspense } from 'react';
-
-import DeckView from './DeckView';
 
 // Component that fetches deck data - wrapped in Suspense for cacheComponents
 async function DeckContent({ id }: { id: string }) {

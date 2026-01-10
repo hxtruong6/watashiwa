@@ -232,6 +232,23 @@ model Vocabulary {
   // [{"sentence": "...", "translation": {"vi": "...", "en": "..."}, "audio": "..."}]
   examples Json
 
+  // Furigana Mapping (Precise kanji-reading alignment)
+  // Contract: FuriganaMapping (zod: FuriganaMappingSchema)
+  // {
+  //   "mappings": [
+  //     {
+  //       "kanji": "休",
+  //       "reading": "やす",
+  //       "surfaceIndex": 0,
+  //       "readingStart": 0,
+  //       "readingEnd": 2
+  //     }
+  //   ]
+  // }
+  // This enables precise furigana rendering: only show reading above kanji, not above kana
+  // For "休みます" with reading "やすみます", only "やす" appears above "休"
+  furiganaMapping Json? @map("furigana_mapping")
+
   // Media
   audioUrl String? @map("audio_url") // Custom audio, priority over OS TTS
   imageUrl String? @map("image_url")

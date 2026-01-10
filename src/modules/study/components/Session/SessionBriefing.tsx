@@ -24,11 +24,11 @@ export default function SessionBriefing({ queue, onStart, onSkip }: SessionBrief
 					<Button type="primary" size="large" onClick={onStart} block>
 						{t('startSession')}
 					</Button>
-					{onSkip && (
+					{/* {onSkip && (
 						<Button type="text" size="large" onClick={onSkip} block>
 							{t('skipBriefing')}
 						</Button>
-					)}
+					)} */}
 				</Space>
 			</div>
 		</div>

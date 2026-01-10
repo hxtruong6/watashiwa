@@ -2,6 +2,7 @@
 
 import { CollapsibleSection } from '@/modules/shared/components/CollapsibleSection';
 import type { CardBackSettings } from '@/modules/study/store/useStudyPreferences';
+import { HanVietBadge } from '@/modules/vocabulary/components/HanVietBadge';
 import {
 	BookOutlined,
 	BulbFilled,
@@ -184,28 +185,7 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 	const pitchSvgPath = (detailsAny?.pitchSvgPath as string) || '';
 
 	const hanVietBadge = back.details.hanViet ? (
-		<div
-			style={{
-				background: token.colorPrimaryBg,
-				padding: '2px 8px',
-				borderRadius: '6px',
-				border: `1px solid ${token.colorPrimaryBorder}`,
-				display: 'inline-flex',
-				alignItems: 'center',
-				height: '24px',
-			}}
-		>
-			<Text
-				strong
-				style={{
-					color: token.colorPrimary,
-					fontSize: '11px',
-					letterSpacing: '0.05em',
-				}}
-			>
-				{back.details.hanViet}
-			</Text>
-		</div>
+		<HanVietBadge hanViet={back.details.hanViet} size="medium" />
 	) : null;
 
 	// Render based on design variant
@@ -215,7 +195,16 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 				vertical
 				style={{
 					minHeight: '100%', // Allow content to expand beyond card height
-					padding: '40px 32px 32px 32px',
+					// CSS-based centering: Use padding to center initial viewport
+					// Top/bottom padding creates equal space, centering content when scrolled to top
+					// This matches the front face's centered visual position
+					// Card height is ~453px (aspectRatio 3/4, maxWidth 340px)
+					// We center ~300px of content, so padding = (453 - 300) / 2 ≈ 76px
+					// Using calc(50% - 150px) dynamically centers based on card height
+					paddingTop: 'max(calc(50% - 150px), 40px)', // Centers content, min 40px
+					paddingBottom: 'max(calc(50% - 150px), 32px)', // Centers content, min 32px
+					paddingLeft: '32px',
+					paddingRight: '32px',
 					textAlign: 'left',
 					width: '100%',
 				}}

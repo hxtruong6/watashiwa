@@ -50,17 +50,24 @@ export const CardFace: React.FC<CardFaceProps> = ({
 	// Front face stays centered without scrolling (simple content)
 	const isBackFace = side === 'back';
 	const contentStyles: React.CSSProperties = {
+		// background: 'yellow',
 		zIndex: 2,
 		width: '100%',
 		height: '100%',
 		...(isBackFace
 			? {
+					// Back face: Scrollable with CSS-based centering
+					display: 'flex',
+					flexDirection: 'column',
 					overflowY: 'auto' as const,
 					overflowX: 'hidden' as const,
 					WebkitOverflowScrolling: 'touch' as const, // Smooth scrolling on iOS
 					// Ensure scrollbar styling is subtle
 					scrollbarWidth: 'thin' as const,
 					scrollbarColor: `${token.colorBorder} transparent`,
+					// CSS-based centering: Use padding to center initial viewport
+					// This creates equal space above and below content when scrolled to top
+					// The padding values will be applied by the content wrapper
 				}
 			: {
 					overflow: 'hidden' as const, // Front face: no scrolling needed

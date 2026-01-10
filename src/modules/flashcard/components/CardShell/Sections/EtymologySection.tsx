@@ -1,6 +1,7 @@
 'use client';
 
 import type { EtymologyData } from '@/lib/schemas/jsonb';
+import { HanVietBadge } from '@/modules/vocabulary/components/HanVietBadge';
 import { HistoryOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { Collapse, Flex, Typography, theme } from 'antd';
 import { useTranslations } from 'next-intl';
@@ -65,17 +66,7 @@ export const EtymologySection: React.FC<EtymologySectionProps> = ({
 										>
 											{part.kanji}
 										</Text>
-										<Text
-											style={{
-												fontSize: 'clamp(11px, 2.5vw, 12px)',
-												color: token.colorPrimary,
-												background: token.colorPrimaryBg,
-												padding: '2px 8px',
-												borderRadius: '4px',
-											}}
-										>
-											{part.han_viet}
-										</Text>
+										<HanVietBadge hanViet={part.han_viet} size="small" />
 									</Flex>
 									<Text
 										style={{
@@ -165,18 +156,7 @@ export const EtymologySection: React.FC<EtymologySectionProps> = ({
 										>
 											{part.kanji}
 										</Text>
-										<Text
-											style={{
-												fontSize: 'clamp(12px, 2.8vw, 13px)',
-												color: token.colorPrimary,
-												background: token.colorPrimaryBg,
-												padding: '4px 10px',
-												borderRadius: '6px',
-												fontWeight: 600,
-											}}
-										>
-											{part.han_viet}
-										</Text>
+										<HanVietBadge hanViet={part.han_viet} size="medium" />
 									</Flex>
 									<Text
 										style={{
@@ -260,15 +240,7 @@ export const EtymologySection: React.FC<EtymologySectionProps> = ({
 									>
 										{part.kanji}
 									</Text>
-									<Text
-										type="secondary"
-										style={{
-											fontSize: 'clamp(10px, 2.2vw, 11px)',
-											letterSpacing: '0.05em',
-										}}
-									>
-										{part.han_viet}
-									</Text>
+									<HanVietBadge hanViet={part.han_viet} size="small" />
 								</Flex>
 								<Text
 									style={{

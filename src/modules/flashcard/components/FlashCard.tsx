@@ -29,10 +29,10 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 		ref,
 	) => {
 		const screens = useBreakpoint();
+		// Explicit breakpoint variables for clarity
+		const isMobile = screens.xs || screens.sm; // < 768px
+		const isDesktop = screens.md || screens.lg || screens.xl; // ≥ 768px
 		const [imageError, setImageError] = useState(false);
-
-		// Responsive padding: smaller on mobile, larger on desktop
-		const topPadding = screens.md ? 40 : screens.sm ? 24 : 20; // Slightly increased for mobile breathability
 
 		// Audio Hook
 		const {
@@ -183,7 +183,7 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 				style={{
 					perspective: 1000,
 					width: '100%',
-					maxWidth: screens.md ? 800 : 600,
+					maxWidth: isDesktop ? 800 : 600,
 					margin: '0 auto',
 					cursor: !showAnswer ? 'pointer' : 'default',
 					userSelect: 'none',
@@ -206,9 +206,9 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 				<AntCard
 					style={{
 						width: '100%',
-						maxWidth: screens.md ? 800 : 600,
-						height: screens.md ? 'auto' : '65vh',
-						maxHeight: screens.md ? '80vh' : 600,
+						maxWidth: isDesktop ? 800 : 600,
+						height: isDesktop ? 'auto' : '65vh',
+						maxHeight: isDesktop ? '80vh' : 600,
 						minHeight: 320,
 						boxShadow: '0 8px 32px -4px rgba(0,0,0,0.08)', // Soft, deep shadow
 						borderRadius: 24, // Rounder corners (Storyteller)
@@ -238,11 +238,11 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 						},
 					}}
 				>
-					{/* Front content: Absolute positioning to overlay back content location, but centered vertically */}
+					{/* Front content: Absolute positioning to overlay back content location, centered vertically */}
 					<div
 						style={{
 							position: 'absolute',
-							top: topPadding, // Start after padding
+							top: 0, // Full height for true centering
 							left: 0,
 							right: 0,
 							bottom: 0, // Stretch to bottom
@@ -264,7 +264,7 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 					{/* Back content flows below, doesn't affect front positioning */}
 					<div
 						style={{
-							paddingTop: screens.md ? 200 : screens.sm ? 180 : 160,
+							paddingTop: isDesktop ? 200 : screens.sm ? 180 : 160,
 							position: 'relative',
 							zIndex: 1,
 							opacity: showAnswer ? 1 : 0, // Hide back when not revealed

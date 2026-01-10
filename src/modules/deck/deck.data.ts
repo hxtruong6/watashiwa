@@ -25,7 +25,10 @@ export async function getDeckById(id: string, userId: string) {
 				where: {
 					contentStatus: 'VERIFIED', // Only show verified content
 				},
-				orderBy: { createdAt: 'desc' },
+				orderBy: [
+					{ wordOrder: 'asc' }, // Primary: explicit word order
+					{ createdAt: 'asc' }, // Fallback: oldest first for same order
+				],
 				// include: {
 				// 	_count: {
 				// 		select: { cardComments: true },
@@ -59,7 +62,10 @@ export async function getDeckBySlug(slug: string, userId: string) {
 				where: {
 					contentStatus: 'VERIFIED', // Only show verified content
 				},
-				orderBy: { createdAt: 'desc' },
+				orderBy: [
+					{ wordOrder: 'asc' }, // Primary: explicit word order
+					{ createdAt: 'asc' }, // Fallback: oldest first for same order
+				],
 			},
 			stories: {
 				orderBy: { createdAt: 'desc' },
@@ -207,7 +213,10 @@ export async function getDeckVocabularies({
 			where,
 			skip: (page - 1) * limit,
 			take: limit,
-			orderBy: { createdAt: 'desc' },
+			orderBy: [
+				{ wordOrder: 'asc' }, // Primary: explicit word order
+				{ createdAt: 'asc' }, // Fallback: oldest first for same order
+			],
 		}),
 		prisma.vocabulary.count({ where }),
 	]);

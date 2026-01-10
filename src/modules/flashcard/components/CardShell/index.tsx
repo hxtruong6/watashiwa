@@ -3,6 +3,7 @@
 import { useCardFlip } from '@/modules/flashcard/hooks/useCardFlip';
 import { TRANSFORM_CONSTANTS } from '@/modules/flashcard/utils/transformUtils';
 import type { CardBackSettings } from '@/modules/study/store/useStudyPreferences';
+import { Grid } from 'antd';
 import { motion, useAnimation } from 'framer-motion';
 import React, { useEffect } from 'react';
 
@@ -36,6 +37,8 @@ interface CardShellProps {
 	cardBackSettings?: CardBackSettings;
 }
 
+const { useBreakpoint } = Grid;
+
 export const CardShell: React.FC<CardShellProps> = ({
 	card,
 	isActive,
@@ -53,6 +56,7 @@ export const CardShell: React.FC<CardShellProps> = ({
 	cardBackSettings,
 }) => {
 	const controls = useAnimation();
+	const screens = useBreakpoint();
 
 	// Use flip hook for state management
 	const { isFlipped, handleFlip } = useCardFlip({
@@ -122,7 +126,7 @@ export const CardShell: React.FC<CardShellProps> = ({
 			style={{
 				position: 'absolute',
 				width: '100%',
-				maxWidth: '340px',
+				maxWidth: screens.md ? '500px' : '100%',
 				aspectRatio: '3/4',
 				perspective: TRANSFORM_CONSTANTS.PERSPECTIVE,
 				cursor: isActive ? 'pointer' : 'default', // Always clickable when active (allows toggle)

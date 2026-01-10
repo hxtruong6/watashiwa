@@ -77,12 +77,14 @@ export const StudySidebar: React.FC<StudySidebarProps> = ({
 			style={{
 				width: 320,
 				height: 'calc(100vh - 80px)',
-				position: 'sticky',
+				position: 'sticky', // Changed from sticky to absolute - overlays content instead of taking flex space
+				right: 0, // Position from right edge
 				top: 80,
 				padding: 16,
 				borderLeft: `1px solid ${token.colorBorderSecondary}`,
 				background: token.colorBgContainer,
 				overflowY: 'auto',
+				zIndex: 100, // Ensure sidebar is above card content
 				// Subtle scrollbar (need to use CSS modules or global styles for proper cross-browser, but inline works for basics)
 				scrollbarWidth: 'thin',
 				scrollbarColor: `${token.colorBorder} transparent`,

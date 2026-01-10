@@ -136,3 +136,39 @@ export type GapFillPayload = z.infer<typeof GapFillPayloadSchema>;
 export type AudioMatchPayload = z.infer<typeof AudioMatchPayloadSchema>;
 export type InterventionPayload = z.infer<typeof InterventionPayloadSchema>;
 export type VariantPayload = z.infer<typeof VariantPayloadSchema>;
+
+// -----------------------------------------------------------------------------
+// 5. FURIGANA MAPPING (Vocabulary.furiganaMapping)
+// -----------------------------------------------------------------------------
+
+/**
+ * Furigana Mapping Schema
+ * Maps kanji characters in wordSurface to their reading segments in wordReading
+ *
+ * Example: "休みます" (wordSurface) with "やすみます" (wordReading)
+ * {
+ *   mappings: [
+ *     { kanji: "休", reading: "やす", surfaceIndex: 0, readingStart: 0, readingEnd: 2 }
+ *   ]
+ * }
+ *
+ * This allows precise rendering: only "やす" appears above "休", not above "みます"
+ */
+export const FuriganaMappingItemSchema = z
+	.object({
+		kanji: z.string().min(1), // The kanji character(s) - can be single or compound
+		reading: z.string().min(1), // The reading segment for this kanji
+		surfaceIndex: z.number().int().nonnegative(), // Position in wordSurface where kanji starts
+		readingStart: z.number().int().nonnegative(), // Start position in wordReading
+		readingEnd: z.number().int().positive(), // End position in wordReading (exclusive)
+	})
+	.strict();
+
+export const FuriganaMappingSchema = z
+	.object({
+		mappings: z.array(FuriganaMappingItemSchema),
+	})
+	.strict();
+
+export type FuriganaMappingItem = z.infer<typeof FuriganaMappingItemSchema>;
+export type FuriganaMapping = z.infer<typeof FuriganaMappingSchema>;

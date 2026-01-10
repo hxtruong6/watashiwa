@@ -15,9 +15,32 @@ interface RelatedWordsListProps {
 }
 
 export function RelatedWordsList({ words, onSelect, variant = 'default' }: RelatedWordsListProps) {
-	const t = useTranslations('Study.RelatedWords');
-
 	if (words.length === 0) return null;
+
+	// Variant-specific styles
+	const cardStyles: React.CSSProperties =
+		variant === 'sidebar'
+			? {
+					cursor: 'pointer',
+					width: '100%',
+					maxWidth: '100%',
+					// Ensure card fits within 320px sidebar (accounting for padding)
+					boxSizing: 'border-box',
+				}
+			: {
+					cursor: 'pointer',
+				};
+
+	const textStyles: React.CSSProperties =
+		variant === 'sidebar'
+			? {
+					fontSize: 14, // Slightly smaller for sidebar
+					wordBreak: 'break-word' as const,
+					overflowWrap: 'break-word' as const,
+				}
+			: {
+					fontSize: 16,
+				};
 
 	return (
 		<Space direction="vertical" size="small" style={{ width: '100%' }}>
@@ -27,24 +50,38 @@ export function RelatedWordsList({ words, onSelect, variant = 'default' }: Relat
 					size="small"
 					hoverable
 					onClick={() => onSelect(relatedWord)}
-					style={{
-						cursor: 'pointer',
-						// Additional styling based on variant if needed
+					style={cardStyles}
+					styles={{
+						body: variant === 'sidebar' ? { padding: '12px' } : undefined, // Compact padding for sidebar
 					}}
 				>
 					<Space direction="vertical" size="small" style={{ width: '100%' }}>
-						<Space>
-							<Text strong style={{ fontSize: 16 }}>
+						<Space wrap style={{ width: '100%' }}>
+							<Text strong style={textStyles}>
 								{relatedWord.vocab.wordSurface}
 							</Text>
 							{relatedWord.vocab.wordReading && (
-								<Text type="secondary" style={{ fontSize: 14 }}>
+								<Text
+									type="secondary"
+									style={{
+										fontSize: variant === 'sidebar' ? 12 : 14,
+										wordBreak: 'break-word' as const,
+									}}
+								>
 									{relatedWord.vocab.wordReading}
 								</Text>
 							)}
 						</Space>
 						{relatedWord.vocab.meanings && (
-							<Text type="secondary" style={{ fontSize: 13 }}>
+							<Text
+								type="secondary"
+								style={{
+									fontSize: variant === 'sidebar' ? 12 : 13,
+									wordBreak: 'break-word' as const,
+									overflowWrap: 'break-word' as const,
+									lineHeight: 1.4,
+								}}
+							>
 								{Array.isArray(relatedWord.vocab.meanings.en)
 									? relatedWord.vocab.meanings.en[0]
 									: Array.isArray(relatedWord.vocab.meanings.vi)
@@ -52,9 +89,9 @@ export function RelatedWordsList({ words, onSelect, variant = 'default' }: Relat
 										: ''}
 							</Text>
 						)}
-						<Space size="small" wrap>
+						<Space size="small" wrap style={{ width: '100%' }}>
 							{relatedWord.relationshipTypes.map((relType, idx) => (
-								<RelationshipTag key={idx} relationshipType={relType} />
+								<RelationshipTag key={idx} relationshipType={relType} variant={variant} />
 							))}
 						</Space>
 					</Space>
@@ -66,10 +103,22 @@ export function RelatedWordsList({ words, onSelect, variant = 'default' }: Relat
 
 function RelationshipTag({
 	relationshipType,
+	variant,
 }: {
 	relationshipType: RelatedWord['relationshipTypes'][0];
+	variant?: 'sidebar' | 'sheet' | 'default';
 }) {
 	const t = useTranslations('Study.RelatedWords');
+
+	const tagStyle: React.CSSProperties =
+		variant === 'sidebar'
+			? {
+					fontSize: 11,
+					padding: '2px 6px',
+					margin: 0,
+					lineHeight: 1.2,
+				}
+			: {};
 
 	if (relationshipType.kind === 'confusion') {
 		const confusionTypeLabels: Record<string, string> = {
@@ -80,7 +129,7 @@ function RelationshipTag({
 			GRAMMAR: t('confusionGrammar'),
 		};
 		return (
-			<Tag color="red">
+			<Tag color="red" style={tagStyle}>
 				{t('confusionPrefix')}:{' '}
 				{confusionTypeLabels[relationshipType.confusionType] || relationshipType.confusionType}
 			</Tag>
@@ -88,15 +137,27 @@ function RelationshipTag({
 	}
 
 	if (relationshipType.kind === 'shared_kanji') {
-		return <Tag color="blue">{t('sharedKanji')}</Tag>;
+		return (
+			<Tag color="blue" style={tagStyle}>
+				{t('sharedKanji')}
+			</Tag>
+		);
 	}
 
 	if (relationshipType.kind === 'same_deck') {
-		return <Tag color="green">{t('sameDeck')}</Tag>;
+		return (
+			<Tag color="green" style={tagStyle}>
+				{t('sameDeck')}
+			</Tag>
+		);
 	}
 
 	if (relationshipType.kind === 'shared_han_viet') {
-		return <Tag color="purple">{t('sharedHanViet')}</Tag>;
+		return (
+			<Tag color="purple" style={tagStyle}>
+				{t('sharedHanViet')}
+			</Tag>
+		);
 	}
 
 	return null;
