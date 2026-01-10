@@ -4,6 +4,7 @@ import { prisma } from '@/lib/db';
 import {
 	EtymologySchema,
 	ExamplesSchema,
+	FuriganaMappingSchema,
 	LocalizedString,
 	MeaningsSchema,
 } from '@/lib/schemas/jsonb';
@@ -11,11 +12,46 @@ import { executeSafeAction } from '@/modules/core/action-client';
 import { StandardCard } from '@/modules/flashcard/types';
 import { invalidateRelatedWordsCache } from '@/modules/study/services/semantic-relationship.service';
 import { invalidateSemanticCache } from '@/modules/study/services/semantic-sequencer.service';
+import { Prisma } from '@prisma/client';
 import { z } from 'zod';
 
 const EnrollVocabSchema = z.object({
 	vocabId: z.string().uuid(),
 });
+
+// Proper Prisma type for UserReview with included vocab relation
+type UserReviewWithVocab = Prisma.UserReviewGetPayload<{
+	include: {
+		vocab: {
+			select: {
+				id: true;
+				deckId: true;
+				tags: true;
+				wordSurface: true;
+				wordReading: true;
+				wordRomaji: true;
+				hanViet: true;
+				meanings: true;
+				examples: true;
+				etymology: true;
+				mnemonic: true;
+				audioUrl: true;
+				imageUrl: true;
+				pitchPattern: true;
+				pitchSvgPath: true;
+				homonymGroupId: true;
+				furiganaMapping: true;
+				contentStatus: true;
+				verifiedAt: true;
+				verifiedBy: true;
+				createdAt: true;
+				updatedAt: true;
+				deletedAt: true;
+				wordOrder: true;
+			};
+		};
+	};
+}>;
 
 /**
  * Enroll a vocabulary item for the current user's study session
@@ -31,7 +67,7 @@ export async function enrollVocabForSessionAction(input: { vocabId: string }) {
 			}
 
 			// 1. Find or create UserReview
-			const userReview = await prisma.userReview.upsert({
+			const userReview: UserReviewWithVocab = await prisma.userReview.upsert({
 				where: {
 					userId_vocabId: { userId, vocabId },
 				},
@@ -65,6 +101,7 @@ export async function enrollVocabForSessionAction(input: { vocabId: string }) {
 							pitchPattern: true,
 							pitchSvgPath: true,
 							homonymGroupId: true,
+							furiganaMapping: true,
 							contentStatus: true,
 							verifiedAt: true,
 							verifiedBy: true,
@@ -86,6 +123,9 @@ export async function enrollVocabForSessionAction(input: { vocabId: string }) {
 			const mnemonic = userReview.vocab.mnemonic
 				? (userReview.vocab.mnemonic as LocalizedString)
 				: null;
+			const furiganaMapping = userReview.vocab.furiganaMapping
+				? FuriganaMappingSchema.parse(userReview.vocab.furiganaMapping)
+				: null;
 
 			// 3. Build Vocabulary domain object
 			const vocab = {
@@ -94,6 +134,7 @@ export async function enrollVocabForSessionAction(input: { vocabId: string }) {
 				etymology,
 				examples,
 				mnemonic,
+				furiganaMapping,
 			};
 
 			// 4. Build StandardCard (SmartCard)
