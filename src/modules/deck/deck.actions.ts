@@ -6,24 +6,17 @@
 
 'use server';
 
-import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from '@/lib';
 import { prisma } from '@/lib/db';
+import { FuriganaMappingSchema, MeaningsSchema, StoryContentSchema } from '@/lib/schemas/jsonb';
 import { generateSlug } from '@/lib/utils/slug';
 import { getUser } from '@/modules/auth/auth.actions';
-import { executeAdminAction, executeSafeAction } from '@/modules/core/action-client';
-/**
- * Get all decks visible to current user
- */
-// -----------------------------------------------------------------------------
-// getUserDecksWithStats (Aggregated)
-// -----------------------------------------------------------------------------
-
 import { StudyData } from '@/modules/study/study.data';
 import { revalidatePath } from 'next/cache';
 import { cache } from 'react';
 import { z } from 'zod';
 
 import * as deckData from './deck.data';
+import type { StoryItem, VocabularyItem } from './types';
 
 /**
  * Get deck by ID or slug with details and user stats
@@ -54,7 +47,66 @@ export async function getDeck(idOrSlug: string) {
 			unseen: deck._count.vocabularies + deck._count.stories - userReviews.length,
 		};
 
-		return { ...deck, stats };
+		// Transform vocabularies to match VocabularyItem type
+		const vocabularies: VocabularyItem[] | undefined = deck.vocabularies
+			? deck.vocabularies.map((vocab) => {
+					// Parse meanings from JsonValue to the expected type
+					const meaningsParsed = MeaningsSchema.safeParse(vocab.meanings);
+					const meanings = meaningsParsed.success ? meaningsParsed.data : { vi: [], en: [] };
+
+					// Parse furiganaMapping if it exists (access via index signature for type safety)
+					const rawFuriganaMapping =
+						'furiganaMapping' in vocab
+							? (vocab as { furiganaMapping?: unknown }).furiganaMapping
+							: null;
+					const furiganaMappingParsed = rawFuriganaMapping
+						? FuriganaMappingSchema.safeParse(rawFuriganaMapping)
+						: null;
+					const furiganaMapping = furiganaMappingParsed?.success
+						? furiganaMappingParsed.data
+						: null;
+
+					return {
+						id: vocab.id,
+						wordSurface: vocab.wordSurface,
+						wordReading: vocab.wordReading,
+						meanings,
+						hanViet: vocab.hanViet ?? null,
+						furiganaMapping,
+					};
+				})
+			: undefined;
+
+		// Transform stories to match StoryItem type
+		const stories: StoryItem[] | undefined = deck.stories
+			? deck.stories.map((story) => {
+					// Parse content from JsonValue to the expected type
+					const contentParsed = StoryContentSchema.safeParse(story.content);
+					const content = contentParsed.success
+						? {
+								title: contentParsed.data.title
+									? {
+											vi: contentParsed.data.title.vi,
+											en: contentParsed.data.title.en,
+										}
+									: undefined,
+								body_text: contentParsed.data.body_text,
+							}
+						: {};
+
+					return {
+						id: story.id,
+						content,
+					};
+				})
+			: undefined;
+
+		return {
+			...deck,
+			stats,
+			vocabularies,
+			stories,
+		};
 	} catch (error) {
 		console.error('Error fetching deck:', error);
 		return null;

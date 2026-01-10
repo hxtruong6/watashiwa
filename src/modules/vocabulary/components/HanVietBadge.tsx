@@ -66,13 +66,15 @@ export function HanVietBadge({ hanViet, size = 'medium', className, style }: Han
 		<div
 			className={className}
 			style={{
-				background: token.colorPrimaryBg,
+				// background: token.colorPrimaryBg,
+				backgroundColor: token.colorBgBase,
 				padding: currentSizeStyle.padding,
 				borderRadius: token.borderRadius,
 				border: `1px solid ${token.colorPrimaryBorder}`,
 				display: 'inline-flex',
 				alignItems: 'center',
 				height: currentSizeStyle.height,
+				width: 'fit-content',
 				...style,
 			}}
 		>
