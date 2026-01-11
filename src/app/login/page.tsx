@@ -47,13 +47,10 @@ export default function AuthPage() {
 	const [isRedirecting, setIsRedirecting] = useState(false);
 	const [hasShownSessionExpired, setHasShownSessionExpired] = useState(false);
 
-	// Show session expired message if redirected due to expired session
-	// Check on mount and whenever sessionExpired param changes
 	React.useEffect(() => {
 		if (sessionExpired && !hasShownSessionExpired) {
 			antdMessage.warning(t('sessionExpired'));
 			setHasShownSessionExpired(true);
-			// Remove sessionExpired param from URL to prevent showing message again on refresh
 			const params = new URLSearchParams(searchParams.toString());
 			params.delete('sessionExpired');
 			const newUrl = params.toString() ? `${pathname}?${params.toString()}` : pathname;
@@ -61,7 +58,6 @@ export default function AuthPage() {
 		}
 	}, [sessionExpired, hasShownSessionExpired, antdMessage, t, searchParams, pathname, router]);
 
-	// Restore pending signup data from localStorage on mount and auto-retry when online
 	React.useEffect(() => {
 		if (mode === 'signup') {
 			const pendingSignup = localStorage.getItem('pendingSignup');
@@ -69,7 +65,6 @@ export default function AuthPage() {
 				try {
 					const data = JSON.parse(pendingSignup);
 					form.setFieldsValue(data);
-					// Show message that data was restored
 					antdMessage.info(
 						t('dataRestored') || 'Your previous registration data has been restored. Please retry.',
 					);
@@ -93,30 +88,24 @@ export default function AuthPage() {
 		}
 	}, [mode, form, t, antdMessage]);
 
-	// Login method cache hook
 	const { updateCache } = useLoginMethodCache();
 
-	// Use custom auth hook - all business logic is extracted
 	const { loading, error, message, login, signup, signInWithGoogle, resetState, setMessage } =
 		useAuth({
 			onSuccess: (role, isNewUser) => {
-				// Show loading indicator during redirect
 				setIsRedirecting(true);
 
-				// If returnUrl is provided and valid, redirect there after successful auth
 				if (returnUrl && isValidReturnUrl(returnUrl)) {
 					// Use window.location.href for full page reload to ensure middleware sees new session
 					console.log('[Login] Redirecting to returnUrl:', returnUrl);
 					window.location.href = returnUrl;
 					return;
 				}
-				// Redirect new users to profile setup
 				if (isNewUser) {
 					console.log('[Login] Redirecting new user to profile setup');
 					window.location.href = '/profile/setup';
 					return;
 				}
-				// Default redirect: handle role-based or default redirect
 				if (role === 'ADMIN') {
 					console.log('[Login] Redirecting admin to /admin');
 					window.location.href = '/admin';
@@ -134,17 +123,14 @@ export default function AuthPage() {
 
 	const isDark = token.colorBgBase === '#151F32';
 
-	// Reset state when switching modes
 	const toggleMode = () => {
 		const newMode = mode === 'login' ? 'signup' : 'login';
 		setMode(newMode);
 		resetState();
 	};
 
-	// Handle form submission with Zod validation
 	const handleSubmit = async (values: unknown) => {
 		if (mode === 'login') {
-			// Validate with Zod schema
 			const validationResult = loginSchema.safeParse(values);
 			if (!validationResult.success) {
 				const firstError = validationResult.error.issues[0];
@@ -153,14 +139,10 @@ export default function AuthPage() {
 			}
 
 			const result = await login(validationResult.data.email, validationResult.data.password);
-			// Note: Redirect is handled in onSuccess callback
-			// Success message is shown briefly before redirect happens
 			if (result.success) {
 				updateCache(validationResult.data.email, 'email');
-				// Don't show success message - redirect happens immediately via onSuccess callback
 			}
 		} else {
-			// Extract only fields needed for Zod validation (exclude confirmPassword)
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			const { confirmPassword, ...signupData } = values as {
 				email: string;
@@ -169,7 +151,6 @@ export default function AuthPage() {
 				confirmPassword?: string;
 			};
 
-			// Validate with Zod schema (confirmPassword already validated by Form rules)
 			const validationResult = signupSchema.safeParse(signupData);
 			if (!validationResult.success) {
 				const firstError = validationResult.error.issues[0];

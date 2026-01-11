@@ -76,7 +76,6 @@ export const viewport: Viewport = {
 async function AppProviders({ children }: { children: React.ReactNode }) {
 	await connection(); // Wait for request context before accessing cookies/headers
 
-	// Fetch messages with fallback to default locale
 	let messages;
 	try {
 		messages = await getMessages();

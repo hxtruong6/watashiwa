@@ -24,10 +24,8 @@ export const metadata: Metadata = generatePageMetadata({
 	noindex: false, // Public page - no need to hide from search engines
 });
 
-// Component that handles auth and fetches decks data - wrapped in Suspense for cacheComponents
 async function DecksContent() {
 	await connection();
-	// Sync user on load
 	await syncUser();
 	const user = await getUser();
 	if (!user) {

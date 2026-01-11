@@ -32,7 +32,6 @@ export const metadata: Metadata = generatePageMetadata({
 	noindex: true, // Private page - requires authentication
 });
 
-// UUID validation regex
 const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 function isValidUUID(value: string | string[] | undefined): value is string {
@@ -51,7 +50,6 @@ function isValidSlug(value: string | string[] | undefined): value is string {
 	return SLUG_REGEX.test(value);
 }
 
-// Component that handles auth and data fetching - wrapped in Suspense for cacheComponents
 async function StudyPageContent({
 	searchParams,
 }: {
@@ -64,7 +62,6 @@ async function StudyPageContent({
 		redirect('/login');
 	}
 
-	// Check if user has completed setup (server-side protection)
 	const setupCompleted = await hasCompletedSetup(user.id);
 	if (!setupCompleted) {
 		// Preserve query parameters in redirect URL for return after setup
@@ -86,8 +83,7 @@ async function StudyPageContent({
 	const resolvedParams = await searchParams;
 	let { deckId, deckSlug, courseId, courseSlug, mode } = resolvedParams;
 
-	// Normalize parameters: handle empty strings and arrays
-	// Next.js can return arrays for duplicate params, we take the first one
+	// Normalize parameters: Next.js can return arrays for duplicate params, we take the first one
 	if (Array.isArray(deckId)) {
 		deckId = deckId[0];
 	}
@@ -104,20 +100,17 @@ async function StudyPageContent({
 		mode = mode[0];
 	}
 
-	// Filter out empty strings (treat as undefined)
 	if (deckId === '') deckId = undefined;
 	if (deckSlug === '') deckSlug = undefined;
 	if (courseId === '') courseId = undefined;
 	if (courseSlug === '') courseSlug = undefined;
 	if (mode === '') mode = undefined;
 
-	// Priority: slug > ID
 	let targetDeckId: string | undefined = undefined;
 	let targetCourseId: string | undefined = undefined;
 
 	// Handle deck: slug takes precedence over ID
 	if (deckSlug) {
-		// Validate slug format (defensive: prevent injection)
 		if (!isValidSlug(deckSlug)) {
 			redirect('/study');
 		}
@@ -127,12 +120,11 @@ async function StudyPageContent({
 		}
 		targetDeckId = resolvedDeckId;
 	} else if (deckId) {
-		// Validate UUID format
 		if (!isValidUUID(deckId)) {
 			redirect('/study');
 		}
 		// Redirect UUID to slug for SEO and consistency
-		// Optimize: Only fetch slug, not full deck data
+		// Only fetch slug, not full deck data
 		const resolvedDeckSlug = await prisma.deck
 			.findFirst({
 				where: {
@@ -152,7 +144,6 @@ async function StudyPageContent({
 
 	// Handle course: slug takes precedence over ID
 	if (courseSlug) {
-		// Validate slug format (defensive: prevent injection)
 		if (!isValidSlug(courseSlug)) {
 			redirect('/study');
 		}
@@ -162,12 +153,11 @@ async function StudyPageContent({
 		}
 		targetCourseId = resolvedCourseId;
 	} else if (courseId) {
-		// Validate UUID format
 		if (!isValidUUID(courseId)) {
 			redirect('/study');
 		}
 		// Redirect UUID to slug for SEO and consistency
-		// Optimize: Only fetch slug, not full course data
+		// Only fetch slug, not full course data
 		const resolvedCourseSlug = await prisma.course
 			.findUnique({
 				where: { id: courseId },
@@ -188,13 +178,10 @@ async function StudyPageContent({
 		targetDeckId = undefined;
 	}
 
-	// Use resolved IDs
 	deckId = targetDeckId;
 	courseId = targetCourseId;
 
-	// If deckId or courseId is present, start the session
 	if (deckId || courseId) {
-		// Check if this is user's first study session for analytics
 		// Parallelize independent operations for better performance
 		const [hasStudied, dailyProgress] = await Promise.all([
 			hasUserStudiedBefore(),
@@ -217,7 +204,7 @@ async function StudyPageContent({
 	try {
 		const lastSession = await getLastStudySession();
 		if (lastSession?.deckId) {
-			// Optimize: Only fetch slug, not full deck data
+			// Only fetch slug, not full deck data
 			const resolvedDeckSlug = await prisma.deck
 				.findFirst({
 					where: {
@@ -237,12 +224,9 @@ async function StudyPageContent({
 	} catch (error) {
 		// NEXT_REDIRECT is expected when redirect() is called - not a real error
 		if (error instanceof Error && error.message === 'NEXT_REDIRECT') {
-			// Re-throw redirect errors - they're intentional
 			throw error;
 		}
-		// Only log actual errors
 		console.error('Failed to get last study session:', error);
-		// Continue to auto-start or show dashboard on error
 	}
 
 	try {
@@ -258,9 +242,8 @@ async function StudyPageContent({
 		const isFirstSession = !hasStudied;
 
 		// Auto-start session if user has due cards (active user with work to do)
+		// This matches the "Golden Path" - one tap to study
 		if (dueCount > 0 && hasStudyHistory) {
-			// Start session with all due cards (no deckId = global fetch)
-			// This matches the "Golden Path" - one tap to study
 			return (
 				<SessionController
 					deckId={undefined}
@@ -272,10 +255,7 @@ async function StudyPageContent({
 			);
 		}
 
-		// Show dashboard only for:
-		// 1. New users (no study history)
-		// 2. Users with no due cards (all caught up)
-		// 3. Recovery scenario (user needs context before starting)
+		// Show dashboard for new users, users with no due cards, or recovery scenarios
 		const stats = {
 			due: dueCount,
 			new: dailyProgress?.newCardsToday || 0,
@@ -287,7 +267,6 @@ async function StudyPageContent({
 		return <StudyDashboard user={user} stats={stats} recentDecks={learningDecks.slice(0, 3)} />;
 	} catch (error) {
 		console.error('Failed to load study dashboard:', error);
-		// Show error state - redirect to dashboard as fallback
 		redirect('/dashboard');
 	}
 }

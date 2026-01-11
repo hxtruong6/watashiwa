@@ -12,12 +12,9 @@ async function ProfilePageContent(): Promise<React.ReactNode> {
 	const user = await getUser();
 
 	if (!user) {
-		// Redirect unauthenticated users to login
 		redirect('/login?returnUrl=/profile');
 	}
 
-	// Redirect authenticated users to dashboard
-	// Settings are accessible via the settings modal in NavBar
 	redirect('/dashboard');
 }
 

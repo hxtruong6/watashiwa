@@ -20,7 +20,6 @@ export default function ErrorBoundary({
 	const isDev = process.env.NODE_ENV === 'development';
 
 	useEffect(() => {
-		// Log the error to an error reporting service
 		console.error(error);
 	}, [error]);
 

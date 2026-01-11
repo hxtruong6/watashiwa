@@ -27,10 +27,15 @@ Error: Route "/about" used `crypto.randomUUID()` before accessing either uncache
 - Evaluated at build time
 - Still includes both locales via `alternates.languages` in `generatePageMetadata()`
 
-**For dynamic pages:** Keep `generateMetadata()` but ensure `cookies()` is accessed FIRST
+**For redirect pages:** Access `cookies()` at component start to satisfy Next.js requirements
 
-- Use `ensureRequestDataAccess()` at the very start
-- Or access `cookies()` directly before any other operations
+- Redirect pages don't need metadata, but must access `cookies()` to prevent Sentry interception issues
+- Example: `await cookies()` at the start of the component function
+
+**For dynamic pages with params:** Consider removing metadata if Sentry interception can't be avoided
+
+- Dynamic routes with `[id]` params can't be fully prerendered anyway
+- Use structured data (JSON-LD) in page content instead - it's more reliable for SEO
 
 ## When to Use Static Metadata
 
@@ -61,39 +66,48 @@ export const metadata: Metadata = generatePageMetadata({
 
 **Note:** Even though we use default locale (vi) for title/description, `generatePageMetadata()` automatically includes both locales in `alternates.languages`, so search engines can discover both language versions.
 
-## When to Use Dynamic Metadata
+## When to Skip Metadata
 
-Use `generateMetadata()` function when:
+Skip metadata entirely when:
 
-- ✅ Page metadata needs to vary by user locale (from cookies)
-- ✅ Page metadata depends on route parameters (`params`)
-- ✅ Page metadata needs to fetch data from database
-- ✅ Page requires authentication-specific metadata
+- ✅ Page uses dynamic route params (`[id]`) and Sentry interception can't be avoided
+- ✅ Page is a redirect (redirect pages don't need metadata)
+- ✅ Page has structured data (JSON-LD) which is more reliable for SEO
 
-**Example:**
+**Example - Redirect Page:**
 
 ```typescript
-import { ensureRequestDataAccess, getLocaleForMetadata } from '@/lib/seo/locale';
-import { generatePageMetadata } from '@/lib/seo/metadata';
-import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
-export async function generateMetadata(): Promise<Metadata> {
-  // CRITICAL: Access request data FIRST before any other operations
-  // This satisfies Next.js requirement for crypto.randomUUID() usage
-  await ensureRequestDataAccess();
+export default async function RedirectPage() {
+  // Access cookies() to satisfy Next.js requirement before Sentry intercepts
+  try {
+    await cookies();
+  } catch {
+    // During prerendering, cookies() rejects - this is expected
+  }
+  redirect('/target-path');
+}
+```
 
-  // Get locale from request context (cookies) with fallback to default
-  const locale = await getLocaleForMetadata();
-  const t = await getTranslations({ locale, namespace: 'PageNamespace' });
+**Example - Dynamic Route with Structured Data:**
 
-  return generatePageMetadata({
-    title: t('metaTitle'),
-    description: t('metaDescription'),
-    url: '/page-path',
-    locale,
-    canonical: '/page-path',
-  });
+```typescript
+// No metadata - use structured data instead
+import { generateCourseSchema, schemaToJsonLd } from '@/lib/seo/structured-data';
+
+export default async function CoursePage({ params }: { params: Promise<{ id: string }> }) {
+  const course = await getCourse(id);
+  const schema = generateCourseSchema(course);
+  const jsonLd = schemaToJsonLd(schema);
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
+      {/* Page content */}
+    </>
+  );
 }
 ```
 
@@ -111,10 +125,14 @@ When creating a new page, ask yourself:
    - Public page? → Use `export const metadata`
    - No user-specific data? → Use `export const metadata`
 
-3. **If using `generateMetadata()`:**
-   - ✅ Call `ensureRequestDataAccess()` at the very start
-   - ✅ Or access `cookies()` directly before any other operations
-   - ✅ This ensures Next.js requirement is satisfied before Sentry intercepts
+3. **If page is a redirect:**
+   - ✅ Access `cookies()` at component start (even though no metadata is needed)
+   - ✅ This prevents Sentry interception issues during prerendering
+
+4. **If page uses dynamic params and Sentry intercepts:**
+   - ✅ Consider removing metadata entirely
+   - ✅ Use structured data (JSON-LD) in page content instead
+   - ✅ Structured data is more reliable for SEO than metadata tags
 
 ## Current Implementation Status
 
@@ -132,10 +150,11 @@ When creating a new page, ask yourself:
 - `/data-rights/page.tsx` - Data rights
 - `/info/cube/page.tsx` - CUBE method info
 
-### Pages Using Dynamic Metadata (⚠️ Must Access Request Data First)
+### Pages Without Metadata
 
-- `/page.tsx` - Homepage (uses `getLocaleForMetadata()`)
-- `/courses/[id]/page.tsx` - Course detail (uses `params` and DB)
+- `/courses/[id]/page.tsx` - Course detail (metadata removed, uses structured data JSON-LD instead)
+- `/privacy/page.tsx` - Redirect page (no metadata needed)
+- `/profile/setup/cube/page.tsx` - Redirect page (no metadata needed)
 
 ## Reference
 
@@ -157,7 +176,10 @@ If you encounter the `crypto.randomUUID()` error on a page:
    - Use default locale (vi) for title/description
    - Both locales still included via `alternates.languages`
 
-3. **For dynamic pages:**
-   - Add `await ensureRequestDataAccess();` at the very first line
-   - Or access `cookies()` directly before any other operations
-   - This must happen before Sentry intercepts the function
+3. **For redirect pages:**
+   - Add `await cookies()` at the start of the component function
+   - This satisfies Next.js requirements even though no metadata is needed
+
+4. **For dynamic routes with params:**
+   - If Sentry interception can't be avoided, remove metadata entirely
+   - Use structured data (JSON-LD) in page content for SEO instead

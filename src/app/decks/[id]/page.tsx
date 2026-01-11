@@ -1,4 +1,3 @@
-// Added explicit React import if needed, or keeping existing
 import { isUUID } from '@/lib/utils/uuid';
 import { getUser, syncUser } from '@/modules/auth/auth.actions';
 import DeckView from '@/modules/deck/components/DeckView';
@@ -8,9 +7,7 @@ import { PageSkeleton } from '@/modules/ui/components/skeletons';
 import { type RedirectType, notFound, redirect } from 'next/navigation';
 import React, { Suspense } from 'react';
 
-// Component that fetches deck data - wrapped in Suspense for cacheComponents
 async function DeckContent({ id }: { id: string }) {
-	// Sync User
 	await syncUser();
 	const user = await getUser();
 
@@ -22,7 +19,6 @@ async function DeckContent({ id }: { id: string }) {
 		notFound();
 	}
 
-	// Normal slug lookup
 	const deck = await getDeck(id);
 
 	if (!deck) {

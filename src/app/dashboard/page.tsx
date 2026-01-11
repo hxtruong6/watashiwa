@@ -12,21 +12,17 @@ interface Props {
 	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-// Component that handles auth checks and redirects - wrapped in Suspense for cacheComponents
 async function DashboardAuthGuard({
 	searchParams,
 }: {
 	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
 	await connection();
-	// Sync user on load
 	await syncUser();
 
-	// Get user for auth checks
 	const user = await getUserWithRole();
 	console.log('user', user);
 
-	// Check if user has completed setup (server-side protection)
 	if (user) {
 		const setupCompleted = await hasCompletedSetup(user.id);
 		console.log('setupCompleted', setupCompleted);
@@ -35,7 +31,6 @@ async function DashboardAuthGuard({
 		}
 	}
 
-	// Check for role-based redirect
 	const resolvedSearchParams = await searchParams;
 	if (
 		user &&
@@ -45,7 +40,6 @@ async function DashboardAuthGuard({
 		redirect('/admin');
 	}
 
-	// Return the dashboard content
 	return <DashboardDataLoader user={user} />;
 }
 

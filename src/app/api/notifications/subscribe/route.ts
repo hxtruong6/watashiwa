@@ -19,8 +19,6 @@ export async function POST(req: NextRequest) {
 
 		await NotificationService.subscribe(user.id, subscription, userAgent);
 
-		// --- Send Welcome Notification ---
-		// Fetch user's language preference
 		const dbUser = await prisma.user.findUnique({
 			where: { id: user.id },
 			select: { language: true },

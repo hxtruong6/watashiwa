@@ -14,7 +14,6 @@ async function ProfileSetupContent(props: Props) {
 	const searchParams = await props.searchParams;
 	const returnUrl = searchParams.returnUrl;
 
-	// Server-side authentication check
 	const user = await getUser();
 	if (!user) {
 		redirect('/login');
@@ -22,7 +21,6 @@ async function ProfileSetupContent(props: Props) {
 
 	const setupCompleted = await hasCompletedSetup(user.id);
 	if (setupCompleted) {
-		// Default to /dashboard for authenticated users (main board)
 		const redirectPath = returnUrl && returnUrl.startsWith('/') ? returnUrl : '/dashboard';
 		redirect(redirectPath);
 	}

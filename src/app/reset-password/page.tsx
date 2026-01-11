@@ -25,7 +25,6 @@ export default function ResetPasswordPage() {
 	const supabase = createClient();
 	const isDark = token.colorBgBase === '#151F32';
 
-	// Check if user has valid reset token (session from email link)
 	useEffect(() => {
 		const checkSession = async () => {
 			try {
@@ -34,7 +33,6 @@ export default function ResetPasswordPage() {
 					error: sessionError,
 				} = await supabase.auth.getSession();
 
-				// If no session or error, user doesn't have valid reset token
 				if (!session || sessionError) {
 					setError(t('noSession'));
 					setTimeout(() => {
@@ -62,7 +60,6 @@ export default function ResetPasswordPage() {
 		try {
 			const { password } = values as { password: string };
 
-			// Double-check session before updating
 			const {
 				data: { session },
 			} = await supabase.auth.getSession();
@@ -88,7 +85,6 @@ export default function ResetPasswordPage() {
 				setMessage(t('successMessage'));
 				setTimeout(() => {
 					// Force full reload to ensure middleware sees the new session
-					// Redirect to dashboard after successful password reset
 					window.location.href = '/dashboard';
 				}, 2000);
 			}
@@ -99,7 +95,6 @@ export default function ResetPasswordPage() {
 		}
 	};
 
-	// Show loading state while checking session
 	if (checkingSession) {
 		return (
 			<Flex

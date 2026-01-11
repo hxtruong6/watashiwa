@@ -25,7 +25,6 @@ async function CourseDetailContent({ params }: { params: Promise<{ id: string }>
 		notFound();
 	}
 
-	// Normal slug lookup
 	const course = await getCourseWithUserProgress(id);
 
 	if (!course) {
@@ -36,7 +35,6 @@ async function CourseDetailContent({ params }: { params: Promise<{ id: string }>
 	// Use default locale statically - no dynamic data access during prerendering
 	const locale = routing.defaultLocale as 'vi' | 'en';
 
-	// Generate structured data for this course
 	const courseSchema = generateCourseSchema(course, locale);
 	const jsonLd = schemaToJsonLd(courseSchema);
 

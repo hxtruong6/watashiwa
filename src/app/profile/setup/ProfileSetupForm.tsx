@@ -170,7 +170,6 @@ export default function ProfileSetupForm({ returnUrl }: ProfileSetupFormProps) {
 		language?: 'en' | 'vi';
 		algorithmMode?: 'semantic' | 'srs';
 	}) => {
-		// Prevent multiple simultaneous submissions
 		if (loading) {
 			return;
 		}
@@ -183,11 +182,10 @@ export default function ProfileSetupForm({ returnUrl }: ProfileSetupFormProps) {
 				language: values.language || 'vi',
 				preferences: {
 					setupCompleted: true,
-					algorithmMode: values.algorithmMode || 'srs', // Default to SRS
+					algorithmMode: values.algorithmMode || 'srs',
 				},
 			});
 
-			// If result is null, redirect is happening (Unauthorized was handled)
 			if (!result) {
 				return;
 			}
@@ -200,8 +198,6 @@ export default function ProfileSetupForm({ returnUrl }: ProfileSetupFormProps) {
 				const selectedLanguage = values.language || 'vi';
 				setLocaleCookie(selectedLanguage);
 
-				// Determine redirect path
-				// Default to /dashboard for authenticated users (main board)
 				const redirectPath = returnUrl && returnUrl.startsWith('/') ? returnUrl : '/dashboard';
 
 				// Use window.location.href for full page reload to ensure:
@@ -215,7 +211,6 @@ export default function ProfileSetupForm({ returnUrl }: ProfileSetupFormProps) {
 				// The slight performance trade-off is acceptable for correctness.
 				window.location.href = redirectPath;
 			} else {
-				// Enhanced error handling with detailed logging
 				console.error('Profile setup failed:', {
 					error: result.error,
 					validationErrors: result.validationErrors,
@@ -223,13 +218,11 @@ export default function ProfileSetupForm({ returnUrl }: ProfileSetupFormProps) {
 					isMobile: /Mobile|Android|iPhone|iPad/.test(navigator.userAgent),
 				});
 
-				// Show user-friendly error message
 				let errorMessage = t('setupError') || 'Failed to save profile. Please try again.';
 
 				if (result.error === 'Validation Failed') {
 					errorMessage = t('setupErrorValidation') || 'Please check your input and try again.';
 				} else if (result.error) {
-					// Show the actual error message if available
 					errorMessage = result.error;
 				}
 
@@ -237,7 +230,6 @@ export default function ProfileSetupForm({ returnUrl }: ProfileSetupFormProps) {
 				setLoading(false);
 			}
 		} catch (error) {
-			// Enhanced error logging for debugging
 			console.error('Profile setup error:', {
 				error,
 				message: error instanceof Error ? error.message : String(error),
@@ -329,7 +321,6 @@ export default function ProfileSetupForm({ returnUrl }: ProfileSetupFormProps) {
 								type="link"
 								size="small"
 								onClick={() => {
-									// Open in new tab/window for PWA compatibility
 									window.open('/info/cube', '_blank', 'noopener,noreferrer');
 								}}
 								style={{ padding: 0, height: 'auto', fontSize: 12, textAlign: 'left' }}
