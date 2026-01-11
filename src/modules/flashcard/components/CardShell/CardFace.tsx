@@ -49,6 +49,20 @@ export const CardFace: React.FC<CardFaceProps> = ({
 
 	// Front face stays centered without scrolling (simple content)
 	const isBackFace = side === 'back';
+
+	// Override userSelect for back face to allow scrolling and text selection
+	const baseStylesWithOverrides: React.CSSProperties = isBackFace
+		? {
+				...baseStyles,
+				// Allow text selection and scrolling on back face
+				userSelect: 'text',
+				WebkitUserSelect: 'text',
+				WebkitTouchCallout: 'default',
+				// Override overflow to allow scrolling
+				overflow: 'hidden', // Keep hidden on base, scrolling handled by content div
+			}
+		: baseStyles;
+
 	const contentStyles: React.CSSProperties = {
 		// background: 'yellow',
 		zIndex: 2,
@@ -65,6 +79,8 @@ export const CardFace: React.FC<CardFaceProps> = ({
 					// Ensure scrollbar styling is subtle
 					scrollbarWidth: 'thin' as const,
 					scrollbarColor: `${token.colorBorder} transparent`,
+					// Reserve space for scrollbar to prevent layout shift when it appears/disappears
+					scrollbarGutter: 'stable' as const,
 					// CSS-based centering: Use padding to center initial viewport
 					// This creates equal space above and below content when scrolled to top
 					// The padding values will be applied by the content wrapper
@@ -78,7 +94,7 @@ export const CardFace: React.FC<CardFaceProps> = ({
 	};
 
 	return (
-		<div style={baseStyles}>
+		<div style={baseStylesWithOverrides}>
 			{/* Exit Color Trail Overlay */}
 			{isExiting && exitColor && (
 				<motion.div

@@ -35,9 +35,42 @@ export default function RatingBar({
 	const longPressTimerRef = useRef<NodeJS.Timeout | null>(null);
 	const progressIntervalRefForCleanup = useRef<NodeJS.Timeout | null>(null);
 
-	// Colors for buttons
-	const forgotColor = { primary: token.colorError, bg: '#FFF1F0' };
-	const rememberColor = { primary: token.colorSuccess, bg: '#F6FFED' };
+	// Colors for buttons - using theme tokens for consistency
+	// Remember: Primary action (uses app primary color - Indigo)
+	// Forgot: Secondary/destructive action (uses error color)
+	const rememberColor = {
+		primary: token.colorPrimary, // Indigo (Ai-iro) - Primary brand color
+		bg: token.colorBgContainer,
+		hoverBg: token.colorPrimaryHover || token.colorPrimary,
+	};
+	// Create a lighter, softer version of error color for less aggressive appearance
+	// Mixes error color with background to create a softer tint
+	const getLighterErrorColor = () => {
+		const errorHex = token.colorError.replace('#', '');
+		const r = parseInt(errorHex.slice(0, 2), 16);
+		const g = parseInt(errorHex.slice(2, 4), 16);
+		const b = parseInt(errorHex.slice(4, 6), 16);
+
+		// Get background color for mixing (works for both light and dark themes)
+		const bgHex = token.colorBgContainer.replace('#', '');
+		const bgR = parseInt(bgHex.slice(0, 2), 16);
+		const bgG = parseInt(bgHex.slice(2, 4), 16);
+		const bgB = parseInt(bgHex.slice(4, 6), 16);
+
+		// Mix error color with background at 35% to create softer tint
+		// This gives us 65% original error + 35% background = softer appearance
+		const mixRatio = 0.35;
+		const lightR = Math.round(r + (bgR - r) * mixRatio);
+		const lightG = Math.round(g + (bgG - g) * mixRatio);
+		const lightB = Math.round(b + (bgB - b) * mixRatio);
+		return `rgb(${lightR}, ${lightG}, ${lightB})`;
+	};
+
+	const forgotColor = {
+		primary: getLighterErrorColor(), // Softer tint of Vermilion - less aggressive, more subtle
+		bg: token.colorBgContainer,
+		hoverBg: token.colorErrorHover || token.colorError, // Full color on hover for clear feedback
+	};
 
 	// Haptic feedback function
 	const triggerHaptic = () => {
@@ -166,39 +199,54 @@ export default function RatingBar({
 
 	const getButtonStyle = (
 		type: 'forgot' | 'remember',
-		colorTheme: { primary: string; bg: string },
+		colorTheme: { primary: string; bg: string; hoverBg?: string },
 	) => {
 		const isRemember = type === 'remember';
 		const isActive = selectedRating !== null;
 
+		// Base styles
 		let background = token.colorBgContainer;
 		let color = colorTheme.primary;
 		let border = `1px solid ${colorTheme.primary}`;
 		let boxShadow = 'none';
 		let transform = 'scale(1)';
+		let borderWidth = '1px';
 
 		if (isRemember) {
-			// Remember button: Filled Green (60% width)
+			// Remember button: Primary action - Filled with primary color (60% width)
+			// This is the main positive action, so it should be prominent
 			background = colorTheme.primary;
-			color = '#fff';
+			color = token.colorBgBase; // White/light text on primary background
 			border = 'none';
+			borderWidth = '0';
+
 			if (isLongPressing) {
+				// Long-press state: Slightly darker shade for feedback
+				background = colorTheme.hoverBg || colorTheme.primary;
 				transform = 'scale(0.95)';
+				boxShadow = `0 0 0 2px ${colorTheme.primary}60`;
 			} else if (isActive) {
-				boxShadow = `0 0 0 4px ${colorTheme.primary}40`;
+				// Active state: Subtle glow effect
+				boxShadow = `0 0 0 4px ${colorTheme.primary}40, 0 4px 12px ${colorTheme.primary}20`;
 				transform = 'scale(1.02)';
 			}
 		} else {
-			// Forgot button: Bordered Red (40% width)
+			// Forgot button: Secondary/destructive action - Outlined style (40% width)
+			// Less prominent than Remember, but still clear
 			if (isActive) {
+				// Active state: Filled with error color
 				background = colorTheme.primary;
-				color = '#fff';
-				boxShadow = `0 0 0 4px ${colorTheme.primary}40`;
+				color = token.colorBgBase; // White/light text on error background
+				border = 'none';
+				borderWidth = '0';
+				boxShadow = `0 0 0 4px ${colorTheme.primary}40, 0 4px 12px ${colorTheme.primary}20`;
 				transform = 'scale(1.02)';
 			} else {
+				// Default state: Outlined style
 				background = token.colorBgContainer;
 				color = colorTheme.primary;
-				border = `1px solid ${colorTheme.primary}`;
+				border = `1.5px solid ${colorTheme.primary}`;
+				borderWidth = '1.5px';
 			}
 		}
 
@@ -216,11 +264,13 @@ export default function RatingBar({
 			backgroundColor: background,
 			color: color,
 			border: border,
+			borderWidth: borderWidth,
 			boxShadow: boxShadow,
 			opacity: disabled && !isActive ? 0.5 : 1,
 			userSelect: 'none' as const,
 			WebkitUserSelect: 'none' as const,
 			WebkitTouchCallout: 'none' as const,
+			cursor: disabled && !isActive ? 'not-allowed' : 'pointer',
 		};
 	};
 
@@ -230,11 +280,13 @@ export default function RatingBar({
 				marginTop: 16,
 				padding: screens.xs ? '8px' : '12px',
 				background: token.colorBgContainer,
-				borderRadius: 16,
-				boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+				borderRadius: token.borderRadiusLG || 16,
+				// Use theme-aware shadow that works in both light and dark modes
+				boxShadow: token.boxShadowSecondary || '0 8px 32px rgba(0,0,0,0.08)',
 				backdropFilter: 'blur(12px)',
 				width: '100%',
 				maxWidth: 600,
+				border: `1px solid ${token.colorBorderSecondary || token.colorBorder}`,
 			}}
 			onClick={handleInteraction}
 			onTouchStart={handleInteraction}
@@ -289,9 +341,11 @@ export default function RatingBar({
 								left: 0,
 								right: 0,
 								bottom: 0,
-								background: `linear-gradient(90deg, rgba(255,255,255,0.3) ${longPressProgress}%, transparent ${longPressProgress}%)`,
+								// Use theme-aware overlay for better contrast
+								background: `linear-gradient(90deg, rgba(255,255,255,0.4) ${longPressProgress}%, transparent ${longPressProgress}%)`,
 								borderRadius: 'inherit',
 								pointerEvents: 'none',
+								zIndex: 1,
 							}}
 						/>
 					)}
@@ -300,8 +354,11 @@ export default function RatingBar({
 							style={{
 								position: 'absolute',
 								right: 8,
-								fontSize: 16,
-								opacity: 0.8,
+								fontSize: 18,
+								color: token.colorBgBase, // White/light icon on primary background
+								opacity: 0.9,
+								zIndex: 2,
+								transition: 'all 0.2s ease',
 							}}
 						/>
 					)}

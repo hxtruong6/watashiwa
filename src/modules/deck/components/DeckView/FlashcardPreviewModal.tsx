@@ -7,7 +7,7 @@
 'use client';
 
 import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
-import { generateFuriganaMapping, renderFurigana } from '@/lib/utils/furigana';
+import { generateFuriganaMapping, hasKanji, renderFurigana } from '@/lib/utils/furigana';
 import { HanVietBadge } from '@/modules/vocabulary/components/HanVietBadge';
 import { SoundOutlined } from '@ant-design/icons';
 import { Card, Divider, Empty, Flex, Grid, Modal, Space, Typography, theme } from 'antd';
@@ -25,13 +25,6 @@ interface FlashcardPreviewModalProps {
 	item: VocabularyItem | StoryItem | null;
 	type: ContentType;
 	onClose: () => void;
-}
-
-/**
- * Check if a string contains kanji characters
- */
-function hasKanji(text: string): boolean {
-	return /[\p{Script=Han}]/gu.test(text);
 }
 
 export function FlashcardPreviewModal({ open, item, type, onClose }: FlashcardPreviewModalProps) {

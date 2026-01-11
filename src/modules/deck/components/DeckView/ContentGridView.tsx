@@ -4,7 +4,7 @@
  * Grid layout for displaying vocab/story items
  */
 import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
-import { generateFuriganaMapping, renderFurigana } from '@/lib/utils/furigana';
+import { generateFuriganaMapping, hasKanji, renderFurigana } from '@/lib/utils/furigana';
 import { HanVietBadge } from '@/modules/vocabulary/components/HanVietBadge';
 import { SoundOutlined } from '@ant-design/icons';
 import { Button, Card, Col, Flex, Grid, Row, Typography, theme } from 'antd';
@@ -15,13 +15,6 @@ import type { ContentType, StoryItem, VocabularyItem } from '../../types';
 const { Text } = Typography;
 const { useToken } = theme;
 const { useBreakpoint } = Grid;
-
-/**
- * Check if a string contains kanji characters
- */
-function hasKanji(text: string): boolean {
-	return /[\p{Script=Han}]/gu.test(text);
-}
 
 /**
  * Audio Button Component for Vocabulary Cards

@@ -79,11 +79,12 @@ export const CardFlipContainer: React.FC<CardFlipContainerProps> = ({
 				duration: TRANSFORM_CONSTANTS.FLIP_DURATION,
 				ease: TRANSFORM_CONSTANTS.FLIP_EASING,
 			}}
-			onClick={onFlip}
-			onTouchStart={onFlip}
 		>
 			{/* FRONT FACE */}
 			<div
+				role="button"
+				tabIndex={0}
+				aria-label="Flip card to reveal answer"
 				style={{
 					position: 'absolute',
 					inset: 0,
@@ -91,6 +92,20 @@ export const CardFlipContainer: React.FC<CardFlipContainerProps> = ({
 					height: '100%',
 					...getBackfaceVisibility(),
 					...frontTransform,
+					cursor: 'pointer',
+				}}
+				onClick={onFlip}
+				onKeyDown={(e) => {
+					// Support keyboard navigation (Enter/Space to flip)
+					if (e.key === 'Enter' || e.key === ' ') {
+						e.preventDefault();
+						// Create a synthetic event for onFlip
+						const syntheticEvent = {
+							...e,
+							stopPropagation: () => e.stopPropagation(),
+						} as unknown as React.MouseEvent;
+						onFlip(syntheticEvent);
+					}
 				}}
 			>
 				{frontFace}
@@ -98,6 +113,9 @@ export const CardFlipContainer: React.FC<CardFlipContainerProps> = ({
 
 			{/* BACK FACE */}
 			<div
+				role="button"
+				tabIndex={0}
+				aria-label="Flip card back to front"
 				style={{
 					position: 'absolute',
 					inset: 0,
@@ -105,6 +123,47 @@ export const CardFlipContainer: React.FC<CardFlipContainerProps> = ({
 					height: '100%',
 					...getBackfaceVisibility(),
 					...backTransform,
+					cursor: 'pointer',
+				}}
+				onClick={(e) => {
+					// Only flip if clicking on non-interactive areas
+					// Interactive elements (buttons, links) should call stopPropagation()
+					const target = e.target as HTMLElement;
+					const currentTarget = e.currentTarget as HTMLElement;
+
+					// Check for actual interactive elements:
+					// 1. Buttons (native or Ant Design)
+					// 2. Links
+					// 3. Elements with role="button" (but exclude the flip container itself)
+					//
+					// NOTE: We removed the [style*="overflow"] check because it was too broad
+					// and was blocking clicks on scrollable content areas. Scrollable containers
+					// should allow flipping - only actual interactive elements should prevent it.
+					const interactiveButton = target.closest('button');
+					const interactiveLink = target.closest('a');
+					const roleButton = target.closest('[role="button"]');
+					const isRoleButtonButNotContainer = roleButton && roleButton !== currentTarget;
+
+					const isInteractiveElement =
+						!!interactiveButton || !!interactiveLink || !!isRoleButtonButNotContainer;
+
+					// If clicking on interactive element, don't flip (they handle their own clicks)
+					// Otherwise, allow flip on empty space, text, or scrollable areas
+					// Elements with stopPropagation (like CollapsibleSection) will already prevent the flip
+					if (!isInteractiveElement) {
+						onFlip(e);
+					}
+				}}
+				onKeyDown={(e) => {
+					// Support keyboard navigation (Enter/Space to flip)
+					if (e.key === 'Enter' || e.key === ' ') {
+						e.preventDefault();
+						const syntheticEvent = {
+							...e,
+							stopPropagation: () => e.stopPropagation(),
+						} as unknown as React.MouseEvent;
+						onFlip(syntheticEvent);
+					}
 				}}
 			>
 				{backFace}

@@ -271,7 +271,14 @@ const FlashCard = forwardRef<FlashCardHandle, FlashCardProps>(
 							transition: 'opacity 0.2s ease',
 						}}
 					>
-						<StandardFace side="back" card={standardCard} />
+						<StandardFace
+							side="back"
+							card={standardCard}
+							showFurigana={showFurigana}
+							showRomaji={showRomaji}
+							isPlaying={isPlaying}
+							onPlayAudio={() => toggleAudio()}
+						/>
 					</div>
 				</AntCard>
 			</div>

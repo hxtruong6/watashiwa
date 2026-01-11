@@ -9,29 +9,61 @@ import type { FuriganaMapping, FuriganaMappingItem } from '@/lib/schemas/jsonb';
 /**
  * Check if a character is kanji
  */
-function isKanji(char: string): boolean {
+export function isKanji(char: string): boolean {
 	return /[\p{Script=Han}]/gu.test(char);
 }
 
 /**
  * Check if a character is hiragana
  */
-function isHiragana(char: string): boolean {
+export function isHiragana(char: string): boolean {
 	return /[\u3040-\u309F]/g.test(char);
 }
 
 /**
  * Check if a character is katakana
  */
-function isKatakana(char: string): boolean {
+export function isKatakana(char: string): boolean {
 	return /[\u30A0-\u30FF]/g.test(char);
 }
 
 /**
  * Check if a character is kana (hiragana or katakana)
  */
-function isKana(char: string): boolean {
+export function isKana(char: string): boolean {
 	return isHiragana(char) || isKatakana(char);
+}
+
+/**
+ * Check if text contains only kanji characters
+ */
+export function isKanjiOnly(text: string): boolean {
+	if (!text) return false;
+	return /^[\p{Script=Han}]+$/gu.test(text);
+}
+
+/**
+ * Check if text contains only katakana characters
+ */
+export function isKatakanaOnly(text: string): boolean {
+	if (!text) return false;
+	return /^[\u30A0-\u30FF]+$/g.test(text);
+}
+
+/**
+ * Check if text contains only hiragana characters
+ */
+export function isHiraganaOnly(text: string): boolean {
+	if (!text) return false;
+	return /^[\u3040-\u309F]+$/g.test(text);
+}
+
+/**
+ * Check if text contains kanji characters (at least one)
+ */
+export function hasKanji(text: string): boolean {
+	if (!text) return false;
+	return /[\p{Script=Han}]/gu.test(text);
 }
 
 /**

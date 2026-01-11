@@ -126,7 +126,7 @@ export const CardShell: React.FC<CardShellProps> = ({
 			style={{
 				position: 'absolute',
 				width: '100%',
-				maxWidth: screens.md ? '500px' : '100%',
+				maxWidth: screens.md ? '600px' : '100%',
 				aspectRatio: '3/4',
 				perspective: TRANSFORM_CONSTANTS.PERSPECTIVE,
 				cursor: isActive ? 'pointer' : 'default', // Always clickable when active (allows toggle)

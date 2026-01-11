@@ -1,5 +1,6 @@
 'use client';
 
+import { isKanjiOnly, isKatakanaOnly } from '@/lib/utils/furigana';
 import { CollapsibleSection } from '@/modules/shared/components/CollapsibleSection';
 import type { CardBackSettings } from '@/modules/study/store/useStudyPreferences';
 import { HanVietBadge } from '@/modules/vocabulary/components/HanVietBadge';
@@ -7,10 +8,11 @@ import {
 	BookOutlined,
 	BulbFilled,
 	CheckCircleOutlined,
+	InfoCircleOutlined,
 	PauseCircleOutlined,
 	SoundOutlined,
 } from '@ant-design/icons';
-import { Button, Flex, Grid, Tag, Typography, theme } from 'antd';
+import { Button, Flex, Grid, Typography, theme } from 'antd';
 import { useLocale } from 'next-intl';
 import React from 'react';
 
@@ -40,6 +42,9 @@ interface StandardFaceProps {
 
 	// Card Back Settings
 	cardBackSettings?: CardBackSettings;
+
+	// Callback for showing details (sidebar/modal)
+	onShowDetails?: () => void;
 }
 
 export const StandardFace: React.FC<StandardFaceProps> = ({
@@ -51,6 +56,7 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 	onPlayAudio,
 	designVariant = 'safe',
 	cardBackSettings,
+	onShowDetails,
 }) => {
 	const { token } = theme.useToken();
 	const locale = (useLocale() as 'vi' | 'en') || 'vi';
@@ -74,6 +80,11 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 	// FRONT DESIGN
 	if (side === 'front') {
 		const hasAudio = !!front.audio;
+		// For kanji-only or katakana-only words, always show reading if it exists
+		// For other words, show reading only if it differs from hero and showFurigana is true
+		const isKanjiOrKatakanaOnly = isKanjiOnly(front.hero) || isKatakanaOnly(front.hero);
+		const shouldShowReading =
+			front.reading && (isKanjiOrKatakanaOnly || (showFurigana && front.reading !== front.hero));
 
 		return (
 			<Flex
@@ -85,12 +96,20 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 				<div
 					style={{
 						minHeight: 24,
-						opacity: showFurigana && front.reading !== front.hero ? 1 : 0,
+						opacity: shouldShowReading ? 1 : 0,
 						transition: 'opacity 0.3s ease',
-						marginBottom: 4,
+						marginBottom: screens.xs ? 8 : 12,
 					}}
 				>
-					<Text type="secondary" style={{ fontSize: 18 }}>
+					<Text
+						type="secondary"
+						style={{
+							fontSize: screens.xs ? 16 : 18,
+							fontWeight: 400,
+							color: token.colorTextSecondary,
+							letterSpacing: '0.02em',
+						}}
+					>
 						{front.reading || ''}
 					</Text>
 				</div>
@@ -99,12 +118,14 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 				<Title
 					level={1}
 					style={{
-						fontSize: 'clamp(40px, 12vw, 64px)', // Responsive Text
+						fontSize: screens.xs ? 'clamp(36px, 10vw, 56px)' : 'clamp(40px, 12vw, 64px)',
 						fontWeight: 500,
 						margin: '0 0 16px 0',
 						color: token.colorPrimary,
 						textAlign: 'center',
 						lineHeight: 1.2,
+						letterSpacing: '-0.01em',
+						textShadow: `0 2px 4px ${token.colorPrimary}15`, // Subtle shadow for depth
 					}}
 				>
 					{front.hero}
@@ -128,13 +149,23 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 						}}
 						style={{
 							position: 'absolute',
-							bottom: 32,
-							right: 32,
-							width: 48,
-							height: 48,
-							opacity: 0.8,
-							background: 'rgba(255,255,255,0.5)',
-							backdropFilter: 'blur(4px)',
+							bottom: screens.xs ? 24 : 32,
+							right: screens.xs ? 24 : 32,
+							width: screens.xs ? 44 : 48,
+							height: screens.xs ? 44 : 48,
+							background: `${token.colorBgBase}E6`, // ~90% opacity using theme token
+							backdropFilter: 'blur(8px)',
+							border: `1px solid ${token.colorBorderSecondary || token.colorBorder}`,
+							boxShadow: token.boxShadowSecondary || '0 2px 8px rgba(0,0,0,0.1)',
+							transition: 'all 0.2s ease',
+						}}
+						onMouseEnter={(e) => {
+							e.currentTarget.style.background = `${token.colorPrimary}15`;
+							e.currentTarget.style.transform = 'scale(1.05)';
+						}}
+						onMouseLeave={(e) => {
+							e.currentTarget.style.background = `${token.colorBgBase}E6`;
+							e.currentTarget.style.transform = 'scale(1)';
 						}}
 					/>
 				)}
@@ -154,6 +185,8 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 	}
 
 	const hasReading = !!front.reading;
+	// Check if audio is available (either file URL or TTS fallback)
+	const hasAudio = !!front.audio || !!front.hero; // Show audio button if audio URL exists OR if we have text for TTS
 	// Safe access to meanings with fallback
 	const meanings = back.details.meanings || {};
 	const primaryMeaning =
@@ -181,7 +214,6 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 
 	const detailsAny = back.details as unknown as Record<string, unknown>;
 	const tags = Array.isArray(detailsAny?.tags) ? (detailsAny.tags as string[]) : [];
-	const romaji = (detailsAny?.wordRomaji as string) || '';
 	const pitchSvgPath = (detailsAny?.pitchSvgPath as string) || '';
 
 	const hanVietBadge = back.details.hanViet ? (
@@ -194,13 +226,6 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 			<Flex
 				vertical
 				style={{
-					minHeight: '100%', // Allow content to expand beyond card height
-					// CSS-based centering: Use padding to center initial viewport
-					// Top/bottom padding creates equal space, centering content when scrolled to top
-					// This matches the front face's centered visual position
-					// Card height is ~453px (aspectRatio 3/4, maxWidth 340px)
-					// We center ~300px of content, so padding = (453 - 300) / 2 ≈ 76px
-					// Using calc(50% - 150px) dynamically centers based on card height
 					paddingTop: 'max(calc(50% - 150px), 40px)', // Centers content, min 40px
 					paddingBottom: 'max(calc(50% - 150px), 32px)', // Centers content, min 32px
 					paddingLeft: '32px',
@@ -209,89 +234,88 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 					width: '100%',
 				}}
 			>
-				{/* 1. Meta Row: Reading + Romaji + Badge + Audio */}
+				{/* 0. Hero Word/Kanji - Visual anchor connecting front and back */}
+				<Flex
+					vertical
+					align="center"
+					style={{
+						marginBottom: '20px',
+					}}
+				>
+					<Title
+						level={2}
+						style={{
+							fontSize: screens.xs ? 'clamp(32px, 8vw, 40px)' : 'clamp(36px, 9vw, 44px)',
+							fontWeight: 500,
+							margin: 0,
+							color: token.colorPrimary,
+							textAlign: 'center',
+							lineHeight: 1.2,
+							letterSpacing: '-0.01em',
+							opacity: 0.85, // Slightly muted to keep focus on meaning
+							textShadow: `0 1px 3px ${token.colorPrimary}10`,
+						}}
+					>
+						{front.hero}
+					</Title>
+				</Flex>
+
+				{/* 1. Meta Row: Reading + Badge + Audio + Info */}
 				<Flex justify="space-between" align="flex-start" style={{ marginBottom: '24px' }}>
 					<Flex vertical gap={4} style={{ flex: 1 }}>
 						<Flex gap="12px" align="center" wrap="wrap">
 							{hasReading && (
-								<Text type="secondary" style={{ fontSize: '18px', fontWeight: 400 }}>
-									{front.reading}
-								</Text>
-							)}
-							{romaji && (
 								<Text
 									type="secondary"
 									style={{
-										fontSize: '14px',
-										fontWeight: 300,
-										opacity: 0.7,
-										fontStyle: 'italic',
+										fontSize: screens.xs ? 'clamp(20px, 5vw, 24px)' : 'clamp(22px, 6vw, 28px)',
+										fontWeight: 400,
 									}}
 								>
-									{romaji}
+									{front.reading}
 								</Text>
 							)}
 							{hanVietBadge}
 						</Flex>
-						{/* Pitch Pattern Visualization */}
-						{pitchSvgPath && (
-							<div style={{ marginTop: '4px' }}>
-								<svg
-									viewBox="0 0 100 25"
-									style={{
-										width: '100px',
-										height: '25px',
-										overflow: 'visible',
-									}}
-								>
-									<path
-										d={pitchSvgPath}
-										stroke={token.colorPrimary}
-										strokeWidth="2"
-										fill="none"
-										strokeLinecap="round"
-									/>
-								</svg>
-							</div>
-						)}
-						{/* Tags */}
-						{tags.length > 0 && (
-							<Flex gap={4} wrap="wrap" style={{ marginTop: '4px' }}>
-								{tags.map((tag: string) => (
-									<Tag
-										key={tag}
-										style={{
-											fontSize: '10px',
-											padding: '0 6px',
-											margin: 0,
-											opacity: 0.8,
-										}}
-									>
-										{tag}
-									</Tag>
-								))}
-							</Flex>
-						)}
 					</Flex>
 
-					{front.audio && (
-						<Button
-							type="text"
-							shape="circle"
-							size="small"
-							icon={
-								isPlaying ? (
-									<PauseCircleOutlined style={{ fontSize: 18, color: token.colorTextSecondary }} />
-								) : (
-									<SoundOutlined style={{ fontSize: 18, color: token.colorTextSecondary }} />
-								)
-							}
-							onClick={(e) => {
-								e.stopPropagation();
-								onPlayAudio?.(e);
-							}}
-						/>
-					)}
+					<Flex gap={8} align="center">
+						{/* Info button for details (tags, pitch, etc.) */}
+						{(tags.length > 0 || pitchSvgPath) && onShowDetails && (
+							<Button
+								type="text"
+								shape="circle"
+								size="small"
+								icon={
+									<InfoCircleOutlined style={{ fontSize: 18, color: token.colorTextSecondary }} />
+								}
+								onClick={(e) => {
+									e.stopPropagation();
+									onShowDetails();
+								}}
+								title="Show details"
+							/>
+						)}
+						{hasAudio && (
+							<Button
+								type="text"
+								shape="circle"
+								size="small"
+								icon={
+									isPlaying ? (
+										<PauseCircleOutlined style={{ fontSize: 20, color: token.colorPrimary }} />
+									) : (
+										<SoundOutlined style={{ fontSize: 20, color: token.colorPrimary }} />
+									)
+								}
+								onClick={(e) => {
+									e.stopPropagation();
+									onPlayAudio?.(e);
+								}}
+								title="Play audio"
+							/>
+						)}
+					</Flex>
 				</Flex>
 
 				{/* 2. Primary Meaning (Hero - Centered) */}
@@ -300,9 +324,11 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 					align="center"
 					style={{
 						marginBottom: '32px',
-						padding: '24px',
-						background: `${token.colorPrimary}0A`, // 10% opacity
+						padding: screens.xs ? '20px' : '24px',
+						background: `${token.colorPrimary}0D`, // ~5% opacity - subtle highlight
 						borderRadius: token.borderRadiusLG,
+						border: `1px solid ${token.colorPrimary}20`, // Subtle border
+						boxShadow: `0 2px 8px ${token.colorPrimary}08`, // Subtle shadow
 					}}
 				>
 					<Text
@@ -342,6 +368,7 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 				{/* 3. Example (Card-style) - Collapsible */}
 				{hasExample && (
 					<CollapsibleSection
+						key={`example-${card.vocabId}`}
 						title="Example"
 						icon={<BookOutlined style={{ fontSize: 16, color: token.colorTextSecondary }} />}
 						defaultExpanded={isDesktop}
@@ -357,23 +384,17 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 									color: token.colorText,
 									lineHeight: '1.6',
 									display: 'block',
-									marginBottom: '8px',
+									marginBottom: '12px',
 								}}
 							>
 								{example?.sentence}
 							</Text>
-							<div
-								style={{
-									height: '1px',
-									background: token.colorBorder,
-									margin: '8px 0',
-								}}
-							/>
 							<Text
 								style={{
 									fontSize: '13px',
 									color: token.colorTextDescription,
 									lineHeight: '1.5',
+									display: 'block',
 								}}
 							>
 								{example?.translation?.vi || example?.translation?.en || ''}
@@ -386,25 +407,42 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 				{hasMnemonic && (
 					<div
 						style={{
-							padding: '16px',
-							background: token.colorPrimaryBg,
+							padding: screens.xs ? '14px' : '16px',
+							background: `${token.colorPrimary}12`, // ~7% opacity - warm highlight
 							borderRadius: token.borderRadius,
-							border: `1px solid ${token.colorPrimaryBorder}`,
+							border: `1px solid ${token.colorPrimary}30`, // ~19% opacity border
 							marginTop: !hasExample ? 'auto' : '0',
 							marginBottom: '16px',
+							boxShadow: `0 1px 4px ${token.colorPrimary}10`, // Subtle shadow
 						}}
 					>
-						<Flex gap={8} align="center" style={{ marginBottom: '8px' }}>
-							<BulbFilled style={{ fontSize: 16, color: token.colorPrimary }} />
-							<Text type="secondary" style={{ fontSize: '12px', fontWeight: 500 }}>
+						<Flex gap={8} align="center" style={{ marginBottom: '10px' }}>
+							<BulbFilled
+								style={{
+									fontSize: 18,
+									color: token.colorPrimary,
+									filter: `drop-shadow(0 1px 2px ${token.colorPrimary}40)`,
+								}}
+							/>
+							<Text
+								type="secondary"
+								style={{
+									fontSize: '13px',
+									fontWeight: 600,
+									color: token.colorTextSecondary,
+									textTransform: 'uppercase',
+									letterSpacing: '0.05em',
+								}}
+							>
 								Memory Tip
 							</Text>
 						</Flex>
 						<Text
 							style={{
-								fontSize: '14px',
+								fontSize: screens.xs ? '13px' : '14px',
 								color: token.colorText,
-								lineHeight: '1.5',
+								lineHeight: '1.6',
+								fontWeight: 400,
 							}}
 						>
 							{mnemonic}
@@ -425,6 +463,7 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 
 				{settings.showEtymology && back.details.etymology && (
 					<EtymologySection
+						key={`etymology-${card.vocabId}`}
 						etymology={back.details.etymology}
 						designVariant={designVariant}
 						defaultExpanded={settings.defaultCollapseState.etymology === 'expanded'}
@@ -450,95 +489,93 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 			<Flex
 				vertical
 				style={{
-					minHeight: '100%', // Allow content to expand beyond card height
 					padding: '32px 32px 32px 32px',
 					textAlign: 'left',
 					width: '100%',
 				}}
 			>
-				{/* 1. Meta Row: Reading + Romaji + Badge + Audio (Minimal) */}
+				{/* 0. Hero Word/Kanji - Visual anchor connecting front and back */}
+				<Flex
+					vertical
+					align="center"
+					style={{
+						marginBottom: '16px',
+					}}
+				>
+					<Title
+						level={2}
+						style={{
+							fontSize: screens.xs ? 'clamp(36px, 9vw, 44px)' : 'clamp(40px, 10vw, 48px)',
+							fontWeight: 600,
+							margin: 0,
+							color: token.colorPrimary,
+							textAlign: 'center',
+							lineHeight: 1.2,
+							letterSpacing: '-0.02em',
+							opacity: 0.9,
+							textShadow: `0 2px 6px ${token.colorPrimary}20`,
+						}}
+					>
+						{front.hero}
+					</Title>
+				</Flex>
+
+				{/* 1. Meta Row: Reading + Badge + Audio + Info */}
 				<Flex justify="space-between" align="flex-start" style={{ marginBottom: '20px' }}>
 					<Flex vertical gap={4} style={{ flex: 1 }}>
 						<Flex gap="12px" align="center" wrap="wrap">
 							{hasReading && (
-								<Text type="secondary" style={{ fontSize: '16px', fontWeight: 400 }}>
-									{front.reading}
-								</Text>
-							)}
-							{romaji && (
 								<Text
 									type="secondary"
 									style={{
-										fontSize: '13px',
-										fontWeight: 300,
-										opacity: 0.7,
-										fontStyle: 'italic',
+										fontSize: screens.xs ? 'clamp(20px, 5vw, 24px)' : 'clamp(22px, 6vw, 28px)',
+										fontWeight: 400,
 									}}
 								>
-									{romaji}
+									{front.reading}
 								</Text>
 							)}
 							{hanVietBadge}
 						</Flex>
-						{/* Pitch Pattern Visualization */}
-						{pitchSvgPath && (
-							<div style={{ marginTop: '4px' }}>
-								<svg
-									viewBox="0 0 100 25"
-									style={{
-										width: '100px',
-										height: '25px',
-										overflow: 'visible',
-									}}
-								>
-									<path
-										d={pitchSvgPath}
-										stroke={token.colorPrimary}
-										strokeWidth="2"
-										fill="none"
-										strokeLinecap="round"
-									/>
-								</svg>
-							</div>
-						)}
-						{/* Tags */}
-						{tags.length > 0 && (
-							<Flex gap={4} wrap="wrap" style={{ marginTop: '4px' }}>
-								{tags.map((tag: string) => (
-									<Tag
-										key={tag}
-										style={{
-											fontSize: '10px',
-											padding: '0 6px',
-											margin: 0,
-											opacity: 0.8,
-										}}
-									>
-										{tag}
-									</Tag>
-								))}
-							</Flex>
-						)}
 					</Flex>
 
-					{front.audio && (
-						<Button
-							type="text"
-							shape="circle"
-							size="small"
-							icon={
-								isPlaying ? (
-									<PauseCircleOutlined style={{ fontSize: 18, color: token.colorTextSecondary }} />
-								) : (
-									<SoundOutlined style={{ fontSize: 18, color: token.colorTextSecondary }} />
-								)
-							}
-							onClick={(e) => {
-								e.stopPropagation();
-								onPlayAudio?.(e);
-							}}
-						/>
-					)}
+					<Flex gap={8} align="center">
+						{/* Info button for details (tags, pitch, etc.) */}
+						{(tags.length > 0 || pitchSvgPath) && onShowDetails && (
+							<Button
+								type="text"
+								shape="circle"
+								size="small"
+								icon={
+									<InfoCircleOutlined style={{ fontSize: 18, color: token.colorTextSecondary }} />
+								}
+								onClick={(e) => {
+									e.stopPropagation();
+									onShowDetails();
+								}}
+								title="Show details"
+							/>
+						)}
+						{hasAudio && (
+							<Button
+								type="text"
+								shape="circle"
+								size="small"
+								icon={
+									isPlaying ? (
+										<PauseCircleOutlined style={{ fontSize: 20, color: token.colorPrimary }} />
+									) : (
+										<SoundOutlined style={{ fontSize: 20, color: token.colorPrimary }} />
+									)
+								}
+								onClick={(e) => {
+									e.stopPropagation();
+									onPlayAudio?.(e);
+								}}
+								title="Play audio"
+							/>
+						)}
+					</Flex>
 				</Flex>
 
 				{/* 2. Primary Meaning (Celebrated Hero) */}
@@ -547,18 +584,20 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 					align="center"
 					style={{
 						marginBottom: '24px',
-						padding: '28px 20px',
-						background: `linear-gradient(135deg, ${token.colorPrimary}08 0%, transparent 100%)`,
+						padding: screens.xs ? '24px 16px' : '28px 20px',
+						background: `linear-gradient(135deg, ${token.colorPrimary}12 0%, ${token.colorPrimary}08 50%, transparent 100%)`,
 						borderRadius: token.borderRadiusLG,
 						position: 'relative',
+						border: `1px solid ${token.colorPrimary}25`,
+						boxShadow: `0 4px 12px ${token.colorPrimary}15`,
 					}}
 				>
 					<CheckCircleOutlined
 						style={{
-							fontSize: 24,
+							fontSize: screens.xs ? 20 : 24,
 							color: token.colorSuccess,
 							marginBottom: '12px',
-							opacity: 0.8,
+							filter: `drop-shadow(0 2px 4px ${token.colorSuccess}40)`,
 						}}
 					/>
 					<Text
@@ -588,6 +627,7 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 				{/* 3. Example (Speech bubble style) - Collapsible */}
 				{hasExample && (
 					<CollapsibleSection
+						key={`example-${card.vocabId}`}
 						title="Real Usage"
 						icon={<Text style={{ fontSize: 18 }}>💬</Text>}
 						defaultExpanded={isDesktop}
@@ -603,7 +643,7 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 									color: token.colorText,
 									lineHeight: '1.6',
 									display: 'block',
-									marginBottom: '10px',
+									marginBottom: '12px',
 									fontWeight: 500,
 								}}
 							>
@@ -614,6 +654,7 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 									fontSize: '14px',
 									color: token.colorTextDescription,
 									lineHeight: '1.5',
+									display: 'block',
 								}}
 							>
 								{example?.translation?.vi || example?.translation?.en || ''}
@@ -626,17 +667,27 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 				{hasMnemonic && (
 					<div
 						style={{
-							padding: '16px 20px',
-							background: `${token.colorPrimary}18`, // 15% opacity
+							padding: screens.xs ? '14px 16px' : '16px 20px',
+							background: `${token.colorPrimary}15`, // ~8% opacity
 							borderRadius: token.borderRadius,
-							border: `1px solid ${token.colorPrimaryBorder}`,
+							border: `1px solid ${token.colorPrimary}35`, // ~21% opacity
 							marginTop: !hasExample ? 'auto' : '0',
 							marginBottom: '20px',
+							boxShadow: `0 2px 6px ${token.colorPrimary}12`,
 						}}
 					>
 						<Flex gap={8} align="center" style={{ marginBottom: '10px' }}>
-							<Text style={{ fontSize: 18 }}>🧠</Text>
-							<Text type="secondary" style={{ fontSize: '12px', fontWeight: 600 }}>
+							<Text style={{ fontSize: screens.xs ? 16 : 18 }}>🧠</Text>
+							<Text
+								type="secondary"
+								style={{
+									fontSize: '12px',
+									fontWeight: 600,
+									textTransform: 'uppercase',
+									letterSpacing: '0.05em',
+									color: token.colorTextSecondary,
+								}}
+							>
 								Memory Hook
 							</Text>
 						</Flex>
@@ -666,6 +717,7 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 
 				{settings.showEtymology && back.details.etymology && (
 					<EtymologySection
+						key={`etymology-${card.vocabId}`}
 						etymology={back.details.etymology}
 						designVariant={designVariant}
 						defaultExpanded={settings.defaultCollapseState.etymology === 'expanded'}
@@ -691,96 +743,90 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 		<Flex
 			vertical
 			style={{
-				minHeight: '100%', // Allow content to expand beyond card height
 				padding: '60px 40px 40px 40px',
 				textAlign: 'left',
 				width: '100%',
 			}}
 		>
-			{/* 1. Meta Row: Reading + Romaji + Badge + Audio (Ultra-minimal) */}
+			{/* 0. Hero Word/Kanji - Visual anchor connecting front and back */}
+			<Flex
+				vertical
+				align="center"
+				style={{
+					marginBottom: '24px',
+				}}
+			>
+				<Title
+					level={2}
+					style={{
+						fontSize: screens.xs ? 'clamp(28px, 7vw, 32px)' : 'clamp(32px, 8vw, 36px)',
+						fontWeight: 400,
+						margin: 0,
+						color: token.colorPrimary,
+						textAlign: 'center',
+						lineHeight: 1.3,
+						letterSpacing: '-0.01em',
+						opacity: 0.75, // More muted for minimalist design
+					}}
+				>
+					{front.hero}
+				</Title>
+			</Flex>
+
+			{/* 1. Meta Row: Reading + Badge + Audio + Info */}
 			<Flex justify="space-between" align="flex-start" style={{ marginBottom: '32px' }}>
 				<Flex vertical gap={4} style={{ flex: 1 }}>
 					<Flex gap="12px" align="center" wrap="wrap">
 						{hasReading && (
-							<Text type="secondary" style={{ fontSize: '16px', fontWeight: 300 }}>
-								{front.reading}
-							</Text>
-						)}
-						{romaji && (
 							<Text
 								type="secondary"
 								style={{
-									fontSize: '12px',
+									fontSize: screens.xs ? 'clamp(20px, 5vw, 24px)' : 'clamp(22px, 6vw, 28px)',
 									fontWeight: 300,
-									opacity: 0.6,
-									fontStyle: 'italic',
 								}}
 							>
-								{romaji}
+								{front.reading}
 							</Text>
 						)}
 						{hanVietBadge}
 					</Flex>
-					{/* Pitch Pattern Visualization */}
-					{pitchSvgPath && (
-						<div style={{ marginTop: '4px' }}>
-							<svg
-								viewBox="0 0 100 25"
-								style={{
-									width: '100px',
-									height: '25px',
-									overflow: 'visible',
-								}}
-							>
-								<path
-									d={pitchSvgPath}
-									stroke={token.colorPrimary}
-									strokeWidth="1.5"
-									fill="none"
-									strokeLinecap="round"
-									opacity={0.6}
-								/>
-							</svg>
-						</div>
-					)}
-					{/* Tags */}
-					{tags.length > 0 && (
-						<Flex gap={4} wrap="wrap" style={{ marginTop: '4px' }}>
-							{tags.map((tag: string) => (
-								<Tag
-									key={tag}
-									style={{
-										fontSize: '9px',
-										padding: '0 5px',
-										margin: 0,
-										opacity: 0.6,
-									}}
-								>
-									{tag}
-								</Tag>
-							))}
-						</Flex>
-					)}
 				</Flex>
 
-				{front.audio && (
-					<Button
-						type="text"
-						shape="circle"
-						size="small"
-						icon={
-							isPlaying ? (
-								<PauseCircleOutlined style={{ fontSize: 16, color: token.colorTextTertiary }} />
-							) : (
-								<SoundOutlined style={{ fontSize: 16, color: token.colorTextTertiary }} />
-							)
-						}
-						onClick={(e) => {
-							e.stopPropagation();
-							onPlayAudio?.(e);
-						}}
-					/>
-				)}
+				<Flex gap={8} align="center">
+					{/* Info button for details (tags, pitch, etc.) */}
+					{(tags.length > 0 || pitchSvgPath) && onShowDetails && (
+						<Button
+							type="text"
+							shape="circle"
+							size="small"
+							icon={<InfoCircleOutlined style={{ fontSize: 16, color: token.colorTextTertiary }} />}
+							onClick={(e) => {
+								e.stopPropagation();
+								onShowDetails();
+							}}
+							title="Show details"
+						/>
+					)}
+					{hasAudio && (
+						<Button
+							type="text"
+							shape="circle"
+							size="small"
+							icon={
+								isPlaying ? (
+									<PauseCircleOutlined style={{ fontSize: 20, color: token.colorPrimary }} />
+								) : (
+									<SoundOutlined style={{ fontSize: 20, color: token.colorPrimary }} />
+								)
+							}
+							onClick={(e) => {
+								e.stopPropagation();
+								onPlayAudio?.(e);
+							}}
+							title="Play audio"
+						/>
+					)}
+				</Flex>
 			</Flex>
 
 			{/* 2. Primary Meaning (Clean, spacious) */}
@@ -810,6 +856,7 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 			{/* 3. Example (Minimal styling) - Collapsible */}
 			{hasExample && (
 				<CollapsibleSection
+					key={`example-${card.vocabId}`}
 					title="Example"
 					icon={<BookOutlined style={{ fontSize: 16, color: token.colorTextSecondary }} />}
 					defaultExpanded={isDesktop}
@@ -821,7 +868,7 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 								color: token.colorText,
 								lineHeight: '1.7',
 								display: 'block',
-								marginBottom: '8px',
+								marginBottom: '12px',
 								fontWeight: 400,
 							}}
 						>
@@ -832,6 +879,7 @@ export const StandardFace: React.FC<StandardFaceProps> = ({
 								fontSize: '14px',
 								color: token.colorTextDescription,
 								lineHeight: '1.6',
+								display: 'block',
 							}}
 						>
 							{example?.translation?.vi || example?.translation?.en || ''}

@@ -20,7 +20,10 @@ export default function AntdConfig({ children }: { children: React.ReactNode }) 
 
 	return (
 		<ConfigProvider theme={currentTheme}>
-			<App>{children}</App>
+			{/* Suppress hydration warning for PostHog script injection */}
+			<div suppressHydrationWarning>
+				<App>{children}</App>
+			</div>
 		</ConfigProvider>
 	);
 }
