@@ -157,4 +157,65 @@ export const VocabularyData = {
 			where: { id },
 		});
 	},
+
+	/**
+	 * Get N5 Single Kanji
+	 * Queries all kanji in N5 level that are single kanji characters
+	 *
+	 * @param options - Query options
+	 * @param options.status - Content status filter (default: PUBLISHED)
+	 * @param options.deckIds - Optional deck IDs to filter by
+	 * @returns Array of single kanji vocabularies
+	 */
+	getN5SingleKanji: async (options?: { status?: ContentStatus; deckIds?: string[] }) => {
+		const { status = 'PUBLISHED', deckIds } = options || {};
+
+		// Prisma query: tags array must contain both "kanji" and "n5"
+		// wordSurface must be exactly 1 character (single kanji)
+		const where: Prisma.VocabularyWhereInput = {
+			tags: {
+				hasEvery: ['kanji', 'n5'], // Both tags must be present
+			},
+			contentStatus: status,
+			// Single kanji: wordSurface is exactly 1 character
+			// We'll filter this in application layer since Prisma doesn't have
+			// a direct way to check string length in where clause efficiently
+			// But we can use a raw query or filter after fetch
+		};
+
+		if (deckIds && deckIds.length > 0) {
+			where.deckId = { in: deckIds };
+		}
+
+		const allN5Kanji = await prisma.vocabulary.findMany({
+			where,
+			select: {
+				id: true,
+				wordSurface: true,
+				wordReading: true,
+				wordRomaji: true,
+				hanViet: true,
+				meanings: true,
+				etymology: true,
+				mnemonic: true,
+				examples: true,
+				tags: true,
+				contentStatus: true,
+				deckId: true,
+				audioUrl: true,
+				imageUrl: true,
+			},
+			orderBy: [
+				{ wordSurface: 'asc' }, // Sort by kanji character
+			],
+		});
+
+		// Filter for single kanji characters (exactly 1 character, and it's kanji)
+		// Using regex to ensure it's actually a kanji character, not kana or punctuation
+		const kanjiRegex = /^[\p{Script=Han}]$/u;
+
+		return allN5Kanji.filter((vocab) => {
+			return vocab.wordSurface.length === 1 && kanjiRegex.test(vocab.wordSurface);
+		});
+	},
 };

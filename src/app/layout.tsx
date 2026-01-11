@@ -56,13 +56,11 @@ export async function generateMetadata(): Promise<Metadata> {
 	}
 
 	// Add icons and PWA metadata
+	// Note: Next.js automatically detects favicon.ico, icon.png, icon.svg, and apple-icon.png
+	// from the app/ directory, so we don't need to manually configure them here
+	// appleWebApp.title automatically generates the apple-mobile-web-app-title meta tag
 	return {
 		...metadata,
-		icons: {
-			icon: '/assets/w_logo.png',
-			shortcut: '/assets/w_logo.png',
-			apple: '/assets/w_logo.png',
-		},
 		appleWebApp: {
 			capable: true,
 			title: 'WatashiWa',

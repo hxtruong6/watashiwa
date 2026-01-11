@@ -392,7 +392,7 @@ export const ContentWorkbench: React.FC = () => {
 								size="small"
 								style={{ width: 130, fontSize: 14 }}
 								variant="borderless"
-								dropdownMatchSelectWidth={false}
+								popupMatchSelectWidth={false}
 								options={[
 									{ value: 'Pending', label: 'Pending' },
 									{ value: 'AI_GENERATED', label: 'AI Generated' },

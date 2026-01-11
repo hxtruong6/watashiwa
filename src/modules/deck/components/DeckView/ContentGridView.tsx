@@ -235,7 +235,7 @@ export function ContentGridView({
 					const isCurrentlyPlaying = currentPlayingWordId === item.id && type === 'vocab';
 
 					return (
-						<Col xs={24} sm={12} md={8} lg={6} xl={6} xxl={4} key={item.id}>
+						<Col xs={24} sm={12} md={8} lg={6} xl={6} xxl={6} key={item.id}>
 							<div
 								ref={(el) => {
 									if (el) {
@@ -254,8 +254,7 @@ export function ContentGridView({
 											? token.colorPrimary
 											: token.colorBorderSecondary,
 										borderWidth: isCurrentlyPlaying ? 2 : 1,
-										// Fixed height prevents layout shift when toggling meanings
-										minHeight: screens.xs ? (showMeaning ? 110 : 100) : showMeaning ? 130 : 100,
+										minHeight: screens.xs ? (showMeaning ? 110 : 100) : showMeaning ? 140 : 110,
 										position: 'relative',
 										// backgroundColor: isCurrentlyPlaying
 										// 	? token.colorPrimaryBg

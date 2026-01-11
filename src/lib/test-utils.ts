@@ -12,9 +12,8 @@ export async function cleanDatabase() {
 	// Check if we are pointing to the test DB to be extra safe
 	const dbUrl = process.env.DATABASE_URL || '';
 	if (!dbUrl.includes('5433') && !dbUrl.includes('test')) {
-		console.warn(
-			'⚠️ cleanDatabase() called on a DB that does not look like a test DB. URL:',
-			dbUrl,
+		throw new Error(
+			`🚨 SAFETY: cleanDatabase() called on a DB that does not look like a test DB. URL: ${dbUrl}. This prevents accidental data loss.`,
 		);
 	}
 
