@@ -4,8 +4,8 @@
 	"private": true,
 	"scripts": {
 		"dev": "next dev --turbopack",
-		"build": "next build --webpack",
-		"build:debug": "RUST_BACKTRACE=full NEXT_TURBOPACK_TRACING=1 next build --debug-prerender --webpack",
+		"build": "NODE_OPTIONS='--max-old-space-size=3072' next build --webpack",
+		"build:debug": "RUST_BACKTRACE=full NEXT_TURBOPACK_TRACING=1 NODE_OPTIONS='--max-old-space-size=3072' next build --debug-prerender --webpack",
 		"start": "next start",
 		"lint": "eslint .",
 		"format": "prettier --write .",
