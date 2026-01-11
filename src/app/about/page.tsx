@@ -1,4 +1,3 @@
-import { getLocaleForMetadata } from '@/lib/seo/locale';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import { CompactSkeleton } from '@/modules/ui/components/skeletons';
 import type { Metadata } from 'next';
@@ -7,19 +6,16 @@ import { Suspense } from 'react';
 
 import ClientAboutContent from './ClientAboutContent';
 
-export async function generateMetadata(): Promise<Metadata> {
-	// Get locale from request context (cookies) with fallback to default
-	const locale = await getLocaleForMetadata();
-	const t = await getTranslations({ locale, namespace: 'About' });
+const locale = 'vi' as const;
 
-	return generatePageMetadata({
-		title: t('metaTitle'),
-		description: t('metaDescription'),
-		url: '/about',
-		locale,
-		canonical: '/about',
-	});
-}
+export const metadata: Metadata = generatePageMetadata({
+	title: 'Về WatashiWa | Học tiếng Nhật với SRS',
+	description:
+		'Tìm hiểu về sứ mệnh, tính năng, công nghệ và cam kết mã nguồn mở của WatashiWa trong việc học tiếng Nhật.',
+	url: '/about',
+	locale,
+	canonical: '/about',
+});
 
 async function AboutHeader() {
 	const t = await getTranslations('About');

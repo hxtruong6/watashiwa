@@ -1,8 +1,12 @@
-import themeConfig from '@/lib/theme/themeConfig';
 import * as Sentry from '@sentry/nextjs';
 import posthog from 'posthog-js';
 
 export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
+
+// Extract theme color to avoid importing antd at module initialization
+// This prevents HMR issues with antd module factory invalidation
+// The primary color matches lightTheme.token.colorPrimary from themeConfig
+const PRIMARY_COLOR = '#1E3A5F';
 
 // Check if we should enable analytics
 // Default: false in development, true in production, unless overridden by env var
@@ -24,9 +28,9 @@ if (isEnabled) {
 				colorScheme: 'system',
 				autoInject: false,
 				themeLight: {
-					submitBackground: themeConfig.token?.colorPrimary || '#1E3A5F',
+					submitBackground: PRIMARY_COLOR,
 					submitForeground: '#FFFFFF',
-					accentBackground: themeConfig.token?.colorPrimary || '#1E3A5F',
+					accentBackground: PRIMARY_COLOR,
 					background: '#FFFFFF',
 				},
 			}),

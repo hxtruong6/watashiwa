@@ -38,37 +38,27 @@ const geistMono = Geist_Mono({
 	subsets: ['latin'],
 });
 
-export async function generateMetadata(): Promise<Metadata> {
-	// Use default locale statically - no dynamic data access during prerendering
-	const locale = routing.defaultLocale as 'vi' | 'en';
+const locale = routing.defaultLocale as 'vi' | 'en';
 
-	const metadata = generatePageMetadata({
-		locale,
-		url: '/',
-	});
+const baseMetadata = generatePageMetadata({
+	locale,
+	url: '/',
+});
 
-	// Add Google Search Console verification if available
-	const verification = process.env.GOOGLE_SEARCH_CONSOLE_VERIFICATION;
-	if (verification) {
-		metadata.verification = {
-			google: verification,
-		};
-	}
-
-	// Add icons and PWA metadata
-	// Note: Next.js automatically detects favicon.ico, icon.png, icon.svg, and apple-icon.png
-	// from the app/ directory, so we don't need to manually configure them here
-	// appleWebApp.title automatically generates the apple-mobile-web-app-title meta tag
-	return {
-		...metadata,
-		appleWebApp: {
-			capable: true,
-			title: 'WatashiWa',
-			statusBarStyle: 'black-translucent',
+export const metadata: Metadata = {
+	...baseMetadata,
+	...(process.env.GOOGLE_SEARCH_CONSOLE_VERIFICATION && {
+		verification: {
+			google: process.env.GOOGLE_SEARCH_CONSOLE_VERIFICATION,
 		},
-		manifest: '/manifest.json',
-	};
-}
+	}),
+	appleWebApp: {
+		capable: true,
+		title: 'WatashiWa',
+		statusBarStyle: 'black-translucent',
+	},
+	manifest: '/manifest.json',
+};
 
 export const viewport: Viewport = {
 	width: 'device-width',
@@ -131,7 +121,6 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode;
 }>) {
-	// Use default locale for html lang attribute during prerendering
 	const defaultLocale = routing.defaultLocale;
 
 	return (

@@ -10,20 +10,19 @@ import { redirect } from 'next/navigation';
 import { connection } from 'next/server';
 import { Suspense } from 'react';
 
-export async function generateMetadata(): Promise<Metadata> {
-	// Use default locale statically - no dynamic data access during prerendering
-	const locale = routing.defaultLocale as 'vi' | 'en';
-	return generatePageMetadata({
-		title: locale === 'vi' ? 'Bộ thẻ từ vựng' : 'Vocabulary Decks',
-		description:
-			locale === 'vi'
-				? 'Quản lý và học từ vựng tiếng Nhật với các bộ thẻ được tạo sẵn hoặc tự tạo.'
-				: 'Manage and learn Japanese vocabulary with pre-made or custom decks.',
-		locale,
-		url: '/decks',
-		noindex: true, // Private page - requires authentication
-	});
-}
+// Static metadata - no dynamic data needed
+const locale = routing.defaultLocale as 'vi' | 'en';
+
+export const metadata: Metadata = generatePageMetadata({
+	title: locale === 'vi' ? 'Bộ thẻ từ vựng' : 'Vocabulary Decks',
+	description:
+		locale === 'vi'
+			? 'Quản lý và học từ vựng tiếng Nhật với các bộ thẻ được tạo sẵn hoặc tự tạo.'
+			: 'Manage and learn Japanese vocabulary with pre-made or custom decks.',
+	locale,
+	url: '/decks',
+	noindex: false, // Public page - no need to hide from search engines
+});
 
 // Component that handles auth and fetches decks data - wrapped in Suspense for cacheComponents
 async function DecksContent() {

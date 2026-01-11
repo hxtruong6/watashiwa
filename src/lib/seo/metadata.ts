@@ -4,7 +4,7 @@
  */
 import type { Metadata } from 'next';
 
-import { SEO_CONFIG, SEO_DEFAULTS } from './constants';
+import { ASSET_PATHS, SEO_CONFIG, SEO_DEFAULTS } from './constants';
 
 export type Locale = 'vi' | 'en';
 
@@ -29,7 +29,7 @@ export function generatePageMetadata(options: MetadataOptions = {}): Metadata {
 		title,
 		description,
 		keywords,
-		image = '/assets/w_logo.png',
+		image = ASSET_PATHS.logo.large,
 		url,
 		type = 'website',
 		locale = SEO_CONFIG.defaultLocale,
@@ -122,7 +122,7 @@ export function generateCourseMetadata(
 		throw new Error('Course must have a slug for metadata generation');
 	}
 	const url = `/courses/${course.slug}`;
-	const image = course.headerImage || '/assets/w_logo.png';
+	const image = course.headerImage || ASSET_PATHS.logo.large;
 
 	return generatePageMetadata({
 		title,
@@ -160,7 +160,7 @@ export function generateDeckMetadata(
 		throw new Error('Deck must have a slug for metadata generation');
 	}
 	const url = `/decks/${deck.slug}`;
-	const image = deck.headerImage || '/assets/w_logo.png';
+	const image = deck.headerImage || ASSET_PATHS.logo.large;
 
 	return generatePageMetadata({
 		title,

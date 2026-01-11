@@ -1,5 +1,6 @@
 'use client';
 
+import { ASSET_PATHS } from '@/lib/seo/constants';
 import { ambientGradients, customShadows } from '@/lib/theme/themeConfig';
 import { createClient } from '@/utils/supabase/client';
 import { ArrowLeftOutlined, HomeOutlined, MailOutlined } from '@ant-design/icons';
@@ -116,7 +117,7 @@ export default function ForgotPasswordPage() {
 					<div style={{ textAlign: 'center', marginBottom: 32 }}>
 						<div style={{ marginBottom: 16, cursor: 'pointer' }} onClick={() => router.push('/')}>
 							<Image
-								src="/assets/w_logo.png"
+								src={ASSET_PATHS.logo.small}
 								alt="Logo"
 								width={64}
 								height={64}

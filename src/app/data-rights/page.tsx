@@ -1,4 +1,3 @@
-import { getLocaleForMetadata } from '@/lib/seo/locale';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
@@ -7,19 +6,18 @@ import { Suspense } from 'react';
 
 import ClientDataRightsContent from './ClientDataRightsContent';
 
-export async function generateMetadata(): Promise<Metadata> {
-	// Get locale from request context (cookies) with fallback to default
-	const locale = await getLocaleForMetadata();
-	const t = await getTranslations({ locale, namespace: 'Legal.dataRights' });
+// Static metadata - avoids Sentry crypto.randomUUID() issue during prerendering
+// Uses default locale (vi) for title/description, but alternates.languages includes both locales
+const locale = 'vi' as const;
 
-	return generatePageMetadata({
-		title: t('metaTitle'),
-		description: t('metaDescription'),
-		url: '/data-rights',
-		locale,
-		canonical: '/data-rights',
-	});
-}
+export const metadata: Metadata = generatePageMetadata({
+	title: 'Quyền Dữ liệu của Bạn | WatashiWa',
+	description:
+		'Tìm hiểu về quyền của bạn đối với dữ liệu cá nhân, bao gồm cách truy cập, xuất hoặc xóa thông tin của bạn.',
+	url: '/data-rights',
+	locale,
+	canonical: '/data-rights',
+});
 
 // Component that fetches translations - wrapped in Suspense for cacheComponents
 async function DataRightsHeader() {

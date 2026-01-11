@@ -1,5 +1,6 @@
 'use client';
 
+import { ASSET_PATHS } from '@/lib/seo/constants';
 import { useAuth } from '@/modules/auth/hooks/useAuth';
 import ShareModal from '@/modules/deck/components/ShareModal';
 import ProtectedLink from '@/modules/ui/components/ProtectedLink';
@@ -328,7 +329,7 @@ export default function NavBarClient({ user }: { user?: User | null }) {
 						<GlassDock style={{ padding: '8px 24px' }}>
 							<Link href="/">
 								<Flex align="center" gap="small" style={{ cursor: 'pointer' }}>
-									<Image src="/assets/w_logo.png" alt="Logo" width={32} height={32} />
+									<Image src={ASSET_PATHS.logo.small} alt="Logo" width={32} height={32} />
 									<Text strong style={{ fontSize: 16, letterSpacing: '-0.5px' }}>
 										WatashiWa
 									</Text>
@@ -434,7 +435,7 @@ export default function NavBarClient({ user }: { user?: User | null }) {
 					>
 						<div style={{ position: 'relative', height: 28, width: 28 }}>
 							<Link href="/">
-								<Image src="/assets/w_logo.png" alt="Logo" width={28} height={28} />
+								<Image src={ASSET_PATHS.logo.small} alt="Logo" width={28} height={28} />
 							</Link>
 						</div>
 

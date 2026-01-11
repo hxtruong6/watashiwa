@@ -1,43 +1,17 @@
 import { routing } from '@/i18n/routing';
-import { generateCourseMetadata } from '@/lib/seo/metadata';
 import { generateCourseSchema, schemaToJsonLd } from '@/lib/seo/structured-data';
 import { isUUID } from '@/lib/utils/uuid';
 import { getUser } from '@/modules/auth/auth.actions';
 import { getCourseWithUserProgress } from '@/modules/course/course.actions';
-import { getCourseById, getCourseByIdOrSlug } from '@/modules/course/course.data';
+import { getCourseById } from '@/modules/course/course.data';
 import { PageSkeleton } from '@/modules/ui/components/skeletons';
-import type { Metadata } from 'next';
 import { type RedirectType, notFound, redirect } from 'next/navigation';
 import { Suspense } from 'react';
 
 import CourseDetailClient from './CourseDetailClient';
 
-export async function generateMetadata({
-	params,
-}: {
-	params: Promise<{ id: string }>;
-}): Promise<Metadata> {
-	const { id } = await params;
-	// Use default locale statically - no dynamic data access during prerendering
-	const locale = routing.defaultLocale as 'vi' | 'en';
-
-	// Fetch course for metadata (public data only)
-	const course = await getCourseByIdOrSlug(id);
-
-	if (!course || !course.isPublic) {
-		// Return default metadata if course not found or not public
-		return generateCourseMetadata(
-			{
-				title: 'Gợi ý Lộ trình',
-				titleEn: 'Suggested Path',
-				slug: 'suggested-path',
-			},
-			locale,
-		);
-	}
-
-	return generateCourseMetadata(course, locale);
-}
+// Metadata removed - Sentry intercepts generateMetadata before cookies() can be accessed
+// SEO is handled via structured data (JSON-LD) in the page content, which is more reliable
 
 async function CourseDetailContent({ params }: { params: Promise<{ id: string }> }) {
 	const user = await getUser();

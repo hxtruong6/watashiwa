@@ -1,4 +1,3 @@
-import { getLocaleForMetadata } from '@/lib/seo/locale';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import { CompactSkeleton } from '@/modules/ui/components/skeletons';
 import type { Metadata } from 'next';
@@ -7,19 +6,18 @@ import { Suspense } from 'react';
 
 import ClientPrivacyPolicyContent from './ClientPrivacyPolicyContent';
 
-export async function generateMetadata(): Promise<Metadata> {
-	// Get locale from request context (cookies) with fallback to default
-	const locale = await getLocaleForMetadata();
-	const t = await getTranslations({ locale, namespace: 'Legal.privacyPolicy' });
+// Static metadata - avoids Sentry crypto.randomUUID() issue during prerendering
+// Uses default locale (vi) for title/description, but alternates.languages includes both locales
+const locale = 'vi' as const;
 
-	return generatePageMetadata({
-		title: t('metaTitle'),
-		description: t('metaDescription'),
-		url: '/privacy-policy',
-		locale,
-		canonical: '/privacy-policy',
-	});
-}
+export const metadata: Metadata = generatePageMetadata({
+	title: 'Chính Sách Bảo Mật | WatashiWa',
+	description:
+		'Tìm hiểu cách WatashiWa thu thập, sử dụng và bảo vệ dữ liệu cá nhân và thông tin học tập của bạn.',
+	url: '/privacy-policy',
+	locale,
+	canonical: '/privacy-policy',
+});
 
 async function PrivacyPolicyHeader() {
 	const t = await getTranslations('Legal.privacyPolicy');

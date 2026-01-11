@@ -1,4 +1,3 @@
-import { getLocaleForMetadata } from '@/lib/seo/locale';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import { CompactSkeleton } from '@/modules/ui/components/skeletons';
 import type { Metadata } from 'next';
@@ -7,19 +6,18 @@ import { Suspense } from 'react';
 
 import ClientHelpContent from './ClientHelpContent';
 
-export async function generateMetadata(): Promise<Metadata> {
-	// Get locale from request context (cookies) with fallback to default
-	const locale = await getLocaleForMetadata();
-	const t = await getTranslations({ locale, namespace: 'Help' });
+// Static metadata - avoids Sentry crypto.randomUUID() issue during prerendering
+// Uses default locale (vi) for title/description, but alternates.languages includes both locales
+const locale = 'vi' as const;
 
-	return generatePageMetadata({
-		title: t('metaTitle'),
-		description: t('metaDescription'),
-		url: '/help',
-		locale,
-		canonical: '/help',
-	});
-}
+export const metadata: Metadata = generatePageMetadata({
+	title: 'Trung tâm Trợ giúp | WatashiWa',
+	description:
+		'Nhận trợ giúp với WatashiWa. Tìm câu trả lời cho các câu hỏi thường gặp về bắt đầu, thẻ ghi nhớ, quản lý tài khoản và khắc phục sự cố.',
+	url: '/help',
+	locale,
+	canonical: '/help',
+});
 
 async function HelpHeader() {
 	const t = await getTranslations('Help');

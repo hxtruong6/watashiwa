@@ -57,3 +57,16 @@ export const STATIC_PAGES = [
 	{ path: '/cookie-policy', priority: 0.5, changeFrequency: 'yearly' as const },
 	{ path: '/data-rights', priority: 0.5, changeFrequency: 'yearly' as const },
 ] as const;
+
+/**
+ * Logo and Icon Asset Paths
+ * Centralized paths for brand assets used across the application
+ */
+export const ASSET_PATHS = {
+	logo: {
+		/** Small logo for UI components (192x192) */
+		small: '/assets/favicon-for-public/web-app-manifest-192x192.png',
+		/** Large logo for SEO/OG images (512x512) */
+		large: '/assets/favicon-for-public/web-app-manifest-512x512.png',
+	},
+} as const;

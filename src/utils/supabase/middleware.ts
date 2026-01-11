@@ -39,11 +39,15 @@ export async function updateSession(request: NextRequest) {
 
 	const {
 		data: { user },
+		error: authError,
 	} = await supabase.auth.getUser();
+
+	// Check for invalid session (missing user OR auth error)
+	const hasInvalidSession = !user || authError;
 
 	// Protect Dashboard and Study routes
 	if (
-		!user &&
+		hasInvalidSession &&
 		(request.nextUrl.pathname.startsWith('/dashboard') ||
 			request.nextUrl.pathname.startsWith('/study') ||
 			request.nextUrl.pathname.startsWith('/decks'))

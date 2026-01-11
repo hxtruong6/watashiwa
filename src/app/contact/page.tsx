@@ -1,4 +1,3 @@
-import { getLocaleForMetadata } from '@/lib/seo/locale';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import { CompactSkeleton } from '@/modules/ui/components/skeletons';
 import type { Metadata } from 'next';
@@ -7,19 +6,18 @@ import { Suspense } from 'react';
 
 import ClientContactContent from './ClientContactContent';
 
-export async function generateMetadata(): Promise<Metadata> {
-	// Get locale from request context (cookies) with fallback to default
-	const locale = await getLocaleForMetadata();
-	const t = await getTranslations({ locale, namespace: 'Contact' });
+// Static metadata - avoids Sentry crypto.randomUUID() issue during prerendering
+// Uses default locale (vi) for title/description, but alternates.languages includes both locales
+const locale = 'vi' as const;
 
-	return generatePageMetadata({
-		title: t('metaTitle'),
-		description: t('metaDescription'),
-		url: '/contact',
-		locale,
-		canonical: '/contact',
-	});
-}
+export const metadata: Metadata = generatePageMetadata({
+	title: 'Liên hệ | WatashiWa',
+	description:
+		'Liên hệ với đội ngũ WatashiWa để được hỗ trợ, yêu cầu tính năng, báo cáo lỗi hoặc câu hỏi chung.',
+	url: '/contact',
+	locale,
+	canonical: '/contact',
+});
 
 async function ContactHeader() {
 	const t = await getTranslations('Contact');

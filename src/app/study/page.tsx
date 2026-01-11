@@ -19,20 +19,18 @@ import { redirect } from 'next/navigation';
 import { connection } from 'next/server';
 import { Suspense } from 'react';
 
-export async function generateMetadata(): Promise<Metadata> {
-	// Use default locale statically - no dynamic data access during prerendering
-	const locale = routing.defaultLocale as 'vi' | 'en';
-	return generatePageMetadata({
-		title: locale === 'vi' ? 'Học tập' : 'Study',
-		description:
-			locale === 'vi'
-				? 'Phiên học từ vựng tiếng Nhật với hệ thống SRS'
-				: 'Japanese vocabulary study session with SRS system',
-		locale,
-		url: '/study',
-		noindex: true, // Private page - requires authentication
-	});
-}
+const locale = routing.defaultLocale as 'vi' | 'en';
+
+export const metadata: Metadata = generatePageMetadata({
+	title: locale === 'vi' ? 'Học tập' : 'Study',
+	description:
+		locale === 'vi'
+			? 'Phiên học từ vựng tiếng Nhật với hệ thống SRS'
+			: 'Japanese vocabulary study session with SRS system',
+	locale,
+	url: '/study',
+	noindex: true, // Private page - requires authentication
+});
 
 // UUID validation regex
 const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;

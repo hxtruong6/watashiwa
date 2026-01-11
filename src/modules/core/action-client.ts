@@ -41,9 +41,11 @@ export async function executeSafeAction<TInput, TOutput>(
 		const supabase = await createClient();
 		const {
 			data: { user },
+			error: authError,
 		} = await supabase.auth.getUser();
 
-		if (options.requireAuth && !user) {
+		// Handle invalid session or missing user
+		if (options.requireAuth && (!user || authError)) {
 			return { success: false, error: 'Unauthorized' };
 		}
 

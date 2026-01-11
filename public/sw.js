@@ -182,8 +182,8 @@ if (workbox) {
 
         const options = {
             body: data.body,
-            icon: data.icon || '/assets/w_logo.png',
-            badge: '/assets/w_logo.png', // Small icon for notification bar
+            icon: data.icon || '/assets/favicon-for-public/web-app-manifest-192x192.png',
+            badge: '/assets/favicon-for-public/web-app-manifest-192x192.png', // Small icon for notification bar
             data: { url: data.url || '/' }, // Deep link
             tag: data.tag || 'general' // Grouping
         };

@@ -1,5 +1,6 @@
 'use client';
 
+import { ASSET_PATHS } from '@/lib/seo/constants';
 import { ambientGradients, customShadows } from '@/lib/theme/themeConfig';
 import { loginSchema, signupSchema } from '@/modules/auth/auth.dto';
 import { GoogleSignInButton } from '@/modules/auth/components/GoogleSignInButton';
@@ -274,7 +275,7 @@ export default function AuthPage() {
 				>
 					<div style={{ textAlign: 'center', marginBottom: 32 }}>
 						<Image
-							src="/assets/w_logo.png"
+							src={ASSET_PATHS.logo.small}
 							alt="Logo"
 							width={64}
 							height={64}

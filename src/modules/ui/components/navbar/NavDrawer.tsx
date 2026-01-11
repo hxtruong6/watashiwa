@@ -1,5 +1,6 @@
 'use client';
 
+import { ASSET_PATHS } from '@/lib/seo/constants';
 import LanguageSelector from '@/modules/user/components/LanguageSelector';
 import ThemeToggle from '@/modules/user/components/ThemeToggle';
 import {
@@ -57,7 +58,7 @@ export default function NavDrawer({
 		<Drawer
 			title={
 				<Flex align="center" gap="small">
-					<Image src="/assets/w_logo.png" alt="Logo" width={24} height={24} />
+					<Image src={ASSET_PATHS.logo.small} alt="Logo" width={24} height={24} />
 					<Text strong style={{ margin: 0, color: token.colorPrimary, whiteSpace: 'nowrap' }}>
 						WatashiWa
 					</Text>

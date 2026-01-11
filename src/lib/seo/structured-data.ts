@@ -2,7 +2,7 @@
  * Structured Data (JSON-LD) Generators
  * Schema.org markup for better search engine understanding
  */
-import { SEO_CONFIG } from './constants';
+import { ASSET_PATHS, SEO_CONFIG } from './constants';
 
 export interface OrganizationSchema {
 	'@context': string;
@@ -64,7 +64,7 @@ export function generateOrganizationSchema(): OrganizationSchema {
 		'@type': 'EducationalOrganization',
 		name: SEO_CONFIG.siteName,
 		url: SEO_CONFIG.siteUrl,
-		logo: `${SEO_CONFIG.siteUrl}/assets/w_logo.png`,
+		logo: `${SEO_CONFIG.siteUrl}${ASSET_PATHS.logo.large}`,
 		description: 'Japanese language learning platform with SRS (Spaced Repetition System)',
 	};
 }

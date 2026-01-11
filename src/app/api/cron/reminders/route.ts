@@ -1,5 +1,3 @@
-import { prisma } from '@/lib/db';
-import { NotificationService } from '@/lib/notifications/NotificationService';
 import { NextResponse } from 'next/server';
 
 // Vercel Cron will hit this endpoint
@@ -63,7 +61,7 @@ export async function GET(req: Request) {
 	// 				body,
 	// 				url: '/study',
 	// 				tag: 'streak-rescue',
-	// 				icon: '/assets/w_logo.png',
+	// 				icon: ASSET_PATHS.logo.small,
 	// 			});
 	// 			return true;
 	// 		}),

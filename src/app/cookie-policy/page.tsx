@@ -1,4 +1,3 @@
-import { getLocaleForMetadata } from '@/lib/seo/locale';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import { CompactSkeleton } from '@/modules/ui/components/skeletons';
 import type { Metadata } from 'next';
@@ -7,19 +6,18 @@ import { Suspense } from 'react';
 
 import ClientCookiePolicyContent from './ClientCookiePolicyContent';
 
-export async function generateMetadata(): Promise<Metadata> {
-	// Get locale from request context (cookies) with fallback to default
-	const locale = await getLocaleForMetadata();
-	const t = await getTranslations({ locale, namespace: 'Legal.cookiePolicy' });
+// Static metadata - avoids Sentry crypto.randomUUID() issue during prerendering
+// Uses default locale (vi) for title/description, but alternates.languages includes both locales
+const locale = 'vi' as const;
 
-	return generatePageMetadata({
-		title: t('metaTitle'),
-		description: t('metaDescription'),
-		url: '/cookie-policy',
-		locale,
-		canonical: '/cookie-policy',
-	});
-}
+export const metadata: Metadata = generatePageMetadata({
+	title: 'Chính Sách Cookie | WatashiWa',
+	description:
+		'Tìm hiểu về cách WatashiWa sử dụng cookie và các công nghệ tương tự để nâng cao trải nghiệm học tập của bạn.',
+	url: '/cookie-policy',
+	locale,
+	canonical: '/cookie-policy',
+});
 
 async function CookiePolicyHeader() {
 	const t = await getTranslations('Legal.cookiePolicy');

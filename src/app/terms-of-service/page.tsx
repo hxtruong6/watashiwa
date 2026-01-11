@@ -1,4 +1,3 @@
-import { getLocaleForMetadata } from '@/lib/seo/locale';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import { CompactSkeleton } from '@/modules/ui/components/skeletons';
 import type { Metadata } from 'next';
@@ -7,19 +6,18 @@ import { Suspense } from 'react';
 
 import ClientTermsOfServiceContent from './ClientTermsOfServiceContent';
 
-export async function generateMetadata(): Promise<Metadata> {
-	// Get locale from request context (cookies) with fallback to default
-	const locale = await getLocaleForMetadata();
-	const t = await getTranslations({ locale, namespace: 'Legal.termsOfService' });
+// Static metadata - avoids Sentry crypto.randomUUID() issue during prerendering
+// Uses default locale (vi) for title/description, but alternates.languages includes both locales
+const locale = 'vi' as const;
 
-	return generatePageMetadata({
-		title: t('metaTitle'),
-		description: t('metaDescription'),
-		url: '/terms-of-service',
-		locale,
-		canonical: '/terms-of-service',
-	});
-}
+export const metadata: Metadata = generatePageMetadata({
+	title: 'Điều Khoản Dịch Vụ | WatashiWa',
+	description:
+		'Đọc các điều khoản và điều kiện sử dụng WatashiWa, bao gồm trách nhiệm người dùng, chính sách nội dung và giới hạn dịch vụ.',
+	url: '/terms-of-service',
+	locale,
+	canonical: '/terms-of-service',
+});
 
 async function TermsOfServiceHeader() {
 	const t = await getTranslations('Legal.termsOfService');

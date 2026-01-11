@@ -1,5 +1,6 @@
 'use client';
 
+import { useServerAction } from '@/modules/core';
 import { updateUserSettings } from '@/modules/user/user.actions';
 import { setLocaleCookie } from '@/modules/user/utils/locale';
 import { InfoCircleOutlined } from '@ant-design/icons';
@@ -163,6 +164,7 @@ export default function ProfileSetupForm({ returnUrl }: ProfileSetupFormProps) {
 	const tStudy = useTranslations('Study');
 	const [loading, setLoading] = useState(false);
 	const [form] = Form.useForm();
+	const callAction = useServerAction();
 
 	const handleFinish = async (values: {
 		language?: 'en' | 'vi';
@@ -177,13 +179,18 @@ export default function ProfileSetupForm({ returnUrl }: ProfileSetupFormProps) {
 		console.log('values', values);
 
 		try {
-			const result = await updateUserSettings({
+			const result = await callAction(updateUserSettings, {
 				language: values.language || 'vi',
 				preferences: {
 					setupCompleted: true,
 					algorithmMode: values.algorithmMode || 'srs', // Default to SRS
 				},
 			});
+
+			// If result is null, redirect is happening (Unauthorized was handled)
+			if (!result) {
+				return;
+			}
 
 			if (result.success) {
 				message.success(t('setupSuccess') || 'Profile setup complete!');
@@ -219,11 +226,7 @@ export default function ProfileSetupForm({ returnUrl }: ProfileSetupFormProps) {
 				// Show user-friendly error message
 				let errorMessage = t('setupError') || 'Failed to save profile. Please try again.';
 
-				if (result.error === 'Unauthorized') {
-					errorMessage =
-						t('setupErrorAuth') ||
-						'Your session has expired. Please refresh the page and try again.';
-				} else if (result.error === 'Validation Failed') {
+				if (result.error === 'Validation Failed') {
 					errorMessage = t('setupErrorValidation') || 'Please check your input and try again.';
 				} else if (result.error) {
 					// Show the actual error message if available
