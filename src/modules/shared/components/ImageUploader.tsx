@@ -5,6 +5,7 @@ import { DeleteOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons
 import { Button, Modal, Upload, message, theme } from 'antd';
 import type { UploadProps } from 'antd';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import React, { useState } from 'react';
 
 interface ImageUploaderProps {
@@ -132,17 +133,12 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
 							overflow: 'hidden',
 						}}
 					>
-						{/* Use standard img tag for simplicity with external URLs without configuring next.config.js domains everywhere, 
-                 or generic Next Image with unoptimized if uncertain. Given user prompt constraints, let's use img for MVP safety. */}
-						{/* eslint-disable-next-line @next/next/no-img-element */}
-						<img
+						<Image
 							src={value}
 							alt="Uploaded"
-							style={{
-								width: '100%',
-								height: '100%',
-								objectFit: 'cover',
-							}}
+							fill
+							style={{ objectFit: 'cover' }}
+							sizes={`${typeof width === 'number' ? width : 120}px`}
 						/>
 						{!disabled && (
 							<div
@@ -179,8 +175,11 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
 				)}
 			</Upload>
 			<Modal open={previewOpen} footer={null} onCancel={() => setPreviewOpen(false)}>
-				{/* eslint-disable-next-line @next/next/no-img-element */}
-				<img alt="preview" style={{ width: '100%' }} src={value} />
+				{value && (
+					<div style={{ position: 'relative', width: '100%', aspectRatio: '1' }}>
+						<Image src={value} alt="Preview" fill style={{ objectFit: 'contain' }} sizes="100vw" />
+					</div>
+				)}
 			</Modal>
 			<style jsx global>{`
 				.avatar-uploader .ant-upload {

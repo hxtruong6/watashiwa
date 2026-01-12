@@ -47,9 +47,15 @@ interface User {
 /**
  * NavBar Client Component
  * Handles all client-side interactivity, hooks, and UI state
- * Receives user data from server component
+ * Receives user data and streak from server component
  */
-export default function NavBarClient({ user }: { user?: User | null }) {
+export default function NavBarClient({
+	user,
+	streak = 0,
+}: {
+	user?: User | null;
+	streak?: number;
+}) {
 	const pathname = usePathname();
 	const router = useRouter();
 	const searchParams = useSearchParams();
@@ -329,7 +335,7 @@ export default function NavBarClient({ user }: { user?: User | null }) {
 						<GlassDock style={{ padding: '8px 24px' }}>
 							<Link href="/">
 								<Flex align="center" gap="small" style={{ cursor: 'pointer' }}>
-									<Image src={ASSET_PATHS.logo.small} alt="Logo" width={32} height={32} />
+									<Image src={ASSET_PATHS.logo.small} alt="Logo" width={32} height={32} priority />
 									<Text strong style={{ fontSize: 16, letterSpacing: '-0.5px' }}>
 										WatashiWa
 									</Text>
@@ -358,7 +364,7 @@ export default function NavBarClient({ user }: { user?: User | null }) {
 								<>
 									<Flex align="center" gap={4}>
 										<FireFilled style={{ color: token.colorWarning, fontSize: 16 }} />
-										<Text strong>12</Text>
+										<Text strong>{streak}</Text>
 									</Flex>
 									{/* Vertical Divider */}
 									<div style={{ width: 1, height: 24, background: token.colorBorderSecondary }} />
@@ -435,7 +441,7 @@ export default function NavBarClient({ user }: { user?: User | null }) {
 					>
 						<div style={{ position: 'relative', height: 28, width: 28 }}>
 							<Link href="/">
-								<Image src={ASSET_PATHS.logo.small} alt="Logo" width={28} height={28} />
+								<Image src={ASSET_PATHS.logo.small} alt="Logo" width={28} height={28} priority />
 							</Link>
 						</div>
 
@@ -452,7 +458,7 @@ export default function NavBarClient({ user }: { user?: User | null }) {
 							>
 								<FireFilled style={{ color: token.colorWarning, fontSize: 18 }} />
 								<Text strong style={{ fontSize: 16 }}>
-									12
+									{streak}
 								</Text>
 							</Flex>
 						)}
@@ -688,6 +694,13 @@ export default function NavBarClient({ user }: { user?: User | null }) {
 									{user?.email}
 								</Text>
 							</div>
+							{/* Streak Display */}
+							<Flex align="center" gap={4} style={{ marginTop: 8 }}>
+								<FireFilled style={{ color: token.colorWarning, fontSize: 18 }} />
+								<Text strong style={{ fontSize: 16 }}>
+									{streak}
+								</Text>
+							</Flex>
 						</Flex>
 
 						<div style={{ borderBottom: `1px solid ${token.colorBorderSecondary}` }} />

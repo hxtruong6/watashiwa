@@ -1,15 +1,20 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
+const fs = require('fs');
+const path = require('path');
+
+// Check if standalone build exists (created when NODE_ENV=production && output: 'standalone')
+const standalonePath = path.join(process.cwd(), '.next/standalone/server.js');
+const useStandalone = fs.existsSync(standalonePath);
+
 module.exports = {
 	apps: [
 		{
 			name: 'watashiwa',
 
-			script: 'node_modules/next/dist/bin/next', // Staging/Testing Build
-			args: 'start',
-			// script: '.next/standalone/server.js', // For Production Build
-			// args: '',
-			// Working directory for standalone build
-			// Standalone build expects to run from project root
-			// cwd: process.cwd(),
+			// Automatically use standalone if available (production), otherwise use regular Next.js (development)
+			// Standalone build is created when: NODE_ENV=production && output: 'standalone' in next.config.ts
+			script: useStandalone ? '.next/standalone/server.js' : 'node_modules/next/dist/bin/next',
+			args: useStandalone ? '' : 'start',
 
 			// Cluster mode
 			instances: 1, // 'max' is Use all available cores

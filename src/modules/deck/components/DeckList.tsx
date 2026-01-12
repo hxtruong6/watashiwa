@@ -17,6 +17,7 @@ import {
 } from 'antd';
 import { motion } from 'motion/react';
 import { useLocale, useTranslations } from 'next-intl';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
@@ -178,14 +179,16 @@ export default function DeckList({ decks, userId }: DeckListProps) {
 														alignItems: 'center',
 														justifyContent: 'center',
 														overflow: 'hidden',
+														position: 'relative',
 													}}
 												>
 													{deck.headerImage ? (
-														/* eslint-disable-next-line @next/next/no-img-element */
-														<img
+														<Image
 															src={deck.headerImage}
 															alt={displayTitle}
-															style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+															fill
+															style={{ objectFit: 'cover' }}
+															sizes="48px"
 														/>
 													) : (
 														<BookOutlined style={{ fontSize: 24, color: token.colorPrimary }} />

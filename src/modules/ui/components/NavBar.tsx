@@ -1,3 +1,4 @@
+import { getUserStats } from '@/modules/user/user.actions';
 import { connection } from 'next/server';
 
 import NavBarClient from './NavBarClient';
@@ -16,12 +17,19 @@ export default async function NavBar() {
 	await connection();
 
 	let user = null;
+	let streak = 0;
 	try {
 		const { getUser } = await import('@/modules/auth/auth.actions');
 		user = await getUser();
+
+		// Fetch streak data if user is authenticated
+		if (user?.id) {
+			const stats = await getUserStats(user.id);
+			streak = stats.streak;
+		}
 	} catch {
 		// During prerendering, cookies() may reject. NavBarClient handles null users gracefully.
 	}
 
-	return <NavBarClient user={user} />;
+	return <NavBarClient user={user} streak={streak} />;
 }

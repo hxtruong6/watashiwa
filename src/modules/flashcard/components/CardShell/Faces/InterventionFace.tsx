@@ -1,6 +1,7 @@
 import { InterventionCard } from '@/modules/flashcard/types';
 import { PlayCircleFilled } from '@ant-design/icons';
 import { Card, Flex, Typography, theme } from 'antd';
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 const { Text, Title } = Typography;
@@ -58,11 +59,15 @@ export const InterventionFace: React.FC<InterventionFaceProps> = ({ card, onReso
 			>
 				{/* Image Placeholder */}
 				{item.imageUrl ? (
-					<img
-						src={item.imageUrl}
-						alt={item.wordSurface}
-						style={{ width: 64, height: 64, objectFit: 'contain', marginBottom: 8 }}
-					/>
+					<div style={{ position: 'relative', width: 64, height: 64, marginBottom: 8 }}>
+						<Image
+							src={item.imageUrl}
+							alt={item.wordSurface}
+							fill
+							style={{ objectFit: 'contain' }}
+							sizes="64px"
+						/>
+					</div>
 				) : (
 					<div style={{ fontSize: 48, marginBottom: 8 }}>
 						{/* Fallback to Kanji if no image */}

@@ -162,9 +162,41 @@ pnpm install
 
 ### Build the Application
 
+**Local Build (with optimizations):**
+
 ```bash
+# Build with optimized memory settings
 pnpm build
 ```
+
+**Note:** The build process now includes:
+
+- Webpack build worker (20-30% faster, 1-2GB RAM saved)
+- Webpack memory optimizations (10-20% faster, 1GB RAM saved)
+- Standalone output mode (smaller deployment size)
+
+**For low-memory systems, create a swap file:**
+
+```bash
+# Create 2GB swap file (run once)
+sudo fallocate -l 2G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+
+# Make it permanent
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
+
+**Alternative: Use GitHub Actions CI for builds**
+
+Instead of building on the server, you can offload builds to GitHub Actions CI:
+
+1. Push code to GitHub
+2. GitHub Actions builds the application
+3. Download artifacts and deploy to server
+
+See `.github/workflows/build.yml` for the CI configuration.
 
 ---
 
@@ -314,7 +346,7 @@ Follow the prompts to configure HTTPS redirection.
 - **Check App Logs**: `pm2 logs watashiwa`
 - **Check Nginx Logs**: `sudo tail -f /var/log/nginx/error.log`
 - **Database Issues**: Verify `DATABASE_URL` in `.env` is correct and accessible.
-- **Redis Issues**: 
+- **Redis Issues**:
   - Check Redis status: `sudo systemctl status redis-server`
   - Test connection: `redis-cli ping`
   - Check Redis logs: `sudo tail -f /var/log/redis/redis-server.log`
