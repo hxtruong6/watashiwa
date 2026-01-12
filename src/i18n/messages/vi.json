@@ -59,7 +59,8 @@
 		"guest": "Khách",
 		"greeting": "Hế lô {name} ~",
 		"signUpToAccess": "Đăng ký để truy cập tính năng",
-		"signUpToAccessDesc": "Tạo tài khoản để bắt đầu hành trình học tiếng Nhật của bạn"
+		"signUpToAccessDesc": "Tạo tài khoản để bắt đầu hành trình học tiếng Nhật của bạn",
+		"viewLanding": "Giới thiệu"
 	},
 	"Dashboard": {
 		"heroTitle": "Học Tiếng Nhật À? Để Tui Lo!",

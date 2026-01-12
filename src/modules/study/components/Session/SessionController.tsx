@@ -23,7 +23,6 @@ import { useSessionPhase } from '@/modules/study/hooks/useSessionPhase';
 import { useSessionUI } from '@/modules/study/hooks/useSessionUI';
 import { useSessionStore } from '@/modules/study/store/useSessionStore';
 import { useStudyPreferences } from '@/modules/study/store/useStudyPreferences';
-import { useUIStore } from '@/modules/ui/store/useUIStore';
 import { CommentOutlined, SettingOutlined } from '@ant-design/icons';
 import { Button, Drawer, Flex, Grid, Spin, Typography } from 'antd';
 import { useTranslations } from 'next-intl';
@@ -65,7 +64,6 @@ export default function SessionController({
 	const { startSession, queue, currentIndex, submitRating, isSessionActive, currentCard } =
 		useSessionStore();
 	const { mergeTutorials } = useTutorialStore();
-	const { setNavBarVisible } = useUIStore();
 
 	// Local State
 	// Initialization state moved to useSessionInitialization hook (Task 2.7)
@@ -224,20 +222,9 @@ export default function SessionController({
 		setShowAnswer,
 	});
 
-	// Navbar Control: Hide navbar during active session, show on summary
-	useEffect(() => {
-		// Show navbar on summary phase, hide during active session
-		if (studyPhase === 'summary') {
-			setNavBarVisible(true);
-		} else {
-			setNavBarVisible(false);
-		}
-
-		// Restore navbar when component unmounts
-		return () => {
-			setNavBarVisible(true);
-		};
-	}, [studyPhase, setNavBarVisible]);
+	// Navbar visibility is now handled by route-based logic in useNavBarVisibility hook
+	// When study session has deckId/courseId in URL, navbar is automatically hidden
+	// When summary phase is reached, URL changes and navbar shows automatically
 
 	// Tutorial -  TODO: later
 	// const tutorialSteps = useStudyTutorialSteps({

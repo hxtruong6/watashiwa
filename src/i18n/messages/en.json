@@ -59,7 +59,8 @@
 		"guest": "Traveler",
 		"greeting": "Hi, {name} ~",
 		"signUpToAccess": "Sign up to access features",
-		"signUpToAccessDesc": "Create an account to start your Japanese learning journey"
+		"signUpToAccessDesc": "Create an account to start your Japanese learning journey",
+		"viewLanding": "About"
 	},
 	"Dashboard": {
 		"heroTitle": "Ready to learn?",
