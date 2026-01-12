@@ -11,14 +11,19 @@ import NavBarClient from './NavBarClient';
  * Pattern matches src/app/about structure:
  * - Server component handles data fetching with connection()
  * - Client component handles all interactivity
+ *
+ * During static generation: Returns default streak (24) to prevent bailout
+ * During request-time: Returns actual user stats when logged in
  */
 export default async function NavBar() {
-	// Wait for request context before accessing cookies
-	await connection();
-
 	let user = null;
-	let streak = 0;
+	let streak = 24; // Default value for static generation
+
 	try {
+		// Wait for request context before accessing cookies
+		// This will throw during static generation, which is expected
+		await connection();
+
 		const { getUser } = await import('@/modules/auth/auth.actions');
 		user = await getUser();
 
@@ -28,7 +33,11 @@ export default async function NavBar() {
 			streak = stats.streak;
 		}
 	} catch {
-		// During prerendering, cookies() may reject. NavBarClient handles null users gracefully.
+		// During prerendering/static generation:
+		// - connection() throws (expected behavior)
+		// - getUserStats() may throw due to new Date() usage
+		// Return default values to prevent static generation bailout
+		// NavBarClient handles null users gracefully and will show default streak
 	}
 
 	return <NavBarClient user={user} streak={streak} />;
