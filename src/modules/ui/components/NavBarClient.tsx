@@ -1,5 +1,6 @@
 'use client';
 
+import { useSearchShortcut } from '@/hooks/useSearchShortcut';
 import { useAuth } from '@/modules/auth/hooks/useAuth';
 import ShareModal from '@/modules/deck/components/ShareModal';
 import DesktopNavDock from '@/modules/ui/components/navbar/DesktopNavDock';
@@ -73,6 +74,17 @@ export default function NavBarClient({ user, streak = 0 }: NavBarClientProps) {
 	// Determine if user is public (not authenticated)
 	const isPublic = !user;
 
+	// Search handler
+	const handleSearch = () => {
+		router.push('/search');
+	};
+
+	// Keyboard shortcuts for search
+	useSearchShortcut({
+		onSearch: handleSearch,
+		disabled: !shouldShow,
+	});
+
 	// Early return if navbar should be hidden (handled by visibility hook)
 	if (!shouldShow) {
 		return null;
@@ -105,6 +117,7 @@ export default function NavBarClient({ user, streak = 0 }: NavBarClientProps) {
 					onShare={() => setShareModalOpen(true)}
 					onBugReport={handleBugReport}
 					onLogout={handleLogout}
+					onSearchClick={handleSearch}
 				/>
 			)}
 
@@ -116,6 +129,7 @@ export default function NavBarClient({ user, streak = 0 }: NavBarClientProps) {
 					isPublic={isPublic}
 					pathname={pathname}
 					onDrawerOpen={() => setMobileDrawerOpen(true)}
+					onSearchClick={handleSearch}
 				/>
 			)}
 

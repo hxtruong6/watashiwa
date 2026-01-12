@@ -12,9 +12,11 @@ export const NAVBAR_SPACER_MOBILE = 60;
 // Z-index constants
 export const NAVBAR_Z_INDEX = 1000;
 
-// Glass morphism constants
-export const GLASS_DOCK_BLUR = 'blur(16px)';
+// Glass morphism constants (iOS 16 style)
+export const GLASS_DOCK_BLUR = 'blur(20px)';
+export const GLASS_DOCK_BLUR_STRONG = 'blur(28px)'; // For bottom dock
 export const GLASS_DOCK_BORDER_RADIUS = 24;
+export const GLASS_DOCK_SATURATION = 'saturate(180%)'; // iOS 16 enhanced saturation
 
 /**
  * Check if a nav item is active based on current pathname
