@@ -6,6 +6,9 @@ const path = require('path');
 const standalonePath = path.join(process.cwd(), '.next/standalone/server.js');
 const useStandalone = fs.existsSync(standalonePath);
 
+console.log('process.cwd()', process.cwd());
+console.log('useStandalone', useStandalone);
+console.log('standalonePath', standalonePath);
 module.exports = {
 	apps: [
 		{
@@ -13,8 +16,10 @@ module.exports = {
 
 			// Automatically use standalone if available (production), otherwise use regular Next.js (development)
 			// Standalone build is created when: NODE_ENV=production && output: 'standalone' in next.config.ts
-			script: useStandalone ? '.next/standalone/server.js' : 'node_modules/next/dist/bin/next',
-			args: useStandalone ? '' : 'start',
+			script: useStandalone
+				? path.join(process.cwd(), '.next/standalone/server.js')
+				: path.join(process.cwd(), 'node_modules/next/dist/bin/next'),
+			args: useStandalone ? [] : ['start'],
 
 			// Cluster mode
 			instances: 1, // 'max' is Use all available cores
