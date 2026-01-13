@@ -14,14 +14,12 @@ module.exports = {
 		{
 			name: 'watashiwa',
 
-			// Automatically use standalone if available (production), otherwise use regular Next.js (development)
-			// Standalone build is created when: NODE_ENV=production && output: 'standalone' in next.config.ts
 			script: useStandalone
 				? path.join(process.cwd(), '.next/standalone/server.js')
 				: path.join(process.cwd(), 'node_modules/next/dist/bin/next'),
 			args: useStandalone ? [] : ['start'],
-			interpreter: process.execPath || 'node', // Use current Node.js executable path
-			cwd: process.cwd(), // Set working directory explicitly
+			interpreter: 'node',
+			cwd: process.cwd(), // Working directory must be project root (where .next folder is)
 
 			// Cluster mode
 			instances: 1, // 'max' is Use all available cores
@@ -107,9 +105,10 @@ module.exports = {
 			// 2. Generate Prisma client
 			// 3. Migrate DB
 			// 4. Build app
-			// 5. Restart PM2
+			// 5. Copy public and static folders to standalone (per Next.js docs)
+			// 6. Restart PM2
 			'post-deploy':
-				'pnpm install --prod=false && pnpm db:generate && pnpm db:migrate && pnpm build && pm2 startOrRestart ecosystem.config.cjs --env production && pm2 save',
+				'pnpm install --prod=false && pnpm db:generate && pnpm db:migrate && pnpm build && cp -r public .next/standalone/ && cp -r .next/static .next/standalone/.next/ && pm2 startOrRestart ecosystem.config.cjs --env production && pm2 save',
 			env: {
 				NODE_ENV: 'production',
 			},
