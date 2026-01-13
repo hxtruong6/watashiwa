@@ -20,6 +20,8 @@ module.exports = {
 				? path.join(process.cwd(), '.next/standalone/server.js')
 				: path.join(process.cwd(), 'node_modules/next/dist/bin/next'),
 			args: useStandalone ? [] : ['start'],
+			interpreter: process.execPath || 'node', // Use current Node.js executable path
+			cwd: process.cwd(), // Set working directory explicitly
 
 			// Cluster mode
 			instances: 1, // 'max' is Use all available cores
