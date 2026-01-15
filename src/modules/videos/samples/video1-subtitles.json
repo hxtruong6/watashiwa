@@ -1,0 +1,1515 @@
+{
+	"version": "1.0",
+	"videoId": "video1",
+	"language": "ja",
+	"targetLanguage": "vi",
+	"subtitles": [
+		{
+			"id": "sub-4",
+			"order": 1,
+			"startTime": 22.98,
+			"endTime": 24.0,
+			"sentence": "あ",
+			"translation": {
+				"vi": "Ồ",
+				"en": "Oh"
+			},
+			"words": [
+				{
+					"text": "あ",
+					"romaji": "a",
+					"startTime": 0.0,
+					"endTime": 1.02,
+					"color": "purple",
+					"type": "interjection"
+				}
+			]
+		},
+		{
+			"id": "sub-5",
+			"order": 2,
+			"startTime": 24.0,
+			"endTime": 26.46,
+			"sentence": "緑さんこれ見て",
+			"translation": {
+				"vi": "Chị Midori, xem cái này đi",
+				"en": "Midori-san, look at this"
+			},
+			"words": [
+				{
+					"text": "緑",
+					"romaji": "midori",
+					"startTime": 0.0,
+					"endTime": 0.5,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "さん",
+					"romaji": "san",
+					"startTime": 0.5,
+					"endTime": 0.82,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "これ",
+					"romaji": "kore",
+					"startTime": 0.82,
+					"endTime": 1.23,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "見て",
+					"romaji": "mite",
+					"startTime": 1.23,
+					"endTime": 2.46,
+					"color": "red",
+					"type": "verb"
+				}
+			]
+		},
+		{
+			"id": "sub-6",
+			"order": 3,
+			"startTime": 26.46,
+			"endTime": 29.099,
+			"sentence": "ボルダリング大会",
+			"translation": {
+				"vi": "Giải đấu bouldering",
+				"en": "Bouldering tournament"
+			},
+			"words": [
+				{
+					"text": "ボルダリング",
+					"romaji": "borudaringu",
+					"startTime": 0.0,
+					"endTime": 1.32,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "大会",
+					"romaji": "taikai",
+					"startTime": 1.32,
+					"endTime": 2.639,
+					"color": "blue",
+					"type": "noun"
+				}
+			]
+		},
+		{
+			"id": "sub-7",
+			"order": 4,
+			"startTime": 29.099,
+			"endTime": 34.86,
+			"sentence": "優勝賞金5万円だってえー",
+			"translation": {
+				"vi": "Giải thưởng vô địch là 50,000 yên đấy",
+				"en": "The winning prize is 50,000 yen"
+			},
+			"words": [
+				{
+					"text": "優勝",
+					"romaji": "yushou",
+					"startTime": 0.0,
+					"endTime": 0.96,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "賞金",
+					"romaji": "shoukin",
+					"startTime": 0.96,
+					"endTime": 1.76,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "5万円",
+					"romaji": "gomanen",
+					"startTime": 1.76,
+					"endTime": 2.88,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "だって",
+					"romaji": "datte",
+					"startTime": 2.88,
+					"endTime": 3.76,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "えー",
+					"romaji": "ee",
+					"startTime": 3.76,
+					"endTime": 5.761,
+					"color": "purple",
+					"type": "interjection"
+				}
+			]
+		},
+		{
+			"id": "sub-8",
+			"order": 5,
+			"startTime": 34.86,
+			"endTime": 35.719,
+			"sentence": "面白そう",
+			"translation": {
+				"vi": "Có vẻ thú vị",
+				"en": "Looks interesting"
+			},
+			"words": [
+				{
+					"text": "面白",
+					"romaji": "omoshiro",
+					"startTime": 0.0,
+					"endTime": 0.43,
+					"color": "blue",
+					"type": "adjective"
+				},
+				{
+					"text": "そう",
+					"romaji": "sou",
+					"startTime": 0.43,
+					"endTime": 0.859,
+					"color": "purple",
+					"type": "adverb"
+				}
+			]
+		},
+		{
+			"id": "sub-9",
+			"order": 6,
+			"startTime": 35.719,
+			"endTime": 37.8,
+			"sentence": "みどりさん",
+			"translation": {
+				"vi": "Chị Midori",
+				"en": "Midori-san"
+			},
+			"words": [
+				{
+					"text": "みどり",
+					"romaji": "midori",
+					"startTime": 0.0,
+					"endTime": 1.04,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "さん",
+					"romaji": "san",
+					"startTime": 1.04,
+					"endTime": 2.081,
+					"color": "green",
+					"type": "particle"
+				}
+			]
+		},
+		{
+			"id": "sub-10",
+			"order": 7,
+			"startTime": 37.8,
+			"endTime": 38.54,
+			"sentence": "参加する",
+			"translation": {
+				"vi": "Tham gia",
+				"en": "Participate"
+			},
+			"words": [
+				{
+					"text": "参加",
+					"romaji": "sanka",
+					"startTime": 0.0,
+					"endTime": 0.37,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "する",
+					"romaji": "suru",
+					"startTime": 0.37,
+					"endTime": 0.74,
+					"color": "red",
+					"type": "verb"
+				}
+			]
+		},
+		{
+			"id": "sub-11",
+			"order": 8,
+			"startTime": 38.54,
+			"endTime": 41.18,
+			"sentence": "うーんでも",
+			"translation": {
+				"vi": "Ừm nhưng",
+				"en": "Hmm but"
+			},
+			"words": [
+				{
+					"text": "うーん",
+					"romaji": "uun",
+					"startTime": 0.0,
+					"endTime": 0.88,
+					"color": "purple",
+					"type": "interjection"
+				},
+				{
+					"text": "でも",
+					"romaji": "demo",
+					"startTime": 0.88,
+					"endTime": 2.64,
+					"color": "green",
+					"type": "conjunction"
+				}
+			]
+		},
+		{
+			"id": "sub-12",
+			"order": 9,
+			"startTime": 41.18,
+			"endTime": 45.36,
+			"sentence": "みどりさん5万円で和菓子がたくさん",
+			"translation": {
+				"vi": "Chị Midori, với 50,000 yên có thể mua rất nhiều wagashi",
+				"en": "Midori-san, with 50,000 yen you can buy a lot of wagashi"
+			},
+			"words": [
+				{
+					"text": "みどり",
+					"romaji": "midori",
+					"startTime": 0.0,
+					"endTime": 0.5,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "さん",
+					"romaji": "san",
+					"startTime": 0.5,
+					"endTime": 1.0,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "5万円",
+					"romaji": "gomanen",
+					"startTime": 1.0,
+					"endTime": 1.55,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "で",
+					"romaji": "de",
+					"startTime": 1.55,
+					"endTime": 1.82,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "和菓子",
+					"romaji": "wagashi",
+					"startTime": 1.82,
+					"endTime": 2.59,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "が",
+					"romaji": "ga",
+					"startTime": 2.59,
+					"endTime": 2.91,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "たくさん",
+					"romaji": "takusan",
+					"startTime": 2.91,
+					"endTime": 4.18,
+					"color": "purple",
+					"type": "adverb"
+				}
+			]
+		},
+		{
+			"id": "sub-13",
+			"order": 10,
+			"startTime": 45.36,
+			"endTime": 49.8,
+			"sentence": "買えるよえ和菓子",
+			"translation": {
+				"vi": "Có thể mua đấy, wagashi",
+				"en": "You can buy it, wagashi"
+			},
+			"words": [
+				{
+					"text": "買える",
+					"romaji": "kaeru",
+					"startTime": 0.0,
+					"endTime": 1.11,
+					"color": "red",
+					"type": "verb"
+				},
+				{
+					"text": "よ",
+					"romaji": "yo",
+					"startTime": 1.11,
+					"endTime": 1.67,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "え",
+					"romaji": "e",
+					"startTime": 1.67,
+					"endTime": 2.22,
+					"color": "purple",
+					"type": "interjection"
+				},
+				{
+					"text": "和菓子",
+					"romaji": "wagashi",
+					"startTime": 2.22,
+					"endTime": 4.44,
+					"color": "blue",
+					"type": "noun"
+				}
+			]
+		},
+		{
+			"id": "sub-14",
+			"order": 11,
+			"startTime": 49.8,
+			"endTime": 50.52,
+			"sentence": "羊羹",
+			"translation": {
+				"vi": "Yokan",
+				"en": "Yokan"
+			},
+			"words": [
+				{
+					"text": "羊羹",
+					"romaji": "yokan",
+					"startTime": 0.0,
+					"endTime": 0.72,
+					"color": "blue",
+					"type": "noun"
+				}
+			]
+		},
+		{
+			"id": "sub-15",
+			"order": 12,
+			"startTime": 50.52,
+			"endTime": 51.66,
+			"sentence": "柏餅",
+			"translation": {
+				"vi": "Kashiwamochi",
+				"en": "Kashiwamochi"
+			},
+			"words": [
+				{
+					"text": "柏餅",
+					"romaji": "kashiwamochi",
+					"startTime": 0.0,
+					"endTime": 1.14,
+					"color": "blue",
+					"type": "noun"
+				}
+			]
+		},
+		{
+			"id": "sub-16",
+			"order": 13,
+			"startTime": 51.66,
+			"endTime": 53.34,
+			"sentence": "桜餅おはぎ",
+			"translation": {
+				"vi": "Sakura mochi, ohagi",
+				"en": "Sakura mochi, ohagi"
+			},
+			"words": [
+				{
+					"text": "桜餅",
+					"romaji": "sakuramochi",
+					"startTime": 0.0,
+					"endTime": 0.84,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "おはぎ",
+					"romaji": "ohagi",
+					"startTime": 0.84,
+					"endTime": 1.68,
+					"color": "blue",
+					"type": "noun"
+				}
+			]
+		},
+		{
+			"id": "sub-17",
+			"order": 14,
+			"startTime": 53.34,
+			"endTime": 57.059,
+			"sentence": "団子団子団子どうする",
+			"translation": {
+				"vi": "Dango, dango, dango, làm sao đây?",
+				"en": "Dango, dango, dango, what should I do?"
+			},
+			"words": [
+				{
+					"text": "団子",
+					"romaji": "dango",
+					"startTime": 0.0,
+					"endTime": 0.93,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "団子",
+					"romaji": "dango",
+					"startTime": 0.93,
+					"endTime": 1.86,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "団子",
+					"romaji": "dango",
+					"startTime": 1.86,
+					"endTime": 2.79,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "どうする",
+					"romaji": "dousuru",
+					"startTime": 2.79,
+					"endTime": 3.719,
+					"color": "red",
+					"type": "verb"
+				}
+			]
+		},
+		{
+			"id": "sub-18",
+			"order": 15,
+			"startTime": 57.059,
+			"endTime": 60.539,
+			"sentence": "やってみるわぁ",
+			"translation": {
+				"vi": "Tôi sẽ thử làm",
+				"en": "I'll try it"
+			},
+			"words": [
+				{
+					"text": "やって",
+					"romaji": "yatte",
+					"startTime": 0.0,
+					"endTime": 0.87,
+					"color": "red",
+					"type": "verb"
+				},
+				{
+					"text": "みる",
+					"romaji": "miru",
+					"startTime": 0.87,
+					"endTime": 1.74,
+					"color": "red",
+					"type": "verb"
+				},
+				{
+					"text": "わぁ",
+					"romaji": "waa",
+					"startTime": 1.74,
+					"endTime": 3.48,
+					"color": "purple",
+					"type": "particle"
+				}
+			]
+		},
+		{
+			"id": "sub-19",
+			"order": 16,
+			"startTime": 60.539,
+			"endTime": 61.399,
+			"sentence": "頑張ろう",
+			"translation": {
+				"vi": "Cố gắng thôi",
+				"en": "Let's do our best"
+			},
+			"words": [
+				{
+					"text": "頑張ろう",
+					"romaji": "ganbarou",
+					"startTime": 0.0,
+					"endTime": 0.86,
+					"color": "red",
+					"type": "verb"
+				}
+			]
+		},
+		{
+			"id": "sub-20",
+			"order": 17,
+			"startTime": 61.399,
+			"endTime": 64.52,
+			"sentence": "手伝うよ",
+			"translation": {
+				"vi": "Tôi sẽ giúp",
+				"en": "I'll help"
+			},
+			"words": [
+				{
+					"text": "手伝う",
+					"romaji": "tetsudau",
+					"startTime": 0.0,
+					"endTime": 1.04,
+					"color": "red",
+					"type": "verb"
+				},
+				{
+					"text": "よ",
+					"romaji": "yo",
+					"startTime": 1.04,
+					"endTime": 3.121,
+					"color": "green",
+					"type": "particle"
+				}
+			]
+		},
+		{
+			"id": "sub-22",
+			"order": 18,
+			"startTime": 70.86,
+			"endTime": 74.9,
+			"sentence": "疲れたいや大丈夫",
+			"translation": {
+				"vi": "Mệt rồi, không, không sao",
+				"en": "I'm tired, no, I'm fine"
+			},
+			"words": [
+				{
+					"text": "疲れた",
+					"romaji": "tsukareta",
+					"startTime": 0.0,
+					"endTime": 1.01,
+					"color": "red",
+					"type": "verb"
+				},
+				{
+					"text": "いや",
+					"romaji": "iya",
+					"startTime": 1.01,
+					"endTime": 1.51,
+					"color": "purple",
+					"type": "interjection"
+				},
+				{
+					"text": "大丈夫",
+					"romaji": "daijoubu",
+					"startTime": 1.51,
+					"endTime": 4.04,
+					"color": "blue",
+					"type": "adjective"
+				}
+			]
+		},
+		{
+			"id": "sub-23",
+			"order": 19,
+			"startTime": 74.9,
+			"endTime": 77.58,
+			"sentence": "無理しないでね",
+			"translation": {
+				"vi": "Đừng cố quá nhé",
+				"en": "Don't push yourself too hard"
+			},
+			"words": [
+				{
+					"text": "無理",
+					"romaji": "muri",
+					"startTime": 0.0,
+					"endTime": 0.67,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "しないで",
+					"romaji": "shinaide",
+					"startTime": 0.67,
+					"endTime": 1.34,
+					"color": "red",
+					"type": "verb"
+				},
+				{
+					"text": "ね",
+					"romaji": "ne",
+					"startTime": 1.34,
+					"endTime": 2.68,
+					"color": "green",
+					"type": "particle"
+				}
+			]
+		},
+		{
+			"id": "sub-24",
+			"order": 20,
+			"startTime": 77.58,
+			"endTime": 81.6,
+			"sentence": "絶対に勝つ",
+			"translation": {
+				"vi": "Nhất định sẽ thắng",
+				"en": "I will definitely win"
+			},
+			"words": [
+				{
+					"text": "絶対",
+					"romaji": "zetai",
+					"startTime": 0.0,
+					"endTime": 1.01,
+					"color": "purple",
+					"type": "adverb"
+				},
+				{
+					"text": "に",
+					"romaji": "ni",
+					"startTime": 1.01,
+					"endTime": 1.34,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "勝つ",
+					"romaji": "katsu",
+					"startTime": 1.34,
+					"endTime": 4.02,
+					"color": "red",
+					"type": "verb"
+				}
+			]
+		},
+		{
+			"id": "sub-26",
+			"order": 21,
+			"startTime": 85.439,
+			"endTime": 88.259,
+			"sentence": "大会参加者は",
+			"translation": {
+				"vi": "Những người tham gia giải đấu là",
+				"en": "The tournament participants are"
+			},
+			"words": [
+				{
+					"text": "大会",
+					"romaji": "taikai",
+					"startTime": 0.0,
+					"endTime": 0.94,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "参加者",
+					"romaji": "sankasha",
+					"startTime": 0.94,
+					"endTime": 1.88,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "は",
+					"romaji": "wa",
+					"startTime": 1.88,
+					"endTime": 2.82,
+					"color": "green",
+					"type": "particle"
+				}
+			]
+		},
+		{
+			"id": "sub-27",
+			"order": 22,
+			"startTime": 88.259,
+			"endTime": 89.36,
+			"sentence": "剛力さん",
+			"translation": {
+				"vi": "Anh Gouriki",
+				"en": "Gouriki-san"
+			},
+			"words": [
+				{
+					"text": "剛力",
+					"romaji": "gouriki",
+					"startTime": 0.0,
+					"endTime": 0.55,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "さん",
+					"romaji": "san",
+					"startTime": 0.55,
+					"endTime": 1.101,
+					"color": "green",
+					"type": "particle"
+				}
+			]
+		},
+		{
+			"id": "sub-28",
+			"order": 23,
+			"startTime": 89.36,
+			"endTime": 91.159,
+			"sentence": "勝又さん",
+			"translation": {
+				"vi": "Anh Katsumata",
+				"en": "Katsumata-san"
+			},
+			"words": [
+				{
+					"text": "勝又",
+					"romaji": "katsumata",
+					"startTime": 0.0,
+					"endTime": 0.9,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "さん",
+					"romaji": "san",
+					"startTime": 0.9,
+					"endTime": 1.799,
+					"color": "green",
+					"type": "particle"
+				}
+			]
+		},
+		{
+			"id": "sub-29",
+			"order": 24,
+			"startTime": 91.159,
+			"endTime": 96.92,
+			"sentence": "みどりさん以上3名です",
+			"translation": {
+				"vi": "Chị Midori, tổng cộng 3 người",
+				"en": "Midori-san, 3 people in total"
+			},
+			"words": [
+				{
+					"text": "みどり",
+					"romaji": "midori",
+					"startTime": 0.0,
+					"endTime": 0.96,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "さん",
+					"romaji": "san",
+					"startTime": 0.96,
+					"endTime": 1.92,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "以上",
+					"romaji": "ijou",
+					"startTime": 1.92,
+					"endTime": 2.88,
+					"color": "purple",
+					"type": "adverb"
+				},
+				{
+					"text": "3名",
+					"romaji": "sanmei",
+					"startTime": 2.88,
+					"endTime": 3.84,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "です",
+					"romaji": "desu",
+					"startTime": 3.84,
+					"endTime": 5.761,
+					"color": "red",
+					"type": "verb"
+				}
+			]
+		},
+		{
+			"id": "sub-30",
+			"order": 25,
+			"startTime": 96.96,
+			"endTime": 98.7,
+			"sentence": "みどりさん",
+			"translation": {
+				"vi": "Chị Midori",
+				"en": "Midori-san"
+			},
+			"words": [
+				{
+					"text": "みどり",
+					"romaji": "midori",
+					"startTime": 0.0,
+					"endTime": 0.87,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "さん",
+					"romaji": "san",
+					"startTime": 0.87,
+					"endTime": 1.74,
+					"color": "green",
+					"type": "particle"
+				}
+			]
+		},
+		{
+			"id": "sub-31",
+			"order": 26,
+			"startTime": 98.7,
+			"endTime": 100.74,
+			"sentence": "準備はいい",
+			"translation": {
+				"vi": "Sẵn sàng chưa?",
+				"en": "Are you ready?"
+			},
+			"words": [
+				{
+					"text": "準備",
+					"romaji": "junbi",
+					"startTime": 0.0,
+					"endTime": 1.02,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "は",
+					"romaji": "wa",
+					"startTime": 1.02,
+					"endTime": 1.36,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "いい",
+					"romaji": "ii",
+					"startTime": 1.36,
+					"endTime": 2.04,
+					"color": "blue",
+					"type": "adjective"
+				}
+			]
+		},
+		{
+			"id": "sub-32",
+			"order": 27,
+			"startTime": 100.74,
+			"endTime": 105.78,
+			"sentence": "玉夫君ごめんえどうしたの",
+			"translation": {
+				"vi": "Tamao-kun, xin lỗi, có chuyện gì vậy?",
+				"en": "Tamao-kun, sorry, what's wrong?"
+			},
+			"words": [
+				{
+					"text": "玉夫",
+					"romaji": "tamao",
+					"startTime": 0.0,
+					"endTime": 0.84,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "君",
+					"romaji": "kun",
+					"startTime": 0.84,
+					"endTime": 1.26,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "ごめん",
+					"romaji": "gomen",
+					"startTime": 1.26,
+					"endTime": 1.68,
+					"color": "red",
+					"type": "verb"
+				},
+				{
+					"text": "え",
+					"romaji": "e",
+					"startTime": 1.68,
+					"endTime": 2.1,
+					"color": "purple",
+					"type": "interjection"
+				},
+				{
+					"text": "どうした",
+					"romaji": "doushita",
+					"startTime": 2.1,
+					"endTime": 3.36,
+					"color": "red",
+					"type": "verb"
+				},
+				{
+					"text": "の",
+					"romaji": "no",
+					"startTime": 3.36,
+					"endTime": 5.04,
+					"color": "green",
+					"type": "particle"
+				}
+			]
+		},
+		{
+			"id": "sub-33",
+			"order": 28,
+			"startTime": 105.78,
+			"endTime": 109.439,
+			"sentence": "優勝無理だと思う",
+			"translation": {
+				"vi": "Tôi nghĩ không thể thắng được",
+				"en": "I think winning is impossible"
+			},
+			"words": [
+				{
+					"text": "優勝",
+					"romaji": "yushou",
+					"startTime": 0.0,
+					"endTime": 0.91,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "無理",
+					"romaji": "muri",
+					"startTime": 0.91,
+					"endTime": 1.83,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "だ",
+					"romaji": "da",
+					"startTime": 1.83,
+					"endTime": 2.19,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "と",
+					"romaji": "to",
+					"startTime": 2.19,
+					"endTime": 2.55,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "思う",
+					"romaji": "omou",
+					"startTime": 2.55,
+					"endTime": 3.659,
+					"color": "red",
+					"type": "verb"
+				}
+			]
+		},
+		{
+			"id": "sub-34",
+			"order": 29,
+			"startTime": 109.439,
+			"endTime": 112.799,
+			"sentence": "今まで誰よりも練習してきた",
+			"translation": {
+				"vi": "Cho đến giờ tôi đã luyện tập nhiều hơn ai hết",
+				"en": "Until now I've practiced more than anyone"
+			},
+			"words": [
+				{
+					"text": "今まで",
+					"romaji": "imamade",
+					"startTime": 0.0,
+					"endTime": 0.84,
+					"color": "yellow",
+					"type": "time"
+				},
+				{
+					"text": "誰",
+					"romaji": "dare",
+					"startTime": 0.84,
+					"endTime": 1.26,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "よりも",
+					"romaji": "yorimo",
+					"startTime": 1.26,
+					"endTime": 1.68,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "練習",
+					"romaji": "renshuu",
+					"startTime": 1.68,
+					"endTime": 2.52,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "して",
+					"romaji": "shite",
+					"startTime": 2.52,
+					"endTime": 2.94,
+					"color": "red",
+					"type": "verb"
+				},
+				{
+					"text": "きた",
+					"romaji": "kita",
+					"startTime": 2.94,
+					"endTime": 3.36,
+					"color": "red",
+					"type": "verb"
+				}
+			]
+		},
+		{
+			"id": "sub-35",
+			"order": 30,
+			"startTime": 112.799,
+			"endTime": 115.939,
+			"sentence": "自分を信じて",
+			"translation": {
+				"vi": "Hãy tin vào bản thân",
+				"en": "Believe in yourself"
+			},
+			"words": [
+				{
+					"text": "自分",
+					"romaji": "jibun",
+					"startTime": 0.0,
+					"endTime": 1.05,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "を",
+					"romaji": "wo",
+					"startTime": 1.05,
+					"endTime": 1.57,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "信じて",
+					"romaji": "shinjite",
+					"startTime": 1.57,
+					"endTime": 3.14,
+					"color": "red",
+					"type": "verb"
+				}
+			]
+		},
+		{
+			"id": "sub-36",
+			"order": 31,
+			"startTime": 116.54,
+			"endTime": 120.06,
+			"sentence": "そうだねありがとう",
+			"translation": {
+				"vi": "Đúng vậy, cảm ơn",
+				"en": "That's right, thank you"
+			},
+			"words": [
+				{
+					"text": "そう",
+					"romaji": "sou",
+					"startTime": 0.0,
+					"endTime": 0.88,
+					"color": "purple",
+					"type": "adverb"
+				},
+				{
+					"text": "だ",
+					"romaji": "da",
+					"startTime": 0.88,
+					"endTime": 1.32,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "ね",
+					"romaji": "ne",
+					"startTime": 1.32,
+					"endTime": 1.76,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "ありがとう",
+					"romaji": "arigatou",
+					"startTime": 1.76,
+					"endTime": 3.52,
+					"color": "red",
+					"type": "verb"
+				}
+			]
+		},
+		{
+			"id": "sub-37",
+			"order": 32,
+			"startTime": 120.06,
+			"endTime": 123.68,
+			"sentence": "行こうかうん",
+			"translation": {
+				"vi": "Đi thôi nhé, ừm",
+				"en": "Let's go, yeah"
+			},
+			"words": [
+				{
+					"text": "行こう",
+					"romaji": "ikou",
+					"startTime": 0.0,
+					"endTime": 1.81,
+					"color": "red",
+					"type": "verb"
+				},
+				{
+					"text": "か",
+					"romaji": "ka",
+					"startTime": 1.81,
+					"endTime": 2.26,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "うん",
+					"romaji": "un",
+					"startTime": 2.26,
+					"endTime": 3.62,
+					"color": "purple",
+					"type": "interjection"
+				}
+			]
+		},
+		{
+			"id": "sub-38",
+			"order": 33,
+			"startTime": 127.2,
+			"endTime": 130.64,
+			"sentence": "よいしょよいしょ",
+			"translation": {
+				"vi": "Hô, hô",
+				"en": "Heave ho, heave ho"
+			},
+			"words": [
+				{
+					"text": "よいしょ",
+					"romaji": "yoisho",
+					"startTime": 0.0,
+					"endTime": 1.72,
+					"color": "purple",
+					"type": "interjection"
+				},
+				{
+					"text": "よいしょ",
+					"romaji": "yoisho",
+					"startTime": 1.72,
+					"endTime": 3.44,
+					"color": "purple",
+					"type": "interjection"
+				}
+			]
+		},
+		{
+			"id": "sub-39",
+			"order": 34,
+			"startTime": 130.92,
+			"endTime": 131.94,
+			"sentence": "あ",
+			"translation": {
+				"vi": "Ồ",
+				"en": "Oh"
+			},
+			"words": [
+				{
+					"text": "あ",
+					"romaji": "a",
+					"startTime": 0.0,
+					"endTime": 1.02,
+					"color": "purple",
+					"type": "interjection"
+				}
+			]
+		},
+		{
+			"id": "sub-40",
+			"order": 35,
+			"startTime": 131.94,
+			"endTime": 134.0,
+			"sentence": "危ない",
+			"translation": {
+				"vi": "Nguy hiểm",
+				"en": "Dangerous"
+			},
+			"words": [
+				{
+					"text": "危ない",
+					"romaji": "abunai",
+					"startTime": 0.0,
+					"endTime": 2.06,
+					"color": "blue",
+					"type": "adjective"
+				}
+			]
+		},
+		{
+			"id": "sub-41",
+			"order": 36,
+			"startTime": 134.7,
+			"endTime": 140.78,
+			"sentence": "緑さんお疲れ試合残念だったね",
+			"translation": {
+				"vi": "Chị Midori, vất vả rồi, trận đấu thật đáng tiếc nhỉ",
+				"en": "Midori-san, you worked hard, the match was unfortunate"
+			},
+			"words": [
+				{
+					"text": "緑",
+					"romaji": "midori",
+					"startTime": 0.0,
+					"endTime": 1.01,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "さん",
+					"romaji": "san",
+					"startTime": 1.01,
+					"endTime": 2.02,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "お疲れ",
+					"romaji": "otsukare",
+					"startTime": 2.02,
+					"endTime": 3.03,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "試合",
+					"romaji": "shiai",
+					"startTime": 3.03,
+					"endTime": 4.04,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "残念",
+					"romaji": "zannen",
+					"startTime": 4.04,
+					"endTime": 5.05,
+					"color": "blue",
+					"type": "adjective"
+				},
+				{
+					"text": "だった",
+					"romaji": "datta",
+					"startTime": 5.05,
+					"endTime": 6.06,
+					"color": "red",
+					"type": "verb"
+				},
+				{
+					"text": "ね",
+					"romaji": "ne",
+					"startTime": 6.06,
+					"endTime": 6.08,
+					"color": "green",
+					"type": "particle"
+				}
+			]
+		},
+		{
+			"id": "sub-42",
+			"order": 37,
+			"startTime": 140.9,
+			"endTime": 148.379,
+			"sentence": "これおいしいえそれクッキーうん3か所で",
+			"translation": {
+				"vi": "Cái này ngon, ừm, đó là bánh quy, ừm, ở 3 chỗ",
+				"en": "This is delicious, yeah, that's a cookie, yeah, at 3 places"
+			},
+			"words": [
+				{
+					"text": "これ",
+					"romaji": "kore",
+					"startTime": 0.0,
+					"endTime": 0.94,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "おいしい",
+					"romaji": "oishii",
+					"startTime": 0.94,
+					"endTime": 1.87,
+					"color": "blue",
+					"type": "adjective"
+				},
+				{
+					"text": "え",
+					"romaji": "e",
+					"startTime": 1.87,
+					"endTime": 2.25,
+					"color": "purple",
+					"type": "interjection"
+				},
+				{
+					"text": "それ",
+					"romaji": "sore",
+					"startTime": 2.25,
+					"endTime": 3.19,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "クッキー",
+					"romaji": "kukkii",
+					"startTime": 3.19,
+					"endTime": 4.12,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "うん",
+					"romaji": "un",
+					"startTime": 4.12,
+					"endTime": 4.87,
+					"color": "purple",
+					"type": "interjection"
+				},
+				{
+					"text": "3か所",
+					"romaji": "sankasho",
+					"startTime": 4.87,
+					"endTime": 5.62,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "で",
+					"romaji": "de",
+					"startTime": 5.62,
+					"endTime": 7.479,
+					"color": "green",
+					"type": "particle"
+				}
+			]
+		},
+		{
+			"id": "sub-43",
+			"order": 38,
+			"startTime": 148.379,
+			"endTime": 151.56,
+			"sentence": "クッキーもらった",
+			"translation": {
+				"vi": "Đã nhận được bánh quy",
+				"en": "I received cookies"
+			},
+			"words": [
+				{
+					"text": "クッキー",
+					"romaji": "kukkii",
+					"startTime": 0.0,
+					"endTime": 1.06,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "もらった",
+					"romaji": "moratta",
+					"startTime": 1.06,
+					"endTime": 3.181,
+					"color": "red",
+					"type": "verb"
+				}
+			]
+		},
+		{
+			"id": "sub-44",
+			"order": 39,
+			"startTime": 151.56,
+			"endTime": 156.44,
+			"sentence": "参加してよかったそれならよかった",
+			"translation": {
+				"vi": "Tham gia thật tốt, vậy thì tốt rồi",
+				"en": "It was good to participate, then that's good"
+			},
+			"words": [
+				{
+					"text": "参加",
+					"romaji": "sanka",
+					"startTime": 0.0,
+					"endTime": 0.61,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "して",
+					"romaji": "shite",
+					"startTime": 0.61,
+					"endTime": 1.22,
+					"color": "red",
+					"type": "verb"
+				},
+				{
+					"text": "よかった",
+					"romaji": "yokatta",
+					"startTime": 1.22,
+					"endTime": 2.44,
+					"color": "red",
+					"type": "verb"
+				},
+				{
+					"text": "それ",
+					"romaji": "sore",
+					"startTime": 2.44,
+					"endTime": 3.05,
+					"color": "blue",
+					"type": "noun"
+				},
+				{
+					"text": "なら",
+					"romaji": "nara",
+					"startTime": 3.05,
+					"endTime": 3.66,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "よかった",
+					"romaji": "yokatta",
+					"startTime": 3.66,
+					"endTime": 4.88,
+					"color": "red",
+					"type": "verb"
+				}
+			]
+		}
+	]
+}

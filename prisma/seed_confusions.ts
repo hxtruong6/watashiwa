@@ -1,40 +1,68 @@
 // ❯ npx tsx prisma/seed_confusions.ts
-import { ConfusionType } from '@prisma/client';
+import { ConfusionType, Prisma } from '@prisma/client';
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
 
 import { prisma } from '../src/lib/db';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const DATA_PATH = path.join(__dirname, '../scripts/confusion_pair.json');
+const DATA_FOLDER =
+	'/Users/xuantruong/Documents/WORK/SIDE_PROJECTS/watashiwa_data/data/seed/confusion';
 
 interface ConfusionJsonItem {
 	vocabId1: string; // This is actually the surface form in the JSON
 	vocabId2: string; // This is actually the surface form in the JSON
 	type: ConfusionType;
-	explanation: any;
+	explanation: Prisma.InputJsonValue;
 }
 
 async function seedConfusions() {
-	console.log('🛡️ Starting Interference Shield Seeding from JSON...');
+	console.log('🛡️ Starting Interference Shield Seeding from folder...');
+	console.log(`📁 Reading from: ${DATA_FOLDER}`);
 
-	if (!fs.existsSync(DATA_PATH)) {
-		console.error(`❌ Data file not found at: ${DATA_PATH}`);
+	if (!fs.existsSync(DATA_FOLDER)) {
+		console.error(`❌ Data folder not found at: ${DATA_FOLDER}`);
 		return;
 	}
 
-	const rawData = fs.readFileSync(DATA_PATH, 'utf-8');
-	const pairs: ConfusionJsonItem[] = JSON.parse(rawData);
+	// Read all JSON files from the folder
+	const files = fs
+		.readdirSync(DATA_FOLDER)
+		.filter((file) => file.endsWith('.json'))
+		.sort();
 
-	console.log(`Found ${pairs.length} pairs to process.`);
+	if (files.length === 0) {
+		console.error(`❌ No JSON files found in: ${DATA_FOLDER}`);
+		return;
+	}
 
-	for (const item of pairs) {
+	console.log(`📄 Found ${files.length} JSON file(s) to process:\n`);
+
+	let allPairs: ConfusionJsonItem[] = [];
+
+	// Process each file
+	for (const file of files) {
+		const filePath = path.join(DATA_FOLDER, file);
+		console.log(`  📖 Reading: ${file}`);
+
+		try {
+			const rawData = fs.readFileSync(filePath, 'utf-8');
+			const pairs: ConfusionJsonItem[] = JSON.parse(rawData);
+			allPairs = allPairs.concat(pairs);
+			console.log(`     ✓ Loaded ${pairs.length} pairs from ${file}`);
+		} catch (error) {
+			console.error(`     ❌ Error reading ${file}:`, error);
+		}
+	}
+
+	console.log(`\n📊 Total pairs loaded: ${allPairs.length}`);
+	console.log(`\n🔄 Processing pairs...\n`);
+
+	// Process all pairs
+	for (const item of allPairs) {
 		await upsertPair(item);
 	}
 
-	console.log('✅ Seeding complete.');
+	console.log('\n✅ Seeding complete.');
 }
 
 async function upsertPair(item: ConfusionJsonItem) {

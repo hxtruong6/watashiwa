@@ -18,7 +18,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 
 const { Text } = Typography;
 const { useToken } = theme;
@@ -59,6 +59,7 @@ export default function DesktopNavDock({
 	const t = useTranslations('NavBar');
 	const isScrolled = useScrollPosition({ threshold: 50 });
 	const isDark = token.colorBgBase === '#151F32';
+	const [isHovered, setIsHovered] = useState(false);
 
 	return (
 		<motion.div
@@ -109,10 +110,12 @@ export default function DesktopNavDock({
 				>
 					<Link href={isPublic ? '/' : '/dashboard?app=true'}>
 						<motion.div
+							onHoverStart={() => setIsHovered(true)}
+							onHoverEnd={() => setIsHovered(false)}
 							animate={{
-								scale: isScrolled ? 0.95 : 1,
+								scale: isHovered ? 1.02 : isScrolled ? 0.95 : 1,
 							}}
-							transition={{ duration: 0.3 }}
+							transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
 						>
 							<Flex align="center" gap="small" style={{ cursor: 'pointer', height: '100%' }}>
 								<Image

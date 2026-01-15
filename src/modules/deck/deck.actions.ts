@@ -390,6 +390,11 @@ export async function getDecks() {
 
 /**
  * Get decks with due counts for dashboard
+ * Sorting priority:
+ * 1. Due decks (dueCount > 0) - sorted by dueCount desc
+ * 2. Last learned decks (has lastReview) - sorted by lastReview desc
+ * 3. New decks (no lastReview) - sorted by order
+ * Returns top 10 decks
  */
 export const getDecksWithDue = cache(async (userId?: string) => {
 	try {
@@ -402,6 +407,7 @@ export const getDecksWithDue = cache(async (userId?: string) => {
 			uid = user.id;
 		}
 
+		// Get all accessible decks
 		const decks = await prisma.deck.findMany({
 			where: {
 				OR: [{ isPublic: true }, { authorId: uid }],
@@ -411,21 +417,29 @@ export const getDecksWithDue = cache(async (userId?: string) => {
 					select: { vocabularies: true },
 				},
 			},
-			orderBy: {
-				createdAt: 'desc',
-			},
 		});
 
-		// Get due counts for each deck
+		// Get due counts and last review date for each deck
 		const decksWithDue = await Promise.all(
 			decks.map(async (deck) => {
-				const dueCount = await prisma.userReview.count({
-					where: {
-						userId: uid,
-						nextReviewAt: { lte: new Date() },
-						vocab: { deckId: deck.id },
-					},
-				});
+				const [dueCount, lastReview] = await Promise.all([
+					prisma.userReview.count({
+						where: {
+							userId: uid,
+							nextReviewAt: { lte: new Date() },
+							vocab: { deckId: deck.id },
+						},
+					}),
+					prisma.userReview.findFirst({
+						where: {
+							userId: uid,
+							vocab: { deckId: deck.id },
+							lastReview: { not: null },
+						},
+						orderBy: { lastReview: 'desc' },
+						select: { lastReview: true },
+					}),
+				]);
 
 				return {
 					id: deck.id,
@@ -433,11 +447,63 @@ export const getDecksWithDue = cache(async (userId?: string) => {
 					title: deck.title,
 					cardCount: deck._count.vocabularies,
 					dueCount,
+					lastReview: lastReview?.lastReview || null,
+					sortOrder: deck.sortOrder ?? 999999, // Use high number for null values
 				};
 			}),
 		);
 
-		return decksWithDue;
+		// Sort by priority: due decks > last learned > new decks
+		decksWithDue.sort((a, b) => {
+			const aHasDue = a.dueCount > 0;
+			const bHasDue = b.dueCount > 0;
+			const aIsLearned = a.dueCount === 0 && a.lastReview !== null;
+			const bIsLearned = b.dueCount === 0 && b.lastReview !== null;
+
+			// Priority 1: Due decks first (dueCount > 0)
+			if (aHasDue && !bHasDue) return -1;
+			if (!aHasDue && bHasDue) return 1;
+
+			// Within due decks: sort by dueCount desc (most due first)
+			if (aHasDue && bHasDue) {
+				if (a.dueCount !== b.dueCount) {
+					return b.dueCount - a.dueCount;
+				}
+				// If same due count, sort by lastReview desc (most recent first)
+				if (a.lastReview && b.lastReview) {
+					return b.lastReview.getTime() - a.lastReview.getTime();
+				}
+				if (a.lastReview) return -1;
+				if (b.lastReview) return 1;
+				// If neither has lastReview, sort by sortOrder
+				return a.sortOrder - b.sortOrder;
+			}
+
+			// Priority 2: Last learned decks (no due cards but has been learned)
+			if (aIsLearned && !bIsLearned) return -1;
+			if (!aIsLearned && bIsLearned) return 1;
+
+			// Within last learned: sort by lastReview desc (most recent first)
+			if (aIsLearned && bIsLearned && a.lastReview && b.lastReview) {
+				return b.lastReview.getTime() - a.lastReview.getTime();
+			}
+			// If same lastReview or one missing, sort by sortOrder
+			if (aIsLearned && bIsLearned) {
+				return a.sortOrder - b.sortOrder;
+			}
+
+			// Priority 3: New decks (no due cards, no lastReview) - sort by sortOrder ascending
+			return a.sortOrder - b.sortOrder;
+		});
+
+		// Return top 10, excluding internal sorting fields
+		return decksWithDue.slice(0, 10).map((deck) => ({
+			id: deck.id,
+			slug: deck.slug,
+			title: deck.title,
+			cardCount: deck.cardCount,
+			dueCount: deck.dueCount,
+		}));
 	} catch (error) {
 		console.error('Error fetching decks with due:', error);
 		return [];

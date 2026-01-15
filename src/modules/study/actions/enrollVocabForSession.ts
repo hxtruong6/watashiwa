@@ -10,7 +10,10 @@ import {
 } from '@/lib/schemas/jsonb';
 import { executeSafeAction } from '@/modules/core/action-client';
 import { StandardCard } from '@/modules/flashcard/types';
-import { invalidateRelatedWordsCache } from '@/modules/study/services/semantic-relationship.service';
+import {
+	invalidateRelatedWordsCache,
+	invalidateRelatedWordsCacheForVocab,
+} from '@/modules/study/services/semantic-relationship.service';
 import { invalidateSemanticCache } from '@/modules/study/services/semantic-sequencer.service';
 import { Prisma } from '@prisma/client';
 import { z } from 'zod';

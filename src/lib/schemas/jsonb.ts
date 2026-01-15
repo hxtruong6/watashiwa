@@ -62,7 +62,7 @@ export const StoryContentSchema = z
 	.object({
 		title: LocalizedStringSchema,
 		body_text: z.string(),
-		translation: LocalizedStringSchema.optional(), // Added for consistency with data_rules.md example
+		translation: LocalizedStringSchema, // Required: Both English and Vietnamese for language switching
 		highlights: z.array(StoryHighlightSchema),
 	})
 	.strict();

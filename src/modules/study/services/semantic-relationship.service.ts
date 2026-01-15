@@ -105,6 +105,18 @@ export async function invalidateRelatedWordsCache(userId: string): Promise<void>
 	await relatedWordsCache.deletePattern(`related-words:${userId}:`);
 }
 
+/**
+ * Invalidate cache for a specific vocabulary (more targeted than invalidating all user caches)
+ * This is called when a vocab's relationships might have changed
+ */
+export async function invalidateRelatedWordsCacheForVocab(
+	userId: string,
+	vocabId: string,
+): Promise<void> {
+	const cacheKey = `related-words:${userId}:${vocabId}`;
+	await relatedWordsCache.delete(cacheKey);
+}
+
 export const SemanticRelationshipService = {
 	/**
 	 * Returns 0..5 related words. Never throws. Returns [] on invalid input, missing vocab, or service failure.
@@ -119,8 +131,13 @@ export const SemanticRelationshipService = {
 		if (cached) return cached;
 
 		const start = Date.now();
+		let baseQueryTime = 0;
+		let confusionQueryTime = 0;
+		let deckQueryTime = 0;
 
 		try {
+			// Query 1: Get base vocabulary (needed for all relationship calculations)
+			const queryStart = Date.now();
 			const base = await prisma.vocabulary.findUnique({
 				where: { id: vocabId },
 				select: {
@@ -149,6 +166,7 @@ export const SemanticRelationshipService = {
 					wordOrder: true,
 				},
 			});
+			baseQueryTime = Date.now() - queryStart;
 
 			if (!base) {
 				await relatedWordsCache.set(cacheKey, []);
@@ -162,6 +180,8 @@ export const SemanticRelationshipService = {
 			const byVocabId = new Map<string, RelatedWord>();
 
 			// 1) Confusion pairs (highest priority)
+			// Optimize: Use separate queries to avoid nested relation overhead
+			const confusionStart = Date.now();
 			const confusionPairs = await prisma.confusionPair.findMany({
 				where: { OR: [{ vocabId1: vocabId }, { vocabId2: vocabId }] },
 				select: {
@@ -225,6 +245,7 @@ export const SemanticRelationshipService = {
 				},
 				take: 10,
 			});
+			confusionQueryTime = Date.now() - confusionStart;
 
 			for (const pair of confusionPairs) {
 				const otherRaw = pair.vocabId1 === vocabId ? pair.vocab2 : pair.vocab1;
@@ -255,6 +276,7 @@ export const SemanticRelationshipService = {
 			}
 
 			// 2) Contextual grouping: same deck (plus kanji/han-viet/tag overlap as strength boosters)
+			const deckStart = Date.now();
 			const deckCandidates = base.deckId
 				? await prisma.vocabulary.findMany({
 						where: { deckId: base.deckId, id: { not: vocabId } },
@@ -286,6 +308,7 @@ export const SemanticRelationshipService = {
 						take: 50,
 					})
 				: [];
+			deckQueryTime = Date.now() - deckStart;
 
 			for (const cand of deckCandidates) {
 				if (!cand?.id || cand.id === vocabId) continue;
@@ -345,6 +368,12 @@ export const SemanticRelationshipService = {
 					vocabId,
 					count: ranked.length,
 					cacheType: relatedWordsCache.getCacheType(),
+					queryTimes: {
+						base: baseQueryTime,
+						confusion: confusionQueryTime,
+						deck: deckQueryTime,
+						total: elapsed,
+					},
 				});
 			}
 

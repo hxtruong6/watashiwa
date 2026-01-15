@@ -59,3 +59,9 @@ The project follows the **Startup Quality Stack** (Expert Strategy):
 1. `pnpm install`
 2. `pnpm prisma generate`
 3. `pnpm run dev`
+
+```bash
+npx tsx prisma/seed.ts
+npx tsx scripts/seed_minna_course.ts
+npx tsx prisma/seed_confusions.ts
+```

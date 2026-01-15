@@ -18,7 +18,11 @@ export async function GET() {
 	try {
 		// Try multiple paths to support both development and standalone production builds
 		const possiblePaths = [
-			// Development: public folder at project root
+			// Development: lib folder (moved from public to avoid Next.js static file conflict)
+			join(process.cwd(), 'src', 'lib', 'sw.js'),
+			// Standalone production: lib folder in standalone directory
+			join(process.cwd(), '.next', 'standalone', 'src', 'lib', 'sw.js'),
+			// Legacy: public folder (for backwards compatibility during migration)
 			join(process.cwd(), 'public', 'sw.js'),
 			// Standalone production: public folder in standalone directory
 			join(process.cwd(), '.next', 'standalone', 'public', 'sw.js'),

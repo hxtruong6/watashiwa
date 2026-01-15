@@ -10,6 +10,7 @@ import { trackEvent } from '@/lib/analytics';
 import { markStoryRead } from '@/modules/priming/actions';
 import { StoryWithContent } from '@/modules/priming/types';
 import { Button, Typography } from 'antd';
+import { useLocale } from 'next-intl';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { KeywordHighlight } from './KeywordHighlight';
@@ -23,6 +24,7 @@ interface StoryReaderProps {
 }
 
 export function StoryReader({ story, onComplete, onSkip }: StoryReaderProps) {
+	const locale = useLocale() as 'en' | 'vi';
 	const [isMarkingRead, setIsMarkingRead] = useState(false);
 	const scrollRef = useRef<HTMLDivElement>(null);
 	const [scrollDepth, setScrollDepth] = useState(0);
@@ -61,49 +63,112 @@ export function StoryReader({ story, onComplete, onSkip }: StoryReaderProps) {
 		}
 	}, []);
 
+	// Get story text based on current locale
+	const storyText = useMemo(() => {
+		if (locale === 'vi' && story.content.translation?.vi) {
+			return story.content.translation.vi;
+		}
+		// Use body_text for English or fallback
+		return story.content.translation?.en || story.content.body_text;
+	}, [locale, story.content]);
+
 	// Parse story text with highlights
 	const parsedText = useMemo(() => {
-		const { body_text, highlights } = story.content;
+		const { highlights } = story.content;
+		// For Vietnamese, we need to find Japanese words in the Vietnamese text
+		// For English, use body_text with existing highlights
+		const textToParse = locale === 'vi' ? storyText : story.content.body_text;
+
 		const parts: Array<{
 			type: 'text' | 'keyword';
 			content: string;
 			highlight?: { vocab_id: string; word_surface: string; start_index: number; length: number };
 		}> = [];
 
-		// Sort highlights by start_index
-		const sortedHighlights = [...highlights].sort((a, b) => a.start_index - b.start_index);
+		// For English: use existing highlight positions
+		// For Vietnamese: find Japanese words in Vietnamese text
+		if (locale === 'en') {
+			// Sort highlights by start_index
+			const sortedHighlights = [...highlights].sort((a, b) => a.start_index - b.start_index);
+			let lastIndex = 0;
 
-		let lastIndex = 0;
+			for (const highlight of sortedHighlights) {
+				// Add text before highlight
+				if (highlight.start_index > lastIndex) {
+					parts.push({
+						type: 'text',
+						content: textToParse.slice(lastIndex, highlight.start_index),
+					});
+				}
 
-		for (const highlight of sortedHighlights) {
-			// Add text before highlight
-			if (highlight.start_index > lastIndex) {
+				// Add highlighted keyword
 				parts.push({
-					type: 'text',
-					content: body_text.slice(lastIndex, highlight.start_index),
+					type: 'keyword',
+					content: textToParse.slice(
+						highlight.start_index,
+						highlight.start_index + highlight.length,
+					),
+					highlight,
 				});
+
+				lastIndex = highlight.start_index + highlight.length;
 			}
 
-			// Add highlighted keyword
-			parts.push({
-				type: 'keyword',
-				content: body_text.slice(highlight.start_index, highlight.start_index + highlight.length),
-				highlight,
+			// Add remaining text
+			if (lastIndex < textToParse.length) {
+				parts.push({
+					type: 'text',
+					content: textToParse.slice(lastIndex),
+				});
+			}
+		} else {
+			// For Vietnamese: find Japanese words in the text
+			// Japanese words are the same, so we search for them in Vietnamese text
+			const sortedHighlights = [...highlights].sort((a, b) => {
+				// Find positions in Vietnamese text
+				const posA = textToParse.indexOf(a.word_surface);
+				const posB = textToParse.indexOf(b.word_surface);
+				return posA - posB;
 			});
 
-			lastIndex = highlight.start_index + highlight.length;
-		}
+			let lastIndex = 0;
 
-		// Add remaining text
-		if (lastIndex < body_text.length) {
-			parts.push({
-				type: 'text',
-				content: body_text.slice(lastIndex),
-			});
+			for (const highlight of sortedHighlights) {
+				const wordPos = textToParse.indexOf(highlight.word_surface, lastIndex);
+				if (wordPos === -1) {
+					// Word not found, skip
+					continue;
+				}
+
+				// Add text before highlight
+				if (wordPos > lastIndex) {
+					parts.push({
+						type: 'text',
+						content: textToParse.slice(lastIndex, wordPos),
+					});
+				}
+
+				// Add highlighted keyword
+				parts.push({
+					type: 'keyword',
+					content: highlight.word_surface,
+					highlight,
+				});
+
+				lastIndex = wordPos + highlight.word_surface.length;
+			}
+
+			// Add remaining text
+			if (lastIndex < textToParse.length) {
+				parts.push({
+					type: 'text',
+					content: textToParse.slice(lastIndex),
+				});
+			}
 		}
 
 		return parts;
-	}, [story.content]);
+	}, [story.content, storyText, locale]);
 
 	const handleMarkAsRead = useCallback(async () => {
 		// Prevent race condition: ignore if already processing
@@ -152,7 +217,7 @@ export function StoryReader({ story, onComplete, onSkip }: StoryReaderProps) {
 		>
 			{/* Title */}
 			<Title level={2} style={{ marginBottom: 16, textAlign: 'center' }}>
-				{story.content.title.en || story.content.title.vi}
+				{story.content.title[locale] || story.content.title.en || story.content.title.vi}
 			</Title>
 
 			{/* Story Content */}

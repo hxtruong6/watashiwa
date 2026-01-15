@@ -1,0 +1,172 @@
+.container {
+  width: 100%;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  /* Subtle background for better contrast */
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 8px;
+  /* Smooth transitions for subtitle changes */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.sentence {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 8px;
+  max-width: 80ch; /* Limit line width for readability */
+  line-height: 1.8; /* Improved line-height for Japanese text */
+  /* Smooth fade-in for subtitle changes */
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.word {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.wordText {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.8; /* Improved for Japanese text readability */
+  transition: all 0.2s ease; /* Smoother transition */
+}
+
+.romaji {
+  font-size: 14px; /* Increased from 12px for better readability */
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.45);
+  margin-top: 2px;
+  line-height: 1.4; /* Improved line-height */
+}
+
+/* Color coding */
+.word-yellow {
+  background-color: rgba(255, 235, 59, 0.2);
+}
+
+.word-green {
+  background-color: rgba(76, 175, 80, 0.2);
+}
+
+.word-purple {
+  background-color: rgba(156, 39, 176, 0.2);
+}
+
+.word-red {
+  background-color: rgba(244, 67, 54, 0.2);
+}
+
+.word-blue {
+  background-color: rgba(33, 150, 243, 0.2);
+}
+
+.word-light-blue {
+  background-color: rgba(3, 169, 244, 0.2);
+}
+
+.word-default {
+  background-color: transparent;
+}
+
+/* Active word highlighting */
+.wordActive {
+  transform: scale(1.12); /* Increased from 1.05 for better visibility */
+  font-weight: 700;
+  background-color: rgba(24, 144, 255, 0.4) !important; /* More visible */
+  border: 2px solid rgba(24, 144, 255, 0.6); /* Add border for emphasis */
+  transition: all 0.2s ease; /* Smooth transition */
+  z-index: 1; /* Ensure active word is above others */
+}
+
+.wordActive .wordText {
+  font-weight: 700;
+}
+
+.wordActive .romaji {
+  color: rgba(24, 144, 255, 0.9); /* More visible */
+  font-weight: 600; /* Increased from 500 */
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .container {
+    background-color: rgba(255, 255, 255, 0.03); /* Subtle background in dark mode */
+  }
+
+  .romaji {
+    color: rgba(255, 255, 255, 0.65); /* More visible in dark mode */
+  }
+
+  .word-yellow {
+    background-color: rgba(255, 235, 59, 0.15);
+  }
+
+  .word-green {
+    background-color: rgba(76, 175, 80, 0.15);
+  }
+
+  .word-purple {
+    background-color: rgba(156, 39, 176, 0.15);
+  }
+
+  .word-red {
+    background-color: rgba(244, 67, 54, 0.15);
+  }
+
+  .word-blue {
+    background-color: rgba(33, 150, 243, 0.15);
+  }
+
+  .word-light-blue {
+    background-color: rgba(3, 169, 244, 0.15);
+  }
+
+  .wordActive {
+    background-color: rgba(24, 144, 255, 0.25) !important;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px 8px;
+    min-height: 100px;
+  }
+
+  .wordText {
+    font-size: 20px; /* Increased from 18px for mobile readability */
+    line-height: 1.9; /* Slightly more spacing on mobile */
+  }
+
+  .romaji {
+    font-size: 16px; /* Increased from 11px for mobile readability */
+    line-height: 1.5;
+  }
+
+  .sentence {
+    gap: 6px;
+    max-width: 100%; /* Full width on mobile */
+  }
+}

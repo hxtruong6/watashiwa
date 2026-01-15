@@ -1,0 +1,223 @@
+{
+	"version": "1.0",
+	"videoId": "demo-video-001",
+	"language": "ja",
+	"targetLanguage": "vi",
+	"subtitles": [
+		{
+			"id": "sub-1",
+			"order": 1,
+			"startTime": 0.0,
+			"endTime": 5.2,
+			"sentence": "今日、仕事が終わってから一人でいろいろ考えた。",
+			"translation": {
+				"vi": "Hôm nay, sau khi tan làm, tôi đã một mình suy nghĩ rất nhiều.",
+				"en": "Today, after work ended, I thought about many things alone."
+			},
+			"words": [
+				{
+					"text": "今日、",
+					"romaji": "kyou",
+					"startTime": 0.0,
+					"endTime": 0.8,
+					"color": "yellow",
+					"type": "time"
+				},
+				{
+					"text": "仕事",
+					"romaji": "shigoto",
+					"startTime": 0.8,
+					"endTime": 1.2,
+					"color": "green",
+					"type": "noun"
+				},
+				{
+					"text": "が",
+					"romaji": "ga",
+					"startTime": 1.2,
+					"endTime": 1.4,
+					"color": "blue",
+					"type": "particle"
+				},
+				{
+					"text": "終わって",
+					"romaji": "owatte",
+					"startTime": 1.4,
+					"endTime": 2.0,
+					"color": "purple",
+					"type": "verb"
+				},
+				{
+					"text": "から",
+					"romaji": "kara",
+					"startTime": 2.0,
+					"endTime": 2.3,
+					"color": "blue",
+					"type": "particle"
+				},
+				{
+					"text": "一人",
+					"romaji": "hitori",
+					"startTime": 2.3,
+					"endTime": 2.8,
+					"color": "green",
+					"type": "noun"
+				},
+				{
+					"text": "で",
+					"romaji": "de",
+					"startTime": 2.8,
+					"endTime": 3.0,
+					"color": "blue",
+					"type": "particle"
+				},
+				{
+					"text": "いろいろ",
+					"romaji": "iroiro",
+					"startTime": 3.0,
+					"endTime": 3.6,
+					"color": "light-blue",
+					"type": "adverb"
+				},
+				{
+					"text": "考えた。",
+					"romaji": "kangae ta",
+					"startTime": 3.6,
+					"endTime": 5.2,
+					"color": "purple",
+					"type": "verb"
+				}
+			]
+		},
+		{
+			"id": "sub-2",
+			"order": 2,
+			"startTime": 5.2,
+			"endTime": 10.5,
+			"sentence": "最近、何かが違うと感じていた。",
+			"translation": {
+				"vi": "Gần đây, tôi cảm thấy có điều gì đó khác lạ.",
+				"en": "Recently, I felt that something was different."
+			},
+			"words": [
+				{
+					"text": "最近、",
+					"romaji": "saikin",
+					"startTime": 0.0,
+					"endTime": 1.2,
+					"color": "yellow",
+					"type": "time"
+				},
+				{
+					"text": "何か",
+					"romaji": "nanika",
+					"startTime": 1.2,
+					"endTime": 1.8,
+					"color": "green",
+					"type": "pronoun"
+				},
+				{
+					"text": "が",
+					"romaji": "ga",
+					"startTime": 1.8,
+					"endTime": 2.0,
+					"color": "blue",
+					"type": "particle"
+				},
+				{
+					"text": "違う",
+					"romaji": "chigau",
+					"startTime": 2.0,
+					"endTime": 2.6,
+					"color": "purple",
+					"type": "verb"
+				},
+				{
+					"text": "と",
+					"romaji": "to",
+					"startTime": 2.6,
+					"endTime": 2.8,
+					"color": "blue",
+					"type": "particle"
+				},
+				{
+					"text": "感じて",
+					"romaji": "kanjite",
+					"startTime": 2.8,
+					"endTime": 3.6,
+					"color": "purple",
+					"type": "verb"
+				},
+				{
+					"text": "いた。",
+					"romaji": "ita",
+					"startTime": 3.6,
+					"endTime": 5.3,
+					"color": "purple",
+					"type": "verb"
+				}
+			]
+		},
+		{
+			"id": "sub-3",
+			"order": 3,
+			"startTime": 10.5,
+			"endTime": 15.8,
+			"sentence": "でも、それが何なのか、まだ分からない。",
+			"translation": {
+				"vi": "Nhưng tôi vẫn chưa biết đó là cái gì.",
+				"en": "But I still don't know what it is."
+			},
+			"words": [
+				{
+					"text": "でも、",
+					"romaji": "demo",
+					"startTime": 0.0,
+					"endTime": 0.6,
+					"color": "red",
+					"type": "conjunction"
+				},
+				{
+					"text": "それが",
+					"romaji": "sore ga",
+					"startTime": 0.6,
+					"endTime": 1.2,
+					"color": "green",
+					"type": "pronoun"
+				},
+				{
+					"text": "何",
+					"romaji": "nani",
+					"startTime": 1.2,
+					"endTime": 1.6,
+					"color": "green",
+					"type": "pronoun"
+				},
+				{
+					"text": "なのか、",
+					"romaji": "na no ka",
+					"startTime": 1.6,
+					"endTime": 2.4,
+					"color": "blue",
+					"type": "particle"
+				},
+				{
+					"text": "まだ",
+					"romaji": "mada",
+					"startTime": 2.4,
+					"endTime": 2.8,
+					"color": "light-blue",
+					"type": "adverb"
+				},
+				{
+					"text": "分からない。",
+					"romaji": "wakaranai",
+					"startTime": 2.8,
+					"endTime": 5.3,
+					"color": "purple",
+					"type": "verb"
+				}
+			]
+		}
+	]
+}

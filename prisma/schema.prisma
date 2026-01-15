@@ -83,6 +83,7 @@ model User {
   commentVotes    CommentVote[]
   dailyStudyStats DailyStudyStat[]
   studySessions   StudySession[]
+  videoLogs       VideoLog[]
 
   @@index([email])
 }
@@ -156,6 +157,7 @@ model Deck {
   vocabularies Vocabulary[]
   stories      Story[]
   courseDecks  CourseDeck[]
+  videos       Video[]
 
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime  @updatedAt @map("updated_at")
@@ -583,4 +585,90 @@ enum ReportStatus {
   ACCEPTED
   REJECTED
   DUPLICATE
+}
+
+// -----------------------------------------------------------------------------
+// 6. VIDEO LEARNING
+// -----------------------------------------------------------------------------
+
+model Video {
+  id           String  @id @default(uuid())
+  title        String
+  titleEn      String? @map("title_en")
+  description  String?
+  videoUrl     String  @map("video_url") // CDN URL or external URL
+  thumbnailUrl String? @map("thumbnail_url")
+  duration     Int // Duration in seconds
+  deckId       String? @map("deck_id") // Optional: link to deck
+  deck         Deck?   @relation(fields: [deckId], references: [id], onDelete: SetNull)
+
+  // Metadata
+  level          String? // e.g., "N5", "N4", "Beginner"
+  tags           String[]
+  language       String   @default("ja") // Source language
+  targetLanguage String   @default("vi") // Translation language
+
+  // Content Status
+  contentStatus ContentStatus @default(DRAFT) @map("content_status")
+  verifiedAt    DateTime?
+  verifiedBy    String?
+
+  // Relations
+  subtitles Subtitle[]
+  videoLogs VideoLog[]
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  @@index([deckId])
+  @@index([contentStatus])
+}
+
+model Subtitle {
+  id      String @id @default(uuid())
+  videoId String @map("video_id")
+  video   Video  @relation(fields: [videoId], references: [id], onDelete: Cascade)
+
+  // Timing
+  startTime Float @map("start_time") // Start time in seconds
+  endTime   Float @map("end_time") // End time in seconds
+
+  // Content
+  sentence    String // Japanese sentence
+  translation Json // { "vi": "...", "en": "..." }
+  words       Json // Word-level timing data (see SubtitleWord type)
+
+  // Display
+  order Int // Sentence order in video
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([videoId, order])
+  @@index([videoId, startTime])
+}
+
+model VideoLog {
+  id      String @id @default(uuid())
+  userId  String @map("user_id")
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  videoId String @map("video_id")
+  video   Video  @relation(fields: [videoId], references: [id], onDelete: Cascade)
+
+  // Progress
+  currentTime Float   @default(0) @map("current_time") // Last watched position
+  completed   Boolean @default(false)
+  watchTime   Int     @default(0) @map("watch_time") // Total seconds watched
+
+  // Analytics
+  playCount   Int      @default(0) @map("play_count")
+  lastWatched DateTime @default(now()) @map("last_watched")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([userId, videoId])
+  @@index([userId])
+  @@index([videoId])
 }
