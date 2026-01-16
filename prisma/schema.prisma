@@ -487,7 +487,6 @@ model Kanji {
 
   @@index([jlptLevel])
   @@index([frequency])
-  @@map("kanji")
 }
 
 model KanjiComposition {
@@ -505,7 +504,6 @@ model KanjiComposition {
 
   @@unique([wordId, kanjiId, position])
   @@index([kanjiId, readingType])
-  @@map("kanji_composition")
 }
 
 // -----------------------------------------------------------------------------

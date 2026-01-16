@@ -5,7 +5,7 @@
  * Pure functions - testable without database
  */
 import { trackEvent } from '@/lib/analytics';
-import { StoryAnalytics } from '@/lib/schemas/jsonb';
+import type { StoryAnalytics } from '@/lib/schemas/jsonb';
 
 import {
 	addCollectedWordsToReviewQueue,

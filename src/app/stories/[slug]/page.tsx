@@ -44,14 +44,7 @@ export default async function StoryPage({ params, searchParams }: StoryPageProps
 	return (
 		<div style={{ padding: '24px' }}>
 			<Suspense fallback={<StoryReaderSkeleton />}>
-				<StoryReader
-					story={story}
-					locale={locale as 'en' | 'vi'}
-					onComplete={() => {
-						// Redirect to story list after completion
-						window.location.href = '/stories';
-					}}
-				/>
+				<StoryReader story={story} locale={locale as 'en' | 'vi'} redirectOnComplete="/stories" />
 			</Suspense>
 
 			{/* Debug Info (remove in production) */}

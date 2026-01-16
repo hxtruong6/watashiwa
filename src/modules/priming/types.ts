@@ -3,28 +3,25 @@
  *
  * Re-exports and extends story-related types for the Contextual Story Reader feature
  */
-import {
+import type {
 	MultiLangString,
 	StoryAnalytics,
-	StoryAnalyticsSchema,
 	StoryContent,
-	StoryContentSchema,
 	StoryPositions,
+} from '@/lib/schemas/jsonb';
+import {
+	StoryAnalyticsSchema,
+	StoryContentSchema,
 	StoryPositionsSchema,
 } from '@/lib/schemas/jsonb';
 import { Story, StoryLog, StoryVocabulary, Vocabulary } from '@prisma/client';
 import { z } from 'zod';
 
 // Re-export schemas for validation
-export {
-	MultiLangString,
-	StoryAnalytics,
-	StoryAnalyticsSchema,
-	StoryContent,
-	StoryContentSchema,
-	StoryPositions,
-	StoryPositionsSchema,
-};
+export { StoryAnalyticsSchema, StoryContentSchema, StoryPositionsSchema };
+
+// Re-export types
+export type { MultiLangString, StoryAnalytics, StoryContent, StoryPositions };
 
 // -----------------------------------------------------------------------------
 // Extended Story Types with Parsed JSON

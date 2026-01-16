@@ -25,7 +25,7 @@
  *   { type: 'text', content: ' by バス.' }
  * ]
  */
-import { StoryPositions } from '@/lib/schemas/jsonb';
+import type { StoryPositions } from '@/lib/schemas/jsonb';
 import { StoryVocabulary, Vocabulary } from '@prisma/client';
 
 import { TextSegment, VocabMeta } from '../types';

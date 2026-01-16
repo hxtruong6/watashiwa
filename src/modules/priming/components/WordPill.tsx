@@ -7,7 +7,7 @@
 
 'use client';
 
-import { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { VocabMeta } from '../types';
 import { prefersReducedMotion } from '../utils/animationHelpers';
@@ -19,10 +19,13 @@ interface WordPillProps {
 	onOpenTooltip: (vocab: VocabMeta, anchorElement: HTMLElement) => void;
 }
 
-export function WordPill({ vocab, isCollected, onClick, onOpenTooltip }: WordPillProps) {
+function WordPillComponent({ vocab, isCollected, onClick, onOpenTooltip }: WordPillProps) {
 	const pillRef = useRef<HTMLSpanElement>(null);
+	const shimmerTriggeredRef = useRef(false);
 	const [isHovered, setIsHovered] = useState(false);
 	const [isPressed, setIsPressed] = useState(false);
+	const [hasShimmer, setHasShimmer] = useState(false);
+	const [isFocused, setIsFocused] = useState(false);
 
 	const handleClick = useCallback(
 		(e: React.MouseEvent) => {
@@ -56,6 +59,47 @@ export function WordPill({ vocab, isCollected, onClick, onOpenTooltip }: WordPil
 		setIsPressed(false);
 	}, []);
 
+	const handleKeyDown = useCallback(
+		(e: React.KeyboardEvent) => {
+			if (e.key === 'Enter' || e.key === ' ') {
+				e.preventDefault();
+				e.stopPropagation();
+				if (pillRef.current) {
+					// Create a synthetic mouse event to trigger click
+					const syntheticEvent = {
+						currentTarget: pillRef.current,
+						stopPropagation: () => {},
+					} as React.MouseEvent;
+					handleClick(syntheticEvent);
+				}
+			}
+		},
+		[handleClick],
+	);
+
+	const handleFocus = useCallback(() => {
+		setIsFocused(true);
+	}, []);
+
+	const handleBlur = useCallback(() => {
+		setIsFocused(false);
+	}, []);
+
+	// Trigger shimmer effect on mount for uncollected words
+	useEffect(() => {
+		if (!isCollected && !shimmerTriggeredRef.current && pillRef.current) {
+			shimmerTriggeredRef.current = true;
+			setHasShimmer(true);
+
+			// Remove shimmer class after animation completes (800ms)
+			const timer = setTimeout(() => {
+				setHasShimmer(false);
+			}, 800);
+
+			return () => clearTimeout(timer);
+		}
+	}, [isCollected]);
+
 	// Check if animations should be disabled
 	const reducedMotion = prefersReducedMotion();
 
@@ -63,6 +107,9 @@ export function WordPill({ vocab, isCollected, onClick, onOpenTooltip }: WordPil
 		<span
 			ref={pillRef}
 			onClick={handleClick}
+			onKeyDown={handleKeyDown}
+			onFocus={handleFocus}
+			onBlur={handleBlur}
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}
 			onMouseDown={handleMouseDown}
@@ -92,6 +139,12 @@ export function WordPill({ vocab, isCollected, onClick, onOpenTooltip }: WordPil
 				textDecorationColor: isCollected ? 'transparent' : '#94C973',
 				textUnderlineOffset: '3px',
 
+				// Focus styles for keyboard navigation
+				...(isFocused && {
+					outline: '3px solid #6C63FF',
+					outlineOffset: '2px',
+				}),
+
 				// Interaction states
 				...(isHovered &&
 					!reducedMotion && {
@@ -111,6 +164,7 @@ export function WordPill({ vocab, isCollected, onClick, onOpenTooltip }: WordPil
 					? 'none'
 					: 'all 150ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 150ms cubic-bezier(0.4, 0, 0.2, 1)',
 			}}
+			className={hasShimmer && !reducedMotion ? 'shimmer-once' : ''}
 		>
 			{vocab.wordSurface}
 
@@ -138,26 +192,39 @@ export function WordPill({ vocab, isCollected, onClick, onOpenTooltip }: WordPil
 				</span>
 			)}
 
-			{/* Shimmer effect on initial load (only for uncollected) */}
-			{!isCollected && (
-				<style jsx>{`
-					@keyframes shimmer {
-						0% {
-							opacity: 1;
-						}
-						50% {
-							opacity: 0.7;
-							box-shadow: 0 0 8px rgba(148, 201, 115, 0.6);
-						}
-						100% {
-							opacity: 1;
-						}
+			{/* Shimmer effect styles */}
+			<style jsx>{`
+				@keyframes shimmer {
+					0% {
+						opacity: 1;
 					}
-				`}</style>
-			)}
+					50% {
+						opacity: 0.7;
+						box-shadow: 0 0 8px rgba(148, 201, 115, 0.6);
+					}
+					100% {
+						opacity: 1;
+					}
+				}
+
+				.shimmer-once {
+					animation: shimmer 0.8s ease-in-out;
+				}
+			`}</style>
 		</span>
 	);
 }
+
+// Memoize to prevent unnecessary re-renders
+export const WordPill = React.memo(WordPillComponent, (prevProps, nextProps) => {
+	// Custom comparison for better performance
+	return (
+		prevProps.vocab.vocabularyId === nextProps.vocab.vocabularyId &&
+		prevProps.isCollected === nextProps.isCollected &&
+		prevProps.onClick === nextProps.onClick &&
+		prevProps.onOpenTooltip === nextProps.onOpenTooltip
+	);
+});
 
 /**
  * WordPill Skeleton (for loading states)

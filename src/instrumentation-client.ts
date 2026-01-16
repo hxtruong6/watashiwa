@@ -42,7 +42,7 @@ if (isEnabled) {
 
 		// Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
 		// Reduced from 1.0 to 0.1 to prevent rate limiting (429 errors)
-		tracesSampleRate: isDevelopment ? 0.1 : 0.1,
+		tracesSampleRate: isDevelopment ? 0 : 0.1,
 
 		// Define how likely Replay events are sampled.
 		// This sets the sample rate to be 10%. You may want this to be 100% while
@@ -51,7 +51,7 @@ if (isEnabled) {
 
 		// Define how likely Replay events are sampled when an error occurs.
 		// Reduced from 1.0 to 0.5 to prevent rate limiting while still capturing errors
-		replaysOnErrorSampleRate: isDevelopment ? 0.5 : 0.5,
+		replaysOnErrorSampleRate: isDevelopment ? 0 : 0.5,
 
 		// Setting this option to true will print useful information to the console while you're setting up Sentry.
 		// Disable to reduce console noise - set to true only when debugging Sentry issues

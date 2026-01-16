@@ -4,7 +4,7 @@
  * Zustand store for managing story reading state (collection mechanics)
  * Handles word collection, progress tracking, and auto-save
  */
-import { StoryAnalytics } from '@/lib/schemas/jsonb';
+import type { StoryAnalytics } from '@/lib/schemas/jsonb';
 // Export for React import
 import React from 'react';
 import { create } from 'zustand';
@@ -187,8 +187,8 @@ export const useStoryProgress = create<StoryProgressStore>()(
 				}),
 				// Deserialize JSON to Map
 				onRehydrateStorage: () => (state) => {
-					if (state && Array.isArray((state as any).collectedWords)) {
-						state.collectedWords = new Map((state as any).collectedWords);
+					if (state && state.collectedWords && Array.isArray(state.collectedWords)) {
+						state.collectedWords = new Map(state.collectedWords as [string, WordCollectionState][]);
 					}
 				},
 			},

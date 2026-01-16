@@ -8,10 +8,10 @@
 'use client';
 
 import { trackEvent } from '@/lib/analytics';
-import { StoryAnalytics } from '@/lib/schemas/jsonb';
 import { TranslationOutlined } from '@ant-design/icons';
-import { Alert, Button, Card, Space, Spin, Typography } from 'antd';
-import { useCallback, useEffect, useState } from 'react';
+import { Alert, Button, Card, Space, Spin, Typography, message } from 'antd';
+import { useRouter } from 'next/navigation';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { completeStoryAction, updateStoryProgressAction } from '../actions';
 import { useAutoSaveProgress, useStoryProgress } from '../hooks/useStoryProgress';
@@ -20,6 +20,7 @@ import { useWordCollection } from '../hooks/useWordCollection';
 import { StoryWithVocabularies, VocabMeta } from '../types';
 import { playCollectionSound, triggerHaptic } from '../utils/animationHelpers';
 import { CollectionDrawer } from './CollectionDrawer';
+import { GhostAnimation } from './GhostAnimation';
 import { SmartTooltip } from './SmartTooltip';
 import { WordPill } from './WordPill';
 
@@ -29,9 +30,16 @@ interface StoryReaderProps {
 	story: StoryWithVocabularies;
 	locale?: 'en' | 'vi';
 	onComplete?: () => void;
+	redirectOnComplete?: string; // URL to redirect to after completion (for Server Component usage)
 }
 
-export function StoryReader({ story, locale = 'en', onComplete }: StoryReaderProps) {
+export function StoryReader({
+	story,
+	locale = 'en',
+	onComplete,
+	redirectOnComplete,
+}: StoryReaderProps) {
+	const router = useRouter();
 	// State management
 	const [showTranslation, setShowTranslation] = useState(false);
 	const [isDrawerExpanded, setIsDrawerExpanded] = useState(false);
@@ -43,6 +51,17 @@ export function StoryReader({ story, locale = 'en', onComplete }: StoryReaderPro
 		anchor: null,
 	});
 	const [isCompleting, setIsCompleting] = useState(false);
+	const [ghostAnimations, setGhostAnimations] = useState<
+		Array<{
+			id: string;
+			wordElement: HTMLElement;
+			wordText: string;
+			vocabularyId: string;
+			targetSlotIndex: number;
+		}>
+	>([]);
+	const [screenReaderAnnouncement, setScreenReaderAnnouncement] = useState<string>('');
+	const drawerRef = useRef<HTMLDivElement | null>(null);
 
 	// Zustand store
 	const startReading = useStoryProgress((state) => state.startReading);
@@ -66,6 +85,14 @@ export function StoryReader({ story, locale = 'en', onComplete }: StoryReaderPro
 				if (totalCollected === 1) {
 					setIsDrawerExpanded(true);
 				}
+
+				// Announce to screen reader
+				const vocabMeta = story.vocabularies.find((v) => v.vocabularyId === vocabularyId);
+				const wordText = vocabMeta?.wordSurface || 'word';
+				const { total } = getProgress();
+				setScreenReaderAnnouncement(
+					`Word collected: ${wordText}. Progress: ${totalCollected} of ${total} words.`,
+				);
 			},
 		});
 
@@ -81,13 +108,14 @@ export function StoryReader({ story, locale = 'en', onComplete }: StoryReaderPro
 
 		// Cleanup on unmount (pause reading)
 		return () => {
-			const analytics = getAnalytics();
+			// Get current read time from store to avoid stale closure
+			const currentReadTime = useStoryProgress.getState().readTimeSeconds;
 			trackEvent('story_paused', {
 				story_id: story.id,
-				paused_at: readTimeSeconds,
+				paused_at: currentReadTime,
 			});
 		};
-	}, [story.id, metadata.totalWords, locale, startReading, getAnalytics, readTimeSeconds]);
+	}, [story.id, metadata.totalWords, locale, startReading]);
 
 	// Auto-save progress every 30 seconds
 	useAutoSaveProgress(story.id, async (analytics, readTime, wordsCollected) => {
@@ -129,10 +157,61 @@ export function StoryReader({ story, locale = 'en', onComplete }: StoryReaderPro
 			if (!result.alreadyCollected) {
 				// Open tooltip
 				setActiveTooltip({ vocab: meta, anchor: wordElement });
+
+				// Trigger ghost animation if drawer is available
+				// The word is now in collectedWords (Zustand store), so we can find its index
+				// in collectedWordsList which maintains story order
+				if (drawerRef.current && result.collected) {
+					// Find the word's position in the story vocabularies (maintains story order)
+					// This will be its position in collectedWordsList after the next render
+					const storyIndex = story.vocabularies.findIndex((v) => v.vocabularyId === vocabularyId);
+					// Count how many words before this one in story order have been collected
+					// Note: We need to include the current word in the count since it's now collected
+					const collectedBefore = story.vocabularies
+						.slice(0, storyIndex + 1)
+						.filter((v) => collectedWords.has(v.vocabularyId)).length;
+					// Target slot is the position in the collected words list (which maintains story order)
+					// Subtract 1 because we want 0-based index
+					const targetSlotIndex = collectedBefore - 1;
+
+					setGhostAnimations((prev) => [
+						...prev,
+						{
+							id: `${vocabularyId}-${Date.now()}`,
+							wordElement,
+							wordText: meta.wordSurface,
+							vocabularyId,
+							targetSlotIndex,
+						},
+					]);
+				}
 			}
 		},
-		[story.vocabularies, handleWordClick],
+		[story.vocabularies, handleWordClick, collectedWords],
 	);
+
+	// Handle tooltip open
+	const handleOpenTooltip = useCallback((vocab: VocabMeta, anchor: HTMLElement) => {
+		setActiveTooltip({ vocab, anchor });
+	}, []);
+
+	// Handle tooltip close
+	const handleCloseTooltip = useCallback(() => {
+		setActiveTooltip({ vocab: null, anchor: null });
+	}, []);
+
+	// Handle ghost animation complete
+	const handleGhostComplete = useCallback(
+		(id: string) => () => {
+			setGhostAnimations((prev) => prev.filter((g) => g.id !== id));
+		},
+		[],
+	);
+
+	// Toggle drawer
+	const handleToggleDrawer = useCallback(() => {
+		setIsDrawerExpanded((prev) => !prev);
+	}, []);
 
 	// Toggle translation
 	const onToggleTranslation = useCallback(() => {
@@ -157,7 +236,7 @@ export function StoryReader({ story, locale = 'en', onComplete }: StoryReaderPro
 
 		try {
 			const analytics = getAnalytics();
-			const { collected, total } = getProgress();
+			const { total } = getProgress();
 
 			const result = await completeStoryAction({
 				storyId: story.id,
@@ -170,18 +249,27 @@ export function StoryReader({ story, locale = 'en', onComplete }: StoryReaderPro
 				// Show success message
 				console.log('✅ Story completed! New flashcards:', result.data?.newCardsAdded);
 
+				// Announce completion to screen reader
+				setScreenReaderAnnouncement('Story complete! All words collected.');
+
 				// Reset progress
 				resetProgress();
 
-				// Callback
-				onComplete?.();
+				// Handle completion callback or redirect
+				if (redirectOnComplete) {
+					router.push(redirectOnComplete);
+				} else {
+					onComplete?.();
+				}
 			} else {
 				console.error('Failed to complete story:', result.error);
-				alert('Failed to complete story. Please try again.');
+				message.error('Failed to complete story. Please try again.');
 			}
 		} catch (error) {
 			console.error('Error completing story:', error);
-			alert('An error occurred. Please try again.');
+			const errorMessage =
+				error instanceof Error ? error.message : 'An error occurred. Please try again.';
+			message.error(errorMessage);
 		} finally {
 			setIsCompleting(false);
 		}
@@ -193,24 +281,30 @@ export function StoryReader({ story, locale = 'en', onComplete }: StoryReaderPro
 		readTimeSeconds,
 		resetProgress,
 		onComplete,
+		redirectOnComplete,
+		router,
 	]);
 
-	// Build collected words list for drawer
-	const collectedWordsList: VocabMeta[] = story.vocabularies
-		.filter((v) => collectedWords.has(v.vocabularyId))
-		.map((v) => {
-			const meanings = v.vocabulary.meanings as Record<string, string[]>;
-			return {
-				vocabularyId: v.vocabularyId,
-				wordSurface: v.wordSurface,
-				wordReading: v.wordReading,
-				meaningEn: meanings.en?.[0] || meanings.english?.[0] || 'No meaning',
-				meaningVi: meanings.vi?.[0] || meanings.vietnamese?.[0] || 'Không có nghĩa',
-				hanViet: v.vocabulary.hanViet,
-				audioUrl: v.vocabulary.audioUrl,
-				positions: v.positions,
-			};
-		});
+	// Build collected words list for drawer (memoized for performance)
+	const collectedWordsList: VocabMeta[] = useMemo(
+		() =>
+			story.vocabularies
+				.filter((v) => collectedWords.has(v.vocabularyId))
+				.map((v) => {
+					const meanings = v.vocabulary.meanings as Record<string, string[]>;
+					return {
+						vocabularyId: v.vocabularyId,
+						wordSurface: v.wordSurface,
+						wordReading: v.wordReading,
+						meaningEn: meanings.en?.[0] || meanings.english?.[0] || 'No meaning',
+						meaningVi: meanings.vi?.[0] || meanings.vietnamese?.[0] || 'Không có nghĩa',
+						hanViet: v.vocabulary.hanViet,
+						audioUrl: v.vocabulary.audioUrl,
+						positions: v.positions,
+					};
+				}),
+		[story.vocabularies, collectedWords],
+	);
 
 	return (
 		<div
@@ -270,6 +364,8 @@ export function StoryReader({ story, locale = 'en', onComplete }: StoryReaderPro
 					borderRadius: '16px',
 					boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
 					marginBottom: '24px',
+					backdropFilter: activeTooltip.vocab ? 'blur(3px)' : 'none',
+					transition: 'backdrop-filter 300ms ease',
 				}}
 			>
 				<Paragraph
@@ -291,7 +387,7 @@ export function StoryReader({ story, locale = 'en', onComplete }: StoryReaderPro
 									vocab={segment.meta}
 									isCollected={isCollected}
 									onClick={onWordClick}
-									onOpenTooltip={(vocab, anchor) => setActiveTooltip({ vocab, anchor })}
+									onOpenTooltip={handleOpenTooltip}
 								/>
 							);
 						}
@@ -334,18 +430,51 @@ export function StoryReader({ story, locale = 'en', onComplete }: StoryReaderPro
 				isCollected={
 					activeTooltip.vocab ? isWordCollected(activeTooltip.vocab.vocabularyId) : false
 				}
-				onClose={() => setActiveTooltip({ vocab: null, anchor: null })}
+				onClose={handleCloseTooltip}
 				onAudioPlay={handleAudioPlay}
 			/>
 
+			{/* Screen Reader Announcements */}
+			<div
+				role="status"
+				aria-live="polite"
+				aria-atomic="true"
+				style={{
+					position: 'absolute',
+					left: '-10000px',
+					width: '1px',
+					height: '1px',
+					overflow: 'hidden',
+				}}
+			>
+				{screenReaderAnnouncement}
+			</div>
+
 			{/* Collection Drawer */}
 			<CollectionDrawer
+				ref={drawerRef}
 				collectedWords={collectedWordsList}
 				totalWords={metadata.totalWords}
 				isExpanded={isDrawerExpanded}
-				onToggle={() => setIsDrawerExpanded(!isDrawerExpanded)}
+				onToggle={handleToggleDrawer}
 				onCompleteStory={onCompleteStory}
 			/>
+
+			{/* Ghost Animations */}
+			{ghostAnimations.map((ghost) => {
+				if (!drawerRef.current) return null;
+
+				return (
+					<GhostAnimation
+						key={ghost.id}
+						wordElement={ghost.wordElement}
+						drawerElement={drawerRef.current}
+						targetSlotIndex={ghost.targetSlotIndex}
+						wordText={ghost.wordText}
+						onComplete={handleGhostComplete(ghost.id)}
+					/>
+				);
+			})}
 
 			{/* Loading Overlay (when completing) */}
 			{isCompleting && (

@@ -9,7 +9,14 @@
 
 import { PlayCircleFilled } from '@ant-design/icons';
 import { Button, Space, Typography } from 'antd';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+	startTransition,
+	useCallback,
+	useEffect,
+	useLayoutEffect,
+	useRef,
+	useState,
+} from 'react';
 import { createPortal } from 'react-dom';
 
 import { VocabMeta } from '../types';
@@ -27,32 +34,104 @@ interface SmartTooltipProps {
 	isCollected: boolean;
 	onClose: () => void;
 	onAudioPlay: (vocabularyId: string) => void;
+	autoPlayAudio?: boolean; // Default: true
 }
 
-export function SmartTooltip({
+function SmartTooltipComponent({
 	vocab,
 	anchorElement,
 	isCollected,
 	onClose,
 	onAudioPlay,
+	autoPlayAudio = true,
 }: SmartTooltipProps) {
 	const tooltipRef = useRef<HTMLDivElement>(null);
-	const [position, setPosition] = useState({ x: 0, y: 0, placement: 'top' as const });
+	const [position, setPosition] = useState<{
+		x: number;
+		y: number;
+		placement: 'top' | 'bottom' | 'left' | 'right';
+	}>({ x: 0, y: 0, placement: 'top' });
 	const [isVisible, setIsVisible] = useState(false);
 	const [isPlayingAudio, setIsPlayingAudio] = useState(false);
 	const audioRef = useRef<HTMLAudioElement | null>(null);
 
-	// Calculate position when vocab/anchor changes
+	// Cleanup audio on unmount or vocab change
 	useEffect(() => {
+		return () => {
+			if (audioRef.current) {
+				audioRef.current.pause();
+				audioRef.current.currentTime = 0;
+				audioRef.current = null;
+			}
+		};
+	}, [vocab]);
+
+	// Define handleAudioClick first (before useEffect that uses it)
+	const handleAudioClick = useCallback(() => {
+		if (!vocab) return;
+
+		// Only play if audioUrl exists
+		if (vocab.audioUrl) {
+			// Play actual audio file
+			if (audioRef.current) {
+				audioRef.current.pause();
+				audioRef.current.currentTime = 0;
+			}
+
+			audioRef.current = new Audio(vocab.audioUrl);
+			setIsPlayingAudio(true);
+
+			audioRef.current.play().catch((error) => {
+				console.error('Audio playback failed:', error);
+				setIsPlayingAudio(false);
+			});
+
+			audioRef.current.onended = () => {
+				setIsPlayingAudio(false);
+			};
+
+			onAudioPlay(vocab.vocabularyId);
+		} else {
+			// Fallback: Use Web Speech API (only if no audioUrl)
+			if ('speechSynthesis' in window) {
+				const utterance = new SpeechSynthesisUtterance(vocab.wordSurface);
+				utterance.lang = 'ja-JP';
+				utterance.rate = 0.8;
+				window.speechSynthesis.speak(utterance);
+				onAudioPlay(vocab.vocabularyId);
+			}
+		}
+	}, [vocab, onAudioPlay]);
+
+	// Calculate position when vocab/anchor changes
+	useLayoutEffect(() => {
 		if (!vocab || !anchorElement || !tooltipRef.current) return;
 
 		const tooltipWidth = 320;
 		const tooltipHeight = 260;
 
 		const pos = calculateTooltipPosition(anchorElement, tooltipWidth, tooltipHeight);
-		setPosition(pos);
-		setIsVisible(true);
+		// Use startTransition to mark state updates as non-urgent, avoiding cascading renders
+		startTransition(() => {
+			setPosition(pos);
+			setIsVisible(true);
+		});
 	}, [vocab, anchorElement]);
+
+	// Auto-play audio after tooltip appears (only if audioUrl exists and autoPlayAudio is enabled)
+	useEffect(() => {
+		if (!vocab || !isVisible || !autoPlayAudio) return;
+
+		// Only auto-play if audioUrl exists
+		if (vocab.audioUrl) {
+			const autoPlayTimer = setTimeout(() => {
+				handleAudioClick();
+			}, 300);
+
+			return () => clearTimeout(autoPlayTimer);
+		}
+		// If no audioUrl, skip auto-play (don't use speech synthesis as fallback)
+	}, [vocab, isVisible, autoPlayAudio, handleAudioClick]);
 
 	// Close on outside click
 	useEffect(() => {
@@ -84,41 +163,6 @@ export function SmartTooltip({
 		document.addEventListener('keydown', handleEscape);
 		return () => document.removeEventListener('keydown', handleEscape);
 	}, [vocab, onClose]);
-
-	const handleAudioClick = useCallback(() => {
-		if (!vocab) return;
-
-		if (vocab.audioUrl) {
-			// Play actual audio file
-			if (audioRef.current) {
-				audioRef.current.pause();
-				audioRef.current.currentTime = 0;
-			}
-
-			audioRef.current = new Audio(vocab.audioUrl);
-			setIsPlayingAudio(true);
-
-			audioRef.current.play().catch((error) => {
-				console.error('Audio playback failed:', error);
-				setIsPlayingAudio(false);
-			});
-
-			audioRef.current.onended = () => {
-				setIsPlayingAudio(false);
-			};
-
-			onAudioPlay(vocab.vocabularyId);
-		} else {
-			// Fallback: Use Web Speech API
-			if ('speechSynthesis' in window) {
-				const utterance = new SpeechSynthesisUtterance(vocab.wordSurface);
-				utterance.lang = 'ja-JP';
-				utterance.rate = 0.8;
-				window.speechSynthesis.speak(utterance);
-				onAudioPlay(vocab.vocabularyId);
-			}
-		}
-	}, [vocab, onAudioPlay]);
 
 	if (!vocab) return null;
 
@@ -190,22 +234,24 @@ export function SmartTooltip({
 				{vocab.wordReading}
 			</Text>
 
-			{/* Audio Button */}
-			<Button
-				type="primary"
-				icon={<PlayCircleFilled />}
-				onClick={handleAudioClick}
-				loading={isPlayingAudio}
-				size="small"
-				style={{
-					marginBottom: '16px',
-				}}
-			>
-				Play Audio
-			</Button>
+			{/* Audio Button - Only show if audioUrl exists */}
+			{vocab.audioUrl && (
+				<Button
+					type="primary"
+					icon={<PlayCircleFilled />}
+					onClick={handleAudioClick}
+					loading={isPlayingAudio}
+					size="small"
+					style={{
+						marginBottom: '16px',
+					}}
+				>
+					Play Audio
+				</Button>
+			)}
 
 			{/* Meanings */}
-			<Space direction="vertical" size={8} style={{ width: '100%', marginBottom: '16px' }}>
+			<Space orientation="vertical" size={8} style={{ width: '100%', marginBottom: '16px' }}>
 				<div>
 					<Text strong style={{ fontSize: '12px', textTransform: 'uppercase', color: '#999' }}>
 						English
@@ -270,3 +316,16 @@ export function SmartTooltip({
 
 	return createPortal(tooltipContent, portal);
 }
+
+// Memoize to prevent unnecessary re-renders
+export const SmartTooltip = React.memo(SmartTooltipComponent, (prevProps, nextProps) => {
+	// Custom comparison for better performance
+	return (
+		prevProps.vocab?.vocabularyId === nextProps.vocab?.vocabularyId &&
+		prevProps.anchorElement === nextProps.anchorElement &&
+		prevProps.isCollected === nextProps.isCollected &&
+		prevProps.onClose === nextProps.onClose &&
+		prevProps.onAudioPlay === nextProps.onAudioPlay &&
+		prevProps.autoPlayAudio === nextProps.autoPlayAudio
+	);
+});

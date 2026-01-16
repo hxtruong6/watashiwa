@@ -4,8 +4,8 @@
  * Pure Prisma database queries - NO business logic
  * All queries return raw Prisma types
  */
-import { db } from '@/lib/db';
-import { StoryAnalytics, StoryContent, StoryPositions } from '@/lib/schemas/jsonb';
+import db from '@/lib/db';
+import type { StoryAnalytics, StoryContent, StoryPositions } from '@/lib/schemas/jsonb';
 import { ContentStatus, Prisma } from '@prisma/client';
 
 import { StoryWithVocabularies } from './types';
