@@ -42,13 +42,13 @@ Based on the reference images, **active/selected navigation items** now have the
 
 ## 📊 Comparison: Before vs After
 
-| Feature | Before | After (iOS 16 Style) |
-|---------|--------|----------------------|
+| Feature               | Before            | After (iOS 16 Style)             |
+| --------------------- | ----------------- | -------------------------------- |
 | **Active Item Style** | Color change only | Distinct glass button with depth |
-| **Glass Visibility** | Basic blur | Enhanced saturation (200%) |
-| **Depth Perception** | Flat | Multi-layer shadows + gradients |
-| **Visual Feedback** | Scale only | Glass button + scale + opacity |
-| **Material Richness** | Basic | Mesh gradients + inner glow |
+| **Glass Visibility**  | Basic blur        | Enhanced saturation (200%)       |
+| **Depth Perception**  | Flat              | Multi-layer shadows + gradients  |
+| **Visual Feedback**   | Scale only        | Glass button + scale + opacity   |
+| **Material Richness** | Basic             | Mesh gradients + inner glow      |
 
 ---
 

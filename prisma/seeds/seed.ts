@@ -1,7 +1,7 @@
 // ❯ npx tsx prisma/seed.ts
 import { ADMIN_USER_ID } from '@/lib/constants';
 
-import { prisma } from '../src/lib/db';
+import { prisma } from '../../src/lib/db';
 
 async function main() {
 	console.log('🌱 Starting seed...');

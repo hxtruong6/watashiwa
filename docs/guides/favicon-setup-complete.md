@@ -186,7 +186,7 @@ This will verify:
 3. **Optional Enhancements**
    - Add more icon sizes for better compatibility (144x144, 384x384)
    - Create custom splash screens for iOS
-   - Add Windows tile icons (mstile-*.png)
+   - Add Windows tile icons (mstile-\*.png)
 
 ---
 

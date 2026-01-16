@@ -44,11 +44,11 @@ Users can switch between two algorithm modes for study sessions:
 ```typescript
 // Simplified flow
 if (algorithmMode === 'semantic') {
-  // Apply semantic sequencing
-  queue = await getSemanticallySequencedQueue(fsrsQueue, options);
+	// Apply semantic sequencing
+	queue = await getSemanticallySequencedQueue(fsrsQueue, options);
 } else {
-  // Use FSRS queue as-is
-  queue = fsrsQueue;
+	// Use FSRS queue as-is
+	queue = fsrsQueue;
 }
 ```
 
@@ -69,13 +69,14 @@ if (algorithmMode === 'semantic') {
 ## Internationalization
 
 All user-facing strings are translated:
+
 - English: `messages/en.json` under "Study" namespace
 - Vietnamese: `messages/vi.json` under "Study" namespace
 
 ## Analytics
 
 Mode switches are tracked via `trackEvent('algorithm_mode_switched', {...})` with:
+
 - `from_mode`: Previous mode
 - `to_mode`: New mode
 - `switch_reason`: Context (e.g., 'user_preference')
-

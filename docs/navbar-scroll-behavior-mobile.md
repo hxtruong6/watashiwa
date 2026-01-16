@@ -29,54 +29,54 @@
 
 ### Top Bar - Default State (At Page Top)
 
-| Property | Value | Rationale |
-|----------|-------|-----------|
-| **Position** | `top: 0` | Full edge-to-edge (mobile standard) |
-| **Padding** | `12px 16px` | Comfortable spacing, touch-friendly |
-| **Height** | `52px` (12px + 28px logo + 12px) | Standard mobile header height |
-| **Glass Intensity** | `medium` (85% opacity) | Balanced visibility |
-| **Logo Size** | `28px × 28px` | Full brand presence |
-| **Border** | Subtle bottom border | Clear separation |
-| **Shadow** | Subtle | Doesn't compete with content |
+| Property            | Value                            | Rationale                           |
+| ------------------- | -------------------------------- | ----------------------------------- |
+| **Position**        | `top: 0`                         | Full edge-to-edge (mobile standard) |
+| **Padding**         | `12px 16px`                      | Comfortable spacing, touch-friendly |
+| **Height**          | `52px` (12px + 28px logo + 12px) | Standard mobile header height       |
+| **Glass Intensity** | `medium` (85% opacity)           | Balanced visibility                 |
+| **Logo Size**       | `28px × 28px`                    | Full brand presence                 |
+| **Border**          | Subtle bottom border             | Clear separation                    |
+| **Shadow**          | Subtle                           | Doesn't compete with content        |
 
 ### Top Bar - Scrolled State (After Scroll)
 
-| Property | Value | Rationale |
-|----------|-------|-----------|
-| **Position** | `top: 0` | Stays at top (mobile standard) |
-| **Padding** | `8px 12px` | More compact, saves vertical space |
-| **Height** | `44px` (8px + 28px logo + 8px) | Minimum touch target height |
-| **Glass Intensity** | `strong` (92% opacity) | Better visibility against scrolled content |
-| **Logo Size** | `24px × 24px` | Slightly smaller, maintains brand |
-| **Border** | Enhanced bottom border | Clearer separation from content |
-| **Shadow** | Enhanced | Better depth perception |
+| Property            | Value                          | Rationale                                  |
+| ------------------- | ------------------------------ | ------------------------------------------ |
+| **Position**        | `top: 0`                       | Stays at top (mobile standard)             |
+| **Padding**         | `8px 12px`                     | More compact, saves vertical space         |
+| **Height**          | `44px` (8px + 28px logo + 8px) | Minimum touch target height                |
+| **Glass Intensity** | `strong` (92% opacity)         | Better visibility against scrolled content |
+| **Logo Size**       | `24px × 24px`                  | Slightly smaller, maintains brand          |
+| **Border**          | Enhanced bottom border         | Clearer separation from content            |
+| **Shadow**          | Enhanced                       | Better depth perception                    |
 
 ---
 
 ### Bottom Navigation Dock - Default State (At Page Top)
 
-| Property | Value | Rationale |
-|----------|-------|-----------|
-| **Position** | `bottom: 0` | Standard bottom nav placement |
-| **Padding** | `12px clamp(16px, 4vw, 24px)` | Comfortable spacing, responsive |
-| **Main Nav Padding** | `8px` | Generous internal spacing |
-| **Search Button Size** | `56px × 56px` | Prominent, easy to tap |
-| **Glass Intensity** | `medium` (88-94% opacity) | Balanced visibility |
-| **Border Radius** | `24px` | Rounded, modern feel |
-| **Shadow** | Subtle upward shadow | Depth without intrusion |
+| Property               | Value                         | Rationale                       |
+| ---------------------- | ----------------------------- | ------------------------------- |
+| **Position**           | `bottom: 0`                   | Standard bottom nav placement   |
+| **Padding**            | `12px clamp(16px, 4vw, 24px)` | Comfortable spacing, responsive |
+| **Main Nav Padding**   | `8px`                         | Generous internal spacing       |
+| **Search Button Size** | `56px × 56px`                 | Prominent, easy to tap          |
+| **Glass Intensity**    | `medium` (88-94% opacity)     | Balanced visibility             |
+| **Border Radius**      | `24px`                        | Rounded, modern feel            |
+| **Shadow**             | Subtle upward shadow          | Depth without intrusion         |
 
 ### Bottom Navigation Dock - Scrolled State (After Scroll)
 
-| Property | Value | Rationale |
-|----------|-------|-----------|
-| **Position** | `bottom: 0` | Stays at bottom (always accessible) |
-| **Padding** | `8px clamp(12px, 3vw, 20px)` | More compact, saves space |
-| **Main Nav Padding** | `6px` | Tighter internal spacing |
-| **Search Button Size** | `52px × 52px` | Slightly smaller, still easy to tap |
-| **Glass Intensity** | `strong` (92-96% opacity) | Enhanced visibility |
-| **Border Radius** | `20px` | Slightly less rounded, more compact feel |
-| **Shadow** | Enhanced upward shadow | Better separation from content |
-| **Scale** | `0.96` (slight reduction) | Less intrusive, more content visible |
+| Property               | Value                        | Rationale                                |
+| ---------------------- | ---------------------------- | ---------------------------------------- |
+| **Position**           | `bottom: 0`                  | Stays at bottom (always accessible)      |
+| **Padding**            | `8px clamp(12px, 3vw, 20px)` | More compact, saves space                |
+| **Main Nav Padding**   | `6px`                        | Tighter internal spacing                 |
+| **Search Button Size** | `52px × 52px`                | Slightly smaller, still easy to tap      |
+| **Glass Intensity**    | `strong` (92-96% opacity)    | Enhanced visibility                      |
+| **Border Radius**      | `20px`                       | Slightly less rounded, more compact feel |
+| **Shadow**             | Enhanced upward shadow       | Better separation from content           |
+| **Scale**              | `0.96` (slight reduction)    | Less intrusive, more content visible     |
 
 ---
 

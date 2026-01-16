@@ -86,7 +86,7 @@ src/modules/analytics/
 
 ```typescript
 // Union type of all valid event names
-type AnalyticsEventName = 
+type AnalyticsEventName =
   | 'user_signed_up'
   | 'study_session_started'
   | ... // etc
@@ -98,10 +98,10 @@ Each event has a corresponding property interface:
 
 ```typescript
 interface StudySessionStartedProperties {
-  entry_type: 'explicit_deck' | 'explicit_course' | 'auto_start';
-  queue_size: number;
-  due_count: number;
-  // ... more properties
+	entry_type: 'explicit_deck' | 'explicit_course' | 'auto_start';
+	queue_size: number;
+	due_count: number;
+	// ... more properties
 }
 ```
 
@@ -111,18 +111,17 @@ The `AnalyticsEventPropertiesMap` maps event names to their property types:
 
 ```typescript
 interface AnalyticsEventPropertiesMap {
-  [AnalyticsEvents.Study.SessionStarted]: StudySessionStartedProperties;
-  // ... more mappings
+	[AnalyticsEvents.Study.SessionStarted]: StudySessionStartedProperties;
+	// ... more mappings
 }
 ```
 
 ### Generic Helper Type
 
 ```typescript
-type EventProperties<T extends AnalyticsEventName> = 
-  T extends keyof AnalyticsEventPropertiesMap
-    ? AnalyticsEventPropertiesMap[T]
-    : Record<string, unknown>;
+type EventProperties<T extends AnalyticsEventName> = T extends keyof AnalyticsEventPropertiesMap
+	? AnalyticsEventPropertiesMap[T]
+	: Record<string, unknown>;
 ```
 
 This allows TypeScript to infer the correct property type based on the event name.
@@ -161,15 +160,12 @@ The `trackEvent` function uses TypeScript overloads to provide type safety:
 ```typescript
 // Type-safe version
 export function trackEvent<T extends AnalyticsEventName>(
-  eventName: T,
-  properties?: EventProperties<T>,
+	eventName: T,
+	properties?: EventProperties<T>,
 ): void;
 
 // Legacy string version (for backward compatibility)
-export function trackEvent(
-  eventName: string,
-  properties?: Record<string, unknown>,
-): void;
+export function trackEvent(eventName: string, properties?: Record<string, unknown>): void;
 ```
 
 ### Compile-Time Validation
@@ -198,8 +194,8 @@ getAllEventNames(): AnalyticsEventName[]
 
    ```typescript
    export interface MyNewEventProperties {
-     required_field: string;
-     optional_field?: number;
+   	required_field: string;
+   	optional_field?: number;
    }
    ```
 

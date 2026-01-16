@@ -84,13 +84,13 @@
 
 ## Skeleton Variant Usage
 
-| Variant | Usage | Files |
-|---------|-------|-------|
-| `PageSkeleton` | Full page loading | 6 files |
-| `ListSkeleton` | List/table loading | 2 files |
-| `CardSkeleton` | Widget/card loading | 1 file |
-| `LayoutSkeleton` | Root layout | 1 file |
-| `NavBarSkeleton` | Navigation bar | 1 file (specialized) |
+| Variant          | Usage               | Files                |
+| ---------------- | ------------------- | -------------------- |
+| `PageSkeleton`   | Full page loading   | 6 files              |
+| `ListSkeleton`   | List/table loading  | 2 files              |
+| `CardSkeleton`   | Widget/card loading | 1 file               |
+| `LayoutSkeleton` | Root layout         | 1 file               |
+| `NavBarSkeleton` | Navigation bar      | 1 file (specialized) |
 
 ## ✅ Completed Actions
 

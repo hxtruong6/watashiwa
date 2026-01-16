@@ -76,9 +76,9 @@
 
 ```json
 {
-  "word_surface": "から 来ました。",
-  "start_index": 295,
-  "length": 7
+	"word_surface": "から 来ました。",
+	"start_index": 295,
+	"length": 7
 }
 ```
 
@@ -96,9 +96,9 @@
 
 ```json
 {
-  "word_surface": "初めまして。",
-  "start_index": 161,
-  "length": 6
+	"word_surface": "初めまして。",
+	"start_index": 161,
+	"length": 6
 }
 ```
 
@@ -108,9 +108,9 @@
 
 ```json
 {
-  "vocab_id": "1-41",
-  "vocab_id": "1-1",
-  // ...
+	"vocab_id": "1-41",
+	"vocab_id": "1-1"
+	// ...
 }
 ```
 
@@ -121,7 +121,7 @@
 **Schema Definition:**
 
 ```typescript
-vocab_id: z.uuid()  // Must be UUID format
+vocab_id: z.uuid(); // Must be UUID format
 ```
 
 **Violation:** IDs like `"1-41"` are not valid UUIDs. This will **fail schema validation**.
@@ -194,7 +194,7 @@ vocab_id: z.uuid()  // Must be UUID format
 // English: "I アメリカ から 来ました"
 // Highlight: { word_surface: "アメリカ", start_index: 290 }
 
-// Vietnamese: "Tôi アメリカ から 来ました"  
+// Vietnamese: "Tôi アメリカ から 来ました"
 // Position 290 in Vietnamese text = different character!
 // indexOf() finds first occurrence, which might be wrong
 ```
@@ -248,13 +248,13 @@ vocab_id: z.uuid()  // Must be UUID format
 
 ## QUALITY SCORECARD
 
-| Category | Score | Status |
-|----------|-------|--------|
-| **Content Quality** | 4/10 | ⚠️ NEEDS IMPROVEMENT |
-| **Technical Quality** | 3/10 | ❌ FAIL |
-| **Translation Quality** | 5/10 | ⚠️ MODERATE |
-| **Highlight System** | 2/10 | ❌ FAIL |
-| **Overall** | **3.5/10** | ⚠️ **NEEDS REVISION** |
+| Category                | Score      | Status                |
+| ----------------------- | ---------- | --------------------- |
+| **Content Quality**     | 4/10       | ⚠️ NEEDS IMPROVEMENT  |
+| **Technical Quality**   | 3/10       | ❌ FAIL               |
+| **Translation Quality** | 5/10       | ⚠️ MODERATE           |
+| **Highlight System**    | 2/10       | ❌ FAIL               |
+| **Overall**             | **3.5/10** | ⚠️ **NEEDS REVISION** |
 
 ---
 

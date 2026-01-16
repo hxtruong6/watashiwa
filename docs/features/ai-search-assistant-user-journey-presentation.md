@@ -81,14 +81,14 @@
 #### FRAME 2: Sarah Hears Unknown Word (0:15)
 
 ```
-Sarah's TV Screen: 
+Sarah's TV Screen:
 ┌──────────────────────────────────────┐
 │  Anime Character: 「懐かしいね〜」     │
 │  (No subtitles)                      │
 └──────────────────────────────────────┘
 
 Sarah's Thought Bubble:
-💭 "I've heard 'natsukashii' before... 
+💭 "I've heard 'natsukashii' before...
     What does it mean again?"
 ```
 
@@ -171,8 +171,8 @@ Sarah's Thought Bubble:
 
 ```javascript
 // Debounce logic
-onInputChange("natsu") 
-  → Wait 300ms 
+onInputChange("natsu")
+  → Wait 300ms
   → API call: searchVocabulary("natsu")
   → Response time: 150ms
   → Total: 450ms to results
@@ -370,15 +370,16 @@ addWordToDeck({ vocabId: "uuid-懐かしい" })
 
 ### 📊 VALUE DELIVERED (Sarah's Journey)
 
-| Metric | Before (Jisho) | After (WatashiWa Search) | Improvement |
-|--------|----------------|--------------------------|-------------|
-| **Time to lookup** | 15 min (context switch) | 33 seconds | **27x faster** |
-| **Memory encoding** | 0% (passive reading) | 85% (added to SRS + saw etymology) | **∞ better** |
-| **Flow state** | Broken (left app) | Maintained | **Priceless** |
-| **Confidence** | Low (guessing) | High (pitch accent learned) | **+70%** |
-| **Next-day retention** | 23% (forgot) | 87% (SRS scheduled) | **+64pp** |
+| Metric                 | Before (Jisho)          | After (WatashiWa Search)           | Improvement    |
+| ---------------------- | ----------------------- | ---------------------------------- | -------------- |
+| **Time to lookup**     | 15 min (context switch) | 33 seconds                         | **27x faster** |
+| **Memory encoding**    | 0% (passive reading)    | 85% (added to SRS + saw etymology) | **∞ better**   |
+| **Flow state**         | Broken (left app)       | Maintained                         | **Priceless**  |
+| **Confidence**         | Low (guessing)          | High (pitch accent learned)        | **+70%**       |
+| **Next-day retention** | 23% (forgot)            | 87% (SRS scheduled)                | **+64pp**      |
 
 **Sarah's Testimonial (Future):**
+
 > "Before WatashiWa Search, I'd pause anime 10+ times per episode to look up words. Now I just tap 🔍, get the answer instantly, and the word is automatically added to my reviews. I've learned 3x more vocabulary this month!"
 
 ---
@@ -422,6 +423,7 @@ addWordToDeck({ vocabId: "uuid-懐かしい" })
 **Use Case:** App Store screenshots, landing page hero section
 
 **Caption:**
+
 > "Search any Japanese word in 2 seconds. Get instant pronunciation, etymology, and add to your study deck—all without leaving the app. That's the WatashiWa difference."
 
 **Highlight Features:**
@@ -551,10 +553,10 @@ addWordToDeck({ vocabId: "uuid-懐かしい" })
 ```javascript
 // Confusion detection logic
 if (word.homonym_group_id !== null) {
-  // Query all words in same homonym group
-  const confusions = await getHomonyms(word.homonym_group_id);
-  // Auto-show alert banner
-  showConfusionAlert(confusions);
+	// Query all words in same homonym group
+	const confusions = await getHomonyms(word.homonym_group_id);
+	// Auto-show alert banner
+	showConfusionAlert(confusions);
 }
 ```
 
@@ -741,15 +743,16 @@ Minh taps [Show Answer] confidently:
 
 ### 📊 VALUE DELIVERED (Minh's Journey)
 
-| Metric | Before (Flip & Fail) | After (Search & Drill) | Improvement |
-|--------|---------------------|------------------------|-------------|
-| **Time to resolution** | N/A (never resolves, keeps failing) | 30 seconds | **Problem solved** |
-| **Emotional state** | 😰 Anxious → 😞 Guilty → 😓 Avoidance | 😯 Curious → 💪 Confident | **Night & day** |
-| **Future accuracy** | 40% (keeps guessing) | 95% (pitch internalized) | **+55pp** |
-| **Review completion** | 60% (skips cards) | 95% (completes sessions) | **+35pp** |
-| **Churn risk** | High (frustration → quit) | Low (empowered) | **Retention saved** |
+| Metric                 | Before (Flip & Fail)                  | After (Search & Drill)    | Improvement         |
+| ---------------------- | ------------------------------------- | ------------------------- | ------------------- |
+| **Time to resolution** | N/A (never resolves, keeps failing)   | 30 seconds                | **Problem solved**  |
+| **Emotional state**    | 😰 Anxious → 😞 Guilty → 😓 Avoidance | 😯 Curious → 💪 Confident | **Night & day**     |
+| **Future accuracy**    | 40% (keeps guessing)                  | 95% (pitch internalized)  | **+55pp**           |
+| **Review completion**  | 60% (skips cards)                     | 95% (completes sessions)  | **+35pp**           |
+| **Churn risk**         | High (frustration → quit)             | Low (empowered)           | **Retention saved** |
 
 **Minh's Testimonial (Future):**
+
 > "I used to HATE reviews because I'd always mix up 箸 and 橋. WatashiWa's Confusion Alert + Pitch Drill saved me. I finally understand Japanese isn't random—there's a system, and now I can hear it!"
 
 ---

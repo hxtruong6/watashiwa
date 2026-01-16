@@ -201,13 +201,13 @@ StudySession (1) ──< (1) Deck (deckId)
 
 ### Routes/Actions
 
-| Route | Method | AuthZ | Purpose |
-|-------|--------|-------|---------|
-| `/study` | GET | ✅ User required | Main study page (routing logic) |
-| `/study?deckSlug={slug}` | GET | ✅ User + deck access | Start session with specific deck |
-| `/study?courseSlug={slug}` | GET | ✅ User + course access | Start session with course |
-| `/study?deckId={uuid}` | GET | ✅ User + deck access | Start session (redirects to slug) |
-| `/study?courseId={uuid}` | GET | ✅ User + course access | Start session (redirects to slug) |
+| Route                      | Method | AuthZ                   | Purpose                           |
+| -------------------------- | ------ | ----------------------- | --------------------------------- |
+| `/study`                   | GET    | ✅ User required        | Main study page (routing logic)   |
+| `/study?deckSlug={slug}`   | GET    | ✅ User + deck access   | Start session with specific deck  |
+| `/study?courseSlug={slug}` | GET    | ✅ User + course access | Start session with course         |
+| `/study?deckId={uuid}`     | GET    | ✅ User + deck access   | Start session (redirects to slug) |
+| `/study?courseId={uuid}`   | GET    | ✅ User + course access | Start session (redirects to slug) |
 
 ### AuthZ Rules per Route
 

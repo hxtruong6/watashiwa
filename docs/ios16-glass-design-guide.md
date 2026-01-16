@@ -94,20 +94,20 @@ This guide documents the iOS 16-inspired glass morphism design system implemente
 
 ```typescript
 interface GlassDockProps {
-  children: React.ReactNode;
-  style?: React.CSSProperties;
-  intensity?: 'light' | 'medium' | 'strong';
-  enableMeshGradient?: boolean;
+	children: React.ReactNode;
+	style?: React.CSSProperties;
+	intensity?: 'light' | 'medium' | 'strong';
+	enableMeshGradient?: boolean;
 }
 ```
 
 ### Intensity Levels
 
-| Intensity | Opacity | Blur | Use Case |
-|-----------|---------|------|----------|
-| `light` | 70% | 12px | Overlays, modals |
-| `medium` | 85% | 20px | Navigation bars, docks |
-| `strong` | 92% | 28px | Bottom navigation, floating elements |
+| Intensity | Opacity | Blur | Use Case                             |
+| --------- | ------- | ---- | ------------------------------------ |
+| `light`   | 70%     | 12px | Overlays, modals                     |
+| `medium`  | 85%     | 20px | Navigation bars, docks               |
+| `strong`  | 92%     | 28px | Bottom navigation, floating elements |
 
 ---
 

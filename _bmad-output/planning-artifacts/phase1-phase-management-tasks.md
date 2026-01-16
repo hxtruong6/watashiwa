@@ -26,26 +26,32 @@ Extract phase management logic from `SessionController.tsx` into `useSessionPhas
 2. Define types:
 
    ```typescript
-   export type StudyPhase = 'loading' | 'priming-modal' | 'priming' | 'briefing' | 'quiz' | 'summary';
-   
+   export type StudyPhase =
+   	| 'loading'
+   	| 'priming-modal'
+   	| 'priming'
+   	| 'briefing'
+   	| 'quiz'
+   	| 'summary';
+
    interface UseSessionPhaseOptions {
-     queue: SmartCard[];
-     currentCard: SmartCard | null;
-     currentIndex: number;
-     isSessionActive: boolean;
-     isLoading: boolean;
-     redirectToDashboard: () => void;
+   	queue: SmartCard[];
+   	currentCard: SmartCard | null;
+   	currentIndex: number;
+   	isSessionActive: boolean;
+   	isLoading: boolean;
+   	redirectToDashboard: () => void;
    }
-   
+
    interface UseSessionPhaseReturn {
-     studyPhase: StudyPhase;
-     setStudyPhase: (phase: StudyPhase) => void;
-     hasSkippedBriefing: boolean;
-     setHasSkippedBriefing: (value: boolean) => void;
-     hasSkippedPriming: boolean;
-     setHasSkippedPriming: (value: boolean) => void;
-     transitionToQuiz: () => void;
-     transitionToSummary: () => void;
+   	studyPhase: StudyPhase;
+   	setStudyPhase: (phase: StudyPhase) => void;
+   	hasSkippedBriefing: boolean;
+   	setHasSkippedBriefing: (value: boolean) => void;
+   	hasSkippedPriming: boolean;
+   	setHasSkippedPriming: (value: boolean) => void;
+   	transitionToQuiz: () => void;
+   	transitionToSummary: () => void;
    }
    ```
 
@@ -112,31 +118,31 @@ Extract phase management logic from `SessionController.tsx` into `useSessionPhas
 ```typescript
 // In hook
 useEffect(() => {
-  // Phase transition logic from loading
-  if (!isLoading && studyPhase === 'loading') {
-    if (queue.length === 0) {
-      redirectToDashboard();
-      return;
-    }
-    
-    const hasNew = queue.some((c) => c.srsStage === 0);
-    if (hasNew && !hasSkippedBriefing) {
-      setStudyPhase('briefing');
-    } else {
-      setStudyPhase('quiz');
-    }
-  }
+	// Phase transition logic from loading
+	if (!isLoading && studyPhase === 'loading') {
+		if (queue.length === 0) {
+			redirectToDashboard();
+			return;
+		}
+
+		const hasNew = queue.some((c) => c.srsStage === 0);
+		if (hasNew && !hasSkippedBriefing) {
+			setStudyPhase('briefing');
+		} else {
+			setStudyPhase('quiz');
+		}
+	}
 }, [isLoading, studyPhase, queue, hasSkippedBriefing, redirectToDashboard]);
 
 useEffect(() => {
-  // Session completion detection
-  if (studyPhase === 'quiz') {
-    const isComplete = !isSessionActive || (currentIndex >= queue.length && queue.length > 0);
-    if (isComplete) {
-      useSessionStore.getState().endSession();
-      setStudyPhase('summary');
-    }
-  }
+	// Session completion detection
+	if (studyPhase === 'quiz') {
+		const isComplete = !isSessionActive || (currentIndex >= queue.length && queue.length > 0);
+		if (isComplete) {
+			useSessionStore.getState().endSession();
+			setStudyPhase('summary');
+		}
+	}
 }, [studyPhase, isSessionActive, currentIndex, queue.length]);
 ```
 
@@ -159,14 +165,14 @@ useEffect(() => {
 
    ```typescript
    const transitionToQuiz = useCallback(() => {
-     if (queue.length > 0 && queue[0]) {
-       useSessionStore.setState({
-         currentCard: queue[0],
-         currentIndex: 0,
-         isSessionActive: true,
-       });
-       setStudyPhase('quiz');
-     }
+   	if (queue.length > 0 && queue[0]) {
+   		useSessionStore.setState({
+   			currentCard: queue[0],
+   			currentIndex: 0,
+   			isSessionActive: true,
+   		});
+   		setStudyPhase('quiz');
+   	}
    }, [queue]);
    ```
 
@@ -174,8 +180,8 @@ useEffect(() => {
 
    ```typescript
    const transitionToSummary = useCallback(() => {
-     useSessionStore.getState().endSession();
-     setStudyPhase('summary');
+   	useSessionStore.getState().endSession();
+   	setStudyPhase('summary');
    }, []);
    ```
 
@@ -183,9 +189,9 @@ useEffect(() => {
 
    ```typescript
    const ensureCurrentCard = useCallback(() => {
-     if (queue.length > 0 && !currentCard) {
-       useSessionStore.setState({ currentCard: queue[0], currentIndex: 0 });
-     }
+   	if (queue.length > 0 && !currentCard) {
+   		useSessionStore.setState({ currentCard: queue[0], currentIndex: 0 });
+   	}
    }, [queue, currentCard]);
    ```
 
@@ -242,15 +248,15 @@ useEffect(() => {
    // OLD (keep for now)
    const [studyPhase, setStudyPhase] = useState<StudyPhase>('loading');
    const [hasSkippedBriefing, setHasSkippedBriefing] = useState(false);
-   
+
    // NEW (add)
    const phaseHook = useSessionPhase({
-     queue,
-     currentCard,
-     currentIndex,
-     isSessionActive,
-     isLoading,
-     redirectToDashboard,
+   	queue,
+   	currentCard,
+   	currentIndex,
+   	isSessionActive,
+   	isLoading,
+   	redirectToDashboard,
    });
    ```
 
@@ -258,12 +264,12 @@ useEffect(() => {
 
    ```typescript
    useEffect(() => {
-     if (studyPhase !== phaseHook.studyPhase) {
-       console.warn('[Migration] Phase mismatch:', {
-         old: studyPhase,
-         new: phaseHook.studyPhase,
-       });
-     }
+   	if (studyPhase !== phaseHook.studyPhase) {
+   		console.warn('[Migration] Phase mismatch:', {
+   			old: studyPhase,
+   			new: phaseHook.studyPhase,
+   		});
+   	}
    }, [studyPhase, phaseHook.studyPhase]);
    ```
 
@@ -313,7 +319,7 @@ useEffect(() => {
    ```typescript
    // OLD:
    setStudyPhase('quiz');
-   
+
    // NEW:
    phaseHook.transitionToQuiz();
    // OR if direct set is needed:
@@ -336,7 +342,7 @@ useEffect(() => {
        resetTimer();
      }
    }}
-   
+
    // NEW:
    onStart={() => {
      phaseHook.transitionToQuiz();
@@ -419,16 +425,16 @@ useEffect(() => {
    ```typescript
    /**
     * Hook to manage study session phase state and transitions.
-    * 
+    *
     * Handles:
     * - Phase transitions (loading → briefing/quiz → summary)
     * - User preferences (skipped briefing/priming)
     * - Session completion detection
-    * 
+    *
     * @param options - Configuration for phase management
     * @returns Phase state and transition functions
     */
-   export function useSessionPhase(options: UseSessionPhaseOptions): UseSessionPhaseReturn
+   export function useSessionPhase(options: UseSessionPhaseOptions): UseSessionPhaseReturn;
    ```
 
 3. **Update component comments:**
@@ -516,17 +522,17 @@ If issues occur:
 
 ## Estimated Timeline
 
-| Task | Time | Cumulative |
-|------|------|------------|
-| 1.1: Create Hook Structure | 30 min | 30 min |
-| 1.2: Extract Phase State | 45 min | 1h 15min |
-| 1.3: Extract Transition Logic | 2h | 3h 15min |
-| 1.4: Extract Helper Functions | 1h | 4h 15min |
-| 1.5: Extract Side Effects | 45 min | 5h |
-| 1.6: Integrate Hook (Parallel) | 1.5h | 6h 30min |
-| 1.7: Replace State | 1h | 7h 30min |
-| 1.8: Testing & Validation | 1.5h | 9h |
-| 1.9: Cleanup | 30 min | 9h 30min |
+| Task                           | Time   | Cumulative |
+| ------------------------------ | ------ | ---------- |
+| 1.1: Create Hook Structure     | 30 min | 30 min     |
+| 1.2: Extract Phase State       | 45 min | 1h 15min   |
+| 1.3: Extract Transition Logic  | 2h     | 3h 15min   |
+| 1.4: Extract Helper Functions  | 1h     | 4h 15min   |
+| 1.5: Extract Side Effects      | 45 min | 5h         |
+| 1.6: Integrate Hook (Parallel) | 1.5h   | 6h 30min   |
+| 1.7: Replace State             | 1h     | 7h 30min   |
+| 1.8: Testing & Validation      | 1.5h   | 9h         |
+| 1.9: Cleanup                   | 30 min | 9h 30min   |
 
 **Total: ~9.5 hours (1.5 days)**
 

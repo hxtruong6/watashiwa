@@ -27,15 +27,15 @@ src/lib/analytics/
 ### Basic Usage
 
 ```typescript
-import { trackEvent, AnalyticsEvents } from '@/lib/analytics';
+import { AnalyticsEvents, trackEvent } from '@/lib/analytics';
 
 // Type-safe event tracking
 trackEvent(AnalyticsEvents.Study.SessionStarted, {
-  entry_type: 'auto_start',
-  queue_size: 10,
-  due_count: 5,
-  deck_id: null,
-  course_id: null,
+	entry_type: 'auto_start',
+	queue_size: 10,
+	due_count: 5,
+	deck_id: null,
+	course_id: null,
 });
 ```
 
@@ -58,33 +58,33 @@ The system provides full type safety:
 ```typescript
 // ✅ Correct - TypeScript will autocomplete and validate
 trackEvent(AnalyticsEvents.Study.SessionStarted, {
-  entry_type: 'auto_start',
-  queue_size: 10,
-  due_count: 5,
+	entry_type: 'auto_start',
+	queue_size: 10,
+	due_count: 5,
 });
 
 // ❌ Error - Missing required property
 trackEvent(AnalyticsEvents.Study.SessionStarted, {
-  entry_type: 'auto_start',
-  // Missing queue_size and due_count
+	entry_type: 'auto_start',
+	// Missing queue_size and due_count
 });
 
 // ❌ Error - Invalid property type
 trackEvent(AnalyticsEvents.Study.SessionStarted, {
-  entry_type: 'invalid_value', // Type error
-  queue_size: 'ten', // Type error - should be number
+	entry_type: 'invalid_value', // Type error
+	queue_size: 'ten', // Type error - should be number
 });
 ```
 
 ### Server-Side Usage
 
 ```typescript
-import { logAnalyticsEvent, AnalyticsEvents } from '@/modules/analytics/analytics.actions';
+import { AnalyticsEvents, logAnalyticsEvent } from '@/modules/analytics/analytics.actions';
 
 await logAnalyticsEvent(AnalyticsEvents.Auth.UserSignedUp, {
-  distinct_id: userId,
-  method: 'email',
-  source: 'landing_page',
+	distinct_id: userId,
+	method: 'email',
+	source: 'landing_page',
 });
 ```
 
@@ -96,8 +96,8 @@ Add to `src/lib/analytics/types.ts`:
 
 ```typescript
 export interface MyNewEventProperties {
-  required_field: string;
-  optional_field?: number;
+	required_field: string;
+	optional_field?: number;
 }
 ```
 
@@ -107,10 +107,10 @@ Add to `src/lib/analytics/events.ts`:
 
 ```typescript
 export const AnalyticsEvents = {
-  // ... existing events
-  MyDomain: {
-    MyNewEvent: 'my_new_event',
-  } as const,
+	// ... existing events
+	MyDomain: {
+		MyNewEvent: 'my_new_event',
+	} as const,
 } as const;
 ```
 
@@ -120,8 +120,8 @@ Add to `AnalyticsEventPropertiesMap` in `events.ts`:
 
 ```typescript
 export interface AnalyticsEventPropertiesMap {
-  // ... existing mappings
-  [AnalyticsEvents.MyDomain.MyNewEvent]: MyNewEventProperties;
+	// ... existing mappings
+	[AnalyticsEvents.MyDomain.MyNewEvent]: MyNewEventProperties;
 }
 ```
 
@@ -141,8 +141,8 @@ export type { MyNewEventProperties } from './types';
 
 ```typescript
 trackEvent('study_session_started', {
-  entry_type: 'auto_start',
-  queue_size: 10,
+	entry_type: 'auto_start',
+	queue_size: 10,
 });
 ```
 
@@ -152,9 +152,9 @@ trackEvent('study_session_started', {
 import { AnalyticsEvents } from '@/lib/analytics';
 
 trackEvent(AnalyticsEvents.Study.SessionStarted, {
-  entry_type: 'auto_start',
-  queue_size: 10,
-  due_count: 0, // Now required by type
+	entry_type: 'auto_start',
+	queue_size: 10,
+	due_count: 0, // Now required by type
 });
 ```
 
@@ -184,8 +184,8 @@ trackEvent('study_session_started', { ... });
 import { isValidEventName } from '@/lib/analytics';
 
 if (isValidEventName(someString)) {
-  // TypeScript now knows someString is AnalyticsEventName
-  trackEvent(someString, properties);
+	// TypeScript now knows someString is AnalyticsEventName
+	trackEvent(someString, properties);
 }
 ```
 

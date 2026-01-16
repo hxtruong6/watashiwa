@@ -271,6 +271,7 @@ The **Story Feature** (also called "Active Priming") is a **context-first learni
 **Vocabulary:** スーパー, りんご, ねこ, かさ, ともだち
 
 **Story:**
+
 > "Yesterday, I went to the スーパー to buy groceries. As I was picking out some fresh りんご, I noticed a friendly ねこ sitting by the entrance. When I left, I forgot my かさ (umbrella) inside! My ともだち (friend) who works there found it and called me. I was so grateful!"
 
 **Why This is Good:**
@@ -288,6 +289,7 @@ The **Story Feature** (also called "Active Priming") is a **context-first learni
 **Vocabulary:** スーパー, りんご, ねこ, かさ, ともだち
 
 **Story:**
+
 > "I went to スーパー. I bought りんご. I saw ねこ. I have かさ. My ともだち is nice."
 
 **Why This is Bad:**

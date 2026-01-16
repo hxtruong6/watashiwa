@@ -87,89 +87,89 @@ const videoRef = useRef<HTMLVideoElement>(null)
 
 ```json
 {
-  "version": "1.0",
-  "videoId": "video-123",
-  "language": "ja",
-  "targetLanguage": "vi",
-  "subtitles": [
-    {
-      "id": "sub-1",
-      "order": 1,
-      "startTime": 5.2,
-      "endTime": 8.5,
-      "sentence": "今日、仕事が終わってから一人でいろいろ考えた。",
-      "translation": {
-        "vi": "Hôm nay, sau khi tan làm, tôi đã một mình suy nghĩ rất nhiều.",
-        "en": "Today, after work ended, I thought about various things alone."
-      },
-      "words": [
-        {
-          "text": "今日、",
-          "romaji": "kyou",
-          "startTime": 0.0,
-          "endTime": 0.8,
-          "color": "yellow",
-          "type": "time"
-        },
-        {
-          "text": "仕事",
-          "romaji": "shigoto",
-          "startTime": 0.8,
-          "endTime": 1.2,
-          "color": "green",
-          "type": "noun"
-        },
-        {
-          "text": "が",
-          "romaji": "ga",
-          "startTime": 1.2,
-          "endTime": 1.4,
-          "color": "green",
-          "type": "particle"
-        },
-        {
-          "text": "終わって",
-          "romaji": "owatte",
-          "startTime": 1.4,
-          "endTime": 2.0,
-          "color": "green",
-          "type": "verb"
-        },
-        {
-          "text": "から",
-          "romaji": "kara",
-          "startTime": 2.0,
-          "endTime": 2.3,
-          "color": "green",
-          "type": "particle"
-        },
-        {
-          "text": "一人で",
-          "romaji": "hitori de",
-          "startTime": 2.3,
-          "endTime": 3.0,
-          "color": "yellow",
-          "type": "adverb"
-        },
-        {
-          "text": "いろいろ",
-          "romaji": "iroiro",
-          "startTime": 3.0,
-          "endTime": 3.8,
-          "color": "purple",
-          "type": "adverb"
-        },
-        {
-          "text": "考えた。",
-          "romaji": "kangaeta",
-          "startTime": 3.8,
-          "endTime": 4.5,
-          "color": "red",
-          "type": "verb"
-        }
-      ]
-    }
-  ]
+	"version": "1.0",
+	"videoId": "video-123",
+	"language": "ja",
+	"targetLanguage": "vi",
+	"subtitles": [
+		{
+			"id": "sub-1",
+			"order": 1,
+			"startTime": 5.2,
+			"endTime": 8.5,
+			"sentence": "今日、仕事が終わってから一人でいろいろ考えた。",
+			"translation": {
+				"vi": "Hôm nay, sau khi tan làm, tôi đã một mình suy nghĩ rất nhiều.",
+				"en": "Today, after work ended, I thought about various things alone."
+			},
+			"words": [
+				{
+					"text": "今日、",
+					"romaji": "kyou",
+					"startTime": 0.0,
+					"endTime": 0.8,
+					"color": "yellow",
+					"type": "time"
+				},
+				{
+					"text": "仕事",
+					"romaji": "shigoto",
+					"startTime": 0.8,
+					"endTime": 1.2,
+					"color": "green",
+					"type": "noun"
+				},
+				{
+					"text": "が",
+					"romaji": "ga",
+					"startTime": 1.2,
+					"endTime": 1.4,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "終わって",
+					"romaji": "owatte",
+					"startTime": 1.4,
+					"endTime": 2.0,
+					"color": "green",
+					"type": "verb"
+				},
+				{
+					"text": "から",
+					"romaji": "kara",
+					"startTime": 2.0,
+					"endTime": 2.3,
+					"color": "green",
+					"type": "particle"
+				},
+				{
+					"text": "一人で",
+					"romaji": "hitori de",
+					"startTime": 2.3,
+					"endTime": 3.0,
+					"color": "yellow",
+					"type": "adverb"
+				},
+				{
+					"text": "いろいろ",
+					"romaji": "iroiro",
+					"startTime": 3.0,
+					"endTime": 3.8,
+					"color": "purple",
+					"type": "adverb"
+				},
+				{
+					"text": "考えた。",
+					"romaji": "kangaeta",
+					"startTime": 3.8,
+					"endTime": 4.5,
+					"color": "red",
+					"type": "verb"
+				}
+			]
+		}
+	]
 }
 ```
 
@@ -177,41 +177,41 @@ const videoRef = useRef<HTMLVideoElement>(null)
 
 ```typescript
 // src/modules/videos/types.ts
-import { z } from 'zod'
+import { z } from 'zod';
 
 export const SubtitleWordSchema = z.object({
-  text: z.string(),
-  romaji: z.string(),
-  startTime: z.number().min(0),
-  endTime: z.number().min(0),
-  color: z.enum(['yellow', 'green', 'purple', 'red', 'blue', 'light-blue']).optional(),
-  type: z.string().optional(),
-})
+	text: z.string(),
+	romaji: z.string(),
+	startTime: z.number().min(0),
+	endTime: z.number().min(0),
+	color: z.enum(['yellow', 'green', 'purple', 'red', 'blue', 'light-blue']).optional(),
+	type: z.string().optional(),
+});
 
 export const SubtitleSchema = z.object({
-  id: z.string(),
-  order: z.number().int().min(1),
-  startTime: z.number().min(0),
-  endTime: z.number().min(0),
-  sentence: z.string(),
-  translation: z.object({
-    vi: z.string(),
-    en: z.string().optional(),
-  }),
-  words: z.array(SubtitleWordSchema),
-})
+	id: z.string(),
+	order: z.number().int().min(1),
+	startTime: z.number().min(0),
+	endTime: z.number().min(0),
+	sentence: z.string(),
+	translation: z.object({
+		vi: z.string(),
+		en: z.string().optional(),
+	}),
+	words: z.array(SubtitleWordSchema),
+});
 
 export const VideoSubtitleFileSchema = z.object({
-  version: z.string().default('1.0'),
-  videoId: z.string(),
-  language: z.string().default('ja'),
-  targetLanguage: z.string().default('vi'),
-  subtitles: z.array(SubtitleSchema),
-})
+	version: z.string().default('1.0'),
+	videoId: z.string(),
+	language: z.string().default('ja'),
+	targetLanguage: z.string().default('vi'),
+	subtitles: z.array(SubtitleSchema),
+});
 
-export type VideoSubtitleFile = z.infer<typeof VideoSubtitleFileSchema>
-export type Subtitle = z.infer<typeof SubtitleSchema>
-export type SubtitleWord = z.infer<typeof SubtitleWordSchema>
+export type VideoSubtitleFile = z.infer<typeof VideoSubtitleFileSchema>;
+export type Subtitle = z.infer<typeof SubtitleSchema>;
+export type SubtitleWord = z.infer<typeof SubtitleWordSchema>;
 ```
 
 **Benefits:**
@@ -336,9 +336,9 @@ If you want to **import** SRT/VTT files and convert to JSON:
    ```typescript
    // Server Action
    async function uploadSubtitleFile(videoId: string, file: File) {
-     const content = await file.text()
-     const data = VideoSubtitleFileSchema.parse(JSON.parse(content))
-     // Validate and save to database
+   	const content = await file.text();
+   	const data = VideoSubtitleFileSchema.parse(JSON.parse(content));
+   	// Validate and save to database
    }
    ```
 
@@ -355,7 +355,7 @@ If you want to **import** SRT/VTT files and convert to JSON:
 
    ```typescript
    // Already parsed from database
-   const subtitles = await getVideoSubtitles(videoId)
+   const subtitles = await getVideoSubtitles(videoId);
    // subtitles[0].words is already SubtitleWord[]
    ```
 
@@ -369,13 +369,13 @@ Based on your image, use semantic color coding:
 
 ```typescript
 const WORD_COLORS = {
-  time: 'yellow',           // 今日、一人で
-  verb: 'red',              // 考えた、思う
-  noun: 'green',            // 仕事、物
-  particle: 'green',        // が、から、の
-  adverb: 'purple',         // いろいろ
-  adjective: 'light-blue',  // 大変
-} as const
+	time: 'yellow', // 今日、一人で
+	verb: 'red', // 考えた、思う
+	noun: 'green', // 仕事、物
+	particle: 'green', // が、から、の
+	adverb: 'purple', // いろいろ
+	adjective: 'light-blue', // 大変
+} as const;
 ```
 
 **Store in JSON:**
@@ -427,34 +427,34 @@ Create this as a template for content creators:
 
 ```json
 {
-  "version": "1.0",
-  "videoId": "your-video-id",
-  "language": "ja",
-  "targetLanguage": "vi",
-  "subtitles": [
-    {
-      "id": "sub-1",
-      "order": 1,
-      "startTime": 0.0,
-      "endTime": 4.5,
-      "sentence": "今日、仕事が終わってから一人でいろいろ考えた。",
-      "translation": {
-        "vi": "Hôm nay, sau khi tan làm, tôi đã một mình suy nghĩ rất nhiều.",
-        "en": "Today, after work ended, I thought about various things alone."
-      },
-      "words": [
-        {
-          "text": "今日、",
-          "romaji": "kyou",
-          "startTime": 0.0,
-          "endTime": 0.8,
-          "color": "yellow",
-          "type": "time"
-        }
-        // ... more words
-      ]
-    }
-  ]
+	"version": "1.0",
+	"videoId": "your-video-id",
+	"language": "ja",
+	"targetLanguage": "vi",
+	"subtitles": [
+		{
+			"id": "sub-1",
+			"order": 1,
+			"startTime": 0.0,
+			"endTime": 4.5,
+			"sentence": "今日、仕事が終わってから一人でいろいろ考えた。",
+			"translation": {
+				"vi": "Hôm nay, sau khi tan làm, tôi đã một mình suy nghĩ rất nhiều.",
+				"en": "Today, after work ended, I thought about various things alone."
+			},
+			"words": [
+				{
+					"text": "今日、",
+					"romaji": "kyou",
+					"startTime": 0.0,
+					"endTime": 0.8,
+					"color": "yellow",
+					"type": "time"
+				}
+				// ... more words
+			]
+		}
+	]
 }
 ```
 

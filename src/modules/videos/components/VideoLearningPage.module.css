@@ -1,18 +1,18 @@
 .videoLearningPage {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 24px 16px;
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 24px 16px;
 }
 
 @media (max-width: 768px) {
-  .videoLearningPage {
-    padding: 16px 8px;
-  }
+	.videoLearningPage {
+		padding: 16px 8px;
+	}
 }
 
 @media (max-width: 480px) {
-  .videoLearningPage {
-    padding: 12px 4px;
-  }
+	.videoLearningPage {
+		padding: 12px 4px;
+	}
 }

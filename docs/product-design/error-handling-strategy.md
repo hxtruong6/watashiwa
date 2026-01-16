@@ -93,7 +93,7 @@ This document outlines a comprehensive error handling strategy that transforms f
 // Instead: Redirect to login with returnUrl
 
 if (!user) {
-  redirect(`/login?returnUrl=${encodeURIComponent('/dashboard')}`);
+	redirect(`/login?returnUrl=${encodeURIComponent('/dashboard')}`);
 }
 ```
 
@@ -114,7 +114,7 @@ if (!user) {
 
 ```typescript
 // Error Message (Empathetic + Informative)
-"We're having trouble connecting to our servers right now. 
+"We're having trouble connecting to our servers right now.
 This is usually temporary, and we're working on it."
 
 // Actions
@@ -179,13 +179,13 @@ This is usually temporary, and we're working on it."
   {/* Successfully loaded sections */}
   <StatsSection data={stats} /> ✅
   <WeeklyChart data={weeklyStats} /> ✅
-  
+
   {/* Failed sections with graceful degradation */}
   <DecksSection>
     {decksWithDue ? (
       <DeckList decks={decksWithDue} />
     ) : (
-      <ErrorCard 
+      <ErrorCard
         type="section"
         message="Unable to load your decks right now"
         action="Retry Decks"
@@ -193,7 +193,7 @@ This is usually temporary, and we're working on it."
       />
     )}
   </DecksSection>
-  
+
   {/* Optional sections can fail silently */}
   {leaderboard ? (
     <Leaderboard data={leaderboard} />
@@ -293,7 +293,7 @@ if (offline) {
 
 ```typescript
 // Error Message (Reassuring + Actionable)
-"We noticed some of your data needs to be refreshed. 
+"We noticed some of your data needs to be refreshed.
 This won't affect your progress."
 
 // Actions
@@ -372,21 +372,21 @@ This won't affect your progress."
 
 ```typescript
 async function retryWithBackoff<T>(
-  fn: () => Promise<T>,
-  maxRetries = 3,
-  initialDelay = 1000
+	fn: () => Promise<T>,
+	maxRetries = 3,
+	initialDelay = 1000,
 ): Promise<T> {
-  for (let i = 0; i < maxRetries; i++) {
-    try {
-      return await fn();
-    } catch (error) {
-      if (i === maxRetries - 1) throw error;
-      
-      const delay = initialDelay * Math.pow(2, i);
-      await new Promise(resolve => setTimeout(resolve, delay));
-    }
-  }
-  throw new Error('Max retries exceeded');
+	for (let i = 0; i < maxRetries; i++) {
+		try {
+			return await fn();
+		} catch (error) {
+			if (i === maxRetries - 1) throw error;
+
+			const delay = initialDelay * Math.pow(2, i);
+			await new Promise((resolve) => setTimeout(resolve, delay));
+		}
+	}
+	throw new Error('Max retries exceeded');
 }
 ```
 
@@ -396,15 +396,11 @@ async function retryWithBackoff<T>(
 // Load critical data first, then enhance
 const criticalData = await getReviewCount();
 if (criticalData) {
-  // Show dashboard immediately
-  renderDashboard({ reviewCount: criticalData });
-  
-  // Load remaining data in background
-  Promise.all([
-    getUserStats(),
-    getWeeklyStats(),
-    getDecksWithDue(),
-  ]).then(enhanceDashboard);
+	// Show dashboard immediately
+	renderDashboard({ reviewCount: criticalData });
+
+	// Load remaining data in background
+	Promise.all([getUserStats(), getWeeklyStats(), getDecksWithDue()]).then(enhanceDashboard);
 }
 ```
 
@@ -412,25 +408,28 @@ if (criticalData) {
 
 ```typescript
 async function getDashboardDataWithCache() {
-  try {
-    const data = await getDashboardData();
-    // Cache successful response
-    localStorage.setItem('dashboard_cache', JSON.stringify({
-      data,
-      timestamp: Date.now(),
-    }));
-    return data;
-  } catch (error) {
-    // Try cache if available and fresh (< 5 minutes)
-    const cached = localStorage.getItem('dashboard_cache');
-    if (cached) {
-      const { data, timestamp } = JSON.parse(cached);
-      if (Date.now() - timestamp < 5 * 60 * 1000) {
-        return { ...data, _cached: true };
-      }
-    }
-    throw error;
-  }
+	try {
+		const data = await getDashboardData();
+		// Cache successful response
+		localStorage.setItem(
+			'dashboard_cache',
+			JSON.stringify({
+				data,
+				timestamp: Date.now(),
+			}),
+		);
+		return data;
+	} catch (error) {
+		// Try cache if available and fresh (< 5 minutes)
+		const cached = localStorage.getItem('dashboard_cache');
+		if (cached) {
+			const { data, timestamp } = JSON.parse(cached);
+			if (Date.now() - timestamp < 5 * 60 * 1000) {
+				return { ...data, _cached: true };
+			}
+		}
+		throw error;
+	}
 }
 ```
 
@@ -439,36 +438,36 @@ async function getDashboardDataWithCache() {
 ```typescript
 // Queue failed requests for retry when online
 class OfflineQueue {
-  private queue: Array<() => Promise<void>> = [];
-  
-  async add(request: () => Promise<void>) {
-    try {
-      await request();
-    } catch (error) {
-      if (!navigator.onLine) {
-        this.queue.push(request);
-        this.scheduleRetry();
-      } else {
-        throw error;
-      }
-    }
-  }
-  
-  private async scheduleRetry() {
-    window.addEventListener('online', async () => {
-      while (this.queue.length > 0) {
-        const request = this.queue.shift();
-        if (request) {
-          try {
-            await request();
-          } catch (error) {
-            // Log but don't block other requests
-            console.error('Retry failed:', error);
-          }
-        }
-      }
-    });
-  }
+	private queue: Array<() => Promise<void>> = [];
+
+	async add(request: () => Promise<void>) {
+		try {
+			await request();
+		} catch (error) {
+			if (!navigator.onLine) {
+				this.queue.push(request);
+				this.scheduleRetry();
+			} else {
+				throw error;
+			}
+		}
+	}
+
+	private async scheduleRetry() {
+		window.addEventListener('online', async () => {
+			while (this.queue.length > 0) {
+				const request = this.queue.shift();
+				if (request) {
+					try {
+						await request();
+					} catch (error) {
+						// Log but don't block other requests
+						console.error('Retry failed:', error);
+					}
+				}
+			}
+		});
+	}
 }
 ```
 
@@ -535,34 +534,37 @@ function ErrorCard({ title, message, severity, retryable, onRetry, fallback }: E
 
 ```typescript
 // Track errors with context
-function trackError(error: Error, context: {
-  component: string;
-  userId?: string;
-  userAction?: string;
-  errorType: 'auth' | 'network' | 'database' | 'validation';
-  severity: 'critical' | 'major' | 'minor';
-  retryable: boolean;
-}) {
-  // Send to error tracking service (Sentry, etc.)
-  Sentry.captureException(error, {
-    tags: {
-      component: context.component,
-      errorType: context.errorType,
-      severity: context.severity,
-    },
-    user: context.userId ? { id: context.userId } : undefined,
-    extra: {
-      userAction: context.userAction,
-      retryable: context.retryable,
-    },
-  });
-  
-  // Track in analytics
-  trackEvent('error_occurred', {
-    error_type: context.errorType,
-    severity: context.severity,
-    component: context.component,
-  });
+function trackError(
+	error: Error,
+	context: {
+		component: string;
+		userId?: string;
+		userAction?: string;
+		errorType: 'auth' | 'network' | 'database' | 'validation';
+		severity: 'critical' | 'major' | 'minor';
+		retryable: boolean;
+	},
+) {
+	// Send to error tracking service (Sentry, etc.)
+	Sentry.captureException(error, {
+		tags: {
+			component: context.component,
+			errorType: context.errorType,
+			severity: context.severity,
+		},
+		user: context.userId ? { id: context.userId } : undefined,
+		extra: {
+			userAction: context.userAction,
+			retryable: context.retryable,
+		},
+	});
+
+	// Track in analytics
+	trackEvent('error_occurred', {
+		error_type: context.errorType,
+		severity: context.severity,
+		component: context.component,
+	});
 }
 ```
 

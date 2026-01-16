@@ -11,13 +11,15 @@ The Video Learning feature provides a comprehensive API for managing video conte
 Fetches video data including subtitles and user progress.
 
 **Input Schema:**
+
 ```typescript
 {
-  videoId: string; // UUID
+	videoId: string; // UUID
 }
 ```
 
 **Response:**
+
 ```typescript
 {
   success: boolean;
@@ -30,10 +32,11 @@ Fetches video data including subtitles and user progress.
 ```
 
 **Usage:**
+
 ```typescript
 const result = await getVideoData({ videoId: 'uuid-here' });
 if (result.success && result.data) {
-  const { video, progress } = result.data;
+	const { video, progress } = result.data;
 }
 ```
 
@@ -46,15 +49,17 @@ if (result.success && result.data) {
 Updates the user's video watching progress.
 
 **Input Schema:**
+
 ```typescript
 {
-  videoId: string; // UUID
-  currentTime: number; // Current playback position in seconds (min: 0)
-  watchTime: number; // Total time watched in seconds (min: 0)
+	videoId: string; // UUID
+	currentTime: number; // Current playback position in seconds (min: 0)
+	watchTime: number; // Total time watched in seconds (min: 0)
 }
 ```
 
 **Response:**
+
 ```typescript
 {
   success: boolean;
@@ -66,11 +71,12 @@ Updates the user's video watching progress.
 ```
 
 **Usage:**
+
 ```typescript
 const result = await updateVideoProgress({
-  videoId: 'uuid-here',
-  currentTime: 120.5,
-  watchTime: 300,
+	videoId: 'uuid-here',
+	currentTime: 120.5,
+	watchTime: 300,
 });
 ```
 
@@ -85,13 +91,15 @@ const result = await updateVideoProgress({
 Marks a video as completed for the user.
 
 **Input Schema:**
+
 ```typescript
 {
-  videoId: string; // UUID
+	videoId: string; // UUID
 }
 ```
 
 **Response:**
+
 ```typescript
 {
   success: boolean;
@@ -103,6 +111,7 @@ Marks a video as completed for the user.
 ```
 
 **Usage:**
+
 ```typescript
 const result = await markVideoCompleted({ videoId: 'uuid-here' });
 ```
@@ -149,25 +158,25 @@ Creates or updates user's video progress.
 
 ```typescript
 interface Video {
-  id: string;
-  title: string;
-  titleEn?: string;
-  description?: string;
-  videoUrl: string;
-  thumbnailUrl?: string;
-  duration: number; // seconds
-  deckId?: string;
-  level?: string;
-  tags: string[];
-  language: string;
-  targetLanguage: string;
-  contentStatus: ContentStatus;
-  verifiedAt?: Date;
-  verifiedBy?: string;
-  subtitles: Subtitle[];
-  createdAt: Date;
-  updatedAt: Date;
-  deletedAt?: Date;
+	id: string;
+	title: string;
+	titleEn?: string;
+	description?: string;
+	videoUrl: string;
+	thumbnailUrl?: string;
+	duration: number; // seconds
+	deckId?: string;
+	level?: string;
+	tags: string[];
+	language: string;
+	targetLanguage: string;
+	contentStatus: ContentStatus;
+	verifiedAt?: Date;
+	verifiedBy?: string;
+	subtitles: Subtitle[];
+	createdAt: Date;
+	updatedAt: Date;
+	deletedAt?: Date;
 }
 ```
 
@@ -175,19 +184,19 @@ interface Video {
 
 ```typescript
 interface Subtitle {
-  id: string;
-  videoId: string;
-  startTime: number; // seconds
-  endTime: number; // seconds
-  sentence: string; // Japanese sentence
-  translation: {
-    vi: string;
-    en?: string;
-  };
-  words: SubtitleWord[];
-  order: number;
-  createdAt: Date;
-  updatedAt: Date;
+	id: string;
+	videoId: string;
+	startTime: number; // seconds
+	endTime: number; // seconds
+	sentence: string; // Japanese sentence
+	translation: {
+		vi: string;
+		en?: string;
+	};
+	words: SubtitleWord[];
+	order: number;
+	createdAt: Date;
+	updatedAt: Date;
 }
 ```
 
@@ -195,12 +204,12 @@ interface Subtitle {
 
 ```typescript
 interface SubtitleWord {
-  text: string;
-  romaji: string;
-  startTime: number; // relative to subtitle startTime
-  endTime: number; // relative to subtitle startTime
-  color?: 'yellow' | 'green' | 'purple' | 'red' | 'blue' | 'light-blue';
-  type?: string; // e.g., "noun", "verb", "particle"
+	text: string;
+	romaji: string;
+	startTime: number; // relative to subtitle startTime
+	endTime: number; // relative to subtitle startTime
+	color?: 'yellow' | 'green' | 'purple' | 'red' | 'blue' | 'light-blue';
+	type?: string; // e.g., "noun", "verb", "particle"
 }
 ```
 
@@ -208,14 +217,14 @@ interface SubtitleWord {
 
 ```typescript
 interface VideoProgress {
-  id: string;
-  userId: string;
-  videoId: string;
-  currentTime: number; // seconds
-  watchTime: number; // seconds
-  completed: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+	id: string;
+	userId: string;
+	videoId: string;
+	currentTime: number; // seconds
+	watchTime: number; // seconds
+	completed: boolean;
+	createdAt: Date;
+	updatedAt: Date;
 }
 ```
 
@@ -226,35 +235,36 @@ interface VideoProgress {
 See `docs/features/video-learning-demo-data.json` for a complete example.
 
 **Structure:**
+
 ```json
 {
-  "version": "1.0",
-  "videoId": "string",
-  "language": "ja",
-  "targetLanguage": "vi",
-  "subtitles": [
-    {
-      "id": "string",
-      "order": 1,
-      "startTime": 0.0,
-      "endTime": 5.2,
-      "sentence": "Japanese sentence",
-      "translation": {
-        "vi": "Vietnamese translation",
-        "en": "English translation (optional)"
-      },
-      "words": [
-        {
-          "text": "word",
-          "romaji": "romaji",
-          "startTime": 0.0,
-          "endTime": 0.8,
-          "color": "yellow",
-          "type": "noun"
-        }
-      ]
-    }
-  ]
+	"version": "1.0",
+	"videoId": "string",
+	"language": "ja",
+	"targetLanguage": "vi",
+	"subtitles": [
+		{
+			"id": "string",
+			"order": 1,
+			"startTime": 0.0,
+			"endTime": 5.2,
+			"sentence": "Japanese sentence",
+			"translation": {
+				"vi": "Vietnamese translation",
+				"en": "English translation (optional)"
+			},
+			"words": [
+				{
+					"text": "word",
+					"romaji": "romaji",
+					"startTime": 0.0,
+					"endTime": 0.8,
+					"color": "yellow",
+					"type": "noun"
+				}
+			]
+		}
+	]
 }
 ```
 
@@ -269,8 +279,8 @@ All Server Actions return errors in the response object rather than throwing:
 ```typescript
 const result = await getVideoData({ videoId });
 if (!result.success) {
-  console.error(result.error);
-  // Handle error
+	console.error(result.error);
+	// Handle error
 }
 ```
 

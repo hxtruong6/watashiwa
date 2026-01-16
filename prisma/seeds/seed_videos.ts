@@ -9,7 +9,7 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import { v7 } from 'uuid';
 
-import { prisma } from '../src/lib/db';
+import { prisma } from '../../src/lib/db';
 
 interface SubtitleWord {
 	text: string;

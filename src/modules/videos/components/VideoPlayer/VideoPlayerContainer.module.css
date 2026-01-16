@@ -1,66 +1,73 @@
 .container {
-  width: 100%;
-  position: relative;
-  margin-bottom: var(--spacing-md);
+	width: 100%;
+	position: relative;
+	margin-bottom: var(--spacing-md);
 }
 
 .videoWrapper {
-  position: relative;
-  width: 100%;
-  background-color: #000;
-  border-radius: 8px;
-  overflow: hidden;
+	position: relative;
+	width: 100%;
+	background-color: #000;
+	border-radius: 8px;
+	overflow: hidden;
 }
 
 .controlsOverlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%);
-  padding: var(--spacing-md) var(--spacing-sm);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  opacity: 0;
-  transform: translateY(10px);
-  pointer-events: none;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: linear-gradient(
+		to top,
+		rgba(0, 0, 0, 0.7) 0%,
+		rgba(0, 0, 0, 0.4) 50%,
+		transparent 100%
+	);
+	padding: var(--spacing-md) var(--spacing-sm);
+	transition:
+		opacity 0.3s ease,
+		transform 0.3s ease;
+	opacity: 0;
+	transform: translateY(10px);
+	pointer-events: none;
 }
 
 .controlsOverlay.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+	opacity: 1;
+	transform: translateY(0);
+	pointer-events: auto;
 }
 
 .progressBarWrapper {
-  margin-bottom: var(--spacing-sm);
+	margin-bottom: var(--spacing-sm);
 }
 
 .controlsWrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 /* Mobile: Always show controls, no overlay */
 @media (max-width: 768px) {
-  .controlsOverlay {
-    position: static;
-    background: transparent;
-    padding: var(--spacing-md) var(--spacing-sm);
-    opacity: 1;
-    transform: none;
-    pointer-events: auto;
-  }
+	.controlsOverlay {
+		position: static;
+		background: transparent;
+		padding: var(--spacing-md) var(--spacing-sm);
+		opacity: 1;
+		transform: none;
+		pointer-events: auto;
+	}
 
-  .videoWrapper {
-    margin-bottom: 0;
-  }
+	.videoWrapper {
+		margin-bottom: 0;
+	}
 }
 
 /* Desktop: Show controls on hover or when paused */
 @media (min-width: 769px) {
-  .container:hover .controlsOverlay {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	.container:hover .controlsOverlay {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }

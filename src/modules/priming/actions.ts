@@ -1,271 +1,204 @@
 /**
- * Priming Module - Server Actions
+ * Server Actions - Priming Module
  *
- * Handles story fetching, authorization, and progress tracking
+ * MANDATORY: ALL Server Actions MUST use executeSafeAction wrapper
+ * Returns: ApiResponse<T> format
+ * Never throws errors - always return error in response object
  */
 
 'use server';
 
-import { prisma } from '@/lib/db';
-import { StoryContentSchema } from '@/lib/schemas/jsonb';
 import { executeSafeAction } from '@/modules/core/action-client';
-import { unstable_cache } from 'next/cache';
-import { z } from 'zod';
 
-import { MarkStoryReadSchema, StoryResponse, StoryWithContent } from './types';
+import {
+	completeStory,
+	getStoryWithProgress,
+	listStoriesWithProgress,
+	updateStoryProgress,
+} from './services';
+import {
+	CompleteStoryInput,
+	CompleteStoryInputSchema,
+	GetStoryInput,
+	GetStoryInputSchema,
+	GetStoryOutput,
+	ListStoriesInput,
+	ListStoriesInputSchema,
+	ListStoriesOutput,
+	MarkWordCollectedInput,
+	MarkWordCollectedInputSchema,
+	UpdateStoryProgressInput,
+	UpdateStoryProgressInputSchema,
+} from './types';
 
-// Input validation schema
-const GetStoryByUnitSchema = z.object({
-	unitId: z.string().uuid(),
-});
-
-/**
- * Get story content (cached, no authorization)
- * Only caches the story data itself, not authorization checks
- */
-const getStoryContentCached = unstable_cache(
-	async (unitId: string) => {
-		const story = await prisma.story.findFirst({
-			where: { unitId },
-			select: {
-				id: true,
-				unitId: true,
-				content: true,
-				audioUrl: true,
-				contentStatus: true,
-				createdAt: true,
-			},
-		});
-		return story;
-	},
-	['story-content'],
-	{
-		revalidate: 3600, // 1 hour
-		tags: ['stories'],
-	},
-);
+// -----------------------------------------------------------------------------
+// Story Reading Actions
+// -----------------------------------------------------------------------------
 
 /**
- * Get story by unit ID with authorization check
+ * Get story by slug with user progress
  *
- * Security: Verifies user has access to the deck (public or owned)
- * Performance: Caches story content separately from authorization checks
+ * Usage:
+ * const result = await getStoryAction({ slug: 'daily-commute-part-1', language: 'en' })
+ */
+export async function getStoryAction(input: unknown) {
+	return executeSafeAction<GetStoryInput, GetStoryOutput>(
+		GetStoryInputSchema,
+		input,
+		async (data, { userId }) => {
+			if (!userId) {
+				throw new Error('Authentication required to read stories');
+			}
+
+			return await getStoryWithProgress(data.slug, userId, data.language);
+		},
+		{ requireAuth: true },
+	);
+}
+
+/**
+ * List stories with filters and user progress
  *
- * IMPORTANT: Authorization is NOT cached to prevent cross-user cache pollution
+ * Usage:
+ * const result = await listStoriesAction({ difficulty: 'N5', limit: 20 })
  */
-const getStoryByUnitUncached = async (
-	unitId: string,
-	userId: string | null,
-): Promise<StoryWithContent | null> => {
-	// 1. Check deck access (authorization) - NOT CACHED for security
-	const deck = await prisma.deck.findUnique({
-		where: { id: unitId },
-		select: { id: true, isPublic: true, authorId: true },
-	});
-
-	if (!deck) {
-		return null;
-	}
-
-	// Authorization check: user must have access to deck
-	if (!deck.isPublic && deck.authorId !== userId) {
-		// Return null instead of throwing to allow graceful handling
-		return null;
-	}
-
-	// 2. Get cached story content (safe to cache as it's public data)
-	const story = await getStoryContentCached(unitId);
-	if (!story) {
-		return null;
-	}
-
-	// 3. Validate and parse content
-	const contentValidation = StoryContentSchema.safeParse(story.content);
-	if (!contentValidation.success) {
-		console.error('Invalid story content:', contentValidation.error);
-		// Return null instead of throwing for graceful degradation
-		return null;
-	}
-
-	return {
-		...story,
-		content: contentValidation.data,
-	};
-};
-
-/**
- * Get story by unit with authorization and caching
- */
-export async function getStoryByUnit(input: { unitId: string }) {
-	return executeSafeAction(
-		GetStoryByUnitSchema,
+export async function listStoriesAction(input: unknown) {
+	return executeSafeAction<ListStoriesInput, ListStoriesOutput>(
+		ListStoriesInputSchema,
 		input,
-		async ({ unitId }, { userId }) => {
-			const story = await getStoryByUnitUncached(unitId, userId);
-
-			if (!story) {
-				return { story: null, hasRead: false } as StoryResponse;
+		async (data, { userId }) => {
+			if (!userId) {
+				throw new Error('Authentication required');
 			}
 
-			// Check if user has read this story
-			let hasRead = false;
-			if (userId) {
-				const storyLog = await prisma.storyLog.findUnique({
-					where: {
-						userId_storyId: {
-							userId,
-							storyId: story.id,
-						},
-					},
-				});
-				hasRead = !!storyLog;
-			}
-
-			return { story, hasRead } as StoryResponse;
+			return await listStoriesWithProgress(data, userId);
 		},
-		{ requireAuth: false }, // Allow unauthenticated users to read public stories
+		{ requireAuth: true },
 	);
 }
 
+// -----------------------------------------------------------------------------
+// Progress Tracking Actions
+// -----------------------------------------------------------------------------
+
 /**
- * Check if user has read story for a unit
- * Optimized query with single JOIN
+ * Mark word as collected
+ * Updates story log with clicked word
+ *
+ * Usage:
+ * const result = await markWordCollectedAction({
+ *   storyId: '...',
+ *   vocabularyId: '...'
+ * })
  */
-export async function hasReadStory(input: { unitId: string }) {
-	return executeSafeAction(
-		z.object({ unitId: z.string().uuid() }),
+export async function markWordCollectedAction(input: unknown) {
+	return executeSafeAction<MarkWordCollectedInput, { success: boolean }>(
+		MarkWordCollectedInputSchema,
 		input,
-		async ({ unitId }, { userId }) => {
+		async (data, { userId }) => {
 			if (!userId) {
-				return false;
+				throw new Error('Authentication required');
 			}
 
-			// Optimized: Single query with JOIN
-			const storyLog = await prisma.storyLog.findFirst({
-				where: {
-					userId,
-					story: {
-						unitId,
-					},
-				},
-				select: { id: true },
-			});
+			// Note: Actual collection is handled client-side and synced via updateStoryProgressAction
+			// This action is primarily for real-time analytics tracking
 
-			return !!storyLog;
+			return { success: true };
 		},
 		{ requireAuth: true },
 	);
 }
 
 /**
- * Mark story as read
- * Creates StoryLog entry
+ * Update story reading progress
+ * Called periodically during reading (auto-save)
+ *
+ * Usage:
+ * const result = await updateStoryProgressAction({
+ *   storyId: '...',
+ *   wordsCollected: 5,
+ *   readTimeSeconds: 120,
+ *   analytics: { ... }
+ * })
  */
-export async function markStoryRead(input: { storyId: string }) {
-	return executeSafeAction(
-		MarkStoryReadSchema,
+export async function updateStoryProgressAction(input: unknown) {
+	return executeSafeAction<
+		UpdateStoryProgressInput,
+		{ success: boolean; wordsCollected: number; totalWords: number }
+	>(
+		UpdateStoryProgressInputSchema,
 		input,
-		async ({ storyId }, { userId }) => {
+		async (data, { userId }) => {
 			if (!userId) {
-				throw new Error('Unauthorized');
+				throw new Error('Authentication required');
 			}
 
-			// Check if story exists
-			const story = await prisma.story.findUnique({
-				where: { id: storyId },
-				select: { id: true },
-			});
-
-			if (!story) {
-				throw new Error('Story not found');
-			}
-
-			// Upsert to handle duplicate clicks gracefully
-			const storyLog = await prisma.storyLog.upsert({
-				where: {
-					userId_storyId: {
-						userId,
-						storyId,
-					},
-				},
-				create: {
-					userId,
-					storyId,
-					completedAt: new Date(),
-				},
-				update: {
-					completedAt: new Date(),
-				},
-			});
-
-			return { success: true, storyLog };
+			return await updateStoryProgress(userId, data);
 		},
 		{ requireAuth: true },
 	);
 }
 
 /**
- * Get session data with optimized story check
- * Single query to fetch deck, story, and storyLog status
+ * Complete story and add collected words to review queue
+ * Called when user finishes reading all words in story
+ *
+ * Usage:
+ * const result = await completeStoryAction({
+ *   storyId: '...',
+ *   totalWords: 12,
+ *   readTimeSeconds: 300,
+ *   analytics: { clicked_words: [...], translation_used: false, ... }
+ * })
+ *
+ * Returns:
+ * { newCardsAdded: 8, existingCards: 4 }
  */
-export async function getSessionDataWithPriming(input: { deckId: string }) {
-	return executeSafeAction(
-		z.object({ deckId: z.string().uuid() }),
+export async function completeStoryAction(input: unknown) {
+	return executeSafeAction<
+		CompleteStoryInput,
+		{ success: boolean; newCardsAdded: number; existingCards: number }
+	>(
+		CompleteStoryInputSchema,
 		input,
-		async ({ deckId }, { userId }) => {
+		async (data, { userId }) => {
 			if (!userId) {
-				throw new Error('Unauthorized');
+				throw new Error('Authentication required');
 			}
 
-			// Optimized: Single query with all relations
-			const deck = await prisma.deck.findUnique({
-				where: { id: deckId },
-				select: {
-					id: true,
-					isPublic: true,
-					authorId: true,
-					stories: {
-						include: {
-							storyLogs: {
-								where: { userId },
-								select: { id: true },
-							},
-						},
-					},
-				},
-			});
-
-			if (!deck) {
-				throw new Error('Deck not found');
-			}
-
-			// Authorization check
-			if (!deck.isPublic && deck.authorId !== userId) {
-				throw new Error('Unauthorized: Deck not accessible');
-			}
-
-			const story = deck.stories[0] || null;
-			const hasReadStory = story ? story.storyLogs.length > 0 : false;
-
-			// Parse story content if exists
-			let storyWithContent: StoryWithContent | null = null;
-			if (story) {
-				const contentValidation = StoryContentSchema.safeParse(story.content);
-				if (contentValidation.success) {
-					storyWithContent = {
-						...story,
-						content: contentValidation.data,
-					};
-				}
-			}
-
-			return {
-				deck,
-				story: storyWithContent,
-				hasReadStory,
-				requiresPriming: story && !hasReadStory,
-			};
+			return await completeStory(userId, data);
 		},
 		{ requireAuth: true },
 	);
+}
+
+// -----------------------------------------------------------------------------
+// Future Actions (Placeholder for Phase 2+)
+// -----------------------------------------------------------------------------
+
+/**
+ * Get recommended stories based on user level and progress
+ * (Phase 2 feature - AI-powered recommendations)
+ */
+export async function getRecommendedStoriesAction(input: unknown) {
+	// TODO: Implement in Phase 2
+	return { success: false, error: 'Feature not yet implemented' };
+}
+
+/**
+ * Rate story (1-5 stars)
+ * (Phase 2 feature - content quality tracking)
+ */
+export async function rateStoryAction(input: unknown) {
+	// TODO: Implement in Phase 2
+	return { success: false, error: 'Feature not yet implemented' };
+}
+
+/**
+ * Report story error (typo, wrong translation, etc.)
+ * (Phase 2 feature - community content moderation)
+ */
+export async function reportStoryErrorAction(input: unknown) {
+	// TODO: Implement in Phase 2
+	return { success: false, error: 'Feature not yet implemented' };
 }

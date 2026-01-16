@@ -268,12 +268,14 @@ model Vocabulary {
   wordOrder Int @default(0) @map("word_order")
 
   // Relations
-  variants      CardVariant[]
-  confusionsAs1 ConfusionPair[] @relation("ConfusionA")
-  confusionsAs2 ConfusionPair[] @relation("ConfusionB")
-  userReviews   UserReview[]
-  cardComments  CardComment[]
-  cardReports   CardReport[]
+  variants          CardVariant[]
+  confusionsAs1     ConfusionPair[]    @relation("ConfusionA")
+  confusionsAs2     ConfusionPair[]    @relation("ConfusionB")
+  userReviews       UserReview[]
+  cardComments      CardComment[]
+  cardReports       CardReport[]
+  kanjiCompositions KanjiComposition[]
+  storyVocabularies StoryVocabulary[] // Words appearing in stories
   // Generalized index for tag searching might be GIN index in raw SQL, 
   // but Prisma doesn't fully support querying 'has' on arrays efficiently without specific PG extensions.
   // For now, basic list filtering is acceptable.
@@ -347,38 +349,164 @@ enum ConfusionType {
 // Active Priming (The Context)
 model Story {
   id     String @id @default(uuid())
+  slug   String @unique // URL-friendly identifier (e.g., "daily-commute-part-1")
   unitId String @map("unit_id")
   unit   Deck   @relation(fields: [unitId], references: [id], onDelete: Cascade)
 
-  // Contract: StoryContent (zod: StoryContentSchema)
-  // { "title": { "vi": "..." }, "body_text": "...", "highlights": [...] }
-  content       Json
-  audioUrl      String?       @map("audio_url")
-  contentStatus ContentStatus @default(AI_GENERATED) @map("content_status")
+  // Sequencing & Organization
+  order Int @default(0) // Story arc sequencing (Part 1, Part 2, etc.)
 
-  storyLogs StoryLog[]
+  // Contract: StoryContent (zod: StoryContentSchema)
+  // {
+  //   "title": { "en": "...", "vi": "...", "ja": "..." },
+  //   "body_text": { "en": "...", "vi": "...", "ja": "..." },
+  //   "translation": { "en": "...", "vi": "..." },
+  //   "highlights": [] // Now stored in StoryVocabulary table
+  // }
+  content Json
+
+  // Metadata for Discovery & Filtering
+  difficulty   String  @default("N5") // "N5" | "N4" | "N3" | "N2" | "N1"
+  category     String  @default("daily_life") // "daily_life" | "travel" | "social" | "business"
+  readTimeMin  Int     @default(2) @map("read_time_min") // Estimated read time in minutes
+  thumbnailUrl String? @map("thumbnail_url") // Optional illustration
+
+  // Media & Audio
+  audioUrl String? @map("audio_url") // Optional full story narration
+
+  // Quality Control
+  contentStatus ContentStatus @default(AI_GENERATED) @map("content_status")
+  verifiedAt    DateTime?     @map("verified_at")
+  verifiedBy    String?       @map("verified_by")
+
+  // Relations
+  vocabularies StoryVocabulary[]
+  storyLogs    StoryLog[]
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  @@index([unitId])
+  @@index([slug])
+  @@index([contentStatus])
+  @@index([difficulty, category])
+}
+
+// Junction Table: Story ↔ Vocabulary (Many-to-Many)
+// Stores position data for word highlighting in stories
+model StoryVocabulary {
+  id           String @id @default(uuid())
+  storyId      String @map("story_id")
+  vocabularyId String @map("vocabulary_id")
+
+  // Position data for highlighting (JSONB)
+  // {
+  //   "en": [25, 120], // Word appears at positions 25 and 120 in English text
+  //   "vi": [21, 115], // Different positions in Vietnamese
+  //   "ja": [13, 98]   // Different positions in Japanese
+  // }
+  positions Json
+
+  // Word metadata (denormalized for performance)
+  wordSurface String @map("word_surface") // e.g., "いきます"
+  wordReading String @map("word_reading") // e.g., "いきます"
+  wordLength  Int    @map("word_length") // Character length for text slicing
+
+  // Relations
+  story      Story      @relation(fields: [storyId], references: [id], onDelete: Cascade)
+  vocabulary Vocabulary @relation(fields: [vocabularyId], references: [id], onDelete: Cascade)
 
   createdAt DateTime @default(now()) @map("created_at")
 
-  @@index([unitId])
-  @@index([contentStatus])
+  @@unique([storyId, vocabularyId])
+  @@index([storyId])
+  @@index([vocabularyId])
 }
 
 // Story Progress Tracker (Active Priming)
 model StoryLog {
-  id          String   @id @default(uuid())
-  userId      String   @map("user_id")
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  storyId     String   @map("story_id")
-  story       Story    @relation(fields: [storyId], references: [id], onDelete: Cascade)
-  completedAt DateTime @default(now()) @map("completed_at")
+  id      String @id @default(uuid())
+  userId  String @map("user_id")
+  user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  storyId String @map("story_id")
+  story   Story  @relation(fields: [storyId], references: [id], onDelete: Cascade)
+
+  // Progress Tracking
+  completedAt     DateTime? @map("completed_at")
+  wordsCollected  Int       @default(0) @map("words_collected") // How many words user clicked
+  totalWords      Int       @map("total_words") // Total words in story
+  readTimeSeconds Int       @default(0) @map("read_time_seconds") // Time spent reading
+
+  // Behavior Analytics (JSONB)
+  // {
+  //   "clicked_words": ["vocab-id-1", "vocab-id-2"],
+  //   "translation_used": true,
+  //   "paused_at": [30, 120], // Seconds when user paused
+  //   "audio_plays": 5
+  // }
+  analytics Json @default("{}")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
   @@unique([userId, storyId])
   @@index([userId, completedAt])
   @@index([storyId])
+  @@index([userId, storyId])
 }
 
 // NOTE: Legacy separate Kanji model removed in favor of `Vocabulary` with tags=["kanji"].
+
+// -----------------------------------------------------------------------------
+// 3.5 ORIGAMI KNOWLEDGE GRAPH
+// -----------------------------------------------------------------------------
+
+enum ReadingType {
+  ONYOMI
+  KUNYOMI
+  IRREGULAR
+}
+
+model Kanji {
+  id              String   @id @default(uuid())
+  character       String   @unique @db.Char(1) // e.g., '先'
+  meaningVi       String?  @map("meaning_vi") // Vietnamese meaning (e.g., "Trước")
+  meaningEn       String?  @map("meaning_en") // English meaning (e.g., "Ahead, future")
+  hanViet         String?  @map("han_viet") // Hán Việt: TIÊN (Critical for Vietnamese learners)
+  onyomiReadings  String[] // e.g., ["SEN"]
+  kunyomiReadings String[] // e.g., ["saki", "ma-zu"]
+  jlptLevel       Int? // 5 to 1 (nullable for non-JLPT kanji)
+  strokeCount     Int
+  frequency       Int? // Usage frequency ranking
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  compositions KanjiComposition[]
+
+  @@index([jlptLevel])
+  @@index([frequency])
+  @@map("kanji")
+}
+
+model KanjiComposition {
+  id            String      @id @default(uuid())
+  wordId        String      @map("word_id")
+  kanjiId       String      @map("kanji_id")
+  position      Int // 1st, 2nd, 3rd character in word
+  activeReading String      @map("active_reading") // How this kanji is read in this word (e.g., "SEI")
+  readingType   ReadingType @map("reading_type")
+  createdAt     DateTime    @default(now()) @map("created_at")
+
+  // Relations
+  word  Vocabulary @relation(fields: [wordId], references: [id], onDelete: Cascade)
+  kanji Kanji      @relation(fields: [kanjiId], references: [id], onDelete: Cascade)
+
+  @@unique([wordId, kanjiId, position])
+  @@index([kanjiId, readingType])
+  @@map("kanji_composition")
+}
 
 // -----------------------------------------------------------------------------
 // 4. USER PROGRESS (FSRS & MEMORY)

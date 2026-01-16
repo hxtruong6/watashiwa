@@ -46,18 +46,23 @@ A comprehensive video learning system that allows users to learn Japanese throug
 ### 2.1 Core User Stories
 
 **US-1: Video Playback**
+
 > As a learner, I want to play, pause, stop, and adjust playback speed of learning videos so that I can learn at my own pace.
 
 **US-2: Subtitle Highlighting**
+
 > As a learner, I want to see which words are being spoken in real-time through visual highlighting so that I can follow along with the audio.
 
 **US-3: Translation Display**
+
 > As a learner, I want to see Vietnamese translations below Japanese subtitles so that I can understand the meaning of sentences.
 
 **US-4: Word Breakdown**
+
 > As a learner, I want to see individual words with romaji pronunciation so that I can learn proper reading and pronunciation.
 
 **US-5: Progress Tracking**
+
 > As a learner, I want my video watching progress to be saved so that I can resume from where I left off.
 
 ### 2.2 Future Enhancements (Out of Scope for MVP)
@@ -116,26 +121,26 @@ model Video {
   duration      Int      // Duration in seconds
   deckId        String?  @map("deck_id")        // Optional: link to deck
   deck          Deck?    @relation(fields: [deckId], references: [id])
-  
+
   // Metadata
   level         String?  // e.g., "N5", "N4", "Beginner"
   tags          String[]
   language      String   @default("ja")          // Source language
   targetLanguage String  @default("vi")         // Translation language
-  
+
   // Content Status
   contentStatus ContentStatus @default(DRAFT)
   verifiedAt    DateTime?
   verifiedBy    String?
-  
+
   // Relations
   subtitles     Subtitle[]
   videoLogs     VideoLog[]
-  
+
   createdAt     DateTime @default(now()) @map("created_at")
   updatedAt     DateTime @updatedAt @map("updated_at")
   deletedAt     DateTime? @map("deleted_at")
-  
+
   @@index([deckId])
   @@index([contentStatus])
 }
@@ -144,22 +149,22 @@ model Subtitle {
   id          String   @id @default(uuid())
   videoId     String   @map("video_id")
   video       Video    @relation(fields: [videoId], references: [id], onDelete: Cascade)
-  
+
   // Timing
   startTime   Float    @map("start_time")       // Start time in seconds
   endTime     Float    @map("end_time")         // End time in seconds
-  
+
   // Content
   sentence    String   // Japanese sentence
   translation Json     // { "vi": "...", "en": "..." }
   words       Json     // Word-level timing data (see SubtitleWord type)
-  
+
   // Display
   order       Int      // Sentence order in video
-  
+
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
-  
+
   @@index([videoId, order])
   @@index([videoId, startTime])
 }
@@ -170,19 +175,19 @@ model VideoLog {
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   videoId     String   @map("video_id")
   video       Video    @relation(fields: [videoId], references: [id], onDelete: Cascade)
-  
+
   // Progress
   currentTime Float    @default(0) @map("current_time")  // Last watched position
   completed   Boolean  @default(false)
   watchTime   Int      @default(0) @map("watch_time")   // Total seconds watched
-  
+
   // Analytics
   playCount   Int      @default(0) @map("play_count")
   lastWatched DateTime @default(now()) @map("last_watched")
-  
+
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
-  
+
   @@unique([userId, videoId])
   @@index([userId])
   @@index([videoId])
@@ -195,72 +200,72 @@ model VideoLog {
 // src/modules/videos/types.ts
 
 export interface Video {
-  id: string
-  title: string
-  titleEn?: string
-  description?: string
-  videoUrl: string
-  thumbnailUrl?: string
-  duration: number
-  deckId?: string
-  level?: string
-  tags: string[]
-  language: string
-  targetLanguage: string
-  contentStatus: ContentStatus
-  subtitles: Subtitle[]
-  createdAt: Date
-  updatedAt: Date
+	id: string;
+	title: string;
+	titleEn?: string;
+	description?: string;
+	videoUrl: string;
+	thumbnailUrl?: string;
+	duration: number;
+	deckId?: string;
+	level?: string;
+	tags: string[];
+	language: string;
+	targetLanguage: string;
+	contentStatus: ContentStatus;
+	subtitles: Subtitle[];
+	createdAt: Date;
+	updatedAt: Date;
 }
 
 export interface Subtitle {
-  id: string
-  videoId: string
-  startTime: number
-  endTime: number
-  sentence: string
-  translation: {
-    vi: string
-    en?: string
-  }
-  words: SubtitleWord[]
-  order: number
+	id: string;
+	videoId: string;
+	startTime: number;
+	endTime: number;
+	sentence: string;
+	translation: {
+		vi: string;
+		en?: string;
+	};
+	words: SubtitleWord[];
+	order: number;
 }
 
 export interface SubtitleWord {
-  // Word/phrase text
-  text: string
-  
-  // Romaji pronunciation
-  romaji: string
-  
-  // Timing within the sentence (relative to sentence startTime)
-  startTime: number  // Relative to sentence start
-  endTime: number    // Relative to sentence start
-  
-  // Display properties
-  color?: string     // Color category (e.g., "yellow", "green", "purple", "red")
-  type?: string      // Word type (e.g., "noun", "verb", "particle")
+	// Word/phrase text
+	text: string;
+
+	// Romaji pronunciation
+	romaji: string;
+
+	// Timing within the sentence (relative to sentence startTime)
+	startTime: number; // Relative to sentence start
+	endTime: number; // Relative to sentence start
+
+	// Display properties
+	color?: string; // Color category (e.g., "yellow", "green", "purple", "red")
+	type?: string; // Word type (e.g., "noun", "verb", "particle")
 }
 
 export interface VideoProgress {
-  videoId: string
-  currentTime: number
-  completed: boolean
-  watchTime: number
-  playCount: number
-  lastWatched: Date
+	videoId: string;
+	currentTime: number;
+	completed: boolean;
+	watchTime: number;
+	playCount: number;
+	lastWatched: Date;
 }
 
 export interface VideoPlayerState {
-  isPlaying: boolean
-  currentTime: number
-  duration: number
-  playbackRate: number  // 0.5, 0.75, 1.0, 1.25, 1.5, 2.0
-  volume: number
-  isMuted: boolean
-  activeSubtitleId: string | null
-  activeWordIndex: number | null
+	isPlaying: boolean;
+	currentTime: number;
+	duration: number;
+	playbackRate: number; // 0.5, 0.75, 1.0, 1.25, 1.5, 2.0
+	volume: number;
+	isMuted: boolean;
+	activeSubtitleId: string | null;
+	activeWordIndex: number | null;
 }
 ```
 
@@ -456,48 +461,48 @@ Based on the image, words are color-coded by type/function:
 
 ```json
 {
-  "version": "1.0",
-  "videoId": "video-1",
-  "language": "ja",
-  "targetLanguage": "vi",
-  "subtitles": [
-    {
-      "id": "sub-1",
-      "order": 1,
-      "startTime": 5.2,
-      "endTime": 8.5,
-      "sentence": "今日、仕事が終わってから一人でいろいろ考えた。",
-      "translation": {
-        "vi": "Hôm nay, sau khi tan làm, tôi đã một mình suy nghĩ rất nhiều.",
-        "en": "Today, after work ended, I thought about various things alone."
-      },
-      "words": [
-        {
-          "text": "今日、",
-          "romaji": "kyou",
-          "startTime": 0.0,
-          "endTime": 0.8,
-          "color": "yellow",
-          "type": "time"
-        },
-        {
-          "text": "仕事",
-          "romaji": "shigoto",
-          "startTime": 0.8,
-          "endTime": 1.2,
-          "color": "green",
-          "type": "noun"
-        }
-      ]
-    }
-  ]
+	"version": "1.0",
+	"videoId": "video-1",
+	"language": "ja",
+	"targetLanguage": "vi",
+	"subtitles": [
+		{
+			"id": "sub-1",
+			"order": 1,
+			"startTime": 5.2,
+			"endTime": 8.5,
+			"sentence": "今日、仕事が終わってから一人でいろいろ考えた。",
+			"translation": {
+				"vi": "Hôm nay, sau khi tan làm, tôi đã một mình suy nghĩ rất nhiều.",
+				"en": "Today, after work ended, I thought about various things alone."
+			},
+			"words": [
+				{
+					"text": "今日、",
+					"romaji": "kyou",
+					"startTime": 0.0,
+					"endTime": 0.8,
+					"color": "yellow",
+					"type": "time"
+				},
+				{
+					"text": "仕事",
+					"romaji": "shigoto",
+					"startTime": 0.8,
+					"endTime": 1.2,
+					"color": "green",
+					"type": "noun"
+				}
+			]
+		}
+	]
 }
 ```
 
 **Alternative Formats (Not Recommended for MVP):**
 
 - ❌ SRT: No word-level timing
-- ❌ VTT: No word-level timing  
+- ❌ VTT: No word-level timing
 - ❌ ASS: Too complex, requires library
 
 **See [Recommendations Document](./video-learning-recommendations.md) for detailed format comparison.**

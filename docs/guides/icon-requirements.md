@@ -68,21 +68,21 @@
 
 ## Complete Icon Size Reference
 
-| Icon Type | Size | Format | Required | Use Case |
-|-----------|------|--------|----------|----------|
-| **Favicon** | 16x16 | ICO/PNG | ✅ Yes | Browser tab |
-| **Favicon** | 32x32 | ICO/PNG | ✅ Yes | Browser tab (retina) |
-| **Favicon** | 96x96 | PNG | ⚠️ Recommended | High-DPI displays |
-| **Apple Touch** | 180x180 | PNG | ✅ Yes | iOS home screen |
-| **Apple Touch** | 152x152 | PNG | ⚠️ Optional | iPad |
-| **Apple Touch** | 120x120 | PNG | ⚠️ Optional | iPhone (older) |
-| **PWA** | 192x192 | PNG | ✅ Yes | Android app icon |
-| **PWA** | 512x512 | PNG | ✅ Yes | Android splash, PWA install |
-| **PWA** | 144x144 | PNG | ⚠️ Optional | Android (older) |
-| **PWA** | 384x384 | PNG | ⚠️ Optional | Android (tablet) |
-| **Windows** | 144x144 | PNG | ⚠️ Optional | Windows tiles |
-| **Windows** | 150x150 | PNG | ⚠️ Optional | Windows 10 |
-| **Windows** | 310x310 | PNG | ⚠️ Optional | Windows wide tile |
+| Icon Type       | Size    | Format  | Required       | Use Case                    |
+| --------------- | ------- | ------- | -------------- | --------------------------- |
+| **Favicon**     | 16x16   | ICO/PNG | ✅ Yes         | Browser tab                 |
+| **Favicon**     | 32x32   | ICO/PNG | ✅ Yes         | Browser tab (retina)        |
+| **Favicon**     | 96x96   | PNG     | ⚠️ Recommended | High-DPI displays           |
+| **Apple Touch** | 180x180 | PNG     | ✅ Yes         | iOS home screen             |
+| **Apple Touch** | 152x152 | PNG     | ⚠️ Optional    | iPad                        |
+| **Apple Touch** | 120x120 | PNG     | ⚠️ Optional    | iPhone (older)              |
+| **PWA**         | 192x192 | PNG     | ✅ Yes         | Android app icon            |
+| **PWA**         | 512x512 | PNG     | ✅ Yes         | Android splash, PWA install |
+| **PWA**         | 144x144 | PNG     | ⚠️ Optional    | Android (older)             |
+| **PWA**         | 384x384 | PNG     | ⚠️ Optional    | Android (tablet)            |
+| **Windows**     | 144x144 | PNG     | ⚠️ Optional    | Windows tiles               |
+| **Windows**     | 150x150 | PNG     | ⚠️ Optional    | Windows 10                  |
+| **Windows**     | 310x310 | PNG     | ⚠️ Optional    | Windows wide tile           |
 
 ---
 
@@ -128,18 +128,16 @@ In `src/app/layout.tsx`:
 
 ```typescript
 export const metadata: Metadata = {
-  icons: {
-    icon: [
-      { url: '/icon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/icon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/icon-96x96.png', sizes: '96x96', type: 'image/png' },
-    ],
-    apple: [
-      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
-    ],
-    shortcut: '/favicon.ico',
-  },
-}
+	icons: {
+		icon: [
+			{ url: '/icon-16x16.png', sizes: '16x16', type: 'image/png' },
+			{ url: '/icon-32x32.png', sizes: '32x32', type: 'image/png' },
+			{ url: '/icon-96x96.png', sizes: '96x96', type: 'image/png' },
+		],
+		apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+		shortcut: '/favicon.ico',
+	},
+};
 ```
 
 ### Option 2: Using File-Based Metadata (Next.js 13+)
@@ -160,20 +158,20 @@ Update `public/manifest.json`:
 
 ```json
 {
-  "icons": [
-    {
-      "src": "/icon-192x192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/icon-512x512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
-    }
-  ]
+	"icons": [
+		{
+			"src": "/icon-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "/icon-512x512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any maskable"
+		}
+	]
 }
 ```
 

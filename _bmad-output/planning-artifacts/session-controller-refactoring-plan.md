@@ -75,13 +75,13 @@ src/modules/study/
 
 ```typescript
 interface UseSessionPhaseReturn {
-  studyPhase: StudyPhase;
-  setStudyPhase: (phase: StudyPhase) => void;
-  transitionToQuiz: () => void;
-  transitionToSummary: () => void;
-  hasSkippedBriefing: boolean;
-  setHasSkippedBriefing: (value: boolean) => void;
-  // ... other phase helpers
+	studyPhase: StudyPhase;
+	setStudyPhase: (phase: StudyPhase) => void;
+	transitionToQuiz: () => void;
+	transitionToSummary: () => void;
+	hasSkippedBriefing: boolean;
+	setHasSkippedBriefing: (value: boolean) => void;
+	// ... other phase helpers
 }
 ```
 
@@ -108,12 +108,12 @@ interface UseSessionPhaseReturn {
 
 ```typescript
 interface UseSessionInitializationReturn {
-  isLoading: boolean;
-  primingStory: StoryWithContent | null;
-  dailyStats: DailyStats;
-  userSettings: Partial<User> | null;
-  initializeSession: () => Promise<void>;
-  error: Error | null;
+	isLoading: boolean;
+	primingStory: StoryWithContent | null;
+	dailyStats: DailyStats;
+	userSettings: Partial<User> | null;
+	initializeSession: () => Promise<void>;
+	error: Error | null;
 }
 ```
 
@@ -140,12 +140,12 @@ interface UseSessionInitializationReturn {
 
 ```typescript
 interface UseRatingSubmissionReturn {
-  submitRating: (rating: 1 | 2 | 3 | 4, isExplicitEasy?: boolean) => Promise<void>;
-  isSubmitting: boolean;
-  isCardExiting: boolean;
-  exitColor: string | undefined;
-  handleRate: (action: 'forgot' | 'remember' | 'easy') => Promise<void>;
-  handleNumericRate: (rating: number) => Promise<void>;
+	submitRating: (rating: 1 | 2 | 3 | 4, isExplicitEasy?: boolean) => Promise<void>;
+	isSubmitting: boolean;
+	isCardExiting: boolean;
+	exitColor: string | undefined;
+	handleRate: (action: 'forgot' | 'remember' | 'easy') => Promise<void>;
+	handleNumericRate: (rating: number) => Promise<void>;
 }
 ```
 
@@ -171,22 +171,22 @@ interface UseRatingSubmissionReturn {
 
 ```typescript
 interface UseSessionUIReturn {
-  // Drawers
-  settingsVisible: boolean;
-  setSettingsVisible: (visible: boolean) => void;
-  isCommentDrawerOpen: boolean;
-  setIsCommentDrawerOpen: (open: boolean) => void;
-  isRelatedWordDrawerOpen: boolean;
-  setIsRelatedWordDrawerOpen: (open: boolean) => void;
-  selectedRelatedWord: RelatedWord | null;
-  setSelectedRelatedWord: (word: RelatedWord | null) => void;
-  
-  // Modals
-  isReportModalOpen: boolean;
-  setIsReportModalOpen: (open: boolean) => void;
-  
-  // Helpers
-  closeAllDrawers: () => void;
+	// Drawers
+	settingsVisible: boolean;
+	setSettingsVisible: (visible: boolean) => void;
+	isCommentDrawerOpen: boolean;
+	setIsCommentDrawerOpen: (open: boolean) => void;
+	isRelatedWordDrawerOpen: boolean;
+	setIsRelatedWordDrawerOpen: (open: boolean) => void;
+	selectedRelatedWord: RelatedWord | null;
+	setSelectedRelatedWord: (word: RelatedWord | null) => void;
+
+	// Modals
+	isReportModalOpen: boolean;
+	setIsReportModalOpen: (open: boolean) => void;
+
+	// Helpers
+	closeAllDrawers: () => void;
 }
 ```
 
@@ -213,10 +213,10 @@ interface UseSessionUIReturn {
 
 ```typescript
 interface UseSessionAnalyticsReturn {
-  trackSessionStart: (params: SessionStartParams) => void;
-  trackSessionEnd: (params: SessionEndParams) => void;
-  trackFirstCardShown: (params: FirstCardParams) => void;
-  trackPhaseTransition: (from: StudyPhase, to: StudyPhase) => void;
+	trackSessionStart: (params: SessionStartParams) => void;
+	trackSessionEnd: (params: SessionEndParams) => void;
+	trackFirstCardShown: (params: FirstCardParams) => void;
+	trackPhaseTransition: (from: StudyPhase, to: StudyPhase) => void;
 }
 ```
 
@@ -276,23 +276,23 @@ export default function SessionController(props: SessionControllerProps) {
   const rating = useRatingSubmission();
   const ui = useSessionUI();
   const analytics = useSessionAnalytics(props);
-  
+
   // 2. Derived state
   const cardToShow = useMemo(() => {
     // Simple derivation
   }, []);
-  
+
   // 3. Render phase-specific components
   if (phase.studyPhase === 'summary') {
     return <SessionSummary />;
   }
-  
+
   if (phase.studyPhase === 'priming-modal') {
     return <PrimingPhase {...primingProps} />;
   }
-  
+
   // ... other phases
-  
+
   return (
     <SessionContainer>
       {phase.studyPhase === 'loading' && <LoadingPhase />}
@@ -410,17 +410,17 @@ export default function SessionController(props: SessionControllerProps) {
 
 ## 8. Timeline Estimate
 
-| Phase | Effort | Risk |
-|-------|--------|------|
-| Phase 1: Phase Management | 4 hours | Medium |
-| Phase 2: Initialization | 4 hours | Medium |
-| Phase 3: Rating Submission | 3 hours | Low |
-| Phase 4: UI State | 2 hours | Low |
-| Phase 5: Analytics | 2 hours | Low |
-| Phase 6: Phase Components | 6 hours | Medium |
-| Phase 7: Main Refactor | 4 hours | High |
-| Testing & Cleanup | 4 hours | Medium |
-| **Total** | **29 hours** | **~3-4 days** |
+| Phase                      | Effort       | Risk          |
+| -------------------------- | ------------ | ------------- |
+| Phase 1: Phase Management  | 4 hours      | Medium        |
+| Phase 2: Initialization    | 4 hours      | Medium        |
+| Phase 3: Rating Submission | 3 hours      | Low           |
+| Phase 4: UI State          | 2 hours      | Low           |
+| Phase 5: Analytics         | 2 hours      | Low           |
+| Phase 6: Phase Components  | 6 hours      | Medium        |
+| Phase 7: Main Refactor     | 4 hours      | High          |
+| Testing & Cleanup          | 4 hours      | Medium        |
+| **Total**                  | **29 hours** | **~3-4 days** |
 
 ---
 

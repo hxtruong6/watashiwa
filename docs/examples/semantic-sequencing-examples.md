@@ -12,35 +12,35 @@
 
 ```json
 {
-  "id": "vocab-uuid-1",
-  "wordSurface": "大学",
-  "wordReading": "だいがく",
-  "etymology": {
-    "parts": [
-      {
-        "kanji": "大",
-        "han_viet": "ĐẠI",
-        "meaning": {
-          "vi": "Lớn, to lớn",
-          "en": "Big, large"
-        },
-        "stroke_count": 3
-      },
-      {
-        "kanji": "学",
-        "han_viet": "HỌC",
-        "meaning": {
-          "vi": "Học tập, nghiên cứu",
-          "en": "Study, learning"
-        },
-        "stroke_count": 8
-      }
-    ],
-    "note": {
-      "vi": "大学 = Nơi học tập lớn (Trường đại học)",
-      "en": "University = Large place of learning"
-    }
-  }
+	"id": "vocab-uuid-1",
+	"wordSurface": "大学",
+	"wordReading": "だいがく",
+	"etymology": {
+		"parts": [
+			{
+				"kanji": "大",
+				"han_viet": "ĐẠI",
+				"meaning": {
+					"vi": "Lớn, to lớn",
+					"en": "Big, large"
+				},
+				"stroke_count": 3
+			},
+			{
+				"kanji": "学",
+				"han_viet": "HỌC",
+				"meaning": {
+					"vi": "Học tập, nghiên cứu",
+					"en": "Study, learning"
+				},
+				"stroke_count": 8
+			}
+		],
+		"note": {
+			"vi": "大学 = Nơi học tập lớn (Trường đại học)",
+			"en": "University = Large place of learning"
+		}
+	}
 }
 ```
 
@@ -48,21 +48,21 @@
 
 ```json
 {
-  "id": "vocab-uuid-2",
-  "wordSurface": "大きい",
-  "wordReading": "おおきい",
-  "etymology": {
-    "parts": [
-      {
-        "kanji": "大",
-        "han_viet": "ĐẠI",
-        "meaning": {
-          "vi": "Lớn, to lớn",
-          "en": "Big, large"
-        }
-      }
-    ]
-  }
+	"id": "vocab-uuid-2",
+	"wordSurface": "大きい",
+	"wordReading": "おおきい",
+	"etymology": {
+		"parts": [
+			{
+				"kanji": "大",
+				"han_viet": "ĐẠI",
+				"meaning": {
+					"vi": "Lớn, to lớn",
+					"en": "Big, large"
+				}
+			}
+		]
+	}
 }
 ```
 
@@ -70,21 +70,21 @@
 
 ```json
 {
-  "id": "vocab-uuid-3",
-  "wordSurface": "学ぶ",
-  "wordReading": "まなぶ",
-  "etymology": {
-    "parts": [
-      {
-        "kanji": "学",
-        "han_viet": "HỌC",
-        "meaning": {
-          "vi": "Học tập",
-          "en": "Study, learning"
-        }
-      }
-    ]
-  }
+	"id": "vocab-uuid-3",
+	"wordSurface": "学ぶ",
+	"wordReading": "まなぶ",
+	"etymology": {
+		"parts": [
+			{
+				"kanji": "学",
+				"han_viet": "HỌC",
+				"meaning": {
+					"vi": "Học tập",
+					"en": "Study, learning"
+				}
+			}
+		]
+	}
 }
 ```
 
@@ -140,23 +140,23 @@ Cluster 1: 大-related    Cluster 2: 学-related
 
 ```json
 {
-  "vocabId1": "貸す",
-  "vocabId2": "借りる",
-  "type": "ANTONYM",
-  "explanation": {
-    "mnemonic": {
-      "vi": "Kasu (Cho mượn) vs Kariru (Mượn). Nhớ: Kasu = Cho đi, Kariru = Nhận về.",
-      "en": "Kasu (Lend) vs Kariru (Borrow). Remember: Kasu = Give away, Kariru = Receive."
-    },
-    "item1_nuance": {
-      "vi": "貸す: Chủ ngữ là người sở hữu vật, cho người khác mượn (Cho đi).",
-      "en": "貸す: Subject owns the item, lends it to someone (Give)."
-    },
-    "item2_nuance": {
-      "vi": "借りる: Chủ ngữ là người cần vật, mượn từ người khác (Nhận về).",
-      "en": "借りる: Subject needs the item, borrows from someone (Receive)."
-    }
-  }
+	"vocabId1": "貸す",
+	"vocabId2": "借りる",
+	"type": "ANTONYM",
+	"explanation": {
+		"mnemonic": {
+			"vi": "Kasu (Cho mượn) vs Kariru (Mượn). Nhớ: Kasu = Cho đi, Kariru = Nhận về.",
+			"en": "Kasu (Lend) vs Kariru (Borrow). Remember: Kasu = Give away, Kariru = Receive."
+		},
+		"item1_nuance": {
+			"vi": "貸す: Chủ ngữ là người sở hữu vật, cho người khác mượn (Cho đi).",
+			"en": "貸す: Subject owns the item, lends it to someone (Give)."
+		},
+		"item2_nuance": {
+			"vi": "借りる: Chủ ngữ là người cần vật, mượn từ người khác (Nhận về).",
+			"en": "借りる: Subject needs the item, borrows from someone (Receive)."
+		}
+	}
 }
 ```
 
@@ -204,21 +204,21 @@ Cluster 1: Confusion pairs
 
 ```json
 {
-  "id": "vocab-uuid-4",
-  "wordSurface": "持つ",
-  "wordReading": "もつ",
-  "etymology": {
-    "parts": [
-      {
-        "kanji": "持",
-        "han_viet": "TRÌ",
-        "meaning": {
-          "vi": "Cầm, giữ",
-          "en": "Hold, keep"
-        }
-      }
-    ]
-  }
+	"id": "vocab-uuid-4",
+	"wordSurface": "持つ",
+	"wordReading": "もつ",
+	"etymology": {
+		"parts": [
+			{
+				"kanji": "持",
+				"han_viet": "TRÌ",
+				"meaning": {
+					"vi": "Cầm, giữ",
+					"en": "Hold, keep"
+				}
+			}
+		]
+	}
 }
 ```
 
@@ -226,21 +226,21 @@ Cluster 1: Confusion pairs
 
 ```json
 {
-  "id": "vocab-uuid-5",
-  "wordSurface": "待つ",
-  "wordReading": "まつ",
-  "etymology": {
-    "parts": [
-      {
-        "kanji": "待",
-        "han_viet": "ĐÃI",
-        "meaning": {
-          "vi": "Chờ đợi",
-          "en": "Wait"
-        }
-      }
-    ]
-  }
+	"id": "vocab-uuid-5",
+	"wordSurface": "待つ",
+	"wordReading": "まつ",
+	"etymology": {
+		"parts": [
+			{
+				"kanji": "待",
+				"han_viet": "ĐÃI",
+				"meaning": {
+					"vi": "Chờ đợi",
+					"en": "Wait"
+				}
+			}
+		]
+	}
 }
 ```
 
@@ -248,23 +248,23 @@ Cluster 1: Confusion pairs
 
 ```json
 {
-  "vocabId1": "持つ",
-  "vocabId2": "待つ",
-  "type": "LOOKALIKE",
-  "explanation": {
-    "mnemonic": {
-      "vi": "Motsu (Cầm) vs Matsu (Chờ). Dễ nhầm lẫn âm thanh.",
-      "en": "Motsu (Hold) vs Matsu (Wait). Easy to confuse sounds."
-    },
-    "item1_nuance": {
-      "vi": "持つ: Cầm nắm, sở hữu vật.",
-      "en": "持つ: Hold, possess an object."
-    },
-    "item2_nuance": {
-      "vi": "待つ: Chờ đợi, mong đợi.",
-      "en": "待つ: Wait, expect."
-    }
-  }
+	"vocabId1": "持つ",
+	"vocabId2": "待つ",
+	"type": "LOOKALIKE",
+	"explanation": {
+		"mnemonic": {
+			"vi": "Motsu (Cầm) vs Matsu (Chờ). Dễ nhầm lẫn âm thanh.",
+			"en": "Motsu (Hold) vs Matsu (Wait). Easy to confuse sounds."
+		},
+		"item1_nuance": {
+			"vi": "持つ: Cầm nắm, sở hữu vật.",
+			"en": "持つ: Hold, possess an object."
+		},
+		"item2_nuance": {
+			"vi": "待つ: Chờ đợi, mong đợi.",
+			"en": "待つ: Wait, expect."
+		}
+	}
 }
 ```
 
@@ -317,26 +317,26 @@ Cluster: Confusion pair (highest priority)
 
 ```json
 [
-  {
-    "id": "vocab-uuid-6",
-    "wordSurface": "食べる",
-    "deckId": "deck-uuid-1"
-  },
-  {
-    "id": "vocab-uuid-7",
-    "wordSurface": "飲む",
-    "deckId": "deck-uuid-1"
-  },
-  {
-    "id": "vocab-uuid-8",
-    "wordSurface": "注文",
-    "deckId": "deck-uuid-1"
-  },
-  {
-    "id": "vocab-uuid-9",
-    "wordSurface": "お会計",
-    "deckId": "deck-uuid-1"
-  }
+	{
+		"id": "vocab-uuid-6",
+		"wordSurface": "食べる",
+		"deckId": "deck-uuid-1"
+	},
+	{
+		"id": "vocab-uuid-7",
+		"wordSurface": "飲む",
+		"deckId": "deck-uuid-1"
+	},
+	{
+		"id": "vocab-uuid-8",
+		"wordSurface": "注文",
+		"deckId": "deck-uuid-1"
+	},
+	{
+		"id": "vocab-uuid-9",
+		"wordSurface": "お会計",
+		"deckId": "deck-uuid-1"
+	}
 ]
 ```
 
@@ -511,14 +511,14 @@ pair
 
 ```json
 {
-  "vocabId1": "word1",
-  "vocabId2": "word2",
-  "type": "HOMONYM|LOOKALIKE|SYNONYM|ANTONYM|GRAMMAR",
-  "explanation": {
-    "mnemonic": { "vi": "...", "en": "..." },
-    "item1_nuance": { "vi": "...", "en": "..." },
-    "item2_nuance": { "vi": "...", "en": "..." }
-  }
+	"vocabId1": "word1",
+	"vocabId2": "word2",
+	"type": "HOMONYM|LOOKALIKE|SYNONYM|ANTONYM|GRAMMAR",
+	"explanation": {
+		"mnemonic": { "vi": "...", "en": "..." },
+		"item1_nuance": { "vi": "...", "en": "..." },
+		"item2_nuance": { "vi": "...", "en": "..." }
+	}
 }
 ```
 
@@ -526,7 +526,7 @@ pair
 
 ```json
 {
-  "deckId": "thematic-deck-uuid"
+	"deckId": "thematic-deck-uuid"
 }
 ```
 

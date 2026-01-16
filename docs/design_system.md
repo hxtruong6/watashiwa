@@ -43,47 +43,47 @@ Configure in `src/lib/theme/themeConfig.ts`:
 
 ### Light Theme Tokens
 
-| Token              | Value     | Usage                       |
-| ------------------ | --------- | --------------------------- |
-| `colorPrimary`     | `#1E3A5F` | Primary actions, headers    |
-| `colorSuccess`     | `#708238` | "Good" rating, progress     |
-| `colorError`       | `#E64A19` | "Again" rating, destructive |
-| `colorWarning`     | `#FAAD14` | "Hard" rating               |
-| `colorBgBase`      | `#FFFFFF` | Component background        |
-| `colorBgLayout`    | `#F9F7F2` | App background (Washi)      |
-| `colorBgContainer` | `#FFFFFF` | Cards, modals               |
-| `colorText`        | `#2D2D2D` | Primary text (Sumi)         |
+| Token                | Value     | Usage                       |
+| -------------------- | --------- | --------------------------- |
+| `colorPrimary`       | `#1E3A5F` | Primary actions, headers    |
+| `colorSuccess`       | `#708238` | "Good" rating, progress     |
+| `colorError`         | `#E64A19` | "Again" rating, destructive |
+| `colorWarning`       | `#FAAD14` | "Hard" rating               |
+| `colorBgBase`        | `#FFFFFF` | Component background        |
+| `colorBgLayout`      | `#F9F7F2` | App background (Washi)      |
+| `colorBgContainer`   | `#FFFFFF` | Cards, modals               |
+| `colorText`          | `#2D2D2D` | Primary text (Sumi)         |
 | `colorTextSecondary` | `#8C8C8C` | Secondary text (Stone)      |
 
 ### Dark Theme Tokens
 
-| Token              | Value                    | Usage                       |
-| ------------------ | ------------------------ | --------------------------- |
-| `colorPrimary`     | `#63B3ED`                | Primary actions (Clear Sky Blue) |
-| `colorSuccess`     | `#68D391`                | "Good" rating (Emerald 300) |
-| `colorError`       | `#FC8181`                | "Again" rating (Red 300)    |
-| `colorWarning`     | `#F6E05E`                | "Hard" rating (Yellow 300)  |
-| `colorBgBase`     | `#151F32`                | Surface (Card/Nav) - Deep Slate |
-| `colorBgLayout`    | `#0B1120`                | Main Background - Midnight   |
-| `colorBgContainer` | `#151F32`                | Cards, modals               |
-| `colorText`        | `rgba(255, 255, 255, 0.92)` | Primary text (Almost white) |
-| `colorTextSecondary` | `rgba(255, 255, 255, 0.65)` | Secondary text (Readable grey) |
-| `colorTextTertiary` | `rgba(255, 255, 255, 0.45)` | Tertiary text              |
-| `colorBorder`      | `#2D3748`                | Borders (Slate 700)         |
-| `colorBorderSecondary` | `#1A202C`            | Secondary borders (Slate 900) |
+| Token                  | Value                       | Usage                            |
+| ---------------------- | --------------------------- | -------------------------------- |
+| `colorPrimary`         | `#63B3ED`                   | Primary actions (Clear Sky Blue) |
+| `colorSuccess`         | `#68D391`                   | "Good" rating (Emerald 300)      |
+| `colorError`           | `#FC8181`                   | "Again" rating (Red 300)         |
+| `colorWarning`         | `#F6E05E`                   | "Hard" rating (Yellow 300)       |
+| `colorBgBase`          | `#151F32`                   | Surface (Card/Nav) - Deep Slate  |
+| `colorBgLayout`        | `#0B1120`                   | Main Background - Midnight       |
+| `colorBgContainer`     | `#151F32`                   | Cards, modals                    |
+| `colorText`            | `rgba(255, 255, 255, 0.92)` | Primary text (Almost white)      |
+| `colorTextSecondary`   | `rgba(255, 255, 255, 0.65)` | Secondary text (Readable grey)   |
+| `colorTextTertiary`    | `rgba(255, 255, 255, 0.45)` | Tertiary text                    |
+| `colorBorder`          | `#2D3748`                   | Borders (Slate 700)              |
+| `colorBorderSecondary` | `#1A202C`                   | Secondary borders (Slate 900)    |
 
 ### Component-Specific Dark Theme Tokens
 
-| Component  | Token              | Dark Value | Usage                    |
-| ---------- | ------------------ | ---------- | ------------------------ |
-| Layout     | `bodyBg`           | `#0B1120`  | Main app background       |
-| Layout     | `headerBg`         | `#151F32`  | Header background         |
-| Layout     | `siderBg`          | `#151F32`  | Sidebar background        |
-| Card       | `colorBgContainer` | `#151F32`  | Card background           |
-| Card       | `actionsBg`        | `#111927`  | Card actions background   |
-| Card       | `headerBg`         | `#151F32`  | Card header background    |
-| Typography | `colorTextHeading` | `#FFFFFF`  | Pure white headings      |
-| Button     | `primaryShadow`    | `0 2px 0 rgba(0, 0, 0, 0.45)` | Primary button shadow |
+| Component  | Token              | Dark Value                    | Usage                   |
+| ---------- | ------------------ | ----------------------------- | ----------------------- |
+| Layout     | `bodyBg`           | `#0B1120`                     | Main app background     |
+| Layout     | `headerBg`         | `#151F32`                     | Header background       |
+| Layout     | `siderBg`          | `#151F32`                     | Sidebar background      |
+| Card       | `colorBgContainer` | `#151F32`                     | Card background         |
+| Card       | `actionsBg`        | `#111927`                     | Card actions background |
+| Card       | `headerBg`         | `#151F32`                     | Card header background  |
+| Typography | `colorTextHeading` | `#FFFFFF`                     | Pure white headings     |
+| Button     | `primaryShadow`    | `0 2px 0 rgba(0, 0, 0, 0.45)` | Primary button shadow   |
 
 ---
 
@@ -153,19 +153,19 @@ import { theme } from 'antd';
 import { useToken } from 'antd';
 
 export default function MyComponent() {
-  const { token } = useToken();
-  
-  return (
-    <div
-      style={{
-        backgroundColor: token.colorBgContainer,
-        color: token.colorText,
-        border: `1px solid ${token.colorBorder}`,
-      }}
-    >
-      Content
-    </div>
-  );
+	const { token } = useToken();
+
+	return (
+		<div
+			style={{
+				backgroundColor: token.colorBgContainer,
+				color: token.colorText,
+				border: `1px solid ${token.colorBorder}`,
+			}}
+		>
+			Content
+		</div>
+	);
 }
 ```
 
@@ -201,13 +201,13 @@ export default function MyComponent() {
 
 ```tsx
 <Card
- style={{
-  boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
-  borderRadius: token.borderRadius,
- }}
+	style={{
+		boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
+		borderRadius: token.borderRadius,
+	}}
 >
- {/* Question: Centered 64px Kanji */}
- {/* Answer: Kanji + Hán Việt + Kana + Sentence */}
+	{/* Question: Centered 64px Kanji */}
+	{/* Answer: Kanji + Hán Việt + Kana + Sentence */}
 </Card>
 ```
 
@@ -242,11 +242,11 @@ Use `framer-motion` for card flip/slide animations.
 
 Breakpoints are defined in `src/styles/_variables.css`:
 
-| Breakpoint | Value  | Usage                                    |
-| ---------- | ------ | ---------------------------------------- |
-| Mobile     | `600px` | Default (mobile-first)                   |
-| Tablet     | `1000px` | Tablet and small desktop                 |
-| Desktop    | `1200px` | Large desktop and above                  |
+| Breakpoint | Value    | Usage                    |
+| ---------- | -------- | ------------------------ |
+| Mobile     | `600px`  | Default (mobile-first)   |
+| Tablet     | `1000px` | Tablet and small desktop |
+| Desktop    | `1200px` | Large desktop and above  |
 
 **CSS Variable Reference:**
 
@@ -267,30 +267,30 @@ Breakpoints are defined in `src/styles/_variables.css`:
 ```css
 /* ✅ CORRECT: Mobile-first */
 .component {
-  padding: 16px; /* Mobile default */
+	padding: 16px; /* Mobile default */
 }
 
 @media (min-width: 600px) {
-  .component {
-    padding: 24px; /* Tablet enhancement */
-  }
+	.component {
+		padding: 24px; /* Tablet enhancement */
+	}
 }
 
 @media (min-width: 1200px) {
-  .component {
-    padding: 32px; /* Desktop enhancement */
-  }
+	.component {
+		padding: 32px; /* Desktop enhancement */
+	}
 }
 
 /* ❌ WRONG: Desktop-first */
 .component {
-  padding: 32px; /* Desktop default */
+	padding: 32px; /* Desktop default */
 }
 
 @media (max-width: 600px) {
-  .component {
-    padding: 16px; /* Mobile override */
-  }
+	.component {
+		padding: 16px; /* Mobile override */
+	}
 }
 ```
 
@@ -380,10 +380,14 @@ Use CSS custom properties for consistent spacing:
 **Example:**
 
 ```tsx
-<div style={{ padding: 'var(--spacing-md)' }}> {/* 16px on mobile */}
-  <div style={{ padding: 'var(--spacing-lg)' }}> {/* 24px on tablet+ */}
-    Content
-  </div>
+<div style={{ padding: 'var(--spacing-md)' }}>
+	{' '}
+	{/* 16px on mobile */}
+	<div style={{ padding: 'var(--spacing-lg)' }}>
+		{' '}
+		{/* 24px on tablet+ */}
+		Content
+	</div>
 </div>
 ```
 
@@ -393,30 +397,30 @@ Use CSS custom properties for consistent spacing:
 
 ```tsx
 <div
-  style={{
-    padding: '16px', // Mobile
-  }}
-  className="responsive-padding" // CSS handles larger screens
+	style={{
+		padding: '16px', // Mobile
+	}}
+	className="responsive-padding" // CSS handles larger screens
 >
-  Content
+	Content
 </div>
 ```
 
 ```css
 .responsive-padding {
-  padding: 16px;
+	padding: 16px;
 }
 
 @media (min-width: 600px) {
-  .responsive-padding {
-    padding: 24px;
-  }
+	.responsive-padding {
+		padding: 24px;
+	}
 }
 
 @media (min-width: 1200px) {
-  .responsive-padding {
-    padding: 32px;
-  }
+	.responsive-padding {
+		padding: 32px;
+	}
 }
 ```
 
@@ -424,9 +428,9 @@ Use CSS custom properties for consistent spacing:
 
 ```tsx
 <Grid.Row gutter={[16, 16]}>
-  <Grid.Col xs={24} sm={12} md={8} lg={6}>
-    {/* Full width on mobile, half on tablet, 1/3 on desktop, 1/4 on large desktop */}
-  </Grid.Col>
+	<Grid.Col xs={24} sm={12} md={8} lg={6}>
+		{/* Full width on mobile, half on tablet, 1/3 on desktop, 1/4 on large desktop */}
+	</Grid.Col>
 </Grid.Row>
 ```
 
@@ -434,30 +438,30 @@ Use CSS custom properties for consistent spacing:
 
 ```tsx
 <Typography.Title
-  level={2}
-  style={{
-    fontSize: '24px', // Mobile
-  }}
-  className="responsive-title"
+	level={2}
+	style={{
+		fontSize: '24px', // Mobile
+	}}
+	className="responsive-title"
 >
-  Title
+	Title
 </Typography.Title>
 ```
 
 ```css
 .responsive-title {
-  font-size: 24px;
+	font-size: 24px;
 }
 
 @media (min-width: 600px) {
-  .responsive-title {
-    font-size: 28px;
-  }
+	.responsive-title {
+		font-size: 28px;
+	}
 }
 
 @media (min-width: 1200px) {
-  .responsive-title {
-    font-size: 32px;
-  }
+	.responsive-title {
+		font-size: 32px;
+	}
 }
 ```

@@ -29,8 +29,8 @@ This document describes the complete implementation of automatic logout and redi
 
 ```typescript
 const {
-  data: { user },
-  error: authError,
+	data: { user },
+	error: authError,
 } = await supabase.auth.getUser();
 
 const hasInvalidSession = !user || authError;
@@ -61,10 +61,10 @@ const hasInvalidSession = !user || authError;
 **Usage:**
 
 ```tsx
-const callAction = useServerAction()
-const result = await callAction(updateProfileAction, { name: 'John' })
+const callAction = useServerAction();
+const result = await callAction(updateProfileAction, { name: 'John' });
 if (result && result.success) {
-  // Handle success
+	// Handle success
 }
 // Unauthorized is automatically handled - result will be null if redirect happens
 ```
@@ -79,8 +79,8 @@ let isRedirecting = false;
 
 // In hook:
 if (isRedirecting || isRedirectingRef.current) {
-  console.warn('[Auth] Redirect already in progress, skipping duplicate');
-  return null;
+	console.warn('[Auth] Redirect already in progress, skipping duplicate');
+	return null;
 }
 ```
 
@@ -99,26 +99,26 @@ if (isRedirecting || isRedirectingRef.current) {
 **Using the hook - this is the ONLY pattern you need:**
 
 ```tsx
-import { useServerAction } from '@/modules/core'
+import { useServerAction } from '@/modules/core';
 
 function MyComponent() {
-  const callAction = useServerAction()
-  
-  const handleSubmit = async () => {
-    const result = await callAction(updateProfileAction, { name: 'John' })
-    
-    // If result is null, redirect is happening (Unauthorized was handled)
-    if (!result) {
-      return
-    }
-    
-    if (result.success) {
-      // Handle success
-    } else {
-      // Handle other errors (Unauthorized is already handled)
-      message.error(result.error)
-    }
-  }
+	const callAction = useServerAction();
+
+	const handleSubmit = async () => {
+		const result = await callAction(updateProfileAction, { name: 'John' });
+
+		// If result is null, redirect is happening (Unauthorized was handled)
+		if (!result) {
+			return;
+		}
+
+		if (result.success) {
+			// Handle success
+		} else {
+			// Handle other errors (Unauthorized is already handled)
+			message.error(result.error);
+		}
+	};
 }
 ```
 
@@ -212,26 +212,26 @@ src/
 **Before:**
 
 ```tsx
-const result = await updateProfileAction({ name: 'John' })
+const result = await updateProfileAction({ name: 'John' });
 if (result.error === 'Unauthorized') {
-  message.error('Session expired')
-  // User stays on page
+	message.error('Session expired');
+	// User stays on page
 }
 ```
 
 **After:**
 
 ```tsx
-const callAction = useServerAction()
-const result = await callAction(updateProfileAction, { name: 'John' })
+const callAction = useServerAction();
+const result = await callAction(updateProfileAction, { name: 'John' });
 
 // If result is null, redirect is happening
 if (!result) {
-  return
+	return;
 }
 
 if (result.success) {
-  // Handle success
+	// Handle success
 }
 // Unauthorized is automatically handled
 ```

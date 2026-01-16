@@ -41,9 +41,9 @@
 ```typescript
 // From semantic-sequencer.service.ts
 const [etymologyRels, confusionRels, deckRels] = await Promise.all([
-  getEtymologyRelationships(vocabIds),      // ← Etymology
-  getConfusionPairRelationships(vocabIds), // ← Confusion Pairs
-  getDeckContextRelationships(queue),      // ← Deck Context
+	getEtymologyRelationships(vocabIds), // ← Etymology
+	getConfusionPairRelationships(vocabIds), // ← Confusion Pairs
+	getDeckContextRelationships(queue), // ← Deck Context
 ]);
 ```
 
@@ -97,15 +97,15 @@ const [etymologyRels, confusionRels, deckRels] = await Promise.all([
 ```json
 // In scripts/confusion_pair.json
 {
-  "vocabId1": "貸す",
-  "vocabId2": "借りる",
-  "type": "ANTONYM",
-  "explanation": {
-    "mnemonic": {
-      "vi": "Kasu (Cho mượn) vs Kariru (Mượn)",
-      "en": "Kasu (Lend) vs Kariru (Borrow)"
-    }
-  }
+	"vocabId1": "貸す",
+	"vocabId2": "借りる",
+	"type": "ANTONYM",
+	"explanation": {
+		"mnemonic": {
+			"vi": "Kasu (Cho mượn) vs Kariru (Mượn)",
+			"en": "Kasu (Lend) vs Kariru (Borrow)"
+		}
+	}
 }
 
 // Result: Explicit relationship created

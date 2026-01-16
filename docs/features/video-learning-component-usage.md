@@ -11,24 +11,27 @@ The Video Learning feature consists of several React components that work togeth
 Main page component that orchestrates all video learning components.
 
 **Props:**
+
 ```typescript
 interface VideoLearningPageProps {
-  video: Video;
-  initialProgress: VideoProgress | null;
+	video: Video;
+	initialProgress: VideoProgress | null;
 }
 ```
 
 **Usage:**
+
 ```typescript
 import { VideoLearningPage } from '@/modules/videos/components';
 
-<VideoLearningPage 
-  video={videoData} 
-  initialProgress={userProgress} 
+<VideoLearningPage
+  video={videoData}
+  initialProgress={userProgress}
 />
 ```
 
 **Features:**
+
 - Coordinates video player, controls, subtitles, and translation
 - Handles progress tracking and auto-save
 - Validates subtitle data
@@ -41,24 +44,26 @@ import { VideoLearningPage } from '@/modules/videos/components';
 Renders the HTML5 video element with loading and error states.
 
 **Props:**
+
 ```typescript
 interface VideoPlayerProps {
-  videoUrl: string;
-  videoRef: React.RefObject<HTMLVideoElement>;
-  onLoaded?: () => void;
-  onError?: (error: Error) => void;
+	videoUrl: string;
+	videoRef: React.RefObject<HTMLVideoElement>;
+	onLoaded?: () => void;
+	onError?: (error: Error) => void;
 }
 ```
 
 **Usage:**
+
 ```typescript
 import { VideoPlayer } from '@/modules/videos/components';
 import { useVideoPlayer } from '@/modules/videos/hooks/useVideoPlayer';
 
 const { videoRef } = useVideoPlayer();
 
-<VideoPlayer 
-  videoUrl={video.videoUrl} 
+<VideoPlayer
+  videoUrl={video.videoUrl}
   videoRef={videoRef}
   onLoaded={() => console.log('Video loaded')}
   onError={(error) => console.error(error)}
@@ -66,6 +71,7 @@ const { videoRef } = useVideoPlayer();
 ```
 
 **Features:**
+
 - Loading skeleton while video loads
 - Error handling with retry button
 - Responsive video container (16:9 aspect ratio)
@@ -78,29 +84,31 @@ const { videoRef } = useVideoPlayer();
 Playback controls for the video player.
 
 **Props:**
+
 ```typescript
 interface VideoControlsProps {
-  isPlaying: boolean;
-  playbackRate: number;
-  play: () => Promise<void>;
-  pause: () => void;
-  stop: () => void;
-  setPlaybackRate: (rate: number) => void;
+	isPlaying: boolean;
+	playbackRate: number;
+	play: () => Promise<void>;
+	pause: () => void;
+	stop: () => void;
+	setPlaybackRate: (rate: number) => void;
 }
 ```
 
 **Usage:**
+
 ```typescript
 import { VideoControls } from '@/modules/videos/components';
 import { useVideoPlayer } from '@/modules/videos/hooks/useVideoPlayer';
 
-const { 
-  isPlaying, 
-  playbackRate, 
-  play, 
-  pause, 
-  stop, 
-  setPlaybackRate 
+const {
+  isPlaying,
+  playbackRate,
+  play,
+  pause,
+  stop,
+  setPlaybackRate
 } = useVideoPlayer();
 
 <VideoControls
@@ -114,6 +122,7 @@ const {
 ```
 
 **Features:**
+
 - Play/Pause toggle
 - Stop button
 - Playback speed selector (0.5x - 2.0x)
@@ -127,30 +136,33 @@ const {
 Displays Japanese subtitles with real-time word highlighting.
 
 **Props:**
+
 ```typescript
 interface SubtitleDisplayProps {
-  subtitle: Subtitle | null;
-  activeWordIndex: number | null;
+	subtitle: Subtitle | null;
+	activeWordIndex: number | null;
 }
 ```
 
 **Usage:**
+
 ```typescript
 import SubtitleDisplay from '@/modules/videos/components/SubtitleDisplay';
 import { useSubtitleSync } from '@/modules/videos/hooks/useSubtitleSync';
 
 const { activeSubtitle, activeWordIndex } = useSubtitleSync(
-  currentTime, 
+  currentTime,
   video.subtitles
 );
 
-<SubtitleDisplay 
-  subtitle={activeSubtitle} 
-  activeWordIndex={activeWordIndex} 
+<SubtitleDisplay
+  subtitle={activeSubtitle}
+  activeWordIndex={activeWordIndex}
 />
 ```
 
 **Features:**
+
 - Real-time word highlighting as video plays
 - Romaji pronunciation display
 - Color coding based on word type
@@ -164,13 +176,15 @@ const { activeSubtitle, activeWordIndex } = useSubtitleSync(
 Displays the Vietnamese translation of the current subtitle.
 
 **Props:**
+
 ```typescript
 interface TranslationDisplayProps {
-  subtitle: Subtitle | null;
+	subtitle: Subtitle | null;
 }
 ```
 
 **Usage:**
+
 ```typescript
 import TranslationDisplay from '@/modules/videos/components/TranslationDisplay';
 
@@ -178,6 +192,7 @@ import TranslationDisplay from '@/modules/videos/components/TranslationDisplay';
 ```
 
 **Features:**
+
 - Shows Vietnamese translation
 - Updates automatically with subtitle changes
 - Screen reader announcements
@@ -191,6 +206,7 @@ import TranslationDisplay from '@/modules/videos/components/TranslationDisplay';
 Manages video playback state and controls.
 
 **Returns:**
+
 ```typescript
 {
   isPlaying: boolean;
@@ -212,20 +228,15 @@ Manages video playback state and controls.
 ```
 
 **Usage:**
+
 ```typescript
 import { useVideoPlayer } from '@/modules/videos/hooks/useVideoPlayer';
 
-const {
-  currentTime,
-  isPlaying,
-  videoRef,
-  play,
-  pause,
-  seek,
-} = useVideoPlayer();
+const { currentTime, isPlaying, videoRef, play, pause, seek } = useVideoPlayer();
 ```
 
 **Features:**
+
 - Throttled time updates (100ms)
 - Automatic event listener management
 - Error handling
@@ -238,6 +249,7 @@ const {
 Synchronizes subtitles with video playback.
 
 **Parameters:**
+
 ```typescript
 useSubtitleSync(
   currentTime: number,
@@ -246,24 +258,24 @@ useSubtitleSync(
 ```
 
 **Returns:**
+
 ```typescript
 {
-  activeSubtitle: Subtitle | null;
-  activeWordIndex: number | null;
+	activeSubtitle: Subtitle | null;
+	activeWordIndex: number | null;
 }
 ```
 
 **Usage:**
+
 ```typescript
 import { useSubtitleSync } from '@/modules/videos/hooks/useSubtitleSync';
 
-const { activeSubtitle, activeWordIndex } = useSubtitleSync(
-  currentTime,
-  video.subtitles
-);
+const { activeSubtitle, activeWordIndex } = useSubtitleSync(currentTime, video.subtitles);
 ```
 
 **Features:**
+
 - Word-level timing synchronization
 - Memoized calculations for performance
 - Edge case handling (before/after subtitles, invalid timing)
@@ -275,6 +287,7 @@ const { activeSubtitle, activeWordIndex } = useSubtitleSync(
 Manages and persists video watching progress.
 
 **Parameters:**
+
 ```typescript
 useVideoProgress({
   videoId: string;
@@ -286,28 +299,31 @@ useVideoProgress({
 ```
 
 **Returns:**
+
 ```typescript
 {
-  isSaving: boolean;
-  progress: VideoProgress | null;
-  loadProgress: () => Promise<void>;
+	isSaving: boolean;
+	progress: VideoProgress | null;
+	loadProgress: () => Promise<void>;
 }
 ```
 
 **Usage:**
+
 ```typescript
 import { useVideoProgress } from '@/modules/videos/hooks/useVideoProgress';
 
 const { isSaving, progress } = useVideoProgress({
-  videoId: video.id,
-  currentTime,
-  duration,
-  isPlaying,
-  onCompleted: () => console.log('Video completed'),
+	videoId: video.id,
+	currentTime,
+	duration,
+	isPlaying,
+	onCompleted: () => console.log('Video completed'),
 });
 ```
 
 **Features:**
+
 - Auto-save every 5 seconds (debounced)
 - Automatic completion detection
 - Progress loading on mount
@@ -345,9 +361,9 @@ export default function VideoPage({ videoId }: { videoId: string }) {
   if (!videoData) return <div>Video not found</div>;
 
   return (
-    <VideoLearningPage 
-      video={videoData} 
-      initialProgress={progress} 
+    <VideoLearningPage
+      video={videoData}
+      initialProgress={progress}
     />
   );
 }
@@ -362,8 +378,8 @@ Components use CSS Modules for styling. Customize by overriding CSS variables:
 ```css
 /* Override Ant Design theme tokens */
 :root {
-  --ant-color-primary: #your-color;
-  --ant-color-text: #your-text-color;
+	--ant-color-primary: #your-color;
+	--ant-color-text: #your-text-color;
 }
 ```
 
@@ -393,16 +409,19 @@ Mobile responsiveness is built-in with media queries at 768px and 480px breakpoi
 ## Troubleshooting
 
 **Video doesn't load:**
+
 - Check video URL is accessible
 - Verify video format is supported (MP4 recommended)
 - Check browser console for CORS errors
 
 **Subtitles don't highlight:**
+
 - Verify subtitle timing data is valid (startTime < endTime)
 - Check word timing is relative to subtitle startTime
 - Ensure subtitles are sorted by order
 
 **Progress doesn't save:**
+
 - Verify user is authenticated
 - Check network connection
 - Review browser console for errors

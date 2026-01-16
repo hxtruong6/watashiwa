@@ -96,28 +96,31 @@
 let isRedirecting = false;
 
 export function useServerAction() {
-  const callAction = useCallback(async <T>(
-    action: (...args: unknown[]) => Promise<ApiResponse<T>>,
-    ...args: unknown[]
-  ): Promise<ApiResponse<T> | null> => {
-    const result = await action(...args);
+	const callAction = useCallback(
+		async <T>(
+			action: (...args: unknown[]) => Promise<ApiResponse<T>>,
+			...args: unknown[]
+		): Promise<ApiResponse<T> | null> => {
+			const result = await action(...args);
 
-    if (!result.success && result.error === 'Unauthorized') {
-      // Guard: Prevent multiple redirects
-      if (isRedirecting) {
-        console.warn('[Auth] Redirect already in progress, skipping');
-        return null;
-      }
-      
-      isRedirecting = true;
-      await handleUnauthorizedError(result.error, pathname);
-      return null;
-    }
+			if (!result.success && result.error === 'Unauthorized') {
+				// Guard: Prevent multiple redirects
+				if (isRedirecting) {
+					console.warn('[Auth] Redirect already in progress, skipping');
+					return null;
+				}
 
-    return result;
-  }, [pathname]);
+				isRedirecting = true;
+				await handleUnauthorizedError(result.error, pathname);
+				return null;
+			}
 
-  return callAction;
+			return result;
+		},
+		[pathname],
+	);
+
+	return callAction;
 }
 ```
 
@@ -151,7 +154,7 @@ type ServerAction<T = unknown> = (...args: unknown[]) => Promise<ApiResponse<T>>
 /**
  * React hook for calling server actions with automatic "Unauthorized" error handling
  * This is the PRIMARY way to call server actions from client components.
- * 
+ *
  * Features:
  * - Automatic logout/redirect on "Unauthorized" errors
  * - Race condition protection (prevents multiple redirects)
@@ -159,6 +162,7 @@ type ServerAction<T = unknown> = (...args: unknown[]) => Promise<ApiResponse<T>>
  */
 import { usePathname } from 'next/navigation';
 import { useCallback, useRef } from 'react';
+
 import type { ApiResponse } from '../dto';
 import { handleUnauthorizedError } from '../handle-unauthorized';
 
@@ -166,45 +170,45 @@ import { handleUnauthorizedError } from '../handle-unauthorized';
 let isRedirecting = false;
 
 export function useServerAction() {
-  const pathname = usePathname();
-  const isRedirectingRef = useRef(false);
+	const pathname = usePathname();
+	const isRedirectingRef = useRef(false);
 
-  const callAction = useCallback(
-    async <T>(
-      action: (...args: unknown[]) => Promise<ApiResponse<T>>,
-      ...args: unknown[]
-    ): Promise<ApiResponse<T> | null> => {
-      const result = await action(...args);
+	const callAction = useCallback(
+		async <T>(
+			action: (...args: unknown[]) => Promise<ApiResponse<T>>,
+			...args: unknown[]
+		): Promise<ApiResponse<T> | null> => {
+			const result = await action(...args);
 
-      if (!result.success && result.error === 'Unauthorized') {
-        // Guard: Prevent multiple simultaneous redirects
-        if (isRedirecting || isRedirectingRef.current) {
-          console.warn('[Auth] Redirect already in progress, skipping duplicate');
-          return null;
-        }
+			if (!result.success && result.error === 'Unauthorized') {
+				// Guard: Prevent multiple simultaneous redirects
+				if (isRedirecting || isRedirectingRef.current) {
+					console.warn('[Auth] Redirect already in progress, skipping duplicate');
+					return null;
+				}
 
-        isRedirecting = true;
-        isRedirectingRef.current = true;
+				isRedirecting = true;
+				isRedirectingRef.current = true;
 
-        try {
-          await handleUnauthorizedError(result.error, pathname || undefined);
-        } finally {
-          // Reset after a delay to allow redirect to complete
-          setTimeout(() => {
-            isRedirecting = false;
-            isRedirectingRef.current = false;
-          }, 1000);
-        }
+				try {
+					await handleUnauthorizedError(result.error, pathname || undefined);
+				} finally {
+					// Reset after a delay to allow redirect to complete
+					setTimeout(() => {
+						isRedirecting = false;
+						isRedirectingRef.current = false;
+					}, 1000);
+				}
 
-        return null; // Indicates redirect is happening
-      }
+				return null; // Indicates redirect is happening
+			}
 
-      return result;
-    },
-    [pathname],
-  );
+			return result;
+		},
+		[pathname],
+	);
 
-  return callAction;
+	return callAction;
 }
 ```
 
@@ -214,58 +218,58 @@ export function useServerAction() {
 /**
  * Handles "Unauthorized" errors from server actions
  * Automatically logs out and redirects to login page
- * 
+ *
  * @param error - The error string from server action response
  * @param currentPath - Optional current path to preserve as returnUrl
  * @returns true if error was handled (Unauthorized), false otherwise
  */
 export async function handleUnauthorizedError(
-  error: string | undefined,
-  currentPath?: string,
+	error: string | undefined,
+	currentPath?: string,
 ): Promise<boolean> {
-  if (!error || error !== 'Unauthorized') {
-    return false;
-  }
+	if (!error || error !== 'Unauthorized') {
+		return false;
+	}
 
-  // Early return if already on login page
-  if (typeof window !== 'undefined' && window.location.pathname === '/login') {
-    return true;
-  }
+	// Early return if already on login page
+	if (typeof window !== 'undefined' && window.location.pathname === '/login') {
+		return true;
+	}
 
-  console.warn('[Auth] Unauthorized error detected, logging out user...');
+	console.warn('[Auth] Unauthorized error detected, logging out user...');
 
-  try {
-    // Clear login method cache
-    if (typeof window !== 'undefined') {
-      try {
-        localStorage.removeItem('watashi_login_methods');
-      } catch (e) {
-        console.error('[Auth] Failed to clear login cache:', e);
-      }
-    }
+	try {
+		// Clear login method cache
+		if (typeof window !== 'undefined') {
+			try {
+				localStorage.removeItem('watashi_login_methods');
+			} catch (e) {
+				console.error('[Auth] Failed to clear login cache:', e);
+			}
+		}
 
-    // Sign out from Supabase (clears session and cookies)
-    const supabase = createClient();
-    await supabase.auth.signOut();
+		// Sign out from Supabase (clears session and cookies)
+		const supabase = createClient();
+		await supabase.auth.signOut();
 
-    // Build redirect URL with returnUrl if currentPath is provided
-    const loginUrl = new URL('/login', window.location.origin);
-    if (currentPath && currentPath !== '/login' && currentPath.startsWith('/')) {
-      loginUrl.searchParams.set('returnUrl', currentPath);
-    }
-    loginUrl.searchParams.set('sessionExpired', 'true');
+		// Build redirect URL with returnUrl if currentPath is provided
+		const loginUrl = new URL('/login', window.location.origin);
+		if (currentPath && currentPath !== '/login' && currentPath.startsWith('/')) {
+			loginUrl.searchParams.set('returnUrl', currentPath);
+		}
+		loginUrl.searchParams.set('sessionExpired', 'true');
 
-    // Redirect to login page with full page reload
-    // Using window.location.href ensures middleware sees cleared session
-    window.location.href = loginUrl.toString();
+		// Redirect to login page with full page reload
+		// Using window.location.href ensures middleware sees cleared session
+		window.location.href = loginUrl.toString();
 
-    return true;
-  } catch (err) {
-    console.error('[Auth] Error during logout:', err);
-    // Even if logout fails, redirect to login
-    window.location.href = '/login?sessionExpired=true';
-    return true;
-  }
+		return true;
+	} catch (err) {
+		console.error('[Auth] Error during logout:', err);
+		// Even if logout fails, redirect to login
+		window.location.href = '/login?sessionExpired=true';
+		return true;
+	}
 }
 ```
 
@@ -360,15 +364,15 @@ const result = await callAction(updateProfileAction, { name: 'John' });
 
 ## Comparison: Current vs Recommended
 
-| Aspect | Current | Recommended |
-|--------|---------|-------------|
-| **Layers** | 3 (middleware, context, utilities) | 2 (middleware, hook) |
-| **Context Provider** | ✅ (but not used) | ❌ (removed) |
-| **Primary Pattern** | Multiple (confusing) | Single (`useServerAction`) |
-| **Race Condition Protection** | ❌ | ✅ |
-| **Type Safety** | ⚠️ (loose) | ✅ (strict) |
-| **Code Complexity** | High | Low |
-| **Maintainability** | Medium | High |
+| Aspect                        | Current                            | Recommended                |
+| ----------------------------- | ---------------------------------- | -------------------------- |
+| **Layers**                    | 3 (middleware, context, utilities) | 2 (middleware, hook)       |
+| **Context Provider**          | ✅ (but not used)                  | ❌ (removed)               |
+| **Primary Pattern**           | Multiple (confusing)               | Single (`useServerAction`) |
+| **Race Condition Protection** | ❌                                 | ✅                         |
+| **Type Safety**               | ⚠️ (loose)                         | ✅ (strict)                |
+| **Code Complexity**           | High                               | Low                        |
+| **Maintainability**           | Medium                             | High                       |
 
 ---
 

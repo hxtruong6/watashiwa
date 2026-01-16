@@ -50,9 +50,9 @@ All tokens defined in `src/lib/theme/themeConfig.ts`. Never use:
 ```typescript
 // Always return this shape
 type ActionResult<T> = {
- success: boolean;
- error?: string;
- data?: T;
+	success: boolean;
+	error?: string;
+	data?: T;
 };
 ```
 
@@ -92,10 +92,10 @@ When adding new text, add keys to **BOTH** language files:
 
 ```json
 {
-  "Dashboard": {
-    "welcome": "Welcome back!",
-    "studyToday": "Study today"
-  }
+	"Dashboard": {
+		"welcome": "Welcome back!",
+		"studyToday": "Study today"
+	}
 }
 ```
 
@@ -103,10 +103,10 @@ When adding new text, add keys to **BOTH** language files:
 
 ```json
 {
-  "Dashboard": {
-    "welcome": "Chào mừng trở lại!",
-    "studyToday": "Học hôm nay"
-  }
+	"Dashboard": {
+		"welcome": "Chào mừng trở lại!",
+		"studyToday": "Học hôm nay"
+	}
 }
 ```
 
@@ -118,14 +118,14 @@ When adding new text, add keys to **BOTH** language files:
 import { useTranslations } from 'next-intl';
 
 export default function Dashboard() {
-  const t = useTranslations('Dashboard');
-  
-  return (
-    <div>
-      <Typography.Title>{t('welcome')}</Typography.Title>
-      <Typography.Text>{t('studyToday')}</Typography.Text>
-    </div>
-  );
+	const t = useTranslations('Dashboard');
+
+	return (
+		<div>
+			<Typography.Title>{t('welcome')}</Typography.Title>
+			<Typography.Text>{t('studyToday')}</Typography.Text>
+		</div>
+	);
 }
 ```
 
@@ -137,13 +137,13 @@ For Server Components, use `getTranslations`:
 import { getTranslations } from 'next-intl/server';
 
 export default async function ServerPage() {
-  const t = await getTranslations('Dashboard');
-  
-  return (
-    <div>
-      <h1>{t('welcome')}</h1>
-    </div>
-  );
+	const t = await getTranslations('Dashboard');
+
+	return (
+		<div>
+			<h1>{t('welcome')}</h1>
+		</div>
+	);
 }
 ```
 
@@ -167,33 +167,31 @@ Before marking a component as complete, verify:
 
 ```tsx
 const t = useTranslations('Common');
-<Button>{t('submit')}</Button>
+<Button>{t('submit')}</Button>;
 ```
 
 #### Pattern 2: Translation with Variables
 
 ```tsx
 const t = useTranslations('Dashboard');
-<Typography.Text>
-  {t('cardCount', { count: cards.length })}
-</Typography.Text>
+<Typography.Text>{t('cardCount', { count: cards.length })}</Typography.Text>;
 ```
 
 **Translation files:**
 
 ```json
 {
-  "Dashboard": {
-    "cardCount": "You have {count} cards"
-  }
+	"Dashboard": {
+		"cardCount": "You have {count} cards"
+	}
 }
 ```
 
 ```json
 {
-  "Dashboard": {
-    "cardCount": "Bạn có {count} thẻ"
-  }
+	"Dashboard": {
+		"cardCount": "Bạn có {count} thẻ"
+	}
 }
 ```
 
@@ -201,18 +199,18 @@ const t = useTranslations('Dashboard');
 
 ```tsx
 const t = useTranslations('Profile');
-<Typography.Text>{t('settings.displayName')}</Typography.Text>
+<Typography.Text>{t('settings.displayName')}</Typography.Text>;
 ```
 
 **Translation files:**
 
 ```json
 {
-  "Profile": {
-    "settings": {
-      "displayName": "Display Name"
-    }
-  }
+	"Profile": {
+		"settings": {
+			"displayName": "Display Name"
+		}
+	}
 }
 ```
 
@@ -220,26 +218,24 @@ const t = useTranslations('Profile');
 
 ```tsx
 const t = useTranslations('Study');
-<Typography.Text>
-  {t('cardsRemaining', { count: remaining })}
-</Typography.Text>
+<Typography.Text>{t('cardsRemaining', { count: remaining })}</Typography.Text>;
 ```
 
 **Translation files:**
 
 ```json
 {
-  "Study": {
-    "cardsRemaining": "{count, plural, =0 {No cards remaining} one {# card remaining} other {# cards remaining}}"
-  }
+	"Study": {
+		"cardsRemaining": "{count, plural, =0 {No cards remaining} one {# card remaining} other {# cards remaining}}"
+	}
 }
 ```
 
 ```json
 {
-  "Study": {
-    "cardsRemaining": "{count, plural, =0 {Không còn thẻ nào} one {Còn # thẻ} other {Còn # thẻ}}"
-  }
+	"Study": {
+		"cardsRemaining": "{count, plural, =0 {Không còn thẻ nào} one {Còn # thẻ} other {Còn # thẻ}}"
+	}
 }
 ```
 
@@ -249,27 +245,27 @@ Organize translations by feature/module:
 
 ```json
 {
-  "Common": {
-    "submit": "Submit",
-    "cancel": "Cancel",
-    "save": "Save",
-    "delete": "Delete"
-  },
-  "Dashboard": {
-    "title": "Dashboard",
-    "welcome": "Welcome back!"
-  },
-  "Study": {
-    "title": "Study Session",
-    "complete": "Session Complete"
-  },
-  "Profile": {
-    "title": "Profile",
-    "settings": {
-      "displayName": "Display Name",
-      "language": "Language"
-    }
-  }
+	"Common": {
+		"submit": "Submit",
+		"cancel": "Cancel",
+		"save": "Save",
+		"delete": "Delete"
+	},
+	"Dashboard": {
+		"title": "Dashboard",
+		"welcome": "Welcome back!"
+	},
+	"Study": {
+		"title": "Study Session",
+		"complete": "Session Complete"
+	},
+	"Profile": {
+		"title": "Profile",
+		"settings": {
+			"displayName": "Display Name",
+			"language": "Language"
+		}
+	}
 }
 ```
 
@@ -284,14 +280,14 @@ Organize translations by feature/module:
 
 ```tsx
 const handleLanguageChange = async (locale: 'en' | 'vi') => {
-  // Update cookie
-  document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000`;
-  
-  // Update database
-  await updateUserSettings({ language: locale });
-  
-  // Reload to apply changes
-  window.location.reload();
+	// Update cookie
+	document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000`;
+
+	// Update database
+	await updateUserSettings({ language: locale });
+
+	// Reload to apply changes
+	window.location.reload();
 };
 ```
 

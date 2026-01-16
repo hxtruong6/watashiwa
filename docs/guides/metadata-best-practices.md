@@ -7,7 +7,7 @@
 When using `generateMetadata()` functions in Next.js 16+ with Sentry instrumentation, you may encounter this error:
 
 ```
-Error: Route "/about" used `crypto.randomUUID()` before accessing either uncached data 
+Error: Route "/about" used `crypto.randomUUID()` before accessing either uncached data
 (e.g. `fetch()`) or Request data (e.g. `cookies()`, `headers()`, `connection()`, and `searchParams`).
 ```
 
@@ -56,11 +56,11 @@ import type { Metadata } from 'next';
 const locale = 'vi' as const;
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Page Title | WatashiWa',
-  description: 'Page description',
-  url: '/page-path',
-  locale,
-  canonical: '/page-path',
+	title: 'Page Title | WatashiWa',
+	description: 'Page description',
+	url: '/page-path',
+	locale,
+	canonical: '/page-path',
 });
 ```
 
@@ -81,13 +81,13 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 export default async function RedirectPage() {
-  // Access cookies() to satisfy Next.js requirement before Sentry intercepts
-  try {
-    await cookies();
-  } catch {
-    // During prerendering, cookies() rejects - this is expected
-  }
-  redirect('/target-path');
+	// Access cookies() to satisfy Next.js requirement before Sentry intercepts
+	try {
+		await cookies();
+	} catch {
+		// During prerendering, cookies() rejects - this is expected
+	}
+	redirect('/target-path');
 }
 ```
 

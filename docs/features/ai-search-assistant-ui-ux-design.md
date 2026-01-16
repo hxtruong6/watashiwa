@@ -33,13 +33,13 @@ Muscle memory should transfer: Search icon in same spot on phone/tablet/desktop.
 
 ## 🎯 DESIGN GOALS
 
-| Goal | Success Metric | Design Solution |
-|------|----------------|-----------------|
-| **Instant Discoverability** | 80% of users try search within 7 days | Prominent search icon with "New!" badge, glowing effect |
-| **Zero Learning Curve** | <5s to complete first search | Familiar search UX (inspired by Google/Spotlight) |
-| **Engagement Without Friction** | 92% click-through on results | Large tap targets, skeleton loaders, instant feedback |
-| **AI Value Clarity** | 35% try AI features | Crown icon 👑, preview animations, clear CTAs |
-| **Accessibility** | 100% WCAG AA compliance | High contrast, screen reader support, keyboard nav |
+| Goal                            | Success Metric                        | Design Solution                                         |
+| ------------------------------- | ------------------------------------- | ------------------------------------------------------- |
+| **Instant Discoverability**     | 80% of users try search within 7 days | Prominent search icon with "New!" badge, glowing effect |
+| **Zero Learning Curve**         | <5s to complete first search          | Familiar search UX (inspired by Google/Spotlight)       |
+| **Engagement Without Friction** | 92% click-through on results          | Large tap targets, skeleton loaders, instant feedback   |
+| **AI Value Clarity**            | 35% try AI features                   | Crown icon 👑, preview animations, clear CTAs           |
+| **Accessibility**               | 100% WCAG AA compliance               | High contrast, screen reader support, keyboard nav      |
 
 ---
 
@@ -52,12 +52,12 @@ Muscle memory should transfer: Search icon in same spot on phone/tablet/desktop.
 ```css
 --search-bg-glass: rgba(255, 255, 255, 0.85); /* Glass surface */
 --search-bg-glass-strong: rgba(255, 255, 255, 0.92); /* Result cards */
---search-accent: #4F46E5; /* Indigo - Primary actions */
+--search-accent: #4f46e5; /* Indigo - Primary actions */
 --search-accent-glow: rgba(79, 70, 229, 0.15); /* Glow effect */
---search-success: #10B981; /* Matcha Green - Mastery */
---search-warning: #EF4444; /* Vermilion - Alerts */
---search-text-primary: #2D2D2D; /* Sumi ink */
---search-text-secondary: #8C8C8C; /* Stone grey */
+--search-success: #10b981; /* Matcha Green - Mastery */
+--search-warning: #ef4444; /* Vermilion - Alerts */
+--search-text-primary: #2d2d2d; /* Sumi ink */
+--search-text-secondary: #8c8c8c; /* Stone grey */
 --search-border: rgba(0, 0, 0, 0.08); /* Subtle borders */
 --search-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
 ```
@@ -67,10 +67,10 @@ Muscle memory should transfer: Search icon in same spot on phone/tablet/desktop.
 ```css
 --search-bg-glass: rgba(21, 31, 50, 0.85); /* Deep Slate glass */
 --search-bg-glass-strong: rgba(21, 31, 50, 0.92); /* Result cards */
---search-accent: #63B3ED; /* Clear Sky Blue */
+--search-accent: #63b3ed; /* Clear Sky Blue */
 --search-accent-glow: rgba(99, 179, 237, 0.15);
---search-success: #68D391; /* Emerald */
---search-warning: #FC8181; /* Red 300 */
+--search-success: #68d391; /* Emerald */
+--search-warning: #fc8181; /* Red 300 */
 --search-text-primary: rgba(255, 255, 255, 0.92);
 --search-text-secondary: rgba(255, 255, 255, 0.65);
 --search-border: rgba(255, 255, 255, 0.08);
@@ -154,25 +154,25 @@ Muscle memory should transfer: Search icon in same spot on phone/tablet/desktop.
 
 ### States & Interactions
 
-| State | Visual Treatment | Animation |
-|-------|------------------|-----------|
-| **Default** | Outlined icon, 24x24px, current color | None |
-| **Hover** (Desktop) | Background: `rgba(accent, 0.08)`, scale: 1.05 | 100ms ease-out |
-| **Active/Pressed** | Background: `rgba(accent, 0.12)`, scale: 0.95 | 100ms ease-out |
-| **First-Time (New!)** | Purple glow pulse animation (2s loop) | Glow radius: 0→8px |
-| **AI Available** | Small crown badge (8x8px) top-right corner | Fade in 200ms |
+| State                 | Visual Treatment                              | Animation          |
+| --------------------- | --------------------------------------------- | ------------------ |
+| **Default**           | Outlined icon, 24x24px, current color         | None               |
+| **Hover** (Desktop)   | Background: `rgba(accent, 0.08)`, scale: 1.05 | 100ms ease-out     |
+| **Active/Pressed**    | Background: `rgba(accent, 0.12)`, scale: 0.95 | 100ms ease-out     |
+| **First-Time (New!)** | Purple glow pulse animation (2s loop)         | Glow radius: 0→8px |
+| **AI Available**      | Small crown badge (8x8px) top-right corner    | Fade in 200ms      |
 
 ### Accessibility
 
 ```html
-<button 
-  aria-label="Search Japanese words, grammar, and vocabulary"
-  aria-haspopup="dialog"
-  aria-expanded="false"
-  role="button"
+<button
+	aria-label="Search Japanese words, grammar, and vocabulary"
+	aria-haspopup="dialog"
+	aria-expanded="false"
+	role="button"
 >
-  <SearchIcon />
-  <span class="sr-only">Press Cmd+K to open search</span>
+	<SearchIcon />
+	<span class="sr-only">Press Cmd+K to open search</span>
 </button>
 ```
 
@@ -230,7 +230,7 @@ Muscle memory should transfer: Search icon in same spot on phone/tablet/desktop.
 │  └───────────────────────────────┘  │
 └─────────────────────────────────────┘
          ↑
-  Glass backdrop: blur(28px), 
+  Glass backdrop: blur(28px),
   saturate(180%), shadow
 ```
 
@@ -240,34 +240,34 @@ Muscle memory should transfer: Search icon in same spot on phone/tablet/desktop.
 
 ```css
 .search-modal {
-  /* Glass morphism */
-  background: var(--search-bg-glass);
-  backdrop-filter: blur(28px) saturate(180%);
-  
-  /* Shadows (iOS 16 multi-layer) */
-  box-shadow: 
-    0 0 0 1px rgba(255, 255, 255, 0.2) inset,  /* Inner glow */
-    0 2px 8px rgba(0, 0, 0, 0.04),              /* Soft near shadow */
-    0 8px 32px rgba(0, 0, 0, 0.08),             /* Medium shadow */
-    0 24px 64px rgba(0, 0, 0, 0.12);            /* Deep shadow */
-  
-  /* Border */
-  border: 1px solid var(--search-border);
-  border-radius: 16px; /* Mobile: 0 (full-screen) */
-  
-  /* Animation */
-  animation: modalSlideIn 300ms var(--ease-out-expo);
+	/* Glass morphism */
+	background: var(--search-bg-glass);
+	backdrop-filter: blur(28px) saturate(180%);
+
+	/* Shadows (iOS 16 multi-layer) */
+	box-shadow:
+		0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+		/* Inner glow */ 0 2px 8px rgba(0, 0, 0, 0.04),
+		/* Soft near shadow */ 0 8px 32px rgba(0, 0, 0, 0.08),
+		/* Medium shadow */ 0 24px 64px rgba(0, 0, 0, 0.12); /* Deep shadow */
+
+	/* Border */
+	border: 1px solid var(--search-border);
+	border-radius: 16px; /* Mobile: 0 (full-screen) */
+
+	/* Animation */
+	animation: modalSlideIn 300ms var(--ease-out-expo);
 }
 
 @keyframes modalSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+	from {
+		opacity: 0;
+		transform: translateY(20px) scale(0.96);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
 }
 ```
 
@@ -275,17 +275,21 @@ Muscle memory should transfer: Search icon in same spot on phone/tablet/desktop.
 
 ```css
 @media (max-width: 768px) {
-  .search-modal {
-    position: fixed;
-    inset: 0; /* Full screen */
-    border-radius: 0;
-    animation: modalSlideUp 300ms var(--ease-out-expo);
-  }
-  
-  @keyframes modalSlideUp {
-    from { transform: translateY(100%); }
-    to { transform: translateY(0); }
-  }
+	.search-modal {
+		position: fixed;
+		inset: 0; /* Full screen */
+		border-radius: 0;
+		animation: modalSlideUp 300ms var(--ease-out-expo);
+	}
+
+	@keyframes modalSlideUp {
+		from {
+			transform: translateY(100%);
+		}
+		to {
+			transform: translateY(0);
+		}
+	}
 }
 ```
 
@@ -300,7 +304,7 @@ Muscle memory should transfer: Search icon in same spot on phone/tablet/desktop.
 │  [🔍]  Type Japanese, Romaji, English...     │  ← Placeholder
 │        ▊                                     │  ← Cursor (blinking)
 └──────────────────────────────────────────────┘
-     ↑                                    
+     ↑
    Icon (20x20px, secondary color)
 ```
 
@@ -318,54 +322,54 @@ Muscle memory should transfer: Search icon in same spot on phone/tablet/desktop.
 
 ```css
 .search-input {
-  /* Size */
-  height: 48px; /* Mobile */
-  height: 56px; /* Desktop */
-  padding: 0 16px 0 48px; /* Space for icon */
-  
-  /* Typography */
-  font-size: 18px; /* Mobile */
-  font-size: 20px; /* Desktop */
-  font-weight: 400;
-  color: var(--search-text-primary);
-  
-  /* Background */
-  background: rgba(0, 0, 0, 0.02); /* Subtle inset */
-  border: 1px solid var(--search-border);
-  border-radius: 12px;
-  
-  /* Focus state */
-  transition: all 200ms ease;
+	/* Size */
+	height: 48px; /* Mobile */
+	height: 56px; /* Desktop */
+	padding: 0 16px 0 48px; /* Space for icon */
+
+	/* Typography */
+	font-size: 18px; /* Mobile */
+	font-size: 20px; /* Desktop */
+	font-weight: 400;
+	color: var(--search-text-primary);
+
+	/* Background */
+	background: rgba(0, 0, 0, 0.02); /* Subtle inset */
+	border: 1px solid var(--search-border);
+	border-radius: 12px;
+
+	/* Focus state */
+	transition: all 200ms ease;
 }
 
 .search-input:focus {
-  border-color: var(--search-accent);
-  box-shadow: 
-    0 0 0 3px var(--search-accent-glow),
-    0 1px 2px rgba(0, 0, 0, 0.04);
-  outline: none;
+	border-color: var(--search-accent);
+	box-shadow:
+		0 0 0 3px var(--search-accent-glow),
+		0 1px 2px rgba(0, 0, 0, 0.04);
+	outline: none;
 }
 ```
 
 ### Input Behaviors
 
-| Behavior | Implementation | Timing |
-|----------|----------------|--------|
-| **Auto-focus** | Focus on modal open (mobile keyboard appears) | Immediate |
-| **Debounce** | Wait 300ms after last keystroke before search | 300ms |
-| **Clear button** | Show [×] when input has text | Fade in 100ms |
-| **Keyboard nav** | Arrow keys to navigate results, Enter to select | Instant |
-| **IME support** | Japanese input methods (Hiragana, Katakana) | Native OS |
+| Behavior         | Implementation                                  | Timing        |
+| ---------------- | ----------------------------------------------- | ------------- |
+| **Auto-focus**   | Focus on modal open (mobile keyboard appears)   | Immediate     |
+| **Debounce**     | Wait 300ms after last keystroke before search   | 300ms         |
+| **Clear button** | Show [×] when input has text                    | Fade in 100ms |
+| **Keyboard nav** | Arrow keys to navigate results, Enter to select | Instant       |
+| **IME support**  | Japanese input methods (Hiragana, Katakana)     | Native OS     |
 
 ### Placeholder Text Progression
 
 ```javascript
 // Rotate through these on empty state
 const placeholders = [
-  "Search by Japanese, Romaji, English...",
-  "Try: sensei, 先生, or teacher",
-  "Look up pitch accents, grammar, vocabulary",
-  "Ask anything about Japanese!"
+	'Search by Japanese, Romaji, English...',
+	'Try: sensei, 先生, or teacher',
+	'Look up pitch accents, grammar, vocabulary',
+	'Ask anything about Japanese!',
 ];
 // Rotate every 3 seconds (subtle animation)
 ```
@@ -423,53 +427,53 @@ Orange/Vermilion gradient border
 
 ```css
 .result-card {
-  /* Glass container */
-  background: var(--search-bg-glass-strong);
-  border: 1px solid var(--search-border);
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 8px;
-  
-  /* Shadow */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-  
-  /* Interaction */
-  cursor: pointer;
-  transition: all 200ms ease;
+	/* Glass container */
+	background: var(--search-bg-glass-strong);
+	border: 1px solid var(--search-border);
+	border-radius: 12px;
+	padding: 16px;
+	margin-bottom: 8px;
+
+	/* Shadow */
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+	/* Interaction */
+	cursor: pointer;
+	transition: all 200ms ease;
 }
 
 .result-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  border-color: var(--search-accent);
+	transform: translateY(-2px);
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+	border-color: var(--search-accent);
 }
 
 .result-card:active {
-  transform: translateY(0);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+	transform: translateY(0);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
 }
 
 /* Status badge */
 .status-badge {
-  display: inline-block;
-  padding: 2px 8px;
-  font-size: 12px;
-  font-weight: 600;
-  border-radius: 6px;
-  
-  /* Variants */
-  &.mastered { 
-    background: rgba(16, 185, 129, 0.1); 
-    color: #059669; 
-  }
-  &.learning { 
-    background: rgba(251, 146, 60, 0.1); 
-    color: #EA580C; 
-  }
-  &.new { 
-    background: rgba(79, 70, 229, 0.1); 
-    color: #4F46E5; 
-  }
+	display: inline-block;
+	padding: 2px 8px;
+	font-size: 12px;
+	font-weight: 600;
+	border-radius: 6px;
+
+	/* Variants */
+	&.mastered {
+		background: rgba(16, 185, 129, 0.1);
+		color: #059669;
+	}
+	&.learning {
+		background: rgba(251, 146, 60, 0.1);
+		color: #ea580c;
+	}
+	&.new {
+		background: rgba(79, 70, 229, 0.1);
+		color: #4f46e5;
+	}
 }
 ```
 
@@ -606,41 +610,46 @@ Results List                Detail View
 
 ```css
 .audio-button {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--search-accent);
-  color: white;
-  transition: all 200ms ease;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: var(--search-accent);
+	color: white;
+	transition: all 200ms ease;
 }
 
 .audio-button:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px var(--search-accent-glow);
+	transform: scale(1.1);
+	box-shadow: 0 4px 12px var(--search-accent-glow);
 }
 
 .audio-button:active {
-  transform: scale(0.95);
+	transform: scale(0.95);
 }
 
 /* Waveform animation */
 .audio-waveform {
-  display: flex;
-  gap: 2px;
-  align-items: center;
+	display: flex;
+	gap: 2px;
+	align-items: center;
 }
 
 .audio-waveform span {
-  width: 3px;
-  height: 12px;
-  background: var(--search-accent);
-  border-radius: 2px;
-  animation: wave 1s ease-in-out infinite;
+	width: 3px;
+	height: 12px;
+	background: var(--search-accent);
+	border-radius: 2px;
+	animation: wave 1s ease-in-out infinite;
 }
 
 @keyframes wave {
-  0%, 100% { height: 8px; }
-  50% { height: 16px; }
+	0%,
+	100% {
+		height: 8px;
+	}
+	50% {
+		height: 16px;
+	}
 }
 ```
 
@@ -649,23 +658,23 @@ Results List                Detail View
 ```svg
 <svg viewBox="0 0 200 40" class="pitch-diagram">
   <!-- High pitch segment -->
-  <line x1="0" y1="10" x2="80" y2="10" 
-        stroke="#4F46E5" 
-        stroke-width="3" 
+  <line x1="0" y1="10" x2="80" y2="10"
+        stroke="#4F46E5"
+        stroke-width="3"
         stroke-linecap="round" />
-  
+
   <!-- Rise transition -->
-  <line x1="80" y1="10" x2="100" y2="30" 
-        stroke="#4F46E5" 
-        stroke-width="3" 
+  <line x1="80" y1="10" x2="100" y2="30"
+        stroke="#4F46E5"
+        stroke-width="3"
         stroke-dasharray="2,2" />
-  
+
   <!-- Low pitch segment -->
-  <line x1="100" y1="30" x2="200" y2="30" 
-        stroke="#8C8C8C" 
-        stroke-width="3" 
+  <line x1="100" y1="30" x2="200" y2="30"
+        stroke="#8C8C8C"
+        stroke-width="3"
         stroke-linecap="round" />
-  
+
   <!-- Mora labels -->
   <text x="40" y="8" class="mora">せ</text>
   <text x="120" y="28" class="mora">ん</text>
@@ -695,32 +704,32 @@ Success State (Toast):
 
 ```css
 .cta-primary {
-  width: 100%;
-  height: 48px;
-  background: var(--search-accent);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 200ms ease;
+	width: 100%;
+	height: 48px;
+	background: var(--search-accent);
+	color: white;
+	border: none;
+	border-radius: 12px;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 200ms ease;
 }
 
 .cta-primary:hover {
-  background: #4338CA; /* Darker shade */
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px var(--search-accent-glow);
+	background: #4338ca; /* Darker shade */
+	transform: translateY(-2px);
+	box-shadow: 0 4px 16px var(--search-accent-glow);
 }
 
 .cta-primary:active {
-  transform: translateY(0);
+	transform: translateY(0);
 }
 
 /* Already in deck state */
 .cta-primary.in-deck {
-  background: var(--search-success);
-  pointer-events: none;
+	background: var(--search-success);
+	pointer-events: none;
 }
 ```
 
@@ -945,17 +954,17 @@ User taps "猫" in story
 
 ```css
 .recent-entry {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 16px;
-  background: var(--search-bg-glass);
-  border-radius: 8px;
-  margin-bottom: 4px;
+	display: flex;
+	justify-content: space-between;
+	padding: 12px 16px;
+	background: var(--search-bg-glass);
+	border-radius: 8px;
+	margin-bottom: 4px;
 }
 
 .recent-entry:hover {
-  background: rgba(79, 70, 229, 0.04);
-  cursor: pointer;
+	background: rgba(79, 70, 229, 0.04);
+	cursor: pointer;
 }
 ```
 
@@ -1027,36 +1036,36 @@ Swipe Left →
 
 ```css
 .graph-node {
-  /* Size based on mastery */
-  width: 80px; /* Known words */
-  width: 100px; /* Current word - larger */
-  width: 60px; /* New suggestions - smaller */
-  
-  /* Colors */
-  fill: var(--search-success); /* Mastered */
-  fill: var(--search-accent); /* Current */
-  fill: var(--search-text-secondary); /* New */
-  
-  /* Interaction */
-  cursor: pointer;
-  transition: all 200ms ease;
+	/* Size based on mastery */
+	width: 80px; /* Known words */
+	width: 100px; /* Current word - larger */
+	width: 60px; /* New suggestions - smaller */
+
+	/* Colors */
+	fill: var(--search-success); /* Mastered */
+	fill: var(--search-accent); /* Current */
+	fill: var(--search-text-secondary); /* New */
+
+	/* Interaction */
+	cursor: pointer;
+	transition: all 200ms ease;
 }
 
 .graph-node:hover {
-  transform: scale(1.2);
-  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+	transform: scale(1.2);
+	filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
 
 /* Edges (connections) */
 .graph-edge {
-  stroke: var(--search-border);
-  stroke-width: 2px;
-  stroke-dasharray: 4, 4; /* Dashed line */
+	stroke: var(--search-border);
+	stroke-width: 2px;
+	stroke-dasharray: 4, 4; /* Dashed line */
 }
 
 .graph-edge.strong {
-  stroke-width: 3px;
-  stroke-dasharray: none; /* Solid for strong connections */
+	stroke-width: 3px;
+	stroke-dasharray: none; /* Solid for strong connections */
 }
 ```
 
@@ -1066,14 +1075,14 @@ Swipe Left →
 
 ### Device-Specific Layouts
 
-| Device | Width | Layout Strategy | Key Differences |
-|--------|-------|-----------------|-----------------|
-| **Mobile S** | 320-374px | Compact, single column | Smaller fonts, reduced padding |
-| **Mobile M** | 375-424px | Standard mobile | Default mobile design |
-| **Mobile L** | 425-767px | Spacious mobile | Larger tap targets |
-| **Tablet** | 768-1023px | 2-column hybrid | Split detail view starts here |
-| **Desktop S** | 1024-1439px | Modal (600px width) | Centered modal with backdrop |
-| **Desktop L** | 1440px+ | Modal (720px width) | More whitespace, larger text |
+| Device        | Width       | Layout Strategy        | Key Differences                |
+| ------------- | ----------- | ---------------------- | ------------------------------ |
+| **Mobile S**  | 320-374px   | Compact, single column | Smaller fonts, reduced padding |
+| **Mobile M**  | 375-424px   | Standard mobile        | Default mobile design          |
+| **Mobile L**  | 425-767px   | Spacious mobile        | Larger tap targets             |
+| **Tablet**    | 768-1023px  | 2-column hybrid        | Split detail view starts here  |
+| **Desktop S** | 1024-1439px | Modal (600px width)    | Centered modal with backdrop   |
+| **Desktop L** | 1440px+     | Modal (720px width)    | More whitespace, larger text   |
 
 ### Layout Adjustments
 
@@ -1081,22 +1090,22 @@ Swipe Left →
 
 ```css
 .search-modal {
-  /* Full screen */
-  position: fixed;
-  inset: 0;
-  border-radius: 0;
+	/* Full screen */
+	position: fixed;
+	inset: 0;
+	border-radius: 0;
 }
 
 .result-card {
-  /* Larger tap targets */
-  min-height: 72px;
-  padding: 16px;
+	/* Larger tap targets */
+	min-height: 72px;
+	padding: 16px;
 }
 
 .detail-view {
-  /* Slide-in animation */
-  transform: translateX(100%);
-  animation: slideIn 300ms forwards;
+	/* Slide-in animation */
+	transform: translateX(100%);
+	animation: slideIn 300ms forwards;
 }
 ```
 
@@ -1104,18 +1113,18 @@ Swipe Left →
 
 ```css
 .search-modal {
-  /* Centered, rounded */
-  width: 90%;
-  max-width: 640px;
-  margin: 5vh auto;
-  border-radius: 16px;
+	/* Centered, rounded */
+	width: 90%;
+	max-width: 640px;
+	margin: 5vh auto;
+	border-radius: 16px;
 }
 
 .search-results {
-  /* 2-column grid */
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
+	/* 2-column grid */
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 12px;
 }
 ```
 
@@ -1123,22 +1132,22 @@ Swipe Left →
 
 ```css
 .search-modal {
-  width: 600px; /* Fixed width */
-  max-height: 80vh;
+	width: 600px; /* Fixed width */
+	max-height: 80vh;
 }
 
 .search-layout {
-  /* Split panel */
-  display: grid;
-  grid-template-columns: 2fr 3fr;
-  gap: 0;
+	/* Split panel */
+	display: grid;
+	grid-template-columns: 2fr 3fr;
+	gap: 0;
 }
 
 .result-card {
-  /* Hover effects enabled */
-  &:hover {
-    transform: translateY(-2px);
-  }
+	/* Hover effects enabled */
+	&:hover {
+		transform: translateY(-2px);
+	}
 }
 ```
 
@@ -1504,54 +1513,56 @@ Frame 6: Quiz Complete (5000ms)
 ```css
 /* Default */
 .btn-primary {
-  background: linear-gradient(135deg, #4F46E5 0%, #4338CA 100%);
-  color: white;
-  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
+	background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+	color: white;
+	box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
 }
 
 /* Hover */
 .btn-primary:hover {
-  background: linear-gradient(135deg, #4338CA 0%, #3730A3 100%);
-  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.3);
-  transform: translateY(-2px);
+	background: linear-gradient(135deg, #4338ca 0%, #3730a3 100%);
+	box-shadow: 0 4px 16px rgba(79, 70, 229, 0.3);
+	transform: translateY(-2px);
 }
 
 /* Active/Pressed */
 .btn-primary:active {
-  background: #3730A3;
-  box-shadow: 0 1px 4px rgba(79, 70, 229, 0.2);
-  transform: translateY(0);
+	background: #3730a3;
+	box-shadow: 0 1px 4px rgba(79, 70, 229, 0.2);
+	transform: translateY(0);
 }
 
 /* Loading */
 .btn-primary.loading {
-  pointer-events: none;
-  opacity: 0.7;
+	pointer-events: none;
+	opacity: 0.7;
 }
 
 .btn-primary.loading::before {
-  content: '';
-  width: 16px;
-  height: 16px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top-color: white;
-  border-radius: 50%;
-  animation: spin 600ms linear infinite;
+	content: '';
+	width: 16px;
+	height: 16px;
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	border-top-color: white;
+	border-radius: 50%;
+	animation: spin 600ms linear infinite;
 }
 
 /* Success */
 .btn-primary.success {
-  background: var(--search-success);
-  pointer-events: none;
+	background: var(--search-success);
+	pointer-events: none;
 }
 
 .btn-primary.success::before {
-  content: '✓ ';
-  font-size: 18px;
+	content: '✓ ';
+	font-size: 18px;
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+	to {
+		transform: rotate(360deg);
+	}
 }
 ```
 
@@ -1559,43 +1570,42 @@ Frame 6: Quiz Complete (5000ms)
 
 ```css
 .btn-samurai {
-  background: linear-gradient(135deg, 
-    rgba(79, 70, 229, 0.1) 0%, 
-    rgba(99, 102, 241, 0.15) 100%
-  );
-  border: 2px solid rgba(79, 70, 229, 0.3);
-  color: var(--search-accent);
-  position: relative;
-  overflow: hidden;
+	background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(99, 102, 241, 0.15) 100%);
+	border: 2px solid rgba(79, 70, 229, 0.3);
+	color: var(--search-accent);
+	position: relative;
+	overflow: hidden;
 }
 
 /* Shimmer effect */
 .btn-samurai::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    rgba(255, 255, 255, 0.3) 50%, 
-    transparent 100%
-  );
-  animation: shimmer 2s infinite;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(
+		90deg,
+		transparent 0%,
+		rgba(255, 255, 255, 0.3) 50%,
+		transparent 100%
+	);
+	animation: shimmer 2s infinite;
 }
 
 @keyframes shimmer {
-  0% { left: -100%; }
-  100% { left: 100%; }
+	0% {
+		left: -100%;
+	}
+	100% {
+		left: 100%;
+	}
 }
 
 .btn-samurai:hover {
-  background: linear-gradient(135deg, 
-    rgba(79, 70, 229, 0.15) 0%, 
-    rgba(99, 102, 241, 0.2) 100%
-  );
-  border-color: var(--search-accent);
+	background: linear-gradient(135deg, rgba(79, 70, 229, 0.15) 0%, rgba(99, 102, 241, 0.2) 100%);
+	border-color: var(--search-accent);
 }
 ```
 
@@ -1643,52 +1653,42 @@ Tab Order:
 
 ```html
 <!-- Search Icon -->
-<button 
-  aria-label="Open search to find Japanese words, grammar, and vocabulary"
-  aria-haspopup="dialog"
-  aria-expanded="false"
+<button
+	aria-label="Open search to find Japanese words, grammar, and vocabulary"
+	aria-haspopup="dialog"
+	aria-expanded="false"
 >
-  <SearchIcon aria-hidden="true" />
+	<SearchIcon aria-hidden="true" />
 </button>
 
 <!-- Search Input -->
 <input
-  type="search"
-  aria-label="Search by Japanese, Romaji, English, or Vietnamese"
-  aria-autocomplete="list"
-  aria-controls="search-results"
-  role="combobox"
+	type="search"
+	aria-label="Search by Japanese, Romaji, English, or Vietnamese"
+	aria-autocomplete="list"
+	aria-controls="search-results"
+	role="combobox"
 />
 
 <!-- Results List -->
-<div 
-  id="search-results"
-  role="listbox"
-  aria-label="Search results"
->
-  <div role="option" aria-selected="false">
-    <span aria-label="Kanji: Sensei">先生</span>
-    <span aria-label="Reading: se-n-se-i">せんせい</span>
-    <span aria-label="Meaning: Teacher, instructor">Teacher</span>
-    <span aria-label="Pitch accent: High tone">⤴️ High</span>
-    <span aria-label="Status: Mastered">Mastered</span>
-  </div>
+<div id="search-results" role="listbox" aria-label="Search results">
+	<div role="option" aria-selected="false">
+		<span aria-label="Kanji: Sensei">先生</span>
+		<span aria-label="Reading: se-n-se-i">せんせい</span>
+		<span aria-label="Meaning: Teacher, instructor">Teacher</span>
+		<span aria-label="Pitch accent: High tone">⤴️ High</span>
+		<span aria-label="Status: Mastered">Mastered</span>
+	</div>
 </div>
 
 <!-- Audio Button -->
-<button 
-  aria-label="Play pronunciation of sensei"
-  aria-pressed="false"
->
-  <PlayIcon aria-hidden="true" />
+<button aria-label="Play pronunciation of sensei" aria-pressed="false">
+	<PlayIcon aria-hidden="true" />
 </button>
 
 <!-- Confusion Alert -->
-<div 
-  role="alert"
-  aria-live="polite"
->
-  ⚠️ Watch out! "hashi" sounds like 2 words. Tap to see the difference.
+<div role="alert" aria-live="polite">
+	⚠️ Watch out! "hashi" sounds like 2 words. Tap to see the difference.
 </div>
 ```
 
@@ -1697,28 +1697,28 @@ Tab Order:
 ```css
 /* High-contrast focus ring (WCAG AAA) */
 *:focus-visible {
-  outline: 3px solid var(--search-accent);
-  outline-offset: 2px;
-  border-radius: 4px;
+	outline: 3px solid var(--search-accent);
+	outline-offset: 2px;
+	border-radius: 4px;
 }
 
 /* Exception for input (has border already) */
 input:focus-visible {
-  outline: none;
-  border-color: var(--search-accent);
-  box-shadow: 0 0 0 3px var(--search-accent-glow);
+	outline: none;
+	border-color: var(--search-accent);
+	box-shadow: 0 0 0 3px var(--search-accent-glow);
 }
 ```
 
 ### Color Contrast Ratios
 
-| Element | Foreground | Background | Ratio | WCAG Level |
-|---------|-----------|------------|-------|------------|
-| **Body text** | `#2D2D2D` | `#FFFFFF` | 13.5:1 | AAA |
-| **Secondary text** | `#8C8C8C` | `#FFFFFF` | 4.6:1 | AA+ |
-| **Primary button** | `#FFFFFF` | `#4F46E5` | 8.2:1 | AAA |
-| **Link text** | `#4F46E5` | `#FFFFFF` | 8.2:1 | AAA |
-| **Dark mode text** | `rgba(255,255,255,0.92)` | `#151F32` | 12.1:1 | AAA |
+| Element            | Foreground               | Background | Ratio  | WCAG Level |
+| ------------------ | ------------------------ | ---------- | ------ | ---------- |
+| **Body text**      | `#2D2D2D`                | `#FFFFFF`  | 13.5:1 | AAA        |
+| **Secondary text** | `#8C8C8C`                | `#FFFFFF`  | 4.6:1  | AA+        |
+| **Primary button** | `#FFFFFF`                | `#4F46E5`  | 8.2:1  | AAA        |
+| **Link text**      | `#4F46E5`                | `#FFFFFF`  | 8.2:1  | AAA        |
+| **Dark mode text** | `rgba(255,255,255,0.92)` | `#151F32`  | 12.1:1 | AAA        |
 
 **Tool:** Use [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)
 
@@ -1730,18 +1730,18 @@ input:focus-visible {
 
 ```css
 :root {
-  /* Base unit: 4px */
-  --space-0: 0;
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 20px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-10: 40px;
-  --space-12: 48px;
-  --space-16: 64px;
+	/* Base unit: 4px */
+	--space-0: 0;
+	--space-1: 4px;
+	--space-2: 8px;
+	--space-3: 12px;
+	--space-4: 16px;
+	--space-5: 20px;
+	--space-6: 24px;
+	--space-8: 32px;
+	--space-10: 40px;
+	--space-12: 48px;
+	--space-16: 64px;
 }
 ```
 
@@ -1749,12 +1749,12 @@ input:focus-visible {
 
 ```css
 :root {
-  --radius-sm: 6px;   /* Badges, tags */
-  --radius-md: 8px;   /* Cards, inputs (compact) */
-  --radius-lg: 12px;  /* Cards, inputs (standard) */
-  --radius-xl: 16px;  /* Modals, panels */
-  --radius-2xl: 20px; /* Large containers */
-  --radius-full: 9999px; /* Pills, avatars */
+	--radius-sm: 6px; /* Badges, tags */
+	--radius-md: 8px; /* Cards, inputs (compact) */
+	--radius-lg: 12px; /* Cards, inputs (standard) */
+	--radius-xl: 16px; /* Modals, panels */
+	--radius-2xl: 20px; /* Large containers */
+	--radius-full: 9999px; /* Pills, avatars */
 }
 ```
 
@@ -1762,23 +1762,21 @@ input:focus-visible {
 
 ```css
 :root {
-  /* Light mode */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
-  --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.16);
-  
-  /* iOS 16 multi-layer */
-  --shadow-glass: 
-    0 0 0 1px rgba(255, 255, 255, 0.2) inset,
-    0 2px 8px rgba(0, 0, 0, 0.04),
-    0 8px 32px rgba(0, 0, 0, 0.08),
-    0 24px 64px rgba(0, 0, 0, 0.12);
-    
-  /* Dark mode (stronger) */
-  --shadow-dark-md: 0 2px 8px rgba(0, 0, 0, 0.24);
-  --shadow-dark-lg: 0 8px 32px rgba(0, 0, 0, 0.36);
-  --shadow-dark-xl: 0 24px 64px rgba(0, 0, 0, 0.48);
+	/* Light mode */
+	--shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+	--shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+	--shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+	--shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.16);
+
+	/* iOS 16 multi-layer */
+	--shadow-glass:
+		0 0 0 1px rgba(255, 255, 255, 0.2) inset, 0 2px 8px rgba(0, 0, 0, 0.04),
+		0 8px 32px rgba(0, 0, 0, 0.08), 0 24px 64px rgba(0, 0, 0, 0.12);
+
+	/* Dark mode (stronger) */
+	--shadow-dark-md: 0 2px 8px rgba(0, 0, 0, 0.24);
+	--shadow-dark-lg: 0 8px 32px rgba(0, 0, 0, 0.36);
+	--shadow-dark-xl: 0 24px 64px rgba(0, 0, 0, 0.48);
 }
 ```
 
@@ -1786,19 +1784,19 @@ input:focus-visible {
 
 ```css
 :root {
-  /* Durations */
-  --duration-instant: 100ms;
-  --duration-quick: 200ms;
-  --duration-smooth: 300ms;
-  --duration-graceful: 500ms;
-  
-  /* Easings */
-  --ease-linear: linear;
-  --ease-in: cubic-bezier(0.4, 0, 1, 1);
-  --ease-out: cubic-bezier(0, 0, 0.2, 1);
-  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+	/* Durations */
+	--duration-instant: 100ms;
+	--duration-quick: 200ms;
+	--duration-smooth: 300ms;
+	--duration-graceful: 500ms;
+
+	/* Easings */
+	--ease-linear: linear;
+	--ease-in: cubic-bezier(0.4, 0, 1, 1);
+	--ease-out: cubic-bezier(0, 0, 0.2, 1);
+	--ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+	--ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+	--ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 ```
 
@@ -1927,23 +1925,23 @@ input:focus-visible {
 
 ### Usability Metrics
 
-| Metric | Tool | Target | Current |
-|--------|------|--------|---------|
-| **Time to First Search** | Mixpanel | <5 seconds | TBD |
-| **Search Success Rate** | Analytics | >92% (user finds word) | TBD |
-| **Modal Bounce Rate** | Heatmaps | <15% (user closes without action) | TBD |
-| **AI Feature Discovery** | Analytics | >35% (see AI quiz) | TBD |
-| **Detail View Engagement** | Session replay | >60% scroll depth | TBD |
+| Metric                     | Tool           | Target                            | Current |
+| -------------------------- | -------------- | --------------------------------- | ------- |
+| **Time to First Search**   | Mixpanel       | <5 seconds                        | TBD     |
+| **Search Success Rate**    | Analytics      | >92% (user finds word)            | TBD     |
+| **Modal Bounce Rate**      | Heatmaps       | <15% (user closes without action) | TBD     |
+| **AI Feature Discovery**   | Analytics      | >35% (see AI quiz)                | TBD     |
+| **Detail View Engagement** | Session replay | >60% scroll depth                 | TBD     |
 
 ### Design Quality Metrics
 
-| Metric | Tool | Target | Current |
-|--------|------|--------|---------|
-| **Lighthouse Accessibility** | Lighthouse | 100/100 | TBD |
-| **WCAG Compliance** | axe DevTools | 0 violations | TBD |
-| **Keyboard Navigation** | Manual test | 100% functional | TBD |
-| **Performance (LCP)** | Web Vitals | <2.5s | TBD |
-| **Animation FPS** | Chrome DevTools | 60fps | TBD |
+| Metric                       | Tool            | Target          | Current |
+| ---------------------------- | --------------- | --------------- | ------- |
+| **Lighthouse Accessibility** | Lighthouse      | 100/100         | TBD     |
+| **WCAG Compliance**          | axe DevTools    | 0 violations    | TBD     |
+| **Keyboard Navigation**      | Manual test     | 100% functional | TBD     |
+| **Performance (LCP)**        | Web Vitals      | <2.5s           | TBD     |
+| **Animation FPS**            | Chrome DevTools | 60fps           | TBD     |
 
 ---
 
@@ -2095,9 +2093,9 @@ User right-clicks Japanese text on website
 **Design Lead:** [Your Name]  
 **Slack Channel:** #search-feature-design  
 **Figma File:** [Link to Figma]  
-**Zeplin/Inspect:** [Link to Zeplin]  
+**Zeplin/Inspect:** [Link to Zeplin]
 
-**Office Hours:**  
+**Office Hours:**
 
 - Monday/Wednesday 2-4 PM: Design Q&A
 - Thursday 10 AM: Weekly design sync
@@ -2112,10 +2110,10 @@ User right-clicks Japanese text on website
 
 **Document Version:** 1.0  
 **Last Updated:** January 13, 2026  
-**Next Review:** After Phase 0 user testing  
+**Next Review:** After Phase 0 user testing
 
 ---
 
-*"Design is not just what it looks like and feels like. Design is how it works."* — Steve Jobs
+_"Design is not just what it looks like and feels like. Design is how it works."_ — Steve Jobs
 
 Let's build a search experience that feels magical. ✨

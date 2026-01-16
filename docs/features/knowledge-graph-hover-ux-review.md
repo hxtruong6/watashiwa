@@ -193,13 +193,13 @@ The current hover implementation provides **functional** kanji relationship disc
 
    ```tsx
    <Card title="Shared Kanji" size="small" collapsible>
-     {kanjiColors.entries().map(([kanji, color]) => (
-       <Flex align="center" gap="small">
-         <div style={{ width: 16, height: 16, background: color, borderRadius: 4 }} />
-         <Text>{kanji}</Text>
-         <Text type="secondary">({nodeCount} words)</Text>
-       </Flex>
-     ))}
+   	{kanjiColors.entries().map(([kanji, color]) => (
+   		<Flex align="center" gap="small">
+   			<div style={{ width: 16, height: 16, background: color, borderRadius: 4 }} />
+   			<Text>{kanji}</Text>
+   			<Text type="secondary">({nodeCount} words)</Text>
+   		</Flex>
+   	))}
    </Card>
    ```
 
@@ -308,16 +308,16 @@ The current hover implementation provides **functional** kanji relationship disc
 
 ## Implementation Priority Matrix
 
-| Enhancement | Impact | Effort | Priority |
-|------------|--------|--------|----------|
-| Kanji Legend | High | Low | P1 |
-| Hovered Node Active Kanji | High | Low | P1 |
-| Card Kanji Display | Medium | Low | P1 |
-| Edge Label Progressive | High | Medium | P2 |
-| Hover Persistence | Medium | Low | P2 |
-| Onboarding | Medium | Medium | P2 |
-| Keyboard Nav | High | High | P3 |
-| Advanced Filtering | Medium | High | P3 |
+| Enhancement               | Impact | Effort | Priority |
+| ------------------------- | ------ | ------ | -------- |
+| Kanji Legend              | High   | Low    | P1       |
+| Hovered Node Active Kanji | High   | Low    | P1       |
+| Card Kanji Display        | Medium | Low    | P1       |
+| Edge Label Progressive    | High   | Medium | P2       |
+| Hover Persistence         | Medium | Low    | P2       |
+| Onboarding                | Medium | Medium | P2       |
+| Keyboard Nav              | High   | High   | P3       |
+| Advanced Filtering        | Medium | High   | P3       |
 
 ---
 
@@ -345,48 +345,50 @@ These changes will transform the feature from "works but unclear" to "intuitive 
 ### Kanji Legend Component (Recommended)
 
 ```tsx
-function KanjiLegend({ 
-  kanjiColors, 
-  kanjiHighlightMap, 
-  nodes 
+function KanjiLegend({
+	kanjiColors,
+	kanjiHighlightMap,
+	nodes,
 }: {
-  kanjiColors: Map<string, string>;
-  kanjiHighlightMap: Map<string, Set<string>>;
-  nodes: KnowledgeGraphNode[];
+	kanjiColors: Map<string, string>;
+	kanjiHighlightMap: Map<string, Set<string>>;
+	nodes: KnowledgeGraphNode[];
 }) {
-  if (kanjiColors.size === 0) return null;
-  
-  return (
-    <Card 
-      title="Shared Kanji" 
-      size="small" 
-      style={{ marginTop: 16 }}
-      extra={<Button type="text" icon={<QuestionCircleOutlined />} />}
-    >
-      <Flex vertical gap="small">
-        {Array.from(kanjiColors.entries()).map(([kanji, color]) => {
-          const nodeCount = kanjiHighlightMap.get(kanji)?.size ?? 0;
-          return (
-            <Flex key={kanji} align="center" gap="small">
-              <div 
-                style={{ 
-                  width: 16, 
-                  height: 16, 
-                  background: color, 
-                  borderRadius: 4,
-                  border: `1px solid ${color}80`
-                }} 
-              />
-              <Text strong style={{ fontSize: 16 }}>{kanji}</Text>
-              <Text type="secondary">
-                {nodeCount} {nodeCount === 1 ? 'word' : 'words'}
-              </Text>
-            </Flex>
-          );
-        })}
-      </Flex>
-    </Card>
-  );
+	if (kanjiColors.size === 0) return null;
+
+	return (
+		<Card
+			title="Shared Kanji"
+			size="small"
+			style={{ marginTop: 16 }}
+			extra={<Button type="text" icon={<QuestionCircleOutlined />} />}
+		>
+			<Flex vertical gap="small">
+				{Array.from(kanjiColors.entries()).map(([kanji, color]) => {
+					const nodeCount = kanjiHighlightMap.get(kanji)?.size ?? 0;
+					return (
+						<Flex key={kanji} align="center" gap="small">
+							<div
+								style={{
+									width: 16,
+									height: 16,
+									background: color,
+									borderRadius: 4,
+									border: `1px solid ${color}80`,
+								}}
+							/>
+							<Text strong style={{ fontSize: 16 }}>
+								{kanji}
+							</Text>
+							<Text type="secondary">
+								{nodeCount} {nodeCount === 1 ? 'word' : 'words'}
+							</Text>
+						</Flex>
+					);
+				})}
+			</Flex>
+		</Card>
+	);
 }
 ```
 
@@ -395,15 +397,13 @@ function KanjiLegend({
 ```tsx
 // In nodeCanvasObject for cards layout
 if (isHovered && activeNode) {
-  // Show active kanji badges
-  const activeKanji = activeNode.sharedKanji.filter(k => 
-    kanjiHighlightMap.has(k)
-  );
-  
-  activeKanji.forEach((kanji, index) => {
-    const color = kanjiColors.get(kanji);
-    // Draw colored badge above card
-    // ... badge rendering code
-  });
+	// Show active kanji badges
+	const activeKanji = activeNode.sharedKanji.filter((k) => kanjiHighlightMap.has(k));
+
+	activeKanji.forEach((kanji, index) => {
+		const color = kanjiColors.get(kanji);
+		// Draw colored badge above card
+		// ... badge rendering code
+	});
 }
 ```

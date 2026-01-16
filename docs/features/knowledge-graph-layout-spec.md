@@ -58,11 +58,11 @@ Persisted on `knowledge_graph_nodes.layout` and returned from API:
 
 ```json
 {
-  "x": 120.5,
-  "y": -80.2,
-  "radius": 12,
-  "cluster": "学",
-  "layout": "radial"
+	"x": 120.5,
+	"y": -80.2,
+	"radius": 12,
+	"cluster": "学",
+	"layout": "radial"
 }
 ```
 
@@ -70,14 +70,10 @@ Persisted on `knowledge_graph_nodes.layout` and returned from API:
 
 ```json
 {
-  "centerNodeId": "uuid",
-  "nodes": [
-    { "id": "uuid", "x": 0, "y": 0, "radius": 12, "cluster": "学" }
-  ],
-  "edges": [
-    { "sourceId": "uuid", "targetId": "uuid", "weight": 0.7 }
-  ],
-  "layout": "radial"
+	"centerNodeId": "uuid",
+	"nodes": [{ "id": "uuid", "x": 0, "y": 0, "radius": 12, "cluster": "学" }],
+	"edges": [{ "sourceId": "uuid", "targetId": "uuid", "weight": 0.7 }],
+	"layout": "radial"
 }
 ```
 

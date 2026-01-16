@@ -18,7 +18,7 @@ For words like "休みます" (yasumimasu):
 ```prisma
 model Vocabulary {
   // ... existing fields ...
-  
+
   // Furigana Mapping (Precise kanji-reading alignment)
   furiganaMapping Json? @map("furigana_mapping")
 }
@@ -28,15 +28,15 @@ model Vocabulary {
 
 ```typescript
 {
-  mappings: [
-    {
-      kanji: "休",           // The kanji character(s)
-      reading: "やす",        // Reading segment for this kanji
-      surfaceIndex: 0,      // Position in wordSurface
-      readingStart: 0,       // Start position in wordReading
-      readingEnd: 2          // End position in wordReading (exclusive)
-    }
-  ]
+	mappings: [
+		{
+			kanji: '休', // The kanji character(s)
+			reading: 'やす', // Reading segment for this kanji
+			surfaceIndex: 0, // Position in wordSurface
+			readingStart: 0, // Start position in wordReading
+			readingEnd: 2, // End position in wordReading (exclusive)
+		},
+	];
 }
 ```
 
@@ -48,15 +48,15 @@ model Vocabulary {
 
 ```json
 {
-  "mappings": [
-    {
-      "kanji": "休",
-      "reading": "やす",
-      "surfaceIndex": 0,
-      "readingStart": 0,
-      "readingEnd": 2
-    }
-  ]
+	"mappings": [
+		{
+			"kanji": "休",
+			"reading": "やす",
+			"surfaceIndex": 0,
+			"readingStart": 0,
+			"readingEnd": 2
+		}
+	]
 }
 ```
 
@@ -68,15 +68,15 @@ model Vocabulary {
 
 ```typescript
 export const FuriganaMappingItemSchema = z.object({
-  kanji: z.string().min(1),
-  reading: z.string().min(1),
-  surfaceIndex: z.number().int().nonnegative(),
-  readingStart: z.number().int().nonnegative(),
-  readingEnd: z.number().int().positive(),
+	kanji: z.string().min(1),
+	reading: z.string().min(1),
+	surfaceIndex: z.number().int().nonnegative(),
+	readingStart: z.number().int().nonnegative(),
+	readingEnd: z.number().int().positive(),
 });
 
 export const FuriganaMappingSchema = z.object({
-  mappings: z.array(FuriganaMappingItemSchema),
+	mappings: z.array(FuriganaMappingItemSchema),
 });
 ```
 
@@ -92,16 +92,16 @@ import { renderFurigana } from '@/lib/utils/furigana';
 
 const segments = renderFurigana(wordSurface, furiganaMapping);
 
-segments.map((segment, i) => (
-  segment.isKanji && segment.reading ? (
-    <ruby key={i}>
-      {segment.text}
-      <rt>{segment.reading}</rt>
-    </ruby>
-  ) : (
-    <span key={i}>{segment.text}</span>
-  )
-))
+segments.map((segment, i) =>
+	segment.isKanji && segment.reading ? (
+		<ruby key={i}>
+			{segment.text}
+			<rt>{segment.reading}</rt>
+		</ruby>
+	) : (
+		<span key={i}>{segment.text}</span>
+	),
+);
 ```
 
 ## Migration Strategy
@@ -117,20 +117,20 @@ segments.map((segment, i) => (
 ```typescript
 // Migration script to populate existing data
 async function backfillFuriganaMappings() {
-  const vocabularies = await prisma.vocabulary.findMany({
-    where: { furiganaMapping: null },
-    select: { id: true, wordSurface: true, wordReading: true },
-  });
+	const vocabularies = await prisma.vocabulary.findMany({
+		where: { furiganaMapping: null },
+		select: { id: true, wordSurface: true, wordReading: true },
+	});
 
-  for (const vocab of vocabularies) {
-    const mapping = generateFuriganaMapping(vocab.wordSurface, vocab.wordReading);
-    if (mapping) {
-      await prisma.vocabulary.update({
-        where: { id: vocab.id },
-        data: { furiganaMapping: mapping },
-      });
-    }
-  }
+	for (const vocab of vocabularies) {
+		const mapping = generateFuriganaMapping(vocab.wordSurface, vocab.wordReading);
+		if (mapping) {
+			await prisma.vocabulary.update({
+				where: { id: vocab.id },
+				data: { furiganaMapping: mapping },
+			});
+		}
+	}
 }
 ```
 
@@ -150,11 +150,11 @@ async function backfillFuriganaMappings() {
 
 ```json
 {
-  "mappings": [
-    { "kanji": "大", "reading": "だい", "surfaceIndex": 0, "readingStart": 0, "readingEnd": 2 },
-    { "kanji": "学", "reading": "がく", "surfaceIndex": 1, "readingStart": 2, "readingEnd": 4 },
-    { "kanji": "生", "reading": "せい", "surfaceIndex": 2, "readingStart": 4, "readingEnd": 6 }
-  ]
+	"mappings": [
+		{ "kanji": "大", "reading": "だい", "surfaceIndex": 0, "readingStart": 0, "readingEnd": 2 },
+		{ "kanji": "学", "reading": "がく", "surfaceIndex": 1, "readingStart": 2, "readingEnd": 4 },
+		{ "kanji": "生", "reading": "せい", "surfaceIndex": 2, "readingStart": 4, "readingEnd": 6 }
+	]
 }
 ```
 
@@ -166,10 +166,10 @@ async function backfillFuriganaMappings() {
 
 ```json
 {
-  "mappings": [
-    { "kanji": "休", "reading": "きゅう", "surfaceIndex": 0, "readingStart": 0, "readingEnd": 3 },
-    { "kanji": "憩", "reading": "けい", "surfaceIndex": 1, "readingStart": 3, "readingEnd": 5 }
-  ]
+	"mappings": [
+		{ "kanji": "休", "reading": "きゅう", "surfaceIndex": 0, "readingStart": 0, "readingEnd": 3 },
+		{ "kanji": "憩", "reading": "けい", "surfaceIndex": 1, "readingStart": 3, "readingEnd": 5 }
+	]
 }
 ```
 

@@ -9,7 +9,7 @@ Quick reference for which code sections move to `useSessionPhase.ts` hook.
 ```typescript
 // EXTRACT TO HOOK:
 const [studyPhase, setStudyPhase] = useState<
-  'loading' | 'priming-modal' | 'priming' | 'briefing' | 'quiz' | 'summary'
+	'loading' | 'priming-modal' | 'priming' | 'briefing' | 'quiz' | 'summary'
 >('loading');
 const [hasSkippedBriefing, setHasSkippedBriefing] = useState(false);
 const [hasSkippedPriming, setHasSkippedPriming] = useState(false);
@@ -31,66 +31,66 @@ const [hasSkippedPriming, setHasSkippedPriming] = useState(false);
 
 ```typescript
 useEffect(() => {
-  console.log('[SessionController] Phase transition effect:', {
-    isLoading,
-    studyPhase,
-    queueLength: queue.length,
-    hasSkippedBriefing,
-  });
+	console.log('[SessionController] Phase transition effect:', {
+		isLoading,
+		studyPhase,
+		queueLength: queue.length,
+		hasSkippedBriefing,
+	});
 
-  // Don't transition if user has explicitly skipped briefing or already in quiz
-  if (hasSkippedBriefing || studyPhase === 'quiz') {
-    return;
-  }
+	// Don't transition if user has explicitly skipped briefing or already in quiz
+	if (hasSkippedBriefing || studyPhase === 'quiz') {
+		return;
+	}
 
-  if (!isLoading && studyPhase === 'loading') {
-    console.log('[SessionController] Phase transition check:', {
-      queueLength: queue.length,
-      currentCard: !!useSessionStore.getState().currentCard,
-    });
+	if (!isLoading && studyPhase === 'loading') {
+		console.log('[SessionController] Phase transition check:', {
+			queueLength: queue.length,
+			currentCard: !!useSessionStore.getState().currentCard,
+		});
 
-    if (queue.length === 0) {
-      console.warn('[SessionController] Queue is empty, redirecting to dashboard');
-      redirectToDashboard();
-      return;
-    }
+		if (queue.length === 0) {
+			console.warn('[SessionController] Queue is empty, redirecting to dashboard');
+			redirectToDashboard();
+			return;
+		}
 
-    // Ensure currentCard is set before transitioning
-    const { currentCard: storeCurrentCard } = useSessionStore.getState();
-    if (!storeCurrentCard && queue.length > 0) {
-      console.log('[SessionController] Setting currentCard from queue[0]');
-      useSessionStore.setState({ currentCard: queue[0], currentIndex: 0 });
-    }
+		// Ensure currentCard is set before transitioning
+		const { currentCard: storeCurrentCard } = useSessionStore.getState();
+		if (!storeCurrentCard && queue.length > 0) {
+			console.log('[SessionController] Setting currentCard from queue[0]');
+			useSessionStore.setState({ currentCard: queue[0], currentIndex: 0 });
+		}
 
-    // Check for Briefing Candidates
-    const hasNew = queue.some((c) => c.srsStage === 0);
-    const hasLeech = false; // TODO: Add lapses to SmartCard type
+		// Check for Briefing Candidates
+		const hasNew = queue.some((c) => c.srsStage === 0);
+		const hasLeech = false; // TODO: Add lapses to SmartCard type
 
-    // Debug: Log briefing decision
-    const newCount = queue.filter((c) => c.srsStage === 0).length;
-    const reviewCount = queue.filter((c) => c.srsStage > 0).length;
-    console.log('[SessionController] Briefing decision:', {
-      hasNew,
-      hasLeech,
-      newCount,
-      reviewCount,
-      total: queue.length,
-    });
+		// Debug: Log briefing decision
+		const newCount = queue.filter((c) => c.srsStage === 0).length;
+		const reviewCount = queue.filter((c) => c.srsStage > 0).length;
+		console.log('[SessionController] Briefing decision:', {
+			hasNew,
+			hasLeech,
+			newCount,
+			reviewCount,
+			total: queue.length,
+		});
 
-    if (hasNew || hasLeech) {
-      console.log(
-        '[SessionController] Transitioning to briefing (hasNew:',
-        hasNew,
-        ', hasLeech:',
-        hasLeech,
-        ')',
-      );
-      setStudyPhase('briefing');
-    } else {
-      console.log('[SessionController] Transitioning to quiz (no new cards or leeches)');
-      setStudyPhase('quiz');
-    }
-  }
+		if (hasNew || hasLeech) {
+			console.log(
+				'[SessionController] Transitioning to briefing (hasNew:',
+				hasNew,
+				', hasLeech:',
+				hasLeech,
+				')',
+			);
+			setStudyPhase('briefing');
+		} else {
+			console.log('[SessionController] Transitioning to quiz (no new cards or leeches)');
+			setStudyPhase('quiz');
+		}
+	}
 }, [isLoading, queue, studyPhase, hasSkippedBriefing, redirectToDashboard]);
 ```
 
@@ -109,10 +109,10 @@ useEffect(() => {
 ```typescript
 // Ensure currentCard is set when entering quiz phase from briefing
 useEffect(() => {
-  if (studyPhase === 'quiz' && queue.length > 0 && !currentCard) {
-    // Force set currentCard from queue
-    useSessionStore.setState({ currentCard: queue[0], currentIndex: 0 });
-  }
+	if (studyPhase === 'quiz' && queue.length > 0 && !currentCard) {
+		// Force set currentCard from queue
+		useSessionStore.setState({ currentCard: queue[0], currentIndex: 0 });
+	}
 }, [studyPhase, queue, currentCard]);
 ```
 
@@ -130,32 +130,32 @@ useEffect(() => {
 ```typescript
 // Detect session completion and transition to summary
 useEffect(() => {
-  // Only check during quiz phase (active study session)
-  if (studyPhase !== 'quiz') {
-    return;
-  }
+	// Only check during quiz phase (active study session)
+	if (studyPhase !== 'quiz') {
+		return;
+	}
 
-  // Session is complete when:
-  // 1. isSessionActive is false (set by nextCard() when queue exhausted)
-  //    OR
-  // 2. currentIndex >= queue.length (all cards reviewed, including re-queued "Again" cards)
-  //    Note: queue.length can grow if "Again" cards are re-queued, so we check index vs length
-  const isComplete = !isSessionActive || (currentIndex >= queue.length && queue.length > 0);
+	// Session is complete when:
+	// 1. isSessionActive is false (set by nextCard() when queue exhausted)
+	//    OR
+	// 2. currentIndex >= queue.length (all cards reviewed, including re-queued "Again" cards)
+	//    Note: queue.length can grow if "Again" cards are re-queued, so we check index vs length
+	const isComplete = !isSessionActive || (currentIndex >= queue.length && queue.length > 0);
 
-  if (isComplete) {
-    console.log('[SessionController] Session complete detected, transitioning to summary', {
-      isSessionActive,
-      currentCard: !!currentCard,
-      queueLength: queue.length,
-      currentIndex,
-    });
+	if (isComplete) {
+		console.log('[SessionController] Session complete detected, transitioning to summary', {
+			isSessionActive,
+			currentCard: !!currentCard,
+			queueLength: queue.length,
+			currentIndex,
+		});
 
-    // End session in store (ensures stats are finalized)
-    useSessionStore.getState().endSession();
+		// End session in store (ensures stats are finalized)
+		useSessionStore.getState().endSession();
 
-    // Transition to summary phase
-    setStudyPhase('summary');
-  }
+		// Transition to summary phase
+		setStudyPhase('summary');
+	}
 }, [studyPhase, isSessionActive, currentCard, queue.length, currentIndex]);
 ```
 
@@ -195,14 +195,14 @@ onStart={() => {
 
 ```typescript
 const transitionToQuiz = useCallback(() => {
-  if (queue.length > 0 && queue[0]) {
-    useSessionStore.setState({
-      currentCard: queue[0],
-      currentIndex: 0,
-      isSessionActive: true,
-    });
-    setStudyPhase('quiz');
-  }
+	if (queue.length > 0 && queue[0]) {
+		useSessionStore.setState({
+			currentCard: queue[0],
+			currentIndex: 0,
+			isSessionActive: true,
+		});
+		setStudyPhase('quiz');
+	}
 }, [queue]);
 ```
 
@@ -230,8 +230,8 @@ setStudyPhase('summary');
 
 ```typescript
 const transitionToSummary = useCallback(() => {
-  useSessionStore.getState().endSession();
-  setStudyPhase('summary');
+	useSessionStore.getState().endSession();
+	setStudyPhase('summary');
 }, []);
 ```
 
@@ -246,14 +246,14 @@ const transitionToSummary = useCallback(() => {
 ```typescript
 // KEEP IN COMPONENT
 useEffect(() => {
-  if (studyPhase === 'summary') {
-    setNavBarVisible(true);
-  } else {
-    setNavBarVisible(false);
-  }
-  return () => {
-    setNavBarVisible(true);
-  };
+	if (studyPhase === 'summary') {
+		setNavBarVisible(true);
+	} else {
+		setNavBarVisible(false);
+	}
+	return () => {
+		setNavBarVisible(true);
+	};
 }, [studyPhase, setNavBarVisible]);
 ```
 
@@ -271,12 +271,12 @@ useEffect(() => {
 
 ```typescript
 interface UseSessionPhaseOptions {
-  queue: SmartCard[];
-  currentCard: SmartCard | null;
-  currentIndex: number;
-  isSessionActive: boolean;
-  isLoading: boolean;
-  redirectToDashboard: () => void;
+	queue: SmartCard[];
+	currentCard: SmartCard | null;
+	currentIndex: number;
+	isSessionActive: boolean;
+	isLoading: boolean;
+	redirectToDashboard: () => void;
 }
 ```
 
@@ -284,14 +284,14 @@ interface UseSessionPhaseOptions {
 
 ```typescript
 interface UseSessionPhaseReturn {
-  studyPhase: StudyPhase;
-  setStudyPhase: (phase: StudyPhase) => void;
-  hasSkippedBriefing: boolean;
-  setHasSkippedBriefing: (value: boolean) => void;
-  hasSkippedPriming: boolean;
-  setHasSkippedPriming: (value: boolean) => void;
-  transitionToQuiz: () => void;
-  transitionToSummary: () => void;
+	studyPhase: StudyPhase;
+	setStudyPhase: (phase: StudyPhase) => void;
+	hasSkippedBriefing: boolean;
+	setHasSkippedBriefing: (value: boolean) => void;
+	hasSkippedPriming: boolean;
+	setHasSkippedPriming: (value: boolean) => void;
+	transitionToQuiz: () => void;
+	transitionToSummary: () => void;
 }
 ```
 
@@ -313,12 +313,12 @@ const [hasSkippedPriming, setHasSkippedPriming] = useState(false);
 
 ```typescript
 const phaseHook = useSessionPhase({
-  queue,
-  currentCard,
-  currentIndex,
-  isSessionActive,
-  isLoading,
-  redirectToDashboard,
+	queue,
+	currentCard,
+	currentIndex,
+	isSessionActive,
+	isLoading,
+	redirectToDashboard,
 });
 
 // Use phaseHook.studyPhase instead of studyPhase

@@ -522,17 +522,17 @@ async function getConfusionPairRelationships(vocabIds: string[]): Promise<WordRe
 
 ## 📊 **Current Feature Gaps Summary**
 
-| Feature Area | Current State | Recommended Priority | Impact | Effort |
-|-------------|---------------|---------------------|--------|--------|
-| **Flashcard Mode** | ✅ Fully implemented | - | High | - |
-| **Intervention System** | ✅ Implemented | - | High | - |
-| **Semantic Sequencing** | ✅ Background logic | - | High | - |
-| **Video Learning** | ❌ Not implemented | **P1** | High | Medium |
-| **Story Mode** | ❌ Not implemented | **P1** | Medium | Medium |
-| **Proactive Warnings** | ❌ Not implemented | **P2** | Medium | Medium |
-| **Practice Mode** | ❌ Not implemented | **P2** | High | High |
-| **Smart Detection** | ❌ Not implemented | **P3** | High | High |
-| **Analytics Dashboard** | ❌ Not implemented | **P3** | Medium | High |
+| Feature Area            | Current State        | Recommended Priority | Impact | Effort |
+| ----------------------- | -------------------- | -------------------- | ------ | ------ |
+| **Flashcard Mode**      | ✅ Fully implemented | -                    | High   | -      |
+| **Intervention System** | ✅ Implemented       | -                    | High   | -      |
+| **Semantic Sequencing** | ✅ Background logic  | -                    | High   | -      |
+| **Video Learning**      | ❌ Not implemented   | **P1**               | High   | Medium |
+| **Story Mode**          | ❌ Not implemented   | **P1**               | Medium | Medium |
+| **Proactive Warnings**  | ❌ Not implemented   | **P2**               | Medium | Medium |
+| **Practice Mode**       | ❌ Not implemented   | **P2**               | High   | High   |
+| **Smart Detection**     | ❌ Not implemented   | **P3**               | High   | High   |
+| **Analytics Dashboard** | ❌ Not implemented   | **P3**               | Medium | High   |
 
 ---
 
@@ -568,14 +568,14 @@ async function getConfusionPairRelationships(vocabIds: string[]): Promise<WordRe
 ### **Short-term (Next Month):**
 
 4. ✅ Implement proactive confusion warnings
-2. ✅ Create confusion pair practice mode
-3. ✅ Add analytics tracking for confusion pair performance
+5. ✅ Create confusion pair practice mode
+6. ✅ Add analytics tracking for confusion pair performance
 
 ### **Long-term (Next Quarter):**
 
 7. ✅ Smart confusion detection from user errors
-2. ✅ Confusion pair analytics dashboard
-3. ✅ Community-driven confusion pair suggestions
+8. ✅ Confusion pair analytics dashboard
+9. ✅ Community-driven confusion pair suggestions
 
 ---
 

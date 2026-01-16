@@ -10,10 +10,10 @@
 
 ### Behavior
 
-| Scroll Position | `isScrolled` | Dock State |
-|-----------------|--------------|------------|
-| **Top (scrollY ≤ 50px)** | `false` | **Normal/Default** |
-| **Scrolled (scrollY > 50px)** | `true` | **Compact** |
+| Scroll Position               | `isScrolled` | Dock State         |
+| ----------------------------- | ------------ | ------------------ |
+| **Top (scrollY ≤ 50px)**      | `false`      | **Normal/Default** |
+| **Scrolled (scrollY > 50px)** | `true`       | **Compact**        |
 
 ---
 

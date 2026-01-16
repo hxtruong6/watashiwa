@@ -62,7 +62,7 @@ User Flow:
 ```typescript
 // SessionSummary.tsx:341, 357
 // User clicks "Continue Studying" or "Study Dashboard":
-router.push('/study')  // No parameters
+router.push('/study'); // No parameters
 ```
 
 #### Phase 3: Study Page Resolution
@@ -171,19 +171,19 @@ GET /study?deckSlug=minna-no-nihongo-unit-15 200 in 760ms
 ```typescript
 // Add resetSession action to useSessionStore
 resetSession: () => {
-  set((state) => {
-    state.queue = [];
-    state.currentIndex = 0;
-    state.isSessionActive = false;
-    state.currentCard = null;
-    state.sessionStats = {
-      startTime: null,
-      endTime: null,
-      reviews: { 1: 0, 2: 0, 3: 0, 4: 0 },
-      forgottenCards: [],
-    };
-  });
-}
+	set((state) => {
+		state.queue = [];
+		state.currentIndex = 0;
+		state.isSessionActive = false;
+		state.currentCard = null;
+		state.sessionStats = {
+			startTime: null,
+			endTime: null,
+			reviews: { 1: 0, 2: 0, 3: 0, 4: 0 },
+			forgottenCards: [],
+		};
+	});
+};
 
 // Call resetSession when navigating from summary
 // In SessionSummary.tsx, before router.push('/study')
@@ -205,24 +205,24 @@ useSessionStore.getState().resetSession();
 ```typescript
 // Enhanced SessionSummary navigation logic
 const handleContinueStudying = async () => {
-  // 1. Reset session store
-  useSessionStore.getState().resetSession();
-  
-  // 2. Check for available cards
-  const progress = await getDailyProgress();
-  const hasMoreCards = (progress?.dueCount || 0) > 0;
-  
-  // 3. Smart routing
-  if (hasMoreCards) {
-    // Option A: Auto-start new session (Golden Path)
-    router.push('/study'); // Will auto-start if dueCount > 0
-  } else {
-    // Option B: Show dashboard (all caught up)
-    router.push('/study'); // Will show dashboard if no cards
-  }
-  
-  // Alternative: Explicit routing
-  // router.push('/study?autoStart=true');
+	// 1. Reset session store
+	useSessionStore.getState().resetSession();
+
+	// 2. Check for available cards
+	const progress = await getDailyProgress();
+	const hasMoreCards = (progress?.dueCount || 0) > 0;
+
+	// 3. Smart routing
+	if (hasMoreCards) {
+		// Option A: Auto-start new session (Golden Path)
+		router.push('/study'); // Will auto-start if dueCount > 0
+	} else {
+		// Option B: Show dashboard (all caught up)
+		router.push('/study'); // Will show dashboard if no cards
+	}
+
+	// Alternative: Explicit routing
+	// router.push('/study?autoStart=true');
 };
 ```
 
@@ -243,9 +243,9 @@ const handleContinueStudying = async () => {
 useEffect(() => {
   async function init() {
     // ... existing code ...
-    
+
     const response = await fetchSessionAction({ deckId, courseId });
-    
+
     if (response.success && response.data) {
       if (response.data.length > 0) {
         startSession(response.data);
@@ -254,10 +254,10 @@ useEffect(() => {
         // NEW: Handle empty queue gracefully
         // Option 1: Show empty state component
         setStudyPhase('empty');
-        
+
         // Option 2: Redirect to dashboard
         // router.push('/study'); // Will show dashboard
-        
+
         // Option 3: Show message and action buttons
         // setStudyPhase('no-cards');
       }
@@ -507,18 +507,18 @@ const handleContinue = async () => {
 
 ### 8.1 Technical Risks
 
-| Risk | Probability | Impact | Mitigation |
-|------|------------|--------|------------|
-| State reset causes data loss | Low | High | Test thoroughly, add backup |
-| Navigation race conditions | Medium | Medium | Use proper async/await patterns |
-| Performance degradation | Low | Low | Monitor with analytics |
+| Risk                         | Probability | Impact | Mitigation                      |
+| ---------------------------- | ----------- | ------ | ------------------------------- |
+| State reset causes data loss | Low         | High   | Test thoroughly, add backup     |
+| Navigation race conditions   | Medium      | Medium | Use proper async/await patterns |
+| Performance degradation      | Low         | Low    | Monitor with analytics          |
 
 ### 8.2 User Experience Risks
 
-| Risk | Probability | Impact | Mitigation |
-|------|------------|--------|------------|
-| Confusion from auto-start | Low | Medium | Add clear messaging |
-| Too many redirects | Low | Medium | Limit redirect depth |
+| Risk                      | Probability | Impact | Mitigation           |
+| ------------------------- | ----------- | ------ | -------------------- |
+| Confusion from auto-start | Low         | Medium | Add clear messaging  |
+| Too many redirects        | Low         | Medium | Limit redirect depth |
 
 ---
 
@@ -547,17 +547,17 @@ const handleContinue = async () => {
 ```typescript
 // New events to track
 trackEvent('study_summary_continue_clicked', {
-  has_more_cards: boolean,
-  navigation_path: 'auto_start' | 'dashboard' | 'empty_state',
+	has_more_cards: boolean,
+	navigation_path: 'auto_start' | 'dashboard' | 'empty_state',
 });
 
 trackEvent('study_session_reset', {
-  reason: 'summary_navigation' | 'manual' | 'error',
+	reason: 'summary_navigation' | 'manual' | 'error',
 });
 
 trackEvent('study_empty_state_shown', {
-  deck_id: string | null,
-  total_due_count: number,
+	deck_id: string | null,
+	total_due_count: number,
 });
 ```
 
@@ -583,16 +583,16 @@ New translation keys needed:
 
 ```json
 {
-  "Study": {
-    "summary": {
-      "loading": "Loading...",
-      "checkingForCards": "Checking for available cards...",
-      "allCaughtUp": "All Caught Up!",
-      "noMoreCards": "No more cards available in this deck."
-    },
-    "preparingSession": "Preparing session...",
-    "checkingForCards": "Checking for available cards..."
-  }
+	"Study": {
+		"summary": {
+			"loading": "Loading...",
+			"checkingForCards": "Checking for available cards...",
+			"allCaughtUp": "All Caught Up!",
+			"noMoreCards": "No more cards available in this deck."
+		},
+		"preparingSession": "Preparing session...",
+		"checkingForCards": "Checking for available cards..."
+	}
 }
 ```
 

@@ -31,7 +31,6 @@
 		"e2e:stop": "pkill -f 'playwright|next dev' || true",
 		"gen:content": "tsx scripts/generate_content.ts",
 		"validate:email-templates": "tsx scripts/validate-email-templates.ts",
-		"seed:videos": "tsx prisma/seed_videos.ts",
 		"type-check": "tsc --noEmit",
 		"prepare": "husky"
 	},
@@ -55,6 +54,7 @@
 		"canvas-confetti": "^1.9.4",
 		"date-fns": "^4.1.0",
 		"dotenv": "^17.2.3",
+		"fast-xml-parser": "^5.3.3",
 		"framer-motion": "^12.23.26",
 		"immer": "^11.1.0",
 		"import-in-the-middle": "^2.0.1",
@@ -76,6 +76,7 @@
 		"react": "19.2.3",
 		"react-dom": "19.2.3",
 		"react-force-graph-2d": "^1.29.0",
+		"reactflow": "^11.11.4",
 		"require-in-the-middle": "^8.0.1",
 		"three": "^0.182.0",
 		"ts-fsrs": "^5.2.3",

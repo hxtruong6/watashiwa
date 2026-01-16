@@ -96,19 +96,25 @@ Store each component's styles in its own CSS Module file. Do not mix styles from
 
 ```css
 /* ❌ Don't do this */
-.gallery {}
-.gallery__image {}
-.title {}
+.gallery {
+}
+.gallery__image {
+}
+.title {
+}
 ```
 
 ```css
 /* ✅ Do this - separate files */
 /* NavBar.module.css */
-.navContainer {}
-.navItem {}
+.navContainer {
+}
+.navItem {
+}
 
 /* Title.module.css */
-.title {}
+.title {
+}
 ```
 
 ### 3. Limit Nesting to 2 Levels
@@ -118,28 +124,28 @@ Avoid deep nesting. Flat structure with full selectors is often easier to scan a
 ```css
 /* ✅ Good - flat structure */
 .teaser {
-  padding: 2em;
+	padding: 2em;
 }
 
 .teaser--small {
-  padding: 1em;
+	padding: 1em;
 }
 
 .teaser__title {
-  font-size: 2em;
+	font-size: 2em;
 }
 
 /* ❌ Avoid - deep nesting */
 .teaser {
-  padding: 2em;
-  
-  &--small {
-    padding: 1em;
-    
-    &__title {
-      font-size: 2em;
-    }
-  }
+	padding: 2em;
+
+	&--small {
+		padding: 1em;
+
+		&__title {
+			font-size: 2em;
+		}
+	}
 }
 ```
 
@@ -151,15 +157,21 @@ Margin breaks component encapsulation. A well-built component should not affect 
 
 ```css
 /* ✅ Good - spacing utilities */
-.spacing-sm { margin: var(--spacing-sm); }
-.spacing-md { margin: var(--spacing-md); }
-.spacing-lg { margin: var(--spacing-lg); }
+.spacing-sm {
+	margin: var(--spacing-sm);
+}
+.spacing-md {
+	margin: var(--spacing-md);
+}
+.spacing-lg {
+	margin: var(--spacing-lg);
+}
 ```
 
 ```tsx
 /* ✅ Good - wrapper component */
 <Space size="large">
-  <MyComponent />
+	<MyComponent />
 </Space>
 ```
 
@@ -225,7 +237,7 @@ import styles from './NavBar.module.css';
 ```css
 /* src/modules/ui/components/NavBar.module.css */
 .navContainer {
- background: var(--color-background);
+	background: var(--color-background);
 }
 ```
 
@@ -236,16 +248,16 @@ CSS Custom Properties are defined in `_variables.css` and should be used instead
 ```css
 /* ✅ Good */
 .component {
- color: var(--color-foreground);
- padding: var(--spacing-md);
- transition: var(--transition-base);
+	color: var(--color-foreground);
+	padding: var(--spacing-md);
+	transition: var(--transition-base);
 }
 
 /* ❌ Bad */
 .component {
- color: #2d2d2d;
- padding: 16px;
- transition: 0.3s ease;
+	color: #2d2d2d;
+	padding: 16px;
+	transition: 0.3s ease;
 }
 ```
 
@@ -268,11 +280,11 @@ While we use CSS Modules for component scoping, if you need to add global utilit
 ```css
 /* Global utility class */
 .u-text-center {
-  text-align: center;
+	text-align: center;
 }
 
 .u-margin-top-lg {
-  margin-top: var(--spacing-lg);
+	margin-top: var(--spacing-lg);
 }
 ```
 

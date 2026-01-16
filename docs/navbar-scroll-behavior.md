@@ -22,25 +22,25 @@
 
 ### Default State (Top of Page)
 
-| Property | Value | Rationale |
-|----------|-------|-----------|
-| **Position** | `top: 24px` | Comfortable spacing from top |
-| **Glass Intensity** | `medium` (85% opacity) | Balanced visibility |
-| **Logo** | Full logo + text | Brand presence |
-| **Padding** | Standard (8px 24px) | Comfortable spacing |
-| **Shadow** | Subtle | Doesn't compete with content |
-| **Size** | Full size | Maximum visibility |
+| Property            | Value                  | Rationale                    |
+| ------------------- | ---------------------- | ---------------------------- |
+| **Position**        | `top: 24px`            | Comfortable spacing from top |
+| **Glass Intensity** | `medium` (85% opacity) | Balanced visibility          |
+| **Logo**            | Full logo + text       | Brand presence               |
+| **Padding**         | Standard (8px 24px)    | Comfortable spacing          |
+| **Shadow**          | Subtle                 | Doesn't compete with content |
+| **Size**            | Full size              | Maximum visibility           |
 
 ### Scrolled State (After Scroll)
 
-| Property | Value | Rationale |
-|----------|-------|-----------|
-| **Position** | `top: 8px` | Closer to top, more accessible |
-| **Glass Intensity** | `strong` (92% opacity) | Better visibility against content |
-| **Logo** | Full logo + text (slightly smaller) | Maintains brand, saves space |
-| **Padding** | Compact (6px 20px) | More efficient space usage |
-| **Shadow** | Enhanced | Clear separation from content |
-| **Size** | Slightly reduced (scale: 0.95) | Less intrusive, more content visible |
+| Property            | Value                               | Rationale                            |
+| ------------------- | ----------------------------------- | ------------------------------------ |
+| **Position**        | `top: 8px`                          | Closer to top, more accessible       |
+| **Glass Intensity** | `strong` (92% opacity)              | Better visibility against content    |
+| **Logo**            | Full logo + text (slightly smaller) | Maintains brand, saves space         |
+| **Padding**         | Compact (6px 20px)                  | More efficient space usage           |
+| **Shadow**          | Enhanced                            | Clear separation from content        |
+| **Size**            | Slightly reduced (scale: 0.95)      | Less intrusive, more content visible |
 
 ---
 

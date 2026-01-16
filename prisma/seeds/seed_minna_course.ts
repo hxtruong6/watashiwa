@@ -5,8 +5,8 @@
 import fs from 'fs';
 import path from 'path';
 
-import { prisma } from '../src/lib/db';
-import { generateSlug } from '../src/lib/utils/slug';
+import { prisma } from '../../src/lib/db';
+import { generateSlug } from '../../src/lib/utils/slug';
 
 async function seedMinnaCourse(bookLevel: 'I' | 'II', fromUnit = 1, toUnit = 25) {
 	console.log('🚀 Starting Minna no Nihongo N5 Course Seed...');

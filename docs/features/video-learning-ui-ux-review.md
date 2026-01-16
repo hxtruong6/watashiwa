@@ -17,6 +17,7 @@ The video learning feature demonstrates solid technical architecture with word-l
 ## 1. Information Architecture & Layout
 
 ### ✅ **Strengths**
+
 - Clean vertical layout with logical component ordering
 - Proper separation of concerns (player, controls, subtitles, translation)
 - Good use of Ant Design Flex components for layout consistency
@@ -24,15 +25,18 @@ The video learning feature demonstrates solid technical architecture with word-l
 ### ❌ **Critical Issues**
 
 #### **Issue #1: Missing Progress Indicator**
+
 **Severity: HIGH**  
 **Impact: User loses sense of progress through video**
 
 **Current State:**
+
 - No visual progress bar or timeline
 - Users cannot see how much of the video they've watched
 - No way to quickly jump to specific timestamps
 
 **Recommendation:**
+
 ```typescript
 // Add progress bar component
 <VideoProgressBar
@@ -44,6 +48,7 @@ The video learning feature demonstrates solid technical architecture with word-l
 ```
 
 **Design Spec:**
+
 - Position: Below video player, above controls
 - Features:
   - Visual progress indicator (0-100%)
@@ -55,20 +60,24 @@ The video learning feature demonstrates solid technical architecture with word-l
 ---
 
 #### **Issue #2: Translation Display Lacks Visual Hierarchy**
+
 **Severity: MEDIUM**  
 **Impact: Translation competes with subtitle for attention**
 
 **Current State:**
+
 ```47:47:src/modules/videos/components/VideoPlayer/TranslationDisplay.tsx
 // Translation appears as plain paragraph below subtitle
 ```
 
 **Problems:**
+
 - Translation uses same visual weight as subtitle
 - No clear distinction between Japanese (learning) and Vietnamese (support)
 - Translation might be missed or ignored
 
 **Recommendation:**
+
 - Use subtle background color or border to distinguish translation
 - Reduce font size slightly (14px vs 16px)
 - Add icon indicator (e.g., language flag or translation icon)
@@ -77,20 +86,24 @@ The video learning feature demonstrates solid technical architecture with word-l
 ---
 
 #### **Issue #3: Controls Placement & Discoverability**
+
 **Severity: MEDIUM**  
 **Impact: Controls feel disconnected from video**
 
 **Current State:**
+
 ```105:113:src/modules/videos/components/VideoLearningPage.tsx
 // Controls are separate from video player
 ```
 
 **Problems:**
+
 - Controls are far from video (24px margin)
 - No visual connection between controls and video
 - Missing essential controls (volume, fullscreen, timeline)
 
 **Recommendation:**
+
 - Integrate controls into video player overlay (appear on hover/tap)
 - Add volume control (currently missing from UI)
 - Add fullscreen button
@@ -103,21 +116,25 @@ The video learning feature demonstrates solid technical architecture with word-l
 ### ❌ **Critical Issues**
 
 #### **Issue #4: Subtitle Display Lacks Readability Optimization**
+
 **Severity: HIGH**  
 **Impact: Difficult to read during fast-paced dialogue**
 
 **Current State:**
+
 ```34:51:src/modules/videos/components/VideoPlayer/SubtitleDisplay.tsx
 // Words wrap naturally, but no line breaks for readability
 ```
 
 **Problems:**
+
 - Long sentences wrap awkwardly
 - No line-height optimization for Japanese text
 - Word highlighting might cause layout shift
 - Romaji text is too small (12px) and hard to read
 
 **Recommendation:**
+
 - Increase romaji font size to 14px
 - Add max-width constraint per line (e.g., 80ch)
 - Improve line-height for Japanese text (1.8-2.0)
@@ -127,21 +144,25 @@ The video learning feature demonstrates solid technical architecture with word-l
 ---
 
 #### **Issue #5: Active Word Highlighting Needs Refinement**
+
 **Severity: MEDIUM**  
 **Impact: Active word might be missed during fast playback**
 
 **Current State:**
+
 ```74:88:src/modules/videos/components/VideoPlayer/SubtitleDisplay.module.css
 // Active word uses scale transform and color change
 ```
 
 **Problems:**
+
 - Scale transform (1.05) is subtle and might be missed
 - Blue highlight might not be visible on all backgrounds
 - No smooth transition indication for word changes
 - Active state might cause layout shift
 
 **Recommendation:**
+
 - Increase scale to 1.1-1.15 for better visibility
 - Add subtle pulse animation for active word
 - Use stronger contrast color (consider theme-aware colors)
@@ -151,15 +172,18 @@ The video learning feature demonstrates solid technical architecture with word-l
 ---
 
 #### **Issue #6: Color Coding System Lacks Legend/Explanation**
+
 **Severity: LOW**  
 **Impact: Users don't understand word color meanings**
 
 **Current State:**
+
 ```45:72:src/modules/videos/components/VideoPlayer/SubtitleDisplay.module.css
 // Colors exist but no explanation
 ```
 
 **Recommendation:**
+
 - Add tooltip or info icon explaining color system
 - Consider: Yellow = beginner, Green = intermediate, Purple = advanced, etc.
 - Add toggle to show/hide color coding
@@ -172,10 +196,12 @@ The video learning feature demonstrates solid technical architecture with word-l
 ### ❌ **Critical Issues**
 
 #### **Issue #7: No Keyboard Shortcuts**
+
 **Severity: MEDIUM**  
 **Impact: Power users cannot efficiently control playback**
 
 **Missing Features:**
+
 - Spacebar: Play/Pause
 - Arrow Left/Right: Seek backward/forward (5-10s)
 - Arrow Up/Down: Volume control
@@ -184,6 +210,7 @@ The video learning feature demonstrates solid technical architecture with word-l
 - Number keys: Jump to percentage (0-9 = 0-90%)
 
 **Recommendation:**
+
 - Implement keyboard event handlers in `useVideoPlayer` hook
 - Display keyboard shortcuts in help tooltip or settings panel
 - Ensure shortcuts don't conflict with browser defaults
@@ -191,15 +218,18 @@ The video learning feature demonstrates solid technical architecture with word-l
 ---
 
 #### **Issue #8: Missing Playback Speed Visual Feedback**
+
 **Severity: LOW**  
 **Impact: Users might forget current playback speed**
 
 **Current State:**
+
 ```108:116:src/modules/videos/components/VideoPlayer/VideoControls.tsx
 // Speed selector exists but no persistent indicator
 ```
 
 **Recommendation:**
+
 - Add small badge/indicator showing current speed (e.g., "1.5x" badge)
 - Position near play button or video player
 - Consider showing speed change animation/notification
@@ -207,20 +237,24 @@ The video learning feature demonstrates solid technical architecture with word-l
 ---
 
 #### **Issue #9: No "Resume from Last Position" Prompt**
+
 **Severity: MEDIUM**  
 **Impact: Users might not realize progress was saved**
 
 **Current State:**
+
 ```58:67:src/modules/videos/components/VideoLearningPage.tsx
 // Progress loads silently
 ```
 
 **Problems:**
+
 - No user confirmation that progress was loaded
 - No option to "Start from beginning" vs "Resume"
 - Silent auto-seek might be jarring
 
 **Recommendation:**
+
 - Show modal/toast on load: "Resume from 12:34?" with options:
   - "Resume" (default)
   - "Start from beginning"
@@ -230,15 +264,18 @@ The video learning feature demonstrates solid technical architecture with word-l
 ---
 
 #### **Issue #10: Missing Video Completion Celebration**
+
 **Severity: LOW**  
 **Impact: No sense of achievement when completing video**
 
 **Current State:**
+
 ```70:72:src/modules/videos/components/VideoLearningPage.tsx
 // Completion only logs to console
 ```
 
 **Recommendation:**
+
 - Show completion modal/notification
 - Display: "Congratulations! Video completed"
 - Show statistics: Total watch time, words learned, etc.
@@ -252,21 +289,25 @@ The video learning feature demonstrates solid technical architecture with word-l
 ### ❌ **Critical Issues**
 
 #### **Issue #11: Controls Not Optimized for Touch**
+
 **Severity: HIGH**  
 **Impact: Poor mobile experience**
 
 **Current State:**
+
 ```54:122:src/modules/videos/components/VideoPlayer/VideoControls.tsx
 // Controls use standard button sizes
 ```
 
 **Problems:**
+
 - Buttons might be too small for touch targets (minimum 44x44px)
 - No swipe gestures for seeking
 - Speed selector dropdown might be hard to use on mobile
 - Controls spacing might be too tight
 
 **Recommendation:**
+
 - Increase touch target sizes to minimum 48x48px on mobile
 - Add swipe left/right on video for seeking (±10s)
 - Consider bottom sheet for controls on mobile
@@ -276,15 +317,18 @@ The video learning feature demonstrates solid technical architecture with word-l
 ---
 
 #### **Issue #12: Subtitle Text Size on Mobile**
+
 **Severity: MEDIUM**  
 **Impact: Subtitles might be too small on mobile devices**
 
 **Current State:**
+
 ```126:143:src/modules/videos/components/VideoPlayer/SubtitleDisplay.module.css
 // Mobile font size: 18px (might be small)
 ```
 
 **Recommendation:**
+
 - Increase mobile font size to 20-22px
 - Add user preference for subtitle size (Settings)
 - Consider subtitle positioning overlay on video for mobile
@@ -295,6 +339,7 @@ The video learning feature demonstrates solid technical architecture with word-l
 ## 5. Accessibility (a11y)
 
 ### ✅ **Strengths**
+
 - Good ARIA labels on controls
 - Semantic HTML structure
 - Keyboard navigation partially supported
@@ -302,15 +347,18 @@ The video learning feature demonstrates solid technical architecture with word-l
 ### ❌ **Critical Issues**
 
 #### **Issue #13: Missing Closed Captions Support**
+
 **Severity: HIGH**  
 **Impact: Hearing-impaired users cannot use feature**
 
 **Missing:**
+
 - No native HTML5 `<track>` element for captions
 - No way to toggle captions on/off
 - No caption styling options
 
 **Recommendation:**
+
 - Add WebVTT track support
 - Add caption toggle button
 - Support multiple languages for captions
@@ -319,15 +367,18 @@ The video learning feature demonstrates solid technical architecture with word-l
 ---
 
 #### **Issue #14: Screen Reader Support Incomplete**
+
 **Severity: MEDIUM**  
 **Impact: Screen reader users miss context**
 
 **Problems:**
+
 - Active word changes not announced
 - Subtitle changes not announced
 - No live region for dynamic content updates
 
 **Recommendation:**
+
 - Add `aria-live="polite"` region for subtitle updates
 - Announce active word changes: "Active word: [word]"
 - Add `aria-label` for progress: "Video progress: 45%"
@@ -338,21 +389,25 @@ The video learning feature demonstrates solid technical architecture with word-l
 ## 6. Error States & Edge Cases
 
 ### ✅ **Strengths**
+
 - Good error handling in VideoPlayer component
 - Subtitle validation with user-friendly warnings
 
 ### ❌ **Issues**
 
 #### **Issue #15: Error Recovery UX**
+
 **Severity: LOW**  
 **Impact: Users might not know how to recover from errors**
 
 **Current State:**
+
 ```98:124:src/modules/videos/components/VideoPlayer/VideoPlayer.tsx
 // Error shows retry button, but no context
 ```
 
 **Recommendation:**
+
 - Add more specific error messages
 - Suggest troubleshooting steps (check connection, try different browser)
 - Add "Report Issue" button for persistent errors
@@ -363,6 +418,7 @@ The video learning feature demonstrates solid technical architecture with word-l
 ## 7. Performance & Loading States
 
 ### ✅ **Strengths**
+
 - Good loading skeleton for video
 - Throttled time updates (100ms)
 - Memoized components
@@ -370,10 +426,12 @@ The video learning feature demonstrates solid technical architecture with word-l
 ### ❌ **Issues**
 
 #### **Issue #16: No Buffering Indicator**
+
 **Severity: MEDIUM**  
 **Impact: Users don't know if video is loading or stuck**
 
 **Recommendation:**
+
 - Add buffering spinner when `video.buffered` < `video.currentTime + 3s`
 - Show buffering progress on timeline
 - Display network quality indicator (if available)
@@ -385,15 +443,18 @@ The video learning feature demonstrates solid technical architecture with word-l
 ### ❌ **Critical Issues**
 
 #### **Issue #17: No Word Click Interaction**
+
 **Severity: MEDIUM**  
 **Impact: Missed opportunity for vocabulary learning**
 
 **Missing Feature:**
+
 - Users cannot click words to see definitions
 - No integration with flashcard system
 - No "Add to deck" functionality
 
 **Recommendation:**
+
 - Make words clickable
 - Show tooltip/popover with:
   - Word definition
@@ -405,14 +466,17 @@ The video learning feature demonstrates solid technical architecture with word-l
 ---
 
 #### **Issue #18: No Subtitle Language Toggle**
+
 **Severity: LOW**  
 **Impact: Advanced learners might want English subtitles**
 
 **Current State:**
+
 - Only Vietnamese translation shown
 - No way to toggle between languages
 
 **Recommendation:**
+
 - Add language selector for subtitles
 - Support: Japanese (default), English, Vietnamese
 - Allow multiple subtitle tracks
@@ -421,10 +485,12 @@ The video learning feature demonstrates solid technical architecture with word-l
 ---
 
 #### **Issue #19: No Playback Speed Recommendations**
+
 **Severity: LOW**  
 **Impact: Users might not know optimal speed for learning**
 
 **Recommendation:**
+
 - Add preset speed profiles:
   - "Slow Learning" (0.75x) - for beginners
   - "Normal" (1.0x) - default
@@ -439,10 +505,12 @@ The video learning feature demonstrates solid technical architecture with word-l
 ### ❌ **Issues**
 
 #### **Issue #20: Missing Smooth Transitions**
+
 **Severity: LOW**  
 **Impact: UI feels abrupt**
 
 **Recommendations:**
+
 - Add smooth fade-in for subtitle changes
 - Smooth word highlighting transitions
 - Loading state transitions
@@ -453,17 +521,20 @@ The video learning feature demonstrates solid technical architecture with word-l
 ## Priority Matrix
 
 ### **P0 - Critical (Fix Immediately)**
+
 1. ✅ Issue #1: Missing Progress Indicator
 2. ✅ Issue #11: Mobile Touch Optimization
 3. ✅ Issue #13: Closed Captions Support
 
 ### **P1 - High Priority (Next Sprint)**
+
 4. ✅ Issue #4: Subtitle Readability
 5. ✅ Issue #7: Keyboard Shortcuts
 6. ✅ Issue #9: Resume Prompt
 7. ✅ Issue #14: Screen Reader Support
 
 ### **P2 - Medium Priority (Backlog)**
+
 8. ✅ Issue #2: Translation Hierarchy
 9. ✅ Issue #3: Controls Placement
 10. ✅ Issue #5: Active Word Highlighting
@@ -471,6 +542,7 @@ The video learning feature demonstrates solid technical architecture with word-l
 12. ✅ Issue #16: Buffering Indicator
 
 ### **P3 - Low Priority (Nice to Have)**
+
 13. ✅ Issue #6: Color Legend
 14. ✅ Issue #8: Speed Feedback
 15. ✅ Issue #10: Completion Celebration
@@ -485,6 +557,7 @@ The video learning feature demonstrates solid technical architecture with word-l
 ## Design Recommendations Summary
 
 ### **Immediate Actions (Week 1)**
+
 1. **Add Progress Bar Component**
    - Timeline with seek functionality
    - Current time / duration display
@@ -501,6 +574,7 @@ The video learning feature demonstrates solid technical architecture with word-l
    - Increase romaji font size
 
 ### **Short-term (Month 1)**
+
 4. **Keyboard Shortcuts**
    - Spacebar, arrow keys, number keys
    - Help tooltip with shortcuts list
@@ -515,6 +589,7 @@ The video learning feature demonstrates solid technical architecture with word-l
    - ARIA live regions
 
 ### **Long-term (Quarter 1)**
+
 7. **Learning Features**
    - Word click interactions
    - Flashcard integration
@@ -539,6 +614,7 @@ The video learning feature has a **solid technical foundation** but needs **sign
 4. **Learning features** (word interactions, flashcard integration)
 
 **Estimated Effort:**
+
 - P0 Issues: 2-3 weeks
 - P1 Issues: 4-6 weeks
 - P2-P3 Issues: 8-12 weeks
@@ -550,6 +626,7 @@ The video learning feature has a **solid technical foundation** but needs **sign
 ## Appendix: Design Mockups & Specs
 
 ### Progress Bar Component Spec
+
 ```
 Position: Below video, above controls
 Height: 48px (mobile: 56px for touch)
@@ -563,6 +640,7 @@ Features:
 ```
 
 ### Mobile Controls Spec
+
 ```
 Layout: Bottom sheet (slide up from bottom)
 Touch Targets: Minimum 48x48px
@@ -576,6 +654,7 @@ Features:
 ```
 
 ### Subtitle Display Spec
+
 ```
 Container:
   - Max-width: 80ch

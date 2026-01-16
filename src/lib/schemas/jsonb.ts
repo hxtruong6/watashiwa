@@ -49,6 +49,16 @@ export type EtymologyData = z.infer<typeof EtymologySchema>;
 // 2. STORY CONTENT (Story.content)
 // -----------------------------------------------------------------------------
 
+// Extended localized string with Japanese
+export const MultiLangStringSchema = z.object({
+	en: z.string(),
+	vi: z.string(),
+	ja: z.string(),
+});
+export type MultiLangString = z.infer<typeof MultiLangStringSchema>;
+
+// Story highlight (deprecated - now stored in StoryVocabulary table)
+// Kept for backward compatibility with existing data
 export const StoryHighlightSchema = z
 	.object({
 		vocab_id: z.uuid(),
@@ -58,16 +68,39 @@ export const StoryHighlightSchema = z
 	})
 	.strict();
 
+// Story Content Schema (Enhanced for Contextual Story Reader)
 export const StoryContentSchema = z
 	.object({
-		title: LocalizedStringSchema,
-		body_text: z.string(),
-		translation: LocalizedStringSchema, // Required: Both English and Vietnamese for language switching
-		highlights: z.array(StoryHighlightSchema),
+		title: MultiLangStringSchema, // Multi-language title
+		body_text: MultiLangStringSchema, // Story text in EN, VI, JA
+		translation: LocalizedStringSchema, // Full translation (EN, VI) as safety net
+		highlights: z.array(StoryHighlightSchema).optional(), // Deprecated, kept for migration
 	})
 	.strict();
 
 export type StoryContent = z.infer<typeof StoryContentSchema>;
+
+// Story Analytics Schema (StoryLog.analytics)
+export const StoryAnalyticsSchema = z
+	.object({
+		clicked_words: z.array(z.string()).default([]), // Vocabulary IDs clicked
+		translation_used: z.boolean().default(false), // Did user reveal translation?
+		paused_at: z.array(z.number()).default([]), // Seconds when user paused reading
+		audio_plays: z.number().int().default(0), // How many word audios played
+		reading_language: z.enum(['en', 'vi', 'ja']).default('en'), // Which language user read in
+	})
+	.strict();
+
+export type StoryAnalytics = z.infer<typeof StoryAnalyticsSchema>;
+
+// Story Positions Schema (StoryVocabulary.positions)
+export const StoryPositionsSchema = z.object({
+	en: z.array(z.number().int().nonnegative()), // Positions in English text
+	vi: z.array(z.number().int().nonnegative()), // Positions in Vietnamese text
+	ja: z.array(z.number().int().nonnegative()), // Positions in Japanese text
+});
+
+export type StoryPositions = z.infer<typeof StoryPositionsSchema>;
 
 // -----------------------------------------------------------------------------
 // 3. CONFUSION PAIR (ConfusionPair.explanation)

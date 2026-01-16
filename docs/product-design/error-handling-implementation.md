@@ -43,102 +43,102 @@ if (!data) {
 // src/modules/dashboard/dashboard.actions.ts
 
 export interface DashboardData {
-  reviewCount: number | null;
-  stats: UserStats | null;
-  weeklyStats: WeeklyStats | null;
-  decksWithDue: DeckWithDue[] | null;
-  userSettings: UserSettings | null;
-  userName: string | null;
+	reviewCount: number | null;
+	stats: UserStats | null;
+	weeklyStats: WeeklyStats | null;
+	decksWithDue: DeckWithDue[] | null;
+	userSettings: UserSettings | null;
+	userName: string | null;
 }
 
 export interface DashboardDataResult {
-  data: DashboardData;
-  errors: Array<{
-    field: keyof DashboardData;
-    error: string;
-    retryable: boolean;
-  }>;
-  hasCriticalFailure: boolean;
+	data: DashboardData;
+	errors: Array<{
+		field: keyof DashboardData;
+		error: string;
+		retryable: boolean;
+	}>;
+	hasCriticalFailure: boolean;
 }
 
 export async function getDashboardData(): Promise<DashboardDataResult> {
-  const user = await getUser();
-  if (!user) {
-    return {
-      data: {
-        reviewCount: null,
-        stats: null,
-        weeklyStats: null,
-        decksWithDue: null,
-        userSettings: null,
-        userName: null,
-      },
-      errors: [{ field: 'reviewCount', error: 'Authentication required', retryable: false }],
-      hasCriticalFailure: true,
-    };
-  }
+	const user = await getUser();
+	if (!user) {
+		return {
+			data: {
+				reviewCount: null,
+				stats: null,
+				weeklyStats: null,
+				decksWithDue: null,
+				userSettings: null,
+				userName: null,
+			},
+			errors: [{ field: 'reviewCount', error: 'Authentication required', retryable: false }],
+			hasCriticalFailure: true,
+		};
+	}
 
-  // Use allSettled to get partial results
-  const results = await Promise.allSettled([
-    { key: 'reviewCount' as const, fn: () => getReviewCount() },
-    { key: 'stats' as const, fn: () => getUserStats(user.id) },
-    { key: 'weeklyStats' as const, fn: () => getWeeklyStats(user.id) },
-    { key: 'decksWithDue' as const, fn: () => getDecksWithDue(user.id) },
-    { key: 'userSettings' as const, fn: () => getUserSettings() },
-  ]);
+	// Use allSettled to get partial results
+	const results = await Promise.allSettled([
+		{ key: 'reviewCount' as const, fn: () => getReviewCount() },
+		{ key: 'stats' as const, fn: () => getUserStats(user.id) },
+		{ key: 'weeklyStats' as const, fn: () => getWeeklyStats(user.id) },
+		{ key: 'decksWithDue' as const, fn: () => getDecksWithDue(user.id) },
+		{ key: 'userSettings' as const, fn: () => getUserSettings() },
+	]);
 
-  // Fetch userName separately (non-critical)
-  let userName: string | null = null;
-  try {
-    const dbUser = await prisma.user.findUnique({
-      where: { id: user.id },
-      select: { name: true },
-    });
-    userName = dbUser?.name ?? null;
-  } catch (error) {
-    console.error('Error fetching userName:', error);
-    // Non-critical, continue
-  }
+	// Fetch userName separately (non-critical)
+	let userName: string | null = null;
+	try {
+		const dbUser = await prisma.user.findUnique({
+			where: { id: user.id },
+			select: { name: true },
+		});
+		userName = dbUser?.name ?? null;
+	} catch (error) {
+		console.error('Error fetching userName:', error);
+		// Non-critical, continue
+	}
 
-  // Process results
-  const data: DashboardData = {
-    reviewCount: null,
-    stats: null,
-    weeklyStats: null,
-    decksWithDue: null,
-    userSettings: null,
-    userName,
-  };
+	// Process results
+	const data: DashboardData = {
+		reviewCount: null,
+		stats: null,
+		weeklyStats: null,
+		decksWithDue: null,
+		userSettings: null,
+		userName,
+	};
 
-  const errors: DashboardDataResult['errors'] = [];
+	const errors: DashboardDataResult['errors'] = [];
 
-  results.forEach((result, index) => {
-    const { key } = results[index] as { key: keyof DashboardData; fn: () => Promise<any> };
-    
-    if (result.status === 'fulfilled') {
-      data[key] = result.value;
-    } else {
-      const error = result.reason;
-      errors.push({
-        field: key,
-        error: error?.message || 'Unknown error',
-        retryable: isRetryableError(error),
-      });
-    }
-  });
+	results.forEach((result, index) => {
+		const { key } = results[index] as { key: keyof DashboardData; fn: () => Promise<any> };
 
-  // Critical failure if both reviewCount and stats fail (core dashboard data)
-  const hasCriticalFailure = !data.reviewCount && !data.stats;
+		if (result.status === 'fulfilled') {
+			data[key] = result.value;
+		} else {
+			const error = result.reason;
+			errors.push({
+				field: key,
+				error: error?.message || 'Unknown error',
+				retryable: isRetryableError(error),
+			});
+		}
+	});
 
-  return { data, errors, hasCriticalFailure };
+	// Critical failure if both reviewCount and stats fail (core dashboard data)
+	const hasCriticalFailure = !data.reviewCount && !data.stats;
+
+	return { data, errors, hasCriticalFailure };
 }
 
 function isRetryableError(error: any): boolean {
-  // Network errors, timeouts, and 5xx errors are retryable
-  if (error?.code === 'ECONNREFUSED' || error?.code === 'ETIMEDOUT') return true;
-  if (error?.status >= 500) return true;
-  if (error?.message?.includes('timeout')) return true;
-  return false;
+	// Network errors, timeouts, and 5xx errors are retryable
+	if (error?.code === 'ECONNREFUSED' || error?.code === 'ETIMEDOUT') return true;
+	if (error?.status >= 500) return true;
+	if (error?.message?.includes('timeout')) return true;
+	return false;
 }
 ```
 
@@ -506,49 +506,46 @@ export default function DashboardOverview({
 // src/lib/utils/retry.ts
 
 export interface RetryOptions {
-  maxRetries?: number;
-  initialDelay?: number;
-  maxDelay?: number;
-  backoffMultiplier?: number;
-  onRetry?: (attempt: number, error: Error) => void;
+	maxRetries?: number;
+	initialDelay?: number;
+	maxDelay?: number;
+	backoffMultiplier?: number;
+	onRetry?: (attempt: number, error: Error) => void;
 }
 
 export async function retryWithBackoff<T>(
-  fn: () => Promise<T>,
-  options: RetryOptions = {}
+	fn: () => Promise<T>,
+	options: RetryOptions = {},
 ): Promise<T> {
-  const {
-    maxRetries = 3,
-    initialDelay = 1000,
-    maxDelay = 30000,
-    backoffMultiplier = 2,
-    onRetry,
-  } = options;
+	const {
+		maxRetries = 3,
+		initialDelay = 1000,
+		maxDelay = 30000,
+		backoffMultiplier = 2,
+		onRetry,
+	} = options;
 
-  let lastError: Error;
+	let lastError: Error;
 
-  for (let attempt = 0; attempt < maxRetries; attempt++) {
-    try {
-      return await fn();
-    } catch (error) {
-      lastError = error as Error;
+	for (let attempt = 0; attempt < maxRetries; attempt++) {
+		try {
+			return await fn();
+		} catch (error) {
+			lastError = error as Error;
 
-      if (attempt < maxRetries - 1) {
-        const delay = Math.min(
-          initialDelay * Math.pow(backoffMultiplier, attempt),
-          maxDelay
-        );
+			if (attempt < maxRetries - 1) {
+				const delay = Math.min(initialDelay * Math.pow(backoffMultiplier, attempt), maxDelay);
 
-        if (onRetry) {
-          onRetry(attempt + 1, lastError);
-        }
+				if (onRetry) {
+					onRetry(attempt + 1, lastError);
+				}
 
-        await new Promise((resolve) => setTimeout(resolve, delay));
-      }
-    }
-  }
+				await new Promise((resolve) => setTimeout(resolve, delay));
+			}
+		}
+	}
 
-  throw lastError!;
+	throw lastError!;
 }
 ```
 
@@ -559,46 +556,46 @@ export async function retryWithBackoff<T>(
 
 'use client';
 
-import { useState, useCallback } from 'react';
 import { retryWithBackoff } from '@/lib/utils/retry';
+import { useCallback, useState } from 'react';
 
 export function useRetry<T>(
-  fn: () => Promise<T>,
-  options?: Parameters<typeof retryWithBackoff>[1]
+	fn: () => Promise<T>,
+	options?: Parameters<typeof retryWithBackoff>[1],
 ) {
-  const [isRetrying, setIsRetrying] = useState(false);
-  const [attempt, setAttempt] = useState(0);
-  const [error, setError] = useState<Error | null>(null);
+	const [isRetrying, setIsRetrying] = useState(false);
+	const [attempt, setAttempt] = useState(0);
+	const [error, setError] = useState<Error | null>(null);
 
-  const execute = useCallback(async () => {
-    setIsRetrying(true);
-    setError(null);
-    setAttempt(0);
+	const execute = useCallback(async () => {
+		setIsRetrying(true);
+		setError(null);
+		setAttempt(0);
 
-    try {
-      const result = await retryWithBackoff(fn, {
-        ...options,
-        onRetry: (attempt, error) => {
-          setAttempt(attempt);
-          setError(error);
-          options?.onRetry?.(attempt, error);
-        },
-      });
-      setIsRetrying(false);
-      return result;
-    } catch (err) {
-      setIsRetrying(false);
-      setError(err as Error);
-      throw err;
-    }
-  }, [fn, options]);
+		try {
+			const result = await retryWithBackoff(fn, {
+				...options,
+				onRetry: (attempt, error) => {
+					setAttempt(attempt);
+					setError(error);
+					options?.onRetry?.(attempt, error);
+				},
+			});
+			setIsRetrying(false);
+			return result;
+		} catch (err) {
+			setIsRetrying(false);
+			setError(err as Error);
+			throw err;
+		}
+	}, [fn, options]);
 
-  return {
-    execute,
-    isRetrying,
-    attempt,
-    error,
-  };
+	return {
+		execute,
+		isRetrying,
+		attempt,
+		error,
+	};
 }
 ```
 
@@ -612,42 +609,42 @@ export function useRetry<T>(
 // src/lib/utils/cache.ts
 
 interface CacheEntry<T> {
-  data: T;
-  timestamp: number;
-  ttl: number; // Time to live in milliseconds
+	data: T;
+	timestamp: number;
+	ttl: number; // Time to live in milliseconds
 }
 
 export class DataCache {
-  private cache: Map<string, CacheEntry<any>> = new Map();
+	private cache: Map<string, CacheEntry<any>> = new Map();
 
-  set<T>(key: string, data: T, ttl: number = 5 * 60 * 1000): void {
-    this.cache.set(key, {
-      data,
-      timestamp: Date.now(),
-      ttl,
-    });
-  }
+	set<T>(key: string, data: T, ttl: number = 5 * 60 * 1000): void {
+		this.cache.set(key, {
+			data,
+			timestamp: Date.now(),
+			ttl,
+		});
+	}
 
-  get<T>(key: string): T | null {
-    const entry = this.cache.get(key);
-    if (!entry) return null;
+	get<T>(key: string): T | null {
+		const entry = this.cache.get(key);
+		if (!entry) return null;
 
-    const age = Date.now() - entry.timestamp;
-    if (age > entry.ttl) {
-      this.cache.delete(key);
-      return null;
-    }
+		const age = Date.now() - entry.timestamp;
+		if (age > entry.ttl) {
+			this.cache.delete(key);
+			return null;
+		}
 
-    return entry.data as T;
-  }
+		return entry.data as T;
+	}
 
-  clear(key?: string): void {
-    if (key) {
-      this.cache.delete(key);
-    } else {
-      this.cache.clear();
-    }
-  }
+	clear(key?: string): void {
+		if (key) {
+			this.cache.delete(key);
+		} else {
+			this.cache.clear();
+		}
+	}
 }
 
 export const dataCache = new DataCache();
@@ -657,30 +654,29 @@ export const dataCache = new DataCache();
 
 ```typescript
 // Add to dashboard.actions.ts
-
 import { dataCache } from '@/lib/utils/cache';
 
 export async function getDashboardData(useCache = true): Promise<DashboardDataResult> {
-  const cacheKey = 'dashboard_data';
-  
-  // Try cache first
-  if (useCache) {
-    const cached = dataCache.get<DashboardDataResult>(cacheKey);
-    if (cached) {
-      return { ...cached, _fromCache: true };
-    }
-  }
+	const cacheKey = 'dashboard_data';
 
-  // ... existing fetch logic ...
+	// Try cache first
+	if (useCache) {
+		const cached = dataCache.get<DashboardDataResult>(cacheKey);
+		if (cached) {
+			return { ...cached, _fromCache: true };
+		}
+	}
 
-  const result = { data, errors, hasCriticalFailure };
-  
-  // Cache successful results
-  if (!result.hasCriticalFailure) {
-    dataCache.set(cacheKey, result, 5 * 60 * 1000); // 5 minutes
-  }
+	// ... existing fetch logic ...
 
-  return result;
+	const result = { data, errors, hasCriticalFailure };
+
+	// Cache successful results
+	if (!result.hasCriticalFailure) {
+		dataCache.set(cacheKey, result, 5 * 60 * 1000); // 5 minutes
+	}
+
+	return result;
 }
 ```
 
@@ -694,37 +690,37 @@ export async function getDashboardData(useCache = true): Promise<DashboardDataRe
 // src/lib/utils/errorTracking.ts
 
 interface ErrorContext {
-  component: string;
-  userId?: string;
-  userAction?: string;
-  errorType: 'auth' | 'network' | 'database' | 'validation' | 'unknown';
-  severity: 'critical' | 'major' | 'minor';
-  retryable: boolean;
-  metadata?: Record<string, any>;
+	component: string;
+	userId?: string;
+	userAction?: string;
+	errorType: 'auth' | 'network' | 'database' | 'validation' | 'unknown';
+	severity: 'critical' | 'major' | 'minor';
+	retryable: boolean;
+	metadata?: Record<string, any>;
 }
 
 export function trackError(error: Error, context: ErrorContext) {
-  // Send to error tracking service
-  if (typeof window !== 'undefined' && (window as any).Sentry) {
-    (window as any).Sentry.captureException(error, {
-      tags: {
-        component: context.component,
-        errorType: context.errorType,
-        severity: context.severity,
-      },
-      user: context.userId ? { id: context.userId } : undefined,
-      extra: {
-        userAction: context.userAction,
-        retryable: context.retryable,
-        ...context.metadata,
-      },
-    });
-  }
+	// Send to error tracking service
+	if (typeof window !== 'undefined' && (window as any).Sentry) {
+		(window as any).Sentry.captureException(error, {
+			tags: {
+				component: context.component,
+				errorType: context.errorType,
+				severity: context.severity,
+			},
+			user: context.userId ? { id: context.userId } : undefined,
+			extra: {
+				userAction: context.userAction,
+				retryable: context.retryable,
+				...context.metadata,
+			},
+		});
+	}
 
-  // Log to console in development
-  if (process.env.NODE_ENV === 'development') {
-    console.error(`[${context.component}] Error:`, error, context);
-  }
+	// Log to console in development
+	if (process.env.NODE_ENV === 'development') {
+		console.error(`[${context.component}] Error:`, error, context);
+	}
 }
 ```
 
@@ -732,21 +728,20 @@ export function trackError(error: Error, context: ErrorContext) {
 
 ```typescript
 // In dashboard.actions.ts
-
 import { trackError } from '@/lib/utils/errorTracking';
 
 export async function getDashboardData(): Promise<DashboardDataResult> {
-  try {
-    // ... existing code ...
-  } catch (error) {
-    trackError(error as Error, {
-      component: 'getDashboardData',
-      errorType: 'database',
-      severity: 'critical',
-      retryable: true,
-    });
-    throw error;
-  }
+	try {
+		// ... existing code ...
+	} catch (error) {
+		trackError(error as Error, {
+			component: 'getDashboardData',
+			errorType: 'database',
+			severity: 'critical',
+			retryable: true,
+		});
+		throw error;
+	}
 }
 ```
 
@@ -758,27 +753,26 @@ export async function getDashboardData(): Promise<DashboardDataResult> {
 
 ```typescript
 // tests/dashboard/error-handling.test.ts
-
-import { describe, it, expect, vi } from 'vitest';
 import { getDashboardData } from '@/modules/dashboard/dashboard.actions';
+import { describe, expect, it, vi } from 'vitest';
 
 describe('Dashboard Error Handling', () => {
-  it('should return partial data when some queries fail', async () => {
-    // Mock: reviewCount succeeds, stats fails
-    const result = await getDashboardData();
-    
-    expect(result.data.reviewCount).toBeDefined();
-    expect(result.data.stats).toBeNull();
-    expect(result.errors).toHaveLength(1);
-    expect(result.hasCriticalFailure).toBe(false);
-  });
+	it('should return partial data when some queries fail', async () => {
+		// Mock: reviewCount succeeds, stats fails
+		const result = await getDashboardData();
 
-  it('should mark as critical failure when both reviewCount and stats fail', async () => {
-    // Mock: both critical queries fail
-    const result = await getDashboardData();
-    
-    expect(result.hasCriticalFailure).toBe(true);
-  });
+		expect(result.data.reviewCount).toBeDefined();
+		expect(result.data.stats).toBeNull();
+		expect(result.errors).toHaveLength(1);
+		expect(result.hasCriticalFailure).toBe(false);
+	});
+
+	it('should mark as critical failure when both reviewCount and stats fail', async () => {
+		// Mock: both critical queries fail
+		const result = await getDashboardData();
+
+		expect(result.hasCriticalFailure).toBe(true);
+	});
 });
 ```
 
@@ -786,20 +780,19 @@ describe('Dashboard Error Handling', () => {
 
 ```typescript
 // e2e/dashboard-error-handling.spec.ts
-
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test('should show partial data when some sections fail', async ({ page }) => {
-  // Mock network: fail only weeklyStats
-  await page.route('**/api/dashboard/weekly-stats', (route) => {
-    route.fulfill({ status: 500 });
-  });
+	// Mock network: fail only weeklyStats
+	await page.route('**/api/dashboard/weekly-stats', (route) => {
+		route.fulfill({ status: 500 });
+	});
 
-  await page.goto('/dashboard');
-  
-  // Should show dashboard with error card for weekly stats
-  await expect(page.locator('text=Weekly Stats Unavailable')).toBeVisible();
-  await expect(page.locator('text=Review Count')).toBeVisible(); // Other sections work
+	await page.goto('/dashboard');
+
+	// Should show dashboard with error card for weekly stats
+	await expect(page.locator('text=Weekly Stats Unavailable')).toBeVisible();
+	await expect(page.locator('text=Review Count')).toBeVisible(); // Other sections work
 });
 ```
 

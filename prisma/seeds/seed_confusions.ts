@@ -3,7 +3,7 @@ import { ConfusionType, Prisma } from '@prisma/client';
 import fs from 'fs';
 import path from 'path';
 
-import { prisma } from '../src/lib/db';
+import { prisma } from '../../src/lib/db';
 
 const DATA_FOLDER =
 	'/Users/xuantruong/Documents/WORK/SIDE_PROJECTS/watashiwa_data/data/seed/confusion';

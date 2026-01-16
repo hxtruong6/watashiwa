@@ -31,13 +31,13 @@ This feature directly supports WatashiWa's core positioning as "Your AI Memory C
 
 ### Expected Impact
 
-| Metric | Current | Target (3 Months Post-Launch) | Rationale |
-|--------|---------|-------------------------------|-----------|
-| **Session Duration** | 12 min | +25% (15 min) | Users stay engaged with exploratory learning |
-| **D7 Retention** | 35% | +15% (40%) | Quick access reduces friction, increases habit formation |
-| **Feature Engagement** | N/A | 60% DAU | High-value utility drives daily usage |
-| **AI Interaction Rate** | 8% | +20% (28%) | Natural entry point for AI features |
-| **User Satisfaction (NPS)** | +32 | +10 pts (+42) | Addresses #1 requested feature from user research |
+| Metric                      | Current | Target (3 Months Post-Launch) | Rationale                                                |
+| --------------------------- | ------- | ----------------------------- | -------------------------------------------------------- |
+| **Session Duration**        | 12 min  | +25% (15 min)                 | Users stay engaged with exploratory learning             |
+| **D7 Retention**            | 35%     | +15% (40%)                    | Quick access reduces friction, increases habit formation |
+| **Feature Engagement**      | N/A     | 60% DAU                       | High-value utility drives daily usage                    |
+| **AI Interaction Rate**     | 8%      | +20% (28%)                    | Natural entry point for AI features                      |
+| **User Satisfaction (NPS)** | +32     | +10 pts (+42)                 | Addresses #1 requested feature from user research        |
 
 ---
 
@@ -48,7 +48,7 @@ This feature directly supports WatashiWa's core positioning as "Your AI Memory C
 **Strategic Hypothesis:** Most language learning apps fail not because users can't learn, but because apps don't capitalize on **moments of curiosity**—the split seconds when a learner's brain is primed for retention.
 
 **The Missing Link:**  
-Traditional SRS apps like Anki force users into a *scheduled learning* mindset: "I must review these 50 cards now." But peak learning happens during **spontaneous curiosity**:
+Traditional SRS apps like Anki force users into a _scheduled learning_ mindset: "I must review these 50 cards now." But peak learning happens during **spontaneous curiosity**:
 
 - Watching anime: "What did that character just say?"
 - Reading manga: "I've seen this kanji before, but where?"
@@ -71,22 +71,22 @@ CURIOSITY    CONFIDENCE   CONNECTION
                right?"      this?"
 ```
 
-**Pillar 1: Curiosity (Discovery Hub)**  
+**Pillar 1: Curiosity (Discovery Hub)**
 
-- Search becomes the *front door* to learning, not a side feature
+- Search becomes the _front door_ to learning, not a side feature
 - Users don't need a study session to engage—curiosity is the trigger
 - **Behavioral Loop:** See word → Search → Learn → Want more → Search again
 - **Why This Matters:** Research shows curiosity-driven learning has 3x higher retention than forced exposure (Gruber et al., 2014)
 
-**Pillar 2: Confidence (Validation Engine)**  
+**Pillar 2: Confidence (Validation Engine)**
 
-- Users who avoid reviews often cite *fear of failure* (52% in our interviews)
+- Users who avoid reviews often cite _fear of failure_ (52% in our interviews)
 - Search provides a "safe space" to check answers without SRS penalty
 - **Psychological Safety:** "I can look this up without feeling stupid"
 - **Progressive Disclosure:** Start with basic lookup → Reveal AI hints → Offer quiz when ready
 - **Why This Matters:** Self-directed validation increases self-efficacy, a key predictor of long-term engagement
 
-**Pillar 3: Connection (Knowledge Network)**  
+**Pillar 3: Connection (Knowledge Network)**
 
 - Every search becomes a node in the user's personal knowledge graph
 - Users see patterns: "Oh, 学 is in all these words!"
@@ -95,16 +95,16 @@ CURIOSITY    CONFIDENCE   CONNECTION
 
 ### How This Changes the Game
 
-| Traditional Dictionary (Jisho.org) | Anki SRS | **WatashiWa Search** |
-|------------------------------------|----------|---------------------|
-| Passive lookup → Close app | Scheduled grind → Guilt if skipped | **Curiosity → Exploration → Mastery** |
-| No memory encoding | High friction (manual card creation) | **Instant encoding via AI quiz** |
-| Isolated facts | No context | **Knowledge graph shows connections** |
-| No personalization | Generic cards | **AI adapts to user's level & history** |
-| Zero retention tracking | Only tracks SRS | **Tracks curiosity patterns → Recommends content** |
+| Traditional Dictionary (Jisho.org) | Anki SRS                             | **WatashiWa Search**                               |
+| ---------------------------------- | ------------------------------------ | -------------------------------------------------- |
+| Passive lookup → Close app         | Scheduled grind → Guilt if skipped   | **Curiosity → Exploration → Mastery**              |
+| No memory encoding                 | High friction (manual card creation) | **Instant encoding via AI quiz**                   |
+| Isolated facts                     | No context                           | **Knowledge graph shows connections**              |
+| No personalization                 | Generic cards                        | **AI adapts to user's level & history**            |
+| Zero retention tracking            | Only tracks SRS                      | **Tracks curiosity patterns → Recommends content** |
 
 **The Strategic Moat:**  
-By making search the *hub* of the learning experience (not a utility), we:
+By making search the _hub_ of the learning experience (not a utility), we:
 
 1. **Capture high-intent moments** (users actively seeking knowledge)
 2. **Create habit loops** (every search = micro-win = dopamine = return)
@@ -113,7 +113,7 @@ By making search the *hub* of the learning experience (not a utility), we:
 
 ### Product Philosophy: "Learn Like You Live"
 
-People don't learn languages in scheduled 20-minute blocks—they learn through *living*:
+People don't learn languages in scheduled 20-minute blocks—they learn through _living_:
 
 - Watching a show
 - Reading a sign
@@ -168,17 +168,17 @@ From user interviews (N=47, Dec 2025) and in-app surveys (N=312):
    PEAK (100%)            (drops to 30%)
 ```
 
-**The 15-Minute Rule:** Research shows users have a 15-minute *window of curiosity* before motivation decays. Every minute spent context-switching reduces retention by 12%.
+**The 15-Minute Rule:** Research shows users have a 15-minute _window of curiosity_ before motivation decays. Every minute spent context-switching reduces retention by 12%.
 
 ### User Personas & Jobs-to-Be-Done (JTBD)
 
-| Persona | JTBD | Current Workaround | Pain Level | Frequency |
-|---------|------|-------------------|------------|-----------|
-| **Active Learner (Sarah, 24)** | "When I encounter a word in real life (anime, manga), I want to instantly look it up AND add it to my study queue so I don't forget it" | Uses Jisho + manual Anki card creation (15 min effort) | 🔴 HIGH | 5-10x/day |
-| **Struggling Student (Minh, 28)** | "When I'm stuck on a word during review, I need hints that don't give away the answer so I can strengthen recall" | Skips card → guilt → avoidance | 🟠 MEDIUM | 3-5x/session |
-| **Curious Explorer (Alex, 32)** | "When I learn a new word, I want to see related words and create stories to make it stick" | No solution; relies on memory alone | 🟡 LOW-MED | 2-3x/day |
-| **Anxious Perfectionist (Keiko, 26)** | "When I'm unsure about pronunciation, I want to verify pitch accent before speaking to avoid embarrassment" | YouTube videos, italki tutors (expensive) | 🔴 HIGH | Daily |
-| **Time-Starved Professional (David, 35)** | "When I have 5 minutes between meetings, I want to learn something meaningful, not start a full review session" | Doesn't use app (sessions too long) | 🟠 MEDIUM | 2-3x/week |
+| Persona                                   | JTBD                                                                                                                                    | Current Workaround                                     | Pain Level | Frequency    |
+| ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | ---------- | ------------ |
+| **Active Learner (Sarah, 24)**            | "When I encounter a word in real life (anime, manga), I want to instantly look it up AND add it to my study queue so I don't forget it" | Uses Jisho + manual Anki card creation (15 min effort) | 🔴 HIGH    | 5-10x/day    |
+| **Struggling Student (Minh, 28)**         | "When I'm stuck on a word during review, I need hints that don't give away the answer so I can strengthen recall"                       | Skips card → guilt → avoidance                         | 🟠 MEDIUM  | 3-5x/session |
+| **Curious Explorer (Alex, 32)**           | "When I learn a new word, I want to see related words and create stories to make it stick"                                              | No solution; relies on memory alone                    | 🟡 LOW-MED | 2-3x/day     |
+| **Anxious Perfectionist (Keiko, 26)**     | "When I'm unsure about pronunciation, I want to verify pitch accent before speaking to avoid embarrassment"                             | YouTube videos, italki tutors (expensive)              | 🔴 HIGH    | Daily        |
+| **Time-Starved Professional (David, 35)** | "When I have 5 minutes between meetings, I want to learn something meaningful, not start a full review session"                         | Doesn't use app (sessions too long)                    | 🟠 MEDIUM  | 2-3x/week    |
 
 ---
 
@@ -210,31 +210,31 @@ LEVEL 1: UTILITY 🔍
 
 ### Behavioral Psychology: Why This Works
 
-**1. The Zeigarnik Effect (Incomplete Tasks)**  
+**1. The Zeigarnik Effect (Incomplete Tasks)**
 
 - **Principle:** People remember unfinished tasks better than completed ones
 - **Application:** When user searches but doesn't add to deck, we show subtle reminder: "You searched this 3 times. Ready to master it?"
 - **Result:** 34% higher conversion to adding words
 
-**2. The Spacing Effect (Optimal Timing)**  
+**2. The Spacing Effect (Optimal Timing)**
 
 - **Principle:** Information learned over time (spaced) sticks better than cramming
 - **Application:** Recent Searches tab shows "2h ago"—primes user to recall before memory fully fades
 - **Result:** 28% better retention when users re-engage with searched words
 
-**3. The Generation Effect (Active Recall)**  
+**3. The Generation Effect (Active Recall)**
 
 - **Principle:** Self-generated answers are remembered better than passively read ones
 - **Application:** AI quiz forces generation ("Create a sentence") before revealing mnemonic
 - **Result:** 3x retention vs. passive card flip (confirmed in beta tests)
 
-**4. The Curiosity Gap (Information Seeking)**  
+**4. The Curiosity Gap (Information Seeking)**
 
-- **Principle:** When we know *something* but not *everything*, we're compelled to fill the gap
+- **Principle:** When we know _something_ but not _everything_, we're compelled to fill the gap
 - **Application:** Show "3 related words" → User clicks → Discovers pattern → Wants more
 - **Result:** 45% of users click related words (recursive search)
 
-**5. The Peak-End Rule (Memorable Moments)**  
+**5. The Peak-End Rule (Memorable Moments)**
 
 - **Principle:** We judge experiences by peaks and endings, not averages
 - **Application:** Search ends with "Aha!" moment (mnemonic unlock, story generated)
@@ -242,15 +242,15 @@ LEVEL 1: UTILITY 🔍
 
 ### Unique Value Propositions (vs. Competitors)
 
-| Feature | Jisho.org | Anki | Duolingo | **WatashiWa Search** |
-|---------|-----------|------|----------|---------------------|
-| **Instant Lookup** | ✅ | ❌ | ❌ | ✅ **+ AI Insights** |
-| **Add to Study Queue** | ❌ | Manual | ❌ | ✅ **1-tap** |
-| **Pronunciation Feedback** | Audio only | Manual add-on | Inconsistent | ✅ **Pitch visualization + Homonym alerts** |
-| **Memory Strengthening** | ❌ | Passive flip | Gamified | ✅ **AI adaptive quiz** |
-| **Contextual Learning** | ❌ | Manual notes | Generic | ✅ **Etymology + Hán Việt + Knowledge Graph** |
-| **Story Creation** | ❌ | ❌ | ❌ | ✅ **AI absurd stories** |
-| **Search History Analysis** | ❌ | ❌ | ❌ | ✅ **Pattern detection → Recommendations** |
+| Feature                     | Jisho.org  | Anki          | Duolingo     | **WatashiWa Search**                          |
+| --------------------------- | ---------- | ------------- | ------------ | --------------------------------------------- |
+| **Instant Lookup**          | ✅         | ❌            | ❌           | ✅ **+ AI Insights**                          |
+| **Add to Study Queue**      | ❌         | Manual        | ❌           | ✅ **1-tap**                                  |
+| **Pronunciation Feedback**  | Audio only | Manual add-on | Inconsistent | ✅ **Pitch visualization + Homonym alerts**   |
+| **Memory Strengthening**    | ❌         | Passive flip  | Gamified     | ✅ **AI adaptive quiz**                       |
+| **Contextual Learning**     | ❌         | Manual notes  | Generic      | ✅ **Etymology + Hán Việt + Knowledge Graph** |
+| **Story Creation**          | ❌         | ❌            | ❌           | ✅ **AI absurd stories**                      |
+| **Search History Analysis** | ❌         | ❌            | ❌           | ✅ **Pattern detection → Recommendations**    |
 
 **Key Differentiator:** We're the only app that transforms passive lookup into active, personalized learning with AI.
 
@@ -343,7 +343,7 @@ STEP 1: Stuck Moment (0s)
 STEP 2: Confusion Alert (Auto-triggered, 5s)
 → Search shows: "⚠️ Watch out! 2 words sound alike"
 → Side-by-side comparison:
-   
+
    箸 (hashi)              橋 (hashi)
    ⤴️ HIGH pitch           ⤵️ LOW pitch
    🥢 Chopsticks          🌉 Bridge
@@ -384,7 +384,7 @@ STEP 5: Return to Review (Seamless)
 
 **User:** David, 35, time-starved professional, 10-minute train ride
 
-**Context:** David has 10 minutes before his stop. Too short for a full SRS session (20+ min), but wants to learn *something*.
+**Context:** David has 10 minutes before his stop. Too short for a full SRS session (20+ min), but wants to learn _something_.
 
 **Current Behavior (Wasted Opportunity):**
 
@@ -529,7 +529,7 @@ Low motivation              →    High motivation
 STEP 1: Search + Verify (5s)
 → Keiko searches "経験"
 → Detail view shows pitch diagram:
-   
+
    け い け ん
    ─ ⤴️ ─ ─  (Rises on い, then flat)
 
@@ -602,15 +602,15 @@ Based on beta testing (N=120 users, 30 days):
 
 **Time-of-Day Analysis (N=4,500 searches over 30 days):**
 
-| Time Slot | % of Searches | Context | Optimization Opportunity |
-|-----------|---------------|---------|--------------------------|
-| 7-9 AM (Commute) | 18% | Quick lookups, micro-learning | Prioritize speed, show "Quiz Recent" |
-| 12-1 PM (Lunch) | 22% | Curiosity browsing, longer sessions | Promote Knowledge Graph, Story Gen |
-| 6-8 PM (Post-work) | 31% | **PEAK** - Anime, reading, deep learning | Full AI features, encourage exploration |
-| 9-11 PM (Pre-bed) | 21% | Light review, checking pitch accents | Low-pressure, validation features |
-| Other | 8% | Random curiosity spikes | Always-available utility |
+| Time Slot          | % of Searches | Context                                  | Optimization Opportunity                |
+| ------------------ | ------------- | ---------------------------------------- | --------------------------------------- |
+| 7-9 AM (Commute)   | 18%           | Quick lookups, micro-learning            | Prioritize speed, show "Quiz Recent"    |
+| 12-1 PM (Lunch)    | 22%           | Curiosity browsing, longer sessions      | Promote Knowledge Graph, Story Gen      |
+| 6-8 PM (Post-work) | 31%           | **PEAK** - Anime, reading, deep learning | Full AI features, encourage exploration |
+| 9-11 PM (Pre-bed)  | 21%           | Light review, checking pitch accents     | Low-pressure, validation features       |
+| Other              | 8%            | Random curiosity spikes                  | Always-available utility                |
 
-**Insight:** Peak usage (6-8 PM) coincides with *content consumption* (anime, manga). This is the **golden hour** for engagement.
+**Insight:** Peak usage (6-8 PM) coincides with _content consumption_ (anime, manga). This is the **golden hour** for engagement.
 
 **Action:** Optimize for media-triggered searches—future feature: "Search while watching" (browser extension, OCR from screenshots).
 
@@ -661,12 +661,12 @@ Based on beta testing (N=120 users, 30 days):
 
 We discovered **4 distinct search personas** with different needs:
 
-| Persona | % of Users | Behavior Pattern | Ideal Features | Monetization |
-|---------|-----------|------------------|----------------|--------------|
-| **Fast Validators** | 35% | Search → Quick check → Close | Speed, pitch viz, audio | Low (Ronin OK) |
-| **Deep Learners** | 28% | Search → Read etymology → Add to deck | Etymology, Hán Việt, related words | Medium (Samurai trial) |
-| **Quiz Addicts** | 22% | Search → Always do AI quiz | AI quiz, mnemonics, stories | **HIGH** (Samurai loyal) |
-| **Graph Explorers** | 15% | Search → Click related → Rabbit hole | Knowledge Graph, visual exploration | Medium (converts slowly) |
+| Persona             | % of Users | Behavior Pattern                      | Ideal Features                      | Monetization             |
+| ------------------- | ---------- | ------------------------------------- | ----------------------------------- | ------------------------ |
+| **Fast Validators** | 35%        | Search → Quick check → Close          | Speed, pitch viz, audio             | Low (Ronin OK)           |
+| **Deep Learners**   | 28%        | Search → Read etymology → Add to deck | Etymology, Hán Việt, related words  | Medium (Samurai trial)   |
+| **Quiz Addicts**    | 22%        | Search → Always do AI quiz            | AI quiz, mnemonics, stories         | **HIGH** (Samurai loyal) |
+| **Graph Explorers** | 15%        | Search → Click related → Rabbit hole  | Knowledge Graph, visual exploration | Medium (converts slowly) |
 
 **Product Strategy per Segment:**
 
@@ -683,12 +683,12 @@ We discovered **4 distinct search personas** with different needs:
 
 **Data (Beta Test Results):**
 
-| User Segment | Samurai Conversion (30 Days) | ARPU (Month 2) |
-|--------------|------------------------------|----------------|
-| Never used search | 7% | $0.56 |
-| Used search (basic only) | 14% (+100%) | $1.12 |
-| Used AI quiz (1+ time) | **32%** (+357%) | **$2.56** |
-| Used story generation | **41%** (+486%) | **$3.28** |
+| User Segment             | Samurai Conversion (30 Days) | ARPU (Month 2) |
+| ------------------------ | ---------------------------- | -------------- |
+| Never used search        | 7%                           | $0.56          |
+| Used search (basic only) | 14% (+100%)                  | $1.12          |
+| Used AI quiz (1+ time)   | **32%** (+357%)              | **$2.56**      |
+| Used story generation    | **41%** (+486%)              | **$3.28**      |
 
 **The Aha Moment:** When users experience **AI quiz + Story generation**, they understand WatashiWa isn't just another SRS app—it's an AI coach. Conversion skyrockets.
 
@@ -706,17 +706,17 @@ We discovered **4 distinct search personas** with different needs:
 
 **Competitive Feature Matrix (Detailed):**
 
-| Feature | Jisho.org | Mazii (Vietnamese) | Akebi | Shirabe Jisho | Takoboto | **WatashiWa** |
-|---------|-----------|-------------------|-------|---------------|----------|---------------|
-| **Speed** | ⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ |
-| **Hán Việt Support** | ❌ | ⭐⭐⭐⭐ | ❌ | ❌ | ❌ | ⭐⭐⭐⭐⭐ |
-| **Pitch Accent Viz** | Audio only | ❌ | Diagrams | Diagrams | Text only | ⭐⭐⭐⭐⭐ (Interactive SVG) |
-| **AI Quiz** | ❌ | ❌ | ❌ | ❌ | ❌ | ⭐⭐⭐⭐⭐ **(UNIQUE)** |
-| **Add to SRS** | ❌ | Export only | ❌ | ❌ | ❌ | ⭐⭐⭐⭐⭐ (1-tap) |
-| **Knowledge Graph** | ❌ | ❌ | ❌ | ❌ | ❌ | ⭐⭐⭐⭐⭐ **(UNIQUE)** |
-| **Story Generation** | ❌ | ❌ | ❌ | ❌ | ❌ | ⭐⭐⭐⭐⭐ **(UNIQUE)** |
-| **Search History** | ❌ | ❌ | ⭐⭐ | ❌ | ❌ | ⭐⭐⭐⭐ (With analytics) |
-| **Offline** | ❌ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ❌ (Future) |
+| Feature              | Jisho.org  | Mazii (Vietnamese) | Akebi    | Shirabe Jisho | Takoboto  | **WatashiWa**                |
+| -------------------- | ---------- | ------------------ | -------- | ------------- | --------- | ---------------------------- |
+| **Speed**            | ⭐⭐⭐     | ⭐⭐               | ⭐⭐⭐   | ⭐⭐⭐        | ⭐⭐      | ⭐⭐⭐⭐⭐                   |
+| **Hán Việt Support** | ❌         | ⭐⭐⭐⭐           | ❌       | ❌            | ❌        | ⭐⭐⭐⭐⭐                   |
+| **Pitch Accent Viz** | Audio only | ❌                 | Diagrams | Diagrams      | Text only | ⭐⭐⭐⭐⭐ (Interactive SVG) |
+| **AI Quiz**          | ❌         | ❌                 | ❌       | ❌            | ❌        | ⭐⭐⭐⭐⭐ **(UNIQUE)**      |
+| **Add to SRS**       | ❌         | Export only        | ❌       | ❌            | ❌        | ⭐⭐⭐⭐⭐ (1-tap)           |
+| **Knowledge Graph**  | ❌         | ❌                 | ❌       | ❌            | ❌        | ⭐⭐⭐⭐⭐ **(UNIQUE)**      |
+| **Story Generation** | ❌         | ❌                 | ❌       | ❌            | ❌        | ⭐⭐⭐⭐⭐ **(UNIQUE)**      |
+| **Search History**   | ❌         | ❌                 | ⭐⭐     | ❌            | ❌        | ⭐⭐⭐⭐ (With analytics)    |
+| **Offline**          | ❌         | ⭐⭐⭐             | ⭐⭐⭐⭐ | ⭐⭐⭐⭐      | ⭐⭐⭐    | ❌ (Future)                  |
 
 **Competitive Moats:**
 
@@ -730,12 +730,12 @@ We discovered **4 distinct search personas** with different needs:
 
 **Threat Analysis:**
 
-| Competitor | Risk Level | Mitigation |
-|------------|-----------|------------|
-| **Jisho adds AI** | 🟠 Medium | They're open-source, slow to innovate. Our 12-month head start is huge. |
-| **Duolingo adds search** | 🔴 High | They have resources. Counter: Our SRS integration + Knowledge Graph > Their gamification. |
-| **Anki plugins** | 🟡 Low | Anki users are tech-savvy but hate complexity. Our UX is cleaner. |
-| **New AI entrant** | 🟠 Medium | Possible. Counter: Build brand loyalty NOW. First-mover advantage in Japan/Vietnam markets. |
+| Competitor               | Risk Level | Mitigation                                                                                  |
+| ------------------------ | ---------- | ------------------------------------------------------------------------------------------- |
+| **Jisho adds AI**        | 🟠 Medium  | They're open-source, slow to innovate. Our 12-month head start is huge.                     |
+| **Duolingo adds search** | 🔴 High    | They have resources. Counter: Our SRS integration + Knowledge Graph > Their gamification.   |
+| **Anki plugins**         | 🟡 Low     | Anki users are tech-savvy but hate complexity. Our UX is cleaner.                           |
+| **New AI entrant**       | 🟠 Medium  | Possible. Counter: Build brand loyalty NOW. First-mover advantage in Japan/Vietnam markets. |
 
 ---
 
@@ -796,12 +796,12 @@ This is how we beat Anki in the long term—they're a tool, we're a network.
 
 **Input Metrics:**
 
-| Metric | Definition | Target | Measurement |
-|--------|-----------|--------|-------------|
-| **Search Adoption** | % of users who try search within first 7 days | 80% | Mixpanel event: `search_first_use` |
-| **Search Frequency** | Avg. searches per active user per day | 3.5 | Event: `search_query_submitted` |
-| **AI Feature Discovery** | % of searchers who use AI questions/story gen | 35% | Events: `ai_question_answered`, `story_generated` |
-| **Cross-Feature Flow** | % who add search result to study queue | 45% | Event: `search_result_added_to_deck` |
+| Metric                   | Definition                                    | Target | Measurement                                       |
+| ------------------------ | --------------------------------------------- | ------ | ------------------------------------------------- |
+| **Search Adoption**      | % of users who try search within first 7 days | 80%    | Mixpanel event: `search_first_use`                |
+| **Search Frequency**     | Avg. searches per active user per day         | 3.5    | Event: `search_query_submitted`                   |
+| **AI Feature Discovery** | % of searchers who use AI questions/story gen | 35%    | Events: `ai_question_answered`, `story_generated` |
+| **Cross-Feature Flow**   | % who add search result to study queue        | 45%    | Event: `search_result_added_to_deck`              |
 
 **Output Metrics:**
 
@@ -823,15 +823,15 @@ This is how we beat Anki in the long term—they're a tool, we're a network.
 
 **The Multiplier Effect:** Search doesn't exist in isolation—it's a catalyst that makes every other feature more valuable.
 
-| Existing Feature | Without Search | With Search | Impact Multiplier |
-|------------------|----------------|-------------|-------------------|
-| **SRS Reviews** | Scheduled only, rigid | Can look up forgotten words mid-review | +35% completion rate |
-| **Knowledge Graph** | Post-review only, passive | Search generates nodes, user-driven | +120% graph growth |
-| **AI Mnemonics** | System-triggered (limited moments) | User-triggered on-demand | +240% AI engagement |
-| **Pitch Training** | Only during flashcard review | Anytime verification | +85% pronunciation confidence |
-| **Story Generation** | Random words (hit-or-miss) | User's searched words (high relevance) | +67% story retention |
-| **Daily Stats** | Generic progress bars | "You searched X, mastered Y" insights | +45% dashboard visits |
-| **Email Reminders** | "Time to review" (ignored) | "You searched this 3x—ready to master?" | +58% email CTR |
+| Existing Feature     | Without Search                     | With Search                             | Impact Multiplier             |
+| -------------------- | ---------------------------------- | --------------------------------------- | ----------------------------- |
+| **SRS Reviews**      | Scheduled only, rigid              | Can look up forgotten words mid-review  | +35% completion rate          |
+| **Knowledge Graph**  | Post-review only, passive          | Search generates nodes, user-driven     | +120% graph growth            |
+| **AI Mnemonics**     | System-triggered (limited moments) | User-triggered on-demand                | +240% AI engagement           |
+| **Pitch Training**   | Only during flashcard review       | Anytime verification                    | +85% pronunciation confidence |
+| **Story Generation** | Random words (hit-or-miss)         | User's searched words (high relevance)  | +67% story retention          |
+| **Daily Stats**      | Generic progress bars              | "You searched X, mastered Y" insights   | +45% dashboard visits         |
+| **Email Reminders**  | "Time to review" (ignored)         | "You searched this 3x—ready to master?" | +58% email CTR                |
 
 **Concrete Example: Knowledge Graph Explosion**
 
@@ -903,15 +903,15 @@ WATASHIWA 3.0: THE AI BRAIN
 
 **Monthly Breakdown:**
 
-| Month | DAU | Search Adopters (60%) | AI Quiz Users (35% of searchers) | New Samurai Conversions | Cumulative MRR | Revenue Lift from Search |
-|-------|-----|----------------------|----------------------------------|-------------------------|----------------|--------------------------|
-| 1 (Launch) | 5,000 | 3,000 | 1,050 | +168 | +$1,343 | - |
-| 2 | 6,000 | 3,600 | 1,260 | +202 | +$3,958 | +$1,615 |
-| 3 | 7,500 | 4,500 | 1,575 | +252 | +$7,971 | +$4,013 |
-| 4 | 9,000 | 5,400 | 1,890 | +302 | +$13,383 | +$6,412 |
-| 5 | 10,500 | 6,300 | 2,205 | +353 | +$20,194 | +$8,811 |
-| 6 | 12,000 | 7,200 | 2,520 | +403 | +$28,404 | +$11,209 |
-| 12 | 15,000 | 9,000 | 3,150 | +504 | +$68,400 | +$27,216 |
+| Month      | DAU    | Search Adopters (60%) | AI Quiz Users (35% of searchers) | New Samurai Conversions | Cumulative MRR | Revenue Lift from Search |
+| ---------- | ------ | --------------------- | -------------------------------- | ----------------------- | -------------- | ------------------------ |
+| 1 (Launch) | 5,000  | 3,000                 | 1,050                            | +168                    | +$1,343        | -                        |
+| 2          | 6,000  | 3,600                 | 1,260                            | +202                    | +$3,958        | +$1,615                  |
+| 3          | 7,500  | 4,500                 | 1,575                            | +252                    | +$7,971        | +$4,013                  |
+| 4          | 9,000  | 5,400                 | 1,890                            | +302                    | +$13,383       | +$6,412                  |
+| 5          | 10,500 | 6,300                 | 2,205                            | +353                    | +$20,194       | +$8,811                  |
+| 6          | 12,000 | 7,200                 | 2,520                            | +403                    | +$28,404       | +$11,209                 |
+| 12         | 15,000 | 9,000                 | 3,150                            | +504                    | +$68,400       | +$27,216                 |
 
 **Year 1 Net Revenue Lift:** $27,216/mo by Month 12 × 12 months (avg) = **~$163K additional ARR**
 
@@ -934,11 +934,11 @@ WATASHIWA 3.0: THE AI BRAIN
 
 **Cohort Analysis (Beta Data, N=300 users over 90 days):**
 
-| Cohort | 90-Day Retention | Avg. Subscription Length | LTV (24 months) |
-|--------|------------------|--------------------------|-----------------|
-| **Never used search** | 22% | 3.2 months | $25.57 |
-| **Used search (basic)** | 38% (+73%) | 5.8 months | $46.34 (+81%) |
-| **Used AI features** | 52% (+136%) | 8.9 months | $71.11 (+178%) |
+| Cohort                  | 90-Day Retention | Avg. Subscription Length | LTV (24 months) |
+| ----------------------- | ---------------- | ------------------------ | --------------- |
+| **Never used search**   | 22%              | 3.2 months               | $25.57          |
+| **Used search (basic)** | 38% (+73%)       | 5.8 months               | $46.34 (+81%)   |
+| **Used AI features**    | 52% (+136%)      | 8.9 months               | $71.11 (+178%)  |
 
 **The Compounding Effect:**  
 If search drives 60% of users to "Used search (basic)" tier:
@@ -956,19 +956,19 @@ If search drives 60% of users to "Used search (basic)" tier:
 **How search transforms our product positioning over time:**
 
 **Phase 1 (Today): SRS App**  
-*Job:* "Help me remember Japanese words"  
-*Competition:* Anki, Quizlet, WaniKani  
-*Weakness:* Commoditized, low switching cost
+_Job:_ "Help me remember Japanese words"  
+_Competition:_ Anki, Quizlet, WaniKani  
+_Weakness:_ Commoditized, low switching cost
 
 **Phase 2 (With Search - Month 3): AI Learning Companion**  
-*Job:* "Help me learn Japanese anytime curiosity strikes"  
-*Competition:* Duolingo, Busuu, Babbel  
-*Strength:* On-demand + AI personalization
+_Job:_ "Help me learn Japanese anytime curiosity strikes"  
+_Competition:_ Duolingo, Busuu, Babbel  
+_Strength:_ On-demand + AI personalization
 
 **Phase 3 (Future - Month 12): Personal Japanese Brain**  
-*Job:* "Be my second brain for Japanese—answer any question, anytime"  
-*Competition:* ChatGPT, Siri, Google Translate  
-*Strength:* Specialized knowledge + memory integration
+_Job:_ "Be my second brain for Japanese—answer any question, anytime"  
+_Competition:_ ChatGPT, Siri, Google Translate  
+_Strength:_ Specialized knowledge + memory integration
 
 **The Strategic Ladder:**  
 We're not building a better flashcard app. We're building the AI assistant every Japanese learner wishes they had—starting with search.
@@ -1032,13 +1032,13 @@ We're not building a better flashcard app. We're building the AI assistant every
 
 **Contextual Upgrade Prompts (Not Annoying, Value-Driven):**
 
-| Trigger | Prompt Message | Conversion Rate (Beta) |
-|---------|----------------|------------------------|
-| User clicks "Test Me" (3rd time) | "You love quizzes! Unlock unlimited AI learning for $7.99/mo" | 38% |
-| User searches homonym (confusion alert) | "Get AI explanations for confusing words—Upgrade to Samurai" | 24% |
-| User clicks 3rd related word | "Your curiosity is beautiful! See the full Knowledge Graph" | 19% |
-| Recent searches fills up (6th search) | "You're on fire! Upgrade to track all your searches" | 22% |
-| User generates 1 free story | "Loved that story? Create 5/day with Samurai" | 31% |
+| Trigger                                 | Prompt Message                                                | Conversion Rate (Beta) |
+| --------------------------------------- | ------------------------------------------------------------- | ---------------------- |
+| User clicks "Test Me" (3rd time)        | "You love quizzes! Unlock unlimited AI learning for $7.99/mo" | 38%                    |
+| User searches homonym (confusion alert) | "Get AI explanations for confusing words—Upgrade to Samurai"  | 24%                    |
+| User clicks 3rd related word            | "Your curiosity is beautiful! See the full Knowledge Graph"   | 19%                    |
+| Recent searches fills up (6th search)   | "You're on fire! Upgrade to track all your searches"          | 22%                    |
+| User generates 1 free story             | "Loved that story? Create 5/day with Samurai"                 | 31%                    |
 
 **The "14-Day Trial" Strategy:**
 
@@ -1211,78 +1211,78 @@ Excludes:
 
 ### 4.1 Search Interface
 
-| Requirement ID | Description | Priority | Device |
-|---------------|-------------|----------|--------|
-| **FR-SI-001** | Search icon visible in app header (all screens except during card review) | P0 | All |
-| **FR-SI-002** | Search icon inherits visual style from AI Assistant icon (glowing purple dot when AI features available) | P1 | All |
-| **FR-SI-003** | Click/tap search icon opens modal overlay (doesn't navigate) | P0 | All |
-| **FR-SI-004** | Search input auto-focuses on open (keyboard appears on mobile) | P0 | Mobile |
-| **FR-SI-005** | Support input methods: Romaji (auto-converts to Hiragana), Hiragana, Katakana, Kanji, English, Vietnamese | P0 | All |
-| **FR-SI-006** | Real-time search (debounced 300ms) - no "submit" button required | P0 | All |
-| **FR-SI-007** | Close modal via: X button, ESC key (web), swipe down (mobile), click outside | P0 | All |
-| **FR-SI-008** | Search history persists locally (last 20, stored in IndexedDB/localStorage) | P1 | All |
-| **FR-SI-009** | Empty state shows: Placeholder ("Search by Japanese, Romaji, English..."), Recent searches (if any), Suggested words (trending/leeches) | P1 | All |
+| Requirement ID | Description                                                                                                                             | Priority | Device |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------ |
+| **FR-SI-001**  | Search icon visible in app header (all screens except during card review)                                                               | P0       | All    |
+| **FR-SI-002**  | Search icon inherits visual style from AI Assistant icon (glowing purple dot when AI features available)                                | P1       | All    |
+| **FR-SI-003**  | Click/tap search icon opens modal overlay (doesn't navigate)                                                                            | P0       | All    |
+| **FR-SI-004**  | Search input auto-focuses on open (keyboard appears on mobile)                                                                          | P0       | Mobile |
+| **FR-SI-005**  | Support input methods: Romaji (auto-converts to Hiragana), Hiragana, Katakana, Kanji, English, Vietnamese                               | P0       | All    |
+| **FR-SI-006**  | Real-time search (debounced 300ms) - no "submit" button required                                                                        | P0       | All    |
+| **FR-SI-007**  | Close modal via: X button, ESC key (web), swipe down (mobile), click outside                                                            | P0       | All    |
+| **FR-SI-008**  | Search history persists locally (last 20, stored in IndexedDB/localStorage)                                                             | P1       | All    |
+| **FR-SI-009**  | Empty state shows: Placeholder ("Search by Japanese, Romaji, English..."), Recent searches (if any), Suggested words (trending/leeches) | P1       | All    |
 
 ### 4.2 Search Results
 
-| Requirement ID | Description | Priority | Notes |
-|---------------|-------------|----------|-------|
-| **FR-SR-001** | Display top 5 results ordered by relevance (exact match > starts with > contains) | P0 | |
-| **FR-SR-002** | Each result shows: Kanji (or Kana if no Kanji), Reading (Hiragana), Primary meaning (English/Vietnamese based on locale), Pitch accent icon (⤴️ high / ⤵️ low / - flat) | P0 | |
-| **FR-SR-003** | Highlight query match in results (bold or color) | P1 | |
-| **FR-SR-004** | Tag results with user status: "Mastered" (green), "Learning" (orange), "New" (blue) | P1 | Requires UserReview lookup |
-| **FR-SR-005** | "See More" button if >5 results (expands to 20 max) | P2 | |
-| **FR-SR-006** | No results state: Show "Not found. Add to Suggestion List?" button | P2 | Captures user needs for content team |
-| **FR-SR-007** | Loading state: Skeleton loaders for results (not spinner) | P1 | UX consistency |
+| Requirement ID | Description                                                                                                                                                             | Priority | Notes                                |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------ |
+| **FR-SR-001**  | Display top 5 results ordered by relevance (exact match > starts with > contains)                                                                                       | P0       |                                      |
+| **FR-SR-002**  | Each result shows: Kanji (or Kana if no Kanji), Reading (Hiragana), Primary meaning (English/Vietnamese based on locale), Pitch accent icon (⤴️ high / ⤵️ low / - flat) | P0       |                                      |
+| **FR-SR-003**  | Highlight query match in results (bold or color)                                                                                                                        | P1       |                                      |
+| **FR-SR-004**  | Tag results with user status: "Mastered" (green), "Learning" (orange), "New" (blue)                                                                                     | P1       | Requires UserReview lookup           |
+| **FR-SR-005**  | "See More" button if >5 results (expands to 20 max)                                                                                                                     | P2       |                                      |
+| **FR-SR-006**  | No results state: Show "Not found. Add to Suggestion List?" button                                                                                                      | P2       | Captures user needs for content team |
+| **FR-SR-007**  | Loading state: Skeleton loaders for results (not spinner)                                                                                                               | P1       | UX consistency                       |
 
 ### 4.3 Word Detail View
 
-| Requirement ID | Description | Priority | Notes |
-|---------------|-------------|----------|-------|
-| **FR-WD-001** | Click result opens detail view (replaces search results in same modal) | P0 | Smooth slide transition |
-| **FR-WD-002** | Display sections: Header (Kanji + Reading + Audio button), Meanings (all definitions, numbered), Examples (2-3 sentences with translations), Etymology/Hán Việt (if available, JSONB from Vocabulary), Pitch Visualization (SVG graph), Related Words (from Knowledge Graph) | P0 | |
-| **FR-WD-003** | Audio playback: Native pronunciation (Google TTS or recorded audio) | P0 | |
-| **FR-WD-004** | "Add to Deck" button (if word not in user's study queue) | P0 | Triggers Server Action: `addWordToDeck()` |
-| **FR-WD-005** | If word already in deck, show SRS status: "You're reviewing this (Next due: [date])" | P1 | |
-| **FR-WD-006** | Back button returns to search results (preserves scroll position) | P0 | |
-| **FR-WD-007** | Share button (copies word + definition to clipboard; future: social share) | P2 | |
+| Requirement ID | Description                                                                                                                                                                                                                                                                  | Priority | Notes                                     |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------------------------------- |
+| **FR-WD-001**  | Click result opens detail view (replaces search results in same modal)                                                                                                                                                                                                       | P0       | Smooth slide transition                   |
+| **FR-WD-002**  | Display sections: Header (Kanji + Reading + Audio button), Meanings (all definitions, numbered), Examples (2-3 sentences with translations), Etymology/Hán Việt (if available, JSONB from Vocabulary), Pitch Visualization (SVG graph), Related Words (from Knowledge Graph) | P0       |                                           |
+| **FR-WD-003**  | Audio playback: Native pronunciation (Google TTS or recorded audio)                                                                                                                                                                                                          | P0       |                                           |
+| **FR-WD-004**  | "Add to Deck" button (if word not in user's study queue)                                                                                                                                                                                                                     | P0       | Triggers Server Action: `addWordToDeck()` |
+| **FR-WD-005**  | If word already in deck, show SRS status: "You're reviewing this (Next due: [date])"                                                                                                                                                                                         | P1       |                                           |
+| **FR-WD-006**  | Back button returns to search results (preserves scroll position)                                                                                                                                                                                                            | P0       |                                           |
+| **FR-WD-007**  | Share button (copies word + definition to clipboard; future: social share)                                                                                                                                                                                                   | P2       |                                           |
 
 ### 4.4 AI Learning Features (Samurai Tier - Gated)
 
-| Requirement ID | Description | Priority | Access |
-|---------------|-------------|----------|--------|
-| **FR-AI-001** | "Test Me" button in detail view (Samurai tier only; Ronin sees upgrade prompt) | P0 | Samurai |
-| **FR-AI-002** | Generate 3 adaptive questions (types: Recognition MCQ, Recall Fill-Blank, Application Open-Ended) | P0 | Samurai |
-| **FR-AI-003** | Questions adapt to user level: N5 uses simple grammar, N4 adds complexity | P1 | Samurai |
-| **FR-AI-004** | Correct answer unlocks AI-generated mnemonic (visual + text) | P1 | Samurai |
-| **FR-AI-005** | Quiz results logged to ReviewLog (counts toward daily stats, but separate from SRS) | P1 | Samurai |
-| **FR-AI-006** | "Confusion Alert" banner if word has homonyms (auto-triggered) | P0 | All (value demo) |
-| **FR-AI-007** | Side-by-side comparison for homonyms (Samurai unlocks AI explanation + drills) | P0/P1 | All/Samurai |
-| **FR-AI-008** | "Create Story" button appears after 3+ searches in session | P1 | Samurai |
-| **FR-AI-009** | Story generation uses: Searched words (3-5) + User's mastered words (10-15) + GPT prompt (quirky, absurd theme) | P1 | Samurai |
-| **FR-AI-010** | Story saved to DailyStudyStat.daily_story (JSONB) | P1 | Samurai |
-| **FR-AI-011** | Story displayed with word links (tap to define inline) | P2 | Samurai |
+| Requirement ID | Description                                                                                                     | Priority | Access           |
+| -------------- | --------------------------------------------------------------------------------------------------------------- | -------- | ---------------- |
+| **FR-AI-001**  | "Test Me" button in detail view (Samurai tier only; Ronin sees upgrade prompt)                                  | P0       | Samurai          |
+| **FR-AI-002**  | Generate 3 adaptive questions (types: Recognition MCQ, Recall Fill-Blank, Application Open-Ended)               | P0       | Samurai          |
+| **FR-AI-003**  | Questions adapt to user level: N5 uses simple grammar, N4 adds complexity                                       | P1       | Samurai          |
+| **FR-AI-004**  | Correct answer unlocks AI-generated mnemonic (visual + text)                                                    | P1       | Samurai          |
+| **FR-AI-005**  | Quiz results logged to ReviewLog (counts toward daily stats, but separate from SRS)                             | P1       | Samurai          |
+| **FR-AI-006**  | "Confusion Alert" banner if word has homonyms (auto-triggered)                                                  | P0       | All (value demo) |
+| **FR-AI-007**  | Side-by-side comparison for homonyms (Samurai unlocks AI explanation + drills)                                  | P0/P1    | All/Samurai      |
+| **FR-AI-008**  | "Create Story" button appears after 3+ searches in session                                                      | P1       | Samurai          |
+| **FR-AI-009**  | Story generation uses: Searched words (3-5) + User's mastered words (10-15) + GPT prompt (quirky, absurd theme) | P1       | Samurai          |
+| **FR-AI-010**  | Story saved to DailyStudyStat.daily_story (JSONB)                                                               | P1       | Samurai          |
+| **FR-AI-011**  | Story displayed with word links (tap to define inline)                                                          | P2       | Samurai          |
 
 ### 4.5 Knowledge Graph Integration
 
-| Requirement ID | Description | Priority | Notes |
-|---------------|-------------|----------|-------|
-| **FR-KG-001** | Display "Related Words You Know" section in detail view (max 5 words) | P1 | |
-| **FR-KG-002** | Related words sourced from: Shared radicals (han_viet_info.radicals), Shared etymology, Same homonym_group_id, Co-occurrence in user's stories | P1 | Requires DB query optimization |
-| **FR-KG-003** | Show connection type label (e.g., "Shares 学", "Same pitch") | P1 | |
-| **FR-KG-004** | Clicking related word opens its detail view (recursive) | P0 | |
-| **FR-KG-005** | Every search creates "Explored" node in user's KnowledgeGraph (separate from "Mastered") | P2 | For future analytics |
-| **FR-KG-006** | Visual graph view (desktop only, optional expand) shows network as interactive SVG | P2 | Use D3.js or vis.js |
+| Requirement ID | Description                                                                                                                                    | Priority | Notes                          |
+| -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------ |
+| **FR-KG-001**  | Display "Related Words You Know" section in detail view (max 5 words)                                                                          | P1       |                                |
+| **FR-KG-002**  | Related words sourced from: Shared radicals (han_viet_info.radicals), Shared etymology, Same homonym_group_id, Co-occurrence in user's stories | P1       | Requires DB query optimization |
+| **FR-KG-003**  | Show connection type label (e.g., "Shares 学", "Same pitch")                                                                                   | P1       |                                |
+| **FR-KG-004**  | Clicking related word opens its detail view (recursive)                                                                                        | P0       |                                |
+| **FR-KG-005**  | Every search creates "Explored" node in user's KnowledgeGraph (separate from "Mastered")                                                       | P2       | For future analytics           |
+| **FR-KG-006**  | Visual graph view (desktop only, optional expand) shows network as interactive SVG                                                             | P2       | Use D3.js or vis.js            |
 
 ### 4.6 Recent Searches & History
 
-| Requirement ID | Description | Priority | Notes |
-|---------------|-------------|----------|-------|
-| **FR-RH-001** | "Recent" tab in search modal (alongside "Results") | P1 | |
-| **FR-RH-002** | Display last 20 searches with: Word, Timestamp (relative, e.g., "2h ago"), Status icon (added to deck or not) | P1 | |
-| **FR-RH-003** | Tap recent search re-opens detail view | P0 | |
-| **FR-RH-004** | "Clear History" button (with confirmation) | P2 | |
-| **FR-RH-005** | "Quiz Recent" button (Samurai only) generates mini-review from recent searches | P2 | |
+| Requirement ID | Description                                                                                                   | Priority | Notes |
+| -------------- | ------------------------------------------------------------------------------------------------------------- | -------- | ----- |
+| **FR-RH-001**  | "Recent" tab in search modal (alongside "Results")                                                            | P1       |       |
+| **FR-RH-002**  | Display last 20 searches with: Word, Timestamp (relative, e.g., "2h ago"), Status icon (added to deck or not) | P1       |       |
+| **FR-RH-003**  | Tap recent search re-opens detail view                                                                        | P0       |       |
+| **FR-RH-004**  | "Clear History" button (with confirmation)                                                                    | P2       |       |
+| **FR-RH-005**  | "Quiz Recent" button (Samurai only) generates mini-review from recent searches                                | P2       |       |
 
 ---
 
@@ -1330,23 +1330,23 @@ src/modules/search/
 
 **New/Modified Tables:**
 
-| Table | Changes | Rationale |
-|-------|---------|-----------|
-| **Vocabulary** | Add `search_vector` (tsvector) column for full-text search | Enables fast search across kanji/reading/meaning |
-| **Vocabulary** | Add GIN index on `search_vector` | Performance optimization |
-| **SearchHistory** (NEW) | Fields: `user_id`, `query`, `result_vocab_id`, `timestamp`, `added_to_deck` (boolean) | Track user search behavior for analytics |
-| **KnowledgeGraph** | Add `explored_node_ids` (JSONB array) to store searched words | Lightweight tracking without new table |
+| Table                   | Changes                                                                               | Rationale                                        |
+| ----------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| **Vocabulary**          | Add `search_vector` (tsvector) column for full-text search                            | Enables fast search across kanji/reading/meaning |
+| **Vocabulary**          | Add GIN index on `search_vector`                                                      | Performance optimization                         |
+| **SearchHistory** (NEW) | Fields: `user_id`, `query`, `result_vocab_id`, `timestamp`, `added_to_deck` (boolean) | Track user search behavior for analytics         |
+| **KnowledgeGraph**      | Add `explored_node_ids` (JSONB array) to store searched words                         | Lightweight tracking without new table           |
 
 **SQL Migrations:**
 
 ```sql
 -- Migration: Add full-text search to Vocabulary
-ALTER TABLE "Vocabulary" 
+ALTER TABLE "Vocabulary"
 ADD COLUMN search_vector tsvector
 GENERATED ALWAYS AS (
-  to_tsvector('japanese', 
-    coalesce(kanji, '') || ' ' || 
-    coalesce(reading, '') || ' ' || 
+  to_tsvector('japanese',
+    coalesce(kanji, '') || ' ' ||
+    coalesce(reading, '') || ' ' ||
     coalesce(meaning_en, '') || ' ' ||
     coalesce(meaning_vi, '')
   )
@@ -1527,19 +1527,19 @@ Format as JSON:
 ```typescript
 // Zustand Store: src/modules/search/store/useSearchStore.ts
 interface SearchState {
-  isOpen: boolean;
-  query: string;
-  results: SearchResult[];
-  selectedWord: WordDetail | null;
-  recentSearches: SearchHistoryItem[];
-  isLoading: boolean;
-  
-  // Actions
-  openSearch: () => void;
-  closeSearch: () => void;
-  setQuery: (query: string) => void;
-  selectWord: (wordId: string) => void;
-  clearHistory: () => void;
+	isOpen: boolean;
+	query: string;
+	results: SearchResult[];
+	selectedWord: WordDetail | null;
+	recentSearches: SearchHistoryItem[];
+	isLoading: boolean;
+
+	// Actions
+	openSearch: () => void;
+	closeSearch: () => void;
+	setQuery: (query: string) => void;
+	selectWord: (wordId: string) => void;
+	clearHistory: () => void;
 }
 ```
 
@@ -1553,11 +1553,11 @@ interface SearchState {
 
 **Responsive Design:**
 
-| Breakpoint | Layout | Notes |
-|------------|--------|-------|
-| Mobile (<768px) | Full-screen modal, bottom sheet swipe | Native feel |
-| Tablet (768-1024px) | 80% width modal, centered | Comfortable reading |
-| Desktop (>1024px) | 600px fixed width modal, right-side detail panel | Power user efficiency |
+| Breakpoint          | Layout                                           | Notes                 |
+| ------------------- | ------------------------------------------------ | --------------------- |
+| Mobile (<768px)     | Full-screen modal, bottom sheet swipe            | Native feel           |
+| Tablet (768-1024px) | 80% width modal, centered                        | Comfortable reading   |
+| Desktop (>1024px)   | 600px fixed width modal, right-side detail panel | Power user efficiency |
 
 ### 5.6 Analytics & Logging
 
@@ -1597,7 +1597,6 @@ interface SearchState {
   - Modal Background: Frosted glass (backdrop-blur-md, bg-white/90)
   - Accent: Matcha Green (#10B981) for "Add to Deck" success
   - Alert: Vermilion (#EF4444) for "Confusion Alert" banner
-  
 - **Typography:**
   - Search Input: Inter 18px (mobile), 20px (desktop)
   - Results: Kanji 24px bold, Reading 14px secondary, Meaning 16px
@@ -1764,18 +1763,18 @@ User searches 3 words during session (e.g., 猫, 車, 魚)
 
 ### 6.4 Copy & Microcopy
 
-| Element | Copy | Tone |
-|---------|------|------|
-| Search Placeholder | "Search by Japanese, Romaji, English..." | Inviting, clear |
-| Empty State | "Start typing to explore words 🔍" | Encouraging |
-| No Results | "Hmm, we don't have that yet. Help us add it?" | Collaborative |
-| Add to Deck Success | "Added! You'll see this tomorrow ✨" | Rewarding |
-| AI Quiz Intro | "Let's strengthen this word! 3 quick questions" | Motivating |
-| Quiz Correct | "Nailed it! 🎯" | Celebratory |
-| Quiz Incorrect | "Close! Here's a hint..." | Gentle, supportive |
-| Confusion Alert | "⚠️ Watch out! This sounds like another word" | Proactive, helpful |
-| Story Generated | "Your absurd story is ready 😄" | Playful |
-| Rate Limit | "You're on fire! Take a breather (limit reached for today)" | Humorous, clear |
+| Element             | Copy                                                        | Tone               |
+| ------------------- | ----------------------------------------------------------- | ------------------ |
+| Search Placeholder  | "Search by Japanese, Romaji, English..."                    | Inviting, clear    |
+| Empty State         | "Start typing to explore words 🔍"                          | Encouraging        |
+| No Results          | "Hmm, we don't have that yet. Help us add it?"              | Collaborative      |
+| Add to Deck Success | "Added! You'll see this tomorrow ✨"                        | Rewarding          |
+| AI Quiz Intro       | "Let's strengthen this word! 3 quick questions"             | Motivating         |
+| Quiz Correct        | "Nailed it! 🎯"                                             | Celebratory        |
+| Quiz Incorrect      | "Close! Here's a hint..."                                   | Gentle, supportive |
+| Confusion Alert     | "⚠️ Watch out! This sounds like another word"               | Proactive, helpful |
+| Story Generated     | "Your absurd story is ready 😄"                             | Playful            |
+| Rate Limit          | "You're on fire! Take a breather (limit reached for today)" | Humorous, clear    |
 
 ---
 
@@ -1853,7 +1852,7 @@ User searches 3 words during session (e.g., 猫, 車, 魚)
 **Mitigation:**
 
 1. **Complementary Positioning:**
-   - Messaging: "Search helps you *prepare* for reviews, not replace them"
+   - Messaging: "Search helps you _prepare_ for reviews, not replace them"
    - In-app prompt after 3 searches: "Great curiosity! Ready to lock these in? [Start Review]"
 
 2. **Smart Scheduling Integration:**
@@ -2206,7 +2205,7 @@ User searches 3 words during session (e.g., 猫, 車, 魚)
    - Use case: Collective wisdom, reduce AI hallucinations
 
 **Strategic North Star:**  
-By 2027, WatashiWa is the first app learners open when they have *any* question about Japanese—not just vocabulary, but grammar, culture, pronunciation, everything.
+By 2027, WatashiWa is the first app learners open when they have _any_ question about Japanese—not just vocabulary, but grammar, culture, pronunciation, everything.
 
 ---
 
@@ -2214,22 +2213,22 @@ By 2027, WatashiWa is the first app learners open when they have *any* question 
 
 ### Internal Dependencies
 
-| Dependency | Module | Required For | Risk Level |
-|------------|--------|--------------|------------|
-| UserReview table | SRS Module | Determine user status (mastered/learning) | Low (existing) |
-| Vocabulary table | Content Module | Source of search data | Low (existing) |
-| KnowledgeGraph | Study Module | Related words, graph viz | Medium (requires extension) |
-| han_viet_info (JSONB) | Content Module | Etymology, radical breakdown | Low (existing) |
-| DailyStudyStat | Analytics Module | Story saving, daily email | Low (existing) |
-| Auth & Tier Check | Auth Module | Samurai gating | Low (existing) |
+| Dependency            | Module           | Required For                              | Risk Level                  |
+| --------------------- | ---------------- | ----------------------------------------- | --------------------------- |
+| UserReview table      | SRS Module       | Determine user status (mastered/learning) | Low (existing)              |
+| Vocabulary table      | Content Module   | Source of search data                     | Low (existing)              |
+| KnowledgeGraph        | Study Module     | Related words, graph viz                  | Medium (requires extension) |
+| han_viet_info (JSONB) | Content Module   | Etymology, radical breakdown              | Low (existing)              |
+| DailyStudyStat        | Analytics Module | Story saving, daily email                 | Low (existing)              |
+| Auth & Tier Check     | Auth Module      | Samurai gating                            | Low (existing)              |
 
 ### External Dependencies
 
-| Dependency | Purpose | Provider | Risk Mitigation |
-|------------|---------|----------|-----------------|
-| GPT-4 API | AI quiz, story, mnemonic generation | OpenAI | Cache responses, fallback templates |
-| TTS API | Audio pronunciation | Google Cloud TTS | Pre-record common words, fallback to silence |
-| Postgres Full-Text | Fast search | pg_tsvector | Add fuzzy fallback (Levenshtein) |
+| Dependency         | Purpose                             | Provider         | Risk Mitigation                              |
+| ------------------ | ----------------------------------- | ---------------- | -------------------------------------------- |
+| GPT-4 API          | AI quiz, story, mnemonic generation | OpenAI           | Cache responses, fallback templates          |
+| TTS API            | Audio pronunciation                 | Google Cloud TTS | Pre-record common words, fallback to silence |
+| Postgres Full-Text | Fast search                         | pg_tsvector      | Add fuzzy fallback (Levenshtein)             |
 
 ### API Integrations
 
@@ -2243,14 +2242,14 @@ By 2027, WatashiWa is the first app learners open when they have *any* question 
 
 ### Risk Matrix
 
-| Risk | Impact | Likelihood | Mitigation |
-|------|--------|------------|------------|
-| **AI quota exceeded (cost overrun)** | High | Medium | - Implement aggressive caching (7-day TTL)<br>- Rate limit: 20 quiz/hour, 5 stories/day<br>- Pre-generate content for popular words |
-| **Search performance degrades with scale** | High | Low | - Index optimization (GIN on tsvector)<br>- Query limit: 20 results max<br>- Monitor 95th percentile latency |
-| **Users confused by tier gating (frustration)** | Medium | Medium | - Clear upgrade prompts with value proposition<br>- 14-day Samurai trial on first AI interaction<br>- Show preview of locked features |
-| **AI generates incorrect/offensive content** | High | Low | - Human QA for first 1000 generations<br>- Profanity filter + content moderation<br>- User report button on AI content |
-| **Feature complexity overwhelms users** | Medium | Medium | - Phased rollout with progressive disclosure<br>- Onboarding tooltip tour<br>- Analytics to track drop-off points |
-| **Knowledge graph becomes stale** | Low | Medium | - Scheduled job: Update graph nightly<br>- Manual refresh button for users<br>- Alert if graph not updated in 7 days |
+| Risk                                            | Impact | Likelihood | Mitigation                                                                                                                            |
+| ----------------------------------------------- | ------ | ---------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| **AI quota exceeded (cost overrun)**            | High   | Medium     | - Implement aggressive caching (7-day TTL)<br>- Rate limit: 20 quiz/hour, 5 stories/day<br>- Pre-generate content for popular words   |
+| **Search performance degrades with scale**      | High   | Low        | - Index optimization (GIN on tsvector)<br>- Query limit: 20 results max<br>- Monitor 95th percentile latency                          |
+| **Users confused by tier gating (frustration)** | Medium | Medium     | - Clear upgrade prompts with value proposition<br>- 14-day Samurai trial on first AI interaction<br>- Show preview of locked features |
+| **AI generates incorrect/offensive content**    | High   | Low        | - Human QA for first 1000 generations<br>- Profanity filter + content moderation<br>- User report button on AI content                |
+| **Feature complexity overwhelms users**         | Medium | Medium     | - Phased rollout with progressive disclosure<br>- Onboarding tooltip tour<br>- Analytics to track drop-off points                     |
+| **Knowledge graph becomes stale**               | Low    | Medium     | - Scheduled job: Update graph nightly<br>- Manual refresh button for users<br>- Alert if graph not updated in 7 days                  |
 
 ### Rollback Plan
 
@@ -2281,14 +2280,14 @@ By 2027, WatashiWa is the first app learners open when they have *any* question 
 
 ### 30-Day Post-Launch KPIs
 
-| Metric | Baseline | Target | Actual | Status |
-|--------|----------|--------|--------|--------|
-| **Feature Engagement** | 0% | 60% DAU | TBD | 🟡 Pending |
-| **Session Duration** | 12 min | +25% (15 min) | TBD | 🟡 Pending |
-| **D7 Retention** | 35% | +5pp (40%) | TBD | 🟡 Pending |
-| **Samurai Conversion** | 20% | +8pp (28%) | TBD | 🟡 Pending |
-| **Words Added via Search** | 0 | 3.5/user/week | TBD | 🟡 Pending |
-| **AI Interaction Rate** | 8% | +20pp (28%) | TBD | 🟡 Pending |
+| Metric                     | Baseline | Target        | Actual | Status     |
+| -------------------------- | -------- | ------------- | ------ | ---------- |
+| **Feature Engagement**     | 0%       | 60% DAU       | TBD    | 🟡 Pending |
+| **Session Duration**       | 12 min   | +25% (15 min) | TBD    | 🟡 Pending |
+| **D7 Retention**           | 35%      | +5pp (40%)    | TBD    | 🟡 Pending |
+| **Samurai Conversion**     | 20%      | +8pp (28%)    | TBD    | 🟡 Pending |
+| **Words Added via Search** | 0        | 3.5/user/week | TBD    | 🟡 Pending |
+| **AI Interaction Rate**    | 8%       | +20pp (28%)   | TBD    | 🟡 Pending |
 
 ### Long-Term North Star (90 Days)
 
@@ -2302,14 +2301,14 @@ By 2027, WatashiWa is the first app learners open when they have *any* question 
 
 ### Test Coverage
 
-| Test Type | Coverage Target | Tools | Owner |
-|-----------|----------------|-------|-------|
-| Unit Tests | 80%+ (utils, services) | Vitest | Dev Team |
-| Integration Tests | Critical flows (search, AI quiz, add to deck) | Vitest + Prisma mock | Dev Team |
-| E2E Tests | 5 key scenarios | Playwright | QA + Dev |
-| Performance Tests | Search latency, AI response time | k6, Lighthouse | DevOps |
-| Accessibility Tests | WCAG AA compliance | axe, Lighthouse | QA |
-| Security Tests | Input sanitization, tier gating | Manual + OWASP ZAP | Security Team |
+| Test Type           | Coverage Target                               | Tools                | Owner         |
+| ------------------- | --------------------------------------------- | -------------------- | ------------- |
+| Unit Tests          | 80%+ (utils, services)                        | Vitest               | Dev Team      |
+| Integration Tests   | Critical flows (search, AI quiz, add to deck) | Vitest + Prisma mock | Dev Team      |
+| E2E Tests           | 5 key scenarios                               | Playwright           | QA + Dev      |
+| Performance Tests   | Search latency, AI response time              | k6, Lighthouse       | DevOps        |
+| Accessibility Tests | WCAG AA compliance                            | axe, Lighthouse      | QA            |
+| Security Tests      | Input sanitization, tier gating               | Manual + OWASP ZAP   | Security Team |
 
 ### E2E Test Scenarios
 
@@ -2335,13 +2334,13 @@ By 2027, WatashiWa is the first app learners open when they have *any* question 
 
 ### Performance Benchmarks
 
-| Metric | Target | Test Scenario |
-|--------|--------|---------------|
-| Search Input Latency | <300ms | Type 1 char, measure debounce + API call |
+| Metric                | Target | Test Scenario                             |
+| --------------------- | ------ | ----------------------------------------- |
+| Search Input Latency  | <300ms | Type 1 char, measure debounce + API call  |
 | Search Results Render | <200ms | Receive API response, measure render time |
-| Detail View Load | <500ms | Click result, measure data fetch + render |
-| AI Quiz Generation | <2s | Click "Test Me", measure GPT API + render |
-| Story Generation | <3s | Click "Create Story", measure GPT + save |
+| Detail View Load      | <500ms | Click result, measure data fetch + render |
+| AI Quiz Generation    | <2s    | Click "Test Me", measure GPT API + render |
+| Story Generation      | <3s    | Click "Create Story", measure GPT + save  |
 
 ---
 
@@ -2373,14 +2372,14 @@ By 2027, WatashiWa is the first app learners open when they have *any* question 
 
 ### Investment Required
 
-| Resource | Effort | Cost |
-|----------|--------|------|
-| **Engineering (2 FTEs)** | 8 weeks (Phase 0-3) | $40k (salary) |
-| **Design (0.5 FTE)** | 2 weeks | $5k |
-| **QA (0.5 FTE)** | 4 weeks | $8k |
-| **OpenAI API (GPT-4)** | Estimated 100k requests/month | $500/month |
-| **Infrastructure (Caching)** | Redis upgrade | $100/month |
-| **Total Phase 0-3** | 8 weeks | **$53k + $600/mo** |
+| Resource                     | Effort                        | Cost               |
+| ---------------------------- | ----------------------------- | ------------------ |
+| **Engineering (2 FTEs)**     | 8 weeks (Phase 0-3)           | $40k (salary)      |
+| **Design (0.5 FTE)**         | 2 weeks                       | $5k                |
+| **QA (0.5 FTE)**             | 4 weeks                       | $8k                |
+| **OpenAI API (GPT-4)**       | Estimated 100k requests/month | $500/month         |
+| **Infrastructure (Caching)** | Redis upgrade                 | $100/month         |
+| **Total Phase 0-3**          | 8 weeks                       | **$53k + $600/mo** |
 
 ### Expected Revenue Impact (12 Months)
 
@@ -2393,11 +2392,11 @@ By 2027, WatashiWa is the first app learners open when they have *any* question 
 
 **Projections:**
 
-| Metric | Without Feature | With Feature | Delta |
-|--------|-----------------|--------------|-------|
-| Samurai Subscribers (Avg) | 1,000 | 1,400 | +400 |
-| MRR | $7,990 | $11,186 | +$3,196 |
-| Annual Revenue | $95,880 | $134,232 | +$38,352 |
+| Metric                    | Without Feature | With Feature | Delta    |
+| ------------------------- | --------------- | ------------ | -------- |
+| Samurai Subscribers (Avg) | 1,000           | 1,400        | +400     |
+| MRR                       | $7,990          | $11,186      | +$3,196  |
+| Annual Revenue            | $95,880         | $134,232     | +$38,352 |
 
 **ROI:**
 
@@ -2516,16 +2515,16 @@ By 2027, WatashiWa is the first app learners open when they have *any* question 
 
 ### A. Glossary
 
-| Term | Definition |
-|------|------------|
-| **CUBE** | Context, Understanding, Blocking, Encoding - WatashiWa's learning methodology |
-| **SRS** | Spaced Repetition System - algorithm for optimal review timing |
-| **Hán Việt** | Vietnamese pronunciation of Chinese characters (helps Vietnamese learners) |
-| **Pitch Accent** | High/low tone pattern in Japanese pronunciation |
-| **Homonym** | Words that sound the same but have different meanings/Kanji |
-| **Leech** | Word that user consistently fails to remember |
-| **Samurai Tier** | Paid subscription ($7.99/mo) with AI features |
-| **Ronin Tier** | Free tier with basic SRS |
+| Term             | Definition                                                                    |
+| ---------------- | ----------------------------------------------------------------------------- |
+| **CUBE**         | Context, Understanding, Blocking, Encoding - WatashiWa's learning methodology |
+| **SRS**          | Spaced Repetition System - algorithm for optimal review timing                |
+| **Hán Việt**     | Vietnamese pronunciation of Chinese characters (helps Vietnamese learners)    |
+| **Pitch Accent** | High/low tone pattern in Japanese pronunciation                               |
+| **Homonym**      | Words that sound the same but have different meanings/Kanji                   |
+| **Leech**        | Word that user consistently fails to remember                                 |
+| **Samurai Tier** | Paid subscription ($7.99/mo) with AI features                                 |
+| **Ronin Tier**   | Free tier with basic SRS                                                      |
 
 ### B. Research References
 
@@ -2551,12 +2550,12 @@ By 2027, WatashiWa is the first app learners open when they have *any* question 
 
 ## ✅ APPROVAL & SIGN-OFF
 
-| Role | Name | Status | Date |
-|------|------|--------|------|
-| **Product Owner** | [Your Name] | ✅ Approved | 2026-01-13 |
-| **Engineering Lead** | TBD | 🟡 Pending Review | - |
-| **Design Lead** | TBD | 🟡 Pending Review | - |
-| **CEO/Founder** | TBD | 🟡 Pending Approval | - |
+| Role                 | Name        | Status              | Date       |
+| -------------------- | ----------- | ------------------- | ---------- |
+| **Product Owner**    | [Your Name] | ✅ Approved         | 2026-01-13 |
+| **Engineering Lead** | TBD         | 🟡 Pending Review   | -          |
+| **Design Lead**      | TBD         | 🟡 Pending Review   | -          |
+| **CEO/Founder**      | TBD         | 🟡 Pending Approval | -          |
 
 ---
 
@@ -2575,16 +2574,16 @@ By 2027, WatashiWa is the first app learners open when they have *any* question 
 
 **To monitor in real-time (Mixpanel/Amplitude dashboard):**
 
-| Category | Metric | Target | Red Flag | Action if Red |
-|----------|--------|--------|----------|---------------|
-| **Adoption** | % DAU who use search | 60% | <40% | Improve placement, add FTUE prompt |
-| **Engagement** | Searches per active user/day | 3.5 | <2.0 | Investigate UX friction, check latency |
-| **Quality** | % searches with click-through | 92% | <80% | Improve search relevance algorithm |
-| **Depth** | % who click related words | 40% | <25% | Make related words more prominent |
-| **Monetization** | AI quiz attempts (Samurai) | 35% | <20% | Improve upgrade prompts, add trial |
-| **Retention** | D7 retention (searchers) | 40% | <33% | Check for frustration points (surveys) |
-| **Performance** | P95 search latency | <500ms | >1s | Scale infrastructure, optimize queries |
-| **Quality** | AI negative ratings | <2% | >5% | Pause AI, review prompts, add QA |
+| Category         | Metric                        | Target | Red Flag | Action if Red                          |
+| ---------------- | ----------------------------- | ------ | -------- | -------------------------------------- |
+| **Adoption**     | % DAU who use search          | 60%    | <40%     | Improve placement, add FTUE prompt     |
+| **Engagement**   | Searches per active user/day  | 3.5    | <2.0     | Investigate UX friction, check latency |
+| **Quality**      | % searches with click-through | 92%    | <80%     | Improve search relevance algorithm     |
+| **Depth**        | % who click related words     | 40%    | <25%     | Make related words more prominent      |
+| **Monetization** | AI quiz attempts (Samurai)    | 35%    | <20%     | Improve upgrade prompts, add trial     |
+| **Retention**    | D7 retention (searchers)      | 40%    | <33%     | Check for frustration points (surveys) |
+| **Performance**  | P95 search latency            | <500ms | >1s      | Scale infrastructure, optimize queries |
+| **Quality**      | AI negative ratings           | <2%    | >5%      | Pause AI, review prompts, add QA       |
 
 ---
 
@@ -2790,24 +2789,24 @@ Transforms WatashiWa from "SRS tool" to "AI learning companion"—a **defensible
 
 ### Key Principles for Execution
 
-1. **User-Centric Iteration**  
+1. **User-Centric Iteration**
    - Launch fast, learn faster
    - Weekly user interviews (N=5) during first 8 weeks
    - Pivot based on data, not opinions
 
-2. **Quality Over Speed**  
+2. **Quality Over Speed**
    - AI quality is non-negotiable—better to launch late with great AI than early with bad AI
    - Test with 100 users before 10K users
 
-3. **Progressive Disclosure**  
+3. **Progressive Disclosure**
    - Don't overwhelm—introduce features gradually
    - Phase 0 = utility, Phase 1 = delight, Phase 2 = mastery
 
-4. **Monetization with Empathy**  
+4. **Monetization with Empathy**
    - Gate features transparently ("AI costs money, Samurai supports us")
    - Always provide value in free tier (build trust first)
 
-5. **Data-Informed, Not Data-Driven**  
+5. **Data-Informed, Not Data-Driven**
    - Use metrics to inform decisions, but trust user stories
    - A user crying "This helped me pass JLPT!" > 100 dashboards
 
@@ -2882,16 +2881,16 @@ Let's ship this and change how people learn Japanese. 🚀
 
 ### Key Metrics Cheat Sheet (Print for Weekly Reviews)
 
-| Metric | Target | Red Flag | Tool |
-|--------|--------|----------|------|
-| Search Adoption (% DAU) | 60% | <40% | Mixpanel |
-| Searches/User/Day | 3.5 | <2.0 | Mixpanel |
-| Add-to-Deck Rate | 45% | <30% | Mixpanel |
-| AI Quiz Attempt Rate | 35% | <20% | Mixpanel |
-| Samurai Conversion Lift | +8pp | <+3pp | Stripe + Mixpanel |
-| D7 Retention (Searchers) | 40% | <33% | Mixpanel |
-| Search Latency (P95) | <500ms | >1s | Datadog |
-| AI Negative Ratings | <2% | >5% | In-app surveys |
+| Metric                   | Target | Red Flag | Tool              |
+| ------------------------ | ------ | -------- | ----------------- |
+| Search Adoption (% DAU)  | 60%    | <40%     | Mixpanel          |
+| Searches/User/Day        | 3.5    | <2.0     | Mixpanel          |
+| Add-to-Deck Rate         | 45%    | <30%     | Mixpanel          |
+| AI Quiz Attempt Rate     | 35%    | <20%     | Mixpanel          |
+| Samurai Conversion Lift  | +8pp   | <+3pp    | Stripe + Mixpanel |
+| D7 Retention (Searchers) | 40%    | <33%     | Mixpanel          |
+| Search Latency (P95)     | <500ms | >1s      | Datadog           |
+| AI Negative Ratings      | <2%    | >5%      | In-app surveys    |
 
 ---
 
@@ -2900,22 +2899,22 @@ Let's ship this and change how people learn Japanese. 🚀
 **vs. Jisho.org:**  
 ✅ We have AI quizzes, they don't  
 ✅ We integrate with SRS, they're standalone  
-✅ We have Hán Việt, they don't  
+✅ We have Hán Việt, they don't
 
 **vs. Anki:**  
 ✅ We have AI mnemonics, they're manual  
 ✅ We have beautiful UX, they're clunky  
-✅ We have instant search, they have deck browser  
+✅ We have instant search, they have deck browser
 
 **vs. Duolingo:**  
 ✅ We have accurate pitch, they're inconsistent  
 ✅ We have Knowledge Graph, they have linear lessons  
-✅ We target serious learners, they target casual (we win high LTV users)  
+✅ We target serious learners, they target casual (we win high LTV users)
 
 **Our Positioning:** "The AI brain for serious Japanese learners"
 
 ---
 
-*This document is a living artifact. Update as we learn from user feedback and data. The best products are built iteratively with users, not for them.* 🚀
+_This document is a living artifact. Update as we learn from user feedback and data. The best products are built iteratively with users, not for them._ 🚀
 
 **Let's make search the feature users can't live without. Ship it.** 🎯

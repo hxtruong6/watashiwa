@@ -112,23 +112,23 @@ The PRD is **High Quality**. It contains:
 
 ### Coverage Matrix
 
-| FR Type | FR Number | PRD Requirement | Epic Coverage | Status |
-| :--- | :--- | :--- | :--- | :--- |
-| **Core** | FR10 | Visualize vocabulary as semantic networks | Epic 3 | ✓ Covered |
-| **Core** | FR14 | Highlight semantic connections | Epic 3 | ✓ Covered |
-| **Core** | FR19 | Detect confusion patterns | Epic 4 | ✓ Covered |
-| **Core** | FR21 | Multi-modal feedback (Visual + Haptic) | Epic 4 | ✓ Covered |
-| **Core** | FR27 | Vietnamese interface | Epic 5 | ✓ Covered |
-| **Core** | FR35 | Seamless study session flow | Epic 2 | ✓ Covered |
-| **Specific** | FR59 | Related Words Sidebar (Desktop) | Epic 7 | ✓ Covered |
-| **Specific** | FR60 | Related Words Bottom Sheet (Mobile) | Epic 7 | ✓ Covered |
-| **Specific** | FR61 | Subtle Action Bar (Mobile) | Epic 7 | ✓ Covered |
-| **Specific** | FR62 | Collapsible Example Section | Epic 7 | ✓ Covered |
-| **Specific** | FR63 | Settings Persistence | Epic 7 | ✓ Covered |
-| **Specific** | FR64 | FlashCard Responsive Sizing | Epic 7 | ✓ Covered |
-| **Specific** | FR65 | Polished Rating Bar | Epic 7 | ✓ Covered |
-| **Specific** | FR66 | Keyboard Shortcuts | Epic 7 | ✓ Covered |
-| **Specific** | FR67 | Haptic Feedback | Epic 7 | ✓ Covered |
+| FR Type      | FR Number | PRD Requirement                           | Epic Coverage | Status    |
+| :----------- | :-------- | :---------------------------------------- | :------------ | :-------- |
+| **Core**     | FR10      | Visualize vocabulary as semantic networks | Epic 3        | ✓ Covered |
+| **Core**     | FR14      | Highlight semantic connections            | Epic 3        | ✓ Covered |
+| **Core**     | FR19      | Detect confusion patterns                 | Epic 4        | ✓ Covered |
+| **Core**     | FR21      | Multi-modal feedback (Visual + Haptic)    | Epic 4        | ✓ Covered |
+| **Core**     | FR27      | Vietnamese interface                      | Epic 5        | ✓ Covered |
+| **Core**     | FR35      | Seamless study session flow               | Epic 2        | ✓ Covered |
+| **Specific** | FR59      | Related Words Sidebar (Desktop)           | Epic 7        | ✓ Covered |
+| **Specific** | FR60      | Related Words Bottom Sheet (Mobile)       | Epic 7        | ✓ Covered |
+| **Specific** | FR61      | Subtle Action Bar (Mobile)                | Epic 7        | ✓ Covered |
+| **Specific** | FR62      | Collapsible Example Section               | Epic 7        | ✓ Covered |
+| **Specific** | FR63      | Settings Persistence                      | Epic 7        | ✓ Covered |
+| **Specific** | FR64      | FlashCard Responsive Sizing               | Epic 7        | ✓ Covered |
+| **Specific** | FR65      | Polished Rating Bar                       | Epic 7        | ✓ Covered |
+| **Specific** | FR66      | Keyboard Shortcuts                        | Epic 7        | ✓ Covered |
+| **Specific** | FR67      | Haptic Feedback                           | Epic 7        | ✓ Covered |
 
 ### Missing Requirements
 
@@ -161,33 +161,33 @@ The PRD is **High Quality**. It contains:
 ### Warnings
 
 - **Minor Technical Risk**: The UX Spec suggests using JS-based responsiveness (`screens.md ? 800 : 600`) in inline styles.
-  - *Risk*: Potential Hydration Mismatch if server renders mobile defaults and client renders desktop.
-  - *Recommendation*: Use CSS Modules or Ant Design's `Col/Row` grid system where possible, or ensure these components are Client Components with proper `useEffect` or `useMount` handling to prevent flicker.
+  - _Risk_: Potential Hydration Mismatch if server renders mobile defaults and client renders desktop.
+  - _Recommendation_: Use CSS Modules or Ant Design's `Col/Row` grid system where possible, or ensure these components are Client Components with proper `useEffect` or `useMount` handling to prevent flicker.
 
 ### Warnings
 
 - **Minor Technical Risk**: The UX Spec suggests using JS-based responsiveness (`screens.md ? 800 : 600`) in inline styles.
-  - *Risk*: Potential Hydration Mismatch if server renders mobile defaults and client renders desktop.
-  - *Recommendation*: Use CSS Modules or Ant Design's `Col/Row` grid system where possible, or ensure these components are Client Components with proper `useEffect` or `useMount` handling to prevent flicker.
+  - _Risk_: Potential Hydration Mismatch if server renders mobile defaults and client renders desktop.
+  - _Recommendation_: Use CSS Modules or Ant Design's `Col/Row` grid system where possible, or ensure these components are Client Components with proper `useEffect` or `useMount` handling to prevent flicker.
 
 ## Epic Quality Review
 
 ### Best Practices Compliance
 
-| Epic | User Value | Independence | Sizing | Status |
-| :--- | :--- | :--- | :--- | :--- |
+| Epic       | User Value                                 | Independence                                      | Sizing                                       | Status  |
+| :--------- | :----------------------------------------- | :------------------------------------------------ | :------------------------------------------- | :------ |
 | **Epic 7** | **High** (Directly improves learning flow) | **Valid** (Depends on Epic 2/3, not future epics) | **Good** (Broken down by layout/interaction) | ✅ Pass |
 
 ### Findings
 
 1. **User Value Focus**: Epic 7 is strongly user-centric, addressing specific pain points (layout shift, mobile usability). Not a "technical" epic.
 2. **Story Structure**:
-    - Story 7.1 establishes the responsive grid foundation.
-    - Stories 7.2 and 7.3 build on this for desktop and mobile respectively.
-    - Story sequence is logical (Foundation -> Specific Implementations).
+   - Story 7.1 establishes the responsive grid foundation.
+   - Stories 7.2 and 7.3 build on this for desktop and mobile respectively.
+   - Story sequence is logical (Foundation -> Specific Implementations).
 3. **Dependencies**:
-    - Backward dependencies on Epic 2 (Study Session) and Epic 3 (Knowledge Graph data) are noted and valid for a Phase 3/4 enhancement.
-    - No critical forward dependencies identified.
+   - Backward dependencies on Epic 2 (Study Session) and Epic 3 (Knowledge Graph data) are noted and valid for a Phase 3/4 enhancement.
+   - No critical forward dependencies identified.
 
 ### Quality Status
 

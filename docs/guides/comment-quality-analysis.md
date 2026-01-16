@@ -107,7 +107,7 @@
 // Determine if dark theme based on background color
 // Dark theme has darker backgrounds, so we check if colorBgContainer is dark
 const isDarkTheme =
-  token.colorBgContainer?.includes('15') || token.colorBgContainer?.includes('0B');
+	token.colorBgContainer?.includes('15') || token.colorBgContainer?.includes('0B');
 ```
 
 **Why Keep:**
@@ -233,7 +233,7 @@ message.error(errorMessage);
 ```typescript
 // Prevent multiple simultaneous submissions
 if (loading) {
-  return;
+	return;
 }
 ```
 

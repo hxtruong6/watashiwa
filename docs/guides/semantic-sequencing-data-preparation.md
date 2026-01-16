@@ -59,29 +59,29 @@ Your current Prisma schema is **perfectly designed** for semantic sequencing:
 
 ```json
 {
-  "parts": [
-    {
-      "kanji": "大",
-      "han_viet": "ĐẠI",
-      "meaning": {
-        "vi": "Lớn, to lớn",
-        "en": "Big, large"
-      },
-      "stroke_count": 3
-    },
-    {
-      "kanji": "学",
-      "han_viet": "HỌC",
-      "meaning": {
-        "vi": "Học tập",
-        "en": "Study, learning"
-      }
-    }
-  ],
-  "note": {
-    "vi": "大学 (Đại học) = Nơi học tập lớn",
-    "en": "University = Large place of learning"
-  }
+	"parts": [
+		{
+			"kanji": "大",
+			"han_viet": "ĐẠI",
+			"meaning": {
+				"vi": "Lớn, to lớn",
+				"en": "Big, large"
+			},
+			"stroke_count": 3
+		},
+		{
+			"kanji": "学",
+			"han_viet": "HỌC",
+			"meaning": {
+				"vi": "Học tập",
+				"en": "Study, learning"
+			}
+		}
+	],
+	"note": {
+		"vi": "大学 (Đại học) = Nơi học tập lớn",
+		"en": "University = Large place of learning"
+	}
 }
 ```
 
@@ -120,23 +120,23 @@ Your current Prisma schema is **perfectly designed** for semantic sequencing:
 
 ```json
 {
-  "vocabId1": "貸す",
-  "vocabId2": "借りる",
-  "type": "ANTONYM",
-  "explanation": {
-    "mnemonic": {
-      "vi": "Kasu (Cho mượn) vs Kariru (Mượn).",
-      "en": "Kasu (Lend) vs Kariru (Borrow)."
-    },
-    "item1_nuance": {
-      "vi": "Chủ ngữ là người sở hữu vật (Cho đi).",
-      "en": "Lend (Give)."
-    },
-    "item2_nuance": {
-      "vi": "Chủ ngữ là người cần vật (Nhận về).",
-      "en": "Borrow (Receive)."
-    }
-  }
+	"vocabId1": "貸す",
+	"vocabId2": "借りる",
+	"type": "ANTONYM",
+	"explanation": {
+		"mnemonic": {
+			"vi": "Kasu (Cho mượn) vs Kariru (Mượn).",
+			"en": "Kasu (Lend) vs Kariru (Borrow)."
+		},
+		"item1_nuance": {
+			"vi": "Chủ ngữ là người sở hữu vật (Cho đi).",
+			"en": "Lend (Give)."
+		},
+		"item2_nuance": {
+			"vi": "Chủ ngữ là người cần vật (Nhận về).",
+			"en": "Borrow (Receive)."
+		}
+	}
 }
 ```
 
