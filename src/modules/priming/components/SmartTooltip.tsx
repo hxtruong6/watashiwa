@@ -54,6 +54,8 @@ function SmartTooltipComponent({
 	const [isVisible, setIsVisible] = useState(false);
 	const [isPlayingAudio, setIsPlayingAudio] = useState(false);
 	const audioRef = useRef<HTMLAudioElement | null>(null);
+	const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+	const isMouseOverTooltipRef = useRef(false);
 
 	// Cleanup audio on unmount or vocab change
 	useEffect(() => {
@@ -105,7 +107,19 @@ function SmartTooltipComponent({
 
 	// Calculate position when vocab/anchor changes
 	useLayoutEffect(() => {
-		if (!vocab || !anchorElement || !tooltipRef.current) return;
+		if (!vocab || !anchorElement) {
+			// Use startTransition to avoid cascading renders
+			startTransition(() => {
+				setIsVisible(false);
+			});
+			return;
+		}
+
+		// Clear any pending close timeout
+		if (closeTimeoutRef.current) {
+			clearTimeout(closeTimeoutRef.current);
+			closeTimeoutRef.current = null;
+		}
 
 		const tooltipWidth = 320;
 		const tooltipHeight = 260;
@@ -133,24 +147,58 @@ function SmartTooltipComponent({
 		// If no audioUrl, skip auto-play (don't use speech synthesis as fallback)
 	}, [vocab, isVisible, autoPlayAudio, handleAudioClick]);
 
-	// Close on outside click
+	// Handle mouse enter on tooltip - keep it open
+	const handleTooltipMouseEnter = useCallback(() => {
+		isMouseOverTooltipRef.current = true;
+		// Clear any pending close timeout
+		if (closeTimeoutRef.current) {
+			clearTimeout(closeTimeoutRef.current);
+			closeTimeoutRef.current = null;
+		}
+	}, []);
+
+	// Handle mouse leave on tooltip - close after delay
+	const handleTooltipMouseLeave = useCallback(() => {
+		isMouseOverTooltipRef.current = false;
+		// Close after a short delay to allow mouse to return
+		closeTimeoutRef.current = setTimeout(() => {
+			if (!isMouseOverTooltipRef.current) {
+				onClose();
+			}
+		}, 100);
+	}, [onClose]);
+
+	// Close on outside click (use click instead of mousedown for better UX)
 	useEffect(() => {
 		if (!vocab) return;
 
 		const handleClickOutside = (e: MouseEvent) => {
 			const target = e.target as HTMLElement;
+			// Only close if click is truly outside both anchor and tooltip
+			// and mouse is not over tooltip
 			if (
 				tooltipRef.current &&
 				!tooltipRef.current.contains(target) &&
-				!anchorElement?.contains(target)
+				!anchorElement?.contains(target) &&
+				!isMouseOverTooltipRef.current
 			) {
 				onClose();
 			}
 		};
 
-		document.addEventListener('mousedown', handleClickOutside);
-		return () => document.removeEventListener('mousedown', handleClickOutside);
+		// Use click instead of mousedown to avoid closing when moving mouse
+		document.addEventListener('click', handleClickOutside, true);
+		return () => document.removeEventListener('click', handleClickOutside, true);
 	}, [vocab, anchorElement, onClose]);
+
+	// Cleanup timeout on unmount
+	useEffect(() => {
+		return () => {
+			if (closeTimeoutRef.current) {
+				clearTimeout(closeTimeoutRef.current);
+			}
+		};
+	}, []);
 
 	// Close on ESC key
 	useEffect(() => {
@@ -175,6 +223,8 @@ function SmartTooltipComponent({
 			role="dialog"
 			aria-label="Word details"
 			aria-modal="false"
+			onMouseEnter={handleTooltipMouseEnter}
+			onMouseLeave={handleTooltipMouseLeave}
 			style={{
 				position: 'fixed',
 				left: `${position.x}px`,

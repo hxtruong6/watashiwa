@@ -8,7 +8,7 @@
 import { executeSafeAction } from '@/modules/core/action-client';
 import { z } from 'zod';
 
-import { getTopVocabCache } from './data';
+import { getTopVocabCache, getVocabByWordSurface } from './data';
 
 const GetVocabCacheSchema = z.object({
 	limit: z.number().int().min(1).max(2000).optional().default(1000),
@@ -44,5 +44,25 @@ export async function getVocabCacheArrayAction(input: unknown) {
 			return vocabs;
 		},
 		{ requireAuth: false },
+	);
+}
+
+const GetVocabByWordSurfaceSchema = z.object({
+	wordSurface: z.string().min(1),
+});
+
+/**
+ * Get vocabulary by wordSurface (on-demand fetch)
+ * Used when word is not in cache and user hovers/clicks on kanji
+ */
+export async function getVocabByWordSurfaceAction(input: unknown) {
+	return executeSafeAction(
+		GetVocabByWordSurfaceSchema,
+		input,
+		async (data) => {
+			const vocab = await getVocabByWordSurface(data.wordSurface);
+			return vocab;
+		},
+		{ requireAuth: false }, // Public endpoint
 	);
 }

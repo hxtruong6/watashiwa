@@ -7,7 +7,7 @@
 
 'use client';
 
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { startTransition, useCallback, useEffect, useRef, useState } from 'react';
 
 import { VocabMeta } from '../types';
 import { prefersReducedMotion } from '../utils/animationHelpers';
@@ -16,7 +16,7 @@ interface WordPillProps {
 	vocab: VocabMeta;
 	isCollected: boolean;
 	onClick: (event: React.MouseEvent, vocabularyId: string) => void;
-	onOpenTooltip: (vocab: VocabMeta, anchorElement: HTMLElement) => void;
+	onOpenTooltip?: (vocab: VocabMeta) => void;
 }
 
 function WordPillComponent({ vocab, isCollected, onClick, onOpenTooltip }: WordPillProps) {
@@ -36,8 +36,8 @@ function WordPillComponent({ vocab, isCollected, onClick, onOpenTooltip }: WordP
 			// Trigger click callback
 			onClick(e, vocab.vocabularyId);
 
-			// Open tooltip
-			onOpenTooltip(vocab, pillRef.current);
+			// Open tooltip (if handler provided)
+			onOpenTooltip?.(vocab);
 		},
 		[vocab, onClick, onOpenTooltip],
 	);
@@ -69,7 +69,7 @@ function WordPillComponent({ vocab, isCollected, onClick, onOpenTooltip }: WordP
 					const syntheticEvent = {
 						currentTarget: pillRef.current,
 						stopPropagation: () => {},
-					} as React.MouseEvent;
+					} as unknown as React.MouseEvent;
 					handleClick(syntheticEvent);
 				}
 			}
@@ -89,11 +89,15 @@ function WordPillComponent({ vocab, isCollected, onClick, onOpenTooltip }: WordP
 	useEffect(() => {
 		if (!isCollected && !shimmerTriggeredRef.current && pillRef.current) {
 			shimmerTriggeredRef.current = true;
-			setHasShimmer(true);
+			startTransition(() => {
+				setHasShimmer(true);
+			});
 
 			// Remove shimmer class after animation completes (800ms)
 			const timer = setTimeout(() => {
-				setHasShimmer(false);
+				startTransition(() => {
+					setHasShimmer(false);
+				});
 			}, 800);
 
 			return () => clearTimeout(timer);

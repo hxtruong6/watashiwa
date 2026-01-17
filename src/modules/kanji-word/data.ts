@@ -40,3 +40,40 @@ export async function getTopVocabCache(limit = 1000): Promise<Vocabulary[]> {
 		},
 	});
 }
+
+/**
+ * Get vocabulary by wordSurface
+ * Used for on-demand fetching when word is not in cache
+ */
+export async function getVocabByWordSurface(wordSurface: string): Promise<Vocabulary | null> {
+	if (!wordSurface || wordSurface.trim().length === 0) {
+		return null;
+	}
+
+	const vocab = await prisma.vocabulary.findFirst({
+		where: {
+			wordSurface: wordSurface.trim(),
+			contentStatus: 'PUBLISHED',
+		},
+		select: {
+			id: true,
+			wordSurface: true,
+			wordReading: true,
+			wordRomaji: true,
+			hanViet: true,
+			meanings: true,
+			audioUrl: true,
+			tags: true,
+			etymology: true,
+			examples: true,
+			mnemonic: true,
+			furiganaMapping: true,
+			contentStatus: true,
+			deckId: true,
+			createdAt: true,
+			updatedAt: true,
+		},
+	});
+
+	return vocab;
+}

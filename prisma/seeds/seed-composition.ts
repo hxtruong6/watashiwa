@@ -10,8 +10,8 @@
  *   - Kanji table must be seeded first
  *   - Vocabulary table must have words with kanji
  */
+import { matchKanjiReadings } from '../../scripts/utils/reading-matcher';
 import { prisma } from '../../src/lib/db';
-import { matchKanjiReadings } from '../../src/lib/utils/reading-matcher';
 
 /**
  * Extract kanji characters from a word
@@ -30,7 +30,7 @@ async function seedComposition() {
 		const words = await prisma.vocabulary.findMany({
 			where: {
 				wordSurface: {
-					not: null,
+					not: undefined,
 				},
 			},
 			select: {

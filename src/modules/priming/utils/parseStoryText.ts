@@ -69,7 +69,66 @@ export function parseStoryText(
 		}
 
 		// Each word may appear multiple times (multiple positions)
+		// Pre-validate positions to ensure the word actually exists at that position
 		for (const pos of positions) {
+			// Validate position is within text bounds
+			if (pos < 0 || pos >= text.length) {
+				console.warn(
+					`Invalid position ${pos} for vocab "${vocab.wordSurface}" in locale "${locale}" (text length: ${text.length})`,
+				);
+				continue;
+			}
+
+			// Validate the word exists at this position (pre-check before adding marker)
+			const expectedEnd = pos + vocab.wordLength;
+			if (expectedEnd > text.length) {
+				console.warn(
+					`Position ${pos} + length ${vocab.wordLength} exceeds text length for vocab "${vocab.wordSurface}" in locale "${locale}"`,
+				);
+				continue;
+			}
+
+			const actualContent = text.slice(pos, expectedEnd);
+
+			// If the word doesn't match at this position, try to find it nearby
+			if (actualContent !== vocab.wordSurface) {
+				// Try to find the word near the expected position (within 50 characters)
+				const searchWindow = 50;
+				const searchStart = Math.max(0, pos - searchWindow);
+				const searchEnd = Math.min(text.length, expectedEnd + searchWindow);
+				const searchText = text.slice(searchStart, searchEnd);
+				const foundIndex = searchText.indexOf(vocab.wordSurface);
+
+				if (foundIndex !== -1) {
+					// Found the word nearby - use the corrected position
+					const correctedPosition = searchStart + foundIndex;
+					const correctedContent = text.slice(
+						correctedPosition,
+						correctedPosition + vocab.wordLength,
+					);
+
+					if (correctedContent === vocab.wordSurface) {
+						console.warn(
+							`Position corrected for "${vocab.wordSurface}" in locale "${locale}": ${pos} → ${correctedPosition}`,
+						);
+						// Use corrected position
+						markers.push({
+							position: correctedPosition,
+							length: vocab.wordLength,
+							vocab,
+						});
+						continue;
+					}
+				}
+
+				// Word not found at position or nearby - skip this occurrence
+				console.warn(
+					`Skipping invalid position ${pos} for vocab "${vocab.wordSurface}" in locale "${locale}" - word not found in text`,
+				);
+				continue;
+			}
+
+			// Position is valid - add marker
 			markers.push({
 				position: pos,
 				length: vocab.wordLength,
@@ -129,8 +188,10 @@ export function parseStoryText(
 		const vocabContent = text.slice(position, position + length);
 
 		// Validate the sliced content matches expected word surface
+		// This is a safety net - positions should already be validated in step 1
 		if (vocabContent !== vocab.wordSurface) {
-			console.error('Position mismatch detected!', {
+			// This should rarely happen since we pre-validate, but keep as safety net
+			console.warn('Position mismatch in segment building (should be pre-validated)!', {
 				expected: vocab.wordSurface,
 				actual: vocabContent,
 				position,
@@ -138,7 +199,10 @@ export function parseStoryText(
 				textSnippet: text.slice(Math.max(0, position - 10), position + length + 10),
 				locale,
 			});
-			// Don't throw - log and use actual content to prevent UI breaking
+
+			// Skip this occurrence to prevent UI breaking
+			// Don't advance lastIndex - treat this as if the word wasn't there
+			continue;
 		}
 
 		segments.push({
@@ -241,6 +305,60 @@ export function validateStoryPositions(
 		valid: errors.length === 0,
 		errors,
 	};
+}
+
+/**
+ * Recalculate positions for a vocabulary word in text
+ * Used to fix position mismatches by finding actual positions in the text
+ *
+ * @param text - The text to search in
+ * @param wordSurface - The Japanese word to find
+ * @returns Array of positions where the word appears
+ */
+export function recalculateWordPositions(text: string, wordSurface: string): number[] {
+	return findWordPositions(text, wordSurface);
+}
+
+/**
+ * Fix position mismatches by recalculating positions from actual text
+ * This is a utility function to repair corrupted position data
+ *
+ * @param storyContent - The story content with body_text
+ * @param vocabularies - Array of vocabularies with potentially incorrect positions
+ * @returns Array of vocabularies with corrected positions
+ */
+export function fixStoryPositions(
+	storyContent: { body_text: { en: string; vi: string; ja: string } },
+	vocabularies: VocabularyWithPositions[],
+): VocabularyWithPositions[] {
+	const fixed: VocabularyWithPositions[] = [];
+
+	for (const vocab of vocabularies) {
+		const fixedPositions: StoryPositions = {
+			en: recalculateWordPositions(storyContent.body_text.en, vocab.wordSurface),
+			vi: recalculateWordPositions(storyContent.body_text.vi, vocab.wordSurface),
+			ja: recalculateWordPositions(storyContent.body_text.ja, vocab.wordSurface),
+		};
+
+		// Validate that we found the word in at least one language
+		const totalPositions =
+			fixedPositions.en.length + fixedPositions.vi.length + fixedPositions.ja.length;
+
+		if (totalPositions === 0) {
+			console.warn(
+				`Word "${vocab.wordSurface}" not found in any language version of the story text`,
+			);
+			// Keep original positions even if they're wrong (better than losing the word entirely)
+			fixed.push(vocab);
+		} else {
+			fixed.push({
+				...vocab,
+				positions: fixedPositions,
+			});
+		}
+	}
+
+	return fixed;
 }
 
 /**

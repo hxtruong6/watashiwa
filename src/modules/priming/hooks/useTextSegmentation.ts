@@ -8,13 +8,19 @@ import { useMemo } from 'react';
 
 import { StoryWithVocabularies } from '../types';
 import { parseStoryText } from '../utils/parseStoryText';
+import { createVocabTranslationMapping, parseTranslationText } from '../utils/parseTranslationText';
 
 interface UseTextSegmentationProps {
 	story: StoryWithVocabularies;
 	locale: 'en' | 'vi' | 'ja';
+	userLanguage?: 'en' | 'vi'; // User's global language preference (for translation fallback when story is 'ja')
 }
 
-export function useTextSegmentation({ story, locale }: UseTextSegmentationProps) {
+export function useTextSegmentation({
+	story,
+	locale,
+	userLanguage = 'en',
+}: UseTextSegmentationProps) {
 	// Parse story text into segments (memoized)
 	const segments = useMemo(() => {
 		const bodyText = story.content.body_text[locale];
@@ -23,10 +29,31 @@ export function useTextSegmentation({ story, locale }: UseTextSegmentationProps)
 		return parseStoryText(bodyText, vocabularies, locale);
 	}, [story, locale]);
 
-	// Get full translation (safety net)
-	const translation = useMemo(() => {
-		return story.content.translation[locale === 'ja' ? 'en' : locale];
-	}, [story, locale]);
+	// Get full translation text
+	// Translation follows story language selection (en or vi)
+	// For Japanese story, fallback to user language or default 'en'
+	const translationText = useMemo(() => {
+		if (locale === 'ja') {
+			// For Japanese story, use user language or default to 'en'
+			return story.content.translation[userLanguage] || story.content.translation.en;
+		}
+		// For 'en' or 'vi' story, use the same language for translation
+		return story.content.translation[locale];
+	}, [story, locale, userLanguage]);
+
+	// Parse translation text into segments with vocabulary highlighting
+	const translationSegments = useMemo(() => {
+		if (!translationText) return [];
+		// Translation locale follows story language (en or vi)
+		// For Japanese story, use user language or default 'en'
+		const translationLocale = locale === 'ja' ? userLanguage : locale;
+		return parseTranslationText(translationText, story.vocabularies, translationLocale);
+	}, [translationText, story.vocabularies, locale, userLanguage]);
+
+	// Create bidirectional mapping between story and translation segments
+	const vocabMapping = useMemo(() => {
+		return createVocabTranslationMapping(segments, translationSegments);
+	}, [segments, translationSegments]);
 
 	// Get story metadata
 	const metadata = useMemo(
@@ -42,7 +69,9 @@ export function useTextSegmentation({ story, locale }: UseTextSegmentationProps)
 
 	return {
 		segments,
-		translation,
+		translation: translationText,
+		translationSegments,
+		vocabMapping,
 		metadata,
 	};
 }

@@ -272,12 +272,17 @@ You MUST output valid JSON matching this exact structure:
 {
   "title": {
     "en": "Story Title in English (Engaging, 3-5 words)",
-    "vi": "Tiêu đề câu chuyện bằng tiếng Việt"
+    "vi": "Tiêu đề câu chuyện bằng tiếng Việt",
+    "ja": "日本語のタイトル"
   },
-  "body_text": "The complete story text here in ENGLISH with Japanese words mixed in. This must be 100-150 words. Japanese vocabulary words should appear naturally within the English text. DO NOT use placeholders. Write the complete, final text in English.",
-  "translation": {
+  "body_text": {
     "en": "The complete story text here in ENGLISH with Japanese words mixed in. This must be 100-150 words. Japanese vocabulary words should appear naturally within the English text. DO NOT use placeholders. Write the complete, final text in English.",
-    "vi": "Văn bản câu chuyện hoàn chỉnh bằng TIẾNG VIỆT với từ tiếng Nhật được trộn vào. Phải có 100-150 từ. Từ vựng tiếng Nhật nên xuất hiện tự nhiên trong văn bản tiếng Việt. KHÔNG sử dụng placeholder. Viết văn bản hoàn chỉnh, cuối cùng bằng tiếng Việt."
+    "vi": "Câu chuyện hoàn chỉnh bằng TIẾNG VIỆT với từ tiếng Nhật được trộn vào. Phải có 100-150 từ. Từ vựng tiếng Nhật nên xuất hiện tự nhiên trong văn bản tiếng Việt. KHÔNG sử dụng placeholder. Viết văn bản hoàn chỉnh, cuối cùng bằng tiếng Việt.",
+    "ja": "完全な日本語のストーリー。100-150語。自然な日本語で書いてください。"
+  },
+  "translation": {
+    "en": "The complete story text here in ENGLISH with ALL Japanese words replaced with English translations. This must be 100-150 words. DO NOT include any Japanese words in the translation - replace them all with English equivalents.",
+    "vi": "Văn bản câu chuyện hoàn chỉnh bằng TIẾNG VIỆT với TẤT CẢ từ tiếng Nhật được thay bằng tiếng Việt. Phải có 100-150 từ. KHÔNG bao gồm bất kỳ từ tiếng Nhật nào trong bản dịch - thay thế tất cả bằng từ tiếng Việt tương đương."
   },
   "highlights": [
     {
@@ -291,53 +296,57 @@ You MUST output valid JSON matching this exact structure:
 \`\`\`
 
 **Language Requirements:**
-- **Title:** Must have BOTH \`en\` (English) and \`vi\` (Vietnamese) ✅
-- **Body Text:** Must be in ENGLISH with Japanese words ✅
-- **Translation:** Must have BOTH \`en\` (English - same as body_text) and \`vi\` (Vietnamese translation) ✅
+- **Title:** Must have \`en\` (English), \`vi\` (Vietnamese), and \`ja\` (Japanese) ✅
+- **Body Text:** Must be an object with \`en\`, \`vi\`, and \`ja\` keys. Each version should have Japanese vocabulary words mixed in naturally. ✅
+- **Translation:** Must have BOTH \`en\` (English - ALL Japanese words replaced) and \`vi\` (Vietnamese - ALL Japanese words replaced) ✅
 
 **Translation Guidelines:**
-- Vietnamese translation must be 100-150 words (same length as English)
-- All Japanese vocabulary words must appear in the Vietnamese text
+- Translation must be 100-150 words (same length as body_text)
+- **CRITICAL:** Translation should have ALL Japanese words REPLACED with their English/Vietnamese equivalents
+- Do NOT include any Japanese words in the translation
 - Maintain the same narrative structure and flow
 - Keep the same emotional tone and cultural context
-- Japanese words should appear naturally in Vietnamese grammar structure
-- The \`en\` field in translation should be identical to \`body_text\`
+- The translation helps users understand the full meaning without Japanese words
 
 ## HIGHLIGHT GENERATION (CRITICAL TECHNICAL REQUIREMENT)
 
 **For EACH vocabulary word, you must:**
 
-1. **Find the exact position** where the word appears in \`body_text\`
-2. **Calculate \`position\`:** Character position (0-based) where the word starts
+1. **Find the exact position** where the word appears in \`body_text.en\`, \`body_text.vi\`, and \`body_text.ja\`
+2. **Calculate \`position\`:** Character position (0-based) where the word starts in EACH language version
 3. **Calculate \`length\`:** Exact number of characters in the Japanese word
 4. **Match \`word_surface\`:** Must exactly match the text in \`body_text\` at that position
 
 **Example Calculation:**
 
-If \`body_text\` is: "I went to the スーパー to buy りんご."
+If \`body_text.en\` is: "I went to the スーパー to buy りんご."
+If \`body_text.vi\` is: "Tôi đã đến スーパー để mua りんご."
+If \`body_text.ja\` is: "私はスーパーへりんごを買いに行きました。"
 
-- "スーパー" appears at position 14 (after "I went to the ")
-  - \`start_index\`: 14
-  - \`length\`: 4 (スーパー = 4 characters)
-  - \`word_surface\`: "スーパー"
+For "スーパー":
+- In \`body_text.en\`: position 14, length 4
+- In \`body_text.vi\`: position 12, length 4  
+- In \`body_text.ja\`: position 2, length 4
 
-- "りんご" appears at position 28 (after "I went to the スーパー to buy ")
-  - \`start_index\`: 28
-  - \`length\`: 3 (りんご = 3 characters)
-  - \`word_surface\`: "りんご"
+For "りんご":
+- In \`body_text.en\`: position 28, length 3
+- In \`body_text.vi\`: position 25, length 3
+- In \`body_text.ja\`: position 7, length 3
 
 **CRITICAL RULES:**
 - \`start_index\` is 0-based (first character = 0, not 1)
 - \`length\` must match the exact character count of the Japanese word
-- \`word_surface\` must exactly match the text in \`body_text\`
+- \`word_surface\` must exactly match the text in \`body_text.en\`, \`body_text.vi\`, and \`body_text.ja\`
 - Each highlight must be a SINGLE vocabulary word (not phrases)
-- If a word appears multiple times, create multiple highlights
+- If a word appears multiple times, create multiple highlights with different \`start_index\` values
+- You must calculate positions for ALL THREE languages (en, vi, ja)
 
 **VERIFICATION CHECKLIST:**
 - [ ] Every vocabulary word has exactly one highlight (or multiple if word appears multiple times)
-- [ ] \`start_index\` + \`length\` extracts the correct word from \`body_text\`
-- [ ] \`word_surface\` exactly matches the extracted text
+- [ ] \`start_index\` + \`length\` extracts the correct word from \`body_text.en\`, \`body_text.vi\`, and \`body_text.ja\`
+- [ ] \`word_surface\` exactly matches the extracted text in all three language versions
 - [ ] No highlights for phrases (only single words)
+- [ ] All three language versions of body_text are provided
 
 ## QUALITY CHECKLIST
 

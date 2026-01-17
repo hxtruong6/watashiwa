@@ -1,110 +1,47 @@
 /**
- * KanjiWordTooltip Component
+ * KanjiWordPopoverContent Component
  *
- * Popup tooltip showing vocabulary details on hover/tap
+ * Content component for KanjiWord popover/tooltip
+ * Displays vocabulary details with audio playback
  */
+
 'use client';
 
 import { PlayCircleFilled, RightOutlined } from '@ant-design/icons';
-import { Button, Space, Typography, theme } from 'antd';
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
+import type { Vocabulary } from '@prisma/client';
+import { Button, Space, Spin, Typography, theme } from 'antd';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { TOOLTIP_CONFIG } from '../constants';
-import type { KanjiWordTooltipProps } from '../types';
 import { parseVocabularyMeanings } from '../utils/meaningParser';
-import {
-	calculateTooltipPosition,
-	createAnimationPortal,
-	prefersReducedMotion,
-} from '../utils/tooltipHelpers';
-
-const { useToken } = theme;
 
 const { Text, Title } = Typography;
+const { useToken } = theme;
 
-export function KanjiWordTooltip({
+interface KanjiWordPopoverContentProps {
+	vocab: Vocabulary | null;
+	isLoading?: boolean;
+	onSeeMore?: (vocabId: string) => void;
+}
+
+export function KanjiWordPopoverContent({
 	vocab,
-	anchorElement,
-	onClose,
+	isLoading = false,
 	onSeeMore,
-}: KanjiWordTooltipProps) {
-	const tooltipRef = useRef<HTMLDivElement>(null);
+}: KanjiWordPopoverContentProps) {
 	const { token } = useToken();
-	const [position, setPosition] = useState<{
-		x: number;
-		y: number;
-		placement: 'top' | 'bottom' | 'left' | 'right';
-	}>({
-		x: 0,
-		y: 0,
-		placement: 'top',
-	});
 	const [isPlayingAudio, setIsPlayingAudio] = useState(false);
 	const audioRef = useRef<HTMLAudioElement | null>(null);
-
-	// Derive visibility from props (no state needed)
-	const isVisible = Boolean(vocab && anchorElement);
 
 	// Cleanup audio on unmount
 	useEffect(() => {
 		return () => {
 			if (audioRef.current) {
 				audioRef.current.pause();
+				audioRef.current.currentTime = 0;
 				audioRef.current = null;
 			}
 		};
 	}, []);
-
-	// Calculate position when vocab/anchor changes
-	// Use useLayoutEffect for synchronous DOM measurements (tooltip positioning)
-	// Note: setState in useLayoutEffect is necessary here to avoid flickering during positioning
-	// This is a legitimate use case for DOM measurement and synchronous updates
-	useLayoutEffect(() => {
-		if (!vocab || !anchorElement || !tooltipRef.current) {
-			return;
-		}
-
-		const tooltipWidth = TOOLTIP_CONFIG.WIDTH;
-		const tooltipHeight = TOOLTIP_CONFIG.HEIGHT;
-
-		const pos = calculateTooltipPosition(anchorElement, tooltipWidth, tooltipHeight);
-
-		// Update position synchronously to avoid flickering
-		// This is a legitimate use case for setState in useLayoutEffect (DOM measurement)
-		setPosition(pos);
-	}, [vocab, anchorElement]);
-
-	// Close on outside click
-	useEffect(() => {
-		if (!vocab) return;
-
-		const handleClickOutside = (e: MouseEvent) => {
-			const target = e.target as HTMLElement;
-			if (
-				tooltipRef.current &&
-				!tooltipRef.current.contains(target) &&
-				!anchorElement?.contains(target)
-			) {
-				onClose();
-			}
-		};
-
-		document.addEventListener('mousedown', handleClickOutside);
-		return () => document.removeEventListener('mousedown', handleClickOutside);
-	}, [vocab, anchorElement, onClose]);
-
-	// Close on ESC key
-	useEffect(() => {
-		if (!vocab) return;
-
-		const handleEscape = (e: KeyboardEvent) => {
-			if (e.key === 'Escape') onClose();
-		};
-
-		document.addEventListener('keydown', handleEscape);
-		return () => document.removeEventListener('keydown', handleEscape);
-	}, [vocab, onClose]);
 
 	const handleAudioClick = useCallback(() => {
 		if (!vocab) return;
@@ -122,7 +59,6 @@ export function KanjiWordTooltip({
 			audioRef.current.play().catch((error) => {
 				console.error('Audio playback failed:', error);
 				setIsPlayingAudio(false);
-				// TODO: Show user-friendly error message (e.g., toast notification)
 			});
 
 			audioRef.current.onended = () => {
@@ -143,8 +79,26 @@ export function KanjiWordTooltip({
 		if (vocab && onSeeMore) {
 			onSeeMore(vocab.id);
 		}
-		onClose();
-	}, [vocab, onSeeMore, onClose]);
+	}, [vocab, onSeeMore]);
+
+	if (isLoading) {
+		return (
+			<div
+				style={{
+					width: 320,
+					minHeight: 200,
+					display: 'flex',
+					flexDirection: 'column',
+					alignItems: 'center',
+					justifyContent: 'center',
+					gap: token.marginMD || 16,
+				}}
+			>
+				<Spin size="large" />
+				<Text type="secondary">Loading word details...</Text>
+			</div>
+		);
+	}
 
 	if (!vocab) return null;
 
@@ -154,58 +108,8 @@ export function KanjiWordTooltip({
 	// Extract tags
 	const tags = vocab.tags || [];
 
-	const reducedMotion = prefersReducedMotion();
-	const portal = createAnimationPortal('kanji-word-tooltip-portal');
-
-	const tooltipContent = (
-		<div
-			ref={tooltipRef}
-			role="dialog"
-			aria-label="Word details"
-			aria-modal="false"
-			style={{
-				position: 'fixed',
-				left: `${position.x}px`,
-				top: `${position.y}px`,
-				width: `${TOOLTIP_CONFIG.WIDTH}px`,
-				minHeight: '280px',
-				// Use explicit background properties to avoid conflicts with shorthand 'background'
-				backgroundColor: token.colorBgElevated || '#fff',
-				backgroundImage: 'none',
-				backgroundRepeat: 'no-repeat',
-				backgroundPosition: 'initial',
-				backgroundSize: 'initial',
-				borderRadius: token.borderRadiusLG || 16,
-				boxShadow: token.boxShadowSecondary || '0 8px 32px rgba(0, 0, 0, 0.12)',
-				border: `1px solid ${token.colorBorder}`,
-				padding: token.paddingLG || 24,
-				zIndex: TOOLTIP_CONFIG.Z_INDEX,
-				pointerEvents: isVisible ? 'auto' : 'none',
-				visibility: isVisible ? 'visible' : 'hidden',
-				opacity: isVisible ? 1 : 0,
-				transform: reducedMotion ? 'none' : isVisible ? 'scale(1)' : 'scale(0.95)',
-				transition: reducedMotion
-					? 'none'
-					: 'opacity 200ms ease, transform 200ms ease, visibility 0s linear 200ms',
-			}}
-		>
-			{/* Close button */}
-			<Button
-				type="text"
-				size="small"
-				onClick={onClose}
-				style={{
-					position: 'absolute',
-					top: '8px',
-					right: '8px',
-					padding: '4px',
-					minWidth: 'auto',
-				}}
-				aria-label="Close tooltip"
-			>
-				✕
-			</Button>
-
+	return (
+		<div style={{ width: 320, minHeight: 280 }}>
 			{/* Word Surface (Kanji/Kana) */}
 			<Title
 				level={4}
@@ -330,7 +234,7 @@ export function KanjiWordTooltip({
 			{/* Tags */}
 			{tags.length > 0 && (
 				<Space wrap size={4} style={{ marginBottom: 16 }}>
-					{tags.slice(0, 5).map((tag, idx) => (
+					{tags.slice(0, 5).map((tag: string, idx: number) => (
 						<span
 							key={idx}
 							style={{
@@ -365,6 +269,4 @@ export function KanjiWordTooltip({
 			)}
 		</div>
 	);
-
-	return createPortal(tooltipContent, portal);
 }

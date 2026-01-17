@@ -12,8 +12,6 @@ import type { Vocabulary } from '@prisma/client';
 import { Card, Flex, Space, Typography } from 'antd';
 import { useMemo } from 'react';
 
-import { testVocabs } from './page';
-
 const { Title, Paragraph, Text } = Typography;
 
 // Test sentences
@@ -21,6 +19,88 @@ const testSentences = [
 	'私は学校に行きます。',
 	'今日は休みます。',
 	'毎朝、私は学校で日本語を勉強します。',
+];
+
+// Test vocabulary data (for standalone testing)
+const testVocabs = [
+	{
+		id: 'test-1',
+		wordSurface: '学校',
+		wordReading: 'がっこう',
+		wordRomaji: 'gakkou',
+		hanViet: 'HỌC HIỆU',
+		meanings: { en: ['School'], vi: ['Trường học'] },
+		tags: ['n5', 'noun'],
+		audioUrl: null,
+		etymology: {},
+		examples: [],
+		mnemonic: null,
+		furiganaMapping: null,
+		contentStatus: 'PUBLISHED' as const,
+		deckId: '',
+		createdAt: new Date(),
+		updatedAt: new Date(),
+		deletedAt: null,
+		wordOrder: 0,
+		pitchPattern: null,
+		pitchSvgPath: null,
+		homonymGroupId: null,
+		imageUrl: null,
+		verifiedAt: null,
+		verifiedBy: null,
+	},
+	{
+		id: 'test-2',
+		wordSurface: '行きます',
+		wordReading: 'いきます',
+		wordRomaji: 'ikimasu',
+		hanViet: 'HÀNH',
+		meanings: { en: ['To go'], vi: ['Đi'] },
+		tags: ['n5', 'verb'],
+		audioUrl: null,
+		etymology: {},
+		examples: [],
+		mnemonic: null,
+		furiganaMapping: null,
+		contentStatus: 'PUBLISHED' as const,
+		deckId: '',
+		createdAt: new Date(),
+		updatedAt: new Date(),
+		deletedAt: null,
+		wordOrder: 0,
+		pitchPattern: null,
+		pitchSvgPath: null,
+		homonymGroupId: null,
+		imageUrl: null,
+		verifiedAt: null,
+		verifiedBy: null,
+	},
+	{
+		id: 'test-3',
+		wordSurface: '休みます',
+		wordReading: 'やすみます',
+		wordRomaji: 'yasumimasu',
+		hanViet: 'HƯU',
+		meanings: { en: ['To rest', 'To take a break'], vi: ['Nghỉ ngơi'] },
+		tags: ['n5', 'verb'],
+		audioUrl: null,
+		etymology: {},
+		examples: [],
+		mnemonic: null,
+		furiganaMapping: null,
+		contentStatus: 'PUBLISHED' as const,
+		deckId: '',
+		createdAt: new Date(),
+		updatedAt: new Date(),
+		deletedAt: null,
+		wordOrder: 0,
+		pitchPattern: null,
+		pitchSvgPath: null,
+		homonymGroupId: null,
+		imageUrl: null,
+		verifiedAt: null,
+		verifiedBy: null,
+	},
 ];
 
 interface DemoContentClientProps {

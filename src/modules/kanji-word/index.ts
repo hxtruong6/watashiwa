@@ -6,11 +6,9 @@
 export { KanjiWord } from './components/KanjiWord';
 export { KanjiWordProvider, useKanjiWordContext } from './components/KanjiWordProvider';
 export { KanjiWordText } from './components/KanjiWordText';
-export { KanjiWordTooltip } from './components/KanjiWordTooltip';
 
 export type {
 	KanjiWordProps,
-	KanjiWordTooltipProps,
 	KanjiWordProviderProps,
 	ParsedKanjiSegment,
 	ReadingMode,

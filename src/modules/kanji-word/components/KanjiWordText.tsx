@@ -42,22 +42,19 @@ export function KanjiWordText({
 					return <span key={idx}>{segment.content}</span>;
 				}
 
-				// Kanji segment
-				if (segment.vocab) {
-					return (
-						<KanjiWord
-							key={idx}
-							vocab={segment.vocab}
-							readingMode={readingMode}
-							size={size}
-							showCategoryUnderline={showCategoryUnderline}
-							interactive={interactive}
-						/>
-					);
-				}
-
-				// Kanji without vocab match - render as plain text
-				return <span key={idx}>{segment.content}</span>;
+				// Kanji segment - render as KanjiWord even without vocab
+				// KanjiWord will fetch vocab on hover if not available
+				return (
+					<KanjiWord
+						key={idx}
+						vocab={segment.vocab}
+						wordSurface={segment.content}
+						readingMode={readingMode}
+						size={size}
+						showCategoryUnderline={showCategoryUnderline}
+						interactive={interactive}
+					/>
+				);
 			})}
 		</>
 	);

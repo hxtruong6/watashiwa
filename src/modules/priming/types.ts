@@ -174,7 +174,7 @@ export type StoryAnalyticsEvent =
 	| {
 			type: 'story_started';
 			storyId: string;
-			language: 'en' | 'vi';
+			language: 'en' | 'vi' | 'ja';
 	  }
 	| {
 			type: 'word_clicked';

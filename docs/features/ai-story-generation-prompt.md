@@ -91,30 +91,24 @@ When generating multiple stories (vocabCount > 15):
 
 ```json
 {
-	"title": {
-		"en": "Engaging Title (3-5 words)",
-		"vi": "Tiêu đề tiếng Việt"
-	},
-	"body_text": {
-		"en": "Complete story in ENGLISH grammar with Japanese vocabulary mixed in (100-150 words)",
-		"vi": "Câu chuyện hoàn chỉnh bằng NGỮ PHÁP TIẾNG VIỆT với từ vựng tiếng Nhật (100-150 từ)",
-		"ja": "完全な日本語のストーリー (100-150語)"
-	},
-	"translation": {
-		"en": "Full English translation (ALL Japanese words replaced with English)",
-		"vi": "Bản dịch tiếng Việt đầy đủ (TẤT CẢ từ tiếng Nhật thay bằng tiếng Việt)"
-	},
-	"highlights": [
-		{
-			"word_surface": "スーパー",
-			"length": 4,
-			"positions": {
-				"en": [89, 245],
-				"vi": [67, 235],
-				"ja": [12, 78]
-			}
-		}
-	]
+ "title": {
+  "en": "Engaging Title (3-5 words)",
+  "vi": "Tiêu đề tiếng Việt"
+ },
+ "body_text": {
+  "en": "Complete story in ENGLISH grammar with Japanese vocabulary mixed in (100-150 words)",
+  "vi": "Câu chuyện hoàn chỉnh bằng NGỮ PHÁP TIẾNG VIỆT với từ vựng tiếng Nhật (100-150 từ)",
+  "ja": "完全な日本語のストーリー (100-150語)"
+ },
+ "translation": {
+  "en": "Full English translation (ALL Japanese words replaced with English)",
+  "vi": "Bản dịch tiếng Việt đầy đủ (TẤT CẢ từ tiếng Nhật thay bằng tiếng Việt)"
+ },
+ "highlights": [
+  "スーパー",
+  "りんご",
+  "ねこ"
+ ]
 }
 ```
 
@@ -142,30 +136,17 @@ When generating multiple stories (vocabCount > 15):
 
 **`highlights`:**
 
-- One object per unique vocabulary word (consolidated format)
-- `word_surface`: Exact Japanese word (NO punctuation, NO spaces, NO placeholders)
-- `length`: Character count of the word
-- `positions`: Object with arrays for each language
-  - `en`: Array of 0-based start indices in `body_text.en`
-  - `vi`: Array of 0-based start indices in `body_text.vi`
-  - `ja`: Array of 0-based start indices in `body_text.ja`
-  - If word appears multiple times, include ALL positions (sorted)
+- Array of unique vocabulary word strings
+- Each string is the exact Japanese word (NO punctuation, NO spaces, NO placeholders)
 
 ### Highlight Rules (CRITICAL)
 
-**For EACH vocabulary word:**
-
-1. Create ONE highlight object (no duplication)
-2. Find ALL occurrences in `body_text.en`, `body_text.vi`, `body_text.ja`
-3. Calculate 0-based positions for each language
-4. Verify: `text.slice(position, position + length)` extracts exact word
-
 **Common Mistakes to Avoid:**
 
-- ❌ `word_surface: "初めまして。"` (includes punctuation)
-- ❌ `word_surface: "から 来ました"` (contains space)
-- ❌ `word_surface: "～から"` (includes placeholder)
-- ✅ `word_surface: "初めまして"` (clean word only)
+- ❌ `"初めまして。"` (includes punctuation)
+- ❌ `"から 来ました"` (contains space)
+- ❌ `"～から"` (includes placeholder)
+- ✅ `"初めまして"` (clean word only)
 
 **Rules:**
 
@@ -198,12 +179,8 @@ Before outputting, verify:
 **Technical:**
 
 - [ ] JSON format is valid
-- [ ] Highlights use consolidated format (one object per word)
-- [ ] Each highlight has `positions` object with `en`, `vi`, `ja` arrays
-- [ ] All positions are 0-based and accurate
-- [ ] `word_surface` has NO punctuation, spaces, or placeholders
-- [ ] Position arrays sorted in ascending order
-- [ ] If word appears multiple times, all positions included
+- [ ] Highlights is an array of word strings (one string per unique vocabulary word)
+- [ ] Each word string has NO punctuation, spaces, or placeholders
 
 ## EXAMPLE OUTPUT
 
@@ -213,57 +190,25 @@ Before outputting, verify:
 
 ```json
 {
-	"title": {
-		"en": "The Friendly Cat",
-		"vi": "Chú Mèo Thân Thiện"
-	},
-	"body_text": {
-		"en": "When I first moved to Tokyo, I was nervous about shopping alone. On my first trip to the スーパー, I was looking for fresh りんご when I noticed a friendly ねこ sitting by the entrance. It meowed at me, and I couldn't resist petting it. My ともだち who lives nearby saw me and laughed. 'That cat visits every day,' she said. 'It's the store's unofficial greeter!' We chatted while I picked out the perfect apples, and I felt much more comfortable. The ねこ followed us to the checkout, and the cashier smiled. 'He likes you,' she said. That simple interaction made my first week in Tokyo feel much more welcoming.",
-		"vi": "Khi tôi mới chuyển đến Tokyo, tôi cảm thấy lo lắng về việc mua sắm một mình. Trong chuyến đi đầu tiên đến スーパー, tôi đang tìm những quả りんご tươi ngon thì nhận thấy một chú ねこ thân thiện đang ngồi ở lối vào. Nó kêu meo meo với tôi, và tôi không thể cưỡng lại việc vuốt ve nó. ともだち của tôi sống gần đó nhìn thấy tôi và cười. 'Con mèo đó đến mỗi ngày đấy,' cô ấy nói. 'Nó là người chào đón không chính thức của cửa hàng!' Chúng tôi trò chuyện trong khi tôi chọn những quả táo hoàn hảo, và tôi cảm thấy thoải mái hơn nhiều. Chú ねこ đi theo chúng tôi đến quầy thanh toán, và nhân viên thu ngân mỉm cười. 'Nó thích bạn đấy,' cô ấy nói. Cuộc tương tác đơn giản đó khiến tuần đầu tiên của tôi ở Tokyo cảm thấy chào đón hơn nhiều.",
-		"ja": "初めて東京に引っ越した時、一人で買い物をするのは緊張していました。初めてスーパーに行った時、新鮮なりんごを探していたら、入口に座っている親切なねこに気づきました。ねこは私に向かって鳴き、撫でるのを我慢できませんでした。近くに住んでいるともだちが私を見て笑いました。'あのねこは毎日来るのよ'と彼女は言いました。'店の非公式な出迎え係なの！' 完璧なりんごを選びながら話し合い、ずっと快適に感じました。ねこは私たちについてレジまで来て、レジ係は微笑みました。'あなたを気に入っているのよ'と彼女は言いました。その簡単な交流が、東京での最初の週をずっと歓迎されているように感じさせました。"
-	},
-	"translation": {
-		"en": "When I first moved to Tokyo, I was nervous about shopping alone. On my first trip to the supermarket, I was looking for fresh apples when I noticed a friendly cat sitting by the entrance. It meowed at me, and I couldn't resist petting it. My friend who lives nearby saw me and laughed. 'That cat visits every day,' she said. 'It's the store's unofficial greeter!' We chatted while I picked out the perfect apples, and I felt much more comfortable. The cat followed us to the checkout, and the cashier smiled. 'He likes you,' she said. That simple interaction made my first week in Tokyo feel much more welcoming.",
-		"vi": "Khi tôi mới chuyển đến Tokyo, tôi cảm thấy lo lắng về việc mua sắm một mình. Trong chuyến đi đầu tiên đến siêu thị, tôi đang tìm những quả táo tươi ngon thì nhận thấy một chú mèo thân thiện đang ngồi ở lối vào. Nó kêu meo meo với tôi, và tôi không thể cưỡng lại việc vuốt ve nó. Người bạn của tôi sống gần đó nhìn thấy tôi và cười. 'Con mèo đó đến mỗi ngày đấy,' cô ấy nói. 'Nó là người chào đón không chính thức của cửa hàng!' Chúng tôi trò chuyện trong khi tôi chọn những quả táo hoàn hảo, và tôi cảm thấy thoải mái hơn nhiều. Chú mèo đi theo chúng tôi đến quầy thanh toán, và nhân viên thu ngân mỉm cười. 'Nó thích bạn đấy,' cô ấy nói. Cuộc tương tác đơn giản đó khiến tuần đầu tiên của tôi ở Tokyo cảm thấy chào đón hơn nhiều."
-	},
-	"highlights": [
-		{
-			"word_surface": "スーパー",
-			"length": 4,
-			"positions": {
-				"en": [89],
-				"vi": [67],
-				"ja": [12]
-			}
-		},
-		{
-			"word_surface": "りんご",
-			"length": 3,
-			"positions": {
-				"en": [103],
-				"vi": [85],
-				"ja": [20]
-			}
-		},
-		{
-			"word_surface": "ねこ",
-			"length": 2,
-			"positions": {
-				"en": [115, 245],
-				"vi": [100, 235],
-				"ja": [28, 78]
-			}
-		},
-		{
-			"word_surface": "ともだち",
-			"length": 4,
-			"positions": {
-				"en": [133],
-				"vi": [120],
-				"ja": [45]
-			}
-		}
-	]
+ "title": {
+  "en": "The Friendly Cat",
+  "vi": "Chú Mèo Thân Thiện"
+ },
+ "body_text": {
+  "en": "When I first moved to Tokyo, I was nervous about shopping alone. On my first trip to the スーパー, I was looking for fresh りんご when I noticed a friendly ねこ sitting by the entrance. It meowed at me, and I couldn't resist petting it. My ともだち who lives nearby saw me and laughed. 'That cat visits every day,' she said. 'It's the store's unofficial greeter!' We chatted while I picked out the perfect apples, and I felt much more comfortable. The ねこ followed us to the checkout, and the cashier smiled. 'He likes you,' she said. That simple interaction made my first week in Tokyo feel much more welcoming.",
+  "vi": "Khi tôi mới chuyển đến Tokyo, tôi cảm thấy lo lắng về việc mua sắm một mình. Trong chuyến đi đầu tiên đến スーパー, tôi đang tìm những quả りんご tươi ngon thì nhận thấy một chú ねこ thân thiện đang ngồi ở lối vào. Nó kêu meo meo với tôi, và tôi không thể cưỡng lại việc vuốt ve nó. ともだち của tôi sống gần đó nhìn thấy tôi và cười. 'Con mèo đó đến mỗi ngày đấy,' cô ấy nói. 'Nó là người chào đón không chính thức của cửa hàng!' Chúng tôi trò chuyện trong khi tôi chọn những quả táo hoàn hảo, và tôi cảm thấy thoải mái hơn nhiều. Chú ねこ đi theo chúng tôi đến quầy thanh toán, và nhân viên thu ngân mỉm cười. 'Nó thích bạn đấy,' cô ấy nói. Cuộc tương tác đơn giản đó khiến tuần đầu tiên của tôi ở Tokyo cảm thấy chào đón hơn nhiều.",
+  "ja": "初めて東京に引っ越した時、一人で買い物をするのは緊張していました。初めてスーパーに行った時、新鮮なりんごを探していたら、入口に座っている親切なねこに気づきました。ねこは私に向かって鳴き、撫でるのを我慢できませんでした。近くに住んでいるともだちが私を見て笑いました。'あのねこは毎日来るのよ'と彼女は言いました。'店の非公式な出迎え係なの！' 完璧なりんごを選びながら話し合い、ずっと快適に感じました。ねこは私たちについてレジまで来て、レジ係は微笑みました。'あなたを気に入っているのよ'と彼女は言いました。その簡単な交流が、東京での最初の週をずっと歓迎されているように感じさせました。"
+ },
+ "translation": {
+  "en": "When I first moved to Tokyo, I was nervous about shopping alone. On my first trip to the supermarket, I was looking for fresh apples when I noticed a friendly cat sitting by the entrance. It meowed at me, and I couldn't resist petting it. My friend who lives nearby saw me and laughed. 'That cat visits every day,' she said. 'It's the store's unofficial greeter!' We chatted while I picked out the perfect apples, and I felt much more comfortable. The cat followed us to the checkout, and the cashier smiled. 'He likes you,' she said. That simple interaction made my first week in Tokyo feel much more welcoming.",
+  "vi": "Khi tôi mới chuyển đến Tokyo, tôi cảm thấy lo lắng về việc mua sắm một mình. Trong chuyến đi đầu tiên đến siêu thị, tôi đang tìm những quả táo tươi ngon thì nhận thấy một chú mèo thân thiện đang ngồi ở lối vào. Nó kêu meo meo với tôi, và tôi không thể cưỡng lại việc vuốt ve nó. Người bạn của tôi sống gần đó nhìn thấy tôi và cười. 'Con mèo đó đến mỗi ngày đấy,' cô ấy nói. 'Nó là người chào đón không chính thức của cửa hàng!' Chúng tôi trò chuyện trong khi tôi chọn những quả táo hoàn hảo, và tôi cảm thấy thoải mái hơn nhiều. Chú mèo đi theo chúng tôi đến quầy thanh toán, và nhân viên thu ngân mỉm cười. 'Nó thích bạn đấy,' cô ấy nói. Cuộc tương tác đơn giản đó khiến tuần đầu tiên của tôi ở Tokyo cảm thấy chào đón hơn nhiều."
+ },
+ "highlights": [
+  "スーパー",
+  "りんご",
+  "ねこ",
+  "ともだち"
+ ]
 }
 ```
 
@@ -278,7 +223,6 @@ Before outputting, verify:
    - Write 100-150 words with clear structure
    - Create all three versions (en, vi, ja)
    - Create full translations (en, vi)
-   - Calculate highlight positions accurately
 4. **Output JSON:**
    - Single object if 1 story
    - Array of objects if multiple stories

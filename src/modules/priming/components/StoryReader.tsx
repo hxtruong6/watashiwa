@@ -9,8 +9,8 @@
 
 import { trackEvent } from '@/lib/analytics';
 import { TranslationOutlined } from '@ant-design/icons';
-import { Alert, Button, Card, Space, Spin, Typography, message } from 'antd';
-import { useRouter } from 'next/navigation';
+import { Alert, Button, Card, Popover, Segmented, Space, Spin, Typography, message } from 'antd';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import { completeStoryAction, updateStoryProgressAction } from '../actions';
@@ -21,14 +21,15 @@ import { StoryWithVocabularies, VocabMeta } from '../types';
 import { playCollectionSound, triggerHaptic } from '../utils/animationHelpers';
 import { CollectionDrawer } from './CollectionDrawer';
 import { GhostAnimation } from './GhostAnimation';
-import { SmartTooltip } from './SmartTooltip';
+import { VocabPopoverContent } from './VocabPopoverContent';
 import { WordPill } from './WordPill';
 
 const { Title, Text, Paragraph } = Typography;
 
 interface StoryReaderProps {
 	story: StoryWithVocabularies;
-	locale?: 'en' | 'vi';
+	locale?: 'en' | 'vi' | 'ja';
+	userLanguage?: 'en' | 'vi'; // User's global language preference (for translation fallback when story is 'ja')
 	onComplete?: () => void;
 	redirectOnComplete?: string; // URL to redirect to after completion (for Server Component usage)
 }
@@ -36,20 +37,24 @@ interface StoryReaderProps {
 export function StoryReader({
 	story,
 	locale = 'en',
+	userLanguage = 'en', // Default to 'en' if not provided
 	onComplete,
 	redirectOnComplete,
 }: StoryReaderProps) {
 	const router = useRouter();
+	const searchParams = useSearchParams();
+
 	// State management
 	const [showTranslation, setShowTranslation] = useState(false);
 	const [isDrawerExpanded, setIsDrawerExpanded] = useState(false);
 	const [activeTooltip, setActiveTooltip] = useState<{
 		vocab: VocabMeta | null;
-		anchor: HTMLElement | null;
+		vocabularyId: string | null;
 	}>({
 		vocab: null,
-		anchor: null,
+		vocabularyId: null,
 	});
+	const [hoveredVocabId, setHoveredVocabId] = useState<string | null>(null);
 	const [isCompleting, setIsCompleting] = useState(false);
 	const [ghostAnimations, setGhostAnimations] = useState<
 		Array<{
@@ -72,7 +77,8 @@ export function StoryReader({
 	const resetProgress = useStoryProgress((state) => state.resetProgress);
 
 	// Hooks
-	const { segments, translation, metadata } = useTextSegmentation({ story, locale });
+	const { segments, translation, translationSegments, vocabMapping, metadata } =
+		useTextSegmentation({ story, locale, userLanguage });
 	const { handleWordClick, handleAudioPlay, isWordCollected, isStoryComplete, getProgress } =
 		useWordCollection({
 			storyId: story.id,
@@ -156,7 +162,7 @@ export function StoryReader({
 
 			if (!result.alreadyCollected) {
 				// Open tooltip
-				setActiveTooltip({ vocab: meta, anchor: wordElement });
+				setActiveTooltip({ vocab: meta, vocabularyId });
 
 				// Trigger ghost animation if drawer is available
 				// The word is now in collectedWords (Zustand store), so we can find its index
@@ -191,13 +197,13 @@ export function StoryReader({
 	);
 
 	// Handle tooltip open
-	const handleOpenTooltip = useCallback((vocab: VocabMeta, anchor: HTMLElement) => {
-		setActiveTooltip({ vocab, anchor });
+	const handleOpenTooltip = useCallback((vocab: VocabMeta) => {
+		setActiveTooltip({ vocab, vocabularyId: vocab.vocabularyId });
 	}, []);
 
 	// Handle tooltip close
 	const handleCloseTooltip = useCallback(() => {
-		setActiveTooltip({ vocab: null, anchor: null });
+		setActiveTooltip({ vocab: null, vocabularyId: null });
 	}, []);
 
 	// Handle ghost animation complete
@@ -224,6 +230,31 @@ export function StoryReader({
 			shown: newState,
 		});
 	}, [showTranslation, story.id, toggleTranslation]);
+
+	// Handle language change (story-level only, does NOT update global language preference)
+	const handleLanguageChange = useCallback(
+		(newLocale: 'en' | 'vi' | 'ja') => {
+			if (newLocale === locale) return;
+
+			// Get current pathname to extract slug
+			const pathname = window.location.pathname;
+			const slug = pathname.split('/stories/')[1]?.split('?')[0] || '';
+
+			// Update URL with new locale (this will trigger a re-render with new locale)
+			const params = new URLSearchParams(searchParams.toString());
+			params.set('locale', newLocale);
+			router.push(`/stories/${slug}?${params.toString()}`);
+
+			// Note: We do NOT update global language preference here
+			// Story language selector is independent of app language setting
+		},
+		[locale, searchParams, router],
+	);
+
+	// Handle word hover (for bidirectional highlighting)
+	const handleWordHover = useCallback((vocabularyId: string | null) => {
+		setHoveredVocabId(vocabularyId);
+	}, []);
 
 	// Complete story
 	const onCompleteStory = useCallback(async () => {
@@ -347,15 +378,26 @@ export function StoryReader({
 				style={{ marginBottom: '24px' }}
 			/>
 
-			{/* Translation Toggle */}
-			<Button
-				icon={<TranslationOutlined />}
-				onClick={onToggleTranslation}
-				style={{ marginBottom: '16px' }}
-				type={showTranslation ? 'primary' : 'default'}
-			>
-				{showTranslation ? 'Hide' : 'Show'} Translation
-			</Button>
+			{/* Language Selector and Translation Toggle */}
+			<Space size={16} style={{ marginBottom: '16px' }}>
+				<Segmented
+					options={[
+						{ label: 'English', value: 'en' },
+						{ label: 'Tiếng Việt', value: 'vi' },
+						{ label: '日本語', value: 'ja' },
+					]}
+					value={locale}
+					onChange={(value) => handleLanguageChange(value as 'en' | 'vi' | 'ja')}
+					size="large"
+				/>
+				<Button
+					icon={<TranslationOutlined />}
+					onClick={onToggleTranslation}
+					type={showTranslation ? 'primary' : 'default'}
+				>
+					{showTranslation ? 'Hide' : 'Show'} Translation
+				</Button>
+			</Space>
 
 			{/* Story Content */}
 			<Card
@@ -381,14 +423,75 @@ export function StoryReader({
 							return <span key={index}>{segment.content}</span>;
 						} else {
 							const isCollected = isWordCollected(segment.meta.vocabularyId);
+							const isHovered = hoveredVocabId === segment.meta.vocabularyId;
+							const mapping = vocabMapping.get(segment.meta.vocabularyId);
+							const hasTranslation = mapping && mapping.translationIndices.length > 0;
+
+							const isTooltipOpen = activeTooltip.vocabularyId === segment.meta.vocabularyId;
+
 							return (
-								<WordPill
+								<span
 									key={index}
-									vocab={segment.meta}
-									isCollected={isCollected}
-									onClick={onWordClick}
-									onOpenTooltip={handleOpenTooltip}
-								/>
+									onMouseEnter={() => handleWordHover(segment.meta.vocabularyId)}
+									onMouseLeave={() => handleWordHover(null)}
+									style={{
+										position: 'relative',
+										display: 'inline-block',
+									}}
+								>
+									<Popover
+										content={
+											<VocabPopoverContent
+												vocab={segment.meta}
+												isCollected={isCollected}
+												onAudioPlay={handleAudioPlay}
+												autoPlayAudio={true}
+											/>
+										}
+										trigger="click"
+										open={isTooltipOpen}
+										onOpenChange={(open) => {
+											if (open) {
+												handleOpenTooltip(segment.meta);
+											} else {
+												handleCloseTooltip();
+											}
+										}}
+										placement="top"
+										autoAdjustOverflow
+										destroyTooltipOnHide
+										styles={{
+											content: {
+												width: 320,
+												minWidth: 320,
+												maxWidth: 320,
+											},
+										}}
+									>
+										<span style={{ display: 'inline-block' }}>
+											<WordPill
+												vocab={segment.meta}
+												isCollected={isCollected}
+												onClick={onWordClick}
+											/>
+										</span>
+									</Popover>
+									{isHovered && hasTranslation && (
+										<span
+											style={{
+												position: 'absolute',
+												top: '-2px',
+												left: '-2px',
+												right: '-2px',
+												bottom: '-2px',
+												border: '2px solid rgba(108, 99, 255, 0.5)',
+												borderRadius: '4px',
+												pointerEvents: 'none',
+												transition: 'all 0.2s ease',
+											}}
+										/>
+									)}
+								</span>
 							);
 						}
 					})}
@@ -417,22 +520,48 @@ export function StoryReader({
 								fontStyle: 'italic',
 							}}
 						>
-							{translation}
+							{translationSegments.length > 0
+								? translationSegments.map((segment, index) => {
+										if (segment.type === 'text') {
+											return <span key={index}>{segment.content}</span>;
+										} else {
+											const isHovered = hoveredVocabId === segment.vocabId;
+											const mapping = segment.vocabId
+												? vocabMapping.get(segment.vocabId)
+												: undefined;
+											const hasStoryWord = mapping && mapping.storyIndices.length > 0;
+
+											return (
+												<span
+													key={index}
+													onMouseEnter={() => segment.vocabId && handleWordHover(segment.vocabId)}
+													onMouseLeave={() => handleWordHover(null)}
+													style={{
+														backgroundColor: isHovered
+															? 'rgba(108, 99, 255, 0.2)'
+															: hasStoryWord
+																? 'rgba(108, 99, 255, 0.1)'
+																: 'transparent',
+														padding: '2px 4px',
+														borderRadius: '4px',
+														fontWeight: hasStoryWord ? 600 : 'normal',
+														transition: 'all 0.2s ease',
+														cursor: hasStoryWord ? 'pointer' : 'default',
+														border: isHovered
+															? '1px solid rgba(108, 99, 255, 0.5)'
+															: '1px solid transparent',
+													}}
+												>
+													{segment.content}
+												</span>
+											);
+										}
+									})
+								: translation}
 						</Paragraph>
 					</div>
 				)}
 			</Card>
-
-			{/* Smart Tooltip */}
-			<SmartTooltip
-				vocab={activeTooltip.vocab}
-				anchorElement={activeTooltip.anchor}
-				isCollected={
-					activeTooltip.vocab ? isWordCollected(activeTooltip.vocab.vocabularyId) : false
-				}
-				onClose={handleCloseTooltip}
-				onAudioPlay={handleAudioPlay}
-			/>
 
 			{/* Screen Reader Announcements */}
 			<div

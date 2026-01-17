@@ -4,8 +4,11 @@
  * Route: /stories/[slug]
  * Dynamic route for reading contextual stories
  */
+import { getCookiesSafely } from '@/i18n/request';
+import { routing } from '@/i18n/routing';
 import { getStoryAction } from '@/modules/priming/actions';
 import { StoryReader } from '@/modules/priming/components/StoryReader';
+import { getUserSettings } from '@/modules/user/user.actions';
 import { Skeleton, Space } from 'antd';
 import { Suspense } from 'react';
 
@@ -16,7 +19,45 @@ interface StoryPageProps {
 
 export default async function StoryPage({ params, searchParams }: StoryPageProps) {
 	const { slug } = await params;
-	const { locale = 'en' } = await searchParams;
+	const searchParamsData = await searchParams;
+
+	// Language priority:
+	// 1. User language setting (from cookie/DB) - for initial load
+	// 2. Story language selector (URL param) - user can switch without impacting global setting
+	// 3. Default to "en" if no option available
+	const validStoryLocales = ['en', 'vi', 'ja'] as const;
+	type StoryLocale = 'en' | 'vi' | 'ja';
+
+	// Get user language preference (for translation fallback and initial story language)
+	const cookieStore = await getCookiesSafely();
+	let userLanguage: 'en' | 'vi' = 'en'; // Default to 'en'
+
+	if (cookieStore) {
+		const cookieValue = cookieStore.get('NEXT_LOCALE')?.value;
+		if (cookieValue && routing.locales.includes(cookieValue as 'vi' | 'en')) {
+			userLanguage = cookieValue as 'en' | 'vi';
+		}
+	}
+
+	// If no cookie, try user DB setting
+	if (userLanguage === 'en') {
+		const userSettings = await getUserSettings();
+		if (userSettings?.language && routing.locales.includes(userSettings.language as 'vi' | 'en')) {
+			userLanguage = userSettings.language as 'en' | 'vi';
+		}
+	}
+
+	// Determine story locale: URL param -> User language -> Default 'en'
+	let locale: StoryLocale;
+	const urlLocale = searchParamsData.locale as StoryLocale | undefined;
+
+	if (urlLocale && validStoryLocales.includes(urlLocale)) {
+		// User selected language in story selector (URL param)
+		locale = urlLocale;
+	} else {
+		// Use user language preference, or default to 'en'
+		locale = userLanguage;
+	}
 
 	// Get current user
 	// const user = await getUser();
@@ -25,9 +66,10 @@ export default async function StoryPage({ params, searchParams }: StoryPageProps
 	// }
 
 	// Fetch story data
+	// Note: language param is for analytics, story content includes all languages
 	const result = await getStoryAction({
 		slug,
-		language: locale as 'en' | 'vi',
+		language: locale === 'ja' ? 'en' : (locale as 'en' | 'vi'), // Use 'en' as fallback for analytics when 'ja' is selected
 	});
 
 	if (!result.success || !result.data?.story) {
@@ -44,7 +86,12 @@ export default async function StoryPage({ params, searchParams }: StoryPageProps
 	return (
 		<div style={{ padding: '24px' }}>
 			<Suspense fallback={<StoryReaderSkeleton />}>
-				<StoryReader story={story} locale={locale as 'en' | 'vi'} redirectOnComplete="/stories" />
+				<StoryReader
+					story={story}
+					locale={locale}
+					userLanguage={userLanguage}
+					redirectOnComplete="/stories"
+				/>
 			</Suspense>
 
 			{/* Debug Info (remove in production) */}
