@@ -23,9 +23,10 @@ export function KanaReferencePage() {
 	const { token } = useToken();
 	const t = useTranslations('KanaReference');
 	const { showRomaji, playAudioOnTap, showExampleWords } = useKanaPreferences();
-	const { play: playAudio } = useKanaAudio({
-		onPlayError: () => message.error(t('audioPlayFailed')),
-	});
+	const onPlayError = useCallback(() => {
+		message.error(t('audioPlayFailed'));
+	}, [t]);
+	const { play: playAudio } = useKanaAudio({ onPlayError });
 
 	const [table, setTable] = useQueryState(
 		'table',

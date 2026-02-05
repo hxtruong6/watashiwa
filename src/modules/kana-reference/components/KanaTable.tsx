@@ -1,15 +1,18 @@
 'use client';
 
 import { Typography, theme } from 'antd';
+import { useTranslations } from 'next-intl';
 import React from 'react';
 
-import { getExampleWord } from '../data/exampleWords';
-import type { KanaGrid } from '../types';
+import { getExampleForScript } from '../data/exampleWords';
+import type { KanaGrid, KanaScript } from '../types';
 import { ExampleWordPopover } from './ExampleWordPopover';
 import { KanaCell } from './KanaCell';
 
 const { useToken } = theme;
 const { Text } = Typography;
+
+const NOOP_PLAY: (text: string) => void = () => {};
 
 export interface KanaTableProps {
 	grid: KanaGrid;
@@ -18,12 +21,12 @@ export interface KanaTableProps {
 	/** Optional: called when a cell is tapped (Stage 2 copy / Stage 4 audio). */
 	onCellClick?: (cellId: string, character: string, romaji: string) => void;
 	/** Script for aria caption and cell labels. */
-	script: 'hiragana' | 'katakana';
-	/** When false, hide romaji in each cell. Stage 4 */
+	script: KanaScript;
+	/** When false, hide romaji in each cell. */
 	showRomaji?: boolean;
-	/** When true, wrap cells in example word popover. Stage 4 */
+	/** When true, wrap cells in example word popover. */
 	showExampleWords?: boolean;
-	/** Same play as page useKanaAudio – used for popover "Play" so voice/speed match. */
+	/** Play function from page useKanaAudio – used for popover "Play" so voice/speed match. */
 	onPlayWord?: (text: string) => void;
 }
 
@@ -37,7 +40,8 @@ export function KanaTable({
 	onPlayWord,
 }: KanaTableProps) {
 	const { token } = useToken();
-	const scriptLabel = script === 'hiragana' ? 'Hiragana' : 'Katakana';
+	const t = useTranslations('KanaReference');
+	const scriptLabel = script === 'hiragana' ? t('hiragana') : t('katakana');
 
 	return (
 		<div
@@ -50,7 +54,7 @@ export function KanaTable({
 		>
 			<table
 				role="grid"
-				aria-label={`${scriptLabel} basic chart`}
+				aria-label={scriptLabel}
 				style={{
 					width: '100%',
 					borderCollapse: 'collapse',
@@ -126,9 +130,8 @@ export function KanaTable({
 									{cell ? (
 										<ExampleWordPopover
 											enabled={showExampleWords}
-											example={getExampleWord(cell.romaji)}
-											script={script}
-											onPlayWord={onPlayWord ?? (() => {})}
+											example={getExampleForScript(cell.romaji, script)}
+											onPlayWord={onPlayWord ?? NOOP_PLAY}
 										>
 											<KanaCell
 												character={cell.character}

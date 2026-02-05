@@ -56,7 +56,7 @@
 		"discover": "Explore",
 		"collection": "My Decks",
 		"journey": "Paths",
-		"kanaReference": "Kana",
+		"kanaReference": "Kana Reference",
 		"loginStart": "Join Now",
 		"guest": "Traveler",
 		"greeting": "Hi, {name} ~",
@@ -1294,6 +1294,7 @@
 		"settingsShowExampleWordsTooltip": "Show an example word in a popover when you tap a character",
 		"example": "Example",
 		"play": "Play",
-		"audioPlayFailed": "Couldn't play audio. Try again."
+		"audioPlayFailed": "Couldn't play audio. Try again.",
+		"usuallyWrittenInHiragana": "Usually written in Hiragana"
 	}
 }

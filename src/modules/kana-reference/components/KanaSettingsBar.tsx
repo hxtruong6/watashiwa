@@ -8,6 +8,27 @@ import { useKanaPreferences } from '../hooks/useKanaPreferences';
 
 const { useToken } = theme;
 
+interface SettingSwitchProps {
+	label: string;
+	tooltip: string;
+	checked: boolean;
+	onChange: (checked: boolean) => void;
+}
+
+function SettingSwitch({ label, tooltip, checked, onChange }: SettingSwitchProps) {
+	const { token } = useToken();
+	return (
+		<Tooltip title={tooltip}>
+			<Flex align="center" gap={token.marginXS} style={{ flexShrink: 0 }}>
+				<Typography.Text type="secondary" style={{ fontWeight: 500 }}>
+					{label}
+				</Typography.Text>
+				<Switch checked={checked} onChange={onChange} size="small" />
+			</Flex>
+		</Tooltip>
+	);
+}
+
 export function KanaSettingsBar() {
 	const { token } = useToken();
 	const t = useTranslations('KanaReference');
@@ -34,31 +55,25 @@ export function KanaSettingsBar() {
 		>
 			<Flex align="center" gap={token.marginXS} style={{ flexShrink: 0 }}>
 				<SettingOutlined style={{ color: token.colorTextSecondary }} />
-				<Tooltip title={t('settingsShowRomajiTooltip')}>
-					<Flex align="center" gap={token.marginXS}>
-						<Typography.Text type="secondary" style={{ fontWeight: 500 }}>
-							{t('settingsShowRomaji')}
-						</Typography.Text>
-						<Switch checked={showRomaji} onChange={setShowRomaji} size="small" />
-					</Flex>
-				</Tooltip>
+				<SettingSwitch
+					label={t('settingsShowRomaji')}
+					tooltip={t('settingsShowRomajiTooltip')}
+					checked={showRomaji}
+					onChange={setShowRomaji}
+				/>
 			</Flex>
-			<Tooltip title={t('settingsPlayAudioOnTapTooltip')}>
-				<Flex align="center" gap={token.marginXS} style={{ flexShrink: 0 }}>
-					<Typography.Text type="secondary" style={{ fontWeight: 500 }}>
-						{t('settingsPlayAudioOnTap')}
-					</Typography.Text>
-					<Switch checked={playAudioOnTap} onChange={setPlayAudioOnTap} size="small" />
-				</Flex>
-			</Tooltip>
-			<Tooltip title={t('settingsShowExampleWordsTooltip')}>
-				<Flex align="center" gap={token.marginXS} style={{ flexShrink: 0 }}>
-					<Typography.Text type="secondary" style={{ fontWeight: 500 }}>
-						{t('settingsShowExampleWords')}
-					</Typography.Text>
-					<Switch checked={showExampleWords} onChange={setShowExampleWords} size="small" />
-				</Flex>
-			</Tooltip>
+			<SettingSwitch
+				label={t('settingsPlayAudioOnTap')}
+				tooltip={t('settingsPlayAudioOnTapTooltip')}
+				checked={playAudioOnTap}
+				onChange={setPlayAudioOnTap}
+			/>
+			<SettingSwitch
+				label={t('settingsShowExampleWords')}
+				tooltip={t('settingsShowExampleWordsTooltip')}
+				checked={showExampleWords}
+				onChange={setShowExampleWords}
+			/>
 		</Flex>
 	);
 }

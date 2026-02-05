@@ -56,7 +56,7 @@
 		"discover": "Khám phá",
 		"collection": "Túi đồ",
 		"journey": "Lộ trình",
-		"kanaReference": "Kana",
+		"kanaReference": "Bảng chữ Kana",
 		"loginStart": "Chiến ngay",
 		"guest": "Khách",
 		"greeting": "Hế lô {name} ~",
@@ -1284,6 +1284,7 @@
 		"settingsShowExampleWordsTooltip": "Hiện một từ ví dụ trong popover khi bạn chạm vào ký tự",
 		"example": "Ví dụ",
 		"play": "Phát",
-		"audioPlayFailed": "Không phát được âm thanh. Thử lại."
+		"audioPlayFailed": "Không phát được âm thanh. Thử lại.",
+		"usuallyWrittenInHiragana": "Thường viết bằng Hiragana"
 	}
 }

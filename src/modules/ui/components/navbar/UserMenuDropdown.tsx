@@ -3,12 +3,13 @@
 import type { NavBarUser } from '@/modules/ui/components/navbar/types';
 import {
 	BugOutlined,
+	FontSizeOutlined,
 	HomeOutlined,
 	LogoutOutlined,
 	SettingOutlined,
 	ShareAltOutlined,
+	UserOutlined,
 } from '@ant-design/icons';
-import { UserOutlined } from '@ant-design/icons';
 import { Avatar, Dropdown, Flex, Typography, theme } from 'antd';
 import type { MenuProps } from 'antd';
 import { useTranslations } from 'next-intl';
@@ -83,6 +84,18 @@ export default function UserMenuDropdown({
 				},
 			},
 			{ type: 'divider' },
+			{
+				key: 'kanaReference',
+				icon: <FontSizeOutlined />,
+				label: (
+					<Link href="/reference/kana" style={{ color: 'inherit', textDecoration: 'none' }}>
+						{t('kanaReference')}
+					</Link>
+				),
+				onClick: () => {
+					onOpenChange(false);
+				},
+			},
 			{
 				key: 'landing',
 				icon: <HomeOutlined />,

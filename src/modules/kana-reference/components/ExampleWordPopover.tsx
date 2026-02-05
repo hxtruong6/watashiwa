@@ -5,30 +5,27 @@ import { Button, Flex, Popover, Typography, theme } from 'antd';
 import { useLocale, useTranslations } from 'next-intl';
 import type { ReactNode } from 'react';
 
-import { type KanaExampleWord, getExampleWordDisplay } from '../data/exampleWords';
-import type { KanaScript } from '../types';
+import { type SingleExample, getMeaningForExample } from '../data/exampleWords';
 
 const { useToken } = theme;
 
 export interface ExampleWordPopoverProps {
 	/** When false, renders only children (no popover). */
 	enabled: boolean;
-	example: KanaExampleWord | undefined;
-	/** Current table script – used to show word vs wordKatakana. */
-	script: KanaScript;
+	/** Script-specific example (one for Hiragana tab, one for Katakana tab). */
+	example: SingleExample | undefined;
 	/** Same play function as page (useKanaAudio) so voice/speed match user settings. */
 	onPlayWord: (text: string) => void;
 	children: ReactNode;
 }
 
 /**
- * Wraps a cell (or any trigger) in a popover that shows one example word.
- * When enabled, click on children opens the popover; same click is used by parent for copy/audio.
+ * Wraps a cell in a popover that shows one example word for the current script.
+ * We always provide two examples per syllable (Hiragana + Katakana); this shows the one for the active tab.
  */
 export function ExampleWordPopover({
 	enabled,
 	example,
-	script,
 	onPlayWord,
 	children,
 }: ExampleWordPopoverProps) {
@@ -40,28 +37,22 @@ export function ExampleWordPopover({
 		return <>{children}</>;
 	}
 
-	const meaning = example
-		? locale === 'vi' && example.meaningVi
-			? example.meaningVi
-			: example.meaningEn
-		: null;
-
-	const displayWord = getExampleWordDisplay(example, script);
+	const meaning = getMeaningForExample(example, locale);
 
 	const content = example ? (
 		<Flex vertical gap={token.marginSM} style={{ minWidth: 160 }}>
 			<Typography.Text strong style={{ fontSize: token.fontSizeLG }}>
-				{displayWord}
+				{example.word}
 			</Typography.Text>
 			<Typography.Text type="secondary" style={{ fontStyle: 'italic' }}>
 				{example.romaji}
 			</Typography.Text>
-			<Typography.Text>{meaning}</Typography.Text>
+			{meaning ? <Typography.Text>{meaning}</Typography.Text> : null}
 			<Button
 				type="text"
 				size="small"
 				icon={<SoundOutlined />}
-				onClick={() => onPlayWord(displayWord)}
+				onClick={() => onPlayWord(example.word)}
 				style={{ alignSelf: 'flex-start' }}
 			>
 				{t('play')}

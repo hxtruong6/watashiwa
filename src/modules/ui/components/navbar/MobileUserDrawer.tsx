@@ -6,6 +6,7 @@ import ThemeToggle from '@/modules/user/components/ThemeToggle';
 import {
 	BugOutlined,
 	FireFilled,
+	FontSizeOutlined,
 	HomeOutlined,
 	LogoutOutlined,
 	SettingOutlined,
@@ -154,6 +155,28 @@ export default function MobileUserDrawer({
 						</Flex>
 					</Flex>
 
+					<Link
+						href="/reference/kana"
+						prefetch={true}
+						onClick={onClose}
+						style={{ textDecoration: 'none', marginBottom: 12, display: 'block' }}
+					>
+						<Button
+							type="default"
+							size="large"
+							block
+							icon={<FontSizeOutlined />}
+							style={{
+								height: 'clamp(44px, 10vw, 48px)',
+								fontSize: 'clamp(14px, 3.5vw, 16px)',
+								justifyContent: 'flex-start',
+								paddingLeft: 'clamp(20px, 5vw, 24px)',
+								color: token.colorText,
+							}}
+						>
+							{t('kanaReference')}
+						</Button>
+					</Link>
 					<Link href="/login" prefetch={true} onClick={onClose}>
 						<Button
 							type="primary"
@@ -254,6 +277,22 @@ export default function MobileUserDrawer({
 						>
 							{t('share')}
 						</Button>
+						<Link href="/reference/kana" onClick={onClose} style={{ textDecoration: 'none' }}>
+							<Button
+								block
+								size="large"
+								icon={<FontSizeOutlined />}
+								style={{
+									justifyContent: 'flex-start',
+									paddingLeft: 'clamp(20px, 5vw, 24px)',
+									fontSize: 'clamp(14px, 3.5vw, 16px)',
+									height: 'clamp(44px, 10vw, 48px)',
+									color: token.colorText,
+								}}
+							>
+								{t('kanaReference')}
+							</Button>
+						</Link>
 						<Link href="/" onClick={onClose} style={{ textDecoration: 'none' }}>
 							<Button
 								block
