@@ -19,6 +19,8 @@ export interface UseSessionPhaseOptions {
 	isSessionActive: boolean;
 	isLoading: boolean;
 	redirectToDashboard: () => void;
+	/** When true, skip briefing and go straight to quiz when session has new/leech cards. */
+	skipBriefingByDefault?: boolean;
 }
 
 /**
@@ -54,6 +56,7 @@ export function useSessionPhase(options: UseSessionPhaseOptions): UseSessionPhas
 		isSessionActive,
 		isLoading: isLoadingOption,
 		redirectToDashboard,
+		skipBriefingByDefault = false,
 	} = options;
 
 	// Use ref to always have latest isLoading value (breaks circular dependency)
@@ -117,21 +120,30 @@ export function useSessionPhase(options: UseSessionPhaseOptions): UseSessionPhas
 			});
 
 			if (hasNew || hasLeech) {
-				console.log(
-					'[useSessionPhase] Transitioning to briefing (hasNew:',
-					hasNew,
-					', hasLeech:',
-					hasLeech,
-					')',
-				);
-				// eslint-disable-next-line react-hooks/set-state-in-effect
-				setStudyPhase('briefing');
+				if (skipBriefingByDefault) {
+					// User preference: skip briefing and go straight to quiz
+					useSessionStore.setState({
+						currentCard: queue[0],
+						currentIndex: 0,
+						isSessionActive: true,
+					});
+					// eslint-disable-next-line react-hooks/set-state-in-effect
+					setStudyPhase('quiz');
+				} else {
+					setStudyPhase('briefing');
+				}
 			} else {
-				console.log('[useSessionPhase] Transitioning to quiz (no new cards or leeches)');
 				setStudyPhase('quiz');
 			}
 		}
-	}, [queue, studyPhase, hasSkippedBriefing, redirectToDashboard, isLoadingOption]);
+	}, [
+		queue,
+		studyPhase,
+		hasSkippedBriefing,
+		redirectToDashboard,
+		isLoadingOption,
+		skipBriefingByDefault,
+	]);
 
 	// Task 1.5: Ensure currentCard is set when entering quiz phase
 	useEffect(() => {

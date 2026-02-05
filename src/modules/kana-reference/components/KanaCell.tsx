@@ -9,6 +9,8 @@ const { Text } = Typography;
 export interface KanaCellProps {
 	character: string;
 	romaji: string;
+	/** When false, hide romaji in cell (aria-label still includes it for a11y). Stage 4 */
+	showRomaji?: boolean;
 	/** Optional: for Stage 2 copy / Stage 4 audio */
 	onClick?: () => void;
 	/** Accessible label, e.g. "Hiragana か, romaji ka" */
@@ -20,6 +22,7 @@ export interface KanaCellProps {
 export function KanaCell({
 	character,
 	romaji,
+	showRomaji = true,
 	onClick,
 	ariaLabel,
 	highlighted = false,
@@ -39,17 +42,19 @@ export function KanaCell({
 			>
 				{character}
 			</Text>
-			<Text
-				style={{
-					display: 'block',
-					fontSize: token.fontSizeSM,
-					color: token.colorTextSecondary,
-					fontStyle: 'italic',
-					marginTop: token.marginXXS,
-				}}
-			>
-				{romaji}
-			</Text>
+			{showRomaji && (
+				<Text
+					style={{
+						display: 'block',
+						fontSize: token.fontSizeSM,
+						color: token.colorTextSecondary,
+						fontStyle: 'italic',
+						marginTop: token.marginXXS,
+					}}
+				>
+					{romaji}
+				</Text>
+			)}
 		</>
 	);
 

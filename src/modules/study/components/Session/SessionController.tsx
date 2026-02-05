@@ -75,7 +75,14 @@ export default function SessionController({
 	});
 
 	// Settings STORE
-	const { showFurigana, showRomaji, autoPlayAudio, cardBackSettings } = useStudyPreferences();
+	const {
+		showFurigana,
+		showRomaji,
+		autoPlayAudio,
+		cardBackSettings,
+		skipBriefingByDefault,
+		setSkipBriefingByDefault,
+	} = useStudyPreferences();
 	// userSettings moved to useSessionInitialization hook (Task 2.7)
 	const [showAnswer, setShowAnswer] = useState(false);
 	// Rating submission state moved to useRatingSubmission hook (Task 3.7)
@@ -136,8 +143,9 @@ export default function SessionController({
 		currentCard,
 		currentIndex,
 		isSessionActive,
-		isLoading: initHook.isLoading, // Use actual isLoading from init hook
+		isLoading: initHook.isLoading,
 		redirectToDashboard,
+		skipBriefingByDefault,
 	});
 
 	// Extract phase state from hook (Task 1.7)
@@ -384,44 +392,44 @@ export default function SessionController({
 	}
 
 	// Priming phase - show story reader
-	if (studyPhase === 'priming' && primingStory) {
-		return (
-			<SessionContainer
-				progress={0}
-				headerVisible={true}
-				actions={
-					<>
-						<Button
-							type="text"
-							shape="circle"
-							icon={<SettingOutlined />}
-							onClick={() => uiHook.setSettingsVisible(true)}
-						/>
-					</>
-				}
-			>
-				<StoryReader
-					story={primingStory}
-					onComplete={() => {
-						// After story is read, proceed to fetch cards
-						setHasSkippedPriming(false);
-						// Re-initialize to fetch cards
-						initHook.initializeSession();
-					}}
-					onSkip={() => {
-						// Soft Gate: Allow skipping
-						trackEvent('priming_skipped', {
-							unit_id: deckId,
-							source: 'story',
-						});
-						setHasSkippedPriming(true);
-						// Re-initialize to fetch cards
-						initHook.initializeSession();
-					}}
-				/>
-			</SessionContainer>
-		);
-	}
+	// if (studyPhase === 'priming' && primingStory) {
+	// 	return (
+	// 		<SessionContainer
+	// 			progress={0}
+	// 			headerVisible={true}
+	// 			actions={
+	// 				<>
+	// 					<Button
+	// 						type="text"
+	// 						shape="circle"
+	// 						icon={<SettingOutlined />}
+	// 						onClick={() => uiHook.setSettingsVisible(true)}
+	// 					/>
+	// 				</>
+	// 			}
+	// 		>
+	// 			<StoryReader
+	// 				story={primingStory}
+	// 				onComplete={() => {
+	// 					// After story is read, proceed to fetch cards
+	// 					setHasSkippedPriming(false);
+	// 					// Re-initialize to fetch cards
+	// 					initHook.initializeSession();
+	// 				}}
+	// 				onSkip={() => {
+	// 					// Soft Gate: Allow skipping
+	// 					trackEvent('priming_skipped', {
+	// 						unit_id: deckId,
+	// 						source: 'story',
+	// 					});
+	// 					setHasSkippedPriming(true);
+	// 					// Re-initialize to fetch cards
+	// 					initHook.initializeSession();
+	// 				}}
+	// 			/>
+	// 		</SessionContainer>
+	// 	);
+	// }
 
 	return (
 		<SessionContainer
@@ -579,7 +587,7 @@ export default function SessionController({
 						setShowAnswer(false);
 						resetTimer();
 					}}
-					onSkip={() => {
+					onDonShowAgain={() => {
 						const newCount = queue.filter((c) => c.srsStage === 0).length;
 						const reviewCount = queue.length - newCount;
 						trackEvent(AnalyticsEvents.Study.BriefingSkipped, {
@@ -589,6 +597,7 @@ export default function SessionController({
 							new_count: newCount,
 							review_count: reviewCount,
 						});
+						setSkipBriefingByDefault(true);
 						setHasSkippedBriefing(true);
 						phaseHook.transitionToQuiz();
 						setShowAnswer(false);

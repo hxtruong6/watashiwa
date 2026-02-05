@@ -8,6 +8,8 @@ export interface AudioPlayerOptions {
 	volume?: number;
 	voiceUri?: string; // ID of the saved voice
 	lang?: string;
+	/** Called when TTS fails (e.g. no voice, network). Not called for "interrupted". */
+	onError?: (event?: SpeechSynthesisErrorEvent) => void;
 }
 
 export const useAudioPlayer = (initialOptions: AudioPlayerOptions = {}) => {
@@ -91,6 +93,7 @@ export const useAudioPlayer = (initialOptions: AudioPlayerOptions = {}) => {
 				// "interrupted" is expected when cancel() is called (e.g. user triggered new speak)
 				if (e.error !== 'interrupted') {
 					console.error('Audio playback error', e);
+					optionsRef.current.onError?.(e);
 				}
 				setIsPlaying(false);
 				setIsPaused(false);

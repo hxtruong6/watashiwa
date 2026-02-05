@@ -3,7 +3,9 @@
 import { Typography, theme } from 'antd';
 import React from 'react';
 
+import { getExampleWord } from '../data/exampleWords';
 import type { KanaGrid } from '../types';
+import { ExampleWordPopover } from './ExampleWordPopover';
 import { KanaCell } from './KanaCell';
 
 const { useToken } = theme;
@@ -17,9 +19,23 @@ export interface KanaTableProps {
 	onCellClick?: (cellId: string, character: string, romaji: string) => void;
 	/** Script for aria caption and cell labels. */
 	script: 'hiragana' | 'katakana';
+	/** When false, hide romaji in each cell. Stage 4 */
+	showRomaji?: boolean;
+	/** When true, wrap cells in example word popover. Stage 4 */
+	showExampleWords?: boolean;
+	/** Same play as page useKanaAudio – used for popover "Play" so voice/speed match. */
+	onPlayWord?: (text: string) => void;
 }
 
-export function KanaTable({ grid, highlightSet, onCellClick, script }: KanaTableProps) {
+export function KanaTable({
+	grid,
+	highlightSet,
+	onCellClick,
+	script,
+	showRomaji = true,
+	showExampleWords = false,
+	onPlayWord,
+}: KanaTableProps) {
 	const { token } = useToken();
 	const scriptLabel = script === 'hiragana' ? 'Hiragana' : 'Katakana';
 
@@ -108,21 +124,28 @@ export function KanaTable({ grid, highlightSet, onCellClick, script }: KanaTable
 									}}
 								>
 									{cell ? (
-										<KanaCell
-											character={cell.character}
-											romaji={cell.romaji}
-											ariaLabel={`${scriptLabel} ${cell.character}, romaji ${cell.romaji}`}
-											highlighted={highlightSet?.has(cell.id)}
-											onClick={
-												onCellClick
-													? () => onCellClick(cell.id, cell.character, cell.romaji)
-													: undefined
-											}
-										/>
+										<ExampleWordPopover
+											enabled={showExampleWords}
+											example={getExampleWord(cell.romaji)}
+											script={script}
+											onPlayWord={onPlayWord ?? (() => {})}
+										>
+											<KanaCell
+												character={cell.character}
+												romaji={cell.romaji}
+												showRomaji={showRomaji}
+												ariaLabel={`${scriptLabel} ${cell.character}, romaji ${cell.romaji}`}
+												highlighted={highlightSet?.has(cell.id)}
+												onClick={
+													onCellClick
+														? () => onCellClick(cell.id, cell.character, cell.romaji)
+														: undefined
+												}
+											/>
+										</ExampleWordPopover>
 									) : (
 										<div
 											style={{
-												// backgroundColor: token.colorFillQuaternary,
 												borderRadius: token.borderRadius,
 											}}
 											aria-hidden

@@ -1,6 +1,7 @@
 import {
 	CompassOutlined,
 	DeploymentUnitOutlined,
+	FontSizeOutlined,
 	ReadOutlined,
 	RocketOutlined,
 } from '@ant-design/icons';
@@ -37,6 +38,12 @@ export const NAV_ITEMS: NavItem[] = [
 		label: 'Journey',
 		path: '/dashboard/courses',
 		icon: <ReadOutlined />,
+	},
+	{
+		key: 'kanaReference',
+		label: 'Kana',
+		path: '/reference/kana',
+		icon: <FontSizeOutlined />,
 	},
 ];
 

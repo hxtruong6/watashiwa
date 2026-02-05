@@ -25,6 +25,8 @@ interface StudyPreferences {
 	showRatingText: boolean; // Show text labels on rating buttons
 	cardBackSettings: CardBackSettings;
 	algorithmMode: AlgorithmMode; // Algorithm mode: 'semantic' or 'srs'
+	/** Skip the session briefing screen and go straight to quiz when there are new/leech cards. */
+	skipBriefingByDefault: boolean;
 	/** @deprecated Use responsive breakpoint detection in components instead. Kept for backward compatibility. */
 	exampleDefaultExpanded: boolean; // Default expand state for examples
 
@@ -35,6 +37,7 @@ interface StudyPreferences {
 	setShowRatingText: (show: boolean) => void;
 	setCardBackSettings: (settings: Partial<CardBackSettings>) => void;
 	setAlgorithmMode: (mode: AlgorithmMode) => void;
+	setSkipBriefingByDefault: (skip: boolean) => void;
 	/** @deprecated Use responsive breakpoint detection in components instead. Kept for backward compatibility. */
 	setExampleDefaultExpanded: (expanded: boolean) => void;
 }
@@ -62,9 +65,12 @@ function validateStoredPreferences(data: unknown): Partial<StudyPreferences> | n
 	// Validate algorithmMode if present
 	if (stored.algorithmMode !== undefined) {
 		if (stored.algorithmMode !== 'semantic' && stored.algorithmMode !== 'srs') {
-			// Invalid algorithmMode, reset to default
 			stored.algorithmMode = 'srs';
 		}
+	}
+	// Validate skipBriefingByDefault
+	if (stored.skipBriefingByDefault !== undefined && typeof stored.skipBriefingByDefault !== 'boolean') {
+		stored.skipBriefingByDefault = false;
 	}
 
 	// Validate other fields if needed
@@ -82,6 +88,7 @@ export const useStudyPreferences = create<StudyPreferences>()(
 			showRatingText: true, // Default: show text
 			cardBackSettings: defaultCardBackSettings,
 			algorithmMode: 'srs', // Default to SRS (safe fallback)
+			skipBriefingByDefault: false,
 			/** @deprecated Use responsive breakpoint detection in components instead. Kept for backward compatibility. */
 			exampleDefaultExpanded: true, // Default to expanded (Desktop first, will be overridden by component logic if needed)
 
@@ -94,6 +101,7 @@ export const useStudyPreferences = create<StudyPreferences>()(
 					cardBackSettings: { ...state.cardBackSettings, ...settings },
 				})),
 			setAlgorithmMode: (mode) => set({ algorithmMode: mode }),
+			setSkipBriefingByDefault: (skip) => set({ skipBriefingByDefault: skip }),
 			/** @deprecated Use responsive breakpoint detection in components instead. Kept for backward compatibility. */
 			setExampleDefaultExpanded: (expanded) => set({ exampleDefaultExpanded: expanded }),
 		}),

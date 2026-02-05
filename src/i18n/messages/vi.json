@@ -56,6 +56,7 @@
 		"discover": "Khám phá",
 		"collection": "Túi đồ",
 		"journey": "Lộ trình",
+		"kanaReference": "Kana",
 		"loginStart": "Chiến ngay",
 		"guest": "Khách",
 		"greeting": "Hế lô {name} ~",
@@ -233,13 +234,19 @@
 		},
 		"briefing": {
 			"title": "Tóm tắt buổi học",
+			"subtitle": "Nội dung phiên học hôm nay",
 			"readyToReview": "Sẵn sàng ôn tập {count} thẻ?",
 			"missionNew": "{count} Từ mới",
 			"missionReview": "{count} Thẻ ôn tập",
 			"sectionNew": "Hàng mới về",
+			"sectionNewHint": "Từ bạn chưa học lần nào",
 			"sectionReview": "Cần ôn lại",
+			"sectionReviewHint": "Từ bạn đã học — ôn lại để nhớ lâu",
+			"totalCards": "Tổng: {count} thẻ",
+			"estimatedTime": "Khoảng {minutes} phút",
+			"wordsInSession": "Từ trong phiên học",
 			"startSession": "Bắt đầu",
-			"skipBriefing": "Bỏ qua & Bắt đầu"
+			"donShowScreenAgain": "Không hiện màn hình này nữa"
 		},
 		"Tutorial": {
 			"welcomeTitle": "Chào mừng bạn đến với chế độ học",
@@ -1260,10 +1267,23 @@
 	},
 	"KanaReference": {
 		"title": "Bảng Chữ Kana",
-		"subtitle": "Tra cứu nhanh Hiragana và Katakana. Chạm vào chữ để xem trong ngữ cảnh.",
+		"subtitle": "Tra cứu nhanh Hiragana và Katakana. Chạm vào chữ để sao chép.",
 		"metaTitle": "Bảng Hiragana & Katakana | WatashiWa",
 		"metaDescription": "Bảng tra cứu nhanh Hiragana và Katakana. Tra bất kỳ ký tự nào và romaji của nó.",
 		"hiragana": "Hiragana",
-		"katakana": "Katakana"
+		"katakana": "Katakana",
+		"sectionBasic": "Cơ bản (Gojūon)",
+		"sectionDakuten": "Dakuten & Handakuten",
+		"copiedChar": "Đã sao chép {char}",
+		"copyNotSupported": "Không hỗ trợ sao chép trong ngữ cảnh này",
+		"settingsShowRomaji": "Hiện romaji trong ô",
+		"settingsShowRomajiTooltip": "Hiện hoặc ẩn cách đọc romaji dưới mỗi chữ",
+		"settingsPlayAudioOnTap": "Phát âm thanh khi chạm",
+		"settingsPlayAudioOnTapTooltip": "Phát âm khi bạn chạm vào một ký tự",
+		"settingsShowExampleWords": "Hiện từ ví dụ",
+		"settingsShowExampleWordsTooltip": "Hiện một từ ví dụ trong popover khi bạn chạm vào ký tự",
+		"example": "Ví dụ",
+		"play": "Phát",
+		"audioPlayFailed": "Không phát được âm thanh. Thử lại."
 	}
 }

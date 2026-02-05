@@ -17,14 +17,16 @@ src/modules/kana-reference/
 │   ├── KanaTable.tsx               # Single table (grid) for one script + section
 │   ├── KanaCell.tsx                # One cell: character, romaji, tap handlers
 │   ├── KanaSearch.tsx              # Search input + clear
+│   ├── KanaSettingsBar.tsx         # Toggles: show romaji, play audio, show examples (Stage 4)
 │   ├── ExampleWordPopover.tsx      # Popover with example word (Stage 4)
 │   └── index.ts
 ├── data/
-│   └── kanaData.ts                 # Gojūon + dakuten arrays (single source of truth)
+│   ├── kanaData.ts                 # Gojūon + dakuten arrays (single source of truth)
+│   └── exampleWords.ts             # One example word per kana, beginner-focused (Stage 4)
 ├── hooks/
 │   ├── useKanaSearch.ts            # Filter cells by query (Stage 3)
-│   ├── useKanaAudio.ts             # Play TTS/audio for character (Stage 4)
-│   └── useKanaPreferences.ts       # Persist audio/example prefs (Stage 4)
+│   ├── useKanaAudio.ts             # Play TTS for character (Stage 4)
+│   └── useKanaPreferences.ts       # showRomaji, playAudio, showExamples; persist (Stage 4)
 ├── types.ts
 ├── constants.ts                    # Row/column labels, view modes
 └── index.ts
@@ -107,29 +109,29 @@ src/app/reference/kana/
 
 ### 2.1 Data
 
-- [ ] **Task 2.1.1** – Extend `kanaData.ts` with dakuten & handakuten
+- [x] **Task 2.1.1** – Extend `kanaData.ts` with dakuten & handakuten
   - Hiragana: が〜ぽ (and ぱ-row).
   - Katakana: ガ〜ポ (and パ-row).
   - Export `getHiraganaDakuten()`, `getKatakanaDakuten()` (or single getter with section param).
 
 ### 2.2 Section Selector & URL
 
-- [ ] **Task 2.2.1** – Add section state: `section = 'basic' | 'dakuten'`.
+- [x] **Task 2.2.1** – Add section state: `section = 'basic' | 'dakuten'`.
   - UI: Tabs or Segmented “Basic (Gojūon)” | “Dakuten & Handakuten” (per table or global).
   - When section is dakuten, render dakuten grid for current script (Hiragana or Katakana).
 
-- [ ] **Task 2.2.2** – Sync state to URL (e.g. `nuqs` or router)
+- [x] **Task 2.2.2** – Sync state to URL (e.g. `nuqs` or router)
   - Query params: `table=hiragana|katakana`, `section=basic|dakuten`.
   - On load: read URL and set initial tab + section; on change update URL.
   - Invalid values fallback to default (e.g. hiragana, basic).
 
 ### 2.3 Copy & Toast
 
-- [ ] **Task 2.3.1** – In `KanaCell` (or parent), on tap/click: copy character to clipboard via `navigator.clipboard.writeText(character)`.
+- [x] **Task 2.3.1** – In `KanaCell` (or parent), on tap/click: copy character to clipboard via `navigator.clipboard.writeText(character)`.
   - On success: show Ant Design `message.success` or toast “Copied か” (use i18n).
   - On failure (e.g. permission): show “Copy not supported” or “Could not copy” (i18n).
 
-- [ ] **Task 2.3.2** – Add i18n keys: “Copied {char}”, “Copy not supported”.
+- [x] **Task 2.3.2** – Add i18n keys: “Copied {char}”, “Copy not supported”.
 
 ### Stage 2 Done When
 
@@ -171,45 +173,67 @@ src/app/reference/kana/
 
 ---
 
-## Stage 4: Audio & Example Words
+## Stage 4: Audio, Example Words & Settings Bar
 
-**Goal:** Tap plays pronunciation; optional popover with one example word per character; user preferences (audio on/off, show examples on/off) persisted.
+**Goal:** Tap plays pronunciation; optional popover with one example word per character; **settings bar** for user preferences (show/hide romaji, audio on tap, example words); all preferences persisted.
 
-### 4.1 Audio
+### 4.1 Settings Bar & Preferences
 
-- [ ] **Task 4.1.1** – Create `useKanaAudio.ts`
-  - Given a character (and optionally romaji), trigger TTS or play pre-recorded file.
-  - Reuse app audio stack if one exists (e.g. `useAudioPlayer`, voice utils); otherwise use Web Speech API or agreed API.
-  - Contract: `play(character: string, romaji?: string)`; return cleanup (e.g. abort if new play requested).
-  - Only one playback at a time: new play stops previous.
+- [ ] **Task 4.1.1** – Create `useKanaPreferences.ts` (hooks/)
+  - State: `showRomaji` (boolean), `playAudioOnTap` (boolean), `showExampleWords` (boolean).
+  - Persist in localStorage; key `watashi-kana-prefs`. Use zustand + persist (or simple get/set) with JSON.
+  - Defaults: showRomaji = true, playAudioOnTap = true, showExampleWords = true.
+  - Export getters and setters; validate stored shape on load.
 
-- [ ] **Task 4.1.2** – Wire `KanaCell` (or table) so that on tap: copy (existing) + optional play. If play fails, show toast “Couldn’t play audio. Try again.” (i18n).
+- [ ] **Task 4.1.2** – Create `KanaSettingsBar.tsx`
+  - Horizontal bar (Flex/Space) with:
+    - **Show romaji in cells**: Switch/toggle — when off, cells show only the kana character.
+    - **Play audio on tap**: Switch — when on, tap plays TTS for the character.
+    - **Show example words**: Switch — when on, tap shows popover with one example word.
+  - Optional: “Settings” label or icon (SettingOutlined); compact on mobile (e.g. icon + dropdown).
+  - All toggles bound to `useKanaPreferences`; changes persist immediately.
+  - i18n keys for each label and optional tooltips.
 
-### 4.2 Example Words
+- [ ] **Task 4.1.3** – Pass `showRomaji` from page → `KanaTable` → `KanaCell`; in `KanaCell` conditionally render romaji (hide when false, keep aria-label for a11y).
 
-- [ ] **Task 4.2.1** – Add example word data
-  - In `kanaData.ts` or separate `exampleWords.ts`: map each kana (or key like “ka”) to one example word (e.g. { kana: “かぞく”, romaji: “kazoku”, meaning: “family” }).
-  - Cover at least basic gojūon; dakuten optional for v1.
+### 4.2 Audio
 
-- [ ] **Task 4.2.2** – Create `ExampleWordPopover.tsx`
-  - Props: visible, target (cell ref or position), character, example (word, romaji, meaning).
-  - Use Ant Design `Popover`; on close, callback to parent.
-  - i18n for “Example” or direct display of word + meaning.
+- [ ] **Task 4.2.1** – Create `useKanaAudio.ts`
+  - Reuse app `useAudioPlayer` from `@/components/Audio/useAudioPlayer`; optionally respect `useTtsSettings` for voice/speed.
+  - Contract: `play(character: string)` — speak the single kana with `lang: 'ja-JP'`. New play cancels previous (useAudioPlayer already does this).
+  - Return `{ play, isPlaying }` (or minimal API). No pre-recorded files for v1; TTS only.
 
-- [ ] **Task 4.2.3** – In `KanaReferencePage` / `KanaCell`: when “Show example words” is on and user taps cell, after copy (and optional audio) show popover with example for that character.
+- [ ] **Task 4.2.2** – In `KanaReferencePage` (or table): on cell tap, if `playAudioOnTap` then call `play(character)`. On failure (e.g. no speech support), show toast “Couldn’t play audio. Try again.” (i18n).
 
-### 4.3 Preferences
+### 4.3 Example Words (Data + UI)
 
-- [ ] **Task 4.3.1** – Create `useKanaPreferences.ts`
-  - Read/write: “Play audio on tap” (boolean), “Show example words” (boolean).
-  - Persist in localStorage (or user settings API if available); key e.g. `watashi-kana-prefs`.
-  - Default: audio on, examples on (or per product decision).
+- [ ] **Task 4.3.1** – Add example word data in `data/exampleWords.ts`
+  - Type: `KanaExampleWord { word: string; romaji: string; meaningEn: string; meaningVi?: string }`.
+  - Map key = romaji syllable (e.g. `"a"`, `"ka"`, `"shi"`) for basic gojūon; one entry per kana. Dakuten optional for v1.
+  - **Quality bar (beginner-focused):** Common, simple words (e.g. あお “blue”, いぬ “dog”, うみ “sea”, かぞく “family”, しあわせ “happiness”). Prefer words that clearly feature the syllable. Use consistent romaji (e.g. Hepburn).
+  - Export `getExampleWord(romaji: string): KanaExampleWord | undefined`.
 
-- [ ] **Task 4.3.2** – Add toggles on page (or in a small settings dropdown): “Play audio on tap”, “Show example words”. Persist via `useKanaPreferences`.
+- [ ] **Task 4.3.2** – Create `ExampleWordPopover.tsx`
+  - Props: `visible`, `anchor`, `onClose`, `character`, `example` (word, romaji, meaning).
+  - Use Ant Design `Popover` (or Dropdown) with content: word (kana), romaji, meaning. Optional: small “Play” to speak the example word.
+  - i18n: “Example”, “Play”, and meanings can come from data (en/vi keys or inline for v1).
+
+- [ ] **Task 4.3.3** – In `KanaReferencePage`: when `showExampleWords` is on and user taps a cell, after copy (and optional audio) open popover anchored to cell with `getExampleWord(cell.romaji)`. Close on outside click or Escape.
+
+### 4.4 i18n
+
+- [ ] **Task 4.4.1** – Add i18n keys (en, vi): settings bar labels (“Show romaji”, “Play audio on tap”, “Show example words”), “Example”, “Couldn’t play audio. Try again.”, popover “Play” if applicable.
 
 ### Stage 4 Done When
 
-- Tapping a cell copies, optionally plays audio, and optionally shows one example word. User can turn audio and examples off; choice is persisted.
+- Settings bar is visible; user can show/hide romaji in cells, toggle audio on tap, and toggle example words. Tapping a cell copies, optionally plays TTS, and optionally shows one example word in a popover. All choices persisted in localStorage.
+
+### Stage 4 Polish (done)
+
+- **Dakuten example words:** `exampleWords.ts` includes ga–go, za–zo, da/de/do, ba–bo, pa–po (beginner-friendly words).
+- **Locale-aware meaning:** `ExampleWordPopover` uses `useLocale()`; shows `meaningVi` when locale is `vi`, else `meaningEn`.
+- **Audio error feedback:** `useAudioPlayer` accepts optional `onError`; `useKanaAudio({ onPlayError })` forwards it so the page can show “Couldn’t play audio” toast on TTS failure.
+- **Settings bar tooltips:** Each toggle has a short tooltip (i18n keys `settingsShowRomajiTooltip`, etc.).
 
 ---
 

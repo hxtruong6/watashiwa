@@ -56,6 +56,7 @@
 		"discover": "Explore",
 		"collection": "My Decks",
 		"journey": "Paths",
+		"kanaReference": "Kana",
 		"loginStart": "Join Now",
 		"guest": "Traveler",
 		"greeting": "Hi, {name} ~",
@@ -242,13 +243,19 @@
 		},
 		"briefing": {
 			"title": "Session Briefing",
+			"subtitle": "Here’s what’s in this session",
 			"readyToReview": "Ready to review {count} cards?",
 			"missionNew": "{count} New Words",
 			"missionReview": "{count} Reviews",
 			"sectionNew": "New Arrivals",
+			"sectionNewHint": "Words you haven’t studied yet",
 			"sectionReview": "Refresh Memory",
+			"sectionReviewHint": "Words you’ve seen before — time to reinforce",
+			"totalCards": "Total: {count} cards",
+			"estimatedTime": "About {minutes} min",
 			"startSession": "Start Session",
-			"skipBriefing": "Skip & Start Review"
+			"wordsInSession": "Words in this session",
+			"donShowScreenAgain": "Don't show this screen again"
 		},
 		"Tutorial": {
 			"welcomeTitle": "Welcome to Study Mode",
@@ -1270,10 +1277,23 @@
 	},
 	"KanaReference": {
 		"title": "Kana Reference",
-		"subtitle": "Quick reference for Hiragana and Katakana. Tap a character to see it in context.",
+		"subtitle": "Quick reference for Hiragana and Katakana. Tap a character to copy it.",
 		"metaTitle": "Hiragana & Katakana Reference | WatashiWa",
 		"metaDescription": "Quick reference tables for Hiragana and Katakana. Look up any character and its romaji.",
 		"hiragana": "Hiragana",
-		"katakana": "Katakana"
+		"katakana": "Katakana",
+		"sectionBasic": "Basic (Gojūon)",
+		"sectionDakuten": "Dakuten & Handakuten",
+		"copiedChar": "Copied {char}",
+		"copyNotSupported": "Copy not supported in this context",
+		"settingsShowRomaji": "Show romaji in cells",
+		"settingsShowRomajiTooltip": "Show or hide romaji reading under each character",
+		"settingsPlayAudioOnTap": "Play audio on tap",
+		"settingsPlayAudioOnTapTooltip": "Play pronunciation when you tap a character",
+		"settingsShowExampleWords": "Show example words",
+		"settingsShowExampleWordsTooltip": "Show an example word in a popover when you tap a character",
+		"example": "Example",
+		"play": "Play",
+		"audioPlayFailed": "Couldn't play audio. Try again."
 	}
 }
