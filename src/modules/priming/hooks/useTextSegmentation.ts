@@ -55,10 +55,10 @@ export function useTextSegmentation({
 		return createVocabTranslationMapping(segments, translationSegments);
 	}, [segments, translationSegments]);
 
-	// Get story metadata
+	// Get story metadata (title is LocalizedString: en/vi only; for ja use en fallback)
 	const metadata = useMemo(
 		() => ({
-			title: story.content.title[locale],
+			title: (locale === 'ja' ? story.content.title?.en : story.content.title?.[locale]) || '',
 			difficulty: story.difficulty,
 			category: story.category,
 			readTimeMin: story.readTimeMin,

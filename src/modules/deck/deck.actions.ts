@@ -93,7 +93,7 @@ export async function getDeck(idOrSlug: string) {
 											en: contentParsed.data.title.en,
 										}
 									: undefined,
-								body_text: contentParsed.data.body_text,
+								body_text: contentParsed.data.body_text as unknown as string,
 							}
 						: {};
 
@@ -437,12 +437,17 @@ export async function updateDeck(
 			return { success: false, error: 'Deck must have a slug' };
 		}
 
+		const updatePayload: Parameters<typeof prisma.deck.update>[0]['data'] = {
+			slug, // Ensure slug is set
+		};
+		if (data.title !== undefined) updatePayload.title = data.title;
+		if (data.description !== undefined) updatePayload.description = data.description;
+		if (data.isPublic !== undefined) updatePayload.isPublic = data.isPublic;
+		if (data.headerImage !== undefined) updatePayload.headerImage = data.headerImage;
+
 		const deck = await prisma.deck.update({
 			where: { id },
-			data: {
-				...data,
-				slug, // Ensure slug is set
-			} as any,
+			data: updatePayload,
 		});
 		revalidatePath('/dashboard/decks');
 		revalidatePath(`/decks/${deck.slug}`);

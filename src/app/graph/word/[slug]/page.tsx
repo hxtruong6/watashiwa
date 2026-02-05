@@ -1,5 +1,6 @@
 import { getInitialGraph } from '@/modules/origami/actions';
 import { OrigamiCanvas } from '@/modules/origami/components/OrigamiCanvas';
+import type { GraphData } from '@/modules/origami/types';
 import { redirect } from 'next/navigation';
 
 interface GraphWordPageProps {
@@ -20,7 +21,7 @@ export default async function GraphWordPage({ params }: GraphWordPageProps) {
 		redirect('/graph?error=word_not_found');
 	}
 
-	const { nodes, edges } = result.data;
+	const { nodes, edges } = result.data as GraphData;
 
 	return (
 		<div style={{ width: '100%', height: '100vh' }}>

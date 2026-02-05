@@ -3,7 +3,7 @@
 import { Skeleton } from 'antd';
 import dynamic from 'next/dynamic';
 import { useCallback, useState } from 'react';
-import type { Edge, Node } from 'reactflow';
+import { type Edge, MarkerType, type Node } from 'reactflow';
 import 'reactflow/dist/style.css';
 
 import { expandKanjiNode } from '../actions';
@@ -55,13 +55,13 @@ export function OrigamiCanvas({ initialNodes, initialEdges }: OrigamiCanvasProps
 				strokeDasharray: edge.type === 'KUNYOMI' ? '5,5' : edge.type === 'IRREGULAR' ? '2,2' : '0',
 			},
 			markerEnd: {
-				type: 'arrowclosed',
+				type: MarkerType.ArrowClosed,
 				color: edge.type === 'ONYOMI' ? '#1890ff' : edge.type === 'KUNYOMI' ? '#eb2f96' : '#fa8c16',
 			},
 		})),
 	);
 	const [loading, setLoading] = useState(false);
-	const [selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
+	const [_selectedNodeId, setSelectedNodeId] = useState<string | null>(null);
 
 	const handleNodeClick = useCallback(async (_event: React.MouseEvent, node: Node) => {
 		// Only expand kanji nodes
@@ -102,13 +102,13 @@ export function OrigamiCanvas({ initialNodes, initialEdges }: OrigamiCanvasProps
 						strokeDasharray: e.type === 'KUNYOMI' ? '5,5' : e.type === 'IRREGULAR' ? '2,2' : '0',
 					},
 					markerEnd: {
-						type: 'arrowclosed',
+						type: MarkerType.ArrowClosed,
 						color: e.type === 'ONYOMI' ? '#1890ff' : e.type === 'KUNYOMI' ? '#eb2f96' : '#fa8c16',
 					},
 				}));
 
 				setNodes((prev) => [...prev, ...newNodes]);
-				setEdges((prev) => [...prev, ...newEdges]);
+				setEdges((prev) => [...prev, ...newEdges] as Edge[]);
 
 				// Re-center on clicked node (simple implementation)
 				// In Phase 2, we'll add smooth transitions

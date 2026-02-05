@@ -8,7 +8,7 @@ import db from '@/lib/db';
 import type { StoryAnalytics, StoryContent, StoryPositions } from '@/lib/schemas/jsonb';
 import { ContentStatus, Prisma } from '@prisma/client';
 
-import { StoryWithVocabularies } from './types';
+import type { StoryWithContent, StoryWithVocabularies } from './types';
 
 // -----------------------------------------------------------------------------
 // Story Queries

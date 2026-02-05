@@ -1,6 +1,6 @@
 import { prisma } from '@/lib/db';
 import { EtymologyData } from '@/lib/schemas/jsonb';
-import { SmartCard, StandardCard } from '@/modules/flashcard/types';
+import { SmartCard, StandardCard, type Vocabulary } from '@/modules/flashcard/types';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import {
@@ -69,6 +69,7 @@ function createSmartCard(
 				meanings: { en: [`meaning-${wordSurface}`], vi: [`nghĩa-${wordSurface}`] },
 				mnemonic: null,
 				examples: [],
+				furiganaMapping: null,
 				audioUrl: null,
 				imageUrl: null,
 				contentStatus: 'PUBLISHED' as const,
@@ -101,6 +102,14 @@ describe('Semantic Sequencer Service', () => {
 		});
 
 		it('should return original queue for single card', async () => {
+			const minimalDetails = {
+				id: 'vocab-1',
+				wordSurface: 'テスト',
+				wordReading: 'てすと',
+				meanings: { en: ['test'] },
+				etymology: null,
+				examples: [],
+			} as unknown as Vocabulary;
 			const queue: SmartCard[] = [
 				{
 					id: 'card-1',
@@ -109,16 +118,7 @@ describe('Semantic Sequencer Service', () => {
 					nextReview: null,
 					variant: 'BASIC',
 					front: { hero: 'テスト', reading: 'てすと' },
-					back: {
-						details: {
-							id: 'vocab-1',
-							wordSurface: 'テスト',
-							wordReading: 'てすと',
-							meanings: { en: ['test'] },
-							etymology: null,
-							examples: [],
-						},
-					},
+					back: { details: minimalDetails },
 				},
 			];
 
@@ -131,6 +131,22 @@ describe('Semantic Sequencer Service', () => {
 		});
 
 		it('should return FSRS queue when no relationships found', async () => {
+			const details1 = {
+				id: 'vocab-1',
+				wordSurface: 'テスト',
+				wordReading: 'てすと',
+				meanings: { en: ['test'] },
+				etymology: null,
+				examples: [],
+			} as unknown as Vocabulary;
+			const details2 = {
+				id: 'vocab-2',
+				wordSurface: '例',
+				wordReading: 'れい',
+				meanings: { en: ['example'] },
+				etymology: null,
+				examples: [],
+			} as unknown as Vocabulary;
 			const queue: SmartCard[] = [
 				{
 					id: 'card-1',
@@ -139,16 +155,7 @@ describe('Semantic Sequencer Service', () => {
 					nextReview: new Date(),
 					variant: 'BASIC',
 					front: { hero: 'テスト', reading: 'てすと' },
-					back: {
-						details: {
-							id: 'vocab-1',
-							wordSurface: 'テスト',
-							wordReading: 'てすと',
-							meanings: { en: ['test'] },
-							etymology: null,
-							examples: [],
-						},
-					},
+					back: { details: details1 },
 				},
 				{
 					id: 'card-2',
@@ -157,16 +164,7 @@ describe('Semantic Sequencer Service', () => {
 					nextReview: new Date(),
 					variant: 'BASIC',
 					front: { hero: '例', reading: 'れい' },
-					back: {
-						details: {
-							id: 'vocab-2',
-							wordSurface: '例',
-							wordReading: 'れい',
-							meanings: { en: ['example'] },
-							etymology: null,
-							examples: [],
-						},
-					},
+					back: { details: details2 },
 				},
 			];
 
@@ -191,42 +189,40 @@ describe('Semantic Sequencer Service', () => {
 		});
 
 		it('should maintain FSRS priority (Due Reviews > New Cards)', async () => {
+			const details1 = {
+				id: 'vocab-1',
+				wordSurface: 'テスト',
+				wordReading: 'てすと',
+				meanings: { en: ['test'] },
+				etymology: null,
+				examples: [],
+			} as unknown as Vocabulary;
+			const details2 = {
+				id: 'vocab-2',
+				wordSurface: '例',
+				wordReading: 'れい',
+				meanings: { en: ['example'] },
+				etymology: null,
+				examples: [],
+			} as unknown as Vocabulary;
 			const queue: SmartCard[] = [
 				{
 					id: 'card-1',
 					vocabId: 'vocab-1',
-					srsStage: 0, // New
+					srsStage: 0,
 					nextReview: null,
 					variant: 'BASIC',
 					front: { hero: 'テスト', reading: 'てすと' },
-					back: {
-						details: {
-							id: 'vocab-1',
-							wordSurface: 'テスト',
-							wordReading: 'てすと',
-							meanings: { en: ['test'] },
-							etymology: null,
-							examples: [],
-						},
-					},
+					back: { details: details1 },
 				},
 				{
 					id: 'card-2',
 					vocabId: 'vocab-2',
-					srsStage: 2, // Review
+					srsStage: 2,
 					nextReview: new Date(),
 					variant: 'BASIC',
 					front: { hero: '例', reading: 'れい' },
-					back: {
-						details: {
-							id: 'vocab-2',
-							wordSurface: '例',
-							wordReading: 'れい',
-							meanings: { en: ['example'] },
-							etymology: null,
-							examples: [],
-						},
-					},
+					back: { details: details2 },
 				},
 			];
 
@@ -258,12 +254,12 @@ describe('Semantic Sequencer Service', () => {
 				createSmartCard('card-2', 'vocab-2', 1, '例', 'れい'),
 			];
 
-			// Mock slow query
+			// Mock slow query (cast: test mock returns Promise, not PrismaPromise)
 			vi.mocked(prisma.vocabulary.findMany).mockImplementation(
 				() =>
 					new Promise((resolve) => {
-						setTimeout(() => resolve([]), 3000); // 3 seconds
-					}),
+						setTimeout(() => resolve([]), 3000);
+					}) as ReturnType<typeof prisma.vocabulary.findMany>,
 			);
 
 			const result = await getSemanticallySequencedQueue(queue, {
@@ -401,7 +397,7 @@ describe('Semantic Sequencer Service', () => {
 					{ id: 'vocab-2', deckId: 'deck-1' },
 					{ id: 'vocab-3', deckId: 'deck-1' },
 					{ id: 'vocab-4', deckId: 'deck-1' },
-				]);
+				] as any);
 
 			// Mock confusion pair queries
 			vi.mocked(prisma.confusionPair.findMany)
@@ -449,7 +445,7 @@ describe('Semantic Sequencer Service', () => {
 					{ id: 'vocab-2', deckId: 'deck-1' },
 					{ id: 'vocab-3', deckId: 'deck-1' },
 					{ id: 'vocab-4', deckId: 'deck-2' },
-				]);
+				] as any);
 
 			// Mock confusion pair queries
 			vi.mocked(prisma.confusionPair.findMany).mockResolvedValueOnce([]).mockResolvedValueOnce([]);
@@ -527,7 +523,7 @@ describe('Semantic Sequencer Service', () => {
 					},
 					{ id: 'vocab-3', etymology: null },
 					{ id: 'vocab-4', etymology: null },
-				])
+				] as any)
 				.mockResolvedValueOnce([
 					// Deck context query
 					{ id: 'vocab-1', deckId: 'deck-1' },
@@ -729,7 +725,7 @@ describe('Semantic Sequencer Service', () => {
 						},
 					},
 					{ id: 'vocab-3', etymology: null },
-				])
+				] as any)
 				.mockResolvedValueOnce([
 					{ id: 'vocab-1', deckId: 'deck-1' },
 					{ id: 'vocab-2', deckId: 'deck-1' },

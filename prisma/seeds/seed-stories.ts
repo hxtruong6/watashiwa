@@ -327,7 +327,8 @@ async function processStory(
 			title: {
 				en: storyJson.title.en,
 				vi: storyJson.title.vi,
-				ja: storyJson.title.vi, // Fallback if ja not provided in title
+				// ja not in StoryContent.title (LocalizedStringSchema is en/vi only). Uncomment if schema is extended.
+				// ja: storyJson.title.vi,
 			},
 			body_text: {
 				en: storyJson.body_text.en,

@@ -11,11 +11,9 @@ import {
 import { executeSafeAction } from '@/modules/core/action-client';
 import { getSemanticallySequencedQueue } from '@/modules/study/services/semantic-sequencer.service';
 import { UserPreferences } from '@/types/user';
-import { Card, createEmptyCard } from 'ts-fsrs';
 import { z } from 'zod';
 
 import { SmartCard, StandardCard, Vocabulary } from './types';
-import { fsrs, getSRSStage, mapRatingToFSRS } from './utils/srs-algorithm';
 
 // Input Validation Schemas
 // Validate UUIDs when provided to prevent injection attacks
@@ -113,8 +111,9 @@ export async function fetchSessionAction(input: { deckId?: string; courseId?: st
 				newCards = fetched.map((v) => ({ ...v, _review: null }));
 			}
 
-			// 3. Get story keywords for recency effect (if deckId is specified)
-			let keywordVocabIds: string[] = [];
+			// 3. Get story keyword word surfaces for recency effect (if deckId is specified)
+			// highlights are word surfaces (deprecated schema); we prioritize cards whose wordSurface is in highlights
+			let keywordWordSurfaces: string[] = [];
 			if (deckId) {
 				const story = await prisma.story.findFirst({
 					where: { unitId: deckId },
@@ -124,7 +123,7 @@ export async function fetchSessionAction(input: { deckId?: string; courseId?: st
 				if (story) {
 					const contentValidation = StoryContentSchema.safeParse(story.content);
 					if (contentValidation.success) {
-						keywordVocabIds = contentValidation.data.highlights.map((h) => h.vocab_id);
+						keywordWordSurfaces = contentValidation.data.highlights || [];
 					}
 				}
 			}
@@ -140,7 +139,7 @@ export async function fetchSessionAction(input: { deckId?: string; courseId?: st
 			const otherCards: typeof combined = [];
 
 			for (const item of combined) {
-				if (keywordVocabIds.includes(item.id)) {
+				if (keywordWordSurfaces.includes(item.wordSurface)) {
 					keywordCards.push(item);
 				} else {
 					otherCards.push(item);
@@ -206,7 +205,7 @@ export async function fetchSessionAction(input: { deckId?: string; courseId?: st
 					// Metrics are tracked via analytics service if needed
 
 					return semanticResult.queue;
-				} catch (error) {
+				} catch (_error) {
 					// Graceful fallback: return FSRS queue on any error
 					// Error is handled gracefully, no user-facing error needed
 					return sessionCards;

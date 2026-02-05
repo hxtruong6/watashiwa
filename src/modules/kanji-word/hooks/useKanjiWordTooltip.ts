@@ -4,13 +4,11 @@
  * Custom hook for managing tooltip state and interactions
  * Extracted from KanjiWordTooltip component for reusability
  */
-
+import type { Vocabulary } from '@prisma/client';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import type { Vocabulary } from '@prisma/client';
-
-import { calculateTooltipPosition } from '../utils/tooltipHelpers';
 import { TOOLTIP_CONFIG } from '../constants';
+import { calculateTooltipPosition } from '../utils/tooltipHelpers';
 
 export interface UseKanjiWordTooltipReturn {
 	showTooltip: boolean;
@@ -46,6 +44,7 @@ export function useKanjiWordTooltip(vocab: Vocabulary | null): UseKanjiWordToolt
 	// Calculate position when vocab/anchor changes
 	useEffect(() => {
 		if (!vocab || !tooltipAnchor || !tooltipRef.current) {
+			// eslint-disable-next-line react-hooks/set-state-in-effect
 			setIsVisible(false);
 			return;
 		}
@@ -55,7 +54,7 @@ export function useKanjiWordTooltip(vocab: Vocabulary | null): UseKanjiWordToolt
 			TOOLTIP_CONFIG.WIDTH,
 			TOOLTIP_CONFIG.HEIGHT,
 		);
-		setPosition(pos);
+		setPosition(pos as { x: number; y: number; placement: 'top' });
 		setIsVisible(true);
 	}, [vocab, tooltipAnchor]);
 
@@ -77,6 +76,5 @@ export function useKanjiWordTooltip(vocab: Vocabulary | null): UseKanjiWordToolt
 		isVisible,
 		handleOpen,
 		handleClose,
-		tooltipRef, // Expose ref for positioning calculations
 	};
 }

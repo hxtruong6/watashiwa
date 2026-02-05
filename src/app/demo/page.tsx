@@ -5,6 +5,7 @@
  */
 import { getVocabCacheArrayAction } from '@/modules/kanji-word/actions';
 import { buildVocabCache } from '@/modules/kanji-word/utils';
+import { Vocabulary } from '@prisma/client';
 import { Suspense } from 'react';
 
 import { DemoContentClient } from './DemoContentClient';
@@ -15,7 +16,7 @@ async function DemoContent() {
 	try {
 		const vocabCacheResult = await getVocabCacheArrayAction({ limit: 1000 });
 		if (vocabCacheResult.success && vocabCacheResult.data) {
-			vocabCache = buildVocabCache(vocabCacheResult.data);
+			vocabCache = buildVocabCache(vocabCacheResult.data as unknown as Vocabulary[]);
 		}
 	} catch (error) {
 		console.error('Failed to load vocab cache:', error);

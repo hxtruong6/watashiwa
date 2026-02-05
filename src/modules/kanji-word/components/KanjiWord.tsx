@@ -147,9 +147,9 @@ export function KanjiWord({
 				hasFetchedRef.current = true;
 			});
 			getVocabByWordSurfaceAction({ wordSurface: vocabData.wordSurface })
-				.then((result: { success: boolean; data?: Vocabulary | null }) => {
+				.then((result) => {
 					if (result.success && result.data) {
-						setLoadedVocab(result.data);
+						setLoadedVocab(result.data as unknown as Vocabulary);
 					} else {
 						setLoadedVocab(null);
 					}

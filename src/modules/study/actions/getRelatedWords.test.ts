@@ -1,13 +1,13 @@
-import { executeSafeAction } from '@/modules/core/action-client';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { SemanticRelationshipService } from '../services/semantic-relationship.service';
+import type { RelatedWord } from '../types/related-words';
 import { getRelatedWordsAction } from './getRelatedWords';
 
 // Mock executeSafeAction to avoid complex Supabase mocking
 const mockExecuteSafeAction = vi.fn();
 vi.mock('@/modules/core/action-client', () => ({
-	executeSafeAction: (...args: any[]) => mockExecuteSafeAction(...args),
+	executeSafeAction: (...args: unknown[]) => mockExecuteSafeAction(...args),
 }));
 
 // Mock SemanticRelationshipService
@@ -25,6 +25,7 @@ describe('getRelatedWordsAction', () => {
 	});
 
 	it('should call SemanticRelationshipService.getRelatedWords with correct params', async () => {
+		// Minimal vocab shape for test; service returns full RelatedWord[]
 		const mockRelatedWords = [
 			{
 				vocab: {
@@ -36,7 +37,7 @@ describe('getRelatedWordsAction', () => {
 				relationshipTypes: [{ kind: 'confusion', confusionType: 'HOMONYM' }],
 				strength: 0.9,
 			},
-		];
+		] as unknown as RelatedWord[];
 
 		vi.mocked(SemanticRelationshipService.getRelatedWords).mockResolvedValue(mockRelatedWords);
 
