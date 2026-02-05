@@ -27,7 +27,8 @@
 		"errorImageOnly": "You can only upload image files!",
 		"errorImageSize": "Image must be smaller than 5MB!",
 		"language": "Language",
-		"unexpectedError": "An unexpected error occurred."
+		"unexpectedError": "An unexpected error occurred.",
+		"verify": "Verify"
 	},
 	"Offline": {
 		"title": "Lost in the clouds...",
@@ -573,6 +574,18 @@
 		"validationTooLong": "Too long (max 500 chars)",
 		"sortPopular": "Popular",
 		"sortNewest": "Newest"
+	},
+	"Email": {
+		"checkingStatus": "Checking verification status...",
+		"emailVerified": "Email Verified",
+		"emailNotVerified": "Email Not Verified",
+		"verifyEmail": "Verify Email",
+		"verifyEmailDescription": "Verify your email to secure your account and receive important updates.",
+		"verifyEmailModalTitle": "Verify Your Email",
+		"otpSentMessage": "We sent a 6-digit verification code to:",
+		"enterCode": "Enter Verification Code",
+		"otpExpiresIn": "Code expires in 15 minutes",
+		"resendCode": "Resend Code"
 	},
 	"Donation": {
 		"title": "Support the Journey",

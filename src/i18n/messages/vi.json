@@ -27,7 +27,8 @@
 		"errorImageOnly": "Chỉ được tải lên tệp hình ảnh!",
 		"errorImageSize": "Kích thước ảnh phải nhỏ hơn 5MB!",
 		"language": "Ngôn ngữ",
-		"unexpectedError": "Đã xảy ra lỗi bất ngờ."
+		"unexpectedError": "Đã xảy ra lỗi bất ngờ.",
+		"verify": "Xác minh"
 	},
 	"Offline": {
 		"title": "Lạc trôi...",
@@ -564,6 +565,18 @@
 		"validationTooLong": "Quá dài (tối đa 500 ký tự)",
 		"sortPopular": "Nổi bật",
 		"sortNewest": "Mới nhất"
+	},
+	"Email": {
+		"checkingStatus": "Đang kiểm tra trạng thái xác minh...",
+		"emailVerified": "Đã xác minh email",
+		"emailNotVerified": "Chưa xác minh email",
+		"verifyEmail": "Xác minh email",
+		"verifyEmailDescription": "Xác minh email để bảo mật tài khoản và nhận thông báo quan trọng.",
+		"verifyEmailModalTitle": "Xác minh email của bạn",
+		"otpSentMessage": "Chúng tôi đã gửi mã 6 chữ số đến:",
+		"enterCode": "Nhập mã xác minh",
+		"otpExpiresIn": "Mã hết hạn sau 15 phút",
+		"resendCode": "Gửi lại mã"
 	},
 	"Donation": {
 		"title": "Tiếp sức cho WatashiWa",

@@ -111,7 +111,7 @@ export default function EmailVerificationButton({ userEmail }: EmailVerification
 	if (checkingStatus) {
 		return (
 			<Flex align="center" gap="small">
-				<Text type="secondary">Checking verification status...</Text>
+				<Text type="secondary">{t('checkingStatus')}</Text>
 			</Flex>
 		);
 	}
