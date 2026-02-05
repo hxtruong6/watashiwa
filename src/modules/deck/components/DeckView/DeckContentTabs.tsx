@@ -4,6 +4,7 @@
  * Tabs for switching between vocab and stories
  * Includes audio playback controls and settings
  */
+import { useDismissibleTooltip } from '@/hooks/useDismissibleTooltip';
 import { LAYOUT } from '@/lib/constants';
 import {
 	AppstoreOutlined,
@@ -23,6 +24,8 @@ import type { ReactNode } from 'react';
 
 import type { ContentType, ViewMode, VocabularyItem } from '../../types';
 import { usePlayAllAudio } from './hooks/usePlayAllAudio';
+
+const PLAY_ALL_TOOLTIP_KEY = 'audio_play_all';
 
 const { Title } = Typography;
 const { useToken } = theme;
@@ -65,6 +68,8 @@ export function DeckContentTabs({
 	const t = useTranslations('Decks');
 	const { token } = useToken();
 	const screens = Grid.useBreakpoint();
+	const { showTooltip: showPlayAllTooltip, onOpenChange: onPlayAllTooltipOpenChange } =
+		useDismissibleTooltip(PLAY_ALL_TOOLTIP_KEY, { maxShows: 3 });
 
 	// Audio playback for vocabulary list
 	const { isPlaying, toggle, stop, currentIndex, totalWords } = usePlayAllAudio({
@@ -173,7 +178,16 @@ export function DeckContentTabs({
 								{currentIndex + 1} / {totalWords}
 							</span>
 						)}
-						<Tooltip title={isPlaying ? 'Stop playback' : 'Play all words'}>
+						<Tooltip
+							title={
+								showPlayAllTooltip
+									? isPlaying
+										? t('tooltipStopPlayback')
+										: t('tooltipPlayAllWords')
+									: undefined
+							}
+							onOpenChange={onPlayAllTooltipOpenChange}
+						>
 							<Button
 								type={isPlaying ? 'primary' : 'default'}
 								danger={isPlaying}
@@ -184,29 +198,30 @@ export function DeckContentTabs({
 									animation: isPlaying ? 'audioPulse 1.5s ease-in-out infinite' : 'none',
 									fontWeight: isPlaying ? 600 : 'normal',
 								}}
+								aria-label={isPlaying ? t('tooltipStop') : t('tooltipPlayAll')}
 							>
-								{isPlaying ? 'Stop' : ''}
+								{isPlaying ? t('tooltipStop') : ''}
 							</Button>
 						</Tooltip>
 					</>
 				)}
-				<Tooltip title={showMeaning ? 'Hide meanings' : 'Show meanings'}>
+				<Tooltip title={showMeaning ? t('tooltipHideMeanings') : t('tooltipShowMeanings')}>
 					<Button
 						type={showMeaning ? 'default' : 'text'}
 						icon={showMeaning ? <EyeOutlined /> : <EyeInvisibleOutlined />}
 						onClick={() => onShowMeaningChange(!showMeaning)}
 						size="small"
-						aria-label={showMeaning ? 'Hide meanings' : 'Show meanings'}
+						aria-label={showMeaning ? t('tooltipHideMeanings') : t('tooltipShowMeanings')}
 					/>
 				</Tooltip>
-				<Tooltip title={repeatPlayback ? 'Disable repeat' : 'Enable repeat playback'}>
+				<Tooltip title={repeatPlayback ? t('tooltipDisableRepeat') : t('tooltipEnableRepeat')}>
 					<Button
 						type={repeatPlayback ? 'default' : 'text'}
 						icon={<ReloadOutlined spin={repeatPlayback} />}
 						onClick={() => onRepeatPlaybackChange(!repeatPlayback)}
 						size="small"
 						disabled={!canPlay}
-						aria-label={repeatPlayback ? 'Disable repeat' : 'Enable repeat'}
+						aria-label={repeatPlayback ? t('tooltipDisableRepeat') : t('tooltipEnableRepeat')}
 					/>
 				</Tooltip>
 				<Segmented

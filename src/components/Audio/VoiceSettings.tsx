@@ -4,6 +4,8 @@ import { useTranslations } from 'next-intl';
 import React, { useEffect, useState } from 'react';
 
 import { useAudioPlayer } from './useAudioPlayer';
+import { DEFAULT_TTS_SPEED, STORAGE_KEY_SPEED, STORAGE_KEY_VOICE } from './useTtsSettings';
+import { getSelectableVoices, resolveJapaneseVoice } from './voiceUtils';
 
 const { Text } = Typography;
 
@@ -12,15 +14,12 @@ interface VoiceSettingsProps {
 	onSettingsChange?: (settings: { voiceUri: string; speed: number }) => void;
 }
 
-const STORAGE_KEY_VOICE = 'watashiwa_audio_voice';
-const STORAGE_KEY_SPEED = 'watashiwa_audio_speed';
-
 export default function VoiceSettings({ lang = 'ja-JP', onSettingsChange }: VoiceSettingsProps) {
 	const t = useTranslations('Settings');
 	const [speed, setSpeed] = useState(() => {
-		if (typeof window === 'undefined') return 1;
+		if (typeof window === 'undefined') return DEFAULT_TTS_SPEED;
 		const s = localStorage.getItem(STORAGE_KEY_SPEED);
-		return s ? parseFloat(s) : 1;
+		return s ? parseFloat(s) : DEFAULT_TTS_SPEED;
 	});
 
 	const [selectedVoiceUri, setSelectedVoiceUri] = useState<string>(() => {
@@ -36,37 +35,20 @@ export default function VoiceSettings({ lang = 'ja-JP', onSettingsChange }: Voic
 
 	// Notify parent on mount if needed, but safer to do it in effect ONLY if values exist
 	useEffect(() => {
-		if (onSettingsChange && (selectedVoiceUri || speed !== 1)) {
+		if (onSettingsChange && (selectedVoiceUri || speed !== DEFAULT_TTS_SPEED)) {
 			onSettingsChange({
 				voiceUri: selectedVoiceUri,
 				speed,
 			});
 		}
-	}, [onSettingsChange, selectedVoiceUri, speed]); // Run once to sync if needed
+	}, [onSettingsChange, selectedVoiceUri, speed]);
 
-	// Filter voices: default Hattori, user can select Kyoko in settings
-	const jpVoices = voices.filter((v) => {
-		if (v.lang !== 'ja-JP') return false;
-		const name = v.name.toLowerCase();
-		return name.includes('hattori') || name.includes('kyoko');
-		// Other options (uncomment to allow in settings):
-		// name.includes('google') ||
-		// name.includes('otoya') ||
-		// name.includes('nanami') ||
-		// name.includes('haruka') ||
-		// name.includes('siri')
-	});
-
-	const hattoriVoice = jpVoices.find(
-		(v) => v.lang === 'ja-JP' && v.name.toLowerCase().includes('hattori'),
-	);
-	const defaultHattoriUri = hattoriVoice?.voiceURI ?? '';
-	const effectiveVoiceUri = selectedVoiceUri || defaultHattoriUri;
-
-	console.log('effectiveVoiceUri', effectiveVoiceUri);
-	console.log('selectedVoiceUri', selectedVoiceUri);
-	console.log('defaultHattoriUri', defaultHattoriUri);
-	console.log('jpVoices', jpVoices);
+	// Same source as useAudioPlayer: only show preferred voices (Hattori, Kyoko) in settings
+	const jpVoices = getSelectableVoices(voices);
+	const defaultVoice = resolveJapaneseVoice(voices, null);
+	const defaultVoiceUri = defaultVoice?.voiceURI ?? '';
+	const defaultIsInList = jpVoices.some((v) => v.voiceURI === defaultVoiceUri);
+	const effectiveVoiceUri = selectedVoiceUri || (defaultIsInList ? defaultVoiceUri : '');
 
 	const handleVoiceChange = (val: string) => {
 		setSelectedVoiceUri(val);

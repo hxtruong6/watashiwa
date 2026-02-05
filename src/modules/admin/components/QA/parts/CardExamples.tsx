@@ -1,3 +1,5 @@
+import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
+import { useTtsSettings } from '@/components/Audio/useTtsSettings';
 import { InlineInput } from '@/modules/admin/components/QA/InlineInput';
 import { useWorkbenchStore } from '@/modules/admin/store/useWorkbenchStore';
 import { DeleteOutlined, PlusOutlined, SoundOutlined } from '@ant-design/icons';
@@ -10,6 +12,12 @@ const { Text } = Typography;
 export const CardExamples: React.FC = () => {
 	const { token } = theme.useToken();
 	const t = useTranslations('Admin.Content');
+	const ttsSettings = useTtsSettings();
+	const { speak } = useAudioPlayer({
+		rate: ttsSettings.speed,
+		voiceUri: ttsSettings.voiceUri,
+		lang: 'ja-JP',
+	});
 	const { activeItem, locale, addExample, updateExample, removeExample } = useWorkbenchStore();
 
 	if (!activeItem) return null;
@@ -28,9 +36,7 @@ export const CardExamples: React.FC = () => {
 		if (url) {
 			new Audio(url).play().catch(console.error);
 		} else {
-			const u = new SpeechSynthesisUtterance(text);
-			u.lang = 'ja-JP';
-			window.speechSynthesis.speak(u);
+			speak(text);
 		}
 	};
 

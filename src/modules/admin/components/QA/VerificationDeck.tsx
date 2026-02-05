@@ -1,5 +1,7 @@
 'use client';
 
+import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
+import { useTtsSettings } from '@/components/Audio/useTtsSettings';
 import {
 	getPendingVocabularySafe,
 	rejectContent,
@@ -17,6 +19,13 @@ import { type ExtendedVocabulary, VerificationCard } from './VerificationCard';
 const { Title } = Typography;
 
 export const VerificationDeck: React.FC = () => {
+	const ttsSettings = useTtsSettings();
+	const { speak } = useAudioPlayer({
+		rate: ttsSettings.speed,
+		voiceUri: ttsSettings.voiceUri,
+		lang: 'ja-JP',
+	});
+
 	// State
 	const [queue, setQueue] = useState<ExtendedVocabulary[]>([]);
 	const [loading, setLoading] = useState(true);
@@ -144,13 +153,9 @@ export const VerificationDeck: React.FC = () => {
 			audio.play().catch((e) => console.error('Audio playback error', e));
 		} else {
 			const text = current?.wordReading || current?.wordSurface;
-			if (text) {
-				const u = new SpeechSynthesisUtterance(text);
-				u.lang = 'ja-JP';
-				window.speechSynthesis.speak(u);
-			}
+			if (text) speak(text);
 		}
-	}, []);
+	}, [speak]);
 
 	// Keyboard Shortcuts
 	useEffect(() => {

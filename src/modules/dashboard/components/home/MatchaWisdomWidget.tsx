@@ -1,5 +1,7 @@
 'use client';
 
+import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
+import { useTtsSettings } from '@/components/Audio/useTtsSettings';
 import { WisdomWordData, getMatchaWisdomWords } from '@/modules/dashboard/dashboard.actions';
 import { SoundOutlined } from '@ant-design/icons';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
@@ -46,6 +48,12 @@ const FALLBACK_WORDS: WisdomWordData[] = [
 export default function MatchaWisdomWidget() {
 	const { token } = useToken();
 	const t = useTranslations('Dashboard');
+	const ttsSettings = useTtsSettings();
+	const { speak } = useAudioPlayer({
+		rate: ttsSettings.speed,
+		voiceUri: ttsSettings.voiceUri,
+		lang: 'ja-JP',
+	});
 	const [selectedWord, setSelectedWord] = useState<string | null>(null);
 	const [words, setWords] = useState<AnimatedWordData[]>([]);
 	const [prefersReducedMotion, setPrefersReducedMotion] = useState(() => {
@@ -105,12 +113,7 @@ export default function MatchaWisdomWidget() {
 		}
 
 		setSelectedWord(word.id);
-
-		if ('speechSynthesis' in window) {
-			const utterance = new SpeechSynthesisUtterance(word.kanji);
-			utterance.lang = 'ja-JP';
-			window.speechSynthesis.speak(utterance);
-		}
+		speak(word.kanji);
 
 		setTimeout(() => {
 			setSelectedWord(null);

@@ -354,6 +354,14 @@
 		"filterPublic": "Công khai",
 		"addNewContent": "Thêm nội dung",
 		"close": "Đóng",
+		"tooltipPlayAllWords": "Phát tất cả từ",
+		"tooltipStopPlayback": "Dừng phát",
+		"tooltipShowMeanings": "Hiển thị nghĩa",
+		"tooltipHideMeanings": "Ẩn nghĩa",
+		"tooltipEnableRepeat": "Bật phát lặp",
+		"tooltipDisableRepeat": "Tắt phát lặp",
+		"tooltipPlayAll": "Phát tất cả",
+		"tooltipStop": "Dừng",
 		"exercises": {
 			"title": "Ôn tập chủ động"
 		}

@@ -7,6 +7,7 @@
 'use client';
 
 import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
+import { useTtsSettings } from '@/components/Audio/useTtsSettings';
 import { trackEvent } from '@/lib/analytics';
 import { SoundOutlined } from '@ant-design/icons';
 import { Tooltip } from 'antd';
@@ -27,8 +28,10 @@ export function KeywordHighlight({
 	children,
 }: KeywordHighlightProps) {
 	const [isPlaying, setIsPlaying] = useState(false);
+	const ttsSettings = useTtsSettings();
 	const { speak, stop } = useAudioPlayer({
-		rate: 0.8,
+		rate: ttsSettings.speed,
+		voiceUri: ttsSettings.voiceUri,
 		lang: 'ja-JP',
 	});
 

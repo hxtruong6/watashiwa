@@ -1,4 +1,5 @@
 import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
+import { useTtsSettings } from '@/components/Audio/useTtsSettings';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 type FlashCardAudioProps = {
@@ -7,23 +8,11 @@ type FlashCardAudioProps = {
 	autoPlayAudio: 'off' | 'question' | 'answer';
 };
 
-const AUDIO_SPEED = 0.8;
-
 export function useFlashCardAudio({ card, showAnswer, autoPlayAudio }: FlashCardAudioProps) {
 	const audioRef = useRef<HTMLAudioElement | null>(null);
 	const [isFilePlaying, setIsFilePlaying] = useState(false);
 
-	// TTS Player
-	const [ttsSettings] = useState(() => {
-		if (typeof window === 'undefined') return { voiceUri: '', speed: AUDIO_SPEED };
-		const savedVoice = localStorage.getItem('watashiwa_audio_voice');
-		const savedSpeed = localStorage.getItem('watashiwa_audio_speed');
-		return {
-			voiceUri: savedVoice || '',
-			speed: savedSpeed ? parseFloat(savedSpeed) : AUDIO_SPEED,
-		};
-	});
-
+	const ttsSettings = useTtsSettings();
 	const {
 		speak,
 		stop,
@@ -53,13 +42,8 @@ export function useFlashCardAudio({ card, showAnswer, autoPlayAudio }: FlashCard
 					.then(() => setIsFilePlaying(true))
 					.catch((err) => console.error('Audio play failed:', err));
 			} else {
-				// TTS Fallback
-				const savedSpeed =
-					typeof window !== 'undefined'
-						? localStorage.getItem('watashiwa_audio_speed')
-						: `${AUDIO_SPEED}`;
-				const speed = savedSpeed ? parseFloat(savedSpeed) : AUDIO_SPEED;
-				speak(reading || vocabKanji || frontText, { rate: speed });
+				// TTS Fallback (uses centralized rate from useAudioPlayer/useTtsSettings)
+				speak(reading || vocabKanji || frontText);
 			}
 		}
 	}, [isVocab, audioUrl, reading, vocabKanji, frontText, speak]);
@@ -82,10 +66,7 @@ export function useFlashCardAudio({ card, showAnswer, autoPlayAudio }: FlashCard
 		}
 
 		if (textToSpeak) {
-			const savedSpeed =
-				typeof window !== 'undefined' ? localStorage.getItem('watashiwa_audio_speed') : '0.8';
-			const speed = savedSpeed ? parseFloat(savedSpeed) : 0.8;
-			speak(textToSpeak, { rate: speed });
+			speak(textToSpeak);
 		}
 	}, [isVocab, exampleSentence, speak]);
 

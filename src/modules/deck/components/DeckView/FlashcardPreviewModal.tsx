@@ -7,6 +7,7 @@
 'use client';
 
 import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
+import { useTtsSettings } from '@/components/Audio/useTtsSettings';
 import { HanVietBadge } from '@/modules/vocabulary/components/HanVietBadge';
 import { WordWithFurigana } from '@/modules/vocabulary/components/WordWithFurigana';
 import { SoundOutlined } from '@ant-design/icons';
@@ -20,14 +21,22 @@ const { Title, Text, Paragraph } = Typography;
 const { useToken } = theme;
 const { useBreakpoint } = Grid;
 
+export interface DeckViewAudioProps {
+	speak: (text: string) => void;
+	stop: () => void;
+	isPlaying: boolean;
+}
+
 interface FlashcardPreviewModalProps {
 	open: boolean;
 	item: VocabularyItem | StoryItem | null;
 	type: ContentType;
 	onClose: () => void;
+	/** When provided (e.g. from DeckView), use this player so voice/speed match the deck page */
+	audio?: DeckViewAudioProps | null;
 }
 
-export function FlashcardPreviewModal({ open, item, type, onClose }: FlashcardPreviewModalProps) {
+export function FlashcardPreviewModal({ open, item, type, onClose, audio }: FlashcardPreviewModalProps) {
 	const screens = useBreakpoint();
 	const { token } = useToken();
 	const locale = (useLocale() as 'vi' | 'en') || 'vi';
@@ -44,28 +53,17 @@ export function FlashcardPreviewModal({ open, item, type, onClose }: FlashcardPr
 		return '90vw'; // Mobile: 90% of viewport width
 	}, [screens]);
 
-	// TTS Player for audio playback
-	const [ttsSettings] = React.useState(() => {
-		if (typeof window === 'undefined') return { voiceUri: '', speed: 0.8 };
-		const savedVoice = localStorage.getItem('watashiwa_audio_voice');
-		const savedSpeed = localStorage.getItem('watashiwa_audio_speed');
-		return {
-			voiceUri: savedVoice || '',
-			speed: savedSpeed ? parseFloat(savedSpeed) : 0.8,
-		};
-	});
-
-	const {
-		speak,
-		stop,
-		isPlaying: isTtsPlaying,
-	} = useAudioPlayer({
+	// Use parent's audio when provided (same voice/speed as deck page); otherwise own TTS
+	const ttsSettings = useTtsSettings();
+	const ownPlayer = useAudioPlayer({
 		rate: ttsSettings.speed,
 		voiceUri: ttsSettings.voiceUri,
 		lang: 'ja-JP',
 	});
 
-	const isPlaying = isTtsPlaying;
+	const speak = audio?.speak ?? ownPlayer.speak;
+	const stop = audio?.stop ?? ownPlayer.stop;
+	const isPlaying = audio?.isPlaying ?? ownPlayer.isPlaying;
 
 	// Handle audio playback
 	const handlePlayAudio = React.useCallback(() => {

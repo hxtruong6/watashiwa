@@ -1,5 +1,7 @@
 'use client';
 
+import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
+import { useTtsSettings } from '@/components/Audio/useTtsSettings';
 import { useWorkbenchStore } from '@/modules/admin/store/useWorkbenchStore';
 import {
 	getPendingVocabularySafe,
@@ -46,6 +48,12 @@ const { Sider, Content } = Layout;
 
 export const ContentWorkbench: React.FC = () => {
 	const t = useTranslations('Admin.Content');
+	const ttsSettings = useTtsSettings();
+	const { speak } = useAudioPlayer({
+		rate: ttsSettings.speed,
+		voiceUri: ttsSettings.voiceUri,
+		lang: 'ja-JP',
+	});
 
 	// Store
 	const { activeItem, isDirty, init, updateField } = useWorkbenchStore();
@@ -248,16 +256,9 @@ export const ContentWorkbench: React.FC = () => {
 			audio.play().catch((e) => console.error('Audio playback error', e));
 		} else {
 			const text = current.wordReading || current.wordSurface;
-			if (text) {
-				const u = new SpeechSynthesisUtterance(text);
-				u.lang = 'ja-JP';
-				const voices = window.speechSynthesis.getVoices();
-				const kyoko = voices.find((v) => v.name === 'Kyoko' || v.name.includes('Kyoko'));
-				if (kyoko) u.voice = kyoko;
-				window.speechSynthesis.speak(u);
-			}
+			if (text) speak(text);
 		}
-	}, []);
+	}, [speak]);
 
 	// KEYBOARD SHORTCUTS
 	useEffect(() => {

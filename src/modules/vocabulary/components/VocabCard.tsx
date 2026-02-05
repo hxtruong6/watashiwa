@@ -1,4 +1,5 @@
 import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
+import { useTtsSettings } from '@/components/Audio/useTtsSettings';
 import KanjiBreakdown from '@/modules/vocabulary/components/KanjiBreakdown';
 import { PauseCircleOutlined, PlayCircleOutlined } from '@ant-design/icons';
 import { Button, Card, Divider, Flex, Tag, Typography, theme } from 'antd';
@@ -26,17 +27,7 @@ export default function VocabCard({
 	const audioRef = useRef<HTMLAudioElement | null>(null);
 	const [isFilePlaying, setIsFilePlaying] = useState(false);
 
-	// TTS Player
-	const [ttsSettings] = useState(() => {
-		if (typeof window === 'undefined') return { voiceUri: '', speed: 1 };
-		const savedVoice = localStorage.getItem('watashiwa_audio_voice');
-		const savedSpeed = localStorage.getItem('watashiwa_audio_speed');
-		return {
-			voiceUri: savedVoice || '',
-			speed: savedSpeed ? parseFloat(savedSpeed) : 1,
-		};
-	});
-
+	const ttsSettings = useTtsSettings();
 	const {
 		speak,
 		stop,

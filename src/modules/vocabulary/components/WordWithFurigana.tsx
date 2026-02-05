@@ -5,6 +5,9 @@
  * - If word has kanji: show furigana when possible; else show surface + reading line.
  * - If word is kana-only (hiragana/katakana): show plain wordSurface only (no reading line).
  *
+ * Ruby layout: uses ruby-align so furigana is visually balanced over the base
+ * (base and rt often differ in width due to kanji vs kana character count).
+ *
  * Reused in deck list, grid, flashcard preview, KanjiWord, etc.
  */
 
@@ -17,6 +20,9 @@ import React from 'react';
 
 const { Text } = Typography;
 
+/** How to align ruby annotation (furigana) relative to the base text when widths differ. */
+export type RubyAlign = 'start' | 'center' | 'space-between' | 'space-around';
+
 export interface WordWithFuriganaProps {
 	wordSurface: string;
 	wordReading?: string | null;
@@ -27,6 +33,13 @@ export interface WordWithFuriganaProps {
 	fontSize?: number | string;
 	/** Font size for ruby <rt>. Default 10. */
 	rtFontSize?: number | string;
+	/**
+	 * Alignment of furigana over base when rt and base have different widths.
+	 * - center: furigana centered over kanji (recommended for best balance).
+	 * - start: furigana aligned to start (can look off when rt is longer).
+	 * - space-between / space-around: distribute space (stretch rt over base where supported).
+	 */
+	rubyAlign?: RubyAlign;
 	/** Wrapper element. Use 'span' for inline (e.g. KanjiWord). Default 'div'. */
 	as?: 'div' | 'span';
 	className?: string;
@@ -40,6 +53,7 @@ export function WordWithFurigana({
 	showReadingLine = true,
 	fontSize = 17,
 	rtFontSize = 10,
+	rubyAlign = 'center',
 	as = 'div',
 	className,
 	style,
@@ -58,19 +72,22 @@ export function WordWithFurigana({
 	// For kana-only (hiragana/katakana) words, show plain wordSurface only.
 	const showReading = showReadingLine && wordReading && !hasRuby && hasKanjiInSurface;
 
+	// Slightly darker grey for <rt> improves contrast (WCAG AA); colorTextSecondary can be too light
+	const rtColor = token.colorTextTertiary ?? token.colorTextSecondary;
+
 	const content = (
 		<>
 			<Text strong style={{ fontSize, lineHeight: 1.3 }}>
 				{hasRuby ? (
-					<ruby style={{ rubyAlign: 'start' }}>
+					<ruby style={{ rubyAlign }}>
 						{furiganaSegments!.map((segment, idx) =>
 							segment.isKanji && segment.reading ? (
-								<ruby key={idx} style={{ rubyAlign: 'start' }}>
+								<ruby key={idx} style={{ rubyAlign }}>
 									{segment.text}
 									<rt
 										style={{
 											fontSize: rtFontSize,
-											color: token.colorTextSecondary,
+											color: rtColor,
 											fontWeight: 'normal',
 										}}
 									>

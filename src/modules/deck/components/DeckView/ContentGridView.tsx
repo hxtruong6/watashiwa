@@ -4,6 +4,7 @@
  * Grid layout for displaying vocab/story items
  */
 import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
+import { useTtsSettings } from '@/components/Audio/useTtsSettings';
 import { HanVietBadge } from '@/modules/vocabulary/components/HanVietBadge';
 import { WordWithFurigana } from '@/modules/vocabulary/components/WordWithFurigana';
 import { SoundOutlined } from '@ant-design/icons';
@@ -31,17 +32,7 @@ function AudioButton({ wordReading, wordSurface, isMobile, onStopPlayAll }: Audi
 	const { token } = useToken();
 	const [isAnimating, setIsAnimating] = useState(false);
 
-	// TTS Player
-	const [ttsSettings] = useState(() => {
-		if (typeof window === 'undefined') return { voiceUri: '', speed: 1 };
-		const savedVoice = localStorage.getItem('watashiwa_audio_voice');
-		const savedSpeed = localStorage.getItem('watashiwa_audio_speed');
-		return {
-			voiceUri: savedVoice || '',
-			speed: savedSpeed ? parseFloat(savedSpeed) : 1,
-		};
-	});
-
+	const ttsSettings = useTtsSettings();
 	const {
 		speak,
 		stop,

@@ -2,9 +2,12 @@
  * usePlayAllAudio Hook
  *
  * Manages sequential audio playback for a list of vocabulary words
- * Supports repeat mode and proper cleanup
+ * Supports repeat mode and proper cleanup.
+ * Uses same TTS settings and voice resolution as deck (useTtsSettings + resolveJapaneseVoice).
  */
 import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
+import { useTtsSettings } from '@/components/Audio/useTtsSettings';
+import { resolveJapaneseVoice } from '@/components/Audio/voiceUtils';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import type { VocabularyItem } from '../../../types';
@@ -21,28 +24,21 @@ export function usePlayAllAudio({ words, repeat, enabled }: UsePlayAllAudioOptio
 	const isPlayingRef = useRef(false);
 	const currentIndexRef = useRef(0);
 	const repeatRef = useRef(repeat);
+	const DEFAULT_WORD_DELAY = 1800;
 
-	// Update refs when props change
-	useEffect(() => {
-		repeatRef.current = repeat;
-	}, [repeat]);
-
-	// TTS Player with user's saved settings
-	const [ttsSettings] = useState(() => {
-		if (typeof window === 'undefined') return { voiceUri: '', speed: 1 };
-		const savedVoice = localStorage.getItem('watashiwa_audio_voice');
-		const savedSpeed = localStorage.getItem('watashiwa_audio_speed');
-		return {
-			voiceUri: savedVoice || '',
-			speed: savedSpeed ? parseFloat(savedSpeed) : 1,
-		};
-	});
+	// Same TTS source as DeckView / FlashcardPreviewModal
+	const ttsSettings = useTtsSettings();
 
 	const { stop } = useAudioPlayer({
 		rate: ttsSettings.speed,
 		voiceUri: ttsSettings.voiceUri,
 		lang: 'ja-JP',
 	});
+
+	// Update refs when props change
+	useEffect(() => {
+		repeatRef.current = repeat;
+	}, [repeat]);
 
 	// Sync refs with state
 	useEffect(() => {
@@ -86,7 +82,7 @@ export function usePlayAllAudio({ words, repeat, enabled }: UsePlayAllAudioOptio
 						if (isPlayingRef.current && playNextRef.current) {
 							playNextRef.current();
 						}
-					}, 1000);
+					}, DEFAULT_WORD_DELAY);
 				} else {
 					setIsPlaying(false);
 					isPlayingRef.current = false;
@@ -110,15 +106,14 @@ export function usePlayAllAudio({ words, repeat, enabled }: UsePlayAllAudioOptio
 				return;
 			}
 
-			// Create utterance with onend handler
+			// Create utterance with onend handler (same voice resolution as deck: Hattori/preferred)
 			const utterance = new SpeechSynthesisUtterance(textToSpeak);
 			utterance.rate = ttsSettingsRef.current.speed * 0.9;
 			utterance.lang = 'ja-JP';
 
-			// Set voice if available
-			if (ttsSettingsRef.current.voiceUri && typeof window !== 'undefined') {
+			if (typeof window !== 'undefined') {
 				const voices = window.speechSynthesis.getVoices();
-				const voice = voices.find((v) => v.voiceURI === ttsSettingsRef.current.voiceUri);
+				const voice = resolveJapaneseVoice(voices, ttsSettingsRef.current.voiceUri || null);
 				if (voice) utterance.voice = voice;
 			}
 
@@ -134,7 +129,7 @@ export function usePlayAllAudio({ words, repeat, enabled }: UsePlayAllAudioOptio
 					if (isPlayingRef.current && playNextRef.current) {
 						playNextRef.current();
 					}
-				}, 800);
+				}, DEFAULT_WORD_DELAY);
 			};
 
 			utterance.onerror = () => {

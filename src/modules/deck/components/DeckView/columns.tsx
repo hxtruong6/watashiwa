@@ -5,6 +5,7 @@
  */
 'use client';
 
+import { useDismissibleTooltip } from '@/hooks/useDismissibleTooltip';
 import { WordWithFurigana } from '@/modules/vocabulary/components/WordWithFurigana';
 import { SoundOutlined } from '@ant-design/icons';
 import { Button, Checkbox, Flex, Tooltip, theme } from 'antd';
@@ -13,6 +14,8 @@ import type { ColumnsType } from 'antd/es/table';
 import { useTranslations } from 'next-intl';
 
 import type { VocabularyItem } from '../../types';
+
+const AUDIO_PLAY_TOOLTIP_KEY = 'audio_play';
 
 function AudioCell({
 	record,
@@ -26,8 +29,11 @@ function AudioCell({
 	tooltip: string;
 }) {
 	const { token } = theme.useToken();
+	const { showTooltip, onOpenChange } = useDismissibleTooltip(AUDIO_PLAY_TOOLTIP_KEY, {
+		maxShows: 3,
+	});
 	return (
-		<Tooltip title={tooltip}>
+		<Tooltip title={showTooltip ? tooltip : undefined} onOpenChange={onOpenChange}>
 			<Button
 				type="text"
 				size="small"

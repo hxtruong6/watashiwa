@@ -7,6 +7,8 @@
 
 'use client';
 
+import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
+import { useTtsSettings } from '@/components/Audio/useTtsSettings';
 import { PlayCircleFilled } from '@ant-design/icons';
 import { Button, Space, Spin, Typography, theme } from 'antd';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -34,6 +36,12 @@ export function VocabPopoverContent({
 	const { token } = useToken();
 	const [isPlayingAudio, setIsPlayingAudio] = useState(false);
 	const audioRef = useRef<HTMLAudioElement | null>(null);
+	const ttsSettings = useTtsSettings();
+	const { speak } = useAudioPlayer({
+		rate: ttsSettings.speed,
+		voiceUri: ttsSettings.voiceUri,
+		lang: 'ja-JP',
+	});
 
 	// Cleanup audio on unmount
 	useEffect(() => {
@@ -83,17 +91,13 @@ export function VocabPopoverContent({
 
 			onAudioPlay?.(vocab.vocabularyId);
 		} else {
-			// Fallback: Use Web Speech API (prefer reading, then surface)
-			if ('speechSynthesis' in window) {
-				const textToSpeak = vocab.wordReading || vocab.wordSurface;
-				const utterance = new SpeechSynthesisUtterance(textToSpeak);
-				utterance.lang = 'ja-JP';
-				utterance.rate = 0.8;
-				window.speechSynthesis.speak(utterance);
+			const textToSpeak = vocab.wordReading || vocab.wordSurface;
+			if (textToSpeak) {
+				speak(textToSpeak);
 				onAudioPlay?.(vocab.vocabularyId);
 			}
 		}
-	}, [vocab, onAudioPlay]);
+	}, [vocab, onAudioPlay, speak]);
 
 	if (isLoading) {
 		return (

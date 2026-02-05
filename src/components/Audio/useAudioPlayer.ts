@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import { resolveJapaneseVoice } from './voiceUtils';
+
 export interface AudioPlayerOptions {
 	rate?: number;
 	pitch?: number;
@@ -37,24 +39,11 @@ export const useAudioPlayer = (initialOptions: AudioPlayerOptions = {}) => {
 		}
 	}, []);
 
-	// Derive selected voice (order: saved voiceUri → Hattori/Kyoko → first ja-JP)
-	const voice = useCallback(() => {
-		if (!voices.length) return null;
-		if (initialOptions.voiceUri) {
-			return voices.find((v) => v.voiceURI === initialOptions.voiceUri) || null;
-		}
-		const nameIncludes = (v: SpeechSynthesisVoice, ...names: string[]) =>
-			names.some((n) => v.name.toLowerCase().includes(n.toLowerCase()));
-		// Prefer app defaults: Hattori, then Kyoko (matches VoiceSettings)
-		const preferred = voices.find((v) => v.lang === 'ja-JP' && nameIncludes(v, 'Hattori', 'Kyoko'));
-		if (preferred) return preferred;
-		// Then try common quality voices
-		const fallback = voices.find(
-			(v) => v.lang === 'ja-JP' && nameIncludes(v, 'Google', 'Microsoft'),
-		);
-		if (fallback) return fallback;
-		return voices.find((v) => v.lang === 'ja-JP') || null;
-	}, [voices, initialOptions.voiceUri])();
+	// Single source of truth: resolveJapaneseVoice (saved URI → preferred names → local → any ja-JP)
+	const voice = useCallback(
+		() => resolveJapaneseVoice(voices, initialOptions.voiceUri),
+		[voices, initialOptions.voiceUri],
+	)();
 
 	const speak = useCallback(
 		(text: string, overrideOptions?: AudioPlayerOptions) => {

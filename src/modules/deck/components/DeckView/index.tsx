@@ -11,6 +11,7 @@
 'use client';
 
 import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
+import { useTtsSettings } from '@/components/Audio/useTtsSettings';
 import BackButton from '@/components/BackButton';
 import { getDeckUrl } from '@/lib/utils/urls';
 import CommentDrawer from '@/modules/community/components/comments/CommentDrawer';
@@ -93,15 +94,7 @@ export default function DeckView({ deck, isOwner }: DeckViewProps) {
 	const [currentPlayingWordId, setCurrentPlayingWordId] = useState<string | null>(null);
 	const stopPlayAllRef = React.useRef<(() => void) | null>(null);
 
-	const [ttsSettings] = useState(() => {
-		if (typeof window === 'undefined') return { voiceUri: '', speed: 1 };
-		const savedVoice = localStorage.getItem('watashiwa_audio_voice');
-		const savedSpeed = localStorage.getItem('watashiwa_audio_speed');
-		return {
-			voiceUri: savedVoice || '',
-			speed: savedSpeed ? parseFloat(savedSpeed) : 1,
-		};
-	});
+	const ttsSettings = useTtsSettings();
 	const { speak, stop, isPlaying } = useAudioPlayer({
 		rate: ttsSettings.speed,
 		voiceUri: ttsSettings.voiceUri,
@@ -270,6 +263,7 @@ export default function DeckView({ deck, isOwner }: DeckViewProps) {
 				item={previewState.item}
 				type={previewState.type}
 				onClose={closePreview}
+				audio={{ speak, stop, isPlaying }}
 			/>
 		</div>
 	);

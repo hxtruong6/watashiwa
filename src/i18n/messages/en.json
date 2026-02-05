@@ -363,6 +363,14 @@
 		"filterPublic": "Public",
 		"addNewContent": "Add Content",
 		"close": "Close",
+		"tooltipPlayAllWords": "Play all words",
+		"tooltipStopPlayback": "Stop playback",
+		"tooltipShowMeanings": "Show meanings",
+		"tooltipHideMeanings": "Hide meanings",
+		"tooltipEnableRepeat": "Enable repeat playback",
+		"tooltipDisableRepeat": "Disable repeat",
+		"tooltipPlayAll": "Play all",
+		"tooltipStop": "Stop",
 		"exercises": {
 			"title": "Active Recall"
 		}

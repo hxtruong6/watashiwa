@@ -7,6 +7,8 @@
 
 'use client';
 
+import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
+import { useTtsSettings } from '@/components/Audio/useTtsSettings';
 import { PlayCircleFilled } from '@ant-design/icons';
 import { Button, Space, Typography } from 'antd';
 import React, {
@@ -46,6 +48,12 @@ function SmartTooltipComponent({
 	autoPlayAudio = true,
 }: SmartTooltipProps) {
 	const tooltipRef = useRef<HTMLDivElement>(null);
+	const ttsSettings = useTtsSettings();
+	const { speak } = useAudioPlayer({
+		rate: ttsSettings.speed,
+		voiceUri: ttsSettings.voiceUri,
+		lang: 'ja-JP',
+	});
 	const [position, setPosition] = useState<{
 		x: number;
 		y: number;
@@ -94,17 +102,13 @@ function SmartTooltipComponent({
 
 			onAudioPlay(vocab.vocabularyId);
 		} else {
-			// Fallback: Use Web Speech API (prefer reading, then surface)
-			if ('speechSynthesis' in window) {
-				const textToSpeak = vocab.wordReading || vocab.wordSurface;
-				const utterance = new SpeechSynthesisUtterance(textToSpeak);
-				utterance.lang = 'ja-JP';
-				utterance.rate = 0.8;
-				window.speechSynthesis.speak(utterance);
+			const textToSpeak = vocab.wordReading || vocab.wordSurface;
+			if (textToSpeak) {
+				speak(textToSpeak);
 				onAudioPlay(vocab.vocabularyId);
 			}
 		}
-	}, [vocab, onAudioPlay]);
+	}, [vocab, onAudioPlay, speak]);
 
 	// Calculate position when vocab/anchor changes
 	useLayoutEffect(() => {
