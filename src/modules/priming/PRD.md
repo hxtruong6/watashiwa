@@ -813,7 +813,7 @@ model Story {
   order       Int      // Story arc sequencing
 
   // Multi-language content (JSONB)
-  content     Json     // { title: {en, vi, ja}, body_text: {...}, translation: {...}, highlights: [...] }
+  content     Json     // { title: {en, vi}, body_text: {en, vi, ja}, translation: {en, vi}, highlights: ["word1", "word2"] }
 
   // Metadata
   difficulty  String   // "N5" | "N4" | "N3"
@@ -887,37 +887,37 @@ import { z } from 'zod';
 import { getStoryBySlug, markStoryAsRead } from './services';
 
 const GetStoryInputSchema = z.object({
-	slug: z.string().min(1),
+ slug: z.string().min(1),
 });
 
 export async function getStoryAction(input: unknown) {
-	return executeSafeAction(
-		GetStoryInputSchema,
-		input,
-		async (data, { userId }) => {
-			const story = await getStoryBySlug(data.slug, userId);
-			return story;
-		},
-		{ requireAuth: true },
-	);
+ return executeSafeAction(
+  GetStoryInputSchema,
+  input,
+  async (data, { userId }) => {
+   const story = await getStoryBySlug(data.slug, userId);
+   return story;
+  },
+  { requireAuth: true },
+ );
 }
 
 const MarkCollectedInputSchema = z.object({
-	storyId: z.string().uuid(),
-	vocabularyId: z.string().uuid(),
-	readTimeSeconds: z.number().int().positive(),
+ storyId: z.string().uuid(),
+ vocabularyId: z.string().uuid(),
+ readTimeSeconds: z.number().int().positive(),
 });
 
 export async function markWordCollectedAction(input: unknown) {
-	return executeSafeAction(
-		MarkCollectedInputSchema,
-		input,
-		async (data, { userId }) => {
-			await markStoryAsRead(userId, data.storyId, data.vocabularyId);
-			return { success: true };
-		},
-		{ requireAuth: true },
-	);
+ return executeSafeAction(
+  MarkCollectedInputSchema,
+  input,
+  async (data, { userId }) => {
+   await markStoryAsRead(userId, data.storyId, data.vocabularyId);
+   return { success: true };
+  },
+  { requireAuth: true },
+ );
 }
 ```
 
@@ -929,59 +929,59 @@ export async function markWordCollectedAction(input: unknown) {
 // src/modules/priming/utils/parseStoryText.ts
 
 interface Segment {
-	type: 'text' | 'vocab';
-	content: string;
-	meta?: {
-		vocabularyId: string;
-		reading: string;
-		meaning: string;
-		audioUrl?: string;
-	};
+ type: 'text' | 'vocab';
+ content: string;
+ meta?: {
+  vocabularyId: string;
+  reading: string;
+  meaning: string;
+  audioUrl?: string;
+ };
 }
 
 export function parseStoryText(
-	text: string,
-	highlights: Array<{
-		word_surface: string;
-		length: number;
-		positions: { [locale: string]: number[] };
-	}>,
-	locale: 'en' | 'vi' | 'ja',
+ text: string,
+ highlights: Array<{
+  word_surface: string;
+  length: number;
+  positions: { [locale: string]: number[] };
+ }>,
+ locale: 'en' | 'vi' | 'ja',
 ): Segment[] {
-	const segments: Segment[] = [];
-	const positions = highlights
-		.flatMap((h) => h.positions[locale].map((pos) => ({ pos, length: h.length, data: h })))
-		.sort((a, b) => a.pos - b.pos);
+ const segments: Segment[] = [];
+ const positions = highlights
+  .flatMap((h) => h.positions[locale].map((pos) => ({ pos, length: h.length, data: h })))
+  .sort((a, b) => a.pos - b.pos);
 
-	let lastIndex = 0;
+ let lastIndex = 0;
 
-	for (const { pos, length, data } of positions) {
-		// Add text before this word
-		if (pos > lastIndex) {
-			segments.push({ type: 'text', content: text.slice(lastIndex, pos) });
-		}
+ for (const { pos, length, data } of positions) {
+  // Add text before this word
+  if (pos > lastIndex) {
+   segments.push({ type: 'text', content: text.slice(lastIndex, pos) });
+  }
 
-		// Add vocab word
-		segments.push({
-			type: 'vocab',
-			content: text.slice(pos, pos + length),
-			meta: {
-				vocabularyId: data.vocabularyId,
-				reading: data.reading,
-				meaning: data.meaning,
-				audioUrl: data.audioUrl,
-			},
-		});
+  // Add vocab word
+  segments.push({
+   type: 'vocab',
+   content: text.slice(pos, pos + length),
+   meta: {
+    vocabularyId: data.vocabularyId,
+    reading: data.reading,
+    meaning: data.meaning,
+    audioUrl: data.audioUrl,
+   },
+  });
 
-		lastIndex = pos + length;
-	}
+  lastIndex = pos + length;
+ }
 
-	// Add remaining text
-	if (lastIndex < text.length) {
-		segments.push({ type: 'text', content: text.slice(lastIndex) });
-	}
+ // Add remaining text
+ if (lastIndex < text.length) {
+  segments.push({ type: 'text', content: text.slice(lastIndex) });
+ }
 
-	return segments;
+ return segments;
 }
 ```
 
@@ -1110,50 +1110,50 @@ Fix: Reduce to 2-3 words per sentence, spread across paragraphs
 ```typescript
 // Story Loading
 trackEvent('story_started', {
-	story_id: string,
-	story_slug: string,
-	difficulty: 'N5' | 'N4' | 'N3',
-	user_level: string,
+ story_id: string,
+ story_slug: string,
+ difficulty: 'N5' | 'N4' | 'N3',
+ user_level: string,
 });
 
 // Word Interaction
 trackEvent('word_clicked', {
-	story_id: string,
-	vocabulary_id: string,
-	word_surface: string,
-	position_in_story: number, // Which word clicked (1st, 2nd, etc.)
-	time_since_story_start: number, // Seconds
+ story_id: string,
+ vocabulary_id: string,
+ word_surface: string,
+ position_in_story: number, // Which word clicked (1st, 2nd, etc.)
+ time_since_story_start: number, // Seconds
 });
 
 // Collection Progress
 trackEvent('word_collected', {
-	story_id: string,
-	vocabulary_id: string,
-	collection_count: number, // Total collected so far (e.g., 5/12)
-	total_words: number,
+ story_id: string,
+ vocabulary_id: string,
+ collection_count: number, // Total collected so far (e.g., 5/12)
+ total_words: number,
 });
 
 // Story Completion
 trackEvent('story_completed', {
-	story_id: string,
-	words_collected: number,
-	total_words: number,
-	read_time_seconds: number,
-	translation_used: boolean,
-	audio_plays_count: number,
+ story_id: string,
+ words_collected: number,
+ total_words: number,
+ read_time_seconds: number,
+ translation_used: boolean,
+ audio_plays_count: number,
 });
 
 // Translation Usage
 trackEvent('translation_toggled', {
-	story_id: string,
-	translation_shown: boolean, // true = user clicked to reveal
-	time_since_story_start: number,
+ story_id: string,
+ translation_shown: boolean, // true = user clicked to reveal
+ time_since_story_start: number,
 });
 
 // Flashcard Integration
 trackEvent('story_to_flashcard_transition', {
-	story_id: string,
-	words_primed: number, // How many story words are in next flashcard session
+ story_id: string,
+ words_primed: number, // How many story words are in next flashcard session
 });
 ```
 
@@ -1424,48 +1424,48 @@ trackEvent('story_to_flashcard_transition', {
 
 ```json
 {
-	"id": "story-001-daily-commute-part1",
-	"slug": "daily-commute-part-1",
-	"order": 1,
-	"title": {
-		"en": "The Daily Commute - Part 1",
-		"vi": "Việc Đi Lại Hằng Ngày - Phần 1",
-		"ja": "毎日の通勤 - パート1"
-	},
-	"body_text": {
-		"en": "Every morning, I usually いきます to 学校 by バス. However, today the weather was beautiful, so I decided to go 歩いて.",
-		"vi": "Mỗi sáng, tôi thường いきます đến 学校 bằng バス. Tuy nhiên, hôm nay thời tiết rất đẹp, nên tôi quyết định đi 歩いて.",
-		"ja": "毎朝、私はたいていバスで学校へいきます。しかし、今日は天気が良かったので、歩いていくことにしました。"
-	},
-	"translation": {
-		"en": "Every morning, I usually go to school by bus. However, today the weather was beautiful, so I decided to go on foot.",
-		"vi": "Mỗi sáng, tôi thường đi đến trường học bằng xe buýt. Tuy nhiên, hôm nay thời tiết rất đẹp, nên tôi quyết định đi bộ."
-	},
-	"highlights": [
-		{
-			"word_surface": "いきます",
-			"length": 4,
-			"positions": { "en": [25], "vi": [21], "ja": [13] },
-			"vocabulary_id": "vocab-uuid-001",
-			"reading": "いきます",
-			"meaning_en": "to go (polite)",
-			"meaning_vi": "đi (lịch sự)",
-			"han_viet_hint": "Động từ: đi, tới"
-		},
-		{
-			"word_surface": "学校",
-			"length": 2,
-			"positions": { "en": [33], "vi": [30], "ja": [9] },
-			"vocabulary_id": "vocab-uuid-002",
-			"reading": "がっこう",
-			"meaning_en": "school",
-			"meaning_vi": "trường học",
-			"han_viet_hint": "学 (HỌC) + 校 (HIỆU) = Trường học"
-		}
-	],
-	"difficulty": "N5",
-	"category": "daily_life",
-	"read_time_min": 2
+ "id": "story-001-daily-commute-part1",
+ "slug": "daily-commute-part-1",
+ "order": 1,
+ "title": {
+  "en": "The Daily Commute - Part 1",
+  "vi": "Việc Đi Lại Hằng Ngày - Phần 1",
+  "ja": "毎日の通勤 - パート1"
+ },
+ "body_text": {
+  "en": "Every morning, I usually いきます to 学校 by バス. However, today the weather was beautiful, so I decided to go 歩いて.",
+  "vi": "Mỗi sáng, tôi thường いきます đến 学校 bằng バス. Tuy nhiên, hôm nay thời tiết rất đẹp, nên tôi quyết định đi 歩いて.",
+  "ja": "毎朝、私はたいていバスで学校へいきます。しかし、今日は天気が良かったので、歩いていくことにしました。"
+ },
+ "translation": {
+  "en": "Every morning, I usually go to school by bus. However, today the weather was beautiful, so I decided to go on foot.",
+  "vi": "Mỗi sáng, tôi thường đi đến trường học bằng xe buýt. Tuy nhiên, hôm nay thời tiết rất đẹp, nên tôi quyết định đi bộ."
+ },
+ "highlights": [
+  {
+   "word_surface": "いきます",
+   "length": 4,
+   "positions": { "en": [25], "vi": [21], "ja": [13] },
+   "vocabulary_id": "vocab-uuid-001",
+   "reading": "いきます",
+   "meaning_en": "to go (polite)",
+   "meaning_vi": "đi (lịch sự)",
+   "han_viet_hint": "Động từ: đi, tới"
+  },
+  {
+   "word_surface": "学校",
+   "length": 2,
+   "positions": { "en": [33], "vi": [30], "ja": [9] },
+   "vocabulary_id": "vocab-uuid-002",
+   "reading": "がっこう",
+   "meaning_en": "school",
+   "meaning_vi": "trường học",
+   "han_viet_hint": "学 (HỌC) + 校 (HIỆU) = Trường học"
+  }
+ ],
+ "difficulty": "N5",
+ "category": "daily_life",
+ "read_time_min": 2
 }
 ```
 

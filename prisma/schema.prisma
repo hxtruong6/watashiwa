@@ -358,10 +358,10 @@ model Story {
 
   // Contract: StoryContent (zod: StoryContentSchema)
   // {
-  //   "title": { "en": "...", "vi": "...", "ja": "..." },
+  //   "title": { "en": "...", "vi": "..." },
   //   "body_text": { "en": "...", "vi": "...", "ja": "..." },
   //   "translation": { "en": "...", "vi": "..." },
-  //   "highlights": [] // Now stored in StoryVocabulary table
+  //   "highlights": ["word1", "word2"] // Array of vocabulary word strings (deprecated, kept for migration)
   // }
   content Json
 

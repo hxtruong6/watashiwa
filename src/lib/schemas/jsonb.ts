@@ -71,10 +71,10 @@ export const StoryHighlightSchema = z
 // Story Content Schema (Enhanced for Contextual Story Reader)
 export const StoryContentSchema = z
 	.object({
-		title: MultiLangStringSchema, // Multi-language title
+		title: LocalizedStringSchema, // Title in EN, VI only
 		body_text: MultiLangStringSchema, // Story text in EN, VI, JA
 		translation: LocalizedStringSchema, // Full translation (EN, VI) as safety net
-		highlights: z.array(StoryHighlightSchema).optional(), // Deprecated, kept for migration
+		highlights: z.array(z.string()).optional(), // Array of vocabulary word strings (deprecated, kept for migration)
 	})
 	.strict();
 

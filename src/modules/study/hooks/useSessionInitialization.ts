@@ -3,7 +3,7 @@
 import { trackEvent } from '@/lib/analytics';
 import { fetchSessionAction } from '@/modules/flashcard/flashcard.actions';
 import { SmartCard } from '@/modules/flashcard/types';
-import { getSessionDataWithPriming } from '@/modules/priming/actions';
+import { getStoryByUnitAction } from '@/modules/priming/actions';
 import { hasSeenPrimingModal } from '@/modules/priming/components/PrimingModal';
 import type { StoryWithContent } from '@/modules/priming/types';
 import type { StudyPhase } from '@/modules/study/hooks/useSessionPhase';
@@ -124,7 +124,7 @@ export function useSessionInitialization(
 		}
 
 		try {
-			const primingData = await getSessionDataWithPriming({ deckId });
+			const primingData = await getStoryByUnitAction({ deckId });
 			if (primingData.success && primingData.data) {
 				const { story, requiresPriming } = primingData.data;
 				if (requiresPriming && story) {

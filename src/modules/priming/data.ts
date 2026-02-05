@@ -64,6 +64,28 @@ export async function getStoryById(storyId: string) {
 }
 
 /**
+ * Get first story for a deck (unit)
+ * Used for priming check before study session
+ */
+export async function getFirstStoryByDeckId(deckId: string): Promise<StoryWithContent | null> {
+	const story = await db.story.findFirst({
+		where: {
+			unitId: deckId,
+			contentStatus: ContentStatus.PUBLISHED,
+			deletedAt: null,
+		},
+		orderBy: [{ order: 'asc' }, { createdAt: 'asc' }],
+	});
+
+	if (!story) return null;
+
+	return {
+		...story,
+		content: story.content as StoryContent,
+	};
+}
+
+/**
  * List stories with filters and pagination
  */
 export async function listStories(params: {

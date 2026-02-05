@@ -9,9 +9,9 @@
 import { GoogleGenAI } from '@google/genai';
 import { PrismaClient } from '@prisma/client';
 import 'dotenv/config';
-import { z } from 'zod';
 
-import { StoryContentSchema } from '../src/lib/schemas/jsonb';
+import { MeaningsSchema, StoryContentSchema } from '../src/lib/schemas/jsonb';
+import { generateSlug } from '../src/lib/utils/slug';
 
 const GEN_MODEL = 'gemini-2.5-flash';
 const MAX_UNITS_PER_RUN = 10; // Cost control
@@ -79,7 +79,8 @@ async function generateStoryForUnit(unitId: string): Promise<void> {
 
 	// 2. Prepare vocabulary list
 	const allVocabList = deck.vocabularies.map((v) => {
-		const meanings = v.meanings as any;
+		const meaningsParsed = MeaningsSchema.safeParse(v.meanings);
+		const meanings = meaningsParsed.success ? meaningsParsed.data : { en: [], vi: [] };
 		return {
 			id: v.id,
 			word: v.wordSurface,
@@ -405,15 +406,13 @@ Now, generate the story following ALL requirements above.
 		const storyContent = validation.data;
 
 		// 5. Verify all words are present
-		const includedVocabIds = storyContent.highlights.map((h) => h.vocab_id);
-		const requiredVocabIds = vocabList.map((v) => v.id);
-		const missingWords = requiredVocabIds.filter((id) => !includedVocabIds.includes(id));
+		// Highlights are now strings (word surfaces), not objects
+		const includedWords = storyContent.highlights || [];
+		const requiredWords = vocabList.map((v) => v.word);
+		const missingWords = requiredWords.filter((word) => !includedWords.includes(word));
 
 		if (missingWords.length > 0) {
-			console.error(
-				`❌ Missing words in story for unit ${unitId}:`,
-				missingWords.map((id) => vocabList.find((v) => v.id === id)?.word),
-			);
+			console.error(`❌ Missing words in story for unit ${unitId}:`, missingWords);
 			return;
 		}
 
@@ -426,15 +425,16 @@ Now, generate the story following ALL requirements above.
 		});
 
 		// Try to find matching story by checking if it has the same vocabulary words
+		// Highlights are now strings (word surfaces), not objects
 		let matchingStory = null;
 		for (const existing of existingStories) {
 			const existingContent = StoryContentSchema.safeParse(existing.content);
 			if (existingContent.success) {
-				const existingVocabIds = existingContent.data.highlights.map((h) => h.vocab_id);
-				const currentVocabIds = vocabList.map((v) => v.id);
+				const existingWords = existingContent.data.highlights || [];
+				const currentWords = vocabList.map((v) => v.word);
 				// Check if vocab sets match (all current words are in existing story)
-				const allMatch = currentVocabIds.every((id) => existingVocabIds.includes(id));
-				if (allMatch && existingVocabIds.length === currentVocabIds.length) {
+				const allMatch = currentWords.every((word) => existingWords.includes(word));
+				if (allMatch && existingWords.length === currentWords.length) {
 					matchingStory = existing;
 					break;
 				}
@@ -452,14 +452,29 @@ Now, generate the story following ALL requirements above.
 			});
 			console.log(`   ✅ Story ${storyNumber} updated`);
 		} else {
+			// Generate slug from title
+			const titleText = storyContent.title.en || storyContent.title.vi || 'untitled-story';
+			const existingStories = await prisma.story.findMany({
+				select: { slug: true },
+			});
+			const existingSlugs = existingStories
+				.map((s) => s.slug)
+				.filter((slug): slug is string => Boolean(slug));
+			const slug = generateSlug(titleText, existingSlugs);
+
 			await prisma.story.create({
 				data: {
 					unitId,
+					slug,
+					order: options.storyNumber - 1, // 0-indexed
 					content: storyContent,
 					contentStatus: 'AI_GENERATED',
+					difficulty: 'N5', // Default, can be adjusted later
+					category: 'daily_life', // Default, can be adjusted later
+					readTimeMin: Math.ceil((storyContent.body_text.en.split(/\s+/).length || 100) / 200), // Estimate: 200 words per minute
 				},
 			});
-			console.log(`   ✅ Story ${storyNumber} created`);
+			console.log(`   ✅ Story ${storyNumber} created with slug: ${slug}`);
 		}
 	} catch (error) {
 		console.error(`❌ Error generating story ${storyNumber} for unit ${unitId}:`, error);

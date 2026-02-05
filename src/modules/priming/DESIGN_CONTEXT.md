@@ -142,20 +142,20 @@ Each story part contains:
 
 ```json
 {
-	"title": { "en": "...", "vi": "...", "ja": "..." },
-	"body_text": {
-		"en": "Every morning, I usually **いきます** to **学校**...",
-		"vi": "Mỗi sáng, tôi thường **いきます** đến **学校**...",
-		"ja": "毎朝、私はたいていバスで学校へいきます..."
-	},
-	"translation": { "en": "...", "vi": "..." },
-	"highlights": [
-		{
-			"word_surface": "いきます",
-			"length": 4,
-			"positions": { "en": [25], "vi": [21], "ja": [13] }
-		}
-	]
+ "title": { "en": "...", "vi": "...", "ja": "..." },
+ "body_text": {
+  "en": "Every morning, I usually **いきます** to **学校**...",
+  "vi": "Mỗi sáng, tôi thường **いきます** đến **学校**...",
+  "ja": "毎朝、私はたいていバスで学校へいきます..."
+ },
+ "translation": { "en": "...", "vi": "..." },
+ "highlights": [
+  {
+   "word_surface": "いきます",
+   "length": 4,
+   "positions": { "en": [25], "vi": [21], "ja": [13] }
+  }
+ ]
 }
 ```
 
@@ -166,9 +166,9 @@ Each story part contains:
 ```javascript
 // Utility Function: renderSegmentedText
 function renderSegmentedText(text, highlights, locale) {
-	// 1. Sort highlights by position
-	// 2. Slice text into segments: [text] [vocab] [text] [vocab]...
-	// 3. Return array of { type: 'text' | 'vocab', content, meta }
+ // 1. Sort highlights by position
+ // 2. Slice text into segments: [text] [vocab] [text] [vocab]...
+ // 3. Return array of { type: 'text' | 'vocab', content, meta }
 }
 ```
 
@@ -201,16 +201,16 @@ On initial load, highlighted words pulse once:
 
 ```css
 @keyframes shimmer {
-	0% {
-		opacity: 1;
-	}
-	50% {
-		opacity: 0.7;
-		box-shadow: 0 0 8px rgba(148, 201, 115, 0.6);
-	}
-	100% {
-		opacity: 1;
-	}
+ 0% {
+  opacity: 1;
+ }
+ 50% {
+  opacity: 0.7;
+  box-shadow: 0 0 8px rgba(148, 201, 115, 0.6);
+ }
+ 100% {
+  opacity: 1;
+ }
 }
 ```
 
@@ -231,8 +231,8 @@ When tooltip appears:
 
 ```css
 .story-text {
-	backdrop-filter: blur(2px);
-	transition: backdrop-filter 0.3s ease;
+ backdrop-filter: blur(2px);
+ transition: backdrop-filter 0.3s ease;
 }
 ```
 

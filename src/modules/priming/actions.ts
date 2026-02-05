@@ -9,9 +9,11 @@
 'use server';
 
 import { executeSafeAction } from '@/modules/core/action-client';
+import { z } from 'zod';
 
 import {
 	completeStory,
+	getStoryByUnit,
 	getStoryWithProgress,
 	listStoriesWithProgress,
 	updateStoryProgress,
@@ -51,6 +53,30 @@ export async function getStoryAction(input: unknown) {
 			}
 
 			return await getStoryWithProgress(data.slug, userId, data.language);
+		},
+		{ requireAuth: true },
+	);
+}
+
+/**
+ * Get story by unit (deck) for priming check
+ *
+ * Usage:
+ * const result = await getStoryByUnitAction({ deckId: '...' })
+ */
+export async function getStoryByUnitAction(input: unknown) {
+	return executeSafeAction<
+		{ deckId: string },
+		{ story: import('./types').StoryWithContent | null; requiresPriming: boolean }
+	>(
+		z.object({ deckId: z.string().uuid() }),
+		input,
+		async (data, { userId }) => {
+			if (!userId) {
+				throw new Error('Authentication required');
+			}
+
+			return await getStoryByUnit(data.deckId, userId);
 		},
 		{ requireAuth: true },
 	);

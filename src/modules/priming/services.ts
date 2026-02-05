@@ -11,12 +11,14 @@ import {
 	addCollectedWordsToReviewQueue,
 	countStoryWords,
 	getCollectedVocabularies,
+	getFirstStoryByDeckId,
 	getStoryBySlugWithVocabularies,
 	getStoryLog,
 	listStories as listStoriesData,
 	markStoryCompleted,
 	upsertStoryLog,
 } from './data';
+import type { StoryWithContent } from './types';
 import {
 	CompleteStoryInput,
 	GetStoryOutput,
@@ -64,6 +66,27 @@ export async function getStoryWithProgress(
 			readTimeSeconds: log.readTimeSeconds,
 		},
 	};
+}
+
+/**
+ * Get story by unit (deck) and check if priming is required
+ * Returns story if it exists and user hasn't completed it
+ */
+export async function getStoryByUnit(
+	deckId: string,
+	userId: string,
+): Promise<{ story: StoryWithContent | null; requiresPriming: boolean }> {
+	const story = await getFirstStoryByDeckId(deckId);
+
+	if (!story) {
+		return { story: null, requiresPriming: false };
+	}
+
+	// Check if user has already completed this story
+	const log = await getStoryLog(userId, story.id);
+	const requiresPriming = !log || !log.completedAt;
+
+	return { story, requiresPriming };
 }
 
 /**
