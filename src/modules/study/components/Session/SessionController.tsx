@@ -575,17 +575,21 @@ export default function SessionController({
 					queue={queue}
 					stats={dailyStats}
 					onStart={() => {
-						// Transition to quiz phase using hook helper
 						phaseHook.transitionToQuiz();
 						setShowAnswer(false);
 						resetTimer();
 					}}
 					onSkip={() => {
-						// Skip briefing and go directly to quiz
-						// Mark that user has skipped briefing
+						const newCount = queue.filter((c) => c.srsStage === 0).length;
+						const reviewCount = queue.length - newCount;
+						trackEvent(AnalyticsEvents.Study.BriefingSkipped, {
+							deck_id: deckId || null,
+							course_id: courseId || null,
+							queue_size: queue.length,
+							new_count: newCount,
+							review_count: reviewCount,
+						});
 						setHasSkippedBriefing(true);
-						// Transition using hook helper
-						console.log('[SessionController] User clicked skip, transitioning to quiz');
 						phaseHook.transitionToQuiz();
 						setShowAnswer(false);
 						resetTimer();

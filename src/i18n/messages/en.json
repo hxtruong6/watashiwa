@@ -321,6 +321,21 @@
 			"insight": "Insight",
 			"thisWord": "This word:",
 			"similar": "Similar"
+		},
+		"emptyState": {
+			"noDeckTitle": "No Deck Selected",
+			"noDeckMessage": "The study session requires a deck context.",
+			"allCaughtUpTitle": "All Caught Up",
+			"allCaughtUpMessage": "No reviews due right now. Your memory is stable.",
+			"deckEmptyTitle": "Deck Has No Content",
+			"deckEmptyMessage": "This deck needs verified vocabulary before you can study.",
+			"browseLibrary": "Browse Library",
+			"goHome": "Go Home",
+			"studyAhead": "Practice More",
+			"browseOtherDecks": "Browse Other Decks",
+			"viewDeckDetails": "View Deck Details",
+			"zenAccomplished": "「休むも相場」 — Rest is part of mastery.",
+			"zenCalm": "「焦らず丁寧に」 — No rush. Precision over speed."
 		}
 	},
 	"Decks": {
@@ -1252,5 +1267,13 @@
 		"selectCubeMethod": "Select CUBE Method",
 		"cubeMethodSelected": "CUBE method selected!",
 		"signUpToUseCube": "Sign Up to Use CUBE"
+	},
+	"KanaReference": {
+		"title": "Kana Reference",
+		"subtitle": "Quick reference for Hiragana and Katakana. Tap a character to see it in context.",
+		"metaTitle": "Hiragana & Katakana Reference | WatashiWa",
+		"metaDescription": "Quick reference tables for Hiragana and Katakana. Look up any character and its romaji.",
+		"hiragana": "Hiragana",
+		"katakana": "Katakana"
 	}
 }

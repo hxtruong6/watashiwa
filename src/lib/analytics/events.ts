@@ -24,6 +24,7 @@ import type {
 	PrimingSkippedProperties,
 	StoryCompletedProperties,
 	StoryOpenedProperties,
+	StudyBriefingSkippedProperties,
 	StudyEmptyStateShownProperties,
 	StudyNavigationTimingProperties,
 	StudySessionCompletedProperties,
@@ -67,6 +68,7 @@ export const AnalyticsEvents = {
 		CardReviewed: 'card_reviewed',
 		SummaryContinueClicked: 'study_summary_continue_clicked',
 		NavigationTiming: 'study_navigation_timing',
+		BriefingSkipped: 'study_briefing_skipped',
 	} as const,
 
 	// ========================================================================
@@ -144,6 +146,7 @@ export interface AnalyticsEventPropertiesMap {
 	[AnalyticsEvents.Study.SummaryContinueClicked]: StudySummaryContinueClickedProperties;
 	[AnalyticsEvents.Study.NavigationTiming]: StudyNavigationTimingProperties;
 	[AnalyticsEvents.Study.CardReviewed]: CardReviewedProperties;
+	[AnalyticsEvents.Study.BriefingSkipped]: StudyBriefingSkippedProperties;
 	[AnalyticsEvents.Priming.Skipped]: PrimingSkippedProperties;
 	[AnalyticsEvents.Priming.ModalReadClicked]: PrimingModalReadClickedProperties;
 	[AnalyticsEvents.Priming.ModalSkipClicked]: PrimingModalSkipClickedProperties;

@@ -312,6 +312,21 @@
 			"insight": "Góc nhìn",
 			"thisWord": "Từ này:",
 			"similar": "Tương tự"
+		},
+		"emptyState": {
+			"noDeckTitle": "Chưa chọn bộ thẻ",
+			"noDeckMessage": "Phiên học cần một bộ thẻ để bắt đầu.",
+			"allCaughtUpTitle": "Đã ôn xong",
+			"allCaughtUpMessage": "Hiện không có thẻ cần ôn. Trí nhớ của bạn đang ổn định.",
+			"deckEmptyTitle": "Bộ thẻ chưa có nội dung",
+			"deckEmptyMessage": "Bộ thẻ này cần từ vựng đã được xác minh trước khi bạn có thể học.",
+			"browseLibrary": "Duyệt thư viện",
+			"goHome": "Về trang chủ",
+			"studyAhead": "Luyện thêm",
+			"browseOtherDecks": "Xem bộ thẻ khác",
+			"viewDeckDetails": "Xem chi tiết bộ thẻ",
+			"zenAccomplished": "「休むも相場」 — Nghỉ ngơi cũng là một phần của sự thành thạo.",
+			"zenCalm": "「焦らず丁寧に」 — Đừng vội. Chính xác hơn tốc độ."
 		}
 	},
 	"Decks": {
@@ -1242,5 +1257,13 @@
 		"selectCubeMethod": "Chọn Phương Pháp CUBE",
 		"cubeMethodSelected": "Đã chọn phương pháp CUBE!",
 		"signUpToUseCube": "Đăng Ký Để Sử Dụng CUBE"
+	},
+	"KanaReference": {
+		"title": "Bảng Chữ Kana",
+		"subtitle": "Tra cứu nhanh Hiragana và Katakana. Chạm vào chữ để xem trong ngữ cảnh.",
+		"metaTitle": "Bảng Hiragana & Katakana | WatashiWa",
+		"metaDescription": "Bảng tra cứu nhanh Hiragana và Katakana. Tra bất kỳ ký tự nào và romaji của nó.",
+		"hiragana": "Hiragana",
+		"katakana": "Katakana"
 	}
 }

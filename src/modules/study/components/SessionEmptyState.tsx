@@ -8,6 +8,7 @@
 
 import { BookOutlined, CheckCircleOutlined, RocketOutlined } from '@ant-design/icons';
 import { Button, Flex, Typography, theme } from 'antd';
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import React from 'react';
 
@@ -21,22 +22,26 @@ interface SessionEmptyStateProps {
 
 export const SessionEmptyState: React.FC<SessionEmptyStateProps> = ({ scenario, deckId }) => {
 	const { token } = useToken();
+	const t = useTranslations('Study.emptyState');
+
+	// Practice More: start another session with this deck (e.g. new cards). Use /study with deckId when available; otherwise /decks.
+	const studyAheadHref = deckId ? `/study?deckId=${deckId}` : '/decks';
 
 	const configs = {
 		NO_DECK: {
 			icon: <BookOutlined style={{ fontSize: 64, color: token.colorTextSecondary }} />,
-			title: 'No Deck Selected',
-			message: 'The study session requires a deck context.',
-			emotion: 'calm',
+			title: t('noDeckTitle'),
+			message: t('noDeckMessage'),
+			emotion: 'calm' as const,
 			actions: [
 				{
-					label: 'Browse Library',
+					label: t('browseLibrary'),
 					icon: <BookOutlined />,
 					href: '/decks',
 					type: 'primary' as const,
 				},
 				{
-					label: 'Go Home',
+					label: t('goHome'),
 					href: '/',
 					type: 'default' as const,
 				},
@@ -44,18 +49,18 @@ export const SessionEmptyState: React.FC<SessionEmptyStateProps> = ({ scenario, 
 		},
 		ALL_CAUGHT_UP: {
 			icon: <CheckCircleOutlined style={{ fontSize: 64, color: token.colorSuccess }} />,
-			title: 'All Caught Up',
-			message: 'No reviews due right now. Your memory is stable.',
-			emotion: 'accomplished',
+			title: t('allCaughtUpTitle'),
+			message: t('allCaughtUpMessage'),
+			emotion: 'accomplished' as const,
 			actions: [
 				{
-					label: 'Study Ahead',
+					label: t('studyAhead'),
 					icon: <RocketOutlined />,
-					href: `/exercises?deckId=${deckId}`,
+					href: studyAheadHref,
 					type: 'primary' as const,
 				},
 				{
-					label: 'Browse Other Decks',
+					label: t('browseOtherDecks'),
 					icon: <BookOutlined />,
 					href: '/decks',
 					type: 'default' as const,
@@ -64,26 +69,31 @@ export const SessionEmptyState: React.FC<SessionEmptyStateProps> = ({ scenario, 
 		},
 		DECK_EMPTY: {
 			icon: <BookOutlined style={{ fontSize: 64, color: token.colorWarning }} />,
-			title: 'Deck Has No Content',
-			message: 'This deck needs verified vocabulary before you can study.',
-			emotion: 'calm',
+			title: t('deckEmptyTitle'),
+			message: t('deckEmptyMessage'),
+			emotion: 'calm' as const,
 			actions: [
+				...(deckId
+					? [
+							{
+								label: t('viewDeckDetails'),
+								href: `/decks/${deckId}`,
+								type: 'primary' as const,
+							},
+						]
+					: []),
 				{
-					label: 'View Deck Details',
-					href: `/decks/${deckId}`,
-					type: 'primary' as const,
-				},
-				{
-					label: 'Browse Library',
+					label: t('browseLibrary'),
 					icon: <BookOutlined />,
 					href: '/decks',
-					type: 'default' as const,
+					type: (deckId ? 'default' : 'primary') as 'primary' | 'default',
 				},
 			],
 		},
 	};
 
 	const config = configs[scenario];
+	const zenQuote = config.emotion === 'accomplished' ? t('zenAccomplished') : t('zenCalm');
 
 	return (
 		<Flex
@@ -97,10 +107,8 @@ export const SessionEmptyState: React.FC<SessionEmptyStateProps> = ({ scenario, 
 				textAlign: 'center',
 			}}
 		>
-			{/* Icon */}
 			<div>{config.icon}</div>
 
-			{/* Title */}
 			<Title
 				level={3}
 				style={{
@@ -111,7 +119,6 @@ export const SessionEmptyState: React.FC<SessionEmptyStateProps> = ({ scenario, 
 				{config.title}
 			</Title>
 
-			{/* Message */}
 			<Paragraph
 				style={{
 					maxWidth: 400,
@@ -123,7 +130,6 @@ export const SessionEmptyState: React.FC<SessionEmptyStateProps> = ({ scenario, 
 				{config.message}
 			</Paragraph>
 
-			{/* The Zen Wisdom: Calm the user */}
 			<div
 				style={{
 					background: token.colorFillAlter,
@@ -139,13 +145,10 @@ export const SessionEmptyState: React.FC<SessionEmptyStateProps> = ({ scenario, 
 						color: token.colorTextSecondary,
 					}}
 				>
-					{config.emotion === 'accomplished'
-						? '「休むも相場」 — Rest is part of mastery.'
-						: '「焦らず丁寧に」 — No rush. Precision over speed.'}
+					{zenQuote}
 				</Text>
 			</div>
 
-			{/* Action Buttons */}
 			<Flex gap="middle" wrap="wrap" justify="center">
 				{config.actions.map((action, index) => (
 					<Link key={index} href={action.href} prefetch={true}>

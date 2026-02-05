@@ -93,6 +93,14 @@ export interface CardReviewedProperties {
 	course_id?: string;
 }
 
+export interface StudyBriefingSkippedProperties {
+	deck_id?: string | null;
+	course_id?: string | null;
+	queue_size: number;
+	new_count: number;
+	review_count: number;
+}
+
 // ============================================================================
 // PRIMING EVENTS
 // ============================================================================
