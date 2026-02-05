@@ -86,8 +86,8 @@ function GlassDock({
 	return (
 		<div
 			style={{
-				// Base glass material
-				background: `color-mix(in srgb, ${token.colorBgContainer} ${config.opacity * 100}%, transparent)`,
+				// Base glass material (use backgroundColor to avoid conflicting with backgroundImage)
+				backgroundColor: `color-mix(in srgb, ${token.colorBgContainer} ${config.opacity * 100}%, transparent)`,
 
 				// Mesh gradient overlay for depth (iOS 16 style)
 				backgroundImage: meshGradient,
@@ -110,7 +110,7 @@ function GlassDock({
 				gap: '16px',
 
 				// Smooth transitions
-				transition: 'transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease',
+				transition: 'transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease',
 
 				// Performance optimizations
 				willChange: 'transform',

@@ -37,19 +37,22 @@ export const useAudioPlayer = (initialOptions: AudioPlayerOptions = {}) => {
 		}
 	}, []);
 
-	// Derive selected voice
+	// Derive selected voice (order: saved voiceUri → Hattori/Kyoko → first ja-JP)
 	const voice = useCallback(() => {
 		if (!voices.length) return null;
 		if (initialOptions.voiceUri) {
 			return voices.find((v) => v.voiceURI === initialOptions.voiceUri) || null;
 		}
-		// Auto-select best JP voice if not set
-		const jpVoice = voices.find(
-			(v) =>
-				v.lang === 'ja-JP' &&
-				(v.name.includes('Google') || v.name.includes('Microsoft') || v.name.includes('Hattori')),
+		const nameIncludes = (v: SpeechSynthesisVoice, ...names: string[]) =>
+			names.some((n) => v.name.toLowerCase().includes(n.toLowerCase()));
+		// Prefer app defaults: Hattori, then Kyoko (matches VoiceSettings)
+		const preferred = voices.find((v) => v.lang === 'ja-JP' && nameIncludes(v, 'Hattori', 'Kyoko'));
+		if (preferred) return preferred;
+		// Then try common quality voices
+		const fallback = voices.find(
+			(v) => v.lang === 'ja-JP' && nameIncludes(v, 'Google', 'Microsoft'),
 		);
-		if (jpVoice) return jpVoice;
+		if (fallback) return fallback;
 		return voices.find((v) => v.lang === 'ja-JP') || null;
 	}, [voices, initialOptions.voiceUri])();
 
@@ -95,8 +98,11 @@ export const useAudioPlayer = (initialOptions: AudioPlayerOptions = {}) => {
 				setIsPaused(false);
 			};
 
-			utterance.onerror = (e) => {
-				console.error('Audio playback error', e);
+			utterance.onerror = (e: SpeechSynthesisErrorEvent) => {
+				// "interrupted" is expected when cancel() is called (e.g. user triggered new speak)
+				if (e.error !== 'interrupted') {
+					console.error('Audio playback error', e);
+				}
 				setIsPlaying(false);
 				setIsPaused(false);
 			};

@@ -117,21 +117,29 @@ export function generateFuriganaMapping(
 		} else {
 			// Non-kanji character (kana, punctuation, etc.)
 			if (kanjiBuffer !== '') {
-				// We have accumulated kanji, now we need to find its reading
-				// The reading should be the segment before the matching kana
+				// We have accumulated kanji; find its reading segment.
+				// Use remaining length so we pick the correct boundary when the same
+				// kana appears multiple times (e.g. 紹介します / しょうかいします).
 				const readingStart = readingIndex;
-				let readingEnd = readingIndex;
+				const remainingSurfaceKana = surfaceChars.slice(i).filter((c) => isKana(c)).length;
+				const remainingReading = readingChars.length - readingIndex;
+				const kanjiReadingLength = remainingReading - remainingSurfaceKana;
 
-				// Find where the kana part starts in the reading
-				// Skip reading characters until we match the kana part
-				while (readingEnd < readingChars.length && readingIndex < i) {
-					if (isKana(readingChars[readingEnd])) {
-						// Check if this kana matches the current surface kana
-						if (readingChars[readingEnd] === char) {
+				let readingEnd = readingIndex;
+				if (
+					kanjiReadingLength > 0 &&
+					readingIndex + kanjiReadingLength <= readingChars.length &&
+					readingChars[readingIndex + kanjiReadingLength] === char
+				) {
+					readingEnd = readingIndex + kanjiReadingLength;
+				} else {
+					// Fallback: first occurrence of current kana in reading
+					while (readingEnd < readingChars.length) {
+						if (isKana(readingChars[readingEnd]) && readingChars[readingEnd] === char) {
 							break;
 						}
+						readingEnd++;
 					}
-					readingEnd++;
 				}
 
 				// Extract reading segment for the kanji

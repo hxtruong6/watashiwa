@@ -28,7 +28,11 @@ export default function VoiceSettings({ lang = 'ja-JP', onSettingsChange }: Voic
 		return localStorage.getItem(STORAGE_KEY_VOICE) || '';
 	});
 
-	const { voices, speak } = useAudioPlayer({ lang, rate: speed, voiceUri: selectedVoiceUri });
+	const { voices, speak } = useAudioPlayer({
+		lang,
+		rate: speed,
+		voiceUri: selectedVoiceUri || undefined,
+	});
 
 	// Notify parent on mount if needed, but safer to do it in effect ONLY if values exist
 	useEffect(() => {
@@ -40,21 +44,29 @@ export default function VoiceSettings({ lang = 'ja-JP', onSettingsChange }: Voic
 		}
 	}, [onSettingsChange, selectedVoiceUri, speed]); // Run once to sync if needed
 
-	// Filter voices for the target language or "smart" defaults
+	// Filter voices: default Hattori, user can select Kyoko in settings
 	const jpVoices = voices.filter((v) => {
 		if (v.lang !== 'ja-JP') return false;
 		const name = v.name.toLowerCase();
-		// Whitelist specific high-quality voices
-		return (
-			name.includes('hattori') ||
-			name.includes('kyoko') ||
-			name.includes('google') ||
-			name.includes('otoya') ||
-			name.includes('nanami') ||
-			name.includes('haruka') ||
-			name.includes('siri')
-		);
+		return name.includes('hattori') || name.includes('kyoko');
+		// Other options (uncomment to allow in settings):
+		// name.includes('google') ||
+		// name.includes('otoya') ||
+		// name.includes('nanami') ||
+		// name.includes('haruka') ||
+		// name.includes('siri')
 	});
+
+	const hattoriVoice = jpVoices.find(
+		(v) => v.lang === 'ja-JP' && v.name.toLowerCase().includes('hattori'),
+	);
+	const defaultHattoriUri = hattoriVoice?.voiceURI ?? '';
+	const effectiveVoiceUri = selectedVoiceUri || defaultHattoriUri;
+
+	console.log('effectiveVoiceUri', effectiveVoiceUri);
+	console.log('selectedVoiceUri', selectedVoiceUri);
+	console.log('defaultHattoriUri', defaultHattoriUri);
+	console.log('jpVoices', jpVoices);
 
 	const handleVoiceChange = (val: string) => {
 		setSelectedVoiceUri(val);
@@ -78,7 +90,7 @@ export default function VoiceSettings({ lang = 'ja-JP', onSettingsChange }: Voic
 				<Form.Item label={t('voiceLabel')}>
 					<Space.Compact style={{ width: '100%' }}>
 						<Select
-							value={selectedVoiceUri}
+							value={effectiveVoiceUri}
 							onChange={handleVoiceChange}
 							placeholder={t('voicePlaceholder')}
 							style={{ flex: 1 }}

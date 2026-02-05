@@ -8,7 +8,8 @@
 
 import type { FuriganaMapping } from '@/lib/schemas/jsonb';
 import { FuriganaMappingSchema } from '@/lib/schemas/jsonb';
-import { generateFuriganaMapping, renderFurigana } from '@/lib/utils/furigana';
+import { generateFuriganaMapping } from '@/lib/utils/furigana';
+import { WordWithFurigana } from '@/modules/vocabulary/components/WordWithFurigana';
 import type { Vocabulary } from '@prisma/client';
 import { Popover, theme } from 'antd';
 import { startTransition, useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -127,12 +128,6 @@ export function KanjiWord({
 		return generateFuriganaMapping(vocabData.wordSurface, vocabData.wordReading);
 	}, [vocabData]);
 
-	// Render furigana segments (handle null vocabData inside memo)
-	const furiganaSegments = useMemo(() => {
-		if (!vocabData?.wordSurface) return [];
-		return renderFurigana(vocabData.wordSurface, furiganaMapping);
-	}, [vocabData, furiganaMapping]);
-
 	// Size styles
 	const sizeStyles = SIZE_STYLES[size];
 
@@ -169,14 +164,11 @@ export function KanjiWord({
 		}
 	}, [vocab, vocabData, popoverOpen]);
 
-	const handleClick = useCallback(
-		(e: React.MouseEvent<HTMLElement>) => {
-			if (onClick && vocabData) {
-				onClick(vocabData);
-			}
-		},
-		[onClick, vocabData],
-	);
+	const handleClick = useCallback(() => {
+		if (onClick && vocabData) {
+			onClick(vocabData);
+		}
+	}, [onClick, vocabData]);
 
 	const handlePopoverOpenChange = useCallback((open: boolean) => {
 		setPopoverOpen(open);
@@ -217,30 +209,17 @@ export function KanjiWord({
 			}}
 		>
 			{effectiveReadingMode === 'furigana' || effectiveReadingMode === 'both' ? (
-				// Render with furigana using <ruby> tags
-				<ruby style={{ rubyAlign: 'start', fontSize: sizeStyles.fontSize }}>
-					{furiganaSegments.map((segment, idx) => {
-						if (segment.isKanji && segment.reading) {
-							return (
-								<ruby key={idx} style={{ rubyAlign: 'start' }}>
-									{segment.text}
-									<rt
-										style={{
-											fontSize: sizeStyles.furiganaSize,
-											color: token.colorTextSecondary,
-											fontWeight: 'normal',
-										}}
-									>
-										{segment.reading}
-									</rt>
-								</ruby>
-							);
-						}
-						return <span key={idx}>{segment.text}</span>;
-					})}
-				</ruby>
+				<WordWithFurigana
+					wordSurface={vocabData.wordSurface}
+					wordReading={vocabData.wordReading || undefined}
+					furiganaMapping={furiganaMapping}
+					showReadingLine={false}
+					fontSize={sizeStyles.fontSize}
+					rtFontSize={sizeStyles.furiganaSize}
+					as="span"
+					style={{ display: 'inline-block' }}
+				/>
 			) : (
-				// Render without furigana
 				<span style={{ fontSize: sizeStyles.fontSize }}>{vocabData.wordSurface}</span>
 			)}
 

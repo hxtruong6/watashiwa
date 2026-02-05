@@ -21,7 +21,7 @@ export interface PreviewState {
 }
 
 export function useDeckViewState() {
-	const [viewMode, setViewMode] = useState<'List' | 'Grid'>('Grid');
+	const [viewMode, setViewMode] = useState<'List' | 'Grid'>('List');
 	const [activeTab, setActiveTab] = useState<ContentType>('vocab');
 	const [showAddContent, setShowAddContent] = useState(false);
 	const [showMeaning, setShowMeaning] = useState(true);

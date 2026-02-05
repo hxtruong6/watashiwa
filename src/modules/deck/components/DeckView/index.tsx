@@ -10,6 +10,7 @@
 
 'use client';
 
+import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
 import BackButton from '@/components/BackButton';
 import { getDeckUrl } from '@/lib/utils/urls';
 import CommentDrawer from '@/modules/community/components/comments/CommentDrawer';
@@ -18,8 +19,9 @@ import { Breadcrumb, Empty, Flex } from 'antd';
 import confetti from 'canvas-confetti';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
+import { toggleVocabLearnt } from '../../deck.actions';
 import type { DeckWithStats, VocabularyItem } from '../../types';
 import { AddContentSection } from './AddContentSection';
 import { ContentGridView } from './ContentGridView';
@@ -37,6 +39,8 @@ interface DeckViewProps {
 
 export default function DeckView({ deck, isOwner }: DeckViewProps) {
 	const t = useTranslations('Decks');
+	/** Local overrides for learnt state so checkbox updates instantly (optimistic). Cleared on failure. */
+	const [learntOverrides, setLearntOverrides] = useState<Map<string, boolean>>(new Map());
 
 	const {
 		viewMode,
@@ -57,7 +61,75 @@ export default function DeckView({ deck, isOwner }: DeckViewProps) {
 		closePreview,
 	} = useDeckViewState();
 
-	const vocabColumns = useVocabColumns((record) => openComments(record, 'vocab'));
+	const handleToggleLearnt = useCallback(
+		async (record: VocabularyItem, learnt: boolean) => {
+			// Optimistic update: show new state immediately so UI feels instant
+			setLearntOverrides((prev) => new Map(prev).set(record.id, learnt));
+
+			const result = await toggleVocabLearnt({
+				deckId: deck.id,
+				deckSlug: deck.slug,
+				vocabId: record.id,
+				learnt,
+			});
+
+			if (!result.success) {
+				// Revert on failure
+				setLearntOverrides((prev) => {
+					const next = new Map(prev);
+					next.delete(record.id);
+					return next;
+				});
+			}
+		},
+		[deck.id, deck.slug],
+	);
+
+	const getLearnt = useCallback(
+		(record: VocabularyItem) => learntOverrides.get(record.id) ?? record.learnt ?? false,
+		[learntOverrides],
+	);
+
+	const [currentPlayingWordId, setCurrentPlayingWordId] = useState<string | null>(null);
+	const stopPlayAllRef = React.useRef<(() => void) | null>(null);
+
+	const [ttsSettings] = useState(() => {
+		if (typeof window === 'undefined') return { voiceUri: '', speed: 1 };
+		const savedVoice = localStorage.getItem('watashiwa_audio_voice');
+		const savedSpeed = localStorage.getItem('watashiwa_audio_speed');
+		return {
+			voiceUri: savedVoice || '',
+			speed: savedSpeed ? parseFloat(savedSpeed) : 1,
+		};
+	});
+	const { speak, stop, isPlaying } = useAudioPlayer({
+		rate: ttsSettings.speed,
+		voiceUri: ttsSettings.voiceUri,
+		lang: 'ja-JP',
+	});
+
+	useEffect(() => {
+		if (!isPlaying) {
+			const id = requestAnimationFrame(() => setCurrentPlayingWordId(null));
+			return () => cancelAnimationFrame(id);
+		}
+	}, [isPlaying]);
+
+	const handlePlayAudio = useCallback(
+		(record: VocabularyItem) => {
+			stop();
+			setCurrentPlayingWordId(record.id);
+			speak(record.wordReading || record.wordSurface);
+		},
+		[speak, stop],
+	);
+
+	const vocabColumns = useVocabColumns((record) => openComments(record, 'vocab'), {
+		onToggleLearnt: handleToggleLearnt,
+		getLearnt,
+		onPlayAudio: handlePlayAudio,
+		currentPlayingWordId,
+	});
 
 	const vocabCount = deck.vocabularies ? deck.vocabularies.length : 0;
 	const storiesCount = deck.stories ? deck.stories.length : 0;
@@ -83,9 +155,6 @@ export default function DeckView({ deck, isOwner }: DeckViewProps) {
 			});
 		}
 	}, [percentLearned]);
-
-	const [currentPlayingWordId, setCurrentPlayingWordId] = React.useState<string | null>(null);
-	const stopPlayAllRef = React.useRef<(() => void) | null>(null);
 
 	const renderContent = (type: 'vocab' | 'story') => {
 		const data = type === 'vocab' ? deck.vocabularies || [] : deck.stories || [];

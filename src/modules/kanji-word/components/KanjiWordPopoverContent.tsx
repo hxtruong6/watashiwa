@@ -65,9 +65,10 @@ export function KanjiWordPopoverContent({
 				setIsPlayingAudio(false);
 			};
 		} else {
-			// Fallback: Use Web Speech API
+			// Fallback: Use Web Speech API (prefer reading, then surface)
 			if ('speechSynthesis' in window) {
-				const utterance = new SpeechSynthesisUtterance(vocab.wordSurface);
+				const textToSpeak = vocab.wordReading || vocab.wordSurface;
+				const utterance = new SpeechSynthesisUtterance(textToSpeak);
 				utterance.lang = 'ja-JP';
 				utterance.rate = 0.8;
 				window.speechSynthesis.speak(utterance);

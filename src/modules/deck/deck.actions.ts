@@ -29,14 +29,16 @@ export async function getDeck(idOrSlug: string) {
 		const deck = await deckData.getDeckByIdOrSlug(idOrSlug, user.id);
 		if (!deck) return null;
 
-		// Calculate User Stats for this deck
+		// Calculate User Stats and per-vocab learnt status for this deck
 		const userReviews = await prisma.userReview.findMany({
 			where: {
 				userId: user.id,
 				vocab: { deckId: deck.id },
 			},
-			select: { srsStage: true },
+			select: { vocabId: true, srsStage: true },
 		});
+
+		const learntVocabIds = new Set(userReviews.map((r) => r.vocabId));
 
 		const stats = {
 			total: deck._count.vocabularies + deck._count.stories,
@@ -47,7 +49,7 @@ export async function getDeck(idOrSlug: string) {
 			unseen: deck._count.vocabularies + deck._count.stories - userReviews.length,
 		};
 
-		// Transform vocabularies to match VocabularyItem type
+		// Transform vocabularies to match VocabularyItem type (with learnt from UserReview)
 		const vocabularies: VocabularyItem[] | undefined = deck.vocabularies
 			? deck.vocabularies.map((vocab) => {
 					// Parse meanings from JsonValue to the expected type
@@ -73,6 +75,7 @@ export async function getDeck(idOrSlug: string) {
 						meanings,
 						hanViet: vocab.hanViet ?? null,
 						furiganaMapping,
+						learnt: learntVocabIds.has(vocab.id),
 					};
 				})
 			: undefined;
@@ -120,6 +123,100 @@ const CreateDeckSchema = z.object({
 	headerImage: z.string().optional(),
 });
 const IdSchema = z.string().min(1);
+
+const ToggleVocabLearntSchema = z.object({
+	deckId: z.string().uuid(),
+	deckSlug: z.string().optional(),
+	vocabId: z.string().uuid(),
+	learnt: z.boolean(),
+});
+
+/**
+ * Toggle vocabulary "learnt" / "will learn" in deck list.
+ * learnt=true: create or keep UserReview (card is in progress or known).
+ * learnt=false: delete UserReview (user resets to "will learn").
+ */
+export async function toggleVocabLearnt(input: {
+	deckId: string;
+	deckSlug?: string;
+	vocabId: string;
+	learnt: boolean;
+}) {
+	const parsed = ToggleVocabLearntSchema.safeParse(input);
+	if (!parsed.success) {
+		return { success: false, error: 'Invalid input' };
+	}
+	const { deckId, deckSlug, vocabId, learnt } = parsed.data;
+
+	try {
+		const user = await getUser();
+		if (!user) return { success: false, error: 'Unauthorized' };
+
+		// Ensure vocab belongs to deck and user can access deck
+		const vocab = await prisma.vocabulary.findFirst({
+			where: { id: vocabId, deckId },
+			select: { id: true },
+		});
+		if (!vocab) return { success: false, error: 'Vocabulary not found in deck' };
+
+		const deck = await prisma.deck.findFirst({
+			where: {
+				id: deckId,
+				OR: [{ isPublic: true }, { authorId: user.id }],
+			},
+			select: { id: true },
+		});
+		if (!deck) return { success: false, error: 'Deck not found' };
+
+		if (learnt) {
+			// Mark as learnt: upsert UserReview in "Review" state so it's considered known
+			const now = new Date();
+			const nextReviewAt = new Date(now);
+			nextReviewAt.setDate(nextReviewAt.getDate() + 21);
+
+			await prisma.userReview.upsert({
+				where: {
+					userId_vocabId: { userId: user.id, vocabId },
+				},
+				update: {
+					srsStage: 2,
+					state: 2,
+					stability: 22,
+					nextReviewAt,
+					updatedAt: now,
+				},
+				create: {
+					userId: user.id,
+					vocabId,
+					srsStage: 2,
+					state: 2,
+					stability: 22,
+					difficulty: 5,
+					elapsedDays: 0,
+					scheduledDays: 21,
+					reps: 1,
+					lapses: 0,
+					nextReviewAt,
+				},
+			});
+		} else {
+			// Will learn: remove from reviews so card appears as new again
+			await prisma.userReview.deleteMany({
+				where: {
+					userId: user.id,
+					vocabId,
+				},
+			});
+		}
+
+		revalidatePath(deckSlug ? `/decks/${deckSlug}` : `/decks/${deckId}`);
+		revalidatePath('/decks');
+		return { success: true };
+	} catch (error) {
+		console.error('toggleVocabLearnt failed:', error);
+		return { success: false, error: 'Failed to update' };
+	}
+}
 
 export async function getUserDecksWithStats() {
 	try {

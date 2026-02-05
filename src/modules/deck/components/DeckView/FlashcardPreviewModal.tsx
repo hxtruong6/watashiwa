@@ -7,8 +7,8 @@
 'use client';
 
 import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
-import { generateFuriganaMapping, hasKanji, renderFurigana } from '@/lib/utils/furigana';
 import { HanVietBadge } from '@/modules/vocabulary/components/HanVietBadge';
+import { WordWithFurigana } from '@/modules/vocabulary/components/WordWithFurigana';
 import { SoundOutlined } from '@ant-design/icons';
 import { Card, Divider, Empty, Flex, Grid, Modal, Space, Typography, theme } from 'antd';
 import { useLocale } from 'next-intl';
@@ -79,41 +79,6 @@ export function FlashcardPreviewModal({ open, item, type, onClose }: FlashcardPr
 			}
 		}
 	}, [item, type, speak, stop, isPlaying]);
-
-	// Render furigana for word surface
-	const renderWordWithFurigana = (wordSurface: string, wordReading: string) => {
-		if (!wordReading || !hasKanji(wordSurface)) {
-			return <span>{wordSurface}</span>;
-		}
-
-		// Generate or use existing furigana mapping
-		const effectiveMapping =
-			(item as VocabularyItem)?.furiganaMapping ||
-			generateFuriganaMapping(wordSurface, wordReading);
-
-		if (!effectiveMapping) {
-			return <span>{wordSurface}</span>;
-		}
-
-		const segments = renderFurigana(wordSurface, effectiveMapping);
-
-		return (
-			<span>
-				{segments.map((segment, i) =>
-					segment.isKanji && segment.reading ? (
-						<ruby key={i} style={{ rubyAlign: 'start' }}>
-							{segment.text}
-							<rt style={{ fontSize: isMobile ? '0.5em' : '0.55em', opacity: 0.7 }}>
-								{segment.reading}
-							</rt>
-						</ruby>
-					) : (
-						<span key={i}>{segment.text}</span>
-					),
-				)}
-			</span>
-		);
-	};
 
 	if (!item || type !== 'vocab') {
 		return (
@@ -200,21 +165,15 @@ export function FlashcardPreviewModal({ open, item, type, onClose }: FlashcardPr
 							lineHeight: 1.2,
 						}}
 					>
-						{renderWordWithFurigana(wordSurface, wordReading || '')}
+						<WordWithFurigana
+							wordSurface={wordSurface}
+							wordReading={wordReading ?? undefined}
+							furiganaMapping={(item as VocabularyItem).furiganaMapping ?? undefined}
+							showReadingLine={true}
+							fontSize={isMobile ? 32 : 40}
+							rtFontSize={isMobile ? 16 : 22}
+						/>
 					</Title>
-
-					{/* Reading */}
-					{wordReading && (
-						<Text
-							type="secondary"
-							style={{
-								fontSize: isMobile ? 18 : 20,
-								fontWeight: 400,
-							}}
-						>
-							{wordReading}
-						</Text>
-					)}
 
 					{/* Audio Button */}
 					<Space>

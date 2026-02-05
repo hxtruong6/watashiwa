@@ -4,8 +4,8 @@
  * Grid layout for displaying vocab/story items
  */
 import { useAudioPlayer } from '@/components/Audio/useAudioPlayer';
-import { generateFuriganaMapping, hasKanji, renderFurigana } from '@/lib/utils/furigana';
 import { HanVietBadge } from '@/modules/vocabulary/components/HanVietBadge';
+import { WordWithFurigana } from '@/modules/vocabulary/components/WordWithFurigana';
 import { SoundOutlined } from '@ant-design/icons';
 import { Button, Card, Col, Flex, Grid, Row, Typography, theme } from 'antd';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -198,21 +198,6 @@ export function ContentGridView({
 					const furiganaMapping =
 						type === 'vocab' ? (item as VocabularyItem).furiganaMapping : null;
 
-					// Show furigana only when kanji is present
-					const shouldShowFurigana = type === 'vocab' && wordReading && hasKanji(wordSurface);
-
-					// Generate or use existing furigana mapping
-					const effectiveMapping =
-						furiganaMapping ||
-						(shouldShowFurigana && wordReading
-							? generateFuriganaMapping(wordSurface, wordReading)
-							: null);
-
-					// Render furigana segments
-					const furiganaSegments = effectiveMapping
-						? renderFurigana(wordSurface, effectiveMapping)
-						: null;
-
 					// Extract first meaning from meanings object (prefer vi, fallback to en)
 					const meaningText =
 						type === 'vocab'
@@ -277,36 +262,18 @@ export function ContentGridView({
 										{/* Header: Word/Title and Actions */}
 										<Flex justify="space-between" align="start" gap="small" wrap="wrap">
 											<Flex vertical gap={2} style={{ flex: 1, minWidth: 0 }}>
-												{/* Word Surface with Precise Furigana (Kanji-only) */}
-												{furiganaSegments ? (
-													<Text
-														strong
-														style={{
-															fontSize: titleFontSize,
-															color: token.colorPrimary,
-															wordBreak: 'break-word',
-															lineHeight: 1.3,
-														}}
-													>
-														{furiganaSegments.map((segment, idx) =>
-															segment.isKanji && segment.reading ? (
-																<ruby key={idx} style={{ rubyAlign: 'start' }}>
-																	{segment.text}
-																	<rt
-																		style={{
-																			fontSize: furiganaFontSize,
-																			color: token.colorTextSecondary,
-																			fontWeight: 'normal',
-																		}}
-																	>
-																		{segment.reading}
-																	</rt>
-																</ruby>
-															) : (
-																<span key={idx}>{segment.text}</span>
-															),
-														)}
-													</Text>
+												{/* Word: shared WordWithFurigana (reading line only when no furigana) */}
+												{type === 'vocab' ? (
+													<div style={{ color: token.colorPrimary, wordBreak: 'break-word' }}>
+														<WordWithFurigana
+															wordSurface={wordSurface}
+															wordReading={wordReading ?? undefined}
+															furiganaMapping={furiganaMapping ?? undefined}
+															showReadingLine={true}
+															fontSize={titleFontSize}
+															rtFontSize={furiganaFontSize}
+														/>
+													</div>
 												) : (
 													<Text
 														strong

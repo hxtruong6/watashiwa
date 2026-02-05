@@ -42,6 +42,8 @@ export interface VocabularyItem {
 	};
 	hanViet?: string | null;
 	furiganaMapping?: FuriganaMapping | null;
+	/** True if the current user has a UserReview for this vocab (marked learnt / in progress) */
+	learnt?: boolean;
 	_count?: {
 		cardComments: number;
 	};
