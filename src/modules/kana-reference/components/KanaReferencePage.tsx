@@ -44,18 +44,18 @@ export function KanaReferencePage() {
 
 	const handleCellClick = useCallback(
 		(_cellId: string, character: string, _romaji: string) => {
-			if (typeof navigator === 'undefined' || !navigator.clipboard?.writeText) {
-				message.error(t('copyNotSupported'));
-				return;
-			}
-			navigator.clipboard
-				.writeText(character)
-				.then(() => {
-					message.success(t('copiedChar', { char: character }));
-				})
-				.catch(() => {
-					message.error(t('copyNotSupported'));
-				});
+			// if (typeof navigator === 'undefined' || !navigator.clipboard?.writeText) {
+			// 	message.error(t('copyNotSupported'));
+			// 	return;
+			// }
+			// navigator.clipboard
+			// 	.writeText(character)
+			// 	.then(() => {
+			// 		message.success(t('copiedChar', { char: character }));
+			// 	})
+			// 	.catch(() => {
+			// 		message.error(t('copyNotSupported'));
+			// 	});
 
 			if (playAudioOnTap) {
 				try {

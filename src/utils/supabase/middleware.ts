@@ -45,12 +45,13 @@ export async function updateSession(request: NextRequest) {
 	// Check for invalid session (missing user OR auth error)
 	const hasInvalidSession = !user || authError;
 
-	// Protect Dashboard and Study routes
+	// Protect Dashboard, Study, and Learn routes
 	if (
 		hasInvalidSession &&
 		(request.nextUrl.pathname.startsWith('/dashboard') ||
 			request.nextUrl.pathname.startsWith('/study') ||
-			request.nextUrl.pathname.startsWith('/decks'))
+			request.nextUrl.pathname.startsWith('/decks') ||
+			request.nextUrl.pathname.startsWith('/learn'))
 	) {
 		if (request.nextUrl.pathname === '/login') {
 			return supabaseResponse;

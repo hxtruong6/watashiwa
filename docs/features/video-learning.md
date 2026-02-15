@@ -11,6 +11,7 @@
 - [API Reference](./video-learning-api.md) - Server Actions and data layer
 - [Component Usage Guide](./video-learning-component-usage.md) - React components and hooks
 - [Technical Recommendations](./video-learning-recommendations.md) - Library choices and format decisions
+- [Listen & Type Practice](./video-listen-type-practice.md) - Dictation practice mode (separate route)
 
 ---
 
@@ -367,6 +368,7 @@ All MVP features have been implemented:
 
 **Planned Enhancements:**
 
+- [Listen & Type Practice](./video-listen-type-practice.md) — Dictation practice (separate route)
 - Word click to show vocabulary details
 - Bookmark timestamps
 - Repeat sentence functionality

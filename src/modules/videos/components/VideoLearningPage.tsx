@@ -5,7 +5,9 @@
  */
 'use client';
 
-import { Alert, Flex } from 'antd';
+import { Alert, Button, Flex } from 'antd';
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 import { memo, useCallback, useEffect, useState } from 'react';
 
 import { useSubtitleSync } from '../hooks/useSubtitleSync';
@@ -25,6 +27,7 @@ interface VideoLearningPageProps {
 }
 
 function VideoLearningPageComponent({ video, initialProgress }: VideoLearningPageProps) {
+	const t = useTranslations('Practice');
 	const videoPlayer = useVideoPlayer();
 	const {
 		currentTime,
@@ -239,7 +242,7 @@ function VideoLearningPageComponent({ video, initialProgress }: VideoLearningPag
 			<div style={{ width: '100%', marginTop: 'var(--spacing-md)' }}>
 				{subtitleError ? (
 					<Alert
-						message="Subtitle Warning"
+						title="Subtitle Warning"
 						description={subtitleError}
 						type="warning"
 						showIcon
@@ -253,6 +256,17 @@ function VideoLearningPageComponent({ video, initialProgress }: VideoLearningPag
 			<div style={{ width: '100%' }}>
 				<TranslationDisplay subtitle={activeSubtitle} />
 			</div>
+
+			{/* Practice link */}
+			{video.subtitles.length > 0 && (
+				<div style={{ width: '100%', marginTop: 'var(--spacing-md)' }}>
+					<Link href={`/learn/videos/${video.id}/practice`}>
+						<Button type="default" size="large">
+							{t('practice')}
+						</Button>
+					</Link>
+				</div>
+			)}
 
 			{/* Resume Prompt Modal */}
 			{initialProgress && (
