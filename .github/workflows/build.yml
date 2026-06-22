@@ -51,9 +51,11 @@ jobs:
         env:
           NODE_ENV: production
           NODE_OPTIONS: '--max-old-space-size=4096'
-          # Add other required env vars here
-          # DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          # NEXT_PUBLIC_*: ${{ secrets.NEXT_PUBLIC_* }}
+          # Build-time placeholder; real value comes from repo secrets when set.
+          # The app tolerates an unreachable DB at build (see src/app/sitemap.ts).
+          DATABASE_URL: ${{ secrets.DATABASE_URL || 'postgresql://postgres:postgres@localhost:5432/test' }}
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL || 'https://placeholder.supabase.co' }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'placeholder-anon-key' }}
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
