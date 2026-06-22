@@ -67,3 +67,19 @@ GEMINI.md
 .cursorrules
 .aider*
 .windsurfrules
+
+# Documentation: keep a curated public set; the rest stays local-only
+/docs/**
+!/docs/architecture.md
+!/docs/modules.md
+!/docs/design_system.md
+!/docs/technical_spec.md
+!/docs/conventions.md
+!/docs/testing_strategy.md
+!/docs/project-overview.md
+!/docs/development-guide.md
+!/docs/deployment-vercel.md
+!/docs/srs_architecture.md
+!/docs/screenshots/
+!/docs/screenshots/*.png
+!/docs/screenshots/README.md
