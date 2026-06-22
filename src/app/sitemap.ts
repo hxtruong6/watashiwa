@@ -24,55 +24,51 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		},
 	}));
 
-	// Public courses
-	const publicCourses = await prisma.course.findMany({
-		where: {
-			isPublic: true,
-			deletedAt: null,
-		},
-		select: {
-			slug: true,
-			updatedAt: true,
-		},
-	});
+	// Dynamic pages from the database. Tolerate the database being unavailable
+	// (e.g. during a build without DB access) so the sitemap never breaks the build.
+	let coursePages: MetadataRoute.Sitemap = [];
+	let deckPages: MetadataRoute.Sitemap = [];
 
-	const coursePages: MetadataRoute.Sitemap = publicCourses.map((course) => ({
-		url: `${baseUrl}/courses/${course.slug}`,
-		lastModified: course.updatedAt,
-		changeFrequency: 'weekly',
-		priority: 0.8,
-		alternates: {
-			languages: {
-				'vi-VN': `${baseUrl}/courses/${course.slug}`,
-				'en-US': `${baseUrl}/courses/${course.slug}`,
+	try {
+		const [publicCourses, publicDecks] = await Promise.all([
+			prisma.course.findMany({
+				where: { isPublic: true, deletedAt: null },
+				select: { slug: true, updatedAt: true },
+			}),
+			prisma.deck.findMany({
+				where: { isPublic: true, deletedAt: null },
+				select: { slug: true, updatedAt: true },
+			}),
+		]);
+
+		coursePages = publicCourses.map((course) => ({
+			url: `${baseUrl}/courses/${course.slug}`,
+			lastModified: course.updatedAt,
+			changeFrequency: 'weekly',
+			priority: 0.8,
+			alternates: {
+				languages: {
+					'vi-VN': `${baseUrl}/courses/${course.slug}`,
+					'en-US': `${baseUrl}/courses/${course.slug}`,
+				},
 			},
-		},
-	}));
+		}));
 
-	// Public decks
-	const publicDecks = await prisma.deck.findMany({
-		where: {
-			isPublic: true,
-			deletedAt: null,
-		},
-		select: {
-			slug: true,
-			updatedAt: true,
-		},
-	});
-
-	const deckPages: MetadataRoute.Sitemap = publicDecks.map((deck) => ({
-		url: `${baseUrl}/decks/${deck.slug}`,
-		lastModified: deck.updatedAt,
-		changeFrequency: 'weekly',
-		priority: 0.7,
-		alternates: {
-			languages: {
-				'vi-VN': `${baseUrl}/decks/${deck.slug}`,
-				'en-US': `${baseUrl}/decks/${deck.slug}`,
+		deckPages = publicDecks.map((deck) => ({
+			url: `${baseUrl}/decks/${deck.slug}`,
+			lastModified: deck.updatedAt,
+			changeFrequency: 'weekly',
+			priority: 0.7,
+			alternates: {
+				languages: {
+					'vi-VN': `${baseUrl}/decks/${deck.slug}`,
+					'en-US': `${baseUrl}/decks/${deck.slug}`,
+				},
 			},
-		},
-	}));
+		}));
+	} catch (error) {
+		console.error('[sitemap] Failed to load dynamic pages; returning static pages only:', error);
+	}
 
 	return [...staticPages, ...coursePages, ...deckPages];
 }
