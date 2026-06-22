@@ -56,3 +56,14 @@ gcs.json
 /scripts/capture-screenshots.ts
 /src/utils/supabase/dev-auth.ts
 /docs/screenshots/_report.json
+
+# AI assistant rules / config (not for public repo)
+.cursor/
+.agent/
+.claude/
+CLAUDE.md
+AGENTS.md
+GEMINI.md
+.cursorrules
+.aider*
+.windsurfrules
