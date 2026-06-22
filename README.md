@@ -8,6 +8,20 @@ A Japanese vocabulary-learning platform built around spaced repetition and the
 **CUBE** method: words are learned in meaningful context, connected by shared
 kanji and etymology, rather than memorised in isolation.
 
+[![Build](https://github.com/hxtruong6/watashiwa/actions/workflows/build.yml/badge.svg)](https://github.com/hxtruong6/watashiwa/actions/workflows/build.yml)
+[![Release](https://img.shields.io/github/v/tag/hxtruong6/watashiwa?label=release&sort=semver)](https://github.com/hxtruong6/watashiwa/tags)
+![License](https://img.shields.io/badge/license-Proprietary-red)
+
+<br/>
+
+![Next.js](https://img.shields.io/badge/Next.js_16-000000?logo=nextdotjs&logoColor=white)
+![React](https://img.shields.io/badge/React_19-20232A?logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma_7-2D3748?logo=prisma&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?logo=supabase&logoColor=white)
+![Ant Design](https://img.shields.io/badge/Ant_Design_6-0170FE?logo=antdesign&logoColor=white)
+
 [Features](#features) · [Screenshots](#screenshots) · [Tech stack](#tech-stack) · [Getting started](#getting-started) · [Architecture](#architecture)
 
 </div>
