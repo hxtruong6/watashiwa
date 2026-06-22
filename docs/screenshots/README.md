@@ -1,9 +1,7 @@
 # WatashiWa — Screenshot Gallery
 
 A visual tour of the app. Screens are captured at 1440px desktop width against a
-seeded demo account. Regenerate with `pnpm tsx scripts/capture-screenshots.ts`
-(requires the dev server running with `SCREENSHOT_AUTH_USER_ID` set — see the
-[main README](../../README.md#screenshots)).
+seeded demo account using a Playwright capture script.
 
 ## Core experience
 

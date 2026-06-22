@@ -55,7 +55,7 @@ bilingual (English / Vietnamese) with Japanese throughout.
 
 ➡️ **See the [full screenshot gallery](docs/screenshots/README.md)** for every screen.
 
-<!-- TODO: add a live demo link here once deployed, e.g. **Live demo:** https://watashiwa.app -->
+<!-- Live demo: add the URL here once deployed. See docs/deployment-vercel.md. -->
 
 ## Tech stack
 
@@ -102,15 +102,10 @@ pnpm test:integration  # Vitest against the real DB
 pnpm e2e               # Playwright end-to-end flows
 ```
 
-### Screenshots
+### Deployment
 
-The gallery is generated against a seeded demo account:
-
-```bash
-pnpm tsx scripts/seed-demo-activity.ts          # seed realistic demo activity
-SCREENSHOT_AUTH_USER_ID=<demo-user-id> pnpm dev # run with the demo login
-pnpm tsx scripts/capture-screenshots.ts         # capture to docs/screenshots/
-```
+See [`docs/deployment-vercel.md`](docs/deployment-vercel.md) for a step-by-step
+guide to deploying on Vercel with a managed Postgres database (for a live demo).
 
 ## Architecture
 
