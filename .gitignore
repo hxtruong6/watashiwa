@@ -51,3 +51,8 @@ next-env.d.ts
 
 # google cloud storage
 gcs.json
+# Local-only demo/screenshot tooling (kept out of the public repo)
+/scripts/seed-demo-activity.ts
+/scripts/capture-screenshots.ts
+/src/utils/supabase/dev-auth.ts
+/docs/screenshots/_report.json
