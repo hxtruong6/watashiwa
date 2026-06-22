@@ -59,6 +59,9 @@
 		"modeFull": "Gõ cả câu",
 		"modeFillTooltip": "Điền chỗ trống / Gõ cả câu",
 		"blanksPerSentence": "Số chỗ trống mỗi câu",
+		"validationKana": "Kana",
+		"validationKanji": "Kanji",
+		"validationModeTooltip": "Kana: gõ hiragana/katakana. Kanji: gõ đúng chữ Hán",
 		"practice": "Luyện tập",
 		"settings": "Cài đặt",
 		"practiceComplete": "Hoàn thành luyện tập",
@@ -66,6 +69,7 @@
 		"submitTooltip": "Nộp bài để kiểm tra. Bạn sẽ biết đúng/sai và xem đáp án.",
 		"showAnswerTooltip": "Xem đáp án ngay không cần đoán, rồi chuyển câu tiếp theo.",
 		"shortcutsHint": "P Phát/Tạm dừng · R Phát lại · Enter Xem đáp án · → Tiếp theo",
+		"shortcutsHintWithH": "P Phát/Tạm dừng · R Phát lại · H Gợi ý · Enter Xem đáp án · → Tiếp theo",
 		"fullSentencePlaceholder": "Gõ những gì bạn nghe..."
 	},
 	"NavBar": {

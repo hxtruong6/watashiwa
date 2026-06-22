@@ -45,12 +45,47 @@ export function userInputToHiragana(input: string): string {
 	return typeof result.normalize === 'function' ? result.normalize('NFC') : result;
 }
 
-export type ValidationMode = 'kana';
+export type ValidationMode = 'kana' | 'kanji';
 
 export interface KanaCompareResult {
 	correct: boolean;
 	expectedHiragana: string;
 	userHiragana: string;
+}
+
+export interface KanjiCompareResult {
+	correct: boolean;
+	expectedNormalized: string;
+	userNormalized: string;
+}
+
+/**
+ * Compare user answer to expected text in Kanji mode.
+ * Exact character-by-character match after normalizeSpaces (trim, collapse spaces).
+ * Homophones (聞く vs 聴く) and okurigana (見て vs 見る) must match exactly.
+ */
+export function compareKanji(userAnswer: string, expectedText: string): KanjiCompareResult {
+	const expectedNormalized = normalizeSpaces(expectedText);
+	const userNormalized = normalizeSpaces(userAnswer);
+	const correct = expectedNormalized === userNormalized;
+	return { correct, expectedNormalized, userNormalized };
+}
+
+/**
+ * Validate a single segment (one blank or one word) in Kanji mode.
+ */
+export function validateSegmentKanji(userSegment: string, expectedText: string): boolean {
+	const { correct } = compareKanji(userSegment, expectedText);
+	return correct;
+}
+
+/**
+ * Compare full sentence in Kanji mode: exact match after normalization (spaces trimmed/collapsed).
+ */
+export function compareKanjiFullSentence(userAnswer: string, expectedText: string): boolean {
+	const expectedNormalized = normalizeSpaces(expectedText);
+	const userNormalized = normalizeSpaces(userAnswer);
+	return expectedNormalized === userNormalized;
 }
 
 /**

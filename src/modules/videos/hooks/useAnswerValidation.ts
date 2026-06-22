@@ -4,13 +4,17 @@ import { useCallback } from 'react';
 
 import type { Subtitle } from '../types';
 import {
+	type ValidationMode,
 	compareKanaFullSentence,
+	compareKanjiFullSentence,
 	expectedToHiragana,
 	normalizeSpaces,
 	validateSegmentKana,
+	validateSegmentKanji,
 } from '../utils/practice-validation';
 
 export type PracticeMode = 'fill' | 'full';
+export type { ValidationMode };
 
 export interface FillValidationResult {
 	correct: boolean;
@@ -66,6 +70,7 @@ export function useAnswerValidation() {
 			subtitle: Subtitle,
 			blankIndices: number[],
 			userValuesByBlank: string[],
+			validationMode: ValidationMode,
 		): FillValidationResult => {
 			const expectedPerBlank = blankIndices.map((wordIndex) => {
 				const { expectedDisplay } = getExpectedForSegment(subtitle, wordIndex);
@@ -74,9 +79,13 @@ export function useAnswerValidation() {
 			const incorrectBlankIndices: number[] = [];
 			for (let i = 0; i < blankIndices.length; i++) {
 				const wordIndex = blankIndices[i];
-				const { expectedRomaji } = getExpectedForSegment(subtitle, wordIndex);
+				const { expectedRomaji, expectedDisplay } = getExpectedForSegment(subtitle, wordIndex);
 				const userSegment = userValuesByBlank[i] ?? '';
-				if (!validateSegmentKana(userSegment, expectedRomaji)) {
+				const segmentCorrect =
+					validationMode === 'kanji'
+						? validateSegmentKanji(userSegment, expectedDisplay)
+						: validateSegmentKana(userSegment, expectedRomaji);
+				if (!segmentCorrect) {
 					incorrectBlankIndices.push(i);
 				}
 			}
@@ -91,10 +100,16 @@ export function useAnswerValidation() {
 	);
 
 	const validateFull = useCallback(
-		(subtitle: Subtitle, userInput: string): FullValidationResult => {
-			const expectedHiragana = getFullExpectedHiragana(subtitle);
-			const correct = compareKanaFullSentence(userInput, expectedHiragana);
+		(
+			subtitle: Subtitle,
+			userInput: string,
+			validationMode: ValidationMode,
+		): FullValidationResult => {
 			const expectedDisplay = subtitle.sentence;
+			const correct =
+				validationMode === 'kanji'
+					? compareKanjiFullSentence(userInput, expectedDisplay)
+					: compareKanaFullSentence(userInput, getFullExpectedHiragana(subtitle));
 			return {
 				correct,
 				expectedDisplay,
@@ -110,11 +125,12 @@ export function useAnswerValidation() {
 			blankIndices: number[],
 			userValuesByBlank: string[],
 			fullUserInput: string,
+			validationMode: ValidationMode,
 		): ValidationResult => {
 			if (mode === 'fill') {
-				return validateFill(subtitle, blankIndices, userValuesByBlank);
+				return validateFill(subtitle, blankIndices, userValuesByBlank, validationMode);
 			}
-			return validateFull(subtitle, fullUserInput);
+			return validateFull(subtitle, fullUserInput, validationMode);
 		},
 		[validateFill, validateFull],
 	);

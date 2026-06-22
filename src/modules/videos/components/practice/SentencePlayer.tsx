@@ -44,7 +44,6 @@ function SentencePlayerComponent({
 	isMuted,
 	playCurrentSentence,
 	repeatCurrentSentence,
-	play,
 	pause,
 	setPlaybackRate,
 	setVolume,
@@ -72,8 +71,9 @@ function SentencePlayerComponent({
 					width: '100%',
 					maxHeight: 220,
 					objectFit: 'contain',
-					backgroundColor: '#000',
-					borderRadius: 8,
+					backgroundColor: '#0a0a0a',
+					borderRadius: 'var(--ant-borderRadiusLG, 8px)',
+					border: '1px solid var(--ant-colorBorderSecondary)',
 				}}
 			/>
 			<Flex

@@ -3,16 +3,18 @@
 import { Alert, Button, Flex, Tooltip, Typography } from 'antd';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import {
 	type FillValidationResult,
 	type FullValidationResult,
 	type PracticeMode,
+	type ValidationMode,
 	type ValidationResult,
 	useAnswerValidation,
 } from '../../hooks/useAnswerValidation';
 import { usePracticeSession } from '../../hooks/usePracticeSession';
+import { usePracticeSettingsPersisted } from '../../hooks/usePracticeSettingsPersisted';
 import { useSentencePlayback } from '../../hooks/useSentencePlayback';
 import { useVideoPlayer } from '../../hooks/useVideoPlayer';
 import type { Video } from '../../types';
@@ -31,10 +33,22 @@ export function ListenTypePracticePage({ video }: ListenTypePracticePageProps) {
 
 	const hasSubtitles = video.subtitles && video.subtitles.length > 0;
 
-	const [practiceMode, setPracticeMode] = useState<PracticeMode>('fill');
-	const [blanksPerSentence, setBlanksPerSentence] = useState<1 | 2>(1);
+	const [settings, setSettings] = usePracticeSettingsPersisted();
+	const { mode: practiceMode, blanksPerSentence, validationMode } = settings;
+	const setPracticeMode = useCallback((mode: PracticeMode) => setSettings({ mode }), [setSettings]);
+	const setBlanksPerSentence = useCallback(
+		(n: 1 | 2) => setSettings({ blanksPerSentence: n }),
+		[setSettings],
+	);
+	const setValidationMode = useCallback(
+		(mode: ValidationMode) => setSettings({ validationMode: mode }),
+		[setSettings],
+	);
+
 	const [fillValues, setFillValues] = useState<string[]>([]);
 	const [fullValue, setFullValue] = useState('');
+	const [hintRevealedCountFill, setHintRevealedCountFill] = useState<number[]>([]);
+	const [hintRevealedCountFull, setHintRevealedCountFull] = useState(0);
 	const [feedback, setFeedback] = useState<{
 		type: FeedbackType;
 		expected?: string;
@@ -80,6 +94,65 @@ export function ListenTypePracticePage({ video }: ListenTypePracticePageProps) {
 
 	const { validate } = useAnswerValidation();
 
+	const isDoneWithSentence = uiState === 'correct' || uiState === 'showAnswer';
+
+	const hintPrefixesFill = useMemo(() => {
+		if (!currentSubtitle || blankIndices.length === 0) return undefined;
+		const words = currentSubtitle.words;
+		const getExpected = (wi: number) =>
+			words.length === 0 ? currentSubtitle.sentence : (words[wi]?.text ?? '');
+		return blankIndices.map((wi, i) => {
+			const expected = getExpected(wi);
+			const count = hintRevealedCountFill[i] ?? 0;
+			return count > 0 ? expected.slice(0, count) : '';
+		});
+	}, [currentSubtitle, blankIndices, hintRevealedCountFill]);
+
+	const hintPrefixFull =
+		currentSubtitle && hintRevealedCountFull > 0
+			? currentSubtitle.sentence.slice(0, hintRevealedCountFull)
+			: '';
+
+	const canHintFill = useMemo(() => {
+		if (!currentSubtitle || isDoneWithSentence) return false;
+		const words = currentSubtitle.words;
+		const getExpected = (wi: number) =>
+			words.length === 0 ? currentSubtitle.sentence : (words[wi]?.text ?? '');
+		return blankIndices.some((wi, i) => {
+			const expected = getExpected(wi);
+			return (hintRevealedCountFill[i] ?? 0) < expected.length;
+		});
+	}, [currentSubtitle, blankIndices, hintRevealedCountFill, isDoneWithSentence]);
+	const canHintFull =
+		currentSubtitle != null &&
+		!isDoneWithSentence &&
+		hintRevealedCountFull < currentSubtitle.sentence.length;
+	const canHint = practiceMode === 'fill' ? canHintFill : canHintFull;
+
+	const handleHint = useCallback(() => {
+		if (!currentSubtitle || !canHint) return;
+		if (practiceMode === 'fill') {
+			const words = currentSubtitle.words;
+			const getExpected = (wi: number) =>
+				words.length === 0 ? currentSubtitle.sentence : (words[wi]?.text ?? '');
+			setHintRevealedCountFill((prev) => {
+				const next = [...prev];
+				for (let i = 0; i < blankIndices.length; i++) {
+					const expected = getExpected(blankIndices[i]);
+					if ((next[i] ?? 0) < expected.length) {
+						next[i] = (next[i] ?? 0) + 1;
+						return next;
+					}
+				}
+				return next;
+			});
+		} else {
+			setHintRevealedCountFull((prev) =>
+				prev < currentSubtitle.sentence.length ? prev + 1 : prev,
+			);
+		}
+	}, [currentSubtitle, practiceMode, blankIndices, canHint]);
+
 	const nextAutoPlayRef = useRef(false);
 	const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
 	const practiceRegionRef = useRef<HTMLDivElement>(null);
@@ -90,11 +163,15 @@ export function ListenTypePracticePage({ video }: ListenTypePracticePageProps) {
 			if (!currentSubtitle) {
 				setFillValues([]);
 				setFullValue('');
+				setHintRevealedCountFill([]);
+				setHintRevealedCountFull(0);
 				setFeedback(null);
 				return;
 			}
 			setFillValues(Array(blankIndices.length).fill(''));
 			setFullValue('');
+			setHintRevealedCountFill(Array(blankIndices.length).fill(0));
+			setHintRevealedCountFull(0);
 			setFeedback(null);
 		}, 0);
 		return () => clearTimeout(id);
@@ -124,6 +201,7 @@ export function ListenTypePracticePage({ video }: ListenTypePracticePageProps) {
 			blankIndices,
 			fillValues,
 			fullValue,
+			validationMode,
 		) as ValidationResult;
 		const correct = 'incorrectBlankIndices' in result ? result.correct : result.correct;
 		if (practiceMode === 'fill') {
@@ -143,7 +221,16 @@ export function ListenTypePracticePage({ video }: ListenTypePracticePageProps) {
 		setUIState(correct ? 'correct' : 'incorrect');
 		// Move focus to practice region so Enter (Next) and P/R shortcuts work
 		setTimeout(() => practiceRegionRef.current?.focus(), 0);
-	}, [currentSubtitle, practiceMode, blankIndices, fillValues, fullValue, validate, setUIState]);
+	}, [
+		currentSubtitle,
+		practiceMode,
+		blankIndices,
+		fillValues,
+		fullValue,
+		validationMode,
+		validate,
+		setUIState,
+	]);
 
 	const handleShowAnswer = useCallback(() => {
 		if (!currentSubtitle) return;
@@ -234,8 +321,14 @@ export function ListenTypePracticePage({ video }: ListenTypePracticePageProps) {
 				repeatCurrentSentence();
 				return;
 			}
+			if (!isInput && e.key.toLowerCase() === 'h' && canHint) {
+				e.preventDefault();
+				handleHint();
+				return;
+			}
 		},
 		[
+			videoRef,
 			practiceMode,
 			feedback,
 			isLastSentence,
@@ -244,6 +337,8 @@ export function ListenTypePracticePage({ video }: ListenTypePracticePageProps) {
 			pause,
 			playCurrentSentence,
 			repeatCurrentSentence,
+			canHint,
+			handleHint,
 		],
 	);
 
@@ -266,7 +361,6 @@ export function ListenTypePracticePage({ video }: ListenTypePracticePageProps) {
 
 	const canSubmit =
 		practiceMode === 'fill' ? fillValues.some((v) => v.trim() !== '') : fullValue.trim() !== '';
-	const isDoneWithSentence = uiState === 'correct' || uiState === 'showAnswer';
 	const hasFeedback = feedback != null;
 
 	return (
@@ -285,20 +379,28 @@ export function ListenTypePracticePage({ video }: ListenTypePracticePageProps) {
 					maxWidth: 900,
 					margin: '0 auto',
 					padding: '24px 16px',
+					gap: 24,
 				}}
-				gap="middle"
 			>
-				<Flex justify="space-between" align="center" wrap="wrap" gap="small">
-					<Link href={`/learn/videos/${video.id}`}>{t('backToVideo')}</Link>
-					<span style={{ flex: 1, textAlign: 'center', fontWeight: 500 }}>
+				{/* Header: back link, title, settings */}
+				<Flex justify="space-between" align="center" wrap="wrap" gap="middle">
+					<Link
+						href={`/learn/videos/${video.id}`}
+						style={{ color: 'var(--ant-colorPrimary)', fontWeight: 500 }}
+					>
+						{t('backToVideo')}
+					</Link>
+					<Typography.Title level={5} style={{ margin: 0, flex: 1, textAlign: 'center' }}>
 						{video.titleEn || video.title}
-					</span>
-					<Flex gap="small">
+					</Typography.Title>
+					<Flex gap="small" wrap="wrap">
 						<PracticeSettings
 							mode={practiceMode}
 							blanksPerSentence={blanksPerSentence}
+							validationMode={validationMode}
 							onModeChange={setPracticeMode}
 							onBlanksChange={setBlanksPerSentence}
+							onValidationChange={setValidationMode}
 						/>
 					</Flex>
 				</Flex>
@@ -319,84 +421,101 @@ export function ListenTypePracticePage({ video }: ListenTypePracticePageProps) {
 					toggleMute={videoPlayer.toggleMute}
 				/>
 
-				{/* Progress + Skip grouped */}
-				<Flex justify="space-between" align="center" wrap="wrap" gap="small">
-					<span
-						style={{
-							fontSize: 15,
-							fontWeight: 600,
-							color: 'var(--ant-colorText)',
-						}}
-					>
-						{t('sentenceOf', {
-							current: currentIndex + 1,
-							total: totalSentences,
-						})}
-					</span>
-					<Button size="small" onClick={skip} aria-label={t('skip')}>
-						{t('skip')}
-					</Button>
-				</Flex>
-
-				{practiceMode === 'fill' && currentSubtitle && (
-					<FillBlankInput
-						subtitle={currentSubtitle}
-						blankIndices={blankIndices}
-						values={fillValues}
-						onChange={setFillValues}
-						disabled={isDoneWithSentence}
-						revealedBlanks={
-							feedback?.expectedPerBlank != null ? feedback.expectedPerBlank : undefined
-						}
-						firstInputRef={inputRef as React.RefObject<HTMLInputElement | null>}
-					/>
-				)}
-				{practiceMode === 'full' && (
-					<FullSentenceInput
-						value={fullValue}
-						onChange={setFullValue}
-						disabled={isDoneWithSentence}
-						placeholder={t('fullSentencePlaceholder')}
-						inputRef={inputRef as React.RefObject<HTMLTextAreaElement | null>}
-					/>
-				)}
-
-				{/* Feedback above actions – prominent Alert */}
-				{feedback && (
-					<ValidationFeedback
-						type={feedback.type ?? null}
-						expected={feedback.expected}
-						expectedPerBlank={feedback.expectedPerBlank}
-						incorrectBlankIndices={feedback.incorrectBlankIndices}
-					/>
-				)}
-
-				{/* After submit or show answer: only Next. Before: Submit + Show Answer. */}
-				<Flex gap="small" wrap="wrap" align="center">
-					{!hasFeedback ? (
-						<>
-							<Tooltip title={t('submitTooltip')}>
-								<span>
-									<Button type="primary" onClick={handleSubmit} disabled={!canSubmit}>
-										{t('submit')}
+				{/* Practice block: progress, sentence, input, feedback, actions */}
+				<Flex
+					vertical
+					gap="middle"
+					style={{
+						padding: '20px 16px',
+						background: 'var(--ant-colorBgContainer)',
+						borderRadius: 'var(--ant-borderRadiusLG, 8px)',
+						border: '1px solid var(--ant-colorBorderSecondary)',
+					}}
+				>
+					<Flex justify="space-between" align="center" wrap="wrap" gap="small">
+						<Typography.Text strong style={{ color: 'var(--ant-colorText)' }}>
+							{t('sentenceOf', {
+								current: currentIndex + 1,
+								total: totalSentences,
+							})}
+						</Typography.Text>
+						<Flex gap="small">
+							<Tooltip title={t('hint')}>
+								<span style={{ display: 'inline-block' }}>
+									<Button
+										size="small"
+										onClick={handleHint}
+										disabled={!canHint}
+										aria-label={t('hint')}
+									>
+										{t('hint')}
 									</Button>
 								</span>
 							</Tooltip>
-							<Tooltip title={t('showAnswerTooltip')}>
-								<span>
-									<Button onClick={handleShowAnswer}>{t('showAnswer')}</Button>
-								</span>
-							</Tooltip>
-						</>
-					) : (
-						<Button type="primary" onClick={handleNext}>
-							{t('next')}
-						</Button>
+							<Button size="small" onClick={skip} aria-label={t('skip')}>
+								{t('skip')}
+							</Button>
+						</Flex>
+					</Flex>
+
+					{practiceMode === 'fill' && currentSubtitle && (
+						<FillBlankInput
+							subtitle={currentSubtitle}
+							blankIndices={blankIndices}
+							values={fillValues}
+							onChange={setFillValues}
+							disabled={isDoneWithSentence}
+							revealedBlanks={
+								feedback?.expectedPerBlank != null ? feedback.expectedPerBlank : undefined
+							}
+							hintPrefixes={hintPrefixesFill}
+							firstInputRef={inputRef as React.RefObject<HTMLInputElement | null>}
+						/>
 					)}
+					{practiceMode === 'full' && (
+						<FullSentenceInput
+							value={fullValue}
+							onChange={setFullValue}
+							disabled={isDoneWithSentence}
+							placeholder={t('fullSentencePlaceholder')}
+							hintPrefix={hintPrefixFull || undefined}
+							inputRef={inputRef as React.RefObject<HTMLTextAreaElement | null>}
+						/>
+					)}
+
+					{feedback && (
+						<ValidationFeedback
+							type={feedback.type ?? null}
+							expected={feedback.expected}
+							expectedPerBlank={feedback.expectedPerBlank}
+							incorrectBlankIndices={feedback.incorrectBlankIndices}
+						/>
+					)}
+
+					<Flex gap="small" wrap="wrap" align="center">
+						{!hasFeedback ? (
+							<>
+								<Tooltip title={t('submitTooltip')}>
+									<Button type="primary" size="middle" onClick={handleSubmit} disabled={!canSubmit}>
+										{t('submit')}
+									</Button>
+								</Tooltip>
+								<Tooltip title={t('showAnswerTooltip')}>
+									<Button size="middle" onClick={handleShowAnswer}>
+										{t('showAnswer')}
+									</Button>
+								</Tooltip>
+							</>
+						) : (
+							<Button type="primary" size="middle" onClick={handleNext}>
+								{t('next')}
+							</Button>
+						)}
+					</Flex>
 				</Flex>
 
 				<Typography.Text type="secondary" style={{ fontSize: 12 }}>
-					{t('shortcutsHint')}
+					{t('shortcutsHintWithH')}
 				</Typography.Text>
 
 				{isLastSentence && isDoneWithSentence && (

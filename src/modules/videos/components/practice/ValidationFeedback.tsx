@@ -30,9 +30,10 @@ function ValidationFeedbackComponent({
 				type="success"
 				showIcon
 				icon={<CheckCircleOutlined />}
-				message={t('correct')}
+				title={t('correct')}
 				role="status"
 				aria-live="polite"
+				style={{ borderRadius: 'var(--ant-borderRadiusLG, 8px)' }}
 			/>
 		);
 	}
@@ -52,9 +53,10 @@ function ValidationFeedbackComponent({
 			type="error"
 			showIcon
 			icon={<CloseCircleOutlined />}
-			message={message}
+			title={message}
 			role="status"
 			aria-live="polite"
+			style={{ borderRadius: 'var(--ant-borderRadiusLG, 8px)' }}
 		/>
 	);
 }
