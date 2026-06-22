@@ -55,8 +55,6 @@ bilingual (English / Vietnamese) with Japanese throughout.
 
 ➡️ **See the [full screenshot gallery](docs/screenshots/README.md)** for every screen.
 
-<!-- Live demo: add the URL here once deployed. See docs/deployment-vercel.md. -->
-
 ## Tech stack
 
 | Area | Choices |
