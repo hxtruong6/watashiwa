@@ -67,6 +67,8 @@ GEMINI.md
 .cursorrules
 .aider*
 .windsurfrules
+ai_prompt.md
+bmad.png
 
 # Documentation: keep a curated public set; the rest stays local-only
 /docs/**
@@ -79,6 +81,7 @@ GEMINI.md
 !/docs/project-overview.md
 !/docs/development-guide.md
 !/docs/deployment-vercel.md
+!/docs/deployment-selfhost.md
 !/docs/srs_architecture.md
 !/docs/screenshots/
 !/docs/screenshots/*.png

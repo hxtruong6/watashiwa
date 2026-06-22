@@ -102,8 +102,8 @@ pnpm e2e               # Playwright end-to-end flows
 
 ### Deployment
 
-See [`docs/deployment-vercel.md`](docs/deployment-vercel.md) for a step-by-step
-guide to deploying on Vercel with a managed Postgres database (for a live demo).
+- **Vercel** (managed Postgres) — see [`docs/deployment-vercel.md`](docs/deployment-vercel.md).
+- **Self-hosted** (Ubuntu + PM2 + Nginx) — see [`docs/deployment-selfhost.md`](docs/deployment-selfhost.md).
 
 ## Architecture
 
